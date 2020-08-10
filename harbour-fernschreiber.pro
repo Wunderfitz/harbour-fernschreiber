@@ -15,6 +15,7 @@ TARGET = harbour-fernschreiber
 CONFIG += sailfishapp sailfishapp_i18n
 
 SOURCES += src/harbour-fernschreiber.cpp \
+    src/tdlibreceiver.cpp \
     src/tdlibwrapper.cpp
 
 DISTFILES += qml/harbour-fernschreiber.qml \
@@ -70,5 +71,6 @@ INSTALLS += telegram 86.png 108.png 128.png 172.png 256.png \
             fernschreiber.desktop gui images
 
 HEADERS += \
+    src/tdlibreceiver.h \
     src/tdlibsecrets.h \
     src/tdlibwrapper.h

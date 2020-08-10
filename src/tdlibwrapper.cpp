@@ -23,18 +23,17 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
 {
     qDebug() << "[TDLibWrapper] Initializing TD Lib...";
     this->tdLibClient = td_json_client_create();
-    //this->testIt();
+    this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
+    this->tdLibReceiver->start();
 }
 
 TDLibWrapper::~TDLibWrapper()
 {
     qDebug() << "[TDLibWrapper] Destroying TD Lib...";
+    this->tdLibReceiver->setActive(false);
+    while (this->tdLibReceiver->isRunning()) {
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
+    }
     td_json_client_destroy(this->tdLibClient);
-}
-
-void TDLibWrapper::testIt()
-{
-    qDebug() << "[TDLibWrapper] Test it!";
-    td_json_client_send(this->tdLibClient, "BLUBB");
 }
 

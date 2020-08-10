@@ -1,9 +1,11 @@
 #ifndef TDLIBWRAPPER_H
 #define TDLIBWRAPPER_H
 
+#include <QCoreApplication>
 #include <QObject>
 #include <QDebug>
 #include <td/telegram/td_json_client.h>
+#include "tdlibreceiver.h"
 
 class TDLibWrapper : public QObject
 {
@@ -12,8 +14,6 @@ public:
     explicit TDLibWrapper(QObject *parent = nullptr);
     ~TDLibWrapper();
 
-    Q_INVOKABLE void testIt();
-
 signals:
 
 public slots:
@@ -21,6 +21,7 @@ public slots:
 
 private:
     void *tdLibClient;
+    TDLibReceiver *tdLibReceiver;
 
 };
 
