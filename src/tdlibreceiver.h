@@ -3,6 +3,8 @@
 
 #include <QDebug>
 #include <QThread>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <td/telegram/td_json_client.h>
 
 class TDLibReceiver : public QThread
@@ -15,11 +17,18 @@ public:
     explicit TDLibReceiver(void *tdLibClient, QObject *parent = nullptr);
     void setActive(const bool &active);
 
+signals:
+    void versionDetected(const QString &version);
+    void authorizationStateChanged(const QString &authorizationState);
+
 private:
     void *tdLibClient;
     bool isActive;
 
     void receiverLoop();
+    void handleReceivedDocument(const QJsonDocument &receivedJsonDocument);
+    void handleUpdateOption(const QVariantMap &receivedInformation);
+    void handleUpdateAuthorizationState(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

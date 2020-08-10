@@ -19,9 +19,41 @@ void TDLibReceiver::receiverLoop()
     while (this->isActive) {
       const char *result = td_json_client_receive(this->tdLibClient, WAIT_TIMEOUT);
       if (result) {
-          qDebug() << "[TDLibReceiver] Raw result: " << result;
-          // parse the result as JSON object and process it as an incoming update or an answer to a previously sent request
+          QJsonDocument receivedJsonDocument = QJsonDocument::fromJson(QByteArray(result));
+          qDebug().noquote() << "[TDLibReceiver] Raw result: " << receivedJsonDocument.toJson(QJsonDocument::Indented);
+          handleReceivedDocument(receivedJsonDocument);
       }
     }
     qDebug() << "[TDLibReceiver] Stopping receiver loop";
+}
+
+void TDLibReceiver::handleReceivedDocument(const QJsonDocument &receivedJsonDocument)
+{
+    QVariantMap receivedInformation = receivedJsonDocument.object().toVariantMap();
+    QString objectTypeName = receivedInformation.value("@type").toString();
+
+    if (objectTypeName == "updateOption") {
+        this->handleUpdateOption(receivedInformation);
+    }
+
+    if (objectTypeName == "updateAuthorizationState") {
+        this->handleUpdateAuthorizationState(receivedInformation);
+    }
+}
+
+void TDLibReceiver::handleUpdateOption(const QVariantMap &receivedInformation)
+{
+    QString currentOption = receivedInformation.value("name").toString();
+    if (currentOption == "version") {
+        QString detectedVersion = receivedInformation.value("value").toMap().value("value").toString();
+        qDebug() << "[TDLibReceiver] TD Lib version detected: " << detectedVersion;
+        emit versionDetected(detectedVersion);
+    }
+}
+
+void TDLibReceiver::handleUpdateAuthorizationState(const QVariantMap &receivedInformation)
+{
+    QString authorizationState = receivedInformation.value("authorization_state").toMap().value("@type").toString();
+    qDebug() << "[TDLibReceiver] Authorization state changed: " << authorizationState;
+    emit authorizationStateChanged(authorizationState);
 }
