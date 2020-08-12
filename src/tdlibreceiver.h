@@ -21,6 +21,7 @@ signals:
     void versionDetected(const QString &version);
     void authorizationStateChanged(const QString &authorizationState);
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
+    void connectionStateChanged(const QString &connectionState);
 
 private:
     void *tdLibClient;
@@ -30,6 +31,7 @@ private:
     void processReceivedDocument(const QJsonDocument &receivedJsonDocument);
     void processUpdateOption(const QVariantMap &receivedInformation);
     void processUpdateAuthorizationState(const QVariantMap &receivedInformation);
+    void processUpdateConnectionState(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

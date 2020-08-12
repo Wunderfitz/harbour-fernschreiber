@@ -39,6 +39,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(versionDetected(QString)), this, SLOT(handleVersionDetected(QString)));
     connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString)), this, SLOT(handleAuthorizationStateChanged(QString)));
     connect(this->tdLibReceiver, SIGNAL(optionUpdated(QString, QVariant)), this, SLOT(handleOptionUpdated(QString, QVariant)));
+    connect(this->tdLibReceiver, SIGNAL(connectionStateChanged(QString)), this, SLOT(handleConnectionStateChanged(QString)));
 
     this->tdLibReceiver->start();
 }
@@ -70,6 +71,11 @@ TDLibWrapper::AuthorizationState TDLibWrapper::getAuthorizationState()
     return this->authorizationState;
 }
 
+TDLibWrapper::ConnectionState TDLibWrapper::getConnectionState()
+{
+    return this->connectionState;
+}
+
 void TDLibWrapper::handleVersionDetected(const QString &version)
 {
     this->version = version;
@@ -78,7 +84,7 @@ void TDLibWrapper::handleVersionDetected(const QString &version)
 
 void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationState)
 {
-        if (authorizationState == "authorizationStateClosed") {
+    if (authorizationState == "authorizationStateClosed") {
         this->authorizationState = AuthorizationState::Closed;
     }
 
@@ -132,6 +138,27 @@ void TDLibWrapper::handleOptionUpdated(const QString &optionName, const QVariant
 {
     this->options.insert(optionName, optionValue);
     emit optionUpdated(optionName, optionValue);
+}
+
+void TDLibWrapper::handleConnectionStateChanged(const QString &connectionState)
+{
+    if (connectionState == "connectionStateConnecting") {
+        this->connectionState = ConnectionState::Connecting;
+    }
+    if (connectionState == "connectionStateConnectingToProxy") {
+        this->connectionState = ConnectionState::ConnectingToProxy;
+    }
+    if (connectionState == "connectionStateReady") {
+        this->connectionState = ConnectionState::IsReady;
+    }
+    if (connectionState == "connectionStateUpdating") {
+        this->connectionState = ConnectionState::Updating;
+    }
+    if (connectionState == "connectionStateWaitingForNetwork") {
+        this->connectionState = ConnectionState::WaitingForNetwork;
+    }
+
+    emit connectionStateChanged(this->connectionState);
 }
 
 void TDLibWrapper::setInitialParameters()

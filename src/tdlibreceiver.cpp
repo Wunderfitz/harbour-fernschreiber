@@ -43,6 +43,10 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateAuthorizationState") {
         this->processUpdateAuthorizationState(receivedInformation);
     }
+
+    if (objectTypeName == "updateConnectionState") {
+        this->processUpdateConnectionState(receivedInformation);
+    }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -64,4 +68,11 @@ void TDLibReceiver::processUpdateAuthorizationState(const QVariantMap &receivedI
     QString authorizationState = receivedInformation.value("authorization_state").toMap().value("@type").toString();
     qDebug() << "[TDLibReceiver] Authorization state changed: " << authorizationState;
     emit authorizationStateChanged(authorizationState);
+}
+
+void TDLibReceiver::processUpdateConnectionState(const QVariantMap &receivedInformation)
+{
+    QString connectionState = receivedInformation.value("state").toMap().value("@type").toString();
+    qDebug() << "[TDLibReceiver] Connection state changed: " << connectionState;
+    emit connectionStateChanged(connectionState);
 }
