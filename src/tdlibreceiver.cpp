@@ -52,6 +52,10 @@ void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
         QString detectedVersion = receivedInformation.value("value").toMap().value("value").toString();
         qDebug() << "[TDLibReceiver] TD Lib version detected: " << detectedVersion;
         emit versionDetected(detectedVersion);
+    } else {
+        QVariant currentValue = receivedInformation.value("value").toMap().value("value");
+        qDebug() << "[TDLibReceiver] Option updated: " << currentOption << currentValue;
+        emit optionUpdated(currentOption, currentValue);
     }
 }
 

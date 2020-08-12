@@ -20,6 +20,7 @@ public:
 signals:
     void versionDetected(const QString &version);
     void authorizationStateChanged(const QString &authorizationState);
+    void optionUpdated(const QString &optionName, const QVariant &optionValue);
 
 private:
     void *tdLibClient;
