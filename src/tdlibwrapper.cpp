@@ -24,6 +24,10 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     qDebug() << "[TDLibWrapper] Initializing TD Lib...";
     this->tdLibClient = td_json_client_create();
     this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
+
+    connect(this->tdLibReceiver, SIGNAL(versionDetected(QString)), this, SLOT(handleVersionDetected(QString)));
+    connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString)), this, SLOT(handleAuthorizationStateChanged(QString)));
+
     this->tdLibReceiver->start();
 }
 
@@ -35,5 +39,27 @@ TDLibWrapper::~TDLibWrapper()
         QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
     }
     td_json_client_destroy(this->tdLibClient);
+}
+
+QString TDLibWrapper::getVersion()
+{
+    return this->version;
+}
+
+QString TDLibWrapper::getAuthorizationState()
+{
+    return this->authorizationState;
+}
+
+void TDLibWrapper::handleVersionDetected(const QString &version)
+{
+    this->version = version;
+    emit versionDetected(version);
+}
+
+void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationState)
+{
+    this->authorizationState = authorizationState;
+    emit authorizationStateChanged(authorizationState);
 }
 

@@ -28,10 +28,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This product uses the Telegram API but is not endorsed or certified by Telegram</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Terms of Service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -53,6 +49,14 @@
     </message>
     <message>
         <source>About Telegram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TDLib version %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

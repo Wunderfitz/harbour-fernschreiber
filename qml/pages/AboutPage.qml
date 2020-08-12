@@ -121,7 +121,20 @@ Page {
             Label {
                 x: Theme.horizontalPageMargin
                 width: parent.width  - ( 2 * Theme.horizontalPageMargin )
-                text: qsTr("This product uses the Telegram API but is not endorsed or certified by Telegram")
+                horizontalAlignment: Text.AlignHCenter
+                text: qsTr("This product uses the Telegram API but is not endorsed or certified by Telegram.")
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignHCenter
+                text: qsTr("TDLib version %1").arg(tdLibWrapper.getVersion())
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
                 anchors {
@@ -147,7 +160,7 @@ Page {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onClicked: {
-                    Qt.openUrlExternally("https://telegram.orgprivacy")
+                    Qt.openUrlExternally("https://telegram.org/privacy")
                 }
             }
 

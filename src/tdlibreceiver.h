@@ -26,9 +26,9 @@ private:
     bool isActive;
 
     void receiverLoop();
-    void handleReceivedDocument(const QJsonDocument &receivedJsonDocument);
-    void handleUpdateOption(const QVariantMap &receivedInformation);
-    void handleUpdateAuthorizationState(const QVariantMap &receivedInformation);
+    void processReceivedDocument(const QJsonDocument &receivedJsonDocument);
+    void processUpdateOption(const QVariantMap &receivedInformation);
+    void processUpdateAuthorizationState(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

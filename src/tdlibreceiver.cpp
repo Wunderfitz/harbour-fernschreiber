@@ -8,7 +8,11 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
 
 void TDLibReceiver::setActive(const bool &active)
 {
-    qDebug() << "[TDLibReceiver] setActive " << active;
+    if (active) {
+        qDebug() << "[TDLibReceiver] Activating receiver loop...";
+    } else {
+        qDebug() << "[TDLibReceiver] Deactivating receiver loop, this may take a while...";
+    }
     this->isActive = active;
 }
 
@@ -21,27 +25,27 @@ void TDLibReceiver::receiverLoop()
       if (result) {
           QJsonDocument receivedJsonDocument = QJsonDocument::fromJson(QByteArray(result));
           qDebug().noquote() << "[TDLibReceiver] Raw result: " << receivedJsonDocument.toJson(QJsonDocument::Indented);
-          handleReceivedDocument(receivedJsonDocument);
+          processReceivedDocument(receivedJsonDocument);
       }
     }
     qDebug() << "[TDLibReceiver] Stopping receiver loop";
 }
 
-void TDLibReceiver::handleReceivedDocument(const QJsonDocument &receivedJsonDocument)
+void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDocument)
 {
     QVariantMap receivedInformation = receivedJsonDocument.object().toVariantMap();
     QString objectTypeName = receivedInformation.value("@type").toString();
 
     if (objectTypeName == "updateOption") {
-        this->handleUpdateOption(receivedInformation);
+        this->processUpdateOption(receivedInformation);
     }
 
     if (objectTypeName == "updateAuthorizationState") {
-        this->handleUpdateAuthorizationState(receivedInformation);
+        this->processUpdateAuthorizationState(receivedInformation);
     }
 }
 
-void TDLibReceiver::handleUpdateOption(const QVariantMap &receivedInformation)
+void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
 {
     QString currentOption = receivedInformation.value("name").toString();
     if (currentOption == "version") {
@@ -51,7 +55,7 @@ void TDLibReceiver::handleUpdateOption(const QVariantMap &receivedInformation)
     }
 }
 
-void TDLibReceiver::handleUpdateAuthorizationState(const QVariantMap &receivedInformation)
+void TDLibReceiver::processUpdateAuthorizationState(const QVariantMap &receivedInformation)
 {
     QString authorizationState = receivedInformation.value("authorization_state").toMap().value("@type").toString();
     qDebug() << "[TDLibReceiver] Authorization state changed: " << authorizationState;
