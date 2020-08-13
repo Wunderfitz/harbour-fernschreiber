@@ -3,12 +3,12 @@
 
     This file is part of Fernschreiber.
 
-    fernschreiber is free software: you can redistribute it and/or modify
+    Fernschreiber is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    fernschreiber is distributed in the hope that it will be useful,
+    Fernschreiber is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
@@ -40,6 +40,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString)), this, SLOT(handleAuthorizationStateChanged(QString)));
     connect(this->tdLibReceiver, SIGNAL(optionUpdated(QString, QVariant)), this, SLOT(handleOptionUpdated(QString, QVariant)));
     connect(this->tdLibReceiver, SIGNAL(connectionStateChanged(QString)), this, SLOT(handleConnectionStateChanged(QString)));
+    connect(this->tdLibReceiver, SIGNAL(userUpdated(QVariantMap)), this, SLOT(handleUserUpdated(QVariantMap)));
 
     this->tdLibReceiver->start();
 }
@@ -183,6 +184,16 @@ void TDLibWrapper::handleConnectionStateChanged(const QString &connectionState)
     emit connectionStateChanged(this->connectionState);
 }
 
+void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
+{
+    if (userInformation.value("id") == this->options.value("my_id")) {
+        qDebug() << "[TDLibWrapper] Own user information updated :)";
+        this->userInformation = userInformation;
+    } else {
+        qDebug() << "[TDLibWrapper] Other user information updated";
+    }
+}
+
 void TDLibWrapper::setInitialParameters()
 {
     qDebug() << "[TDLibWrapper] Sending initial parameters to TD Lib";
@@ -192,6 +203,8 @@ void TDLibWrapper::setInitialParameters()
     initialParameters.insert("api_id", TDLIB_API_ID);
     initialParameters.insert("api_hash", TDLIB_API_HASH);
     initialParameters.insert("database_directory", QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib");
+    initialParameters.insert("use_file_database", true);
+    initialParameters.insert("use_chat_info_database", true);
     initialParameters.insert("use_message_database", true);
     initialParameters.insert("use_secret_chats", false);
     initialParameters.insert("system_language_code", QLocale::system().name());

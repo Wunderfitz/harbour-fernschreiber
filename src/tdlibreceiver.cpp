@@ -3,12 +3,12 @@
 
     This file is part of Fernschreiber.
 
-    fernschreiber is free software: you can redistribute it and/or modify
+    Fernschreiber is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    fernschreiber is distributed in the hope that it will be useful,
+    Fernschreiber is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
@@ -65,6 +65,10 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateConnectionState") {
         this->processUpdateConnectionState(receivedInformation);
     }
+
+    if (objectTypeName == "updateUser") {
+        this->processUpdateUser(receivedInformation);
+    }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -93,4 +97,11 @@ void TDLibReceiver::processUpdateConnectionState(const QVariantMap &receivedInfo
     QString connectionState = receivedInformation.value("state").toMap().value("@type").toString();
     qDebug() << "[TDLibReceiver] Connection state changed: " << connectionState;
     emit connectionStateChanged(connectionState);
+}
+
+void TDLibReceiver::processUpdateUser(const QVariantMap &receivedInformation)
+{
+    QVariantMap userInformation = receivedInformation.value("user").toMap();
+    qDebug() << "[TDLibReceiver] User was updated: " << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString();
+    emit userUpdated(userInformation);
 }

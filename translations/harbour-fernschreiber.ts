@@ -106,11 +106,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Welcome to Fernschreiber</source>
+        <source>Loading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Loading...</source>
+        <source>Fernschreiber</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waiting for network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connecting to network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connecting to proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updating content</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

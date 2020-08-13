@@ -3,12 +3,12 @@
 
     This file is part of Fernschreiber.
 
-    fernschreiber is free software: you can redistribute it and/or modify
+    Fernschreiber is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    fernschreiber is distributed in the hope that it will be useful,
+    Fernschreiber is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
@@ -40,6 +40,7 @@ signals:
     void authorizationStateChanged(const QString &authorizationState);
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
     void connectionStateChanged(const QString &connectionState);
+    void userUpdated(const QVariantMap &userInformation);
 
 private:
     void *tdLibClient;
@@ -50,6 +51,7 @@ private:
     void processUpdateOption(const QVariantMap &receivedInformation);
     void processUpdateAuthorizationState(const QVariantMap &receivedInformation);
     void processUpdateConnectionState(const QVariantMap &receivedInformation);
+    void processUpdateUser(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

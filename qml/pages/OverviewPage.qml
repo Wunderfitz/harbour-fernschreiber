@@ -3,12 +3,12 @@
 
     This file is part of Fernschreiber.
 
-    fernschreiber is free software: you can redistribute it and/or modify
+    Fernschreiber is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    fernschreiber is distributed in the hope that it will be useful,
+    Fernschreiber is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
@@ -37,6 +37,31 @@ Page {
         running: overviewPage.loading
     }
 
+    function setPageStatus() {
+        switch (overviewPage.connectionState) {
+        case TelegramAPI.WaitingForNetwork:
+            pageStatus.color = "red";
+            pageHeader.title = qsTr("Waiting for network");
+            break;
+        case TelegramAPI.Connecting:
+            pageStatus.color = "gold";
+            pageHeader.title = qsTr("Connecting to network");
+            break;
+        case TelegramAPI.ConnectingToProxy:
+            pageStatus.color = "gold";
+            pageHeader.title = qsTr("Connecting to proxy");
+            break;
+        case TelegramAPI.ConnectionReady:
+            pageStatus.color = "green";
+            pageHeader.title = qsTr("Fernschreiber");
+            break;
+        case TelegramAPI.Updating:
+            pageStatus.color = "lightblue";
+            pageHeader.title = qsTr("Updating content");
+            break;
+        }
+    }
+
     Connections {
         target: tdLibWrapper
         onAuthorizationStateChanged: {
@@ -61,6 +86,7 @@ Page {
         }
         onConnectionStateChanged: {
             overviewPage.connectionState = connectionState;
+            setPageStatus();
         }
     }
 
@@ -71,6 +97,7 @@ Page {
         }
 
         overviewPage.connectionState = tdLibWrapper.getConnectionState();
+        overviewPage.setPageStatus();
     }
 
     SilicaFlickable {
@@ -91,8 +118,24 @@ Page {
             width: parent.width
             spacing: Theme.paddingLarge
 
-            PageHeader {
-                title: qsTr("Welcome to Fernschreiber")
+            Row {
+                width: parent.width
+
+                GlassItem {
+                    id: pageStatus
+                    width: Theme.itemSizeMedium
+                    height: Theme.itemSizeMedium
+                    color: "red"
+                    falloffRadius: 0.1
+                    radius: 0.2
+                    cache: false
+                }
+
+                PageHeader {
+                    id: pageHeader
+                    title: qsTr("Fernschreiber")
+                    width: parent.width - pageStatus.width
+                }
             }
 
             VerticalScrollDecorator {}

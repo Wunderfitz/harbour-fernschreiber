@@ -3,12 +3,12 @@
 
     This file is part of Fernschreiber.
 
-    fernschreiber is free software: you can redistribute it and/or modify
+    Fernschreiber is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    fernschreiber is distributed in the hope that it will be useful,
+    Fernschreiber is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
@@ -76,6 +76,7 @@ public slots:
     void handleAuthorizationStateChanged(const QString &authorizationState);
     void handleOptionUpdated(const QString &optionName, const QVariant &optionValue);
     void handleConnectionStateChanged(const QString &connectionState);
+    void handleUserUpdated(const QVariantMap &userInformation);
 
 private:
     void *tdLibClient;
@@ -84,6 +85,7 @@ private:
     TDLibWrapper::AuthorizationState authorizationState;
     TDLibWrapper::ConnectionState connectionState;
     QVariantMap options;
+    QVariantMap userInformation;
 
     void setInitialParameters();
     void setEncryptionKey();
