@@ -67,22 +67,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Please enter the PIN that you received:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to authenticate you with the entered PIN.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter PIN again</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart authentication</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Welcome to Fernschreiber!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -92,6 +76,26 @@
     </message>
     <message>
         <source>Continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please enter the code that you received:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unable to authenticate you with the entered code.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter code again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart authentication</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

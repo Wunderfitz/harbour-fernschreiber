@@ -18,10 +18,47 @@
 */
 import QtQuick 2.2
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 
 Page {
     id: initializationPage
     allowedOrientations: Orientation.All
+
+    property bool loading: true
+    property int authorizationState: TelegramAPI.Closed
+
+    BusyLabel {
+        text: qsTr("Loading...")
+        running: initializationPage.loading
+    }
+
+    Component.onCompleted: {
+        initializationPage.authorizationState = tdLibWrapper.getAuthorizationState();
+        initializationPage.loading = false;
+        if (initializationPage.authorizationState === TelegramAPI.WaitCode) {
+            welcomeFlickable.visible = false;
+            enterPinColumn.visible = true;
+        }
+    }
+
+    Connections {
+        target: tdLibWrapper
+        onAuthorizationStateChanged: {
+            switch (authorizationState) {
+            case TelegramAPI.WaitCode:
+                initializationPage.loading = false;
+                enterPinColumn.visible = true;
+                break;
+            case TelegramAPI.AuthorizationReady:
+                overviewPage.loading = false;
+                pageStack.clear();
+                pageStack.push(Qt.resolvedUrl("../pages/OverviewPage.qml"));
+                break;
+            default:
+                // Nothing ;)
+            }
+        }
+    }
 
     Column {
         y: ( parent.height - ( errorInfoLabel.height + fernschreiberErrorImage.height + errorOkButton.height + ( 3 * Theme.paddingSmall ) ) ) / 2
@@ -87,7 +124,7 @@ Page {
         InfoLabel {
             id: enterPinLabel
             font.pixelSize: Theme.fontSizeLarge
-            text: qsTr("Please enter the PIN that you received:")
+            text: qsTr("Please enter the code that you received:")
         }
 
         TextField {
@@ -108,8 +145,9 @@ Page {
                 horizontalCenter: parent.horizontalCenter
             }
             onClicked: {
-                //accountModel.enterPin(enterPinField.text)
+                initializationPage.loading = true;
                 enterPinColumn.visible = false;
+                tdLibWrapper.setAuthenticationCode(enterPinField.text);
             }
         }
     }
@@ -138,12 +176,12 @@ Page {
         InfoLabel {
             id: linkingErrorInfoLabel
             font.pixelSize: Theme.fontSizeLarge
-            text: qsTr("Unable to authenticate you with the entered PIN.")
+            text: qsTr("Unable to authenticate you with the entered code.")
         }
 
         Button {
             id: enterPinAgainButton
-            text: qsTr("Enter PIN again")
+            text: qsTr("Enter code again")
             anchors {
                 horizontalCenter: parent.horizontalCenter
             }
@@ -169,38 +207,12 @@ Page {
     SilicaFlickable {
         id: welcomeFlickable
         anchors.fill: parent
-        contentHeight: column.height
+        contentHeight: welcomeColumn.height
         Behavior on opacity { NumberAnimation {} }
         opacity: visible ? 1 : 0
 
-//        Connections {
-//            target: accountModel
-//            onPinRequestSuccessful: {
-//                console.log("URL: " + url)
-//                Qt.openUrlExternally(url)
-//                welcomeFlickable.visible = false
-//                enterPinColumn.visible = true
-//            }
-//            onPinRequestError: {
-//                errorInfoLabel.text = errorMessage
-//                welcomeFlickable.visible = false
-//                pinErrorColumn.visible = true
-//                console.log("Error Message: " + errorMessage)
-//            }
-//            onLinkingSuccessful: {
-//                console.log("Linking successful, moving on to my tweets...")
-//                pageStack.clear()
-//                pageStack.push(overviewPage)
-//            }
-//            onLinkingFailed: {
-//                enterPinColumn.visible = false
-//                linkingErrorColumn.visible = true
-//                console.log("Linking error, proceeding to error page!")
-//            }
-//        }
-
         Column {
-            id: column
+            id: welcomeColumn
             width: parent.width
             spacing: Theme.paddingLarge
 
@@ -246,6 +258,8 @@ Page {
                 }
                 enabled: phoneNumberTextField.text.match(/\+[1-9][0-9]{4,}/g)
                 onClicked: {
+                    initializationPage.loading = true;
+                    welcomeFlickable.visible = false;
                     tdLibWrapper.setAuthenticationPhoneNumber(phoneNumberTextField.text);
                 }
             }

@@ -89,6 +89,15 @@ void TDLibWrapper::setAuthenticationPhoneNumber(const QString &phoneNumber)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::setAuthenticationCode(const QString &authenticationCode)
+{
+    qDebug() << "[TDLibWrapper] Set authentication code " << authenticationCode;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "checkAuthenticationCode");
+    requestObject.insert("code", authenticationCode);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::handleVersionDetected(const QString &version)
 {
     this->version = version;

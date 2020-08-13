@@ -29,6 +29,8 @@ Page {
     allowedOrientations: Orientation.All
 
     property bool loading: true;
+    property int authorizationState: TelegramAPI.Closed
+    property int connectionState: TelegramAPI.WaitingForNetwork
 
     BusyLabel {
         text: qsTr("Loading...")
@@ -44,10 +46,31 @@ Page {
                 pageStack.clear();
                 pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
                 break;
+            case TelegramAPI.WaitCode:
+                overviewPage.loading = false;
+                pageStack.clear();
+                pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+                break;
+            case TelegramAPI.AuthorizationReady:
+                overviewPage.loading = false;
+                break;
             default:
                 // Nothing ;)
             }
+            overviewPage.authorizationState = authorizationState;
         }
+        onConnectionStateChanged: {
+            overviewPage.connectionState = connectionState;
+        }
+    }
+
+    Component.onCompleted: {
+        overviewPage.authorizationState = tdLibWrapper.getAuthorizationState();
+        if (overviewPage.authorizationState === TelegramAPI.AuthorizationReady) {
+            overviewPage.loading = false;
+        }
+
+        overviewPage.connectionState = tdLibWrapper.getConnectionState();
     }
 
     SilicaFlickable {
