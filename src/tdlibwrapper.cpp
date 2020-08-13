@@ -76,6 +76,19 @@ TDLibWrapper::ConnectionState TDLibWrapper::getConnectionState()
     return this->connectionState;
 }
 
+void TDLibWrapper::setAuthenticationPhoneNumber(const QString &phoneNumber)
+{
+    qDebug() << "[TDLibWrapper] Set authentication phone number " << phoneNumber;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "setAuthenticationPhoneNumber");
+    requestObject.insert("phone_number", phoneNumber);
+    QVariantMap phoneNumberSettings;
+    phoneNumberSettings.insert("allow_flash_call", false);
+    phoneNumberSettings.insert("is_current_phone_number", true);
+    requestObject.insert("settings", phoneNumberSettings);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::handleVersionDetected(const QString &version)
 {
     this->version = version;
@@ -97,7 +110,7 @@ void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationS
     }
 
     if (authorizationState == "authorizationStateReady") {
-        this->authorizationState = AuthorizationState::Ready;
+        this->authorizationState = AuthorizationState::AuthorizationReady;
     }
 
     if (authorizationState == "authorizationStateWaitCode") {
@@ -149,7 +162,7 @@ void TDLibWrapper::handleConnectionStateChanged(const QString &connectionState)
         this->connectionState = ConnectionState::ConnectingToProxy;
     }
     if (connectionState == "connectionStateReady") {
-        this->connectionState = ConnectionState::IsReady;
+        this->connectionState = ConnectionState::ConnectionReady;
     }
     if (connectionState == "connectionStateUpdating") {
         this->connectionState = ConnectionState::Updating;

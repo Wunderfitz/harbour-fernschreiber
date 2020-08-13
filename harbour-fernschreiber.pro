@@ -20,6 +20,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
 
 DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/CoverPage.qml \
+    qml/pages/InitializationPage.qml \
     qml/pages/OverviewPage.qml \
     qml/pages/AboutPage.qml \
     rpm/harbour-fernschreiber.changes.in \

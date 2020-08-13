@@ -40,6 +40,7 @@ int main(int argc, char *argv[])
 
     TDLibWrapper tdLibWrapper;
     context->setContextProperty("tdLibWrapper", &tdLibWrapper);
+    qmlRegisterType<TDLibWrapper>("WerkWolf.Fernschreiber", 1, 0, "TelegramAPI");
 
     view->setSource(SailfishApp::pathTo("qml/harbour-fernschreiber.qml"));
     view->show();

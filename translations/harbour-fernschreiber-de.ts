@@ -61,6 +61,41 @@
     </message>
 </context>
 <context>
+    <name>InitializationPage</name>
+    <message>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please enter the PIN that you received:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unable to authenticate you with the entered PIN.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter PIN again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to Fernschreiber!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please enter your phone number to continue.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
@@ -68,6 +103,10 @@
     </message>
     <message>
         <source>Welcome to Fernschreiber</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

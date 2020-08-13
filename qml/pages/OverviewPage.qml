@@ -21,16 +21,40 @@ import QtGraphicalEffects 1.0
 import QtMultimedia 5.0
 import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
+import WerkWolf.Fernschreiber 1.0
 
 
 Page {
     id: overviewPage
     allowedOrientations: Orientation.All
 
+    property bool loading: true;
+
+    BusyLabel {
+        text: qsTr("Loading...")
+        running: overviewPage.loading
+    }
+
+    Connections {
+        target: tdLibWrapper
+        onAuthorizationStateChanged: {
+            switch (authorizationState) {
+            case TelegramAPI.WaitPhoneNumber:
+                overviewPage.loading = false;
+                pageStack.clear();
+                pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+                break;
+            default:
+                // Nothing ;)
+            }
+        }
+    }
+
     SilicaFlickable {
         id: aboutContainer
         contentHeight: column.height
         anchors.fill: parent
+        visible: !overviewPage.loading
 
         PullDownMenu {
             MenuItem {
