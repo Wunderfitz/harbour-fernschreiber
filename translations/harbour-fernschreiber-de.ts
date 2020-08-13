@@ -67,6 +67,14 @@
         <source>Phone number: +%1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open twemoji on GitHub</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InitializationPage</name>
@@ -122,19 +130,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Waiting for network</source>
+        <source>Waiting for network...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Connecting to network</source>
+        <source>Connecting to network...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Connecting to proxy</source>
+        <source>Connecting to proxy...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Updating content</source>
+        <source>Updating content...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
