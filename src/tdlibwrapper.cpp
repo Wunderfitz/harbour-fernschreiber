@@ -99,6 +99,20 @@ void TDLibWrapper::setAuthenticationCode(const QString &authenticationCode)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::getChats()
+{
+    qDebug() << "[TDLibWrapper] Getting chats";
+    QVariantMap requestObject;
+    requestObject.insert("@type", "getChats");
+    requestObject.insert("limit", 20);
+    this->sendRequest(requestObject);
+}
+
+QVariantMap TDLibWrapper::getUserInformation()
+{
+    return this->userInformation;
+}
+
 void TDLibWrapper::handleVersionDetected(const QString &version)
 {
     this->version = version;

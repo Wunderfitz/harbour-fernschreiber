@@ -64,6 +64,8 @@ public:
     Q_INVOKABLE TDLibWrapper::ConnectionState getConnectionState();
     Q_INVOKABLE void setAuthenticationPhoneNumber(const QString &phoneNumber);
     Q_INVOKABLE void setAuthenticationCode(const QString &authenticationCode);
+    Q_INVOKABLE void getChats();
+    Q_INVOKABLE QVariantMap getUserInformation();
 
 signals:
     void versionDetected(const QString &version);

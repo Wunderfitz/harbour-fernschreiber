@@ -59,6 +59,14 @@
         <source>TDLib version %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Logged in as %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Phone number: +%1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InitializationPage</name>

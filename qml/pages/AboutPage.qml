@@ -18,10 +18,16 @@
 */
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../js/twemoji.js" as Emoji
 
 Page {
     id: aboutPage
     allowedOrientations: Orientation.All
+
+    function getUserName() {
+        var userInformation = tdLibWrapper.getUserInformation();
+        return Emoji.emojify(userInformation.first_name + " " + userInformation.last_name, Theme.fontSizeSmall);
+    }
 
     SilicaFlickable {
         id: aboutContainer
@@ -135,6 +141,32 @@ Page {
                 width: parent.width  - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTr("TDLib version %1").arg(tdLibWrapper.getVersion())
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+
+            Text {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignHCenter
+                text: qsTr("Logged in as %1").arg(aboutPage.getUserName())
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+                color: Theme.primaryColor
+                textFormat: Text.StyledText
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignHCenter
+                text: qsTr("Phone number: +%1").arg(tdLibWrapper.getUserInformation().phone_number)
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
                 anchors {

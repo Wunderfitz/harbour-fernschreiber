@@ -41,15 +41,15 @@ Page {
         switch (overviewPage.connectionState) {
         case TelegramAPI.WaitingForNetwork:
             pageStatus.color = "red";
-            pageHeader.title = qsTr("Waiting for network");
+            pageHeader.title = qsTr("Waiting for network...");
             break;
         case TelegramAPI.Connecting:
             pageStatus.color = "gold";
-            pageHeader.title = qsTr("Connecting to network");
+            pageHeader.title = qsTr("Connecting to network...");
             break;
         case TelegramAPI.ConnectingToProxy:
             pageStatus.color = "gold";
-            pageHeader.title = qsTr("Connecting to proxy");
+            pageHeader.title = qsTr("Connecting to proxy...");
             break;
         case TelegramAPI.ConnectionReady:
             pageStatus.color = "green";
@@ -57,9 +57,13 @@ Page {
             break;
         case TelegramAPI.Updating:
             pageStatus.color = "lightblue";
-            pageHeader.title = qsTr("Updating content");
+            pageHeader.title = qsTr("Updating content...");
             break;
         }
+    }
+
+    function updateContent() {
+        // tdLibWrapper.getChats();
     }
 
     Connections {
@@ -78,6 +82,7 @@ Page {
                 break;
             case TelegramAPI.AuthorizationReady:
                 overviewPage.loading = false;
+                overviewPage.updateContent();
                 break;
             default:
                 // Nothing ;)
@@ -94,6 +99,7 @@ Page {
         overviewPage.authorizationState = tdLibWrapper.getAuthorizationState();
         if (overviewPage.authorizationState === TelegramAPI.AuthorizationReady) {
             overviewPage.loading = false;
+            overviewPage.updateContent();
         }
 
         overviewPage.connectionState = tdLibWrapper.getConnectionState();
