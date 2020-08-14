@@ -58,20 +58,24 @@ public:
     };
     Q_ENUM(ConnectionState)
 
-    Q_INVOKABLE void sendRequest(const QVariantMap &requestObject);
     Q_INVOKABLE QString getVersion();
     Q_INVOKABLE TDLibWrapper::AuthorizationState getAuthorizationState();
     Q_INVOKABLE TDLibWrapper::ConnectionState getConnectionState();
+    Q_INVOKABLE QVariantMap getUserInformation();
+
+    // Direct TDLib functions
+    Q_INVOKABLE void sendRequest(const QVariantMap &requestObject);
     Q_INVOKABLE void setAuthenticationPhoneNumber(const QString &phoneNumber);
     Q_INVOKABLE void setAuthenticationCode(const QString &authenticationCode);
     Q_INVOKABLE void getChats();
-    Q_INVOKABLE QVariantMap getUserInformation();
+    Q_INVOKABLE void downloadFile(const QString &fileId);
 
 signals:
     void versionDetected(const QString &version);
     void authorizationStateChanged(const TDLibWrapper::AuthorizationState &authorizationState);
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
     void connectionStateChanged(const TDLibWrapper::ConnectionState &connectionState);
+    void fileUpdated(const int fileId, const QVariantMap fileInformation);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -79,6 +83,7 @@ public slots:
     void handleOptionUpdated(const QString &optionName, const QVariant &optionValue);
     void handleConnectionStateChanged(const QString &connectionState);
     void handleUserUpdated(const QVariantMap &userInformation);
+    void handleFileUpdated(const QVariantMap &userInformation);
 
 private:
     void *tdLibClient;
@@ -91,6 +96,7 @@ private:
 
     void setInitialParameters();
     void setEncryptionKey();
+    void setLogVerbosityLevel();
 
 };
 

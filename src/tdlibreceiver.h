@@ -41,6 +41,7 @@ signals:
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
     void connectionStateChanged(const QString &connectionState);
     void userUpdated(const QVariantMap &userInformation);
+    void fileUpdated(const QVariantMap &fileInformation);
 
 private:
     void *tdLibClient;
@@ -52,6 +53,7 @@ private:
     void processUpdateAuthorizationState(const QVariantMap &receivedInformation);
     void processUpdateConnectionState(const QVariantMap &receivedInformation);
     void processUpdateUser(const QVariantMap &receivedInformation);
+    void processUpdateFile(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

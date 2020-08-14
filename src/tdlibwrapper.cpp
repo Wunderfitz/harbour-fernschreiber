@@ -41,8 +41,11 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(optionUpdated(QString, QVariant)), this, SLOT(handleOptionUpdated(QString, QVariant)));
     connect(this->tdLibReceiver, SIGNAL(connectionStateChanged(QString)), this, SLOT(handleConnectionStateChanged(QString)));
     connect(this->tdLibReceiver, SIGNAL(userUpdated(QVariantMap)), this, SLOT(handleUserUpdated(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(fileUpdated(QVariantMap)), this, SLOT(handleFileUpdated(QVariantMap)));
 
     this->tdLibReceiver->start();
+
+    this->setLogVerbosityLevel();
 }
 
 TDLibWrapper::~TDLibWrapper()
@@ -105,6 +108,19 @@ void TDLibWrapper::getChats()
     QVariantMap requestObject;
     requestObject.insert("@type", "getChats");
     requestObject.insert("limit", 20);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::downloadFile(const QString &fileId)
+{
+    qDebug() << "[TDLibWrapper] Downloading file " << fileId;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "downloadFile");
+    requestObject.insert("file_id", fileId);
+    requestObject.insert("synchronous", false);
+    requestObject.insert("offset", 0);
+    requestObject.insert("limit", 0);
+    requestObject.insert("priority", 1);
     this->sendRequest(requestObject);
 }
 
@@ -208,6 +224,11 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
     }
 }
 
+void TDLibWrapper::handleFileUpdated(const QVariantMap &userInformation)
+{
+    emit fileUpdated(userInformation.value("id").toInt(), userInformation);
+}
+
 void TDLibWrapper::setInitialParameters()
 {
     qDebug() << "[TDLibWrapper] Sending initial parameters to TD Lib";
@@ -237,6 +258,15 @@ void TDLibWrapper::setEncryptionKey()
     requestObject.insert("@type", "checkDatabaseEncryptionKey");
     // see https://github.com/tdlib/td/issues/188#issuecomment-379536139
     requestObject.insert("encryption_key", "");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setLogVerbosityLevel()
+{
+    qDebug() << "[TDLibWrapper] Setting log verbosity level to something less chatty";
+    QVariantMap requestObject;
+    requestObject.insert("@type", "setLogVerbosityLevel");
+    requestObject.insert("new_verbosity_level", 2);
     this->sendRequest(requestObject);
 }
 

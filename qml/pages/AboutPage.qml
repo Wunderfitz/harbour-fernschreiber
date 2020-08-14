@@ -18,16 +18,14 @@
 */
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../components"
 import "../js/twemoji.js" as Emoji
 
 Page {
     id: aboutPage
     allowedOrientations: Orientation.All
 
-    function getUserName() {
-        var userInformation = tdLibWrapper.getUserInformation();
-        return Emoji.emojify(userInformation.first_name + " " + userInformation.last_name, Theme.fontSizeSmall);
-    }
+    property variant userInformation : tdLibWrapper.getUserInformation();
 
     SilicaFlickable {
         id: aboutContainer
@@ -152,7 +150,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width  - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("Logged in as %1").arg(aboutPage.getUserName())
+                text: qsTr("Logged in as %1").arg(Emoji.emojify(aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name, Theme.fontSizeSmall))
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
                 color: Theme.primaryColor
@@ -162,11 +160,20 @@ Page {
                 }
             }
 
+            ImageThumbnail {
+                imageData: aboutPage.userInformation.profile_photo.big
+                width: Theme.itemSizeExtraLarge
+                height: Theme.itemSizeExtraLarge
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+
             Label {
                 x: Theme.horizontalPageMargin
                 width: parent.width  - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("Phone number: +%1").arg(tdLibWrapper.getUserInformation().phone_number)
+                text: qsTr("Phone number: +%1").arg(aboutPage.userInformation.phone_number)
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
                 anchors {

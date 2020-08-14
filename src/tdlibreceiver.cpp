@@ -69,6 +69,10 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateUser") {
         this->processUpdateUser(receivedInformation);
     }
+
+    if (objectTypeName == "updateFile") {
+        this->processUpdateFile(receivedInformation);
+    }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -104,4 +108,11 @@ void TDLibReceiver::processUpdateUser(const QVariantMap &receivedInformation)
     QVariantMap userInformation = receivedInformation.value("user").toMap();
     qDebug() << "[TDLibReceiver] User was updated: " << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString();
     emit userUpdated(userInformation);
+}
+
+void TDLibReceiver::processUpdateFile(const QVariantMap &receivedInformation)
+{
+    QVariantMap fileInformation = receivedInformation.value("file").toMap();
+    qDebug() << "[TDLibReceiver] File was updated: " << fileInformation.value("id").toString();
+    emit fileUpdated(fileInformation);
 }
