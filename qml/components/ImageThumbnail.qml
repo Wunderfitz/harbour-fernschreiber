@@ -22,7 +22,7 @@ import Sailfish.Silica 1.0
 
 Item {
 
-    id: imageTumbnail
+    id: imageThumbnail
 
     property variant imageData;
 
@@ -41,9 +41,9 @@ Item {
             onFileUpdated: {
                 if (id === imageData.id) {
                     console.log("File updated, completed? " + fileInformation.local.is_downloading_completed);
-                    imageTumbnail.imageData = fileInformation;
-                    if (imageTumbnail.imageData.local.is_downloading_completed) {
-                        singleImage.source = imageTumbnail.imageData.local.path;
+                    imageThumbnail.imageData = fileInformation;
+                    if (imageThumbnail.imageData.local.is_downloading_completed) {
+                        singleImage.source = imageThumbnail.imageData.local.path;
                     }
                 }
             }
@@ -57,6 +57,27 @@ Item {
         fillMode: Image.PreserveAspectCrop
         autoTransform: true
         asynchronous: true
+        visible: false
+    }
+
+    Rectangle {
+        id: imageThumbnailMask
+        width: parent.width - Theme.paddingSmall
+        height: parent.height - Theme.paddingSmall
+        color: Theme.primaryColor
+        radius: parent.width / 7
+        anchors.centerIn: singleImage
+        visible: false
+    }
+
+    OpacityMask {
+        id: maskedThumbnail
+        source: singleImage
+        maskSource: imageThumbnailMask
+        anchors.fill: singleImage
+        visible: singleImage.status === Image.Ready ? true : false
+        opacity: singleImage.status === Image.Ready ? 1 : 0
+        Behavior on opacity { NumberAnimation {} }
     }
 
     Image {
