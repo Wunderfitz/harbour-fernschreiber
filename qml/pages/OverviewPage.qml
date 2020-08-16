@@ -63,7 +63,7 @@ Page {
     }
 
     function updateContent() {
-        // tdLibWrapper.getChats();
+        tdLibWrapper.getChats();
     }
 
     Connections {
@@ -93,6 +93,7 @@ Page {
             overviewPage.connectionState = connectionState;
             setPageStatus();
         }
+
     }
 
     Component.onCompleted: {

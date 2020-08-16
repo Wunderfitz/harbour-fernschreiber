@@ -54,25 +54,12 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     QVariantMap receivedInformation = receivedJsonDocument.object().toVariantMap();
     QString objectTypeName = receivedInformation.value("@type").toString();
 
-    if (objectTypeName == "updateOption") {
-        this->processUpdateOption(receivedInformation);
-    }
-
-    if (objectTypeName == "updateAuthorizationState") {
-        this->processUpdateAuthorizationState(receivedInformation);
-    }
-
-    if (objectTypeName == "updateConnectionState") {
-        this->processUpdateConnectionState(receivedInformation);
-    }
-
-    if (objectTypeName == "updateUser") {
-        this->processUpdateUser(receivedInformation);
-    }
-
-    if (objectTypeName == "updateFile") {
-        this->processUpdateFile(receivedInformation);
-    }
+    if (objectTypeName == "updateOption") { this->processUpdateOption(receivedInformation); }
+    if (objectTypeName == "updateAuthorizationState") { this->processUpdateAuthorizationState(receivedInformation); }
+    if (objectTypeName == "updateConnectionState") { this->processUpdateConnectionState(receivedInformation); }
+    if (objectTypeName == "updateUser") { this->processUpdateUser(receivedInformation); }
+    if (objectTypeName == "updateFile") { this->processUpdateFile(receivedInformation); }
+    if (objectTypeName == "updateNewChat") { this->processUpdateNewChat(receivedInformation); }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -106,7 +93,7 @@ void TDLibReceiver::processUpdateConnectionState(const QVariantMap &receivedInfo
 void TDLibReceiver::processUpdateUser(const QVariantMap &receivedInformation)
 {
     QVariantMap userInformation = receivedInformation.value("user").toMap();
-    qDebug() << "[TDLibReceiver] User was updated: " << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString();
+    // qDebug() << "[TDLibReceiver] User was updated: " << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString();
     emit userUpdated(userInformation);
 }
 
@@ -115,4 +102,11 @@ void TDLibReceiver::processUpdateFile(const QVariantMap &receivedInformation)
     QVariantMap fileInformation = receivedInformation.value("file").toMap();
     qDebug() << "[TDLibReceiver] File was updated: " << fileInformation.value("id").toString();
     emit fileUpdated(fileInformation);
+}
+
+void TDLibReceiver::processUpdateNewChat(const QVariantMap &receivedInformation)
+{
+    QVariantMap chatInformation = receivedInformation.value("chat").toMap();
+    qDebug() << "[TDLibReceiver] New chat discovered: " << chatInformation.value("id").toString() << chatInformation.value("title").toString();
+    emit newChatDiscovered(chatInformation);
 }

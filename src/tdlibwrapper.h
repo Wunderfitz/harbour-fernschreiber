@@ -62,6 +62,7 @@ public:
     Q_INVOKABLE TDLibWrapper::AuthorizationState getAuthorizationState();
     Q_INVOKABLE TDLibWrapper::ConnectionState getConnectionState();
     Q_INVOKABLE QVariantMap getUserInformation();
+    Q_INVOKABLE QVariantMap getUserInformation(const QString &userId);
 
     // Direct TDLib functions
     Q_INVOKABLE void sendRequest(const QVariantMap &requestObject);
@@ -76,6 +77,7 @@ signals:
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
     void connectionStateChanged(const TDLibWrapper::ConnectionState &connectionState);
     void fileUpdated(const int fileId, const QVariantMap fileInformation);
+    void newChatDiscovered(const QString chatId, const QVariantMap chatInformation);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -83,7 +85,8 @@ public slots:
     void handleOptionUpdated(const QString &optionName, const QVariant &optionValue);
     void handleConnectionStateChanged(const QString &connectionState);
     void handleUserUpdated(const QVariantMap &userInformation);
-    void handleFileUpdated(const QVariantMap &userInformation);
+    void handleFileUpdated(const QVariantMap &fileInformation);
+    void handleNewChatDiscovered(const QVariantMap &chatInformation);
 
 private:
     void *tdLibClient;
@@ -93,6 +96,8 @@ private:
     TDLibWrapper::ConnectionState connectionState;
     QVariantMap options;
     QVariantMap userInformation;
+    QVariantMap otherUsers;
+    QVariantMap chats;
 
     void setInitialParameters();
     void setEncryptionKey();

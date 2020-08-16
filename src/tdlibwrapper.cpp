@@ -42,6 +42,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(connectionStateChanged(QString)), this, SLOT(handleConnectionStateChanged(QString)));
     connect(this->tdLibReceiver, SIGNAL(userUpdated(QVariantMap)), this, SLOT(handleUserUpdated(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(fileUpdated(QVariantMap)), this, SLOT(handleFileUpdated(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(newChatDiscovered(QVariantMap)), this, SLOT(handleNewChatDiscovered(QVariantMap)));
 
     this->tdLibReceiver->start();
 
@@ -107,7 +108,7 @@ void TDLibWrapper::getChats()
     qDebug() << "[TDLibWrapper] Getting chats";
     QVariantMap requestObject;
     requestObject.insert("@type", "getChats");
-    requestObject.insert("limit", 20);
+    requestObject.insert("limit", 5);
     this->sendRequest(requestObject);
 }
 
@@ -127,6 +128,12 @@ void TDLibWrapper::downloadFile(const QString &fileId)
 QVariantMap TDLibWrapper::getUserInformation()
 {
     return this->userInformation;
+}
+
+QVariantMap TDLibWrapper::getUserInformation(const QString &userId)
+{
+    qDebug() << "[TDLibWrapper] Returning user information for ID " << userId;
+    return this->otherUsers.value(userId).toMap();
 }
 
 void TDLibWrapper::handleVersionDetected(const QString &version)
@@ -216,17 +223,26 @@ void TDLibWrapper::handleConnectionStateChanged(const QString &connectionState)
 
 void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
 {
-    if (userInformation.value("id") == this->options.value("my_id")) {
+    QString updatedUserId = userInformation.value("id").toString();
+    if (updatedUserId == this->options.value("my_id").toString()) {
         qDebug() << "[TDLibWrapper] Own user information updated :)";
         this->userInformation = userInformation;
     } else {
-        qDebug() << "[TDLibWrapper] Other user information updated";
+        qDebug() << "[TDLibWrapper] Other user information updated: " << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString();
+        this->otherUsers.insert(updatedUserId, userInformation);
     }
 }
 
-void TDLibWrapper::handleFileUpdated(const QVariantMap &userInformation)
+void TDLibWrapper::handleFileUpdated(const QVariantMap &fileInformation)
 {
-    emit fileUpdated(userInformation.value("id").toInt(), userInformation);
+    emit fileUpdated(fileInformation.value("id").toInt(), fileInformation);
+}
+
+void TDLibWrapper::handleNewChatDiscovered(const QVariantMap &chatInformation)
+{
+    QString chatId = chatInformation.value("id").toString();
+    this->chats.insert(chatId, chatInformation);
+    emit newChatDiscovered(chatId, chatInformation);
 }
 
 void TDLibWrapper::setInitialParameters()
