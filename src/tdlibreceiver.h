@@ -43,6 +43,8 @@ signals:
     void userUpdated(const QVariantMap &userInformation);
     void fileUpdated(const QVariantMap &fileInformation);
     void newChatDiscovered(const QVariantMap &chatInformation);
+    void unreadMessageCountUpdated(const QVariantMap &messageCountInformation);
+    void unreadChatCountUpdated(const QVariantMap &chatCountInformation);
 
 private:
     void *tdLibClient;
@@ -56,6 +58,8 @@ private:
     void processUpdateUser(const QVariantMap &receivedInformation);
     void processUpdateFile(const QVariantMap &receivedInformation);
     void processUpdateNewChat(const QVariantMap &receivedInformation);
+    void processUpdateUnreadMessageCount(const QVariantMap &receivedInformation);
+    void processUpdateUnreadChatCount(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

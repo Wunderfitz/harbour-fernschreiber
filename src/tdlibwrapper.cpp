@@ -43,6 +43,8 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(userUpdated(QVariantMap)), this, SLOT(handleUserUpdated(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(fileUpdated(QVariantMap)), this, SLOT(handleFileUpdated(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(newChatDiscovered(QVariantMap)), this, SLOT(handleNewChatDiscovered(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(unreadMessageCountUpdated(QVariantMap)), this, SLOT(handleUnreadMessageCountUpdated(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(unreadChatCountUpdated(QVariantMap)), this, SLOT(handleUnreadChatCountUpdated(QVariantMap)));
 
     this->tdLibReceiver->start();
 
@@ -134,6 +136,16 @@ QVariantMap TDLibWrapper::getUserInformation(const QString &userId)
 {
     qDebug() << "[TDLibWrapper] Returning user information for ID " << userId;
     return this->otherUsers.value(userId).toMap();
+}
+
+QVariantMap TDLibWrapper::getUnreadMessageInformation()
+{
+    return this->unreadMessageInformation;
+}
+
+QVariantMap TDLibWrapper::getUnreadChatInformation()
+{
+    return this->unreadChatInformation;
 }
 
 void TDLibWrapper::handleVersionDetected(const QString &version)
@@ -243,6 +255,18 @@ void TDLibWrapper::handleNewChatDiscovered(const QVariantMap &chatInformation)
     QString chatId = chatInformation.value("id").toString();
     this->chats.insert(chatId, chatInformation);
     emit newChatDiscovered(chatId, chatInformation);
+}
+
+void TDLibWrapper::handleUnreadMessageCountUpdated(const QVariantMap &messageCountInformation)
+{
+    this->unreadMessageInformation = messageCountInformation;
+    emit unreadMessageCountUpdated(messageCountInformation);
+}
+
+void TDLibWrapper::handleUnreadChatCountUpdated(const QVariantMap &chatCountInformation)
+{
+    this->unreadChatInformation = chatCountInformation;
+    emit unreadChatCountUpdated(chatCountInformation);
 }
 
 void TDLibWrapper::setInitialParameters()

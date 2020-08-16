@@ -60,6 +60,8 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateUser") { this->processUpdateUser(receivedInformation); }
     if (objectTypeName == "updateFile") { this->processUpdateFile(receivedInformation); }
     if (objectTypeName == "updateNewChat") { this->processUpdateNewChat(receivedInformation); }
+    if (objectTypeName == "updateUnreadMessageCount") { this->processUpdateUnreadMessageCount(receivedInformation); }
+    if (objectTypeName == "updateUnreadChatCount") { this->processUpdateUnreadChatCount(receivedInformation); }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -109,4 +111,27 @@ void TDLibReceiver::processUpdateNewChat(const QVariantMap &receivedInformation)
     QVariantMap chatInformation = receivedInformation.value("chat").toMap();
     qDebug() << "[TDLibReceiver] New chat discovered: " << chatInformation.value("id").toString() << chatInformation.value("title").toString();
     emit newChatDiscovered(chatInformation);
+}
+
+void TDLibReceiver::processUpdateUnreadMessageCount(const QVariantMap &receivedInformation)
+{
+    QVariantMap messageCountInformation;
+    messageCountInformation.insert("chat_list_type", receivedInformation.value("chat_list").toMap().value("@type"));
+    messageCountInformation.insert("unread_count", receivedInformation.value("unread_count"));
+    messageCountInformation.insert("unread_unmuted_count", receivedInformation.value("unread_unmuted_count"));
+    qDebug() << "[TDLibReceiver] Unread message count updated: " << messageCountInformation.value("chat_list_type").toString() << messageCountInformation.value("unread_count").toString();
+    emit unreadMessageCountUpdated(messageCountInformation);
+}
+
+void TDLibReceiver::processUpdateUnreadChatCount(const QVariantMap &receivedInformation)
+{
+    QVariantMap chatCountInformation;
+    chatCountInformation.insert("chat_list_type", receivedInformation.value("chat_list").toMap().value("@type"));
+    chatCountInformation.insert("marked_as_unread_count", receivedInformation.value("marked_as_unread_count"));
+    chatCountInformation.insert("marked_as_unread_unmuted_count", receivedInformation.value("marked_as_unread_unmuted_count"));
+    chatCountInformation.insert("total_count", receivedInformation.value("total_count"));
+    chatCountInformation.insert("unread_count", receivedInformation.value("unread_count"));
+    chatCountInformation.insert("unread_unmuted_count", receivedInformation.value("unread_unmuted_count"));
+    qDebug() << "[TDLibReceiver] Unread chat count updated: " << chatCountInformation.value("chat_list_type").toString() << chatCountInformation.value("unread_count").toString();
+    emit unreadChatCountUpdated(chatCountInformation);
 }

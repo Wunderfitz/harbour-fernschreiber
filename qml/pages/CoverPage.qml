@@ -18,10 +18,80 @@
 */
 import QtQuick 2.5
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 
 CoverBackground {
 
     id: coverPage
+
+    property int unreadMessages: 0
+    property int unreadChats: 0
+    property bool authenticated: false
+    property int connectionState: TelegramAPI.WaitingForNetwork
+
+    function setUnreadInfoText() {
+        if (unreadMessages === 1) {
+            unreadMessagesText.text = qsTr("unread message");
+        } else {
+            unreadMessagesText.text = qsTr("unread messages");
+        }
+
+        if (unreadChats === 1) {
+            unreadChatsText.text = qsTr("chat");
+        } else {
+            unreadChatsText.text = qsTr("chats");
+        }
+
+        switch (coverPage.connectionState) {
+        case TelegramAPI.WaitingForNetwork:
+            connectionStateText.text = qsTr("Waiting for network...");
+            break;
+        case TelegramAPI.Connecting:
+            connectionStateText.text = qsTr("Connecting to network...");
+            break;
+        case TelegramAPI.ConnectingToProxy:
+            connectionStateText.text = qsTr("Connecting to proxy...");
+            break;
+        case TelegramAPI.ConnectionReady:
+            connectionStateText.text = qsTr("Connected");
+            break;
+        case TelegramAPI.Updating:
+            connectionStateText.text = qsTr("Updating content...");
+            break;
+        }
+    }
+
+    Component.onCompleted: {
+        coverPage.authenticated = (tdLibWrapper.getAuthorizationState() === TelegramAPI.AuthorizationReady);
+        coverPage.connectionState = tdLibWrapper.getConnectionState();
+        coverPage.unreadMessages = tdLibWrapper.getUnreadMessageInformation().unread_count;
+        coverPage.unreadChats = tdLibWrapper.getUnreadChatInformation().unread_count;
+        setUnreadInfoText();
+    }
+
+    Connections {
+        target: tdLibWrapper
+        onUnreadMessageCountUpdated: {
+            if (messageCountInformation.chat_list_type === "chatListMain") {
+                coverPage.unreadMessages = messageCountInformation.unread_count;
+                setUnreadInfoText();
+            }
+        }
+        onUnreadChatCountUpdated: {
+            if (chatCountInformation.chat_list_type === "chatListMain") {
+                coverPage.unreadChats = chatCountInformation.unread_count;
+                setUnreadInfoText();
+            }
+        }
+        onAuthorizationStateChanged: {
+            coverPage.authenticated = (authorizationState === TelegramAPI.AuthorizationReady);
+            setUnreadInfoText();
+        }
+        onConnectionStateChanged: {
+            coverPage.connectionState = connectionState;
+            setUnreadInfoText();
+        }
+    }
 
     Image {
         id: backgroundImage
@@ -38,6 +108,68 @@ CoverBackground {
 
         fillMode: Image.PreserveAspectFit
         opacity: 0.15
+    }
+
+    Column {
+        anchors.fill: parent
+        anchors.margins: Theme.horizontalPageMargin
+        spacing: Theme.paddingMedium
+        visible: coverPage.authenticated
+        Row {
+            width: parent.width
+            spacing: Theme.paddingMedium
+            Text {
+                id: unreadMessagesCountText
+                font.pixelSize: Theme.fontSizeHuge
+                color: Theme.primaryColor
+                text: coverPage.unreadMessages
+            }
+            Text {
+                id: unreadMessagesText
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                width: parent.width - unreadMessagesCountText.width - Theme.paddingMedium
+                wrapMode: Text.Wrap
+                anchors.verticalCenter: unreadMessagesCountText.verticalCenter
+            }
+        }
+
+        Row {
+            width: parent.width
+            spacing: Theme.paddingMedium
+            visible: coverPage.authenticated && coverPage.unreadChats > 0
+            Text {
+                id: inText
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                text: qsTr("in")
+                anchors.verticalCenter: unreadChatsCountText.verticalCenter
+            }
+            Text {
+                id: unreadChatsCountText
+                font.pixelSize: Theme.fontSizeHuge
+                color: Theme.primaryColor
+                text: coverPage.unreadChats
+            }
+            Text {
+                id: unreadChatsText
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                width: parent.width - unreadMessagesCountText.width - inText.width - ( 2 * Theme.paddingMedium )
+                wrapMode: Text.Wrap
+                anchors.verticalCenter: unreadChatsCountText.verticalCenter
+            }
+        }
+
+        Text {
+            id: connectionStateText
+            font.pixelSize: Theme.fontSizeLarge
+            color: Theme.highlightColor
+            visible: coverPage.authenticated
+            width: parent.width
+            maximumLineCount: 2
+            wrapMode: Text.Wrap
+        }
     }
 
 }

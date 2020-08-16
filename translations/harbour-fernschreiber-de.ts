@@ -77,6 +77,49 @@
     </message>
 </context>
 <context>
+    <name>CoverPage</name>
+    <message>
+        <source>unread message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>in</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waiting for network...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connecting to network...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connecting to proxy...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updating content...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>chats</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InitializationPage</name>
     <message>
         <source>OK</source>
