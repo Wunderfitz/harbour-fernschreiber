@@ -23,6 +23,7 @@ import WerkWolf.Fernschreiber 1.0
 Page {
     id: initializationPage
     allowedOrientations: Orientation.All
+    backNavigation: false
 
     property bool loading: true
     property int authorizationState: TelegramAPI.Closed
@@ -50,9 +51,8 @@ Page {
                 enterPinColumn.visible = true;
                 break;
             case TelegramAPI.AuthorizationReady:
-                overviewPage.loading = false;
-                pageStack.clear();
-                pageStack.push(Qt.resolvedUrl("../pages/OverviewPage.qml"));
+                initializationPage.loading = false;
+                pageStack.pop();
                 break;
             default:
                 // Nothing ;)
@@ -206,15 +206,15 @@ Page {
 
     SilicaFlickable {
         id: welcomeFlickable
-        anchors.fill: parent
         contentHeight: welcomeColumn.height
         Behavior on opacity { NumberAnimation {} }
+        anchors.fill: parent
         opacity: visible ? 1 : 0
 
         Column {
             id: welcomeColumn
             width: parent.width
-            spacing: Theme.paddingLarge
+            spacing: Theme.paddingSmall
 
             PageHeader {
                 title: qsTr("Welcome to Fernschreiber!")
@@ -232,6 +232,7 @@ Page {
             }
 
             Label {
+                id: enterPhoneNumberLabel
                 wrapMode: Text.Wrap
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
@@ -252,6 +253,7 @@ Page {
             }
 
             Button {
+                id: continueWithPhoneNumberButton
                 text: qsTr("Continue")
                 anchors {
                     horizontalCenter: parent.horizontalCenter
@@ -264,18 +266,8 @@ Page {
                 }
             }
 
-            Label {
-                id: separatorLabelPhoneNumber
-                x: Theme.horizontalPageMargin
-                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
-                font.pixelSize: Theme.fontSizeExtraSmall
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                }
-            }
-
         }
-
     }
+
 }
 

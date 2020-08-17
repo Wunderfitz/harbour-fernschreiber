@@ -72,16 +72,12 @@ CoverBackground {
     Connections {
         target: tdLibWrapper
         onUnreadMessageCountUpdated: {
-            if (messageCountInformation.chat_list_type === "chatListMain") {
-                coverPage.unreadMessages = messageCountInformation.unread_count;
-                setUnreadInfoText();
-            }
+            coverPage.unreadMessages = messageCountInformation.unread_count;
+            setUnreadInfoText();
         }
         onUnreadChatCountUpdated: {
-            if (chatCountInformation.chat_list_type === "chatListMain") {
-                coverPage.unreadChats = chatCountInformation.unread_count;
-                setUnreadInfoText();
-            }
+            coverPage.unreadChats = chatCountInformation.unread_count;
+            setUnreadInfoText();
         }
         onAuthorizationStateChanged: {
             coverPage.authenticated = (authorizationState === TelegramAPI.AuthorizationReady);
@@ -137,7 +133,7 @@ CoverBackground {
         Row {
             width: parent.width
             spacing: Theme.paddingMedium
-            visible: coverPage.authenticated && coverPage.unreadChats > 0
+            visible: coverPage.authenticated && coverPage.unreadMessages > 1
             Text {
                 id: inText
                 font.pixelSize: Theme.fontSizeSmall

@@ -64,6 +64,17 @@ Page {
 
     function updateContent() {
         tdLibWrapper.getChats();
+
+    }
+
+    function initializePage() {
+        overviewPage.authorizationState = tdLibWrapper.getAuthorizationState();
+        if (overviewPage.authorizationState === TelegramAPI.AuthorizationReady) {
+            overviewPage.loading = false;
+            overviewPage.updateContent();
+        }
+        overviewPage.connectionState = tdLibWrapper.getConnectionState();
+        overviewPage.setPageStatus();
     }
 
     Connections {
@@ -72,12 +83,10 @@ Page {
             switch (authorizationState) {
             case TelegramAPI.WaitPhoneNumber:
                 overviewPage.loading = false;
-                pageStack.clear();
                 pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
                 break;
             case TelegramAPI.WaitCode:
                 overviewPage.loading = false;
-                pageStack.clear();
                 pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
                 break;
             case TelegramAPI.AuthorizationReady:
@@ -97,14 +106,7 @@ Page {
     }
 
     Component.onCompleted: {
-        overviewPage.authorizationState = tdLibWrapper.getAuthorizationState();
-        if (overviewPage.authorizationState === TelegramAPI.AuthorizationReady) {
-            overviewPage.loading = false;
-            overviewPage.updateContent();
-        }
-
-        overviewPage.connectionState = tdLibWrapper.getConnectionState();
-        overviewPage.setPageStatus();
+        initializePage();
     }
 
     SilicaFlickable {

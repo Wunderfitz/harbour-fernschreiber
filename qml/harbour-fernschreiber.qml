@@ -24,12 +24,7 @@ ApplicationWindow
 {
     id: appWindow
 
-    Component {
-        id: overviewPage
-        OverviewPage {}
-    }
-
-    initialPage: overviewPage
+    initialPage: Qt.resolvedUrl("pages/OverviewPage.qml")
     cover: Qt.resolvedUrl("pages/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 }

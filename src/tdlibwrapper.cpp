@@ -259,14 +259,18 @@ void TDLibWrapper::handleNewChatDiscovered(const QVariantMap &chatInformation)
 
 void TDLibWrapper::handleUnreadMessageCountUpdated(const QVariantMap &messageCountInformation)
 {
-    this->unreadMessageInformation = messageCountInformation;
-    emit unreadMessageCountUpdated(messageCountInformation);
+    if (messageCountInformation.value("chat_list_type").toString() == "chatListMain") {
+        this->unreadMessageInformation = messageCountInformation;
+        emit unreadMessageCountUpdated(messageCountInformation);
+    }
 }
 
 void TDLibWrapper::handleUnreadChatCountUpdated(const QVariantMap &chatCountInformation)
 {
-    this->unreadChatInformation = chatCountInformation;
-    emit unreadChatCountUpdated(chatCountInformation);
+    if (chatCountInformation.value("chat_list_type").toString() == "chatListMain") {
+        this->unreadChatInformation = chatCountInformation;
+        emit unreadChatCountUpdated(chatCountInformation);
+    }
 }
 
 void TDLibWrapper::setInitialParameters()
