@@ -28,9 +28,17 @@ Page {
     id: overviewPage
     allowedOrientations: Orientation.All
 
+    property bool initializationCompleted: false;
     property bool loading: true;
     property int authorizationState: TelegramAPI.Closed
     property int connectionState: TelegramAPI.WaitingForNetwork
+
+    onStatusChanged: {
+        console.log("[OverviewPage] Status changed: " + status + ", initialization completed: " + initializationCompleted);
+        if (status === PageStatus.Active && initializationCompleted) {
+            updateContent();
+        }
+    }
 
     BusyLabel {
         text: qsTr("Loading...")
@@ -64,45 +72,45 @@ Page {
 
     function updateContent() {
         tdLibWrapper.getChats();
-
     }
 
     function initializePage() {
         overviewPage.authorizationState = tdLibWrapper.getAuthorizationState();
-        if (overviewPage.authorizationState === TelegramAPI.AuthorizationReady) {
-            overviewPage.loading = false;
-            overviewPage.updateContent();
-        }
+        overviewPage.handleAuthorizationState();
         overviewPage.connectionState = tdLibWrapper.getConnectionState();
         overviewPage.setPageStatus();
+    }
+
+    function handleAuthorizationState() {
+        switch (overviewPage.authorizationState) {
+        case TelegramAPI.WaitPhoneNumber:
+            overviewPage.loading = false;
+            pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+            break;
+        case TelegramAPI.WaitCode:
+            overviewPage.loading = false;
+            pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+            break;
+        case TelegramAPI.AuthorizationReady:
+            overviewPage.loading = false;
+            overviewPage.initializationCompleted = true;
+            overviewPage.updateContent();
+            break;
+        default:
+            // Nothing ;)
+        }
     }
 
     Connections {
         target: tdLibWrapper
         onAuthorizationStateChanged: {
-            switch (authorizationState) {
-            case TelegramAPI.WaitPhoneNumber:
-                overviewPage.loading = false;
-                pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
-                break;
-            case TelegramAPI.WaitCode:
-                overviewPage.loading = false;
-                pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
-                break;
-            case TelegramAPI.AuthorizationReady:
-                overviewPage.loading = false;
-                overviewPage.updateContent();
-                break;
-            default:
-                // Nothing ;)
-            }
             overviewPage.authorizationState = authorizationState;
+            handleAuthorizationState();
         }
         onConnectionStateChanged: {
             overviewPage.connectionState = connectionState;
             setPageStatus();
         }
-
     }
 
     Component.onCompleted: {

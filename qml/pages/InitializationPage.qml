@@ -52,6 +52,7 @@ Page {
                 break;
             case TelegramAPI.AuthorizationReady:
                 initializationPage.loading = false;
+                pageStack.completeAnimation();
                 pageStack.pop();
                 break;
             default:
