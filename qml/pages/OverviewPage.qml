@@ -24,6 +24,7 @@ import Nemo.Notifications 1.0
 import WerkWolf.Fernschreiber 1.0
 import "../components"
 import "../js/twemoji.js" as Emoji
+import "../js/functions.js" as Functions
 
 Page {
     id: overviewPage
@@ -198,14 +199,14 @@ Page {
 
                             Column {
                                 id: chatListPictureColumn
-                                width: parent.width / 6
-                                height: parent.width / 6
+                                width: chatListContentColumn.height
+                                height: chatListContentColumn.height
                                 spacing: Theme.paddingSmall
 
-                                ImageThumbnail {
+                                ProfileThumbnail {
                                     id: chatListPictureThumbnail
-                                    visible: display.photo
-                                    imageData: display.photo.small
+                                    photoData: (typeof display.photo !== "undefined") ? display.photo.small : ""
+                                    replacementStringHint: chatListNameText.text
                                     width: parent.width
                                     height: parent.width
                                 }
@@ -215,11 +216,9 @@ Page {
                                 id: chatListContentColumn
                                 width: parent.width * 5 / 6 - Theme.horizontalPageMargin
 
-                                spacing: Theme.paddingSmall
-
                                 Text {
                                     id: chatListNameText
-                                    text: Emoji.emojify(display.title, Theme.fontSizeMedium)
+                                    text: display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) : qsTr("Unknown")
                                     textFormat: Text.StyledText
                                     font.pixelSize: Theme.fontSizeMedium
                                     color: Theme.primaryColor

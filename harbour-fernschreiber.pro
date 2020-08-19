@@ -20,6 +20,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/tdlibwrapper.cpp
 
 DISTFILES += qml/harbour-fernschreiber.qml \
+    qml/js/functions.js \
     qml/pages/CoverPage.qml \
     qml/pages/InitializationPage.qml \
     qml/pages/OverviewPage.qml \

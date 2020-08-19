@@ -20,6 +20,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/twemoji.js" as Emoji
+import "../js/functions.js" as Functions
 
 Page {
     id: aboutPage
@@ -160,10 +161,11 @@ Page {
                 }
             }
 
-            ImageThumbnail {
-                imageData: aboutPage.userInformation.profile_photo.big
+            ProfileThumbnail {
+                photoData: aboutPage.userInformation.profile_photo.small
                 width: Theme.itemSizeExtraLarge
                 height: Theme.itemSizeExtraLarge
+                replacementStringHint: aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
