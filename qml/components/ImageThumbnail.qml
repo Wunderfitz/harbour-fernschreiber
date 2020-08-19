@@ -39,7 +39,7 @@ Item {
         Connections {
             target: tdLibWrapper
             onFileUpdated: {
-                if (id === imageData.id) {
+                if (fileId === imageData.id) {
                     console.log("File updated, completed? " + fileInformation.local.is_downloading_completed);
                     imageThumbnail.imageData = fileInformation;
                     if (imageThumbnail.imageData.local.is_downloading_completed) {
@@ -65,7 +65,7 @@ Item {
         width: parent.width - Theme.paddingSmall
         height: parent.height - Theme.paddingSmall
         color: Theme.primaryColor
-        radius: parent.width / 7
+        radius: parent.width / 2
         anchors.centerIn: singleImage
         visible: false
     }

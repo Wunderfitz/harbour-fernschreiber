@@ -79,7 +79,7 @@ signals:
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
     void connectionStateChanged(const TDLibWrapper::ConnectionState &connectionState);
     void fileUpdated(const int fileId, const QVariantMap &fileInformation);
-    void newChatDiscovered(const QString chatId, const QVariantMap &chatInformation);
+    void newChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
     void unreadMessageCountUpdated(const QVariantMap &messageCountInformation);
     void unreadChatCountUpdated(const QVariantMap &chatCountInformation);
 

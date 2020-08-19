@@ -22,7 +22,8 @@ import QtMultimedia 5.0
 import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
 import WerkWolf.Fernschreiber 1.0
-
+import "../components"
+import "../js/twemoji.js" as Emoji
 
 Page {
     id: overviewPage
@@ -119,7 +120,8 @@ Page {
 
     SilicaFlickable {
         id: aboutContainer
-        contentHeight: column.height
+        contentHeight: parent.height
+        contentWidth: parent.width
         anchors.fill: parent
         visible: !overviewPage.loading
 
@@ -133,9 +135,11 @@ Page {
         Column {
             id: column
             width: parent.width
-            spacing: Theme.paddingLarge
+            height: parent.height
+            spacing: Theme.paddingMedium
 
             Row {
+                id: headerRow
                 width: parent.width
 
                 GlassItem {
@@ -155,7 +159,157 @@ Page {
                 }
             }
 
-            VerticalScrollDecorator {}
+            SilicaListView {
+
+                id: chatListView
+
+                width: parent.width
+                height: parent.height - Theme.paddingMedium - headerRow.height
+
+                clip: true
+                visible: count > 0
+
+                model: chatListModel
+                delegate: ListItem {
+
+                    id: chatListItem
+
+                    contentHeight: chatListRow.height + chatListSeparator.height + 2 * Theme.paddingMedium
+                    contentWidth: parent.width
+
+                    onClicked: {
+                        // jump to chat details here... ;)
+                        // pageStack.push(Qt.resolvedUrl("../pages/ConversationPage.qml"), { "conversationModel" : display, "myUserId": overviewPage.myUser.id_str, "configuration": overviewPage.configuration });
+                    }
+
+                    Column {
+                        id: chatListColumn
+                        width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                        spacing: Theme.paddingSmall
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            verticalCenter: parent.verticalCenter
+                        }
+
+                        Row {
+                            id: chatListRow
+                            width: parent.width
+                            spacing: Theme.paddingMedium
+
+                            Column {
+                                id: chatListPictureColumn
+                                width: parent.width / 6
+                                height: parent.width / 6
+                                spacing: Theme.paddingSmall
+
+                                ImageThumbnail {
+                                    id: chatListPictureThumbnail
+                                    visible: display.photo
+                                    imageData: display.photo.small
+                                    width: parent.width
+                                    height: parent.width
+                                }
+                            }
+
+                            Column {
+                                id: chatListContentColumn
+                                width: parent.width * 5 / 6 - Theme.horizontalPageMargin
+
+                                spacing: Theme.paddingSmall
+
+                                Text {
+                                    id: chatListNameText
+                                    text: Emoji.emojify(display.title, Theme.fontSizeMedium)
+                                    textFormat: Text.StyledText
+                                    font.pixelSize: Theme.fontSizeMedium
+                                    color: Theme.primaryColor
+                                    elide: Text.ElideRight
+                                    width: parent.width
+                                    onTruncatedChanged: {
+                                        // There is obviously a bug in QML in truncating text with images.
+                                        // We simply remove Emojis then...
+                                        if (truncated) {
+                                            text = text.replace(/\<img [^>]+\/\>/g, "");
+                                        }
+                                    }
+                                }
+
+                                Row {
+                                    id: chatListLastMessageRow
+                                    width: parent.width
+                                    spacing: Theme.paddingMedium
+                                    Text {
+                                        id: chatListLastUserText
+                                        text: Emoji.emojify("Unknown", Theme.fontSizeExtraSmall)
+                                        font.pixelSize: Theme.fontSizeExtraSmall
+                                        color: Theme.highlightColor
+                                        textFormat: Text.StyledText
+                                        onTruncatedChanged: {
+                                            // There is obviously a bug in QML in truncating text with images.
+                                            // We simply remove Emojis then...
+                                            if (truncated) {
+                                                text = text.replace(/\<img [^>]+\/\>/g, "");
+                                            }
+                                        }
+                                    }
+                                    Text {
+                                        id: chatListLastMessageText
+                                        text: Emoji.emojify("Unknown", Theme.fontSizeExtraSmall)
+                                        font.pixelSize: Theme.fontSizeExtraSmall
+                                        color: Theme.primaryColor
+                                        width: parent.width - Theme.paddingMedium - chatListLastUserText.width
+                                        elide: Text.ElideRight
+                                        textFormat: Text.StyledText
+                                        onTruncatedChanged: {
+                                            // There is obviously a bug in QML in truncating text with images.
+                                            // We simply remove Emojis then...
+                                            if (truncated) {
+                                                text = text.replace(/\<img [^>]+\/\>/g, "");
+                                            }
+                                        }
+                                    }
+                                }
+
+                                Timer {
+                                    id: messageContactTimeUpdater
+                                    interval: 60000
+                                    running: true
+                                    repeat: true
+                                    onTriggered: {
+                                        //messageContactTimeElapsedText.text = getConversationTimeElapsed(display.messages);
+                                    }
+                                }
+
+                                Text {
+                                    id: messageContactTimeElapsedText
+                                    //text: getConversationTimeElapsed(display.messages)
+                                    text: "somewhen"
+                                    font.pixelSize: Theme.fontSizeTiny
+                                    color: Theme.primaryColor
+                                }
+                            }
+                        }
+
+                    }
+
+                    Separator {
+                        id: chatListSeparator
+
+                        anchors {
+                            top: chatListColumn.bottom
+                            topMargin: Theme.paddingMedium
+                        }
+
+                        width: parent.width
+                        color: Theme.primaryColor
+                        horizontalAlignment: Qt.AlignHCenter
+                    }
+
+                }
+
+                VerticalScrollDecorator {}
+            }
+
         }
 
     }

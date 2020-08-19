@@ -30,6 +30,7 @@
 #include <QGuiApplication>
 
 #include "tdlibwrapper.h"
+#include "chatlistmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -38,9 +39,12 @@ int main(int argc, char *argv[])
 
     QQmlContext *context = view.data()->rootContext();
 
-    TDLibWrapper tdLibWrapper;
-    context->setContextProperty("tdLibWrapper", &tdLibWrapper);
+    TDLibWrapper *tdLibWrapper = new TDLibWrapper(view.data());
+    context->setContextProperty("tdLibWrapper", tdLibWrapper);
     qmlRegisterType<TDLibWrapper>("WerkWolf.Fernschreiber", 1, 0, "TelegramAPI");
+
+    ChatListModel chatListModel(tdLibWrapper);
+    context->setContextProperty("chatListModel", &chatListModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-fernschreiber.qml"));
     view->show();
