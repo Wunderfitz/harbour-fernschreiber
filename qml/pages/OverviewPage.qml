@@ -34,6 +34,7 @@ Page {
     property bool loading: true;
     property int authorizationState: TelegramAPI.Closed
     property int connectionState: TelegramAPI.WaitingForNetwork
+    property int ownUserId;
 
     onStatusChanged: {
         console.log("[OverviewPage] Status changed: " + status + ", initialization completed: " + initializationCompleted);
@@ -112,6 +113,9 @@ Page {
         onConnectionStateChanged: {
             overviewPage.connectionState = connectionState;
             setPageStatus();
+        }
+        onOwnUserIdFound: {
+            overviewPage.ownUserId = ownUserId;
         }
     }
 
@@ -195,13 +199,14 @@ Page {
                         Row {
                             id: chatListRow
                             width: parent.width
+                            height: chatListContentColumn.height
                             spacing: Theme.paddingMedium
 
                             Column {
                                 id: chatListPictureColumn
-                                width: chatListContentColumn.height
-                                height: chatListContentColumn.height
-                                spacing: Theme.paddingSmall
+                                width: chatListContentColumn.height - Theme.paddingSmall
+                                height: chatListContentColumn.height - Theme.paddingSmall
+                                anchors.verticalCenter: parent.verticalCenter
 
                                 ProfileThumbnail {
                                     id: chatListPictureThumbnail
@@ -215,6 +220,7 @@ Page {
                             Column {
                                 id: chatListContentColumn
                                 width: parent.width * 5 / 6 - Theme.horizontalPageMargin
+                                spacing: Theme.paddingSmall
 
                                 Text {
                                     id: chatListNameText
@@ -239,7 +245,7 @@ Page {
                                     spacing: Theme.paddingMedium
                                     Text {
                                         id: chatListLastUserText
-                                        text: Emoji.emojify("Unknown", Theme.fontSizeExtraSmall)
+                                        text: (typeof display.last_message !== "undefined") ? ( display.last_message.sender_user_id !== overviewPage.ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(display.last_message.sender_user_id)), font.pixelSize) : qsTr("You") ) : qsTr("Unknown")
                                         font.pixelSize: Theme.fontSizeExtraSmall
                                         color: Theme.highlightColor
                                         textFormat: Text.StyledText
@@ -253,7 +259,7 @@ Page {
                                     }
                                     Text {
                                         id: chatListLastMessageText
-                                        text: Emoji.emojify("Unknown", Theme.fontSizeExtraSmall)
+                                        text: (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getSimpleMessageText(display.last_message), Theme.fontSizeExtraSmall) : qsTr("Unknown")
                                         font.pixelSize: Theme.fontSizeExtraSmall
                                         color: Theme.primaryColor
                                         width: parent.width - Theme.paddingMedium - chatListLastUserText.width
@@ -275,16 +281,17 @@ Page {
                                     running: true
                                     repeat: true
                                     onTriggered: {
-                                        //messageContactTimeElapsedText.text = getConversationTimeElapsed(display.messages);
+                                        if (typeof display.last_message !== "undefined") {
+                                            messageContactTimeElapsedText.text = Functions.getDateTimeElapsed(display.last_message.date);
+                                        }
                                     }
                                 }
 
                                 Text {
                                     id: messageContactTimeElapsedText
-                                    //text: getConversationTimeElapsed(display.messages)
-                                    text: "somewhen"
+                                    text: (typeof display.last_message !== "undefined") ? Functions.getDateTimeElapsed(display.last_message.date) : qsTr("Unknown")
                                     font.pixelSize: Theme.fontSizeTiny
-                                    color: Theme.primaryColor
+                                    color: Theme.secondaryColor
                                 }
                             }
                         }

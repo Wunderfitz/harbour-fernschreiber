@@ -18,11 +18,14 @@ public:
 
 public slots:
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
+    void handleChatLastMessageUpdated(const QString &chatId, const QVariantMap &lastMessage);
+    void handleChatOrderUpdated(const QString &chatId, const QString &order);
 
 private:
     TDLibWrapper *tdLibWrapper;
     QVariantList chatList;
     QVariantMap chatToBeAdded;
+    QVariantMap chatIndexMap;
 };
 
 #endif // CHATLISTMODEL_H

@@ -75,6 +75,7 @@ public:
 
 signals:
     void versionDetected(const QString &version);
+    void ownUserIdFound(const QString &ownUserId);
     void authorizationStateChanged(const TDLibWrapper::AuthorizationState &authorizationState);
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
     void connectionStateChanged(const TDLibWrapper::ConnectionState &connectionState);
@@ -82,6 +83,8 @@ signals:
     void newChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
     void unreadMessageCountUpdated(const QVariantMap &messageCountInformation);
     void unreadChatCountUpdated(const QVariantMap &chatCountInformation);
+    void chatLastMessageUpdated(const QString &chatId, const QVariantMap &lastMessage);
+    void chatOrderUpdated(const QString &chatId, const QString &order);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -93,7 +96,8 @@ public slots:
     void handleNewChatDiscovered(const QVariantMap &chatInformation);
     void handleUnreadMessageCountUpdated(const QVariantMap &messageCountInformation);
     void handleUnreadChatCountUpdated(const QVariantMap &chatCountInformation);
-
+    void handleChatLastMessageUpdated(const QString &chatId, const QVariantMap &lastMessage);
+    void handleChatOrderUpdated(const QString &chatId, const QString &order);
 private:
     void *tdLibClient;
     TDLibReceiver *tdLibReceiver;
@@ -102,7 +106,7 @@ private:
     TDLibWrapper::ConnectionState connectionState;
     QVariantMap options;
     QVariantMap userInformation;
-    QVariantMap otherUsers;
+    QVariantMap allUsers;
     QVariantMap chats;
     QVariantMap unreadMessageInformation;
     QVariantMap unreadChatInformation;
