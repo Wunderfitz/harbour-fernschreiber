@@ -48,16 +48,6 @@ Page {
         running: overviewPage.loading
     }
 
-    Timer {
-        id: chatListSorterTimer
-        interval: 100
-        running: false
-        repeat: false
-        onTriggered: {
-            chatListModel.updateSorting();
-        }
-    }
-
     function setPageStatus() {
         switch (overviewPage.connectionState) {
         case TelegramAPI.WaitingForNetwork:
@@ -128,10 +118,6 @@ Page {
             overviewPage.ownUserId = ownUserId;
         }
         onChatOrderUpdated: {
-            chatListSorterTimer.stop();
-            chatListSorterTimer.start();
-        }
-        onChatLastMessageUpdated: {
             chatListSorterTimer.stop();
             chatListSorterTimer.start();
         }

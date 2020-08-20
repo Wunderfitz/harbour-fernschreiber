@@ -53,23 +53,6 @@ bool compareChats(const QVariant &chat1, const QVariant &chat2)
     }
 }
 
-void ChatListModel::updateSorting()
-{
-    this->chatListMutex.lock();
-    qDebug() << "[ChatListModel] List sorting will be updated...";
-
-    emit layoutAboutToBeChanged();
-    std::sort(this->chatList.begin(), this->chatList.end(), compareChats);
-
-    this->chatIndexMap.clear();
-    for (int i = 0; i < this->chatList.length(); i++) {
-        QString currentChatId = this->chatList.at(i).toMap().value("id").toString();
-        this->chatIndexMap.insert(currentChatId, i);
-    }
-    emit layoutChanged();
-    this->chatListMutex.unlock();
-}
-
 void ChatListModel::handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation)
 {
     this->chatListMutex.lock();
@@ -78,6 +61,8 @@ void ChatListModel::handleChatDiscovered(const QString &chatId, const QVariantMa
     insertRows(rowCount(QModelIndex()), 1);
     this->chatListMutex.unlock();
 }
+
+
 
 void ChatListModel::handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage)
 {
@@ -89,6 +74,9 @@ void ChatListModel::handleChatLastMessageUpdated(const QString &chatId, const QS
     currentChat.insert("order", order);
     this->chatList.replace(chatIndex, currentChat);
     emit dataChanged(this->index(chatIndex), this->index(chatIndex));
+
+    this->updateChatOrder(chatIndex, currentChat);
+
     this->chatListMutex.unlock();
 }
 
@@ -96,10 +84,40 @@ void ChatListModel::handleChatOrderUpdated(const QString &chatId, const QString 
 {
     this->chatListMutex.lock();
     qDebug() << "[ChatListModel] Updating chat order because of " << chatId << " new order " << order;
-    int currentChatIndex = this->chatIndexMap.value(chatId).toInt();
-    QVariantMap currentChat = this->chatList.at(currentChatIndex).toMap();
+    int chatIndex = this->chatIndexMap.value(chatId).toInt();
+    QVariantMap currentChat = this->chatList.at(chatIndex).toMap();
     currentChat.insert("order", order);
-    this->chatList.replace(currentChatIndex, currentChat);
-    emit dataChanged(this->index(currentChatIndex), this->index(currentChatIndex));
+    this->chatList.replace(chatIndex, currentChat);
+    emit dataChanged(this->index(chatIndex), this->index(chatIndex));
+
+    this->updateChatOrder(chatIndex, currentChat);
+
     this->chatListMutex.unlock();
+}
+
+void ChatListModel::updateChatOrder(const int &currentChatIndex, const QVariantMap &updatedChat)
+{
+    // Finding the new position manually as information is needed by beginMoveRows()
+    // This seems to be the most convenient way of persisting the list position while changing the items
+    // Other alternative layoutChanged() after sorting resets the index position - there we would need to calculate the new position as well
+    // If somebody has a better solution - go for it ;)
+    int newChatIndex = 0;
+    for (int i = 0; i < this->chatList.length(); i++) {
+        QVariantMap otherChat = this->chatList.at(i).toMap();
+        if (compareChats(updatedChat, otherChat)) {
+            newChatIndex = i;
+            break;
+        }
+    }
+    if (newChatIndex != currentChatIndex) {
+        // The updated chat now needs to go to the position of the other chat
+        qDebug() << "[ChatListModel] Chat " << updatedChat.value("id").toString() << " will be moved from position " << currentChatIndex << " to " << newChatIndex;
+        beginMoveRows(QModelIndex(), currentChatIndex, currentChatIndex, QModelIndex(), (( newChatIndex < currentChatIndex ) ? newChatIndex : ( newChatIndex + 1 )));
+        std::sort(this->chatList.begin(), this->chatList.end(), compareChats);
+        this->chatIndexMap.clear();
+        for (int i = 0; i < this->chatList.length(); i++) {
+            this->chatIndexMap.insert(this->chatList.at(i).toMap().value("id").toString(), i);
+        }
+        endMoveRows();
+    }
 }
