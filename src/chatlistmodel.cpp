@@ -8,6 +8,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper)
     connect(this->tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
+    connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, int)));
 }
 
 ChatListModel::~ChatListModel()
@@ -100,6 +101,18 @@ void ChatListModel::handleChatOrderUpdated(const QString &chatId, const QString 
 
     this->updateChatOrder(chatIndex, currentChat);
 
+    this->chatListMutex.unlock();
+}
+
+void ChatListModel::handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount)
+{
+    this->chatListMutex.lock();
+    qDebug() << "[ChatListModel] Updating chat unread count for " << chatId << " unread messages " << unreadCount;
+    int chatIndex = this->chatIndexMap.value(chatId).toInt();
+    QVariantMap currentChat = this->chatList.at(chatIndex).toMap();
+    currentChat.insert("unread_count", unreadCount);
+    this->chatList.replace(chatIndex, currentChat);
+    emit dataChanged(this->index(chatIndex), this->index(chatIndex));
     this->chatListMutex.unlock();
 }
 

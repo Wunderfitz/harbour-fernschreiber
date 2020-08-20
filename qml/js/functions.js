@@ -17,12 +17,26 @@
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
 function getUserName(userInformation) {
-    return userInformation.first_name + " " + userInformation.last_name;
+    var firstName = typeof userInformation.first_name !== "undefined" ? userInformation.first_name : "";
+    var lastName = typeof userInformation.last_name !== "undefined" ? userInformation.last_name : "";
+    return (firstName + " " + lastName).trim();
 }
 
 function getSimpleMessageText(message) {
     if (message.content['@type'] === 'messageText') {
         return message.content.text.text;
+    }
+    if (message.content['@type'] === 'messagePhoto') {
+        return (typeof message.content.caption) ? qsTr("Picture: %1").arg(message.content.caption.text) : qsTr("Picture");
+    }
+    if (message.content['@type'] === 'messageVideo') {
+        return (typeof message.content.caption) ? qsTr("Video: %1").arg(message.content.caption.text) : qsTr("Video");
+    }
+    if (message.content['@type'] === 'messageContactRegistered') {
+        return qsTr("has registered with Telegram");
+    }
+    if (message.content['@type'] === 'messageChatJoinByLink') {
+        return qsTr("joined this chat by link.");
     }
     return "?";
 }

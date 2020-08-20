@@ -47,6 +47,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(unreadChatCountUpdated(QVariantMap)), this, SLOT(handleUnreadChatCountUpdated(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
+    connect(this->tdLibReceiver, SIGNAL(chatReadInboxUpdated(QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, int)));
 
     this->tdLibReceiver->start();
 
@@ -285,6 +286,11 @@ void TDLibWrapper::handleChatLastMessageUpdated(const QString &chatId, const QSt
 void TDLibWrapper::handleChatOrderUpdated(const QString &chatId, const QString &order)
 {
     emit chatOrderUpdated(chatId, order);
+}
+
+void TDLibWrapper::handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount)
+{
+    emit chatReadInboxUpdated(chatId, unreadCount);
 }
 
 void TDLibWrapper::setInitialParameters()

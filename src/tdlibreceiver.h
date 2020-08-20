@@ -47,6 +47,7 @@ signals:
     void unreadChatCountUpdated(const QVariantMap &chatCountInformation);
     void chatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void chatOrderUpdated(const QString &chatId, const QString &order);
+    void chatReadInboxUpdated(const QString &chatId, const int &unreadCount);
 
 private:
     void *tdLibClient;
@@ -64,6 +65,7 @@ private:
     void processUpdateUnreadChatCount(const QVariantMap &receivedInformation);
     void processUpdateChatLastMessage(const QVariantMap &receivedInformation);
     void processUpdateChatOrder(const QVariantMap &receivedInformation);
+    void processUpdateChatReadInbox(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

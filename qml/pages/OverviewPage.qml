@@ -62,7 +62,7 @@ Page {
         onTriggered: {
             overviewPage.chatListCreated = true;
             chatListModel.enableDeltaUpdates();
-            // Sometimes delta updates are not properly displayed, enforce list redraw every minute
+            // Sometimes delta updates are not properly displayed, enforce list redraw from time to time
             synchronizeChangesTimer.start();
         }
     }

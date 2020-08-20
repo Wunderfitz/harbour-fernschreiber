@@ -197,4 +197,31 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>functions</name>
+    <message>
+        <source>Video: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has registered with Telegram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Picture: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>joined this chat by link.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

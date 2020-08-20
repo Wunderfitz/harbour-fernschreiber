@@ -85,6 +85,7 @@ signals:
     void unreadChatCountUpdated(const QVariantMap &chatCountInformation);
     void chatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void chatOrderUpdated(const QString &chatId, const QString &order);
+    void chatReadInboxUpdated(const QString &chatId, const int &unreadCount);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -98,6 +99,7 @@ public slots:
     void handleUnreadChatCountUpdated(const QVariantMap &chatCountInformation);
     void handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void handleChatOrderUpdated(const QString &chatId, const QString &order);
+    void handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount);
 private:
     void *tdLibClient;
     TDLibReceiver *tdLibReceiver;
