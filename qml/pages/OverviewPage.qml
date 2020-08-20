@@ -45,13 +45,25 @@ Page {
     }
 
     Timer {
+        id: synchronizeChangesTimer
+        interval: 60000
+        running: false
+        repeat: true
+        onTriggered: {
+            chatListModel.enableDeltaUpdates();
+        }
+    }
+
+    Timer {
         id: chatListCreatedTimer
         interval: 500
         running: false
         repeat: false
         onTriggered: {
             overviewPage.chatListCreated = true;
-            chatListModel.uiCreated();
+            chatListModel.enableDeltaUpdates();
+            // Sometimes delta updates are not properly displayed, enforce list redraw every minute
+            synchronizeChangesTimer.start();
         }
     }
 
@@ -232,12 +244,39 @@ Page {
                                 height: chatListContentColumn.height - Theme.paddingSmall
                                 anchors.verticalCenter: parent.verticalCenter
 
-                                ProfileThumbnail {
-                                    id: chatListPictureThumbnail
-                                    photoData: (typeof display.photo !== "undefined") ? display.photo.small : ""
-                                    replacementStringHint: chatListNameText.text
+                                Item {
+                                    id: chatListPictureItem
                                     width: parent.width
                                     height: parent.width
+
+                                    ProfileThumbnail {
+                                        id: chatListPictureThumbnail
+                                        photoData: (typeof display.photo !== "undefined") ? display.photo.small : ""
+                                        replacementStringHint: chatListNameText.text
+                                        width: parent.width
+                                        height: parent.width
+                                    }
+
+                                    Rectangle {
+                                        id: chatUnreadMessagesCountBackground
+                                        color: Theme.highlightBackgroundColor
+                                        width: Theme.fontSizeLarge
+                                        height: Theme.fontSizeLarge
+                                        anchors.right: parent.right
+                                        anchors.bottom: parent.bottom
+                                        radius: parent.width / 2
+                                        visible: display.unread_count > 0
+                                    }
+
+                                    Text {
+                                        id: chatUnreadMessagesCount
+                                        font.pixelSize: Theme.fontSizeExtraSmall
+                                        font.bold: true
+                                        color: Theme.primaryColor
+                                        anchors.centerIn: chatUnreadMessagesCountBackground
+                                        visible: chatUnreadMessagesCountBackground.visible
+                                        text: display.unread_count > 99 ? "99+" : display.unread_count
+                                    }
                                 }
                             }
 

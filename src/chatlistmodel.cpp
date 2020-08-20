@@ -38,9 +38,9 @@ bool ChatListModel::insertRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-void ChatListModel::uiCreated()
+void ChatListModel::enableDeltaUpdates()
 {
-    qDebug() << "[ChatListModel] Chat list on UI created, enabling delta updates...";
+    qDebug() << "[ChatListModel] Enabling delta updates and enforcing UI redraw...";
     layoutChanged();
     this->deltaUpdates = true;
 }

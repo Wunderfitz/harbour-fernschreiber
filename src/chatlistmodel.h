@@ -17,7 +17,7 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const override;
     virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
-    Q_INVOKABLE void uiCreated();
+    Q_INVOKABLE void enableDeltaUpdates();
 
 public slots:
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
