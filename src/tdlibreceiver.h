@@ -45,7 +45,7 @@ signals:
     void newChatDiscovered(const QVariantMap &chatInformation);
     void unreadMessageCountUpdated(const QVariantMap &messageCountInformation);
     void unreadChatCountUpdated(const QVariantMap &chatCountInformation);
-    void chatLastMessageUpdated(const QString &chatId, const QVariantMap &lastMessage);
+    void chatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void chatOrderUpdated(const QString &chatId, const QString &order);
 
 private:

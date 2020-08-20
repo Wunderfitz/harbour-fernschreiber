@@ -141,8 +141,8 @@ void TDLibReceiver::processUpdateUnreadChatCount(const QVariantMap &receivedInfo
 void TDLibReceiver::processUpdateChatLastMessage(const QVariantMap &receivedInformation)
 {
     QVariantMap lastMessage = receivedInformation.value("last_message").toMap();
-    qDebug() << "[TDLibReceiver] Last message of chat " << receivedInformation.value("chat_id").toString() << " updated, content: " << lastMessage.value("content").toString();
-    emit chatLastMessageUpdated(receivedInformation.value("chat_id").toString(), lastMessage);
+    qDebug() << "[TDLibReceiver] Last message of chat " << receivedInformation.value("chat_id").toString() << " updated, order " << receivedInformation.value("order").toString() << " content: " << lastMessage.value("content").toString();
+    emit chatLastMessageUpdated(receivedInformation.value("chat_id").toString(), receivedInformation.value("order").toString(), lastMessage);
 }
 
 void TDLibReceiver::processUpdateChatOrder(const QVariantMap &receivedInformation)

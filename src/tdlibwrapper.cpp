@@ -45,7 +45,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(newChatDiscovered(QVariantMap)), this, SLOT(handleNewChatDiscovered(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(unreadMessageCountUpdated(QVariantMap)), this, SLOT(handleUnreadMessageCountUpdated(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(unreadChatCountUpdated(QVariantMap)), this, SLOT(handleUnreadChatCountUpdated(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(chatLastMessageUpdated(QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
 
     this->tdLibReceiver->start();
@@ -277,9 +277,9 @@ void TDLibWrapper::handleUnreadChatCountUpdated(const QVariantMap &chatCountInfo
     }
 }
 
-void TDLibWrapper::handleChatLastMessageUpdated(const QString &chatId, const QVariantMap &lastMessage)
+void TDLibWrapper::handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage)
 {
-    emit chatLastMessageUpdated(chatId, lastMessage);
+    emit chatLastMessageUpdated(chatId, order, lastMessage);
 }
 
 void TDLibWrapper::handleChatOrderUpdated(const QString &chatId, const QString &order)

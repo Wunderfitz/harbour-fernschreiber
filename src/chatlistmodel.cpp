@@ -5,7 +5,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper)
 {
     this->tdLibWrapper = tdLibWrapper;
     connect(this->tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
-    connect(this->tdLibWrapper, SIGNAL(chatLastMessageUpdated(QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
 }
 
@@ -58,7 +58,7 @@ void ChatListModel::updateSorting()
     this->chatListMutex.lock();
     qDebug() << "[ChatListModel] List sorting will be updated...";
 
-    beginResetModel();
+    emit layoutAboutToBeChanged();
     std::sort(this->chatList.begin(), this->chatList.end(), compareChats);
 
     this->chatIndexMap.clear();
@@ -66,7 +66,7 @@ void ChatListModel::updateSorting()
         QString currentChatId = this->chatList.at(i).toMap().value("id").toString();
         this->chatIndexMap.insert(currentChatId, i);
     }
-    endResetModel();
+    emit layoutChanged();
     this->chatListMutex.unlock();
 }
 
@@ -79,13 +79,14 @@ void ChatListModel::handleChatDiscovered(const QString &chatId, const QVariantMa
     this->chatListMutex.unlock();
 }
 
-void ChatListModel::handleChatLastMessageUpdated(const QString &chatId, const QVariantMap &lastMessage)
+void ChatListModel::handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage)
 {
     this->chatListMutex.lock();
     int chatIndex = this->chatIndexMap.value(chatId).toInt();
     qDebug() << "[ChatListModel] Updating last message for chat " << chatId << " at index " << chatIndex;
     QVariantMap currentChat = this->chatList.value(chatIndex).toMap();
     currentChat.insert("last_message", lastMessage);
+    currentChat.insert("order", order);
     this->chatList.replace(chatIndex, currentChat);
     emit dataChanged(this->index(chatIndex), this->index(chatIndex));
     this->chatListMutex.unlock();

@@ -50,7 +50,7 @@ Page {
 
     Timer {
         id: chatListSorterTimer
-        interval: 1000
+        interval: 100
         running: false
         repeat: false
         onTriggered: {
@@ -128,6 +128,10 @@ Page {
             overviewPage.ownUserId = ownUserId;
         }
         onChatOrderUpdated: {
+            chatListSorterTimer.stop();
+            chatListSorterTimer.start();
+        }
+        onChatLastMessageUpdated: {
             chatListSorterTimer.stop();
             chatListSorterTimer.start();
         }

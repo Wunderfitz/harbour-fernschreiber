@@ -21,7 +21,7 @@ public:
 
 public slots:
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
-    void handleChatLastMessageUpdated(const QString &chatId, const QVariantMap &lastMessage);
+    void handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void handleChatOrderUpdated(const QString &chatId, const QString &order);
 
 private:
