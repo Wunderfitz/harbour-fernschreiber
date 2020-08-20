@@ -4,6 +4,7 @@
 ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper)
 {
     this->tdLibWrapper = tdLibWrapper;
+    this->deltaUpdates = false;
     connect(this->tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
@@ -35,6 +36,13 @@ bool ChatListModel::insertRows(int row, int count, const QModelIndex &parent)
     this->chatIndexMap.insert(this->chatToBeAdded.value("id").toString(), row);
     endInsertRows();
     return true;
+}
+
+void ChatListModel::uiCreated()
+{
+    qDebug() << "[ChatListModel] Chat list on UI created, enabling delta updates...";
+    layoutChanged();
+    this->deltaUpdates = true;
 }
 
 bool compareChats(const QVariant &chat1, const QVariant &chat2)
@@ -102,22 +110,33 @@ void ChatListModel::updateChatOrder(const int &currentChatIndex, const QVariantM
     // Other alternative layoutChanged() after sorting resets the index position - there we would need to calculate the new position as well
     // If somebody has a better solution - go for it ;)
     int newChatIndex = 0;
+    QVariantMap previousChat;
     for (int i = 0; i < this->chatList.length(); i++) {
         QVariantMap otherChat = this->chatList.at(i).toMap();
         if (compareChats(updatedChat, otherChat)) {
-            newChatIndex = i;
+            if (previousChat.value("id") == updatedChat.value("id")) {
+                newChatIndex = currentChatIndex;
+            } else {
+                newChatIndex = i;
+            }
             break;
         }
+        previousChat = otherChat;
     }
     if (newChatIndex != currentChatIndex) {
         // The updated chat now needs to go to the position of the other chat
         qDebug() << "[ChatListModel] Chat " << updatedChat.value("id").toString() << " will be moved from position " << currentChatIndex << " to " << newChatIndex;
-        beginMoveRows(QModelIndex(), currentChatIndex, currentChatIndex, QModelIndex(), (( newChatIndex < currentChatIndex ) ? newChatIndex : ( newChatIndex + 1 )));
+        if (deltaUpdates) {
+            beginMoveRows(QModelIndex(), currentChatIndex, currentChatIndex, QModelIndex(), (( newChatIndex < currentChatIndex ) ? newChatIndex : ( newChatIndex + 1 )));
+        }
         std::sort(this->chatList.begin(), this->chatList.end(), compareChats);
         this->chatIndexMap.clear();
         for (int i = 0; i < this->chatList.length(); i++) {
             this->chatIndexMap.insert(this->chatList.at(i).toMap().value("id").toString(), i);
         }
-        endMoveRows();
+        if (deltaUpdates) {
+            endMoveRows();
+        }
+
     }
 }

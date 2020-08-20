@@ -127,6 +127,8 @@ CoverBackground {
                 width: parent.width - unreadMessagesCountText.width - Theme.paddingMedium
                 wrapMode: Text.Wrap
                 anchors.verticalCenter: unreadMessagesCountText.verticalCenter
+                maximumLineCount: 2
+                elide: Text.ElideRight
             }
         }
 

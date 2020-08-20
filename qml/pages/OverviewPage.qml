@@ -35,11 +35,23 @@ Page {
     property int authorizationState: TelegramAPI.Closed
     property int connectionState: TelegramAPI.WaitingForNetwork
     property int ownUserId;
+    property bool chatListCreated: false;
 
     onStatusChanged: {
         console.log("[OverviewPage] Status changed: " + status + ", initialization completed: " + initializationCompleted);
         if (status === PageStatus.Active && initializationCompleted) {
             updateContent();
+        }
+    }
+
+    Timer {
+        id: chatListCreatedTimer
+        interval: 500
+        running: false
+        repeat: false
+        onTriggered: {
+            overviewPage.chatListCreated = true;
+            chatListModel.uiCreated();
         }
     }
 
@@ -117,9 +129,17 @@ Page {
         onOwnUserIdFound: {
             overviewPage.ownUserId = ownUserId;
         }
+        onChatLastMessageUpdated: {
+            if (!overviewPage.chatListCreated) {
+                chatListCreatedTimer.stop();
+                chatListCreatedTimer.start();
+            }
+        }
         onChatOrderUpdated: {
-            chatListSorterTimer.stop();
-            chatListSorterTimer.start();
+            if (!overviewPage.chatListCreated) {
+                chatListCreatedTimer.stop();
+                chatListCreatedTimer.start();
+            }
         }
     }
 

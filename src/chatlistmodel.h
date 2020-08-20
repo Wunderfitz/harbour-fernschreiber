@@ -17,6 +17,8 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const override;
     virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
+    Q_INVOKABLE void uiCreated();
+
 public slots:
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
     void handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
@@ -28,6 +30,7 @@ private:
     QVariantMap chatToBeAdded;
     QVariantMap chatIndexMap;
     QMutex chatListMutex;
+    bool deltaUpdates;
 
     void updateChatOrder(const int &currentChatIndex, const QVariantMap &updatedChat);
 
