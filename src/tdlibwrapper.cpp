@@ -130,6 +130,24 @@ void TDLibWrapper::downloadFile(const QString &fileId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::openChat(const QString &chatId)
+{
+    qDebug() << "[TDLibWrapper] Opening chat " << chatId;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "openChat");
+    requestObject.insert("chat_id", chatId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::closeChat(const QString &chatId)
+{
+    qDebug() << "[TDLibWrapper] Closing chat " << chatId;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "closeChat");
+    requestObject.insert("chat_id", chatId);
+    this->sendRequest(requestObject);
+}
+
 QVariantMap TDLibWrapper::getUserInformation()
 {
     return this->userInformation;

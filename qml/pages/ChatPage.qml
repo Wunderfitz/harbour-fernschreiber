@@ -33,11 +33,18 @@ Page {
     property variant chatInformation;
 
     function initializePage() {
+        tdLibWrapper.openChat(chatInformation.id);
         chatPage.loading = false;
     }
 
     Component.onCompleted: {
         initializePage();
+    }
+
+    onStatusChanged: {
+        if (status === PageStatus.Deactivating) {
+            tdLibWrapper.closeChat(chatInformation.id);
+        }
     }
 
     SilicaFlickable {

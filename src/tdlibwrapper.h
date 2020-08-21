@@ -72,6 +72,8 @@ public:
     Q_INVOKABLE void setAuthenticationCode(const QString &authenticationCode);
     Q_INVOKABLE void getChats();
     Q_INVOKABLE void downloadFile(const QString &fileId);
+    Q_INVOKABLE void openChat(const QString &chatId);
+    Q_INVOKABLE void closeChat(const QString &chatId);
 
 signals:
     void versionDetected(const QString &version);
