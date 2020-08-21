@@ -148,7 +148,7 @@ Page {
     }
 
     SilicaFlickable {
-        id: aboutContainer
+        id: overviewContainer
         contentHeight: parent.height
         contentWidth: parent.width
         anchors.fill: parent
@@ -207,8 +207,7 @@ Page {
                     contentWidth: parent.width
 
                     onClicked: {
-                        // jump to chat details here... ;)
-                        // pageStack.push(Qt.resolvedUrl("../pages/ConversationPage.qml"), { "conversationModel" : display, "myUserId": overviewPage.myUser.id_str, "configuration": overviewPage.configuration });
+                        pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : display });
                     }
 
                     Connections {

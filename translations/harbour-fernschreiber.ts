@@ -77,6 +77,17 @@
     </message>
 </context>
 <context>
+    <name>ChatPage</name>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your message</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
