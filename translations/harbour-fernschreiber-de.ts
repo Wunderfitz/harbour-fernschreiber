@@ -223,5 +223,13 @@
         <source>joined this chat by link.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Sticker: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>was added to this chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

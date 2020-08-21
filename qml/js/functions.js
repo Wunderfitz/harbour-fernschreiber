@@ -16,6 +16,7 @@
     You should have received a copy of the GNU General Public License
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
+
 function getUserName(userInformation) {
     var firstName = typeof userInformation.first_name !== "undefined" ? userInformation.first_name : "";
     var lastName = typeof userInformation.last_name !== "undefined" ? userInformation.last_name : "";
@@ -25,6 +26,9 @@ function getUserName(userInformation) {
 function getSimpleMessageText(message) {
     if (message.content['@type'] === 'messageText') {
         return message.content.text.text;
+    }
+    if (message.content['@type'] === 'messageSticker') {
+        return qsTr("Sticker: %1").arg(message.content.sticker.emoji);
     }
     if (message.content['@type'] === 'messagePhoto') {
         return (typeof message.content.caption) ? qsTr("Picture: %1").arg(message.content.caption.text) : qsTr("Picture");
@@ -37,6 +41,9 @@ function getSimpleMessageText(message) {
     }
     if (message.content['@type'] === 'messageChatJoinByLink') {
         return qsTr("joined this chat by link.");
+    }
+    if (message.content['@type'] === 'messageChatAddMembers') {
+        return qsTr("was added to this chat.");
     }
     return "?";
 }
