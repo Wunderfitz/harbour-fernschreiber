@@ -45,16 +45,6 @@ Page {
     }
 
     Timer {
-        id: synchronizeChangesTimer
-        interval: 60000
-        running: false
-        repeat: true
-        onTriggered: {
-            chatListModel.enableDeltaUpdates();
-        }
-    }
-
-    Timer {
         id: chatListCreatedTimer
         interval: 500
         running: false
@@ -62,8 +52,6 @@ Page {
         onTriggered: {
             overviewPage.chatListCreated = true;
             chatListModel.enableDeltaUpdates();
-            // Sometimes delta updates are not properly displayed, enforce list redraw from time to time
-            synchronizeChangesTimer.start();
         }
     }
 
@@ -223,6 +211,20 @@ Page {
                         // pageStack.push(Qt.resolvedUrl("../pages/ConversationPage.qml"), { "conversationModel" : display, "myUserId": overviewPage.myUser.id_str, "configuration": overviewPage.configuration });
                     }
 
+                    Connections {
+                        target: chatListModel
+                        onChatChanged: {
+                            if (overviewPage.chatListCreated) {
+                                // Force update of all list item elements. dataChanged() doesn't seem to trigger them all :(
+                                chatListPictureThumbnail.photoData = (typeof display.photo !== "undefined") ? display.photo.small : "";
+                                chatUnreadMessagesCount.text = display.unread_count > 99 ? "99+" : display.unread_count;
+                                chatListNameText.text = display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) : qsTr("Unknown");
+                                chatListLastMessageText.text = (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getSimpleMessageText(display.last_message), Theme.fontSizeExtraSmall) : qsTr("Unknown");
+                                messageContactTimeElapsedText.text = (typeof display.last_message !== "undefined") ? Functions.getDateTimeElapsed(display.last_message.date) : qsTr("Unknown");
+                            }
+                        }
+                    }
+
                     Column {
                         id: chatListColumn
                         width: parent.width - ( 2 * Theme.horizontalPageMargin )
@@ -255,6 +257,7 @@ Page {
                                         replacementStringHint: chatListNameText.text
                                         width: parent.width
                                         height: parent.width
+                                        forceElementUpdate: overviewPage.chatListCreated
                                     }
 
                                     Rectangle {

@@ -85,6 +85,7 @@ void ChatListModel::handleChatLastMessageUpdated(const QString &chatId, const QS
     emit dataChanged(this->index(chatIndex), this->index(chatIndex));
 
     this->updateChatOrder(chatIndex, currentChat);
+    emit chatChanged(chatId);
 
     this->chatListMutex.unlock();
 }
@@ -100,6 +101,7 @@ void ChatListModel::handleChatOrderUpdated(const QString &chatId, const QString 
     emit dataChanged(this->index(chatIndex), this->index(chatIndex));
 
     this->updateChatOrder(chatIndex, currentChat);
+    emit chatChanged(chatId);
 
     this->chatListMutex.unlock();
 }
@@ -113,6 +115,7 @@ void ChatListModel::handleChatReadInboxUpdated(const QString &chatId, const int 
     currentChat.insert("unread_count", unreadCount);
     this->chatList.replace(chatIndex, currentChat);
     emit dataChanged(this->index(chatIndex), this->index(chatIndex));
+    emit chatChanged(chatId);
     this->chatListMutex.unlock();
 }
 

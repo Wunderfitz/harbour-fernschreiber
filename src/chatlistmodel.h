@@ -19,6 +19,9 @@ public:
 
     Q_INVOKABLE void enableDeltaUpdates();
 
+signals:
+    void chatChanged(const QString &chatId);
+
 public slots:
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
     void handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);

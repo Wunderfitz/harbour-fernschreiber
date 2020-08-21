@@ -26,6 +26,7 @@ Item {
 
     property variant photoData;
     property string replacementStringHint: "X"
+    property bool forceElementUpdate: false
 
     function getReplacementString() {
         if (replacementStringHint.length > 2) {
@@ -43,13 +44,34 @@ Item {
         return replacementStringHint;
     }
 
-    Component.onCompleted: {
+    function updatePicture() {
         if (typeof photoData === "object") {
             if (photoData.local.is_downloading_completed) {
                 singleImage.source = photoData.local.path;
             } else {
                 tdLibWrapper.downloadFile(photoData.id);
             }
+        }
+    }
+
+    Timer {
+        id: updatePictureTimer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: {
+            updatePicture();
+        }
+    }
+
+    Component.onCompleted: {
+        updatePictureTimer.start();
+    }
+
+    onPhotoDataChanged: {
+        if (profileThumbnail.forceElementUpdate) {
+            updatePictureTimer.stop();
+            updatePictureTimer.start();
         }
     }
 
