@@ -48,6 +48,9 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(chatReadInboxUpdated(QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, int)));
+    connect(this->tdLibReceiver, SIGNAL(basicGroupUpdated(QString, QVariantMap)), this, SLOT(handleBasicGroupUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(superGroupUpdated(QString, QVariantMap)), this, SLOT(handleSuperGroupUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SLOT(handleChatOnlineMemberCountUpdated(QString, int)));
 
     this->tdLibReceiver->start();
 
@@ -169,6 +172,18 @@ QVariantMap TDLibWrapper::getUnreadChatInformation()
     return this->unreadChatInformation;
 }
 
+QVariantMap TDLibWrapper::getBasicGroup(const QString &groupId)
+{
+    qDebug() << "[TDLibWrapper] Returning basic group information for ID " << groupId;
+    return this->basicGroups.value(groupId).toMap();
+}
+
+QVariantMap TDLibWrapper::getSuperGroup(const QString &groupId)
+{
+    qDebug() << "[TDLibWrapper] Returning super group information for ID " << groupId;
+    return this->superGroups.value(groupId).toMap();
+}
+
 void TDLibWrapper::handleVersionDetected(const QString &version)
 {
     this->version = version;
@@ -266,6 +281,7 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
     }
     qDebug() << "[TDLibWrapper] User information updated: " << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString();
     this->allUsers.insert(updatedUserId, userInformation);
+    emit userUpdated(updatedUserId, userInformation);
 }
 
 void TDLibWrapper::handleFileUpdated(const QVariantMap &fileInformation)
@@ -309,6 +325,23 @@ void TDLibWrapper::handleChatOrderUpdated(const QString &chatId, const QString &
 void TDLibWrapper::handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount)
 {
     emit chatReadInboxUpdated(chatId, unreadCount);
+}
+
+void TDLibWrapper::handleBasicGroupUpdated(const QString &groupId, const QVariantMap &groupInformation)
+{
+    this->basicGroups.insert(groupId, groupInformation);
+    emit basicGroupUpdated(groupId, groupInformation);
+}
+
+void TDLibWrapper::handleSuperGroupUpdated(const QString &groupId, const QVariantMap &groupInformation)
+{
+    this->superGroups.insert(groupId, groupInformation);
+    emit superGroupUpdated(groupId, groupInformation);
+}
+
+void TDLibWrapper::handleChatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount)
+{
+    emit chatOnlineMemberCountUpdated(chatId, onlineMemberCount);
 }
 
 void TDLibWrapper::setInitialParameters()

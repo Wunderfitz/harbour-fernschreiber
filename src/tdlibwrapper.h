@@ -65,6 +65,8 @@ public:
     Q_INVOKABLE QVariantMap getUserInformation(const QString &userId);
     Q_INVOKABLE QVariantMap getUnreadMessageInformation();
     Q_INVOKABLE QVariantMap getUnreadChatInformation();
+    Q_INVOKABLE QVariantMap getBasicGroup(const QString &groupId);
+    Q_INVOKABLE QVariantMap getSuperGroup(const QString &groupId);
 
     // Direct TDLib functions
     Q_INVOKABLE void sendRequest(const QVariantMap &requestObject);
@@ -88,6 +90,10 @@ signals:
     void chatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void chatOrderUpdated(const QString &chatId, const QString &order);
     void chatReadInboxUpdated(const QString &chatId, const int &unreadCount);
+    void userUpdated(const QString &userId, const QVariantMap &userInformation);
+    void basicGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
+    void superGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
+    void chatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -102,6 +108,10 @@ public slots:
     void handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void handleChatOrderUpdated(const QString &chatId, const QString &order);
     void handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount);
+    void handleBasicGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
+    void handleSuperGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
+    void handleChatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
+
 private:
     void *tdLibClient;
     TDLibReceiver *tdLibReceiver;
@@ -114,6 +124,8 @@ private:
     QVariantMap chats;
     QVariantMap unreadMessageInformation;
     QVariantMap unreadChatInformation;
+    QVariantMap basicGroups;
+    QVariantMap superGroups;
 
     void setInitialParameters();
     void setEncryptionKey();

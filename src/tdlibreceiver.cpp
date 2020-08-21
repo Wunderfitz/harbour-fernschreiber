@@ -65,6 +65,9 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateChatLastMessage") { this->processUpdateChatLastMessage(receivedInformation); }
     if (objectTypeName == "updateChatOrder") { this->processUpdateChatOrder(receivedInformation); }
     if (objectTypeName == "updateChatReadInbox") { this->processUpdateChatReadInbox(receivedInformation); }
+    if (objectTypeName == "updateBasicGroup") { this->processUpdateBasicGroup(receivedInformation); }
+    if (objectTypeName == "updateSupergroup") { this->processUpdateSuperGroup(receivedInformation); }
+    if (objectTypeName == "updateChatOnlineMemberCount") { this->processChatOnlineMemberCountUpdated(receivedInformation); }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -156,4 +159,25 @@ void TDLibReceiver::processUpdateChatReadInbox(const QVariantMap &receivedInform
 {
     qDebug() << "[TDLibReceiver] Chat read information updated for " << receivedInformation.value("chat_id").toString() << " unread count: " << receivedInformation.value("unread_count").toString();
     emit chatReadInboxUpdated(receivedInformation.value("chat_id").toString(), receivedInformation.value("unread_count").toInt());
+}
+
+void TDLibReceiver::processUpdateBasicGroup(const QVariantMap &receivedInformation)
+{
+    QString basicGroupId = receivedInformation.value("basic_group").toMap().value("id").toString();
+    qDebug() << "[TDLibReceiver] Basic group information updated for " << basicGroupId;
+    emit basicGroupUpdated(basicGroupId, receivedInformation.value("basic_group").toMap());
+}
+
+void TDLibReceiver::processUpdateSuperGroup(const QVariantMap &receivedInformation)
+{
+    QString superGroupId = receivedInformation.value("supergroup").toMap().value("id").toString();
+    qDebug() << "[TDLibReceiver] Super group information updated for " << superGroupId;
+    emit superGroupUpdated(superGroupId, receivedInformation.value("supergroup").toMap());
+}
+
+void TDLibReceiver::processChatOnlineMemberCountUpdated(const QVariantMap &receivedInformation)
+{
+    QString chatId = receivedInformation.value("chat_id").toString();
+    qDebug() << "[TDLibReceiver] Online member count updated for chat " << chatId;
+    emit chatOnlineMemberCountUpdated(chatId, receivedInformation.value("online_member_count").toInt());
 }

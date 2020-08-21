@@ -40,10 +40,13 @@ function getSimpleMessageText(message) {
         return qsTr("has registered with Telegram");
     }
     if (message.content['@type'] === 'messageChatJoinByLink') {
-        return qsTr("joined this chat by link.");
+        return qsTr("joined this chat.");
     }
     if (message.content['@type'] === 'messageChatAddMembers') {
         return qsTr("was added to this chat.");
+    }
+    if (message.content['@type'] === 'messageChatDeleteMember') {
+        return qsTr("left this chat.");
     }
     return "?";
 }

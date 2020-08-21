@@ -86,6 +86,50 @@
         <source>Your message</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>was never online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>offline, last online: last month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>offline, last online: last week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>offline, last online: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>offline, was recently online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 members, %2 online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 members</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1M</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1K</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 subscribers</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -231,15 +275,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>joined this chat by link.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Sticker: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>was added to this chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>joined this chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>left this chat.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

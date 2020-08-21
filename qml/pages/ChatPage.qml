@@ -31,9 +31,76 @@ Page {
 
     property bool loading: true;
     property variant chatInformation;
+    property bool isPrivateChat: false;
+    property bool isBasicGroup: false;
+    property bool isSuperGroup: false;
+    property bool isChannel: false;
+    property variant chatPartnerInformation;
+    property variant chatGroupInformation;
+    property int chatOnlineMemberCount: 0;
+
+    function getShortenedCount(count) {
+        if (count >= 1000000) {
+            return qsTr("%1M").arg((count / 1000000).toLocaleString(Qt.locale(), 'f', 0));
+        } else if (count >= 1000 ) {
+            return qsTr("%1K").arg((count / 1000).toLocaleString(Qt.locale(), 'f', 0));
+        } else {
+            return count;
+        }
+    }
+
+    function updateChatPartnerStatusText() {
+        if (chatPartnerInformation.status['@type'] === "userStatusEmpty" ) {
+            chatStatusText.text = qsTr("was never online");
+        }
+        if (chatPartnerInformation.status['@type'] === "userStatusLastMonth" ) {
+            chatStatusText.text = qsTr("offline, last online: last month");
+        }
+        if (chatPartnerInformation.status['@type'] === "userStatusLastWeek" ) {
+            chatStatusText.text = qsTr("offline, last online: last week");
+        }
+        if (chatPartnerInformation.status['@type'] === "userStatusOffline" ) {
+            chatStatusText.text = qsTr("offline, last online: %1").arg(Functions.getDateTimeElapsed(chatPartnerInformation.status.was_online));
+        }
+        if (chatPartnerInformation.status['@type'] === "userStatusOnline" ) {
+            chatStatusText.text = qsTr("online");
+        }
+        if (chatPartnerInformation.status['@type'] === "userStatusRecently" ) {
+            chatStatusText.text = qsTr("offline, was recently online");
+        }
+    }
+
+    function updateGroupStatusText() {
+        if (chatOnlineMemberCount > 0) {
+            chatStatusText.text = qsTr("%1 members, %2 online").arg(getShortenedCount(chatGroupInformation.member_count)).arg(getShortenedCount(chatOnlineMemberCount));
+        } else {
+            if (isChannel) {
+                chatStatusText.text = qsTr("%1 subscribers").arg(getShortenedCount(chatGroupInformation.member_count));
+            } else {
+                chatStatusText.text = qsTr("%1 members").arg(getShortenedCount(chatGroupInformation.member_count));
+            }
+        }
+    }
 
     function initializePage() {
         tdLibWrapper.openChat(chatInformation.id);
+        var chatType = chatInformation.type['@type'];
+        isPrivateChat = ( chatType === "chatTypePrivate" );
+        isBasicGroup = ( chatType === "chatTypeBasicGroup" );
+        isSuperGroup = ( chatType === "chatTypeSupergroup" );
+        if (isPrivateChat) {
+            chatPartnerInformation = tdLibWrapper.getUserInformation(chatInformation.type.user_id);
+            updateChatPartnerStatusText();
+        }
+        if (isBasicGroup) {
+            chatGroupInformation = tdLibWrapper.getBasicGroup(chatInformation.type.basic_group_id);
+            updateGroupStatusText();
+        }
+        if (isSuperGroup) {
+            chatGroupInformation = tdLibWrapper.getSuperGroup(chatInformation.type.supergroup_id);
+            isChannel = chatGroupInformation.is_channel;
+            updateGroupStatusText();
+        }
         chatPage.loading = false;
     }
 
@@ -44,6 +111,45 @@ Page {
     onStatusChanged: {
         if (status === PageStatus.Deactivating) {
             tdLibWrapper.closeChat(chatInformation.id);
+        }
+    }
+
+    Connections {
+        target: tdLibWrapper
+        onUserUpdated: {
+            if (isPrivateChat && chatPartnerInformation.id.toString() === userId ) {
+                chatPartnerInformation = userInformation;
+                updateChatPartnerStatusText();
+            }
+        }
+        onBasicGroupUpdated: {
+            if (isBasicGroup && chatGroupInformation.id.toString() === groupId ) {
+                chatGroupInformation = groupInformation;
+                updateGroupStatusText();
+            }
+        }
+        onSuperGroupUpdated: {
+            if (isSuperGroup && chatGroupInformation.id.toString() === groupId ) {
+                chatGroupInformation = groupInformation;
+                updateGroupStatusText();
+            }
+        }
+        onChatOnlineMemberCountUpdated: {
+            console.log(isSuperGroup + "/" + isBasicGroup + "/" + chatInformation.id.toString() + "/" + chatId);
+            if ((isSuperGroup || isBasicGroup) && chatInformation.id.toString() === chatId) {
+                chatOnlineMemberCount = onlineMemberCount;
+                updateGroupStatusText();
+            }
+        }
+    }
+
+    Timer {
+        id: chatContactTimeUpdater
+        interval: 60000
+        running: true
+        repeat: true
+        onTriggered: {
+            updateChatPartnerStatusText();
         }
     }
 
@@ -101,9 +207,9 @@ Page {
                     }
                     Text {
                         id: chatStatusText
-                        text: "This will become a status bar..."
+                        text: ""
                         textFormat: Text.StyledText
-                        font.pixelSize: Theme.fontSizeSmall
+                        font.pixelSize: Theme.fontSizeExtraSmall
                         font.family: Theme.fontFamilyHeading
                         color: Theme.secondaryColor
                         elide: Text.ElideRight
