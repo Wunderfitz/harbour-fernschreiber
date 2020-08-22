@@ -239,12 +239,28 @@ Page {
                 clip: true
                 visible: count > 0
 
+                onMovementEnded: {
+                    tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
+                }
+
+                onQuickScrollAnimatingChanged: {
+                    if (!quickScrollAnimating) {
+                        tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
+                    }
+                }
+
+                onCurrentIndexChanged: {
+                    tdLibWrapper.viewMessage(chatInformation.id, currentItem.myMessage.id);
+                }
+
                 model: chatModel
                 delegate: ListItem {
 
                     id: messageListItem
                     contentHeight: messageTextItem.height + Theme.paddingMedium
                     contentWidth: parent.width
+
+                    property variant myMessage: display
 
                     Column {
                         id: messageTextItem

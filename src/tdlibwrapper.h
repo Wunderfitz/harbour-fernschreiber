@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE void openChat(const QString &chatId);
     Q_INVOKABLE void closeChat(const QString &chatId);
     Q_INVOKABLE void getChatHistory(const QString &chatId, const qlonglong &fromMessageId = 0, const int &offset = 0, const int &limit = 50, const bool &onlyLocal = false);
+    Q_INVOKABLE void viewMessage(const QString &chatId, const QString &messageId);
 
 signals:
     void versionDetected(const QString &version);
