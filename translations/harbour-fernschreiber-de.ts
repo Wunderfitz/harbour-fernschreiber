@@ -259,19 +259,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>has registered with Telegram</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Picture: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -288,6 +280,34 @@
     </message>
     <message>
         <source>left this chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audio: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voice Note: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shared a picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shared a video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shared an audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shared a voice note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shared their location</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

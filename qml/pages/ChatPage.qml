@@ -30,6 +30,7 @@ Page {
     allowedOrientations: Orientation.All
 
     property bool loading: true;
+    property int myUserId: tdLibWrapper.getUserInformation().id;
     property variant chatInformation;
     property bool isPrivateChat: false;
     property bool isBasicGroup: false;
@@ -84,6 +85,7 @@ Page {
 
     function initializePage() {
         tdLibWrapper.openChat(chatInformation.id);
+        chatModel.initialize(chatInformation.id);
         var chatType = chatInformation.type['@type'];
         isPrivateChat = ( chatType === "chatTypePrivate" );
         isBasicGroup = ( chatType === "chatTypeBasicGroup" );
@@ -144,6 +146,13 @@ Page {
         }
     }
 
+    Connections {
+        target: chatModel
+        onMessagesReceived: {
+            chatView.positionViewAtEnd();
+        }
+    }
+
     Timer {
         id: chatContactTimeUpdater
         interval: 60000
@@ -170,7 +179,7 @@ Page {
             Row {
                 id: headerRow
                 width: parent.width - (3 * Theme.horizontalPageMargin)
-                height: chatOverviewColumn.height + Theme.horizontalPageMargin
+                height: chatOverviewColumn.height + ( 2 * Theme.horizontalPageMargin )
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingMedium
 
@@ -180,13 +189,13 @@ Page {
                     replacementStringHint: chatNameText.text
                     width: chatOverviewColumn.height
                     height: chatOverviewColumn.height
-                    anchors.bottom: parent.bottom
+                    anchors.verticalCenter: parent.verticalCenter
                 }
 
                 Column {
                     id: chatOverviewColumn
                     width: parent.width - chatPictureThumbnail.width - Theme.paddingMedium
-                    anchors.bottom: parent.bottom
+                    anchors.verticalCenter: parent.verticalCenter
                     Text {
                         id: chatNameText
                         text: chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, font.pixelSize) : qsTr("Unknown")
@@ -228,15 +237,71 @@ Page {
                 height: parent.height - ( 2 * Theme.paddingMedium ) - headerRow.height - newMessageRow.height
 
                 clip: true
-                // visible: count > 0
+                visible: count > 0
 
-                // model: chatListModel
+                model: chatModel
                 delegate: ListItem {
 
-                    id: chatItem
-
-                    //contentHeight: chatListRow.height + chatListSeparator.height + 2 * Theme.paddingMedium
+                    id: messageListItem
+                    contentHeight: messageTextItem.height + Theme.paddingMedium
                     contentWidth: parent.width
+
+                    Column {
+                        id: messageTextItem
+
+                        spacing: Theme.paddingSmall
+
+                        width: parent.width
+                        height: messageText.height + messageDateText.height + Theme.paddingMedium
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Text {
+                            anchors {
+                                left: parent.left
+                                leftMargin: (chatPage.myUserId === display.sender_user_id) ? 4 * Theme.horizontalPageMargin : Theme.horizontalPageMargin
+                                right: parent.right
+                                rightMargin: (chatPage.myUserId === display.sender_user_id) ? Theme.horizontalPageMargin : 4 * Theme.horizontalPageMargin
+                            }
+
+                            id: messageText
+                            text: Emoji.emojify(Functions.getSimpleMessageText(display), font.pixelSize)
+                            font.pixelSize: Theme.fontSizeSmall
+                            color: chatPage.myUserId === display.sender_user_id ? Theme.highlightColor : Theme.primaryColor
+                            wrapMode: Text.Wrap
+                            textFormat: Text.StyledText
+                            onLinkActivated: {
+                                // Functions.handleLink(link);
+                            }
+                            horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                            linkColor: Theme.highlightColor
+                        }
+
+                        Timer {
+                            id: messageDateUpdater
+                            interval: 60000
+                            running: true
+                            repeat: true
+                            onTriggered: {
+                                messageDateText.text = Functions.getDateTimeElapsed(display.date);
+                            }
+                        }
+
+                        Text {
+                            anchors {
+                                left: parent.left
+                                leftMargin: (chatPage.myUserId === display.sender_user_id) ? 4 * Theme.horizontalPageMargin : Theme.horizontalPageMargin
+                                right: parent.right
+                                rightMargin: (chatPage.myUserId === display.sender_user_id) ? Theme.horizontalPageMargin : 4 * Theme.horizontalPageMargin
+                            }
+
+                            id: messageDateText
+                            text: Functions.getDateTimeElapsed(display.date)
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: chatPage.myUserId === display.sender_user_id ? Theme.highlightColor : Theme.primaryColor
+                            horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                        }
+
+                    }
 
                 }
 

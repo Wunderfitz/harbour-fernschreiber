@@ -31,10 +31,19 @@ function getSimpleMessageText(message) {
         return qsTr("Sticker: %1").arg(message.content.sticker.emoji);
     }
     if (message.content['@type'] === 'messagePhoto') {
-        return (typeof message.content.caption) ? qsTr("Picture: %1").arg(message.content.caption.text) : qsTr("Picture");
+        return (message.content.caption.text !== "") ? qsTr("Picture: %1").arg(message.content.caption.text) : qsTr("shared a picture");
     }
     if (message.content['@type'] === 'messageVideo') {
-        return (typeof message.content.caption) ? qsTr("Video: %1").arg(message.content.caption.text) : qsTr("Video");
+        return (message.content.caption.text !== "") ? qsTr("Video: %1").arg(message.content.caption.text) : qsTr("shared a video");
+    }
+    if (message.content['@type'] === 'messageAudio') {
+        return (message.content.caption.text !== "") ? qsTr("Audio: %1").arg(message.content.caption.text) : qsTr("shared an audio");
+    }
+    if (message.content['@type'] === 'messageVoiceNote') {
+        return (message.content.caption.text !== "") ? qsTr("Voice Note: %1").arg(message.content.caption.text) : qsTr("shared a voice note");
+    }
+    if (message.content['@type'] === 'messageLocation') {
+        return qsTr("shared their location");
     }
     if (message.content['@type'] === 'messageContactRegistered') {
         return qsTr("has registered with Telegram");
