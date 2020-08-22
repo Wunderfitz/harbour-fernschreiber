@@ -52,6 +52,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(basicGroupUpdated(QString, QVariantMap)), this, SLOT(handleBasicGroupUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(superGroupUpdated(QString, QVariantMap)), this, SLOT(handleSuperGroupUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SLOT(handleChatOnlineMemberCountUpdated(QString, int)));
+    connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList)), this, SLOT(handleMessagesReceived(QVariantList)));
 
     this->tdLibReceiver->start();
 
@@ -149,6 +150,19 @@ void TDLibWrapper::closeChat(const QString &chatId)
     QVariantMap requestObject;
     requestObject.insert("@type", "closeChat");
     requestObject.insert("chat_id", chatId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getChatHistory(const QString &chatId, const qlonglong &fromMessageId, const int &offset, const int &limit, const bool &onlyLocal)
+{
+    qDebug() << "[TDLibWrapper] Retrieving chat history " << chatId << fromMessageId << offset << limit << onlyLocal;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "getChatHistory");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("from_message_id", fromMessageId);
+    requestObject.insert("offset", offset);
+    requestObject.insert("limit", limit);
+    requestObject.insert("only_local", onlyLocal);
     this->sendRequest(requestObject);
 }
 
@@ -356,6 +370,11 @@ void TDLibWrapper::handleSuperGroupUpdated(const QString &groupId, const QVarian
 void TDLibWrapper::handleChatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount)
 {
     emit chatOnlineMemberCountUpdated(chatId, onlineMemberCount);
+}
+
+void TDLibWrapper::handleMessagesReceived(const QVariantList &messages)
+{
+    emit messagesReceived(messages);
 }
 
 void TDLibWrapper::setInitialParameters()

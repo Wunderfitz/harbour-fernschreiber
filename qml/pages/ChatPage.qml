@@ -101,6 +101,7 @@ Page {
             isChannel = chatGroupInformation.is_channel;
             updateGroupStatusText();
         }
+        tdLibWrapper.getChatHistory(chatInformation.id);
         chatPage.loading = false;
     }
 

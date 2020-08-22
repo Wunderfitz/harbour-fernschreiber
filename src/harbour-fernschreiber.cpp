@@ -31,6 +31,7 @@
 
 #include "tdlibwrapper.h"
 #include "chatlistmodel.h"
+#include "chatmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -45,6 +46,9 @@ int main(int argc, char *argv[])
 
     ChatListModel chatListModel(tdLibWrapper);
     context->setContextProperty("chatListModel", &chatListModel);
+
+    ChatModel chatModel(tdLibWrapper);
+    context->setContextProperty("chatModel", &chatModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-fernschreiber.qml"));
     view->show();

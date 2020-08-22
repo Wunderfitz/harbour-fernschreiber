@@ -52,6 +52,7 @@ signals:
     void basicGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
     void superGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
     void chatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
+    void messagesReceived(const QVariantList &messages);
 
 private:
     void *tdLibClient;
@@ -74,6 +75,7 @@ private:
     void processUpdateBasicGroup(const QVariantMap &receivedInformation);
     void processUpdateSuperGroup(const QVariantMap &receivedInformation);
     void processChatOnlineMemberCountUpdated(const QVariantMap &receivedInformation);
+    void processMessages(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

@@ -69,6 +69,7 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateBasicGroup") { this->processUpdateBasicGroup(receivedInformation); }
     if (objectTypeName == "updateSupergroup") { this->processUpdateSuperGroup(receivedInformation); }
     if (objectTypeName == "updateChatOnlineMemberCount") { this->processChatOnlineMemberCountUpdated(receivedInformation); }
+    if (objectTypeName == "messages") { this->processMessages(receivedInformation); }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -189,4 +190,10 @@ void TDLibReceiver::processChatOnlineMemberCountUpdated(const QVariantMap &recei
     QString chatId = receivedInformation.value("chat_id").toString();
     qDebug() << "[TDLibReceiver] Online member count updated for chat " << chatId;
     emit chatOnlineMemberCountUpdated(chatId, receivedInformation.value("online_member_count").toInt());
+}
+
+void TDLibReceiver::processMessages(const QVariantMap &receivedInformation)
+{
+    qDebug() << "[TDLibReceiver] Received new messages..." << receivedInformation.value("total_count").toString();
+    emit messagesReceived(receivedInformation.value("messages").toList());
 }
