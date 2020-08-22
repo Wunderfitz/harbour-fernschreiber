@@ -53,6 +53,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(superGroupUpdated(QString, QVariantMap)), this, SLOT(handleSuperGroupUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SLOT(handleChatOnlineMemberCountUpdated(QString, int)));
     connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList)), this, SLOT(handleMessagesReceived(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
 
     this->tdLibReceiver->start();
 
@@ -388,6 +389,11 @@ void TDLibWrapper::handleChatOnlineMemberCountUpdated(const QString &chatId, con
 void TDLibWrapper::handleMessagesReceived(const QVariantList &messages)
 {
     emit messagesReceived(messages);
+}
+
+void TDLibWrapper::handleNewMessageReceived(const QString &chatId, const QVariantMap &message)
+{
+    emit newMessageReceived(chatId, message);
 }
 
 void TDLibWrapper::setInitialParameters()

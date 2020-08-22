@@ -97,6 +97,7 @@ signals:
     void superGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
     void chatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
     void messagesReceived(const QVariantList &messages);
+    void newMessageReceived(const QString &chatId, const QVariantMap &message);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -116,6 +117,7 @@ public slots:
     void handleSuperGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
     void handleChatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
     void handleMessagesReceived(const QVariantList &messages);
+    void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
 
 private:
     void *tdLibClient;

@@ -151,6 +151,9 @@ Page {
         onMessagesReceived: {
             chatView.positionViewAtEnd();
         }
+        onNewMessageReceived: {
+            chatView.positionViewAtEnd();
+        }
     }
 
     Timer {

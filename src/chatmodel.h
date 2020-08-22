@@ -21,9 +21,11 @@ public:
 
 signals:
     void messagesReceived();
+    void newMessageReceived();
 
 public slots:
     void handleMessagesReceived(const QVariantList &messages);
+    void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
 
 private:
 
@@ -34,6 +36,8 @@ private:
     QMutex messagesMutex;
     QString chatId;
     bool inReload;
+
+    void insertMessages();
 };
 
 #endif // CHATMODEL_H
