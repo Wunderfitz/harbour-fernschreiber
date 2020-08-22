@@ -355,7 +355,9 @@ Page {
                         icon.source: "image://theme/icon-m-chat"
                         anchors.horizontalCenter: parent.horizontalCenter
                         onClicked: {
-                            // Send message
+                            tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text);
+                            newMessageTextField.text = "";
+                            newMessageTextField.focus = false;
                         }
                     }
                 }
