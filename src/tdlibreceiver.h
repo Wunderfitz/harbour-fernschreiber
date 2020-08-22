@@ -41,6 +41,7 @@ signals:
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
     void connectionStateChanged(const QString &connectionState);
     void userUpdated(const QVariantMap &userInformation);
+    void userStatusUpdated(const QString &userId, const QVariantMap &userStatusInformation);
     void fileUpdated(const QVariantMap &fileInformation);
     void newChatDiscovered(const QVariantMap &chatInformation);
     void unreadMessageCountUpdated(const QVariantMap &messageCountInformation);
@@ -62,6 +63,7 @@ private:
     void processUpdateAuthorizationState(const QVariantMap &receivedInformation);
     void processUpdateConnectionState(const QVariantMap &receivedInformation);
     void processUpdateUser(const QVariantMap &receivedInformation);
+    void processUpdateUserStatus(const QVariantMap &receivedInformation);
     void processUpdateFile(const QVariantMap &receivedInformation);
     void processUpdateNewChat(const QVariantMap &receivedInformation);
     void processUpdateUnreadMessageCount(const QVariantMap &receivedInformation);

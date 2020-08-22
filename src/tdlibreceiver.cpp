@@ -58,6 +58,7 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateAuthorizationState") { this->processUpdateAuthorizationState(receivedInformation); }
     if (objectTypeName == "updateConnectionState") { this->processUpdateConnectionState(receivedInformation); }
     if (objectTypeName == "updateUser") { this->processUpdateUser(receivedInformation); }
+    if (objectTypeName == "updateUserStatus") { this->processUpdateUserStatus(receivedInformation); }
     if (objectTypeName == "updateFile") { this->processUpdateFile(receivedInformation); }
     if (objectTypeName == "updateNewChat") { this->processUpdateNewChat(receivedInformation); }
     if (objectTypeName == "updateUnreadMessageCount") { this->processUpdateUnreadMessageCount(receivedInformation); }
@@ -103,6 +104,14 @@ void TDLibReceiver::processUpdateUser(const QVariantMap &receivedInformation)
     QVariantMap userInformation = receivedInformation.value("user").toMap();
     // qDebug() << "[TDLibReceiver] User was updated: " << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString();
     emit userUpdated(userInformation);
+}
+
+void TDLibReceiver::processUpdateUserStatus(const QVariantMap &receivedInformation)
+{
+    QString userId = receivedInformation.value("user_id").toString();
+    QVariantMap userStatusInformation = receivedInformation.value("status").toMap();
+    // qDebug() << "[TDLibReceiver] User status was updated: " << receivedInformation.value("user_id").toString() << userStatusInformation.value("@type").toString();
+    emit userStatusUpdated(userId, userStatusInformation);
 }
 
 void TDLibReceiver::processUpdateFile(const QVariantMap &receivedInformation)

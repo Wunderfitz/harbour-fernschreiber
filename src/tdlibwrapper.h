@@ -101,6 +101,7 @@ public slots:
     void handleOptionUpdated(const QString &optionName, const QVariant &optionValue);
     void handleConnectionStateChanged(const QString &connectionState);
     void handleUserUpdated(const QVariantMap &userInformation);
+    void handleUserStatusUpdated(const QString &userId, const QVariantMap &userStatusInformation);
     void handleFileUpdated(const QVariantMap &fileInformation);
     void handleNewChatDiscovered(const QVariantMap &chatInformation);
     void handleUnreadMessageCountUpdated(const QVariantMap &messageCountInformation);

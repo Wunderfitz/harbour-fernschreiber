@@ -41,6 +41,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(optionUpdated(QString, QVariant)), this, SLOT(handleOptionUpdated(QString, QVariant)));
     connect(this->tdLibReceiver, SIGNAL(connectionStateChanged(QString)), this, SLOT(handleConnectionStateChanged(QString)));
     connect(this->tdLibReceiver, SIGNAL(userUpdated(QVariantMap)), this, SLOT(handleUserUpdated(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(userStatusUpdated(QString, QVariantMap)), this, SLOT(handleUserStatusUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(fileUpdated(QVariantMap)), this, SLOT(handleFileUpdated(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(newChatDiscovered(QVariantMap)), this, SLOT(handleNewChatDiscovered(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(unreadMessageCountUpdated(QVariantMap)), this, SLOT(handleUnreadMessageCountUpdated(QVariantMap)));
@@ -282,6 +283,19 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
     qDebug() << "[TDLibWrapper] User information updated: " << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString();
     this->allUsers.insert(updatedUserId, userInformation);
     emit userUpdated(updatedUserId, userInformation);
+}
+
+void TDLibWrapper::handleUserStatusUpdated(const QString &userId, const QVariantMap &userStatusInformation)
+{
+    if (userId == this->options.value("my_id").toString()) {
+        qDebug() << "[TDLibWrapper] Own user status information updated :)";
+        this->userInformation.insert("status", userStatusInformation);
+    }
+    qDebug() << "[TDLibWrapper] User status information updated: " << userId << userStatusInformation.value("@type").toString();
+    QVariantMap updatedUserInformation = this->allUsers.value(userId).toMap();
+    updatedUserInformation.insert("status", userStatusInformation);
+    this->allUsers.insert(userId, updatedUserInformation);
+    emit userUpdated(userId, updatedUserInformation);
 }
 
 void TDLibWrapper::handleFileUpdated(const QVariantMap &fileInformation)
