@@ -203,7 +203,7 @@ QVariantMap TDLibWrapper::getUserInformation()
 
 QVariantMap TDLibWrapper::getUserInformation(const QString &userId)
 {
-    qDebug() << "[TDLibWrapper] Returning user information for ID " << userId;
+    // qDebug() << "[TDLibWrapper] Returning user information for ID " << userId;
     return this->allUsers.value(userId).toMap();
 }
 

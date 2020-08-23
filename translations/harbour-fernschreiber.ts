@@ -130,6 +130,10 @@
         <source>%1 subscribers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>You</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

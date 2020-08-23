@@ -182,7 +182,7 @@ Page {
             Row {
                 id: headerRow
                 width: parent.width - (3 * Theme.horizontalPageMargin)
-                height: chatOverviewColumn.height + ( 2 * Theme.horizontalPageMargin )
+                height: chatOverviewColumn.height + ( 2 * Theme.paddingLarge )
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingMedium
 
@@ -260,64 +260,112 @@ Page {
                 delegate: ListItem {
 
                     id: messageListItem
-                    contentHeight: messageTextItem.height + Theme.paddingMedium
+                    contentHeight: messageBackground.height + Theme.paddingMedium
                     contentWidth: parent.width
 
                     property variant myMessage: display
+                    property variant userInformation: tdLibWrapper.getUserInformation(display.sender_user_id)
 
-                    Column {
-                        id: messageTextItem
-
+                    Row {
+                        id: messageTextRow
                         spacing: Theme.paddingSmall
+                        width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                        anchors.horizontalCenter: parent.horizontalCenter
 
-                        width: parent.width
-                        height: messageText.height + messageDateText.height + Theme.paddingMedium
-                        anchors.verticalCenter: parent.verticalCenter
-
-                        Text {
-                            anchors {
-                                left: parent.left
-                                leftMargin: (chatPage.myUserId === display.sender_user_id) ? 4 * Theme.horizontalPageMargin : Theme.horizontalPageMargin
-                                right: parent.right
-                                rightMargin: (chatPage.myUserId === display.sender_user_id) ? Theme.horizontalPageMargin : 4 * Theme.horizontalPageMargin
-                            }
-
-                            id: messageText
-                            text: Emoji.emojify(Functions.getSimpleMessageText(display), font.pixelSize)
-                            font.pixelSize: Theme.fontSizeSmall
-                            color: chatPage.myUserId === display.sender_user_id ? Theme.highlightColor : Theme.primaryColor
-                            wrapMode: Text.Wrap
-                            textFormat: Text.StyledText
-                            onLinkActivated: {
-                                // Functions.handleLink(link);
-                            }
-                            horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
-                            linkColor: Theme.highlightColor
+                        ProfileThumbnail {
+                            id: messagePictureThumbnail
+                            photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ""
+                            replacementStringHint: userText.text
+                            width: visible ? Theme.itemSizeSmall : 0
+                            height: visible ? Theme.itemSizeSmall : 0
+                            anchors.bottom: parent.bottom
+                            anchors.bottomMargin: Theme.paddingSmall
+                            visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
                         }
 
-                        Timer {
-                            id: messageDateUpdater
-                            interval: 60000
-                            running: true
-                            repeat: true
-                            onTriggered: {
-                                messageDateText.text = Functions.getDateTimeElapsed(display.date);
-                            }
-                        }
+                        Item {
+                            id: messageTextItem
 
-                        Text {
-                            anchors {
-                                left: parent.left
-                                leftMargin: (chatPage.myUserId === display.sender_user_id) ? 4 * Theme.horizontalPageMargin : Theme.horizontalPageMargin
-                                right: parent.right
-                                rightMargin: (chatPage.myUserId === display.sender_user_id) ? Theme.horizontalPageMargin : 4 * Theme.horizontalPageMargin
+                            width: parent.width - messagePictureThumbnail.width - Theme.paddingSmall
+                            height: messageBackground.height
+
+                            Rectangle {
+                                id: messageBackground
+                                anchors {
+                                    left: parent.left
+                                    leftMargin: (chatPage.myUserId === display.sender_user_id) ? 2 * Theme.horizontalPageMargin : 0
+                                    right: parent.right
+                                    rightMargin: (chatPage.myUserId === display.sender_user_id) ? 0 : 2 * Theme.horizontalPageMargin
+                                    verticalCenter: parent.verticalCenter
+                                }
+                                height: messageTextColumn.height + ( 2 * Theme.paddingMedium )
+
+                                color: Theme.secondaryColor
+                                radius: parent.width / 50
+                                opacity: 0.2
                             }
 
-                            id: messageDateText
-                            text: Functions.getDateTimeElapsed(display.date)
-                            font.pixelSize: Theme.fontSizeTiny
-                            color: chatPage.myUserId === display.sender_user_id ? Theme.secondaryHighlightColor : Theme.secondaryColor
-                            horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                            Column {
+                                id: messageTextColumn
+
+                                spacing: Theme.paddingSmall
+
+                                width: messageBackground.width - Theme.horizontalPageMargin
+                                anchors.centerIn: messageBackground
+
+                                Text {
+                                    id: userText
+
+                                    width: parent.width
+                                    text: display.sender_user_id !== chatPage.myUserId ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    font.weight: Font.ExtraBold
+                                    color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
+                                    maximumLineCount: 1
+                                    elide: Text.ElideRight
+                                    textFormat: Text.StyledText
+                                    horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                    visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                                }
+
+                                Text {
+                                    id: messageText
+
+                                    width: parent.width
+                                    text: Emoji.emojify(Functions.getSimpleMessageText(display), font.pixelSize)
+                                    font.pixelSize: Theme.fontSizeSmall
+                                    color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
+                                    wrapMode: Text.Wrap
+                                    textFormat: Text.StyledText
+                                    onLinkActivated: {
+                                        // Functions.handleLink(link);
+                                    }
+                                    horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                    linkColor: Theme.highlightColor
+                                }
+
+                                Timer {
+                                    id: messageDateUpdater
+                                    interval: 60000
+                                    running: true
+                                    repeat: true
+                                    onTriggered: {
+                                        messageDateText.text = Functions.getDateTimeElapsed(display.date);
+                                    }
+                                }
+
+                                Text {
+                                    width: parent.width
+
+                                    id: messageDateText
+                                    text: Functions.getDateTimeElapsed(display.date)
+                                    font.pixelSize: Theme.fontSizeTiny
+                                    color: (chatPage.myUserId === display.sender_user_id) ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                                    horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                }
+
+                            }
+
                         }
 
                     }
