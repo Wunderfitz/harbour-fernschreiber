@@ -316,7 +316,7 @@ Page {
                             id: messageDateText
                             text: Functions.getDateTimeElapsed(display.date)
                             font.pixelSize: Theme.fontSizeTiny
-                            color: chatPage.myUserId === display.sender_user_id ? Theme.highlightColor : Theme.primaryColor
+                            color: chatPage.myUserId === display.sender_user_id ? Theme.secondaryHighlightColor : Theme.secondaryColor
                             horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
                         }
 

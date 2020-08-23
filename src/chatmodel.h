@@ -21,6 +21,7 @@ public:
 
 signals:
     void messagesReceived();
+    void noMessagesAvailable();
     void newMessageReceived();
 
 public slots:

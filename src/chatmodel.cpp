@@ -64,9 +64,14 @@ bool compareMessages(const QVariant &message1, const QVariant &message2)
 
 void ChatModel::handleMessagesReceived(const QVariantList &messages)
 {
-    qDebug() << "[ChatModel] Receiving new messages :)";
-    this->messagesMutex.lock();
+    qDebug() << "[ChatModel] Receiving new messages :)" << messages.size();
 
+    if (messages.size() == 0) {
+        emit noMessagesAvailable();
+        return;
+    }
+
+    this->messagesMutex.lock();
     this->messagesToBeAdded.clear();
     QListIterator<QVariant> messagesIterator(messages);
     while (messagesIterator.hasNext()) {
@@ -80,8 +85,8 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
     this->insertMessages();
     this->messagesMutex.unlock();
 
-    // First call only returns one message, we need to get a little more than that...
-    if (this->messagesToBeAdded.size() == 1 && !this->inReload) {
+    // First call only returns a few messages, we need to get a little more than that...
+    if (this->messagesToBeAdded.size() < 10 && !this->inReload) {
         qDebug() << "[ChatModel] Only one message received in first call, loading more...";
         this->inReload = true;
         this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value("id").toLongLong());
