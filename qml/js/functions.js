@@ -107,6 +107,50 @@ function enhanceMessageText(formattedText) {
             messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<b>" ));
             messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</b>" ));
         }
+        if (entityType === "textEntityTypeUrl") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+        }
+        if (entityType === "textEntityTypeCode") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>" ));
+        }
+        if (entityType === "textEntityTypeEmailAddress") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"mailto:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+        }
+        if (entityType === "textEntityTypeItalic") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<i>" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</i>" ));
+        }
+        if (entityType === "textEntityTypeMention") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"user:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+        }
+        if (entityType === "textEntityTypeMentionName") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"userId://" + formattedText.entities[i].type.user_id + "\">" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+        }
+        if (entityType === "textEntityTypePhoneNumber") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"tel:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+        }
+        if (entityType === "textEntityTypePre") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>" ));
+        }
+        if (entityType === "textEntityTypePreCode") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>" ));
+        }
+        if (entityType === "textEntityTypeTextUrl") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"" + formattedText.entities[i].type.url + "\">" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+        }
+        if (entityType === "textEntityTypeUnderline") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<u>" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</u>" ));
+        }
     }
 
     messageInsertions.sort( function(a, b) { return b.offset - a.offset } );
@@ -129,4 +173,14 @@ function enhanceMessageText(formattedText) {
 
     return messageText;
 
+}
+
+function handleLink(link) {
+    if (link.indexOf("user://") === 0) {
+        //pageStack.push(Qt.resolvedUrl("../pages/UserPage.qml"), {"userName": link.substring(7)});
+    } else if (link.indexOf("userid://") === 0) {
+        //pageStack.push(Qt.resolvedUrl("../pages/UserPage.qml"), {"userId": link.substring(9)});
+    }  else {
+        Qt.openUrlExternally(link);
+    }
 }

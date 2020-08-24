@@ -338,7 +338,7 @@ Page {
                                     wrapMode: Text.Wrap
                                     textFormat: Text.StyledText
                                     onLinkActivated: {
-                                        // Functions.handleLink(link);
+                                        Functions.handleLink(link);
                                     }
                                     horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
                                     linkColor: Theme.highlightColor
