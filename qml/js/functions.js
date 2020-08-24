@@ -23,24 +23,44 @@ function getUserName(userInformation) {
     return (firstName + " " + lastName).trim();
 }
 
-function getSimpleMessageText(message) {
+function getMessageText(message, simple) {
     if (message.content['@type'] === 'messageText') {
-        return message.content.text.text;
+        if (simple) {
+            return message.content.text.text;
+        } else {
+            return enhanceMessageText(message.content.text);
+        }
     }
     if (message.content['@type'] === 'messageSticker') {
         return qsTr("Sticker: %1").arg(message.content.sticker.emoji);
     }
     if (message.content['@type'] === 'messagePhoto') {
-        return (message.content.caption.text !== "") ? qsTr("Picture: %1").arg(message.content.caption.text) : qsTr("shared a picture");
+        if (message.content.caption.text !== "") {
+            return qsTr("Picture: %1").arg(simple ? message.content.caption.text : enhanceMessageText(message.content.caption))
+        } else {
+            return qsTr("shared a picture");
+        }
     }
     if (message.content['@type'] === 'messageVideo') {
-        return (message.content.caption.text !== "") ? qsTr("Video: %1").arg(message.content.caption.text) : qsTr("shared a video");
+        if (message.content.caption.text !== "") {
+            return qsTr("Video: %1").arg(simple ? message.content.caption.text : enhanceMessageText(message.content.caption))
+        } else {
+            return qsTr("shared a video");
+        }
     }
     if (message.content['@type'] === 'messageAudio') {
-        return (message.content.caption.text !== "") ? qsTr("Audio: %1").arg(message.content.caption.text) : qsTr("shared an audio");
+        if (message.content.caption.text !== "") {
+            return qsTr("Audio: %1").arg(simple ? message.content.caption.text : enhanceMessageText(message.content.caption))
+        } else {
+            return qsTr("shared an audio");
+        }
     }
     if (message.content['@type'] === 'messageVoiceNote') {
-        return (message.content.caption.text !== "") ? qsTr("Voice Note: %1").arg(message.content.caption.text) : qsTr("shared a voice note");
+        if (message.content.caption.text !== "") {
+            return qsTr("Voice Note: %1").arg(simple ? message.content.caption.text : enhanceMessageText(message.content.caption))
+        } else {
+            return qsTr("shared a voice note");
+        }
     }
     if (message.content['@type'] === 'messageLocation') {
         return qsTr("shared their location");
@@ -62,4 +82,51 @@ function getSimpleMessageText(message) {
 
 function getDateTimeElapsed(timestamp) {
     return Format.formatDate(new Date(timestamp * 1000), Formatter.DurationElapsed);
+}
+
+function MessageInsertion(offset, insertionString) {
+    this.offset = offset;
+    this.insertionString = insertionString;
+}
+
+MessageInsertion.prototype.toString = function insertionToString() {
+    return "Offset: " + this.offset + ", Insertion String: " + this.insertionString;
+}
+
+function enhanceMessageText(formattedText) {
+
+    var messageText = formattedText.text;
+    var messageInsertions = [];
+
+    for (var i = 0; i < formattedText.entities.length; i++) {
+        if (formattedText.entities[i]['@type'] !== "textEntity") {
+            continue;
+        }
+        var entityType = formattedText.entities[i].type['@type'];
+        if (entityType === "textEntityTypeBold") {
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<b>" ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</b>" ));
+        }
+    }
+
+    messageInsertions.sort( function(a, b) { return b.offset - a.offset } );
+
+    for (var z = 0; z < messageInsertions.length; z++) {
+        messageText = messageText.substring(0, messageInsertions[z].offset) + messageInsertions[z].insertionString + messageText.substring(messageInsertions[z].offset);
+    }
+
+    messageText = messageText.replace(new RegExp("\r?\n", "g"), "<br>");
+
+    var spaceRegex = /\s{2,}/g;
+    function spaceReplacer(match, p1, offset, string) {
+        var replaceString = "";
+        for (var i = 0; i < match.length; i++) {
+            replaceString += "&nbsp;";
+        }
+        return replaceString;
+    }
+    messageText = messageText.replace(spaceRegex, spaceReplacer);
+
+    return messageText;
+
 }

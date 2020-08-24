@@ -332,7 +332,7 @@ Page {
                                     id: messageText
 
                                     width: parent.width
-                                    text: Emoji.emojify(Functions.getSimpleMessageText(display), font.pixelSize)
+                                    text: Emoji.emojify(Functions.getMessageText(display, false), font.pixelSize)
                                     font.pixelSize: Theme.fontSizeSmall
                                     color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
                                     wrapMode: Text.Wrap

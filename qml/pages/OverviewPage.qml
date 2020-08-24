@@ -219,7 +219,7 @@ Page {
                                 chatUnreadMessagesCountBackground.visible = display.unread_count > 0;
                                 chatUnreadMessagesCount.text = display.unread_count > 99 ? "99+" : display.unread_count;
                                 chatListNameText.text = display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) : qsTr("Unknown");
-                                chatListLastMessageText.text = (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getSimpleMessageText(display.last_message), Theme.fontSizeExtraSmall) : qsTr("Unknown");
+                                chatListLastMessageText.text = (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getMessageText(display.last_message, true), Theme.fontSizeExtraSmall) : qsTr("Unknown");
                                 messageContactTimeElapsedText.text = (typeof display.last_message !== "undefined") ? Functions.getDateTimeElapsed(display.last_message.date) : qsTr("Unknown");
                             }
                         }
@@ -325,7 +325,7 @@ Page {
                                     }
                                     Text {
                                         id: chatListLastMessageText
-                                        text: (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getSimpleMessageText(display.last_message), Theme.fontSizeExtraSmall) : qsTr("Unknown")
+                                        text: (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getMessageText(display.last_message, true), Theme.fontSizeExtraSmall) : qsTr("Unknown")
                                         font.pixelSize: Theme.fontSizeExtraSmall
                                         color: Theme.primaryColor
                                         width: parent.width - Theme.paddingMedium - chatListLastUserText.width
