@@ -67,6 +67,8 @@ public:
     Q_INVOKABLE QVariantMap getUnreadChatInformation();
     Q_INVOKABLE QVariantMap getBasicGroup(const QString &groupId);
     Q_INVOKABLE QVariantMap getSuperGroup(const QString &groupId);
+    Q_INVOKABLE void copyPictureToDownloads(const QString &filePath);
+    Q_INVOKABLE void handleAdditionalInformation(const QString &additionalInformation);
 
     // Direct TDLib functions
     Q_INVOKABLE void sendRequest(const QVariantMap &requestObject);
@@ -99,6 +101,8 @@ signals:
     void chatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
     void messagesReceived(const QVariantList &messages);
     void newMessageReceived(const QString &chatId, const QVariantMap &message);
+    void copyToDownloadsSuccessful(const QString &fileName, const QString &filePath);
+    void copyToDownloadsError(const QString &fileName, const QString &filePath);
 
 public slots:
     void handleVersionDetected(const QString &version);

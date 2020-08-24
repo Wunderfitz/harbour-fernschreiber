@@ -77,6 +77,17 @@
     </message>
 </context>
 <context>
+    <name>BackgroundProgressIndicator</name>
+    <message>
+        <source>%1 %</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChatPage</name>
     <message>
         <source>Unknown</source>
@@ -175,6 +186,21 @@
     </message>
     <message>
         <source>chats</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ImagePage</name>
+    <message>
+        <source>Download Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download failed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

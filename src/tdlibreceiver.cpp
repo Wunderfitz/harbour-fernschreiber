@@ -60,6 +60,7 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateUser") { this->processUpdateUser(receivedInformation); }
     if (objectTypeName == "updateUserStatus") { this->processUpdateUserStatus(receivedInformation); }
     if (objectTypeName == "updateFile") { this->processUpdateFile(receivedInformation); }
+    if (objectTypeName == "file") { this->processFile(receivedInformation); }
     if (objectTypeName == "updateNewChat") { this->processUpdateNewChat(receivedInformation); }
     if (objectTypeName == "updateUnreadMessageCount") { this->processUpdateUnreadMessageCount(receivedInformation); }
     if (objectTypeName == "updateUnreadChatCount") { this->processUpdateUnreadChatCount(receivedInformation); }
@@ -121,6 +122,12 @@ void TDLibReceiver::processUpdateFile(const QVariantMap &receivedInformation)
     QVariantMap fileInformation = receivedInformation.value("file").toMap();
     qDebug() << "[TDLibReceiver] File was updated: " << fileInformation.value("id").toString();
     emit fileUpdated(fileInformation);
+}
+
+void TDLibReceiver::processFile(const QVariantMap &receivedInformation)
+{
+    qDebug() << "[TDLibReceiver] File was updated: " << receivedInformation.value("id").toString();
+    emit fileUpdated(receivedInformation);
 }
 
 void TDLibReceiver::processUpdateNewChat(const QVariantMap &receivedInformation)

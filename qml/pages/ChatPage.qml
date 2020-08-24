@@ -84,7 +84,6 @@ Page {
     }
 
     function initializePage() {
-        tdLibWrapper.openChat(chatInformation.id);
         chatModel.initialize(chatInformation.id);
         var chatType = chatInformation.type['@type'];
         isPrivateChat = ( chatType === "chatTypePrivate" );
@@ -112,6 +111,9 @@ Page {
     }
 
     onStatusChanged: {
+        if (status === PageStatus.Activating) {
+            tdLibWrapper.openChat(chatInformation.id);
+        }
         if (status === PageStatus.Deactivating) {
             tdLibWrapper.closeChat(chatInformation.id);
         }
@@ -342,6 +344,14 @@ Page {
                                     }
                                     horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
                                     linkColor: Theme.highlightColor
+                                    visible: (text !== "")
+                                }
+
+                                ImagePreview {
+                                    photoData: ( display.content['@type'] === "messagePhoto" ) ?  display.content.photo : ""
+                                    width: parent.width
+                                    height: parent.width * 2 / 3
+                                    visible: display.content['@type'] === "messagePhoto"
                                 }
 
                                 Timer {

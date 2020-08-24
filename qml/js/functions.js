@@ -36,30 +36,33 @@ function getMessageText(message, simple) {
     }
     if (message.content['@type'] === 'messagePhoto') {
         if (message.content.caption.text !== "") {
-            return qsTr("Picture: %1").arg(simple ? message.content.caption.text : enhanceMessageText(message.content.caption))
+            return simple ? qsTr("Picture: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return qsTr("shared a picture");
+            return simple ? qsTr("shared a picture") : "";
         }
     }
     if (message.content['@type'] === 'messageVideo') {
         if (message.content.caption.text !== "") {
-            return qsTr("Video: %1").arg(simple ? message.content.caption.text : enhanceMessageText(message.content.caption))
+            return simple ? qsTr("Video: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return qsTr("shared a video");
+            //ENABLE when ready: return simple ? qsTr("shared a video") : "";
+            qsTr("shared a video");
         }
     }
     if (message.content['@type'] === 'messageAudio') {
         if (message.content.caption.text !== "") {
-            return qsTr("Audio: %1").arg(simple ? message.content.caption.text : enhanceMessageText(message.content.caption))
+            return simple ? qsTr("Audio: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return qsTr("shared an audio");
+            //ENABLE when ready: return simple ? qsTr("shared an audio") : "";
+            qsTr("shared an audio");
         }
     }
     if (message.content['@type'] === 'messageVoiceNote') {
         if (message.content.caption.text !== "") {
-            return qsTr("Voice Note: %1").arg(simple ? message.content.caption.text : enhanceMessageText(message.content.caption))
+            return simple ? qsTr("Voice Note: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return qsTr("shared a voice note");
+            //ENABLE when ready: return simple ? qsTr("shared a voice note") : "";
+            qsTr("shared a voice note");
         }
     }
     if (message.content['@type'] === 'messageLocation') {

@@ -20,9 +20,13 @@
 #include "tdlibwrapper.h"
 #include "tdlibsecrets.h"
 #include <QDir>
+#include <QFile>
+#include <QFileInfo>
 #include <QLocale>
+#include <QProcess>
 #include <QSysInfo>
 #include <QSettings>
+#include <QStandardPaths>
 
 TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
 {
@@ -227,6 +231,36 @@ QVariantMap TDLibWrapper::getSuperGroup(const QString &groupId)
 {
     qDebug() << "[TDLibWrapper] Returning super group information for ID " << groupId;
     return this->superGroups.value(groupId).toMap();
+}
+
+void TDLibWrapper::copyPictureToDownloads(const QString &filePath)
+{
+    qDebug() << "[TDLibWrapper] Copy picture to downloads " << filePath;
+    QFileInfo fileInfo(filePath);
+    if (fileInfo.exists()) {
+        QString downloadFilePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + fileInfo.fileName();
+        if (QFile::copy(filePath, downloadFilePath)) {
+            emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+        } else {
+            emit copyToDownloadsError(fileInfo.fileName(), downloadFilePath);
+        }
+    } else {
+        emit copyToDownloadsError(fileInfo.fileName(), filePath);
+    }
+}
+
+void TDLibWrapper::handleAdditionalInformation(const QString &additionalInformation)
+{
+    qDebug() << "[TDLibWrapper] Additional information: " << additionalInformation;
+    // For now only used to open downloaded files...
+    QStringList argumentsList;
+    argumentsList.append(additionalInformation);
+    bool successfullyStarted = QProcess::startDetached("xdg-open", argumentsList);
+    if (successfullyStarted) {
+        qDebug() << "Successfully opened file " << additionalInformation;
+    } else {
+        qDebug() << "Error opening file " << additionalInformation;
+    }
 }
 
 void TDLibWrapper::handleVersionDetected(const QString &version)

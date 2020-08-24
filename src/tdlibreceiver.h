@@ -67,6 +67,7 @@ private:
     void processUpdateUser(const QVariantMap &receivedInformation);
     void processUpdateUserStatus(const QVariantMap &receivedInformation);
     void processUpdateFile(const QVariantMap &receivedInformation);
+    void processFile(const QVariantMap &receivedInformation);
     void processUpdateNewChat(const QVariantMap &receivedInformation);
     void processUpdateUnreadMessageCount(const QVariantMap &receivedInformation);
     void processUpdateUnreadChatCount(const QVariantMap &receivedInformation);
