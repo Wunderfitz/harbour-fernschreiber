@@ -330,6 +330,76 @@ Page {
                                     visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
                                 }
 
+                                Row {
+                                    id: inReplyToRow
+                                    spacing: Theme.paddingSmall
+                                    visible: display.reply_to_message_id !== 0
+                                    width: parent.width
+
+                                    property variant inReplyToMessage;
+
+                                    Component.onCompleted: {
+                                        if (visible) {
+                                            tdLibWrapper.getMessage(chatInformation.id, display.reply_to_message_id);
+                                        }
+                                    }
+
+                                    Connections {
+                                        target: tdLibWrapper
+                                        onReceivedMessage: {
+                                            if (messageId === display.reply_to_message_id.toString()) {
+                                                inReplyToRow.inReplyToMessage = message;
+                                                inReplyToUserText.text = (inReplyToRow.inReplyToMessage.sender_user_id !== chatPage.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(inReplyToRow.inReplyToMessage.sender_user_id)), inReplyToUserText.font.pixelSize) : qsTr("You");
+                                                inReplyToMessageText.text = Emoji.emojify(Functions.getMessageText(inReplyToRow.inReplyToMessage, true), inReplyToMessageText.font.pixelSize);
+                                            }
+                                        }
+                                    }
+
+                                    Rectangle {
+                                        id: inReplyToMessageRectangle
+                                        height: inReplyToMessageColumn.height
+                                        width: Theme.paddingSmall
+                                        color: Theme.secondaryHighlightColor
+                                        border.width: 0
+                                    }
+
+                                    Column {
+                                        id: inReplyToMessageColumn
+                                        spacing: Theme.paddingSmall
+                                        width: parent.width - Theme.paddingSmall - inReplyToMessageRectangle.width
+
+                                        Text {
+                                            id: inReplyToUserText
+
+                                            width: parent.width
+                                            font.pixelSize: Theme.fontSizeExtraSmall
+                                            font.weight: Font.ExtraBold
+                                            color: Theme.primaryColor
+                                            maximumLineCount: 1
+                                            elide: Text.ElideRight
+                                            textFormat: Text.StyledText
+                                            horizontalAlignment: Text.AlignLeft
+                                        }
+
+                                        Text {
+                                            id: inReplyToMessageText
+                                            font.pixelSize: Theme.fontSizeExtraSmall
+                                            color: Theme.primaryColor
+                                            width: parent.width
+                                            elide: Text.ElideRight
+                                            textFormat: Text.StyledText
+                                            onTruncatedChanged: {
+                                                // There is obviously a bug in QML in truncating text with images.
+                                                // We simply remove Emojis then...
+                                                if (truncated) {
+                                                    text = text.replace(/\<img [^>]+\/\>/g, "");
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }
+
                                 Text {
                                     id: messageText
 

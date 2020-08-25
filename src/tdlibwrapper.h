@@ -81,6 +81,7 @@ public:
     Q_INVOKABLE void getChatHistory(const QString &chatId, const qlonglong &fromMessageId = 0, const int &offset = 0, const int &limit = 50, const bool &onlyLocal = false);
     Q_INVOKABLE void viewMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void sendTextMessage(const QString &chatId, const QString &message);
+    Q_INVOKABLE void getMessage(const QString &chatId, const QString &messageId);
 
 signals:
     void versionDetected(const QString &version);
@@ -103,6 +104,7 @@ signals:
     void newMessageReceived(const QString &chatId, const QVariantMap &message);
     void copyToDownloadsSuccessful(const QString &fileName, const QString &filePath);
     void copyToDownloadsError(const QString &fileName, const QString &filePath);
+    void receivedMessage(const QString &messageId, const QVariantMap &message);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -123,6 +125,7 @@ public slots:
     void handleChatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
     void handleMessagesReceived(const QVariantList &messages);
     void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
+    void handleMessageInformation(const QString &messageId, const QVariantMap &message);
 
 private:
     void *tdLibClient;

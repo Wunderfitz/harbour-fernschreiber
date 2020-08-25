@@ -72,6 +72,7 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateChatOnlineMemberCount") { this->processChatOnlineMemberCountUpdated(receivedInformation); }
     if (objectTypeName == "messages") { this->processMessages(receivedInformation); }
     if (objectTypeName == "updateNewMessage") { this->processUpdateNewMessage(receivedInformation); }
+    if (objectTypeName == "message") { this->processMessage(receivedInformation); }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -211,4 +212,12 @@ void TDLibReceiver::processUpdateNewMessage(const QVariantMap &receivedInformati
     QString chatId = receivedInformation.value("message").toMap().value("chat_id").toString();
     qDebug() << "[TDLibReceiver] Received new message for chat " << chatId;
     emit newMessageReceived(chatId, receivedInformation.value("message").toMap());
+}
+
+void TDLibReceiver::processMessage(const QVariantMap &receivedInformation)
+{
+    QString chatId = receivedInformation.value("chat_id").toString();
+    QString messageId = receivedInformation.value("id").toString();
+    qDebug() << "[TDLibReceiver] Received message " << chatId << messageId;
+    emit messageInformation(messageId, receivedInformation);
 }

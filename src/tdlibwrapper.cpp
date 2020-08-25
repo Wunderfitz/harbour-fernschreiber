@@ -58,6 +58,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SLOT(handleChatOnlineMemberCountUpdated(QString, int)));
     connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList)), this, SLOT(handleMessagesReceived(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageInformation(QString, QVariantMap)), this, SLOT(handleMessageInformation(QString, QVariantMap)));
 
     this->tdLibReceiver->start();
 
@@ -197,6 +198,16 @@ void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message
     formattedText.insert("@type", "formattedText");
     inputMessageContent.insert("text", formattedText);
     requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
+{
+    qDebug() << "[TDLibWrapper] Retrieving message " << chatId << messageId;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "getMessage");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_id", messageId);
     this->sendRequest(requestObject);
 }
 
@@ -444,6 +455,11 @@ void TDLibWrapper::handleMessagesReceived(const QVariantList &messages)
 void TDLibWrapper::handleNewMessageReceived(const QString &chatId, const QVariantMap &message)
 {
     emit newMessageReceived(chatId, message);
+}
+
+void TDLibWrapper::handleMessageInformation(const QString &messageId, const QVariantMap &message)
+{
+    emit receivedMessage(messageId, message);
 }
 
 void TDLibWrapper::setInitialParameters()
