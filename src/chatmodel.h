@@ -18,9 +18,11 @@ public:
     virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
     Q_INVOKABLE void initialize(const QString &chatId);
+    Q_INVOKABLE void triggerLoadMoreHistory();
 
 signals:
     void messagesReceived();
+    void messagesIncrementalUpdate();
     void noMessagesAvailable();
     void newMessageReceived();
 
@@ -37,6 +39,7 @@ private:
     QMutex messagesMutex;
     QString chatId;
     bool inReload;
+    bool inIncrementalUpdate;
 
     void insertMessages();
 };

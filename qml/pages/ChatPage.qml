@@ -154,7 +154,7 @@ Page {
             chatView.positionViewAtEnd();
         }
         onNewMessageReceived: {
-            chatView.positionViewAtEnd();
+            // Notify user about new messages...
         }
     }
 
@@ -244,17 +244,25 @@ Page {
                 clip: true
                 visible: count > 0
 
-                onMovementEnded: {
+                function handleScrollPositionChanged() {
                     tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
+                    if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
+                        chatModel.triggerLoadMoreHistory();
+                    }
+                }
+
+                onMovementEnded: {
+                    handleScrollPositionChanged();
                 }
 
                 onQuickScrollAnimatingChanged: {
                     if (!quickScrollAnimating) {
-                        tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
+                        handleScrollPositionChanged();
                     }
                 }
 
                 onCurrentIndexChanged: {
+                    console.log("Current index: " + currentIndex);
                     tdLibWrapper.viewMessage(chatInformation.id, currentItem.myMessage.id);
                 }
 

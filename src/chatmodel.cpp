@@ -6,6 +6,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper)
 {
     this->tdLibWrapper = tdLibWrapper;
     this->inReload = false;
+    this->inIncrementalUpdate = false;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList)), this, SLOT(handleMessagesReceived(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
 }
@@ -51,6 +52,15 @@ void ChatModel::initialize(const QString &chatId)
     this->messagesToBeAdded.clear();
 }
 
+void ChatModel::triggerLoadMoreHistory()
+{
+    qDebug() << "[ChatModel] Trigger loading older history...";
+    if (!this->inIncrementalUpdate) {
+        this->inIncrementalUpdate = true;
+        this->tdLibWrapper->getChatHistory(this->chatId, this->messages.first().toMap().value("id").toLongLong());
+    }
+}
+
 bool compareMessages(const QVariant &message1, const QVariant &message2)
 {
     QVariantMap messageMap1 = message1.toMap();
@@ -93,7 +103,12 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
     } else {
         qDebug() << "[ChatModel] Messages loaded, notifying chat UI...";
         this->inReload = false;
-        emit messagesReceived();
+        if (this->inIncrementalUpdate) {
+            this->inIncrementalUpdate = false;
+            emit messagesIncrementalUpdate();
+        } else {
+            emit messagesReceived();
+        }
     }
 }
 
