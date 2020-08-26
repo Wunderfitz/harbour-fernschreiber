@@ -32,7 +32,7 @@ function getMessageText(message, simple) {
         }
     }
     if (message.content['@type'] === 'messageSticker') {
-        return qsTr("Sticker: %1").arg(message.content.sticker.emoji);
+        return simple ? qsTr("Sticker: %1").arg(message.content.sticker.emoji) : "";
     }
     if (message.content['@type'] === 'messagePhoto') {
         if (message.content.caption.text !== "") {
