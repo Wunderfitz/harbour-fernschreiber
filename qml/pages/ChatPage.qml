@@ -418,10 +418,18 @@ Page {
                                 }
 
                                 ImagePreview {
+                                    id: messageImagePreview
                                     photoData: ( display.content['@type'] === "messagePhoto" ) ?  display.content.photo : ""
                                     width: parent.width
                                     height: parent.width * 2 / 3
                                     visible: display.content['@type'] === "messagePhoto"
+                                }
+
+                                StickerPreview {
+                                    id: messageStickerPreview
+                                    stickerData: ( display.content['@type'] === "messageSticker" ) ?  display.content.sticker : ""
+                                    visible: display.content['@type'] === "messageSticker"
+                                    anchors.horizontalCenter: parent.horizontalCenter
                                 }
 
                                 Timer {
