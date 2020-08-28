@@ -449,24 +449,14 @@ Page {
                                     onScreen: chatPage.status === PageStatus.Active
                                 }
 
-//                                Row {
-//                                    id: audioRow
-//                                    visible: display.content['@type'] === "messageVoiceNote"
-//                                    width: parent.width
-//                                    Image {
-//                                        id: audioPlayButton
-//                                        width: Theme.iconSizeLarge
-//                                        height: Theme.iconSizeLarge
-//                                        source: "image://theme/icon-l-play?white"
-//                                        visible: placeholderImage.status === Image.Ready ? true : false
-//                                        MouseArea {
-//                                            anchors.fill: parent
-//                                            onClicked: {
-//                                                // Play the stuff...
-//                                            }
-//                                        }
-//                                    }
-//                                }
+                                AudioPreview {
+                                    id: messageAudioPreview
+                                    audioData: ( display.content['@type'] === "messageVoiceNote" ) ?  display.content.voice_note : ( ( display.content['@type'] === "messageAudio" ) ? display.content.audio : "")
+                                    width: parent.width
+                                    height: parent.width / 2
+                                    visible: ( display.content['@type'] === "messageVoiceNote" || display.content['@type'] === "messageAudio" )
+                                    onScreen: chatPage.status === PageStatus.Active
+                                }
 
                                 Timer {
                                     id: messageDateUpdater

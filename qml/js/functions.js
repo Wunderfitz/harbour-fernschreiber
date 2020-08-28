@@ -59,16 +59,14 @@ function getMessageText(message, simple) {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Audio: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            //ENABLE when ready: return simple ? qsTr("shared an audio") : "";
-            qsTr("shared an audio");
+            return simple ? qsTr("shared an audio") : "";
         }
     }
     if (message.content['@type'] === 'messageVoiceNote') {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Voice Note: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            //ENABLE when ready: return simple ? qsTr("shared a voice note") : "";
-            qsTr("shared a voice note");
+            return simple ? qsTr("shared a voice note") : "";
         }
     }
     if (message.content['@type'] === 'messageLocation') {
