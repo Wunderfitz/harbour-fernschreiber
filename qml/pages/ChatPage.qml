@@ -440,6 +440,33 @@ Page {
                                     anchors.horizontalCenter: parent.horizontalCenter
                                 }
 
+                                VideoPreview {
+                                    id: messageVideoPreview
+                                    videoData: ( display.content['@type'] === "messageVideo" ) ?  display.content.video : ""
+                                    width: parent.width
+                                    height: Functions.getVideoHeight(width, display.content.video)
+                                    visible: display.content['@type'] === "messageVideo"
+                                }
+
+//                                Row {
+//                                    id: audioRow
+//                                    visible: display.content['@type'] === "messageVoiceNote"
+//                                    width: parent.width
+//                                    Image {
+//                                        id: audioPlayButton
+//                                        width: Theme.iconSizeLarge
+//                                        height: Theme.iconSizeLarge
+//                                        source: "image://theme/icon-l-play?white"
+//                                        visible: placeholderImage.status === Image.Ready ? true : false
+//                                        MouseArea {
+//                                            anchors.fill: parent
+//                                            onClicked: {
+//                                                // Play the stuff...
+//                                            }
+//                                        }
+//                                    }
+//                                }
+
                                 Timer {
                                     id: messageDateUpdater
                                     interval: 60000

@@ -14,6 +14,8 @@ TARGET = harbour-fernschreiber
 
 CONFIG += sailfishapp sailfishapp_i18n
 
+QT += core dbus
+
 SOURCES += src/harbour-fernschreiber.cpp \
     src/chatlistmodel.cpp \
     src/chatmodel.cpp \

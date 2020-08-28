@@ -187,3 +187,12 @@ function handleLink(link) {
         Qt.openUrlExternally(link);
     }
 }
+
+function getVideoHeight(videoWidth, videoData) {
+    if (typeof videoData !== "undefined") {
+        var aspectRatio = videoData.height / videoData.width;
+        return Math.round(videoWidth * aspectRatio);
+    } else {
+        return 1;
+    }
+}

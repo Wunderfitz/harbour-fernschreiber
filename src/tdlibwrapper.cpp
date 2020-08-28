@@ -27,6 +27,8 @@
 #include <QSysInfo>
 #include <QSettings>
 #include <QStandardPaths>
+#include <QDBusConnection>
+#include <QDBusInterface>
 
 TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
 {
@@ -271,6 +273,21 @@ void TDLibWrapper::handleAdditionalInformation(const QString &additionalInformat
         qDebug() << "Successfully opened file " << additionalInformation;
     } else {
         qDebug() << "Error opening file " << additionalInformation;
+    }
+}
+
+void TDLibWrapper::controlScreenSaver(const bool &enabled)
+{
+    qDebug() << "[TDLibWrapper] Controlling device screen saver" << enabled;
+    QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
+    QDBusInterface dbusInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", dbusConnection);
+
+    if (enabled) {
+        qDebug() << "Enabling screensaver";
+        dbusInterface.call("req_display_cancel_blanking_pause");
+    } else {
+        qDebug() << "Disabling screensaver";
+        dbusInterface.call("req_display_blanking_pause");
     }
 }
 

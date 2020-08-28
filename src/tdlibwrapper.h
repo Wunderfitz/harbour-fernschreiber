@@ -69,6 +69,7 @@ public:
     Q_INVOKABLE QVariantMap getSuperGroup(const QString &groupId);
     Q_INVOKABLE void copyPictureToDownloads(const QString &filePath);
     Q_INVOKABLE void handleAdditionalInformation(const QString &additionalInformation);
+    Q_INVOKABLE void controlScreenSaver(const bool &enabled);
 
     // Direct TDLib functions
     Q_INVOKABLE void sendRequest(const QVariantMap &requestObject);

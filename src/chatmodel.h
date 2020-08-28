@@ -42,6 +42,7 @@ private:
     bool inIncrementalUpdate;
 
     void insertMessages();
+    QVariantMap enhanceMessage(const QVariantMap &message);
 };
 
 #endif // CHATMODEL_H

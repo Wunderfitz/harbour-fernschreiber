@@ -1,6 +1,8 @@
 #include "chatmodel.h"
 
 #include <QListIterator>
+#include <QByteArray>
+#include <QBitArray>
 
 ChatModel::ChatModel(TDLibWrapper *tdLibWrapper)
 {
@@ -87,6 +89,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
     while (messagesIterator.hasNext()) {
         QVariantMap currentMessage = messagesIterator.next().toMap();
         if (currentMessage.value("chat_id").toString() == this->chatId) {
+
             this->messagesToBeAdded.append(currentMessage);
         }
     }
@@ -143,4 +146,35 @@ void ChatModel::insertMessages()
             this->insertRows(0, this->messagesToBeAdded.size());
         }
     }
+}
+
+QVariantMap ChatModel::enhanceMessage(const QVariantMap &message)
+{
+    QVariantMap enhancedMessage = message;
+    if (enhancedMessage.value("content").toMap().value("@type").toString() == "messageVoiceNote" ) {
+        QVariantMap contentMap = enhancedMessage.value("content").toMap();
+        QVariantMap voiceNoteMap = contentMap.value("voice_note").toMap();
+        QByteArray waveBytes = QByteArray::fromBase64(voiceNoteMap.value("waveform").toByteArray());
+        QBitArray waveBits(waveBytes.count() * 8);
+
+        for (int i = 0; i < waveBytes.count(); i++) {
+            for (int b = 0; b < 8; b++) {
+                waveBits.setBit( i * 8 + b, waveBytes.at(i) & (1 << (7 - b)) );
+            }
+        }
+        int waveSize = 10;
+        int waveformSets = waveBits.size() / waveSize;
+        QVariantList decodedWaveform;
+        for (int i = 0; i < waveformSets; i++) {
+            int waveformHeight = 0;
+            for (int j = 0; j < waveSize; j++) {
+                waveformHeight = waveformHeight + ( waveBits.at(i * waveSize + j) * (2 ^ (j)) );
+            }
+            decodedWaveform.append(waveformHeight);
+        }
+        voiceNoteMap.insert("decoded_voice_note", decodedWaveform);
+        contentMap.insert("voice_note", voiceNoteMap);
+        enhancedMessage.insert("content", contentMap);
+    }
+    return enhancedMessage;
 }
