@@ -69,6 +69,13 @@ function getMessageText(message, simple) {
             return simple ? qsTr("shared a voice note") : "";
         }
     }
+    if (message.content['@type'] === 'messageDocument') {
+        if (message.content.document.file_name !== "") {
+            return simple ? qsTr("Document: %1").arg(message.content.document.file_name) : message.content.document.file_name
+        } else {
+            return simple ? qsTr("shared a document") : "";
+        }
+    }
     if (message.content['@type'] === 'messageLocation') {
         return qsTr("shared their location");
     }
@@ -84,7 +91,7 @@ function getMessageText(message, simple) {
     if (message.content['@type'] === 'messageChatDeleteMember') {
         return qsTr("left this chat.");
     }
-    return "?";
+    return qsTr("Unsupported message: %1").arg(message.content['@type'].substring(7));
 }
 
 function getDateTimeElapsed(timestamp) {

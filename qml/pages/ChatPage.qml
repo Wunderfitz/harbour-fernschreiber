@@ -458,6 +458,12 @@ Page {
                                     onScreen: chatPage.status === PageStatus.Active
                                 }
 
+                                DocumentPreview {
+                                    id: messageDocumentPreview
+                                    documentData: ( display.content['@type'] === "messageDocument" ) ?  display.content.document : ""
+                                    visible: display.content['@type'] === "messageDocument"
+                                }
+
                                 Timer {
                                     id: messageDateUpdater
                                     interval: 60000

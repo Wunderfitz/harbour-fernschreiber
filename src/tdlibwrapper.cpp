@@ -262,17 +262,16 @@ void TDLibWrapper::copyFileToDownloads(const QString &filePath)
     }
 }
 
-void TDLibWrapper::handleAdditionalInformation(const QString &additionalInformation)
+void TDLibWrapper::openFileOnDevice(const QString &filePath)
 {
-    qDebug() << "[TDLibWrapper] Additional information: " << additionalInformation;
-    // For now only used to open downloaded files...
+    qDebug() << "[TDLibWrapper] Open file on device: " << filePath;
     QStringList argumentsList;
-    argumentsList.append(additionalInformation);
+    argumentsList.append(filePath);
     bool successfullyStarted = QProcess::startDetached("xdg-open", argumentsList);
     if (successfullyStarted) {
-        qDebug() << "Successfully opened file " << additionalInformation;
+        qDebug() << "Successfully opened file " << filePath;
     } else {
-        qDebug() << "Error opening file " << additionalInformation;
+        qDebug() << "Error opening file " << filePath;
     }
 }
 

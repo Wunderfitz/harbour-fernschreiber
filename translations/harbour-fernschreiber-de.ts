@@ -190,6 +190,17 @@
     </message>
 </context>
 <context>
+    <name>DocumentPreview</name>
+    <message>
+        <source>Download Document</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Document</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
@@ -361,6 +372,18 @@
     </message>
     <message>
         <source>shared an animation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsupported message: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Document: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shared a document</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

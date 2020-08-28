@@ -66,7 +66,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            tdLibWrapper.handleAdditionalInformation(notificationItem.additionalInformation);
+            tdLibWrapper.openFileOnDevice(notificationItem.additionalInformation);
         }
         visible: additionalInformation ? true : false
     }

@@ -24,6 +24,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
 
 DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/AudioPreview.qml \
+    qml/components/DocumentPreview.qml \
     qml/components/ImagePreview.qml \
     qml/js/functions.js \
     qml/pages/ChatPage.qml \
