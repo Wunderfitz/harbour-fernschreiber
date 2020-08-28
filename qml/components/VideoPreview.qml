@@ -30,6 +30,7 @@ Item {
     property int videoFileId;
     property bool fullscreen : false;
     property bool onScreen;
+    property string videoType : "video";
 
     width: parent.width
     height: parent.height
@@ -73,19 +74,26 @@ Item {
 
     function updateVideoThumbnail() {
         if (typeof videoData === "object") {
-            previewFileId = videoData.thumbnail.photo.id;
-            videoFileId = videoData.video.id;
-            if (videoData.thumbnail.photo.local.is_downloading_completed) {
-                placeholderImage.source = videoData.thumbnail.photo.local.path;
+            videoType = videoData['@type'];
+            videoFileId = videoData[videoType].id;
+            if (typeof videoData.thumbnail !== "undefined") {
+                previewFileId = videoData.thumbnail.photo.id;
+                if (videoData.thumbnail.photo.local.is_downloading_completed) {
+                    placeholderImage.source = videoData.thumbnail.photo.local.path;
+                } else {
+                    tdLibWrapper.downloadFile(previewFileId);
+                }
             } else {
-                tdLibWrapper.downloadFile(previewFileId);
+                placeholderImage.source = "image://theme/icon-l-video?white";
+                placeholderImage.width = Theme.itemSizeLarge
+                placeholderImage.height = Theme.itemSizeLarge
             }
         }
     }
 
     function handlePlay() {
-        if (videoData.video.local.is_downloading_completed) {
-            videoUrl = videoData.video.local.path;
+        if (videoData[videoType].local.is_downloading_completed) {
+            videoUrl = videoData[videoType].local.path;
             videoComponentLoader.active = true;
         } else {
             videoDownloadBusyIndicator.running = true;
@@ -104,7 +112,7 @@ Item {
                     }
                     if (fileId === videoFileId) {
                         videoDownloadBusyIndicator.running = false;
-                        videoData.video = fileInformation;
+                        videoData[videoType] = fileInformation;
                         videoUrl = fileInformation.local.path;
                         if (onScreen) {
                             videoComponentLoader.active = true;
@@ -119,6 +127,7 @@ Item {
         id: placeholderImage
         width: parent.width
         height: parent.height
+        anchors.centerIn: parent
         fillMode: Image.PreserveAspectCrop
         visible: status === Image.Ready ? true : false
     }

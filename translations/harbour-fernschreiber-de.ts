@@ -355,5 +355,13 @@
         <source>shared their location</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Animation: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shared an animation</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

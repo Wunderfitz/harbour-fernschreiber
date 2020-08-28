@@ -45,8 +45,14 @@ function getMessageText(message, simple) {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Video: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            //ENABLE when ready: return simple ? qsTr("shared a video") : "";
-            qsTr("shared a video");
+            return simple ? qsTr("shared a video") : "";
+        }
+    }
+    if (message.content['@type'] === 'messageAnimation') {
+        if (message.content.caption.text !== "") {
+            return simple ? qsTr("Animation: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
+        } else {
+            return simple ? qsTr("shared an animation") : "";
         }
     }
     if (message.content['@type'] === 'messageAudio') {

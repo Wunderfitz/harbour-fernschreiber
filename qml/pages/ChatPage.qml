@@ -442,10 +442,10 @@ Page {
 
                                 VideoPreview {
                                     id: messageVideoPreview
-                                    videoData: ( display.content['@type'] === "messageVideo" ) ?  display.content.video : ""
+                                    videoData: ( display.content['@type'] === "messageVideo" ) ?  display.content.video : ( ( display.content['@type'] === "messageAnimation" ) ? display.content.animation : "")
                                     width: parent.width
-                                    height: Functions.getVideoHeight(width, display.content.video)
-                                    visible: display.content['@type'] === "messageVideo"
+                                    height: ( display.content['@type'] === "messageVideo" ) ? Functions.getVideoHeight(width, display.content.video) : Functions.getVideoHeight(width, display.content.animation)
+                                    visible: ( display.content['@type'] === "messageVideo" || display.content['@type'] === "messageAnimation" )
                                     onScreen: chatPage.status === PageStatus.Active
                                 }
 
