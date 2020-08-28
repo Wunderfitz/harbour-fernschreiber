@@ -145,6 +145,10 @@
         <source>You</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Reply to Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -212,6 +216,13 @@
     </message>
     <message>
         <source>Download failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>InReplyToRow</name>
+    <message>
+        <source>You</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

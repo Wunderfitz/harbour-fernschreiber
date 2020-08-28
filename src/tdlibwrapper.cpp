@@ -187,12 +187,15 @@ void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message)
+void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId)
 {
-    qDebug() << "[TDLibWrapper] Sending text message " << chatId << message;
+    qDebug() << "[TDLibWrapper] Sending text message " << chatId << message << replyToMessageId;
     QVariantMap requestObject;
     requestObject.insert("@type", "sendMessage");
     requestObject.insert("chat_id", chatId);
+    if (replyToMessageId != "0") {
+        requestObject.insert("reply_to_message_id", replyToMessageId);
+    }
     QVariantMap inputMessageContent;
     inputMessageContent.insert("@type", "inputMessageText");
     QVariantMap formattedText;

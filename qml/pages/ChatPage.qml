@@ -239,7 +239,7 @@ Page {
                 id: chatView
 
                 width: parent.width
-                height: parent.height - ( 2 * Theme.paddingMedium ) - headerRow.height - newMessageRow.height
+                height: parent.height - ( 2 * Theme.paddingMedium ) - headerRow.height - newMessageColumn.height
 
                 clip: true
                 visible: count > 0
@@ -275,6 +275,16 @@ Page {
 
                     property variant myMessage: display
                     property variant userInformation: tdLibWrapper.getUserInformation(display.sender_user_id)
+
+                    menu: ContextMenu {
+                        MenuItem {
+                            onClicked: {
+                                newMessageColumn.replyToMessageId = display.id;
+                                sendMessageColumn.focus = true;
+                            }
+                            text: qsTr("Reply to Message")
+                        }
+                    }
 
                     Row {
                         id: messageTextRow
@@ -338,74 +348,8 @@ Page {
                                     visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
                                 }
 
-                                Row {
-                                    id: inReplyToRow
-                                    spacing: Theme.paddingSmall
-                                    visible: display.reply_to_message_id !== 0
-                                    width: parent.width
-
-                                    property variant inReplyToMessage;
-
-                                    Component.onCompleted: {
-                                        if (visible) {
-                                            tdLibWrapper.getMessage(chatInformation.id, display.reply_to_message_id);
-                                        }
-                                    }
-
-                                    Connections {
-                                        target: tdLibWrapper
-                                        onReceivedMessage: {
-                                            if (messageId === display.reply_to_message_id.toString()) {
-                                                inReplyToRow.inReplyToMessage = message;
-                                                inReplyToUserText.text = (inReplyToRow.inReplyToMessage.sender_user_id !== chatPage.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(inReplyToRow.inReplyToMessage.sender_user_id)), inReplyToUserText.font.pixelSize) : qsTr("You");
-                                                inReplyToMessageText.text = Emoji.emojify(Functions.getMessageText(inReplyToRow.inReplyToMessage, true), inReplyToMessageText.font.pixelSize);
-                                            }
-                                        }
-                                    }
-
-                                    Rectangle {
-                                        id: inReplyToMessageRectangle
-                                        height: inReplyToMessageColumn.height
-                                        width: Theme.paddingSmall
-                                        color: Theme.secondaryHighlightColor
-                                        border.width: 0
-                                    }
-
-                                    Column {
-                                        id: inReplyToMessageColumn
-                                        spacing: Theme.paddingSmall
-                                        width: parent.width - Theme.paddingSmall - inReplyToMessageRectangle.width
-
-                                        Text {
-                                            id: inReplyToUserText
-
-                                            width: parent.width
-                                            font.pixelSize: Theme.fontSizeExtraSmall
-                                            font.weight: Font.ExtraBold
-                                            color: Theme.primaryColor
-                                            maximumLineCount: 1
-                                            elide: Text.ElideRight
-                                            textFormat: Text.StyledText
-                                            horizontalAlignment: Text.AlignLeft
-                                        }
-
-                                        Text {
-                                            id: inReplyToMessageText
-                                            font.pixelSize: Theme.fontSizeExtraSmall
-                                            color: Theme.primaryColor
-                                            width: parent.width
-                                            elide: Text.ElideRight
-                                            textFormat: Text.StyledText
-                                            onTruncatedChanged: {
-                                                // There is obviously a bug in QML in truncating text with images.
-                                                // We simply remove Emojis then...
-                                                if (truncated) {
-                                                    text = text.replace(/\<img [^>]+\/\>/g, "");
-                                                }
-                                            }
-                                        }
-                                    }
-
+                                InReplyToRow {
+                                    originalMessageId: display.reply_to_message_id
                                 }
 
                                 Text {
@@ -495,41 +439,63 @@ Page {
                 VerticalScrollDecorator {}
             }
 
-            Row {
-                id: newMessageRow
-                width: parent.width - Theme.horizontalPageMargin
-                height: sendMessageColumn.height + ( 2 * Theme.paddingLarge )
-                anchors.left: parent.left
+            Column {
+                id: newMessageColumn
                 spacing: Theme.paddingMedium
-                Column {
-                    id: sendMessageColumn
-                    width: parent.width - Theme.fontSizeMedium - ( 2 * Theme.paddingMedium )
-                    anchors.verticalCenter: parent.verticalCenter
-                    TextArea {
-                        id: newMessageTextField
-                        width: parent.width
-                        font.pixelSize: Theme.fontSizeSmall
-                        placeholderText: qsTr("Your message")
-                        labelVisible: false
-                    }
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                property string replyToMessageId: "0"
+
+                InReplyToRow {
+                    originalMessageId: newMessageColumn.replyToMessageId
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
 
-                Column {
-                    width: Theme.fontSizeMedium
-                    anchors.bottom: parent.bottom
-                    anchors.bottomMargin: Theme.paddingLarge
-                    IconButton {
-                        id: newMessageSendButton
-                        icon.source: "image://theme/icon-m-chat"
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        onClicked: {
-                            tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text);
-                            newMessageTextField.text = "";
-                            newMessageTextField.focus = false;
+                Row {
+                    id: newMessageRow
+                    width: parent.width
+                    height: sendMessageColumn.height + ( 2 * Theme.paddingLarge )
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    spacing: Theme.paddingMedium
+
+                    Column {
+                        id: sendMessageColumn
+                        width: parent.width - newMessageSendButton.width - Theme.paddingMedium
+                        anchors.verticalCenter: parent.verticalCenter
+                        TextArea {
+                            id: newMessageTextField
+                            width: parent.width
+                            font.pixelSize: Theme.fontSizeSmall
+                            placeholderText: qsTr("Your message")
+                            labelVisible: false
+                            onFocusChanged: {
+                                if (!focus) {
+                                    newMessageColumn.replyToMessageId = "0";
+                                }
+                            }
+                        }
+                    }
+
+                    Column {
+                        width: newMessageSendButton.width
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: Theme.paddingLarge
+                        IconButton {
+                            id: newMessageSendButton
+                            icon.source: "image://theme/icon-m-chat"
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            onClicked: {
+                                tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                                newMessageTextField.text = "";
+                                newMessageTextField.focus = false;
+                            }
                         }
                     }
                 }
+
             }
+
         }
     }
 
