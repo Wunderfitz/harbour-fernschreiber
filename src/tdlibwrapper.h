@@ -67,7 +67,7 @@ public:
     Q_INVOKABLE QVariantMap getUnreadChatInformation();
     Q_INVOKABLE QVariantMap getBasicGroup(const QString &groupId);
     Q_INVOKABLE QVariantMap getSuperGroup(const QString &groupId);
-    Q_INVOKABLE void copyPictureToDownloads(const QString &filePath);
+    Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
     Q_INVOKABLE void handleAdditionalInformation(const QString &additionalInformation);
     Q_INVOKABLE void controlScreenSaver(const bool &enabled);
 

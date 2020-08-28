@@ -99,7 +99,7 @@ Page {
             MenuItem {
                 text: qsTr("Download Picture")
                 onClicked: {
-                    tdLibWrapper.copyPictureToDownloads(imagePage.imageUrl);
+                    tdLibWrapper.copyFileToDownloads(imagePage.imageUrl);
                 }
             }
         }

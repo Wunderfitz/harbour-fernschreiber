@@ -446,6 +446,7 @@ Page {
                                     width: parent.width
                                     height: Functions.getVideoHeight(width, display.content.video)
                                     visible: display.content['@type'] === "messageVideo"
+                                    onScreen: chatPage.status === PageStatus.Active
                                 }
 
 //                                Row {

@@ -29,6 +29,7 @@ Item {
     property int previewFileId;
     property int videoFileId;
     property bool fullscreen : false;
+    property bool onScreen;
 
     width: parent.width
     height: parent.height
@@ -105,7 +106,9 @@ Item {
                         videoDownloadBusyIndicator.running = false;
                         videoData.video = fileInformation;
                         videoUrl = fileInformation.local.path;
-                        videoComponentLoader.active = true;
+                        if (onScreen) {
+                            videoComponentLoader.active = true;
+                        }
                     }
                 }
             }
@@ -187,8 +190,7 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        // TODO show video page once it's there...
-                        //pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"tweetModel": tweet.retweeted_status ? tweet.retweeted_status : tweet});
+                        pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
                     }
                 }
             }
@@ -417,8 +419,7 @@ Item {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    // TODO go to video page once it's done
-                                    // pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"tweetModel": videoMessageComponent.tweet});
+                                    pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
                                 }
                             }
                         }

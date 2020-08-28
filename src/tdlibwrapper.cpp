@@ -246,9 +246,9 @@ QVariantMap TDLibWrapper::getSuperGroup(const QString &groupId)
     return this->superGroups.value(groupId).toMap();
 }
 
-void TDLibWrapper::copyPictureToDownloads(const QString &filePath)
+void TDLibWrapper::copyFileToDownloads(const QString &filePath)
 {
-    qDebug() << "[TDLibWrapper] Copy picture to downloads " << filePath;
+    qDebug() << "[TDLibWrapper] Copy file to downloads " << filePath;
     QFileInfo fileInfo(filePath);
     if (fileInfo.exists()) {
         QString downloadFilePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + fileInfo.fileName();

@@ -283,6 +283,21 @@
     </message>
 </context>
 <context>
+    <name>VideoPage</name>
+    <message>
+        <source>Download Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>functions</name>
     <message>
         <source>Video: %1</source>
