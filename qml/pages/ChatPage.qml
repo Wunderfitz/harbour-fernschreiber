@@ -30,6 +30,7 @@ Page {
     allowedOrientations: Orientation.All
 
     property bool loading: true;
+    property bool isInitialized: false;
     property int myUserId: tdLibWrapper.getUserInformation().id;
     property variant chatInformation;
     property bool isPrivateChat: false;
@@ -84,6 +85,7 @@ Page {
     }
 
     function initializePage() {
+        console.log("[ChatPage] Initializing chat page...");
         chatView.currentIndex = -1;
         var chatType = chatInformation.type['@type'];
         isPrivateChat = ( chatType === "chatTypePrivate" );
@@ -113,7 +115,10 @@ Page {
             tdLibWrapper.openChat(chatInformation.id);
         }
         if (status === PageStatus.Active) {
-            chatModel.initialize(chatInformation);
+            if (!chatPage.isInitialized) {
+                chatModel.initialize(chatInformation);
+                chatPage.isInitialized = true;
+            }
         }
         if (status === PageStatus.Deactivating) {
             tdLibWrapper.closeChat(chatInformation.id);
@@ -154,6 +159,8 @@ Page {
         onMessagesReceived: {
             console.log("[ChatPage] Messages received, view has " + chatView.count + " messages, setting view to index " + modelIndex);
             chatView.currentIndex = modelIndex;
+            chatViewLoadingTimer.stop();
+            chatViewLoadingTimer.start();
         }
         onNewMessageReceived: {
             // Notify user about new messages...

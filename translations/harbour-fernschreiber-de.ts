@@ -1,405 +1,405 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="de_DE">
 <context>
     <name>AboutPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Fernschreiber</translation>
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation type="unfinished"></translation>
+        <translation>Ein Telegram-Client für Sailfish OS</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
-        <translation type="unfinished"></translation>
+        <translation>Von Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation type="unfinished"></translation>
+        <translation>E-Mail verschicken</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation type="unfinished"></translation>
+        <translation>Lizenziert unter der GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Quelltexte auf GitHub</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation type="unfinished"></translation>
+        <translation>Nutzungsbedingungen</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenschutzerklärung</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Danksagungen</translation>
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Projekt nutzt die Telegram Database Library (TDLib). Vielen Dank dafür, dass sie unter den Bedingungen der Boost Software License 1.0 verfügbar gemacht wurde!   </translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Telegram Database Library auf GitHub öffnen</translation>
     </message>
     <message>
         <source>About Telegram</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Telegram</translation>
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Produkt nutzt die Telegram-API, ist aber von Telegram weder unterstützt noch zertifiziert.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>TDLib-Version %1</translation>
     </message>
     <message>
         <source>Logged in as %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Angemeldet als %1</translation>
     </message>
     <message>
         <source>Phone number: +%1</source>
-        <translation type="unfinished"></translation>
+        <translation>Telefonnummer: +%1</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Projekt nutzt die twemoji. Copyright 2018 Twitter, Inc. und andere Beitragende. Vielen Dank dafür, dass sie unter den Bedingungen der MIT License (Coding) und CC-BY 4.0 (Grafiken) verfügbar gemacht wurde!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Twemoji auf GitHub öffnen</translation>
     </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
     <message>
         <source>%1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %</translation>
     </message>
     <message>
         <source>%1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1</translation>
     </message>
 </context>
 <context>
     <name>ChatPage</name>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Unbekannt</translation>
     </message>
     <message>
         <source>Your message</source>
-        <translation type="unfinished"></translation>
+        <translation>Ihre Nachricht</translation>
     </message>
     <message>
         <source>was never online</source>
-        <translation type="unfinished"></translation>
+        <translation>war niemals online</translation>
     </message>
     <message>
         <source>offline, last online: last month</source>
-        <translation type="unfinished"></translation>
+        <translation>offline, zuletzt online im letzten Monat</translation>
     </message>
     <message>
         <source>offline, last online: last week</source>
-        <translation type="unfinished"></translation>
+        <translation>offline, zuletzt online in der letzten Woche</translation>
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>offline, zuletzt online: %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation type="unfinished"></translation>
+        <translation>online</translation>
     </message>
     <message>
         <source>offline, was recently online</source>
-        <translation type="unfinished"></translation>
+        <translation>offline, war neulich online</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Mitglieder, %2 online</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Mitglieder</translation>
     </message>
     <message>
         <source>%1M</source>
-        <translation type="unfinished"></translation>
+        <translation>%1M</translation>
     </message>
     <message>
         <source>%1K</source>
-        <translation type="unfinished"></translation>
+        <translation>%1T</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Abonnenten</translation>
     </message>
     <message>
         <source>Reply to Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Auf Nachricht antworten</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie</translation>
     </message>
     <message>
         <source>Loading messages...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachrichten laden...</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation type="unfinished"></translation>
+        <translation>ungelesene Nachricht</translation>
     </message>
     <message>
         <source>unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>ungelesene Nachrichten</translation>
     </message>
     <message>
         <source>in</source>
-        <translation type="unfinished"></translation>
+        <translation>in</translation>
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation type="unfinished"></translation>
+        <translation>Auf Netzwerk warten...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zum Netzwerk verbinden...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zum Proxy verbinden...</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbunden</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation type="unfinished"></translation>
+        <translation>Inhalte aktualisieren...</translation>
     </message>
     <message>
         <source>chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Chat</translation>
     </message>
     <message>
         <source>chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Chats</translation>
     </message>
 </context>
 <context>
     <name>DocumentPreview</name>
     <message>
         <source>Download Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokument herunterladen</translation>
     </message>
     <message>
         <source>Open Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokument öffnen</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild herunterladen</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download von %1 erfolgreich.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download fehlgeschlagen.</translation>
     </message>
 </context>
 <context>
     <name>InReplyToRow</name>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie</translation>
     </message>
 </context>
 <context>
     <name>InitializationPage</name>
     <message>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Welcome to Fernschreiber!</source>
-        <translation type="unfinished"></translation>
+        <translation>Willkommen bei Fernschreiber!</translation>
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte geben Sie zum Fortfahren Ihre Telefonnummer ein.</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Weiter</translation>
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte geben Sie den Code ein, den Sie erhalten haben:</translation>
     </message>
     <message>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Laden...</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
-        <translation type="unfinished"></translation>
+        <translation>Es war nicht möglich, Sie mit dem eingegebenen Code zu authentifizieren.</translation>
     </message>
     <message>
         <source>Enter code again</source>
-        <translation type="unfinished"></translation>
+        <translation>Code erneut eingeben</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Authentifizierung neu starten</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Fernschreiber</translation>
     </message>
     <message>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Laden...</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
-        <translation type="unfinished"></translation>
+        <translation>Fernschreiber</translation>
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation type="unfinished"></translation>
+        <translation>Warten auf Netzwerk...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zum Netzwerk verbinden...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zum Proxy verbinden...</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation type="unfinished"></translation>
+        <translation>Inhalte aktualisieren...</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Unbekannt</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Video herunterladen</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download von %1 erfolgreich.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download fehlgeschlagen.</translation>
     </message>
 </context>
 <context>
     <name>functions</name>
     <message>
         <source>Video: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Video: %1</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation type="unfinished"></translation>
+        <translation>hat sich bei Telegram angemeldet</translation>
     </message>
     <message>
         <source>Picture: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild: %1</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sticker: %1</translation>
     </message>
     <message>
         <source>was added to this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>wurde diesem Chat hinzugefügt.</translation>
     </message>
     <message>
         <source>joined this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>ist diesem Chat beigetreten.</translation>
     </message>
     <message>
         <source>left this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>hat diesen Chat verlassen.</translation>
     </message>
     <message>
         <source>Audio: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio: %1</translation>
     </message>
     <message>
         <source>Voice Note: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprachnachricht: %1</translation>
     </message>
     <message>
         <source>shared a picture</source>
-        <translation type="unfinished"></translation>
+        <translation>hat ein Bild geteilt</translation>
     </message>
     <message>
         <source>shared a video</source>
-        <translation type="unfinished"></translation>
+        <translation>hat ein Video geteilt</translation>
     </message>
     <message>
         <source>shared an audio</source>
-        <translation type="unfinished"></translation>
+        <translation>hat ein Audio geteilt</translation>
     </message>
     <message>
         <source>shared a voice note</source>
-        <translation type="unfinished"></translation>
+        <translation>hat eine Sprachnachricht geteilt</translation>
     </message>
     <message>
         <source>shared their location</source>
-        <translation type="unfinished"></translation>
+        <translation>hat die Position geteilt</translation>
     </message>
     <message>
         <source>Animation: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Animation: %1</translation>
     </message>
     <message>
         <source>shared an animation</source>
-        <translation type="unfinished"></translation>
+        <translation>hat eine Animation geteilt</translation>
     </message>
     <message>
         <source>Unsupported message: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht unterstützte Nachricht: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokument: %1</translation>
     </message>
     <message>
         <source>shared a document</source>
-        <translation type="unfinished"></translation>
+        <translation>hat ein Dokument geteilt</translation>
     </message>
 </context>
 </TS>
