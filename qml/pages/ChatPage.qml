@@ -249,7 +249,7 @@ Page {
 
                 Timer {
                     id: chatViewLoadingTimer
-                    interval: 500
+                    interval: 100
                     repeat: false
                     running: false
                     onTriggered: {
@@ -269,13 +269,18 @@ Page {
                     highlightFollowsCurrentItem: true
 
                     function handleScrollPositionChanged() {
+                        console.log("Current position: " + chatView.contentY);
                         tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
-//                        if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
-//                            chatModel.triggerLoadMoreHistory();
-//                        }
+                        var indexAtCursor = chatView.indexAt(chatView.contentX, chatView.contentY);
+                        // If the list is at the top or close to the top, the index jumps to the top of the new list
+                        // Before we find a solution, we don't reload at the top... TODO ;)
+                        if (indexAtCursor > 5 && indexAtCursor < 25) {
+                            chatModel.triggerLoadMoreHistory();
+                        }
                     }
 
                     onContentYChanged: {
+                        chatViewLoadingTimer.stop();
                         chatViewLoadingTimer.start();
                     }
 
