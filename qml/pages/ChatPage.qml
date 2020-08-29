@@ -84,6 +84,7 @@ Page {
     }
 
     function initializePage() {
+        chatView.currentIndex = -1;
         var chatType = chatInformation.type['@type'];
         isPrivateChat = ( chatType === "chatTypePrivate" );
         isBasicGroup = ( chatType === "chatTypeBasicGroup" );
@@ -112,7 +113,7 @@ Page {
             tdLibWrapper.openChat(chatInformation.id);
         }
         if (status === PageStatus.Active) {
-            chatModel.initialize(chatInformation.id);
+            chatModel.initialize(chatInformation);
         }
         if (status === PageStatus.Deactivating) {
             tdLibWrapper.closeChat(chatInformation.id);
@@ -151,10 +152,17 @@ Page {
     Connections {
         target: chatModel
         onMessagesReceived: {
-            chatPage.loading = false;
+            console.log("[ChatPage] Messages received, view has " + chatView.count + " messages, setting view to index " + modelIndex);
+            chatView.currentIndex = modelIndex;
         }
         onNewMessageReceived: {
             // Notify user about new messages...
+        }
+        onUnreadCountUpdated: {
+            console.log("[ChatPage] Unread count updated, new count: " + unreadCount);
+            chatInformation.unread_count = unreadCount;
+            chatUnreadMessagesCountBackground.visible = ( !chatPage.loading && unreadCount > 0 )
+            chatUnreadMessagesCount.text = unreadCount > 99 ? "99+" : unreadCount
         }
     }
 
@@ -239,6 +247,16 @@ Page {
                 width: parent.width
                 height: parent.height - ( 2 * Theme.paddingMedium ) - headerRow.height - newMessageColumn.height
 
+                Timer {
+                    id: chatViewLoadingTimer
+                    interval: 500
+                    repeat: false
+                    running: false
+                    onTriggered: {
+                        chatPage.loading = false;
+                    }
+                }
+
                 SilicaListView {
                     id: chatView
 
@@ -246,15 +264,19 @@ Page {
 
                     opacity: chatPage.loading ? 0 : 1
                     Behavior on opacity { NumberAnimation {} }
-                    visible: !chatPage.loading
 
                     clip: true
+                    highlightFollowsCurrentItem: true
 
                     function handleScrollPositionChanged() {
                         tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
 //                        if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
 //                            chatModel.triggerLoadMoreHistory();
 //                        }
+                    }
+
+                    onContentYChanged: {
+                        chatViewLoadingTimer.start();
                     }
 
                     onMovementEnded: {
@@ -265,10 +287,6 @@ Page {
                         if (!quickScrollAnimating) {
                             handleScrollPositionChanged();
                         }
-                    }
-
-                    onCurrentIndexChanged: {
-                        tdLibWrapper.viewMessage(chatInformation.id, currentItem.myMessage.id);
                     }
 
                     model: chatModel
@@ -490,6 +508,29 @@ Page {
                         running: chatPage.loading
                         size: BusyIndicatorSize.Large
                     }
+                }
+
+                Rectangle {
+                    id: chatUnreadMessagesCountBackground
+                    color: Theme.highlightBackgroundColor
+                    width: Theme.fontSizeHuge
+                    height: Theme.fontSizeHuge
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.paddingMedium
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: Theme.paddingMedium
+                    radius: width / 2
+                    visible: !chatPage.loading && chatInformation.unread_count > 0
+                }
+
+                Text {
+                    id: chatUnreadMessagesCount
+                    font.pixelSize: Theme.fontSizeMedium
+                    font.bold: true
+                    color: Theme.primaryColor
+                    anchors.centerIn: chatUnreadMessagesCountBackground
+                    visible: chatUnreadMessagesCountBackground.visible
+                    text: chatInformation.unread_count > 99 ? "99+" : chatInformation.unread_count
                 }
 
             }

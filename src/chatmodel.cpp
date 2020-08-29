@@ -11,6 +11,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper)
     this->inIncrementalUpdate = false;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList)), this, SLOT(handleMessagesReceived(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, int)));
 }
 
 ChatModel::~ChatModel()
@@ -46,13 +47,14 @@ bool ChatModel::insertRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
-void ChatModel::initialize(const QString &chatId)
+void ChatModel::initialize(const QVariantMap &chatInformation)
 {
-    this->chatId = chatId;
+    this->chatInformation = chatInformation;
     this->messages.clear();
     this->messageIndexMap.clear();
     this->messagesToBeAdded.clear();
-    tdLibWrapper->getChatHistory(chatId);
+    this->chatId = chatInformation.value("id").toString();
+    tdLibWrapper->getChatHistory(this->chatId);
 }
 
 void ChatModel::triggerLoadMoreHistory()
@@ -84,9 +86,9 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
         this->inReload = false;
         if (this->inIncrementalUpdate) {
             this->inIncrementalUpdate = false;
-            emit messagesIncrementalUpdate();
+            emit messagesIncrementalUpdate(this->messages.size() - 1);
         } else {
-            emit messagesReceived();
+            emit messagesReceived(this->messages.size() - 1);
         }
     } else {
         this->messagesMutex.lock();
@@ -103,6 +105,10 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
         this->insertMessages();
         this->messagesMutex.unlock();
 
+        QString lastKnownMessageId = this->chatInformation.value("last_read_inbox_message_id").toString();
+        int listPosition = this->messageIndexMap.value(lastKnownMessageId, this->messages.size() - 1).toInt();
+        qDebug() << "[ChatModel] Last known message is at position" << listPosition;
+
         // First call only returns a few messages, we need to get a little more than that...
         if (this->messagesToBeAdded.size() < 10 && !this->inReload) {
             qDebug() << "[ChatModel] Only a few messages received in first call, loading more...";
@@ -113,9 +119,9 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
             this->inReload = false;
             if (this->inIncrementalUpdate) {
                 this->inIncrementalUpdate = false;
-                emit messagesIncrementalUpdate();
+                emit messagesIncrementalUpdate(listPosition);
             } else {
-                emit messagesReceived();
+                emit messagesReceived(listPosition);
             }
         }
     }
@@ -134,6 +140,15 @@ void ChatModel::handleNewMessageReceived(const QString &chatId, const QVariantMa
         this->insertMessages();
         this->messagesMutex.unlock();
         emit newMessageReceived();
+    }
+}
+
+void ChatModel::handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount)
+{
+    if (chatId == this->chatId) {
+        qDebug() << "[ChatModel] Updating chat unread count, unread messages " << unreadCount;
+        this->chatInformation.insert("unread_count", unreadCount);
+        emit unreadCountUpdated(unreadCount);
     }
 }
 

@@ -165,7 +165,7 @@ CoverBackground {
             color: Theme.highlightColor
             visible: coverPage.authenticated
             width: parent.width
-            maximumLineCount: 2
+            maximumLineCount: 3
             wrapMode: Text.Wrap
         }
     }

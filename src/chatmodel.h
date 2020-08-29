@@ -17,17 +17,19 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const override;
     virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
-    Q_INVOKABLE void initialize(const QString &chatId);
+    Q_INVOKABLE void initialize(const QVariantMap &chatInformation);
     Q_INVOKABLE void triggerLoadMoreHistory();
 
 signals:
-    void messagesReceived();
-    void messagesIncrementalUpdate();
+    void messagesReceived(const int &modelIndex);
+    void messagesIncrementalUpdate(const int &modelIndex);
     void newMessageReceived();
+    void unreadCountUpdated(const int &unreadCount);
 
 public slots:
     void handleMessagesReceived(const QVariantList &messages);
     void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
+    void handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount);
 
 private:
 
@@ -36,6 +38,7 @@ private:
     QVariantList messagesToBeAdded;
     QVariantMap messageIndexMap;
     QMutex messagesMutex;
+    QVariantMap chatInformation;
     QString chatId;
     bool inReload;
     bool inIncrementalUpdate;
