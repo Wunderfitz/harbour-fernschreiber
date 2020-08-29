@@ -73,7 +73,7 @@ Item {
     }
 
     function updateVideoThumbnail() {
-        if (typeof videoData === "object") {
+        if (videoData) {
             videoType = videoData['@type'];
             videoFileId = videoData[videoType].id;
             if (typeof videoData.thumbnail !== "undefined") {
@@ -104,19 +104,17 @@ Item {
     Connections {
         target: tdLibWrapper
         onFileUpdated: {
-            if (typeof videoData === "object") {
-                if (fileInformation.local.is_downloading_completed) {
-                    if (fileId === previewFileId) {
-                        videoData.thumbnail.photo = fileInformation;
-                        placeholderImage.source = fileInformation.local.path;
-                    }
-                    if (fileId === videoFileId) {
-                        videoDownloadBusyIndicator.running = false;
-                        videoData[videoType] = fileInformation;
-                        videoUrl = fileInformation.local.path;
-                        if (onScreen) {
-                            videoComponentLoader.active = true;
-                        }
+            if (videoData) {
+                if (fileInformation.local.is_downloading_completed && fileId === previewFileId) {
+                    videoData.thumbnail.photo = fileInformation;
+                    placeholderImage.source = fileInformation.local.path;
+                }
+                if (fileInformation.local.is_downloading_completed && fileId === videoFileId) {
+                    videoDownloadBusyIndicator.running = false;
+                    videoData[videoType] = fileInformation;
+                    videoUrl = fileInformation.local.path;
+                    if (onScreen) {
+                        videoComponentLoader.active = true;
                     }
                 }
             }

@@ -35,7 +35,7 @@ Item {
     }
 
     function updateSticker() {
-        if (typeof stickerData === "object") {
+        if (stickerData) {
             if (stickerData.is_animated) {
                 // Use thumbnail until we can decode TGS files
                 usedFileId = stickerData.thumbnail.photo.id;
@@ -58,17 +58,14 @@ Item {
     Connections {
         target: tdLibWrapper
         onFileUpdated: {
-            if (typeof stickerData === "object") {
-                if (fileId === usedFileId) {
-                    console.log("File updated, completed? " + fileInformation.local.is_downloading_completed);
-                    if (fileInformation.local.is_downloading_completed) {                        
-                        if (stickerData.is_animated) {
-                            stickerData.thumbnail.photo = fileInformation;
-                        } else {
-                            stickerData.sticker = fileInformation;
-                        }
-                        singleImage.source = fileInformation.local.path;
+            if (stickerData) {
+                if (fileId === usedFileId && fileInformation.local.is_downloading_completed) {
+                    if (stickerData.is_animated) {
+                        stickerData.thumbnail.photo = fileInformation;
+                    } else {
+                        stickerData.sticker = fileInformation;
                     }
+                    singleImage.source = fileInformation.local.path;
                 }
             }
         }

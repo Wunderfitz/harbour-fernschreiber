@@ -29,15 +29,12 @@ Row {
     width: parent.width
 
     property string myUserId;
-    property variant inReplyToMessage: "";
+    property variant inReplyToMessage;
 
     onInReplyToMessageChanged: {
-        if (typeof inReplyToRow.inReplyToMessage === "object") {
+        if (inReplyToMessage) {
             inReplyToUserText.text = (inReplyToRow.inReplyToMessage.sender_user_id !== inReplyToRow.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(inReplyToRow.inReplyToMessage.sender_user_id)), inReplyToUserText.font.pixelSize) : qsTr("You");
             inReplyToMessageText.text = Emoji.emojify(Functions.getMessageText(inReplyToRow.inReplyToMessage, true), inReplyToMessageText.font.pixelSize);
-        } else {
-            inReplyToUserText.text = "";
-            inReplyToMessageText.text = "";
         }
     }
 

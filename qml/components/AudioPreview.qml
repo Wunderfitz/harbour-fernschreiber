@@ -52,7 +52,7 @@ Item {
     }
 
     function updateAudioThumbnail() {
-        if (typeof audioData === "object") {
+        if (audioData) {
             audioType = ( audioData['@type'] === "voiceNote" ) ? "voice" : "audio";
             audioFileId = audioData[audioType].id;
             if (typeof audioData.album_cover_thumbnail !== "undefined") {

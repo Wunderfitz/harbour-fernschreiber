@@ -100,7 +100,6 @@ CoverBackground {
 
             right: parent.right
             rightMargin: Theme.paddingMedium
-            asynchronous: true
         }
 
         fillMode: Image.PreserveAspectFit

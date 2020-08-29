@@ -280,7 +280,7 @@ Page {
                         MenuItem {
                             onClicked: {
                                 newMessageInReplyToRow.inReplyToMessage = display;
-                                sendMessageColumn.focus = true;
+                                newMessageTextField.focus = true;
                             }
                             text: qsTr("Reply to Message")
                         }
@@ -475,7 +475,7 @@ Page {
                 InReplyToRow {
                     onInReplyToMessageChanged: {
                         console.log("This is a reply!");
-                        if (typeof newMessageInReplyToRow.inReplyToMessage === "object") {
+                        if (inReplyToMessage) {
                             newMessageColumn.replyToMessageId = newMessageInReplyToRow.inReplyToMessage.id.toString()
                             newMessageInReplyToRow.visible = true;
                         } else {
@@ -509,7 +509,7 @@ Page {
                             labelVisible: false
                             onFocusChanged: {
                                 if (!focus) {
-                                    newMessageInReplyToRow.inReplyToMessage = "";
+                                    newMessageInReplyToRow.inReplyToMessage = null;
                                 }
                             }
                         }

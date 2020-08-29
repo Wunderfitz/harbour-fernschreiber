@@ -33,7 +33,7 @@ Item {
     }
 
     function updateDocument() {
-        if (typeof documentData === "object") {
+        if (documentData) {
             if (documentData.document.local.is_downloading_completed) {
                 downloadDocumentButton.visible = false;
                 openDocumentButton.visible = true;
@@ -47,8 +47,8 @@ Item {
     Connections {
         target: tdLibWrapper
         onFileUpdated: {
-            if (typeof documentData !== "undefined" && fileId === documentData.document.id) {
-                if (fileInformation.local.is_downloading_completed) {
+            if (documentData) {
+                if (fileId === documentData.document.id && fileInformation.local.is_downloading_completed) {
                     downloadBusyIndicator.running = false;
                     documentData.document = fileInformation;
                     downloadDocumentButton.visible = false;

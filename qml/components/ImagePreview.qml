@@ -32,7 +32,7 @@ Item {
     }
 
     function updatePicture() {
-        if (typeof photoData === "object") {
+        if (photoData) {
             // Check first which size fits best...
             for (var i = 0; i < photoData.sizes.length; i++) {
                 imagePreviewItem.pictureFileInformation = photoData.sizes[i].photo;
@@ -52,9 +52,8 @@ Item {
     Connections {
         target: tdLibWrapper
         onFileUpdated: {
-            if (typeof imagePreviewItem.pictureFileInformation !== "undefined" && fileId === imagePreviewItem.pictureFileInformation.id) {
-                console.log("File updated, completed? " + fileInformation.local.is_downloading_completed);
-                if (fileInformation.local.is_downloading_completed) {
+            if (imagePreviewItem.pictureFileInformation) {
+                if (fileId === imagePreviewItem.pictureFileInformation.id && fileInformation.local.is_downloading_completed) {
                     imagePreviewItem.pictureFileInformation = fileInformation;
                     singleImage.source = fileInformation.local.path;
                 }
