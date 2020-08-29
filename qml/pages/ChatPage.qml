@@ -387,6 +387,13 @@ Page {
                                     visible: (text !== "")
                                 }
 
+                                WebPagePreview {
+                                    id: webPagePreview
+                                    webPageData: ( typeof display.content.web_page !== "undefined" ) ? display.content.web_page : ""
+                                    width: parent.width
+                                    visible: typeof display.content.web_page !== "undefined"
+                                }
+
                                 ImagePreview {
                                     id: messageImagePreview
                                     photoData: ( display.content['@type'] === "messagePhoto" ) ?  display.content.photo : ""
