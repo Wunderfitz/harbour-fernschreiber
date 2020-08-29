@@ -279,7 +279,7 @@ Page {
                     menu: ContextMenu {
                         MenuItem {
                             onClicked: {
-                                newMessageColumn.replyToMessageId = display.id;
+                                newMessageInReplyToRow.inReplyToMessage = display;
                                 sendMessageColumn.focus = true;
                             }
                             text: qsTr("Reply to Message")
@@ -333,6 +333,22 @@ Page {
                                 width: messageBackground.width - Theme.horizontalPageMargin
                                 anchors.centerIn: messageBackground
 
+                                Component.onCompleted: {
+                                    if (display.reply_to_message_id !== 0) {
+                                        tdLibWrapper.getMessage(chatInformation.id, display.reply_to_message_id);
+                                    }
+                                }
+
+                                Connections {
+                                    target: tdLibWrapper
+                                    onReceivedMessage: {
+                                        if (messageId === display.reply_to_message_id.toString()) {
+                                            messageInReplyToRow.inReplyToMessage = message;
+                                            messageInReplyToRow.visible = true;
+                                        }
+                                    }
+                                }
+
                                 Text {
                                     id: userText
 
@@ -349,7 +365,9 @@ Page {
                                 }
 
                                 InReplyToRow {
-                                    originalMessageId: display.reply_to_message_id
+                                    id: messageInReplyToRow
+                                    myUserId: chatPage.myUserId
+                                    visible: false
                                 }
 
                                 Text {
@@ -445,11 +463,20 @@ Page {
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                property string replyToMessageId: "0"
-
                 InReplyToRow {
-                    originalMessageId: newMessageColumn.replyToMessageId
+                    onInReplyToMessageChanged: {
+                        console.log("This is a reply!");
+                        if (typeof newMessageInReplyToRow.inReplyToMessage === "object") {
+                            visible: true;
+                        } else {
+                            visible: false;
+                        }
+                    }
+
+                    id: newMessageInReplyToRow
+                    myUserId: chatPage.myUserId
                     anchors.horizontalCenter: parent.horizontalCenter
+                    visible: false
                 }
 
                 Row {
@@ -471,7 +498,7 @@ Page {
                             labelVisible: false
                             onFocusChanged: {
                                 if (!focus) {
-                                    newMessageColumn.replyToMessageId = "0";
+                                    newMessageInReplyToRow.inReplyToMessage = "";
                                 }
                             }
                         }

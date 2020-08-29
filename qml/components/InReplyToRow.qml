@@ -27,25 +27,17 @@ Row {
     id: inReplyToRow
     spacing: Theme.paddingSmall
     width: parent.width
-    visible: originalMessageId !== "0"
 
-    property string originalMessageId: "0";
-    property variant inReplyToMessage;
+    property string myUserId;
+    property variant inReplyToMessage: "";
 
-    onOriginalMessageIdChanged: {
-        if (originalMessageId !== "0") {
-            tdLibWrapper.getMessage(chatInformation.id, originalMessageId);
-        }
-    }
-
-    Connections {
-        target: tdLibWrapper
-        onReceivedMessage: {
-            if (messageId === originalMessageId) {
-                inReplyToRow.inReplyToMessage = message;
-                inReplyToUserText.text = (inReplyToRow.inReplyToMessage.sender_user_id !== chatPage.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(inReplyToRow.inReplyToMessage.sender_user_id)), inReplyToUserText.font.pixelSize) : qsTr("You");
-                inReplyToMessageText.text = Emoji.emojify(Functions.getMessageText(inReplyToRow.inReplyToMessage, true), inReplyToMessageText.font.pixelSize);
-            }
+    onInReplyToMessageChanged: {
+        if (typeof inReplyToRow.inReplyToMessage === "object") {
+            inReplyToUserText.text = (inReplyToRow.inReplyToMessage.sender_user_id !== inReplyToRow.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(inReplyToRow.inReplyToMessage.sender_user_id)), inReplyToUserText.font.pixelSize) : qsTr("You");
+            inReplyToMessageText.text = Emoji.emojify(Functions.getMessageText(inReplyToRow.inReplyToMessage, true), inReplyToMessageText.font.pixelSize);
+        } else {
+            inReplyToUserText.text = "";
+            inReplyToMessageText.text = "";
         }
     }
 

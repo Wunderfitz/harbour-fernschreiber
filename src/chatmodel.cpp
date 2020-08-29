@@ -89,7 +89,6 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
     while (messagesIterator.hasNext()) {
         QVariantMap currentMessage = messagesIterator.next().toMap();
         if (currentMessage.value("chat_id").toString() == this->chatId) {
-
             this->messagesToBeAdded.append(currentMessage);
         }
     }
