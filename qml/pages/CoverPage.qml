@@ -91,7 +91,7 @@ CoverBackground {
 
     Image {
         id: backgroundImage
-        source: "../../images/background" + ( Theme.colorScheme ? "-black" : "-white" ) + ".png"
+        source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + ".png"
         anchors {
             verticalCenter: parent.verticalCenter
 
@@ -100,6 +100,7 @@ CoverBackground {
 
             right: parent.right
             rightMargin: Theme.paddingMedium
+            asynchronous: true
         }
 
         fillMode: Image.PreserveAspectFit

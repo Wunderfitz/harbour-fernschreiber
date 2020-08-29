@@ -96,13 +96,14 @@ Item {
 
     Image {
         id: imageLoadingBackgroundImage
-        source: "../../images/background" + ( Theme.colorScheme ? "-black" : "-white" ) + ".png"
+        source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
         anchors {
             centerIn: parent
         }
         width: ( ( parent.width - Theme.paddingSmall ) >= stickerData.width ) ? stickerData.width : ( parent.width - Theme.paddingSmall )
         height: ( ( parent.height - Theme.paddingSmall ) >= stickerData.height ) ? stickerData.height : ( parent.height - Theme.paddingSmall )
         visible: singleImage.status !== Image.Ready
+        asynchronous: true
 
         fillMode: Image.PreserveAspectFit
         opacity: 0.15

@@ -50,6 +50,7 @@ Page {
                 }
 
                 fillMode: Image.PreserveAspectFit
+                asynchronous: true
                 width: 2/3 * parent.width
 
             }

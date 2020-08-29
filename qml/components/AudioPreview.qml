@@ -107,19 +107,21 @@ Item {
         width: parent.width
         height: parent.height
         anchors.centerIn: parent
+        asynchronous: true
         fillMode: Image.PreserveAspectCrop
         visible: status === Image.Ready ? true : false
     }
 
     Image {
         id: imageLoadingBackgroundImage
-        source: "../../images/background" + ( Theme.colorScheme ? "-black" : "-white" ) + ".png"
+        source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
         anchors {
             centerIn: parent
         }
         width: parent.width - Theme.paddingSmall
         height: parent.height - Theme.paddingSmall
         visible: placeholderImage.status !== Image.Ready
+        asynchronous: true
 
         fillMode: Image.PreserveAspectFit
         opacity: 0.15
@@ -146,6 +148,7 @@ Item {
                 width: Theme.iconSizeLarge
                 height: Theme.iconSizeLarge
                 source: "image://theme/icon-l-play?white"
+                asynchronous: true
                 visible: placeholderImage.status === Image.Ready ? true : false
                 MouseArea {
                     anchors.fill: parent
@@ -343,6 +346,7 @@ Item {
                             anchors.centerIn: parent
                             width: Theme.iconSizeLarge
                             height: Theme.iconSizeLarge
+                            asynchronous: true
                             source: "image://theme/icon-l-play?white"
                             MouseArea {
                                 anchors.fill: parent

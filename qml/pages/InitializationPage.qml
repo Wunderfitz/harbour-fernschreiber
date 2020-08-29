@@ -79,6 +79,7 @@ Page {
             }
 
             fillMode: Image.PreserveAspectFit
+            asynchronous: true
             width: 1/2 * parent.width
         }
 
@@ -119,6 +120,7 @@ Page {
             }
 
             fillMode: Image.PreserveAspectFit
+            asynchronous: true
             width: 1/2 * parent.width
         }
 
@@ -171,6 +173,7 @@ Page {
             }
 
             fillMode: Image.PreserveAspectFit
+            asynchronous: true
             width: 1/2 * parent.width
         }
 
@@ -229,6 +232,7 @@ Page {
                 }
 
                 fillMode: Image.PreserveAspectFit
+                asynchronous: true
                 width: 1/2 * parent.width
             }
 

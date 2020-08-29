@@ -84,13 +84,14 @@ Item {
 
     Image {
         id: imageLoadingBackgroundImage
-        source: "../../images/background" + ( Theme.colorScheme ? "-black" : "-white" ) + ".png"
+        source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
         anchors {
             centerIn: parent
         }
         width: parent.width - Theme.paddingMedium
         height: parent.height - Theme.paddingMedium
         visible: singleImage.status !== Image.Ready
+        asynchronous: true
 
         fillMode: Image.PreserveAspectFit
         opacity: 0.15

@@ -38,7 +38,7 @@ Column {
     }
 
     function updateWebPage() {
-        if (typeof webPageData === "object") {
+        if (webPageData) {
             if (typeof webPageData.photo !== "undefined") {
                 hasImage = true;
                 // Check first which size fits best...
@@ -48,12 +48,11 @@ Column {
                         break;
                     }
                 }
-            }
-
-            if (pictureFileInformation.local.is_downloading_completed) {
-                singleImage.source = pictureFileInformation.local.path;
-            } else {
-                tdLibWrapper.downloadFile(pictureFileInformation.id);
+                if (pictureFileInformation.local.is_downloading_completed) {
+                    singleImage.source = pictureFileInformation.local.path;
+                } else {
+                    tdLibWrapper.downloadFile(pictureFileInformation.id);
+                }
             }
         }
     }
@@ -74,7 +73,7 @@ Column {
         id: siteNameText
 
         width: parent.width
-        text: Emoji.emojify(webPageData.site_name, font.pixelSize)
+        text: webPageData.site_name ? Emoji.emojify(webPageData.site_name, font.pixelSize) : 0
         font.pixelSize: Theme.fontSizeExtraSmall
         font.bold: true
         color: Theme.secondaryHighlightColor
@@ -88,7 +87,7 @@ Column {
         id: titleText
 
         width: parent.width
-        text: Emoji.emojify(webPageData.title, font.pixelSize)
+        text: webPageData.title ? Emoji.emojify(webPageData.title, font.pixelSize) : 0
         font.pixelSize: Theme.fontSizeExtraSmall
         font.bold: true
         color: Theme.primaryColor
@@ -103,7 +102,7 @@ Column {
         id: descriptionText
 
         width: parent.width
-        text: Emoji.emojify(webPageData.description, font.pixelSize)
+        text: webPageData.description ? Emoji.emojify(webPageData.description, font.pixelSize) : 0
         font.pixelSize: Theme.fontSizeExtraSmall
         color: Theme.primaryColor
         elide: Text.ElideRight
@@ -141,13 +140,14 @@ Column {
 
         Image {
             id: imageLoadingBackgroundImage
-            source: "../../images/background" + ( Theme.colorScheme ? "-black" : "-white" ) + ".png"
+            source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
             anchors {
                 centerIn: parent
             }
             width: parent.width - Theme.paddingMedium
             height: parent.height - Theme.paddingMedium
             visible: hasImage && singleImage.status !== Image.Ready
+            asynchronous: true
 
             fillMode: Image.PreserveAspectFit
             opacity: 0.15
