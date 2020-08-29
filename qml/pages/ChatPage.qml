@@ -463,13 +463,17 @@ Page {
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 anchors.horizontalCenter: parent.horizontalCenter
 
+                property string replyToMessageId: "0";
+
                 InReplyToRow {
                     onInReplyToMessageChanged: {
                         console.log("This is a reply!");
                         if (typeof newMessageInReplyToRow.inReplyToMessage === "object") {
-                            visible: true;
+                            newMessageColumn.replyToMessageId = newMessageInReplyToRow.inReplyToMessage.id.toString()
+                            newMessageInReplyToRow.visible = true;
                         } else {
-                            visible: false;
+                            newMessageInReplyToRow.visible = false;
+                            newMessageColumn.replyToMessageId = "0";
                         }
                     }
 
