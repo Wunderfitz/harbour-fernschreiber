@@ -38,7 +38,6 @@ Page {
     property bool chatListCreated: false;
 
     onStatusChanged: {
-        console.log("[OverviewPage] Status changed: " + status + ", initialization completed: " + initializationCompleted);
         if (status === PageStatus.Active && initializationCompleted && !chatListCreated) {
             updateContent();
         }

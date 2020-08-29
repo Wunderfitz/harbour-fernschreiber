@@ -142,11 +142,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Reply to Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>You</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Reply to Message</source>
+        <source>Loading messages...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

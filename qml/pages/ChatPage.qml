@@ -84,7 +84,6 @@ Page {
     }
 
     function initializePage() {
-        chatModel.initialize(chatInformation.id);
         var chatType = chatInformation.type['@type'];
         isPrivateChat = ( chatType === "chatTypePrivate" );
         isBasicGroup = ( chatType === "chatTypeBasicGroup" );
@@ -102,8 +101,6 @@ Page {
             isChannel = chatGroupInformation.is_channel;
             updateGroupStatusText();
         }
-        tdLibWrapper.getChatHistory(chatInformation.id);
-        chatPage.loading = false;
     }
 
     Component.onCompleted: {
@@ -113,6 +110,9 @@ Page {
     onStatusChanged: {
         if (status === PageStatus.Activating) {
             tdLibWrapper.openChat(chatInformation.id);
+        }
+        if (status === PageStatus.Active) {
+            chatModel.initialize(chatInformation.id);
         }
         if (status === PageStatus.Deactivating) {
             tdLibWrapper.closeChat(chatInformation.id);
@@ -151,6 +151,7 @@ Page {
     Connections {
         target: chatModel
         onMessagesReceived: {
+            chatPage.loading = false;
             chatView.positionViewAtEnd();
         }
         onNewMessageReceived: {
@@ -173,7 +174,6 @@ Page {
         contentHeight: parent.height
         contentWidth: parent.width
         anchors.fill: parent
-        visible: !chatPage.loading
 
         Column {
             id: chatColumn
@@ -235,222 +235,230 @@ Page {
                 }
             }
 
-            SilicaListView {
-                id: chatView
-
+            Item {
+                id: chatViewItem
                 width: parent.width
                 height: parent.height - ( 2 * Theme.paddingMedium ) - headerRow.height - newMessageColumn.height
 
-                clip: true
-                visible: count > 0
+                SilicaListView {
+                    id: chatView
 
-                function handleScrollPositionChanged() {
-                    tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
-                    if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
-                        chatModel.triggerLoadMoreHistory();
+                    anchors.fill: parent
+
+                    opacity: chatPage.loading ? 0 : 1
+                    Behavior on opacity { NumberAnimation {} }
+                    visible: !chatPage.loading
+
+                    clip: true
+
+                    function handleScrollPositionChanged() {
+                        tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
+                        if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
+                            chatModel.triggerLoadMoreHistory();
+                        }
                     }
-                }
 
-                onMovementEnded: {
-                    handleScrollPositionChanged();
-                }
-
-                onQuickScrollAnimatingChanged: {
-                    if (!quickScrollAnimating) {
+                    onMovementEnded: {
                         handleScrollPositionChanged();
                     }
-                }
 
-                onCurrentIndexChanged: {
-                    console.log("Current index: " + currentIndex);
-                    tdLibWrapper.viewMessage(chatInformation.id, currentItem.myMessage.id);
-                }
-
-                model: chatModel
-                delegate: ListItem {
-
-                    id: messageListItem
-                    contentHeight: messageBackground.height + Theme.paddingMedium
-                    contentWidth: parent.width
-
-                    property variant myMessage: display
-                    property variant userInformation: tdLibWrapper.getUserInformation(display.sender_user_id)
-
-                    menu: ContextMenu {
-                        MenuItem {
-                            onClicked: {
-                                newMessageInReplyToRow.inReplyToMessage = display;
-                                newMessageTextField.focus = true;
-                            }
-                            text: qsTr("Reply to Message")
+                    onQuickScrollAnimatingChanged: {
+                        if (!quickScrollAnimating) {
+                            handleScrollPositionChanged();
                         }
                     }
 
-                    Row {
-                        id: messageTextRow
-                        spacing: Theme.paddingSmall
-                        width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                        anchors.horizontalCenter: parent.horizontalCenter
+                    onCurrentIndexChanged: {
+                        tdLibWrapper.viewMessage(chatInformation.id, currentItem.myMessage.id);
+                    }
 
-                        ProfileThumbnail {
-                            id: messagePictureThumbnail
-                            photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ""
-                            replacementStringHint: userText.text
-                            width: visible ? Theme.itemSizeSmall : 0
-                            height: visible ? Theme.itemSizeSmall : 0
-                            anchors.bottom: parent.bottom
-                            anchors.bottomMargin: Theme.paddingSmall
-                            visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                    model: chatModel
+                    delegate: ListItem {
+
+                        id: messageListItem
+                        contentHeight: messageBackground.height + Theme.paddingMedium
+                        contentWidth: parent.width
+
+                        property variant myMessage: display
+                        property variant userInformation: tdLibWrapper.getUserInformation(display.sender_user_id)
+
+                        menu: ContextMenu {
+                            MenuItem {
+                                onClicked: {
+                                    newMessageInReplyToRow.inReplyToMessage = display;
+                                    newMessageTextField.focus = true;
+                                }
+                                text: qsTr("Reply to Message")
+                            }
                         }
 
-                        Item {
-                            id: messageTextItem
+                        Row {
+                            id: messageTextRow
+                            spacing: Theme.paddingSmall
+                            width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                            anchors.horizontalCenter: parent.horizontalCenter
 
-                            width: parent.width - messagePictureThumbnail.width - Theme.paddingSmall
-                            height: messageBackground.height
-
-                            Rectangle {
-                                id: messageBackground
-                                anchors {
-                                    left: parent.left
-                                    leftMargin: (chatPage.myUserId === display.sender_user_id) ? 2 * Theme.horizontalPageMargin : 0
-                                    right: parent.right
-                                    rightMargin: (chatPage.myUserId === display.sender_user_id) ? 0 : 2 * Theme.horizontalPageMargin
-                                    verticalCenter: parent.verticalCenter
-                                }
-                                height: messageTextColumn.height + ( 2 * Theme.paddingMedium )
-
-                                color: Theme.secondaryColor
-                                radius: parent.width / 50
-                                opacity: 0.2
+                            ProfileThumbnail {
+                                id: messagePictureThumbnail
+                                photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ""
+                                replacementStringHint: userText.text
+                                width: visible ? Theme.itemSizeSmall : 0
+                                height: visible ? Theme.itemSizeSmall : 0
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: Theme.paddingSmall
+                                visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
                             }
 
-                            Column {
-                                id: messageTextColumn
+                            Item {
+                                id: messageTextItem
 
-                                spacing: Theme.paddingSmall
+                                width: parent.width - messagePictureThumbnail.width - Theme.paddingSmall
+                                height: messageBackground.height
 
-                                width: messageBackground.width - Theme.horizontalPageMargin
-                                anchors.centerIn: messageBackground
-
-                                Component.onCompleted: {
-                                    if (display.reply_to_message_id !== 0) {
-                                        tdLibWrapper.getMessage(chatInformation.id, display.reply_to_message_id);
+                                Rectangle {
+                                    id: messageBackground
+                                    anchors {
+                                        left: parent.left
+                                        leftMargin: (chatPage.myUserId === display.sender_user_id) ? 2 * Theme.horizontalPageMargin : 0
+                                        right: parent.right
+                                        rightMargin: (chatPage.myUserId === display.sender_user_id) ? 0 : 2 * Theme.horizontalPageMargin
+                                        verticalCenter: parent.verticalCenter
                                     }
+                                    height: messageTextColumn.height + ( 2 * Theme.paddingMedium )
+
+                                    color: Theme.secondaryColor
+                                    radius: parent.width / 50
+                                    opacity: 0.2
                                 }
 
-                                Connections {
-                                    target: tdLibWrapper
-                                    onReceivedMessage: {
-                                        if (messageId === display.reply_to_message_id.toString()) {
-                                            messageInReplyToRow.inReplyToMessage = message;
-                                            messageInReplyToRow.visible = true;
+                                Column {
+                                    id: messageTextColumn
+
+                                    spacing: Theme.paddingSmall
+
+                                    width: messageBackground.width - Theme.horizontalPageMargin
+                                    anchors.centerIn: messageBackground
+
+                                    Component.onCompleted: {
+                                        if (display.reply_to_message_id !== 0) {
+                                            tdLibWrapper.getMessage(chatInformation.id, display.reply_to_message_id);
                                         }
                                     }
-                                }
 
-                                Text {
-                                    id: userText
-
-                                    width: parent.width
-                                    text: display.sender_user_id !== chatPage.myUserId ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")
-                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                    font.weight: Font.ExtraBold
-                                    color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
-                                    maximumLineCount: 1
-                                    elide: Text.ElideRight
-                                    textFormat: Text.StyledText
-                                    horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
-                                    visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
-                                }
-
-                                InReplyToRow {
-                                    id: messageInReplyToRow
-                                    myUserId: chatPage.myUserId
-                                    visible: false
-                                }
-
-                                Text {
-                                    id: messageText
-
-                                    width: parent.width
-                                    text: Emoji.emojify(Functions.getMessageText(display, false), font.pixelSize)
-                                    font.pixelSize: Theme.fontSizeSmall
-                                    color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
-                                    wrapMode: Text.Wrap
-                                    textFormat: Text.StyledText
-                                    onLinkActivated: {
-                                        Functions.handleLink(link);
+                                    Connections {
+                                        target: tdLibWrapper
+                                        onReceivedMessage: {
+                                            if (messageId === display.reply_to_message_id.toString()) {
+                                                messageInReplyToRow.inReplyToMessage = message;
+                                                messageInReplyToRow.visible = true;
+                                            }
+                                        }
                                     }
-                                    horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
-                                    linkColor: Theme.highlightColor
-                                    visible: (text !== "")
-                                }
 
-                                WebPagePreview {
-                                    id: webPagePreview
-                                    webPageData: ( typeof display.content.web_page !== "undefined" ) ? display.content.web_page : ""
-                                    width: parent.width
-                                    visible: typeof display.content.web_page !== "undefined"
-                                }
+                                    Text {
+                                        id: userText
 
-                                ImagePreview {
-                                    id: messageImagePreview
-                                    photoData: ( display.content['@type'] === "messagePhoto" ) ?  display.content.photo : ""
-                                    width: parent.width
-                                    height: parent.width * 2 / 3
-                                    visible: display.content['@type'] === "messagePhoto"
-                                }
-
-                                StickerPreview {
-                                    id: messageStickerPreview
-                                    stickerData: ( display.content['@type'] === "messageSticker" ) ?  display.content.sticker : ""
-                                    visible: display.content['@type'] === "messageSticker"
-                                    anchors.horizontalCenter: parent.horizontalCenter
-                                }
-
-                                VideoPreview {
-                                    id: messageVideoPreview
-                                    videoData: ( display.content['@type'] === "messageVideo" ) ?  display.content.video : ( ( display.content['@type'] === "messageAnimation" ) ? display.content.animation : "")
-                                    width: parent.width
-                                    height: ( display.content['@type'] === "messageVideo" ) ? Functions.getVideoHeight(width, display.content.video) : Functions.getVideoHeight(width, display.content.animation)
-                                    visible: ( display.content['@type'] === "messageVideo" || display.content['@type'] === "messageAnimation" )
-                                    onScreen: chatPage.status === PageStatus.Active
-                                }
-
-                                AudioPreview {
-                                    id: messageAudioPreview
-                                    audioData: ( display.content['@type'] === "messageVoiceNote" ) ?  display.content.voice_note : ( ( display.content['@type'] === "messageAudio" ) ? display.content.audio : "")
-                                    width: parent.width
-                                    height: parent.width / 2
-                                    visible: ( display.content['@type'] === "messageVoiceNote" || display.content['@type'] === "messageAudio" )
-                                    onScreen: chatPage.status === PageStatus.Active
-                                }
-
-                                DocumentPreview {
-                                    id: messageDocumentPreview
-                                    documentData: ( display.content['@type'] === "messageDocument" ) ?  display.content.document : ""
-                                    visible: display.content['@type'] === "messageDocument"
-                                }
-
-                                Timer {
-                                    id: messageDateUpdater
-                                    interval: 60000
-                                    running: true
-                                    repeat: true
-                                    onTriggered: {
-                                        messageDateText.text = Functions.getDateTimeElapsed(display.date);
+                                        width: parent.width
+                                        text: display.sender_user_id !== chatPage.myUserId ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")
+                                        font.pixelSize: Theme.fontSizeExtraSmall
+                                        font.weight: Font.ExtraBold
+                                        color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
+                                        maximumLineCount: 1
+                                        elide: Text.ElideRight
+                                        textFormat: Text.StyledText
+                                        horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                        visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
                                     }
-                                }
 
-                                Text {
-                                    width: parent.width
+                                    InReplyToRow {
+                                        id: messageInReplyToRow
+                                        myUserId: chatPage.myUserId
+                                        visible: false
+                                    }
 
-                                    id: messageDateText
-                                    text: Functions.getDateTimeElapsed(display.date)
-                                    font.pixelSize: Theme.fontSizeTiny
-                                    color: (chatPage.myUserId === display.sender_user_id) ? Theme.secondaryHighlightColor : Theme.secondaryColor
-                                    horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                    Text {
+                                        id: messageText
+
+                                        width: parent.width
+                                        text: Emoji.emojify(Functions.getMessageText(display, false), font.pixelSize)
+                                        font.pixelSize: Theme.fontSizeSmall
+                                        color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
+                                        wrapMode: Text.Wrap
+                                        textFormat: Text.StyledText
+                                        onLinkActivated: {
+                                            Functions.handleLink(link);
+                                        }
+                                        horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                        linkColor: Theme.highlightColor
+                                        visible: (text !== "")
+                                    }
+
+                                    WebPagePreview {
+                                        id: webPagePreview
+                                        webPageData: ( typeof display.content.web_page !== "undefined" ) ? display.content.web_page : ""
+                                        width: parent.width
+                                        visible: typeof display.content.web_page !== "undefined"
+                                    }
+
+                                    ImagePreview {
+                                        id: messageImagePreview
+                                        photoData: ( display.content['@type'] === "messagePhoto" ) ?  display.content.photo : ""
+                                        width: parent.width
+                                        height: parent.width * 2 / 3
+                                        visible: display.content['@type'] === "messagePhoto"
+                                    }
+
+                                    StickerPreview {
+                                        id: messageStickerPreview
+                                        stickerData: ( display.content['@type'] === "messageSticker" ) ?  display.content.sticker : ""
+                                        visible: display.content['@type'] === "messageSticker"
+                                        anchors.horizontalCenter: parent.horizontalCenter
+                                    }
+
+                                    VideoPreview {
+                                        id: messageVideoPreview
+                                        videoData: ( display.content['@type'] === "messageVideo" ) ?  display.content.video : ( ( display.content['@type'] === "messageAnimation" ) ? display.content.animation : "")
+                                        width: parent.width
+                                        height: ( display.content['@type'] === "messageVideo" ) ? Functions.getVideoHeight(width, display.content.video) : Functions.getVideoHeight(width, display.content.animation)
+                                        visible: ( display.content['@type'] === "messageVideo" || display.content['@type'] === "messageAnimation" )
+                                        onScreen: chatPage.status === PageStatus.Active
+                                    }
+
+                                    AudioPreview {
+                                        id: messageAudioPreview
+                                        audioData: ( display.content['@type'] === "messageVoiceNote" ) ?  display.content.voice_note : ( ( display.content['@type'] === "messageAudio" ) ? display.content.audio : "")
+                                        width: parent.width
+                                        height: parent.width / 2
+                                        visible: ( display.content['@type'] === "messageVoiceNote" || display.content['@type'] === "messageAudio" )
+                                        onScreen: chatPage.status === PageStatus.Active
+                                    }
+
+                                    DocumentPreview {
+                                        id: messageDocumentPreview
+                                        documentData: ( display.content['@type'] === "messageDocument" ) ?  display.content.document : ""
+                                        visible: display.content['@type'] === "messageDocument"
+                                    }
+
+                                    Timer {
+                                        id: messageDateUpdater
+                                        interval: 60000
+                                        running: true
+                                        repeat: true
+                                        onTriggered: {
+                                            messageDateText.text = Functions.getDateTimeElapsed(display.date);
+                                        }
+                                    }
+
+                                    Text {
+                                        width: parent.width
+
+                                        id: messageDateText
+                                        text: Functions.getDateTimeElapsed(display.date)
+                                        font.pixelSize: Theme.fontSizeTiny
+                                        color: (chatPage.myUserId === display.sender_user_id) ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                                        horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                    }
+
                                 }
 
                             }
@@ -459,9 +467,32 @@ Page {
 
                     }
 
+                    VerticalScrollDecorator {}
                 }
 
-                VerticalScrollDecorator {}
+                Column {
+                    width: parent.width
+                    height: loadingLabel.height + loadingBusyIndicator.height + Theme.paddingMedium
+                    spacing: Theme.paddingMedium
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    opacity: chatPage.loading ? 1 : 0
+                    Behavior on opacity { NumberAnimation {} }
+                    visible: chatPage.loading
+
+                    InfoLabel {
+                        id: loadingLabel
+                        text: qsTr("Loading messages...")
+                    }
+
+                    BusyIndicator {
+                        id: loadingBusyIndicator
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        running: chatPage.loading
+                        size: BusyIndicatorSize.Large
+                    }
+                }
+
             }
 
             Column {

@@ -52,6 +52,7 @@ void ChatModel::initialize(const QString &chatId)
     this->messages.clear();
     this->messageIndexMap.clear();
     this->messagesToBeAdded.clear();
+    tdLibWrapper->getChatHistory(chatId);
 }
 
 void ChatModel::triggerLoadMoreHistory()
