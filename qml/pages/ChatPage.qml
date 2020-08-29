@@ -152,7 +152,6 @@ Page {
         target: chatModel
         onMessagesReceived: {
             chatPage.loading = false;
-            chatView.positionViewAtEnd();
         }
         onNewMessageReceived: {
             // Notify user about new messages...
@@ -253,9 +252,9 @@ Page {
 
                     function handleScrollPositionChanged() {
                         tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
-                        if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
-                            chatModel.triggerLoadMoreHistory();
-                        }
+//                        if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
+//                            chatModel.triggerLoadMoreHistory();
+//                        }
                     }
 
                     onMovementEnded: {

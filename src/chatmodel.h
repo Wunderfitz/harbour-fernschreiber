@@ -23,7 +23,6 @@ public:
 signals:
     void messagesReceived();
     void messagesIncrementalUpdate();
-    void noMessagesAvailable();
     void newMessageReceived();
 
 public slots:

@@ -80,31 +80,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
     qDebug() << "[ChatModel] Receiving new messages :)" << messages.size();
 
     if (messages.size() == 0) {
-        emit noMessagesAvailable();
-        return;
-    }
-
-    this->messagesMutex.lock();
-    this->messagesToBeAdded.clear();
-    QListIterator<QVariant> messagesIterator(messages);
-    while (messagesIterator.hasNext()) {
-        QVariantMap currentMessage = messagesIterator.next().toMap();
-        if (currentMessage.value("chat_id").toString() == this->chatId) {
-            this->messagesToBeAdded.append(currentMessage);
-        }
-    }
-    std::sort(this->messagesToBeAdded.begin(), this->messagesToBeAdded.end(), compareMessages);
-
-    this->insertMessages();
-    this->messagesMutex.unlock();
-
-    // First call only returns a few messages, we need to get a little more than that...
-    if (this->messagesToBeAdded.size() < 10 && !this->inReload) {
-        qDebug() << "[ChatModel] Only one message received in first call, loading more...";
-        this->inReload = true;
-        this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value("id").toLongLong());
-    } else {
-        qDebug() << "[ChatModel] Messages loaded, notifying chat UI...";
+        qDebug() << "[ChatModel] No additional messages loaded, notifying chat UI...";
         this->inReload = false;
         if (this->inIncrementalUpdate) {
             this->inIncrementalUpdate = false;
@@ -112,7 +88,38 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
         } else {
             emit messagesReceived();
         }
+    } else {
+        this->messagesMutex.lock();
+        this->messagesToBeAdded.clear();
+        QListIterator<QVariant> messagesIterator(messages);
+        while (messagesIterator.hasNext()) {
+            QVariantMap currentMessage = messagesIterator.next().toMap();
+            if (currentMessage.value("chat_id").toString() == this->chatId) {
+                this->messagesToBeAdded.append(currentMessage);
+            }
+        }
+        std::sort(this->messagesToBeAdded.begin(), this->messagesToBeAdded.end(), compareMessages);
+
+        this->insertMessages();
+        this->messagesMutex.unlock();
+
+        // First call only returns a few messages, we need to get a little more than that...
+        if (this->messagesToBeAdded.size() < 10 && !this->inReload) {
+            qDebug() << "[ChatModel] Only a few messages received in first call, loading more...";
+            this->inReload = true;
+            this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value("id").toLongLong());
+        } else {
+            qDebug() << "[ChatModel] Messages loaded, notifying chat UI...";
+            this->inReload = false;
+            if (this->inIncrementalUpdate) {
+                this->inIncrementalUpdate = false;
+                emit messagesIncrementalUpdate();
+            } else {
+                emit messagesReceived();
+            }
+        }
     }
+
 }
 
 void ChatModel::handleNewMessageReceived(const QString &chatId, const QVariantMap &message)
