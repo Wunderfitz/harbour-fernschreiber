@@ -276,10 +276,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Loading...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Fernschreiber</source>
         <translation type="unfinished"></translation>
     </message>
@@ -305,6 +301,10 @@
     </message>
     <message>
         <source>You</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading chat list...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

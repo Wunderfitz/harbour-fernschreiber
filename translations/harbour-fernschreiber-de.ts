@@ -151,7 +151,7 @@
     </message>
     <message>
         <source>Loading messages...</source>
-        <translation>Nachrichten laden...</translation>
+        <translation>Lade Nachrichten...</translation>
     </message>
 </context>
 <context>
@@ -276,10 +276,6 @@
         <translation>Über Fernschreiber</translation>
     </message>
     <message>
-        <source>Loading...</source>
-        <translation>Laden...</translation>
-    </message>
-    <message>
         <source>Fernschreiber</source>
         <translation>Fernschreiber</translation>
     </message>
@@ -306,6 +302,10 @@
     <message>
         <source>You</source>
         <translation>Sie</translation>
+    </message>
+    <message>
+        <source>Loading chat list...</source>
+        <translation>Lade Chatliste...</translation>
     </message>
 </context>
 <context>
