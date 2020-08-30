@@ -73,7 +73,7 @@ Column {
         id: siteNameText
 
         width: parent.width
-        text: webPageData.site_name ? Emoji.emojify(webPageData.site_name, font.pixelSize) : 0
+        text: webPageData.site_name ? Emoji.emojify(webPageData.site_name, font.pixelSize) : ""
         font.pixelSize: Theme.fontSizeExtraSmall
         font.bold: true
         color: Theme.secondaryHighlightColor
@@ -87,7 +87,7 @@ Column {
         id: titleText
 
         width: parent.width
-        text: webPageData.title ? Emoji.emojify(webPageData.title, font.pixelSize) : 0
+        text: webPageData.title ? Emoji.emojify(webPageData.title, font.pixelSize) : ""
         font.pixelSize: Theme.fontSizeExtraSmall
         font.bold: true
         color: Theme.primaryColor
@@ -102,7 +102,7 @@ Column {
         id: descriptionText
 
         width: parent.width
-        text: webPageData.description ? Emoji.emojify(webPageData.description, font.pixelSize) : 0
+        text: webPageData.description ? Emoji.emojify(webPageData.description, font.pixelSize) : ""
         font.pixelSize: Theme.fontSizeExtraSmall
         color: Theme.primaryColor
         elide: Text.ElideRight
