@@ -49,6 +49,7 @@ signals:
     void chatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void chatOrderUpdated(const QString &chatId, const QString &order);
     void chatReadInboxUpdated(const QString &chatId, const int &unreadCount);
+    void chatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void basicGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
     void superGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
     void chatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
@@ -75,6 +76,7 @@ private:
     void processUpdateChatLastMessage(const QVariantMap &receivedInformation);
     void processUpdateChatOrder(const QVariantMap &receivedInformation);
     void processUpdateChatReadInbox(const QVariantMap &receivedInformation);
+    void processUpdateChatReadOutbox(const QVariantMap &receivedInformation);
     void processUpdateBasicGroup(const QVariantMap &receivedInformation);
     void processUpdateSuperGroup(const QVariantMap &receivedInformation);
     void processChatOnlineMemberCountUpdated(const QVariantMap &receivedInformation);

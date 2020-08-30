@@ -97,6 +97,7 @@ signals:
     void chatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void chatOrderUpdated(const QString &chatId, const QString &order);
     void chatReadInboxUpdated(const QString &chatId, const int &unreadCount);
+    void chatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void userUpdated(const QString &userId, const QVariantMap &userInformation);
     void basicGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
     void superGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
@@ -121,6 +122,7 @@ public slots:
     void handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void handleChatOrderUpdated(const QString &chatId, const QString &order);
     void handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount);
+    void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void handleBasicGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
     void handleSuperGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
     void handleChatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);

@@ -67,6 +67,7 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateChatLastMessage") { this->processUpdateChatLastMessage(receivedInformation); }
     if (objectTypeName == "updateChatOrder") { this->processUpdateChatOrder(receivedInformation); }
     if (objectTypeName == "updateChatReadInbox") { this->processUpdateChatReadInbox(receivedInformation); }
+    if (objectTypeName == "updateChatReadOutbox") { this->processUpdateChatReadOutbox(receivedInformation); }
     if (objectTypeName == "updateBasicGroup") { this->processUpdateBasicGroup(receivedInformation); }
     if (objectTypeName == "updateSupergroup") { this->processUpdateSuperGroup(receivedInformation); }
     if (objectTypeName == "updateChatOnlineMemberCount") { this->processChatOnlineMemberCountUpdated(receivedInformation); }
@@ -178,6 +179,12 @@ void TDLibReceiver::processUpdateChatReadInbox(const QVariantMap &receivedInform
 {
     qDebug() << "[TDLibReceiver] Chat read information updated for " << receivedInformation.value("chat_id").toString() << " unread count: " << receivedInformation.value("unread_count").toString();
     emit chatReadInboxUpdated(receivedInformation.value("chat_id").toString(), receivedInformation.value("unread_count").toInt());
+}
+
+void TDLibReceiver::processUpdateChatReadOutbox(const QVariantMap &receivedInformation)
+{
+    qDebug() << "[TDLibReceiver] Sent messages read information updated for " << receivedInformation.value("chat_id").toString() << " last read message ID: " << receivedInformation.value("last_read_outbox_message_id").toString();
+    emit chatReadOutboxUpdated(receivedInformation.value("chat_id").toString(), receivedInformation.value("last_read_outbox_message_id").toString());
 }
 
 void TDLibReceiver::processUpdateBasicGroup(const QVariantMap &receivedInformation)

@@ -87,6 +87,7 @@ Page {
     function initializePage() {
         console.log("[ChatPage] Initializing chat page...");
         chatView.currentIndex = -1;
+        chatView.lastReadSentIndex = 0;
         var chatType = chatInformation.type['@type'];
         isPrivateChat = ( chatType === "chatTypePrivate" );
         isBasicGroup = ( chatType === "chatTypeBasicGroup" );
@@ -157,8 +158,9 @@ Page {
     Connections {
         target: chatModel
         onMessagesReceived: {
-            console.log("[ChatPage] Messages received, view has " + chatView.count + " messages, setting view to index " + modelIndex);
+            console.log("[ChatPage] Messages received, view has " + chatView.count + " messages, setting view to index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
             chatView.currentIndex = modelIndex;
+            chatView.lastReadSentIndex = lastReadSentIndex;
             chatViewLoadingTimer.stop();
             chatViewLoadingTimer.start();
         }
@@ -170,6 +172,10 @@ Page {
             chatInformation.unread_count = unreadCount;
             chatUnreadMessagesCountBackground.visible = ( !chatPage.loading && unreadCount > 0 )
             chatUnreadMessagesCount.text = unreadCount > 99 ? "99+" : unreadCount
+        }
+        onLastReadSentMessageUpdated: {
+            console.log("[ChatPage] Updating last read sent index, new index: " + lastReadSentIndex);
+            chatView.lastReadSentIndex = lastReadSentIndex;
         }
     }
 
@@ -275,6 +281,8 @@ Page {
                     clip: true
                     highlightFollowsCurrentItem: true
 
+                    property int lastReadSentIndex: 0
+
                     function handleScrollPositionChanged() {
                         console.log("Current position: " + chatView.contentY);
                         tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
@@ -284,7 +292,7 @@ Page {
                         chatViewLoadingTimer.stop();
                         chatViewLoadingTimer.start();
                         if (!chatPage.loading) {
-                            if (chatView.indexAt(chatView.contentX, chatView.contentY) < 20) {
+                            if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
                                 console.log("Trying to get older history items...");
                                 chatModel.triggerLoadMoreHistory();
                             }
@@ -474,7 +482,15 @@ Page {
                                         running: true
                                         repeat: true
                                         onTriggered: {
-                                            messageDateText.text = Functions.getDateTimeElapsed(display.date);
+                                            messageDateText.text = Functions.getDateTimeElapsed(display.date) + ( (chatPage.myUserId === display.sender_user_id) ? ( index <= chatView.lastReadSentIndex ? Emoji.emojify(" - ✅", Theme.fontSizeTiny) : Emoji.emojify(" - ☑️", Theme.fontSizeTiny) ) : "" );
+                                        }
+                                    }
+
+                                    Connections {
+                                        target: chatModel
+                                        onLastReadSentMessageUpdated: {
+                                            console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + index <= lastReadSentIndex);
+                                            messageDateText.text = Functions.getDateTimeElapsed(display.date) + ( (chatPage.myUserId === display.sender_user_id) ? ( index <= lastReadSentIndex ? Emoji.emojify(" - ✅", Theme.fontSizeTiny) : Emoji.emojify(" - ☑️", Theme.fontSizeTiny) ) : "" );
                                         }
                                     }
 
@@ -482,7 +498,7 @@ Page {
                                         width: parent.width
 
                                         id: messageDateText
-                                        text: Functions.getDateTimeElapsed(display.date)
+                                        text: Functions.getDateTimeElapsed(display.date) + ( (chatPage.myUserId === display.sender_user_id) ? ( index <= chatView.lastReadSentIndex ? Emoji.emojify(" - ✅", Theme.fontSizeTiny) : Emoji.emojify(" - ☑️", Theme.fontSizeTiny) ) : "" );
                                         font.pixelSize: Theme.fontSizeTiny
                                         color: (chatPage.myUserId === display.sender_user_id) ? Theme.secondaryHighlightColor : Theme.secondaryColor
                                         horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
