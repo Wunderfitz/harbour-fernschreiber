@@ -252,7 +252,7 @@ Page {
             Item {
                 id: chatViewItem
                 width: parent.width
-                height: parent.height - ( 2 * Theme.paddingMedium ) - headerRow.height - newMessageColumn.height
+                height: parent.height - Theme.paddingMedium - headerRow.height - ( chatPage.isChannel ? 0 : ( newMessageColumn.height + Theme.paddingMedium ) )
 
                 Timer {
                     id: chatViewLoadingTimer
@@ -552,6 +552,7 @@ Page {
                 spacing: Theme.paddingMedium
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 anchors.horizontalCenter: parent.horizontalCenter
+                visible: !chatPage.isChannel
 
                 property string replyToMessageId: "0";
 
