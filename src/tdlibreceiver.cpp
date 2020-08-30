@@ -74,6 +74,7 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "messages") { this->processMessages(receivedInformation); }
     if (objectTypeName == "updateNewMessage") { this->processUpdateNewMessage(receivedInformation); }
     if (objectTypeName == "message") { this->processMessage(receivedInformation); }
+    if (objectTypeName == "updateMessageSendSucceeded") { this->processMessageSendSucceeded(receivedInformation); }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -227,4 +228,13 @@ void TDLibReceiver::processMessage(const QVariantMap &receivedInformation)
     QString messageId = receivedInformation.value("id").toString();
     qDebug() << "[TDLibReceiver] Received message " << chatId << messageId;
     emit messageInformation(messageId, receivedInformation);
+}
+
+void TDLibReceiver::processMessageSendSucceeded(const QVariantMap &receivedInformation)
+{
+    QString oldMessageId = receivedInformation.value("old_message_id").toString();
+    QVariantMap message = receivedInformation.value("message").toMap();
+    QString messageId = message.value("id").toString();
+    qDebug() << "[TDLibReceiver] Message send succeeded " << messageId << oldMessageId;
+    emit messageSendSucceeded(messageId, oldMessageId, message);
 }

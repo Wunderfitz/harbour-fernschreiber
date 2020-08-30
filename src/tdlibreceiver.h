@@ -56,6 +56,7 @@ signals:
     void messagesReceived(const QVariantList &messages);
     void newMessageReceived(const QString &chatId, const QVariantMap &message);
     void messageInformation(const QString &messageId, const QVariantMap &message);
+    void messageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
 
 private:
     void *tdLibClient;
@@ -83,6 +84,7 @@ private:
     void processMessages(const QVariantMap &receivedInformation);
     void processUpdateNewMessage(const QVariantMap &receivedInformation);
     void processMessage(const QVariantMap &receivedInformation);
+    void processMessageSendSucceeded(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

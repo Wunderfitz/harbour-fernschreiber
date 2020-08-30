@@ -13,6 +13,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper)
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, int)));
     connect(this->tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
+    connect(this->tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
 }
 
 ChatModel::~ChatModel()
@@ -158,6 +159,23 @@ void ChatModel::handleChatReadOutboxUpdated(const QString &chatId, const QString
         int sentIndex = calculateLastReadSentMessageId();
         qDebug() << "[ChatModel] Updating sent message ID, new index " << sentIndex;
         emit lastReadSentMessageUpdated(sentIndex);
+    }
+}
+
+void ChatModel::handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message)
+{
+    qDebug() << "[ChatModel] Message send succeeded, new message ID " << messageId << "old message ID " << oldMessageId << ", chat ID" << message.value("chat_id").toString();
+    qDebug() << "[ChatModel] index map: " << this->messageIndexMap.contains(oldMessageId) << ", index count: " << this->messageIndexMap.size() << ", message count: " << this->messages.size();
+    if (this->messageIndexMap.contains(oldMessageId)) {
+        this->messagesMutex.lock();
+        qDebug() << "[ChatModel] Message was successfully sent " << oldMessageId;
+        int messageIndex = this->messageIndexMap.value(oldMessageId).toInt();
+        this->messages.replace(messageIndex, message);
+        this->calculateMessageIndexMap();
+        qDebug() << "[ChatModel] Message was replaced at index " << messageIndex;
+        this->messagesMutex.unlock();
+        emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
+        emit dataChanged(index(messageIndex), index(messageIndex));
     }
 }
 

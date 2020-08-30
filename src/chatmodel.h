@@ -32,6 +32,7 @@ public slots:
     void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
     void handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount);
     void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
+    void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
 
 private:
 

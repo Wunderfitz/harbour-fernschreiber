@@ -482,23 +482,85 @@ Page {
                                         running: true
                                         repeat: true
                                         onTriggered: {
-                                            messageDateText.text = Functions.getDateTimeElapsed(display.date) + ( (chatPage.myUserId === display.sender_user_id) ? ( index <= chatView.lastReadSentIndex ? Emoji.emojify(" - ✅", Theme.fontSizeTiny) : Emoji.emojify(" - ☑️", Theme.fontSizeTiny) ) : "" );
+                                            var messageStatusSuffix = "";
+                                            if (chatPage.myUserId === display.sender_user_id) {
+                                                if (index <= chatView.lastReadSentIndex) {
+                                                    // Read by other party
+                                                    messageStatusSuffix += Emoji.emojify("✅", Theme.fontSizeTiny);
+                                                } else {
+                                                    // Not yet read by other party
+                                                    if (display.sending_state) {
+                                                        if (display.sending_state['@type'] === "messageSendingStatePending") {
+                                                            messageStatusSuffix += Emoji.emojify("🕙", Theme.fontSizeTiny);
+                                                        } else {
+                                                            // Sending failed...
+                                                            messageStatusSuffix += Emoji.emojify("❌", Theme.fontSizeTiny);
+                                                        }
+                                                    } else {
+                                                        messageStatusSuffix += Emoji.emojify("☑️", Theme.fontSizeTiny);
+                                                    }
+                                                }
+                                            }
+                                            messageDateText.text = Functions.getDateTimeElapsed(display.date) + messageStatusSuffix;
                                         }
                                     }
 
                                     Connections {
                                         target: chatModel
                                         onLastReadSentMessageUpdated: {
-                                            console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + index <= lastReadSentIndex);
-                                            messageDateText.text = Functions.getDateTimeElapsed(display.date) + ( (chatPage.myUserId === display.sender_user_id) ? ( index <= lastReadSentIndex ? Emoji.emojify(" - ✅", Theme.fontSizeTiny) : Emoji.emojify(" - ☑️", Theme.fontSizeTiny) ) : "" );
+                                            console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + (index <= lastReadSentIndex));
+                                            var messageStatusSuffix = "";
+                                            if (chatPage.myUserId === display.sender_user_id) {
+                                                if (index <= lastReadSentIndex) {
+                                                    // Read by other party
+                                                    messageStatusSuffix += Emoji.emojify("✅", Theme.fontSizeTiny);
+                                                } else {
+                                                    // Not yet read by other party
+                                                    if (display.sending_state) {
+                                                        if (display.sending_state['@type'] === "messageSendingStatePending") {
+                                                            messageStatusSuffix += Emoji.emojify("🕙", Theme.fontSizeTiny);
+                                                        } else {
+                                                            // Sending failed...
+                                                            messageStatusSuffix += Emoji.emojify("❌", Theme.fontSizeTiny);
+                                                        }
+                                                    } else {
+                                                        messageStatusSuffix += Emoji.emojify("☑️", Theme.fontSizeTiny);
+                                                    }
+                                                }
+                                            }
+                                            messageDateText.text = Functions.getDateTimeElapsed(display.date) + messageStatusSuffix;
                                         }
                                     }
 
                                     Text {
+
+                                        Component.onCompleted: {
+                                            var messageStatusSuffix = "";
+                                            if (chatPage.myUserId === display.sender_user_id) {
+                                                messageStatusSuffix += " - "
+                                                if (index <= chatView.lastReadSentIndex) {
+                                                    // Read by other party
+                                                    messageStatusSuffix += Emoji.emojify("✅", Theme.fontSizeTiny);
+                                                } else {
+                                                    // Not yet read by other party
+                                                    if (display.sending_state) {
+                                                        if (display.sending_state['@type'] === "messageSendingStatePending") {
+                                                            messageStatusSuffix += Emoji.emojify("🕙", Theme.fontSizeTiny);
+                                                        } else {
+                                                            // Sending failed...
+                                                            messageStatusSuffix += Emoji.emojify("❌", Theme.fontSizeTiny);
+                                                        }
+                                                    } else {
+                                                        messageStatusSuffix += Emoji.emojify("☑️", Theme.fontSizeTiny);
+                                                    }
+                                                }
+                                            }
+                                            text = Functions.getDateTimeElapsed(display.date) + messageStatusSuffix;
+                                        }
+
                                         width: parent.width
 
                                         id: messageDateText
-                                        text: Functions.getDateTimeElapsed(display.date) + ( (chatPage.myUserId === display.sender_user_id) ? ( index <= chatView.lastReadSentIndex ? Emoji.emojify(" - ✅", Theme.fontSizeTiny) : Emoji.emojify(" - ☑️", Theme.fontSizeTiny) ) : "" );
                                         font.pixelSize: Theme.fontSizeTiny
                                         color: (chatPage.myUserId === display.sender_user_id) ? Theme.secondaryHighlightColor : Theme.secondaryColor
                                         horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft

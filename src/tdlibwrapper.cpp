@@ -62,6 +62,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList)), this, SLOT(handleMessagesReceived(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageInformation(QString, QVariantMap)), this, SLOT(handleMessageInformation(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
 
     this->tdLibReceiver->start();
 
@@ -485,6 +486,11 @@ void TDLibWrapper::handleNewMessageReceived(const QString &chatId, const QVarian
 void TDLibWrapper::handleMessageInformation(const QString &messageId, const QVariantMap &message)
 {
     emit receivedMessage(messageId, message);
+}
+
+void TDLibWrapper::handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message)
+{
+    emit messageSendSucceeded(messageId, oldMessageId, message);
 }
 
 void TDLibWrapper::setInitialParameters()

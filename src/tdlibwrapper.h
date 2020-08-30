@@ -107,6 +107,7 @@ signals:
     void copyToDownloadsSuccessful(const QString &fileName, const QString &filePath);
     void copyToDownloadsError(const QString &fileName, const QString &filePath);
     void receivedMessage(const QString &messageId, const QVariantMap &message);
+    void messageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -129,6 +130,7 @@ public slots:
     void handleMessagesReceived(const QVariantList &messages);
     void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
     void handleMessageInformation(const QString &messageId, const QVariantMap &message);
+    void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
 
 private:
     void *tdLibClient;
