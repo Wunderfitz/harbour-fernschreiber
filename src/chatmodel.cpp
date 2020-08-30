@@ -59,8 +59,8 @@ void ChatModel::initialize(const QVariantMap &chatInformation)
 
 void ChatModel::triggerLoadMoreHistory()
 {
-    qDebug() << "[ChatModel] Trigger loading older history...";
     if (!this->inIncrementalUpdate) {
+        qDebug() << "[ChatModel] Trigger loading older history...";
         this->inIncrementalUpdate = true;
         this->tdLibWrapper->getChatHistory(this->chatId, this->messages.first().toMap().value("id").toLongLong());
     }

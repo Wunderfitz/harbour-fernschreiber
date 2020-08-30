@@ -170,15 +170,15 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Auf Netzwerk warten...</translation>
+        <translation>Warte auf Netzwerk...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Zum Netzwerk verbinden...</translation>
+        <translation>Verbinde zum Netzwerk...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Zum Proxy verbinden...</translation>
+        <translation>Verbinde zum Proxy...</translation>
     </message>
     <message>
         <source>Connected</source>
@@ -186,7 +186,7 @@
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Inhalte aktualisieren...</translation>
+        <translation>Aktualisiere Inhalte...</translation>
     </message>
     <message>
         <source>chat</source>
@@ -281,19 +281,19 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Warten auf Netzwerk...</translation>
+        <translation>Warte auf Netzwerk...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Zum Netzwerk verbinden...</translation>
+        <translation>Verbinde zum Netzwerk...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Zum Proxy verbinden...</translation>
+        <translation>Verbinde zum Proxy...</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Inhalte aktualisieren...</translation>
+        <translation>Aktualisiere Inhalte...</translation>
     </message>
     <message>
         <source>Unknown</source>
