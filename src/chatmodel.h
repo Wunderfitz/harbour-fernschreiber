@@ -24,13 +24,13 @@ signals:
     void messagesReceived(const int &modelIndex, const int &lastReadSentIndex);
     void messagesIncrementalUpdate(const int &modelIndex, const int &lastReadSentIndex);
     void newMessageReceived();
-    void unreadCountUpdated(const int &unreadCount);
+    void unreadCountUpdated(const int &unreadCount, const QString &lastReadInboxMessageId);
     void lastReadSentMessageUpdated(const int &lastReadSentIndex);
 
 public slots:
     void handleMessagesReceived(const QVariantList &messages);
     void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
-    void handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount);
+    void handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount);
     void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
 

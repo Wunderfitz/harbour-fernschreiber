@@ -26,7 +26,9 @@ public slots:
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
     void handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void handleChatOrderUpdated(const QString &chatId, const QString &order);
-    void handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount);
+    void handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount);
+    void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
+    void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
 
 private:
     TDLibWrapper *tdLibWrapper;

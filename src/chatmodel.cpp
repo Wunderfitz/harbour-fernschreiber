@@ -11,7 +11,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper)
     this->inIncrementalUpdate = false;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList)), this, SLOT(handleMessagesReceived(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
-    connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, int)));
+    connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
     connect(this->tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
     connect(this->tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
 }
@@ -143,12 +143,13 @@ void ChatModel::handleNewMessageReceived(const QString &chatId, const QVariantMa
     }
 }
 
-void ChatModel::handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount)
+void ChatModel::handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount)
 {
     if (chatId == this->chatId) {
-        qDebug() << "[ChatModel] Updating chat unread count, unread messages " << unreadCount;
+        qDebug() << "[ChatModel] Updating chat unread count, unread messages " << unreadCount << ", last read message ID: " << lastReadInboxMessageId;
         this->chatInformation.insert("unread_count", unreadCount);
-        emit unreadCountUpdated(unreadCount);
+        this->chatInformation.insert("last_read_inbox_message_id", lastReadInboxMessageId);
+        emit unreadCountUpdated(unreadCount, lastReadInboxMessageId);
     }
 }
 

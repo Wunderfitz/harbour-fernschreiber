@@ -8,7 +8,9 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper)
     connect(this->tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
-    connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, int)));
+    connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
+    connect(this->tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
+    connect(this->tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
 }
 
 ChatListModel::~ChatListModel()
@@ -106,16 +108,45 @@ void ChatListModel::handleChatOrderUpdated(const QString &chatId, const QString 
     this->chatListMutex.unlock();
 }
 
-void ChatListModel::handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount)
+void ChatListModel::handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount)
 {
     this->chatListMutex.lock();
-    qDebug() << "[ChatListModel] Updating chat unread count for " << chatId << " unread messages " << unreadCount;
+    qDebug() << "[ChatListModel] Updating chat unread count for " << chatId << " unread messages " << unreadCount << ", last read message ID: " << lastReadInboxMessageId;
     int chatIndex = this->chatIndexMap.value(chatId).toInt();
     QVariantMap currentChat = this->chatList.at(chatIndex).toMap();
     currentChat.insert("unread_count", unreadCount);
+    currentChat.insert("last_read_inbox_message_id", lastReadInboxMessageId);
     this->chatList.replace(chatIndex, currentChat);
     emit dataChanged(this->index(chatIndex), this->index(chatIndex));
     emit chatChanged(chatId);
+    this->chatListMutex.unlock();
+}
+
+void ChatListModel::handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId)
+{
+    this->chatListMutex.lock();
+    qDebug() << "[ChatListModel] Updating last read message for " << chatId << " last ID " << lastReadOutboxMessageId;
+    int chatIndex = this->chatIndexMap.value(chatId).toInt();
+    QVariantMap currentChat = this->chatList.at(chatIndex).toMap();
+    currentChat.insert("last_read_outbox_message_id", lastReadOutboxMessageId);
+    this->chatList.replace(chatIndex, currentChat);
+    emit dataChanged(this->index(chatIndex), this->index(chatIndex));
+    emit chatChanged(chatId);
+    this->chatListMutex.unlock();
+}
+
+void ChatListModel::handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message)
+{
+    this->chatListMutex.lock();
+    QString chatId = message.value("chat_id").toString();
+    int chatIndex = this->chatIndexMap.value(chatId).toInt();
+    qDebug() << "[ChatListModel] Updating last message for chat " << chatId << " at index " << chatIndex << ", as message was sent, old ID: " << oldMessageId << ", new ID: " << messageId;
+    QVariantMap currentChat = this->chatList.value(chatIndex).toMap();
+    currentChat.insert("last_message", message);
+    this->chatList.replace(chatIndex, currentChat);
+    emit dataChanged(this->index(chatIndex), this->index(chatIndex));
+    emit chatChanged(chatId);
+
     this->chatListMutex.unlock();
 }
 

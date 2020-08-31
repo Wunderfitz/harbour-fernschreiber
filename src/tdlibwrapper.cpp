@@ -54,7 +54,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(unreadChatCountUpdated(QVariantMap)), this, SLOT(handleUnreadChatCountUpdated(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
-    connect(this->tdLibReceiver, SIGNAL(chatReadInboxUpdated(QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, int)));
+    connect(this->tdLibReceiver, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
     connect(this->tdLibReceiver, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(basicGroupUpdated(QString, QVariantMap)), this, SLOT(handleBasicGroupUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(superGroupUpdated(QString, QVariantMap)), this, SLOT(handleSuperGroupUpdated(QString, QVariantMap)));
@@ -446,9 +446,9 @@ void TDLibWrapper::handleChatOrderUpdated(const QString &chatId, const QString &
     emit chatOrderUpdated(chatId, order);
 }
 
-void TDLibWrapper::handleChatReadInboxUpdated(const QString &chatId, const int &unreadCount)
+void TDLibWrapper::handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount)
 {
-    emit chatReadInboxUpdated(chatId, unreadCount);
+    emit chatReadInboxUpdated(chatId, lastReadInboxMessageId, unreadCount);
 }
 
 void TDLibWrapper::handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId)
