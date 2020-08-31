@@ -237,7 +237,11 @@ int ChatModel::calculateLastKnownMessageId()
     qDebug() << "[ChatModel] lastKnownMessageId" << lastKnownMessageId;
     qDebug() << "[ChatModel] size messageIndexMap" << this->messageIndexMap.size();
     qDebug() << "[ChatModel] contains ID?" << this->messageIndexMap.contains(lastKnownMessageId);
-    int listInboxPosition = this->messageIndexMap.value(lastKnownMessageId, this->messages.size() - 1).toInt();
+    // TODO: List sometimes crashes if index is set to the last item. Trying with the second last for now.
+    int listInboxPosition = this->messageIndexMap.value(lastKnownMessageId, this->messages.size() - 2).toInt();
+    if (listInboxPosition > this->messages.size() - 2 ) {
+        listInboxPosition = this->messages.size() - 2;
+    }
     qDebug() << "[ChatModel] Last known message is at position" << listInboxPosition;
     return listInboxPosition;
 }
