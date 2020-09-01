@@ -83,6 +83,7 @@ public:
     Q_INVOKABLE void viewMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void getMessage(const QString &chatId, const QString &messageId);
+    Q_INVOKABLE void setOptionInteger(const QString &optionName, const int &optionValue);
 
 signals:
     void versionDetected(const QString &version);

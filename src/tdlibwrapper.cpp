@@ -67,6 +67,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     this->tdLibReceiver->start();
 
     this->setLogVerbosityLevel();
+    this->setOptionInteger("notification_group_count_max", 5);
 }
 
 TDLibWrapper::~TDLibWrapper()
@@ -215,6 +216,19 @@ void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
     requestObject.insert("@type", "getMessage");
     requestObject.insert("chat_id", chatId);
     requestObject.insert("message_id", messageId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setOptionInteger(const QString &optionName, const int &optionValue)
+{
+    qDebug() << "[TDLibWrapper] Setting integet option " << optionName << optionValue;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "setOption");
+    requestObject.insert("name", optionName);
+    QVariantMap optionValueMap;
+    optionValueMap.insert("@type", "optionValueInteger");
+    optionValueMap.insert("value", optionValue);
+    requestObject.insert("value", optionValueMap);
     this->sendRequest(requestObject);
 }
 
