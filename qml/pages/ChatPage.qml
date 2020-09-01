@@ -201,6 +201,11 @@ Page {
             console.log("[ChatPage] Updating last read sent index, new index: " + lastReadSentIndex);
             chatView.lastReadSentIndex = lastReadSentIndex;
         }
+        onMessagesIncrementalUpdate: {
+            console.log("Incremental update received. View now has " + chatView.count + " messages, view is on index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
+            chatView.currentIndex = modelIndex;
+            chatView.lastReadSentIndex = lastReadSentIndex;
+        }
     }
 
     Timer {
