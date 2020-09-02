@@ -27,6 +27,7 @@ NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, QObject *pa
     connect(this->tdLibWrapper, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SLOT(handleUpdateActiveNotifications(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(notificationGroupUpdated(QVariantMap)), this, SLOT(handleUpdateNotificationGroup(QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(notificationUpdated(QVariantMap)), this, SLOT(handleUpdateNotification(QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
 }
 
 NotificationManager::~NotificationManager()
@@ -47,4 +48,12 @@ void NotificationManager::handleUpdateNotificationGroup(const QVariantMap notifi
 void NotificationManager::handleUpdateNotification(const QVariantMap updatedNotification)
 {
     qDebug() << "[NotificationManager] Received notification update, group ID:" << updatedNotification.value("notification_group_id").toInt();
+}
+
+void NotificationManager::handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation)
+{
+    this->chatListMutex.lock();
+    qDebug() << "[NotificationManager] Adding chat to internal map " << chatId;
+    this->chatMap.insert(chatId, chatInformation);
+    this->chatListMutex.unlock();
 }

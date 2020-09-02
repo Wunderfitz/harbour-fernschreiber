@@ -21,6 +21,7 @@
 #define NOTIFICATIONMANAGER_H
 
 #include <QObject>
+#include <QMutex>
 
 #include "tdlibwrapper.h"
 
@@ -38,10 +39,13 @@ public slots:
     void handleUpdateActiveNotifications(const QVariantList notificationGroups);
     void handleUpdateNotificationGroup(const QVariantMap notificationGroupUpdate);
     void handleUpdateNotification(const QVariantMap updatedNotification);
+    void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
 
 private:
 
     TDLibWrapper *tdLibWrapper;
+    QVariantMap chatMap;
+    QMutex chatListMutex;
 
 };
 
