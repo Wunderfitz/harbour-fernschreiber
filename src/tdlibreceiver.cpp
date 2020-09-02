@@ -75,6 +75,8 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateNewMessage") { this->processUpdateNewMessage(receivedInformation); }
     if (objectTypeName == "message") { this->processMessage(receivedInformation); }
     if (objectTypeName == "updateMessageSendSucceeded") { this->processMessageSendSucceeded(receivedInformation); }
+    if (objectTypeName == "updateActiveNotifications") { this->processUpdateActiveNotifications(receivedInformation); }
+    if (objectTypeName == "updateNotificationGroup") { this->processUpdateNotificationGroup(receivedInformation); }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -237,4 +239,22 @@ void TDLibReceiver::processMessageSendSucceeded(const QVariantMap &receivedInfor
     QString messageId = message.value("id").toString();
     qDebug() << "[TDLibReceiver] Message send succeeded " << messageId << oldMessageId;
     emit messageSendSucceeded(messageId, oldMessageId, message);
+}
+
+void TDLibReceiver::processUpdateActiveNotifications(const QVariantMap &receivedInformation)
+{
+    qDebug() << "[TDLibReceiver] Received active notification groups";
+    emit activeNotificationsUpdated(receivedInformation.value("groups").toList());
+}
+
+void TDLibReceiver::processUpdateNotificationGroup(const QVariantMap &receivedInformation)
+{
+    qDebug() << "[TDLibReceiver] Received updated notification group";
+    emit notificationGroupUpdated(receivedInformation);
+}
+
+void TDLibReceiver::processUpdateNotification(const QVariantMap &receivedInformation)
+{
+    qDebug() << "[TDLibReceiver] Received notification update";
+    emit notificationUpdated(receivedInformation);
 }

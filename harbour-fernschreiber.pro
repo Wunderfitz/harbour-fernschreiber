@@ -19,6 +19,7 @@ QT += core dbus
 SOURCES += src/harbour-fernschreiber.cpp \
     src/chatlistmodel.cpp \
     src/chatmodel.cpp \
+    src/notificationmanager.cpp \
     src/tdlibreceiver.cpp \
     src/tdlibwrapper.cpp
 
@@ -86,6 +87,7 @@ INSTALLS += telegram 86.png 108.png 128.png 172.png 256.png \
 HEADERS += \
     src/chatlistmodel.h \
     src/chatmodel.h \
+    src/notificationmanager.h \
     src/tdlibreceiver.h \
     src/tdlibsecrets.h \
     src/tdlibwrapper.h

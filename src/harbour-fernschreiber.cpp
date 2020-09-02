@@ -32,6 +32,7 @@
 #include "tdlibwrapper.h"
 #include "chatlistmodel.h"
 #include "chatmodel.h"
+#include "notificationmanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -49,6 +50,9 @@ int main(int argc, char *argv[])
 
     ChatModel chatModel(tdLibWrapper);
     context->setContextProperty("chatModel", &chatModel);
+
+    NotificationManager notificationManager(tdLibWrapper);
+    context->setContextProperty("notificationManager", &notificationManager);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-fernschreiber.qml"));
     view->show();

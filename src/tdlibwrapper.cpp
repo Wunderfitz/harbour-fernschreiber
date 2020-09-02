@@ -62,7 +62,10 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList)), this, SLOT(handleMessagesReceived(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageInformation(QString, QVariantMap)), this, SLOT(handleMessageInformation(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));    
+    connect(this->tdLibReceiver, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SLOT(handleUpdateActiveNotifications(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(notificationGroupUpdated(QVariantMap)), this, SLOT(handleUpdateNotificationGroup(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(notificationUpdated(QVariantMap)), this, SLOT(handleUpdateNotification(QVariantMap)));
 
     this->tdLibReceiver->start();
 
@@ -505,6 +508,21 @@ void TDLibWrapper::handleMessageInformation(const QString &messageId, const QVar
 void TDLibWrapper::handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message)
 {
     emit messageSendSucceeded(messageId, oldMessageId, message);
+}
+
+void TDLibWrapper::handleUpdateActiveNotifications(const QVariantList notificationGroups)
+{
+    emit activeNotificationsUpdated(notificationGroups);
+}
+
+void TDLibWrapper::handleUpdateNotificationGroup(const QVariantMap notificationGroupUpdate)
+{
+    emit notificationGroupUpdated(notificationGroupUpdate);
+}
+
+void TDLibWrapper::handleUpdateNotification(const QVariantMap updatedNotification)
+{
+    emit notificationUpdated(updatedNotification);
 }
 
 void TDLibWrapper::setInitialParameters()
