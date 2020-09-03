@@ -45,7 +45,10 @@ private:
 
     TDLibWrapper *tdLibWrapper;
     QVariantMap chatMap;
+    QVariantMap notificationGroups;
     QMutex chatListMutex;
+
+    void sendNotifications();
 
 };
 

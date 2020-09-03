@@ -18,6 +18,11 @@
 */
 
 #include "notificationmanager.h"
+#include <nemonotifications-qt5/notification.h>
+#include <sailfishapp.h>
+#include <QDebug>
+#include <QListIterator>
+#include <QUrl>
 
 NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, QObject *parent) : QObject(parent)
 {
@@ -42,7 +47,32 @@ void NotificationManager::handleUpdateActiveNotifications(const QVariantList not
 
 void NotificationManager::handleUpdateNotificationGroup(const QVariantMap notificationGroupUpdate)
 {
-    qDebug() << "[NotificationManager] Received notification group update, group ID:" << notificationGroupUpdate.value("notification_group_id").toInt();
+    QString notificationGroupId = notificationGroupUpdate.value("notification_group_id").toString();
+    qDebug() << "[NotificationManager] Received notification group update, group ID:" << notificationGroupId;
+    QVariantMap notificationGroup = this->notificationGroups.value(notificationGroupId).toMap();
+
+    notificationGroup.insert("type", notificationGroupUpdate.value("type"));
+    notificationGroup.insert("chat_id", notificationGroupUpdate.value("chat_id"));
+    notificationGroup.insert("notification_settings_chat_id", notificationGroupUpdate.value("notification_settings_chat_id"));
+    notificationGroup.insert("is_silent", notificationGroupUpdate.value("is_silent"));
+    notificationGroup.insert("total_count", notificationGroupUpdate.value("total_count"));
+
+    QVariantMap notifications = notificationGroup.value("notifications").toMap();
+    QVariantList addedNotifications = notificationGroupUpdate.value("added_notifications").toList();
+    QListIterator<QVariant> addedNotificationIterator(addedNotifications);
+    while (addedNotificationIterator.hasNext()) {
+        QVariantMap addedNotification = addedNotificationIterator.next().toMap();
+        notifications.insert(addedNotification.value("id").toString(), addedNotification);
+    }
+    QVariantList removedNotifications = notificationGroupUpdate.value("removed_notification_ids").toList();
+    QListIterator<QVariant> removedNotificationIterator(removedNotifications);
+    while (removedNotificationIterator.hasNext()) {
+        QString removedNotificationId = removedNotificationIterator.next().toString();
+        notifications.remove(removedNotificationId);
+    }
+    notificationGroup.insert("notifications", notifications);
+    this->notificationGroups.insert(notificationGroupId, notificationGroup);
+    // this->sendNotifications();
 }
 
 void NotificationManager::handleUpdateNotification(const QVariantMap updatedNotification)
@@ -56,4 +86,22 @@ void NotificationManager::handleChatDiscovered(const QString &chatId, const QVar
     qDebug() << "[NotificationManager] Adding chat to internal map " << chatId;
     this->chatMap.insert(chatId, chatInformation);
     this->chatListMutex.unlock();
+}
+
+void NotificationManager::sendNotifications()
+{
+    QVariantList notificationGroupList = this->notificationGroups.values();
+    QListIterator<QVariant> notificationGroupIterator(notificationGroupList);
+    QUrl appIconUrl = SailfishApp::pathTo("images/fernschreiber-notification.png");
+    while (notificationGroupIterator.hasNext()) {
+        QVariantMap notificationGroup = notificationGroupIterator.next().toMap();
+        Notification nemoNotification;
+        nemoNotification.setAppName("Fernschreiber");
+        nemoNotification.setAppIcon(appIconUrl.toLocalFile());
+        nemoNotification.setBody("This is the body");
+        nemoNotification.setSummary("This is the summary");
+        nemoNotification.setPreviewSummary("This is the preview summary");
+        nemoNotification.setPreviewBody("This is the preview body");
+        nemoNotification.publish();
+    }
 }
