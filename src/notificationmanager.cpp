@@ -72,11 +72,28 @@ void NotificationManager::handleUpdateNotificationGroup(const QVariantMap notifi
         }
     }
 
+    // If we have deleted notifications, we need to update possibly existing ones
+    if (!removedNotificationIds.isEmpty() && !activeNotifications.isEmpty()) {
+        qDebug() << "[NotificationManager] Some removals happend, but we have " << activeNotifications.size() << "existing notifications.";
+        QVariantMap firstActiveNotification = activeNotifications.first().toMap();
+        activeNotifications.remove(firstActiveNotification.value("id").toString());
+        QVariantMap newFirstActiveNotification = this->sendNotification(chatId, firstActiveNotification, activeNotifications);
+        QVariantMap newActiveNotifications;
+        QListIterator<QVariant> activeNotificationsIterator(activeNotifications.values());
+        while (activeNotificationsIterator.hasNext()) {
+            QVariantMap newActiveNotification = activeNotificationsIterator.next().toMap();
+            newActiveNotification.insert("replaces_id", newFirstActiveNotification.value("replaces_id"));
+            newActiveNotifications.insert(newActiveNotification.value("id").toString(), newActiveNotification);
+        }
+        newActiveNotifications.insert(newFirstActiveNotification.value("id").toString(), newFirstActiveNotification);
+        activeNotifications = newActiveNotifications;
+    }
+
     QVariantList addedNotifications = notificationGroupUpdate.value("added_notifications").toList();
     QListIterator<QVariant> addedNotificationIterator(addedNotifications);
     while (addedNotificationIterator.hasNext()) {
         QVariantMap addedNotification = addedNotificationIterator.next().toMap();
-        QVariantMap activeNotification = this->sendNotification(chatId, addedNotification);
+        QVariantMap activeNotification = this->sendNotification(chatId, addedNotification, activeNotifications);
         activeNotifications.insert(activeNotification.value("id").toString(), activeNotification);
     }
 
@@ -97,7 +114,7 @@ void NotificationManager::handleChatDiscovered(const QString &chatId, const QVar
     this->chatListMutex.unlock();
 }
 
-QVariantMap NotificationManager::sendNotification(const QString &chatId, const QVariantMap &notificationInformation)
+QVariantMap NotificationManager::sendNotification(const QString &chatId, const QVariantMap &notificationInformation, const QVariantMap &activeNotifications)
 {
     qDebug() << "[NotificationManager] Sending notification" << notificationInformation.value("id").toString();
 
@@ -110,7 +127,12 @@ QVariantMap NotificationManager::sendNotification(const QString &chatId, const Q
     nemoNotification.setAppIcon(appIconUrl.toLocalFile());
     nemoNotification.setSummary(chatInformation.value("title").toString());
     nemoNotification.setCategory("x-nemo.messaging.im");
-    nemoNotification.setBody(this->getNotificationText(notificationInformation.value("type").toMap().value("message").toMap().value("content").toMap()));
+    if (activeNotifications.isEmpty()) {
+        nemoNotification.setBody(this->getNotificationText(notificationInformation.value("type").toMap().value("message").toMap().value("content").toMap()));
+    } else {
+        nemoNotification.setReplacesId(activeNotifications.first().toMap().value("replaces_id").toUInt());
+        nemoNotification.setBody(tr("%1 unread messages").arg(activeNotifications.size() + 1));
+    }
 
     nemoNotification.publish();
     updatedNotificationInformation.insert("replaces_id", nemoNotification.replacesId());

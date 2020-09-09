@@ -270,6 +270,13 @@
     </message>
 </context>
 <context>
+    <name>NotificationManager</name>
+    <message>
+        <source>%1 unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>

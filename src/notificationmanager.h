@@ -48,7 +48,7 @@ private:
     QVariantMap notificationGroups;
     QMutex chatListMutex;
 
-    QVariantMap sendNotification(const QString &chatId, const QVariantMap &notificationInformation);
+    QVariantMap sendNotification(const QString &chatId, const QVariantMap &notificationInformation, const QVariantMap &activeNotifications);
     void removeNotification(const QVariantMap &notificationInformation);
     QString getNotificationText(const QVariantMap &notificationContent);
 
