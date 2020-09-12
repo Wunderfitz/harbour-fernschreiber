@@ -23,6 +23,7 @@
 #include <QDebug>
 #include <QListIterator>
 #include <QUrl>
+#include <QDateTime>
 
 NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, QObject *parent) : QObject(parent)
 {
@@ -119,16 +120,32 @@ QVariantMap NotificationManager::sendNotification(const QString &chatId, const Q
     qDebug() << "[NotificationManager] Sending notification" << notificationInformation.value("id").toString();
 
     QVariantMap chatInformation = this->chatMap.value(chatId).toMap();
+    QString chatType = chatInformation.value("type").toMap().value("@type").toString();
+    bool addAuthor = false;
+    if (chatType == "chatTypeBasicGroup" || ( chatType == "chatTypeSupergroup" && !chatInformation.value("type").toMap().value("@is_channel").toBool() )) {
+        addAuthor = true;
+    }
 
     QVariantMap updatedNotificationInformation = notificationInformation;
     QUrl appIconUrl = SailfishApp::pathTo("images/fernschreiber-notification.png");
+    QVariantMap messageMap = notificationInformation.value("type").toMap().value("message").toMap();
     Notification nemoNotification;
     nemoNotification.setAppName("Fernschreiber");
     nemoNotification.setAppIcon(appIconUrl.toLocalFile());
     nemoNotification.setSummary(chatInformation.value("title").toString());
     nemoNotification.setCategory("x-nemo.messaging.im");
+    nemoNotification.setTimestamp(QDateTime::fromMSecsSinceEpoch(messageMap.value("date").toLongLong() * 1000));
     if (activeNotifications.isEmpty()) {
-        nemoNotification.setBody(this->getNotificationText(notificationInformation.value("type").toMap().value("message").toMap().value("content").toMap()));
+        QString notificationBody;
+        if (addAuthor) {
+            QVariantMap authorInformation = tdLibWrapper->getUserInformation(messageMap.value("sender_user_id").toString());
+            QString firstName = authorInformation.value("first_name").toString();
+            QString lastName = authorInformation.value("last_name").toString();
+            QString fullName = firstName + " " + lastName;
+            notificationBody = notificationBody + fullName.trimmed() + ": ";
+        }
+        notificationBody = notificationBody + this->getNotificationText(messageMap.value("content").toMap());
+        nemoNotification.setBody(notificationBody);
     } else {
         nemoNotification.setReplacesId(activeNotifications.first().toMap().value("replaces_id").toUInt());
         nemoNotification.setBody(tr("%1 unread messages").arg(activeNotifications.size() + 1));
@@ -150,5 +167,41 @@ void NotificationManager::removeNotification(const QVariantMap &notificationInfo
 QString NotificationManager::getNotificationText(const QVariantMap &notificationContent)
 {
     qDebug() << "[NotificationManager] Getting notification text from content" << notificationContent;
-    return notificationContent.value("text").toMap().value("text").toString();
+
+    QString contentType = notificationContent.value("@type").toString();
+
+    if (contentType == "messageText") {
+        return notificationContent.value("text").toMap().value("text").toString();
+    }
+    if (contentType == "messagePhoto") {
+        return tr("sent a picture");
+    }
+    if (contentType == "messageVideo") {
+        return tr("sent a video");
+    }
+    if (contentType == "messageAnimation") {
+        return tr("sent an animation");
+    }
+    if (contentType == "messageVoiceNote") {
+        return tr("sent a voice note");
+    }
+    if (contentType == "messageDocument") {
+        return tr("sent a document");
+    }
+    if (contentType == "messageLocation") {
+        return tr("sent a location");
+    }
+    if (contentType == "messageContactRegistered") {
+        return tr("has registered with Telegram");
+    }
+    if (contentType == "messageChatJoinByLink") {
+        return tr("joined this chat");
+    }
+    if (contentType == "messageChatAddMembers") {
+        return tr("was added to this chat");
+    }
+    if (contentType == "messageChatDeleteMember") {
+        return tr("left this chat");
+    }
+    return tr("Unsupported message: %1").arg(contentType.mid(7));
 }

@@ -275,6 +275,50 @@
         <source>%1 unread messages</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>sent a picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has registered with Telegram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>was added to this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsupported message: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -349,18 +393,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>was added to this chat.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>joined this chat.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>left this chat.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -369,31 +401,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>shared a picture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>shared a video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>shared an audio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>shared a voice note</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>shared their location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Animation: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>shared an animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -405,7 +413,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>shared a document</source>
+        <source>sent a picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>was added to this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>left this chat</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

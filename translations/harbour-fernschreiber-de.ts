@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Dieses Projekt nutzt die Telegram Database Library (TDLib). Vielen Dank dafür, dass sie unter den Bedingungen der Boost Software License 1.0 verfügbar gemacht wurde!   </translation>
+        <translation>Dieses Projekt nutzt die Telegram Database Library (TDLib). Vielen Dank dafür, dass sie unter den Bedingungen der Boost Software License 1.0 verfügbar gemacht wurde!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
@@ -273,7 +273,51 @@
     <name>NotificationManager</name>
     <message>
         <source>%1 unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ungelesene Nachrichten</translation>
+    </message>
+    <message>
+        <source>sent a picture</source>
+        <translation>hat ein Bild geschickt</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <translation>hat ein Video geschickt</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <translation>hat eine Animation geschickt</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <translation>hat eine Sprachnachricht geschickt</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <translation>hat ein Dokument geschickt</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <translation>hat einen Ort geschickt</translation>
+    </message>
+    <message>
+        <source>has registered with Telegram</source>
+        <translation>hat sich bei Telegram angemeldet</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <translation>ist diesem Chat beigetreten</translation>
+    </message>
+    <message>
+        <source>was added to this chat</source>
+        <translation>wurde diesem Chat hinzugefügt</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <translation>hat diesen Chat verlassen</translation>
+    </message>
+    <message>
+        <source>Unsupported message: %1</source>
+        <translation>Nicht unterstützte Nachricht: %1</translation>
     </message>
 </context>
 <context>
@@ -349,18 +393,6 @@
         <translation>Sticker: %1</translation>
     </message>
     <message>
-        <source>was added to this chat.</source>
-        <translation>wurde diesem Chat hinzugefügt.</translation>
-    </message>
-    <message>
-        <source>joined this chat.</source>
-        <translation>ist diesem Chat beigetreten.</translation>
-    </message>
-    <message>
-        <source>left this chat.</source>
-        <translation>hat diesen Chat verlassen.</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Audio: %1</translation>
     </message>
@@ -369,32 +401,8 @@
         <translation>Sprachnachricht: %1</translation>
     </message>
     <message>
-        <source>shared a picture</source>
-        <translation>hat ein Bild geteilt</translation>
-    </message>
-    <message>
-        <source>shared a video</source>
-        <translation>hat ein Video geteilt</translation>
-    </message>
-    <message>
-        <source>shared an audio</source>
-        <translation>hat ein Audio geteilt</translation>
-    </message>
-    <message>
-        <source>shared a voice note</source>
-        <translation>hat eine Sprachnachricht geteilt</translation>
-    </message>
-    <message>
-        <source>shared their location</source>
-        <translation>hat die Position geteilt</translation>
-    </message>
-    <message>
         <source>Animation: %1</source>
         <translation>Animation: %1</translation>
-    </message>
-    <message>
-        <source>shared an animation</source>
-        <translation>hat eine Animation geteilt</translation>
     </message>
     <message>
         <source>Unsupported message: %1</source>
@@ -405,8 +413,44 @@
         <translation>Dokument: %1</translation>
     </message>
     <message>
-        <source>shared a document</source>
-        <translation>hat ein Dokument geteilt</translation>
+        <source>sent a picture</source>
+        <translation>hat ein Bild geschickt</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <translation>hat ein Video geschickt</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <translation>hat eine Animation geschickt</translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <translation>hat eine Audiodatei geschickt</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <translation>hat eine Sprachnachricht geschickt</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <translation>hat ein Dokument geschickt</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <translation>hat einen Ort geschickt</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <translation>ist diesem Chat beigetreten</translation>
+    </message>
+    <message>
+        <source>was added to this chat</source>
+        <translation>wurde diesem Chat hinzugefügt</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <translation>hat diesen Chat verlassen</translation>
     </message>
 </context>
 </TS>

@@ -38,58 +38,58 @@ function getMessageText(message, simple) {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Picture: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return simple ? qsTr("shared a picture") : "";
+            return simple ? qsTr("sent a picture") : "";
         }
     }
     if (message.content['@type'] === 'messageVideo') {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Video: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return simple ? qsTr("shared a video") : "";
+            return simple ? qsTr("sent a video") : "";
         }
     }
     if (message.content['@type'] === 'messageAnimation') {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Animation: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return simple ? qsTr("shared an animation") : "";
+            return simple ? qsTr("sent an animation") : "";
         }
     }
     if (message.content['@type'] === 'messageAudio') {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Audio: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return simple ? qsTr("shared an audio") : "";
+            return simple ? qsTr("sent an audio") : "";
         }
     }
     if (message.content['@type'] === 'messageVoiceNote') {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Voice Note: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return simple ? qsTr("shared a voice note") : "";
+            return simple ? qsTr("sent a voice note") : "";
         }
     }
     if (message.content['@type'] === 'messageDocument') {
         if (message.content.document.file_name !== "") {
             return simple ? qsTr("Document: %1").arg(message.content.document.file_name) : message.content.document.file_name
         } else {
-            return simple ? qsTr("shared a document") : "";
+            return simple ? qsTr("sent a document") : "";
         }
     }
     if (message.content['@type'] === 'messageLocation') {
-        return qsTr("shared their location");
+        return qsTr("sent a location");
     }
     if (message.content['@type'] === 'messageContactRegistered') {
         return qsTr("has registered with Telegram");
     }
     if (message.content['@type'] === 'messageChatJoinByLink') {
-        return qsTr("joined this chat.");
+        return qsTr("joined this chat");
     }
     if (message.content['@type'] === 'messageChatAddMembers') {
-        return qsTr("was added to this chat.");
+        return qsTr("was added to this chat");
     }
     if (message.content['@type'] === 'messageChatDeleteMember') {
-        return qsTr("left this chat.");
+        return qsTr("left this chat");
     }
     return qsTr("Unsupported message: %1").arg(message.content['@type'].substring(7));
 }
