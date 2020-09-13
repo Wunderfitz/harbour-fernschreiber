@@ -624,18 +624,19 @@ Page {
                     width: parent.width
                     height: sendMessageColumn.height + ( 2 * Theme.paddingLarge )
                     anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: Theme.paddingMedium
 
                     Column {
                         id: sendMessageColumn
-                        width: parent.width - newMessageSendButton.width - Theme.paddingMedium
+                        width: parent.width - newMessageSendButton.width
                         anchors.verticalCenter: parent.verticalCenter
+
                         TextArea {
                             id: newMessageTextField
                             width: parent.width
                             font.pixelSize: Theme.fontSizeSmall
                             placeholderText: qsTr("Your message")
                             labelVisible: false
+                            textLeftMargin: 0
                             onFocusChanged: {
                                 if (!focus) {
                                     newMessageInReplyToRow.inReplyToMessage = null;
@@ -645,9 +646,9 @@ Page {
                     }
 
                     Column {
-                        width: newMessageSendButton.width
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingLarge
+
                         IconButton {
                             id: newMessageSendButton
                             icon.source: "image://theme/icon-m-chat"
