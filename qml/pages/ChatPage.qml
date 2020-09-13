@@ -183,10 +183,9 @@ Page {
         target: chatModel
         onMessagesReceived: {
             console.log("[ChatPage] Messages received, view has " + chatView.count + " messages, setting view to index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
-            chatView.currentIndex = modelIndex;
             chatView.lastReadSentIndex = lastReadSentIndex;
-            chatViewLoadingTimer.stop();
-            chatViewLoadingTimer.start();
+            chatView.positionViewAtIndex(modelIndex, ListView.Contain);
+            chatPage.loading = false;
         }
         onNewMessageReceived: {
             // Notify user about new messages...
@@ -308,7 +307,6 @@ Page {
                     Behavior on opacity { NumberAnimation {} }
 
                     clip: true
-                    highlightFollowsCurrentItem: true
 
                     property int lastReadSentIndex: 0
 
@@ -318,8 +316,6 @@ Page {
                     }
 
                     onContentYChanged: {
-                        chatViewLoadingTimer.stop();
-                        chatViewLoadingTimer.start();
                         if (!chatPage.loading) {
                             if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
                                 console.log("Trying to get older history items...");
