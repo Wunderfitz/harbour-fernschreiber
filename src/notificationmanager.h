@@ -22,7 +22,7 @@
 
 #include <QObject>
 #include <QMutex>
-
+#include <ngf-qt5/NgfClient>
 #include "tdlibwrapper.h"
 
 class NotificationManager : public QObject
@@ -40,10 +40,16 @@ public slots:
     void handleUpdateNotificationGroup(const QVariantMap notificationGroupUpdate);
     void handleUpdateNotification(const QVariantMap updatedNotification);
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
+    void handleNgfConnectionStatus(const bool &connected);
+    void handleNgfEventFailed(const quint32 &eventId);
+    void handleNgfEventCompleted(const quint32 &eventId);
+    void handleNgfEventPlaying(const quint32 &eventId);
+    void handleNgfEventPaused(const quint32 &eventId);
 
 private:
 
     TDLibWrapper *tdLibWrapper;
+    Ngf::Client *ngfClient;
     QVariantMap chatMap;
     QVariantMap notificationGroups;
     QMutex chatListMutex;
@@ -51,6 +57,7 @@ private:
     QVariantMap sendNotification(const QString &chatId, const QVariantMap &notificationInformation, const QVariantMap &activeNotifications);
     void removeNotification(const QVariantMap &notificationInformation);
     QString getNotificationText(const QVariantMap &notificationContent);
+    void controlLedNotification(const bool &enabled);
 
 };
 
