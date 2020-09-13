@@ -20,6 +20,8 @@ const char TDLIB_API_HASH[] = "1234567890abcdef1234567890abcdef";
 
 You get the Telegram API ID and hash as soon as you've registered your own application on [https://my.telegram.org](https://my.telegram.org).
 
+Moreover, you need to have a compiled version of [TDLib](https://github.com/tdlib/td) in the subfolder `tdlib/lib` that fits to the target device architecture (e.g. armv7hl) as this repository only includes the header and make files of TDLib.
+
 ## Credits
 This project uses
 - The Telegram Database Library (TDLib) - available on [GitHub.com](https://github.com/tdlib/td). Thanks for making it available under the conditions of the Boost Software License 1.0! Details about the license of TDLib in [its license file](https://github.com/tdlib/td/blob/master/LICENSE_1_0.txt).
