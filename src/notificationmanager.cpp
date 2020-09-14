@@ -180,6 +180,10 @@ QVariantMap NotificationManager::sendNotification(const QString &chatId, const Q
     nemoNotification.setSummary(chatInformation.value("title").toString());
     nemoNotification.setCategory("x-nemo.messaging.im");
     nemoNotification.setTimestamp(QDateTime::fromMSecsSinceEpoch(messageMap.value("date").toLongLong() * 1000));
+    QVariantList remoteActionArguments;
+    remoteActionArguments.append(chatId);
+    remoteActionArguments.append(messageMap.value("id").toString());
+    nemoNotification.setRemoteAction(Notification::remoteAction("default", "openMessage", "de.ygriega.fernschreiber", "/de/ygriega/fernschreiber", "de.ygriega.fernschreiber", "openMessage", remoteActionArguments));
     if (activeNotifications.isEmpty()) {
         QString notificationBody;
         if (addAuthor) {

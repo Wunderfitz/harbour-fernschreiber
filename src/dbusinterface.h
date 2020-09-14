@@ -16,22 +16,32 @@
     You should have received a copy of the GNU General Public License
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
-import QtQuick 2.0
-import Sailfish.Silica 1.0
-import "pages"
 
-ApplicationWindow
+#ifndef DBUSINTERFACE_H
+#define DBUSINTERFACE_H
+
+#include <QObject>
+#include <QtDBus>
+
+#include "dbusadaptor.h"
+
+const QString INTERFACE_NAME = "de.ygriega.fernschreiber";
+const QString PATH_NAME = "/de/ygriega/fernschreiber";
+
+class DBusInterface : public QObject
 {
-    id: appWindow
+    Q_OBJECT
+public:
+    explicit DBusInterface(QObject *parent = nullptr);
+    DBusAdaptor *getDBusAdaptor();
 
-    initialPage: Qt.resolvedUrl("pages/OverviewPage.qml")
-    cover: Qt.resolvedUrl("pages/CoverPage.qml")
-    allowedOrientations: defaultAllowedOrientations
+signals:
 
-    Connections {
-        target: dBusAdaptor
-        onPleaseOpenMessage: {
-            appWindow.activate();
-        }
-    }
-}
+public slots:
+
+private:
+    DBusAdaptor *dbusAdaptor;
+
+};
+
+#endif // DBUSINTERFACE_H

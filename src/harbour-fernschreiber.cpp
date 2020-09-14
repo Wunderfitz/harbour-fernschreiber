@@ -33,6 +33,7 @@
 #include "chatlistmodel.h"
 #include "chatmodel.h"
 #include "notificationmanager.h"
+#include "dbusadaptor.h"
 
 int main(int argc, char *argv[])
 {
@@ -44,6 +45,9 @@ int main(int argc, char *argv[])
     TDLibWrapper *tdLibWrapper = new TDLibWrapper(view.data());
     context->setContextProperty("tdLibWrapper", tdLibWrapper);
     qmlRegisterType<TDLibWrapper>("WerkWolf.Fernschreiber", 1, 0, "TelegramAPI");
+
+    DBusAdaptor *dBusAdaptor = tdLibWrapper->getDBusAdaptor();
+    context->setContextProperty("dBusAdaptor", dBusAdaptor);
 
     ChatListModel chatListModel(tdLibWrapper);
     context->setContextProperty("chatListModel", &chatListModel);

@@ -42,6 +42,9 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
         tdLibDatabaseDirectory.mkpath(tdLibDatabaseDirectoryPath);
     }
 
+    this->dbusInterface = new DBusInterface(this);
+    this->initializeOpenWith();
+
     connect(this->tdLibReceiver, SIGNAL(versionDetected(QString)), this, SLOT(handleVersionDetected(QString)));
     connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString)), this, SLOT(handleAuthorizationStateChanged(QString)));
     connect(this->tdLibReceiver, SIGNAL(optionUpdated(QString, QVariant)), this, SLOT(handleOptionUpdated(QString, QVariant)));
@@ -312,6 +315,11 @@ void TDLibWrapper::controlScreenSaver(const bool &enabled)
     }
 }
 
+DBusAdaptor *TDLibWrapper::getDBusAdaptor()
+{
+    return this->dbusInterface->getDBusAdaptor();
+}
+
 void TDLibWrapper::handleVersionDetected(const QString &version)
 {
     this->version = version;
@@ -564,5 +572,31 @@ void TDLibWrapper::setLogVerbosityLevel()
     requestObject.insert("@type", "setLogVerbosityLevel");
     requestObject.insert("new_verbosity_level", 2);
     this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::initializeOpenWith()
+{
+    qDebug() << "[TDLibWrapper] Initialize open-with";
+
+    QString dbusPathName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/dbus-1/services";
+    QDir dbusPath(dbusPathName);
+    if (!dbusPath.exists()) {
+        qDebug() << "[TDLibWrapper] Creating D-Bus directory " << dbusPathName;
+        dbusPath.mkpath(dbusPathName);
+    }
+    QString dbusServiceFileName = dbusPathName + "/de.ygriega.fernschreiber.service";
+    QFile dbusServiceFile(dbusServiceFileName);
+    if (!dbusServiceFile.exists()) {
+        qDebug() << "[TDLibWrapper] Creating D-Bus service file at " << dbusServiceFile.fileName();
+        if (dbusServiceFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream fileOut(&dbusServiceFile);
+            fileOut.setCodec("UTF-8");
+            fileOut << QString("[D-BUS Service]").toUtf8() << "\n";
+            fileOut << QString("Name=de.ygriega.fernschreiber").toUtf8() << "\n";
+            fileOut << QString("Exec=/usr/bin/invoker -s --type=silica-qt5 /usr/bin/harbour-fernschreiber").toUtf8() << "\n";
+            fileOut.flush();
+            dbusServiceFile.close();
+        }
+    }
 }
 

@@ -26,6 +26,8 @@
 #include <QStandardPaths>
 #include <td/telegram/td_json_client.h>
 #include "tdlibreceiver.h"
+#include "dbusadaptor.h"
+#include "dbusinterface.h"
 
 class TDLibWrapper : public QObject
 {
@@ -70,6 +72,8 @@ public:
     Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
     Q_INVOKABLE void openFileOnDevice(const QString &filePath);
     Q_INVOKABLE void controlScreenSaver(const bool &enabled);
+
+    DBusAdaptor *getDBusAdaptor();
 
     // Direct TDLib functions
     Q_INVOKABLE void sendRequest(const QVariantMap &requestObject);
@@ -142,6 +146,7 @@ public slots:
 private:
     void *tdLibClient;
     TDLibReceiver *tdLibReceiver;
+    DBusInterface *dbusInterface;
     QString version;
     TDLibWrapper::AuthorizationState authorizationState;
     TDLibWrapper::ConnectionState connectionState;
@@ -157,6 +162,7 @@ private:
     void setInitialParameters();
     void setEncryptionKey();
     void setLogVerbosityLevel();
+    void initializeOpenWith();
 
 };
 

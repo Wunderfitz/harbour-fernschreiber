@@ -16,22 +16,18 @@
     You should have received a copy of the GNU General Public License
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
-import QtQuick 2.0
-import Sailfish.Silica 1.0
-import "pages"
 
-ApplicationWindow
+#include "dbusadaptor.h"
+
+#include <QDebug>
+
+DBusAdaptor::DBusAdaptor(QObject *parent): QDBusAbstractAdaptor(parent)
 {
-    id: appWindow
 
-    initialPage: Qt.resolvedUrl("pages/OverviewPage.qml")
-    cover: Qt.resolvedUrl("pages/CoverPage.qml")
-    allowedOrientations: defaultAllowedOrientations
+}
 
-    Connections {
-        target: dBusAdaptor
-        onPleaseOpenMessage: {
-            appWindow.activate();
-        }
-    }
+void DBusAdaptor::openMessage(const QString &chatId, const QString &messageId)
+{
+    qDebug() << "[DBusAdaptor] Open Message " << chatId << messageId;
+    emit pleaseOpenMessage(chatId, messageId);
 }
