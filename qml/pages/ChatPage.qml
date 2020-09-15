@@ -359,6 +359,7 @@ Page {
                             spacing: Theme.paddingSmall
                             width: parent.width - ( 2 * Theme.horizontalPageMargin )
                             anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.verticalCenter: parent.verticalCenter
 
                             ProfileThumbnail {
                                 id: messagePictureThumbnail
