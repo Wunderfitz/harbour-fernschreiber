@@ -223,6 +223,21 @@ Page {
                             pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : display });
                         }
 
+                        menu: ContextMenu {
+                            MenuItem {
+                                onClicked: {
+                                    var newNotificationSettings = display.notification_settings;
+                                    if (newNotificationSettings.mute_for > 0) {
+                                        newNotificationSettings.mute_for = 0;
+                                    } else {
+                                        newNotificationSettings.mute_for = 666666;
+                                    }
+                                    tdLibWrapper.setChatNotificationSettings(display.id, newNotificationSettings);
+                                }
+                                text: display.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
+                            }
+                        }
+
                         Connections {
                             target: chatListModel
                             onChatChanged: {

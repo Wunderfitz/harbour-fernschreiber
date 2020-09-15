@@ -90,6 +90,7 @@ void TDLibWrapper::sendRequest(const QVariantMap &requestObject)
 {
     qDebug() << "[TDLibWrapper] Sending request to TD Lib, object type name: " << requestObject.value("@type").toString();
     QJsonDocument requestDocument = QJsonDocument::fromVariant(requestObject);
+    qDebug().noquote() << requestDocument.toJson();
     td_json_client_send(this->tdLibClient, requestDocument.toJson().constData());
 }
 
@@ -227,7 +228,7 @@ void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
 
 void TDLibWrapper::setOptionInteger(const QString &optionName, const int &optionValue)
 {
-    qDebug() << "[TDLibWrapper] Setting integet option " << optionName << optionValue;
+    qDebug() << "[TDLibWrapper] Setting integer option " << optionName << optionValue;
     QVariantMap requestObject;
     requestObject.insert("@type", "setOption");
     requestObject.insert("name", optionName);
@@ -235,6 +236,16 @@ void TDLibWrapper::setOptionInteger(const QString &optionName, const int &option
     optionValueMap.insert("@type", "optionValueInteger");
     optionValueMap.insert("value", optionValue);
     requestObject.insert("value", optionValueMap);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings)
+{
+    qDebug() << "[TDLibWrapper] Notification settings for chat " << chatId << notificationSettings;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "setChatNotificationSettings");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("notification_settings", notificationSettings);
     this->sendRequest(requestObject);
 }
 
