@@ -43,6 +43,19 @@ Page {
         }
     }
 
+    Connections {
+        target: dBusAdaptor
+        onPleaseOpenMessage: {
+            console.log("[OverviewPage] Opening chat from external call...")
+            if (chatListCreated) {
+                if (status !== PageStatus.Active) {
+                    pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ), PageStackAction.Immediate);
+                }
+                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chatId) });
+            }
+        }
+    }
+
     Timer {
         id: chatListCreatedTimer
         interval: 500
@@ -201,7 +214,7 @@ Page {
                     model: chatListModel
                     delegate: ListItem {
 
-                        id: chatListItem
+                        id: chatListViewItem
 
                         contentHeight: chatListRow.height + chatListSeparator.height + 2 * Theme.paddingMedium
                         contentWidth: parent.width

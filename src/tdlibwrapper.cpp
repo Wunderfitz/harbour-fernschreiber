@@ -271,6 +271,12 @@ QVariantMap TDLibWrapper::getSuperGroup(const QString &groupId)
     return this->superGroups.value(groupId).toMap();
 }
 
+QVariantMap TDLibWrapper::getChat(const QString &chatId)
+{
+    qDebug() << "[TDLibWrapper] Returning chat information for ID " << chatId;
+    return this->chats.value(chatId).toMap();
+}
+
 void TDLibWrapper::copyFileToDownloads(const QString &filePath)
 {
     qDebug() << "[TDLibWrapper] Copy file to downloads " << filePath;
