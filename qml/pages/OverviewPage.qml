@@ -303,7 +303,7 @@ Page {
 
                                     Text {
                                         id: chatListNameText
-                                        text: display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) : qsTr("Unknown")
+                                        text: display.title !== "" ? Emoji.emojify(display.title, font.pixelSize) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", font.pixelSize) : "" ) : qsTr("Unknown")
                                         textFormat: Text.StyledText
                                         font.pixelSize: Theme.fontSizeMedium
                                         color: Theme.primaryColor
