@@ -193,8 +193,8 @@ Page {
         onUnreadCountUpdated: {
             console.log("[ChatPage] Unread count updated, new count: " + unreadCount);
             chatInformation.unread_count = unreadCount;
-            chatUnreadMessagesCountBackground.visible = ( !chatPage.loading && unreadCount > 0 )
-            chatUnreadMessagesCount.text = unreadCount > 99 ? "99+" : unreadCount
+            chatUnreadMessagesCountBackground.visible = ( !chatPage.loading && unreadCount > 0 );
+            chatUnreadMessagesCount.text = unreadCount > 99 ? "99+" : unreadCount;
         }
         onLastReadSentMessageUpdated: {
             console.log("[ChatPage] Updating last read sent index, new index: " + lastReadSentIndex);
@@ -354,6 +354,14 @@ Page {
                             }
                         }
 
+                        Connections {
+                            target: chatModel
+                            onUnreadCountUpdated: {
+                                messageBackground.color = index > ( chatView.count - unreadCount - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor;
+                                messageBackground.opacity = index > ( chatView.count - unreadCount - 1 ) ? 0.5 : 0.2;
+                            }
+                        }
+
                         Row {
                             id: messageTextRow
                             spacing: Theme.paddingSmall
@@ -389,9 +397,9 @@ Page {
                                     }
                                     height: messageTextColumn.height + ( 2 * Theme.paddingMedium )
 
-                                    color: Theme.secondaryColor
+                                    color: index > ( chatView.count - chatInformation.unread_count - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor
                                     radius: parent.width / 50
-                                    opacity: 0.2
+                                    opacity: index > ( chatView.count - chatInformation.unread_count - 1 ) ? 0.5 : 0.2
                                 }
 
                                 Column {
