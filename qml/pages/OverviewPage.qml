@@ -166,6 +166,10 @@ Page {
                 text: qsTr("About Fernschreiber")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"))
             }
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/SettingsPage.qml"))
+            }
         }
 
         Column {

@@ -675,6 +675,34 @@ Page {
                                     newMessageInReplyToRow.inReplyToMessage = null;
                                 }
                             }
+                            EnterKey.onClicked: {
+                                if (tdLibWrapper.getSendByEnter()) {
+                                    tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                                    newMessageTextField.text = "";
+                                    newMessageTextField.focus = false;
+                                }
+                            }
+
+                            Component.onCompleted: {
+                                if (tdLibWrapper.getSendByEnter()) {
+                                    EnterKey.iconSource = "image://theme/icon-m-chat";
+                                    EnterKey.enabled = false;
+                                }
+                            }
+
+                            onTextChanged: {
+                                if (text.length === 0) {
+                                    newMessageSendButton.enabled = false;
+                                    if (tdLibWrapper.getSendByEnter()) {
+                                        EnterKey.enabled = false;
+                                    }
+                                } else {
+                                    newMessageSendButton.enabled = true;
+                                    if (tdLibWrapper.getSendByEnter()) {
+                                        EnterKey.enabled = true;
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -686,6 +714,7 @@ Page {
                             id: newMessageSendButton
                             icon.source: "image://theme/icon-m-chat"
                             anchors.horizontalCenter: parent.horizontalCenter
+                            enabled: false
                             onClicked: {
                                 tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
                                 newMessageTextField.text = "";

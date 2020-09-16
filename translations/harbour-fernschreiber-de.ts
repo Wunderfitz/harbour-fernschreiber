@@ -374,6 +374,29 @@
         <source>Mute Chat</source>
         <translation>Chat stummschalten</translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <source>Behavior</source>
+        <translation>Verhalten</translation>
+    </message>
+    <message>
+        <source>Send message by enter</source>
+        <translation>Nachricht mit Enter senden</translation>
+    </message>
+    <message>
+        <source>Send your message by pressing the enter key</source>
+        <translation>Senden Sie Ihre Nachricht, indem Sie die Enter-Taste drücken</translation>
+    </message>
 </context>
 <context>
     <name>VideoPage</name>

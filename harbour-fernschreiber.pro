@@ -39,6 +39,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/InitializationPage.qml \
     qml/pages/OverviewPage.qml \
     qml/pages/AboutPage.qml \
+    qml/pages/SettingsPage.qml \
     qml/pages/VideoPage.qml \
     rpm/harbour-fernschreiber.changes.in \
     rpm/harbour-fernschreiber.changes.run.in \

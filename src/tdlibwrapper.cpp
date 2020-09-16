@@ -30,7 +30,7 @@
 #include <QDBusConnection>
 #include <QDBusInterface>
 
-TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
+TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
 {
     qDebug() << "[TDLibWrapper] Initializing TD Lib...";
     this->tdLibClient = td_json_client_create();
@@ -331,6 +331,16 @@ void TDLibWrapper::controlScreenSaver(const bool &enabled)
         qDebug() << "Disabling screensaver";
         dbusInterface.call("req_display_blanking_pause");
     }
+}
+
+void TDLibWrapper::setSendByEnter(const bool &sendByEnter)
+{
+    settings.setValue("sendByEnter", sendByEnter);
+}
+
+bool TDLibWrapper::getSendByEnter()
+{
+    return settings.value("sendByEnter", false).toBool();
 }
 
 DBusAdaptor *TDLibWrapper::getDBusAdaptor()
