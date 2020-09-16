@@ -39,6 +39,12 @@ Page {
         if (initializationPage.authorizationState === TelegramAPI.WaitCode) {
             welcomeFlickable.visible = false;
             enterPinColumn.visible = true;
+            enterPasswordColumn.visible = false;
+        }
+        if (initializationPage.authorizationState === TelegramAPI.WaitPassword) {
+            welcomeFlickable.visible = false;
+            enterPinColumn.visible = false;
+            enterPasswordColumn.visible = true;
         }
     }
 
@@ -49,6 +55,12 @@ Page {
             case TelegramAPI.WaitCode:
                 initializationPage.loading = false;
                 enterPinColumn.visible = true;
+                enterPasswordColumn.visible = false;
+                break;
+            case TelegramAPI.WaitPassword:
+                initializationPage.loading = false;
+                enterPinColumn.visible = false;
+                enterPasswordColumn.visible = true;
                 break;
             case TelegramAPI.AuthorizationReady:
                 initializationPage.loading = false;
@@ -98,6 +110,58 @@ Page {
             onClicked: {
                 pinErrorColumn.visible = false;
                 welcomeFlickable.visible = true;
+            }
+        }
+    }
+
+    Column {
+        y: ( parent.height - ( fernschreiberPasswordImage.height + enterPasswordLabel.height + enterPasswordField.height + enterPasswordButton.height + ( 3 * Theme.paddingSmall ) ) ) / 2
+        width: parent.width
+        id: enterPasswordColumn
+        spacing: Theme.paddingSmall
+
+        Behavior on opacity { NumberAnimation {} }
+        opacity: visible ? true : false
+        visible: false
+
+        Image {
+            id: fernschreiberPasswordImage
+            source: "../../images/fernschreiber.png"
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+
+            fillMode: Image.PreserveAspectFit
+            asynchronous: true
+            width: 1/2 * parent.width
+        }
+
+        InfoLabel {
+            id: enterPasswordLabel
+            font.pixelSize: Theme.fontSizeLarge
+            text: qsTr("Please enter your password:")
+        }
+
+        TextField {
+            id: enterPasswordField
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+            font.pixelSize: Theme.fontSizeLarge
+            width: parent.width - 2 * Theme.horizontalPageMargin
+            horizontalAlignment: TextInput.AlignHCenter
+        }
+
+        Button {
+            id: enterPasswordButton
+            text: qsTr("OK")
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+            onClicked: {
+                initializationPage.loading = true;
+                enterPasswordColumn.visible = false;
+                tdLibWrapper.setAuthenticationPassword(enterPasswordField.text);
             }
         }
     }

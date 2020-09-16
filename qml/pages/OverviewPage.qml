@@ -113,6 +113,10 @@ Page {
             overviewPage.loading = false;
             pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
             break;
+        case TelegramAPI.WaitPassword:
+            overviewPage.loading = false;
+            pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+            break;
         case TelegramAPI.AuthorizationReady:
             overviewPage.loading = false;
             overviewPage.initializationCompleted = true;

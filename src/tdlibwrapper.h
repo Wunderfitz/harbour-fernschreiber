@@ -83,6 +83,7 @@ public:
     Q_INVOKABLE void sendRequest(const QVariantMap &requestObject);
     Q_INVOKABLE void setAuthenticationPhoneNumber(const QString &phoneNumber);
     Q_INVOKABLE void setAuthenticationCode(const QString &authenticationCode);
+    Q_INVOKABLE void setAuthenticationPassword(const QString &authenticationPassword);
     Q_INVOKABLE void getChats();
     Q_INVOKABLE void downloadFile(const QString &fileId);
     Q_INVOKABLE void openChat(const QString &chatId);

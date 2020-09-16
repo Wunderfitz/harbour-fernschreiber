@@ -132,6 +132,15 @@ void TDLibWrapper::setAuthenticationCode(const QString &authenticationCode)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::setAuthenticationPassword(const QString &authenticationPassword)
+{
+    qDebug() << "[TDLibWrapper] Set authentication password " << authenticationPassword;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "checkAuthenticationPassword");
+    requestObject.insert("password", authenticationPassword);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::getChats()
 {
     qDebug() << "[TDLibWrapper] Getting chats";
