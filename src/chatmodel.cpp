@@ -33,6 +33,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper)
     connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
     connect(this->tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
     connect(this->tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
 }
 
 ChatModel::~ChatModel()
@@ -83,6 +84,11 @@ void ChatModel::triggerLoadMoreHistory()
         this->inIncrementalUpdate = true;
         this->tdLibWrapper->getChatHistory(this->chatId, this->messages.first().toMap().value("id").toLongLong());
     }
+}
+
+QVariantMap ChatModel::getChatInformation()
+{
+    return this->chatInformation;
 }
 
 bool compareMessages(const QVariant &message1, const QVariant &message2)
@@ -196,6 +202,15 @@ void ChatModel::handleMessageSendSucceeded(const QString &messageId, const QStri
         this->messagesMutex.unlock();
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
         emit dataChanged(index(messageIndex), index(messageIndex));
+    }
+}
+
+void ChatModel::handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings)
+{
+    if (chatId == this->chatId) {
+        this->chatInformation.insert("notification_settings", chatNotificationSettings);
+        qDebug() << "[ChatModel] Notification settings updated";
+        emit notificationSettingsUpdated();
     }
 }
 

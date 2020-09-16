@@ -31,6 +31,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper)
     connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
     connect(this->tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
     connect(this->tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
 }
 
 ChatListModel::~ChatListModel()
@@ -163,6 +164,20 @@ void ChatListModel::handleMessageSendSucceeded(const QString &messageId, const Q
     qDebug() << "[ChatListModel] Updating last message for chat " << chatId << " at index " << chatIndex << ", as message was sent, old ID: " << oldMessageId << ", new ID: " << messageId;
     QVariantMap currentChat = this->chatList.value(chatIndex).toMap();
     currentChat.insert("last_message", message);
+    this->chatList.replace(chatIndex, currentChat);
+    emit dataChanged(this->index(chatIndex), this->index(chatIndex));
+    emit chatChanged(chatId);
+
+    this->chatListMutex.unlock();
+}
+
+void ChatListModel::handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings)
+{
+    this->chatListMutex.lock();
+    int chatIndex = this->chatIndexMap.value(chatId).toInt();
+    qDebug() << "[ChatListModel] Updating notification settings for chat " << chatId << " at index " << chatIndex;
+    QVariantMap currentChat = this->chatList.value(chatIndex).toMap();
+    currentChat.insert("notification_settings", chatNotificationSettings);
     this->chatList.replace(chatIndex, currentChat);
     emit dataChanged(this->index(chatIndex), this->index(chatIndex));
     emit chatChanged(chatId);

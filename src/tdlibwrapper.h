@@ -118,6 +118,7 @@ signals:
     void activeNotificationsUpdated(const QVariantList notificationGroups);
     void notificationGroupUpdated(const QVariantMap notificationGroupUpdate);
     void notificationUpdated(const QVariantMap updatedNotification);
+    void chatNotificationSettingsUpdated(const QString &chatId, const QVariantMap chatNotificationSettings);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -144,6 +145,7 @@ public slots:
     void handleUpdateActiveNotifications(const QVariantList notificationGroups);
     void handleUpdateNotificationGroup(const QVariantMap notificationGroupUpdate);
     void handleUpdateNotification(const QVariantMap updatedNotification);
+    void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
 
 private:
     void *tdLibClient;

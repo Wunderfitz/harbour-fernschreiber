@@ -230,7 +230,7 @@ Page {
                                     if (newNotificationSettings.mute_for > 0) {
                                         newNotificationSettings.mute_for = 0;
                                     } else {
-                                        newNotificationSettings.mute_for = 666666;
+                                        newNotificationSettings.mute_for = 6666666;
                                     }
                                     tdLibWrapper.setChatNotificationSettings(display.id, newNotificationSettings);
                                 }
@@ -246,7 +246,7 @@ Page {
                                     chatListPictureThumbnail.photoData = (typeof display.photo !== "undefined") ? display.photo.small : "";
                                     chatUnreadMessagesCountBackground.visible = display.unread_count > 0;
                                     chatUnreadMessagesCount.text = display.unread_count > 99 ? "99+" : display.unread_count;
-                                    chatListNameText.text = display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) : qsTr("Unknown");
+                                    chatListNameText.text = display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown")
                                     chatListLastMessageText.text = (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getMessageText(display.last_message, true), Theme.fontSizeExtraSmall) : qsTr("Unknown");
                                     messageContactTimeElapsedText.text = (typeof display.last_message !== "undefined") ? Functions.getDateTimeElapsed(display.last_message.date) : qsTr("Unknown");
                                 }
@@ -318,7 +318,7 @@ Page {
 
                                     Text {
                                         id: chatListNameText
-                                        text: display.title !== "" ? Emoji.emojify(display.title, font.pixelSize) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", font.pixelSize) : "" ) : qsTr("Unknown")
+                                        text: display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown")
                                         textFormat: Text.StyledText
                                         font.pixelSize: Theme.fontSizeMedium
                                         color: Theme.primaryColor

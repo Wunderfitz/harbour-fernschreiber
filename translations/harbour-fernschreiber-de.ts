@@ -153,6 +153,14 @@
         <source>Loading messages...</source>
         <translation>Lade Nachrichten...</translation>
     </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Stummschaltung des Chats aufheben</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Chat stummschalten</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -360,11 +368,11 @@
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Stummschaltung des Chats aufheben</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Chat stummschalten</translation>
     </message>
 </context>
 <context>

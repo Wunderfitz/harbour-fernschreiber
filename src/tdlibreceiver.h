@@ -60,6 +60,7 @@ signals:
     void activeNotificationsUpdated(const QVariantList notificationGroups);
     void notificationGroupUpdated(const QVariantMap notificationGroupUpdate);
     void notificationUpdated(const QVariantMap updatedNotification);
+    void chatNotificationSettingsUpdated(const QString &chatId, const QVariantMap updatedChatNotificationSettings);
 
 private:
     void *tdLibClient;
@@ -91,6 +92,7 @@ private:
     void processUpdateActiveNotifications(const QVariantMap &receivedInformation);
     void processUpdateNotificationGroup(const QVariantMap &receivedInformation);
     void processUpdateNotification(const QVariantMap &receivedInformation);
+    void processUpdateChatNotificationSettings(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

@@ -38,6 +38,7 @@ public:
 
     Q_INVOKABLE void initialize(const QVariantMap &chatInformation);
     Q_INVOKABLE void triggerLoadMoreHistory();
+    Q_INVOKABLE QVariantMap getChatInformation();
 
 signals:
     void messagesReceived(const int &modelIndex, const int &lastReadSentIndex);
@@ -45,6 +46,7 @@ signals:
     void newMessageReceived();
     void unreadCountUpdated(const int &unreadCount, const QString &lastReadInboxMessageId);
     void lastReadSentMessageUpdated(const int &lastReadSentIndex);
+    void notificationSettingsUpdated();
 
 public slots:
     void handleMessagesReceived(const QVariantList &messages);
@@ -52,6 +54,7 @@ public slots:
     void handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount);
     void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
+    void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
 
 private:
 

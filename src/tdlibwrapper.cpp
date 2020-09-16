@@ -69,6 +69,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SLOT(handleUpdateActiveNotifications(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(notificationGroupUpdated(QVariantMap)), this, SLOT(handleUpdateNotificationGroup(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(notificationUpdated(QVariantMap)), this, SLOT(handleUpdateNotification(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
 
     this->tdLibReceiver->start();
 
@@ -548,6 +549,11 @@ void TDLibWrapper::handleUpdateNotificationGroup(const QVariantMap notificationG
 void TDLibWrapper::handleUpdateNotification(const QVariantMap updatedNotification)
 {
     emit notificationUpdated(updatedNotification);
+}
+
+void TDLibWrapper::handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings)
+{
+    emit chatNotificationSettingsUpdated(chatId, chatNotificationSettings);
 }
 
 void TDLibWrapper::setInitialParameters()

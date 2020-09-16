@@ -153,6 +153,14 @@
         <source>Loading messages...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

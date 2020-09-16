@@ -223,6 +223,30 @@ Page {
         contentWidth: parent.width
         anchors.fill: parent
 
+        PullDownMenu {
+            MenuItem {
+                id: muteChatMenuItem
+                onClicked: {
+                    var newNotificationSettings = chatInformation.notification_settings;
+                    if (newNotificationSettings.mute_for > 0) {
+                        newNotificationSettings.mute_for = 0;
+                    } else {
+                        newNotificationSettings.mute_for = 6666666;
+                    }
+                    tdLibWrapper.setChatNotificationSettings(chatInformation.id, newNotificationSettings);
+                }
+                text: chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
+            }
+        }
+
+        Connections {
+            target: chatModel
+            onNotificationSettingsUpdated: {
+                chatInformation = chatModel.getChatInformation();
+                muteChatMenuItem.text = chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat");
+            }
+        }
+
         Column {
             id: chatColumn
             width: parent.width
