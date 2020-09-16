@@ -39,6 +39,7 @@ public:
     Q_INVOKABLE void initialize(const QVariantMap &chatInformation);
     Q_INVOKABLE void triggerLoadMoreHistory();
     Q_INVOKABLE QVariantMap getChatInformation();
+    Q_INVOKABLE QVariantMap getMessage(const int &index);
 
 signals:
     void messagesReceived(const int &modelIndex, const int &lastReadSentIndex);

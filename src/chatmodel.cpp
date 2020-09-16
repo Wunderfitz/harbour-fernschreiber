@@ -91,6 +91,15 @@ QVariantMap ChatModel::getChatInformation()
     return this->chatInformation;
 }
 
+QVariantMap ChatModel::getMessage(const int &index)
+{
+    if (index < this->messages.size()) {
+        return this->messages.at(index).toMap();
+    } else {
+        return QVariantMap();
+    }
+}
+
 bool compareMessages(const QVariant &message1, const QVariant &message2)
 {
     QVariantMap messageMap1 = message1.toMap();

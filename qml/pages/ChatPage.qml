@@ -186,6 +186,10 @@ Page {
             chatView.lastReadSentIndex = lastReadSentIndex;
             chatView.positionViewAtIndex(modelIndex, ListView.Contain);
             chatPage.loading = false;
+            if (chatView.height > chatView.contentHeight) {
+                console.log("[ChatPage] Chat content quite small...");
+                tdLibWrapper.viewMessage(chatInformation.id, chatModel.getMessage(chatView.count - 1).id);
+            }
         }
         onNewMessageReceived: {
             // Notify user about new messages...
