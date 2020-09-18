@@ -161,6 +161,10 @@
         <source>Mute Chat</source>
         <translation>Chat stummschalten</translation>
     </message>
+    <message>
+        <source>Edit Message</source>
+        <translation>Nachricht ändern</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

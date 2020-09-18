@@ -228,6 +228,7 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
+            visible: chatInformation.id !== chatPage.myUserId
             MenuItem {
                 id: muteChatMenuItem
                 onClicked: {
@@ -391,6 +392,14 @@ Page {
                                     newMessageTextField.focus = true;
                                 }
                                 text: qsTr("Reply to Message")
+                            }
+                            MenuItem {
+                                onClicked: {
+                                    newMessageColumn.editMessageId = display.id;
+                                    newMessageTextField.text = Functions.getMessageText(display, false);
+                                }
+                                text: qsTr("Edit Message")
+                                visible: display.can_be_edited
                             }
                         }
 
@@ -645,10 +654,10 @@ Page {
                 visible: !chatPage.isChannel
 
                 property string replyToMessageId: "0";
+                property string editMessageId: "0";
 
                 InReplyToRow {
                     onInReplyToMessageChanged: {
-                        console.log("This is a reply!");
                         if (inReplyToMessage) {
                             newMessageColumn.replyToMessageId = newMessageInReplyToRow.inReplyToMessage.id.toString()
                             newMessageInReplyToRow.visible = true;
@@ -664,10 +673,21 @@ Page {
                     visible: false
                 }
 
+                Text {
+                    width: parent.width
+
+                    id: editMessageText
+                    font.pixelSize: Theme.fontSizeSmall
+                    font.bold: true
+                    text: qsTr("Edit Message")
+                    color: Theme.secondaryColor
+                    visible: newMessageColumn.editMessageId !== "0"
+                }
+
                 Row {
                     id: newMessageRow
                     width: parent.width
-                    height: sendMessageColumn.height + Theme.paddingLarge
+                    height: sendMessageColumn.height + Theme.paddingMedium
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     Column {
@@ -682,9 +702,14 @@ Page {
                             placeholderText: qsTr("Your message")
                             labelVisible: false
                             textLeftMargin: 0
+                            textTopMargin: 0
                             onFocusChanged: {
                                 if (!focus) {
                                     newMessageInReplyToRow.inReplyToMessage = null;
+                                    if (newMessageColumn.editMessageId !== "0") {
+                                        newMessageColumn.editMessageId = "0";
+                                        newMessageTextField.text = "";
+                                    }
                                 }
                             }
                             EnterKey.onClicked: {
@@ -720,7 +745,7 @@ Page {
 
                     Column {
                         anchors.bottom: parent.bottom
-                        anchors.bottomMargin: Theme.paddingLarge
+                        anchors.bottomMargin: Theme.paddingSmall
 
                         IconButton {
                             id: newMessageSendButton

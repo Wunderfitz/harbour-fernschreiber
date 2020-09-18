@@ -161,6 +161,10 @@
         <source>Mute Chat</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Edit Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

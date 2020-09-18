@@ -232,6 +232,7 @@ Page {
                         }
 
                         menu: ContextMenu {
+                            visible: display.id !== overviewPage.ownUserId
                             MenuItem {
                                 onClicked: {
                                     var newNotificationSettings = display.notification_settings;
