@@ -260,7 +260,7 @@ Page {
             Row {
                 id: headerRow
                 width: parent.width - (3 * Theme.horizontalPageMargin)
-                height: chatOverviewColumn.height + ( 2 * Theme.paddingLarge )
+                height: chatOverviewColumn.height + Theme.paddingLarge
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingMedium
 
@@ -315,6 +315,18 @@ Page {
                 id: chatViewItem
                 width: parent.width
                 height: parent.height - Theme.paddingMedium - headerRow.height - ( chatPage.isChannel ? 0 : ( newMessageColumn.height + Theme.paddingMedium ) )
+
+                property int previousHeight;
+
+                Component.onCompleted: {
+                    previousHeight = height;
+                }
+
+                onHeightChanged: {
+                    var deltaHeight = previousHeight - height;
+                    chatView.contentY = chatView.contentY + deltaHeight;
+                    previousHeight = height;
+                }
 
                 Timer {
                     id: chatViewLoadingTimer
@@ -655,7 +667,7 @@ Page {
                 Row {
                     id: newMessageRow
                     width: parent.width
-                    height: sendMessageColumn.height + ( 2 * Theme.paddingLarge )
+                    height: sendMessageColumn.height + Theme.paddingLarge
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     Column {

@@ -51,7 +51,7 @@ Page {
 
                 fillMode: Image.PreserveAspectFit
                 asynchronous: true
-                width: 2/3 * parent.width
+                width: aboutPage.isPortrait ? ( 1/2 * parent.width ) : ( 1/2 * parent.height )
 
             }
 
