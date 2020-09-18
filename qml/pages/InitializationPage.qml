@@ -142,7 +142,7 @@ Page {
             text: qsTr("Please enter your password:")
         }
 
-        TextField {
+        PasswordField {
             id: enterPasswordField
             anchors {
                 horizontalCenter: parent.horizontalCenter

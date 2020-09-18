@@ -276,6 +276,10 @@
         <source>Restart authentication</source>
         <translation>Authentifizierung neu starten</translation>
     </message>
+    <message>
+        <source>Please enter your password:</source>
+        <translation>Bitte geben Sie Ihr Passwort ein:</translation>
+    </message>
 </context>
 <context>
     <name>NotificationManager</name>

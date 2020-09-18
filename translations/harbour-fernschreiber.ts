@@ -276,6 +276,10 @@
         <source>Restart authentication</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Please enter your password:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NotificationManager</name>
