@@ -256,7 +256,7 @@ Page {
             id: chatColumn
             width: parent.width
             height: parent.height
-            spacing: Theme.paddingMedium
+            spacing: Theme.paddingSmall
 
             Row {
                 id: headerRow
@@ -271,13 +271,15 @@ Page {
                     replacementStringHint: chatNameText.text
                     width: chatOverviewColumn.height
                     height: chatOverviewColumn.height
-                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: Theme.paddingSmall
                 }
 
                 Column {
                     id: chatOverviewColumn
                     width: parent.width - chatPictureThumbnail.width - Theme.paddingMedium
-                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: Theme.paddingSmall
                     Text {
                         id: chatNameText
                         text: chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, font.pixelSize) : qsTr("Unknown")
@@ -315,7 +317,7 @@ Page {
             Item {
                 id: chatViewItem
                 width: parent.width
-                height: parent.height - Theme.paddingMedium - headerRow.height - ( chatPage.isChannel ? 0 : ( newMessageColumn.height + Theme.paddingMedium ) )
+                height: parent.height - headerRow.height - Theme.paddingSmall - ( chatPage.isChannel ? 0 : ( newMessageColumn.height + Theme.paddingSmall ) )
 
                 property int previousHeight;
 
@@ -397,6 +399,7 @@ Page {
                                 onClicked: {
                                     newMessageColumn.editMessageId = display.id;
                                     newMessageTextField.text = Functions.getMessageText(display, false);
+                                    newMessageTextField.focus = true;
                                 }
                                 text: qsTr("Edit Message")
                                 visible: display.can_be_edited
@@ -408,6 +411,10 @@ Page {
                             onUnreadCountUpdated: {
                                 messageBackground.color = index > ( chatView.count - unreadCount - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor;
                                 messageBackground.opacity = index > ( chatView.count - unreadCount - 1 ) ? 0.5 : 0.2;
+                            }
+                            onNewMessageReceived: {
+                                messageBackground.color = index > ( chatView.count - chatInformation.unreadCount - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor;
+                                messageBackground.opacity = index > ( chatView.count - chatInformation.unreadCount - 1 ) ? 0.5 : 0.2;
                             }
                         }
 
@@ -648,7 +655,7 @@ Page {
 
             Column {
                 id: newMessageColumn
-                spacing: Theme.paddingMedium
+                spacing: Theme.paddingSmall
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: !chatPage.isChannel
