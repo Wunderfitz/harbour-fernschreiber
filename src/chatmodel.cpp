@@ -34,6 +34,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper)
     connect(this->tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
     connect(this->tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)), this, SLOT(handleMessageContentUpdated(QString, QString, QVariantMap)));
 }
 
 ChatModel::~ChatModel()
@@ -220,6 +221,24 @@ void ChatModel::handleChatNotificationSettingsUpdated(const QString &chatId, con
         this->chatInformation.insert("notification_settings", chatNotificationSettings);
         qDebug() << "[ChatModel] Notification settings updated";
         emit notificationSettingsUpdated();
+    }
+}
+
+void ChatModel::handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent)
+{
+    qDebug() << "[ChatModel] Message content updated" << chatId << messageId;
+    if (chatId == this->chatId && this->messageIndexMap.contains(messageId)) {
+        this->messagesMutex.lock();
+        qDebug() << "[ChatModel] We know the message that was updated " << messageId;
+        int messageIndex = this->messageIndexMap.value(messageId).toInt();
+        QVariantMap messageToBeUpdated = this->messages.at(messageIndex).toMap();
+        messageToBeUpdated.insert("content", newContent);
+        this->messages.replace(messageIndex, messageToBeUpdated);
+        this->calculateMessageIndexMap();
+        qDebug() << "[ChatModel] Message was replaced at index " << messageIndex;
+        this->messagesMutex.unlock();
+        emit messageUpdated(messageIndex);
+        emit dataChanged(index(messageIndex), index(messageIndex));
     }
 }
 

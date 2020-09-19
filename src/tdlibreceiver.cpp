@@ -78,6 +78,7 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateActiveNotifications") { this->processUpdateActiveNotifications(receivedInformation); }
     if (objectTypeName == "updateNotificationGroup") { this->processUpdateNotificationGroup(receivedInformation); }
     if (objectTypeName == "updateChatNotificationSettings") { this->processUpdateChatNotificationSettings(receivedInformation); }
+    if (objectTypeName == "updateMessageContent") { this->processUpdateMessageContent(receivedInformation); }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -265,4 +266,12 @@ void TDLibReceiver::processUpdateChatNotificationSettings(const QVariantMap &rec
     QString chatId = receivedInformation.value("chat_id").toString();
     qDebug() << "[TDLibReceiver] Received new notification settings for chat " << chatId;
     emit chatNotificationSettingsUpdated(chatId, receivedInformation.value("notification_settings").toMap());
+}
+
+void TDLibReceiver::processUpdateMessageContent(const QVariantMap &receivedInformation)
+{
+    QString chatId = receivedInformation.value("chat_id").toString();
+    QString messageId = receivedInformation.value("message_id").toString();
+    qDebug() << "[TDLibReceiver] Message content updated " << chatId << messageId;
+    emit messageContentUpdated(chatId, messageId, receivedInformation.value("new_content").toMap());
 }

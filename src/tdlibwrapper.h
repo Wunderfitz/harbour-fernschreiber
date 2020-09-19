@@ -94,6 +94,7 @@ public:
     Q_INVOKABLE void getMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void setOptionInteger(const QString &optionName, const int &optionValue);
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);
+    Q_INVOKABLE void editMessageText(const QString &chatId, const QString &messageId, const QString &message);
 
 signals:
     void versionDetected(const QString &version);
@@ -123,6 +124,7 @@ signals:
     void notificationGroupUpdated(const QVariantMap notificationGroupUpdate);
     void notificationUpdated(const QVariantMap updatedNotification);
     void chatNotificationSettingsUpdated(const QString &chatId, const QVariantMap chatNotificationSettings);
+    void messageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -150,6 +152,7 @@ public slots:
     void handleUpdateNotificationGroup(const QVariantMap notificationGroupUpdate);
     void handleUpdateNotification(const QVariantMap updatedNotification);
     void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
+    void handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
 
 private:
     void *tdLibClient;

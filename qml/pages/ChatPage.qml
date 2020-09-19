@@ -109,6 +109,11 @@ Page {
 
     function getMessageStatusText(message, listItemIndex, lastReadSentIndex) {
         var messageStatusSuffix = "";
+
+        if (message.edit_date > 0) {
+            messageStatusSuffix += "&nbsp;-&nbsp;" + qsTr("edited");
+        }
+
         if (chatPage.myUserId === message.sender_user_id) {
             messageStatusSuffix += "&nbsp;&nbsp;"
             if (listItemIndex <= lastReadSentIndex) {
@@ -582,6 +587,13 @@ Page {
                                             console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + (index <= lastReadSentIndex));
                                             messageDateText.text = getMessageStatusText(display, index, lastReadSentIndex);
                                         }
+                                        onMessageUpdated: {
+                                            if (index === modelIndex) {
+                                                console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
+                                                messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
+                                                messageText.text = Emoji.emojify(Functions.getMessageText(display, false), font.pixelSize);
+                                            }
+                                        }
                                     }
 
                                     Text {
@@ -721,7 +733,11 @@ Page {
                             }
                             EnterKey.onClicked: {
                                 if (tdLibWrapper.getSendByEnter()) {
-                                    tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                                    if (newMessageColumn.editMessageId !== "0") {
+                                        tdLibWrapper.editMessageText(chatInformation.id, newMessageColumn.editMessageId, newMessageTextField.text);
+                                    } else {
+                                        tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                                    }
                                     newMessageTextField.text = "";
                                     newMessageTextField.focus = false;
                                 }
@@ -760,7 +776,11 @@ Page {
                             anchors.horizontalCenter: parent.horizontalCenter
                             enabled: false
                             onClicked: {
-                                tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                                if (newMessageColumn.editMessageId !== "0") {
+                                    tdLibWrapper.editMessageText(chatInformation.id, newMessageColumn.editMessageId, newMessageTextField.text);
+                                } else {
+                                    tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                                }
                                 newMessageTextField.text = "";
                                 newMessageTextField.focus = false;
                             }
