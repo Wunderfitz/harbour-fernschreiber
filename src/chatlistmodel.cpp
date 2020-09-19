@@ -69,6 +69,12 @@ void ChatListModel::enableDeltaUpdates()
     this->deltaUpdates = true;
 }
 
+void ChatListModel::redrawModel()
+{
+    qDebug() << "[ChatListModel] Enforcing UI redraw...";
+    layoutChanged();
+}
+
 bool compareChats(const QVariant &chat1, const QVariant &chat2)
 {
     QVariantMap chatMap1 = chat1.toMap();

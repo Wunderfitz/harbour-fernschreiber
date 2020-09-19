@@ -111,7 +111,7 @@ Page {
         var messageStatusSuffix = "";
 
         if (message.edit_date > 0) {
-            messageStatusSuffix += "&nbsp;-&nbsp;" + qsTr("edited");
+            messageStatusSuffix += " - " + qsTr("edited");
         }
 
         if (chatPage.myUserId === message.sender_user_id) {
@@ -409,6 +409,13 @@ Page {
                                 text: qsTr("Edit Message")
                                 visible: display.can_be_edited
                             }
+                            MenuItem {
+                                onClicked: {
+                                    deleteMessageRemorseItem.execute(messageListItem, qsTr("Deleting message"), function() { tdLibWrapper.deleteMessages(chatInformation.id, [ display.id ]); } );
+                                }
+                                text: qsTr("Delete Message")
+                                visible: display.can_be_deleted_for_all_users
+                            }
                         }
 
                         Connections {
@@ -421,6 +428,10 @@ Page {
                                 messageBackground.color = index > ( chatView.count - chatInformation.unreadCount - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor;
                                 messageBackground.opacity = index > ( chatView.count - chatInformation.unreadCount - 1 ) ? 0.5 : 0.2;
                             }
+                        }
+
+                        RemorseItem {
+                            id: deleteMessageRemorseItem
                         }
 
                         Row {

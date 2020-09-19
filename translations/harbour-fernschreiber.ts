@@ -169,6 +169,14 @@
         <source>edited</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Deleting message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

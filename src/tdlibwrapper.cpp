@@ -71,6 +71,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent), settings("harbour
     connect(this->tdLibReceiver, SIGNAL(notificationUpdated(QVariantMap)), this, SLOT(handleUpdateNotification(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)), this, SLOT(handleMessageContentUpdated(QString, QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messagesDeleted(QString, QVariantList)), this, SLOT(handleMessagesDeleted(QString, QVariantList)));
 
     this->tdLibReceiver->start();
 
@@ -262,7 +263,7 @@ void TDLibWrapper::setChatNotificationSettings(const QString &chatId, const QVar
 
 void TDLibWrapper::editMessageText(const QString &chatId, const QString &messageId, const QString &message)
 {
-    qDebug() << "[TDLibWrapper] Editiing message text " << chatId << messageId;
+    qDebug() << "[TDLibWrapper] Editing message text " << chatId << messageId;
     QVariantMap requestObject;
     requestObject.insert("@type", "editMessageText");
     requestObject.insert("chat_id", chatId);
@@ -273,6 +274,17 @@ void TDLibWrapper::editMessageText(const QString &chatId, const QString &message
     formattedText.insert("text", message);
     inputMessageContent.insert("text", formattedText);
     requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::deleteMessages(const QString &chatId, const QVariantList messageIds)
+{
+    qDebug() << "[TDLibWrapper] Deleting some messages " << chatId << messageIds;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "deleteMessages");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_ids", messageIds);
+    requestObject.insert("revoke", true);
     this->sendRequest(requestObject);
 }
 
@@ -595,6 +607,11 @@ void TDLibWrapper::handleChatNotificationSettingsUpdated(const QString &chatId, 
 void TDLibWrapper::handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent)
 {
     emit messageContentUpdated(chatId, messageId, newContent);
+}
+
+void TDLibWrapper::handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds)
+{
+    emit messagesDeleted(chatId, messageIds);
 }
 
 void TDLibWrapper::setInitialParameters()

@@ -163,11 +163,19 @@
     </message>
     <message>
         <source>Edit Message</source>
-        <translation>Nachricht editieren</translation>
+        <translation>Nachricht bearbeiten</translation>
     </message>
     <message>
         <source>edited</source>
-        <translation>editiert</translation>
+        <translation>bearbeitet</translation>
+    </message>
+    <message>
+        <source>Deleting message</source>
+        <translation>Lösche Nachricht</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Nachricht löschen</translation>
     </message>
 </context>
 <context>

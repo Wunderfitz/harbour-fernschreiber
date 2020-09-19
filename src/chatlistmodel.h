@@ -37,6 +37,7 @@ public:
     virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
     Q_INVOKABLE void enableDeltaUpdates();
+    Q_INVOKABLE void redrawModel();
 
 signals:
     void chatChanged(const QString &chatId);

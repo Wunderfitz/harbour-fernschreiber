@@ -49,6 +49,7 @@ signals:
     void lastReadSentMessageUpdated(const int &lastReadSentIndex);
     void notificationSettingsUpdated();
     void messageUpdated(const int &modelIndex);
+    void messagesDeleted();
 
 public slots:
     void handleMessagesReceived(const QVariantList &messages);
@@ -58,6 +59,7 @@ public slots:
     void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
     void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
     void handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
+    void handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds);
 
 private:
 

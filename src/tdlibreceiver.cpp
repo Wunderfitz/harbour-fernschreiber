@@ -79,6 +79,7 @@ void TDLibReceiver::processReceivedDocument(const QJsonDocument &receivedJsonDoc
     if (objectTypeName == "updateNotificationGroup") { this->processUpdateNotificationGroup(receivedInformation); }
     if (objectTypeName == "updateChatNotificationSettings") { this->processUpdateChatNotificationSettings(receivedInformation); }
     if (objectTypeName == "updateMessageContent") { this->processUpdateMessageContent(receivedInformation); }
+    if (objectTypeName == "updateDeleteMessages") { this->processUpdateDeleteMessages(receivedInformation); }
 }
 
 void TDLibReceiver::processUpdateOption(const QVariantMap &receivedInformation)
@@ -274,4 +275,12 @@ void TDLibReceiver::processUpdateMessageContent(const QVariantMap &receivedInfor
     QString messageId = receivedInformation.value("message_id").toString();
     qDebug() << "[TDLibReceiver] Message content updated " << chatId << messageId;
     emit messageContentUpdated(chatId, messageId, receivedInformation.value("new_content").toMap());
+}
+
+void TDLibReceiver::processUpdateDeleteMessages(const QVariantMap &receivedInformation)
+{
+    QString chatId = receivedInformation.value("chat_id").toString();
+    QVariantList messageIds = receivedInformation.value("message_ids").toList();
+    qDebug() << "[TDLibReceiver] Some messages were deleted " << chatId << messageIds;
+    emit messagesDeleted(chatId, messageIds);
 }

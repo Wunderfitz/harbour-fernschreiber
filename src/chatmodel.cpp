@@ -35,6 +35,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper)
     connect(this->tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)), this, SLOT(handleMessageContentUpdated(QString, QString, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(messagesDeleted(QString, QVariantList)), this, SLOT(handleMessagesDeleted(QString, QVariantList)));
 }
 
 ChatModel::~ChatModel()
@@ -239,6 +240,29 @@ void ChatModel::handleMessageContentUpdated(const QString &chatId, const QString
         this->messagesMutex.unlock();
         emit messageUpdated(messageIndex);
         emit dataChanged(index(messageIndex), index(messageIndex));
+    }
+}
+
+void ChatModel::handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds)
+{
+    qDebug() << "[ChatModel] Messages were deleted in a chat" << chatId;
+    if (chatId == this->chatId) {
+        this->messagesMutex.lock();
+        qDebug() << "[ChatModel] Messages in this chat were deleted...";
+        QListIterator<QVariant> messageIdIterator(messageIds);
+        while (messageIdIterator.hasNext()) {
+            QString messageId = messageIdIterator.next().toString();
+            if (this->messageIndexMap.contains(messageId)) {
+                int messageIndex = this->messageIndexMap.value(messageId).toInt();
+                beginRemoveRows(QModelIndex(), messageIndex, messageIndex);
+                qDebug() << "[ChatModel] ...and we even know this message!" << messageId << messageIndex;
+                this->messages.removeAt(messageIndex);
+                this->calculateMessageIndexMap();
+                endRemoveRows();
+            }
+        }
+        this->messagesMutex.unlock();
+        emit messagesDeleted();
     }
 }
 
