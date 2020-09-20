@@ -255,7 +255,8 @@ Page {
                                     chatListPictureThumbnail.photoData = (typeof display.photo !== "undefined") ? display.photo.small : "";
                                     chatUnreadMessagesCountBackground.visible = display.unread_count > 0;
                                     chatUnreadMessagesCount.text = display.unread_count > 99 ? "99+" : display.unread_count;
-                                    chatListNameText.text = display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown")
+                                    chatListNameText.text = display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown");
+                                    chatListLastUserText.text = (typeof display.last_message !== "undefined") ? ( display.last_message.sender_user_id !== overviewPage.ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(display.last_message.sender_user_id)), Theme.fontSizeExtraSmall) : qsTr("You") ) : qsTr("Unknown");
                                     chatListLastMessageText.text = (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getMessageText(display.last_message, true), Theme.fontSizeExtraSmall) : qsTr("Unknown");
                                     messageContactTimeElapsedText.text = (typeof display.last_message !== "undefined") ? Functions.getDateTimeElapsed(display.last_message.date) : qsTr("Unknown");
                                 }
@@ -386,6 +387,13 @@ Page {
                                         onTriggered: {
                                             if (typeof display.last_message !== "undefined") {
                                                 messageContactTimeElapsedText.text = Functions.getDateTimeElapsed(display.last_message.date);
+                                                // Force update of all list item elements. dataChanged() doesn't seem to trigger them all :(
+                                                chatListPictureThumbnail.photoData = (typeof display.photo !== "undefined") ? display.photo.small : "";
+                                                chatUnreadMessagesCountBackground.visible = display.unread_count > 0;
+                                                chatUnreadMessagesCount.text = display.unread_count > 99 ? "99+" : display.unread_count;
+                                                chatListNameText.text = display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown");
+                                                chatListLastUserText.text = (typeof display.last_message !== "undefined") ? ( display.last_message.sender_user_id !== overviewPage.ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(display.last_message.sender_user_id)), Theme.fontSizeExtraSmall) : qsTr("You") ) : qsTr("Unknown");
+                                                chatListLastMessageText.text = (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getMessageText(display.last_message, true), Theme.fontSizeExtraSmall) : qsTr("Unknown");
                                             }
                                         }
                                     }

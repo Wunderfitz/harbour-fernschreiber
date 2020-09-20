@@ -189,7 +189,11 @@ Page {
         onMessagesReceived: {
             console.log("[ChatPage] Messages received, view has " + chatView.count + " messages, setting view to index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
             chatView.lastReadSentIndex = lastReadSentIndex;
-            chatView.positionViewAtIndex(modelIndex, ListView.Contain);
+            if (modelIndex === (chatView.count - 1)) {
+                chatView.positionViewAtEnd();
+            } else {
+                chatView.positionViewAtIndex(modelIndex, ListView.Beginning);
+            }
             chatPage.loading = false;
             if (chatView.height > chatView.contentHeight) {
                 console.log("[ChatPage] Chat content quite small...");
@@ -602,7 +606,7 @@ Page {
                                             if (index === modelIndex) {
                                                 console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
                                                 messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
-                                                messageText.text = Emoji.emojify(Functions.getMessageText(display, false), font.pixelSize);
+                                                messageText.text = Emoji.emojify(Functions.getMessageText(display, false), messageText.font.pixelSize);
                                             }
                                         }
                                     }

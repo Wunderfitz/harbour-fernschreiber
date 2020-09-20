@@ -93,7 +93,7 @@ void TDLibWrapper::sendRequest(const QVariantMap &requestObject)
 {
     qDebug() << "[TDLibWrapper] Sending request to TD Lib, object type name: " << requestObject.value("@type").toString();
     QJsonDocument requestDocument = QJsonDocument::fromVariant(requestObject);
-    qDebug().noquote() << requestDocument.toJson();
+    // Too much information... qDebug().noquote() << requestDocument.toJson();
     td_json_client_send(this->tdLibClient, requestDocument.toJson().constData());
 }
 

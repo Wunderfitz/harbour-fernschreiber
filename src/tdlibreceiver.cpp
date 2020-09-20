@@ -42,7 +42,7 @@ void TDLibReceiver::receiverLoop()
       const char *result = td_json_client_receive(this->tdLibClient, WAIT_TIMEOUT);
       if (result) {
           QJsonDocument receivedJsonDocument = QJsonDocument::fromJson(QByteArray(result));
-          qDebug().noquote() << "[TDLibReceiver] Raw result: " << receivedJsonDocument.toJson(QJsonDocument::Indented);
+          // Too much information... qDebug().noquote() << "[TDLibReceiver] Raw result: " << receivedJsonDocument.toJson(QJsonDocument::Indented);
           processReceivedDocument(receivedJsonDocument);
       }
     }
@@ -281,6 +281,6 @@ void TDLibReceiver::processUpdateDeleteMessages(const QVariantMap &receivedInfor
 {
     QString chatId = receivedInformation.value("chat_id").toString();
     QVariantList messageIds = receivedInformation.value("message_ids").toList();
-    qDebug() << "[TDLibReceiver] Some messages were deleted " << chatId << messageIds;
+    qDebug() << "[TDLibReceiver] Some messages were deleted " << chatId;
     emit messagesDeleted(chatId, messageIds);
 }
