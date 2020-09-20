@@ -12,7 +12,6 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Sun Apr 13 2014 Jack Tar <jack.tar@example.com> 0.0.1-1
-- Scrubbed the deck
-- Hoisted the sails
+* Sun Sep 20 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.1
+- Initial release
 
