@@ -95,7 +95,7 @@
     </message>
     <message>
         <source>Your message</source>
-        <translation>Su mensaje</translation>
+        <translation>Escribir mensaje</translation>
     </message>
     <message>
         <source>was never online</source>
@@ -411,11 +411,11 @@
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Enviar mensaje por entrar</translation>
+        <translation>Enviar mensaje por tecla entrar</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Envíar mensaje pulsando la tecla Intro</translation>
+        <translation>Envía mensajes pulsando la tecla entrar</translation>
     </message>
 </context>
 <context>
@@ -437,7 +437,7 @@
     <name>functions</name>
     <message>
         <source>Video: %1</source>
-        <translation>Vídeo: %1</translation>
+        <translation>Video: %1</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
