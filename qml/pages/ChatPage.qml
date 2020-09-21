@@ -443,21 +443,33 @@ Page {
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.verticalCenter: parent.verticalCenter
 
-                            ProfileThumbnail {
-                                id: messagePictureThumbnail
-                                photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ""
-                                replacementStringHint: userText.text
-                                width: visible ? Theme.itemSizeSmall : 0
-                                height: visible ? Theme.itemSizeSmall : 0
+                            Component {
+                                id: profileThumbnailComponent
+                                ProfileThumbnail {
+                                    id: messagePictureThumbnail
+                                    photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ""
+                                    replacementStringHint: userText.text
+                                    width: visible ? Theme.itemSizeSmall : 0
+                                    height: visible ? Theme.itemSizeSmall : 0
+                                    visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                                }
+                            }
+
+                            Loader {
+                                id: profileThumbnailLoader
+                                active: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                                asynchronous: true
+                                width: active ? Theme.itemSizeSmall : 0
+                                height: active ? Theme.itemSizeSmall : 0
                                 anchors.bottom: parent.bottom
                                 anchors.bottomMargin: Theme.paddingSmall
-                                visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                                sourceComponent: profileThumbnailComponent
                             }
 
                             Item {
                                 id: messageTextItem
 
-                                width: parent.width - messagePictureThumbnail.width - Theme.paddingSmall
+                                width: parent.width - profileThumbnailLoader.width - Theme.paddingSmall
                                 height: messageBackground.height
 
                                 Rectangle {
