@@ -47,7 +47,7 @@ Item {
     function updatePicture() {
         if (typeof photoData === "object") {
             if (photoData.local.is_downloading_completed) {
-                singleImage.source = photoData.local.path;
+                profileImageLoader.active = true;
             } else {
                 tdLibWrapper.downloadFile(photoData.id);
             }
@@ -82,49 +82,70 @@ Item {
                 console.log("File updated, completed? " + fileInformation.local.is_downloading_completed);
                 if (fileInformation.local.is_downloading_completed) {
                     photoData = fileInformation;
-                    singleImage.source = photoData.local.path;
+                    profileImageLoader.active = true;
                 }
             }
         }
     }
 
-    Image {
-        id: singleImage
-        width: parent.width - Theme.paddingSmall
-        height: parent.height - Theme.paddingSmall
-        anchors.centerIn: parent
+    Component {
+        id: profileImageComponent
+        Item {
+            width: parent.width
+            height: width
 
-        fillMode: Image.PreserveAspectCrop
-        autoTransform: true
+            Image {
+                id: singleImage
+                width: parent.width - Theme.paddingSmall
+                height: parent.height - Theme.paddingSmall
+                anchors.centerIn: parent
+                source: profileThumbnail.photoData.local.path
+
+                fillMode: Image.PreserveAspectCrop
+                autoTransform: true
+                asynchronous: true
+                visible: false
+            }
+
+            Rectangle {
+                id: profileThumbnailMask
+                width: parent.width - Theme.paddingSmall
+                height: parent.height - Theme.paddingSmall
+                color: Theme.primaryColor
+                radius: parent.width / 2
+                anchors.centerIn: singleImage
+                visible: false
+            }
+
+            OpacityMask {
+                id: maskedThumbnail
+                source: singleImage
+                maskSource: profileThumbnailMask
+                anchors.fill: singleImage
+                visible: singleImage.status === Image.Ready ? true : false
+                opacity: singleImage.status === Image.Ready ? 1 : 0
+                Behavior on opacity { NumberAnimation {} }
+            }
+        }
+    }
+
+    Loader {
+        id: profileImageLoader
+        active: false
         asynchronous: true
-        visible: false
-    }
-
-    Rectangle {
-        id: profileThumbnailMask
-        width: parent.width - Theme.paddingSmall
-        height: parent.height - Theme.paddingSmall
-        color: Theme.primaryColor
-        radius: parent.width / 2
-        anchors.centerIn: singleImage
-        visible: false
-    }
-
-    OpacityMask {
-        id: maskedThumbnail
-        source: singleImage
-        maskSource: profileThumbnailMask
-        anchors.fill: singleImage
-        visible: singleImage.status === Image.Ready ? true : false
-        opacity: singleImage.status === Image.Ready ? 1 : 0
-        Behavior on opacity { NumberAnimation {} }
+        width: parent.width
+        sourceComponent: profileImageComponent
+        onLoaded: {
+            console.log(profileThumbnail.photoData.local.path);
+        }
     }
 
     Item {
         id: replacementThumbnailItem
         width: parent.width - Theme.paddingSmall
         height: parent.height - Theme.paddingSmall
-        visible: singleImage.status !== Image.Ready
+        //visible: singleImage.status !== Image.Ready
+        visible: !profileImageLoader.active
 
         Rectangle {
             id: replacementThumbnailBackground

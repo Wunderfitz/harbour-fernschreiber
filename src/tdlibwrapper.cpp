@@ -631,7 +631,7 @@ void TDLibWrapper::setInitialParameters()
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
     initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     initialParameters.insert("system_version", QSysInfo::prettyProductName());
-    initialParameters.insert("application_version", "0.1");
+    initialParameters.insert("application_version", "0.2");
     requestObject.insert("parameters", initialParameters);
     this->sendRequest(requestObject);
 }

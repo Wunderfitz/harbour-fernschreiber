@@ -354,10 +354,8 @@ Page {
                     id: chatView
 
                     anchors.fill: parent
-
                     opacity: chatPage.loading ? 0 : 1
                     Behavior on opacity { NumberAnimation {} }
-
                     clip: true
 
                     property int lastReadSentIndex: 0
@@ -540,50 +538,116 @@ Page {
                                         visible: (text !== "")
                                     }
 
-                                    WebPagePreview {
-                                        id: webPagePreview
-                                        webPageData: ( typeof display.content.web_page !== "undefined" ) ? display.content.web_page : ""
+                                    Component {
+                                        id: webPagePreviewComponent
+                                        WebPagePreview {
+                                            id: webPagePreview
+                                            webPageData: ( typeof display.content.web_page !== "undefined" ) ? display.content.web_page : ""
+                                            width: parent.width
+                                            visible: typeof display.content.web_page !== "undefined"
+                                        }
+                                    }
+
+                                    Loader {
+                                        id: webPagePreviewLoader
+                                        active: ( typeof display.content.web_page !== "undefined" )
+                                        asynchronous: true
                                         width: parent.width
-                                        visible: typeof display.content.web_page !== "undefined"
+                                        sourceComponent: webPagePreviewComponent
                                     }
 
-                                    ImagePreview {
-                                        id: messageImagePreview
-                                        photoData: ( display.content['@type'] === "messagePhoto" ) ?  display.content.photo : ""
+                                    Component {
+                                        id: imagePreviewComponent
+                                        ImagePreview {
+                                            id: messageImagePreview
+                                            photoData: ( display.content['@type'] === "messagePhoto" ) ?  display.content.photo : ""
+                                            width: parent.width
+                                            height: parent.width * 2 / 3
+                                            visible: display.content['@type'] === "messagePhoto"
+                                        }
+                                    }
+
+                                    Loader {
+                                        id: imagePreviewLoader
+                                        active: ( display.content['@type'] === "messagePhoto" )
+                                        asynchronous: true
                                         width: parent.width
-                                        height: parent.width * 2 / 3
-                                        visible: display.content['@type'] === "messagePhoto"
+                                        sourceComponent: imagePreviewComponent
                                     }
 
-                                    StickerPreview {
-                                        id: messageStickerPreview
-                                        stickerData: ( display.content['@type'] === "messageSticker" ) ?  display.content.sticker : ""
-                                        visible: display.content['@type'] === "messageSticker"
-                                        anchors.horizontalCenter: parent.horizontalCenter
+                                    Component {
+                                        id: stickerPreviewComponent
+                                        StickerPreview {
+                                            id: messageStickerPreview
+                                            stickerData: ( display.content['@type'] === "messageSticker" ) ?  display.content.sticker : ""
+                                            visible: display.content['@type'] === "messageSticker"
+                                            anchors.horizontalCenter: parent.horizontalCenter
+                                        }
                                     }
 
-                                    VideoPreview {
-                                        id: messageVideoPreview
-                                        videoData: ( display.content['@type'] === "messageVideo" ) ?  display.content.video : ( ( display.content['@type'] === "messageAnimation" ) ? display.content.animation : "")
+                                    Loader {
+                                        id: stickerPreviewLoader
+                                        active: ( display.content['@type'] === "messageSticker" )
+                                        asynchronous: true
                                         width: parent.width
-                                        height: ( display.content['@type'] === "messageVideo" ) ? Functions.getVideoHeight(width, display.content.video) : Functions.getVideoHeight(width, display.content.animation)
-                                        visible: ( display.content['@type'] === "messageVideo" || display.content['@type'] === "messageAnimation" )
-                                        onScreen: chatPage.status === PageStatus.Active
+                                        sourceComponent: stickerPreviewComponent
                                     }
 
-                                    AudioPreview {
-                                        id: messageAudioPreview
-                                        audioData: ( display.content['@type'] === "messageVoiceNote" ) ?  display.content.voice_note : ( ( display.content['@type'] === "messageAudio" ) ? display.content.audio : "")
+                                    Component {
+                                        id: videoPreviewComponent
+                                        VideoPreview {
+                                            id: messageVideoPreview
+                                            videoData: ( display.content['@type'] === "messageVideo" ) ?  display.content.video : ( ( display.content['@type'] === "messageAnimation" ) ? display.content.animation : "")
+                                            width: parent.width
+                                            height: ( display.content['@type'] === "messageVideo" ) ? Functions.getVideoHeight(width, display.content.video) : Functions.getVideoHeight(width, display.content.animation)
+                                            visible: ( display.content['@type'] === "messageVideo" || display.content['@type'] === "messageAnimation" )
+                                            onScreen: chatPage.status === PageStatus.Active
+                                        }
+                                    }
+
+                                    Loader {
+                                        id: videoPreviewLoader
+                                        active: (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ))
+                                        asynchronous: true
                                         width: parent.width
-                                        height: parent.width / 2
-                                        visible: ( display.content['@type'] === "messageVoiceNote" || display.content['@type'] === "messageAudio" )
-                                        onScreen: chatPage.status === PageStatus.Active
+                                        sourceComponent: videoPreviewComponent
                                     }
 
-                                    DocumentPreview {
-                                        id: messageDocumentPreview
-                                        documentData: ( display.content['@type'] === "messageDocument" ) ?  display.content.document : ""
-                                        visible: display.content['@type'] === "messageDocument"
+                                    Component {
+                                        id: audioPreviewComponent
+                                        AudioPreview {
+                                            id: messageAudioPreview
+                                            audioData: ( display.content['@type'] === "messageVoiceNote" ) ?  display.content.voice_note : ( ( display.content['@type'] === "messageAudio" ) ? display.content.audio : "")
+                                            width: parent.width
+                                            height: parent.width / 2
+                                            visible: ( display.content['@type'] === "messageVoiceNote" || display.content['@type'] === "messageAudio" )
+                                            onScreen: chatPage.status === PageStatus.Active
+                                        }
+                                    }
+
+                                    Loader {
+                                        id: audioPreviewLoader
+                                        active: (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ))
+                                        asynchronous: true
+                                        width: parent.width
+                                        sourceComponent: audioPreviewComponent
+                                    }
+
+                                    Component {
+                                        id: documentPreviewComponent
+                                        DocumentPreview {
+                                            id: messageDocumentPreview
+                                            documentData: ( display.content['@type'] === "messageDocument" ) ?  display.content.document : ""
+                                            visible: display.content['@type'] === "messageDocument"
+                                        }
+                                    }
+
+                                    Loader {
+                                        id: documentPreviewLoader
+                                        active: ( display.content['@type'] === "messageDocument" )
+                                        asynchronous: true
+                                        width: parent.width
+                                        sourceComponent: documentPreviewComponent
                                     }
 
                                     Timer {

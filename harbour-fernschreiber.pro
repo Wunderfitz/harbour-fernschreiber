@@ -50,7 +50,9 @@ DISTFILES += qml/harbour-fernschreiber.qml \
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172 256x256
 
-TRANSLATIONS += translations/harbour-fernschreiber-de.ts
+TRANSLATIONS += translations/harbour-fernschreiber-de.ts \
+                translations/harbour-fernschreiber-es.ts \
+                translations/harbour-fernschreiber-zh_CN.ts
 
 LIBS += -L$$PWD/tdlib/lib/ -ltdjson
 
