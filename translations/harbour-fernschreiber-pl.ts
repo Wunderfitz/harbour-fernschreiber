@@ -37,11 +37,11 @@
     </message>
     <message>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Podziękowania:</translation>
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ten projekt wykorzystuje bibliotekę bazy danych telegramu (TDLib). Dziękujemy za udostępnienie go na warunkach licencji Boost Software License 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ten projekt wykorzystuje twemoji. Copyright 2018 Twitter, Inc. i inni współpracownicy. Dziękujemy za udostępnienie na warunkach Licencji MIT (kodowanie) i CC-BY 4.0 (grafika)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
