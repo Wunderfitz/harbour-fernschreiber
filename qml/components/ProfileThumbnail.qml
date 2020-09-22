@@ -45,6 +45,8 @@ Item {
     }
 
     function updatePicture() {
+        profileImageLoader.active = false;
+        replacementThumbnailItem.visible = true;
         if (typeof photoData === "object") {
             if (photoData.local.is_downloading_completed) {
                 profileImageLoader.active = true;
@@ -57,7 +59,7 @@ Item {
 
     Timer {
         id: updatePictureTimer
-        interval: 100
+        interval: 500
         running: false
         repeat: false
         onTriggered: {

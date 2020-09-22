@@ -382,12 +382,10 @@ Page {
                     }
 
                     onContentYChanged: {
-                        if (!chatPage.loading && !chatView.inCooldown) {
-                            if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
-                                console.log("[ChatPage] Trying to get older history items...");
-                                chatView.inCooldown = true;
-                                chatModel.triggerLoadMoreHistory();
-                            }
+                        if (!chatPage.loading && !chatView.inCooldown && chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
+                            console.log("[ChatPage] Trying to get older history items...");
+                            chatView.inCooldown = true;
+                            chatModel.triggerLoadMoreHistory();
                         }
                     }
 
@@ -449,6 +447,25 @@ Page {
                             }
                         }
 
+                        Component.onCompleted: {
+                            delegateComponentLoadingTimer.start();
+                        }
+
+                        Timer {
+                            id: delegateComponentLoadingTimer
+                            interval: 500
+                            repeat: false
+                            running: false
+                            onTriggered: {
+                                webPagePreviewLoader.active = ( typeof display.content.web_page !== "undefined" );
+                                imagePreviewLoader.active = ( display.content['@type'] === "messagePhoto" );
+                                stickerPreviewLoader.active = ( display.content['@type'] === "messageSticker" );
+                                videoPreviewLoader.active = (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
+                                audioPreviewLoader.active = (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
+                                documentPreviewLoader.active = ( display.content['@type'] === "messageDocument" );
+                            }
+                        }
+
                         RemorseItem {
                             id: deleteMessageRemorseItem
                         }
@@ -474,7 +491,7 @@ Page {
 
                             Loader {
                                 id: profileThumbnailLoader
-                                active: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                                active: (( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel)
                                 asynchronous: true
                                 width: active ? Theme.itemSizeSmall : 0
                                 height: active ? Theme.itemSizeSmall : 0
@@ -513,10 +530,8 @@ Page {
                                     width: messageBackground.width - Theme.horizontalPageMargin
                                     anchors.centerIn: messageBackground
 
-                                    Component.onCompleted: {
-                                        if (display.reply_to_message_id !== 0) {
-                                            tdLibWrapper.getMessage(chatInformation.id, display.reply_to_message_id);
-                                        }
+                                    Behavior on height {
+                                        PropertyAnimation { easing.type: Easing.OutBack; duration: 200 }
                                     }
 
                                     Connections {
@@ -579,7 +594,7 @@ Page {
 
                                     Loader {
                                         id: webPagePreviewLoader
-                                        active: ( typeof display.content.web_page !== "undefined" )
+                                        active: false
                                         asynchronous: true
                                         width: parent.width
                                         sourceComponent: webPagePreviewComponent
@@ -598,7 +613,7 @@ Page {
 
                                     Loader {
                                         id: imagePreviewLoader
-                                        active: ( display.content['@type'] === "messagePhoto" )
+                                        active: false
                                         asynchronous: true
                                         width: parent.width
                                         sourceComponent: imagePreviewComponent
@@ -616,7 +631,7 @@ Page {
 
                                     Loader {
                                         id: stickerPreviewLoader
-                                        active: ( display.content['@type'] === "messageSticker" )
+                                        active: false
                                         asynchronous: true
                                         width: parent.width
                                         sourceComponent: stickerPreviewComponent
@@ -636,7 +651,7 @@ Page {
 
                                     Loader {
                                         id: videoPreviewLoader
-                                        active: (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ))
+                                        active: false
                                         asynchronous: true
                                         width: parent.width
                                         sourceComponent: videoPreviewComponent
@@ -656,7 +671,7 @@ Page {
 
                                     Loader {
                                         id: audioPreviewLoader
-                                        active: (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ))
+                                        active: false
                                         asynchronous: true
                                         width: parent.width
                                         sourceComponent: audioPreviewComponent
@@ -673,7 +688,7 @@ Page {
 
                                     Loader {
                                         id: documentPreviewLoader
-                                        active: ( display.content['@type'] === "messageDocument" )
+                                        active: false
                                         asynchronous: true
                                         width: parent.width
                                         sourceComponent: documentPreviewComponent
