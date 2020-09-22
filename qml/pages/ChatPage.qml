@@ -201,7 +201,10 @@ Page {
             }
         }
         onNewMessageReceived: {
-            // Notify user about new messages...
+            if (message.sender_user_id === chatPage.myUserId) {
+                console.log("[ChatPage] Own message received, scrolling down to see it...");
+                chatView.scrollToBottom();
+            }
         }
         onUnreadCountUpdated: {
             console.log("[ChatPage] Unread count updated, new count: " + unreadCount);

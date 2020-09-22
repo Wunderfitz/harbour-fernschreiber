@@ -137,9 +137,6 @@ Item {
         asynchronous: true
         width: parent.width
         sourceComponent: profileImageComponent
-        onLoaded: {
-            console.log(profileThumbnail.photoData.local.path);
-        }
     }
 
     Item {

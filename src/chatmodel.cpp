@@ -175,7 +175,7 @@ void ChatModel::handleNewMessageReceived(const QString &chatId, const QVariantMa
 
         this->insertMessages();
         this->messagesMutex.unlock();
-        emit newMessageReceived();
+        emit newMessageReceived(message);
     }
 }
 

@@ -44,7 +44,7 @@ public:
 signals:
     void messagesReceived(const int &modelIndex, const int &lastReadSentIndex);
     void messagesIncrementalUpdate(const int &modelIndex, const int &lastReadSentIndex);
-    void newMessageReceived();
+    void newMessageReceived(const QVariantMap &message);
     void unreadCountUpdated(const int &unreadCount, const QString &lastReadInboxMessageId);
     void lastReadSentMessageUpdated(const int &lastReadSentIndex);
     void notificationSettingsUpdated();
