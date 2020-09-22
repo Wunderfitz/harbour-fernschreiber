@@ -731,29 +731,38 @@ Page {
                     }
                 }
 
-                Rectangle {
-                    id: chatUnreadMessagesCountBackground
-                    color: Theme.highlightBackgroundColor
+                Item {
+                    id: chatUnreadMessagesItem
                     width: Theme.fontSizeHuge
                     height: Theme.fontSizeHuge
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingMedium
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: Theme.paddingMedium
-                    radius: width / 2
-                    visible: !chatPage.loading && chatInformation.unread_count > 0
-                }
+                    Rectangle {
+                        id: chatUnreadMessagesCountBackground
+                        color: Theme.highlightBackgroundColor
+                        anchors.fill: parent
+                        radius: width / 2
+                        visible: !chatPage.loading && chatInformation.unread_count > 0
+                    }
 
-                Text {
-                    id: chatUnreadMessagesCount
-                    font.pixelSize: Theme.fontSizeMedium
-                    font.bold: true
-                    color: Theme.primaryColor
-                    anchors.centerIn: chatUnreadMessagesCountBackground
-                    visible: chatUnreadMessagesCountBackground.visible
-                    text: chatInformation.unread_count > 99 ? "99+" : chatInformation.unread_count
+                    Text {
+                        id: chatUnreadMessagesCount
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.bold: true
+                        color: Theme.primaryColor
+                        anchors.centerIn: chatUnreadMessagesCountBackground
+                        visible: chatUnreadMessagesCountBackground.visible
+                        text: chatInformation.unread_count > 99 ? "99+" : chatInformation.unread_count
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            chatView.positionViewAtIndex(chatView.count - 1 - chatInformation.unread_count, ListView.Beginning);
+                        }
+                    }
                 }
-
             }
 
             Column {

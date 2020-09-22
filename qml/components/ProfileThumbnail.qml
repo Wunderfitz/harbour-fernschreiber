@@ -48,6 +48,7 @@ Item {
         if (typeof photoData === "object") {
             if (photoData.local.is_downloading_completed) {
                 profileImageLoader.active = true;
+                replacementThumbnailItem.visible = false;
             } else {
                 tdLibWrapper.downloadFile(photoData.id);
             }
@@ -83,6 +84,7 @@ Item {
                 if (fileInformation.local.is_downloading_completed) {
                     photoData = fileInformation;
                     profileImageLoader.active = true;
+                    replacementThumbnailItem.visible = false;
                 }
             }
         }
@@ -144,8 +146,7 @@ Item {
         id: replacementThumbnailItem
         width: parent.width - Theme.paddingSmall
         height: parent.height - Theme.paddingSmall
-        //visible: singleImage.status !== Image.Ready
-        visible: !profileImageLoader.active
+        visible: true
 
         Rectangle {
             id: replacementThumbnailBackground
