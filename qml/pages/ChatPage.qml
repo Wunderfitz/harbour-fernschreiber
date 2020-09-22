@@ -220,6 +220,7 @@ Page {
             console.log("Incremental update received. View now has " + chatView.count + " messages, view is on index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
             chatView.currentIndex = modelIndex;
             chatView.lastReadSentIndex = lastReadSentIndex;
+            chatViewCooldownTimer.start();
         }
     }
 
@@ -353,6 +354,17 @@ Page {
                     }
                 }
 
+                Timer {
+                    id: chatViewCooldownTimer
+                    interval: 2000
+                    repeat: false
+                    running: false
+                    onTriggered: {
+                        console.log("[ChatPage] Cooldown completed...");
+                        chatView.inCooldown = false;
+                    }
+                }
+
                 SilicaListView {
                     id: chatView
 
@@ -362,6 +374,7 @@ Page {
                     clip: true
 
                     property int lastReadSentIndex: 0
+                    property bool inCooldown: false
 
                     function handleScrollPositionChanged() {
                         console.log("Current position: " + chatView.contentY);
@@ -369,9 +382,10 @@ Page {
                     }
 
                     onContentYChanged: {
-                        if (!chatPage.loading) {
+                        if (!chatPage.loading && !chatView.inCooldown) {
                             if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
-                                console.log("Trying to get older history items...");
+                                console.log("[ChatPage] Trying to get older history items...");
+                                chatView.inCooldown = true;
                                 chatModel.triggerLoadMoreHistory();
                             }
                         }
