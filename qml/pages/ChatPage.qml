@@ -841,74 +841,27 @@ Page {
                     height: sendMessageColumn.height + Theme.paddingMedium
                     anchors.horizontalCenter: parent.horizontalCenter
 
-                    Column {
-                        id: sendMessageColumn
-                        width: parent.width - newMessageSendButton.width
+                    TextArea {
+                        id: newMessageTextField
+                        width: parent.width - attachmentIconButton.width - newMessageSendButton.width
+                        height: Math.min(chatContainer.height / 3, implicitHeight)
                         anchors.verticalCenter: parent.verticalCenter
-
-                        TextArea {
-                            id: newMessageTextField
-                            width: parent.width
-                            height: Math.min(chatContainer.height / 3, implicitHeight)
-                            font.pixelSize: Theme.fontSizeSmall
-                            placeholderText: qsTr("Your message")
-                            labelVisible: false
-                            textLeftMargin: 0
-                            textTopMargin: 0
-                            onFocusChanged: {
-                                if (!focus) {
-                                    newMessageInReplyToRow.inReplyToMessage = null;
-                                    if (newMessageColumn.editMessageId !== "0") {
-                                        newMessageColumn.editMessageId = "0";
-                                        newMessageTextField.text = "";
-                                    }
-                                }
-                            }
-                            EnterKey.onClicked: {
-                                if (tdLibWrapper.getSendByEnter()) {
-                                    if (newMessageColumn.editMessageId !== "0") {
-                                        tdLibWrapper.editMessageText(chatInformation.id, newMessageColumn.editMessageId, newMessageTextField.text);
-                                    } else {
-                                        tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
-                                    }
+                        font.pixelSize: Theme.fontSizeSmall
+                        placeholderText: qsTr("Your message")
+                        labelVisible: false
+                        textLeftMargin: 0
+                        textTopMargin: 0
+                        onFocusChanged: {
+                            if (!focus) {
+                                newMessageInReplyToRow.inReplyToMessage = null;
+                                if (newMessageColumn.editMessageId !== "0") {
+                                    newMessageColumn.editMessageId = "0";
                                     newMessageTextField.text = "";
-                                    newMessageTextField.focus = false;
-                                }
-                            }
-
-                            Component.onCompleted: {
-                                if (tdLibWrapper.getSendByEnter()) {
-                                    EnterKey.iconSource = "image://theme/icon-m-chat";
-                                    EnterKey.enabled = false;
-                                }
-                            }
-
-                            onTextChanged: {
-                                if (text.length === 0) {
-                                    newMessageSendButton.enabled = false;
-                                    if (tdLibWrapper.getSendByEnter()) {
-                                        EnterKey.enabled = false;
-                                    }
-                                } else {
-                                    newMessageSendButton.enabled = true;
-                                    if (tdLibWrapper.getSendByEnter()) {
-                                        EnterKey.enabled = true;
-                                    }
                                 }
                             }
                         }
-                    }
-
-                    Column {
-                        anchors.bottom: parent.bottom
-                        anchors.bottomMargin: Theme.paddingSmall
-
-                        IconButton {
-                            id: newMessageSendButton
-                            icon.source: "image://theme/icon-m-chat"
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            enabled: false
-                            onClicked: {
+                        EnterKey.onClicked: {
+                            if (tdLibWrapper.getSendByEnter()) {
                                 if (newMessageColumn.editMessageId !== "0") {
                                     tdLibWrapper.editMessageText(chatInformation.id, newMessageColumn.editMessageId, newMessageTextField.text);
                                 } else {
@@ -918,7 +871,54 @@ Page {
                                 newMessageTextField.focus = false;
                             }
                         }
+
+                        Component.onCompleted: {
+                            if (tdLibWrapper.getSendByEnter()) {
+                                EnterKey.iconSource = "image://theme/icon-m-chat";
+                                EnterKey.enabled = false;
+                            }
+                        }
+
+                        onTextChanged: {
+                            if (text.length === 0) {
+                                newMessageSendButton.enabled = false;
+                                if (tdLibWrapper.getSendByEnter()) {
+                                    EnterKey.enabled = false;
+                                }
+                            } else {
+                                newMessageSendButton.enabled = true;
+                                if (tdLibWrapper.getSendByEnter()) {
+                                    EnterKey.enabled = true;
+                                }
+                            }
+                        }
                     }
+
+                    IconButton {
+                        id: attachmentIconButton
+                        icon.source: "image://theme/icon-m-attach"
+                        anchors.verticalCenter: parent.verticalCenter
+                        onClicked: {
+
+                        }
+                    }
+
+                    IconButton {
+                        id: newMessageSendButton
+                        icon.source: "image://theme/icon-m-chat"
+                        anchors.verticalCenter: parent.verticalCenter
+                        enabled: false
+                        onClicked: {
+                            if (newMessageColumn.editMessageId !== "0") {
+                                tdLibWrapper.editMessageText(chatInformation.id, newMessageColumn.editMessageId, newMessageTextField.text);
+                            } else {
+                                tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                            }
+                            newMessageTextField.text = "";
+                            newMessageTextField.focus = false;
+                        }
+                    }
+
                 }
 
             }
