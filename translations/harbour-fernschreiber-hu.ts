@@ -21,11 +21,11 @@
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation type="Licensz: GNU GPLv3"></translation>
+        <translation type="A GNU GPLv3 licensz által engedélyezve"></translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation type="Forráskód elérhető a GitHub-on"></translation>
+        <translation type="Forráskód a GitHub-on"></translation>
     </message>
     <message>
         <source>Terms of Service</source>
@@ -41,15 +41,15 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation type="Ez a projekt a Telegram Adatkönyvtárat (TDLib) használja. Köszönet amiért elérhetővé tették a Boost Software License 1.0 licensz feltételei alatt!"></translation>
+        <translation type="Ez a projekt a Telegram Adatkönyvtárat (TDLib) használja. Köszönet amiért elérhetővé tették a Boost Software Licensz 1.0 feltételei alatt!"></translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation type="Nyitott Telegram Adatkönyvtár a GitHub-on"></translation>
+        <translation type="Telegram Adatkönyvtár megnyitása a GitHub-on"></translation>
     </message>
     <message>
         <source>About Telegram</source>
-        <translation type="A Telegram névjegye"></translation>
+        <translation type="A Telegramról"></translation>
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation type="Nyitott twemoji a GitHub-on"></translation>
+        <translation type="twemoji megnyitása a GitHub-on"></translation>
     </message>
 </context>
 <context>
@@ -95,7 +95,7 @@
     </message>
     <message>
         <source>Your message</source>
-        <translation type="A te üzeneted"></translation>
+        <translation type="Üzeneted"></translation>
     </message>
     <message>
         <source>was never online</source>
@@ -123,11 +123,11 @@
     </message>
     <message>
         <source>%1 members, %2 online</source>
-        <translation type="%1 tag(ok), %2 online"></translation>
+        <translation type="%1 tag, %2 online"></translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="%1 tag(ok)"></translation>
+        <translation type="%1 tag"></translation>
     </message>
     <message>
         <source>%1M</source>
@@ -139,7 +139,7 @@
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation type="%1 előfizető"></translation>
+        <translation type="%1 feliratkozott"></translation>
     </message>
     <message>
         <source>Reply to Message</source>
@@ -317,7 +317,7 @@
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation type="hangfelvételt küldött"></translation>
+        <translation type="hangüzenetet küldött"></translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -325,7 +325,7 @@
     </message>
     <message>
         <source>sent a location</source>
-        <translation type="helyzetjelentést küldött"></translation>
+        <translation type="helyzetmeghatározó információt küldött"></translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
@@ -457,7 +457,7 @@
     </message>
     <message>
         <source>Voice Note: %1</source>
-        <translation type="Hang üzenet: %1"></translation>
+        <translation type="Hangüzenet: %1"></translation>
     </message>
     <message>
         <source>Animation: %1</source>
@@ -489,7 +489,7 @@
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation type="hangfelvételt küldött"></translation>
+        <translation type="hangüzenetet küldött"></translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -497,7 +497,7 @@
     </message>
     <message>
         <source>sent a location</source>
-        <translation type="helyzetjelentést küldött"></translation>
+        <translation type="helyzetmeghatározó információt küldött"></translation>
     </message>
     <message>
         <source>joined this chat</source>
