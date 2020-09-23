@@ -29,5 +29,6 @@ This project uses
 
 Fernschreiber was translated to several languages. Thanks to all contributors!
 - Chinese: [dashinfantry](https://github.com/dashinfantry)
+- Hungarian [edp17](https://github.com/edp17)
 - Polish: [atlochowski](https://github.com/atlochowski)
 - Spanish: [GNUuser](https://github.com/GNUuser)

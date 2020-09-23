@@ -163,11 +163,11 @@
     </message>
     <message>
         <source>Edit Message</source>
-        <translation>unfinished</translation>
+        <translation>Üzenet szerkesztése</translation>
     </message>
     <message>
         <source>edited</source>
-        <translation>Üzenet szerkesztése</translation>
+        <translation>Szerkesztett</translation>
     </message>
     <message>
         <source>Deleting message</source>
