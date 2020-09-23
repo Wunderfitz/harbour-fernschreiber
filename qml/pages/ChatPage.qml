@@ -849,6 +849,7 @@ Page {
                         TextArea {
                             id: newMessageTextField
                             width: parent.width
+                            height: Math.min(chatContainer.height / 3, implicitHeight)
                             font.pixelSize: Theme.fontSizeSmall
                             placeholderText: qsTr("Your message")
                             labelVisible: false
