@@ -520,8 +520,10 @@ Page {
                                     width: messageBackground.width - Theme.horizontalPageMargin
                                     anchors.centerIn: messageBackground
 
-                                    Behavior on height {
-                                        PropertyAnimation { easing.type: Easing.OutBack; duration: 200 }
+                                    Component.onCompleted: {
+                                        if (display.reply_to_message_id !== 0) {
+                                            tdLibWrapper.getMessage(chatInformation.id, display.reply_to_message_id);
+                                        }
                                     }
 
                                     Connections {
@@ -887,7 +889,8 @@ Page {
                     IconButton {
                         id: attachmentIconButton
                         icon.source: "image://theme/icon-m-attach"
-                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: Theme.paddingSmall
                         onClicked: {
 
                         }
@@ -896,7 +899,8 @@ Page {
                     IconButton {
                         id: newMessageSendButton
                         icon.source: "image://theme/icon-m-chat"
-                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: Theme.paddingSmall
                         enabled: false
                         onClicked: {
                             if (newMessageColumn.editMessageId !== "0") {
