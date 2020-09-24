@@ -19,6 +19,7 @@
 import QtQuick 2.5
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
+import "../js/functions.js" as Functions
 
 CoverBackground {
 
@@ -118,7 +119,7 @@ CoverBackground {
                 id: unreadMessagesCountText
                 font.pixelSize: Theme.fontSizeHuge
                 color: Theme.primaryColor
-                text: coverPage.unreadMessages
+                text: Functions.getShortenedCount(coverPage.unreadMessages)
             }
             Text {
                 id: unreadMessagesText
@@ -147,13 +148,13 @@ CoverBackground {
                 id: unreadChatsCountText
                 font.pixelSize: Theme.fontSizeHuge
                 color: Theme.primaryColor
-                text: coverPage.unreadChats
+                text: Functions.getShortenedCount(coverPage.unreadChats)
             }
             Text {
                 id: unreadChatsText
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.primaryColor
-                width: parent.width - unreadMessagesCountText.width - inText.width - ( 2 * Theme.paddingMedium )
+                width: parent.width - unreadChatsCountText.width - inText.width - ( 2 * Theme.paddingMedium )
                 wrapMode: Text.Wrap
                 anchors.verticalCenter: unreadChatsCountText.verticalCenter
             }

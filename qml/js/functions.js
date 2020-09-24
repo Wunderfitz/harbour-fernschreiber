@@ -93,6 +93,15 @@ function getMessageText(message, simple) {
     }
     return qsTr("Unsupported message: %1").arg(message.content['@type'].substring(7));
 }
+function getShortenedCount(count) {
+    if (count >= 1000000) {
+        return qsTr("%1M").arg((count / 1000000).toLocaleString(Qt.locale(), 'f', 0));
+    } else if (count >= 1000 ) {
+        return qsTr("%1K").arg((count / 1000).toLocaleString(Qt.locale(), 'f', 0));
+    } else {
+        return count;
+    }
+}
 
 function getDateTimeElapsed(timestamp) {
     return Format.formatDate(new Date(timestamp * 1000), Formatter.DurationElapsed);
