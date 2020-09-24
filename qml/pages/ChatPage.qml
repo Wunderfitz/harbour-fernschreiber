@@ -41,16 +41,6 @@ Page {
     property variant chatGroupInformation;
     property int chatOnlineMemberCount: 0;
 
-    function getShortenedCount(count) {
-        if (count >= 1000000) {
-            return qsTr("%1M").arg((count / 1000000).toLocaleString(Qt.locale(), 'f', 0));
-        } else if (count >= 1000 ) {
-            return qsTr("%1K").arg((count / 1000).toLocaleString(Qt.locale(), 'f', 0));
-        } else {
-            return count;
-        }
-    }
-
     function updateChatPartnerStatusText() {
         if (chatPartnerInformation.status['@type'] === "userStatusEmpty" ) {
             chatStatusText.text = qsTr("was never online");
@@ -74,12 +64,12 @@ Page {
 
     function updateGroupStatusText() {
         if (chatOnlineMemberCount > 0) {
-            chatStatusText.text = qsTr("%1 members, %2 online").arg(getShortenedCount(chatGroupInformation.member_count)).arg(getShortenedCount(chatOnlineMemberCount));
+            chatStatusText.text = qsTr("%1 members, %2 online").arg(Functions.getShortenedCount(chatGroupInformation.member_count)).arg(Functions.getShortenedCount(chatOnlineMemberCount));
         } else {
             if (isChannel) {
-                chatStatusText.text = qsTr("%1 subscribers").arg(getShortenedCount(chatGroupInformation.member_count));
+                chatStatusText.text = qsTr("%1 subscribers").arg(Functions.getShortenedCount(chatGroupInformation.member_count));
             } else {
-                chatStatusText.text = qsTr("%1 members").arg(getShortenedCount(chatGroupInformation.member_count));
+                chatStatusText.text = qsTr("%1 members").arg(Functions.getShortenedCount(chatGroupInformation.member_count));
             }
         }
     }
