@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation><该项目使用 twemoji  2018 Twitter, Inc. 版权所有。感谢使它在 MIT 许可证（编码）及 CC-BY 4.0（图像）许可证下可用。</translation>
+        <translation>该项目使用 twemoji  2018 Twitter, Inc. 版权所有。感谢使它在 MIT 许可证（编码）及 CC-BY 4.0（图像）许可证下可用。</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -128,14 +128,6 @@
     <message>
         <source>%1 members</source>
         <translation>%1 位成员</translation>
-    </message>
-    <message>
-        <source>%1M</source>
-        <translation>%1M</translation>
-    </message>
-    <message>
-        <source>%1K</source>
-        <translation>%1T</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
@@ -510,6 +502,14 @@
     <message>
         <source>left this chat</source>
         <translation>离开此对话</translation>
+    </message>
+    <message>
+        <source>%1M</source>
+        <translation>%1M</translation>
+    </message>
+    <message>
+        <source>%1K</source>
+        <translation>%1T</translation>
     </message>
 </context>
 </TS>

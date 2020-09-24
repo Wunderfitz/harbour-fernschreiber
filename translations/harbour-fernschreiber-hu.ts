@@ -130,14 +130,6 @@
         <translation>%1 tag</translation>
     </message>
     <message>
-        <source>%1M</source>
-        <translation>%1M</translation>
-    </message>
-    <message>
-        <source>%1K</source>
-        <translation>%1K</translation>
-    </message>
-    <message>
         <source>%1 subscribers</source>
         <translation>%1 feliratkozott</translation>
     </message>
@@ -510,6 +502,14 @@
     <message>
         <source>left this chat</source>
         <translation>kilépett a csevegésből</translation>
+    </message>
+    <message>
+        <source>%1M</source>
+        <translation>%1M</translation>
+    </message>
+    <message>
+        <source>%1K</source>
+        <translation>%1K</translation>
     </message>
 </context>
 </TS>

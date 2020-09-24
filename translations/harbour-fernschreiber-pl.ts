@@ -130,14 +130,6 @@
         <translation>%1 czlonków</translation>
     </message>
     <message>
-        <source>%1M</source>
-        <translation>%1M</translation>
-    </message>
-    <message>
-        <source>%1K</source>
-        <translation>%1K</translation>
-    </message>
-    <message>
         <source>%1 subscribers</source>
         <translation>%1 subskrybentów</translation>
     </message>
@@ -510,6 +502,14 @@
     <message>
         <source>left this chat</source>
         <translation>opuścił ten czat</translation>
+    </message>
+    <message>
+        <source>%1M</source>
+        <translation>%1M</translation>
+    </message>
+    <message>
+        <source>%1K</source>
+        <translation>%1K</translation>
     </message>
 </context>
 </TS>

@@ -130,14 +130,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1M</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1K</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>%1 subscribers</source>
         <translation type="unfinished"></translation>
     </message>
@@ -509,6 +501,14 @@
     </message>
     <message>
         <source>left this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1M</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1K</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
