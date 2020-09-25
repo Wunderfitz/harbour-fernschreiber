@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>Un Telegram cliente de Sailfish SO</translation>
+        <translation>Un cliente de Telegram para Sailfish SO</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
@@ -41,11 +41,11 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Este proyecto usa la biblioteca de bases de datos de Telegram (TDLib). ¡Gracias por hacerlo disponible bajo las condiciones de la licencia de software-boost 1.0!</translation>
+        <translation>Este proyecto usa la biblioteca TDLib de Telegram. ¡Gracias por estar disponible bajo las condiciones de la licencia de software-boost 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Biblioteca de bases de datos de Telegram</translation>
+        <translation>Biblioteca TDLib</translation>
     </message>
     <message>
         <source>About Telegram</source>
@@ -53,7 +53,7 @@
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Este producto usa la API de Telegram, pero no está respaldado ni certificado por Telegram.</translation>
+        <translation>Este programa usa la API de Telegram, pero no está respaldado ni certificado por Telegram.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
@@ -69,11 +69,11 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Este proyecto usa twemoji. Derechos de autor 2018 Twitter, Inc. y otros colaboradores. ¡Gracias por hacerlo disponible bajo las condiciones de la licencia MIT (codificación) y CC-BY 4.0 (gráficos)!</translation>
+        <translation>Este proyecto usa twemoji. Derechos de autor 2018 Twitter, Inc. y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT (codificación) y CC-BY 4.0 (gráficos)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Biblioteca de bases de datos de twemoji</translation>
+        <translation>Biblioteca twemoji</translation>
     </message>
 </context>
 <context>
@@ -266,7 +266,7 @@
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Introducir código que recibiste:</translation>
+        <translation>Introducir código recibido:</translation>
     </message>
     <message>
         <source>Loading...</source>
