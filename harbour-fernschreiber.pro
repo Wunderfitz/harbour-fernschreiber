@@ -56,12 +56,13 @@ TRANSLATIONS += translations/harbour-fernschreiber-de.ts \
                 translations/harbour-fernschreiber-pl.ts \
                 translations/harbour-fernschreiber-zh_CN.ts
 
-LIBS += -L$$PWD/tdlib/lib/ -ltdjson
+# Use armv7hl for most devices and i486 for emulator and Jolla Tablet. Can most certainly be automated... ;)
+TARGET_ARCHITECTURE = i486
 
 INCLUDEPATH += $$PWD/tdlib/include
 DEPENDPATH += $$PWD/tdlib/include
-
-telegram.files = $$PWD/tdlib/lib
+LIBS += -L$$PWD/tdlib/$${TARGET_ARCHITECTURE}/lib/ -ltdjson
+telegram.files = $$PWD/tdlib/$${TARGET_ARCHITECTURE}/lib
 telegram.path = /usr/share/$${TARGET}
 
 gui.files = qml
@@ -102,3 +103,4 @@ HEADERS += \
     src/tdlibreceiver.h \
     src/tdlibsecrets.h \
     src/tdlibwrapper.h
+

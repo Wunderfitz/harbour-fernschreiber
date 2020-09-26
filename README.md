@@ -20,7 +20,7 @@ const char TDLIB_API_HASH[] = "1234567890abcdef1234567890abcdef";
 
 You get the Telegram API ID and hash as soon as you've registered your own application on [https://my.telegram.org](https://my.telegram.org).
 
-Moreover, you need to have a compiled version of [TDLib](https://github.com/tdlib/td) in the subfolder `tdlib/lib` that fits to the target device architecture (e.g. armv7hl) as this repository only includes the header and make files of TDLib.
+Moreover, you need to have a compiled version of [TDLib](https://github.com/tdlib/td) in the sub-directory `tdlib`. This sub-directory must contain another sub-directory that fits to the target device architecture (e.g. armv7hl, i486). Within this directory, there needs to be a folder called `lib` that contains at least `libtdjson.so`. For armv7hl the relative path would consequently be `tdlib/armv7hl/lib`. Before compiling the project, be sure to set the target architecture in the project file `harbour-fernschreiber.pro` correctly using the variable `TARGET_ARCHITECTURE`. This can most certainly be automated. Pull requests welcome! ;)
 
 ## Credits
 This project uses
