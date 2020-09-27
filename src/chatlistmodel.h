@@ -34,15 +34,13 @@ public:
 
     virtual int rowCount(const QModelIndex&) const override;
     virtual QVariant data(const QModelIndex &index, int role) const override;
-    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
-    Q_INVOKABLE void enableDeltaUpdates();
     Q_INVOKABLE void redrawModel();
 
 signals:
     void chatChanged(const QString &chatId);
 
-public slots:
+private slots:
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
     void handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void handleChatOrderUpdated(const QString &chatId, const QString &order);
@@ -52,15 +50,14 @@ public slots:
     void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
 
 private:
+    int updateChatOrder(int chatIndex);
+
+private:
+    class ChatData;
+
     TDLibWrapper *tdLibWrapper;
-    QVariantList chatList;
-    QVariantMap chatToBeAdded;
-    QVariantMap chatIndexMap;
-    QMutex chatListMutex;
-    bool deltaUpdates;
-
-    void updateChatOrder(const int &currentChatIndex, const QVariantMap &updatedChat);
-
+    QList<ChatData*> chatList;
+    QHash<QString,int> chatIndexMap;
 };
 
 #endif // CHATLISTMODEL_H
