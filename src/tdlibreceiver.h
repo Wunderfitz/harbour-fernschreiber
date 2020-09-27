@@ -65,6 +65,9 @@ signals:
     void messagesDeleted(const QString &chatId, const QVariantList &messageIds);
 
 private:
+    typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
+
+    QHash<QString, Handler> handlers;
     void *tdLibClient;
     bool isActive;
 
@@ -82,6 +85,7 @@ private:
     void processUpdateUnreadChatCount(const QVariantMap &receivedInformation);
     void processUpdateChatLastMessage(const QVariantMap &receivedInformation);
     void processUpdateChatOrder(const QVariantMap &receivedInformation);
+    void processUpdateChatPosition(const QVariantMap &receivedInformation);
     void processUpdateChatReadInbox(const QVariantMap &receivedInformation);
     void processUpdateChatReadOutbox(const QVariantMap &receivedInformation);
     void processUpdateBasicGroup(const QVariantMap &receivedInformation);
