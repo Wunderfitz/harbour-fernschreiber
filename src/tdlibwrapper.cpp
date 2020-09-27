@@ -252,6 +252,54 @@ void TDLibWrapper::sendPhotoMessage(const QString &chatId, const QString &filePa
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::sendVideoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
+{
+    qDebug() << "[TDLibWrapper] Sending video message " << chatId << filePath << message << replyToMessageId;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "sendMessage");
+    requestObject.insert("chat_id", chatId);
+    if (replyToMessageId != "0") {
+        requestObject.insert("reply_to_message_id", replyToMessageId);
+    }
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert("@type", "inputMessageVideo");
+    QVariantMap formattedText;
+    formattedText.insert("text", message);
+    formattedText.insert("@type", "formattedText");
+    inputMessageContent.insert("caption", formattedText);
+    QVariantMap videoInputFile;
+    videoInputFile.insert("@type", "inputFileLocal");
+    videoInputFile.insert("path", filePath);
+    inputMessageContent.insert("video", videoInputFile);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
+{
+    qDebug() << "[TDLibWrapper] Sending document message " << chatId << filePath << message << replyToMessageId;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "sendMessage");
+    requestObject.insert("chat_id", chatId);
+    if (replyToMessageId != "0") {
+        requestObject.insert("reply_to_message_id", replyToMessageId);
+    }
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert("@type", "inputMessageDocument");
+    QVariantMap formattedText;
+    formattedText.insert("text", message);
+    formattedText.insert("@type", "formattedText");
+    inputMessageContent.insert("caption", formattedText);
+    QVariantMap documentInputFile;
+    documentInputFile.insert("@type", "inputFileLocal");
+    documentInputFile.insert("path", filePath);
+    inputMessageContent.insert("document", documentInputFile);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
 {
     qDebug() << "[TDLibWrapper] Retrieving message " << chatId << messageId;

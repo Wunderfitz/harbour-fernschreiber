@@ -21,6 +21,7 @@ import QtGraphicalEffects 1.0
 import QtMultimedia 5.0
 import Sailfish.Silica 1.0
 import Sailfish.Pickers 1.0
+import Nemo.Thumbnailer 1.0
 import WerkWolf.Fernschreiber 1.0
 import "../components"
 import "../js/twemoji.js" as Emoji
@@ -130,6 +131,8 @@ Page {
     function clearAttachmentPreviewRow() {
         attachmentPreviewRow.visible = false;
         attachmentPreviewRow.isPicture = false;
+        attachmentPreviewRow.isVideo = false;
+        attachmentPreviewRow.isDocument = false;
         attachmentPreviewRow.filePath = "";
     }
 
@@ -140,6 +143,12 @@ Page {
             if (attachmentPreviewRow.visible) {
                 if (attachmentPreviewRow.isPicture) {
                     tdLibWrapper.sendPhotoMessage(chatInformation.id, attachmentPreviewRow.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                }
+                if (attachmentPreviewRow.isVideo) {
+                    tdLibWrapper.sendVideoMessage(chatInformation.id, attachmentPreviewRow.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                }
+                if (attachmentPreviewRow.isDocument) {
+                    tdLibWrapper.sendDocumentMessage(chatInformation.id, attachmentPreviewRow.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
                 }
                 clearAttachmentPreviewRow();
             } else {
@@ -834,6 +843,32 @@ Page {
                      }
                  }
 
+                Component {
+                     id: videoPickerPage
+                     VideoPickerPage {
+                         onSelectedContentPropertiesChanged: {
+                             attachmentOptionsRow.visible = false;
+                             console.log("Selected video: " + selectedContentProperties.filePath );
+                             attachmentPreviewRow.filePath = selectedContentProperties.filePath;
+                             attachmentPreviewRow.isVideo = true;
+                             attachmentPreviewRow.visible = true;
+                         }
+                     }
+                 }
+
+                Component {
+                     id: documentPickerPage
+                     DocumentPickerPage {
+                         onSelectedContentPropertiesChanged: {
+                             attachmentOptionsRow.visible = false;
+                             console.log("Selected document: " + selectedContentProperties.filePath );
+                             attachmentPreviewRow.filePath = selectedContentProperties.filePath;
+                             attachmentPreviewRow.isDocument = true;
+                             attachmentPreviewRow.visible = true;
+                         }
+                     }
+                 }
+
                 InReplyToRow {
                     onInReplyToMessageChanged: {
                         if (inReplyToMessage) {
@@ -855,6 +890,21 @@ Page {
                     id: attachmentOptionsRow
                     visible: false
                     anchors.right: parent.right
+                    spacing: Theme.paddingMedium
+                    IconButton {
+                        id: documentAttachmentButton
+                        icon.source: "image://theme/icon-m-document"
+                        onClicked: {
+                            pageStack.push(documentPickerPage);
+                        }
+                    }
+                    IconButton {
+                        id: videoAttachmentButton
+                        icon.source: "image://theme/icon-m-video"
+                        onClicked: {
+                            pageStack.push(videoPickerPage);
+                        }
+                    }
                     IconButton {
                         id: imageAttachmentButton
                         icon.source: "image://theme/icon-m-image"
@@ -871,19 +921,34 @@ Page {
                     anchors.right: parent.right
 
                     property bool isPicture: false;
+                    property bool isVideo: false;
+                    property bool isDocument: false;
                     property string filePath: "";
 
-                    Image {
+                    Thumbnail {
                         id: attachmentPreviewImage
                         width: Theme.itemSizeMedium
                         height: Theme.itemSizeMedium
+                        sourceSize.width: width
+                        sourceSize.height: height
 
-                        fillMode: Image.PreserveAspectCrop
-                        autoTransform: true
-                        asynchronous: true
+                        fillMode: Thumbnail.PreserveAspectCrop
                         source: attachmentPreviewRow.filePath
+                        visible: attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo
+                    }
+
+                    Text {
+                        width: parent.width - Theme.paddingMedium - removeAttachmentsIconButton.width
+
+                        id: attachmentPreviewText
+                        font.pixelSize: Theme.fontSizeSmall
+                        text: attachmentPreviewRow.filePath;
+                        maximumLineCount: 1
+                        elide: Text.ElideRight
+                        color: Theme.secondaryColor
                         visible: attachmentPreviewRow.isPicture
                     }
+
                     IconButton {
                         id: removeAttachmentsIconButton
                         icon.source: "image://theme/icon-m-clear"
