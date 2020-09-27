@@ -103,3 +103,5 @@ HEADERS += \
     src/tdlibsecrets.h \
     src/tdlibwrapper.h
 
+OTHER_FILES += \
+    rpm/$${TARGET}.spec
