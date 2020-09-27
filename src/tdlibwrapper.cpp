@@ -228,6 +228,30 @@ void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::sendPhotoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
+{
+    qDebug() << "[TDLibWrapper] Sending photo message " << chatId << filePath << message << replyToMessageId;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "sendMessage");
+    requestObject.insert("chat_id", chatId);
+    if (replyToMessageId != "0") {
+        requestObject.insert("reply_to_message_id", replyToMessageId);
+    }
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert("@type", "inputMessagePhoto");
+    QVariantMap formattedText;
+    formattedText.insert("text", message);
+    formattedText.insert("@type", "formattedText");
+    inputMessageContent.insert("caption", formattedText);
+    QVariantMap photoInputFile;
+    photoInputFile.insert("@type", "inputFileLocal");
+    photoInputFile.insert("path", filePath);
+    inputMessageContent.insert("photo", photoInputFile);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
 {
     qDebug() << "[TDLibWrapper] Retrieving message " << chatId << messageId;

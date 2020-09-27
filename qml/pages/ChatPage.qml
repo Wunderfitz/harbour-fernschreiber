@@ -20,6 +20,7 @@ import QtQuick 2.5
 import QtGraphicalEffects 1.0
 import QtMultimedia 5.0
 import Sailfish.Silica 1.0
+import Sailfish.Pickers 1.0
 import WerkWolf.Fernschreiber 1.0
 import "../components"
 import "../js/twemoji.js" as Emoji
@@ -124,6 +125,27 @@ Page {
             }
         }
         return Functions.getDateTimeElapsed(message.date) + messageStatusSuffix;
+    }
+
+    function clearAttachmentPreviewRow() {
+        attachmentPreviewRow.visible = false;
+        attachmentPreviewRow.isPicture = false;
+        attachmentPreviewRow.filePath = "";
+    }
+
+    function sendMessage() {
+        if (newMessageColumn.editMessageId !== "0") {
+            tdLibWrapper.editMessageText(chatInformation.id, newMessageColumn.editMessageId, newMessageTextField.text);
+        } else {
+            if (attachmentPreviewRow.visible) {
+                if (attachmentPreviewRow.isPicture) {
+                    tdLibWrapper.sendPhotoMessage(chatInformation.id, attachmentPreviewRow.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                }
+                clearAttachmentPreviewRow();
+            } else {
+                tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
+            }
+        }
     }
 
     Component.onCompleted: {
@@ -799,6 +821,19 @@ Page {
                 property string replyToMessageId: "0";
                 property string editMessageId: "0";
 
+                Component {
+                     id: imagePickerPage
+                     ImagePickerPage {
+                         onSelectedContentPropertiesChanged: {
+                             attachmentOptionsRow.visible = false;
+                             console.log("Selected photo: " + selectedContentProperties.filePath );
+                             attachmentPreviewRow.filePath = selectedContentProperties.filePath;
+                             attachmentPreviewRow.isPicture = true;
+                             attachmentPreviewRow.visible = true;
+                         }
+                     }
+                 }
+
                 InReplyToRow {
                     onInReplyToMessageChanged: {
                         if (inReplyToMessage) {
@@ -814,6 +849,48 @@ Page {
                     myUserId: chatPage.myUserId
                     anchors.horizontalCenter: parent.horizontalCenter
                     visible: false
+                }
+
+                Row {
+                    id: attachmentOptionsRow
+                    visible: false
+                    anchors.right: parent.right
+                    IconButton {
+                        id: imageAttachmentButton
+                        icon.source: "image://theme/icon-m-image"
+                        onClicked: {
+                            pageStack.push(imagePickerPage);
+                        }
+                    }
+                }
+
+                Row {
+                    id: attachmentPreviewRow
+                    visible: false
+                    spacing: Theme.paddingMedium
+                    anchors.right: parent.right
+
+                    property bool isPicture: false;
+                    property string filePath: "";
+
+                    Image {
+                        id: attachmentPreviewImage
+                        width: Theme.itemSizeMedium
+                        height: Theme.itemSizeMedium
+
+                        fillMode: Image.PreserveAspectCrop
+                        autoTransform: true
+                        asynchronous: true
+                        source: attachmentPreviewRow.filePath
+                        visible: attachmentPreviewRow.isPicture
+                    }
+                    IconButton {
+                        id: removeAttachmentsIconButton
+                        icon.source: "image://theme/icon-m-clear"
+                        onClicked: {
+                            clearAttachmentPreviewRow();
+                        }
+                    }
                 }
 
                 Text {
@@ -854,11 +931,7 @@ Page {
                         }
                         EnterKey.onClicked: {
                             if (tdLibWrapper.getSendByEnter()) {
-                                if (newMessageColumn.editMessageId !== "0") {
-                                    tdLibWrapper.editMessageText(chatInformation.id, newMessageColumn.editMessageId, newMessageTextField.text);
-                                } else {
-                                    tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
-                                }
+                                sendMessage();
                                 newMessageTextField.text = "";
                                 newMessageTextField.focus = false;
                             }
@@ -888,11 +961,17 @@ Page {
 
                     IconButton {
                         id: attachmentIconButton
-                        icon.source: "image://theme/icon-m-attach"
+                        icon.source: attachmentOptionsRow.visible ? "image://theme/icon-m-attach?" + Theme.highlightColor : "image://theme/icon-m-attach?" + Theme.primaryColor
+
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
+                        enabled: !attachmentPreviewRow.visible
                         onClicked: {
-
+                            if (attachmentOptionsRow.visible) {
+                                attachmentOptionsRow.visible = false;
+                            } else {
+                                attachmentOptionsRow.visible = true;
+                            }
                         }
                     }
 
@@ -903,11 +982,7 @@ Page {
                         anchors.bottomMargin: Theme.paddingSmall
                         enabled: false
                         onClicked: {
-                            if (newMessageColumn.editMessageId !== "0") {
-                                tdLibWrapper.editMessageText(chatInformation.id, newMessageColumn.editMessageId, newMessageTextField.text);
-                            } else {
-                                tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
-                            }
+                            sendMessage();
                             newMessageTextField.text = "";
                             newMessageTextField.focus = false;
                         }

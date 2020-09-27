@@ -91,6 +91,7 @@ public:
     Q_INVOKABLE void getChatHistory(const QString &chatId, const qlonglong &fromMessageId = 0, const int &offset = 0, const int &limit = 50, const bool &onlyLocal = false);
     Q_INVOKABLE void viewMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId = "0");
+    Q_INVOKABLE void sendPhotoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void getMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void setOptionInteger(const QString &optionName, const int &optionValue);
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);
