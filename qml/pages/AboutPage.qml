@@ -77,8 +77,13 @@ Page {
             }
 
             Label {
-                text: qsTr("By Sebastian J. Wolf")
+                text: qsTr("By Sebastian J. Wolf and <a href=\"https://github.com/Wunderfitz/harbour-fernschreiber#contributions\">other contributors</a>")
                 font.pixelSize: Theme.fontSizeSmall
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.Wrap
+                linkColor: Theme.highlightColor
+                onLinkActivated: Qt.openUrlExternally(link)
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }

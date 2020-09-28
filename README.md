@@ -4,6 +4,19 @@ A Telegram client for Sailfish OS
 ## Author
 Sebastian J. Wolf [sebastian@ygriega.de](mailto:sebastian@ygriega.de)
 
+## Contributions
+
+Fernschreiber wouldn't be the same without all the people helping in making it better. Thank you very much to all contributors!
+
+### Code (Features, Bugfixes, Optimizations etc.)
+- Chat list model, TDLib receiver, project dependencies: [Slava Monich](https://github.com/monich)
+
+### Translations
+- Chinese: [dashinfantry](https://github.com/dashinfantry)
+- Hungarian [edp17](https://github.com/edp17)
+- Polish: [atlochowski](https://github.com/atlochowski)
+- Spanish: [GNUuser](https://github.com/GNUuser)
+
 ## License
 Licensed under GNU GPLv3
 
@@ -28,7 +41,4 @@ This project uses
 - Emoji parsing and artwork by [Twitter Emoji (Twemoji)](http://twitter.github.io/twemoji/), copyright 2018 Twitter, Inc and other contributors, Code licensed under the [MIT License](http://opensource.org/licenses/MIT), Graphics licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 Fernschreiber was translated to several languages. Thanks to all contributors!
-- Chinese: [dashinfantry](https://github.com/dashinfantry)
-- Hungarian [edp17](https://github.com/edp17)
-- Polish: [atlochowski](https://github.com/atlochowski)
-- Spanish: [GNUuser](https://github.com/GNUuser)
+

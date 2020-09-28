@@ -219,7 +219,12 @@ void TDLibReceiver::processUpdateUnreadChatCount(const QVariantMap &receivedInfo
 void TDLibReceiver::processUpdateChatLastMessage(const QVariantMap &receivedInformation)
 {
     const QString chat_id(receivedInformation.value(CHAT_ID).toString());
-    const QString order(findChatPositionOrder(receivedInformation.value(POSITIONS).toList()));
+    QString order;
+    if (receivedInformation.contains(POSITIONS)) {
+        order = findChatPositionOrder(receivedInformation.value(POSITIONS).toList());
+    } else {
+        order = receivedInformation.value(ORDER).toString();
+    }
     const QVariantMap lastMessage = receivedInformation.value(LAST_MESSAGE).toMap();
     LOG("Last message of chat" << chat_id << "updated, order" << order << "type" << lastMessage.value("@type").toString());
     emit chatLastMessageUpdated(chat_id, order, lastMessage);

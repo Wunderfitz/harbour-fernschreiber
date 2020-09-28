@@ -12,10 +12,6 @@
         <translation>Un cliente de Telegram para Sailfish SO</translation>
     </message>
     <message>
-        <source>By Sebastian J. Wolf</source>
-        <translation>Por Sebastian J. Wolf</translation>
-    </message>
-    <message>
         <source>Send E-Mail</source>
         <translation>Enviar C.Electron.</translation>
     </message>
@@ -74,6 +70,10 @@
     <message>
         <source>Open twemoji on GitHub</source>
         <translation>Biblioteca twemoji</translation>
+    </message>
+    <message>
+        <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

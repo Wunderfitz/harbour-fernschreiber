@@ -77,14 +77,14 @@ bool ChatListModel::ChatData::setOrder(const QString &newOrder)
 
 ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper)
 {
-    tdLibWrapper = tdLibWrapper;
-    connect(tdLibWrapper, SIGNAL(newChatDiscovered(QString,QVariantMap)), this, SLOT(handleChatDiscovered(QString,QVariantMap)));
-    connect(tdLibWrapper, SIGNAL(chatLastMessageUpdated(QString,QString,QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString,QString,QVariantMap)));
-    connect(tdLibWrapper, SIGNAL(chatOrderUpdated(QString,QString)), this, SLOT(handleChatOrderUpdated(QString,QString)));
-    connect(tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString,QString,int)), this, SLOT(handleChatReadInboxUpdated(QString,QString,int)));
-    connect(tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString,QString)), this, SLOT(handleChatReadOutboxUpdated(QString,QString)));
-    connect(tdLibWrapper, SIGNAL(messageSendSucceeded(QString,QString,QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString,QString,QVariantMap)));
-    connect(tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString,QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString,QVariantMap)));
+    this->tdLibWrapper = tdLibWrapper;
+    connect(tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
+    connect(tdLibWrapper, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
+    connect(tdLibWrapper, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
+    connect(tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
+    connect(tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
+    connect(tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
+    connect(tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
 }
 
 ChatListModel::~ChatListModel()
