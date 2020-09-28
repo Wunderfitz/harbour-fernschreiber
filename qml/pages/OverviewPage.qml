@@ -63,7 +63,6 @@ Page {
         repeat: false
         onTriggered: {
             overviewPage.chatListCreated = true;
-            chatListModel.enableDeltaUpdates();
         }
     }
 
