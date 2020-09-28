@@ -484,6 +484,7 @@ Page {
                                 videoPreviewLoader.active = (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
                                 audioPreviewLoader.active = (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
                                 documentPreviewLoader.active = ( display.content['@type'] === "messageDocument" );
+                                locationPreviewLoader.active = ( display.content['@type'] === "messageLocation" )
                             }
                         }
 
@@ -716,7 +717,25 @@ Page {
                                         width: parent.width
                                         sourceComponent: documentPreviewComponent
                                     }
+                                    Component {
+                                        id: locationPreviewComponent
+                                        LocationPreview {
+                                            id: messageLocationPreview
+                                            width: parent.width
+                                            height: parent.width * 2 / 3
+                                            chatId: display.id
+                                            locationData: ( display.content['@type'] === "messageLocation" ) ?  display.content.location : ""
+                                            visible: display.content['@type'] === "messageLocation"
+                                        }
+                                    }
 
+                                    Loader {
+                                        id: locationPreviewLoader
+                                        active: false
+                                        asynchronous: true
+                                        width: parent.width
+                                        sourceComponent: locationPreviewComponent
+                                    }
                                     Timer {
                                         id: messageDateUpdater
                                         interval: 60000
