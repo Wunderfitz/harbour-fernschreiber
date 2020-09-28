@@ -133,7 +133,24 @@ Page {
         attachmentPreviewRow.isPicture = false;
         attachmentPreviewRow.isVideo = false;
         attachmentPreviewRow.isDocument = false;
-        attachmentPreviewRow.filePath = "";
+        attachmentPreviewRow.fileProperties = {};
+    }
+
+    function controlEnterKey() {
+        if (newMessageTextField.text.length !== 0
+                || attachmentPreviewRow.isPicture
+                || attachmentPreviewRow.isDocument
+                || attachmentPreviewRow.isVideo) {
+            newMessageSendButton.enabled = true;
+            if (tdLibWrapper.getSendByEnter()) {
+                EnterKey.enabled = true;
+            }
+        } else {
+            newMessageSendButton.enabled = false;
+            if (tdLibWrapper.getSendByEnter()) {
+                EnterKey.enabled = false;
+            }
+        }
     }
 
     function sendMessage() {
@@ -142,19 +159,20 @@ Page {
         } else {
             if (attachmentPreviewRow.visible) {
                 if (attachmentPreviewRow.isPicture) {
-                    tdLibWrapper.sendPhotoMessage(chatInformation.id, attachmentPreviewRow.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    tdLibWrapper.sendPhotoMessage(chatInformation.id, attachmentPreviewRow.fileProperties.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
                 }
                 if (attachmentPreviewRow.isVideo) {
-                    tdLibWrapper.sendVideoMessage(chatInformation.id, attachmentPreviewRow.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    tdLibWrapper.sendVideoMessage(chatInformation.id, attachmentPreviewRow.fileProperties.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
                 }
                 if (attachmentPreviewRow.isDocument) {
-                    tdLibWrapper.sendDocumentMessage(chatInformation.id, attachmentPreviewRow.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    tdLibWrapper.sendDocumentMessage(chatInformation.id, attachmentPreviewRow.fileProperties.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
                 }
                 clearAttachmentPreviewRow();
             } else {
                 tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
             }
         }
+        controlEnterKey();
     }
 
     Component.onCompleted: {
@@ -836,9 +854,10 @@ Page {
                          onSelectedContentPropertiesChanged: {
                              attachmentOptionsRow.visible = false;
                              console.log("Selected photo: " + selectedContentProperties.filePath );
-                             attachmentPreviewRow.filePath = selectedContentProperties.filePath;
+                             attachmentPreviewRow.fileProperties = selectedContentProperties;
                              attachmentPreviewRow.isPicture = true;
                              attachmentPreviewRow.visible = true;
+                             controlEnterKey();
                          }
                      }
                  }
@@ -849,9 +868,10 @@ Page {
                          onSelectedContentPropertiesChanged: {
                              attachmentOptionsRow.visible = false;
                              console.log("Selected video: " + selectedContentProperties.filePath );
-                             attachmentPreviewRow.filePath = selectedContentProperties.filePath;
+                             attachmentPreviewRow.fileProperties = selectedContentProperties;
                              attachmentPreviewRow.isVideo = true;
                              attachmentPreviewRow.visible = true;
+                             controlEnterKey();
                          }
                      }
                  }
@@ -862,9 +882,10 @@ Page {
                          onSelectedContentPropertiesChanged: {
                              attachmentOptionsRow.visible = false;
                              console.log("Selected document: " + selectedContentProperties.filePath );
-                             attachmentPreviewRow.filePath = selectedContentProperties.filePath;
+                             attachmentPreviewRow.fileProperties = selectedContentProperties;
                              attachmentPreviewRow.isDocument = true;
                              attachmentPreviewRow.visible = true;
+                             controlEnterKey();
                          }
                      }
                  }
@@ -890,12 +911,14 @@ Page {
                     id: attachmentOptionsRow
                     visible: false
                     anchors.right: parent.right
+                    width: parent.width
+                    layoutDirection: Qt.RightToLeft
                     spacing: Theme.paddingMedium
                     IconButton {
-                        id: documentAttachmentButton
-                        icon.source: "image://theme/icon-m-document"
+                        id: imageAttachmentButton
+                        icon.source: "image://theme/icon-m-image"
                         onClicked: {
-                            pageStack.push(documentPickerPage);
+                            pageStack.push(imagePickerPage);
                         }
                     }
                     IconButton {
@@ -906,10 +929,10 @@ Page {
                         }
                     }
                     IconButton {
-                        id: imageAttachmentButton
-                        icon.source: "image://theme/icon-m-image"
+                        id: documentAttachmentButton
+                        icon.source: "image://theme/icon-m-document"
                         onClicked: {
-                            pageStack.push(imagePickerPage);
+                            pageStack.push(documentPickerPage);
                         }
                     }
                 }
@@ -918,12 +941,23 @@ Page {
                     id: attachmentPreviewRow
                     visible: false
                     spacing: Theme.paddingMedium
+                    width: parent.width
+                    layoutDirection: Qt.RightToLeft
                     anchors.right: parent.right
 
                     property bool isPicture: false;
                     property bool isVideo: false;
                     property bool isDocument: false;
-                    property string filePath: "";
+                    property variant fileProperties;
+
+                    IconButton {
+                        id: removeAttachmentsIconButton
+                        icon.source: "image://theme/icon-m-clear"
+                        onClicked: {
+                            clearAttachmentPreviewRow();
+                            controlEnterKey();
+                        }
+                    }
 
                     Thumbnail {
                         id: attachmentPreviewImage
@@ -933,28 +967,21 @@ Page {
                         sourceSize.height: height
 
                         fillMode: Thumbnail.PreserveAspectCrop
-                        source: attachmentPreviewRow.filePath
+                        mimeType: attachmentPreviewRow.fileProperties.mimeType
+                        source: attachmentPreviewRow.fileProperties.url
                         visible: attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo
                     }
 
                     Text {
-                        width: parent.width - Theme.paddingMedium - removeAttachmentsIconButton.width
-
                         id: attachmentPreviewText
                         font.pixelSize: Theme.fontSizeSmall
-                        text: attachmentPreviewRow.filePath;
+                        text: attachmentPreviewRow.fileProperties.fileName;
+                        anchors.verticalCenter: parent.verticalCenter
+
                         maximumLineCount: 1
                         elide: Text.ElideRight
                         color: Theme.secondaryColor
-                        visible: attachmentPreviewRow.isPicture
-                    }
-
-                    IconButton {
-                        id: removeAttachmentsIconButton
-                        icon.source: "image://theme/icon-m-clear"
-                        onClicked: {
-                            clearAttachmentPreviewRow();
-                        }
+                        visible: attachmentPreviewRow.isDocument
                     }
                 }
 
@@ -1010,17 +1037,7 @@ Page {
                         }
 
                         onTextChanged: {
-                            if (text.length === 0) {
-                                newMessageSendButton.enabled = false;
-                                if (tdLibWrapper.getSendByEnter()) {
-                                    EnterKey.enabled = false;
-                                }
-                            } else {
-                                newMessageSendButton.enabled = true;
-                                if (tdLibWrapper.getSendByEnter()) {
-                                    EnterKey.enabled = true;
-                                }
-                            }
+                            controlEnterKey();
                         }
                     }
 
