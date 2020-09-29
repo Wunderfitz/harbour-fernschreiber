@@ -136,20 +136,14 @@ Page {
         attachmentPreviewRow.fileProperties = {};
     }
 
-    function controlEnterKey() {
+    function controlSendButton() {
         if (newMessageTextField.text.length !== 0
                 || attachmentPreviewRow.isPicture
                 || attachmentPreviewRow.isDocument
                 || attachmentPreviewRow.isVideo) {
             newMessageSendButton.enabled = true;
-            if (tdLibWrapper.getSendByEnter()) {
-                EnterKey.enabled = true;
-            }
         } else {
             newMessageSendButton.enabled = false;
-            if (tdLibWrapper.getSendByEnter()) {
-                EnterKey.enabled = false;
-            }
         }
     }
 
@@ -172,7 +166,7 @@ Page {
                 tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
             }
         }
-        controlEnterKey();
+        controlSendButton();
     }
 
     Component.onCompleted: {
@@ -857,7 +851,7 @@ Page {
                              attachmentPreviewRow.fileProperties = selectedContentProperties;
                              attachmentPreviewRow.isPicture = true;
                              attachmentPreviewRow.visible = true;
-                             controlEnterKey();
+                             controlSendButton();
                          }
                      }
                  }
@@ -871,7 +865,7 @@ Page {
                              attachmentPreviewRow.fileProperties = selectedContentProperties;
                              attachmentPreviewRow.isVideo = true;
                              attachmentPreviewRow.visible = true;
-                             controlEnterKey();
+                             controlSendButton();
                          }
                      }
                  }
@@ -885,7 +879,7 @@ Page {
                              attachmentPreviewRow.fileProperties = selectedContentProperties;
                              attachmentPreviewRow.isDocument = true;
                              attachmentPreviewRow.visible = true;
-                             controlEnterKey();
+                             controlSendButton();
                          }
                      }
                  }
@@ -955,7 +949,7 @@ Page {
                         icon.source: "image://theme/icon-m-clear"
                         onClicked: {
                             clearAttachmentPreviewRow();
-                            controlEnterKey();
+                            controlSendButton();
                         }
                     }
 
@@ -1029,15 +1023,16 @@ Page {
                             }
                         }
 
+                        EnterKey.enabled: tdLibWrapper.getSendByEnter() ? text.length > 0 : true;
+
                         Component.onCompleted: {
                             if (tdLibWrapper.getSendByEnter()) {
                                 EnterKey.iconSource = "image://theme/icon-m-chat";
-                                EnterKey.enabled = false;
                             }
                         }
 
                         onTextChanged: {
-                            controlEnterKey();
+                            controlSendButton();
                         }
                     }
 
