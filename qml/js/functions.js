@@ -77,7 +77,10 @@ function getMessageText(message, simple) {
         }
     }
     if (message.content['@type'] === 'messageLocation') {
-        return qsTr("sent a location");
+        return simple ? qsTr("sent a location") : "";
+    }
+    if (message.content['@type'] === 'messageVenue') {
+        return simple ? qsTr("sent a venue") : ( "<b>" + message.content.venue.title + "</b>, " + message.content.venue.address );
     }
     if (message.content['@type'] === 'messageContactRegistered') {
         return qsTr("has registered with Telegram");

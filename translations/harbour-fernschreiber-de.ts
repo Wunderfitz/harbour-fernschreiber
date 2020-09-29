@@ -496,7 +496,7 @@
     </message>
     <message>
         <source>sent a location</source>
-        <translation>hat einen Ort geschickt</translation>
+        <translation>hat einen Standort geschickt</translation>
     </message>
     <message>
         <source>joined this chat</source>
@@ -517,6 +517,10 @@
     <message>
         <source>%1K</source>
         <translation>%1T</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <translation>hat einen Ort geschickt</translation>
     </message>
 </context>
 </TS>

@@ -496,7 +496,7 @@ Page {
                                 videoPreviewLoader.active = (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
                                 audioPreviewLoader.active = (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
                                 documentPreviewLoader.active = ( display.content['@type'] === "messageDocument" );
-                                locationPreviewLoader.active = ( display.content['@type'] === "messageLocation" )
+                                locationPreviewLoader.active = ( display.content['@type'] === "messageLocation" || ( display.content['@type'] === "messageVenue" ))
                             }
                         }
 
@@ -736,8 +736,8 @@ Page {
                                             width: parent.width
                                             height: parent.width * 2 / 3
                                             chatId: display.id
-                                            locationData: ( display.content['@type'] === "messageLocation" ) ?  display.content.location : ""
-                                            visible: display.content['@type'] === "messageLocation"
+                                            locationData: ( display.content['@type'] === "messageLocation" ) ?  display.content.location : ( ( display.content['@type'] === "messageVenue" ) ? display.content.venue.location : "" )
+                                            visible: ( display.content['@type'] === "messageLocation" || display.content['@type'] === "messageVenue" )
                                         }
                                     }
 

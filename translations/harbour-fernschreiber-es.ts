@@ -518,5 +518,9 @@
         <source>%1K</source>
         <translation>%1K</translation>
     </message>
+    <message>
+        <source>sent a venue</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

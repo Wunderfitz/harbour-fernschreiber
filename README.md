@@ -10,6 +10,7 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 
 ### Code (Features, Bugfixes, Optimizations etc.)
 - Chat list model, TDLib receiver, project dependencies: [Slava Monich](https://github.com/monich)
+- Location support, project dependencies: [jgibbon](https://github.com/jgibbon)
 
 ### Translations
 - Chinese: [dashinfantry](https://github.com/dashinfantry)
