@@ -27,6 +27,7 @@ Item {
     height: Theme.itemSizeLarge
 
     property variant documentData;
+    property bool openRequested: false;
 
     Component.onCompleted: {
         updateDocument();
@@ -48,12 +49,15 @@ Item {
         target: tdLibWrapper
         onFileUpdated: {
             if (documentData) {
-                if (fileId === documentData.document.id && fileInformation.local.is_downloading_completed) {
+                if (!fileInformation.remote.is_uploading_active && fileId === documentData.document.id && fileInformation.local.is_downloading_completed) {
                     downloadBusyIndicator.running = false;
                     documentData.document = fileInformation;
                     downloadDocumentButton.visible = false;
                     openDocumentButton.visible = true;
-                    tdLibWrapper.openFileOnDevice(documentData.document.local.path);
+                    if (documentPreviewItem.openRequested) {
+                        documentPreviewItem.openRequested = false;
+                        tdLibWrapper.openFileOnDevice(documentData.document.local.path);
+                    }
                 }
             }
         }
@@ -87,6 +91,7 @@ Item {
         text: qsTr("Open Document")
         visible: false
         onClicked: {
+            documentPreviewItem.openRequested = true;
             tdLibWrapper.openFileOnDevice(documentData.document.local.path);
         }
     }

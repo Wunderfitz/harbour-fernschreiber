@@ -169,6 +169,10 @@
         <source>Delete Message</source>
         <translation>Nachricht löschen</translation>
     </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>Lade hoch...</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

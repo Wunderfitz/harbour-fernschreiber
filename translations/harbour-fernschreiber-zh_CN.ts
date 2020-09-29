@@ -169,6 +169,10 @@
         <source>Delete Message</source>
         <translation>删除消息</translation>
     </message>
+    <message>
+        <source>Uploading...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

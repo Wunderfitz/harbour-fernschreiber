@@ -215,6 +215,11 @@ Page {
                 updateGroupStatusText();
             }
         }
+        onFileUpdated: {
+            uploadStatusRow.visible = fileInformation.remote.is_uploading_active;
+            uploadingProgressBar.maximumValue = fileInformation.size;
+            uploadingProgressBar.value = fileInformation.remote.uploaded_size;
+        }
     }
 
     Connections {
@@ -1000,6 +1005,33 @@ Page {
                         color: Theme.secondaryColor
                         visible: attachmentPreviewRow.isDocument
                     }
+                }
+
+                Row {
+                    id: uploadStatusRow
+                    visible: false
+                    spacing: Theme.paddingMedium
+                    width: parent.width
+                    anchors.right: parent.right
+
+                    Text {
+                        id: uploadingText
+                        font.pixelSize: Theme.fontSizeSmall
+                        text: qsTr("Uploading...")
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: Theme.secondaryColor
+                        visible: uploadStatusRow.visible
+                    }
+
+                    ProgressBar {
+                        id: uploadingProgressBar
+                        minimumValue: 0
+                        maximumValue: 100
+                        value: 0
+                        visible: uploadStatusRow.visible
+                        width: parent.width - uploadingText.width - Theme.paddingMedium
+                    }
+
                 }
 
                 Text {

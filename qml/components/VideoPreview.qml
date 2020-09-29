@@ -31,6 +31,7 @@ Item {
     property bool fullscreen : false;
     property bool onScreen;
     property string videoType : "video";
+    property bool playRequested: false;
 
     width: parent.width
     height: parent.height
@@ -92,6 +93,7 @@ Item {
     }
 
     function handlePlay() {
+        playRequested = true;
         if (videoData[videoType].local.is_downloading_completed) {
             videoUrl = videoData[videoType].local.path;
             videoComponentLoader.active = true;
@@ -109,11 +111,12 @@ Item {
                     videoData.thumbnail.photo = fileInformation;
                     placeholderImage.source = fileInformation.local.path;
                 }
-                if (fileInformation.local.is_downloading_completed && fileId === videoFileId) {
+                if (!fileInformation.remote.is_uploading_active && fileInformation.local.is_downloading_completed && fileId === videoFileId) {
                     videoDownloadBusyIndicator.running = false;
                     videoData[videoType] = fileInformation;
                     videoUrl = fileInformation.local.path;
-                    if (onScreen) {
+                    if (onScreen && playRequested) {
+                        playRequested = false;
                         videoComponentLoader.active = true;
                     }
                 }
