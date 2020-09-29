@@ -34,6 +34,7 @@
 #include "chatmodel.h"
 #include "notificationmanager.h"
 #include "dbusadaptor.h"
+#include "processlauncher.h"
 
 int main(int argc, char *argv[])
 {
@@ -57,6 +58,9 @@ int main(int argc, char *argv[])
 
     NotificationManager notificationManager(tdLibWrapper);
     context->setContextProperty("notificationManager", &notificationManager);
+
+    ProcessLauncher processLauncher;
+    context->setContextProperty("processLauncher", &processLauncher);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-fernschreiber.qml"));
     view->show();

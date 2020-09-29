@@ -24,6 +24,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/dbusadaptor.cpp \
     src/dbusinterface.cpp \
     src/notificationmanager.cpp \
+    src/processlauncher.cpp \
     src/tdlibreceiver.cpp \
     src/tdlibwrapper.cpp
 
@@ -32,6 +33,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/DocumentPreview.qml \
     qml/components/ImagePreview.qml \
     qml/components/InReplyToRow.qml \
+    qml/components/LocationPreview.qml \
     qml/components/WebPagePreview.qml \
     qml/js/functions.js \
     qml/pages/ChatPage.qml \
@@ -99,6 +101,7 @@ HEADERS += \
     src/dbusadaptor.h \
     src/dbusinterface.h \
     src/notificationmanager.h \
+    src/processlauncher.h \
     src/tdlibreceiver.h \
     src/tdlibsecrets.h \
     src/tdlibwrapper.h

@@ -290,6 +290,13 @@
     </message>
 </context>
 <context>
+    <name>LocationPreview</name>
+    <message>
+        <source>Install Pure Maps to inspect this location.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NotificationManager</name>
     <message>
         <source>%1 unread messages</source>

@@ -99,6 +99,7 @@ public:
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);
     Q_INVOKABLE void editMessageText(const QString &chatId, const QString &messageId, const QString &message);
     Q_INVOKABLE void deleteMessages(const QString &chatId, const QVariantList messageIds);
+    Q_INVOKABLE void getMapThumbnailFile(const QString &chatId, const double &latitude, const double &longitude, const int &width, const int &height);
 
 signals:
     void versionDetected(const QString &version);

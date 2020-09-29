@@ -496,6 +496,7 @@ Page {
                                 videoPreviewLoader.active = (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
                                 audioPreviewLoader.active = (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
                                 documentPreviewLoader.active = ( display.content['@type'] === "messageDocument" );
+                                locationPreviewLoader.active = ( display.content['@type'] === "messageLocation" )
                             }
                         }
 
@@ -728,7 +729,25 @@ Page {
                                         width: parent.width
                                         sourceComponent: documentPreviewComponent
                                     }
+                                    Component {
+                                        id: locationPreviewComponent
+                                        LocationPreview {
+                                            id: messageLocationPreview
+                                            width: parent.width
+                                            height: parent.width * 2 / 3
+                                            chatId: display.id
+                                            locationData: ( display.content['@type'] === "messageLocation" ) ?  display.content.location : ""
+                                            visible: display.content['@type'] === "messageLocation"
+                                        }
+                                    }
 
+                                    Loader {
+                                        id: locationPreviewLoader
+                                        active: false
+                                        asynchronous: true
+                                        width: parent.width
+                                        sourceComponent: locationPreviewComponent
+                                    }
                                     Timer {
                                         id: messageDateUpdater
                                         interval: 60000
@@ -750,6 +769,10 @@ Page {
                                                 console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
                                                 messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
                                                 messageText.text = Emoji.emojify(Functions.getMessageText(display, false), messageText.font.pixelSize);
+                                                if(locationPreviewLoader.active && locationPreviewLoader.status === Loader.Ready) {
+                                                    locationPreviewLoader.item.locationData = display.content.location;
+                                                    locationPreviewLoader.item.updatePicture()
+                                                }
                                             }
                                         }
                                     }

@@ -360,6 +360,29 @@ void TDLibWrapper::deleteMessages(const QString &chatId, const QVariantList mess
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::getMapThumbnailFile(const QString &chatId, const double &latitude, const double &longitude, const int &width, const int &height)
+{
+    qDebug() << "[TDLibWrapper] getting Map Thumbnail File " << chatId;
+    QVariantMap location;
+    location.insert("latitude", latitude);
+    location.insert("longitude", longitude);
+
+    // ensure dimensions are in bounds (16 - 1024)
+    int boundsWidth = std::min(std::max(width, 16), 1024);
+    int boundsHeight = std::min(std::max(height, 16), 1024);
+
+    QVariantMap requestObject;
+    requestObject.insert("@type", "getMapThumbnailFile");
+    requestObject.insert("location", location);
+    requestObject.insert("zoom", 17); //13-20
+    requestObject.insert("width", boundsWidth);
+    requestObject.insert("height", boundsHeight);
+    requestObject.insert("scale", 1); // 1-3
+    requestObject.insert("chat_id", chatId);
+
+    this->sendRequest(requestObject);
+}
+
 QVariantMap TDLibWrapper::getUserInformation()
 {
     return this->userInformation;
