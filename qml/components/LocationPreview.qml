@@ -32,6 +32,7 @@ Item {
     }
 
     function updatePicture() {
+        imagePreviewItem.pictureFileInformation = null;
         if (locationData) {
             tdLibWrapper.getMapThumbnailFile(chatId, locationData.latitude, locationData.longitude, Math.round(imagePreviewItem.width), Math.round(imagePreviewItem.height));
         }

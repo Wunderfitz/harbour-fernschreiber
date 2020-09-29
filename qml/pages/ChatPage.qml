@@ -757,6 +757,10 @@ Page {
                                                 console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
                                                 messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
                                                 messageText.text = Emoji.emojify(Functions.getMessageText(display, false), messageText.font.pixelSize);
+                                                if(locationPreviewLoader.active && locationPreviewLoader.status === Loader.Ready) {
+                                                    locationPreviewLoader.item.locationData = display.content.location;
+                                                    locationPreviewLoader.item.updatePicture()
+                                                }
                                             }
                                         }
                                     }
