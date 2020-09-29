@@ -526,5 +526,64 @@
         <source>sent a venue</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>sent a picture</source>
+        <comment>myself</comment>
+        <translation type="unfinished">képet küldött</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <comment>myself</comment>
+        <translation type="unfinished">videót küldött</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <comment>myself</comment>
+        <translation type="unfinished">animációt küldött</translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <comment>myself</comment>
+        <translation type="unfinished">audiót küldött</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <comment>myself</comment>
+        <translation type="unfinished">hangüzenetet küldött</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <comment>myself</comment>
+        <translation type="unfinished">helyzetmeghatározó információt küldött</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have registered with Telegram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">csatlakozott a csevegéshez</translation>
+    </message>
+    <message>
+        <source>were added to this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">kilépett a csevegésből</translation>
+    </message>
 </context>
 </TS>

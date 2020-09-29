@@ -458,7 +458,7 @@ Page {
                             MenuItem {
                                 onClicked: {
                                     newMessageColumn.editMessageId = display.id;
-                                    newMessageTextField.text = Functions.getMessageText(display, false);
+                                    newMessageTextField.text = Functions.getMessageText(display, false, false);
                                     newMessageTextField.focus = true;
                                 }
                                 text: qsTr("Edit Message")
@@ -610,7 +610,7 @@ Page {
                                         id: messageText
 
                                         width: parent.width
-                                        text: Emoji.emojify(Functions.getMessageText(display, false), font.pixelSize)
+                                        text: Emoji.emojify(Functions.getMessageText(display, false, chatPage.myUserId === display.sender_user_id), font.pixelSize)
                                         font.pixelSize: Theme.fontSizeSmall
                                         color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
                                         wrapMode: Text.Wrap
@@ -773,7 +773,7 @@ Page {
                                             if (index === modelIndex) {
                                                 console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
                                                 messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
-                                                messageText.text = Emoji.emojify(Functions.getMessageText(display, false), messageText.font.pixelSize);
+                                                messageText.text = Emoji.emojify(Functions.getMessageText(display, false, chatPage.myUserId === display.sender_user_id), messageText.font.pixelSize);
                                                 if(locationPreviewLoader.active && locationPreviewLoader.status === Loader.Ready) {
                                                     locationPreviewLoader.item.locationData = display.content.location;
                                                     locationPreviewLoader.item.updatePicture()

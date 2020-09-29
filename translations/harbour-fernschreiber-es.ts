@@ -526,5 +526,64 @@
         <source>sent a venue</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>sent a picture</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió una imagen</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió un video</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió una animación</translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió un audio</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió una nota de voz</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió un documento</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió una ubicación</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have registered with Telegram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">se unió a esta charla</translation>
+    </message>
+    <message>
+        <source>were added to this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">dejó esta charla</translation>
+    </message>
 </context>
 </TS>

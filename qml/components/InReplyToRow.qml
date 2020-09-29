@@ -34,7 +34,7 @@ Row {
     onInReplyToMessageChanged: {
         if (inReplyToMessage) {
             inReplyToUserText.text = (inReplyToRow.inReplyToMessage.sender_user_id !== inReplyToRow.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(inReplyToRow.inReplyToMessage.sender_user_id)), inReplyToUserText.font.pixelSize) : qsTr("You");
-            inReplyToMessageText.text = Emoji.emojify(Functions.getMessageText(inReplyToRow.inReplyToMessage, true), inReplyToMessageText.font.pixelSize);
+            inReplyToMessageText.text = Emoji.emojify(Functions.getMessageText(inReplyToRow.inReplyToMessage, true, inReplyToRow.inReplyToMessage.sender_user_id === inReplyToRow.myUserId), inReplyToMessageText.font.pixelSize);
         }
     }
 

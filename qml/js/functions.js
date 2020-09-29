@@ -23,7 +23,7 @@ function getUserName(userInformation) {
     return (firstName + " " + lastName).trim();
 }
 
-function getMessageText(message, simple) {
+function getMessageText(message, simple, myself) {
     if (message.content['@type'] === 'messageText') {
         if (simple) {
             return message.content.text.text;
@@ -38,61 +38,61 @@ function getMessageText(message, simple) {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Picture: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return simple ? qsTr("sent a picture") : "";
+            return simple ? (myself ? qsTr("sent a picture", "myself") : qsTr("sent a picture")) : "";
         }
     }
     if (message.content['@type'] === 'messageVideo') {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Video: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return simple ? qsTr("sent a video") : "";
+            return simple ? (myself ? qsTr("sent a video", "myself") : qsTr("sent a video")) : "";
         }
     }
     if (message.content['@type'] === 'messageAnimation') {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Animation: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return simple ? qsTr("sent an animation") : "";
+            return simple ? (myself ? qsTr("sent an animation", "myself") : qsTr("sent an animation")) : "";
         }
     }
     if (message.content['@type'] === 'messageAudio') {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Audio: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return simple ? qsTr("sent an audio") : "";
+            return simple ? (myself ? qsTr("sent an audio", "myself") : qsTr("sent an audio")) : "";
         }
     }
     if (message.content['@type'] === 'messageVoiceNote') {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Voice Note: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
         } else {
-            return simple ? qsTr("sent a voice note") : "";
+            return simple ? (myself ? qsTr("sent a voice note", "myself") : qsTr("sent a voice note")) : "";
         }
     }
     if (message.content['@type'] === 'messageDocument') {
         if (message.content.document.file_name !== "") {
             return simple ? qsTr("Document: %1").arg(message.content.document.file_name) : message.content.document.file_name
         } else {
-            return simple ? qsTr("sent a document") : "";
+            return simple ? (myself ? qsTr("sent a document", "myself") : qsTr("sent a document")) : "";
         }
     }
     if (message.content['@type'] === 'messageLocation') {
-        return simple ? qsTr("sent a location") : "";
+        return simple ? (myself ? qsTr("sent a location", "myself") : qsTr("sent a location")) : "";
     }
     if (message.content['@type'] === 'messageVenue') {
-        return simple ? qsTr("sent a venue") : ( "<b>" + message.content.venue.title + "</b>, " + message.content.venue.address );
+        return simple ? (myself ? qsTr("sent a venue", "myself") : qsTr("sent a venue")) : ( "<b>" + message.content.venue.title + "</b>, " + message.content.venue.address );
     }
     if (message.content['@type'] === 'messageContactRegistered') {
-        return qsTr("has registered with Telegram");
+        return myself ? qsTr("have registered with Telegram") : qsTr("has registered with Telegram");
     }
     if (message.content['@type'] === 'messageChatJoinByLink') {
-        return qsTr("joined this chat");
+        return myself ? qsTr("joined this chat", "myself") : qsTr("joined this chat");
     }
     if (message.content['@type'] === 'messageChatAddMembers') {
-        return qsTr("was added to this chat");
+        return myself ? qsTr("were added to this chat", "myself") : qsTr("was added to this chat");
     }
     if (message.content['@type'] === 'messageChatDeleteMember') {
-        return qsTr("left this chat");
+        return myself ? qsTr("left this chat", "myself") : qsTr("left this chat");
     }
     return qsTr("Unsupported message: %1").arg(message.content['@type'].substring(7));
 }

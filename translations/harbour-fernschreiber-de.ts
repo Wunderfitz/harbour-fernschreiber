@@ -526,5 +526,64 @@
         <source>sent a venue</source>
         <translation>hat einen Ort geschickt</translation>
     </message>
+    <message>
+        <source>sent a picture</source>
+        <comment>myself</comment>
+        <translation>haben ein Bild geschickt</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <comment>myself</comment>
+        <translation>haben ein Video geschickt</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <comment>myself</comment>
+        <translation>haben eine Animation geschickt</translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <comment>myself</comment>
+        <translation>haben eine Audiodatei geschickt</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <comment>myself</comment>
+        <translation>haben eine Sprachnachricht geschickt</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <comment>myself</comment>
+        <translation>haben ein Dokument geschickt</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <comment>myself</comment>
+        <translation>haben einen Standort geschickt</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <comment>myself</comment>
+        <translation>haben einen Ort geschickt</translation>
+    </message>
+    <message>
+        <source>have registered with Telegram</source>
+        <translation>haben sich bei Telegram angemeldet</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <comment>myself</comment>
+        <translation>sind diesem Chat beigetreten</translation>
+    </message>
+    <message>
+        <source>were added to this chat</source>
+        <comment>myself</comment>
+        <translation>wurde diesem Chat hinzugefügt</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <comment>myself</comment>
+        <translation>haben diesen Chat verlassen</translation>
+    </message>
 </context>
 </TS>
