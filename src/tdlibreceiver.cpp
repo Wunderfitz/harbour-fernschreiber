@@ -148,7 +148,7 @@ void TDLibReceiver::processUpdateAuthorizationState(const QVariantMap &receivedI
 {
     QString authorizationState = receivedInformation.value("authorization_state").toMap().value("@type").toString();
     LOG("Authorization state changed: " << authorizationState);
-    emit authorizationStateChanged(authorizationState);
+    emit authorizationStateChanged(authorizationState, receivedInformation);
 }
 
 void TDLibReceiver::processUpdateConnectionState(const QVariantMap &receivedInformation)

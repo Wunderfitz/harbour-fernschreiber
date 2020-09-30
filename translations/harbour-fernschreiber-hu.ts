@@ -292,6 +292,22 @@
         <source>Please enter your password:</source>
         <translation>Kérlek add meg a jelszavad:</translation>
     </message>
+    <message>
+        <source>Register User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your First Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your Last Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User Registration</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>

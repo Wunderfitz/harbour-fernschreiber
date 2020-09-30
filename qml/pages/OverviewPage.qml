@@ -106,14 +106,9 @@ Page {
     function handleAuthorizationState() {
         switch (overviewPage.authorizationState) {
         case TelegramAPI.WaitPhoneNumber:
-            overviewPage.loading = false;
-            pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
-            break;
         case TelegramAPI.WaitCode:
-            overviewPage.loading = false;
-            pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
-            break;
         case TelegramAPI.WaitPassword:
+        case TelegramAPI.WaitRegistration:
             overviewPage.loading = false;
             pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
             break;

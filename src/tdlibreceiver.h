@@ -37,7 +37,7 @@ public:
 
 signals:
     void versionDetected(const QString &version);
-    void authorizationStateChanged(const QString &authorizationState);
+    void authorizationStateChanged(const QString &authorizationState, const QVariantMap &authorizationStateData);
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
     void connectionStateChanged(const QString &connectionState);
     void userUpdated(const QVariantMap &userInformation);

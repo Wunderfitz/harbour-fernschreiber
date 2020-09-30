@@ -46,7 +46,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent), settings("harbour
     this->initializeOpenWith();
 
     connect(this->tdLibReceiver, SIGNAL(versionDetected(QString)), this, SLOT(handleVersionDetected(QString)));
-    connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString)), this, SLOT(handleAuthorizationStateChanged(QString)));
+    connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString, QVariantMap)), this, SLOT(handleAuthorizationStateChanged(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(optionUpdated(QString, QVariant)), this, SLOT(handleOptionUpdated(QString, QVariant)));
     connect(this->tdLibReceiver, SIGNAL(connectionStateChanged(QString)), this, SLOT(handleConnectionStateChanged(QString)));
     connect(this->tdLibReceiver, SIGNAL(userUpdated(QVariantMap)), this, SLOT(handleUserUpdated(QVariantMap)));
@@ -107,6 +107,11 @@ TDLibWrapper::AuthorizationState TDLibWrapper::getAuthorizationState()
     return this->authorizationState;
 }
 
+QVariantMap TDLibWrapper::getAuthorizationStateData()
+{
+    return this->authorizationStateData;
+}
+
 TDLibWrapper::ConnectionState TDLibWrapper::getConnectionState()
 {
     return this->connectionState;
@@ -140,6 +145,16 @@ void TDLibWrapper::setAuthenticationPassword(const QString &authenticationPasswo
     QVariantMap requestObject;
     requestObject.insert("@type", "checkAuthenticationPassword");
     requestObject.insert("password", authenticationPassword);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::registerUser(const QString &firstName, const QString &lastName)
+{
+    qDebug() << "[TDLibWrapper] Register User " << firstName << lastName;
+    QVariantMap requestObject;
+    requestObject.insert("@type", "registerUser");
+    requestObject.insert("first_name", firstName);
+    requestObject.insert("last_name", lastName);
     this->sendRequest(requestObject);
 }
 
@@ -487,7 +502,7 @@ void TDLibWrapper::handleVersionDetected(const QString &version)
     emit versionDetected(version);
 }
 
-void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationState)
+void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationState, const QVariantMap authorizationStateData)
 {
     if (authorizationState == "authorizationStateClosed") {
         this->authorizationState = AuthorizationState::Closed;
@@ -534,8 +549,8 @@ void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationS
         this->setInitialParameters();
         this->authorizationState = AuthorizationState::WaitTdlibParameters;
     }
-
-    emit authorizationStateChanged(this->authorizationState);
+    this->authorizationStateData = authorizationStateData;
+    emit authorizationStateChanged(this->authorizationState, this->authorizationStateData);
 
 }
 

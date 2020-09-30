@@ -63,6 +63,7 @@ public:
 
     Q_INVOKABLE QString getVersion();
     Q_INVOKABLE TDLibWrapper::AuthorizationState getAuthorizationState();
+    Q_INVOKABLE QVariantMap getAuthorizationStateData();
     Q_INVOKABLE TDLibWrapper::ConnectionState getConnectionState();
     Q_INVOKABLE QVariantMap getUserInformation();
     Q_INVOKABLE QVariantMap getUserInformation(const QString &userId);
@@ -84,6 +85,7 @@ public:
     Q_INVOKABLE void setAuthenticationPhoneNumber(const QString &phoneNumber);
     Q_INVOKABLE void setAuthenticationCode(const QString &authenticationCode);
     Q_INVOKABLE void setAuthenticationPassword(const QString &authenticationPassword);
+    Q_INVOKABLE void registerUser(const QString &firstName, const QString &lastName);
     Q_INVOKABLE void getChats();
     Q_INVOKABLE void downloadFile(const QString &fileId);
     Q_INVOKABLE void openChat(const QString &chatId);
@@ -104,7 +106,7 @@ public:
 signals:
     void versionDetected(const QString &version);
     void ownUserIdFound(const QString &ownUserId);
-    void authorizationStateChanged(const TDLibWrapper::AuthorizationState &authorizationState);
+    void authorizationStateChanged(const TDLibWrapper::AuthorizationState &authorizationState, const QVariantMap &authorizationStateData);
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
     void connectionStateChanged(const TDLibWrapper::ConnectionState &connectionState);
     void fileUpdated(const int fileId, const QVariantMap &fileInformation);
@@ -134,7 +136,7 @@ signals:
 
 public slots:
     void handleVersionDetected(const QString &version);
-    void handleAuthorizationStateChanged(const QString &authorizationState);
+    void handleAuthorizationStateChanged(const QString &authorizationState, const QVariantMap authorizationStateData);
     void handleOptionUpdated(const QString &optionName, const QVariant &optionValue);
     void handleConnectionStateChanged(const QString &connectionState);
     void handleUserUpdated(const QVariantMap &userInformation);
@@ -167,6 +169,7 @@ private:
     DBusInterface *dbusInterface;
     QString version;
     TDLibWrapper::AuthorizationState authorizationState;
+    QVariantMap authorizationStateData;
     TDLibWrapper::ConnectionState connectionState;
     QVariantMap options;
     QVariantMap userInformation;
