@@ -15,3 +15,13 @@
 * Sun Sep 20 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.1
 - Initial release
 
+* Wed Sep 30 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.2
+- Support sending images, videos and documents
+- Support receiving locations and venues - thanks to jgibbon
+- Performance improvements for chat list, new sorting algorithm and much more - thanks to monich
+- Performance improvements for chat, lazy loading for most UI elements
+- Cover page improvements - thanks to jgibbon
+- Fix handling of "<>" in messages
+- Differentiate text between other people and current user ("You have..." vs. "Somebody has...")
+- Support for the Jolla Tablet
+- New translations (Chinese, Hungarian, Polish, Spanish) - thanks to dashinfantry, edp17, atlochowski, GNUuser

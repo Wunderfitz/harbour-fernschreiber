@@ -109,7 +109,7 @@ CoverBackground {
 
     Column {
         anchors.fill: parent
-        anchors.margins: Theme.horizontalPageMargin
+        anchors.margins: Theme.paddingLarge
         spacing: Theme.paddingMedium
         visible: coverPage.authenticated
         Row {

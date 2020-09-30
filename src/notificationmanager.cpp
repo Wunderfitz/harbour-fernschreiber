@@ -167,7 +167,7 @@ QVariantMap NotificationManager::sendNotification(const QString &chatId, const Q
     QVariantMap chatInformation = this->chatMap.value(chatId).toMap();
     QString chatType = chatInformation.value("type").toMap().value("@type").toString();
     bool addAuthor = false;
-    if (chatType == "chatTypeBasicGroup" || ( chatType == "chatTypeSupergroup" && !chatInformation.value("@type").toMap().value("is_channel").toBool() )) {
+    if (chatType == "chatTypeBasicGroup" || ( chatType == "chatTypeSupergroup" && !chatInformation.value("type").toMap().value("is_channel").toBool() )) {
         addAuthor = true;
     }
 

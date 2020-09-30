@@ -58,11 +58,12 @@ Page {
 
     Timer {
         id: chatListCreatedTimer
-        interval: 500
+        interval: 300
         running: false
         repeat: false
         onTriggered: {
             overviewPage.chatListCreated = true;
+            chatListModel.redrawModel();
         }
     }
 
