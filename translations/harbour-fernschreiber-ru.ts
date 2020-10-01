@@ -258,23 +258,23 @@
     </message>
     <message>
         <source>Welcome to Fernschreiber!</source>
-        <translation>Willkommen bei Fernschreiber!</translation>
+        <translation>Fernschreiber приветствует вас!</translation>
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Bitte geben Sie zum Fortfahren Ihre Telefonnummer ein.</translation>
+        <translation>Введите, пожалуйста, ваш номер телефона.</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Далее</translation>
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Bitte geben Sie den Code ein, den Sie erhalten haben:</translation>
+        <translation>Введите сюда, тот код, который вы получили:</translation>
     </message>
     <message>
         <source>Loading...</source>
-        <translation>Laden...</translation>
+        <translation>Загрузка...</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
