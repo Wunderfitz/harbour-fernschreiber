@@ -49,19 +49,19 @@
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Dieses Produkt nutzt die Telegram-API, ist aber von Telegram weder unterstützt noch zertifiziert.</translation>
+        <translation>Этот продукт использует Telegram API, но он не одобрен или сертифицирован Telegram.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
-        <translation>TDLib-Version %1</translation>
+        <translation>Версия TDLib %1</translation>
     </message>
     <message>
         <source>Logged in as %1</source>
-        <translation>Angemeldet als %1</translation>
+        <translation>Зашли как %1</translation>
     </message>
     <message>
         <source>Phone number: +%1</source>
-        <translation>Telefonnummer: +%1</translation>
+        <translation>Номер телефона: +%1</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
