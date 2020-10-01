@@ -25,15 +25,15 @@
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Условия использования</translation>
+        <translation>Условия службы</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Политика конфиденциальности</translation>
+        <translation>Личные данные</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation>Danksagungen</translation>
+        <translation>Благодарности</translation>
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
