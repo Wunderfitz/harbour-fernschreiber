@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.1" language="ru_RU">
 <context>
     <name>AboutPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>Über Fernschreiber</translation>
+        <translation>О Fernschreiber</translation>
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>Ein Telegram-Client für Sailfish OS</translation>
+        <translation>Клиент Telegram для Sailfish OS</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>E-Mail verschicken</translation>
+        <translation>Отправить E-Mail</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Lizenziert unter der GNU GPLv3</translation>
+        <translation>Лицензирован в соответствии с GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Quelltexte auf GitHub</translation>
+        <translation>Исходный код на GitHub</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Nutzungsbedingungen</translation>
+        <translation>Условия использования</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Datenschutzerklärung</translation>
+        <translation>Политика конфиденциальности</translation>
     </message>
     <message>
         <source>Credits</source>
