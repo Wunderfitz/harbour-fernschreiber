@@ -72,6 +72,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent), settings("harbour
     connect(this->tdLibReceiver, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)), this, SLOT(handleMessageContentUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messagesDeleted(QString, QVariantList)), this, SLOT(handleMessagesDeleted(QString, QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SLOT(handleChats(QVariantMap)));
 
     this->tdLibReceiver->start();
 
@@ -722,6 +723,11 @@ void TDLibWrapper::handleMessageContentUpdated(const QString &chatId, const QStr
 void TDLibWrapper::handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds)
 {
     emit messagesDeleted(chatId, messageIds);
+}
+
+void TDLibWrapper::handleChats(const QVariantMap &chats)
+{
+    emit this->chatsReceived(chats);
 }
 
 void TDLibWrapper::setInitialParameters()

@@ -417,6 +417,10 @@
         <source>Settings</source>
         <translation>设置</translation>
     </message>
+    <message>
+        <source>You don&apos;t have any chats yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

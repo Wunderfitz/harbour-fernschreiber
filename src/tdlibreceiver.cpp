@@ -90,6 +90,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateChatNotificationSettings", &TDLibReceiver::processUpdateChatNotificationSettings);
     handlers.insert("updateMessageContent", &TDLibReceiver::processUpdateMessageContent);
     handlers.insert("updateDeleteMessages", &TDLibReceiver::processUpdateDeleteMessages);
+    handlers.insert("chats", &TDLibReceiver::processChats);
 }
 
 void TDLibReceiver::setActive(const bool &active)
@@ -352,4 +353,9 @@ void TDLibReceiver::processUpdateDeleteMessages(const QVariantMap &receivedInfor
     QVariantList messageIds = receivedInformation.value("message_ids").toList();
     LOG("Some messages were deleted " << chatId);
     emit messagesDeleted(chatId, messageIds);
+}
+
+void TDLibReceiver::processChats(const QVariantMap &receivedInformation)
+{
+    emit chats(receivedInformation);
 }

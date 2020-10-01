@@ -133,6 +133,7 @@ signals:
     void chatNotificationSettingsUpdated(const QString &chatId, const QVariantMap chatNotificationSettings);
     void messageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void messagesDeleted(const QString &chatId, const QVariantList &messageIds);
+    void chatsReceived(const QVariantMap &chats);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -162,6 +163,7 @@ public slots:
     void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
     void handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds);
+    void handleChats(const QVariantMap &chats);
 
 private:
     void *tdLibClient;
