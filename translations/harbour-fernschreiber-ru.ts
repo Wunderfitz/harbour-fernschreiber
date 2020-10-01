@@ -320,7 +320,7 @@
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>отправить голосовое сообщение</translation>
+        <translation>отправить голосовую заметку</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -496,23 +496,23 @@
     </message>
     <message>
         <source>sent a document</source>
-        <translation>hat ein Dokument geschickt</translation>
+        <translation>отправить документ</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>hat einen Standort geschickt</translation>
+        <translation>отправить местоположение</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>ist diesem Chat beigetreten</translation>
+        <translation>присоединился к этому чату</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>wurde diesem Chat hinzugefügt</translation>
+        <translation>был добавлен в этот чат</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>hat diesen Chat verlassen</translation>
+        <translation>покинул этот чат</translation>
     </message>
     <message>
         <source>%1M</source>
@@ -520,70 +520,70 @@
     </message>
     <message>
         <source>%1K</source>
-        <translation>%1T</translation>
+        <translation>%1К</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>hat einen Ort geschickt</translation>
+        <translation>отправить место встречи</translation>
     </message>
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>haben ein Bild geschickt</translation>
+        <translation>отправить картинку</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>haben ein Video geschickt</translation>
+        <translation>отправить видео</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>haben eine Animation geschickt</translation>
+        <translation>отправить анимацию</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>haben eine Audiodatei geschickt</translation>
+        <translation>отправить аудио</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>haben eine Sprachnachricht geschickt</translation>
+        <translation>отправить голосовую заметку</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>haben ein Dokument geschickt</translation>
+        <translation>отправить документ</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>haben einen Standort geschickt</translation>
+        <translation>отправить местоположение</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>haben einen Ort geschickt</translation>
+        <translation>отправить место встречи</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation>haben sich bei Telegram angemeldet</translation>
+        <translation>зарегистрировались в Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>sind diesem Chat beigetreten</translation>
+        <translation>присоединился к этому чату</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>wurde diesem Chat hinzugefügt</translation>
+        <translation>были добавлены в этот чат</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>haben diesen Chat verlassen</translation>
+        <translation>покинули этот чат</translation>
     </message>
 </context>
 </TS>
