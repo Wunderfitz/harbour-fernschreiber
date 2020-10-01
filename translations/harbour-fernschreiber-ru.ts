@@ -65,15 +65,15 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Dieses Projekt nutzt die twemoji. Copyright 2018 Twitter, Inc. und andere Beitragende. Vielen Dank dafür, dass sie unter den Bedingungen der MIT License (Coding) und CC-BY 4.0 (Grafiken) verfügbar gemacht wurde!</translation>
+        <translation>Этот проект использует twemoji. Copyright 2018 Twitter, Inc. и другие участники. Спасибо, что сделали её доступной на условиях лицензии MIT License (программирование) und CC-BY 4.0 (графика)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Twemoji auf GitHub öffnen</translation>
+        <translation>Открыть Twemoji на GitHub</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
-        <translation>Von Sebastian J. Wolf und &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;anderen Beitragenden&lt;/a&gt;</translation>
+        <translation>Sebastian J. Wolf и &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;другие участники&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
