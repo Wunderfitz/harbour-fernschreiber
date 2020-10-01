@@ -37,15 +37,15 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Dieses Projekt nutzt die Telegram Database Library (TDLib). Vielen Dank dafür, dass sie unter den Bedingungen der Boost Software License 1.0 verfügbar gemacht wurde!</translation>
+        <translation>Этот проект использует Telegram Database Library (TDLib). Спасибо, что сделали её доступной на условиях лицензии Boost Software License 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Telegram Database Library auf GitHub öffnen</translation>
+        <translation>Открыть Telegram Database Library на GitHub</translation>
     </message>
     <message>
         <source>About Telegram</source>
-        <translation>Über Telegram</translation>
+        <translation>О Telegram</translation>
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
