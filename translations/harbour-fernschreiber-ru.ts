@@ -278,84 +278,84 @@
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
-        <translation>Es war nicht möglich, Sie mit dem eingegebenen Code zu authentifizieren.</translation>
+        <translation>Не удалось аутентифицировать вас с помощью введенного кода.</translation>
     </message>
     <message>
         <source>Enter code again</source>
-        <translation>Code erneut eingeben</translation>
+        <translation>Введите код заново</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Authentifizierung neu starten</translation>
+        <translation>Перезапуск аутентификации</translation>
     </message>
     <message>
         <source>Please enter your password:</source>
-        <translation>Bitte geben Sie Ihr Passwort ein:</translation>
+        <translation>Пожалуйста, введите ваш пароль:</translation>
     </message>
 </context>
 <context>
     <name>LocationPreview</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation>Installieren Sie Pure Maps, um diesen Ort zu erkunden</translation>
+        <translation>Чтобы исследовать эту местность установите Pure Maps.</translation>
     </message>
 </context>
 <context>
     <name>NotificationManager</name>
     <message>
         <source>%1 unread messages</source>
-        <translation>%1 ungelesene Nachrichten</translation>
+        <translation>%1 непрочитанных сообщений</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>hat ein Bild geschickt</translation>
+        <translation>отправить картинку</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>hat ein Video geschickt</translation>
+        <translation>отправить видео</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>hat eine Animation geschickt</translation>
+        <translation>отправить анимацию</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>hat eine Sprachnachricht geschickt</translation>
+        <translation>отправить голосовое сообщение</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>hat ein Dokument geschickt</translation>
+        <translation>отправить документ</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>hat einen Ort geschickt</translation>
+        <translation>отправить местоположение</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>hat sich bei Telegram angemeldet</translation>
+        <translation>зарегистрировался с помощью Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>ist diesem Chat beigetreten</translation>
+        <translation>присоединился к этому чату</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>wurde diesem Chat hinzugefügt</translation>
+        <translation>был добавлен в этот чат</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>hat diesen Chat verlassen</translation>
+        <translation>покинул этот чат</translation>
     </message>
     <message>
         <source>Unsupported message: %1</source>
-        <translation>Nicht unterstützte Nachricht: %1</translation>
+        <translation>Не поддерживается: %1</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>Über Fernschreiber</translation>
+        <translation>О Fernschreiber</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
@@ -363,136 +363,136 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Warte auf Netzwerk...</translation>
+        <translation>Ожидание сети...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Verbinde zum Netzwerk...</translation>
+        <translation>Подключение к сети...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Verbinde zum Proxy...</translation>
+        <translation>Подключение к прокси...</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Aktualisiere Inhalte...</translation>
+        <translation>Обновление контента...</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Unbekannt</translation>
+        <translation>Неизвестный</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>Sie</translation>
+        <translation>Вы</translation>
     </message>
     <message>
         <source>Loading chat list...</source>
-        <translation>Lade Chatliste...</translation>
+        <translation>Загрузка списка чатов...</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Stummschaltung des Chats aufheben</translation>
+        <translation>Прибавить звук</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Chat stummschalten</translation>
+        <translation>Заглушить чат</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <source>Behavior</source>
-        <translation>Verhalten</translation>
+        <translation>Поведение</translation>
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Nachricht mit Enter senden</translation>
+        <translation>Отправка сообщения клавишей ввода</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Senden Sie Ihre Nachricht, indem Sie die Enter-Taste drücken</translation>
+        <translation>Для отправки вашего сообщения нажмите на клавишу ввода</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download Video</source>
-        <translation>Video herunterladen</translation>
+        <translation>Скачать видео</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download von %1 erfolgreich.</translation>
+        <translation>Успешно скачано %1.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Download fehlgeschlagen.</translation>
+        <translation>Ошибка скачивания.</translation>
     </message>
 </context>
 <context>
     <name>functions</name>
     <message>
         <source>Video: %1</source>
-        <translation>Video: %1</translation>
+        <translation>Видео: %1</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>hat sich bei Telegram angemeldet</translation>
+        <translation>зарегистрировался с помощью Telegram</translation>
     </message>
     <message>
         <source>Picture: %1</source>
-        <translation>Bild: %1</translation>
+        <translation>Картинка: %1</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation>Sticker: %1</translation>
+        <translation>Стикер: %1</translation>
     </message>
     <message>
         <source>Audio: %1</source>
-        <translation>Audio: %1</translation>
+        <translation>Аудио: %1</translation>
     </message>
     <message>
         <source>Voice Note: %1</source>
-        <translation>Sprachnachricht: %1</translation>
+        <translation>Голосовая Заметка: %1</translation>
     </message>
     <message>
         <source>Animation: %1</source>
-        <translation>Animation: %1</translation>
+        <translation>Анимация: %1</translation>
     </message>
     <message>
         <source>Unsupported message: %1</source>
-        <translation>Nicht unterstützte Nachricht: %1</translation>
+        <translation>Не поддерживается: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
-        <translation>Dokument: %1</translation>
+        <translation>Документ: %1</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>hat ein Bild geschickt</translation>
+        <translation>отправить картинку</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>hat ein Video geschickt</translation>
+        <translation>отправить видео</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>hat eine Animation geschickt</translation>
+        <translation>отправить анимацию</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>hat eine Audiodatei geschickt</translation>
+        <translation>отправить аудио</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>hat eine Sprachnachricht geschickt</translation>
+        <translation>отправить голосовую заметку</translation>
     </message>
     <message>
         <source>sent a document</source>
