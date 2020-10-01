@@ -91,163 +91,163 @@
     <name>ChatPage</name>
     <message>
         <source>Unknown</source>
-        <translation>Unbekannt</translation>
+        <translation>Неизвестный</translation>
     </message>
     <message>
         <source>Your message</source>
-        <translation>Ihre Nachricht</translation>
+        <translation>Ваше сообщение</translation>
     </message>
     <message>
         <source>was never online</source>
-        <translation>war niemals online</translation>
+        <translation>никогда не был онлайн</translation>
     </message>
     <message>
         <source>offline, last online: last month</source>
-        <translation>offline, zuletzt online im letzten Monat</translation>
+        <translation>офлайн, онлайн был: прошлый месяц</translation>
     </message>
     <message>
         <source>offline, last online: last week</source>
-        <translation>offline, zuletzt online in der letzten Woche</translation>
+        <translation>офлайн, онлайн был: прошлая неделя</translation>
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation>offline, zuletzt online: %1</translation>
+        <translation>офлайн, онлайн был: %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation>online</translation>
+        <translation>онлайн</translation>
     </message>
     <message>
         <source>offline, was recently online</source>
-        <translation>offline, war neulich online</translation>
+        <translation>офлайн, недавно был онлайн</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
-        <translation>%1 Mitglieder, %2 online</translation>
+        <translation>%1 участников, %2 онлайн</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 Mitglieder</translation>
+        <translation>%1 участников</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation>%1 Abonnenten</translation>
+        <translation>%1 подписчиков</translation>
     </message>
     <message>
         <source>Reply to Message</source>
-        <translation>Auf Nachricht antworten</translation>
+        <translation>Ответить на сообщение</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>Sie</translation>
+        <translation>Вы</translation>
     </message>
     <message>
         <source>Loading messages...</source>
-        <translation>Lade Nachrichten...</translation>
+        <translation>Загрузка сообщений...</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Stummschaltung des Chats aufheben</translation>
+        <translation>Прибавить звук</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Chat stummschalten</translation>
+        <translation>Заглушить чат</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation>Nachricht bearbeiten</translation>
+        <translation>Изменить сообщение</translation>
     </message>
     <message>
         <source>edited</source>
-        <translation>bearbeitet</translation>
+        <translation>изменено</translation>
     </message>
     <message>
         <source>Deleting message</source>
-        <translation>Lösche Nachricht</translation>
+        <translation>Удаление сообщения</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation>Nachricht löschen</translation>
+        <translation>Удалить сообщение</translation>
     </message>
     <message>
         <source>Uploading...</source>
-        <translation>Lade hoch...</translation>
+        <translation>Отправка...</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation>ungelesene Nachricht</translation>
+        <translation>непрочитанное сообщение</translation>
     </message>
     <message>
         <source>unread messages</source>
-        <translation>ungelesene Nachrichten</translation>
+        <translation>непрочитанных сообщений</translation>
     </message>
     <message>
         <source>in</source>
-        <translation>in</translation>
+        <translation>в</translation>
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Warte auf Netzwerk...</translation>
+        <translation>Ожидание сети...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Verbinde zum Netzwerk...</translation>
+        <translation>Подключение к сети...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Verbinde zum Proxy...</translation>
+        <translation>Подключение к прокси...</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation>Verbunden</translation>
+        <translation>Подключен</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Aktualisiere Inhalte...</translation>
+        <translation>Обновление контента...</translation>
     </message>
     <message>
         <source>chat</source>
-        <translation>Chat</translation>
+        <translation>чат</translation>
     </message>
     <message>
         <source>chats</source>
-        <translation>Chats</translation>
+        <translation>чаты</translation>
     </message>
 </context>
 <context>
     <name>DocumentPreview</name>
     <message>
         <source>Download Document</source>
-        <translation>Dokument herunterladen</translation>
+        <translation>Скачать документ</translation>
     </message>
     <message>
         <source>Open Document</source>
-        <translation>Dokument öffnen</translation>
+        <translation>Открыть документ</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
-        <translation>Bild herunterladen</translation>
+        <translation>Скачать картинку</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download von %1 erfolgreich.</translation>
+        <translation>Успешно скачано %1.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Download fehlgeschlagen.</translation>
+        <translation>Ошибка скачивания.</translation>
     </message>
 </context>
 <context>
     <name>InReplyToRow</name>
     <message>
         <source>You</source>
-        <translation>Sie</translation>
+        <translation>Вы</translation>
     </message>
 </context>
 <context>
