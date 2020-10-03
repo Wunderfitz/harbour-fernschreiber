@@ -58,7 +58,7 @@ TRANSLATIONS += translations/harbour-fernschreiber-de.ts \
                 translations/harbour-fernschreiber-zh_CN.ts
 
 # Use armv7hl for most devices and i486 for emulator and Jolla Tablet. Can most certainly be automated... ;)
-TARGET_ARCHITECTURE = i486
+TARGET_ARCHITECTURE = armv7hl
 
 INCLUDEPATH += $$PWD/tdlib/include
 DEPENDPATH += $$PWD/tdlib/include

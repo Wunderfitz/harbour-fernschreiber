@@ -124,6 +124,7 @@ function enhanceMessageText(formattedText) {
     var messageText = formattedText.text;
     messageText = messageText.replace("<", "&lt;");
     messageText = messageText.replace(">", "&gt;");
+    messageText = messageText.replace("&", "&amp;");
     var messageInsertions = [];
 
     for (var i = 0; i < formattedText.entities.length; i++) {
