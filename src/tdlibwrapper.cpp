@@ -30,9 +30,17 @@
 #include <QDBusConnection>
 #include <QDBusInterface>
 
+#define LOG(x) qDebug() << "[TDLibWrapper]" << x
+
+#ifdef DEBUG
+#  define VERBOSE(x) LOG(x)
+#else
+#  define VERBOSE(x)
+#endif
+
 TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
 {
-    qDebug() << "[TDLibWrapper] Initializing TD Lib...";
+    LOG("Initializing TD Lib...");
     this->tdLibClient = td_json_client_create();
     this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
 
@@ -81,7 +89,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent), settings("harbour
 
 TDLibWrapper::~TDLibWrapper()
 {
-    qDebug() << "[TDLibWrapper] Destroying TD Lib...";
+    LOG("Destroying TD Lib...");
     this->tdLibReceiver->setActive(false);
     while (this->tdLibReceiver->isRunning()) {
         QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
@@ -91,9 +99,9 @@ TDLibWrapper::~TDLibWrapper()
 
 void TDLibWrapper::sendRequest(const QVariantMap &requestObject)
 {
-    qDebug() << "[TDLibWrapper] Sending request to TD Lib, object type name: " << requestObject.value("@type").toString();
+    LOG("Sending request to TD Lib, object type name:" << requestObject.value("@type").toString());
     QJsonDocument requestDocument = QJsonDocument::fromVariant(requestObject);
-    // Too much information... qDebug().noquote() << requestDocument.toJson();
+    VERBOSE(requestDocument.toJson().constData());
     td_json_client_send(this->tdLibClient, requestDocument.toJson().constData());
 }
 
@@ -114,7 +122,7 @@ TDLibWrapper::ConnectionState TDLibWrapper::getConnectionState()
 
 void TDLibWrapper::setAuthenticationPhoneNumber(const QString &phoneNumber)
 {
-    qDebug() << "[TDLibWrapper] Set authentication phone number " << phoneNumber;
+    LOG("Set authentication phone number " << phoneNumber);
     QVariantMap requestObject;
     requestObject.insert("@type", "setAuthenticationPhoneNumber");
     requestObject.insert("phone_number", phoneNumber);
@@ -127,7 +135,7 @@ void TDLibWrapper::setAuthenticationPhoneNumber(const QString &phoneNumber)
 
 void TDLibWrapper::setAuthenticationCode(const QString &authenticationCode)
 {
-    qDebug() << "[TDLibWrapper] Set authentication code " << authenticationCode;
+    LOG("Set authentication code " << authenticationCode);
     QVariantMap requestObject;
     requestObject.insert("@type", "checkAuthenticationCode");
     requestObject.insert("code", authenticationCode);
@@ -136,7 +144,7 @@ void TDLibWrapper::setAuthenticationCode(const QString &authenticationCode)
 
 void TDLibWrapper::setAuthenticationPassword(const QString &authenticationPassword)
 {
-    qDebug() << "[TDLibWrapper] Set authentication password " << authenticationPassword;
+    LOG("Set authentication password " << authenticationPassword);
     QVariantMap requestObject;
     requestObject.insert("@type", "checkAuthenticationPassword");
     requestObject.insert("password", authenticationPassword);
@@ -145,7 +153,7 @@ void TDLibWrapper::setAuthenticationPassword(const QString &authenticationPasswo
 
 void TDLibWrapper::getChats()
 {
-    qDebug() << "[TDLibWrapper] Getting chats";
+    LOG("Getting chats");
     QVariantMap requestObject;
     requestObject.insert("@type", "getChats");
     requestObject.insert("limit", 5);
@@ -154,7 +162,7 @@ void TDLibWrapper::getChats()
 
 void TDLibWrapper::downloadFile(const QString &fileId)
 {
-    qDebug() << "[TDLibWrapper] Downloading file " << fileId;
+    LOG("Downloading file " << fileId);
     QVariantMap requestObject;
     requestObject.insert("@type", "downloadFile");
     requestObject.insert("file_id", fileId);
@@ -167,7 +175,7 @@ void TDLibWrapper::downloadFile(const QString &fileId)
 
 void TDLibWrapper::openChat(const QString &chatId)
 {
-    qDebug() << "[TDLibWrapper] Opening chat " << chatId;
+    LOG("Opening chat " << chatId);
     QVariantMap requestObject;
     requestObject.insert("@type", "openChat");
     requestObject.insert("chat_id", chatId);
@@ -176,7 +184,7 @@ void TDLibWrapper::openChat(const QString &chatId)
 
 void TDLibWrapper::closeChat(const QString &chatId)
 {
-    qDebug() << "[TDLibWrapper] Closing chat " << chatId;
+    LOG("Closing chat " << chatId);
     QVariantMap requestObject;
     requestObject.insert("@type", "closeChat");
     requestObject.insert("chat_id", chatId);
@@ -185,7 +193,7 @@ void TDLibWrapper::closeChat(const QString &chatId)
 
 void TDLibWrapper::getChatHistory(const QString &chatId, const qlonglong &fromMessageId, const int &offset, const int &limit, const bool &onlyLocal)
 {
-    qDebug() << "[TDLibWrapper] Retrieving chat history " << chatId << fromMessageId << offset << limit << onlyLocal;
+    LOG("Retrieving chat history" << chatId << fromMessageId << offset << limit << onlyLocal);
     QVariantMap requestObject;
     requestObject.insert("@type", "getChatHistory");
     requestObject.insert("chat_id", chatId);
@@ -198,7 +206,7 @@ void TDLibWrapper::getChatHistory(const QString &chatId, const qlonglong &fromMe
 
 void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId)
 {
-    qDebug() << "[TDLibWrapper] Mark message as viewed " << chatId << messageId;
+    LOG("Mark message as viewed" << chatId << messageId);
     QVariantMap requestObject;
     requestObject.insert("@type", "viewMessages");
     requestObject.insert("chat_id", chatId);
@@ -211,7 +219,7 @@ void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId)
 
 void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId)
 {
-    qDebug() << "[TDLibWrapper] Sending text message " << chatId << message << replyToMessageId;
+    LOG("Sending text message" << chatId << message << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert("@type", "sendMessage");
     requestObject.insert("chat_id", chatId);
@@ -230,7 +238,7 @@ void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message
 
 void TDLibWrapper::sendPhotoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
 {
-    qDebug() << "[TDLibWrapper] Sending photo message " << chatId << filePath << message << replyToMessageId;
+    LOG("Sending photo message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert("@type", "sendMessage");
     requestObject.insert("chat_id", chatId);
@@ -254,7 +262,7 @@ void TDLibWrapper::sendPhotoMessage(const QString &chatId, const QString &filePa
 
 void TDLibWrapper::sendVideoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
 {
-    qDebug() << "[TDLibWrapper] Sending video message " << chatId << filePath << message << replyToMessageId;
+    LOG("Sending video message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert("@type", "sendMessage");
     requestObject.insert("chat_id", chatId);
@@ -278,7 +286,7 @@ void TDLibWrapper::sendVideoMessage(const QString &chatId, const QString &filePa
 
 void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
 {
-    qDebug() << "[TDLibWrapper] Sending document message " << chatId << filePath << message << replyToMessageId;
+    LOG("Sending document message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert("@type", "sendMessage");
     requestObject.insert("chat_id", chatId);
@@ -302,7 +310,7 @@ void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &fil
 
 void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
 {
-    qDebug() << "[TDLibWrapper] Retrieving message " << chatId << messageId;
+    LOG("Retrieving message" << chatId << messageId);
     QVariantMap requestObject;
     requestObject.insert("@type", "getMessage");
     requestObject.insert("chat_id", chatId);
@@ -312,7 +320,7 @@ void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
 
 void TDLibWrapper::setOptionInteger(const QString &optionName, const int &optionValue)
 {
-    qDebug() << "[TDLibWrapper] Setting integer option " << optionName << optionValue;
+    LOG("Setting integer option" << optionName << optionValue);
     QVariantMap requestObject;
     requestObject.insert("@type", "setOption");
     requestObject.insert("name", optionName);
@@ -325,7 +333,7 @@ void TDLibWrapper::setOptionInteger(const QString &optionName, const int &option
 
 void TDLibWrapper::setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings)
 {
-    qDebug() << "[TDLibWrapper] Notification settings for chat " << chatId << notificationSettings;
+    LOG("Notification settings for chat " << chatId << notificationSettings);
     QVariantMap requestObject;
     requestObject.insert("@type", "setChatNotificationSettings");
     requestObject.insert("chat_id", chatId);
@@ -335,7 +343,7 @@ void TDLibWrapper::setChatNotificationSettings(const QString &chatId, const QVar
 
 void TDLibWrapper::editMessageText(const QString &chatId, const QString &messageId, const QString &message)
 {
-    qDebug() << "[TDLibWrapper] Editing message text " << chatId << messageId;
+    LOG("Editing message text" << chatId << messageId);
     QVariantMap requestObject;
     requestObject.insert("@type", "editMessageText");
     requestObject.insert("chat_id", chatId);
@@ -351,7 +359,7 @@ void TDLibWrapper::editMessageText(const QString &chatId, const QString &message
 
 void TDLibWrapper::deleteMessages(const QString &chatId, const QVariantList messageIds)
 {
-    qDebug() << "[TDLibWrapper] Deleting some messages " << chatId << messageIds;
+    LOG("Deleting some messages" << chatId << messageIds);
     QVariantMap requestObject;
     requestObject.insert("@type", "deleteMessages");
     requestObject.insert("chat_id", chatId);
@@ -362,7 +370,7 @@ void TDLibWrapper::deleteMessages(const QString &chatId, const QVariantList mess
 
 void TDLibWrapper::getMapThumbnailFile(const QString &chatId, const double &latitude, const double &longitude, const int &width, const int &height)
 {
-    qDebug() << "[TDLibWrapper] getting Map Thumbnail File " << chatId;
+    LOG("Getting Map Thumbnail File" << chatId);
     QVariantMap location;
     location.insert("latitude", latitude);
     location.insert("longitude", longitude);
@@ -390,7 +398,7 @@ QVariantMap TDLibWrapper::getUserInformation()
 
 QVariantMap TDLibWrapper::getUserInformation(const QString &userId)
 {
-    // qDebug() << "[TDLibWrapper] Returning user information for ID " << userId;
+    // LOG("Returning user information for ID" << userId);
     return this->allUsers.value(userId).toMap();
 }
 
@@ -406,25 +414,25 @@ QVariantMap TDLibWrapper::getUnreadChatInformation()
 
 QVariantMap TDLibWrapper::getBasicGroup(const QString &groupId)
 {
-    qDebug() << "[TDLibWrapper] Returning basic group information for ID " << groupId;
+    LOG("Returning basic group information for ID" << groupId);
     return this->basicGroups.value(groupId).toMap();
 }
 
 QVariantMap TDLibWrapper::getSuperGroup(const QString &groupId)
 {
-    qDebug() << "[TDLibWrapper] Returning super group information for ID " << groupId;
+    LOG("Returning super group information for ID" << groupId);
     return this->superGroups.value(groupId).toMap();
 }
 
 QVariantMap TDLibWrapper::getChat(const QString &chatId)
 {
-    qDebug() << "[TDLibWrapper] Returning chat information for ID " << chatId;
+    LOG("Returning chat information for ID" << chatId);
     return this->chats.value(chatId).toMap();
 }
 
 void TDLibWrapper::copyFileToDownloads(const QString &filePath)
 {
-    qDebug() << "[TDLibWrapper] Copy file to downloads " << filePath;
+    LOG("Copy file to downloads" << filePath);
     QFileInfo fileInfo(filePath);
     if (fileInfo.exists()) {
         QString downloadFilePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + fileInfo.fileName();
@@ -440,7 +448,7 @@ void TDLibWrapper::copyFileToDownloads(const QString &filePath)
 
 void TDLibWrapper::openFileOnDevice(const QString &filePath)
 {
-    qDebug() << "[TDLibWrapper] Open file on device: " << filePath;
+    LOG("Open file on device:" << filePath);
     QStringList argumentsList;
     argumentsList.append(filePath);
     bool successfullyStarted = QProcess::startDetached("xdg-open", argumentsList);
@@ -453,7 +461,7 @@ void TDLibWrapper::openFileOnDevice(const QString &filePath)
 
 void TDLibWrapper::controlScreenSaver(const bool &enabled)
 {
-    qDebug() << "[TDLibWrapper] Controlling device screen saver" << enabled;
+    LOG("Controlling device screen saver" << enabled);
     QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
     QDBusInterface dbusInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", dbusConnection);
 
@@ -573,10 +581,10 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
 {
     QString updatedUserId = userInformation.value("id").toString();
     if (updatedUserId == this->options.value("my_id").toString()) {
-        qDebug() << "[TDLibWrapper] Own user information updated :)";
+        LOG("Own user information updated :)");
         this->userInformation = userInformation;
     }
-    qDebug() << "[TDLibWrapper] User information updated: " << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString();
+    LOG("User information updated:" << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString());
     this->allUsers.insert(updatedUserId, userInformation);
     emit userUpdated(updatedUserId, userInformation);
 }
@@ -584,10 +592,10 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
 void TDLibWrapper::handleUserStatusUpdated(const QString &userId, const QVariantMap &userStatusInformation)
 {
     if (userId == this->options.value("my_id").toString()) {
-        qDebug() << "[TDLibWrapper] Own user status information updated :)";
+        LOG("Own user status information updated :)");
         this->userInformation.insert("status", userStatusInformation);
     }
-    qDebug() << "[TDLibWrapper] User status information updated: " << userId << userStatusInformation.value("@type").toString();
+    LOG("User status information updated:" << userId << userStatusInformation.value("@type").toString());
     QVariantMap updatedUserInformation = this->allUsers.value(userId).toMap();
     updatedUserInformation.insert("status", userStatusInformation);
     this->allUsers.insert(userId, updatedUserInformation);
@@ -711,7 +719,7 @@ void TDLibWrapper::handleMessagesDeleted(const QString &chatId, const QVariantLi
 
 void TDLibWrapper::setInitialParameters()
 {
-    qDebug() << "[TDLibWrapper] Sending initial parameters to TD Lib";
+    LOG("Sending initial parameters to TD Lib");
     QVariantMap requestObject;
     requestObject.insert("@type", "setTdlibParameters");
     QVariantMap initialParameters;
@@ -733,7 +741,7 @@ void TDLibWrapper::setInitialParameters()
 
 void TDLibWrapper::setEncryptionKey()
 {
-    qDebug() << "[TDLibWrapper] Setting database encryption key";
+    LOG("Setting database encryption key");
     QVariantMap requestObject;
     requestObject.insert("@type", "checkDatabaseEncryptionKey");
     // see https://github.com/tdlib/td/issues/188#issuecomment-379536139
@@ -743,7 +751,7 @@ void TDLibWrapper::setEncryptionKey()
 
 void TDLibWrapper::setLogVerbosityLevel()
 {
-    qDebug() << "[TDLibWrapper] Setting log verbosity level to something less chatty";
+    LOG("Setting log verbosity level to something less chatty");
     QVariantMap requestObject;
     requestObject.insert("@type", "setLogVerbosityLevel");
     requestObject.insert("new_verbosity_level", 2);
@@ -752,18 +760,18 @@ void TDLibWrapper::setLogVerbosityLevel()
 
 void TDLibWrapper::initializeOpenWith()
 {
-    qDebug() << "[TDLibWrapper] Initialize open-with";
+    LOG("Initialize open-with");
 
     QString dbusPathName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/dbus-1/services";
     QDir dbusPath(dbusPathName);
     if (!dbusPath.exists()) {
-        qDebug() << "[TDLibWrapper] Creating D-Bus directory " << dbusPathName;
+        LOG("Creating D-Bus directory" << dbusPathName);
         dbusPath.mkpath(dbusPathName);
     }
     QString dbusServiceFileName = dbusPathName + "/de.ygriega.fernschreiber.service";
     QFile dbusServiceFile(dbusServiceFileName);
     if (!dbusServiceFile.exists()) {
-        qDebug() << "[TDLibWrapper] Creating D-Bus service file at " << dbusServiceFile.fileName();
+        LOG("Creating D-Bus service file at" << dbusServiceFile.fileName());
         if (dbusServiceFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QTextStream fileOut(&dbusServiceFile);
             fileOut.setCodec("UTF-8");
