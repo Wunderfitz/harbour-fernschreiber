@@ -333,7 +333,7 @@ Page {
                                         spacing: Theme.paddingSmall
                                         Text {
                                             id: chatListLastUserText
-                                            text: last_message_sender_id ? ( last_message_sender_id !== overviewPage.ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(last_message_sender_id)), font.pixelSize) : qsTr("You") ) : qsTr("Unknown")
+                                            text: is_channel ? "" : ( last_message_sender_id ? ( last_message_sender_id !== overviewPage.ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(last_message_sender_id)), font.pixelSize) : qsTr("You") ) : qsTr("Unknown") )
                                             font.pixelSize: Theme.fontSizeExtraSmall
                                             color: Theme.highlightColor
                                             textFormat: Text.StyledText

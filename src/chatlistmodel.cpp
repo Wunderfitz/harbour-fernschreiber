@@ -38,6 +38,8 @@ namespace {
     const QString NOTIFICATION_SETTINGS("notification_settings");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
+    const QString TYPE_MAP("type");
+    const QString IS_CHANNEL("is_channel");
 
     const QString TYPE("@type");
     const QString TYPE_MESSAGE_TEXT("messageText");
@@ -55,7 +57,8 @@ public:
         RoleLastReadInboxMessageId,
         RoleLastMessageSenderId,
         RoleLastMessageDate,
-        RoleLastMessageText
+        RoleLastMessageText,
+        RoleIsChannel
     };
 
     ChatData(const QVariantMap &data);
@@ -70,6 +73,7 @@ public:
     qlonglong senderUserId() const;
     qlonglong senderMessageDate() const;
     QString senderMessageText() const;
+    bool isChannel() const;
     bool updateUnreadCount(int unreadCount);
     bool updateLastReadInboxMessageId(qlonglong messageId);
     QVector<int> updateLastMessage(const QVariantMap &message);
@@ -148,6 +152,11 @@ QString ChatListModel::ChatData::senderMessageText() const
     return (content.value(TYPE).toString() == TYPE_MESSAGE_TEXT) ? content.value(TEXT).toMap().value(TEXT).toString() : QString();
 }
 
+bool ChatListModel::ChatData::isChannel() const
+{
+    return chatData.value(TYPE_MAP).toMap().value(IS_CHANNEL).toBool();
+}
+
 bool ChatListModel::ChatData::updateUnreadCount(int count)
 {
     const int prevUnreadCount(unreadCount());
@@ -220,6 +229,7 @@ QHash<int,QByteArray> ChatListModel::roleNames() const
     roles.insert(ChatData::RoleLastMessageSenderId, "last_message_sender_id");
     roles.insert(ChatData::RoleLastMessageDate, "last_message_date");
     roles.insert(ChatData::RoleLastMessageText, "last_message_text");
+    roles.insert(ChatData::RoleIsChannel, "is_channel");
     return roles;
 }
 
@@ -243,6 +253,7 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatData::RoleLastMessageSenderId: return data->senderUserId();
         case ChatData::RoleLastMessageText: return data->senderMessageText();
         case ChatData::RoleLastMessageDate: return data->senderMessageDate();
+        case ChatData::RoleIsChannel: return data->isChannel();
         }
     }
     return QVariant();
