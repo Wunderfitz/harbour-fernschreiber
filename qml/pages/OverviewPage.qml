@@ -231,8 +231,8 @@ Page {
                             pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : display });
                         }
 
+                        showMenuOnPressAndHold: chat_id != overviewPage.ownUserId
                         menu: ContextMenu {
-                            visible: display.id !== overviewPage.ownUserId
                             MenuItem {
                                 onClicked: {
                                     var newNotificationSettings = display.notification_settings;
@@ -241,25 +241,9 @@ Page {
                                     } else {
                                         newNotificationSettings.mute_for = 6666666;
                                     }
-                                    tdLibWrapper.setChatNotificationSettings(display.id, newNotificationSettings);
+                                    tdLibWrapper.setChatNotificationSettings(chat_id, newNotificationSettings);
                                 }
                                 text: display.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
-                            }
-                        }
-
-                        Connections {
-                            target: chatListModel
-                            onChatChanged: {
-                                if (overviewPage.chatListCreated) {
-                                    // Force update of all list item elements. dataChanged() doesn't seem to trigger them all :(
-                                    chatListPictureThumbnail.photoData = (typeof display.photo !== "undefined") ? display.photo.small : "";
-                                    chatUnreadMessagesCountBackground.visible = display.unread_count > 0;
-                                    chatUnreadMessagesCount.text = display.unread_count > 99 ? "99+" : display.unread_count;
-                                    chatListNameText.text = display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown");
-                                    chatListLastUserText.text = (typeof display.last_message !== "undefined") ? ( display.last_message.sender_user_id !== overviewPage.ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(display.last_message.sender_user_id)), Theme.fontSizeExtraSmall) : qsTr("You") ) : qsTr("Unknown");
-                                    chatListLastMessageText.text = (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getMessageText(display.last_message, true, display.last_message.sender_user_id === overviewPage.ownUserId), Theme.fontSizeExtraSmall) : qsTr("Unknown");
-                                    messageContactTimeElapsedText.text = (typeof display.last_message !== "undefined") ? Functions.getDateTimeElapsed(display.last_message.date) : qsTr("Unknown");
-                                }
                             }
                         }
 
@@ -291,7 +275,7 @@ Page {
 
                                         ProfileThumbnail {
                                             id: chatListPictureThumbnail
-                                            photoData: (typeof display.photo !== "undefined") ? display.photo.small : ""
+                                            photoData: photo_small
                                             replacementStringHint: chatListNameText.text
                                             width: parent.width
                                             height: parent.width
@@ -306,7 +290,7 @@ Page {
                                             anchors.right: parent.right
                                             anchors.bottom: parent.bottom
                                             radius: parent.width / 2
-                                            visible: display.unread_count > 0
+                                            visible: unread_count > 0
                                         }
 
                                         Text {
@@ -316,7 +300,7 @@ Page {
                                             color: Theme.primaryColor
                                             anchors.centerIn: chatUnreadMessagesCountBackground
                                             visible: chatUnreadMessagesCountBackground.visible
-                                            text: display.unread_count > 99 ? "99+" : display.unread_count
+                                            text: unread_count > 99 ? "99+" : unread_count
                                         }
                                     }
                                 }
@@ -328,7 +312,7 @@ Page {
 
                                     Text {
                                         id: chatListNameText
-                                        text: display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown")
+                                        text: title ? Emoji.emojify(title, Theme.fontSizeMedium) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown")
                                         textFormat: Text.StyledText
                                         font.pixelSize: Theme.fontSizeMedium
                                         color: Theme.primaryColor
@@ -349,7 +333,7 @@ Page {
                                         spacing: Theme.paddingSmall
                                         Text {
                                             id: chatListLastUserText
-                                            text: (typeof display.last_message !== "undefined") ? ( display.last_message.sender_user_id !== overviewPage.ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(display.last_message.sender_user_id)), font.pixelSize) : qsTr("You") ) : qsTr("Unknown")
+                                            text: last_message_sender_id ? ( last_message_sender_id !== overviewPage.ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(last_message_sender_id)), font.pixelSize) : qsTr("You") ) : qsTr("Unknown")
                                             font.pixelSize: Theme.fontSizeExtraSmall
                                             color: Theme.highlightColor
                                             textFormat: Text.StyledText
@@ -363,7 +347,7 @@ Page {
                                         }
                                         Text {
                                             id: chatListLastMessageText
-                                            text: (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getMessageText(display.last_message, true, display.last_message.sender_user_id === overviewPage.ownUserId), Theme.fontSizeExtraSmall) : qsTr("Unknown")
+                                            text: last_message_text ? Emoji.emojify(last_message_text, Theme.fontSizeExtraSmall) : qsTr("Unknown")
                                             font.pixelSize: Theme.fontSizeExtraSmall
                                             color: Theme.primaryColor
                                             width: parent.width - Theme.paddingMedium - chatListLastUserText.width
@@ -379,28 +363,9 @@ Page {
                                         }
                                     }
 
-                                    Timer {
-                                        id: messageContactTimeUpdater
-                                        interval: 60000
-                                        running: true
-                                        repeat: true
-                                        onTriggered: {
-                                            if (typeof display.last_message !== "undefined") {
-                                                messageContactTimeElapsedText.text = Functions.getDateTimeElapsed(display.last_message.date);
-                                                // Force update of all list item elements. dataChanged() doesn't seem to trigger them all :(
-                                                chatListPictureThumbnail.photoData = (typeof display.photo !== "undefined") ? display.photo.small : "";
-                                                chatUnreadMessagesCountBackground.visible = display.unread_count > 0;
-                                                chatUnreadMessagesCount.text = display.unread_count > 99 ? "99+" : display.unread_count;
-                                                chatListNameText.text = display.title !== "" ? Emoji.emojify(display.title, Theme.fontSizeMedium) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown");
-                                                chatListLastUserText.text = (typeof display.last_message !== "undefined") ? ( display.last_message.sender_user_id !== overviewPage.ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(display.last_message.sender_user_id)), Theme.fontSizeExtraSmall) : qsTr("You") ) : qsTr("Unknown");
-                                                chatListLastMessageText.text = (typeof display.last_message !== "undefined") ? Emoji.emojify(Functions.getMessageText(display.last_message, true, display.last_message.sender_user_id === overviewPage.ownUserId), Theme.fontSizeExtraSmall) : qsTr("Unknown");
-                                            }
-                                        }
-                                    }
-
                                     Text {
                                         id: messageContactTimeElapsedText
-                                        text: (typeof display.last_message !== "undefined") ? Functions.getDateTimeElapsed(display.last_message.date) : qsTr("Unknown")
+                                        text: last_message_date ? Functions.getDateTimeElapsed(last_message_date) : qsTr("Unknown")
                                         font.pixelSize: Theme.fontSizeTiny
                                         color: Theme.secondaryColor
                                     }

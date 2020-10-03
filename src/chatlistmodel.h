@@ -21,8 +21,6 @@
 #define CHATLISTMODEL_H
 
 #include <QAbstractListModel>
-#include <QDebug>
-#include <QMutex>
 #include "tdlibwrapper.h"
 
 class ChatListModel : public QAbstractListModel
@@ -32,22 +30,21 @@ public:
     ChatListModel(TDLibWrapper *tdLibWrapper);
     ~ChatListModel() override;
 
+    virtual QHash<int,QByteArray> roleNames() const override;
     virtual int rowCount(const QModelIndex&) const override;
     virtual QVariant data(const QModelIndex &index, int role) const override;
 
     Q_INVOKABLE void redrawModel();
 
-signals:
-    void chatChanged(const QString &chatId);
-
 private slots:
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
     void handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void handleChatOrderUpdated(const QString &chatId, const QString &order);
-    void handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount);
+    void handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, int unreadCount);
     void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
     void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
+    void handleRelativeTimeRefreshTimer();
 
 private:
     int updateChatOrder(int chatIndex);
@@ -56,6 +53,7 @@ private:
     class ChatData;
 
     TDLibWrapper *tdLibWrapper;
+    QTimer *relativeTimeRefreshTimer;
     QList<ChatData*> chatList;
     QHash<QString,int> chatIndexMap;
 };
