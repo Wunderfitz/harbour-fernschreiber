@@ -18,6 +18,7 @@
 */
 
 #include "chatlistmodel.h"
+#include "fernschreiberutils.h"
 #include <QDebug>
 
 #define LOG(x) qDebug() << "[ChatListModel]" << x
@@ -61,7 +62,7 @@ public:
         RoleIsChannel
     };
 
-    ChatData(const QVariantMap &data);
+    ChatData(const QVariantMap &data, const QVariantMap &userInformation);
 
     int compareTo(const ChatData *chat) const;
     bool setOrder(const QString &order);
@@ -82,13 +83,15 @@ public:
     QVariantMap chatData;
     QString chatId;
     qlonglong order;
+    QVariantMap userInformation;
 };
 
-ChatListModel::ChatData::ChatData(const QVariantMap &data) :
+ChatListModel::ChatData::ChatData(const QVariantMap &data, const QVariantMap &userInformation) :
     chatData(data),
     chatId(data.value(ID).toString()),
     order(data.value(ORDER).toLongLong())
 {
+    this->userInformation = userInformation;
 }
 
 int ChatListModel::ChatData::compareTo(const ChatData *other) const
@@ -148,8 +151,7 @@ qlonglong ChatListModel::ChatData::senderMessageDate() const
 
 QString ChatListModel::ChatData::senderMessageText() const
 {
-    const QVariantMap content(lastMessage(CONTENT).toMap());
-    return (content.value(TYPE).toString() == TYPE_MESSAGE_TEXT) ? content.value(TEXT).toMap().value(TEXT).toString() : QString();
+    return FernschreiberUtils::getMessageShortText(lastMessage(CONTENT).toMap(), this->userInformation.value(ID).toLongLong() == senderUserId());
 }
 
 bool ChatListModel::ChatData::isChannel() const
@@ -307,7 +309,7 @@ int ChatListModel::updateChatOrder(int chatIndex)
 
 void ChatListModel::handleChatDiscovered(const QString &chatId, const QVariantMap &chatToBeAdded)
 {
-    ChatData *chat = new ChatData(chatToBeAdded);
+    ChatData *chat = new ChatData(chatToBeAdded, tdLibWrapper->getUserInformation());
     const int n = chatList.size();
     int chatIndex;
     for (chatIndex = 0; chatIndex < n && chat->compareTo(chatList.at(chatIndex)) >= 0; chatIndex++);

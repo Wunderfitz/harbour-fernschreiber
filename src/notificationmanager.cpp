@@ -18,6 +18,7 @@
 */
 
 #include "notificationmanager.h"
+#include "fernschreiberutils.h"
 #include <nemonotifications-qt5/notification.h>
 #include <sailfishapp.h>
 #include <QDebug>
@@ -219,42 +220,7 @@ QString NotificationManager::getNotificationText(const QVariantMap &notification
 {
     qDebug() << "[NotificationManager] Getting notification text from content" << notificationContent;
 
-    QString contentType = notificationContent.value("@type").toString();
-
-    if (contentType == "messageText") {
-        return notificationContent.value("text").toMap().value("text").toString();
-    }
-    if (contentType == "messagePhoto") {
-        return tr("sent a picture");
-    }
-    if (contentType == "messageVideo") {
-        return tr("sent a video");
-    }
-    if (contentType == "messageAnimation") {
-        return tr("sent an animation");
-    }
-    if (contentType == "messageVoiceNote") {
-        return tr("sent a voice note");
-    }
-    if (contentType == "messageDocument") {
-        return tr("sent a document");
-    }
-    if (contentType == "messageLocation") {
-        return tr("sent a location");
-    }
-    if (contentType == "messageContactRegistered") {
-        return tr("has registered with Telegram");
-    }
-    if (contentType == "messageChatJoinByLink") {
-        return tr("joined this chat");
-    }
-    if (contentType == "messageChatAddMembers") {
-        return tr("was added to this chat");
-    }
-    if (contentType == "messageChatDeleteMember") {
-        return tr("left this chat");
-    }
-    return tr("Unsupported message: %1").arg(contentType.mid(7));
+    return FernschreiberUtils::getMessageShortText(notificationContent, false);
 }
 
 void NotificationManager::controlLedNotification(const bool &enabled)

@@ -229,6 +229,116 @@
     </message>
 </context>
 <context>
+    <name>FernschreiberUtils</name>
+    <message>
+        <source>sent a picture</source>
+        <comment>myself</comment>
+        <translation type="unfinished">képet küldött</translation>
+    </message>
+    <message>
+        <source>sent a picture</source>
+        <translation type="unfinished">képet küldött</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <comment>myself</comment>
+        <translation type="unfinished">videót küldött</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <translation type="unfinished">videót küldött</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <comment>myself</comment>
+        <translation type="unfinished">animációt küldött</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <translation type="unfinished">animációt küldött</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <translation type="unfinished">hangüzenetet küldött</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <comment>myself</comment>
+        <translation type="unfinished">dokumentumot küldött</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <translation type="unfinished">dokumentumot küldött</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <comment>myself</comment>
+        <translation type="unfinished">helyzetmeghatározó információt küldött</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <translation type="unfinished">helyzetmeghatározó információt küldött</translation>
+    </message>
+    <message>
+        <source>have registered with Telegram</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has registered with Telegram</source>
+        <translation type="unfinished">regisztrált a Telegram-al</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">csatlakozott a csevegéshez</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <translation type="unfinished">csatlakozott a csevegéshez</translation>
+    </message>
+    <message>
+        <source>were added to this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>was added to this chat</source>
+        <translation type="unfinished">hozzáadva a csevegéshez</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">kilépett a csevegésből</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <translation type="unfinished">kilépett a csevegésből</translation>
+    </message>
+    <message>
+        <source>Unsupported message: %1</source>
+        <translation type="unfinished">Nem támogatott üzenet: %1</translation>
+    </message>
+    <message>
+        <source>Sticker: %1</source>
+        <translation type="unfinished">Matrica: %1</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <comment>myself</comment>
+        <translation type="unfinished">hangüzenetet küldött</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
@@ -305,50 +415,6 @@
     <message>
         <source>%1 unread messages</source>
         <translation>%1 olvasatlan üzenet</translation>
-    </message>
-    <message>
-        <source>sent a picture</source>
-        <translation>képet küldött</translation>
-    </message>
-    <message>
-        <source>sent a video</source>
-        <translation>videót küldött</translation>
-    </message>
-    <message>
-        <source>sent an animation</source>
-        <translation>animációt küldött</translation>
-    </message>
-    <message>
-        <source>sent a voice note</source>
-        <translation>hangüzenetet küldött</translation>
-    </message>
-    <message>
-        <source>sent a document</source>
-        <translation>dokumentumok küldött</translation>
-    </message>
-    <message>
-        <source>sent a location</source>
-        <translation>helyzetmeghatározó információt küldött</translation>
-    </message>
-    <message>
-        <source>has registered with Telegram</source>
-        <translation>regisztrált a Telegram-al</translation>
-    </message>
-    <message>
-        <source>joined this chat</source>
-        <translation>csatlakozott a csevegéshez</translation>
-    </message>
-    <message>
-        <source>was added to this chat</source>
-        <translation>hozzáadva a csevegéshez</translation>
-    </message>
-    <message>
-        <source>left this chat</source>
-        <translation>kilépett a csevegésből</translation>
-    </message>
-    <message>
-        <source>Unsupported message: %1</source>
-        <translation>Nem támogatott üzenet: %1</translation>
     </message>
 </context>
 <context>
@@ -554,7 +620,7 @@
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">dokumentumot küldött</translation>
     </message>
     <message>
         <source>sent a location</source>

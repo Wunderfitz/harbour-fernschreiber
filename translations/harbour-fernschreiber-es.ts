@@ -229,6 +229,116 @@
     </message>
 </context>
 <context>
+    <name>FernschreiberUtils</name>
+    <message>
+        <source>sent a picture</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió una imagen</translation>
+    </message>
+    <message>
+        <source>sent a picture</source>
+        <translation type="unfinished">envió una imagen</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió un video</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <translation type="unfinished">envió un video</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió una animación</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <translation type="unfinished">envió una animación</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <translation type="unfinished">envió una nota de voz</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió un documento</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <translation type="unfinished">envió un documento</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió una ubicación</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <translation type="unfinished">envió una ubicación</translation>
+    </message>
+    <message>
+        <source>have registered with Telegram</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has registered with Telegram</source>
+        <translation type="unfinished">te has registrado en Telegram</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">se unió a esta charla</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <translation type="unfinished">se unió a esta charla</translation>
+    </message>
+    <message>
+        <source>were added to this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>was added to this chat</source>
+        <translation type="unfinished">se añadió a esta charla</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">dejó esta charla</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <translation type="unfinished">dejó esta charla</translation>
+    </message>
+    <message>
+        <source>Unsupported message: %1</source>
+        <translation type="unfinished">Mensaje no soportado: %1</translation>
+    </message>
+    <message>
+        <source>Sticker: %1</source>
+        <translation type="unfinished">Pegatina: %1</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió una nota de voz</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
@@ -305,50 +415,6 @@
     <message>
         <source>%1 unread messages</source>
         <translation>%1 mensajes no leídos</translation>
-    </message>
-    <message>
-        <source>sent a picture</source>
-        <translation>envió una imagen</translation>
-    </message>
-    <message>
-        <source>sent a video</source>
-        <translation>envió un video</translation>
-    </message>
-    <message>
-        <source>sent an animation</source>
-        <translation>envió una animación</translation>
-    </message>
-    <message>
-        <source>sent a voice note</source>
-        <translation>envió una nota de voz</translation>
-    </message>
-    <message>
-        <source>sent a document</source>
-        <translation>envió un documento</translation>
-    </message>
-    <message>
-        <source>sent a location</source>
-        <translation>envió una ubicación</translation>
-    </message>
-    <message>
-        <source>has registered with Telegram</source>
-        <translation>te has registrado en Telegram</translation>
-    </message>
-    <message>
-        <source>joined this chat</source>
-        <translation>se unió a esta charla</translation>
-    </message>
-    <message>
-        <source>was added to this chat</source>
-        <translation>se añadió a esta charla</translation>
-    </message>
-    <message>
-        <source>left this chat</source>
-        <translation>dejó esta charla</translation>
-    </message>
-    <message>
-        <source>Unsupported message: %1</source>
-        <translation>Mensaje no soportado: %1</translation>
     </message>
 </context>
 <context>

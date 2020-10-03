@@ -229,6 +229,116 @@
     </message>
 </context>
 <context>
+    <name>FernschreiberUtils</name>
+    <message>
+        <source>sent a picture</source>
+        <comment>myself</comment>
+        <translation>haben ein Bild geschickt</translation>
+    </message>
+    <message>
+        <source>sent a picture</source>
+        <translation>hat ein Bild geschickt</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <comment>myself</comment>
+        <translation>haben ein Video geschickt</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <translation>hat ein Video geschickt</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <comment>myself</comment>
+        <translation>haben eine Animation geschickt</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <translation>hat eine Animation geschickt</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <translation>hat eine Sprachnachricht geschickt</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <comment>myself</comment>
+        <translation>haben ein Dokument geschickt</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <translation>hat ein Dokument geschickt</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <comment>myself</comment>
+        <translation>haben einen Standort geschickt</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <translation>hat einen Standort geschickt</translation>
+    </message>
+    <message>
+        <source>have registered with Telegram</source>
+        <comment>myself</comment>
+        <translation>haben sich bei Telegram angemeldet</translation>
+    </message>
+    <message>
+        <source>has registered with Telegram</source>
+        <translation>hat sich bei Telegram angemeldet</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <comment>myself</comment>
+        <translation>sind diesem Chat beigetreten</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <translation>ist diesem Chat beigetreten</translation>
+    </message>
+    <message>
+        <source>were added to this chat</source>
+        <comment>myself</comment>
+        <translation>wurden diesem Chat hinzugefügt</translation>
+    </message>
+    <message>
+        <source>was added to this chat</source>
+        <translation>wurde diesem Chat hinzugefügt</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <comment>myself</comment>
+        <translation>haben diesen Chat verlassen</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <translation>hat diesen Chat verlassen</translation>
+    </message>
+    <message>
+        <source>Unsupported message: %1</source>
+        <translation>Nicht unterstützte Nachricht: %1</translation>
+    </message>
+    <message>
+        <source>Sticker: %1</source>
+        <translation>Sticker: %1</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <comment>myself</comment>
+        <translation>haben eine Sprachnachricht geschickt</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <comment>myself</comment>
+        <translation>haben einen Ort geschickt</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <translation>hat einen Ort geschickt</translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
@@ -297,7 +407,7 @@
     <name>LocationPreview</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation>Installieren Sie Pure Maps, um diesen Ort zu erkunden</translation>
+        <translation>Installieren Sie Pure Maps, um diesen Ort zu erkunden.</translation>
     </message>
 </context>
 <context>
@@ -305,50 +415,6 @@
     <message>
         <source>%1 unread messages</source>
         <translation>%1 ungelesene Nachrichten</translation>
-    </message>
-    <message>
-        <source>sent a picture</source>
-        <translation>hat ein Bild geschickt</translation>
-    </message>
-    <message>
-        <source>sent a video</source>
-        <translation>hat ein Video geschickt</translation>
-    </message>
-    <message>
-        <source>sent an animation</source>
-        <translation>hat eine Animation geschickt</translation>
-    </message>
-    <message>
-        <source>sent a voice note</source>
-        <translation>hat eine Sprachnachricht geschickt</translation>
-    </message>
-    <message>
-        <source>sent a document</source>
-        <translation>hat ein Dokument geschickt</translation>
-    </message>
-    <message>
-        <source>sent a location</source>
-        <translation>hat einen Ort geschickt</translation>
-    </message>
-    <message>
-        <source>has registered with Telegram</source>
-        <translation>hat sich bei Telegram angemeldet</translation>
-    </message>
-    <message>
-        <source>joined this chat</source>
-        <translation>ist diesem Chat beigetreten</translation>
-    </message>
-    <message>
-        <source>was added to this chat</source>
-        <translation>wurde diesem Chat hinzugefügt</translation>
-    </message>
-    <message>
-        <source>left this chat</source>
-        <translation>hat diesen Chat verlassen</translation>
-    </message>
-    <message>
-        <source>Unsupported message: %1</source>
-        <translation>Nicht unterstützte Nachricht: %1</translation>
     </message>
 </context>
 <context>
