@@ -103,15 +103,15 @@
     </message>
     <message>
         <source>offline, last online: last month</source>
-        <translation>офлайн, онлайн был: прошлый месяц</translation>
+        <translation>офлайн, был онлайн: прошлый месяц</translation>
     </message>
     <message>
         <source>offline, last online: last week</source>
-        <translation>офлайн, онлайн был: прошлая неделя</translation>
+        <translation>офлайн, был онлайн: прошлая неделя</translation>
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation>офлайн, онлайн был: %1</translation>
+        <translation>офлайн, был онлайн: %1</translation>
     </message>
     <message>
         <source>online</source>
@@ -147,11 +147,11 @@
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Прибавить звук</translation>
+        <translation>Включить звук</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Заглушить чат</translation>
+        <translation>Выключить звук</translation>
     </message>
     <message>
         <source>Edit Message</source>
@@ -167,7 +167,7 @@
     </message>
     <message>
         <source>Delete Message</source>
-        <translation>Удалить сообщение</translation>
+        <translation>Сообщение удалено</translation>
     </message>
     <message>
         <source>Uploading...</source>
@@ -229,6 +229,116 @@
     </message>
 </context>
 <context>
+    <name>FernschreiberUtils</name>
+    <message>
+        <source>sent a picture</source>
+        <comment>myself</comment>
+        <translation>отправить картинку</translation>
+    </message>
+    <message>
+        <source>sent a picture</source>
+        <translation>отправить картинку</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <comment>myself</comment>
+        <translation>отправить видео</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <translation>отправить видео</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <comment>myself</comment>
+        <translation>отправить анимацию</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <translation>отправить анимацию</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <translation>отправить голосовую заметку</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <comment>myself</comment>
+        <translation>отправить документ</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <translation>отправить документ</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <comment>myself</comment>
+        <translation>отправить местоположение</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <translation>отправить местоположение</translation>
+    </message>
+    <message>
+        <source>have registered with Telegram</source>
+        <comment>myself</comment>
+        <translation>зарегистрировались с помощью Telegram</translation>
+    </message>
+    <message>
+        <source>has registered with Telegram</source>
+        <translation>зарегистрирован с помощью Telegram</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <comment>myself</comment>
+        <translation>присоединился к этому чату</translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <translation>присоединился к этому чату</translation>
+    </message>
+    <message>
+        <source>were added to this chat</source>
+        <comment>myself</comment>
+        <translation>были добавлены в этот чат</translation>
+    </message>
+    <message>
+        <source>was added to this chat</source>
+        <translation>добавлен в этот чат</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <comment>myself</comment>
+        <translation>покинул этот чат</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <translation>покунул этот чат</translation>
+    </message>
+    <message>
+        <source>Unsupported message: %1</source>
+        <translation>Не поддерживается: %1</translation>
+    </message>
+    <message>
+        <source>Sticker: %1</source>
+        <translation>Стикер: %1</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <comment>myself</comment>
+        <translation>отправить голосовую заметку</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <comment>myself</comment>
+        <translation>отправить место встречи</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <translation>отправить место встречи</translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
@@ -254,7 +364,7 @@
     <name>InitializationPage</name>
     <message>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>Ок</translation>
     </message>
     <message>
         <source>Welcome to Fernschreiber!</source>
@@ -306,50 +416,6 @@
         <source>%1 unread messages</source>
         <translation>%1 непрочитанных сообщений</translation>
     </message>
-    <message>
-        <source>sent a picture</source>
-        <translation>отправить картинку</translation>
-    </message>
-    <message>
-        <source>sent a video</source>
-        <translation>отправить видео</translation>
-    </message>
-    <message>
-        <source>sent an animation</source>
-        <translation>отправить анимацию</translation>
-    </message>
-    <message>
-        <source>sent a voice note</source>
-        <translation>отправить голосовую заметку</translation>
-    </message>
-    <message>
-        <source>sent a document</source>
-        <translation>отправить документ</translation>
-    </message>
-    <message>
-        <source>sent a location</source>
-        <translation>отправить местоположение</translation>
-    </message>
-    <message>
-        <source>has registered with Telegram</source>
-        <translation>зарегистрировался с помощью Telegram</translation>
-    </message>
-    <message>
-        <source>joined this chat</source>
-        <translation>присоединился к этому чату</translation>
-    </message>
-    <message>
-        <source>was added to this chat</source>
-        <translation>был добавлен в этот чат</translation>
-    </message>
-    <message>
-        <source>left this chat</source>
-        <translation>покинул этот чат</translation>
-    </message>
-    <message>
-        <source>Unsupported message: %1</source>
-        <translation>Не поддерживается: %1</translation>
-    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -391,11 +457,11 @@
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Прибавить звук</translation>
+        <translation>Включить звук</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Заглушить чат</translation>
+        <translation>Выключить звук</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -425,7 +491,7 @@
     <name>VideoPage</name>
     <message>
         <source>Download Video</source>
-        <translation>Скачать видео</translation>
+        <translation>Скачать Видео</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
@@ -444,7 +510,7 @@
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>зарегистрировался с помощью Telegram</translation>
+        <translation>зарегистрирован с помощью Telegram</translation>
     </message>
     <message>
         <source>Picture: %1</source>
@@ -460,7 +526,7 @@
     </message>
     <message>
         <source>Voice Note: %1</source>
-        <translation>Голосовая Заметка: %1</translation>
+        <translation>Голосовая заметка: %1</translation>
     </message>
     <message>
         <source>Animation: %1</source>
@@ -520,7 +586,7 @@
     </message>
     <message>
         <source>%1K</source>
-        <translation>%1К</translation>
+        <translation>%1T</translation>
     </message>
     <message>
         <source>sent a venue</source>
@@ -568,7 +634,7 @@
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation>зарегистрировались в Telegram</translation>
+        <translation>зарегистрировался с помощью Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
@@ -578,12 +644,12 @@
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>были добавлены в этот чат</translation>
+        <translation>добавлен в этот чат</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>покинули этот чат</translation>
+        <translation>покинул этот чат</translation>
     </message>
 </context>
 </TS>
