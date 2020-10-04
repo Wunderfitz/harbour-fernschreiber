@@ -229,6 +229,132 @@
     </message>
 </context>
 <context>
+    <name>FernschreiberUtils</name>
+    <message>
+        <source>sent a picture</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have registered with Telegram</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has registered with Telegram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>were added to this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>was added to this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsupported message: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sticker: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Register User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your First Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your Last Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User Registration</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
@@ -292,22 +418,6 @@
         <source>Please enter your password:</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Register User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter your First Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter your Last Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>User Registration</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -320,50 +430,6 @@
     <name>NotificationManager</name>
     <message>
         <source>%1 unread messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>sent a picture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>sent a video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>sent an animation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>sent a voice note</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>sent a document</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>sent a location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>has registered with Telegram</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>joined this chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>was added to this chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>left this chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unsupported message: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>开发者为 Sebastian J. Wolf 及 &lt;ahref=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;其他贡献者&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
@@ -131,7 +131,7 @@
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation>%1 订阅者</translation>
+        <translation>%1 位订阅者</translation>
     </message>
     <message>
         <source>Reply to Message</source>
@@ -171,7 +171,7 @@
     </message>
     <message>
         <source>Uploading...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在上传……</translation>
     </message>
 </context>
 <context>
@@ -229,6 +229,116 @@
     </message>
 </context>
 <context>
+    <name>FernschreiberUtils</name>
+    <message>
+        <source>sent a picture</source>
+        <comment>myself</comment>
+        <translation type="unfinished">发送照片</translation>
+    </message>
+    <message>
+        <source>sent a picture</source>
+        <translation type="unfinished">发送照片</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <comment>myself</comment>
+        <translation type="unfinished">发送视频</translation>
+    </message>
+    <message>
+        <source>sent a video</source>
+        <translation type="unfinished">发送视频</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <comment>myself</comment>
+        <translation type="unfinished">发送动画</translation>
+    </message>
+    <message>
+        <source>sent an animation</source>
+        <translation type="unfinished">发送动画</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <comment>myself</comment>
+        <translation type="unfinished">发送文档</translation>
+    </message>
+    <message>
+        <source>sent a document</source>
+        <translation type="unfinished">发送文档</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <comment>myself</comment>
+        <translation type="unfinished">发送位置</translation>
+    </message>
+    <message>
+        <source>sent a location</source>
+        <translation type="unfinished">发送位置</translation>
+    </message>
+    <message>
+        <source>have registered with Telegram</source>
+        <comment>myself</comment>
+        <translation type="unfinished">已注册到 Telegram</translation>
+    </message>
+    <message>
+        <source>has registered with Telegram</source>
+        <translation type="unfinished">已注册到 Telegram </translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>joined this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>were added to this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">已经加入到此对话之中</translation>
+    </message>
+    <message>
+        <source>was added to this chat</source>
+        <translation type="unfinished">已加入到此对话</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">离开此对话</translation>
+    </message>
+    <message>
+        <source>left this chat</source>
+        <translation type="unfinished">离开此对话</translation>
+    </message>
+    <message>
+        <source>Unsupported message: %1</source>
+        <translation type="unfinished">未读消息: %1</translation>
+    </message>
+    <message>
+        <source>Sticker: %1</source>
+        <translation type="unfinished">贴纸: %1</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <comment>myself</comment>
+        <translation type="unfinished">发送地点</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <translation type="unfinished">发送地点</translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
@@ -247,7 +357,7 @@
     <name>InReplyToRow</name>
     <message>
         <source>You</source>
-        <translation>你的</translation>
+        <translation>你</translation>
     </message>
 </context>
 <context>
@@ -274,7 +384,7 @@
     </message>
     <message>
         <source>Loading...</source>
-        <translation>正在加载</translation>
+        <translation>正在加载……</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
@@ -313,58 +423,14 @@
     <name>LocationPreview</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation type="unfinished"></translation>
+        <translation>安装 Pure Maps 以插入位置</translation>
     </message>
 </context>
 <context>
     <name>NotificationManager</name>
     <message>
         <source>%1 unread messages</source>
-        <translation>%1 未读消息</translation>
-    </message>
-    <message>
-        <source>sent a picture</source>
-        <translation>发送照片</translation>
-    </message>
-    <message>
-        <source>sent a video</source>
-        <translation>发送视频</translation>
-    </message>
-    <message>
-        <source>sent an animation</source>
-        <translation>发送动画</translation>
-    </message>
-    <message>
-        <source>sent a voice note</source>
-        <translation>发送语音</translation>
-    </message>
-    <message>
-        <source>sent a document</source>
-        <translation>发送文档</translation>
-    </message>
-    <message>
-        <source>sent a location</source>
-        <translation>发送位置</translation>
-    </message>
-    <message>
-        <source>has registered with Telegram</source>
-        <translation>已注册到 Telegram </translation>
-    </message>
-    <message>
-        <source>joined this chat</source>
-        <translation>加入此对话</translation>
-    </message>
-    <message>
-        <source>was added to this chat</source>
-        <translation>已加入此对话</translation>
-    </message>
-    <message>
-        <source>left this chat</source>
-        <translation>离开此对话</translation>
-    </message>
-    <message>
-        <source>Unsupported message: %1</source>
-        <translation>不受支持的消息： %1</translation>
+        <translation>%1 则未读消息</translation>
     </message>
 </context>
 <context>
@@ -488,7 +554,7 @@
     </message>
     <message>
         <source>Unsupported message: %1</source>
-        <translation>未读消息t: %1</translation>
+        <translation>未读消息: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
@@ -544,66 +610,66 @@
     </message>
     <message>
         <source>sent a venue</source>
-        <translation type="unfinished"></translation>
+        <translation>发送地点</translation>
     </message>
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送照片</translation>
+        <translation>发送照片</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送视频</translation>
+        <translation>发送视频</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送动画</translation>
+        <translation>发送动画</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送音频</translation>
+        <translation>发送音频</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>发送语音</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送文档</translation>
+        <translation>发送文档</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送位置</translation>
+        <translation>发送位置</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>发送地点</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation type="unfinished"></translation>
+        <translation>已注册到 Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>已加入此对话</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>已经加入到此对话之中</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">离开此对话</translation>
+        <translation>离开此对话</translation>
     </message>
 </context>
 </TS>

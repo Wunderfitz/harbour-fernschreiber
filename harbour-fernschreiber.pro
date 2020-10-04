@@ -23,6 +23,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/chatmodel.cpp \
     src/dbusadaptor.cpp \
     src/dbusinterface.cpp \
+    src/fernschreiberutils.cpp \
     src/notificationmanager.cpp \
     src/processlauncher.cpp \
     src/tdlibreceiver.cpp \
@@ -103,6 +104,7 @@ HEADERS += \
     src/chatmodel.h \
     src/dbusadaptor.h \
     src/dbusinterface.h \
+    src/fernschreiberutils.h \
     src/notificationmanager.h \
     src/processlauncher.h \
     src/tdlibreceiver.h \
