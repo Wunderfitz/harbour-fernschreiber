@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.1" language="ru">
 <context>
     <name>AboutPage</name>
     <message>
@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>Клиент Telegram для Sailfish OS</translation>
+        <translation>Телеграм клиент для Sailfish OS</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Условия службы</translation>
+        <translation>Условия обслуживания</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
@@ -91,7 +91,7 @@
     <name>ChatPage</name>
     <message>
         <source>Unknown</source>
-        <translation>Неизвестный</translation>
+        <translation>Неизвестный(ая)</translation>
     </message>
     <message>
         <source>Your message</source>
@@ -286,34 +286,34 @@
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>зарегистрирован с помощью Telegram</translation>
+        <translation>зарегистрирован(а) с помощью Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>присоединился к этому чату</translation>
+        <translation>присоединил(ась)ся к чату</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>присоединился к этому чату</translation>
+        <translation>присоединил(ась)ся к чату</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>был добавлен в этот чат</translation>
+        <translation>был добавлен(а) в чат</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>добавлен в этот чат</translation>
+        <translation>добавлен(а) в чат</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>покинул этот чат</translation>
+        <translation>покинул(а) чат</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>покунул этот чат</translation>
+        <translation>покунул(а) чат</translation>
     </message>
     <message>
         <source>Unsupported message: %1</source>
@@ -510,7 +510,7 @@
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>зарегистрирован с помощью Telegram</translation>
+        <translation>зарегистрирован(а) с помощью Telegram</translation>
     </message>
     <message>
         <source>Picture: %1</source>
@@ -570,15 +570,15 @@
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>присоединился к этому чату</translation>
+        <translation>присоединил(ась)ся к чату</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>был добавлен в этот чат</translation>
+        <translation>был добавлен(а) в чат</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>покинул этот чат</translation>
+        <translation>покинул(а) чат</translation>
     </message>
     <message>
         <source>%1M</source>
@@ -634,22 +634,22 @@
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation>зарегистрировался с помощью Telegram</translation>
+        <translation>зарегистрировал(ась)ся с помощью Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>присоединился к этому чату</translation>
+        <translation>присоединил(ась)ся к чату</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>был добавлен в этот чат</translation>
+        <translation>был добавлен(а) в чат</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>покинул этот чат</translation>
+        <translation>покинул(а) чат</translation>
     </message>
 </context>
 </TS>
