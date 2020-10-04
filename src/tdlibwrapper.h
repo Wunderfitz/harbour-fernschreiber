@@ -61,6 +61,35 @@ public:
     };
     Q_ENUM(ConnectionState)
 
+    enum ChatType {
+        ChatTypeUnknown,
+        ChatTypePrivate,
+        ChatTypeBasicGroup,
+        ChatTypeSupergroup,
+        ChatTypeSecret
+    };
+    Q_ENUM(ChatType)
+
+    enum ChatMemberStatus {
+        ChatMemberStatusUnknown,
+        ChatMemberStatusCreator,
+        ChatMemberStatusAdministrator,
+        ChatMemberStatusMember,
+        ChatMemberStatusRestricted,
+        ChatMemberStatusLeft,
+        ChatMemberStatusBanned
+    };
+    Q_ENUM(ChatMemberStatus)
+
+    class Group {
+    public:
+        Group(qlonglong id) : groupId(id) { }
+        ChatMemberStatus chatMemberStatus() const;
+    public:
+        const qlonglong groupId;
+        QVariantMap groupInfo;
+    };
+
     Q_INVOKABLE QString getVersion();
     Q_INVOKABLE TDLibWrapper::AuthorizationState getAuthorizationState();
     Q_INVOKABLE QVariantMap getAuthorizationStateData();
@@ -69,8 +98,8 @@ public:
     Q_INVOKABLE QVariantMap getUserInformation(const QString &userId);
     Q_INVOKABLE QVariantMap getUnreadMessageInformation();
     Q_INVOKABLE QVariantMap getUnreadChatInformation();
-    Q_INVOKABLE QVariantMap getBasicGroup(const QString &groupId);
-    Q_INVOKABLE QVariantMap getSuperGroup(const QString &groupId);
+    Q_INVOKABLE QVariantMap getBasicGroup(qlonglong groupId) const;
+    Q_INVOKABLE QVariantMap getSuperGroup(qlonglong groupId) const;
     Q_INVOKABLE QVariantMap getChat(const QString &chatId);
     Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
     Q_INVOKABLE void openFileOnDevice(const QString &filePath);
@@ -103,6 +132,10 @@ public:
     Q_INVOKABLE void deleteMessages(const QString &chatId, const QVariantList messageIds);
     Q_INVOKABLE void getMapThumbnailFile(const QString &chatId, const double &latitude, const double &longitude, const int &width, const int &height);
 
+public:
+    const Group* getGroup(qlonglong groupId) const;
+    static ChatMemberStatus chatMemberStatusFromString(const QString &status);
+
 signals:
     void versionDetected(const QString &version);
     void ownUserIdFound(const QString &ownUserId);
@@ -118,8 +151,8 @@ signals:
     void chatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount);
     void chatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void userUpdated(const QString &userId, const QVariantMap &userInformation);
-    void basicGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
-    void superGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
+    void basicGroupUpdated(qlonglong groupId);
+    void superGroupUpdated(qlonglong groupId);
     void chatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
     void messagesReceived(const QVariantList &messages);
     void newMessageReceived(const QString &chatId, const QVariantMap &message);
@@ -150,8 +183,8 @@ public slots:
     void handleChatOrderUpdated(const QString &chatId, const QString &order);
     void handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount);
     void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
-    void handleBasicGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
-    void handleSuperGroupUpdated(const QString &groupId, const QVariantMap &groupInformation);
+    void handleBasicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
+    void handleSuperGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void handleChatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
     void handleMessagesReceived(const QVariantList &messages);
     void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
@@ -164,6 +197,13 @@ public slots:
     void handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds);
     void handleChats(const QVariantMap &chats);
+
+private:
+    void setInitialParameters();
+    void setEncryptionKey();
+    void setLogVerbosityLevel();
+    void initializeOpenWith();
+    const Group *updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups);
 
 private:
     void *tdLibClient;
@@ -179,15 +219,9 @@ private:
     QVariantMap chats;
     QVariantMap unreadMessageInformation;
     QVariantMap unreadChatInformation;
-    QVariantMap basicGroups;
-    QVariantMap superGroups;
+    QHash<qlonglong,Group*> basicGroups;
+    QHash<qlonglong,Group*> superGroups;
     QSettings settings;
-
-    void setInitialParameters();
-    void setEncryptionKey();
-    void setLogVerbosityLevel();
-    void initializeOpenWith();
-
 };
 
 #endif // TDLIBWRAPPER_H
