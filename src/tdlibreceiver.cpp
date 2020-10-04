@@ -27,6 +27,8 @@ namespace {
     const QString POSITION("position");
     const QString POSITIONS("positions");
     const QString ORDER("order");
+    const QString BASIC_GROUP("basic_group");
+    const QString SUPERGROUP("supergroup");
     const QString LAST_MESSAGE("last_message");
     const QString UNREAD_COUNT("unread_count");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
@@ -264,16 +266,18 @@ void TDLibReceiver::processUpdateChatReadOutbox(const QVariantMap &receivedInfor
 
 void TDLibReceiver::processUpdateBasicGroup(const QVariantMap &receivedInformation)
 {
-    QString basicGroupId = receivedInformation.value("basic_group").toMap().value(ID).toString();
+    const QVariantMap basicGroup(receivedInformation.value(BASIC_GROUP).toMap());
+    const qlonglong basicGroupId = basicGroup.value(ID).toLongLong();
     LOG("Basic group information updated for " << basicGroupId);
-    emit basicGroupUpdated(basicGroupId, receivedInformation.value("basic_group").toMap());
+    emit basicGroupUpdated(basicGroupId, basicGroup);
 }
 
 void TDLibReceiver::processUpdateSuperGroup(const QVariantMap &receivedInformation)
 {
-    QString superGroupId = receivedInformation.value("supergroup").toMap().value(ID).toString();
+    const QVariantMap supergroup(receivedInformation.value(SUPERGROUP).toMap());
+    const qlonglong superGroupId = supergroup.value(ID).toLongLong();
     LOG("Super group information updated for " << superGroupId);
-    emit superGroupUpdated(superGroupId, receivedInformation.value("supergroup").toMap());
+    emit superGroupUpdated(superGroupId, supergroup);
 }
 
 void TDLibReceiver::processChatOnlineMemberCountUpdated(const QVariantMap &receivedInformation)

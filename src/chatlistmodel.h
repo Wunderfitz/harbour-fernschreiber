@@ -26,6 +26,8 @@
 class ChatListModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(bool showAllChats READ showAllChats WRITE setShowAllChats NOTIFY showAllChatsChanged)
+
 public:
     ChatListModel(TDLibWrapper *tdLibWrapper);
     ~ChatListModel() override;
@@ -36,6 +38,9 @@ public:
 
     Q_INVOKABLE void redrawModel();
 
+    bool showAllChats() const;
+    void setShowAllChats(bool showAll);
+
 private slots:
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
     void handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
@@ -44,18 +49,25 @@ private slots:
     void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
     void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
+    void handleGroupUpdated(qlonglong groupId);
     void handleRelativeTimeRefreshTimer();
 
-private:
-    int updateChatOrder(int chatIndex);
+signals:
+    void showAllChatsChanged();
 
 private:
     class ChatData;
+    void addVisibleChat(ChatData *chat);
+    void updateChatVisibility(const TDLibWrapper::Group *group);
+    int updateChatOrder(int chatIndex);
 
+private:
     TDLibWrapper *tdLibWrapper;
     QTimer *relativeTimeRefreshTimer;
     QList<ChatData*> chatList;
-    QHash<QString,int> chatIndexMap;
+    QHash<qlonglong,int> chatIndexMap;
+    QHash<qlonglong,ChatData*> hiddenChats;
+    bool showHiddenChats;
 };
 
 #endif // CHATLISTMODEL_H
