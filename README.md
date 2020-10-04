@@ -16,6 +16,7 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 - Chinese: [dashinfantry](https://github.com/dashinfantry)
 - Hungarian [edp17](https://github.com/edp17)
 - Polish: [atlochowski](https://github.com/atlochowski)
+- Russian: [Rustem Abzalov](https://github.com/arustg)
 - Spanish: [GNUuser](https://github.com/GNUuser)
 
 ## License
