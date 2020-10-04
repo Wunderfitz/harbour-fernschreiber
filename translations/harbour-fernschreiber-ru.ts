@@ -5,7 +5,7 @@
     <name>AboutPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>О Fernschreiber</translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
@@ -29,7 +29,7 @@
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Личные данные</translation>
+        <translation>Конфиденциальность</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -45,11 +45,11 @@
     </message>
     <message>
         <source>About Telegram</source>
-        <translation>О Telegram</translation>
+        <translation>Телеграм</translation>
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Этот продукт использует Telegram API, но он не одобрен или сертифицирован Telegram.</translation>
+        <translation>Этот продукт использует Telegram API, но не одобрен или сертифицирован Telegram.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
@@ -57,11 +57,11 @@
     </message>
     <message>
         <source>Logged in as %1</source>
-        <translation>Зашли как %1</translation>
+        <translation>Вы тут как %1</translation>
     </message>
     <message>
         <source>Phone number: +%1</source>
-        <translation>Номер телефона: +%1</translation>
+        <translation>Ваш телефон: +%1</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
@@ -99,19 +99,19 @@
     </message>
     <message>
         <source>was never online</source>
-        <translation>никогда не был онлайн</translation>
+        <translation>никогда не был(а) онлайн</translation>
     </message>
     <message>
         <source>offline, last online: last month</source>
-        <translation>офлайн, был онлайн: прошлый месяц</translation>
+        <translation>офлайн, был(а) онлайн: в прошлом месяце</translation>
     </message>
     <message>
         <source>offline, last online: last week</source>
-        <translation>офлайн, был онлайн: прошлая неделя</translation>
+        <translation>офлайн, был(а) онлайн: на прошлой неделе</translation>
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation>офлайн, был онлайн: %1</translation>
+        <translation>офлайн, был(а) онлайн: %1</translation>
     </message>
     <message>
         <source>online</source>
@@ -119,7 +119,7 @@
     </message>
     <message>
         <source>offline, was recently online</source>
-        <translation>офлайн, недавно был онлайн</translation>
+        <translation>офлайн, недавно был(а) онлайн</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
@@ -135,7 +135,7 @@
     </message>
     <message>
         <source>Reply to Message</source>
-        <translation>Ответить на сообщение</translation>
+        <translation>Ответить</translation>
     </message>
     <message>
         <source>You</source>
@@ -147,15 +147,15 @@
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Включить звук</translation>
+        <translation>Включить уведомления</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Выключить звук</translation>
+        <translation>Выключить уведомления</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation>Изменить сообщение</translation>
+        <translation>Редактировать</translation>
     </message>
     <message>
         <source>edited</source>
@@ -167,7 +167,7 @@
     </message>
     <message>
         <source>Delete Message</source>
-        <translation>Сообщение удалено</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <source>Uploading...</source>
@@ -233,60 +233,60 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>отправить картинку</translation>
+        <translation>отправил(а) картинку</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>отправить картинку</translation>
+        <translation>отправил(а) картинку</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>отправить видео</translation>
+        <translation>отправил(а) видео</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>отправить видео</translation>
+        <translation>отправил(а) видео</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>отправить анимацию</translation>
+        <translation>отправил(а) анимацию</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>отправить анимацию</translation>
+        <translation>отправил(а) анимацию</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>отправить голосовую заметку</translation>
+        <translation>отправил(а) голосовую заметку</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>отправить документ</translation>
+        <translation>отправил(а) документ</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>отправить документ</translation>
+        <translation>отправил(а) документ</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>отправить местоположение</translation>
+        <translation>отправил(а) местоположение</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>отправить местоположение</translation>
+        <translation>отправил(а) местоположение</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>зарегистрировались с помощью Telegram</translation>
+        <translation>зарегистрирован(а) в Telegram</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>зарегистрирован(а) с помощью Telegram</translation>
+        <translation>зарегистрирован(а) в Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
@@ -326,16 +326,16 @@
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>отправить голосовую заметку</translation>
+        <translation>отправил(а) голосовую заметку</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>отправить место встречи</translation>
+        <translation>отправил(а) место встречи</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>отправить место встречи</translation>
+        <translation>отправил(а) место встречи</translation>
     </message>
 </context>
 <context>
@@ -380,7 +380,7 @@
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Введите сюда, тот код, который вы получили:</translation>
+        <translation>Введите сюда тот код, который вы получили:</translation>
     </message>
     <message>
         <source>Loading...</source>
@@ -404,26 +404,26 @@
     </message>
     <message>
         <source>User Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Регистрация</translation>
     </message>
     <message>
         <source>Enter your First Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя</translation>
     </message>
     <message>
         <source>Enter your Last Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Фамилия</translation>
     </message>
     <message>
         <source>Register User</source>
-        <translation type="unfinished"></translation>
+        <translation>Зарегистрироваться</translation>
     </message>
 </context>
 <context>
     <name>LocationPreview</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation>Чтобы исследовать эту местность установите Pure Maps.</translation>
+        <translation>Для просмотра карты, установите Pure Maps.</translation>
     </message>
 </context>
 <context>
@@ -437,7 +437,7 @@
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>О Fernschreiber</translation>
+        <translation>О программе «Fernschreiber»</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
@@ -469,15 +469,15 @@
     </message>
     <message>
         <source>Loading chat list...</source>
-        <translation>Загрузка списка чатов...</translation>
+        <translation>Загрузка чатов...</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Включить звук</translation>
+        <translation>Включить уведомления</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Выключить звук</translation>
+        <translation>Выключить уведомления</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -485,7 +485,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Тут пока ничего нет</translation>
     </message>
 </context>
 <context>
@@ -504,7 +504,7 @@
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Для отправки вашего сообщения нажмите на клавишу ввода</translation>
+        <translation>Для отправки вашего сообщения нажмите на клавишу ввода.</translation>
     </message>
 </context>
 <context>
@@ -530,7 +530,7 @@
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>зарегистрирован(а) с помощью Telegram</translation>
+        <translation>зарегистрирован(а) в Телеграм</translation>
     </message>
     <message>
         <source>Picture: %1</source>
@@ -562,31 +562,31 @@
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>отправить картинку</translation>
+        <translation>отправил(а) картинку</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>отправить видео</translation>
+        <translation>отправил(а) видео</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>отправить анимацию</translation>
+        <translation>отправил(а) анимацию</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>отправить аудио</translation>
+        <translation>отправил(а) аудио</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>отправить голосовую заметку</translation>
+        <translation>отправил(а) голосовую заметку</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>отправить документ</translation>
+        <translation>отправил(а) документ</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>отправить местоположение</translation>
+        <translation>отправил(а) местоположение</translation>
     </message>
     <message>
         <source>joined this chat</source>
@@ -610,47 +610,47 @@
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>отправить место встречи</translation>
+        <translation>отправил(а) место встречи</translation>
     </message>
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>отправить картинку</translation>
+        <translation>отправил(а) картинку</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>отправить видео</translation>
+        <translation>отправил(а) видео</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>отправить анимацию</translation>
+        <translation>отправил(а) анимацию</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>отправить аудио</translation>
+        <translation>отправил(а) аудио</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>отправить голосовую заметку</translation>
+        <translation>отправил(а) голосовую заметку</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>отправить документ</translation>
+        <translation>отправил(а) документ</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>отправить местоположение</translation>
+        <translation>отправил(а) местоположение</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>отправить место встречи</translation>
+        <translation>отправил(а) место встречи</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
