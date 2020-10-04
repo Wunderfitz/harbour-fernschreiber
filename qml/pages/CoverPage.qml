@@ -65,7 +65,7 @@ CoverBackground {
     Component.onCompleted: {
         coverPage.authenticated = (tdLibWrapper.getAuthorizationState() === TelegramAPI.AuthorizationReady);
         coverPage.connectionState = tdLibWrapper.getConnectionState();
-        coverPage.unreadMessages = tdLibWrapper.getUnreadMessageInformation().unread_count;
+        coverPage.unreadMessages = tdLibWrapper.getUnreadMessageInformation().unread_count || 0;
         coverPage.unreadChats = tdLibWrapper.getUnreadChatInformation().unread_count;
         setUnreadInfoText();
     }

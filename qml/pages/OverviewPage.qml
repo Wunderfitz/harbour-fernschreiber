@@ -106,14 +106,9 @@ Page {
     function handleAuthorizationState() {
         switch (overviewPage.authorizationState) {
         case TelegramAPI.WaitPhoneNumber:
-            overviewPage.loading = false;
-            pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
-            break;
         case TelegramAPI.WaitCode:
-            overviewPage.loading = false;
-            pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
-            break;
         case TelegramAPI.WaitPassword:
+        case TelegramAPI.WaitRegistration:
             overviewPage.loading = false;
             pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
             break;
@@ -148,6 +143,12 @@ Page {
         }
         onChatOrderUpdated: {
             if (!overviewPage.chatListCreated) {
+                chatListCreatedTimer.stop();
+                chatListCreatedTimer.start();
+            }
+        }
+        onChatsReceived: {
+            if(chats && chats.chat_ids && chats.chat_ids.length === 0) {
                 chatListCreatedTimer.stop();
                 chatListCreatedTimer.start();
             }
@@ -215,7 +216,6 @@ Page {
                     anchors.fill: parent
 
                     clip: true
-                    visible: count > 0
                     opacity: overviewPage.chatListCreated ? 1 : 0
                     Behavior on opacity { NumberAnimation {} }
 
@@ -387,6 +387,11 @@ Page {
                             horizontalAlignment: Qt.AlignHCenter
                         }
 
+                    }
+
+                    ViewPlaceholder {
+                        enabled: chatListView.count === 0
+                        text: qsTr("You don't have any chats yet.")
                     }
 
                     VerticalScrollDecorator {}

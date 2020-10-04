@@ -402,6 +402,22 @@
         <source>Please enter your password:</source>
         <translation>Wprowadź hasło:</translation>
     </message>
+    <message>
+        <source>Register User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your First Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your Last Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User Registration</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -466,6 +482,10 @@
     <message>
         <source>Settings</source>
         <translation>Ustawienia</translation>
+    </message>
+    <message>
+        <source>You don&apos;t have any chats yet.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

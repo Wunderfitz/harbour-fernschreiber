@@ -37,7 +37,7 @@ public:
 
 signals:
     void versionDetected(const QString &version);
-    void authorizationStateChanged(const QString &authorizationState);
+    void authorizationStateChanged(const QString &authorizationState, const QVariantMap &authorizationStateData);
     void optionUpdated(const QString &optionName, const QVariant &optionValue);
     void connectionStateChanged(const QString &connectionState);
     void userUpdated(const QVariantMap &userInformation);
@@ -63,6 +63,7 @@ signals:
     void chatNotificationSettingsUpdated(const QString &chatId, const QVariantMap updatedChatNotificationSettings);
     void messageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void messagesDeleted(const QString &chatId, const QVariantList &messageIds);
+    void chats(const QVariantMap &chats);
 
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
@@ -101,6 +102,7 @@ private:
     void processUpdateChatNotificationSettings(const QVariantMap &receivedInformation);
     void processUpdateMessageContent(const QVariantMap &receivedInformation);
     void processUpdateDeleteMessages(const QVariantMap &receivedInformation);
+    void processChats(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H
