@@ -957,6 +957,13 @@ Page {
                             pageStack.push(documentPickerPage);
                         }
                     }
+                    IconButton {
+                        id: stickerAttachmentButton
+                        icon.source: "../../images/icon-m-sticker.png"
+                        onClicked: {
+                            // TODO
+                        }
+                    }
                 }
 
                 Row {
