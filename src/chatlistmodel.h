@@ -54,6 +54,7 @@ private slots:
 
 signals:
     void showAllChatsChanged();
+    void chatChanged(const qlonglong &changedChatId);
 
 private:
     class ChatData;

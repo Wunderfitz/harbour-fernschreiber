@@ -244,6 +244,16 @@ Page {
                             }
                         }
 
+                        Connections {
+                            target: chatListModel
+                            onChatChanged: {
+                                if (overviewPage.chatListCreated && changedChatId === chat_id) {
+                                    // Force update of some list item elements (currently only last message text seems to create problems). dataChanged() doesn't seem to trigger them all :(
+                                    chatListLastMessageText.text = last_message_text ? Emoji.emojify(last_message_text, Theme.fontSizeExtraSmall) : qsTr("Unknown")
+                                }
+                            }
+                        }
+
                         Column {
                             id: chatListColumn
                             width: parent.width - ( 2 * Theme.horizontalPageMargin )

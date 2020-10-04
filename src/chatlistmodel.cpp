@@ -493,6 +493,7 @@ void ChatListModel::handleChatLastMessageUpdated(const QString &id, const QStrin
             }
             const QModelIndex modelIndex(index(chatIndex));
             emit dataChanged(modelIndex, modelIndex, chat->updateLastMessage(lastMessage));
+            emit chatChanged(chatId);
         } else {
             ChatData *chat = hiddenChats.value(chatId);
             if (chat) {
