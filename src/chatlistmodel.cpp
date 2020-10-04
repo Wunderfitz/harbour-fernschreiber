@@ -42,7 +42,6 @@ namespace {
     const QString NOTIFICATION_SETTINGS("notification_settings");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
-    const QString TYPE_MAP("type");
     const QString IS_CHANNEL("is_channel");
 
     const QString _TYPE("@type");
@@ -186,7 +185,7 @@ QString ChatListModel::ChatData::senderMessageText() const
 
 bool ChatListModel::ChatData::isChannel() const
 {
-    return chatData.value(TYPE_MAP).toMap().value(IS_CHANNEL).toBool();
+    return chatData.value(TYPE).toMap().value(IS_CHANNEL).toBool();
 }
 
 bool ChatListModel::ChatData::isHidden() const

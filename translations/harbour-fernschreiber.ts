@@ -337,22 +337,6 @@
         <source>sent a venue</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Register User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter your First Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter your Last Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>User Registration</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -416,6 +400,22 @@
     </message>
     <message>
         <source>Please enter your password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User Registration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your First Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your Last Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Register User</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
