@@ -54,6 +54,7 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172 256x256
 
 TRANSLATIONS += translations/harbour-fernschreiber-de.ts \
                 translations/harbour-fernschreiber-es.ts \
+                translations/harbour-fernschreiber-fi.ts \
                 translations/harbour-fernschreiber-hu.ts \
                 translations/harbour-fernschreiber-pl.ts \
                 translations/harbour-fernschreiber-ru.ts \
