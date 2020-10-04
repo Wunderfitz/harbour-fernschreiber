@@ -20,6 +20,12 @@
 
 #define LOG(x) qDebug() << "[TDLibReceiver]" << x
 
+#ifdef DEBUG
+#  define VERBOSE(x) LOG(x)
+#else
+#  define VERBOSE(x)
+#endif
+
 namespace {
     const QString ID("id");
     const QString LIST("list");
@@ -111,7 +117,7 @@ void TDLibReceiver::receiverLoop()
       const char *result = td_json_client_receive(this->tdLibClient, WAIT_TIMEOUT);
       if (result) {
           QJsonDocument receivedJsonDocument = QJsonDocument::fromJson(QByteArray(result));
-          // Too much information qDebug().noquote() << "[TDLibReceiver] Raw result: " << receivedJsonDocument.toJson(QJsonDocument::Indented);
+          VERBOSE("Raw result:" << receivedJsonDocument.toJson(QJsonDocument::Indented).constData());
           processReceivedDocument(receivedJsonDocument);
       }
     }
