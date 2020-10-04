@@ -300,7 +300,7 @@
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>были добавлены в этот чат</translation>
+        <translation>был добавлен в этот чат</translation>
     </message>
     <message>
         <source>was added to this chat</source>
@@ -644,7 +644,7 @@
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>добавлен в этот чат</translation>
+        <translation>был добавлен в этот чат</translation>
     </message>
     <message>
         <source>left this chat</source>
