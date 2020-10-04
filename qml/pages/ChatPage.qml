@@ -446,6 +446,8 @@ Page {
 
                         property variant myMessage: display
                         property variant userInformation: tdLibWrapper.getUserInformation(display.sender_user_id)
+                        property bool isSticker: display.content['@type'] === "messageSticker"
+                        property bool isOwnMessage: chatPage.myUserId === display.sender_user_id
 
                         menu: ContextMenu {
                             MenuItem {
@@ -497,7 +499,6 @@ Page {
                             onTriggered: {
                                 webPagePreviewLoader.active = ( typeof display.content.web_page !== "undefined" );
                                 imagePreviewLoader.active = ( display.content['@type'] === "messagePhoto" );
-                                stickerPreviewLoader.active = ( display.content['@type'] === "messageSticker" );
                                 videoPreviewLoader.active = (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
                                 audioPreviewLoader.active = (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
                                 documentPreviewLoader.active = ( display.content['@type'] === "messageDocument" );
@@ -549,9 +550,9 @@ Page {
                                     id: messageBackground
                                     anchors {
                                         left: parent.left
-                                        leftMargin: (chatPage.myUserId === display.sender_user_id) ? 2 * Theme.horizontalPageMargin : 0
+                                        leftMargin: messageListItem.isOwnMessage ? 2 * Theme.horizontalPageMargin : 0
                                         right: parent.right
-                                        rightMargin: (chatPage.myUserId === display.sender_user_id) ? 0 : 2 * Theme.horizontalPageMargin
+                                        rightMargin: messageListItem.isOwnMessage ? 0 : 2 * Theme.horizontalPageMargin
                                         verticalCenter: parent.verticalCenter
                                     }
                                     height: messageTextColumn.height + ( 2 * Theme.paddingMedium )
@@ -559,6 +560,7 @@ Page {
                                     color: index > ( chatView.count - chatInformation.unread_count - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor
                                     radius: parent.width / 50
                                     opacity: index > ( chatView.count - chatInformation.unread_count - 1 ) ? 0.5 : 0.2
+                                    visible: !messageListItem.isSticker
                                 }
 
                                 Column {
@@ -592,11 +594,11 @@ Page {
                                         text: display.sender_user_id !== chatPage.myUserId ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")
                                         font.pixelSize: Theme.fontSizeExtraSmall
                                         font.weight: Font.ExtraBold
-                                        color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
+                                        color: messageListItem.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
                                         maximumLineCount: 1
                                         elide: Text.ElideRight
                                         textFormat: Text.StyledText
-                                        horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                        horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
                                         visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
                                     }
 
@@ -610,15 +612,15 @@ Page {
                                         id: messageText
 
                                         width: parent.width
-                                        text: Emoji.emojify(Functions.getMessageText(display, false, chatPage.myUserId === display.sender_user_id), font.pixelSize)
+                                        text: Emoji.emojify(Functions.getMessageText(display, false, messageListItem.isOwnMessage), font.pixelSize)
                                         font.pixelSize: Theme.fontSizeSmall
-                                        color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
+                                        color: messageListItem.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
                                         wrapMode: Text.Wrap
                                         textFormat: Text.StyledText
                                         onLinkActivated: {
                                             Functions.handleLink(link);
                                         }
-                                        horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                        horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
                                         linkColor: Theme.highlightColor
                                         visible: (text !== "")
                                     }
@@ -660,22 +662,15 @@ Page {
                                         sourceComponent: imagePreviewComponent
                                     }
 
-                                    Component {
-                                        id: stickerPreviewComponent
-                                        StickerPreview {
-                                            id: messageStickerPreview
-                                            stickerData: ( display.content['@type'] === "messageSticker" ) ?  display.content.sticker : ""
-                                            visible: display.content['@type'] === "messageSticker"
-                                            anchors.horizontalCenter: parent.horizontalCenter
-                                        }
-                                    }
-
                                     Loader {
-                                        id: stickerPreviewLoader
-                                        active: false
+                                        x: messageListItem.isOwnMessage ? (parent.width - width) : 0
+                                        active: messageListItem.isSticker
                                         asynchronous: true
-                                        width: parent.width
-                                        sourceComponent: stickerPreviewComponent
+                                        sourceComponent: Component {
+                                            StickerPreview {
+                                                stickerData: display.content.sticker
+                                            }
+                                        }
                                     }
 
                                     Component {
@@ -773,7 +768,7 @@ Page {
                                             if (index === modelIndex) {
                                                 console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
                                                 messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
-                                                messageText.text = Emoji.emojify(Functions.getMessageText(display, false, chatPage.myUserId === display.sender_user_id), messageText.font.pixelSize);
+                                                messageText.text = Emoji.emojify(Functions.getMessageText(display, false, messageListItem.isOwnMessage), messageText.font.pixelSize);
                                                 if(locationPreviewLoader.active && locationPreviewLoader.status === Loader.Ready) {
                                                     locationPreviewLoader.item.locationData = display.content.location;
                                                     locationPreviewLoader.item.updatePicture()
@@ -787,8 +782,8 @@ Page {
 
                                         id: messageDateText
                                         font.pixelSize: Theme.fontSizeTiny
-                                        color: (chatPage.myUserId === display.sender_user_id) ? Theme.secondaryHighlightColor : Theme.secondaryColor
-                                        horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                        color: messageListItem.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                                        horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
                                         text: getMessageStatusText(display, index, chatView.lastReadSentIndex)
                                     }
 
