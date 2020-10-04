@@ -137,20 +137,17 @@ Page {
         }
         onChatLastMessageUpdated: {
             if (!overviewPage.chatListCreated) {
-                chatListCreatedTimer.stop();
-                chatListCreatedTimer.start();
+                chatListCreatedTimer.restart();
             }
         }
         onChatOrderUpdated: {
             if (!overviewPage.chatListCreated) {
-                chatListCreatedTimer.stop();
-                chatListCreatedTimer.start();
+                chatListCreatedTimer.restart();
             }
         }
         onChatsReceived: {
             if(chats && chats.chat_ids && chats.chat_ids.length === 0) {
-                chatListCreatedTimer.stop();
-                chatListCreatedTimer.start();
+                chatListCreatedTimer.restart();
             }
         }
     }
