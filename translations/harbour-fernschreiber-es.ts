@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Enviar C.Electron.</translation>
+        <translation>Enviar correo</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Este proyecto usa twemoji. Derechos de autor 2018 Twitter, Inc. y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT (codificación) y CC-BY 4.0 (gráficos)!</translation>
+        <translation>Este proyecto usa la biblioteca twemoji de Tweeter. Derechos de autor 2018 Twitter, Inc. y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT (codificación) y CC-BY 4.0 (gráficos)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Por Sebastian J. Wolf y &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;otros contribuyentes&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
@@ -171,7 +171,7 @@
     </message>
     <message>
         <source>Uploading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Subiendo...</translation>
     </message>
 </context>
 <context>
@@ -233,109 +233,109 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió una imagen</translation>
+        <translation>envió una imagen</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation type="unfinished">envió una imagen</translation>
+        <translation>envió una imagen</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió un video</translation>
+        <translation>envió un video</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation type="unfinished">envió un video</translation>
+        <translation>envió un video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió una animación</translation>
+        <translation>envió una animación</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation type="unfinished">envió una animación</translation>
+        <translation>envió una animación</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation type="unfinished">envió una nota de voz</translation>
+        <translation>envió una nota de voz</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió un documento</translation>
+        <translation>envió un documento</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation type="unfinished">envió un documento</translation>
+        <translation>envió un documento</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió una ubicación</translation>
+        <translation>envió una ubicación</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation type="unfinished">envió una ubicación</translation>
+        <translation>envió una ubicación</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>se registró en Telegram</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation type="unfinished">te has registrado en Telegram</translation>
+        <translation>te has registrado en Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">se unió a esta charla</translation>
+        <translation>se unió a esta charla</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation type="unfinished">se unió a esta charla</translation>
+        <translation>se unió a esta charla</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>se añadió a esta charla</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation type="unfinished">se añadió a esta charla</translation>
+        <translation>se añadió a esta charla</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">dejó esta charla</translation>
+        <translation>dejó esta charla</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation type="unfinished">dejó esta charla</translation>
+        <translation>dejó esta charla</translation>
     </message>
     <message>
         <source>Unsupported message: %1</source>
-        <translation type="unfinished">Mensaje no soportado: %1</translation>
+        <translation>Mensaje no soportado: %1</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation type="unfinished">Pegatina: %1</translation>
+        <translation>Pegatina: %1</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió una nota de voz</translation>
+        <translation>envie una nota de voz</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envié un lugar</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation type="unfinished"></translation>
+        <translation>envió un lugar</translation>
     </message>
 </context>
 <context>
@@ -404,26 +404,26 @@
     </message>
     <message>
         <source>Register User</source>
-        <translation type="unfinished"></translation>
+        <translation>Registrar usuario</translation>
     </message>
     <message>
         <source>Enter your First Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Introducir el nombre</translation>
     </message>
     <message>
         <source>Enter your Last Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Introducir el apellido</translation>
     </message>
     <message>
         <source>User Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Registro de usuario</translation>
     </message>
 </context>
 <context>
     <name>LocationPreview</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Instalar Pure Maps para inspeccionar esta ubicación.</translation>
     </message>
 </context>
 <context>
@@ -437,7 +437,7 @@
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>Detalles de Fernschreiber</translation>
+        <translation>Acerca de</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
@@ -485,14 +485,14 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>No hay todavía ninguna charla .</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Configuraciones</translation>
+        <translation>Ajustes</translation>
     </message>
     <message>
         <source>Behavior</source>
@@ -500,7 +500,7 @@
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Enviar mensaje por tecla entrar</translation>
+        <translation>Enviar mensaje por tecla Entrar</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
@@ -610,66 +610,66 @@
     </message>
     <message>
         <source>sent a venue</source>
-        <translation type="unfinished"></translation>
+        <translation>envió un lugar</translation>
     </message>
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió una imagen</translation>
+        <translation>envió una imagen</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió un video</translation>
+        <translation>envié un video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió una animación</translation>
+        <translation>envié una animación</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió un audio</translation>
+        <translation>envié un audio</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió una nota de voz</translation>
+        <translation>envié una nota de voz</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió un documento</translation>
+        <translation>envié un documento</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió una ubicación</translation>
+        <translation>envié una ubicación</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envié un lugar</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation type="unfinished"></translation>
+        <translation>se ha registrado en Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">se unió a esta charla</translation>
+        <translation>me uní a esta charla</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>me añadí a esta charla</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">dejó esta charla</translation>
+        <translation>dejé esta charla</translation>
     </message>
 </context>
 </TS>
