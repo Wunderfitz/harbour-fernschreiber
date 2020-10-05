@@ -131,6 +131,8 @@ public:
     Q_INVOKABLE void editMessageText(const QString &chatId, const QString &messageId, const QString &message);
     Q_INVOKABLE void deleteMessages(const QString &chatId, const QVariantList messageIds);
     Q_INVOKABLE void getMapThumbnailFile(const QString &chatId, const double &latitude, const double &longitude, const int &width, const int &height);
+    Q_INVOKABLE void getRecentStickers();
+    Q_INVOKABLE void getInstalledStickerSets();
 
 public:
     const Group* getGroup(qlonglong groupId) const;
@@ -167,6 +169,10 @@ signals:
     void messageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void messagesDeleted(const QString &chatId, const QVariantList &messageIds);
     void chatsReceived(const QVariantMap &chats);
+    void recentStickersUpdated(const QVariantList &stickerIds);
+    void stickersReceived(const QVariantList &stickers);
+    void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
+    void stickerSetsReceived(const QVariantList &stickerSets);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -197,6 +203,10 @@ public slots:
     void handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds);
     void handleChats(const QVariantMap &chats);
+    void handleRecentStickersUpdated(const QVariantList &stickerIds);
+    void handleStickers(const QVariantList &stickers);
+    void handleInstalledStickerSetsUpdated(const QVariantList &stickerSetIds);
+    void handleStickerSets(const QVariantList &stickerSets);
 
 private:
     void setInitialParameters();

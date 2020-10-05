@@ -32,7 +32,7 @@
 
 #define LOG(x) qDebug() << "[TDLibWrapper]" << x
 
-#ifdef DEBUG
+#if defined (QT_DEBUG) || defined (DEBUG)
 #  define VERBOSE(x) LOG(x)
 #else
 #  define VERBOSE(x)
@@ -86,6 +86,10 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent), settings("harbour
     connect(this->tdLibReceiver, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)), this, SLOT(handleMessageContentUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messagesDeleted(QString, QVariantList)), this, SLOT(handleMessagesDeleted(QString, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SLOT(handleChats(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SLOT(handleRecentStickersUpdated(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SLOT(handleStickers(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SLOT(handleInstalledStickerSetsUpdated(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(stickerSets(QVariantList)), this, SLOT(handleStickerSets(QVariantList)));
 
     this->tdLibReceiver->start();
 
@@ -411,6 +415,22 @@ void TDLibWrapper::getMapThumbnailFile(const QString &chatId, const double &lati
     requestObject.insert("scale", 1); // 1-3
     requestObject.insert("chat_id", chatId);
 
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getRecentStickers()
+{
+    LOG("Retrieving recent stickers");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getRecentStickers");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getInstalledStickerSets()
+{
+    LOG("Retrieving installed sticker sets");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getInstalledStickerSets");
     this->sendRequest(requestObject);
 }
 
@@ -753,6 +773,26 @@ void TDLibWrapper::handleMessagesDeleted(const QString &chatId, const QVariantLi
 void TDLibWrapper::handleChats(const QVariantMap &chats)
 {
     emit this->chatsReceived(chats);
+}
+
+void TDLibWrapper::handleRecentStickersUpdated(const QVariantList &stickerIds)
+{
+    emit this->recentStickersUpdated(stickerIds);
+}
+
+void TDLibWrapper::handleStickers(const QVariantList &stickers)
+{
+    emit this->stickersReceived(stickers);
+}
+
+void TDLibWrapper::handleInstalledStickerSetsUpdated(const QVariantList &stickerSetIds)
+{
+    emit this->installedStickerSetsUpdated(stickerSetIds);
+}
+
+void TDLibWrapper::handleStickerSets(const QVariantList &stickerSets)
+{
+    emit this->stickerSetsReceived(stickerSets);
 }
 
 void TDLibWrapper::setInitialParameters()

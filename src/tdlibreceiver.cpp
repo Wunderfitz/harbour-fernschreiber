@@ -20,7 +20,7 @@
 
 #define LOG(x) qDebug() << "[TDLibReceiver]" << x
 
-#ifdef DEBUG
+#if defined (QT_DEBUG) || defined (DEBUG)
 #  define VERBOSE(x) LOG(x)
 #else
 #  define VERBOSE(x)
@@ -99,6 +99,10 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateMessageContent", &TDLibReceiver::processUpdateMessageContent);
     handlers.insert("updateDeleteMessages", &TDLibReceiver::processUpdateDeleteMessages);
     handlers.insert("chats", &TDLibReceiver::processChats);
+    handlers.insert("updateRecentStickers", &TDLibReceiver::processUpdateRecentStickers);
+    handlers.insert("stickers", &TDLibReceiver::processStickers);
+    handlers.insert("updateInstalledStickerSets", &TDLibReceiver::processUpdateInstalledStickerSets);
+    handlers.insert("stickerSets", &TDLibReceiver::processStickerSets);
 }
 
 void TDLibReceiver::setActive(const bool &active)
@@ -368,4 +372,28 @@ void TDLibReceiver::processUpdateDeleteMessages(const QVariantMap &receivedInfor
 void TDLibReceiver::processChats(const QVariantMap &receivedInformation)
 {
     emit chats(receivedInformation);
+}
+
+void TDLibReceiver::processUpdateRecentStickers(const QVariantMap &receivedInformation)
+{
+    LOG("Recent stickers updated");
+    emit recentStickersUpdated(receivedInformation.value("sticker_ids").toList());
+}
+
+void TDLibReceiver::processStickers(const QVariantMap &receivedInformation)
+{
+    LOG("Received some stickers...");
+    emit stickers(receivedInformation.value("stickers").toList());
+}
+
+void TDLibReceiver::processUpdateInstalledStickerSets(const QVariantMap &receivedInformation)
+{
+    LOG("Recent sticker sets updated");
+    emit installedStickerSetsUpdated(receivedInformation.value("sticker_set_ids").toList());
+}
+
+void TDLibReceiver::processStickerSets(const QVariantMap &receivedInformation)
+{
+    LOG("Received some sticker sets...");
+    emit stickers(receivedInformation.value("sets").toList());
 }

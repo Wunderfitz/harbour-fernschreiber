@@ -64,6 +64,10 @@ signals:
     void messageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void messagesDeleted(const QString &chatId, const QVariantList &messageIds);
     void chats(const QVariantMap &chats);
+    void recentStickersUpdated(const QVariantList &stickerIds);
+    void stickers(const QVariantList &stickers);
+    void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
+    void stickerSets(const QVariantList &stickerSets);
 
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
@@ -103,6 +107,10 @@ private:
     void processUpdateMessageContent(const QVariantMap &receivedInformation);
     void processUpdateDeleteMessages(const QVariantMap &receivedInformation);
     void processChats(const QVariantMap &receivedInformation);
+    void processUpdateRecentStickers(const QVariantMap &receivedInformation);
+    void processStickers(const QVariantMap &receivedInformation);
+    void processUpdateInstalledStickerSets(const QVariantMap &receivedInformation);
+    void processStickerSets(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H
