@@ -25,7 +25,8 @@
 #include <QLocale>
 #include <QProcess>
 #include <QSysInfo>
-#include <QSettings>
+#include <QDebug>
+#include <QJsonDocument>
 #include <QStandardPaths>
 #include <QDBusConnection>
 #include <QDBusInterface>
@@ -43,7 +44,7 @@ namespace {
     const QString _TYPE("@type");
 }
 
-TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
+TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
 {
     LOG("Initializing TD Lib...");
     this->tdLibClient = td_json_client_create();
@@ -527,16 +528,6 @@ void TDLibWrapper::controlScreenSaver(const bool &enabled)
         qDebug() << "Disabling screensaver";
         dbusInterface.call("req_display_blanking_pause");
     }
-}
-
-void TDLibWrapper::setSendByEnter(const bool &sendByEnter)
-{
-    settings.setValue("sendByEnter", sendByEnter);
-}
-
-bool TDLibWrapper::getSendByEnter()
-{
-    return settings.value("sendByEnter", false).toBool();
 }
 
 DBusAdaptor *TDLibWrapper::getDBusAdaptor()

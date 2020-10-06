@@ -20,11 +20,6 @@
 #define TDLIBWRAPPER_H
 
 #include <QCoreApplication>
-#include <QObject>
-#include <QDebug>
-#include <QJsonDocument>
-#include <QStandardPaths>
-#include <QSettings>
 #include <td/telegram/td_json_client.h>
 #include "tdlibreceiver.h"
 #include "dbusadaptor.h"
@@ -104,8 +99,6 @@ public:
     Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
     Q_INVOKABLE void openFileOnDevice(const QString &filePath);
     Q_INVOKABLE void controlScreenSaver(const bool &enabled);
-    Q_INVOKABLE void setSendByEnter(const bool &sendByEnter);
-    Q_INVOKABLE bool getSendByEnter();
 
     DBusAdaptor *getDBusAdaptor();
 
@@ -231,7 +224,6 @@ private:
     QVariantMap unreadChatInformation;
     QHash<qlonglong,Group*> basicGroups;
     QHash<qlonglong,Group*> superGroups;
-    QSettings settings;
 };
 
 #endif // TDLIBWRAPPER_H

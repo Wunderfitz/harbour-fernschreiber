@@ -19,6 +19,7 @@ PKGCONFIG += nemonotifications-qt5 ngf-qt5
 QT += core dbus
 
 SOURCES += src/harbour-fernschreiber.cpp \
+    src/appsettings.cpp \
     src/chatlistmodel.cpp \
     src/chatmodel.cpp \
     src/dbusadaptor.cpp \
@@ -102,6 +103,7 @@ INSTALLS += telegram 86.png 108.png 128.png 172.png 256.png \
             fernschreiber.desktop gui images
 
 HEADERS += \
+    src/appsettings.h \
     src/chatlistmodel.h \
     src/chatmodel.h \
     src/dbusadaptor.h \

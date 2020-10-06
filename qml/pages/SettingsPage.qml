@@ -44,11 +44,12 @@ Page {
             }
 
             TextSwitch {
-                checked: tdLibWrapper.getSendByEnter()
+                checked: appSettings.sendByEnter
                 text: qsTr("Send message by enter")
                 description: qsTr("Send your message by pressing the enter key")
-                onCheckedChanged: {
-                    tdLibWrapper.setSendByEnter(checked);
+                automaticCheck: false
+                onClicked: {
+                    appSettings.sendByEnter = !checked
                 }
             }
 
