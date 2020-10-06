@@ -1078,20 +1078,15 @@ Page {
                             }
                         }
                         EnterKey.onClicked: {
-                            if (tdLibWrapper.getSendByEnter()) {
+                            if (appSettings.sendByEnter) {
                                 sendMessage();
                                 newMessageTextField.text = "";
                                 newMessageTextField.focus = false;
                             }
                         }
 
-                        EnterKey.enabled: tdLibWrapper.getSendByEnter() ? text.length > 0 : true;
-
-                        Component.onCompleted: {
-                            if (tdLibWrapper.getSendByEnter()) {
-                                EnterKey.iconSource = "image://theme/icon-m-chat";
-                            }
-                        }
+                        EnterKey.enabled: !appSettings.sendByEnter || text.length
+                        EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-chat" : "image://theme/icon-m-enter"
 
                         onTextChanged: {
                             controlSendButton();

@@ -29,6 +29,7 @@
 #include <QQmlEngine>
 #include <QGuiApplication>
 
+#include "appsettings.h"
 #include "tdlibwrapper.h"
 #include "chatlistmodel.h"
 #include "chatmodel.h"
@@ -42,6 +43,9 @@ int main(int argc, char *argv[])
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
     QQmlContext *context = view.data()->rootContext();
+
+    AppSettings *appSettings = new AppSettings(view.data());
+    context->setContextProperty("appSettings", appSettings);
 
     TDLibWrapper *tdLibWrapper = new TDLibWrapper(view.data());
     context->setContextProperty("tdLibWrapper", tdLibWrapper);
