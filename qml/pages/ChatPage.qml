@@ -469,7 +469,7 @@ Page {
                                     deleteMessageRemorseItem.execute(messageListItem, qsTr("Deleting message"), function() { tdLibWrapper.deleteMessages(chatInformation.id, [ display.id ]); } );
                                 }
                                 text: qsTr("Delete Message")
-                                visible: display.can_be_deleted_for_all_users
+                                visible: display.can_be_deleted_for_all_users || (display.can_be_deleted_only_for_self && display.chat_id === chatPage.myUserId)
                             }
                         }
 
