@@ -173,6 +173,10 @@
         <source>Uploading...</source>
         <translation>Lähetetään...</translation>
     </message>
+    <message>
+        <source>Forwarded Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

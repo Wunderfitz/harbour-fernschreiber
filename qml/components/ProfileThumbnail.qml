@@ -161,7 +161,7 @@ Item {
             text: getReplacementString()
             color: Theme.primaryColor
             font.bold: true
-            font.pixelSize: Theme.fontSizeLarge
+            font.pixelSize: ( profileThumbnail.height >= Theme.itemSizeSmall ) ? Theme.fontSizeLarge : Theme.fontSizeMedium
         }
 
     }

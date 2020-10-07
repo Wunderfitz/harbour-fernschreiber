@@ -11,7 +11,7 @@ Name:       harbour-fernschreiber
 # << macros
 
 Summary:    Fernschreiber is a Telegram client for Sailfish OS
-Version:    0.2
+Version:    0.3
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -27,7 +27,6 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(nemonotifications-qt5)
 BuildRequires:  pkgconfig(ngf-qt5)
 BuildRequires:  desktop-file-utils
-BuildRequires:  qt5-qttools-linguist
 
 %description
 Fernschreiber is a Telegram client for Sailfish OS

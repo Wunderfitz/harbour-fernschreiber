@@ -173,6 +173,10 @@
         <source>Uploading...</source>
         <translation>Lade hoch...</translation>
     </message>
+    <message>
+        <source>Forwarded Message</source>
+        <translation>Weitergeleitete Nachricht</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

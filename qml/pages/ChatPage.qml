@@ -502,6 +502,7 @@ Page {
                                 audioPreviewLoader.active = (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
                                 documentPreviewLoader.active = ( display.content['@type'] === "messageDocument" );
                                 locationPreviewLoader.active = ( display.content['@type'] === "messageLocation" || ( display.content['@type'] === "messageVenue" ))
+                                forwardedInformationLoader.active = ( typeof display.forward_info !== "undefined" );
                             }
                         }
 
@@ -604,6 +605,82 @@ Page {
                                         id: messageInReplyToRow
                                         myUserId: chatPage.myUserId
                                         visible: false
+                                    }
+
+                                    Loader {
+                                        id: forwardedInformationLoader
+                                        active: false
+                                        asynchronous: true
+                                        width: parent.width
+                                        sourceComponent: Component {
+                                            Row {
+                                                id: forwardedMessageInformationRow
+                                                spacing: Theme.paddingSmall
+                                                width: parent.width
+
+                                                Component.onCompleted: {
+                                                    if (display.forward_info.origin["@type"] === "messageForwardOriginChannel") {
+                                                        var otherChatInformation = tdLibWrapper.getChat(display.forward_info.origin.chat_id);
+                                                        forwardedThumbnail.photoData = (typeof otherChatInformation.photo !== "undefined") ? otherChatInformation.photo.small : "";
+                                                        forwardedChannelText.text = otherChatInformation.title;
+                                                    } else if (display.forward_info.origin["@type"] === "messageForwardOriginUser") {
+                                                        var otherUserInformation = tdLibWrapper.getUserInformation(display.forward_info.origin.sender_user_id);
+                                                        forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : "";
+                                                        forwardedChannelText.text = Functions.getUserName(otherUserInformation);
+                                                    } else {
+                                                        forwardedThumbnail.photoData = "";
+                                                        forwardedChannelText.text = display.forward_info.origin.sender_user_name;
+                                                    }
+                                                }
+
+                                                ProfileThumbnail {
+                                                    id: forwardedThumbnail
+                                                    replacementStringHint: forwardedChannelText.text
+                                                    width: Theme.itemSizeExtraSmall
+                                                    height: Theme.itemSizeExtraSmall
+                                                }
+
+                                                Column {
+                                                    spacing: Theme.paddingSmall
+                                                    width: parent.width
+                                                    Text {
+                                                        font.pixelSize: Theme.fontSizeExtraSmall
+                                                        color: Theme.primaryColor
+                                                        width: parent.width
+                                                        font.italic: true
+                                                        elide: Text.ElideRight
+                                                        textFormat: Text.StyledText
+                                                        text: qsTr("Forwarded Message")
+                                                        onTruncatedChanged: {
+                                                            // There is obviously a bug in QML in truncating text with images.
+                                                            // We simply remove Emojis then...
+                                                            if (truncated) {
+                                                                text = text.replace(/\<img [^>]+\/\>/g, "");
+                                                            }
+                                                        }
+                                                    }
+                                                    Text {
+                                                        id: forwardedChannelText
+                                                        font.pixelSize: Theme.fontSizeExtraSmall
+                                                        color: Theme.primaryColor
+                                                        width: parent.width
+                                                        font.bold: true
+                                                        elide: Text.ElideRight
+                                                        textFormat: Text.StyledText
+                                                        text: forwardedMessageInformationRow.otherChatInformation.title
+                                                        onTruncatedChanged: {
+                                                            // There is obviously a bug in QML in truncating text with images.
+                                                            // We simply remove Emojis then...
+                                                            if (truncated) {
+                                                                text = text.replace(/\<img [^>]+\/\>/g, "");
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+
+                                            }
+                                        }
                                     }
 
                                     Text {

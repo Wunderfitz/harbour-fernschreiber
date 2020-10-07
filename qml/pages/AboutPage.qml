@@ -56,7 +56,7 @@ Page {
             }
 
             Label {
-                text: "Fernschreiber 0.2"
+                text: "Fernschreiber 0.3"
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraLarge
                 anchors {
