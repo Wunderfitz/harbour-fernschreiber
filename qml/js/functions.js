@@ -71,7 +71,7 @@ function getMessageText(message, simple, myself) {
     }
     if (message.content['@type'] === 'messageDocument') {
         if (message.content.document.file_name !== "") {
-            return simple ? qsTr("Document: %1").arg(message.content.document.file_name) : message.content.document.file_name
+            return simple ? qsTr("Document: %1").arg(message.content.document.file_name) : (message.content.document.file_name + ( message.content.caption.text !== "" ? ("<br />" + enhanceMessageText(message.content.caption) ) : "")).trim();
         } else {
             return simple ? (myself ? qsTr("sent a document", "myself") : qsTr("sent a document")) : "";
         }
