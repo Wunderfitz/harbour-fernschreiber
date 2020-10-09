@@ -33,7 +33,6 @@ Page {
         Column {
             id: column
             width: settingsPage.width
-            spacing: Theme.paddingLarge
 
             PageHeader {
                 title: qsTr("Settings")
@@ -53,8 +52,22 @@ Page {
                 }
             }
 
-            VerticalScrollDecorator {}
+            SectionHeader {
+                text: qsTr("Appearance")
+            }
+
+            TextSwitch {
+                checked: appSettings.showStickersAsImages
+                text: qsTr("Show stickers as images")
+                description: qsTr("Show background for stickers and align them centrally like images")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.showStickersAsImages = !checked
+                }
+            }
+
         }
 
+        VerticalScrollDecorator {}
     }
 }
