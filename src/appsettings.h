@@ -24,6 +24,7 @@
 class AppSettings : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool sendByEnter READ getSendByEnter WRITE setSendByEnter NOTIFY sendByEnterChanged)
+    Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
 
 public:
     AppSettings(QObject *parent = Q_NULLPTR);
@@ -31,8 +32,12 @@ public:
     bool getSendByEnter() const;
     void setSendByEnter(bool sendByEnter);
 
+    bool showStickersAsImages() const;
+    void setShowStickersAsImages(bool showAsImages);
+
 signals:
     void sendByEnterChanged();
+    void showStickersAsImagesChanged();
 
 private:
     QSettings settings;
