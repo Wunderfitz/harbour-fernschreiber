@@ -28,9 +28,11 @@
 #include <QDBusConnection>
 #include <QDBusInterface>
 
+#define LOG(x) qDebug() << "[NotificationManager]" << x
+
 NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, QObject *parent) : QObject(parent)
 {
-    qDebug() << "[NotificationManager] Initializing...";
+    LOG("Initializing...");
     this->tdLibWrapper = tdLibWrapper;
     this->ngfClient = new Ngf::Client(this);
 
@@ -44,29 +46,28 @@ NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, QObject *pa
     connect(this->ngfClient, SIGNAL(eventPlaying(quint32)), this, SLOT(handleNgfEventPlaying(quint32)));
 
     if (this->ngfClient->connect()) {
-        qDebug() << "[NotificationManager] NGF Client successfully initialized...";
+        LOG("NGF Client successfully initialized...");
     } else {
-        qDebug() << "[NotificationManager] Failed to initialize NGF Client...";
+        LOG("Failed to initialize NGF Client...");
     }
 
     this->controlLedNotification(false);
-
 }
 
 NotificationManager::~NotificationManager()
 {
-    qDebug() << "[NotificationManager] Destroying myself...";
+    LOG("Destroying myself...");
 }
 
 void NotificationManager::handleUpdateActiveNotifications(const QVariantList notificationGroups)
 {
-    qDebug() << "[NotificationManager] Received active notifications, number of groups:" << notificationGroups.size();
+    LOG("Received active notifications, number of groups:" << notificationGroups.size());
 }
 
 void NotificationManager::handleUpdateNotificationGroup(const QVariantMap notificationGroupUpdate)
 {
     QString notificationGroupId = notificationGroupUpdate.value("notification_group_id").toString();
-    qDebug() << "[NotificationManager] Received notification group update, group ID:" << notificationGroupId;
+    LOG("Received notification group update, group ID:" << notificationGroupId);
     QVariantMap notificationGroup = this->notificationGroups.value(notificationGroupId).toMap();
 
     QString chatId = notificationGroupUpdate.value("chat_id").toString();
@@ -92,7 +93,7 @@ void NotificationManager::handleUpdateNotificationGroup(const QVariantMap notifi
 
     // If we have deleted notifications, we need to update possibly existing ones
     if (!removedNotificationIds.isEmpty() && !activeNotifications.isEmpty()) {
-        qDebug() << "[NotificationManager] Some removals happend, but we have " << activeNotifications.size() << "existing notifications.";
+        LOG("Some removals happend, but we have" << activeNotifications.size() << "existing notifications.");
         QVariantMap firstActiveNotification = activeNotifications.first().toMap();
         activeNotifications.remove(firstActiveNotification.value("id").toString());
         QVariantMap newFirstActiveNotification = this->sendNotification(chatId, firstActiveNotification, activeNotifications);
@@ -125,45 +126,45 @@ void NotificationManager::handleUpdateNotificationGroup(const QVariantMap notifi
 
 void NotificationManager::handleUpdateNotification(const QVariantMap updatedNotification)
 {
-    qDebug() << "[NotificationManager] Received notification update, group ID:" << updatedNotification.value("notification_group_id").toInt();
+    LOG("Received notification update, group ID:" << updatedNotification.value("notification_group_id").toInt());
 }
 
 void NotificationManager::handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation)
 {
     this->chatListMutex.lock();
-    qDebug() << "[NotificationManager] Adding chat to internal map " << chatId;
+    LOG("Adding chat to internal map" << chatId);
     this->chatMap.insert(chatId, chatInformation);
     this->chatListMutex.unlock();
 }
 
 void NotificationManager::handleNgfConnectionStatus(const bool &connected)
 {
-    qDebug() << "[NotificationManager] NGF Daemon connection status changed " << connected;
+    LOG("NGF Daemon connection status changed" << connected);
 }
 
 void NotificationManager::handleNgfEventFailed(const quint32 &eventId)
 {
-    qDebug() << "[NotificationManager] NGF event failed, id: " << eventId;
+    LOG("NGF event failed, id:" << eventId);
 }
 
 void NotificationManager::handleNgfEventCompleted(const quint32 &eventId)
 {
-    qDebug() << "[NotificationManager] NGF event completed, id: " << eventId;
+    LOG("NGF event completed, id:" << eventId);
 }
 
 void NotificationManager::handleNgfEventPlaying(const quint32 &eventId)
 {
-    qDebug() << "[NotificationManager] NGF event playing, id: " << eventId;
+    LOG("NGF event playing, id:" << eventId);
 }
 
 void NotificationManager::handleNgfEventPaused(const quint32 &eventId)
 {
-    qDebug() << "[NotificationManager] NGF event paused, id: " << eventId;
+    LOG("NGF event paused, id:" << eventId);
 }
 
 QVariantMap NotificationManager::sendNotification(const QString &chatId, const QVariantMap &notificationInformation, const QVariantMap &activeNotifications)
 {
-    qDebug() << "[NotificationManager] Sending notification" << notificationInformation.value("id").toString();
+    LOG("Sending notification" << notificationInformation.value("id").toString());
 
     QVariantMap chatInformation = this->chatMap.value(chatId).toMap();
     QString chatType = chatInformation.value("type").toMap().value("@type").toString();
@@ -210,7 +211,7 @@ QVariantMap NotificationManager::sendNotification(const QString &chatId, const Q
 
 void NotificationManager::removeNotification(const QVariantMap &notificationInformation)
 {
-    qDebug() << "[NotificationManager] Removing notification" << notificationInformation.value("id").toString();
+    LOG("Removing notification" << notificationInformation.value("id").toString());
     Notification nemoNotification;
     nemoNotification.setReplacesId(notificationInformation.value("replaces_id").toUInt());
     nemoNotification.close();
@@ -218,14 +219,14 @@ void NotificationManager::removeNotification(const QVariantMap &notificationInfo
 
 QString NotificationManager::getNotificationText(const QVariantMap &notificationContent)
 {
-    qDebug() << "[NotificationManager] Getting notification text from content" << notificationContent;
+    LOG("Getting notification text from content" << notificationContent);
 
     return FernschreiberUtils::getMessageShortText(notificationContent, false);
 }
 
 void NotificationManager::controlLedNotification(const bool &enabled)
 {
-    qDebug() << "[NotificationManager] Controlling notification LED" << enabled;
+    LOG("Controlling notification LED" << enabled;
     QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
     QDBusInterface dbusInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", dbusConnection);
 
@@ -234,5 +235,4 @@ void NotificationManager::controlLedNotification(const bool &enabled)
     } else {
         dbusInterface.call("req_led_pattern_deactivate", "PatternCommunicationIM");
     }
-
 }
