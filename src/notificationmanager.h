@@ -24,12 +24,13 @@
 #include <QDBusInterface>
 #include <ngf-qt5/NgfClient>
 #include "tdlibwrapper.h"
+#include "appsettings.h"
 
 class NotificationManager : public QObject
 {
     Q_OBJECT
 public:
-    NotificationManager(TDLibWrapper *tdLibWrapper);
+    NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings);
     ~NotificationManager() override;
 
 signals:
@@ -56,6 +57,7 @@ private:
 private:
 
     TDLibWrapper *tdLibWrapper;
+    AppSettings *appSettings;
     Ngf::Client *ngfClient;
     QVariantMap chatMap;
     QVariantMap notificationGroups;

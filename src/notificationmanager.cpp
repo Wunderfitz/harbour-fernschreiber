@@ -29,11 +29,12 @@
 
 #define LOG(x) qDebug() << "[NotificationManager]" << x
 
-NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper) :
+NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings) :
     mceInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", QDBusConnection::systemBus())
 {
     LOG("Initializing...");
     this->tdLibWrapper = tdLibWrapper;
+    this->appSettings = appSettings;
     this->ngfClient = new Ngf::Client(this);
 
     connect(this->tdLibWrapper, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SLOT(handleUpdateActiveNotifications(QVariantList)));
@@ -178,12 +179,15 @@ QVariantMap NotificationManager::sendNotification(const QString &chatId, const Q
     nemoNotification.setAppName("Fernschreiber");
     nemoNotification.setAppIcon(appIconUrl.toLocalFile());
     nemoNotification.setSummary(chatInformation.value("title").toString());
-    nemoNotification.setCategory("x-nemo.messaging.im");
     nemoNotification.setTimestamp(QDateTime::fromMSecsSinceEpoch(messageMap.value("date").toLongLong() * 1000));
     QVariantList remoteActionArguments;
     remoteActionArguments.append(chatId);
     remoteActionArguments.append(messageMap.value("id").toString());
     nemoNotification.setRemoteAction(Notification::remoteAction("default", "openMessage", "de.ygriega.fernschreiber", "/de/ygriega/fernschreiber", "de.ygriega.fernschreiber", "openMessage", remoteActionArguments));
+
+    bool needFeedback;
+    const AppSettings::NotificationFeedback feedbackStyle = appSettings->notificationFeedback();
+
     if (activeNotifications.isEmpty()) {
         QString notificationBody;
         if (addAuthor) {
@@ -195,13 +199,19 @@ QVariantMap NotificationManager::sendNotification(const QString &chatId, const Q
         }
         notificationBody = notificationBody + this->getNotificationText(messageMap.value("content").toMap());
         nemoNotification.setBody(notificationBody);
+        needFeedback = (feedbackStyle != AppSettings::NotificationFeedbackNone);
     } else {
         nemoNotification.setReplacesId(activeNotifications.first().toMap().value("replaces_id").toUInt());
         nemoNotification.setBody(tr("%1 unread messages").arg(activeNotifications.size() + 1));
+        needFeedback = (feedbackStyle == AppSettings::NotificationFeedbackAll);
+    }
+
+    if (needFeedback) {
+        nemoNotification.setCategory("x-nemo.messaging.im");
+        ngfClient->play("chat");
     }
 
     nemoNotification.publish();
-    this->ngfClient->play("chat");
     this->controlLedNotification(true);
     updatedNotificationInformation.insert("replaces_id", nemoNotification.replacesId());
     return updatedNotificationInformation;
