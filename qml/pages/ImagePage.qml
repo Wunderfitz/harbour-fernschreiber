@@ -25,6 +25,7 @@ import "../js/functions.js" as Functions
 Page {
     id: imagePage
     allowedOrientations: Orientation.All
+    backNavigation: !imageOnly
 
     property variant photoData;
     property variant pictureFileInformation;
@@ -42,6 +43,8 @@ Page {
     property real centerY;
     property real oldCenterX;
     property real oldCenterY;
+
+    property bool imageOnly
 
     Component.onCompleted: {
         updatePicture();
@@ -95,7 +98,7 @@ Page {
         contentHeight: imagePinchArea.height;
 
         PullDownMenu {
-            visible: (typeof imagePage.imageUrl !== "undefined")
+            visible: !imageOnly && imageUrl
             MenuItem {
                 text: qsTr("Download Picture")
                 onClicked: {
@@ -110,6 +113,12 @@ Page {
 
         AppNotification {
             id: imageNotification
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            visible: singleImage.visible
+            onClicked: imageOnly = !imageOnly // Toggle "Image only" mode on tap
         }
 
         PinchArea {
