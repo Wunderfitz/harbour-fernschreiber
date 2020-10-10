@@ -26,11 +26,11 @@
 #include <QUrl>
 #include <QDateTime>
 #include <QDBusConnection>
-#include <QDBusInterface>
 
 #define LOG(x) qDebug() << "[NotificationManager]" << x
 
-NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, QObject *parent) : QObject(parent)
+NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper) :
+    mceInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", QDBusConnection::systemBus())
 {
     LOG("Initializing...");
     this->tdLibWrapper = tdLibWrapper;
@@ -131,10 +131,8 @@ void NotificationManager::handleUpdateNotification(const QVariantMap updatedNoti
 
 void NotificationManager::handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation)
 {
-    this->chatListMutex.lock();
     LOG("Adding chat to internal map" << chatId);
     this->chatMap.insert(chatId, chatInformation);
-    this->chatListMutex.unlock();
 }
 
 void NotificationManager::handleNgfConnectionStatus(const bool &connected)
@@ -226,13 +224,10 @@ QString NotificationManager::getNotificationText(const QVariantMap &notification
 
 void NotificationManager::controlLedNotification(const bool &enabled)
 {
-    LOG("Controlling notification LED" << enabled;
-    QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
-    QDBusInterface dbusInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", dbusConnection);
+    static const QString PATTERN("PatternCommunicationIM");
+    static const QString ACTIVATE("req_led_pattern_activate");
+    static const QString DEACTIVATE("req_led_pattern_deactivate");
 
-    if (enabled) {
-        dbusInterface.call("req_led_pattern_activate", "PatternCommunicationIM");
-    } else {
-        dbusInterface.call("req_led_pattern_deactivate", "PatternCommunicationIM");
-    }
+    LOG("Controlling notification LED" << enabled);
+    mceInterface.call(enabled ? ACTIVATE : DEACTIVATE, PATTERN);
 }

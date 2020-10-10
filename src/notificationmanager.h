@@ -21,7 +21,7 @@
 #define NOTIFICATIONMANAGER_H
 
 #include <QObject>
-#include <QMutex>
+#include <QDBusInterface>
 #include <ngf-qt5/NgfClient>
 #include "tdlibwrapper.h"
 
@@ -29,7 +29,7 @@ class NotificationManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit NotificationManager(TDLibWrapper *tdLibWrapper, QObject *parent = nullptr);
+    NotificationManager(TDLibWrapper *tdLibWrapper);
     ~NotificationManager() override;
 
 signals:
@@ -48,16 +48,18 @@ public slots:
 
 private:
 
-    TDLibWrapper *tdLibWrapper;
-    Ngf::Client *ngfClient;
-    QVariantMap chatMap;
-    QVariantMap notificationGroups;
-    QMutex chatListMutex;
-
     QVariantMap sendNotification(const QString &chatId, const QVariantMap &notificationInformation, const QVariantMap &activeNotifications);
     void removeNotification(const QVariantMap &notificationInformation);
     QString getNotificationText(const QVariantMap &notificationContent);
     void controlLedNotification(const bool &enabled);
+
+private:
+
+    TDLibWrapper *tdLibWrapper;
+    Ngf::Client *ngfClient;
+    QVariantMap chatMap;
+    QVariantMap notificationGroups;
+    QDBusInterface mceInterface;
 
 };
 
