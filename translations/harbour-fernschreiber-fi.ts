@@ -510,6 +510,18 @@
         <source>Send your message by pressing the enter key</source>
         <translation>Lähetä viestisi painamalla palautusnäppäintä (enter)</translation>
     </message>
+    <message>
+        <source>Appearance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>VideoPage</name>

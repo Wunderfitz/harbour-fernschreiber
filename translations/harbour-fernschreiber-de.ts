@@ -510,6 +510,18 @@
         <source>Send your message by pressing the enter key</source>
         <translation>Senden Sie Ihre Nachricht, indem Sie die Enter-Taste drücken</translation>
     </message>
+    <message>
+        <source>Appearance</source>
+        <translation>Erscheinungsbild</translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation">Sticker als Bilder anzeigen</translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation>Hintergrund für Sticker anzeigen und sie wie Bilder mittig platzieren.</translation>
+    </message>
 </context>
 <context>
     <name>VideoPage</name>
