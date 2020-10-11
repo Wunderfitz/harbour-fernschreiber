@@ -450,6 +450,11 @@ Page {
                         property bool isForwarded: typeof display.forward_info !== "undefined"
                         property bool containsImage: display.content['@type'] === "messagePhoto"
                         property bool containsSticker: display.content['@type'] === "messageSticker"
+                        property bool containsWebPage: typeof display.content.web_page !== "undefined"
+                        property bool containsVideo: (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
+                        property bool containsAudio: (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
+                        property bool containsDocument: ( display.content['@type'] === "messageDocument" )
+                        property bool containsLocation: ( display.content['@type'] === "messageLocation" || ( display.content['@type'] === "messageVenue" ))
 
                         menu: ContextMenu {
                             MenuItem {
@@ -500,13 +505,13 @@ Page {
                             running: false
                             onTriggered: {
                                 if (typeof display.content !== "undefined") {
-                                    webPagePreviewLoader.active = ( typeof display.content.web_page !== "undefined" );
+                                    webPagePreviewLoader.active = messageListItem.containsWebPage;
                                     imagePreviewLoader.active = messageListItem.containsImage;
                                     stickerPreviewLoader.active = messageListItem.containsSticker;
-                                    videoPreviewLoader.active = (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
-                                    audioPreviewLoader.active = (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
-                                    documentPreviewLoader.active = ( display.content['@type'] === "messageDocument" );
-                                    locationPreviewLoader.active = ( display.content['@type'] === "messageLocation" || ( display.content['@type'] === "messageVenue" ))
+                                    videoPreviewLoader.active = messageListItem.containsVideo;
+                                    audioPreviewLoader.active = messageListItem.containsAudio;
+                                    documentPreviewLoader.active = messageListItem.containsDocument;
+                                    locationPreviewLoader.active = messageListItem.containsLocation;
                                     forwardedInformationLoader.active = messageListItem.isForwarded;
                                 }
                             }
@@ -708,22 +713,21 @@ Page {
                                         visible: (text !== "")
                                     }
 
-                                    Component {
-                                        id: webPagePreviewComponent
-                                        WebPagePreview {
-                                            id: webPagePreview
-                                            webPageData: ( typeof display.content.web_page !== "undefined" ) ? display.content.web_page : ""
-                                            width: parent.width
-                                            visible: typeof display.content.web_page !== "undefined"
-                                        }
-                                    }
-
                                     Loader {
                                         id: webPagePreviewLoader
                                         active: false
                                         asynchronous: true
                                         width: parent.width
-                                        sourceComponent: webPagePreviewComponent
+                                        height: messageListItem.containsWebPage ? ( item ? item.height : ( (parent.width * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) ) ) : 0
+
+                                        sourceComponent: Component {
+                                            id: webPagePreviewComponent
+                                            WebPagePreview {
+                                                id: webPagePreview
+                                                webPageData: messageListItem.containsWebPage ? display.content.web_page : ""
+                                                width: parent.width
+                                            }
+                                        }
                                     }
 
                                     Loader {
@@ -761,35 +765,21 @@ Page {
                                         }
                                     }
 
-                                    Component {
-                                        id: videoPreviewComponent
-                                        VideoPreview {
-                                            id: messageVideoPreview
-                                            videoData: ( display.content['@type'] === "messageVideo" ) ?  display.content.video : ( ( display.content['@type'] === "messageAnimation" ) ? display.content.animation : "")
-                                            width: parent.width
-                                            height: ( display.content['@type'] === "messageVideo" ) ? Functions.getVideoHeight(width, display.content.video) : Functions.getVideoHeight(width, display.content.animation)
-                                            visible: ( display.content['@type'] === "messageVideo" || display.content['@type'] === "messageAnimation" )
-                                            onScreen: chatPage.status === PageStatus.Active
-                                        }
-                                    }
-
                                     Loader {
                                         id: videoPreviewLoader
                                         active: false
                                         asynchronous: true
                                         width: parent.width
-                                        sourceComponent: videoPreviewComponent
-                                    }
-
-                                    Component {
-                                        id: audioPreviewComponent
-                                        AudioPreview {
-                                            id: messageAudioPreview
-                                            audioData: ( display.content['@type'] === "messageVoiceNote" ) ?  display.content.voice_note : ( ( display.content['@type'] === "messageAudio" ) ? display.content.audio : "")
-                                            width: parent.width
-                                            height: parent.width / 2
-                                            visible: ( display.content['@type'] === "messageVoiceNote" || display.content['@type'] === "messageAudio" )
-                                            onScreen: chatPage.status === PageStatus.Active
+                                        height: messageListItem.containsVideo ? Functions.getVideoHeight(width, ( display.content['@type'] === "messageVideo" ) ? display.content.video : display.content.animation) : 0
+                                        sourceComponent: Component {
+                                            id: videoPreviewComponent
+                                            VideoPreview {
+                                                id: messageVideoPreview
+                                                videoData: ( display.content['@type'] === "messageVideo" ) ?  display.content.video : ( ( display.content['@type'] === "messageAnimation" ) ? display.content.animation : "")
+                                                width: parent.width
+                                                height: Functions.getVideoHeight(width, ( display.content['@type'] === "messageVideo" ) ? display.content.video : display.content.animation)
+                                                onScreen: chatPage.status === PageStatus.Active
+                                            }
                                         }
                                     }
 
@@ -798,15 +788,16 @@ Page {
                                         active: false
                                         asynchronous: true
                                         width: parent.width
-                                        sourceComponent: audioPreviewComponent
-                                    }
-
-                                    Component {
-                                        id: documentPreviewComponent
-                                        DocumentPreview {
-                                            id: messageDocumentPreview
-                                            documentData: ( display.content['@type'] === "messageDocument" ) ?  display.content.document : ""
-                                            visible: display.content['@type'] === "messageDocument"
+                                        height: messageListItem.containsAudio ? (parent.width / 2) : 0
+                                        sourceComponent: Component {
+                                            id: audioPreviewComponent
+                                            AudioPreview {
+                                                id: messageAudioPreview
+                                                audioData: ( display.content['@type'] === "messageVoiceNote" ) ?  display.content.voice_note : ( ( display.content['@type'] === "messageAudio" ) ? display.content.audio : "")
+                                                width: parent.width
+                                                height: parent.width / 2
+                                                onScreen: chatPage.status === PageStatus.Active
+                                            }
                                         }
                                     }
 
@@ -815,17 +806,13 @@ Page {
                                         active: false
                                         asynchronous: true
                                         width: parent.width
-                                        sourceComponent: documentPreviewComponent
-                                    }
-                                    Component {
-                                        id: locationPreviewComponent
-                                        LocationPreview {
-                                            id: messageLocationPreview
-                                            width: parent.width
-                                            height: parent.width * 2 / 3
-                                            chatId: display.id
-                                            locationData: ( display.content['@type'] === "messageLocation" ) ?  display.content.location : ( ( display.content['@type'] === "messageVenue" ) ? display.content.venue.location : "" )
-                                            visible: ( display.content['@type'] === "messageLocation" || display.content['@type'] === "messageVenue" )
+                                        height: messageListItem.containsDocument ? (item ? item.height : Theme.itemSizeSmall) : 0
+                                        sourceComponent: Component {
+                                            id: documentPreviewComponent
+                                            DocumentPreview {
+                                                id: messageDocumentPreview
+                                                documentData: messageListItem.containsDocument ?  display.content.document : ""
+                                            }
                                         }
                                     }
 
@@ -834,8 +821,19 @@ Page {
                                         active: false
                                         asynchronous: true
                                         width: parent.width
-                                        sourceComponent: locationPreviewComponent
+                                        height: messageListItem.containsLocation ? (item ? item.height : (parent.width * 2 / 3)) : 0
+                                        sourceComponent: Component {
+                                            id: locationPreviewComponent
+                                            LocationPreview {
+                                                id: messageLocationPreview
+                                                width: parent.width
+                                                height: parent.width * 2 / 3
+                                                chatId: display.id
+                                                locationData: ( display.content['@type'] === "messageLocation" ) ?  display.content.location : ( ( display.content['@type'] === "messageVenue" ) ? display.content.venue.location : "" )
+                                            }
+                                        }
                                     }
+
                                     Timer {
                                         id: messageDateUpdater
                                         interval: 60000
