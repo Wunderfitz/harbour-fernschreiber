@@ -22,6 +22,7 @@
 
 namespace {
     const QString KEY_SEND_BY_ENTER("sendByEnter");
+    const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
@@ -39,5 +40,19 @@ void AppSettings::setSendByEnter(bool sendByEnter)
         LOG(KEY_SEND_BY_ENTER << sendByEnter);
         settings.setValue(KEY_SEND_BY_ENTER, sendByEnter);
         emit sendByEnterChanged();
+    }
+}
+
+bool AppSettings::showStickersAsImages() const
+{
+    return settings.value(KEY_SHOW_STICKERS_AS_IMAGES, true).toBool();
+}
+
+void AppSettings::setShowStickersAsImages(bool showAsImages)
+{
+    if (showStickersAsImages() != showAsImages) {
+        LOG(KEY_SHOW_STICKERS_AS_IMAGES << showAsImages);
+        settings.setValue(KEY_SHOW_STICKERS_AS_IMAGES, showAsImages);
+        emit showStickersAsImagesChanged();
     }
 }

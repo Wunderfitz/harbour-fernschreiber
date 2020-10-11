@@ -497,7 +497,6 @@ Page {
                             onTriggered: {
                                 webPagePreviewLoader.active = ( typeof display.content.web_page !== "undefined" );
                                 imagePreviewLoader.active = ( display.content['@type'] === "messagePhoto" );
-                                stickerPreviewLoader.active = ( display.content['@type'] === "messageSticker" );
                                 videoPreviewLoader.active = (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
                                 audioPreviewLoader.active = (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
                                 documentPreviewLoader.active = ( display.content['@type'] === "messageDocument" );
@@ -560,6 +559,7 @@ Page {
                                     color: index > ( chatView.count - chatInformation.unread_count - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor
                                     radius: parent.width / 50
                                     opacity: index > ( chatView.count - chatInformation.unread_count - 1 ) ? 0.5 : 0.2
+                                    visible: appSettings.showStickersAsImages || display.content['@type'] !== "messageSticker"
                                 }
 
                                 Column {
@@ -740,18 +740,16 @@ Page {
                                     Component {
                                         id: stickerPreviewComponent
                                         StickerPreview {
-                                            id: messageStickerPreview
                                             stickerData: ( display.content['@type'] === "messageSticker" ) ?  display.content.sticker : ""
-                                            visible: display.content['@type'] === "messageSticker"
-                                            anchors.horizontalCenter: parent.horizontalCenter
                                         }
                                     }
 
                                     Loader {
                                         id: stickerPreviewLoader
-                                        active: false
+                                        active: display.content['@type'] === "messageSticker"
                                         asynchronous: true
-                                        width: parent.width
+                                        x: (chatPage.myUserId === display.sender_user_id) ? (parent.width - width) : 0
+                                        width: (appSettings.showStickersAsImages || !item) ? parent.width : item.width
                                         sourceComponent: stickerPreviewComponent
                                     }
 
