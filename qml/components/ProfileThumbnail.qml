@@ -81,7 +81,7 @@ Item {
     Connections {
         target: tdLibWrapper
         onFileUpdated: {
-            if (fileId === photoData.id) {
+            if (typeof photoData !== "undefined" && fileId === photoData.id) {
                 console.log("File updated, completed? " + fileInformation.local.is_downloading_completed);
                 if (fileInformation.local.is_downloading_completed) {
                     photoData = fileInformation;

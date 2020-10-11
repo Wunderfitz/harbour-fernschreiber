@@ -446,6 +446,10 @@ Page {
 
                         property variant myMessage: display
                         property variant userInformation: tdLibWrapper.getUserInformation(display.sender_user_id)
+                        property bool isOwnMessage: chatPage.myUserId === display.sender_user_id
+                        property bool isForwarded: typeof display.forward_info !== "undefined"
+                        property bool containsImage: display.content['@type'] === "messagePhoto"
+                        property bool containsSticker: display.content['@type'] === "messageSticker"
 
                         menu: ContextMenu {
                             MenuItem {
@@ -495,13 +499,16 @@ Page {
                             repeat: false
                             running: false
                             onTriggered: {
-                                webPagePreviewLoader.active = ( typeof display.content.web_page !== "undefined" );
-                                imagePreviewLoader.active = ( display.content['@type'] === "messagePhoto" );
-                                videoPreviewLoader.active = (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
-                                audioPreviewLoader.active = (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
-                                documentPreviewLoader.active = ( display.content['@type'] === "messageDocument" );
-                                locationPreviewLoader.active = ( display.content['@type'] === "messageLocation" || ( display.content['@type'] === "messageVenue" ))
-                                forwardedInformationLoader.active = ( typeof display.forward_info !== "undefined" );
+                                if (typeof display.content !== "undefined") {
+                                    webPagePreviewLoader.active = ( typeof display.content.web_page !== "undefined" );
+                                    imagePreviewLoader.active = messageListItem.containsImage;
+                                    stickerPreviewLoader.active = messageListItem.containsSticker;
+                                    videoPreviewLoader.active = (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
+                                    audioPreviewLoader.active = (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
+                                    documentPreviewLoader.active = ( display.content['@type'] === "messageDocument" );
+                                    locationPreviewLoader.active = ( display.content['@type'] === "messageLocation" || ( display.content['@type'] === "messageVenue" ))
+                                    forwardedInformationLoader.active = messageListItem.isForwarded;
+                                }
                             }
                         }
 
@@ -549,9 +556,9 @@ Page {
                                     id: messageBackground
                                     anchors {
                                         left: parent.left
-                                        leftMargin: (chatPage.myUserId === display.sender_user_id) ? 2 * Theme.horizontalPageMargin : 0
+                                        leftMargin: messageListItem.isOwnMessage ? 2 * Theme.horizontalPageMargin : 0
                                         right: parent.right
-                                        rightMargin: (chatPage.myUserId === display.sender_user_id) ? 0 : 2 * Theme.horizontalPageMargin
+                                        rightMargin: messageListItem.isOwnMessage ? 0 : 2 * Theme.horizontalPageMargin
                                         verticalCenter: parent.verticalCenter
                                     }
                                     height: messageTextColumn.height + ( 2 * Theme.paddingMedium )
@@ -559,7 +566,7 @@ Page {
                                     color: index > ( chatView.count - chatInformation.unread_count - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor
                                     radius: parent.width / 50
                                     opacity: index > ( chatView.count - chatInformation.unread_count - 1 ) ? 0.5 : 0.2
-                                    visible: appSettings.showStickersAsImages || display.content['@type'] !== "messageSticker"
+                                    visible: appSettings.showStickersAsImages || !messageListItem.containsSticker
                                 }
 
                                 Column {
@@ -590,14 +597,14 @@ Page {
                                         id: userText
 
                                         width: parent.width
-                                        text: display.sender_user_id !== chatPage.myUserId ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")
+                                        text: !messageListItem.isOwnMessage ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")
                                         font.pixelSize: Theme.fontSizeExtraSmall
                                         font.weight: Font.ExtraBold
-                                        color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
+                                        color: messageListItem.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
                                         maximumLineCount: 1
                                         elide: Text.ElideRight
                                         textFormat: Text.StyledText
-                                        horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                        horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
                                         visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
                                     }
 
@@ -612,6 +619,7 @@ Page {
                                         active: false
                                         asynchronous: true
                                         width: parent.width
+                                        height: messageListItem.isForwarded ? ( item ? item.height : Theme.itemSizeExtraSmall ) : 0
                                         sourceComponent: Component {
                                             Row {
                                                 id: forwardedMessageInformationRow
@@ -687,15 +695,15 @@ Page {
                                         id: messageText
 
                                         width: parent.width
-                                        text: Emoji.emojify(Functions.getMessageText(display, false, chatPage.myUserId === display.sender_user_id), font.pixelSize)
+                                        text: Emoji.emojify(Functions.getMessageText(display, false, messageListItem.isOwnMessage), font.pixelSize)
                                         font.pixelSize: Theme.fontSizeSmall
-                                        color: (chatPage.myUserId === display.sender_user_id) ? Theme.highlightColor : Theme.primaryColor
+                                        color: messageListItem.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
                                         wrapMode: Text.Wrap
                                         textFormat: Text.StyledText
                                         onLinkActivated: {
                                             Functions.handleLink(link);
                                         }
-                                        horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                        horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
                                         linkColor: Theme.highlightColor
                                         visible: (text !== "")
                                     }
@@ -718,39 +726,39 @@ Page {
                                         sourceComponent: webPagePreviewComponent
                                     }
 
-                                    Component {
-                                        id: imagePreviewComponent
-                                        ImagePreview {
-                                            id: messageImagePreview
-                                            photoData: ( display.content['@type'] === "messagePhoto" ) ?  display.content.photo : ""
-                                            width: parent.width
-                                            height: parent.width * 2 / 3
-                                            visible: display.content['@type'] === "messagePhoto"
-                                        }
-                                    }
-
                                     Loader {
                                         id: imagePreviewLoader
                                         active: false
                                         asynchronous: true
                                         width: parent.width
-                                        sourceComponent: imagePreviewComponent
-                                    }
-
-                                    Component {
-                                        id: stickerPreviewComponent
-                                        StickerPreview {
-                                            stickerData: ( display.content['@type'] === "messageSticker" ) ?  display.content.sticker : ""
+                                        height: messageListItem.containsImage ? (item ? item.height : (parent.width * 2 / 3)) : 0
+                                        sourceComponent: Component {
+                                            id: imagePreviewComponent
+                                            ImagePreview {
+                                                id: messageImagePreview
+                                                photoData: messageListItem.containsImage ?  display.content.photo : ""
+                                                width: parent.width
+                                                height: parent.width * 2 / 3
+                                            }
                                         }
                                     }
 
-                                    Loader {
+                                    Loader
+                                    {
                                         id: stickerPreviewLoader
-                                        active: display.content['@type'] === "messageSticker"
+                                        active: false
                                         asynchronous: true
-                                        x: (chatPage.myUserId === display.sender_user_id) ? (parent.width - width) : 0
+                                        x: messageListItem.isOwnMessage ? (parent.width - width) : 0
                                         width: (appSettings.showStickersAsImages || !item) ? parent.width : item.width
-                                        sourceComponent: stickerPreviewComponent
+                                        height: messageListItem.containsSticker ?  display.content.sticker.height : 0
+
+                                        sourceComponent: Component {
+                                            id: stickerPreviewComponent
+                                            StickerPreview {
+                                                id: messageStickerPreview
+                                                stickerData: messageListItem.containsSticker ?  display.content.sticker : ""
+                                            }
+                                        }
                                     }
 
                                     Component {
@@ -848,7 +856,7 @@ Page {
                                             if (index === modelIndex) {
                                                 console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
                                                 messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
-                                                messageText.text = Emoji.emojify(Functions.getMessageText(display, false, chatPage.myUserId === display.sender_user_id), messageText.font.pixelSize);
+                                                messageText.text = Emoji.emojify(Functions.getMessageText(display, false, messageListItem.isOwnMessage), messageText.font.pixelSize);
                                                 if(locationPreviewLoader.active && locationPreviewLoader.status === Loader.Ready) {
                                                     locationPreviewLoader.item.locationData = display.content.location;
                                                     locationPreviewLoader.item.updatePicture()
@@ -862,8 +870,8 @@ Page {
 
                                         id: messageDateText
                                         font.pixelSize: Theme.fontSizeTiny
-                                        color: (chatPage.myUserId === display.sender_user_id) ? Theme.secondaryHighlightColor : Theme.secondaryColor
-                                        horizontalAlignment: (chatPage.myUserId === display.sender_user_id) ? Text.AlignRight : Text.AlignLeft
+                                        color: messageListItem.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                                        horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
                                         text: getMessageStatusText(display, index, chatView.lastReadSentIndex)
                                     }
 
@@ -1071,15 +1079,15 @@ Page {
                         sourceSize.height: height
 
                         fillMode: Thumbnail.PreserveAspectCrop
-                        mimeType: attachmentPreviewRow.fileProperties.mimeType
-                        source: attachmentPreviewRow.fileProperties.url
+                        mimeType: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.mimeType : ""
+                        source: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.url : ""
                         visible: attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo
                     }
 
                     Text {
                         id: attachmentPreviewText
                         font.pixelSize: Theme.fontSizeSmall
-                        text: attachmentPreviewRow.fileProperties.fileName;
+                        text: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.fileName : "";
                         anchors.verticalCenter: parent.verticalCenter
 
                         maximumLineCount: 1
@@ -1130,7 +1138,6 @@ Page {
                 Row {
                     id: newMessageRow
                     width: parent.width
-                    height: sendMessageColumn.height + Theme.paddingMedium
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     TextArea {
