@@ -175,7 +175,7 @@
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Mensaje reenviado</translation>
     </message>
 </context>
 <context>
@@ -512,15 +512,15 @@
     </message>
     <message>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Apariencia</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar pegatinas como imágenes</translation>
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar fondo para pegatinas y alinearlas centralmente como imágenes</translation>
     </message>
 </context>
 <context>
