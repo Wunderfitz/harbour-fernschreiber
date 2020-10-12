@@ -58,6 +58,7 @@ TRANSLATIONS += translations/harbour-fernschreiber-de.ts \
                 translations/harbour-fernschreiber-es.ts \
                 translations/harbour-fernschreiber-fi.ts \
                 translations/harbour-fernschreiber-hu.ts \
+                translations/harbour-fernschreiber-it.ts \
                 translations/harbour-fernschreiber-pl.ts \
                 translations/harbour-fernschreiber-ru.ts \
                 translations/harbour-fernschreiber-zh_CN.ts
