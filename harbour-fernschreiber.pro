@@ -27,6 +27,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/fernschreiberutils.cpp \
     src/notificationmanager.cpp \
     src/processlauncher.cpp \
+    src/stickermanager.cpp \
     src/tdlibreceiver.cpp \
     src/tdlibwrapper.cpp
 
@@ -111,6 +112,7 @@ HEADERS += \
     src/fernschreiberutils.h \
     src/notificationmanager.h \
     src/processlauncher.h \
+    src/stickermanager.h \
     src/tdlibreceiver.h \
     src/tdlibsecrets.h \
     src/tdlibwrapper.h

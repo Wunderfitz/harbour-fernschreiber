@@ -336,6 +336,23 @@ void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &fil
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::sendStickerMessage(const QString &chatId, const QVariantMap &stickerInformation, const QString &replyToMessageId)
+{
+    LOG("Sending sticker message" << chatId << stickerInformation << replyToMessageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "sendMessage");
+    requestObject.insert("chat_id", chatId);
+    if (replyToMessageId != "0") {
+        requestObject.insert("reply_to_message_id", replyToMessageId);
+    }
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessageSticker");
+    inputMessageContent.insert("sticker", stickerInformation);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
 {
     LOG("Retrieving message" << chatId << messageId);

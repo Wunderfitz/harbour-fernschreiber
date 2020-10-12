@@ -395,5 +395,5 @@ void TDLibReceiver::processUpdateInstalledStickerSets(const QVariantMap &receive
 void TDLibReceiver::processStickerSets(const QVariantMap &receivedInformation)
 {
     LOG("Received some sticker sets...");
-    emit stickers(receivedInformation.value("sets").toList());
+    emit stickerSets(receivedInformation.value("sets").toList());
 }

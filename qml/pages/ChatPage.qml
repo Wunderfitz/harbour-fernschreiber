@@ -939,6 +939,20 @@ Page {
                         }
                     }
                 }
+
+                Item {
+                    id: stickerPickerOverlayItem
+                    anchors.fill: parent
+                    visible: false
+                    Rectangle {
+                        id: stickerPickerOverlayBackground
+                        anchors.fill: parent
+
+                        color: Theme.overlayBackgroundColor
+                        opacity: 0.7
+                    }
+                }
+
             }
 
             Column {
@@ -1038,11 +1052,20 @@ Page {
                             pageStack.push(documentPickerPage);
                         }
                     }
-                    IconButton {
-                        id: stickerAttachmentButton
-                        icon.source: "../../images/icon-m-sticker.png"
-                        onClicked: {
-                            // TODO
+                    HighlightImage {
+                        source: "../../images/icon-m-sticker.png"
+                        width: documentAttachmentButton.width
+                        height: documentAttachmentButton.height
+                        color: Theme.primaryColor
+                        highlightColor: Theme.highlightColor
+                        highlighted: stickerPickerOverlayItem.visible
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                //console.log("RECENT STICKERS: " + JSON.stringify(stickerManager.getRecentStickers()));
+                                //console.log("INSTALLED SETS: " + JSON.stringify(stickerManager.getInstalledStickerSets()));
+                                stickerPickerOverlayItem.visible = !stickerPickerOverlayItem.visible;
+                            }
                         }
                     }
                 }
