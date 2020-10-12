@@ -175,7 +175,7 @@
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Пересланное сообщение</translation>
     </message>
 </context>
 <context>
@@ -508,26 +508,26 @@
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Для отправки вашего сообщения нажмите на клавишу ввода.</translation>
+        <translation>Тогда клавиша ввода на клавиатуре будет отправлять сообщение, а не переносить строку.</translation>
     </message>
     <message>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Внешний вид</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать стикеры как обычные изображения</translation>
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation type="unfinished"></translation>
+        <translation>То есть рисовать под ними фон и позиционировать по центру.</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download Video</source>
-        <translation>Скачать Видео</translation>
+        <translation>Скачать видео</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
