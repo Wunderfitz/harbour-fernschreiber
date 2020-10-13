@@ -27,6 +27,7 @@ Row {
     id: inReplyToRow
     spacing: Theme.paddingSmall
     width: parent.width
+    height: inReplyToMessageColumn.height
 
     property string myUserId;
     property variant inReplyToMessage;

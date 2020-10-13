@@ -718,12 +718,17 @@ Page {
                                         active: false
                                         asynchronous: true
                                         width: parent.width
-                                        height: messageListItem.containsWebPage ? ( item ? item.height : ( (parent.width * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) ) ) : 0
+                                        height: messageListItem.containsWebPage ? ( (parent.width * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) ) : 0
 
                                         sourceComponent: Component {
                                             id: webPagePreviewComponent
                                             WebPagePreview {
                                                 id: webPagePreview
+
+                                                onImplicitHeightChanged: {
+                                                    webPagePreviewLoader.height = webPagePreview.implicitHeight;
+                                                }
+
                                                 webPageData: messageListItem.containsWebPage ? display.content.web_page : ""
                                                 width: parent.width
                                             }
