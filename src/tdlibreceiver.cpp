@@ -103,6 +103,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("stickers", &TDLibReceiver::processStickers);
     handlers.insert("updateInstalledStickerSets", &TDLibReceiver::processUpdateInstalledStickerSets);
     handlers.insert("stickerSets", &TDLibReceiver::processStickerSets);
+    handlers.insert("stickerSet", &TDLibReceiver::processStickerSet);
 }
 
 void TDLibReceiver::setActive(const bool &active)
@@ -396,4 +397,10 @@ void TDLibReceiver::processStickerSets(const QVariantMap &receivedInformation)
 {
     LOG("Received some sticker sets...");
     emit stickerSets(receivedInformation.value("sets").toList());
+}
+
+void TDLibReceiver::processStickerSet(const QVariantMap &receivedInformation)
+{
+    LOG("Received a sticker set...");
+    emit stickerSet(receivedInformation);
 }

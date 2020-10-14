@@ -44,6 +44,7 @@ private slots:
     void handleStickersReceived(const QVariantList &stickers);
     void handleInstalledStickerSetsUpdated(const QVariantList &stickerSetIds);
     void handleStickerSetsReceived(const QVariantList &stickerSets);
+    void handleStickerSetReceived(const QVariantMap &stickerSet);
 
 private:
 
@@ -55,6 +56,7 @@ private:
     QVariantList installedStickerSetIds;
     QVariantMap stickers;
     QVariantMap stickerSets;
+    QVariantMap stickerSetMap;
 
 };
 

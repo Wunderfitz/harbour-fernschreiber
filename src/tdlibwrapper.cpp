@@ -91,6 +91,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SLOT(handleStickers(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SLOT(handleInstalledStickerSetsUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSets(QVariantList)), this, SLOT(handleStickerSets(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(stickerSet(QVariantMap)), this, SLOT(handleStickerSet(QVariantMap)));
 
     this->tdLibReceiver->start();
 
@@ -336,9 +337,9 @@ void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &fil
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendStickerMessage(const QString &chatId, const QVariantMap &stickerInformation, const QString &replyToMessageId)
+void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &filePath, const QString &replyToMessageId)
 {
-    LOG("Sending sticker message" << chatId << stickerInformation << replyToMessageId);
+    LOG("Sending sticker message" << chatId << filePath << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "sendMessage");
     requestObject.insert("chat_id", chatId);
@@ -347,7 +348,12 @@ void TDLibWrapper::sendStickerMessage(const QString &chatId, const QVariantMap &
     }
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageSticker");
-    inputMessageContent.insert("sticker", stickerInformation);
+
+    QVariantMap stickerInputFile;
+    stickerInputFile.insert(_TYPE, "inputFileLocal");
+    stickerInputFile.insert("path", filePath);
+
+    inputMessageContent.insert("sticker", stickerInputFile);
 
     requestObject.insert("input_message_content", inputMessageContent);
     this->sendRequest(requestObject);
@@ -449,6 +455,15 @@ void TDLibWrapper::getInstalledStickerSets()
     LOG("Retrieving installed sticker sets");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getInstalledStickerSets");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getStickerSet(const QString &setId)
+{
+    LOG("Retrieving sticker set" << setId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getStickerSet");
+    requestObject.insert("set_id", setId);
     this->sendRequest(requestObject);
 }
 
@@ -800,7 +815,17 @@ void TDLibWrapper::handleInstalledStickerSetsUpdated(const QVariantList &sticker
 
 void TDLibWrapper::handleStickerSets(const QVariantList &stickerSets)
 {
+    QListIterator<QVariant> stickerSetIterator(stickerSets);
+    while (stickerSetIterator.hasNext()) {
+        QVariantMap stickerSet = stickerSetIterator.next().toMap();
+        this->getStickerSet(stickerSet.value("id").toString());
+    }
     emit this->stickerSetsReceived(stickerSets);
+}
+
+void TDLibWrapper::handleStickerSet(const QVariantMap &stickerSet)
+{
+    emit stickerSetReceived(stickerSet);
 }
 
 void TDLibWrapper::setInitialParameters()

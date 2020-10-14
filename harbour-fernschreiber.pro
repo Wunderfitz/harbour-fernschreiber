@@ -37,6 +37,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/ImagePreview.qml \
     qml/components/InReplyToRow.qml \
     qml/components/LocationPreview.qml \
+    qml/components/StickerPicker.qml \
     qml/components/WebPagePreview.qml \
     qml/js/functions.js \
     qml/pages/ChatPage.qml \

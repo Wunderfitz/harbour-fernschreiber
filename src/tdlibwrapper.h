@@ -118,7 +118,7 @@ public:
     Q_INVOKABLE void sendPhotoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendVideoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendDocumentMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
-    Q_INVOKABLE void sendStickerMessage(const QString &chatId, const QVariantMap &stickerInformation, const QString &replyToMessageId = "0");
+    Q_INVOKABLE void sendStickerMessage(const QString &chatId, const QString &filePath, const QString &replyToMessageId = "0");
     Q_INVOKABLE void getMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void setOptionInteger(const QString &optionName, const int &optionValue);
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);
@@ -127,6 +127,7 @@ public:
     Q_INVOKABLE void getMapThumbnailFile(const QString &chatId, const double &latitude, const double &longitude, const int &width, const int &height);
     Q_INVOKABLE void getRecentStickers();
     Q_INVOKABLE void getInstalledStickerSets();
+    Q_INVOKABLE void getStickerSet(const QString &setId);
 
 public:
     const Group* getGroup(qlonglong groupId) const;
@@ -167,6 +168,7 @@ signals:
     void stickersReceived(const QVariantList &stickers);
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
     void stickerSetsReceived(const QVariantList &stickerSets);
+    void stickerSetReceived(const QVariantMap &stickerSet);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -201,6 +203,7 @@ public slots:
     void handleStickers(const QVariantList &stickers);
     void handleInstalledStickerSetsUpdated(const QVariantList &stickerSetIds);
     void handleStickerSets(const QVariantList &stickerSets);
+    void handleStickerSet(const QVariantMap &stickerSet);
 
 private:
     void setInitialParameters();

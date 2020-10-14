@@ -68,6 +68,7 @@ signals:
     void stickers(const QVariantList &stickers);
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
     void stickerSets(const QVariantList &stickerSets);
+    void stickerSet(const QVariantMap &stickerSet);
 
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
@@ -111,6 +112,7 @@ private:
     void processStickers(const QVariantMap &receivedInformation);
     void processUpdateInstalledStickerSets(const QVariantMap &receivedInformation);
     void processStickerSets(const QVariantMap &receivedInformation);
+    void processStickerSet(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

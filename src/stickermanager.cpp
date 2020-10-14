@@ -32,6 +32,7 @@ StickerManager::StickerManager(TDLibWrapper *tdLibWrapper, QObject *parent) : QO
     connect(this->tdLibWrapper, SIGNAL(stickersReceived(QVariantList)), this, SLOT(handleStickersReceived(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SLOT(handleInstalledStickerSetsUpdated(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(stickerSetsReceived(QVariantList)), this, SLOT(handleStickerSetsReceived(QVariantList)));
+    connect(this->tdLibWrapper, SIGNAL(stickerSetReceived(QVariantMap)), this, SLOT(handleStickerSetReceived(QVariantMap)));
 }
 
 StickerManager::~StickerManager()
@@ -89,8 +90,21 @@ void StickerManager::handleStickerSetsReceived(const QVariantList &stickerSets)
 
     this->installedStickerSets.clear();
     QListIterator<QVariant> stickerSetIdIterator(this->installedStickerSetIds);
+    int i = 0;
+    this->stickerSetMap.clear();
     while (stickerSetIdIterator.hasNext()) {
         QString stickerSetId = stickerSetIdIterator.next().toString();
         this->installedStickerSets.append(this->stickerSets.value(stickerSetId));
+        this->stickerSetMap.insert(stickerSetId, i);
+        i++;
     }
+}
+
+void StickerManager::handleStickerSetReceived(const QVariantMap &stickerSet)
+{
+    LOG("Receiving complete sticker set...." << stickerSet);
+    QString stickerSetId = stickerSet.value("id").toString();
+    this->stickerSets.insert(stickerSetId, stickerSet);
+    int setIndex = this->stickerSetMap.value(stickerSetId).toInt();
+    this->installedStickerSets.replace(setIndex, stickerSet);
 }
