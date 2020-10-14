@@ -51,8 +51,7 @@ Page {
 
                 fillMode: Image.PreserveAspectFit
                 asynchronous: true
-                width: aboutPage.isPortrait ? ( 1/2 * parent.width ) : ( 1/2 * parent.height )
-
+                width: (aboutPage.isPortrait ? aboutPage.width : aboutPage.height) / 2
             }
 
             Label {
