@@ -337,9 +337,9 @@ void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &fil
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &filePath, const QString &replyToMessageId)
+void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &fileId, const QString &replyToMessageId)
 {
-    LOG("Sending sticker message" << chatId << filePath << replyToMessageId);
+    LOG("Sending sticker message" << chatId << fileId << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "sendMessage");
     requestObject.insert("chat_id", chatId);
@@ -350,8 +350,8 @@ void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &file
     inputMessageContent.insert(_TYPE, "inputMessageSticker");
 
     QVariantMap stickerInputFile;
-    stickerInputFile.insert(_TYPE, "inputFileLocal");
-    stickerInputFile.insert("path", filePath);
+    stickerInputFile.insert(_TYPE, "inputFileRemote");
+    stickerInputFile.insert("id", fileId);
 
     inputMessageContent.insert("sticker", stickerInputFile);
 

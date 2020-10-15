@@ -107,4 +107,14 @@ void StickerManager::handleStickerSetReceived(const QVariantMap &stickerSet)
     this->stickerSets.insert(stickerSetId, stickerSet);
     int setIndex = this->stickerSetMap.value(stickerSetId).toInt();
     this->installedStickerSets.replace(setIndex, stickerSet);
+    QVariantList stickerList = stickerSet.value("stickers").toList();
+    QListIterator<QVariant> stickerIterator(stickerList);
+    while (stickerIterator.hasNext()) {
+        QVariantMap singleSticker = stickerIterator.next().toMap();
+        QVariantMap thumbnailFile = singleSticker.value("thumbnail").toMap().value("photo").toMap();
+        QVariantMap thumbnailLocalFile = thumbnailFile.value("local").toMap();
+        if (!thumbnailLocalFile.value("is_downloading_completed").toBool()) {
+            tdLibWrapper->downloadFile(thumbnailFile.value("id").toString());
+        }
+    }
 }

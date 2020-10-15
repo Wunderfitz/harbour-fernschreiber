@@ -29,6 +29,17 @@ Item {
 
     property variant recentStickers: stickerManager.getRecentStickers()
     property variant installedStickerSets: stickerManager.getInstalledStickerSets()
+    property bool pickerLoaded: false
+
+    Timer {
+        id: stickerPickerLoadedTimer
+        interval: 100
+        running: true
+        repeat: false
+        onTriggered: {
+            stickerPickerOverlayItem.pickerLoaded = true;
+        }
+    }
 
     Rectangle {
         id: stickerPickerOverlayBackground
@@ -37,10 +48,16 @@ Item {
         color: Theme.overlayBackgroundColor
         opacity: 0.7
     }
+
     Flickable {
         id: stickerPickerFlickable
         anchors.fill: parent
         anchors.margins: Theme.paddingMedium
+
+        opacity: stickerPickerOverlayItem.pickerLoaded ? 1 : 0
+        Behavior on opacity { NumberAnimation {} }
+        visible: stickerPickerOverlayItem.pickerLoaded
+
         contentHeight: stickerPickerColumn.height
         clip: true
 
@@ -78,18 +95,25 @@ Item {
                                 id: singleRecentStickerRow
                                 spacing: Theme.paddingSmall
                                 Image {
-                                    source: modelData.sticker.local.path
-                                    width: Theme.itemSizeMedium
-                                    height: Theme.itemSizeMedium
+                                    source: modelData.thumbnail.photo.local.path
+                                    width: Theme.itemSizeExtraLarge
+                                    height: Theme.itemSizeExtraLarge
+                                    asynchronous: true
+                                    onStatusChanged: {
+                                        if (status === Image.Ready) {
+                                            stickerPickerLoadedTimer.restart();
+                                        }
+                                    }
                                 }
                             }
 
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    tdLibWrapper.sendStickerMessage(chatInformation.id, modelData.sticker.local.path);
+                                    tdLibWrapper.sendStickerMessage(chatInformation.id, modelData.sticker.remote.id);
                                     stickerPickerOverlayItem.visible = false;
                                     attachmentOptionsRow.visible = false;
+                                    stickerPickerLoader.active = false;
                                 }
                             }
                         }
@@ -126,61 +150,69 @@ Item {
                                 model: modelData.stickers
 
                                 Item {
-                                    width: Theme.itemSizeMedium
-                                    height: Theme.itemSizeMedium
-
-                                    Component.onCompleted: {
-                                        if (!modelData.sticker.local.is_downloading_completed) {
-                                            tdLibWrapper.downloadFile(modelData.sticker.id);
-                                        }
-                                    }
-
-                                    Connections {
-                                        target: tdLibWrapper
-                                        onFileUpdated : {
-                                            if (fileInformation.local.is_downloading_completed) {
-                                                if (fileId === modelData.sticker.id) {
-                                                    singleStickerImage.source = fileInformation.local.path;
-                                                }
+                                    width: Theme.itemSizeExtraLarge
+                                    height: Theme.itemSizeExtraLarge
+                                    Image {
+                                        id: singleStickerImage
+                                        source: modelData.thumbnail.photo.local.is_downloading_completed ? modelData.thumbnail.photo.local.path : ""
+                                        anchors.fill: parent
+                                        visible: modelData.thumbnail.photo.local.is_downloading_completed
+                                        asynchronous: true
+                                        onStatusChanged: {
+                                            if (status === Image.Ready) {
+                                                stickerPickerLoadedTimer.restart();
                                             }
                                         }
                                     }
-
-                                    Image {
-                                        id: singleStickerImage
-                                        source: modelData.sticker.local.is_downloading_completed ? modelData.sticker.local.path : ""
-                                        anchors.fill: parent
-                                        visible: modelData.sticker.local.is_downloading_completed
-                                    }
                                     Text {
-                                        font.pixelSize: Theme.fontSizeLarge
+                                        font.pixelSize: Theme.fontSizeHuge
                                         color: Theme.primaryColor
                                         anchors.fill: parent
                                         maximumLineCount: 1
                                         elide: Text.ElideRight
                                         text: Emoji.emojify(modelData.emoji, font.pixelSize)
-                                        visible: !modelData.sticker.local.is_downloading_completed
+                                        visible: !modelData.thumbnail.photo.local.is_downloading_completed
                                     }
 
                                     MouseArea {
                                         anchors.fill: parent
                                         onClicked: {
-                                            tdLibWrapper.sendStickerMessage(chatInformation.id, modelData.sticker.local.path);
+                                            tdLibWrapper.sendStickerMessage(chatInformation.id, modelData.sticker.remote.id);
                                             stickerPickerOverlayItem.visible = false;
                                             attachmentOptionsRow.visible = false;
+                                            stickerPickerLoader.active = false;
                                         }
                                     }
                                 }
-
                             }
                         }
                     }
-
-
                 }
             }
-
         }
     }
+
+    Column {
+        anchors.centerIn: parent
+        width: parent.width
+        spacing: Theme.paddingMedium
+
+        opacity: stickerPickerOverlayItem.pickerLoaded ? 0 : 1
+        Behavior on opacity { NumberAnimation {} }
+        visible: !stickerPickerOverlayItem.pickerLoaded
+
+        InfoLabel {
+            id: loadingLabel
+            text: qsTr("Loading stickers...")
+        }
+
+        BusyIndicator {
+            id: loadingBusyIndicator
+            anchors.horizontalCenter: parent.horizontalCenter
+            running: !stickerPickerOverlayItem.pickerLoaded
+            size: BusyIndicatorSize.Large
+        }
+    }
+
 }
 
