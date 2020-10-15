@@ -527,7 +527,7 @@
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>Usati di recente</translation>
     </message>
     <message>
         <source>Loading stickers...</source>
