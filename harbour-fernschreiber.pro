@@ -27,6 +27,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/fernschreiberutils.cpp \
     src/notificationmanager.cpp \
     src/processlauncher.cpp \
+    src/stickermanager.cpp \
     src/tdlibreceiver.cpp \
     src/tdlibwrapper.cpp
 
@@ -36,6 +37,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/ImagePreview.qml \
     qml/components/InReplyToRow.qml \
     qml/components/LocationPreview.qml \
+    qml/components/StickerPicker.qml \
     qml/components/WebPagePreview.qml \
     qml/js/functions.js \
     qml/pages/ChatPage.qml \
@@ -57,6 +59,7 @@ TRANSLATIONS += translations/harbour-fernschreiber-de.ts \
                 translations/harbour-fernschreiber-es.ts \
                 translations/harbour-fernschreiber-fi.ts \
                 translations/harbour-fernschreiber-hu.ts \
+                translations/harbour-fernschreiber-it.ts \
                 translations/harbour-fernschreiber-pl.ts \
                 translations/harbour-fernschreiber-ru.ts \
                 translations/harbour-fernschreiber-zh_CN.ts
@@ -111,6 +114,7 @@ HEADERS += \
     src/fernschreiberutils.h \
     src/notificationmanager.h \
     src/processlauncher.h \
+    src/stickermanager.h \
     src/tdlibreceiver.h \
     src/tdlibsecrets.h \
     src/tdlibwrapper.h

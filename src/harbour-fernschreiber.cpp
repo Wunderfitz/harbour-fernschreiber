@@ -36,6 +36,7 @@
 #include "notificationmanager.h"
 #include "dbusadaptor.h"
 #include "processlauncher.h"
+#include "stickermanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -65,6 +66,9 @@ int main(int argc, char *argv[])
 
     ProcessLauncher processLauncher;
     context->setContextProperty("processLauncher", &processLauncher);
+
+    StickerManager stickerManager(tdLibWrapper);
+    context->setContextProperty("stickerManager", &stickerManager);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-fernschreiber.qml"));
     view->show();

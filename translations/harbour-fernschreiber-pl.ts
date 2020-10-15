@@ -524,6 +524,13 @@
     </message>
 </context>
 <context>
+    <name>StickerPicker</name>
+    <message>
+        <source>Recently used</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>VideoPage</name>
     <message>
         <source>Download Video</source>

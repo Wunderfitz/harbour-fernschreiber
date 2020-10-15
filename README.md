@@ -14,9 +14,11 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 
 ### Translations
 - Chinese: [dashinfantry](https://github.com/dashinfantry)
+- Finnish: [jorm1s](https://github.com/jorm1s)
 - Hungarian [edp17](https://github.com/edp17)
+- Italian [Matteo](https://github.com/iamnomeutente)
 - Polish: [atlochowski](https://github.com/atlochowski)
-- Russian: [Rustem Abzalov](https://github.com/arustg)
+- Russian: [Rustem Abzalov](https://github.com/arustg) and [Slava Monich](https://github.com/monich)
 - Spanish: [GNUuser](https://github.com/GNUuser)
 
 ## License

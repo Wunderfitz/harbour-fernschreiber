@@ -516,11 +516,18 @@
     </message>
     <message>
         <source>Show stickers as images</source>
-        <translation">Mostra sticker come immagini</translation>
+        <translation>Mostra sticker come immagini</translation>
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
         <translation>Mostra sfondo per gli sticker e centrali come le immagini.</translation>
+    </message>
+</context>
+<context>
+    <name>StickerPicker</name>
+    <message>
+        <source>Recently used</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

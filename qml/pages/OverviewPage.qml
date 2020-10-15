@@ -94,6 +94,8 @@ Page {
 
     function updateContent() {
         tdLibWrapper.getChats();
+        tdLibWrapper.getRecentStickers();
+        tdLibWrapper.getInstalledStickerSets();
     }
 
     function initializePage() {

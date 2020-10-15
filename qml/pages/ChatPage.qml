@@ -635,14 +635,14 @@ Page {
                                                     if (display.forward_info.origin["@type"] === "messageForwardOriginChannel") {
                                                         var otherChatInformation = tdLibWrapper.getChat(display.forward_info.origin.chat_id);
                                                         forwardedThumbnail.photoData = (typeof otherChatInformation.photo !== "undefined") ? otherChatInformation.photo.small : "";
-                                                        forwardedChannelText.text = otherChatInformation.title;
+                                                        forwardedChannelText.text = Emoji.emojify(otherChatInformation.title, Theme.fontSizeExtraSmall);
                                                     } else if (display.forward_info.origin["@type"] === "messageForwardOriginUser") {
                                                         var otherUserInformation = tdLibWrapper.getUserInformation(display.forward_info.origin.sender_user_id);
                                                         forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : "";
-                                                        forwardedChannelText.text = Functions.getUserName(otherUserInformation);
+                                                        forwardedChannelText.text = Emoji.emojify(Functions.getUserName(otherUserInformation), Theme.fontSizeExtraSmall);
                                                     } else {
                                                         forwardedThumbnail.photoData = "";
-                                                        forwardedChannelText.text = display.forward_info.origin.sender_user_name;
+                                                        forwardedChannelText.text = Emoji.emojify(display.forward_info.origin.sender_user_name, Theme.fontSizeExtraSmall);
                                                     }
                                                 }
 
@@ -680,7 +680,7 @@ Page {
                                                         font.bold: true
                                                         elide: Text.ElideRight
                                                         textFormat: Text.StyledText
-                                                        text: forwardedMessageInformationRow.otherChatInformation.title
+                                                        text: Emoji.emojify(forwardedMessageInformationRow.otherChatInformation.title, font.pixelSize)
                                                         onTruncatedChanged: {
                                                             // There is obviously a bug in QML in truncating text with images.
                                                             // We simply remove Emojis then...
@@ -718,12 +718,17 @@ Page {
                                         active: false
                                         asynchronous: true
                                         width: parent.width
-                                        height: messageListItem.containsWebPage ? ( item ? item.height : ( (parent.width * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) ) ) : 0
+                                        height: messageListItem.containsWebPage ? ( (parent.width * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) ) : 0
 
                                         sourceComponent: Component {
                                             id: webPagePreviewComponent
                                             WebPagePreview {
                                                 id: webPagePreview
+
+                                                onImplicitHeightChanged: {
+                                                    webPagePreviewLoader.height = webPagePreview.implicitHeight;
+                                                }
+
                                                 webPageData: messageListItem.containsWebPage ? display.content.web_page : ""
                                                 width: parent.width
                                             }
@@ -939,6 +944,11 @@ Page {
                         }
                     }
                 }
+
+//                StickerPicker {
+//                    id: stickerPicker
+//                    visible: false
+//                }
             }
 
             Column {
@@ -1038,11 +1048,20 @@ Page {
                             pageStack.push(documentPickerPage);
                         }
                     }
-                    IconButton {
-                        id: stickerAttachmentButton
-                        icon.source: "../../images/icon-m-sticker.png"
-                        onClicked: {
-                            // TODO
+                    HighlightImage {
+                        source: "../../images/icon-m-sticker.png"
+                        width: documentAttachmentButton.width
+                        height: documentAttachmentButton.height
+                        color: Theme.primaryColor
+                        highlightColor: Theme.highlightColor
+                        highlighted: stickerPicker.visible
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                //console.log("RECENT STICKERS: " + JSON.stringify(stickerManager.getRecentStickers()));
+                                //console.log("INSTALLED SETS: " + JSON.stringify(stickerManager.getInstalledStickerSets()));
+                                stickerPicker.visible = !stickerPicker.visible;
+                            }
                         }
                     }
                 }
@@ -1179,7 +1198,7 @@ Page {
 
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
-                        enabled: !attachmentPreviewRow.visible
+                        enabled: !(attachmentPreviewRow.visible || stickerPicker.visible)
                         onClicked: {
                             if (attachmentOptionsRow.visible) {
                                 attachmentOptionsRow.visible = false;
