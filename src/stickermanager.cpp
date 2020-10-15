@@ -58,7 +58,7 @@ void StickerManager::handleRecentStickersUpdated(const QVariantList &stickerIds)
 
 void StickerManager::handleStickersReceived(const QVariantList &stickers)
 {
-    LOG("Receiving stickers...." << stickers);
+    LOG("Receiving stickers....");
     QListIterator<QVariant> stickersIterator(stickers);
     while (stickersIterator.hasNext()) {
         QVariantMap newSticker = stickersIterator.next().toMap();
@@ -81,7 +81,7 @@ void StickerManager::handleInstalledStickerSetsUpdated(const QVariantList &stick
 
 void StickerManager::handleStickerSetsReceived(const QVariantList &stickerSets)
 {
-    LOG("Receiving sticker sets...." << stickerSets);
+    LOG("Receiving sticker sets....");
     QListIterator<QVariant> stickerSetsIterator(stickerSets);
     while (stickerSetsIterator.hasNext()) {
         QVariantMap newStickerSet = stickerSetsIterator.next().toMap();
@@ -102,8 +102,8 @@ void StickerManager::handleStickerSetsReceived(const QVariantList &stickerSets)
 
 void StickerManager::handleStickerSetReceived(const QVariantMap &stickerSet)
 {
-    LOG("Receiving complete sticker set...." << stickerSet);
     QString stickerSetId = stickerSet.value("id").toString();
+    LOG("Receiving complete sticker set...." << stickerSetId);
     this->stickerSets.insert(stickerSetId, stickerSet);
     int setIndex = this->stickerSetMap.value(stickerSetId).toInt();
     this->installedStickerSets.replace(setIndex, stickerSet);

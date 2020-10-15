@@ -950,7 +950,8 @@ Page {
                     id: stickerPickerLoader
                     active: false
                     asynchronous: true
-                    anchors.fill: parent
+                    width: parent.width
+                    height: active ? parent.height : 0
                     source: "../components/StickerPicker.qml"
                 }
 
