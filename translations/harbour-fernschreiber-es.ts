@@ -527,7 +527,7 @@
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>Usado recientemente</translation>
     </message>
 </context>
 <context>
