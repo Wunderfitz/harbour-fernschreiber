@@ -50,6 +50,16 @@ QVariantList StickerManager::getInstalledStickerSets()
     return this->installedStickerSets;
 }
 
+bool StickerManager::needsReload()
+{
+    return this->reloadNeeded;
+}
+
+void StickerManager::setNeedsReload(const bool &reloadNeeded)
+{
+    this->reloadNeeded = reloadNeeded;
+}
+
 void StickerManager::handleRecentStickersUpdated(const QVariantList &stickerIds)
 {
     LOG("Receiving recent stickers...." << stickerIds);
@@ -115,6 +125,7 @@ void StickerManager::handleStickerSetReceived(const QVariantMap &stickerSet)
         QVariantMap thumbnailLocalFile = thumbnailFile.value("local").toMap();
         if (!thumbnailLocalFile.value("is_downloading_completed").toBool()) {
             tdLibWrapper->downloadFile(thumbnailFile.value("id").toString());
+            this->reloadNeeded = true;
         }
     }
 }

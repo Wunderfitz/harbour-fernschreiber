@@ -98,6 +98,12 @@ Page {
             isChannel = chatGroupInformation.is_channel;
             updateGroupStatusText();
         }
+        if (stickerManager.needsReload()) {
+            console.log("Stickers will be reloaded!");
+            tdLibWrapper.getRecentStickers();
+            tdLibWrapper.getInstalledStickerSets();
+            stickerManager.setNeedsReload(false);
+        }
     }
 
     function getMessageStatusText(message, listItemIndex, lastReadSentIndex) {

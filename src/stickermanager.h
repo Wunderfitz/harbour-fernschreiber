@@ -35,6 +35,8 @@ public:
 
     Q_INVOKABLE QVariantList getRecentStickers();
     Q_INVOKABLE QVariantList getInstalledStickerSets();
+    Q_INVOKABLE bool needsReload();
+    Q_INVOKABLE void setNeedsReload(const bool &reloadNeeded);
 
 signals:
 
@@ -57,6 +59,7 @@ private:
     QVariantMap stickers;
     QVariantMap stickerSets;
     QVariantMap stickerSetMap;
+    bool reloadNeeded;
 
 };
 
