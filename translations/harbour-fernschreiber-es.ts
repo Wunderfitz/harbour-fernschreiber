@@ -527,7 +527,11 @@
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>Usado recientemente</translation>
+    </message>
+    <message>
+        <source>Loading stickers...</source>
+        <translation>Cargando pegatinas...</translation>
     </message>
 </context>
 <context>

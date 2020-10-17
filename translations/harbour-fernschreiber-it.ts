@@ -529,6 +529,10 @@
         <source>Recently used</source>
         <translation>Usati di recente</translation>
     </message>
+    <message>
+        <source>Loading stickers...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>VideoPage</name>

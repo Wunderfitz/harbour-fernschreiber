@@ -30,6 +30,7 @@ import "../js/functions.js" as Functions
 Page {
     id: chatPage
     allowedOrientations: Orientation.All
+    backNavigation: !stickerPickerLoader.active
 
     property bool loading: true;
     property bool isInitialized: false;
@@ -96,6 +97,12 @@ Page {
             chatGroupInformation = tdLibWrapper.getSuperGroup(chatInformation.type.supergroup_id);
             isChannel = chatGroupInformation.is_channel;
             updateGroupStatusText();
+        }
+        if (stickerManager.needsReload()) {
+            console.log("Stickers will be reloaded!");
+            tdLibWrapper.getRecentStickers();
+            tdLibWrapper.getInstalledStickerSets();
+            stickerManager.setNeedsReload(false);
         }
     }
 
@@ -279,7 +286,7 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
-            visible: chatInformation.id !== chatPage.myUserId
+            visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active
             MenuItem {
                 id: muteChatMenuItem
                 onClicked: {
@@ -945,10 +952,15 @@ Page {
                     }
                 }
 
-//                StickerPicker {
-//                    id: stickerPicker
-//                    visible: false
-//                }
+                Loader {
+                    id: stickerPickerLoader
+                    active: false
+                    asynchronous: true
+                    width: parent.width
+                    height: active ? parent.height : 0
+                    source: "../components/StickerPicker.qml"
+                }
+
             }
 
             Column {
@@ -1050,17 +1062,15 @@ Page {
                     }
                     HighlightImage {
                         source: "../../images/icon-m-sticker.png"
-                        width: documentAttachmentButton.width
-                        height: documentAttachmentButton.height
+                        width: Theme.itemSizeSmall
+                        height: Theme.itemSizeSmall
                         color: Theme.primaryColor
                         highlightColor: Theme.highlightColor
-                        highlighted: stickerPicker.visible
+                        highlighted: stickerPickerLoader.active
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                //console.log("RECENT STICKERS: " + JSON.stringify(stickerManager.getRecentStickers()));
-                                //console.log("INSTALLED SETS: " + JSON.stringify(stickerManager.getInstalledStickerSets()));
-                                stickerPicker.visible = !stickerPicker.visible;
+                                stickerPickerLoader.active = !stickerPickerLoader.active;
                             }
                         }
                     }
@@ -1198,10 +1208,11 @@ Page {
 
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
-                        enabled: !(attachmentPreviewRow.visible || stickerPicker.visible)
+                        enabled: !attachmentPreviewRow.visible
                         onClicked: {
                             if (attachmentOptionsRow.visible) {
                                 attachmentOptionsRow.visible = false;
+                                stickerPickerLoader.active = false;
                             } else {
                                 attachmentOptionsRow.visible = true;
                             }
