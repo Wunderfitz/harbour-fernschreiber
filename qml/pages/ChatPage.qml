@@ -175,6 +175,8 @@ Page {
             }
         }
         controlSendButton();
+        newMessageInReplyToRow.inReplyToMessage = null;
+        newMessageColumn.editMessageId = "0";
     }
 
     function getWordBoundaries(text, cursorPosition) {
@@ -1088,6 +1090,12 @@ Page {
                         }
                     }
 
+                    editable: true
+
+                    onClearRequested: {
+                        newMessageInReplyToRow.inReplyToMessage = null;
+                    }
+
                     id: newMessageInReplyToRow
                     myUserId: chatPage.myUserId
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -1265,15 +1273,31 @@ Page {
                     }
                 }
 
-                Text {
+                Row {
                     width: parent.width
-
-                    id: editMessageText
-                    font.pixelSize: Theme.fontSizeSmall
-                    font.bold: true
-                    text: qsTr("Edit Message")
-                    color: Theme.secondaryColor
+                    spacing: Theme.paddingSmall
                     visible: newMessageColumn.editMessageId !== "0"
+
+                    Text {
+                        width: parent.width - Theme.paddingSmall - removeEditMessageIconButton.width
+
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        id: editMessageText
+                        font.pixelSize: Theme.fontSizeSmall
+                        font.bold: true
+                        text: qsTr("Edit Message")
+                        color: Theme.secondaryColor
+                    }
+
+                    IconButton {
+                        id: removeEditMessageIconButton
+                        icon.source: "image://theme/icon-m-clear"
+                        onClicked: {
+                            newMessageColumn.editMessageId = "0";
+                            newMessageTextField.text = "";
+                        }
+                    }
                 }
 
                 Row {
@@ -1291,15 +1315,6 @@ Page {
                         labelVisible: false
                         textLeftMargin: 0
                         textTopMargin: 0
-                        onFocusChanged: {
-                            if (!focus) {
-                                newMessageInReplyToRow.inReplyToMessage = null;
-                                if (newMessageColumn.editMessageId !== "0") {
-                                    newMessageColumn.editMessageId = "0";
-                                    newMessageTextField.text = "";
-                                }
-                            }
-                        }
                         EnterKey.onClicked: {
                             if (appSettings.sendByEnter) {
                                 sendMessage();

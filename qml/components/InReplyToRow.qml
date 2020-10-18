@@ -31,6 +31,9 @@ Row {
 
     property string myUserId;
     property variant inReplyToMessage;
+    property bool editable: false;
+
+    signal clearRequested()
 
     onInReplyToMessageChanged: {
         if (inReplyToMessage) {
@@ -47,37 +50,51 @@ Row {
         border.width: 0
     }
 
-    Column {
-        id: inReplyToMessageColumn
-        spacing: Theme.paddingSmall
+    Row {
         width: parent.width - Theme.paddingSmall - inReplyToMessageRectangle.width
+        spacing: Theme.paddingSmall
 
-        Text {
-            id: inReplyToUserText
+        Column {
+            id: inReplyToMessageColumn
+            spacing: Theme.paddingSmall
+            width: parent.width - ( inReplyToRow.editable ? ( Theme.paddingSmall + removeInReplyToIconButton.width ) : 0 )
 
-            width: parent.width
-            font.pixelSize: Theme.fontSizeExtraSmall
-            font.weight: Font.ExtraBold
-            color: Theme.primaryColor
-            maximumLineCount: 1
-            elide: Text.ElideRight
-            textFormat: Text.StyledText
-            horizontalAlignment: Text.AlignLeft
+            Text {
+                id: inReplyToUserText
+
+                width: parent.width
+                font.pixelSize: Theme.fontSizeExtraSmall
+                font.weight: Font.ExtraBold
+                color: Theme.primaryColor
+                maximumLineCount: 1
+                elide: Text.ElideRight
+                textFormat: Text.StyledText
+                horizontalAlignment: Text.AlignLeft
+            }
+
+            Text {
+                id: inReplyToMessageText
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.primaryColor
+                width: parent.width
+                elide: Text.ElideRight
+                textFormat: Text.StyledText
+                onTruncatedChanged: {
+                    // There is obviously a bug in QML in truncating text with images.
+                    // We simply remove Emojis then...
+                    if (truncated) {
+                        text = text.replace(/\<img [^>]+\/\>/g, "");
+                    }
+                }
+            }
         }
 
-        Text {
-            id: inReplyToMessageText
-            font.pixelSize: Theme.fontSizeExtraSmall
-            color: Theme.primaryColor
-            width: parent.width
-            elide: Text.ElideRight
-            textFormat: Text.StyledText
-            onTruncatedChanged: {
-                // There is obviously a bug in QML in truncating text with images.
-                // We simply remove Emojis then...
-                if (truncated) {
-                    text = text.replace(/\<img [^>]+\/\>/g, "");
-                }
+        IconButton {
+            id: removeInReplyToIconButton
+            icon.source: "image://theme/icon-m-clear"
+            visible: inReplyToRow.editable
+            onClicked: {
+                inReplyToRow.clearRequested();
             }
         }
     }
