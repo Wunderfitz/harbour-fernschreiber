@@ -846,6 +846,7 @@ void TDLibWrapper::setInitialParameters()
     initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     initialParameters.insert("system_version", QSysInfo::prettyProductName());
     initialParameters.insert("application_version", "0.3");
+    // initialParameters.insert("use_test_dc", true);
     requestObject.insert("parameters", initialParameters);
     this->sendRequest(requestObject);
 }

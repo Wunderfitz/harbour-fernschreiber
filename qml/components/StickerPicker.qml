@@ -74,53 +74,50 @@ Item {
                 elide: Text.ElideRight
                 text: qsTr("Recently used")
             }
-            Flickable {
+
+            SilicaGridView {
+                id: recentStickersGridView
                 width: parent.width
-                height: recentStickersRow.height + Theme.paddingSmall
-                anchors.horizontalCenter: parent.horizontalCenter
-                contentWidth: recentStickersRow.width
+                height: Theme.itemSizeExtraLarge
+                cellWidth: Theme.itemSizeExtraLarge;
+                cellHeight: Theme.itemSizeExtraLarge;
+                visible: count > 0
                 clip: true
+                flow: GridView.FlowTopToBottom
 
-                Row {
-                    id: recentStickersRow
-                    spacing: Theme.paddingMedium
-                    Repeater {
-                        model: stickerPickerOverlayItem.recentStickers
+                model: stickerPickerOverlayItem.recentStickers
 
-                        Item {
-                            height: singleRecentStickerRow.height
-                            width: singleRecentStickerRow.width
+                delegate: Item {
+                    width: recentStickersGridView.cellWidth
+                    height: recentStickersGridView.cellHeight
 
-                            Row {
-                                id: singleRecentStickerRow
-                                spacing: Theme.paddingSmall
-                                Image {
-                                    source: modelData.thumbnail.photo.local.path
-                                    width: Theme.itemSizeExtraLarge
-                                    height: Theme.itemSizeExtraLarge
-                                    asynchronous: true
-                                    onStatusChanged: {
-                                        if (status === Image.Ready) {
-                                            stickerPickerLoadedTimer.restart();
-                                        }
-                                    }
-                                }
-                            }
-
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    tdLibWrapper.sendStickerMessage(chatInformation.id, modelData.sticker.remote.id);
-                                    stickerPickerOverlayItem.visible = false;
-                                    attachmentOptionsRow.visible = false;
-                                    stickerPickerLoader.active = false;
-                                }
+                    Image {
+                        source: modelData.thumbnail.photo.local.path
+                        anchors.fill: parent
+                        asynchronous: true
+                        onStatusChanged: {
+                            if (status === Image.Ready) {
+                                stickerPickerLoadedTimer.restart();
                             }
                         }
-
                     }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            tdLibWrapper.sendStickerMessage(chatInformation.id, modelData.sticker.remote.id);
+                            stickerPickerOverlayItem.visible = false;
+                            attachmentOptionsRow.visible = false;
+                            stickerPickerLoader.active = false;
+                        }
+                    }
+
                 }
+
+                HorizontalScrollDecorator {}
+
             }
+
             Repeater {
                 model: stickerPickerOverlayItem.installedStickerSets
                 width: stickerPickerFlickable.width
@@ -136,57 +133,58 @@ Item {
                         elide: Text.ElideRight
                         text: modelData.title
                     }
-                    Flickable {
+
+                    SilicaGridView {
+                        id: installedStickerSetGridView
                         width: parent.width
-                        height: installedStickerSetRow.height + Theme.paddingSmall
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        contentWidth: installedStickerSetRow.width
+                        height: Theme.itemSizeExtraLarge
+                        cellWidth: Theme.itemSizeExtraLarge;
+                        cellHeight: Theme.itemSizeExtraLarge;
+                        visible: count > 0
                         clip: true
-                        Row {
-                            id: installedStickerSetRow
-                            spacing: Theme.paddingMedium
+                        flow: GridView.FlowTopToBottom
 
-                            Repeater {
-                                model: modelData.stickers
+                        model: modelData.stickers
+                        delegate: Item {
+                            width: installedStickerSetGridView.cellWidth
+                            height: installedStickerSetGridView.cellHeight
 
-                                Item {
-                                    width: Theme.itemSizeExtraLarge
-                                    height: Theme.itemSizeExtraLarge
-                                    Image {
-                                        id: singleStickerImage
-                                        source: modelData.thumbnail.photo.local.is_downloading_completed ? modelData.thumbnail.photo.local.path : ""
-                                        anchors.fill: parent
-                                        visible: modelData.thumbnail.photo.local.is_downloading_completed
-                                        asynchronous: true
-                                        onStatusChanged: {
-                                            if (status === Image.Ready) {
-                                                stickerPickerLoadedTimer.restart();
-                                            }
-                                        }
-                                    }
-                                    Text {
-                                        font.pixelSize: Theme.fontSizeHuge
-                                        color: Theme.primaryColor
-                                        anchors.fill: parent
-                                        maximumLineCount: 1
-                                        elide: Text.ElideRight
-                                        text: Emoji.emojify(modelData.emoji, font.pixelSize)
-                                        visible: !modelData.thumbnail.photo.local.is_downloading_completed
-                                    }
-
-                                    MouseArea {
-                                        anchors.fill: parent
-                                        onClicked: {
-                                            tdLibWrapper.sendStickerMessage(chatInformation.id, modelData.sticker.remote.id);
-                                            stickerPickerOverlayItem.visible = false;
-                                            attachmentOptionsRow.visible = false;
-                                            stickerPickerLoader.active = false;
-                                        }
+                            Image {
+                                id: singleStickerImage
+                                source: modelData.thumbnail.photo.local.is_downloading_completed ? modelData.thumbnail.photo.local.path : ""
+                                anchors.fill: parent
+                                visible: modelData.thumbnail.photo.local.is_downloading_completed
+                                asynchronous: true
+                                onStatusChanged: {
+                                    if (status === Image.Ready) {
+                                        stickerPickerLoadedTimer.restart();
                                     }
                                 }
                             }
+                            Text {
+                                font.pixelSize: Theme.fontSizeHuge
+                                color: Theme.primaryColor
+                                anchors.fill: parent
+                                maximumLineCount: 1
+                                elide: Text.ElideRight
+                                text: Emoji.emojify(modelData.emoji, font.pixelSize)
+                                visible: !modelData.thumbnail.photo.local.is_downloading_completed
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    tdLibWrapper.sendStickerMessage(chatInformation.id, modelData.sticker.remote.id);
+                                    stickerPickerOverlayItem.visible = false;
+                                    attachmentOptionsRow.visible = false;
+                                    stickerPickerLoader.active = false;
+                                }
+                            }
                         }
+
+                        HorizontalScrollDecorator {}
                     }
+
                 }
             }
         }
