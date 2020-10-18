@@ -51,7 +51,7 @@ Page {
 
                 fillMode: Image.PreserveAspectFit
                 asynchronous: true
-                width: (aboutPage.isPortrait ? aboutPage.width : aboutPage.height) / 2
+                width: Math.min(2 * Theme.itemSizeHuge, Math.min(aboutPage.width, aboutPage.height) / 2)
             }
 
             Label {
