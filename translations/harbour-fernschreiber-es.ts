@@ -524,23 +524,23 @@
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentarios de notificación</translation>
     </message>
     <message>
         <source>All events</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos los eventos</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation type="unfinished"></translation>
+        <translation>Sólo nuevos eventos</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Ninguno </translation>
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa comentarios no gráficos (sonido, vibración) para las notificaciones</translation>
     </message>
 </context>
 <context>
