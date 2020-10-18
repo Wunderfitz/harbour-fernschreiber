@@ -25,3 +25,19 @@
 - Differentiate text between other people and current user ("You have..." vs. "Somebody has...")
 - Support for the Jolla Tablet
 - New translations (Chinese, Hungarian, Polish, Spanish) - thanks to dashinfantry, edp17, atlochowski, GNUuser
+
+* Sun Oct 18 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.2
+- Support for sending stickers
+- Search for emojis from message input field, use :<keyword> to start searching
+- New icon/logo - thanks to iamnomeutente
+- Option to customize non-graphical notification feedback - thanks to monich
+- Add user registration - thanks to jgibbon
+- Don't show irrelevant groups - thanks to monich
+- Display information about forwarded messages
+- Option to avoid displaying stickers like images - thanks to monich
+- Fix: Don't reset edit/in-reply-to mode after focus change
+- Fix: Display caption for documents
+- Fix: Reserve some space for lazy loaded elements
+- Fix: Don't display error message in case of repeated download of the same file
+- New translations (Finnish, Italian, Russian), thanks to jorm1s, iamnomeutente, arustg and monich
+- That was quite a lot - I hope I didn't forget anything. If I did, big sorry and please let me know!
