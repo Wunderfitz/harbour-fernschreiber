@@ -531,7 +531,7 @@
     </message>
     <message>
         <source>Loading stickers...</source>
-        <translation type="unfinished"></translation>
+        <translation>Carica sticker...</translation>
     </message>
 </context>
 <context>
