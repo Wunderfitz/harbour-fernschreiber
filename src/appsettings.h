@@ -25,6 +25,15 @@ class AppSettings : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool sendByEnter READ getSendByEnter WRITE setSendByEnter NOTIFY sendByEnterChanged)
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
+    Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
+
+public:
+    enum NotificationFeedback {
+        NotificationFeedbackNone,
+        NotificationFeedbackNew,
+        NotificationFeedbackAll
+    };
+    Q_ENUM(NotificationFeedback)
 
 public:
     AppSettings(QObject *parent = Q_NULLPTR);
@@ -35,9 +44,13 @@ public:
     bool showStickersAsImages() const;
     void setShowStickersAsImages(bool showAsImages);
 
+    NotificationFeedback notificationFeedback() const;
+    void setNotificationFeedback(NotificationFeedback feedback);
+
 signals:
     void sendByEnterChanged();
     void showStickersAsImagesChanged();
+    void notificationFeedbackChanged();
 
 private:
     QSettings settings;

@@ -47,10 +47,11 @@ int main(int argc, char *argv[])
 
     AppSettings *appSettings = new AppSettings(view.data());
     context->setContextProperty("appSettings", appSettings);
+    qmlRegisterUncreatableType<AppSettings>("WerkWolf.Fernschreiber", 1, 0, "AppSettings", QString());
 
     TDLibWrapper *tdLibWrapper = new TDLibWrapper(view.data());
     context->setContextProperty("tdLibWrapper", tdLibWrapper);
-    qmlRegisterType<TDLibWrapper>("WerkWolf.Fernschreiber", 1, 0, "TelegramAPI");
+    qmlRegisterUncreatableType<TDLibWrapper>("WerkWolf.Fernschreiber", 1, 0, "TelegramAPI", QString());
 
     DBusAdaptor *dBusAdaptor = tdLibWrapper->getDBusAdaptor();
     context->setContextProperty("dBusAdaptor", dBusAdaptor);
@@ -61,7 +62,7 @@ int main(int argc, char *argv[])
     ChatModel chatModel(tdLibWrapper);
     context->setContextProperty("chatModel", &chatModel);
 
-    NotificationManager notificationManager(tdLibWrapper);
+    NotificationManager notificationManager(tdLibWrapper, appSettings);
     context->setContextProperty("notificationManager", &notificationManager);
 
     ProcessLauncher processLauncher;
