@@ -536,10 +536,14 @@ void TDLibWrapper::copyFileToDownloads(const QString &filePath)
     QFileInfo fileInfo(filePath);
     if (fileInfo.exists()) {
         QString downloadFilePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + fileInfo.fileName();
-        if (QFile::copy(filePath, downloadFilePath)) {
+        if (QFile::exists(downloadFilePath)) {
             emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
         } else {
-            emit copyToDownloadsError(fileInfo.fileName(), downloadFilePath);
+            if (QFile::copy(filePath, downloadFilePath)) {
+                emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+            } else {
+                emit copyToDownloadsError(fileInfo.fileName(), downloadFilePath);
+            }
         }
     } else {
         emit copyToDownloadsError(fileInfo.fileName(), filePath);
