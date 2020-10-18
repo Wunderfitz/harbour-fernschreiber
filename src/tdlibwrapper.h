@@ -24,6 +24,7 @@
 #include "tdlibreceiver.h"
 #include "dbusadaptor.h"
 #include "dbusinterface.h"
+#include "emojisearchworker.h"
 
 class TDLibWrapper : public QObject
 {
@@ -129,6 +130,9 @@ public:
     Q_INVOKABLE void getInstalledStickerSets();
     Q_INVOKABLE void getStickerSet(const QString &setId);
 
+    // Others (candidates for extraction ;))
+    Q_INVOKABLE void searchEmoji(const QString &queryString);
+
 public:
     const Group* getGroup(qlonglong groupId) const;
     static ChatMemberStatus chatMemberStatusFromString(const QString &status);
@@ -169,6 +173,7 @@ signals:
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
     void stickerSetsReceived(const QVariantList &stickerSets);
     void stickerSetReceived(const QVariantMap &stickerSet);
+    void emojiSearchSuccessful(const QVariantList &result);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -204,6 +209,7 @@ public slots:
     void handleInstalledStickerSetsUpdated(const QVariantList &stickerSetIds);
     void handleStickerSets(const QVariantList &stickerSets);
     void handleStickerSet(const QVariantMap &stickerSet);
+    void handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList);
 
 private:
     void setInitialParameters();
@@ -228,6 +234,8 @@ private:
     QVariantMap unreadChatInformation;
     QHash<qlonglong,Group*> basicGroups;
     QHash<qlonglong,Group*> superGroups;
+    EmojiSearchWorker emojiSearchWorker;
+
 };
 
 #endif // TDLIBWRAPPER_H

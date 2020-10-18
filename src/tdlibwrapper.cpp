@@ -93,6 +93,8 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(stickerSets(QVariantList)), this, SLOT(handleStickerSets(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSet(QVariantMap)), this, SLOT(handleStickerSet(QVariantMap)));
 
+    connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
+
     this->tdLibReceiver->start();
 
     this->setLogVerbosityLevel();
@@ -467,6 +469,16 @@ void TDLibWrapper::getStickerSet(const QString &setId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::searchEmoji(const QString &queryString)
+{
+    LOG("Searching emoji" << queryString);
+    while (this->emojiSearchWorker.isRunning()) {
+        this->emojiSearchWorker.requestInterruption();
+    }
+    this->emojiSearchWorker.setParameters(queryString);
+    this->emojiSearchWorker.start();
+}
+
 QVariantMap TDLibWrapper::getUserInformation()
 {
     return this->userInformation;
@@ -826,6 +838,12 @@ void TDLibWrapper::handleStickerSets(const QVariantList &stickerSets)
 void TDLibWrapper::handleStickerSet(const QVariantMap &stickerSet)
 {
     emit stickerSetReceived(stickerSet);
+}
+
+void TDLibWrapper::handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList)
+{
+    LOG("Emoji search completed" << queryString);
+    emit emojiSearchSuccessful(resultList);
 }
 
 void TDLibWrapper::setInitialParameters()

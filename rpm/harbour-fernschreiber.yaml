@@ -24,6 +24,7 @@ PkgConfigBR:
   - Qt5Qml
   - Qt5Quick
   - Qt5DBus
+  - Qt5Sql
   - nemonotifications-qt5
   - ngf-qt5
 

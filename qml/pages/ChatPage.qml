@@ -43,6 +43,7 @@ Page {
     property variant chatPartnerInformation;
     property variant chatGroupInformation;
     property int chatOnlineMemberCount: 0;
+    property variant emojiProposals;
 
     function updateChatPartnerStatusText() {
         if (chatPartnerInformation.status['@type'] === "userStatusEmpty" ) {
@@ -176,6 +177,44 @@ Page {
         controlSendButton();
     }
 
+    function getWordBoundaries(text, cursorPosition) {
+        var wordBoundaries = { beginIndex : 0, endIndex : text.length};
+        var currentIndex = 0;
+        for (currentIndex = (cursorPosition - 1); currentIndex > 0; currentIndex--) {
+            if (text.charAt(currentIndex) === ' ') {
+                wordBoundaries.beginIndex = currentIndex + 1;
+                break;
+            }
+        }
+        for (currentIndex = cursorPosition; currentIndex < text.length; currentIndex++) {
+            if (text.charAt(currentIndex) === ' ') {
+                wordBoundaries.endIndex = currentIndex;
+                break;
+            }
+        }
+        return wordBoundaries;
+    }
+
+    function handleMessageTextReplacement(text, cursorPosition) {
+        var wordBoundaries = getWordBoundaries(text, cursorPosition);
+
+        var currentWord = text.substring(wordBoundaries.beginIndex, wordBoundaries.endIndex);
+        if (currentWord.length > 1 && currentWord.charAt(0) === ':') {
+            tdLibWrapper.searchEmoji(currentWord.substring(1));
+        } else {
+            chatPage.emojiProposals = null;
+        }
+    }
+
+    function replaceMessageText(text, cursorPosition, newText) {
+        var wordBoundaries = getWordBoundaries(text, cursorPosition);
+        var newCompleteText = text.substring(0, wordBoundaries.beginIndex) + newText + " " + text.substring(wordBoundaries.endIndex);
+        var newIndex = wordBoundaries.beginIndex + newText.length + 1;
+        newMessageTextField.text = newCompleteText;
+        newMessageTextField.cursorPosition = newIndex;
+        lostFocusTimer.start();
+    }
+
     Component.onCompleted: {
         initializePage();
     }
@@ -227,6 +266,9 @@ Page {
             uploadingProgressBar.maximumValue = fileInformation.size;
             uploadingProgressBar.value = fileInformation.remote.uploaded_size;
         }
+        onEmojiSearchSuccessful: {
+            chatPage.emojiProposals = result;
+        }
     }
 
     Connections {
@@ -266,6 +308,26 @@ Page {
             chatView.currentIndex = modelIndex;
             chatView.lastReadSentIndex = lastReadSentIndex;
             chatViewCooldownTimer.start();
+        }
+    }
+
+    Timer {
+        id: lostFocusTimer
+        interval: 200
+        running: false
+        repeat: false
+        onTriggered: {
+            newMessageTextField.forceActiveFocus();
+        }
+    }
+
+    Timer {
+        id: textReplacementTimer
+        interval: 600
+        running: false
+        repeat: false
+        onTriggered: {
+            handleMessageTextReplacement(newMessageTextField.text, newMessageTextField.cursorPosition);
         }
     }
 
@@ -1151,6 +1213,58 @@ Page {
 
                 }
 
+                Column {
+                    id: emojiColumn
+                    width: parent.width
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    visible: emojiProposals ? ( emojiProposals.length > 0 ? true : false ) : false
+                    opacity: emojiProposals ? ( emojiProposals.length > 0 ? 1 : 0 ) : 0
+                    Behavior on opacity { NumberAnimation {} }
+                    spacing: Theme.paddingMedium
+
+                    Flickable {
+                        width: parent.width
+                        height: emojiResultRow.height + Theme.paddingSmall
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        contentWidth: emojiResultRow.width
+                        clip: true
+                        Row {
+                            id: emojiResultRow
+                            spacing: Theme.paddingMedium
+                            Repeater {
+                                model: emojiProposals
+
+                                Item {
+                                    height: singleEmojiRow.height
+                                    width: singleEmojiRow.width
+
+                                    Row {
+                                        id: singleEmojiRow
+                                        spacing: Theme.paddingSmall
+
+                                        Image {
+                                            id: emojiPicture
+                                            source: "../js/emoji/" + modelData.file_name
+                                            width: Theme.fontSizeLarge
+                                            height: Theme.fontSizeLarge
+                                        }
+
+                                    }
+
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: {
+                                            replaceMessageText(newMessageTextField.text, newMessageTextField.cursorPosition, modelData.emoji);
+                                            emojiProposals = null;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+
                 Text {
                     width: parent.width
 
@@ -1199,6 +1313,7 @@ Page {
 
                         onTextChanged: {
                             controlSendButton();
+                            textReplacementTimer.restart();
                         }
                     }
 
