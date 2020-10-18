@@ -17,37 +17,29 @@
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
 import QtQuick 2.5
-import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 
 Item {
-
-    id: stickerPreviewItem
-
     property variant stickerData;
     property int usedFileId;
 
-    width: stickerData.width + Theme.paddingSmall
-    height: stickerData.height + Theme.paddingSmall
+    width: stickerData.width
+    height: stickerData.height
 
     Component.onCompleted: {
-        updateSticker();
-    }
-
-    function updateSticker() {
         if (stickerData) {
             if (stickerData.is_animated) {
                 // Use thumbnail until we can decode TGS files
                 usedFileId = stickerData.thumbnail.photo.id;
                 if (stickerData.thumbnail.photo.local.is_downloading_completed) {
-                    singleImage.source = stickerData.thumbnail.photo.local.path;
+                    stickerImage.source = stickerData.thumbnail.photo.local.path;
                 } else {
                     tdLibWrapper.downloadFile(usedFileId);
                 }
             } else {
                 usedFileId = stickerData.sticker.id;
                 if (stickerData.sticker.local.is_downloading_completed) {
-                    singleImage.source = stickerData.sticker.local.path;
+                    stickerImage.source = stickerData.sticker.local.path;
                 } else {
                     tdLibWrapper.downloadFile(usedFileId);
                 }
@@ -65,45 +57,43 @@ Item {
                     } else {
                         stickerData.sticker = fileInformation;
                     }
-                    singleImage.source = fileInformation.local.path;
+                    stickerImage.source = fileInformation.local.path;
                 }
             }
         }
     }
 
     Image {
-        id: singleImage
-        width: ( ( parent.width - Theme.paddingSmall ) >= stickerData.width ) ? stickerData.width : ( parent.width - Theme.paddingSmall )
-        height: ( ( parent.height - Theme.paddingSmall ) >= stickerData.height ) ? stickerData.height : ( parent.height - Theme.paddingSmall )
-        anchors.centerIn: parent
-
-        fillMode: Image.PreserveAspectCrop
-        autoTransform: true
-        asynchronous: true
-        visible: status === Image.Ready
-        opacity: status === Image.Ready ? 1 : 0
-        Behavior on opacity { NumberAnimation {} }
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                //pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), { "photoData" : imagePreviewItem.photoData, "pictureFileInformation" : imagePreviewItem.pictureFileInformation });
-            }
-        }
-    }
-
-    Image {
-        id: imageLoadingBackgroundImage
-        source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
-        anchors {
-            centerIn: parent
-        }
-        width: ( ( parent.width - Theme.paddingSmall ) >= stickerData.width ) ? stickerData.width : ( parent.width - Theme.paddingSmall )
-        height: ( ( parent.height - Theme.paddingSmall ) >= stickerData.height ) ? stickerData.height : ( parent.height - Theme.paddingSmall )
-        visible: singleImage.status !== Image.Ready
-        asynchronous: true
+        id: stickerImage
+        anchors.fill: parent
 
         fillMode: Image.PreserveAspectFit
-        opacity: 0.15
+        autoTransform: true
+        asynchronous: true
+        visible: opacity > 0
+        opacity: status === Image.Ready ? 1 : 0
+        Behavior on opacity { FadeAnimation {} }
     }
 
+    Loader {
+        anchors.fill: parent
+        sourceComponent: Component {
+            Image {
+                source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
+                asynchronous: true
+
+                fillMode: Image.PreserveAspectFit
+            }
+        }
+
+        active: opacity > 0
+        opacity: !stickerImage.visible && !placeHolderDelayTimer.running ? 0.15 : 0
+        Behavior on opacity { FadeAnimation {} }
+    }
+
+    Timer {
+        id: placeHolderDelayTimer
+        interval: 1000
+        running: true
+    }
 }
