@@ -524,34 +524,34 @@
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>Звуки и вибрация</translation>
     </message>
     <message>
         <source>All events</source>
-        <translation type="unfinished"></translation>
+        <translation>На каждое событие</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation type="unfinished"></translation>
+        <translation>Только на новые события</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Никогда</translation>
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Сопровождать уведомления звуками и вибрацией.</translation>
     </message>
 </context>
 <context>
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>Недавно использованные</translation>
     </message>
     <message>
         <source>Loading stickers...</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка стикеров...</translation>
     </message>
 </context>
 <context>
