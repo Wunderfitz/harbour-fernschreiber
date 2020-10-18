@@ -55,7 +55,7 @@ Page {
             ComboBox {
                 id: feedbackComboBox
                 label: qsTr("Notification feedback")
-                description: qsTr("Non-graphical feedback adds vibration to visual notifications.")
+                description: qsTr("Use non-graphical feedback (sound, vibration) for notifications")
                 menu: ContextMenu {
                     id: feedbackMenu
 

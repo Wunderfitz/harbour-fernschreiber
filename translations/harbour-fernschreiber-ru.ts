@@ -522,6 +522,26 @@
         <source>Show background for stickers and align them centrally like images</source>
         <translation>То есть рисовать под ними фон и позиционировать по центру.</translation>
     </message>
+    <message>
+        <source>Notification feedback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All events</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Only new events</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

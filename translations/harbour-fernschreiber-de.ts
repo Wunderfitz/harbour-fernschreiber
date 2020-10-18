@@ -522,6 +522,26 @@
         <source>Show background for stickers and align them centrally like images</source>
         <translation>Hintergrund für Sticker anzeigen und sie wie Bilder mittig platzieren.</translation>
     </message>
+    <message>
+        <source>Notification feedback</source>
+        <translation>Rückmeldung bei Hinweisen</translation>
+    </message>
+    <message>
+        <source>All events</source>
+        <translation>Alle Ereignisse</translation>
+    </message>
+    <message>
+        <source>Only new events</source>
+        <translation>Nur neue Ereignisse</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Keine</translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
+        <translation>Nicht-grafische Rückmeldungen (Klänge, Vibration) bei Hinweisen nutzen</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
