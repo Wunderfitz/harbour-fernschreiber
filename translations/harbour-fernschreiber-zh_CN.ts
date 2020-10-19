@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>该项目使用 Telegram API ，但未被 Telegram 批准及背书。</translation>
+        <translation>该项目使用 Telegram API ，但未得到 Telegram 批准或背书。</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Phone number: +%1</source>
-        <translation>电话号码：+%1</translation>
+        <translation>电话号码:+%1</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
-        <translation>开发者为 Sebastian J. Wolf 及 &lt;ahref=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;其他贡献者&lt;/a&gt;</translation>
+        <translation>开发者 Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;其它贡献者&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
@@ -231,7 +231,7 @@
     </message>
     <message>
         <source>%1 members, %2 online</source>
-        <translation>%1 位成员, %2 在线</translation>
+        <translation>%1 位成员, %2 位在线</translation>
     </message>
     <message>
         <source>%1 members</source>
@@ -251,7 +251,7 @@
     </message>
     <message>
         <source>Loading messages...</source>
-        <translation>加载消息中……</translation>
+        <translation>正在加载消息…</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
@@ -279,11 +279,11 @@
     </message>
     <message>
         <source>Uploading...</source>
-        <translation>正在上传……</translation>
+        <translation>正在上传…</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation type="unfinished"></translation>
+        <translation>转发消息</translation>
     </message>
     <message>
         <source>This chat is empty.</source>
@@ -306,15 +306,15 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>等候网络连接……</translation>
+        <translation>等候网络连接…</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>连接到网络……</translation>
+        <translation>连接到网络…</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>连接到代理……</translation>
+        <translation>连接到代理…</translation>
     </message>
     <message>
         <source>Connected</source>
@@ -322,7 +322,7 @@
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>正在更新内容……</translation>
+        <translation>正在更新内容…</translation>
     </message>
     <message>
         <source>chat</source>
@@ -417,109 +417,109 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送照片</translation>
+        <translation>发送照片</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation type="unfinished">发送照片</translation>
+        <translation>发送照片</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送视频</translation>
+        <translation>发送视频</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation type="unfinished">发送视频</translation>
+        <translation>发送视频</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送动画</translation>
+        <translation>发送动画</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation type="unfinished">发送动画</translation>
+        <translation>发送动画</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation type="unfinished"></translation>
+        <translation>发送语言留言</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送文档</translation>
+        <translation>发送文档</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation type="unfinished">发送文档</translation>
+        <translation>发送文档</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送位置</translation>
+        <translation>发送位置</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation type="unfinished">发送位置</translation>
+        <translation>发送位置</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation type="unfinished">已注册到 Telegram</translation>
+        <translation>已注册到 Telegram</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation type="unfinished">已注册到 Telegram </translation>
+        <translation>已注册到 Telegram </translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>已加入此对话</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation type="unfinished"></translation>
+        <translation>已加入此对话</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">已经加入到此对话之中</translation>
+        <translation>已经加入到此对话之中</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation type="unfinished">已加入到此对话</translation>
+        <translation>已加入到此对话</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">离开此对话</translation>
+        <translation>离开此对话</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation type="unfinished">离开此对话</translation>
+        <translation>离开此对话</translation>
     </message>
     <message>
         <source>Unsupported message: %1</source>
-        <translation type="unfinished">未读消息: %1</translation>
+        <translation>未读消息: %1</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation type="unfinished">贴纸: %1</translation>
+        <translation>表情贴图: %1</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>发送视频留言</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送地点</translation>
+        <translation>发送地点</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation type="unfinished">发送地点</translation>
+        <translation>发送地点</translation>
     </message>
     <message>
         <source>changed the chat title</source>
@@ -573,11 +573,11 @@
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>请输入你收到的验证码：</translation>
+        <translation>请输入你收到的验证码:</translation>
     </message>
     <message>
         <source>Loading...</source>
-        <translation>正在加载……</translation>
+        <translation>正在加载…</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
@@ -593,23 +593,23 @@
     </message>
     <message>
         <source>Please enter your password:</source>
-        <translation>请输入你的密码：</translation>
+        <translation>请输入你的密码:</translation>
     </message>
     <message>
         <source>Register User</source>
-        <translation type="unfinished"></translation>
+        <translation>注册用户</translation>
     </message>
     <message>
         <source>Enter your First Name</source>
-        <translation type="unfinished"></translation>
+        <translation>输入你的名字</translation>
     </message>
     <message>
         <source>Enter your Last Name</source>
-        <translation type="unfinished"></translation>
+        <translation>输入你的姓氏</translation>
     </message>
     <message>
         <source>User Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>用户注册</translation>
     </message>
 </context>
 <context>
@@ -638,19 +638,19 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>等候网络连接：</translation>
+        <translation>等候网络连接…</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>正在连接到网络……</translation>
+        <translation>正在连接到网络…</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>正在连接到代理……</translation>
+        <translation>正在连接到代理…</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>正在更新内容……</translation>
+        <translation>正在更新内容…</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -658,7 +658,7 @@
     </message>
     <message>
         <source>Loading chat list...</source>
-        <translation>正在加载对话列表……</translation>
+        <translation>正在加载对话列表…</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -666,7 +666,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>你尚无任何对话。</translation>
     </message>
 </context>
 <context>
@@ -689,46 +689,46 @@
     </message>
     <message>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>外观</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
-        <translation type="unfinished"></translation>
+        <translation>像图片那样显示表情贴图</translation>
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation type="unfinished"></translation>
+        <translation>显示表情贴图背景并像图片那样自动居中</translation>
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>通知反馈</translation>
     </message>
     <message>
         <source>All events</source>
-        <translation type="unfinished"></translation>
+        <translation>全部事件</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation type="unfinished"></translation>
+        <translation>仅新事件</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>无</translation>
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>使用非图像反馈进行通知（例如声音及振动）</translation>
     </message>
 </context>
 <context>
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>最近使用</translation>
     </message>
     <message>
         <source>Loading stickers...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在加载表情贴图…</translation>
     </message>
 </context>
 <context>
@@ -802,7 +802,7 @@
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>发送语言</translation>
+        <translation>发送语音留言</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -830,7 +830,7 @@
     </message>
     <message>
         <source>%1K</source>
-        <translation>%1T</translation>
+        <translation>%1K</translation>
     </message>
     <message>
         <source>sent a venue</source>

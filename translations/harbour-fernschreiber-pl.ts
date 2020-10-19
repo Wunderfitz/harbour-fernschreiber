@@ -417,11 +417,11 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij obraz</translation>
+        <translation>wysłałem obraz</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation type="unfinished">wyślij obraz</translation>
+        <translation>wysłał obraz</translation>
     </message>
     <message>
         <source>sent a video</source>
@@ -430,87 +430,87 @@
     </message>
     <message>
         <source>sent a video</source>
-        <translation type="unfinished">wyślij film</translation>
+        <translation>wysłał film</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij animację</translation>
+        <translation>wysłałem animację</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation type="unfinished">wyślij animację</translation>
+        <translation>wysłał animację</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation type="unfinished">wyślij notatke głosową</translation>
+        <translation>wysłał notatke głosową</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij dokument</translation>
+        <translation>wysłałem dokument</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation type="unfinished">wyślij dokument</translation>
+        <translation>wysłał dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij lokalizację</translation>
+        <translation>wysłałem lokalizację</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation type="unfinished">wyślij lokalizację</translation>
+        <translation>wysłał lokalizację</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>zostałem zarejestrowany w Telegram</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation type="unfinished">zarejestrował się w Telegramie</translation>
+        <translation>zarejestrował się w Telegramie</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">dołaczył do tego czatu</translation>
+        <translation>dołaczyłem do tego czatu</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation type="unfinished">dołaczył do tego czatu</translation>
+        <translation>dołaczył do tego czatu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>zostałem dodany do tego czatu</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation type="unfinished">został dodany do tego czatu</translation>
+        <translation>został dodany do tego czatu</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">opuścił ten czat</translation>
+        <translation>opuściłem ten czat</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation type="unfinished">opuścił ten czat</translation>
+        <translation>opuścił ten czat</translation>
     </message>
     <message>
         <source>Unsupported message: %1</source>
-        <translation type="unfinished">Nieobsługiwana wiadomość: %1</translation>
+        <translation>Nieobsługiwana wiadomość: %1</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation type="unfinished">Naklejka: %1</translation>
+        <translation>Naklejka: %1</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij notatke głosową</translation>
+        <translation>wysłałem notatke głosową</translation>
     </message>
     <message>
         <source>sent a venue</source>
@@ -597,26 +597,26 @@
     </message>
     <message>
         <source>Register User</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarejestruj użytkownika</translation>
     </message>
     <message>
         <source>Enter your First Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź swoje imię</translation>
     </message>
     <message>
         <source>Enter your Last Name</source>
-        <translation type="unfinished"></translation>
+        <translation>wprowadź swoje nazwisko</translation>
     </message>
     <message>
         <source>User Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Rejestracja użytkownika</translation>
     </message>
 </context>
 <context>
     <name>LocationPreview</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zainstaluj Pure Maps, aby sprawdzić tę lokalizację.</translation>
     </message>
 </context>
 <context>
@@ -666,7 +666,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nie masz jeszcze żadnych czatów.</translation>
     </message>
 </context>
 <context>
@@ -689,11 +689,11 @@
     </message>
     <message>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Wygląd</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż naklejki jako obrazy</translation>
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
@@ -724,11 +724,11 @@
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>Ostatnio użyty</translation>
     </message>
     <message>
         <source>Loading stickers...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ładowanie naklejek...</translation>
     </message>
 </context>
 <context>
@@ -839,27 +839,27 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij obraz</translation>
+        <translation>wysłałem obraz</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij film</translation>
+        <translation>wysłałem film</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij animację</translation>
+        <translation>wysłałem animację</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij dźwięk</translation>
+        <translation>wysłałem dźwięk</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij notatke głosową</translation>
+        <translation>wysłałem notatke głosową</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -878,22 +878,22 @@
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation type="unfinished"></translation>
+        <translation>został zarejestowany w Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">dołaczył do tego czatu</translation>
+        <translation>dołaczyłem do tego czatu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>zostałem dodany do czatu</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">opuścił ten czat</translation>
+        <translation>opuściłem ten czat</translation>
     </message>
     <message>
         <source>was never online</source>

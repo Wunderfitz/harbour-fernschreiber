@@ -29,7 +29,7 @@
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Norme sulle privacy</translation>
+        <translation>Norme sulla privacy</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -701,23 +701,23 @@
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>Feedback notifiche</translation>
     </message>
     <message>
         <source>All events</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutti gli eventi</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation type="unfinished"></translation>
+        <translation>Solo nuovi eventi</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuno</translation>
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa feedback non visuale come suoni e/o vibrazione per le notifiche</translation>
     </message>
 </context>
 <context>
