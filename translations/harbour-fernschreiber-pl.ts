@@ -259,7 +259,7 @@
     </message>
     <message>
         <source>sent an animation</source>
-        <translation">wysłał animację</translation>
+        <translation>wysłał animację</translation>
     </message>
     <message>
         <source>sent a voice note</source>
