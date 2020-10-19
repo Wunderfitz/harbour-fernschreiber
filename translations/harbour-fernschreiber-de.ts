@@ -226,6 +226,10 @@
         <source>Group Info</source>
         <translation>Gruppeninfos</translation>
     </message>
+    <message>
+        <source>Mark all messages as read</source>
+        <translation>Nachrichten als gelesen markieren</translation>
+    </message>
 </context>
 <context>
     <name>ChatPage</name>

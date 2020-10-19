@@ -26,6 +26,14 @@ PhotoTextsListItem {
     openMenuOnPressAndHold: true//chat_id != overviewPage.ownUserId
     menu: ContextMenu {
         MenuItem {
+            visible: unread_count > 0
+            onClicked: {
+                tdLibWrapper.viewMessage(chat_id, display.last_message.id, true);
+            }
+            text: qsTr("Mark all messages as read")
+        }
+
+        MenuItem {
             visible: chat_id != listItem.ownUserId
             onClicked: {
                 var newNotificationSettings = display.notification_settings;

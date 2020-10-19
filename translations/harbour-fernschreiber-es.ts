@@ -226,6 +226,10 @@
         <source>Group Info</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Mark all messages as read</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatPage</name>

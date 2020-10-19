@@ -290,7 +290,7 @@ Page {
             chatPage.loading = false;
             if (chatView.height > chatView.contentHeight) {
                 console.log("[ChatPage] Chat content quite small...");
-                tdLibWrapper.viewMessage(chatInformation.id, chatModel.getMessage(chatView.count - 1).id);
+                tdLibWrapper.viewMessage(chatInformation.id, chatModel.getMessage(chatView.count - 1).id, false);
             }
         }
         onNewMessageReceived: {
@@ -498,7 +498,7 @@ Page {
 
                     function handleScrollPositionChanged() {
                         console.log("Current position: " + chatView.contentY);
-                        tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id);
+                        tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id, false);
                     }
 
                     onContentYChanged: {
