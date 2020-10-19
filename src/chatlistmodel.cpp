@@ -352,6 +352,21 @@ void ChatListModel::redrawModel()
     layoutChanged();
 }
 
+QVariantMap ChatListModel::get(int row)
+{
+
+    QHash<int,QByteArray> names = roleNames();
+    QHashIterator<int, QByteArray> i(names);
+    QVariantMap res;
+    QModelIndex idx = index(row, 0);
+    while (i.hasNext()) {
+        i.next();
+        QVariant data = idx.data(i.key());
+        res[i.value()] = data;
+    }
+    return res;
+}
+
 int ChatListModel::updateChatOrder(int chatIndex)
 {
     ChatData *chat = chatList.at(chatIndex);

@@ -28,7 +28,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper)
     this->tdLibWrapper = tdLibWrapper;
     this->inReload = false;
     this->inIncrementalUpdate = false;
-    connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList)), this, SLOT(handleMessagesReceived(QVariantList)));
+    connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
     connect(this->tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
@@ -72,9 +72,11 @@ void ChatModel::initialize(const QVariantMap &chatInformation)
 {
     qDebug() << "[ChatModel] Initializing chat model...";
     this->chatInformation = chatInformation;
+    beginResetModel();
     this->messages.clear();
     this->messageIndexMap.clear();
     this->messagesToBeAdded.clear();
+    endResetModel();
     this->chatId = chatInformation.value("id").toString();
     tdLibWrapper->getChatHistory(this->chatId);
 }
@@ -113,7 +115,7 @@ bool compareMessages(const QVariant &message1, const QVariant &message2)
     }
 }
 
-void ChatModel::handleMessagesReceived(const QVariantList &messages)
+void ChatModel::handleMessagesReceived(const QVariantList &messages, const int &totalCount)
 {
     qDebug() << "[ChatModel] Receiving new messages :)" << messages.size();
 
@@ -126,7 +128,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
             this->inIncrementalUpdate = false;
             emit messagesIncrementalUpdate(listInboxPosition, listOutboxPosition);
         } else {
-            emit messagesReceived(listInboxPosition, listOutboxPosition);
+            emit messagesReceived(listInboxPosition, listOutboxPosition, totalCount);
         }
     } else {
         this->messagesMutex.lock();
@@ -157,7 +159,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages)
                 this->inIncrementalUpdate = false;
                 emit messagesIncrementalUpdate(listInboxPosition, listOutboxPosition);
             } else {
-                emit messagesReceived(listInboxPosition, listOutboxPosition);
+                emit messagesReceived(listInboxPosition, listOutboxPosition, totalCount);
             }
         }
     }

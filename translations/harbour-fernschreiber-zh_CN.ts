@@ -88,6 +88,138 @@
     </message>
 </context>
 <context>
+    <name>ChatInformationPage</name>
+    <message>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">取消对话静音</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation type="unfinished">对话静音</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">未知</translation>
+    </message>
+    <message>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 members, %2 online</source>
+        <translation type="unfinished">%1 位成员, %2 在线</translation>
+    </message>
+    <message>
+        <source>%1 subscribers</source>
+        <translation type="unfinished">%1 位订阅者</translation>
+    </message>
+    <message>
+        <source>%1 members</source>
+        <translation type="unfinished">%1 位成员</translation>
+    </message>
+    <message>
+        <source>Leave Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leaving chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <comment>group or user infotext header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Phone Number</source>
+        <comment>user phone number header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invite Link</source>
+        <comment>header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There is no information text available, yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chat Title</source>
+        <comment>group title header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter 1-128 characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ChatInformationTabItemMembersGroups</name>
+    <message>
+        <source>Loading common chats…</source>
+        <comment>chats you have in common with a user</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">未知</translation>
+    </message>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading group members…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">你</translation>
+    </message>
+</context>
+<context>
+    <name>ChatInformationTabItemSettings</name>
+    <message>
+        <source>Settings</source>
+        <comment>Button: Chat Settings</comment>
+        <translation type="unfinished">设置</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListViewItem</name>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">未知</translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">你</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">取消对话静音</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation type="unfinished">对话静音</translation>
+    </message>
+    <message>
+        <source>User Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Group Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChatPage</name>
     <message>
         <source>Unknown</source>
@@ -96,30 +228,6 @@
     <message>
         <source>Your message</source>
         <translation>你的消息</translation>
-    </message>
-    <message>
-        <source>was never online</source>
-        <translation>完全离线</translation>
-    </message>
-    <message>
-        <source>offline, last online: last month</source>
-        <translation>离线，上次在线时间:上月</translation>
-    </message>
-    <message>
-        <source>offline, last online: last week</source>
-        <translation>离线，上次在线时间:上周</translation>
-    </message>
-    <message>
-        <source>offline, last online: %1</source>
-        <translation>离线，上次在线时间: %1</translation>
-    </message>
-    <message>
-        <source>online</source>
-        <translation>在线</translation>
-    </message>
-    <message>
-        <source>offline, was recently online</source>
-        <translation>离线，最近在线</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
@@ -177,6 +285,10 @@
         <source>Forwarded Message</source>
         <translation>转发消息</translation>
     </message>
+    <message>
+        <source>This chat is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -230,6 +342,74 @@
     <message>
         <source>Open Document</source>
         <translation>打开文档</translation>
+    </message>
+</context>
+<context>
+    <name>EditGroupChatPermissionsColumn</name>
+    <message>
+        <source>Group Member Permissions</source>
+        <comment>what can normal group members do</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Media Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Other Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Web Page Previews</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change Chat Info</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invite Users</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Members</source>
+        <comment>what can new group members do</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New members can see older messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditSuperGroupSlowModeColumn</name>
+    <message>
+        <source>Slow Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set how long every chat member has to wait between Messages</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -340,6 +520,15 @@
     <message>
         <source>sent a venue</source>
         <translation>发送地点</translation>
+    </message>
+    <message>
+        <source>changed the chat title</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat title</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -468,20 +657,8 @@
         <translation>未知</translation>
     </message>
     <message>
-        <source>You</source>
-        <translation>你</translation>
-    </message>
-    <message>
         <source>Loading chat list...</source>
         <translation>正在加载对话列表…</translation>
-    </message>
-    <message>
-        <source>Unmute Chat</source>
-        <translation>取消静音对话</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>静音对话</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -717,6 +894,59 @@
         <source>left this chat</source>
         <comment>myself</comment>
         <translation>离开此对话</translation>
+    </message>
+    <message>
+        <source>was never online</source>
+        <translation type="unfinished">完全离线</translation>
+    </message>
+    <message>
+        <source>offline, last online: last month</source>
+        <translation type="unfinished">离线，上次在线时间：上月</translation>
+    </message>
+    <message>
+        <source>offline, last online: last week</source>
+        <translation type="unfinished">离线，上次在线时间：上周</translation>
+    </message>
+    <message>
+        <source>offline, last online: %1</source>
+        <translation type="unfinished">离线，上次在线时间： %1</translation>
+    </message>
+    <message>
+        <source>online</source>
+        <translation type="unfinished">在线</translation>
+    </message>
+    <message>
+        <source>offline, was recently online</source>
+        <translation type="unfinished">离线，最近在线</translation>
+    </message>
+    <message>
+        <source>Admin</source>
+        <comment>channel user role</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Banned</source>
+        <comment>channel user role</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creator</source>
+        <comment>channel user role</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restricted</source>
+        <comment>channel user role</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat title to %1</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat title to %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -27,6 +27,8 @@ Item {
     property variant photoData;
     property string replacementStringHint: "X"
     property bool forceElementUpdate: false
+    property int radius: width / 2
+    property int imageStatus: -1
 
     function getReplacementString() {
         if (replacementStringHint.length > 2) {
@@ -109,6 +111,9 @@ Item {
                 autoTransform: true
                 asynchronous: true
                 visible: false
+                onStatusChanged: {
+                    profileThumbnail.imageStatus = status
+                }
             }
 
             Rectangle {
@@ -116,7 +121,7 @@ Item {
                 width: parent.width - Theme.paddingSmall
                 height: parent.height - Theme.paddingSmall
                 color: Theme.primaryColor
-                radius: parent.width / 2
+                radius: profileThumbnail.radius
                 anchors.centerIn: singleImage
                 visible: false
             }

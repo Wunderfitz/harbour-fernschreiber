@@ -41,6 +41,7 @@ namespace {
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
 
     const QString TYPE("@type");
+    const QString EXTRA("@extra");
     const QString TYPE_CHAT_POSITION("chatPosition");
     const QString TYPE_CHAT_LIST_MAIN("chatListMain");
 }
@@ -99,11 +100,22 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateMessageContent", &TDLibReceiver::processUpdateMessageContent);
     handlers.insert("updateDeleteMessages", &TDLibReceiver::processUpdateDeleteMessages);
     handlers.insert("chats", &TDLibReceiver::processChats);
+    handlers.insert("chat", &TDLibReceiver::processChat);
     handlers.insert("updateRecentStickers", &TDLibReceiver::processUpdateRecentStickers);
     handlers.insert("stickers", &TDLibReceiver::processStickers);
     handlers.insert("updateInstalledStickerSets", &TDLibReceiver::processUpdateInstalledStickerSets);
     handlers.insert("stickerSets", &TDLibReceiver::processStickerSets);
     handlers.insert("stickerSet", &TDLibReceiver::processStickerSet);
+    handlers.insert("chatMembers", &TDLibReceiver::processChatMembers);
+    handlers.insert("userFullInfo", &TDLibReceiver::processUserFullInfo);
+    handlers.insert("updateUserFullInfo", &TDLibReceiver::processUpdateUserFullInfo);
+    handlers.insert("basicGroupFullInfo", &TDLibReceiver::processBasicGroupFullInfo);
+    handlers.insert("updateBasicGroupFullInfo", &TDLibReceiver::processUpdateBasicGroupFullInfo);
+    handlers.insert("supergroupFullInfo", &TDLibReceiver::processSupergroupFullInfo);
+    handlers.insert("updateSupergroupFullInfo", &TDLibReceiver::processUpdateSupergroupFullInfo);
+    handlers.insert("userProfilePhotos", &TDLibReceiver::processUserProfilePhotos);
+    handlers.insert("updateChatPermissions", &TDLibReceiver::processUpdateChatPermissions);
+    handlers.insert("updateChatTitle", &TDLibReceiver::processUpdateChatTitle);
 }
 
 void TDLibReceiver::setActive(const bool &active)
@@ -302,7 +314,7 @@ void TDLibReceiver::processChatOnlineMemberCountUpdated(const QVariantMap &recei
 void TDLibReceiver::processMessages(const QVariantMap &receivedInformation)
 {
     LOG("Received new messages, amount: " << receivedInformation.value("total_count").toString());
-    emit messagesReceived(receivedInformation.value("messages").toList());
+    emit messagesReceived(receivedInformation.value("messages").toList(), receivedInformation.value("total_count").toInt());
 }
 
 void TDLibReceiver::processUpdateNewMessage(const QVariantMap &receivedInformation)
@@ -375,6 +387,11 @@ void TDLibReceiver::processChats(const QVariantMap &receivedInformation)
     emit chats(receivedInformation);
 }
 
+void TDLibReceiver::processChat(const QVariantMap &receivedInformation)
+{
+    emit chat(receivedInformation);
+}
+
 void TDLibReceiver::processUpdateRecentStickers(const QVariantMap &receivedInformation)
 {
     LOG("Recent stickers updated");
@@ -403,4 +420,77 @@ void TDLibReceiver::processStickerSet(const QVariantMap &receivedInformation)
 {
     LOG("Received a sticker set...");
     emit stickerSet(receivedInformation);
+}
+void TDLibReceiver::processChatMembers(const QVariantMap &receivedInformation)
+{
+    LOG("Received super group members");
+    const QString extra = receivedInformation.value(EXTRA).toString();
+    emit chatMembers(extra, receivedInformation.value("members").toList(), receivedInformation.value("total_count").toInt());
+}
+
+void TDLibReceiver::processUserFullInfo(const QVariantMap &receivedInformation)
+{
+
+    LOG("Received UserFullInfo");
+
+    emit userFullInfo(receivedInformation);
+}
+
+void TDLibReceiver::processUpdateUserFullInfo(const QVariantMap &receivedInformation)
+{
+
+    LOG("Received UserFullInfoUpdate");
+
+    emit userFullInfoUpdated(receivedInformation.value("user_id").toString(), receivedInformation.value("user_full_info").toMap());
+}
+
+void TDLibReceiver::processBasicGroupFullInfo(const QVariantMap &receivedInformation)
+{
+
+    LOG("Received BasicGroupFullInfo");
+    const QString groupId = receivedInformation.value(EXTRA).toString();
+
+    emit basicGroupFullInfo(groupId, receivedInformation);
+}
+void TDLibReceiver::processUpdateBasicGroupFullInfo(const QVariantMap &receivedInformation)
+{
+    LOG("Received BasicGroupFullInfoUpdate");
+    const QString groupId = receivedInformation.value("basic_group_id").toString();
+
+    emit basicGroupFullInfoUpdated(groupId, receivedInformation.value("basic_group_full_info").toMap());
+}
+
+void TDLibReceiver::processSupergroupFullInfo(const QVariantMap &receivedInformation)
+{
+    LOG("Received SuperGroupFullInfoUpdate");
+    const QString groupId = receivedInformation.value(EXTRA).toString();
+
+    emit supergroupFullInfo(groupId, receivedInformation);
+}
+
+void TDLibReceiver::processUpdateSupergroupFullInfo(const QVariantMap &receivedInformation)
+{
+
+    LOG("Received SuperGroupFullInfoUpdate");
+    const QString groupId = receivedInformation.value("supergroup_id").toString();
+
+    emit supergroupFullInfoUpdated(groupId, receivedInformation.value("supergroup_full_info").toMap());
+}
+
+void TDLibReceiver::processUserProfilePhotos(const QVariantMap &receivedInformation)
+{
+    const QString extra = receivedInformation.value(EXTRA).toString();
+    emit userProfilePhotos(extra, receivedInformation.value("photos").toList(), receivedInformation.value("total_count").toInt());
+}
+
+void TDLibReceiver::processUpdateChatPermissions(const QVariantMap &receivedInformation)
+{
+    emit chatPermissionsUpdated(receivedInformation.value("chat_id").toString(), receivedInformation.value("permissions").toMap());
+}
+
+void TDLibReceiver::processUpdateChatTitle(const QVariantMap &receivedInformation)
+{
+
+    LOG("Received UpdateChatTitle");
+    emit chatTitleUpdated(receivedInformation.value("chat_id").toString(), receivedInformation.value("title").toString());
 }
