@@ -51,5 +51,8 @@ QString FernschreiberUtils::getMessageShortText(const QVariantMap &messageConten
     if (contentType == "messageChatDeleteMember") {
         return myself ? tr("left this chat", "myself") : tr("left this chat");
     }
+    if (contentType == "messageChatChangeTitle") {
+        return myself ? tr("changed the chat title", "myself") : tr("changed the chat title");
+    }
     return tr("Unsupported message: %1").arg(contentType.mid(7));
 }

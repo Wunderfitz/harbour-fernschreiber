@@ -46,23 +46,9 @@ Page {
     property variant emojiProposals;
 
     function updateChatPartnerStatusText() {
-        if (chatPartnerInformation.status['@type'] === "userStatusEmpty" ) {
-            chatStatusText.text = qsTr("was never online");
-        }
-        if (chatPartnerInformation.status['@type'] === "userStatusLastMonth" ) {
-            chatStatusText.text = qsTr("offline, last online: last month");
-        }
-        if (chatPartnerInformation.status['@type'] === "userStatusLastWeek" ) {
-            chatStatusText.text = qsTr("offline, last online: last week");
-        }
-        if (chatPartnerInformation.status['@type'] === "userStatusOffline" ) {
-            chatStatusText.text = qsTr("offline, last online: %1").arg(Functions.getDateTimeElapsed(chatPartnerInformation.status.was_online));
-        }
-        if (chatPartnerInformation.status['@type'] === "userStatusOnline" ) {
-            chatStatusText.text = qsTr("online");
-        }
-        if (chatPartnerInformation.status['@type'] === "userStatusRecently" ) {
-            chatStatusText.text = qsTr("offline, was recently online");
+        var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
+        if(statusText) {
+            chatStatusText.text = statusText;
         }
     }
 
@@ -109,6 +95,9 @@ Page {
 
     function getMessageStatusText(message, listItemIndex, lastReadSentIndex) {
         var messageStatusSuffix = "";
+        if(!message) {
+            return "";
+        }
 
         if (message.edit_date > 0) {
             messageStatusSuffix += " - " + qsTr("edited");
@@ -221,19 +210,26 @@ Page {
         initializePage();
     }
 
+    Component.onDestruction: {
+        tdLibWrapper.closeChat(chatInformation.id);
+    }
+
     onStatusChanged: {
-        if (status === PageStatus.Activating) {
+        switch(status) {
+        case PageStatus.Activating:
             tdLibWrapper.openChat(chatInformation.id);
-        }
-        if (status === PageStatus.Active) {
+            break;
+        case PageStatus.Active:
+            console.log("CHAT opendirectly?", chatPage.isInitialized)
             if (!chatPage.isInitialized) {
                 chatModel.initialize(chatInformation);
                 chatPage.isInitialized = true;
             }
+            break;
+//        case PageStatus.Deactivating:
+//            tdLibWrapper.closeChat(chatInformation.id);
         }
-        if (status === PageStatus.Deactivating) {
-            tdLibWrapper.closeChat(chatInformation.id);
-        }
+
     }
 
     Connections {
@@ -277,6 +273,14 @@ Page {
         target: chatModel
         onMessagesReceived: {
             console.log("[ChatPage] Messages received, view has " + chatView.count + " messages, setting view to index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
+            if(totalCount === 0) {
+                console.log("[ChatPage] actually, skipping that: No Messages in Chat.");
+
+                chatView.positionViewAtEnd();
+                chatPage.loading = false;
+                return;
+            }
+
             chatView.lastReadSentIndex = lastReadSentIndex;
             if (modelIndex === (chatView.count - 1)) {
                 chatView.positionViewAtEnd();
@@ -336,7 +340,7 @@ Page {
     Timer {
         id: chatContactTimeUpdater
         interval: 60000
-        running: true
+        running: isPrivateChat
         repeat: true
         onTriggered: {
             updateChatPartnerStatusText();
@@ -373,7 +377,14 @@ Page {
                 muteChatMenuItem.text = chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat");
             }
         }
-
+        BackgroundItem {
+            id: headerMouseArea
+            height: headerRow.height
+            width: parent.width
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("../pages/ChatInformationPage.qml"), { "chatInformation" : chatInformation, "privateChatUserInformation": chatPartnerInformation, "groupInformation": chatGroupInformation, "chatOnlineMemberCount": chatOnlineMemberCount});
+            }
+        }
         Column {
             id: chatColumn
             width: parent.width
@@ -427,7 +438,7 @@ Page {
                         textFormat: Text.StyledText
                         font.pixelSize: Theme.fontSizeExtraSmall
                         font.family: Theme.fontFamilyHeading
-                        color: Theme.secondaryColor
+                        color: headerMouseArea.pressed ? Theme.secondaryHighlightColor : Theme.secondaryColor
                         elide: Text.ElideRight
                         width: parent.width
                         maximumLineCount: 1
@@ -958,6 +969,11 @@ Page {
                     }
 
                     VerticalScrollDecorator {}
+
+                    ViewPlaceholder {
+                        enabled: chatView.count === 0
+                        text: qsTr("This chat is empty.")
+                    }
                 }
 
                 Column {
@@ -1157,7 +1173,7 @@ Page {
                     property bool isPicture: false;
                     property bool isVideo: false;
                     property bool isDocument: false;
-                    property variant fileProperties;
+                    property variant fileProperties:({});
 
                     IconButton {
                         id: removeAttachmentsIconButton

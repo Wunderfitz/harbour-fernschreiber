@@ -53,7 +53,7 @@ signals:
     void basicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void superGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void chatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
-    void messagesReceived(const QVariantList &messages);
+    void messagesReceived(const QVariantList &messages, const int &totalCount);
     void newMessageReceived(const QString &chatId, const QVariantMap &message);
     void messageInformation(const QString &messageId, const QVariantMap &message);
     void messageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
@@ -64,12 +64,22 @@ signals:
     void messageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void messagesDeleted(const QString &chatId, const QVariantList &messageIds);
     void chats(const QVariantMap &chats);
+    void chat(const QVariantMap &chats);
     void recentStickersUpdated(const QVariantList &stickerIds);
     void stickers(const QVariantList &stickers);
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
     void stickerSets(const QVariantList &stickerSets);
     void stickerSet(const QVariantMap &stickerSet);
-
+    void chatMembers(const QString &extra, const QVariantList &members, const int &totalMembers);
+    void userFullInfo(const QVariantMap &userFullInfo);
+    void userFullInfoUpdated(const QString &userId,const QVariantMap &userFullInfo);
+    void basicGroupFullInfo(const QString &groupId, const QVariantMap &groupFullInfo);
+    void basicGroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo);
+    void supergroupFullInfo(const QString &groupId, const QVariantMap &groupFullInfo);
+    void supergroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo);
+    void userProfilePhotos(const QString &extra, const QVariantList &photos, const int &totalPhotos);
+    void chatPermissionsUpdated(const QString &chatId, const QVariantMap &chatPermissions);
+    void chatTitleUpdated(const QString &chatId, const QString &title);
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
 
@@ -108,11 +118,22 @@ private:
     void processUpdateMessageContent(const QVariantMap &receivedInformation);
     void processUpdateDeleteMessages(const QVariantMap &receivedInformation);
     void processChats(const QVariantMap &receivedInformation);
+    void processChat(const QVariantMap &receivedInformation);
     void processUpdateRecentStickers(const QVariantMap &receivedInformation);
     void processStickers(const QVariantMap &receivedInformation);
     void processUpdateInstalledStickerSets(const QVariantMap &receivedInformation);
     void processStickerSets(const QVariantMap &receivedInformation);
     void processStickerSet(const QVariantMap &receivedInformation);
+    void processChatMembers(const QVariantMap &receivedInformation);
+    void processUserFullInfo(const QVariantMap &receivedInformation);
+    void processUpdateUserFullInfo(const QVariantMap &receivedInformation);
+    void processBasicGroupFullInfo(const QVariantMap &receivedInformation);
+    void processUpdateBasicGroupFullInfo(const QVariantMap &receivedInformation);
+    void processSupergroupFullInfo(const QVariantMap &receivedInformation);
+    void processUpdateSupergroupFullInfo(const QVariantMap &receivedInformation);
+    void processUserProfilePhotos(const QVariantMap &receivedInformation);
+    void processUpdateChatPermissions(const QVariantMap &receivedInformation);
+    void processUpdateChatTitle(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

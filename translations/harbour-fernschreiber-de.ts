@@ -88,6 +88,138 @@
     </message>
 </context>
 <context>
+    <name>ChatInformationPage</name>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Stummschaltung des Chats aufheben</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Chat stummschalten</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
+    </message>
+    <message>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation>Der Einladungslink wurde in die Zwischenablage kopiert.</translation>
+    </message>
+    <message>
+        <source>%1 members, %2 online</source>
+        <translation>%1 Mitglieder, %2 online</translation>
+    </message>
+    <message>
+        <source>%1 subscribers</source>
+        <translation>%1 Abonnenten</translation>
+    </message>
+    <message>
+        <source>%1 members</source>
+        <translation>%1 Mitglieder</translation>
+    </message>
+    <message>
+        <source>Leave Group</source>
+        <translation>Gruppe verlassen</translation>
+    </message>
+    <message>
+        <source>Leaving chat</source>
+        <translation>Verlasse Gruppe</translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <comment>group or user infotext header</comment>
+        <translation>Info</translation>
+    </message>
+    <message>
+        <source>Phone Number</source>
+        <comment>user phone number header</comment>
+        <translation>Telefonnummer</translation>
+    </message>
+    <message>
+        <source>Invite Link</source>
+        <comment>header</comment>
+        <translation>Einladungslink</translation>
+    </message>
+    <message>
+        <source>There is no information text available, yet.</source>
+        <translation>Es gibt noch keinen Informationstext.</translation>
+    </message>
+    <message>
+        <source>Chat Title</source>
+        <comment>group title header</comment>
+        <translation>Chattitel</translation>
+    </message>
+    <message>
+        <source>Enter 1-128 characters</source>
+        <translation>Geben Sie 1-126 Zeichen ein</translation>
+    </message>
+</context>
+<context>
+    <name>ChatInformationTabItemMembersGroups</name>
+    <message>
+        <source>You</source>
+        <translation>Sie</translation>
+    </message>
+    <message>
+        <source>Loading common chats…</source>
+        <comment>chats you have in common with a user</comment>
+        <translation>Lade gemeinsame Chats…</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
+    </message>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation>Gruppen</translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation>Mitglieder</translation>
+    </message>
+    <message>
+        <source>Loading group members…</source>
+        <translation>Lade Gruppenmitglieder…</translation>
+    </message>
+</context>
+<context>
+    <name>ChatInformationTabItemSettings</name>
+    <message>
+        <source>Settings</source>
+        <comment>Button: Chat Settings</comment>
+        <translation>Einstellungen</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListViewItem</name>
+    <message>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation>Sie</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Stummschaltung des Chats aufheben</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Chat stummschalten</translation>
+    </message>
+    <message>
+        <source>User Info</source>
+        <translation>Benutzerinfos</translation>
+    </message>
+    <message>
+        <source>Group Info</source>
+        <translation>Gruppeninfos</translation>
+    </message>
+</context>
+<context>
     <name>ChatPage</name>
     <message>
         <source>Unknown</source>
@@ -96,30 +228,6 @@
     <message>
         <source>Your message</source>
         <translation>Ihre Nachricht</translation>
-    </message>
-    <message>
-        <source>was never online</source>
-        <translation>war niemals online</translation>
-    </message>
-    <message>
-        <source>offline, last online: last month</source>
-        <translation>offline, zuletzt online im letzten Monat</translation>
-    </message>
-    <message>
-        <source>offline, last online: last week</source>
-        <translation>offline, zuletzt online in der letzten Woche</translation>
-    </message>
-    <message>
-        <source>offline, last online: %1</source>
-        <translation>offline, zuletzt online: %1</translation>
-    </message>
-    <message>
-        <source>online</source>
-        <translation>online</translation>
-    </message>
-    <message>
-        <source>offline, was recently online</source>
-        <translation>offline, war neulich online</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
@@ -177,6 +285,10 @@
         <source>Forwarded Message</source>
         <translation>Weitergeleitete Nachricht</translation>
     </message>
+    <message>
+        <source>This chat is empty.</source>
+        <translation>Dieser Chat ist leer.</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -230,6 +342,74 @@
     <message>
         <source>Open Document</source>
         <translation>Dokument öffnen</translation>
+    </message>
+</context>
+<context>
+    <name>EditGroupChatPermissionsColumn</name>
+    <message>
+        <source>Group Member Permissions</source>
+        <comment>what can normal group members do</comment>
+        <translation>Berechtigungen der Gruppenmitglieder</translation>
+    </message>
+    <message>
+        <source>Send Messages</source>
+        <comment>member permission</comment>
+        <translation>Nachrichten senden</translation>
+    </message>
+    <message>
+        <source>Send Media Messages</source>
+        <comment>member permission</comment>
+        <translation>Medien senden</translation>
+    </message>
+    <message>
+        <source>Send Other Messages</source>
+        <comment>member permission</comment>
+        <translation>Andere Nachrichten senden</translation>
+    </message>
+    <message>
+        <source>Add Web Page Previews</source>
+        <comment>member permission</comment>
+        <translation>Webseiten-Vorschau hinzufügen</translation>
+    </message>
+    <message>
+        <source>Change Chat Info</source>
+        <comment>member permission</comment>
+        <translation>Chatinformation ändern</translation>
+    </message>
+    <message>
+        <source>Invite Users</source>
+        <comment>member permission</comment>
+        <translation>Benutzer einladen</translation>
+    </message>
+    <message>
+        <source>Pin Messages</source>
+        <comment>member permission</comment>
+        <translation>Nachrichten anpinnen</translation>
+    </message>
+    <message>
+        <source>New Members</source>
+        <comment>what can new group members do</comment>
+        <translation>Neue Mitglieder</translation>
+    </message>
+    <message>
+        <source>New members can see older messages</source>
+        <comment>member permission</comment>
+        <translation>Neue Mitglieder können ältere Nachrichten sehen</translation>
+    </message>
+</context>
+<context>
+    <name>EditSuperGroupSlowModeColumn</name>
+    <message>
+        <source>Slow Mode</source>
+        <translation>Langsamer Modus</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>Aus</translation>
+    </message>
+    <message>
+        <source>Set how long every chat member has to wait between Messages</source>
+        <translation>Legen Sie fest, wie lange jedes Mitglied zwischen zwei Nachrichten warten muss</translation>
     </message>
 </context>
 <context>
@@ -340,6 +520,15 @@
     <message>
         <source>sent a venue</source>
         <translation>hat einen Ort geschickt</translation>
+    </message>
+    <message>
+        <source>changed the chat title</source>
+        <comment>myself</comment>
+        <translation>haben den Chattitel geändert</translation>
+    </message>
+    <message>
+        <source>changed the chat title</source>
+        <translation>hat den Chattitel geändert</translation>
     </message>
 </context>
 <context>
@@ -468,20 +657,8 @@
         <translation>Unbekannt</translation>
     </message>
     <message>
-        <source>You</source>
-        <translation>Sie</translation>
-    </message>
-    <message>
         <source>Loading chat list...</source>
         <translation>Lade Chatliste...</translation>
-    </message>
-    <message>
-        <source>Unmute Chat</source>
-        <translation>Stummschaltung des Chats aufheben</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Chat stummschalten</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -717,6 +894,59 @@
         <source>left this chat</source>
         <comment>myself</comment>
         <translation>haben diesen Chat verlassen</translation>
+    </message>
+    <message>
+        <source>was never online</source>
+        <translation>war niemals online</translation>
+    </message>
+    <message>
+        <source>offline, last online: last month</source>
+        <translation>offline, zuletzt online im letzten Monat</translation>
+    </message>
+    <message>
+        <source>offline, last online: last week</source>
+        <translation>offline, zuletzt online in der letzten Woche</translation>
+    </message>
+    <message>
+        <source>offline, last online: %1</source>
+        <translation>offline, zuletzt online: %1</translation>
+    </message>
+    <message>
+        <source>online</source>
+        <translation>online</translation>
+    </message>
+    <message>
+        <source>offline, was recently online</source>
+        <translation>offline, war neulich online</translation>
+    </message>
+    <message>
+        <source>Admin</source>
+        <comment>channel user role</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Banned</source>
+        <comment>channel user role</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creator</source>
+        <comment>channel user role</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restricted</source>
+        <comment>channel user role</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat title to %1</source>
+        <comment>myself</comment>
+        <translation>haben den Chattitel zu %1 geändert</translation>
+    </message>
+    <message>
+        <source>changed the chat title to %1</source>
+        <translation>hat den Chattitel zu %1 geändert</translation>
     </message>
 </context>
 </TS>

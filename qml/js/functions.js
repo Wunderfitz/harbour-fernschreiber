@@ -94,8 +94,46 @@ function getMessageText(message, simple, myself) {
     if (message.content['@type'] === 'messageChatDeleteMember') {
         return myself ? qsTr("left this chat", "myself") : qsTr("left this chat");
     }
+    if (message.content['@type'] === 'messageChatChangeTitle') {
+        return myself ? qsTr("changed the chat title to %1", "myself").arg(message.content.title) : qsTr("changed the chat title to %1").arg(message.content.title);
+    }
     return qsTr("Unsupported message: %1").arg(message.content['@type'].substring(7));
 }
+
+function getChatPartnerStatusText(statusType, was_online) {
+    switch(statusType) {
+    case "userStatusEmpty":
+        return qsTr("was never online");
+    case "userStatusLastMonth":
+        return qsTr("offline, last online: last month");
+    case "userStatusLastWeek":
+        return qsTr("offline, last online: last week");
+    case "userStatusOffline":
+        return qsTr("offline, last online: %1").arg(getDateTimeElapsed(was_online));
+    case "userStatusOnline":
+        return qsTr("online");
+    case "userStatusRecently":
+        return qsTr("offline, was recently online");
+    }
+}
+function getChatMemberStatusText(statusType) {
+//    chatMemberStatusAdministrator, chatMemberStatusBanned, chatMemberStatusCreator, chatMemberStatusLeft, chatMemberStatusMember, and chatMemberStatusRestricted.
+    switch(statusType) {
+    case "chatMemberStatusAdministrator":
+        return qsTr("Admin", "channel user role");
+    case "chatMemberStatusBanned":
+        return qsTr("Banned", "channel user role");
+    case "chatMemberStatusCreator":
+        return qsTr("Creator", "channel user role");
+    case "chatMemberStatusRestricted":
+        return qsTr("Restricted", "channel user role");
+    case "chatMemberStatusLeft":
+    case "chatMemberStatusMember":
+        return ""
+    }
+    return statusType || "";
+}
+
 function getShortenedCount(count) {
     if (count >= 1000000) {
         return qsTr("%1M").arg((count / 1000000).toLocaleString(Qt.locale(), 'f', 0));
@@ -225,4 +263,7 @@ function getVideoHeight(videoWidth, videoData) {
     } else {
         return 1;
     }
+}
+function replaceUrlsWithLinks(string) {
+    return string.replace(/((\w+):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, "<a href=\"$1\">$1</a>");
 }
