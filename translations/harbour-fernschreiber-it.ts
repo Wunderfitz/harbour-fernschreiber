@@ -611,6 +611,10 @@
         <source>User Registration</source>
         <translation>Registrazione utente</translation>
     </message>
+    <message>
+        <source>Use the international format, e.g. %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>

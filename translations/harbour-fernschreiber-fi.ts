@@ -611,6 +611,10 @@
         <source>Register User</source>
         <translation>Rekisteröi käyttäjätili</translation>
     </message>
+    <message>
+        <source>Use the international format, e.g. %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
