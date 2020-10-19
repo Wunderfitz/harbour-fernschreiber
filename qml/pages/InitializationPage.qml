@@ -147,7 +147,7 @@ Page {
 
                 TextField {
                     id: phoneNumberTextField
-                    placeholderText: "Use the international format, e.g. +4912342424242"
+                    placeholderText: qsTr("Use the international format, e.g.") + "+4912342424242"
                     inputMethodHints: Qt.ImhDialableCharactersOnly
                     labelVisible: false
                     width: parent.width
