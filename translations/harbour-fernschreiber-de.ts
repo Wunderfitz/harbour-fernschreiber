@@ -183,6 +183,14 @@
         <source>Loading group members…</source>
         <translation>Lade Gruppenmitglieder…</translation>
     </message>
+    <message>
+        <source>You don&apos;t have any groups in common with this user.</source>
+        <translation>Sie haben mit diesem Benutzer keine gemeinsamen Gruppen.</translation>
+    </message>
+    <message>
+        <source>This group is empty.</source>
+        <translation>Diese Gruppe ist leer.</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemSettings</name>

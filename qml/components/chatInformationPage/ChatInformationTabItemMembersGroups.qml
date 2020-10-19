@@ -38,7 +38,7 @@ ChatInformationTabItemBase {
 
     SilicaListView {
         id: membersView
-        model: isPrivateChat ? delegateModel : chatInformationPage.membersList
+        model: isPrivateChat ? (chatPartnerCommonGroupsIds.length > 0 ? delegateModel : null) : chatInformationPage.membersList
         clip: true
         height: tabBase.height
         width: tabBase.width
@@ -68,7 +68,10 @@ ChatInformationTabItemBase {
         onQuickScrollAnimatingChanged: {
             handleScrollIntoView(true)
         }
-
+        ViewPlaceholder {
+            enabled: membersView.count === 0
+            text: chatInformationPage.isPrivateChat ? qsTr("You don't have any groups in common with this user.") : qsTr("This group is empty.")
+        }
         delegate: PhotoTextsListItem {
             pictureThumbnail {
                 photoData: (typeof user.profile_photo !== "undefined") ? user.profile_photo.small : ""

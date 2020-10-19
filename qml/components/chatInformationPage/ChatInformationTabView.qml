@@ -34,17 +34,14 @@ Item {
     Item {
         id: tabViewHeader
         /*
-         * Tab view is prepared, but "disabled" for now
-         * to view shared media/links/…,
+         * Tab view was prepared for
+         * shared media/links/…, but for this
          * we need message search with filters
          */
 
-        // START: change this to enable
         height: visible ? headerGrid.height : 0
-//        height: 0
         clip: true
         visible: tabView.count > 1
-        // END: change this to enable
 
         anchors {
             left: parent.left
@@ -80,7 +77,7 @@ Item {
                         }
                     }
                     Label {
-                        text: headerItem.tabItem.title// + headerItem.itemIsActive
+                        text: headerItem.tabItem.title
                         width: parent.width
                         horizontalAlignment: Text.AlignHCenter
                         anchors.top: headerIcon.bottom

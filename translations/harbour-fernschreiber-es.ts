@@ -183,6 +183,14 @@
         <source>You</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>You don&apos;t have any groups in common with this user.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This group is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemSettings</name>
