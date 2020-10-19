@@ -922,22 +922,22 @@
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Administrator</translation>
     </message>
     <message>
         <source>Banned</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verbannt</translation>
     </message>
     <message>
         <source>Creator</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Urheber</translation>
     </message>
     <message>
         <source>Restricted</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eingeschränkt</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
