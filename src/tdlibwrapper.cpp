@@ -93,6 +93,8 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(stickerSets(QVariantList)), this, SLOT(handleStickerSets(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSet(QVariantMap)), this, SLOT(handleStickerSet(QVariantMap)));
 
+    connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
+
     this->tdLibReceiver->start();
 
     this->setLogVerbosityLevel();
@@ -467,6 +469,16 @@ void TDLibWrapper::getStickerSet(const QString &setId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::searchEmoji(const QString &queryString)
+{
+    LOG("Searching emoji" << queryString);
+    while (this->emojiSearchWorker.isRunning()) {
+        this->emojiSearchWorker.requestInterruption();
+    }
+    this->emojiSearchWorker.setParameters(queryString);
+    this->emojiSearchWorker.start();
+}
+
 QVariantMap TDLibWrapper::getUserInformation()
 {
     return this->userInformation;
@@ -524,10 +536,14 @@ void TDLibWrapper::copyFileToDownloads(const QString &filePath)
     QFileInfo fileInfo(filePath);
     if (fileInfo.exists()) {
         QString downloadFilePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + fileInfo.fileName();
-        if (QFile::copy(filePath, downloadFilePath)) {
+        if (QFile::exists(downloadFilePath)) {
             emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
         } else {
-            emit copyToDownloadsError(fileInfo.fileName(), downloadFilePath);
+            if (QFile::copy(filePath, downloadFilePath)) {
+                emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+            } else {
+                emit copyToDownloadsError(fileInfo.fileName(), downloadFilePath);
+            }
         }
     } else {
         emit copyToDownloadsError(fileInfo.fileName(), filePath);
@@ -828,6 +844,12 @@ void TDLibWrapper::handleStickerSet(const QVariantMap &stickerSet)
     emit stickerSetReceived(stickerSet);
 }
 
+void TDLibWrapper::handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList)
+{
+    LOG("Emoji search completed" << queryString);
+    emit emojiSearchSuccessful(resultList);
+}
+
 void TDLibWrapper::setInitialParameters()
 {
     LOG("Sending initial parameters to TD Lib");
@@ -846,6 +868,7 @@ void TDLibWrapper::setInitialParameters()
     initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     initialParameters.insert("system_version", QSysInfo::prettyProductName());
     initialParameters.insert("application_version", "0.3");
+    // initialParameters.insert("use_test_dc", true);
     requestObject.insert("parameters", initialParameters);
     this->sendRequest(requestObject);
 }

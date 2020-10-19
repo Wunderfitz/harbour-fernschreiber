@@ -16,7 +16,7 @@ CONFIG += sailfishapp sailfishapp_i18n
 
 PKGCONFIG += nemonotifications-qt5 ngf-qt5
 
-QT += core dbus
+QT += core dbus sql
 
 SOURCES += src/harbour-fernschreiber.cpp \
     src/appsettings.cpp \
@@ -24,6 +24,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/chatmodel.cpp \
     src/dbusadaptor.cpp \
     src/dbusinterface.cpp \
+    src/emojisearchworker.cpp \
     src/fernschreiberutils.cpp \
     src/notificationmanager.cpp \
     src/processlauncher.cpp \
@@ -102,8 +103,11 @@ ICONPATH = /usr/share/icons/hicolor
 fernschreiber.desktop.path = /usr/share/applications/
 fernschreiber.desktop.files = harbour-fernschreiber.desktop
 
+database.files = db
+database.path = /usr/share/$${TARGET}
+
 INSTALLS += telegram 86.png 108.png 128.png 172.png 256.png \
-            fernschreiber.desktop gui images
+            fernschreiber.desktop gui images database
 
 HEADERS += \
     src/appsettings.h \
@@ -111,6 +115,7 @@ HEADERS += \
     src/chatmodel.h \
     src/dbusadaptor.h \
     src/dbusinterface.h \
+    src/emojisearchworker.h \
     src/fernschreiberutils.h \
     src/notificationmanager.h \
     src/processlauncher.h \

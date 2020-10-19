@@ -23,6 +23,7 @@
 namespace {
     const QString KEY_SEND_BY_ENTER("sendByEnter");
     const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
+    const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
@@ -54,5 +55,19 @@ void AppSettings::setShowStickersAsImages(bool showAsImages)
         LOG(KEY_SHOW_STICKERS_AS_IMAGES << showAsImages);
         settings.setValue(KEY_SHOW_STICKERS_AS_IMAGES, showAsImages);
         emit showStickersAsImagesChanged();
+    }
+}
+
+AppSettings::NotificationFeedback AppSettings::notificationFeedback() const
+{
+    return (NotificationFeedback) settings.value(KEY_NOTIFICATION_FEEDBACK, (int) NotificationFeedbackAll).toInt();
+}
+
+void AppSettings::setNotificationFeedback(NotificationFeedback feedback)
+{
+    if (notificationFeedback() != feedback) {
+        LOG(KEY_NOTIFICATION_FEEDBACK << feedback);
+        settings.setValue(KEY_NOTIFICATION_FEEDBACK, (int) feedback);
+        emit notificationFeedbackChanged();
     }
 }

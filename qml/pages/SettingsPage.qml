@@ -18,8 +18,8 @@
 */
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 import "../js/functions.js" as Functions
-
 
 Page {
     id: settingsPage
@@ -49,6 +49,57 @@ Page {
                 automaticCheck: false
                 onClicked: {
                     appSettings.sendByEnter = !checked
+                }
+            }
+
+            ComboBox {
+                id: feedbackComboBox
+                label: qsTr("Notification feedback")
+                description: qsTr("Use non-graphical feedback (sound, vibration) for notifications")
+                menu: ContextMenu {
+                    id: feedbackMenu
+
+                    MenuItem {
+                        readonly property int value: AppSettings.NotificationFeedbackAll
+                        text: qsTr("All events")
+                        onClicked: {
+                            appSettings.notificationFeedback = value
+                        }
+                    }
+                    MenuItem {
+                        readonly property int value: AppSettings.NotificationFeedbackNew
+                        text: qsTr("Only new events")
+                        onClicked: {
+                            appSettings.notificationFeedback = value
+                        }
+                    }
+                    MenuItem {
+                        readonly property int value: AppSettings.NotificationFeedbackNone
+                        text: qsTr("None")
+                        onClicked: {
+                            appSettings.notificationFeedback = value
+                        }
+                    }
+                }
+
+                Component.onCompleted: updateFeedbackSelection()
+
+                function updateFeedbackSelection() {
+                    var menuItems = feedbackMenu.children
+                    var n = menuItems.length
+                    for (var i=0; i<n; i++) {
+                        if (menuItems[i].value === appSettings.notificationFeedback) {
+                            currentIndex = i
+                            return
+                        }
+                    }
+                }
+
+                Connections {
+                    target: appSettings
+                    onNotificationFeedbackChanged: {
+                        feedbackComboBox.updateFeedbackSelection()
+                    }
                 }
             }
 
