@@ -258,13 +258,13 @@ void TDLibWrapper::getChatHistory(const QString &chatId, const qlonglong &fromMe
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId)
+void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId, const bool &force = false)
 {
     LOG("Mark message as viewed" << chatId << messageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "viewMessages");
     requestObject.insert("chat_id", chatId);
-    requestObject.insert("force_read", false);
+    requestObject.insert("force_read", force);
     QVariantList messageIds;
     messageIds.append(messageId);
     requestObject.insert("message_ids", messageIds);
