@@ -151,7 +151,7 @@
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation>Geben Sie 1-126 Zeichen ein</translation>
+        <translation>Geben Sie 1-128 Zeichen ein</translation>
     </message>
 </context>
 <context>
