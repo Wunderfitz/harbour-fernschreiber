@@ -91,67 +91,67 @@
     <name>ChatInformationPage</name>
     <message>
         <source>Leave Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Lascia gruppo</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Lascia chat</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Riattiva suoni chat</translation>
+        <translation>Riattiva suoni chat</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Silenzia chat</translation>
+        <translation>Silenzia chat</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Sconosciuto</translation>
+        <translation>Sconosciuto</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il link d'invito è stato copiato nella clipboard</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
-        <translation type="unfinished">%1 membri, %2 online</translation>
+        <translation>%1 membri, %2 online</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 abbonati</translation>
+        <translation>%1 abbonati</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished">%1 membri</translation>
+        <translation>%1 membri</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Info</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Telefono</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Link d'invito</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Attualmente non è disponibile nessuna informazione</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Titolo chat</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserisci 1-128 caratteri</translation>
     </message>
 </context>
 <context>
@@ -159,37 +159,37 @@
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gruppi</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished"></translation>
+        <translation>Membri</translation>
     </message>
     <message>
-        <source>Loading common chats…</source>
+        <source>Loading common chats...</source>
         <comment>chats you have in common with a user</comment>
-        <translation type="unfinished"></translation>
+        <translation>Carica chat in comune...</translation>
     </message>
     <message>
-        <source>Loading group members…</source>
-        <translation type="unfinished"></translation>
+        <source>Loading group members...</source>
+        <translation>Carica membri del gruppo...</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Tu</translation>
+        <translation>Tu</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Sconosciuto</translation>
+        <translation>Sconosciuto</translation>
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Non hai nessun gruppo in comune con questo utente.</translation>
     </message>
     <message>
         <source>This group is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo gruppo è vuoto.</translation>
     </message>
 </context>
 <context>
@@ -197,38 +197,38 @@
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">Impostazioni</translation>
+        <translation>Impostazioni</translation>
     </message>
 </context>
 <context>
     <name>ChatListViewItem</name>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Sconosciuto</translation>
+        <translation>Sconosciuto</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Tu</translation>
+        <translation>Tu</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Riattiva suoni chat</translation>
+        <translation>Riattiva suoni chat</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Silenzia chat</translation>
+        <translation>Silenzia chat</translation>
     </message>
     <message>
         <source>User Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Info utente</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Info gruppo</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Segna tutti i messaggi come già letti</translation>
     </message>
 </context>
 <context>
@@ -299,7 +299,7 @@
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questa chat è vuota</translation>
     </message>
 </context>
 <context>
@@ -361,67 +361,67 @@
     <message>
         <source>Group Member Permissions</source>
         <comment>what can normal group members do</comment>
-        <translation type="unfinished"></translation>
+        <translation>Permessi di gruppo</translation>
     </message>
     <message>
         <source>Send Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Invia messaggio</translation>
     </message>
     <message>
         <source>Send Media Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Invia media</translation>
     </message>
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Invia altri messaggi</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi anteprima sito web</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modifica info chat</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Invita utenti</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Metti in evidenza un messaggio</translation>
     </message>
     <message>
         <source>New Members</source>
         <comment>what can new group members do</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nuovi membri</translation>
     </message>
     <message>
         <source>New members can see older messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>I nuovi membri possono vedere i messaggi precedenti</translation>
     </message>
 </context>
 <context>
     <name>EditSuperGroupSlowModeColumn</name>
     <message>
         <source>Slow Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modalità lenta</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Off</translation>
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposta tempo di attesa tra i messaggi di un utente</translation>
     </message>
 </context>
 <context>
@@ -536,11 +536,11 @@
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hanno modificato il titolo della chat</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation type="unfinished"></translation>
+        <translation>Ha modificato il titolo della chat</translation>
     </message>
 </context>
 <context>
@@ -625,7 +625,7 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizza il formato internazionale, es. %1</translation>
     </message>
 </context>
 <context>
@@ -701,7 +701,7 @@
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Invia il messaggio quando premi il tasto invio</translation>
+        <translation>Invia il tuo messaggio con il tasto invio</translation>
     </message>
     <message>
         <source>Appearance</source>
@@ -913,56 +913,56 @@
     </message>
     <message>
         <source>was never online</source>
-        <translation type="unfinished">mai online</translation>
+        <translation>mai online</translation>
     </message>
     <message>
         <source>offline, last online: last month</source>
-        <translation type="unfinished">offline, ultimo accesso il mese scorso</translation>
+        <translation>offline, ultimo accesso il mese scorso</translation>
     </message>
     <message>
         <source>offline, last online: last week</source>
-        <translation type="unfinished">offline, ultimo accesso la settimana scorsa</translation>
+        <translation>offline, ultimo accesso la settimana scorsa</translation>
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation type="unfinished">offline, ultimo accesso: %1</translation>
+        <translation>offline, ultimo accesso: %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation type="unfinished">online</translation>
+        <translation>online</translation>
     </message>
     <message>
         <source>offline, was recently online</source>
-        <translation type="unfinished">offline, online di recente</translation>
+        <translation>offline, online di recente</translation>
     </message>
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation><Amministratore/translation>
     </message>
     <message>
         <source>Banned</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bannato</translation>
     </message>
     <message>
         <source>Creator</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Creatore</translation>
     </message>
     <message>
         <source>Restricted</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Limitato</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>hanno modificato il titolo della chat in %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ha modificato il titolo della chat in %1</translation>
     </message>
 </context>
 </TS>
