@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf
+    Copyright (C) 2020 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -113,8 +113,9 @@ public:
     Q_INVOKABLE void downloadFile(const QString &fileId);
     Q_INVOKABLE void openChat(const QString &chatId);
     Q_INVOKABLE void closeChat(const QString &chatId);
+    Q_INVOKABLE void leaveChat(const QString &chatId);
     Q_INVOKABLE void getChatHistory(const QString &chatId, const qlonglong &fromMessageId = 0, const int &offset = 0, const int &limit = 50, const bool &onlyLocal = false);
-    Q_INVOKABLE void viewMessage(const QString &chatId, const QString &messageId);
+    Q_INVOKABLE void viewMessage(const QString &chatId, const QString &messageId, const bool &force);
     Q_INVOKABLE void sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendPhotoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendVideoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
@@ -129,6 +130,18 @@ public:
     Q_INVOKABLE void getRecentStickers();
     Q_INVOKABLE void getInstalledStickerSets();
     Q_INVOKABLE void getStickerSet(const QString &setId);
+    Q_INVOKABLE void getSupergroupMembers(const QString &groupId, const int &limit, const int &offset);
+    Q_INVOKABLE void getGroupFullInfo(const QString &groupId, const bool &isSuperGroup);
+    Q_INVOKABLE void getUserFullInfo(const QString &userId);
+    Q_INVOKABLE void createPrivateChat(const QString &userId);
+    Q_INVOKABLE void getGroupsInCommon(const QString &userId, const int &limit, const int &offset);
+    Q_INVOKABLE void getUserProfilePhotos(const QString &userId, const int &limit, const int &offset);
+    Q_INVOKABLE void setChatPermissions(const QString &chatId, const QVariantMap &chatPermissions);
+    Q_INVOKABLE void setChatSlowModeDelay(const QString &chatId, const int &delay);
+    Q_INVOKABLE void setChatDescription(const QString &chatId, const QString &description);
+    Q_INVOKABLE void setChatTitle(const QString &chatId, const QString &title);
+    Q_INVOKABLE void setBio(const QString &bio);
+    Q_INVOKABLE void toggleSupergroupIsAllHistoryAvailable(const QString &groupId, const bool &isAllHistoryAvailable);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -155,7 +168,7 @@ signals:
     void basicGroupUpdated(qlonglong groupId);
     void superGroupUpdated(qlonglong groupId);
     void chatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
-    void messagesReceived(const QVariantList &messages);
+    void messagesReceived(const QVariantList &messages, const int &totalCount);
     void newMessageReceived(const QString &chatId, const QVariantMap &message);
     void copyToDownloadsSuccessful(const QString &fileName, const QString &filePath);
     void copyToDownloadsError(const QString &fileName, const QString &filePath);
@@ -168,12 +181,23 @@ signals:
     void messageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void messagesDeleted(const QString &chatId, const QVariantList &messageIds);
     void chatsReceived(const QVariantMap &chats);
+    void chatReceived(const QVariantMap &chat);
     void recentStickersUpdated(const QVariantList &stickerIds);
     void stickersReceived(const QVariantList &stickers);
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
     void stickerSetsReceived(const QVariantList &stickerSets);
     void stickerSetReceived(const QVariantMap &stickerSet);
     void emojiSearchSuccessful(const QVariantList &result);
+    void chatMembersReceived(const QString &extra, const QVariantList &members, const int &totalMembers);
+    void userFullInfoReceived(const QVariantMap &userFullInfo);
+    void userFullInfoUpdated(const QString &userId, const QVariantMap &userFullInfo);
+    void basicGroupFullInfoReceived(const QString &groupId, const QVariantMap &groupFullInfo);
+    void supergroupFullInfoReceived(const QString &groupId, const QVariantMap &groupFullInfo);
+    void basicGroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo);
+    void supergroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo);
+    void userProfilePhotosReceived(const QString &extra, const QVariantList &photos, const int &totalPhotos);
+    void chatPermissionsUpdated(const QString &chatId, const QVariantMap &permissions);
+    void chatTitleUpdated(const QString &chatId, const QString &title);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -193,7 +217,7 @@ public slots:
     void handleBasicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void handleSuperGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void handleChatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
-    void handleMessagesReceived(const QVariantList &messages);
+    void handleMessagesReceived(const QVariantList &messages, const int &totalCount);
     void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
     void handleMessageInformation(const QString &messageId, const QVariantMap &message);
     void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
@@ -204,12 +228,23 @@ public slots:
     void handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds);
     void handleChats(const QVariantMap &chats);
+    void handleChat(const QVariantMap &chat);
     void handleRecentStickersUpdated(const QVariantList &stickerIds);
     void handleStickers(const QVariantList &stickers);
     void handleInstalledStickerSetsUpdated(const QVariantList &stickerSetIds);
     void handleStickerSets(const QVariantList &stickerSets);
     void handleStickerSet(const QVariantMap &stickerSet);
     void handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList);
+    void handleChatMembers(const QString &extra, const QVariantList &members, const int &totalMembers);
+    void handleUserFullInfo(const QVariantMap &userFullInfo);
+    void handleUserFullInfoUpdated(const QString &userId, const QVariantMap &userFullInfo);
+    void handleBasicGroupFullInfo(const QString &groupId, const QVariantMap &groupFullInfo);
+    void handleBasicGroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo);
+    void handleSupergroupFullInfo(const QString &groupId, const QVariantMap &groupFullInfo);
+    void handleSupergroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo);
+    void handleUserProfilePhotos(const QString &extra, const QVariantList &photos, const int &totalPhotos);
+    void handleChatPermissionsUpdated(const QString &chatId, const QVariantMap permissions);
+    void handleChatTitleUpdated(const QString &chatId, const QString title);
 
 private:
     void setInitialParameters();

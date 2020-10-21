@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru">
+<TS version="2.1" language="sv">
 <context>
     <name>AboutPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>О программе</translation>
+        <translation>Om Fernschreiber</translation>
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>Телеграм клиент для Sailfish OS</translation>
+        <translation>En Telegram-klient för Sailfish OS</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Отправить E-Mail</translation>
+        <translation>Skicka e-post</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Лицензирован в соответствии с GNU GPLv3</translation>
+        <translation>Licensierad under GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Исходный код на GitHub</translation>
+        <translation>Källor på GitHub</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Условия обслуживания</translation>
+        <translation>Tjänstevillkor</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Конфиденциальность</translation>
+        <translation>Sekretesspolicy</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation>Благодарности</translation>
+        <translation>Medverkande</translation>
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Этот проект использует Telegram Database Library (TDLib). Спасибо, что сделали её доступной на условиях лицензии Boost Software License 1.0!</translation>
+        <translation>Detta projekt använder Telegram Database Library (TDLib). Tack för att det gjorts tillgängligt under villkoren för Boost Software License 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Открыть Telegram Database Library на GitHub</translation>
+        <translation>Öppna Telegram Database Library på GitHub</translation>
     </message>
     <message>
         <source>About Telegram</source>
-        <translation>Телеграм</translation>
+        <translation>Om Telegram</translation>
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Этот продукт использует Telegram API, но не одобрен или сертифицирован Telegram.</translation>
+        <translation>Denna produkt använder Telegrams API men är inte godkänt eller certifierat av Telegram.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
-        <translation>Версия TDLib %1</translation>
+        <translation>TDLib version %1</translation>
     </message>
     <message>
         <source>Logged in as %1</source>
-        <translation>Вы тут как %1</translation>
+        <translation>Inloggad som %1</translation>
     </message>
     <message>
         <source>Phone number: +%1</source>
-        <translation>Ваш телефон: +%1</translation>
+        <translation>Telefonnummer: +%1</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Этот проект использует twemoji. Copyright 2018 Twitter, Inc. и другие участники. Спасибо, что сделали её доступной на условиях лицензии MIT License (программирование) und CC-BY 4.0 (графика)!</translation>
+        <translation>Detta projekt använder twemoji. Copyright 2018 Twitter, Inc. och andra medverkande. Tack för att det gjorts tillgängligt under villkoren för MIT License (kodning) och CC-BY 4.0 (grafik)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Открыть Twemoji на GitHub</translation>
+        <translation>Öppna twemoji på GitHub</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
-        <translation>Sebastian J. Wolf и &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;другие участники&lt;/a&gt;</translation>
+        <translation>Av Sebastian J. Wolf och &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;andra medverkande&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
@@ -91,67 +91,67 @@
     <name>ChatInformationPage</name>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Включить уведомления</translation>
+        <translation>Slå på chatten</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Выключить уведомления</translation>
+        <translation>Stäng av chatten</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inbjudningslänken har kopierats till urklipp.</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
-        <translation type="unfinished">%1 участников, %2 онлайн</translation>
+        <translation>%1 medlemmar, %2 inloggade</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 подписчиков</translation>
+        <translation>%1 prenumeranter</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished">%1 участников</translation>
+        <translation>%1 medlemmar</translation>
     </message>
     <message>
         <source>Leave Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Lämna gruppen</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Lämnar chatten</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Info</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Telefonnummer</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Inbjudningslänk</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Det finns ingen informationstext än.</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Chattnamn</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange 1-128 tecken</translation>
     </message>
 </context>
 <context>
@@ -159,37 +159,37 @@
     <message>
         <source>Loading common chats…</source>
         <comment>chats you have in common with a user</comment>
-        <translation type="unfinished"></translation>
+        <translation>Läser in gemensamma chattar...</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grupper</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished"></translation>
+        <translation>Medlemmar</translation>
     </message>
     <message>
         <source>Loading group members…</source>
-        <translation type="unfinished"></translation>
+        <translation>Läser in gruppmedlemmar...</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Вы</translation>
+        <translation>Du</translation>
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du har inga grupper gemensamt med denna användare.</translation>
     </message>
     <message>
         <source>This group is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna grupp är tom.</translation>
     </message>
 </context>
 <context>
@@ -197,163 +197,163 @@
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Inställningar</translation>
     </message>
 </context>
 <context>
     <name>ChatListViewItem</name>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Вы</translation>
+        <translation>Du</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Включить уведомления</translation>
+        <translation>Slå på chatten</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Выключить уведомления</translation>
+        <translation>Stäng av chatten</translation>
     </message>
     <message>
         <source>User Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Användarinfo</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppinfo</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera alla meddelanden som lästa</translation>
     </message>
 </context>
 <context>
     <name>ChatPage</name>
     <message>
         <source>Unknown</source>
-        <translation>Неизвестный(ая)</translation>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>Your message</source>
-        <translation>Ваше сообщение</translation>
+        <translation>Ditt meddelande</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
-        <translation>%1 участников, %2 онлайн</translation>
+        <translation>%1 medlem(mar), %2 inloggad(e)</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 участников</translation>
+        <translation>%1 medlem(mar)</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation>%1 подписчиков</translation>
+        <translation>%1 prenumerant(er)</translation>
     </message>
     <message>
         <source>Reply to Message</source>
-        <translation>Ответить</translation>
+        <translation>Svara på meddelandet</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Du</translation>
     </message>
     <message>
         <source>Loading messages...</source>
-        <translation>Загрузка сообщений...</translation>
+        <translation>Läser in meddelanden...</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Включить уведомления</translation>
+        <translation>Slå på chatten</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Выключить уведомления</translation>
+        <translation>Stäng av chatten</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation>Редактировать</translation>
+        <translation>Redigera meddelandet</translation>
     </message>
     <message>
         <source>edited</source>
-        <translation>изменено</translation>
+        <translation>redigerade</translation>
     </message>
     <message>
         <source>Deleting message</source>
-        <translation>Удаление сообщения</translation>
+        <translation>Tar bort meddelande</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation>Удалить</translation>
+        <translation>Ta bort meddelandet</translation>
     </message>
     <message>
         <source>Uploading...</source>
-        <translation>Отправка...</translation>
+        <translation>Ladda upp...</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation>Пересланное сообщение</translation>
+        <translation>Vidarebefordrat meddelande</translation>
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna chatt är tom.</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation>непрочитанное сообщение</translation>
+        <translation>oläst meddelande</translation>
     </message>
     <message>
         <source>unread messages</source>
-        <translation>непрочитанных сообщений</translation>
+        <translation>olästa meddelanden</translation>
     </message>
     <message>
         <source>in</source>
-        <translation>в</translation>
+        <translation>i</translation>
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Ожидание сети...</translation>
+        <translation>Väntar på nätverket...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Подключение к сети...</translation>
+        <translation>Ansluter till nätverket...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Подключение к прокси...</translation>
+        <translation>Ansluter till proxy...</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation>Подключен</translation>
+        <translation>Ansluten</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Обновление контента...</translation>
+        <translation>Uppdaterar innehåll...</translation>
     </message>
     <message>
         <source>chat</source>
-        <translation>чат</translation>
+        <translation>chatt</translation>
     </message>
     <message>
         <source>chats</source>
-        <translation>чаты</translation>
+        <translation>chattar</translation>
     </message>
 </context>
 <context>
     <name>DocumentPreview</name>
     <message>
         <source>Download Document</source>
-        <translation>Скачать документ</translation>
+        <translation>Ladda ner dokument</translation>
     </message>
     <message>
         <source>Open Document</source>
-        <translation>Открыть документ</translation>
+        <translation>Öppna dokument</translation>
     </message>
 </context>
 <context>
@@ -361,67 +361,67 @@
     <message>
         <source>Group Member Permissions</source>
         <comment>what can normal group members do</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gruppmedlemmars rättigheter</translation>
     </message>
     <message>
         <source>Send Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka meddelanden</translation>
     </message>
     <message>
         <source>Send Media Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka mediameddelanden</translation>
     </message>
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka andra meddelanden</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lägga till förhandsvisning av webbsida</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ändra chattinformation</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bjuda in användare</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fästa meddelanden</translation>
     </message>
     <message>
         <source>New Members</source>
         <comment>what can new group members do</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nya medlemmar</translation>
     </message>
     <message>
         <source>New members can see older messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nya medlemmar kan se gamla meddelanden</translation>
     </message>
 </context>
 <context>
     <name>EditSuperGroupSlowModeColumn</name>
     <message>
         <source>Slow Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Långsamt läge</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Av</translation>
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange hur länge varje chatmedlem måste vänta mellan meddelanden</translation>
     </message>
 </context>
 <context>
@@ -429,224 +429,224 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>отправил(а) картинку</translation>
+        <translation>skickade en bild</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>отправил(а) картинку</translation>
+        <translation>skickade en bild</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>отправил(а) видео</translation>
+        <translation>skickade en video</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>отправил(а) видео</translation>
+        <translation>skickade en video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>отправил(а) анимацию</translation>
+        <translation>skickade en animering</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>отправил(а) анимацию</translation>
+        <translation>skickade en animering</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>отправил(а) голосовую заметку</translation>
+        <translation>skickade en röstanteckning</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>отправил(а) документ</translation>
+        <translation>skickade ett dokument</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>отправил(а) документ</translation>
+        <translation>skickade ett dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>отправил(а) местоположение</translation>
+        <translation>skickade en plats</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>отправил(а) местоположение</translation>
+        <translation>Skickade en plats</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>зарегистрирован(а) в Telegram</translation>
+        <translation>har registrerats på Telegram</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>зарегистрирован(а) в Telegram</translation>
+        <translation>har registrerats på Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>присоединил(ась)ся к чату</translation>
+        <translation>anslöt till denna chat</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>присоединил(ась)ся к чату</translation>
+        <translation>anslöt till denna chat</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>был добавлен(а) в чат</translation>
+        <translation>lades till i denna chatt</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>добавлен(а) в чат</translation>
+        <translation>lades till i denna chatt</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>покинул(а) чат</translation>
+        <translation>lämnade denna chatt</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>покунул(а) чат</translation>
+        <translation>lämnade denna chatt</translation>
     </message>
     <message>
         <source>Unsupported message: %1</source>
-        <translation>Не поддерживается: %1</translation>
+        <translation>Mededelande som inte stöds: %1</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation>Стикер: %1</translation>
+        <translation>Dekal: %1</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>отправил(а) голосовую заметку</translation>
+        <translation>skickade en röstanteckning</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>отправил(а) место встречи</translation>
+        <translation>skickade en mötesplats</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>отправил(а) место встречи</translation>
+        <translation>skickade en mötesplats</translation>
     </message>
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ändrade chattnamnet</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation type="unfinished"></translation>
+        <translation>ändrade chattnamnet</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
-        <translation>Скачать картинку</translation>
+        <translation>Ladda ner bild</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Успешно скачано %1.</translation>
+        <translation>Nerladdning av %1 slutförd.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Ошибка скачивания.</translation>
+        <translation>Nerladdningen misslyckades.</translation>
     </message>
 </context>
 <context>
     <name>InReplyToRow</name>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Du</translation>
     </message>
 </context>
 <context>
     <name>InitializationPage</name>
     <message>
         <source>OK</source>
-        <translation>Ок</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Welcome to Fernschreiber!</source>
-        <translation>Fernschreiber приветствует вас!</translation>
+        <translation>Välkommen till Fernschreiber!</translation>
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Введите, пожалуйста, ваш номер телефона.</translation>
+        <translation>Ange ditt telefonnummer för att förtsätta.</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Далее</translation>
+        <translation>Fortsätt</translation>
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Введите сюда тот код, который вы получили:</translation>
+        <translation>Ange koden du mottog:</translation>
     </message>
     <message>
         <source>Loading...</source>
-        <translation>Загрузка...</translation>
+        <translation>Läser in...</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
-        <translation>Не удалось аутентифицировать вас с помощью введенного кода.</translation>
+        <translation>Det gick inte att autentisera dig med angiven kod.</translation>
     </message>
     <message>
         <source>Enter code again</source>
-        <translation>Введите код заново</translation>
+        <translation>Ange koden igen</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Перезапуск аутентификации</translation>
+        <translation>Starta om autentisering</translation>
     </message>
     <message>
         <source>Please enter your password:</source>
-        <translation>Пожалуйста, введите ваш пароль:</translation>
+        <translation>Ange ditt lösenord:</translation>
     </message>
     <message>
         <source>User Registration</source>
-        <translation>Регистрация</translation>
+        <translation>Användarregistrering</translation>
     </message>
     <message>
         <source>Enter your First Name</source>
-        <translation>Имя</translation>
+        <translation>Ange ditt förnamn</translation>
     </message>
     <message>
         <source>Enter your Last Name</source>
-        <translation>Фамилия</translation>
+        <translation>Ange ditt efternamn</translation>
     </message>
     <message>
         <source>Register User</source>
-        <translation>Зарегистрироваться</translation>
+        <translation>Registrera användaren</translation>
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd internationellt format, t.ex. %1</translation>
     </message>
 </context>
 <context>
     <name>LocationPreview</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation>Для просмотра карты, установите Pure Maps.</translation>
+        <translation>Installera Pure Maps för att inspektera den här platsen.</translation>
     </message>
 </context>
 <context>
     <name>NotificationManager</name>
     <message>
         <source>%1 unread messages</source>
-        <translation>%1 непрочитанных сообщений</translation>
+        <translation>%1 oläst(a) meddelande(n)</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>О программе «Fernschreiber»</translation>
+        <translation>Om Fernschreiber</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
@@ -654,191 +654,191 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Ожидание сети...</translation>
+        <translation>Väntar på nätverk...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Подключение к сети...</translation>
+        <translation>Ansluter till nätverket...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Подключение к прокси...</translation>
+        <translation>Ansluter till proxy...</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Обновление контента...</translation>
+        <translation>Uppdaterar innehåll...</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Неизвестный</translation>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>Loading chat list...</source>
-        <translation>Загрузка чатов...</translation>
+        <translation>Läser in chattlistan...</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Настройки</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>Тут пока ничего нет</translation>
+        <translation>Du har inga chattar än.</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Настройки</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>Behavior</source>
-        <translation>Поведение</translation>
+        <translation>Beteende</translation>
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Отправка сообщения клавишей ввода</translation>
+        <translation>Skicka meddelanden med retur</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Тогда клавиша ввода на клавиатуре будет отправлять сообщение, а не переносить строку.</translation>
+        <translation>Skicka meddelanden genom att trycka på returknappen</translation>
     </message>
     <message>
         <source>Appearance</source>
-        <translation>Внешний вид</translation>
+        <translation>Utseende</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
-        <translation>Показывать стикеры как обычные изображения</translation>
+        <translation>Visa dekaler som bilder</translation>
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation>То есть рисовать под ними фон и позиционировать по центру.</translation>
+        <translation>Visa bakgrund för dekaler och justera dem centralt som bilder</translation>
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation>Звуки и вибрация</translation>
+        <translation>Aviseringsåterkoppling</translation>
     </message>
     <message>
         <source>All events</source>
-        <translation>На каждое событие</translation>
+        <translation>Alla händelser</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation>Только на новые события</translation>
+        <translation>Endast nya händelser</translation>
     </message>
     <message>
         <source>None</source>
-        <translation>Никогда</translation>
+        <translation>Inget</translation>
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Сопровождать уведомления звуками и вибрацией.</translation>
+        <translation>Använd icke-grafisk återkoppling (ljud, vibration) för avisering</translation>
     </message>
 </context>
 <context>
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation>Недавно использованные</translation>
+        <translation>Nyligen använt</translation>
     </message>
     <message>
         <source>Loading stickers...</source>
-        <translation>Загрузка стикеров...</translation>
+        <translation>Läser in dekaler...</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download Video</source>
-        <translation>Скачать видео</translation>
+        <translation>Ladda ner video</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Успешно скачано %1.</translation>
+        <translation>Nerladdning av %1 slutförd.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Ошибка скачивания.</translation>
+        <translation>Nerladdning misslyckades.</translation>
     </message>
 </context>
 <context>
     <name>functions</name>
     <message>
         <source>Video: %1</source>
-        <translation>Видео: %1</translation>
+        <translation>Video: %1</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>зарегистрирован(а) в Телеграм</translation>
+        <translation>har registrerats i Telegram</translation>
     </message>
     <message>
         <source>Picture: %1</source>
-        <translation>Картинка: %1</translation>
+        <translation>Bild: %1</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation>Стикер: %1</translation>
+        <translation>Dekal: %1</translation>
     </message>
     <message>
         <source>Audio: %1</source>
-        <translation>Аудио: %1</translation>
+        <translation>Ljud: %1</translation>
     </message>
     <message>
         <source>Voice Note: %1</source>
-        <translation>Голосовая заметка: %1</translation>
+        <translation>Ljudmeddelande: %1</translation>
     </message>
     <message>
         <source>Animation: %1</source>
-        <translation>Анимация: %1</translation>
+        <translation>Animering: %1</translation>
     </message>
     <message>
         <source>Unsupported message: %1</source>
-        <translation>Не поддерживается: %1</translation>
+        <translation>Meeddelande som inte stöds: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
-        <translation>Документ: %1</translation>
+        <translation>Dokument: %1</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>отправил(а) картинку</translation>
+        <translation>skickade en bild</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>отправил(а) видео</translation>
+        <translation>skickade en video</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>отправил(а) анимацию</translation>
+        <translation>skickade en animering</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>отправил(а) аудио</translation>
+        <translation>skickade en ljudfil</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>отправил(а) голосовую заметку</translation>
+        <translation>skickade ett röstanteckning</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>отправил(а) документ</translation>
+        <translation>skickade ett dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>отправил(а) местоположение</translation>
+        <translation>skickade en plats</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>присоединил(ась)ся к чату</translation>
+        <translation>anslöt till den här chatten</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>был добавлен(а) в чат</translation>
+        <translation>lades till i den här chatten</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>покинул(а) чат</translation>
+        <translation>lämnade den här chatten</translation>
     </message>
     <message>
         <source>%1M</source>
@@ -846,123 +846,123 @@
     </message>
     <message>
         <source>%1K</source>
-        <translation>%1T</translation>
+        <translation>%1K</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>отправил(а) место встречи</translation>
+        <translation>skickade en mötesplats</translation>
     </message>
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>отправил(а) картинку</translation>
+        <translation>skickade en bild</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>отправил(а) видео</translation>
+        <translation>skickade en video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>отправил(а) анимацию</translation>
+        <translation>skickade en animering</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>отправил(а) аудио</translation>
+        <translation>skickade en ljudfil</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>отправил(а) голосовую заметку</translation>
+        <translation>skickade en röstanteckning</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>отправил(а) документ</translation>
+        <translation>skickade ett dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>отправил(а) местоположение</translation>
+        <translation>skickade en plats</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>отправил(а) место встречи</translation>
+        <translation>skickade en mötesplats</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation>зарегистрировал(ась)ся с помощью Telegram</translation>
+        <translation>har registrerats i Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>присоединил(ась)ся к чату</translation>
+        <translation>anslöt till den här chatten</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>был добавлен(а) в чат</translation>
+        <translation>lades till i den här chatten</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>покинул(а) чат</translation>
+        <translation>lämnade den här chatten</translation>
     </message>
     <message>
         <source>was never online</source>
-        <translation type="unfinished">никогда не был(а) онлайн</translation>
+        <translation>var aldrig inloggad</translation>
     </message>
     <message>
         <source>offline, last online: last month</source>
-        <translation type="unfinished">офлайн, был(а) онлайн: в прошлом месяце</translation>
+        <translation>utloggad, inloggad senast: Förra månaden</translation>
     </message>
     <message>
         <source>offline, last online: last week</source>
-        <translation type="unfinished">офлайн, был(а) онлайн: на прошлой неделе</translation>
+        <translation>utloggad, inloggad senast: Förra veckan</translation>
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation type="unfinished">офлайн, был(а) онлайн: %1</translation>
+        <translation>utloggad, inloggad senast: %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation type="unfinished">онлайн</translation>
+        <translation>utloggad</translation>
     </message>
     <message>
         <source>offline, was recently online</source>
-        <translation type="unfinished">офлайн, недавно был(а) онлайн</translation>
+        <translation>utloggad, var nyligen inloggad</translation>
     </message>
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Admin</translation>
     </message>
     <message>
         <source>Banned</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bannlyst</translation>
     </message>
     <message>
         <source>Creator</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skapare</translation>
     </message>
     <message>
         <source>Restricted</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Begränsad</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ändrade chattnamnet till %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ändrade chattnamnet till %1</translation>
     </message>
 </context>
 </TS>

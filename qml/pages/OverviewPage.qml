@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf
+    Copyright (C) 2020 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -152,6 +152,16 @@ Page {
                 chatListCreatedTimer.restart();
             }
         }
+        onChatReceived: {
+            if(chat["@extra"] === "openDirectly") {
+                console.log("ON CHAT RECEIVED", JSON.stringify(chat, null, 2));
+                if (status !== PageStatus.Active) {
+                    pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ), PageStackAction.Immediate);
+                }
+                // if we get a new chat (no messages?), we can not use the provided data
+                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chat.id) });
+            }
+        }
     }
 
     Component.onCompleted: {
@@ -219,31 +229,12 @@ Page {
                     Behavior on opacity { NumberAnimation {} }
 
                     model: chatListModel
-                    delegate: ListItem {
-
-                        id: chatListViewItem
-
-                        contentHeight: chatListRow.height + chatListSeparator.height + 2 * Theme.paddingMedium
-                        contentWidth: parent.width
+                    delegate: ChatListViewItem {
+                        pictureThumbnail.forceElementUpdate: overviewPage.chatListCreated
+                        ownUserId: overviewPage.ownUserId
 
                         onClicked: {
-                            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : display });
-                        }
-
-                        showMenuOnPressAndHold: chat_id != overviewPage.ownUserId
-                        menu: ContextMenu {
-                            MenuItem {
-                                onClicked: {
-                                    var newNotificationSettings = display.notification_settings;
-                                    if (newNotificationSettings.mute_for > 0) {
-                                        newNotificationSettings.mute_for = 0;
-                                    } else {
-                                        newNotificationSettings.mute_for = 6666666;
-                                    }
-                                    tdLibWrapper.setChatNotificationSettings(chat_id, newNotificationSettings);
-                                }
-                                text: display.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
-                            }
+                           pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : display });
                         }
 
                         Connections {
@@ -251,151 +242,10 @@ Page {
                             onChatChanged: {
                                 if (overviewPage.chatListCreated && changedChatId === chat_id) {
                                     // Force update of some list item elements (currently only last message text seems to create problems). dataChanged() doesn't seem to trigger them all :(
-                                    chatListLastMessageText.text = last_message_text ? Emoji.emojify(last_message_text, Theme.fontSizeExtraSmall) : qsTr("Unknown")
+                                    secondaryText.text = last_message_text ? Emoji.emojify(last_message_text, Theme.fontSizeExtraSmall) : qsTr("Unknown")
                                 }
                             }
                         }
-
-                        Column {
-                            id: chatListColumn
-                            width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                            spacing: Theme.paddingSmall
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                                verticalCenter: parent.verticalCenter
-                            }
-
-                            Row {
-                                id: chatListRow
-                                width: parent.width
-                                height: chatListContentColumn.height
-                                spacing: Theme.paddingMedium
-
-                                Column {
-                                    id: chatListPictureColumn
-                                    width: chatListContentColumn.height - Theme.paddingSmall
-                                    height: chatListContentColumn.height - Theme.paddingSmall
-                                    anchors.verticalCenter: parent.verticalCenter
-
-                                    Item {
-                                        id: chatListPictureItem
-                                        width: parent.width
-                                        height: parent.width
-
-                                        ProfileThumbnail {
-                                            id: chatListPictureThumbnail
-                                            photoData: photo_small
-                                            replacementStringHint: chatListNameText.text
-                                            width: parent.width
-                                            height: parent.width
-                                            forceElementUpdate: overviewPage.chatListCreated
-                                        }
-
-                                        Rectangle {
-                                            id: chatUnreadMessagesCountBackground
-                                            color: Theme.highlightBackgroundColor
-                                            width: Theme.fontSizeLarge
-                                            height: Theme.fontSizeLarge
-                                            anchors.right: parent.right
-                                            anchors.bottom: parent.bottom
-                                            radius: parent.width / 2
-                                            visible: unread_count > 0
-                                        }
-
-                                        Text {
-                                            id: chatUnreadMessagesCount
-                                            font.pixelSize: Theme.fontSizeExtraSmall
-                                            font.bold: true
-                                            color: Theme.primaryColor
-                                            anchors.centerIn: chatUnreadMessagesCountBackground
-                                            visible: chatUnreadMessagesCountBackground.visible
-                                            text: unread_count > 99 ? "99+" : unread_count
-                                        }
-                                    }
-                                }
-
-                                Column {
-                                    id: chatListContentColumn
-                                    width: parent.width * 5 / 6 - Theme.horizontalPageMargin
-                                    spacing: Theme.paddingSmall
-
-                                    Text {
-                                        id: chatListNameText
-                                        text: title ? Emoji.emojify(title, Theme.fontSizeMedium) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown")
-                                        textFormat: Text.StyledText
-                                        font.pixelSize: Theme.fontSizeMedium
-                                        color: Theme.primaryColor
-                                        elide: Text.ElideRight
-                                        width: parent.width
-                                        onTruncatedChanged: {
-                                            // There is obviously a bug in QML in truncating text with images.
-                                            // We simply remove Emojis then...
-                                            if (truncated) {
-                                                text = text.replace(/\<img [^>]+\/\>/g, "");
-                                            }
-                                        }
-                                    }
-
-                                    Row {
-                                        id: chatListLastMessageRow
-                                        width: parent.width
-                                        spacing: Theme.paddingSmall
-                                        Text {
-                                            id: chatListLastUserText
-                                            text: is_channel ? "" : ( last_message_sender_id ? ( last_message_sender_id !== overviewPage.ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(last_message_sender_id)), font.pixelSize) : qsTr("You") ) : qsTr("Unknown") )
-                                            font.pixelSize: Theme.fontSizeExtraSmall
-                                            color: Theme.highlightColor
-                                            textFormat: Text.StyledText
-                                            onTruncatedChanged: {
-                                                // There is obviously a bug in QML in truncating text with images.
-                                                // We simply remove Emojis then...
-                                                if (truncated) {
-                                                    text = text.replace(/\<img [^>]+\/\>/g, "");
-                                                }
-                                            }
-                                        }
-                                        Text {
-                                            id: chatListLastMessageText
-                                            text: last_message_text ? Emoji.emojify(last_message_text, Theme.fontSizeExtraSmall) : qsTr("Unknown")
-                                            font.pixelSize: Theme.fontSizeExtraSmall
-                                            color: Theme.primaryColor
-                                            width: parent.width - Theme.paddingMedium - chatListLastUserText.width
-                                            elide: Text.ElideRight
-                                            textFormat: Text.StyledText
-                                            onTruncatedChanged: {
-                                                // There is obviously a bug in QML in truncating text with images.
-                                                // We simply remove Emojis then...
-                                                if (truncated) {
-                                                    text = text.replace(/\<img [^>]+\/\>/g, "");
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                    Text {
-                                        id: messageContactTimeElapsedText
-                                        text: last_message_date ? Functions.getDateTimeElapsed(last_message_date) : qsTr("Unknown")
-                                        font.pixelSize: Theme.fontSizeTiny
-                                        color: Theme.secondaryColor
-                                    }
-                                }
-                            }
-
-                        }
-
-                        Separator {
-                            id: chatListSeparator
-
-                            anchors {
-                                top: chatListColumn.bottom
-                                topMargin: Theme.paddingMedium
-                            }
-
-                            width: parent.width
-                            color: Theme.primaryColor
-                            horizontalAlignment: Qt.AlignHCenter
-                        }
-
                     }
 
                     ViewPlaceholder {

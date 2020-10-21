@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf
+    Copyright (C) 2020 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -42,6 +42,7 @@
 namespace {
     const QString STATUS("status");
     const QString _TYPE("@type");
+    const QString _EXTRA("@extra");
 }
 
 TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
@@ -76,7 +77,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(basicGroupUpdated(qlonglong, QVariantMap)), this, SLOT(handleBasicGroupUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(superGroupUpdated(qlonglong, QVariantMap)), this, SLOT(handleSuperGroupUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SLOT(handleChatOnlineMemberCountUpdated(QString, int)));
-    connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList)), this, SLOT(handleMessagesReceived(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageInformation(QString, QVariantMap)), this, SLOT(handleMessageInformation(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));    
@@ -87,11 +88,24 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)), this, SLOT(handleMessageContentUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messagesDeleted(QString, QVariantList)), this, SLOT(handleMessagesDeleted(QString, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SLOT(handleChats(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chat(QVariantMap)), this, SLOT(handleChat(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SLOT(handleRecentStickersUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SLOT(handleStickers(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SLOT(handleInstalledStickerSetsUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSets(QVariantList)), this, SLOT(handleStickerSets(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSet(QVariantMap)), this, SLOT(handleStickerSet(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chatMembers(QString, QVariantList, int)), this, SLOT(handleChatMembers(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(userFullInfo(QVariantMap)), this, SLOT(handleUserFullInfo(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(userFullInfoUpdated(QString, QVariantMap)), this, SLOT(handleUserFullInfoUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(basicGroupFullInfo(QString, QVariantMap)), this, SLOT(handleBasicGroupFullInfo(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(basicGroupFullInfoUpdated(QString, QVariantMap)), this, SLOT(handleBasicGroupFullInfoUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(supergroupFullInfo(QString, QVariantMap)), this, SLOT(handleSupergroupFullInfo(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(supergroupFullInfoUpdated(QString, QVariantMap)), this, SLOT(handleSupergroupFullInfoUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(userProfilePhotos(QString, QVariantList, int)), this, SLOT(handleUserProfilePhotos(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(userProfilePhotos(QString, QVariantList, int)), this, SLOT(handleUserProfilePhotos(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)), this, SLOT(handleChatPermissionsUpdated(QString, QVariantMap)));
+
+    connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
@@ -222,6 +236,15 @@ void TDLibWrapper::closeChat(const QString &chatId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::leaveChat(const QString &chatId)
+{
+    LOG("Leaving chat " << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "leaveChat");
+    requestObject.insert("chat_id", chatId);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::getChatHistory(const QString &chatId, const qlonglong &fromMessageId, const int &offset, const int &limit, const bool &onlyLocal)
 {
     LOG("Retrieving chat history" << chatId << fromMessageId << offset << limit << onlyLocal);
@@ -235,13 +258,13 @@ void TDLibWrapper::getChatHistory(const QString &chatId, const qlonglong &fromMe
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId)
+void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId, const bool &force = false)
 {
     LOG("Mark message as viewed" << chatId << messageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "viewMessages");
     requestObject.insert("chat_id", chatId);
-    requestObject.insert("force_read", false);
+    requestObject.insert("force_read", force);
     QVariantList messageIds;
     messageIds.append(messageId);
     requestObject.insert("message_ids", messageIds);
@@ -466,6 +489,137 @@ void TDLibWrapper::getStickerSet(const QString &setId)
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getStickerSet");
     requestObject.insert("set_id", setId);
+    this->sendRequest(requestObject);
+}
+void TDLibWrapper::getSupergroupMembers(const QString &groupId, const int &limit = 200, const int &offset = 0)
+{
+    LOG("Retrieving SupergroupMembers");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getSupergroupMembers");
+    requestObject.insert(_EXTRA, groupId);
+    requestObject.insert("supergroup_id", groupId);
+    requestObject.insert("offset", offset);
+    requestObject.insert("limit", limit);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getGroupFullInfo(const QString &groupId, const bool &isSuperGroup)
+{
+    LOG("Retrieving GroupFullInfo");
+    QVariantMap requestObject;
+    if(isSuperGroup) {
+        requestObject.insert(_TYPE, "getSupergroupFullInfo");
+        requestObject.insert("supergroup_id", groupId);
+    } else {
+        requestObject.insert(_TYPE, "getBasicGroupFullInfo");
+        requestObject.insert("basic_group_id", groupId);
+    }
+    requestObject.insert(_EXTRA, groupId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getUserFullInfo(const QString &userId)
+{
+    LOG("Retrieving UserFullInfo");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getUserFullInfo");
+    requestObject.insert(_EXTRA, userId);
+    requestObject.insert("user_id", userId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::createPrivateChat(const QString &userId)
+{
+    LOG("Creating Private Chat");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "createPrivateChat");
+    requestObject.insert("user_id", userId);
+    requestObject.insert(_EXTRA, "openDirectly"); //gets matched in qml
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getGroupsInCommon(const QString &userId, const int &limit, const int &offset)
+{
+    LOG("Retrieving Groups in Common");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getGroupsInCommon");
+    requestObject.insert(_EXTRA, userId);
+    requestObject.insert("user_id", userId);
+    requestObject.insert("offset", offset);
+    requestObject.insert("limit", limit);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getUserProfilePhotos(const QString &userId, const int &limit, const int &offset)
+{
+    LOG("Retrieving User Profile Photos");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getUserProfilePhotos");
+    requestObject.insert(_EXTRA, userId);
+    requestObject.insert("user_id", userId);
+    requestObject.insert("offset", offset);
+    requestObject.insert("limit", limit);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setChatPermissions(const QString &chatId, const QVariantMap &chatPermissions)
+{
+    LOG("Setting Chat Permissions");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setChatPermissions");
+    requestObject.insert(_EXTRA, chatId);
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("permissions", chatPermissions);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setChatSlowModeDelay(const QString &chatId, const int &delay)
+{
+
+    LOG("Setting Chat Slow Mode Delay");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setChatSlowModeDelay");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("slow_mode_delay", delay);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setChatDescription(const QString &chatId, const QString &description)
+{
+    LOG("Setting Chat Description");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setChatDescription");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("description", description);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setChatTitle(const QString &chatId, const QString &title)
+{
+    LOG("Setting Chat Title");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setChatTitle");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("title", title);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setBio(const QString &bio)
+{
+    LOG("Setting Bio");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setBio");
+    requestObject.insert("bio", bio);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::toggleSupergroupIsAllHistoryAvailable(const QString &groupId, const bool &isAllHistoryAvailable)
+{
+    LOG("Toggling SupergroupIsAllHistoryAvailable");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "toggleSupergroupIsAllHistoryAvailable");
+    requestObject.insert("supergroup_id", groupId);
+    requestObject.insert("is_all_history_available", isAllHistoryAvailable);
     this->sendRequest(requestObject);
 }
 
@@ -759,9 +913,9 @@ void TDLibWrapper::handleChatOnlineMemberCountUpdated(const QString &chatId, con
     emit chatOnlineMemberCountUpdated(chatId, onlineMemberCount);
 }
 
-void TDLibWrapper::handleMessagesReceived(const QVariantList &messages)
+void TDLibWrapper::handleMessagesReceived(const QVariantList &messages, const int &totalCount)
 {
-    emit messagesReceived(messages);
+    emit messagesReceived(messages, totalCount);
 }
 
 void TDLibWrapper::handleNewMessageReceived(const QString &chatId, const QVariantMap &message)
@@ -814,6 +968,11 @@ void TDLibWrapper::handleChats(const QVariantMap &chats)
     emit this->chatsReceived(chats);
 }
 
+void TDLibWrapper::handleChat(const QVariantMap &chat)
+{
+    emit this->chatReceived(chat);
+}
+
 void TDLibWrapper::handleRecentStickersUpdated(const QVariantList &stickerIds)
 {
     emit this->recentStickersUpdated(stickerIds);
@@ -850,6 +1009,56 @@ void TDLibWrapper::handleEmojiSearchCompleted(const QString &queryString, const 
     emit emojiSearchSuccessful(resultList);
 }
 
+void TDLibWrapper::handleChatMembers(const QString &extra, const QVariantList &members, const int &totalMembers)
+{
+    emit this->chatMembersReceived(extra, members, totalMembers);
+}
+
+void TDLibWrapper::handleUserFullInfo(const QVariantMap &userFullInfo)
+{
+    emit this->userFullInfoReceived(userFullInfo);
+}
+
+void TDLibWrapper::handleUserFullInfoUpdated(const QString &userId, const QVariantMap &userFullInfo)
+{
+    emit this->userFullInfoUpdated(userId, userFullInfo);
+}
+
+void TDLibWrapper::handleBasicGroupFullInfo(const QString &groupId, const QVariantMap &groupFullInfo)
+{
+    emit this->basicGroupFullInfoReceived(groupId, groupFullInfo);
+}
+
+void TDLibWrapper::handleBasicGroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo)
+{
+    emit this->basicGroupFullInfoUpdated(groupId, groupFullInfo);
+}
+
+void TDLibWrapper::handleSupergroupFullInfo(const QString &groupId, const QVariantMap &groupFullInfo)
+{
+    emit this->supergroupFullInfoReceived(groupId, groupFullInfo);
+}
+
+void TDLibWrapper::handleSupergroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo)
+{
+    emit this->supergroupFullInfoUpdated(groupId, groupFullInfo);
+}
+
+void TDLibWrapper::handleUserProfilePhotos(const QString &extra, const QVariantList &photos, const int &totalPhotos)
+{
+    emit this->userProfilePhotosReceived(extra, photos, totalPhotos);
+}
+
+void TDLibWrapper::handleChatPermissionsUpdated(const QString &chatId, const QVariantMap permissions)
+{
+    emit this->chatPermissionsUpdated(chatId, permissions);
+}
+
+void TDLibWrapper::handleChatTitleUpdated(const QString &chatId, const QString title)
+{
+    emit this->chatTitleUpdated(chatId, title);
+}
+
 void TDLibWrapper::setInitialParameters()
 {
     LOG("Sending initial parameters to TD Lib");
@@ -867,7 +1076,7 @@ void TDLibWrapper::setInitialParameters()
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
     initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     initialParameters.insert("system_version", QSysInfo::prettyProductName());
-    initialParameters.insert("application_version", "0.3");
+    initialParameters.insert("application_version", "0.4");
     // initialParameters.insert("use_test_dc", true);
     requestObject.insert("parameters", initialParameters);
     this->sendRequest(requestObject);

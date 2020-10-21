@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf
+    Copyright (C) 2020 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -42,7 +42,7 @@ public:
     Q_INVOKABLE QVariantMap getMessage(const int &index);
 
 signals:
-    void messagesReceived(const int &modelIndex, const int &lastReadSentIndex);
+    void messagesReceived(const int &modelIndex, const int &lastReadSentIndex, const int &totalCount);
     void messagesIncrementalUpdate(const int &modelIndex, const int &lastReadSentIndex);
     void newMessageReceived(const QVariantMap &message);
     void unreadCountUpdated(const int &unreadCount, const QString &lastReadInboxMessageId);
@@ -52,7 +52,7 @@ signals:
     void messagesDeleted();
 
 public slots:
-    void handleMessagesReceived(const QVariantList &messages);
+    void handleMessagesReceived(const QVariantList &messages, const int &totalCount);
     void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
     void handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount);
     void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);

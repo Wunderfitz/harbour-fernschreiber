@@ -34,13 +34,27 @@ SOURCES += src/harbour-fernschreiber.cpp \
 
 DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/AudioPreview.qml \
+    qml/components/ChatListViewItem.qml \
     qml/components/DocumentPreview.qml \
     qml/components/ImagePreview.qml \
     qml/components/InReplyToRow.qml \
     qml/components/LocationPreview.qml \
     qml/components/StickerPicker.qml \
+    qml/components/PhotoTextsListItem.qml \
     qml/components/WebPagePreview.qml \
+    qml/components/chatInformationPage/ChatInformationEditArea.qml \
+    qml/components/chatInformationPage/ChatInformationProfilePicture.qml \
+    qml/components/chatInformationPage/ChatInformationProfilePictureList.qml \
+    qml/components/chatInformationPage/ChatInformationTabItemBase.qml \
+    qml/components/chatInformationPage/ChatInformationTabItemDebug.qml \
+    qml/components/chatInformationPage/ChatInformationTabItemMembersGroups.qml \
+    qml/components/chatInformationPage/ChatInformationTabItemSettings.qml \
+    qml/components/chatInformationPage/ChatInformationTabView.qml \
+    qml/components/chatInformationPage/ChatInformationTextItem.qml \
+    qml/components/chatInformationPage/EditGroupChatPermissionsColumn.qml \
+    qml/components/chatInformationPage/EditSuperGroupSlowModeColumn.qml \
     qml/js/functions.js \
+    qml/pages/ChatInformationPage.qml \
     qml/pages/ChatPage.qml \
     qml/pages/CoverPage.qml \
     qml/pages/InitializationPage.qml \
@@ -63,6 +77,7 @@ TRANSLATIONS += translations/harbour-fernschreiber-de.ts \
                 translations/harbour-fernschreiber-it.ts \
                 translations/harbour-fernschreiber-pl.ts \
                 translations/harbour-fernschreiber-ru.ts \
+                translations/harbour-fernschreiber-sv.ts \
                 translations/harbour-fernschreiber-zh_CN.ts
 
 contains(QT_ARCH, arm) {

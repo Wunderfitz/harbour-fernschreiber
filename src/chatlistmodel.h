@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf
+    Copyright (C) 2020 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -37,6 +37,7 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const override;
 
     Q_INVOKABLE void redrawModel();
+    Q_INVOKABLE QVariantMap get(int row);
 
     bool showAllChats() const;
     void setShowAllChats(bool showAll);
