@@ -77,6 +77,7 @@ TRANSLATIONS += translations/harbour-fernschreiber-de.ts \
                 translations/harbour-fernschreiber-it.ts \
                 translations/harbour-fernschreiber-pl.ts \
                 translations/harbour-fernschreiber-ru.ts \
+                translations/harbour-fernschreiber-sv.ts \
                 translations/harbour-fernschreiber-zh_CN.ts
 
 contains(QT_ARCH, arm) {
