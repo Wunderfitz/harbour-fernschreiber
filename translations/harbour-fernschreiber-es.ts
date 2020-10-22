@@ -239,7 +239,7 @@
     </message>
     <message>
         <source>Your message</source>
-        <translation>Escribir mensaje</translation>
+        <translation>Introducir texto</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
