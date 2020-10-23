@@ -245,7 +245,7 @@ void TDLibWrapper::leaveChat(const QString &chatId)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getChatHistory(const QString &chatId, const qlonglong &fromMessageId, const int &offset, const int &limit, const bool &onlyLocal)
+void TDLibWrapper::getChatHistory(const QString &chatId, const qlonglong &fromMessageId, int offset, int limit, bool onlyLocal)
 {
     LOG("Retrieving chat history" << chatId << fromMessageId << offset << limit << onlyLocal);
     QVariantMap requestObject;
@@ -258,7 +258,7 @@ void TDLibWrapper::getChatHistory(const QString &chatId, const qlonglong &fromMe
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId, const bool &force = false)
+void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId, bool force)
 {
     LOG("Mark message as viewed" << chatId << messageId);
     QVariantMap requestObject;
@@ -394,7 +394,7 @@ void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::setOptionInteger(const QString &optionName, const int &optionValue)
+void TDLibWrapper::setOptionInteger(const QString &optionName, int optionValue)
 {
     LOG("Setting integer option" << optionName << optionValue);
     QVariantMap requestObject;
@@ -444,7 +444,7 @@ void TDLibWrapper::deleteMessages(const QString &chatId, const QVariantList mess
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getMapThumbnailFile(const QString &chatId, const double &latitude, const double &longitude, const int &width, const int &height)
+void TDLibWrapper::getMapThumbnailFile(const QString &chatId, double latitude, double longitude, int width, int height)
 {
     LOG("Getting Map Thumbnail File" << chatId);
     QVariantMap location;
@@ -491,7 +491,7 @@ void TDLibWrapper::getStickerSet(const QString &setId)
     requestObject.insert("set_id", setId);
     this->sendRequest(requestObject);
 }
-void TDLibWrapper::getSupergroupMembers(const QString &groupId, const int &limit = 200, const int &offset = 0)
+void TDLibWrapper::getSupergroupMembers(const QString &groupId, int limit, int offset)
 {
     LOG("Retrieving SupergroupMembers");
     QVariantMap requestObject;
@@ -503,7 +503,7 @@ void TDLibWrapper::getSupergroupMembers(const QString &groupId, const int &limit
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getGroupFullInfo(const QString &groupId, const bool &isSuperGroup)
+void TDLibWrapper::getGroupFullInfo(const QString &groupId, bool isSuperGroup)
 {
     LOG("Retrieving GroupFullInfo");
     QVariantMap requestObject;
@@ -538,7 +538,7 @@ void TDLibWrapper::createPrivateChat(const QString &userId)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getGroupsInCommon(const QString &userId, const int &limit, const int &offset)
+void TDLibWrapper::getGroupsInCommon(const QString &userId, int limit, int offset)
 {
     LOG("Retrieving Groups in Common");
     QVariantMap requestObject;
@@ -550,7 +550,7 @@ void TDLibWrapper::getGroupsInCommon(const QString &userId, const int &limit, co
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getUserProfilePhotos(const QString &userId, const int &limit, const int &offset)
+void TDLibWrapper::getUserProfilePhotos(const QString &userId, int limit, int offset)
 {
     LOG("Retrieving User Profile Photos");
     QVariantMap requestObject;
@@ -573,7 +573,7 @@ void TDLibWrapper::setChatPermissions(const QString &chatId, const QVariantMap &
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::setChatSlowModeDelay(const QString &chatId, const int &delay)
+void TDLibWrapper::setChatSlowModeDelay(const QString &chatId, int delay)
 {
 
     LOG("Setting Chat Slow Mode Delay");
@@ -613,7 +613,7 @@ void TDLibWrapper::setBio(const QString &bio)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::toggleSupergroupIsAllHistoryAvailable(const QString &groupId, const bool &isAllHistoryAvailable)
+void TDLibWrapper::toggleSupergroupIsAllHistoryAvailable(const QString &groupId, bool isAllHistoryAvailable)
 {
     LOG("Toggling SupergroupIsAllHistoryAvailable");
     QVariantMap requestObject;
@@ -717,7 +717,7 @@ void TDLibWrapper::openFileOnDevice(const QString &filePath)
     }
 }
 
-void TDLibWrapper::controlScreenSaver(const bool &enabled)
+void TDLibWrapper::controlScreenSaver(bool enabled)
 {
     LOG("Controlling device screen saver" << enabled);
     QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
@@ -888,7 +888,7 @@ void TDLibWrapper::handleChatOrderUpdated(const QString &chatId, const QString &
     emit chatOrderUpdated(chatId, order);
 }
 
-void TDLibWrapper::handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount)
+void TDLibWrapper::handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, int unreadCount)
 {
     emit chatReadInboxUpdated(chatId, lastReadInboxMessageId, unreadCount);
 }
@@ -908,12 +908,12 @@ void TDLibWrapper::handleSuperGroupUpdated(qlonglong groupId, const QVariantMap 
     emit superGroupUpdated(updateGroup(groupId, groupInformation, &superGroups)->groupId);
 }
 
-void TDLibWrapper::handleChatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount)
+void TDLibWrapper::handleChatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount)
 {
     emit chatOnlineMemberCountUpdated(chatId, onlineMemberCount);
 }
 
-void TDLibWrapper::handleMessagesReceived(const QVariantList &messages, const int &totalCount)
+void TDLibWrapper::handleMessagesReceived(const QVariantList &messages, int totalCount)
 {
     emit messagesReceived(messages, totalCount);
 }
@@ -1009,7 +1009,7 @@ void TDLibWrapper::handleEmojiSearchCompleted(const QString &queryString, const 
     emit emojiSearchSuccessful(resultList);
 }
 
-void TDLibWrapper::handleChatMembers(const QString &extra, const QVariantList &members, const int &totalMembers)
+void TDLibWrapper::handleChatMembers(const QString &extra, const QVariantList &members, int totalMembers)
 {
     emit this->chatMembersReceived(extra, members, totalMembers);
 }
@@ -1044,7 +1044,7 @@ void TDLibWrapper::handleSupergroupFullInfoUpdated(const QString &groupId, const
     emit this->supergroupFullInfoUpdated(groupId, groupFullInfo);
 }
 
-void TDLibWrapper::handleUserProfilePhotos(const QString &extra, const QVariantList &photos, const int &totalPhotos)
+void TDLibWrapper::handleUserProfilePhotos(const QString &extra, const QVariantList &photos, int totalPhotos)
 {
     emit this->userProfilePhotosReceived(extra, photos, totalPhotos);
 }

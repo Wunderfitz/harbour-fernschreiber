@@ -118,7 +118,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateChatTitle", &TDLibReceiver::processUpdateChatTitle);
 }
 
-void TDLibReceiver::setActive(const bool &active)
+void TDLibReceiver::setActive(bool active)
 {
     if (active) {
         LOG("Activating receiver loop...");
