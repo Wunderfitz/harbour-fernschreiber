@@ -154,7 +154,6 @@ Page {
         }
         onChatReceived: {
             if(chat["@extra"] === "openDirectly") {
-                console.log("ON CHAT RECEIVED", JSON.stringify(chat, null, 2));
                 if (status !== PageStatus.Active) {
                     pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ), PageStackAction.Immediate);
                 }

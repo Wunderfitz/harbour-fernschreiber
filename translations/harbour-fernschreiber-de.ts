@@ -542,6 +542,24 @@
         <source>changed the chat title</source>
         <translation>hat den Chattitel geändert</translation>
     </message>
+    <message>
+        <source>sent a poll</source>
+        <comment>myself</comment>
+        <translation>haben eine Umfrage geschickt</translation>
+    </message>
+    <message>
+        <source>sent a poll</source>
+        <translation>hat eine Umfrage geschickt</translation>
+    </message>
+    <message>
+        <source>sent a quiz</source>
+        <comment>myself</comment>
+        <translation>haben ein Quiz geschickt</translation>
+    </message>
+    <message>
+        <source>sent a quiz</source>
+        <translation>hat ein Quiz geschickt</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -683,6 +701,178 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Sie haben noch keine Chats.</translation>
+    </message>
+</context>
+<context>
+    <name>PollCreationPage</name>
+    <message>
+        <source>All answers have to contain 1-100 characters.</source>
+        <translation>Alle Antworten müssen 1-100 Zeichen beinhalten.</translation>
+    </message>
+    <message>
+        <source>To send a quiz, you have to specify the right answer.</source>
+        <translation>Um ein Quiz zu senden, müssen Sie die richtige Antwort auswählen.</translation>
+    </message>
+    <message>
+        <source>You have to enter a question.</source>
+        <translation>Sie müssen eine Frage eingeben.</translation>
+    </message>
+    <message>
+        <source>The question has to be shorter than 256 characters.</source>
+        <translation>Die Frage muss kürzer als 256 Zeichen sein.</translation>
+    </message>
+    <message>
+        <source>A poll requires 2-10 answers.</source>
+        <translation>Eine Umfrage benötigt 2-10 Antworten.</translation>
+    </message>
+    <message>
+        <source>Create a Poll</source>
+        <comment>Dialog Header</comment>
+        <translation>Erstellen Sie eine Umfrage</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <comment>After dialog header… Create a Poll in [group name]</comment>
+        <translation>in %1</translation>
+    </message>
+    <message>
+        <source>Enter your question here</source>
+        <translation>Geben Sie Ihre Frage ein</translation>
+    </message>
+    <message numerus="yes">
+        <source>Question (%n1 characters left)</source>
+        <translation>
+            <numerusform>Frage (%n1 Zeichen übrig)</numerusform>
+            <numerusform>Frage (%n1 Zeichen übrig)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Answers</source>
+        <comment>Section header</comment>
+        <translation>Antworten</translation>
+    </message>
+    <message>
+        <source>Enter an answer here</source>
+        <translation>Geben Sie eine Antwort ein</translation>
+    </message>
+    <message numerus="yes">
+        <source>Answer (%n1 characters left)</source>
+        <translation>
+            <numerusform>Antwort (%n1 Zeichen übrig)</numerusform>
+            <numerusform>Antwort (%n1 Zeichen übrig)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Add an answer</source>
+        <translation>Antwort hinzufügen</translation>
+    </message>
+    <message>
+        <source>Poll Options</source>
+        <comment>Section header</comment>
+        <translation>Umfrageoptionen</translation>
+    </message>
+    <message>
+        <source>Anonymous answers</source>
+        <translation>Anonyme Antworten</translation>
+    </message>
+    <message>
+        <source>Multiple answers allowed</source>
+        <translation>Mehrere Antworten erlaubt</translation>
+    </message>
+    <message>
+        <source>Quiz Mode</source>
+        <translation>Quizmodus</translation>
+    </message>
+    <message>
+        <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
+        <translation>Quizze haben eine korrekte Antwort. Teilnehmer können ihre Antwort nicht zurückziehen.</translation>
+    </message>
+</context>
+<context>
+    <name>PollPreview</name>
+    <message>
+        <source>%L1%</source>
+        <comment>% of votes for option</comment>
+        <translation>%L1%</translation>
+    </message>
+    <message>
+        <source>Final Result:</source>
+        <translation>Endergebnis:</translation>
+    </message>
+    <message>
+        <source>Multiple Answers are allowed.</source>
+        <translation>Mehrfachauswahl ist erlaubt.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%L1 vote(s) total</source>
+        <comment>number of total votes</comment>
+        <translation>
+            <numerusform>%L1 Stimme insgesamt</numerusform>
+            <numerusform>%L1 Stimmen insgesamt</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Close Poll</source>
+        <translation>Umfrage beenden</translation>
+    </message>
+    <message>
+        <source>Reset Answer</source>
+        <translation>Antwort zurückziehen</translation>
+    </message>
+</context>
+<context>
+    <name>PollResultsPage</name>
+    <message>
+        <source>Quiz Results</source>
+        <translation>Quizergebnis</translation>
+    </message>
+    <message>
+        <source>Poll Results</source>
+        <translation>Umfrageergebnis</translation>
+    </message>
+    <message numerus="yes">
+        <source>%L1 vote(s) total</source>
+        <comment>number of total votes</comment>
+        <translation>
+            <numerusform>%L1 Stimme insgesamt</numerusform>
+            <numerusform>%L1 Stimmen insgesamt</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Question</source>
+        <comment>section header</comment>
+        <translation>Frage</translation>
+    </message>
+    <message>
+        <source>Results</source>
+        <comment>section header</comment>
+        <translation>Ergebnis</translation>
+    </message>
+    <message numerus="yes">
+        <source>%L1 vote(s)</source>
+        <comment>number of votes for option</comment>
+        <translation>
+            <numerusform>%L1 Antwort</numerusform>
+            <numerusform>%L1 Antworten</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%L1%</source>
+        <comment>% of votes for option</comment>
+        <translation>%L1%</translation>
+    </message>
+    <message>
+        <source>Chosen by:</source>
+        <comment>This answer has been chosen by the following users</comment>
+        <translation>Gewählt von:</translation>
+    </message>
+    <message numerus="yes">
+        <source>%L1 vote(s) including yours</source>
+        <comment>number of votes for option</comment>
+        <translation>
+            <numerusform>%L1 Antwort inklusive Ihrer</numerusform>
+            <numerusform>%L1 Antworten inklusive Ihrer</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -963,6 +1153,42 @@
     <message>
         <source>changed the chat title to %1</source>
         <translation>hat den Chattitel zu %1 geändert</translation>
+    </message>
+    <message>
+        <source>sent a poll</source>
+        <comment>myself</comment>
+        <translation>haben eine Umfrage gesendet</translation>
+    </message>
+    <message>
+        <source>sent a poll</source>
+        <translation>hat eine Umfrage gesendet</translation>
+    </message>
+    <message>
+        <source>sent an anonymous quiz</source>
+        <comment>myself</comment>
+        <translation>haben ein anonymes Quiz gesendet</translation>
+    </message>
+    <message>
+        <source>sent an anonymous quiz</source>
+        <translation>hat ein anonymes Quiz gesendet</translation>
+    </message>
+    <message>
+        <source>sent a quiz</source>
+        <comment>myself</comment>
+        <translation>haben ein Quiz gesendet</translation>
+    </message>
+    <message>
+        <source>sent a quiz</source>
+        <translation>hat ein Quiz gesendet</translation>
+    </message>
+    <message>
+        <source>sent an anonymous poll</source>
+        <comment>myself</comment>
+        <translation>haben eine anonyme Umfrage gesendet</translation>
+    </message>
+    <message>
+        <source>sent an anonymous poll</source>
+        <translation>hat eine anonyme Umfrage gesendet</translation>
     </message>
 </context>
 </TS>

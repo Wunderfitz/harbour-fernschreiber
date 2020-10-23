@@ -104,8 +104,8 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(userProfilePhotos(QString, QVariantList, int)), this, SLOT(handleUserProfilePhotos(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(userProfilePhotos(QString, QVariantList, int)), this, SLOT(handleUserProfilePhotos(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)), this, SLOT(handleChatPermissionsUpdated(QString, QVariantMap)));
-
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
+    connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SLOT(handleUsersReceived(QString, QVariantList, int)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
@@ -384,6 +384,36 @@ void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &file
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, const bool &anonymous, const int &correctOption, const bool &multiple, const QString &replyToMessageId)
+{
+    LOG("Sending poll message" << chatId << question << replyToMessageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "sendMessage");
+    requestObject.insert("chat_id", chatId);
+    if (replyToMessageId != "0") {
+        requestObject.insert("reply_to_message_id", replyToMessageId);
+    }
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessagePoll");
+
+    QVariantMap pollType;
+    if(correctOption > -1) {
+        pollType.insert(_TYPE, "pollTypeQuiz");
+        pollType.insert("correct_option_id", correctOption);
+    } else {
+        pollType.insert(_TYPE, "pollTypeRegular");
+        pollType.insert("allow_multiple_answers", multiple);
+    }
+
+    inputMessageContent.insert("type", pollType);
+    inputMessageContent.insert("question", question);
+    inputMessageContent.insert("options", options);
+    inputMessageContent.insert("is_anonymous", anonymous);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
 {
     LOG("Retrieving message" << chatId << messageId);
@@ -620,6 +650,41 @@ void TDLibWrapper::toggleSupergroupIsAllHistoryAvailable(const QString &groupId,
     requestObject.insert(_TYPE, "toggleSupergroupIsAllHistoryAvailable");
     requestObject.insert("supergroup_id", groupId);
     requestObject.insert("is_all_history_available", isAllHistoryAvailable);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setPollAnswer(const QString &chatId, const qlonglong &messageId, QVariantList optionIds)
+{
+    LOG("Setting Poll Answer");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setPollAnswer");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_id", messageId);
+    requestObject.insert("option_ids", optionIds);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::stopPoll(const QString &chatId, const qlonglong &messageId)
+{
+    LOG("Stopping Poll");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "stopPoll");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_id", messageId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getPollVoters(const QString &chatId, const qlonglong &messageId, const int &optionId, const int &limit, const int &offset, const QString &extra)
+{
+    LOG("Retrieving Poll Voters");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getPollVoters");
+    requestObject.insert(_EXTRA, extra);
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_id", messageId);
+    requestObject.insert("option_id", optionId);
+    requestObject.insert("offset", offset);
+    requestObject.insert("limit", limit); //max 50
     this->sendRequest(requestObject);
 }
 
@@ -1049,14 +1114,19 @@ void TDLibWrapper::handleUserProfilePhotos(const QString &extra, const QVariantL
     emit this->userProfilePhotosReceived(extra, photos, totalPhotos);
 }
 
-void TDLibWrapper::handleChatPermissionsUpdated(const QString &chatId, const QVariantMap permissions)
+void TDLibWrapper::handleChatPermissionsUpdated(const QString &chatId, const QVariantMap &permissions)
 {
     emit this->chatPermissionsUpdated(chatId, permissions);
 }
 
-void TDLibWrapper::handleChatTitleUpdated(const QString &chatId, const QString title)
+void TDLibWrapper::handleChatTitleUpdated(const QString &chatId, const QString &title)
 {
     emit this->chatTitleUpdated(chatId, title);
+}
+
+void TDLibWrapper::handleUsersReceived(const QString &extra, const QVariantList &userIds, const int &totalUsers)
+{
+    emit this->usersReceived(extra, userIds, totalUsers);
 }
 
 void TDLibWrapper::setInitialParameters()

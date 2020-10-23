@@ -54,5 +54,11 @@ QString FernschreiberUtils::getMessageShortText(const QVariantMap &messageConten
     if (contentType == "messageChatChangeTitle") {
         return myself ? tr("changed the chat title", "myself") : tr("changed the chat title");
     }
+    if (contentType == "messagePoll") {
+        if(messageContent.value("poll").toMap().value("type").toMap().value("@type").toString() == "pollTypeQuiz") {
+            return myself ? tr("sent a quiz", "myself") : tr("sent a quiz");
+        }
+        return myself ? tr("sent a poll", "myself") : tr("sent a poll");
+    }
     return tr("Unsupported message: %1").arg(contentType.mid(7));
 }
