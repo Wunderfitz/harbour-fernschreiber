@@ -80,7 +80,7 @@ signals:
     void userProfilePhotos(const QString &extra, const QVariantList &photos, const int &totalPhotos);
     void chatPermissionsUpdated(const QString &chatId, const QVariantMap &chatPermissions);
     void chatTitleUpdated(const QString &chatId, const QString &title);
-    void usersReceived(const QString &extra, const QVariantList &userIds, const int &totalUsers);
+    void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
 

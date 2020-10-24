@@ -202,7 +202,7 @@ signals:
     void userProfilePhotosReceived(const QString &extra, const QVariantList &photos, const int &totalPhotos);
     void chatPermissionsUpdated(const QString &chatId, const QVariantMap &permissions);
     void chatTitleUpdated(const QString &chatId, const QString &title);
-    void usersReceived(const QString &extra, const QVariantList &userIds, const int &totalUsers);
+    void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -250,7 +250,6 @@ public slots:
     void handleUserProfilePhotos(const QString &extra, const QVariantList &photos, const int &totalPhotos);
     void handleChatPermissionsUpdated(const QString &chatId, const QVariantMap &permissions);
     void handleChatTitleUpdated(const QString &chatId, const QString &title);
-    void handleUsersReceived(const QString &extra, const QVariantList &userIds, const int &totalUsers);
 
 
 

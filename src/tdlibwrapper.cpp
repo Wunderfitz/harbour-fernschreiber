@@ -105,7 +105,7 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(userProfilePhotos(QString, QVariantList, int)), this, SLOT(handleUserProfilePhotos(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)), this, SLOT(handleChatPermissionsUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
-    connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SLOT(handleUsersReceived(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
@@ -1122,11 +1122,6 @@ void TDLibWrapper::handleChatPermissionsUpdated(const QString &chatId, const QVa
 void TDLibWrapper::handleChatTitleUpdated(const QString &chatId, const QString &title)
 {
     emit this->chatTitleUpdated(chatId, title);
-}
-
-void TDLibWrapper::handleUsersReceived(const QString &extra, const QVariantList &userIds, const int &totalUsers)
-{
-    emit this->usersReceived(extra, userIds, totalUsers);
 }
 
 void TDLibWrapper::setInitialParameters()
