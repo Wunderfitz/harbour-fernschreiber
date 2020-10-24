@@ -46,7 +46,7 @@ Item {
     property Item messageItem
     height: pollColumn.height
     opacity: 0
-    Behavior on opacity { FadeAnimator {} }
+    Behavior on opacity { FadeAnimation {} }
     function handleChoose(index) {
         if(!pollData.type.allow_multiple_answers) {
             chosenIndexes = [index];
@@ -233,7 +233,7 @@ Item {
                 IconButton {
                     visible: !pollData.is_closed && pollMessageComponent.chosenIndexes.length > 0 && pollData.type.allow_multiple_answers  && !pollMessageComponent.hasAnswered
                     opacity: visible ? 1.0 : 0.0
-                    Behavior on opacity { NumberAnimation {}}
+                    Behavior on opacity { FadeAnimation {}}
                     icon.source: "image://theme/icon-m-send"
                     onClicked: {
                         pollMessageComponent.sendResponse()

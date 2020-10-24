@@ -144,8 +144,8 @@ Dialog {
                 height: pollCreationPage.validationErrorsVisible ? visibleHeight : 0
                 clip: true;
                 opacity: pollCreationPage.validationErrorsVisible ? 1.0 : 0.0
-                Behavior on opacity { PropertyAnimation {duration: 500; easing.type: Easing.InOutCubic}}
-                Behavior on height { PropertyAnimation {duration: 200; easing.type: Easing.InOutCubic}}
+                Behavior on opacity { FadeAnimation {} }
+                Behavior on height { NumberAnimation {duration: 200; easing.type: Easing.InOutQuad}}
                 Rectangle {
                     color: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
                     anchors.fill: parent
@@ -216,10 +216,9 @@ Dialog {
                 move: Transition {
                     NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
                 }
-                Behavior on height { PropertyAnimation {duration: 200; easing.type: Easing.InOutCubic}}
+                Behavior on height { NumberAnimation {duration: 200; easing.type: Easing.InOutCubic}}
                 Repeater {
                     model: pollCreationPage.options
-
                     delegate: Row {
                         width: parent.width
                         BackgroundItem {
@@ -230,8 +229,8 @@ Dialog {
                             property bool checked: pollCreationPage.correctOption === index
                             enabled: pollCreationPage.quiz
                             opacity: enabled ? (checked ? 1.0 : 0.5) : 0.0
-                            Behavior on opacity { PropertyAnimation {duration: 500; easing.type: Easing.InOutCubic}}
-                            Behavior on width { PropertyAnimation {duration: 500; easing.type: Easing.InOutCubic}}
+                            Behavior on opacity { FadeAnimation {} }
+                            Behavior on width { NumberAnimation {duration: 500; easing.type: Easing.InOutQuad}}
                             Icon {
                                 source: "image://theme/icon-m-accept"
                                 anchors.centerIn: parent
@@ -240,14 +239,13 @@ Dialog {
                                 pollCreationPage.correctOption = index
                                 validate();
                             }
-
                         }
 
                         TextField {
                             id: answerTextArea
                             textMargin: Theme.paddingSmall
                             width: answerCorrectBackgroundItem.enabled ? parent.width - Theme.itemSizeSmall * 2 : parent.width - Theme.itemSizeSmall
-                            Behavior on width { PropertyAnimation {duration: 500; easing.type: Easing.InOutCubic}}
+                            Behavior on width { NumberAnimation {duration: 500; easing.type: Easing.InOutCubic}}
                             text: model.text
                             onTextChanged: {
                                 pollCreationPage.options.setProperty(index, "text", text)
