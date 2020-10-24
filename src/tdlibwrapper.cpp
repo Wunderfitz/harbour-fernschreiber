@@ -70,42 +70,40 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(newChatDiscovered(QVariantMap)), this, SLOT(handleNewChatDiscovered(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(unreadMessageCountUpdated(QVariantMap)), this, SLOT(handleUnreadMessageCountUpdated(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(unreadChatCountUpdated(QVariantMap)), this, SLOT(handleUnreadChatCountUpdated(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
-    connect(this->tdLibReceiver, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
-    connect(this->tdLibReceiver, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
+    connect(this->tdLibReceiver, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chatOrderUpdated(QString, QString)), this, SIGNAL(chatOrderUpdated(QString, QString)));
+    connect(this->tdLibReceiver, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SIGNAL(chatReadInboxUpdated(QString, QString, int)));
+    connect(this->tdLibReceiver, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SIGNAL(chatReadOutboxUpdated(QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(basicGroupUpdated(qlonglong, QVariantMap)), this, SLOT(handleBasicGroupUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(superGroupUpdated(qlonglong, QVariantMap)), this, SLOT(handleSuperGroupUpdated(qlonglong, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SLOT(handleChatOnlineMemberCountUpdated(QString, int)));
-    connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
-    connect(this->tdLibReceiver, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(messageInformation(QString, QVariantMap)), this, SLOT(handleMessageInformation(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));    
-    connect(this->tdLibReceiver, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SLOT(handleUpdateActiveNotifications(QVariantList)));
-    connect(this->tdLibReceiver, SIGNAL(notificationGroupUpdated(QVariantMap)), this, SLOT(handleUpdateNotificationGroup(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(notificationUpdated(QVariantMap)), this, SLOT(handleUpdateNotification(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)), this, SLOT(handleMessageContentUpdated(QString, QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(messagesDeleted(QString, QVariantList)), this, SLOT(handleMessagesDeleted(QString, QVariantList)));
-    connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SLOT(handleChats(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(chat(QVariantMap)), this, SLOT(handleChat(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SLOT(handleRecentStickersUpdated(QVariantList)));
-    connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SLOT(handleStickers(QVariantList)));
-    connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SLOT(handleInstalledStickerSetsUpdated(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SIGNAL(chatOnlineMemberCountUpdated(QString, int)));
+    connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList, int)), this, SIGNAL(messagesReceived(QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SIGNAL(newMessageReceived(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageInformation(QString, QVariantMap)), this, SIGNAL(receivedMessage(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SIGNAL(activeNotificationsUpdated(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(notificationGroupUpdated(QVariantMap)), this, SIGNAL(notificationGroupUpdated(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(notificationUpdated(QVariantMap)), this, SIGNAL(notificationUpdated(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)), this, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messagesDeleted(QString, QVariantList)), this, SIGNAL(messagesDeleted(QString, QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SIGNAL(chatsReceived(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chat(QVariantMap)), this, SIGNAL(chatReceived(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SIGNAL(recentStickersUpdated(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SIGNAL(stickersReceived(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SIGNAL(installedStickerSetsUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSets(QVariantList)), this, SLOT(handleStickerSets(QVariantList)));
-    connect(this->tdLibReceiver, SIGNAL(stickerSet(QVariantMap)), this, SLOT(handleStickerSet(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(chatMembers(QString, QVariantList, int)), this, SLOT(handleChatMembers(QString, QVariantList, int)));
-    connect(this->tdLibReceiver, SIGNAL(userFullInfo(QVariantMap)), this, SLOT(handleUserFullInfo(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(userFullInfoUpdated(QString, QVariantMap)), this, SLOT(handleUserFullInfoUpdated(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(basicGroupFullInfo(QString, QVariantMap)), this, SLOT(handleBasicGroupFullInfo(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(basicGroupFullInfoUpdated(QString, QVariantMap)), this, SLOT(handleBasicGroupFullInfoUpdated(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(supergroupFullInfo(QString, QVariantMap)), this, SLOT(handleSupergroupFullInfo(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(supergroupFullInfoUpdated(QString, QVariantMap)), this, SLOT(handleSupergroupFullInfoUpdated(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(userProfilePhotos(QString, QVariantList, int)), this, SLOT(handleUserProfilePhotos(QString, QVariantList, int)));
-    connect(this->tdLibReceiver, SIGNAL(userProfilePhotos(QString, QVariantList, int)), this, SLOT(handleUserProfilePhotos(QString, QVariantList, int)));
-    connect(this->tdLibReceiver, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)), this, SLOT(handleChatPermissionsUpdated(QString, QVariantMap)));
-
-    connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
+    connect(this->tdLibReceiver, SIGNAL(stickerSet(QVariantMap)), this, SIGNAL(stickerSetReceived(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chatMembers(QString, QVariantList, int)), this, SIGNAL(chatMembersReceived(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(userFullInfo(QVariantMap)), this, SIGNAL(userFullInfoReceived(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(userFullInfoUpdated(QString, QVariantMap)), this, SIGNAL(userFullInfoUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(basicGroupFullInfo(QString, QVariantMap)), this, SIGNAL(basicGroupFullInfoReceived(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(basicGroupFullInfoUpdated(QString, QVariantMap)), this, SIGNAL(basicGroupFullInfoUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(supergroupFullInfo(QString, QVariantMap)), this, SIGNAL(supergroupFullInfoReceived(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(supergroupFullInfoUpdated(QString, QVariantMap)), this, SIGNAL(supergroupFullInfoUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(userProfilePhotos(QString, QVariantList, int)), this, SIGNAL(userProfilePhotosReceived(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)), this, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SIGNAL(chatTitleUpdated(QString, QString)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
@@ -878,26 +876,6 @@ void TDLibWrapper::handleUnreadChatCountUpdated(const QVariantMap &chatCountInfo
     }
 }
 
-void TDLibWrapper::handleChatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage)
-{
-    emit chatLastMessageUpdated(chatId, order, lastMessage);
-}
-
-void TDLibWrapper::handleChatOrderUpdated(const QString &chatId, const QString &order)
-{
-    emit chatOrderUpdated(chatId, order);
-}
-
-void TDLibWrapper::handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, int unreadCount)
-{
-    emit chatReadInboxUpdated(chatId, lastReadInboxMessageId, unreadCount);
-}
-
-void TDLibWrapper::handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId)
-{
-    emit chatReadOutboxUpdated(chatId, lastReadOutboxMessageId);
-}
-
 void TDLibWrapper::handleBasicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation)
 {
     emit basicGroupUpdated(updateGroup(groupId, groupInformation, &basicGroups)->groupId);
@@ -906,86 +884,6 @@ void TDLibWrapper::handleBasicGroupUpdated(qlonglong groupId, const QVariantMap 
 void TDLibWrapper::handleSuperGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation)
 {
     emit superGroupUpdated(updateGroup(groupId, groupInformation, &superGroups)->groupId);
-}
-
-void TDLibWrapper::handleChatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount)
-{
-    emit chatOnlineMemberCountUpdated(chatId, onlineMemberCount);
-}
-
-void TDLibWrapper::handleMessagesReceived(const QVariantList &messages, int totalCount)
-{
-    emit messagesReceived(messages, totalCount);
-}
-
-void TDLibWrapper::handleNewMessageReceived(const QString &chatId, const QVariantMap &message)
-{
-    emit newMessageReceived(chatId, message);
-}
-
-void TDLibWrapper::handleMessageInformation(const QString &messageId, const QVariantMap &message)
-{
-    emit receivedMessage(messageId, message);
-}
-
-void TDLibWrapper::handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message)
-{
-    emit messageSendSucceeded(messageId, oldMessageId, message);
-}
-
-void TDLibWrapper::handleUpdateActiveNotifications(const QVariantList notificationGroups)
-{
-    emit activeNotificationsUpdated(notificationGroups);
-}
-
-void TDLibWrapper::handleUpdateNotificationGroup(const QVariantMap notificationGroupUpdate)
-{
-    emit notificationGroupUpdated(notificationGroupUpdate);
-}
-
-void TDLibWrapper::handleUpdateNotification(const QVariantMap updatedNotification)
-{
-    emit notificationUpdated(updatedNotification);
-}
-
-void TDLibWrapper::handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings)
-{
-    emit chatNotificationSettingsUpdated(chatId, chatNotificationSettings);
-}
-
-void TDLibWrapper::handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent)
-{
-    emit messageContentUpdated(chatId, messageId, newContent);
-}
-
-void TDLibWrapper::handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds)
-{
-    emit messagesDeleted(chatId, messageIds);
-}
-
-void TDLibWrapper::handleChats(const QVariantMap &chats)
-{
-    emit this->chatsReceived(chats);
-}
-
-void TDLibWrapper::handleChat(const QVariantMap &chat)
-{
-    emit this->chatReceived(chat);
-}
-
-void TDLibWrapper::handleRecentStickersUpdated(const QVariantList &stickerIds)
-{
-    emit this->recentStickersUpdated(stickerIds);
-}
-
-void TDLibWrapper::handleStickers(const QVariantList &stickers)
-{
-    emit this->stickersReceived(stickers);
-}
-
-void TDLibWrapper::handleInstalledStickerSetsUpdated(const QVariantList &stickerSetIds)
-{
-    emit this->installedStickerSetsUpdated(stickerSetIds);
 }
 
 void TDLibWrapper::handleStickerSets(const QVariantList &stickerSets)
@@ -998,65 +896,10 @@ void TDLibWrapper::handleStickerSets(const QVariantList &stickerSets)
     emit this->stickerSetsReceived(stickerSets);
 }
 
-void TDLibWrapper::handleStickerSet(const QVariantMap &stickerSet)
-{
-    emit stickerSetReceived(stickerSet);
-}
-
 void TDLibWrapper::handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList)
 {
     LOG("Emoji search completed" << queryString);
     emit emojiSearchSuccessful(resultList);
-}
-
-void TDLibWrapper::handleChatMembers(const QString &extra, const QVariantList &members, int totalMembers)
-{
-    emit this->chatMembersReceived(extra, members, totalMembers);
-}
-
-void TDLibWrapper::handleUserFullInfo(const QVariantMap &userFullInfo)
-{
-    emit this->userFullInfoReceived(userFullInfo);
-}
-
-void TDLibWrapper::handleUserFullInfoUpdated(const QString &userId, const QVariantMap &userFullInfo)
-{
-    emit this->userFullInfoUpdated(userId, userFullInfo);
-}
-
-void TDLibWrapper::handleBasicGroupFullInfo(const QString &groupId, const QVariantMap &groupFullInfo)
-{
-    emit this->basicGroupFullInfoReceived(groupId, groupFullInfo);
-}
-
-void TDLibWrapper::handleBasicGroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo)
-{
-    emit this->basicGroupFullInfoUpdated(groupId, groupFullInfo);
-}
-
-void TDLibWrapper::handleSupergroupFullInfo(const QString &groupId, const QVariantMap &groupFullInfo)
-{
-    emit this->supergroupFullInfoReceived(groupId, groupFullInfo);
-}
-
-void TDLibWrapper::handleSupergroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo)
-{
-    emit this->supergroupFullInfoUpdated(groupId, groupFullInfo);
-}
-
-void TDLibWrapper::handleUserProfilePhotos(const QString &extra, const QVariantList &photos, int totalPhotos)
-{
-    emit this->userProfilePhotosReceived(extra, photos, totalPhotos);
-}
-
-void TDLibWrapper::handleChatPermissionsUpdated(const QString &chatId, const QVariantMap permissions)
-{
-    emit this->chatPermissionsUpdated(chatId, permissions);
-}
-
-void TDLibWrapper::handleChatTitleUpdated(const QString &chatId, const QString title)
-{
-    emit this->chatTitleUpdated(chatId, title);
 }
 
 void TDLibWrapper::setInitialParameters()
