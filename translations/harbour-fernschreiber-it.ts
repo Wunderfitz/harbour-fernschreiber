@@ -938,7 +938,7 @@
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation><Amministratore/translation>
+        <translation>Amministratore</translation>
     </message>
     <message>
         <source>Banned</source>
