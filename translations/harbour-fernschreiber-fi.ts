@@ -37,11 +37,11 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Tämä projekti käyttää Telegram Database Library (TDLib) -kirjastoa. Kiitokset sen jakamisesta Boost Software License 1.0 -lisenssillä! </translation>
+        <translation>Tämä projekti käyttää Telegram Database Library (TDLib) ‑kirjastoa. Kiitokset sen jakamisesta Boost Software License 1.0 ‑lisenssillä!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Avaa Telegram Database -kirjasto GitHubissa</translation>
+        <translation>Avaa Telegram Database ‑kirjasto GitHubissa</translation>
     </message>
     <message>
         <source>About Telegram</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Tämä sovellus käyttää Telegram API:a, mutta ei ole Telegram:n hyväksymä tai varmentama.</translation>
+        <translation>Tämä sovellus käyttää Telegram APIa, mutta ei ole Telegramin hyväksymä tai varmentama.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
@@ -57,7 +57,7 @@
     </message>
     <message>
         <source>Logged in as %1</source>
-        <translation>Kirjautuneena sisään käyttäjänä %1</translation>
+        <translation>Kirjautunut sisään käyttäjänä %1</translation>
     </message>
     <message>
         <source>Phone number: +%1</source>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Tämä projekti käyttää twemojia. Tekijänoikeus 2018 Twitter, Inc. ja muut tekijät. Kiitokset sen julkaisusta MIT- (lähdekoodi) ja CC-BY 4.0- (grafiikat) lisensseillä!  </translation>
+        <translation>Tämä projekti käyttää twemojia. Tekijänoikeus 2018 Twitter, Inc. ja muut tekijät. Kiitokset sen julkaisusta MIT‑ (lähdekoodi) ja CC-BY 4.0‑ (grafiikat) lisensseillä!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -91,67 +91,67 @@
     <name>ChatInformationPage</name>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Poista keskustelun vaimennus</translation>
+        <translation>Poista keskustelun vaimennus</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Vaimenna keskustelu</translation>
+        <translation>Vaimenna keskustelu</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Tuntematon</translation>
+        <translation>Tuntematon</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kutsulinkki on kopioitu leikepöydälle.</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
-        <translation type="unfinished">%1 jäsentä, %2 paikalla</translation>
+        <translation>%1 jäsentä, %2 paikalla</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 tilaajaa</translation>
+        <translation>%1 tilaajaa</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished">%1 jäsentä</translation>
+        <translation>%1 jäsentä</translation>
     </message>
     <message>
         <source>Leave Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistu ryhmästä</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistutaan keskustelusta</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tietoa</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Puhelinnumero</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kutsulinkki</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietoa ei ole vielä saatavilla.</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Keskustelun otsikko</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Syötä 1-128 merkkiä</translation>
     </message>
 </context>
 <context>
@@ -159,37 +159,37 @@
     <message>
         <source>Loading common chats…</source>
         <comment>chats you have in common with a user</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ladataan yhteisiä keskusteluja...</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Tuntematon</translation>
+        <translation>Tuntematon</translation>
     </message>
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmät</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished"></translation>
+        <translation>Jäsenet</translation>
     </message>
     <message>
         <source>Loading group members…</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladataan ryhmän jäseniä...</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Sinä</translation>
+        <translation>Sinä</translation>
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinulla ei ole yhteisiä ryhmiä tämän käyttäjän kanssa.</translation>
     </message>
     <message>
         <source>This group is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämä ryhmä on tyhjä.</translation>
     </message>
 </context>
 <context>
@@ -197,38 +197,38 @@
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">Asetukset</translation>
+        <translation>Asetukset</translation>
     </message>
 </context>
 <context>
     <name>ChatListViewItem</name>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Tuntematon</translation>
+        <translation>Tuntematon</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Sinä</translation>
+        <translation>Sinä</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Poista keskustelun vaimennus</translation>
+        <translation>Poista keskustelun vaimennus</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Vaimenna keskustelu</translation>
+        <translation>Vaimenna keskustelu</translation>
     </message>
     <message>
         <source>User Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttäjän tiedot</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmän tiedot</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Merkitse kaikki viestit luetuiksi</translation>
     </message>
 </context>
 <context>
@@ -295,11 +295,11 @@
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Välitetty viesti</translation>
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämä keskustelu on tyhjä.</translation>
     </message>
 </context>
 <context>
@@ -314,7 +314,8 @@
     </message>
     <message>
         <source>in</source>
-        <translation></translation>
+        <translatorcomment>The preposition &apos;in&apos; is translated to Finnish using the inessive case (suffix -ssa/-ssä), so this string should be left empty in the translation. Unfortunately Qt will ignore empty translations, so let&apos;s use the character U+200B (zero width space) instead.</translatorcomment>
+        <translation>​</translation>
     </message>
     <message>
         <source>Waiting for network...</source>
@@ -338,7 +339,7 @@
     </message>
     <message>
         <source>chat</source>
-        <translation>keskustelu</translation>
+        <translation>keskustelussa</translation>
     </message>
     <message>
         <source>chats</source>
@@ -361,67 +362,67 @@
     <message>
         <source>Group Member Permissions</source>
         <comment>what can normal group members do</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmän jäsenten käyttöoikeudet</translation>
     </message>
     <message>
         <source>Send Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettä viestejä</translation>
     </message>
     <message>
         <source>Send Media Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää mediaviestejä</translation>
     </message>
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää muita viestejä</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää verkkosivuesikatseluita</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Muuttaa keskustelun tietoja</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kutsua jäseniä</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kiinnittää viestejä</translation>
     </message>
     <message>
         <source>New Members</source>
         <comment>what can new group members do</comment>
-        <translation type="unfinished"></translation>
+        <translation>Uudet jäsenet</translation>
     </message>
     <message>
         <source>New members can see older messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Uudet jäsenet voivat nähdä vanhoja viestejä</translation>
     </message>
 </context>
 <context>
     <name>EditSuperGroupSlowModeColumn</name>
     <message>
         <source>Slow Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Hidas moodi</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Pois</translation>
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Aseta kuinka kauan jokaisen keskustelun jäsenen täytyy odottaa viestien välillä</translation>
     </message>
 </context>
 <context>
@@ -536,11 +537,11 @@
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>muutit keskustelun otsikkoa</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation type="unfinished"></translation>
+        <translation>muutti keskustelun otsikkoa</translation>
     </message>
 </context>
 <context>
@@ -555,7 +556,7 @@
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Lataus epäonnistui</translation>
+        <translation>Lataus epäonnistui.</translation>
     </message>
 </context>
 <context>
@@ -625,14 +626,14 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Käytä kansainvälistä muotoa, esimerkiksi %1</translation>
     </message>
 </context>
 <context>
     <name>LocationPreview</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation>Asenna Pure Maps tarkastellaksesi sijaintia</translation>
+        <translation>Asenna Pure Maps tarkastellaksesi sijaintia.</translation>
     </message>
 </context>
 <context>
@@ -682,7 +683,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>Sinulla ei ole vielä keskusteluja</translation>
+        <translation>Sinulla ei ole vielä keskusteluja.</translation>
     </message>
 </context>
 <context>
@@ -697,54 +698,54 @@
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Lähetä viesti palautusnäppäimellä</translation>
+        <translation>Lähetä viesti rivinvaihdolla</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Lähetä viestisi painamalla palautusnäppäintä (enter)</translation>
+        <translation>Lähetä viestisi painamalla rivinvaihtonäppäintä (enter)</translation>
     </message>
     <message>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Ulkoasu</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä tarrat kuvina</translation>
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä tarroissa tausta ja keskitä ne kuten kuvat</translation>
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilmoitusten palaute</translation>
     </message>
     <message>
         <source>All events</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaikki tapahtumat</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation type="unfinished"></translation>
+        <translation>Vain uudet tapahtumat</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei mitään</translation>
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Käytä ei-graafista palautetta (ääni, värinä) ilmoituksille</translation>
     </message>
 </context>
 <context>
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation type="unfinished"></translation>
+        <translation>Viimeksi käytetty</translation>
     </message>
     <message>
         <source>Loading stickers...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladataan tarroja...</translation>
     </message>
 </context>
 <context>
@@ -759,7 +760,7 @@
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Lataus epäonnistui</translation>
+        <translation>Lataus epäonnistui.</translation>
     </message>
 </context>
 <context>
@@ -913,56 +914,56 @@
     </message>
     <message>
         <source>was never online</source>
-        <translation type="unfinished">Ei ole ollut koskaan paikalla</translation>
+        <translation>ei ole ollut koskaan paikalla</translation>
     </message>
     <message>
         <source>offline, last online: last month</source>
-        <translation type="unfinished">Poissa. Nähty viimeksi: viime kuussa</translation>
+        <translation>poissa. Nähty viimeksi: viime kuussa</translation>
     </message>
     <message>
         <source>offline, last online: last week</source>
-        <translation type="unfinished">Poissa. Nähty viimeksi: viime viikolla</translation>
+        <translation>poissa. Nähty viimeksi: viime viikolla</translation>
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation type="unfinished">Poissa. Nähty viimeksi: %1</translation>
+        <translation>poissa. Nähty viimeksi: %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation type="unfinished">paikalla</translation>
+        <translation>paikalla</translation>
     </message>
     <message>
         <source>offline, was recently online</source>
-        <translation type="unfinished">poissa, oli hetki sitten paikalla</translation>
+        <translation>poissa, oli hetki sitten paikalla</translation>
     </message>
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pääkäyttäjä</translation>
     </message>
     <message>
         <source>Banned</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Estetty</translation>
     </message>
     <message>
         <source>Creator</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Perustaja</translation>
     </message>
     <message>
         <source>Restricted</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rajoitettu</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>vaihdoit keskustelun otsikoksi %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>vaihtoi keskustelun otsikoksi %1</translation>
     </message>
 </context>
 </TS>
