@@ -39,6 +39,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/ImagePreview.qml \
     qml/components/InReplyToRow.qml \
     qml/components/LocationPreview.qml \
+    qml/components/PollPreview.qml \
     qml/components/StickerPicker.qml \
     qml/components/PhotoTextsListItem.qml \
     qml/components/WebPagePreview.qml \
@@ -60,6 +61,8 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/InitializationPage.qml \
     qml/pages/OverviewPage.qml \
     qml/pages/AboutPage.qml \
+    qml/pages/PollCreationPage.qml \
+    qml/pages/PollResultsPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/VideoPage.qml \
     rpm/harbour-fernschreiber.changes.in \
