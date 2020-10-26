@@ -138,19 +138,8 @@ Column {
             }
         }
 
-        Image {
-            id: imageLoadingBackgroundImage
-            source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
-            anchors {
-                centerIn: parent
-            }
-            width: parent.width - Theme.paddingMedium
-            height: parent.height - Theme.paddingMedium
+        BackgroundImage {
             visible: hasImage && singleImage.status !== Image.Ready
-            asynchronous: true
-
-            fillMode: Image.PreserveAspectFit
-            opacity: 0.15
         }
     }
 

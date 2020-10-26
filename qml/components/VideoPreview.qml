@@ -134,19 +134,8 @@ Item {
         visible: status === Image.Ready ? true : false
     }
 
-    Image {
-        id: imageLoadingBackgroundImage
-        source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
-        anchors {
-            centerIn: parent
-        }
-        width: parent.width - Theme.paddingSmall
-        height: parent.height - Theme.paddingSmall
+    BackgroundImage {
         visible: placeholderImage.status !== Image.Ready
-        asynchronous: true
-
-        fillMode: Image.PreserveAspectFit
-        opacity: 0.15
     }
 
     Rectangle {
@@ -193,19 +182,22 @@ Item {
             height: parent.height
             width: parent.width / 2
             visible: !videoMessageComponent.fullscreen
-            Image {
+            IconButton {
                 id: fullscreenButton
                 anchors.centerIn: parent
                 width: Theme.iconSizeLarge
                 height: Theme.iconSizeLarge
-                asynchronous: true
-                source: "../../images/icon-l-fullscreen.png"
-                visible: ( placeholderImage.status === Image.Ready && !videoMessageComponent.fullscreen ) ? true : false
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
+                icon {
+                    asynchronous: true
+                    source: "../../images/icon-l-fullscreen.svg"
+                    sourceSize {
+                        width: Theme.iconSizeLarge
+                        height: Theme.iconSizeLarge
                     }
+                }
+                visible: ( placeholderImage.status === Image.Ready && !videoMessageComponent.fullscreen ) ? true : false
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
                 }
             }
         }
@@ -424,19 +416,22 @@ Item {
                         height: parent.height
                         width: parent.width / 2
                         visible: !videoMessageComponent.fullscreen
-                        Image {
+                        IconButton {
                             id: pausedFullscreenButton
                             anchors.centerIn: parent
                             width: Theme.iconSizeLarge
                             height: Theme.iconSizeLarge
-                            asynchronous: true
-                            source: "../../images/icon-l-fullscreen.png"
-                            visible: ( videoComponentLoader.active && messageVideo.playbackState === MediaPlayer.PausedState ) ? true : false
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
+                            icon {
+                                asynchronous: true
+                                source: "../../images/icon-l-fullscreen.svg"
+                                sourceSize {
+                                    width: Theme.iconSizeLarge
+                                    height: Theme.iconSizeLarge
                                 }
+                            }
+                            visible: ( videoComponentLoader.active && messageVideo.playbackState === MediaPlayer.PausedState ) ? true : false
+                            onClicked: {
+                                pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
                             }
                         }
                     }

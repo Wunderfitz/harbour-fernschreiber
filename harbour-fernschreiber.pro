@@ -34,6 +34,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
 
 DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/AudioPreview.qml \
+    qml/components/BackgroundImage.qml \
     qml/components/ChatListViewItem.qml \
     qml/components/DocumentPreview.qml \
     qml/components/ImagePreview.qml \
