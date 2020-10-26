@@ -121,6 +121,7 @@ public:
     Q_INVOKABLE void sendVideoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendDocumentMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendStickerMessage(const QString &chatId, const QString &fileId, const QString &replyToMessageId = "0");
+    Q_INVOKABLE void sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, const bool &anonymous, const int &correctOption, const bool &multiple, const QString &replyToMessageId = "0");
     Q_INVOKABLE void getMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void setOptionInteger(const QString &optionName, int optionValue);
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);
@@ -142,6 +143,9 @@ public:
     Q_INVOKABLE void setChatTitle(const QString &chatId, const QString &title);
     Q_INVOKABLE void setBio(const QString &bio);
     Q_INVOKABLE void toggleSupergroupIsAllHistoryAvailable(const QString &groupId, bool isAllHistoryAvailable);
+    Q_INVOKABLE void setPollAnswer(const QString &chatId, const qlonglong &messageId, QVariantList optionIds);
+    Q_INVOKABLE void stopPoll(const QString &chatId, const qlonglong &messageId);
+    Q_INVOKABLE void getPollVoters(const QString &chatId, const qlonglong &messageId, const int &optionId, const int &limit, const int &offset, const QString &extra);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -198,6 +202,7 @@ signals:
     void userProfilePhotosReceived(const QString &extra, const QVariantList &photos, int totalPhotos);
     void chatPermissionsUpdated(const QString &chatId, const QVariantMap &permissions);
     void chatTitleUpdated(const QString &chatId, const QString &title);
+    void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
 
 public slots:
     void handleVersionDetected(const QString &version);

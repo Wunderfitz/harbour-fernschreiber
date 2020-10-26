@@ -116,6 +116,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("userProfilePhotos", &TDLibReceiver::processUserProfilePhotos);
     handlers.insert("updateChatPermissions", &TDLibReceiver::processUpdateChatPermissions);
     handlers.insert("updateChatTitle", &TDLibReceiver::processUpdateChatTitle);
+    handlers.insert("users", &TDLibReceiver::processUsers);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -493,4 +494,10 @@ void TDLibReceiver::processUpdateChatTitle(const QVariantMap &receivedInformatio
 
     LOG("Received UpdateChatTitle");
     emit chatTitleUpdated(receivedInformation.value("chat_id").toString(), receivedInformation.value("title").toString());
+}
+
+void TDLibReceiver::processUsers(const QVariantMap &receivedInformation)
+{
+    LOG("Received Users");
+    emit usersReceived(receivedInformation.value(EXTRA).toString(), receivedInformation.value("user_ids").toList(), receivedInformation.value("total_count").toInt());
 }
