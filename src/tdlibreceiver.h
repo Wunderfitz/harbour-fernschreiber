@@ -33,7 +33,7 @@ class TDLibReceiver : public QThread
     }
 public:
     explicit TDLibReceiver(void *tdLibClient, QObject *parent = nullptr);
-    void setActive(const bool &active);
+    void setActive(bool active);
 
 signals:
     void versionDetected(const QString &version);
@@ -48,12 +48,12 @@ signals:
     void unreadChatCountUpdated(const QVariantMap &chatCountInformation);
     void chatLastMessageUpdated(const QString &chatId, const QString &order, const QVariantMap &lastMessage);
     void chatOrderUpdated(const QString &chatId, const QString &order);
-    void chatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount);
+    void chatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, int unreadCount);
     void chatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void basicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void superGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
-    void chatOnlineMemberCountUpdated(const QString &chatId, const int &onlineMemberCount);
-    void messagesReceived(const QVariantList &messages, const int &totalCount);
+    void chatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount);
+    void messagesReceived(const QVariantList &messages, int totalCount);
     void newMessageReceived(const QString &chatId, const QVariantMap &message);
     void messageInformation(const QString &messageId, const QVariantMap &message);
     void messageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
@@ -70,14 +70,14 @@ signals:
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
     void stickerSets(const QVariantList &stickerSets);
     void stickerSet(const QVariantMap &stickerSet);
-    void chatMembers(const QString &extra, const QVariantList &members, const int &totalMembers);
+    void chatMembers(const QString &extra, const QVariantList &members, int totalMembers);
     void userFullInfo(const QVariantMap &userFullInfo);
     void userFullInfoUpdated(const QString &userId,const QVariantMap &userFullInfo);
     void basicGroupFullInfo(const QString &groupId, const QVariantMap &groupFullInfo);
     void basicGroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo);
     void supergroupFullInfo(const QString &groupId, const QVariantMap &groupFullInfo);
     void supergroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo);
-    void userProfilePhotos(const QString &extra, const QVariantList &photos, const int &totalPhotos);
+    void userProfilePhotos(const QString &extra, const QVariantList &photos, int totalPhotos);
     void chatPermissionsUpdated(const QString &chatId, const QVariantMap &chatPermissions);
     void chatTitleUpdated(const QString &chatId, const QString &title);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);

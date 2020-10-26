@@ -119,7 +119,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("users", &TDLibReceiver::processUsers);
 }
 
-void TDLibReceiver::setActive(const bool &active)
+void TDLibReceiver::setActive(bool active)
 {
     if (active) {
         LOG("Activating receiver loop...");
