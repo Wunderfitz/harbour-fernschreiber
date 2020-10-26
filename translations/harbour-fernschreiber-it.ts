@@ -111,7 +111,7 @@
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>Il link d'invito è stato copiato nella clipboard</translation>
+        <translation>Il link d&apos;invito è stato copiato nella clipboard</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
@@ -138,7 +138,7 @@
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation>Link d'invito</translation>
+        <translation>Link d&apos;invito</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
@@ -167,15 +167,6 @@
         <translation>Membri</translation>
     </message>
     <message>
-        <source>Loading common chats...</source>
-        <comment>chats you have in common with a user</comment>
-        <translation>Carica chat in comune...</translation>
-    </message>
-    <message>
-        <source>Loading group members...</source>
-        <translation>Carica membri del gruppo...</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Tu</translation>
     </message>
@@ -190,6 +181,15 @@
     <message>
         <source>This group is empty.</source>
         <translation>Questo gruppo è vuoto.</translation>
+    </message>
+    <message>
+        <source>Loading common chats…</source>
+        <comment>chats you have in common with a user</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading group members…</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
