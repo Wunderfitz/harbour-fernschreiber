@@ -220,7 +220,6 @@ Page {
             tdLibWrapper.openChat(chatInformation.id);
             break;
         case PageStatus.Active:
-            console.log("CHAT opendirectly?", chatPage.isInitialized)
             if (!chatPage.isInitialized) {
                 chatModel.initialize(chatInformation);
                 chatPage.isInitialized = true;
@@ -537,6 +536,7 @@ Page {
                         property bool containsAudio: (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
                         property bool containsDocument: ( display.content['@type'] === "messageDocument" )
                         property bool containsLocation: ( display.content['@type'] === "messageLocation" || ( display.content['@type'] === "messageVenue" ))
+                        property bool containsPoll: display.content['@type'] === "messagePoll"
 
                         menu: ContextMenu {
                             MenuItem {
@@ -594,6 +594,7 @@ Page {
                                     audioPreviewLoader.active = messageListItem.containsAudio;
                                     documentPreviewLoader.active = messageListItem.containsDocument;
                                     locationPreviewLoader.active = messageListItem.containsLocation;
+                                    pollPreviewLoader.active = messageListItem.containsPoll;
                                     forwardedInformationLoader.active = messageListItem.isForwarded;
                                 }
                             }
@@ -921,6 +922,25 @@ Page {
                                         }
                                     }
 
+                                    Loader {
+                                        id: pollPreviewLoader
+                                        active: false
+                                        asynchronous: true
+                                        width: parent.width
+//                                        height: messageListItem.containsLocation ? (item ? item.height : (parent.width * 2 / 3)) : 0
+                                        sourceComponent: Component {
+                                            id: pollPreviewComponent
+                                            PollPreview {
+                                                id: messageLocationPreview
+                                                width: parent.width
+                                                chatId: chatInformation.id
+                                                isOwnMessage: messageListItem.isOwnMessage
+                                                message: display
+                                                messageItem: messageListItem
+                                            }
+                                        }
+                                    }
+
                                     Timer {
                                         id: messageDateUpdater
                                         interval: 60000
@@ -1157,6 +1177,17 @@ Page {
                         highlighted: down || stickerPickerLoader.active
                         onClicked: {
                             stickerPickerLoader.active = !stickerPickerLoader.active;
+                        }
+                    }
+                    IconButton {
+                        visible: !chatPage.isPrivateChat &&
+                                 (chatGroupInformation.status["@type"] === "chatMemberStatusCreator"
+                                  || chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator"
+                                  || (chatGroupInformation.status["@type"] === "chatMemberStatusMember" && chatInformation.permissions.can_send_polls))
+                        icon.source: "image://theme/icon-m-question"
+                        onClicked: {
+                            pageStack.push(Qt.resolvedUrl("../pages/PollCreationPage.qml"), { "chatId" : chatInformation.id, groupName: chatInformation.title});
+                            attachmentOptionsRow.visible = false;
                         }
                     }
                 }
