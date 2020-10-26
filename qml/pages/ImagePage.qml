@@ -187,19 +187,7 @@ Page {
         }
     }
 
-    Image {
-        id: imageLoadingBackgroundImage
-        source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
-        anchors {
-            centerIn: parent
-        }
-        width: parent.width - Theme.paddingMedium
-        height: parent.height - Theme.paddingMedium
+    BackgroundImage {
         visible: singleImage.status !== Image.Ready
-        asynchronous: true
-
-        fillMode: Image.PreserveAspectFit
-        opacity: visible ? 0.15 : 0
-        Behavior on opacity { FadeAnimation {} }
     }
 }

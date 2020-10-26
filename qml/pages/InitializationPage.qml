@@ -116,14 +116,18 @@ Page {
             }
 
             Image {
-                source: "../../images/fernschreiber.png"
+                source: "../../images/fernschreiber.svg"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
-
+                sourceSize {
+                    width: width
+                    height: height
+                }
                 fillMode: Image.PreserveAspectFit
                 asynchronous: true
                 width: Math.min(2 * Theme.itemSizeHuge, Math.min(Screen.width, Screen.height) / 2)
+                height: width
             }
 
             BusyLabel {

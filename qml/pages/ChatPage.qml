@@ -1166,18 +1166,17 @@ Page {
                             pageStack.push(documentPickerPage);
                         }
                     }
-                    HighlightImage {
-                        source: "../../images/icon-m-sticker.png"
-                        width: Theme.itemSizeSmall
-                        height: Theme.itemSizeSmall
-                        color: Theme.primaryColor
-                        highlightColor: Theme.highlightColor
-                        highlighted: stickerPickerLoader.active
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                stickerPickerLoader.active = !stickerPickerLoader.active;
-                            }
+
+                    IconButton {
+                        icon.source: "../../images/icon-m-sticker.svg"
+                        icon.sourceSize {
+                            width: Theme.iconSizeMedium
+                            height: Theme.iconSizeMedium
+                        }
+
+                        highlighted: down || stickerPickerLoader.active
+                        onClicked: {
+                            stickerPickerLoader.active = !stickerPickerLoader.active;
                         }
                     }
                     IconButton {

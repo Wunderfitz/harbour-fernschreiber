@@ -78,12 +78,7 @@ Item {
     Loader {
         anchors.fill: parent
         sourceComponent: Component {
-            Image {
-                source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
-                asynchronous: true
-
-                fillMode: Image.PreserveAspectFit
-            }
+            BackgroundImage {}
         }
 
         active: opacity > 0

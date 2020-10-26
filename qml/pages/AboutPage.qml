@@ -44,14 +44,18 @@ Page {
 
             Image {
                 id: wunderfitzImage
-                source: "../../images/fernschreiber.png"
+                source: "../../images/fernschreiber.svg"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
-
+                sourceSize {
+                    width: width
+                    height: height
+                }
                 fillMode: Image.PreserveAspectFit
                 asynchronous: true
                 width: Math.min(2 * Theme.itemSizeHuge, Math.min(aboutPage.width, aboutPage.height) / 2)
+                height: width
             }
 
             Label {

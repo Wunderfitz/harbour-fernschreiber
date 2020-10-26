@@ -19,6 +19,7 @@
 import QtQuick 2.5
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
+import "../components"
 import "../js/functions.js" as Functions
 
 CoverBackground {
@@ -90,21 +91,19 @@ CoverBackground {
         }
     }
 
-    Image {
+    BackgroundImage {
         id: backgroundImage
-        source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + ".png"
+        width: parent.height - Theme.paddingLarge
+        height: width
+        sourceDimension: width
         anchors {
             verticalCenter: parent.verticalCenter
-
+            centerIn: undefined
             bottom: parent.bottom
             bottomMargin: Theme.paddingMedium
-
             right: parent.right
             rightMargin: Theme.paddingMedium
         }
-
-        fillMode: Image.PreserveAspectFit
-        opacity: 0.15
     }
 
     Column {

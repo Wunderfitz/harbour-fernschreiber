@@ -112,19 +112,8 @@ Item {
         visible: status === Image.Ready ? true : false
     }
 
-    Image {
-        id: imageLoadingBackgroundImage
-        source: "../../images/background-" + ( Theme.colorScheme ? "black" : "white" ) + "-small.png"
-        anchors {
-            centerIn: parent
-        }
-        width: parent.width - Theme.paddingSmall
-        height: parent.height - Theme.paddingSmall
+    BackgroundImage {
         visible: placeholderImage.status !== Image.Ready
-        asynchronous: true
-
-        fillMode: Image.PreserveAspectFit
-        opacity: 0.15
     }
 
     Rectangle {
