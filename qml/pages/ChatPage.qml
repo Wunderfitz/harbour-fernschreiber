@@ -1181,7 +1181,10 @@ Page {
                         }
                     }
                     IconButton {
-                        visible: !chatPage.isPrivateChat
+                        visible: !chatPage.isPrivateChat &&
+                                 (chatGroupInformation.status["@type"] === "chatMemberStatusCreator"
+                                  || chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator"
+                                  || (chatGroupInformation.status["@type"] === "chatMemberStatusMember" && chatInformation.permissions.can_send_polls))
                         icon.source: "image://theme/icon-m-question"
                         onClicked: {
                             pageStack.push(Qt.resolvedUrl("../pages/PollCreationPage.qml"), { "chatId" : chatInformation.id, groupName: chatInformation.title});
