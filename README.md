@@ -23,6 +23,7 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 - Polish: [atlochowski](https://github.com/atlochowski)
 - Russian: [Rustem Abzalov](https://github.com/arustg) and [Slava Monich](https://github.com/monich)
 - Spanish: [carlosgonz](https://github.com/GNUuser)
+- Swedish: [Åke Engelbrektson](https://github.com/eson57)
 
 ## License
 Licensed under GNU GPLv3
@@ -50,4 +51,3 @@ This project uses
 - Emoji parsing and artwork by [Twitter Emoji (Twemoji)](http://twitter.github.io/twemoji/), copyright 2018 Twitter, Inc and other contributors, Code licensed under the [MIT License](http://opensource.org/licenses/MIT), Graphics licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 Fernschreiber was translated to several languages. Thanks to all contributors!
-
