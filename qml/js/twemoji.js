@@ -568,8 +568,8 @@ var twemoji = (function (
 }());
 
 
-function emojify(rawText, emojiSize) {
-    var curatedText = twemoji.parse(rawText, { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: emojiSize });
+function emojify(rawText, emojiSize, basePath) {
+    var curatedText = twemoji.parse(rawText, { callback: function(icon, options, variant) { return (basePath || '../js/emoji/') + icon + '.svg'; }, size: emojiSize });
     // QML has a weird bug. If an ampersand is followed by an HTML tag or a character, the tag is ignored and returned as string or the following string is omitted
     // Therefore replacing the ampersand with &amp; in these cases...
     return curatedText.replace(/((\&[\w\d]+\;)|((\&)(\<|\w+)))/g, function(match, p1, p2, p3, p4, p5, offset, string) {

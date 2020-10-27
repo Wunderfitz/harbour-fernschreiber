@@ -265,8 +265,10 @@ Page {
                             : "../components/chatInformationPage/ChatInformationProfilePicture.qml"
                 }
             }
+            // PageHeader changes the html base path:
+            property url emojiBase: "../js/emoji/"
             leftMargin: imageContainer.minDimension + Theme.horizontalPageMargin + Theme.paddingMedium
-            title: chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, Theme.fontSizeLarge) : qsTr("Unknown")
+            title: chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, Theme.fontSizeLarge, emojiBase) : qsTr("Unknown")
             description: chatInformationPage.isPrivateChat ? ("@"+(chatInformationPage.privateChatUserInformation.username || chatInformationPage.chatPartnerGroupId)) : ""
         }
 
