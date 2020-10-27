@@ -136,27 +136,27 @@ void NotificationManager::handleChatDiscovered(const QString &chatId, const QVar
     this->chatMap.insert(chatId, chatInformation);
 }
 
-void NotificationManager::handleNgfConnectionStatus(const bool &connected)
+void NotificationManager::handleNgfConnectionStatus(bool connected)
 {
     LOG("NGF Daemon connection status changed" << connected);
 }
 
-void NotificationManager::handleNgfEventFailed(const quint32 &eventId)
+void NotificationManager::handleNgfEventFailed(quint32 eventId)
 {
     LOG("NGF event failed, id:" << eventId);
 }
 
-void NotificationManager::handleNgfEventCompleted(const quint32 &eventId)
+void NotificationManager::handleNgfEventCompleted(quint32 eventId)
 {
     LOG("NGF event completed, id:" << eventId);
 }
 
-void NotificationManager::handleNgfEventPlaying(const quint32 &eventId)
+void NotificationManager::handleNgfEventPlaying(quint32 eventId)
 {
     LOG("NGF event playing, id:" << eventId);
 }
 
-void NotificationManager::handleNgfEventPaused(const quint32 &eventId)
+void NotificationManager::handleNgfEventPaused(quint32 eventId)
 {
     LOG("NGF event paused, id:" << eventId);
 }
@@ -232,7 +232,7 @@ QString NotificationManager::getNotificationText(const QVariantMap &notification
     return FernschreiberUtils::getMessageShortText(notificationContent, false);
 }
 
-void NotificationManager::controlLedNotification(const bool &enabled)
+void NotificationManager::controlLedNotification(bool enabled)
 {
     static const QString PATTERN("PatternCommunicationIM");
     static const QString ACTIVATE("req_led_pattern_activate");

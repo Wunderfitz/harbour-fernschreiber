@@ -41,18 +41,18 @@ public slots:
     void handleUpdateNotificationGroup(const QVariantMap notificationGroupUpdate);
     void handleUpdateNotification(const QVariantMap updatedNotification);
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
-    void handleNgfConnectionStatus(const bool &connected);
-    void handleNgfEventFailed(const quint32 &eventId);
-    void handleNgfEventCompleted(const quint32 &eventId);
-    void handleNgfEventPlaying(const quint32 &eventId);
-    void handleNgfEventPaused(const quint32 &eventId);
+    void handleNgfConnectionStatus(bool connected);
+    void handleNgfEventFailed(quint32 eventId);
+    void handleNgfEventCompleted(quint32 eventId);
+    void handleNgfEventPlaying(quint32 eventId);
+    void handleNgfEventPaused(quint32 eventId);
 
 private:
 
     QVariantMap sendNotification(const QString &chatId, const QVariantMap &notificationInformation, const QVariantMap &activeNotifications);
     void removeNotification(const QVariantMap &notificationInformation);
     QString getNotificationText(const QVariantMap &notificationContent);
-    void controlLedNotification(const bool &enabled);
+    void controlLedNotification(bool enabled);
 
 private:
 
