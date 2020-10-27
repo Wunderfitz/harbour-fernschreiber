@@ -62,6 +62,7 @@ private:
     QVariantMap chatMap;
     QVariantMap notificationGroups;
     QDBusInterface mceInterface;
+    QString appIconFile;
 
 };
 
