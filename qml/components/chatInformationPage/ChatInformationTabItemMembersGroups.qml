@@ -79,18 +79,18 @@ ChatInformationTabItemBase {
             width: parent.width
 
             // chat title    isPrivateChat ? () :
-            primaryText.text: Emoji.emojify(Functions.getUserName(user), primaryText.font.pixelSize)
+            primaryText.text: Emoji.emojify(Functions.getUserName(user), primaryText.font.pixelSize, "../../js/emoji/")
             // last user
             prologSecondaryText.text: "@"+(user.username !== "" ? user.username : user_id) + (user_id === chatInformationPage.myUserId ? " " + qsTr("You") : "")
             secondaryText {
                 horizontalAlignment: Text.AlignRight
                 property string statusText: Functions.getChatMemberStatusText(model.status["@type"])
-                property string customText: model.status.custom_title ? Emoji.emojify(model.status.custom_title, secondaryText.font.pixelSize) : ""
+                property string customText: model.status.custom_title ? Emoji.emojify(model.status.custom_title, secondaryText.font.pixelSize, "../../js/emoji/") : ""
                 text: (statusText !== "" && customText !== "") ? statusText + ", " + customText : statusText + customText
             }
             tertiaryText {
                 maximumLineCount: 1
-                text: user.type["@type"] === "userTypeBot" ? (Emoji.emojify("🤖 "+bot_info.description, tertiaryText.font.pixelSize)) : Functions.getChatPartnerStatusText(user.status["@type"], user.status.was_online);
+                text: user.type["@type"] === "userTypeBot" ? (Emoji.emojify("🤖 "+bot_info.description, tertiaryText.font.pixelSize, "../../js/emoji/")) : Functions.getChatPartnerStatusText(user.status["@type"], user.status.was_online);
                 elide: Text.ElideRight
             }
 
@@ -162,7 +162,7 @@ ChatInformationTabItemBase {
                 onChatChanged: {
                     if (changedChatId === chat_id) {
                         // Force update of some list item elements (currently only last message text seems to create problems). dataChanged() doesn't seem to trigger them all :(
-                        secondaryText.text = last_message_text ? Emoji.emojify(last_message_text, Theme.fontSizeExtraSmall) : qsTr("Unknown")
+                        secondaryText.text = last_message_text ? Emoji.emojify(last_message_text, Theme.fontSizeExtraSmall, "../../js/emoji/") : qsTr("Unknown")
                     }
                 }
             }
