@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QDBusInterface>
+#include <nemonotifications-qt5/notification.h>
 #include <ngf-qt5/NgfClient>
 #include "tdlibwrapper.h"
 #include "appsettings.h"
@@ -29,18 +30,21 @@
 class NotificationManager : public QObject
 {
     Q_OBJECT
+    class ChatInfo;
+    class NotificationGroup;
+
 public:
+
     NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings);
     ~NotificationManager() override;
 
-signals:
-
 public slots:
 
-    void handleUpdateActiveNotifications(const QVariantList notificationGroups);
-    void handleUpdateNotificationGroup(const QVariantMap notificationGroupUpdate);
-    void handleUpdateNotification(const QVariantMap updatedNotification);
+    void handleUpdateActiveNotifications(const QVariantList &notificationGroups);
+    void handleUpdateNotificationGroup(const QVariantMap &notificationGroupUpdate);
+    void handleUpdateNotification(const QVariantMap &updatedNotification);
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
+    void handleChatTitleUpdated(const QString &chatId, const QString &title);
     void handleNgfConnectionStatus(bool connected);
     void handleNgfEventFailed(quint32 eventId);
     void handleNgfEventCompleted(quint32 eventId);
@@ -49,18 +53,21 @@ public slots:
 
 private:
 
-    QVariantMap sendNotification(const QString &chatId, const QVariantMap &notificationInformation, const QVariantMap &activeNotifications);
-    void removeNotification(const QVariantMap &notificationInformation);
+    void publishNotification(const NotificationGroup *notificationGroup, bool needFeedback);
     QString getNotificationText(const QVariantMap &notificationContent);
     void controlLedNotification(bool enabled);
+    void updateNotificationGroup(int groupId, qlonglong chatId, int totalCount,
+        const QVariantList &addedNotifications,
+        const QVariantList &removedNotificationIds = QVariantList(),
+        AppSettings::NotificationFeedback feedback = AppSettings::NotificationFeedbackNone);
 
 private:
 
     TDLibWrapper *tdLibWrapper;
     AppSettings *appSettings;
     Ngf::Client *ngfClient;
-    QVariantMap chatMap;
-    QVariantMap notificationGroups;
+    QMap<qlonglong,ChatInfo*> chatMap;
+    QMap<int,NotificationGroup*> notificationGroups;
     QDBusInterface mceInterface;
     QString appIconFile;
 
