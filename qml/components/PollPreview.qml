@@ -80,6 +80,7 @@ Item {
             visible: text !== ""
             text: Emoji.emojify(pollData.question, Theme.fontSizeSmall)
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            textFormat: Text.StyledText
             color: pollMessageComponent.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
         }
 
@@ -152,6 +153,7 @@ Item {
                 Label {
                     id: displayOptionLabel
                     text: Emoji.emojify(modelData.text, Theme.fontSizeMedium)
+                    textFormat: Text.StyledText
 
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     anchors {

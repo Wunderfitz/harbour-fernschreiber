@@ -111,7 +111,7 @@
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>Il link d&apos;invito è stato copiato nella clipboard</translation>
+        <translation>Il link d&apos;invito è stato copiato nella clipboard.</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
@@ -142,7 +142,7 @@
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation>Attualmente non è disponibile nessuna informazione</translation>
+        <translation>Attualmente non è disponibile nessuna informazione.</translation>
     </message>
     <message>
         <source>Chat Title</source>
@@ -262,10 +262,6 @@
         <translation>Tu</translation>
     </message>
     <message>
-        <source>Loading messages…</source>
-        <translation>Carica messaggi…</translation>
-    </message>
-    <message>
         <source>Unmute Chat</source>
         <translation>Riattiva suoni chat</translation>
     </message>
@@ -290,16 +286,20 @@
         <translation>Cancella messaggio</translation>
     </message>
     <message>
-        <source>Uploading…</source>
-        <translation>Carica…</translation>
-    </message>
-    <message>
         <source>Forwarded Message</source>
         <translation>Messaggio inoltrato</translation>
     </message>
     <message>
         <source>This chat is empty.</source>
         <translation>Questa chat è vuota.</translation>
+    </message>
+    <message>
+        <source>Loading messages...</source>
+        <translation>Carica messaggi...</translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>Carica...</translation>
     </message>
 </context>
 <context>
@@ -317,24 +317,8 @@
         <translation>in</translation>
     </message>
     <message>
-        <source>Waiting for network…</source>
-        <translation>Attendo la rete…</translation>
-    </message>
-    <message>
-        <source>Connecting to network…</source>
-        <translation>Connetto alla rete…</translation>
-    </message>
-    <message>
-        <source>Connecting to proxy…</source>
-        <translation>Connetto al proxy…</translation>
-    </message>
-    <message>
         <source>Connected</source>
         <translation>Connesso</translation>
-    </message>
-    <message>
-        <source>Updating content…</source>
-        <translation>Aggiorna contenuti…</translation>
     </message>
     <message>
         <source>chat</source>
@@ -343,6 +327,22 @@
     <message>
         <source>chats</source>
         <translation>chat</translation>
+    </message>
+    <message>
+        <source>Waiting for network...</source>
+        <translation>Attendo la rete...</translation>
+    </message>
+    <message>
+        <source>Connecting to network...</source>
+        <translation>Connetto alla rete...</translation>
+    </message>
+    <message>
+        <source>Connecting to proxy...</source>
+        <translation>Connetto al proxy...</translation>
+    </message>
+    <message>
+        <source>Updating content...</source>
+        <translation>Aggiorna contenuti...</translation>
     </message>
 </context>
 <context>
@@ -606,10 +606,6 @@
         <translation>Inserisci il codice che hai ricevuto:</translation>
     </message>
     <message>
-        <source>Loading…</source>
-        <translation>Carica…</translation>
-    </message>
-    <message>
         <source>Unable to authenticate you with the entered code.</source>
         <translation>Autenticazione non riuscita con il codice inserito.</translation>
     </message>
@@ -645,6 +641,10 @@
         <source>Use the international format, e.g. %1</source>
         <translation>Utilizza il formato internazionale, es. %1</translation>
     </message>
+    <message>
+        <source>Loading...</source>
+        <translation>Carica...</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -671,28 +671,8 @@
         <translation>Fernschreiber</translation>
     </message>
     <message>
-        <source>Waiting for network…</source>
-        <translation>Attendo la rete…</translation>
-    </message>
-    <message>
-        <source>Connecting to network…</source>
-        <translation>Connetto alla rete…</translation>
-    </message>
-    <message>
-        <source>Connecting to proxy…</source>
-        <translation>Connetto al proxy…</translation>
-    </message>
-    <message>
-        <source>Updating content…</source>
-        <translation>Aggiorna contenuti…</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Sconosciuto</translation>
-    </message>
-    <message>
-        <source>Loading chat list…</source>
-        <translation>Carica lista chat…</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -701,6 +681,26 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Non hai nessuna chat.</translation>
+    </message>
+    <message>
+        <source>Waiting for network...</source>
+        <translation>Attendo la rete...</translation>
+    </message>
+    <message>
+        <source>Connecting to network...</source>
+        <translation>Connetto alla rete...</translation>
+    </message>
+    <message>
+        <source>Connecting to proxy...</source>
+        <translation>Connetto al proxy...</translation>
+    </message>
+    <message>
+        <source>Updating content...</source>
+        <translation>Aggiorna contenuti...</translation>
+    </message>
+    <message>
+        <source>Loading chat list...</source>
+        <translation>Carica lista chat...</translation>
     </message>
 </context>
 <context>
@@ -801,7 +801,7 @@
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation>Risposte multiple consentite</translation>
+        <translation>Risposte multiple consentite.</translation>
     </message>
     <message numerus="yes">
         <source>%L1 vote(s) total</source>
@@ -933,8 +933,8 @@
         <translation>Usati di recente</translation>
     </message>
     <message>
-        <source>Loading stickers…</source>
-        <translation>Carica sticker…</translation>
+        <source>Loading stickers...</source>
+        <translation>Carica sticker...</translation>
     </message>
 </context>
 <context>
