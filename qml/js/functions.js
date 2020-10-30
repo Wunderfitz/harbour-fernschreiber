@@ -100,14 +100,14 @@ function getMessageText(message, simple, myself) {
     if (message.content['@type'] === 'messagePoll') {
         if (message.content.poll.type['@type'] === "pollTypeQuiz") {
             if (message.content.poll.is_anonymous) {
-                return simple ? (myself ? qsTr("sent an anonymous quiz", "myself") : qsTr("sent an anonymous quiz")) : "";
+                return simple ? (myself ? qsTr("sent an anonymous quiz", "myself") : qsTr("sent an anonymous quiz")) : ("<b>" + qsTr("Anonymous Quiz") + "</b>");
             }
-            return simple ? (myself ? qsTr("sent a quiz", "myself") : qsTr("sent a quiz")) : "";
+            return simple ? (myself ? qsTr("sent a quiz", "myself") : qsTr("sent a quiz")) : ("<b>" + qsTr("Quiz") + "</b>");
         }
         if (message.content.poll.is_anonymous) {
-            return simple ? (myself ? qsTr("sent an anonymous poll", "myself") : qsTr("sent an anonymous poll")) : "";
+            return simple ? (myself ? qsTr("sent an anonymous poll", "myself") : qsTr("sent an anonymous poll")) : ("<b>" + qsTr("Anonymous Poll") + "</b>");
         }
-        return simple ? (myself ? qsTr("sent a poll", "myself") : qsTr("sent a poll")) : "";
+        return simple ? (myself ? qsTr("sent a poll", "myself") : qsTr("sent a poll")) : ("<b>" + qsTr("Poll") + "</b>");
     }
     return qsTr("Unsupported message: %1").arg(message.content['@type'].substring(7));
 }

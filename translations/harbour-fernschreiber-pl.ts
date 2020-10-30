@@ -1196,5 +1196,21 @@
         <source>sent an anonymous poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Anonymous Quiz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quiz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anonymous Poll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
