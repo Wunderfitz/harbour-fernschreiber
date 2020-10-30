@@ -24,15 +24,18 @@ import "../js/functions.js" as Functions
 Item {
     id: audioMessageComponent
 
-    property variant audioData;
+    property ListItem messageListItem
+    property variant rawMessage: messageListItem.myMessage
+
+    property variant audioData: ( rawMessage.content['@type'] === "messageVoiceNote" ) ?  rawMessage.content.voice_note : ( ( rawMessage.content['@type'] === "messageAudio" ) ? rawMessage.content.audio : "");
     property string audioUrl;
     property int previewFileId;
     property int audioFileId;
-    property bool onScreen;
+    property bool onScreen: messageListItem.page.status === PageStatus.Active
     property string audioType : "voiceNote";
 
     width: parent.width
-    height: parent.height
+    height: width / 2
 
     function getTimeString(rawSeconds) {
         var minutes = Math.floor( rawSeconds / 60 );

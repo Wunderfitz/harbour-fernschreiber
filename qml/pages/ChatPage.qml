@@ -225,8 +225,6 @@ Page {
                 chatPage.isInitialized = true;
             }
             break;
-//        case PageStatus.Deactivating:
-//            tdLibWrapper.closeChat(chatInformation.id);
         }
 
     }
@@ -314,6 +312,10 @@ Page {
             chatView.lastReadSentIndex = lastReadSentIndex;
             chatViewCooldownTimer.start();
         }
+        onNotificationSettingsUpdated: {
+            chatInformation = chatModel.getChatInformation();
+            muteChatMenuItem.text = chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat");
+        }
     }
 
     Timer {
@@ -348,9 +350,9 @@ Page {
 
     SilicaFlickable {
         id: chatContainer
-        contentHeight: parent.height
-        contentWidth: parent.width
         anchors.fill: parent
+        contentHeight: height
+        contentWidth: width
 
         PullDownMenu {
             visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active
@@ -369,13 +371,6 @@ Page {
             }
         }
 
-        Connections {
-            target: chatModel
-            onNotificationSettingsUpdated: {
-                chatInformation = chatModel.getChatInformation();
-                muteChatMenuItem.text = chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat");
-            }
-        }
         BackgroundItem {
             id: headerMouseArea
             height: headerRow.height
@@ -464,16 +459,6 @@ Page {
                 }
 
                 Timer {
-                    id: chatViewLoadingTimer
-                    interval: 100
-                    repeat: false
-                    running: false
-                    onTriggered: {
-                        chatPage.loading = false;
-                    }
-                }
-
-                Timer {
                     id: chatViewCooldownTimer
                     interval: 2000
                     repeat: false
@@ -483,6 +468,7 @@ Page {
                         chatView.inCooldown = false;
                     }
                 }
+
 
                 SilicaListView {
                     id: chatView
@@ -519,24 +505,28 @@ Page {
                     }
 
                     model: chatModel
+                    property variant contentComponentNames: ({
+                                                              messageSticker: "StickerPreview",
+                                                              messagePhoto: "ImagePreview",
+                                                              messageVideo: "VideoPreview",
+                                                              messageAnimation: "VideoPreview",
+                                                              messageAudio: "AudioPreview",
+                                                              messageVoiceNote: "AudioPreview",
+                                                              messageDocument: "DocumentPreview",
+                                                              messageLocation: "LocationPreview",
+                                                              messageVenue: "LocationPreview",
+                                                              messagePoll: "PollPreview"
+                                                          })
                     delegate: ListItem {
-
                         id: messageListItem
                         contentHeight: messageBackground.height + Theme.paddingMedium
                         contentWidth: parent.width
 
                         property variant myMessage: display
                         property variant userInformation: tdLibWrapper.getUserInformation(display.sender_user_id)
+                        property Page page: chatPage
+
                         property bool isOwnMessage: chatPage.myUserId === display.sender_user_id
-                        property bool isForwarded: typeof display.forward_info !== "undefined"
-                        property bool containsImage: display.content['@type'] === "messagePhoto"
-                        property bool containsSticker: display.content['@type'] === "messageSticker"
-                        property bool containsWebPage: typeof display.content.web_page !== "undefined"
-                        property bool containsVideo: (( display.content['@type'] === "messageVideo" ) || ( display.content['@type'] === "messageAnimation" ));
-                        property bool containsAudio: (( display.content['@type'] === "messageVoiceNote" ) || ( display.content['@type'] === "messageAudio" ));
-                        property bool containsDocument: ( display.content['@type'] === "messageDocument" )
-                        property bool containsLocation: ( display.content['@type'] === "messageLocation" || ( display.content['@type'] === "messageVenue" ))
-                        property bool containsPoll: display.content['@type'] === "messagePoll"
 
                         menu: ContextMenu {
                             MenuItem {
@@ -556,6 +546,7 @@ Page {
                                 visible: display.can_be_edited
                             }
                             MenuItem {
+                                enabled: !deleteMessageRemorseItem.pending
                                 onClicked: {
                                     deleteMessageRemorseItem.execute(messageListItem, qsTr("Deleting message"), function() { tdLibWrapper.deleteMessages(chatInformation.id, [ display.id ]); } );
                                 }
@@ -574,6 +565,32 @@ Page {
                                 messageBackground.color = index > ( chatView.count - chatInformation.unreadCount - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor;
                                 messageBackground.opacity = index > ( chatView.count - chatInformation.unreadCount - 1 ) ? 0.5 : 0.2;
                             }
+
+                            onLastReadSentMessageUpdated: {
+                                console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + (index <= lastReadSentIndex));
+                                messageDateText.text = getMessageStatusText(display, index, lastReadSentIndex);
+                            }
+                            onMessageUpdated: {
+                                if (index === modelIndex) {
+                                    console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
+                                    messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
+                                    messageText.text = Emoji.emojify(Functions.getMessageText(display, false, messageListItem.isOwnMessage), messageText.font.pixelSize);
+                                    if(locationPreviewLoader.active && locationPreviewLoader.status === Loader.Ready) {
+                                        locationPreviewLoader.item.locationData = display.content.location;
+                                        locationPreviewLoader.item.updatePicture()
+                                    }
+                                }
+                            }
+                        }
+
+                        Connections {
+                            target: tdLibWrapper
+                            onReceivedMessage: {
+                                if (messageId === display.reply_to_message_id.toString()) {
+                                    messageInReplyToRow.inReplyToMessage = message;
+                                    messageInReplyToRow.visible = true;
+                                }
+                            }
                         }
 
                         Component.onCompleted: {
@@ -587,22 +604,21 @@ Page {
                             running: false
                             onTriggered: {
                                 if (typeof display.content !== "undefined") {
-                                    webPagePreviewLoader.active = messageListItem.containsWebPage;
-                                    imagePreviewLoader.active = messageListItem.containsImage;
-                                    stickerPreviewLoader.active = messageListItem.containsSticker;
-                                    videoPreviewLoader.active = messageListItem.containsVideo;
-                                    audioPreviewLoader.active = messageListItem.containsAudio;
-                                    documentPreviewLoader.active = messageListItem.containsDocument;
-                                    locationPreviewLoader.active = messageListItem.containsLocation;
-                                    pollPreviewLoader.active = messageListItem.containsPoll;
-                                    forwardedInformationLoader.active = messageListItem.isForwarded;
+                                    if(chatView.contentComponentNames.hasOwnProperty(display.content['@type'])) {
+                                        extraContentLoader.setSource(
+                                                    "../components/" +chatView.contentComponentNames[display.content['@type']] +".qml",
+                                                    {
+                                                       messageListItem: messageListItem
+                                                   })
+                                    } else {
+                                        if(typeof display.content.web_page !== "undefined") { // only in messageText
+                                            webPagePreviewLoader.active = true;
+                                        }
+                                    }
                                 }
                             }
                         }
 
-                        RemorseItem {
-                            id: deleteMessageRemorseItem
-                        }
 
                         Row {
                             id: messageTextRow
@@ -610,18 +626,6 @@ Page {
                             width: parent.width - ( 2 * Theme.horizontalPageMargin )
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.verticalCenter: parent.verticalCenter
-
-                            Component {
-                                id: profileThumbnailComponent
-                                ProfileThumbnail {
-                                    id: messagePictureThumbnail
-                                    photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ""
-                                    replacementStringHint: userText.text
-                                    width: visible ? Theme.itemSizeSmall : 0
-                                    height: visible ? Theme.itemSizeSmall : 0
-                                    visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
-                                }
-                            }
 
                             Loader {
                                 id: profileThumbnailLoader
@@ -631,7 +635,16 @@ Page {
                                 height: active ? Theme.itemSizeSmall : 0
                                 anchors.bottom: parent.bottom
                                 anchors.bottomMargin: Theme.paddingSmall
-                                sourceComponent: profileThumbnailComponent
+                                sourceComponent: Component {
+                                    ProfileThumbnail {
+                                        id: messagePictureThumbnail
+                                        photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ""
+                                        replacementStringHint: userText.text
+                                        width: visible ? Theme.itemSizeSmall : 0
+                                        height: visible ? Theme.itemSizeSmall : 0
+                                        visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                                    }
+                                }
                             }
 
                             Item {
@@ -654,7 +667,7 @@ Page {
                                     color: index > ( chatView.count - chatInformation.unread_count - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor
                                     radius: parent.width / 50
                                     opacity: index > ( chatView.count - chatInformation.unread_count - 1 ) ? 0.5 : 0.2
-                                    visible: appSettings.showStickersAsImages || !messageListItem.containsSticker
+                                    visible: appSettings.showStickersAsImages || display.content['@type'] !== "messageSticker"
                                 }
 
                                 Column {
@@ -671,15 +684,6 @@ Page {
                                         }
                                     }
 
-                                    Connections {
-                                        target: tdLibWrapper
-                                        onReceivedMessage: {
-                                            if (messageId === display.reply_to_message_id.toString()) {
-                                                messageInReplyToRow.inReplyToMessage = message;
-                                                messageInReplyToRow.visible = true;
-                                            }
-                                        }
-                                    }
 
                                     Text {
                                         id: userText
@@ -704,10 +708,10 @@ Page {
 
                                     Loader {
                                         id: forwardedInformationLoader
-                                        active: false
+                                        active: typeof display.forward_info !== "undefined"
                                         asynchronous: true
                                         width: parent.width
-                                        height: messageListItem.isForwarded ? ( item ? item.height : Theme.itemSizeExtraSmall ) : 0
+//                                        height: active ? ( item ? item.height : Theme.itemSizeExtraSmall ) : 0
                                         sourceComponent: Component {
                                             Row {
                                                 id: forwardedMessageInformationRow
@@ -817,128 +821,10 @@ Page {
                                             }
                                         }
                                     }
-
                                     Loader {
-                                        id: imagePreviewLoader
-                                        active: false
-                                        asynchronous: true
+                                        id: extraContentLoader
                                         width: parent.width
-                                        height: messageListItem.containsImage ? (item ? item.height : (parent.width * 2 / 3)) : 0
-                                        sourceComponent: Component {
-                                            id: imagePreviewComponent
-                                            ImagePreview {
-                                                id: messageImagePreview
-                                                photoData: messageListItem.containsImage ?  display.content.photo : ""
-                                                width: parent.width
-                                                height: parent.width * 2 / 3
-                                            }
-                                        }
-                                    }
-
-                                    Loader
-                                    {
-                                        id: stickerPreviewLoader
-                                        active: false
                                         asynchronous: true
-                                        x: messageListItem.isOwnMessage ? (parent.width - width) : 0
-                                        width: (appSettings.showStickersAsImages || !item) ? parent.width : item.width
-                                        height: messageListItem.containsSticker ?  display.content.sticker.height : 0
-
-                                        sourceComponent: Component {
-                                            id: stickerPreviewComponent
-                                            StickerPreview {
-                                                id: messageStickerPreview
-                                                stickerData: messageListItem.containsSticker ?  display.content.sticker : ""
-                                            }
-                                        }
-                                    }
-
-                                    Loader {
-                                        id: videoPreviewLoader
-                                        active: false
-                                        asynchronous: true
-                                        width: parent.width
-                                        height: messageListItem.containsVideo ? Functions.getVideoHeight(width, ( display.content['@type'] === "messageVideo" ) ? display.content.video : display.content.animation) : 0
-                                        sourceComponent: Component {
-                                            id: videoPreviewComponent
-                                            VideoPreview {
-                                                id: messageVideoPreview
-                                                videoData: ( display.content['@type'] === "messageVideo" ) ?  display.content.video : ( ( display.content['@type'] === "messageAnimation" ) ? display.content.animation : "")
-                                                width: parent.width
-                                                height: Functions.getVideoHeight(width, ( display.content['@type'] === "messageVideo" ) ? display.content.video : display.content.animation)
-                                                onScreen: chatPage.status === PageStatus.Active
-                                            }
-                                        }
-                                    }
-
-                                    Loader {
-                                        id: audioPreviewLoader
-                                        active: false
-                                        asynchronous: true
-                                        width: parent.width
-                                        height: messageListItem.containsAudio ? (parent.width / 2) : 0
-                                        sourceComponent: Component {
-                                            id: audioPreviewComponent
-                                            AudioPreview {
-                                                id: messageAudioPreview
-                                                audioData: ( display.content['@type'] === "messageVoiceNote" ) ?  display.content.voice_note : ( ( display.content['@type'] === "messageAudio" ) ? display.content.audio : "")
-                                                width: parent.width
-                                                height: parent.width / 2
-                                                onScreen: chatPage.status === PageStatus.Active
-                                            }
-                                        }
-                                    }
-
-                                    Loader {
-                                        id: documentPreviewLoader
-                                        active: false
-                                        asynchronous: true
-                                        width: parent.width
-                                        height: messageListItem.containsDocument ? (item ? item.height : Theme.itemSizeSmall) : 0
-                                        sourceComponent: Component {
-                                            id: documentPreviewComponent
-                                            DocumentPreview {
-                                                id: messageDocumentPreview
-                                                documentData: messageListItem.containsDocument ?  display.content.document : ""
-                                            }
-                                        }
-                                    }
-
-                                    Loader {
-                                        id: locationPreviewLoader
-                                        active: false
-                                        asynchronous: true
-                                        width: parent.width
-                                        height: messageListItem.containsLocation ? (item ? item.height : (parent.width * 2 / 3)) : 0
-                                        sourceComponent: Component {
-                                            id: locationPreviewComponent
-                                            LocationPreview {
-                                                id: messageLocationPreview
-                                                width: parent.width
-                                                height: parent.width * 2 / 3
-                                                chatId: display.id
-                                                locationData: ( display.content['@type'] === "messageLocation" ) ?  display.content.location : ( ( display.content['@type'] === "messageVenue" ) ? display.content.venue.location : "" )
-                                            }
-                                        }
-                                    }
-
-                                    Loader {
-                                        id: pollPreviewLoader
-                                        active: false
-                                        asynchronous: true
-                                        width: parent.width
-//                                        height: messageListItem.containsLocation ? (item ? item.height : (parent.width * 2 / 3)) : 0
-                                        sourceComponent: Component {
-                                            id: pollPreviewComponent
-                                            PollPreview {
-                                                id: messageLocationPreview
-                                                width: parent.width
-                                                chatId: chatInformation.id
-                                                isOwnMessage: messageListItem.isOwnMessage
-                                                message: display
-                                                messageItem: messageListItem
-                                            }
-                                        }
                                     }
 
                                     Timer {
@@ -951,24 +837,6 @@ Page {
                                         }
                                     }
 
-                                    Connections {
-                                        target: chatModel
-                                        onLastReadSentMessageUpdated: {
-                                            console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + (index <= lastReadSentIndex));
-                                            messageDateText.text = getMessageStatusText(display, index, lastReadSentIndex);
-                                        }
-                                        onMessageUpdated: {
-                                            if (index === modelIndex) {
-                                                console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
-                                                messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
-                                                messageText.text = Emoji.emojify(Functions.getMessageText(display, false, messageListItem.isOwnMessage), messageText.font.pixelSize);
-                                                if(locationPreviewLoader.active && locationPreviewLoader.status === Loader.Ready) {
-                                                    locationPreviewLoader.item.locationData = display.content.location;
-                                                    locationPreviewLoader.item.updatePicture()
-                                                }
-                                            }
-                                        }
-                                    }
 
                                     Text {
                                         width: parent.width
@@ -1003,7 +871,7 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
 
                     opacity: chatPage.loading ? 1 : 0
-                    Behavior on opacity { NumberAnimation {} }
+                    Behavior on opacity { FadeAnimation {} }
                     visible: chatPage.loading
 
                     InfoLabel {
@@ -1066,54 +934,13 @@ Page {
             Column {
                 id: newMessageColumn
                 spacing: Theme.paddingSmall
+
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: !chatPage.isChannel
 
                 property string replyToMessageId: "0";
                 property string editMessageId: "0";
-
-                Component {
-                     id: imagePickerPage
-                     ImagePickerPage {
-                         onSelectedContentPropertiesChanged: {
-                             attachmentOptionsRow.visible = false;
-                             console.log("Selected photo: " + selectedContentProperties.filePath );
-                             attachmentPreviewRow.fileProperties = selectedContentProperties;
-                             attachmentPreviewRow.isPicture = true;
-                             attachmentPreviewRow.visible = true;
-                             controlSendButton();
-                         }
-                     }
-                 }
-
-                Component {
-                     id: videoPickerPage
-                     VideoPickerPage {
-                         onSelectedContentPropertiesChanged: {
-                             attachmentOptionsRow.visible = false;
-                             console.log("Selected video: " + selectedContentProperties.filePath );
-                             attachmentPreviewRow.fileProperties = selectedContentProperties;
-                             attachmentPreviewRow.isVideo = true;
-                             attachmentPreviewRow.visible = true;
-                             controlSendButton();
-                         }
-                     }
-                 }
-
-                Component {
-                     id: documentPickerPage
-                     DocumentPickerPage {
-                         onSelectedContentPropertiesChanged: {
-                             attachmentOptionsRow.visible = false;
-                             console.log("Selected document: " + selectedContentProperties.filePath );
-                             attachmentPreviewRow.fileProperties = selectedContentProperties;
-                             attachmentPreviewRow.isDocument = true;
-                             attachmentPreviewRow.visible = true;
-                             controlSendButton();
-                         }
-                     }
-                 }
 
                 InReplyToRow {
                     onInReplyToMessageChanged: {
@@ -1134,7 +961,6 @@ Page {
 
                     id: newMessageInReplyToRow
                     myUserId: chatPage.myUserId
-                    anchors.horizontalCenter: parent.horizontalCenter
                     visible: false
                 }
 
@@ -1149,21 +975,45 @@ Page {
                         id: imageAttachmentButton
                         icon.source: "image://theme/icon-m-image"
                         onClicked: {
-                            pageStack.push(imagePickerPage);
+                            var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
+                            picker.selectedContentPropertiesChanged.connect(function(){
+                                attachmentOptionsRow.visible = false;
+                                console.log("Selected document: " + picker.selectedContentProperties.filePath );
+                                attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                attachmentPreviewRow.isDocument = true;
+                                attachmentPreviewRow.visible = true;
+                                controlSendButton();
+                            })
                         }
                     }
                     IconButton {
                         id: videoAttachmentButton
                         icon.source: "image://theme/icon-m-video"
                         onClicked: {
-                            pageStack.push(videoPickerPage);
+                            var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage");
+                            picker.selectedContentPropertiesChanged.connect(function(){
+                                attachmentOptionsRow.visible = false;
+                                console.log("Selected video: " + picker.selectedContentProperties.filePath );
+                                attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                attachmentPreviewRow.isVideo = true;
+                                attachmentPreviewRow.visible = true;
+                                controlSendButton();
+                            })
                         }
                     }
                     IconButton {
                         id: documentAttachmentButton
                         icon.source: "image://theme/icon-m-document"
                         onClicked: {
-                            pageStack.push(documentPickerPage);
+                            var picker = pageStack.push("Sailfish.Pickers.DocumentPicker");
+                            picker.selectedContentPropertiesChanged.connect(function(){
+                                attachmentOptionsRow.visible = false;
+                                console.log("Selected document: " + picker.selectedContentProperties.filePath );
+                                attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                attachmentPreviewRow.isDocument = true;
+                                attachmentPreviewRow.visible = true;
+                                controlSendButton();
+                            })
                         }
                     }
 
@@ -1180,7 +1030,7 @@ Page {
                         }
                     }
                     IconButton {
-                        visible: !chatPage.isPrivateChat &&
+                        visible: !chatPage.isPrivateChat && chatGroupInformation &&
                                  (chatGroupInformation.status["@type"] === "chatMemberStatusCreator"
                                   || chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator"
                                   || (chatGroupInformation.status["@type"] === "chatMemberStatusMember" && chatInformation.permissions.can_send_polls))
@@ -1222,15 +1072,15 @@ Page {
                         sourceSize.height: height
 
                         fillMode: Thumbnail.PreserveAspectCrop
-                        mimeType: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.mimeType : ""
-                        source: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.url : ""
+                        mimeType: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.mimeType || "" : ""
+                        source: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.url || "" : ""
                         visible: attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo
                     }
 
                     Text {
                         id: attachmentPreviewText
                         font.pixelSize: Theme.fontSizeSmall
-                        text: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.fileName : "";
+                        text: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.fileName || "" : "";
                         anchors.verticalCenter: parent.verticalCenter
 
                         maximumLineCount: 1
@@ -1407,11 +1257,8 @@ Page {
                             newMessageTextField.focus = false;
                         }
                     }
-
                 }
-
             }
-
         }
     }
 

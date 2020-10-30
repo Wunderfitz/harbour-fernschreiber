@@ -24,8 +24,13 @@ Item {
 
     id: imagePreviewItem
 
-    property variant photoData;
+    property ListItem messageListItem
+    property variant rawMessage: messageListItem.myMessage
+    property variant photoData: rawMessage.content.photo;
     property variant pictureFileInformation;
+
+    width: parent.width
+    height: width * 2 / 3
 
     Component.onCompleted: {
         updatePicture();
