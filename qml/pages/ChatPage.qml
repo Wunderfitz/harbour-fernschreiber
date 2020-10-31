@@ -17,8 +17,6 @@
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
 import QtQuick 2.6
-import QtGraphicalEffects 1.0
-import QtMultimedia 5.6
 import Sailfish.Silica 1.0
 import Sailfish.Pickers 1.0
 import Nemo.Thumbnailer 1.0
