@@ -1056,6 +1056,15 @@ const TDLibWrapper::Group* TDLibWrapper::getGroup(qlonglong groupId) const
     return Q_NULLPTR;
 }
 
+TDLibWrapper::ChatType TDLibWrapper::chatTypeFromString(const QString &type)
+{
+    return (type == QStringLiteral("chatTypePrivate")) ? ChatTypePrivate :
+        (type == QStringLiteral("chatTypeBasicGroup")) ? ChatTypeBasicGroup :
+        (type == QStringLiteral("chatTypeSupergroup")) ? ChatTypeSupergroup :
+        (type == QStringLiteral("chatTypeSecret")) ?  ChatTypeSecret :
+        ChatTypeUnknown;
+}
+
 TDLibWrapper::ChatMemberStatus TDLibWrapper::chatMemberStatusFromString(const QString &status)
 {
     // Most common ones first

@@ -152,6 +152,7 @@ public:
 
 public:
     const Group* getGroup(qlonglong groupId) const;
+    static ChatType chatTypeFromString(const QString &type);
     static ChatMemberStatus chatMemberStatusFromString(const QString &status);
 
 signals:
