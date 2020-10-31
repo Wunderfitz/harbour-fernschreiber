@@ -1190,5 +1190,21 @@
         <source>sent an anonymous poll</source>
         <translation>hat eine anonyme Umfrage gesendet</translation>
     </message>
+    <message>
+        <source>Anonymous Quiz</source>
+        <translation>Anonymes Quiz</translation>
+    </message>
+    <message>
+        <source>Quiz</source>
+        <translation>Quiz</translation>
+    </message>
+    <message>
+        <source>Anonymous Poll</source>
+        <translation>Anonyme Umfrage</translation>
+    </message>
+    <message>
+        <source>Poll</source>
+        <translation>Umfrage</translation>
+    </message>
 </context>
 </TS>

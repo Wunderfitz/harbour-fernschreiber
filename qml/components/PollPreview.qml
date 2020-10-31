@@ -80,6 +80,7 @@ Item {
             visible: text !== ""
             text: Emoji.emojify(pollData.question, Theme.fontSizeSmall)
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            textFormat: Text.StyledText
             color: pollMessageComponent.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
         }
 
@@ -102,10 +103,11 @@ Item {
             id: canAnswerDelegate
             TextSwitch {
                 id: optionDelegate
+                // TextSwitch changes the html base path:
+                property url emojiBase: "../js/emoji/"
                 width: pollMessageComponent.width
                 automaticCheck: false
-                // emojify does not work here :/
-                text: modelData.text
+                text: Emoji.emojify(modelData.text, Theme.fontSizeMedium, emojiBase)
                 checked: pollMessageComponent.chosenIndexes.indexOf(index) > -1
                 onClicked: {
                     pollMessageComponent.handleChoose(index);
@@ -151,6 +153,7 @@ Item {
                 Label {
                     id: displayOptionLabel
                     text: Emoji.emojify(modelData.text, Theme.fontSizeMedium)
+                    textFormat: Text.StyledText
 
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     anchors {
@@ -263,6 +266,7 @@ Item {
     Component {
         id: closePollMenuItemComponent
         MenuItem {
+            visible: !pollData.is_closed && pollMessageComponent.canEdit
             text: qsTr("Close Poll")
             onClicked: {
                 tdLibWrapper.stopPoll(pollMessageComponent.chatId, pollMessageComponent.messageId);
@@ -272,6 +276,7 @@ Item {
     Component {
         id: resetAnswerMenuItemComponent
         MenuItem {
+            visible: !pollData.is_closed && !pollMessageComponent.isQuiz && pollMessageComponent.hasAnswered
             text: qsTr("Reset Answer")
             onClicked: {
                 pollMessageComponent.resetChosen()
@@ -282,12 +287,8 @@ Item {
     Component.onCompleted: {
         opacity = 1;
         if(messageItem && messageItem.menu ) { // workaround to add menu entries
-            if(!pollData.is_closed && pollMessageComponent.canEdit) {
-                closePollMenuItemComponent.createObject(messageItem.menu._contentColumn);
-            }
-            if(!pollData.is_closed && !pollMessageComponent.isQuiz && pollMessageComponent.hasAnswered) {
-                resetAnswerMenuItemComponent.createObject(messageItem.menu._contentColumn);
-            }
+            closePollMenuItemComponent.createObject(messageItem.menu._contentColumn);
+            resetAnswerMenuItemComponent.createObject(messageItem.menu._contentColumn);
         }
     }
 }
