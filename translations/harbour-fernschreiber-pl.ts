@@ -282,10 +282,6 @@
         <translation>edytowana</translation>
     </message>
     <message>
-        <source>Deleting message</source>
-        <translation>Usuwanie wiadomości</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Usuń wiadomość</translation>
     </message>
@@ -299,6 +295,10 @@
     </message>
     <message>
         <source>This chat is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

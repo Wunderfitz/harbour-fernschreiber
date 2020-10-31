@@ -517,6 +517,23 @@ Page {
                                                               messageVenue: "LocationPreview",
                                                               messagePoll: "PollPreview"
                                                           })
+                    function getContentComponentHeight(componentName, content, parentWidth) {
+                        switch(componentName) {
+                        case "StickerPreview": return content.sticker.height;
+                        case "ImagePreview":
+                        case "LocationPreview":
+                            return parentWidth * 0.66666666; // 2 / 3;
+                        case "VideoPreview":
+                            return Functions.getVideoHeight(parentWidth, ( content['@type'] === "messageVideo" ) ? content.video : content.animation);
+                        case "AudioPreview":
+                            return parentWidth / 2;
+                        case "DocumentPreview":
+                            return Theme.itemSizeSmall;
+                        case "PollPreview":
+                            return Theme.itemSizeSmall * (4 + content.poll.options);
+                        }
+                    }
+
                     delegate: ListItem {
                         id: messageListItem
                         contentHeight: messageBackground.height + Theme.paddingMedium
@@ -527,7 +544,9 @@ Page {
                         property Page page: chatPage
 
                         property bool isOwnMessage: chatPage.myUserId === display.sender_user_id
-
+                        property string extraContentComponentName: typeof display.content !== "undefined"
+                                                                   && chatView.contentComponentNames.hasOwnProperty(display.content['@type']) ?
+                                                                    chatView.contentComponentNames[display.content['@type']] : ""
                         menu: ContextMenu {
                             MenuItem {
                                 onClicked: {
@@ -546,9 +565,10 @@ Page {
                                 visible: display.can_be_edited
                             }
                             MenuItem {
-                                enabled: !deleteMessageRemorseItem.pending
                                 onClicked: {
-                                    deleteMessageRemorseItem.execute(messageListItem, qsTr("Deleting message"), function() { tdLibWrapper.deleteMessages(chatInformation.id, [ display.id ]); } );
+                                    var chatId = chatInformation.id;
+                                    var messageId = display.id;
+                                    Remorse.itemAction(messageListItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId]);  })
                                 }
                                 text: qsTr("Delete Message")
                                 visible: display.can_be_deleted_for_all_users || (display.can_be_deleted_only_for_self && display.chat_id === chatPage.myUserId)
@@ -604,9 +624,9 @@ Page {
                             running: false
                             onTriggered: {
                                 if (typeof display.content !== "undefined") {
-                                    if(chatView.contentComponentNames.hasOwnProperty(display.content['@type'])) {
+                                    if(messageListItem.extraContentComponentName !== "") {
                                         extraContentLoader.setSource(
-                                                    "../components/" +chatView.contentComponentNames[display.content['@type']] +".qml",
+                                                    "../components/" +messageListItem.extraContentComponentName +".qml",
                                                     {
                                                        messageListItem: messageListItem
                                                    })
@@ -825,6 +845,8 @@ Page {
                                         id: extraContentLoader
                                         width: parent.width
                                         asynchronous: true
+                                        property int heightPreset: messageListItem.extraContentComponentName !== "" ? chatView.getContentComponentHeight(messageListItem.extraContentComponentName, display.content, width) : 0
+                                        height: item ? item.height : heightPreset
                                     }
 
                                     Timer {

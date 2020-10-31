@@ -282,10 +282,6 @@
         <translation>editado</translation>
     </message>
     <message>
-        <source>Deleting message</source>
-        <translation>Borrando mensaje</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Borrar</translation>
     </message>
@@ -300,6 +296,10 @@
     <message>
         <source>This chat is empty.</source>
         <translation>Esta charla está vacía.</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -278,10 +278,6 @@
         <translation>modificato</translation>
     </message>
     <message>
-        <source>Deleting message</source>
-        <translation>Cancellazione del messaggio</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Cancella messaggio</translation>
     </message>
@@ -300,6 +296,10 @@
     <message>
         <source>Uploading...</source>
         <translation>Carica...</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

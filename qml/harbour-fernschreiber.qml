@@ -28,10 +28,6 @@ ApplicationWindow
     cover: Qt.resolvedUrl("pages/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
-    RemorseItem {
-        id: deleteMessageRemorseItem
-    }
-
     Connections {
         target: dBusAdaptor
         onPleaseOpenMessage: {
