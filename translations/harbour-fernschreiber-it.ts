@@ -333,12 +333,12 @@
         <translation>Attendo la rete...</translation>
     </message>
     <message>
-        <source>Connecting to network…</source>
-        <translation>Connetto alla rete…</translation>
+        <source>Connecting to network...</source>
+        <translation>Connetto alla rete...</translation>
     </message>
     <message>
-        <source>Connecting to proxy…</source>
-        <translation>Connetto al proxy…</translation>
+        <source>Connecting to proxy...</source>
+        <translation>Connetto al proxy...</translation>
     </message>
     <message>
         <source>Updating content...</source>
@@ -687,16 +687,16 @@
         <translation>Attendo la rete...</translation>
     </message>
     <message>
-        <source>Connecting to network…</source>
-        <translation>Connetto alla rete…</translation>
+        <source>Connecting to network...</source>
+        <translation>Connetto alla rete...</translation>
     </message>
     <message>
-        <source>Connecting to proxy…</source>
-        <translation>Connetto al proxy…</translation>
+        <source>Connecting to proxy...</source>
+        <translation>Connetto al proxy...</translation>
     </message>
     <message>
-        <source>Updating content…</source>
-        <translation>Aggiorna contenuti…</translation>
+        <source>Updating content...</source>
+        <translation>Aggiorna contenuti...</translation>
     </message>
     <message>
         <source>Loading chat list...</source>
@@ -933,8 +933,8 @@
         <translation>Usati di recente</translation>
     </message>
     <message>
-        <source>Loading stickers…</source>
-        <translation>Carica sticker…</translation>
+        <source>Loading stickers...</source>
+        <translation>Carica sticker...</translation>
     </message>
 </context>
 <context>
