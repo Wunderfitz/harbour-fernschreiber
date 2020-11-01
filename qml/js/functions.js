@@ -160,22 +160,39 @@ function getDateTimeElapsed(timestamp) {
     return Format.formatDate(new Date(timestamp * 1000), Formatter.DurationElapsed);
 }
 
-function MessageInsertion(offset, insertionString) {
+function MessageInsertion(offset, insertionString, removeLength) {
     this.offset = offset;
     this.insertionString = insertionString;
+    this.removeLength = removeLength;
 }
 
 MessageInsertion.prototype.toString = function insertionToString() {
-    return "Offset: " + this.offset + ", Insertion String: " + this.insertionString;
+    return "Offset: " + this.offset + ", Insertion String: " + this.insertionString + ", Remove Length: " + this.removeLength;
+}
+
+function handleHtmlEntity(messageText, messageInsertions, originalString, replacementString) {
+    var continueSearch = true;
+    var fromIndex = 0;
+    var nextIndex = 0;
+    while (continueSearch) {
+        nextIndex = messageText.indexOf(originalString, fromIndex);
+        if (nextIndex < 0) {
+            continueSearch = false;
+        } else {
+            messageInsertions.push(new MessageInsertion(nextIndex, replacementString, originalString.length));
+            fromIndex = nextIndex + 1;
+        }
+    }
 }
 
 function enhanceMessageText(formattedText) {
 
-    var messageText = formattedText.text;
-    messageText = messageText.replace("&", "&amp;");
-    messageText = messageText.replace("<", "&lt;");
-    messageText = messageText.replace(">", "&gt;");
     var messageInsertions = [];
+    var messageText = formattedText.text;
+
+    handleHtmlEntity(messageText, messageInsertions, "&", "&amp;");
+    handleHtmlEntity(messageText, messageInsertions, "<", "&lt;");
+    handleHtmlEntity(messageText, messageInsertions, ">", "&gt;");
 
     for (var i = 0; i < formattedText.entities.length; i++) {
         if (formattedText.entities[i]['@type'] !== "textEntity") {
@@ -183,59 +200,59 @@ function enhanceMessageText(formattedText) {
         }
         var entityType = formattedText.entities[i].type['@type'];
         if (entityType === "textEntityTypeBold") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<b>" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</b>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<b>", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</b>", 0 ));
         }
         if (entityType === "textEntityTypeUrl") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
         }
         if (entityType === "textEntityTypeCode") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>", 0 ));
         }
         if (entityType === "textEntityTypeEmailAddress") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"mailto:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"mailto:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
         }
         if (entityType === "textEntityTypeItalic") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<i>" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</i>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<i>", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</i>", 0 ));
         }
         if (entityType === "textEntityTypeMention") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"user:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"user:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
         }
         if (entityType === "textEntityTypeMentionName") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"userId://" + formattedText.entities[i].type.user_id + "\">" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"userId://" + formattedText.entities[i].type.user_id + "\">", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
         }
         if (entityType === "textEntityTypePhoneNumber") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"tel:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"tel:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
         }
         if (entityType === "textEntityTypePre") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>", 0 ));
         }
         if (entityType === "textEntityTypePreCode") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>", 0 ));
         }
         if (entityType === "textEntityTypeTextUrl") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"" + formattedText.entities[i].type.url + "\">" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"" + formattedText.entities[i].type.url + "\">", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
         }
         if (entityType === "textEntityTypeUnderline") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<u>" ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</u>" ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<u>", 0 ));
+            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</u>", 0 ));
         }
     }
 
     messageInsertions.sort( function(a, b) { return b.offset - a.offset } );
 
     for (var z = 0; z < messageInsertions.length; z++) {
-        messageText = messageText.substring(0, messageInsertions[z].offset) + messageInsertions[z].insertionString + messageText.substring(messageInsertions[z].offset);
+        messageText = messageText.substring(0, messageInsertions[z].offset) + messageInsertions[z].insertionString + messageText.substring(messageInsertions[z].offset + messageInsertions[z].removeLength);
     }
 
     messageText = messageText.replace(new RegExp("\r?\n", "g"), "<br>");
