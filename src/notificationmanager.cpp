@@ -378,8 +378,16 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     nemoNotification->setSummary(chatInformation ? chatInformation->title : QString());
     if (needFeedback) {
         nemoNotification->setCategory(NOTIFICATION_CATEGORY);
-        nemoNotification->setPreviewBody(nemoNotification->body());
-        nemoNotification->setPreviewSummary(nemoNotification->summary());
+
+        // Setting preview body & summary to a non-empty string causes a notification popup,
+        // no matter if we are in the current chat, in the app or not. That might be annoying
+        // In the future, we can show this popup depending if the app/chat is open or not
+        //
+        // nemoNotification->setPreviewBody(nemoNotification->body());
+        // nemoNotification->setPreviewSummary(nemoNotification->summary());
+
+        nemoNotification->setPreviewBody(QString());
+        nemoNotification->setPreviewSummary(QString());
         ngfClient->play(NGF_EVENT);
     } else {
         nemoNotification->setCategory(QString());

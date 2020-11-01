@@ -9,7 +9,7 @@ Sebastian J. Wolf [sebastian@ygriega.de](mailto:sebastian@ygriega.de) and severa
 Fernschreiber wouldn't be the same without all the people helping in making it better. Thank you very much to all contributors!
 
 ### Code (Features, Bugfixes, Optimizations etc.)
-- Chat list model, TDLib receiver, project dependencies: [Slava Monich](https://github.com/monich)
+- Chat list model, notifications, TDLib receiver, project dependencies: [Slava Monich](https://github.com/monich)
 - Chat info page, performance improvements to chat page, location support, app initialization/registration with Telegram, project dependencies: [jgibbon](https://github.com/jgibbon)
 - Copy message to clipboard [Christian Stemmle](https://github.com/chstem)
 
