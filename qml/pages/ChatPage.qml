@@ -566,6 +566,12 @@ Page {
                             }
                             MenuItem {
                                 onClicked: {
+                                    Clipboard.text = Functions.getMessageText(display, false, false);
+                                }
+                                text: qsTr("Copy Message to Clipboard")
+                            }
+                            MenuItem {
+                                onClicked: {
                                     var chatId = chatInformation.id;
                                     var messageId = display.id;
                                     Remorse.itemAction(messageListItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId]);  })

@@ -278,6 +278,10 @@
         <translation>Nachricht bearbeiten</translation>
     </message>
     <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Nachricht in die Zwischenablage kopieren</translation>
+    </message>
+    <message>
         <source>edited</source>
         <translation>bearbeitet</translation>
     </message>
