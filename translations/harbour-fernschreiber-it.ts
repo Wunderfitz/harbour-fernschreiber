@@ -531,7 +531,7 @@
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>ha inviato la posizione</translation>
+        <translation>ha inviato un luogo</translation>
     </message>
     <message>
         <source>changed the chat title</source>
@@ -1192,19 +1192,19 @@
     </message>
     <message>
         <source>Anonymous Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>Quiz anonimo</translation>
     </message>
     <message>
         <source>Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>Quiz</translation>
     </message>
     <message>
         <source>Anonymous Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Sondaggio anonimo</translation>
     </message>
     <message>
         <source>Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Sondaggio</translation>
     </message>
 </context>
 </TS>
