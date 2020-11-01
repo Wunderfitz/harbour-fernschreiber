@@ -43,13 +43,7 @@ namespace {
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
     const QString IS_CHANNEL("is_channel");
-
     const QString _TYPE("@type");
-    const QString TYPE_MESSAGE_TEXT("messageText");
-    const QString TYPE_CHAT_TYPE_PRIVATE("chatTypePrivate");
-    const QString TYPE_CHAT_TYPE_BASIC_GROUP("chatTypeBasicGroup");
-    const QString TYPE_CHAT_TYPE_SUPERGROUP("chatTypeSupergroup");
-    const QString TYPE_CHAT_TYPE_SECRET("chatTypeSecret");
 }
 
 class ChatListModel::ChatData
@@ -88,7 +82,6 @@ public:
     bool updateLastReadInboxMessageId(qlonglong messageId);
     QVector<int> updateLastMessage(const QVariantMap &message);
     QVector<int> updateGroup(const TDLibWrapper::Group *group);
-    static TDLibWrapper::ChatType chatTypeFromString(const QString &type);
 
 public:
     QVariantMap chatData;
@@ -109,7 +102,7 @@ ChatListModel::ChatData::ChatData(const QVariantMap &data, const QVariantMap &us
     userInformation(userInfo)
 {
     const QVariantMap type(data.value(TYPE).toMap());
-    switch (chatType = chatTypeFromString(type.value(_TYPE).toString())) {
+    switch (chatType = TDLibWrapper::chatTypeFromString(type.value(_TYPE).toString())) {
     case TDLibWrapper::ChatTypeBasicGroup:
         groupId = type.value(BASIC_GROUP_ID).toLongLong();
         break;
@@ -262,15 +255,6 @@ QVector<int> ChatListModel::ChatData::updateGroup(const TDLibWrapper::Group *gro
         }
     }
     return changedRoles;
-}
-
-TDLibWrapper::ChatType ChatListModel::ChatData::chatTypeFromString(const QString &type)
-{
-    return (type == TYPE_CHAT_TYPE_PRIVATE) ? TDLibWrapper::ChatTypePrivate :
-        (type == TYPE_CHAT_TYPE_BASIC_GROUP) ? TDLibWrapper::ChatTypeBasicGroup :
-        (type == TYPE_CHAT_TYPE_SUPERGROUP) ? TDLibWrapper::ChatTypeSupergroup :
-        (type == TYPE_CHAT_TYPE_SECRET) ?  TDLibWrapper::ChatTypeSecret :
-        TDLibWrapper::ChatTypeUnknown;
 }
 
 ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper) : showHiddenChats(false)
