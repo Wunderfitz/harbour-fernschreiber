@@ -299,11 +299,11 @@
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Mensaje borrado</translation>
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiar mensaje</translation>
     </message>
 </context>
 <context>
@@ -1190,19 +1190,19 @@
     </message>
     <message>
         <source>Anonymous Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuestionar anónimo</translation>
     </message>
     <message>
         <source>Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuestionar</translation>
     </message>
     <message>
         <source>Anonymous Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Encuestar anónimo</translation>
     </message>
     <message>
         <source>Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Encuesta</translation>
     </message>
 </context>
 </TS>
