@@ -400,19 +400,8 @@ Page {
                         icon.source: "image://theme/icon-m-clipboard"
                         anchors.verticalCenter: inviteLinkItem.verticalCenter
                         onClicked: {
-                            inviteLinkField.selectAll();
-                            inviteLinkField.copy();
-                            inviteLinkField.select(0,0);
+                            Clipboard.text = groupFullInformation.invite_link
                             infoNotification.show(qsTr("The Invite Link has been copied to the clipboard."));
-                        }
-                        TextField {
-                            id: inviteLinkField
-                            width: 0
-                            height: 0
-                            text: groupFullInformation.invite_link ? groupFullInformation.invite_link : ""
-                            visible: false
-                            readOnly: true
-                            opacity: 0
                         }
                     }
                 }
