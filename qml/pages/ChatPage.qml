@@ -566,7 +566,7 @@ Page {
                             }
                             MenuItem {
                                 onClicked: {
-                                    Clipboard.text = Functions.getMessageText(display, false, false);
+                                    Clipboard.text = Functions.getMessageText(display, true, false);
                                 }
                                 text: qsTr("Copy Message to Clipboard")
                             }

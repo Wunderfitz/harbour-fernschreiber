@@ -301,6 +301,10 @@
         <source>Message deleted</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
