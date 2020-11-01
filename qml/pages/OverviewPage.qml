@@ -46,10 +46,8 @@ Page {
         onPleaseOpenMessage: {
             console.log("[OverviewPage] Opening chat from external call...")
             if (chatListCreated) {
-                if (status !== PageStatus.Active) {
-                    pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ), PageStackAction.Immediate);
-                }
-                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chatId) });
+                pageStack.pop(overviewPage, PageStackAction.Immediate)
+                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chatId) }, PageStackAction.Immediate)
             }
         }
     }
@@ -152,9 +150,7 @@ Page {
         }
         onChatReceived: {
             if(chat["@extra"] === "openDirectly") {
-                if (status !== PageStatus.Active) {
-                    pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ), PageStackAction.Immediate);
-                }
+                pageStack.pop(overviewPage, PageStackAction.Immediate)
                 // if we get a new chat (no messages?), we can not use the provided data
                 pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chat.id) });
             }
@@ -275,13 +271,7 @@ Page {
                         size: BusyIndicatorSize.Large
                     }
                 }
-
-
             }
-
-
         }
-
     }
-
 }
