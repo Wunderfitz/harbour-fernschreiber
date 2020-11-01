@@ -1002,7 +1002,7 @@ Page {
                                 attachmentOptionsRow.visible = false;
                                 console.log("Selected document: " + picker.selectedContentProperties.filePath );
                                 attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
-                                attachmentPreviewRow.isDocument = true;
+                                attachmentPreviewRow.isPicture = true;
                                 attachmentPreviewRow.visible = true;
                                 controlSendButton();
                             })
@@ -1027,7 +1027,7 @@ Page {
                         id: documentAttachmentButton
                         icon.source: "image://theme/icon-m-document"
                         onClicked: {
-                            var picker = pageStack.push("Sailfish.Pickers.DocumentPicker");
+                            var picker = pageStack.push("Sailfish.Pickers.DocumentPickerPage");
                             picker.selectedContentPropertiesChanged.connect(function(){
                                 attachmentOptionsRow.visible = false;
                                 console.log("Selected document: " + picker.selectedContentProperties.filePath );
