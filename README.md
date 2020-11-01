@@ -10,7 +10,7 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 
 ### Code (Features, Bugfixes, Optimizations etc.)
 - Chat list model, TDLib receiver, project dependencies: [Slava Monich](https://github.com/monich)
-- Chat info page, location support, app initialization/registration with Telegram, project dependencies: [jgibbon](https://github.com/jgibbon)
+- Chat info page, performance improvements to chat page, location support, app initialization/registration with Telegram, project dependencies: [jgibbon](https://github.com/jgibbon)
 
 ### Logo/Icon
 - Designed by [Matteo](https://github.com/iamnomeutente)

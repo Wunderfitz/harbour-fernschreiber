@@ -286,10 +286,6 @@
         <translation>bearbeitet</translation>
     </message>
     <message>
-        <source>Deleting message</source>
-        <translation>Lösche Nachricht</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Nachricht löschen</translation>
     </message>
@@ -304,6 +300,10 @@
     <message>
         <source>This chat is empty.</source>
         <translation>Dieser Chat ist leer.</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Nachricht gelöscht</translation>
     </message>
 </context>
 <context>
