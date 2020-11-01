@@ -27,13 +27,16 @@ import "../js/twemoji.js" as Emoji
 Item {
     id: pollMessageComponent
 
-    property string chatId
-    property var message:({})
-    property bool isOwnMessage
 
-    property string messageId: message.id
-    property bool canEdit: message.can_be_edited
-    property var pollData: message.content.poll
+    property ListItem messageListItem
+    property variant rawMessage: messageListItem.myMessage
+    property string chatId: messageListItem.page.chatInformation.id
+
+    property bool isOwnMessage: messageListItem.isOwnMessage
+
+    property string messageId: rawMessage.id
+    property bool canEdit: rawMessage.can_be_edited
+    property var pollData: rawMessage.content.poll
     property var chosenPollData:({})
     property var chosenIndexes: []
     property bool hasAnswered: {
@@ -43,7 +46,7 @@ Item {
     }
     property bool canAnswer: !hasAnswered && !pollData.is_closed
     property bool isQuiz: pollData.type['@type'] === "pollTypeQuiz"
-    property Item messageItem
+    width: parent.width
     height: pollColumn.height
     opacity: 0
     Behavior on opacity { FadeAnimation {} }
@@ -286,9 +289,9 @@ Item {
 
     Component.onCompleted: {
         opacity = 1;
-        if(messageItem && messageItem.menu ) { // workaround to add menu entries
-            closePollMenuItemComponent.createObject(messageItem.menu._contentColumn);
-            resetAnswerMenuItemComponent.createObject(messageItem.menu._contentColumn);
+        if(messageListItem && messageListItem.menu ) { // workaround to add menu entries
+            closePollMenuItemComponent.createObject(messageListItem.menu._contentColumn);
+            resetAnswerMenuItemComponent.createObject(messageListItem.menu._contentColumn);
         }
     }
 }

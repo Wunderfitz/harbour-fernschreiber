@@ -282,10 +282,6 @@
         <translation>muokattu</translation>
     </message>
     <message>
-        <source>Deleting message</source>
-        <translation>Poistetaan viestiä</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Poista viesti</translation>
     </message>
@@ -300,6 +296,10 @@
     <message>
         <source>This chat is empty.</source>
         <translation>Tämä keskustelu on tyhjä.</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

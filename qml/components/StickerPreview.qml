@@ -20,7 +20,11 @@ import QtQuick 2.5
 import Sailfish.Silica 1.0
 
 Item {
-    property variant stickerData;
+
+    property ListItem messageListItem
+    property variant rawMessage: messageListItem.myMessage
+
+    property variant stickerData: rawMessage.content.sticker;
     property int usedFileId;
 
     width: stickerData.width

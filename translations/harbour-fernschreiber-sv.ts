@@ -282,10 +282,6 @@
         <translation>redigerade</translation>
     </message>
     <message>
-        <source>Deleting message</source>
-        <translation>Tar bort meddelande</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Ta bort meddelandet</translation>
     </message>
@@ -300,6 +296,10 @@
     <message>
         <source>This chat is empty.</source>
         <translation>Denna chatt är tom.</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

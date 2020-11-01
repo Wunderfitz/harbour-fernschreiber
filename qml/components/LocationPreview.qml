@@ -23,9 +23,16 @@ import Sailfish.Silica 1.0
 Item {
 
     id: imagePreviewItem
-    property variant locationData;
-    property int chatId;
+
+    property ListItem messageListItem
+    property variant rawMessage: messageListItem.myMessage
+
+    property variant locationData : ( rawMessage.content['@type'] === "messageLocation" ) ?  rawMessage.content.location : ( ( rawMessage.content['@type'] === "messageVenue" ) ? rawMessage.content.venue.location : "" )
+
+    property string chatId: messageListItem.page.chatInformation.id
     property variant pictureFileInformation;
+    width: parent.width
+    height: width / 2
 
     Component.onCompleted: {
         updatePicture();
