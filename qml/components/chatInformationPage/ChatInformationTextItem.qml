@@ -47,11 +47,11 @@ Column {
         id: labelComponent
         Label {
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            font.pixelSize: Theme.fontSizeExtraSmall
+            font.pixelSize: Theme.fontSizeSmall
             textFormat: Text.StyledText
-            color: Theme.highlightColor
+            color: Theme.primaryColor
             text: Emoji.emojify( Functions.replaceUrlsWithLinks(textItem.text).replace(/\n/g, "<br>"), Theme.fontSizeExtraSmall, "../../js/emoji/")
-            linkColor: Theme.primaryColor
+            linkColor: Theme.highlightColor
             visible: text !== ""
             onLinkActivated: {
                 Functions.handleLink(link);
@@ -62,8 +62,9 @@ Column {
         id: linkedLabelComponent
         LinkedLabel {
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            font.pixelSize: Theme.fontSizeExtraSmall
+            font.pixelSize: Theme.fontSizeSmall
             textFormat: Text.StyledText
+            color: Theme.highlightColor
             plainText: textItem.text
             visible: textItem.text !== ""
             onLinkActivated: {

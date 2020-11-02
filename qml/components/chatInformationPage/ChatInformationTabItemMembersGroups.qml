@@ -79,18 +79,18 @@ ChatInformationTabItemBase {
             width: parent.width
 
             // chat title    isPrivateChat ? () :
-            primaryText.text: Emoji.emojify(Functions.getUserName(user), primaryText.font.pixelSize, "../../js/emoji/")
+            primaryText.text: Emoji.emojify(Functions.getUserName(user), primaryText.font.pixelSize, "../js/emoji/")
             // last user
             prologSecondaryText.text: "@"+(user.username !== "" ? user.username : user_id) + (user_id === chatInformationPage.myUserId ? " " + qsTr("You") : "")
             secondaryText {
                 horizontalAlignment: Text.AlignRight
                 property string statusText: Functions.getChatMemberStatusText(model.status["@type"])
-                property string customText: model.status.custom_title ? Emoji.emojify(model.status.custom_title, secondaryText.font.pixelSize, "../../js/emoji/") : ""
+                property string customText: model.status.custom_title ? Emoji.emojify(model.status.custom_title, secondaryText.font.pixelSize, "../js/emoji/") : ""
                 text: (statusText !== "" && customText !== "") ? statusText + ", " + customText : statusText + customText
             }
             tertiaryText {
                 maximumLineCount: 1
-                text: user.type["@type"] === "userTypeBot" ? (Emoji.emojify("🤖 "+bot_info.description, tertiaryText.font.pixelSize, "../../js/emoji/")) : Functions.getChatPartnerStatusText(user.status["@type"], user.status.was_online);
+                text: user.type["@type"] === "userTypeBot" ? (Emoji.emojify("🤖 "+bot_info.description, tertiaryText.font.pixelSize, "../js/emoji/")) : Functions.getChatPartnerStatusText(user.status["@type"], user.status.was_online);
                 elide: Text.ElideRight
             }
 

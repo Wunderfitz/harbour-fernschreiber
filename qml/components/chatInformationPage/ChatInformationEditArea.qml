@@ -39,7 +39,6 @@ Column {
 
     SectionHeader {
         id: editAreaHeader
-        font.pixelSize: Theme.fontSizeExtraSmall
         height: parent.visible && text !== "" ? Theme.itemSizeExtraSmall : 0
         x: 0
     }
