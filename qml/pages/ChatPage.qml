@@ -270,18 +270,13 @@ Page {
             console.log("[ChatPage] Messages received, view has " + chatView.count + " messages, setting view to index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
             if(totalCount === 0) {
                 console.log("[ChatPage] actually, skipping that: No Messages in Chat.");
-
                 chatView.positionViewAtEnd();
                 chatPage.loading = false;
                 return;
             }
 
             chatView.lastReadSentIndex = lastReadSentIndex;
-            if (modelIndex === (chatView.count - 1)) {
-                chatView.positionViewAtEnd();
-            } else {
-                chatView.positionViewAtIndex(modelIndex, ListView.Beginning);
-            }
+            chatView.scrollToIndex(modelIndex);
             chatPage.loading = false;
             if (chatView.height > chatView.contentHeight) {
                 console.log("[ChatPage] Chat content quite small...");
@@ -289,9 +284,9 @@ Page {
             }
         }
         onNewMessageReceived: {
-            if (message.sender_user_id === chatPage.myUserId) {
-                console.log("[ChatPage] Own message received, scrolling down to see it...");
-                chatView.scrollToBottom();
+            if (chatView.manuallyScrolledToBottom || message.sender_user_id === chatPage.myUserId) {
+                console.log("[ChatPage] Own message received or was scrolled to bottom, scrolling down to see it...");
+                chatView.scrollToIndex(chatView.count - 1);
             }
         }
         onUnreadCountUpdated: {
@@ -306,7 +301,6 @@ Page {
         }
         onMessagesIncrementalUpdate: {
             console.log("Incremental update received. View now has " + chatView.count + " messages, view is on index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
-            chatView.currentIndex = modelIndex;
             chatView.lastReadSentIndex = lastReadSentIndex;
             chatViewCooldownTimer.start();
         }
@@ -475,13 +469,34 @@ Page {
                     opacity: chatPage.loading ? 0 : 1
                     Behavior on opacity { NumberAnimation {} }
                     clip: true
-
+                    highlightMoveDuration: 0
+                    highlightResizeDuration: 0
+                    highlightRangeMode: ListView.ApplyRange
+                    preferredHighlightBegin: 0
+                    preferredHighlightEnd: height
+                    highlight: Component {Item { } }
                     property int lastReadSentIndex: 0
                     property bool inCooldown: false
+                    property bool manuallyScrolledToBottom
 
                     function handleScrollPositionChanged() {
                         console.log("Current position: " + chatView.contentY);
-                        tdLibWrapper.viewMessage(chatInformation.id, chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin )).myMessage.id, false);
+                        if(chatInformation.unread_count > 0) {
+                            var bottomItem = chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin ));
+                            if(typeof bottomItem !== "undefined") {
+                                tdLibWrapper.viewMessage(chatInformation.id, bottomItem.myMessage.id, false);
+                            }
+                        }
+                        manuallyScrolledToBottom = chatView.atYEnd
+                    }
+
+                    function scrollToIndex(index) {
+                        if(index > 0 && index < chatView.count) {
+                            currentIndex = index;
+                            if(index === chatView.count - 1) {
+                                manuallyScrolledToBottom = true;
+                            }
+                        }
                     }
 
                     onContentYChanged: {
@@ -499,6 +514,10 @@ Page {
                     onQuickScrollAnimatingChanged: {
                         if (!quickScrollAnimating) {
                             handleScrollPositionChanged();
+                            if(atYEnd) { // handle some false guesses from quick scroll
+                                chatView.scrollToIndex(chatView.count - 2)
+                                chatView.scrollToIndex(chatView.count - 1)
+                            }
                         }
                     }
 
@@ -941,7 +960,7 @@ Page {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            chatView.positionViewAtIndex(chatView.count - 1 - chatInformation.unread_count, ListView.Beginning);
+                            chatView.scrollToIndex(chatView.count - 1 - chatInformation.unread_count)
                         }
                     }
                 }
