@@ -160,6 +160,10 @@ function getDateTimeElapsed(timestamp) {
     return Format.formatDate(new Date(timestamp * 1000), Formatter.DurationElapsed);
 }
 
+function getDateTimeTranslated(timestamp) {
+    return new Date(timestamp * 1000).toLocaleString();
+}
+
 function MessageInsertion(offset, insertionString, removeLength) {
     this.offset = offset;
     this.insertionString = insertionString;

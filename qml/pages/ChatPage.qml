@@ -91,7 +91,7 @@ Page {
         }
     }
 
-    function getMessageStatusText(message, listItemIndex, lastReadSentIndex) {
+    function getMessageStatusText(message, listItemIndex, lastReadSentIndex, useElapsed) {
         var messageStatusSuffix = "";
         if(!message) {
             return "";
@@ -120,7 +120,7 @@ Page {
                 }
             }
         }
-        return Functions.getDateTimeElapsed(message.date) + messageStatusSuffix;
+        return ( useElapsed ? Functions.getDateTimeElapsed(message.date) : Functions.getDateTimeTranslated(message.date) ) + messageStatusSuffix;
     }
 
     function clearAttachmentPreviewRow() {
@@ -611,12 +611,12 @@ Page {
 
                             onLastReadSentMessageUpdated: {
                                 console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + (index <= lastReadSentIndex));
-                                messageDateText.text = getMessageStatusText(display, index, lastReadSentIndex);
+                                messageDateText.text = getMessageStatusText(display, index, lastReadSentIndex, messageDateText.useElapsed);
                             }
                             onMessageUpdated: {
                                 if (index === modelIndex) {
                                     console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
-                                    messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
+                                    messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
                                     messageText.text = Emoji.emojify(Functions.getMessageText(display, false, messageListItem.isOwnMessage), messageText.font.pixelSize);
                                     if(locationPreviewLoader.active && locationPreviewLoader.status === Loader.Ready) {
                                         locationPreviewLoader.item.locationData = display.content.location;
@@ -878,7 +878,7 @@ Page {
                                         running: true
                                         repeat: true
                                         onTriggered: {
-                                            messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex);
+                                            messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
                                         }
                                     }
 
@@ -886,11 +886,20 @@ Page {
                                     Text {
                                         width: parent.width
 
+                                        property bool useElapsed: true
+
                                         id: messageDateText
                                         font.pixelSize: Theme.fontSizeTiny
                                         color: messageListItem.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
                                         horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
-                                        text: getMessageStatusText(display, index, chatView.lastReadSentIndex)
+                                        text: getMessageStatusText(display, index, chatView.lastReadSentIndex, messageDateText.useElapsed)
+                                        MouseArea {
+                                            anchors.fill: parent
+                                            onClicked: {
+                                                messageDateText.useElapsed = !messageDateText.useElapsed;
+                                                messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
+                                            }
+                                        }
                                     }
 
                                 }
