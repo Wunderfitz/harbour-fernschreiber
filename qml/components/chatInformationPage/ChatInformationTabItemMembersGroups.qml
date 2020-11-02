@@ -30,11 +30,10 @@ ChatInformationTabItemBase {
     title: chatInformationPage.isPrivateChat ? qsTr("Groups", "Button: groups in common (short)") : qsTr("Members", "Button: Group Members")
     image: "image://theme/icon-m-people"
     loadingText:  isPrivateChat ? qsTr("Loading common chats…", "chats you have in common with a user") : qsTr("Loading group members…")
-    loading: chatInformationPage.isSuperGroup || chatInformationPage.isPrivateChat
+    loading: ( chatInformationPage.isSuperGroup || chatInformationPage.isPrivateChat) && !chatInformationPage.isChannel
     loadingVisible: loading && membersView.count === 0
 
     property variant chatPartnerCommonGroupsIds: ([]);
-
 
     SilicaListView {
         id: membersView
@@ -69,8 +68,9 @@ ChatInformationTabItemBase {
             handleScrollIntoView(true)
         }
         ViewPlaceholder {
+            y: Theme.paddingLarge
             enabled: membersView.count === 0
-            text: chatInformationPage.isPrivateChat ? qsTr("You don't have any groups in common with this user.") : qsTr("This group is empty.")
+            text: chatInformationPage.isPrivateChat ? qsTr("You don't have any groups in common with this user.") : ( chatInformationPage.isChannel ? qsTr("Channel members are anonymous.") : qsTr("This group is empty.") )
         }
         delegate: PhotoTextsListItem {
             pictureThumbnail {
@@ -108,7 +108,7 @@ ChatInformationTabItemBase {
                     id: loadMoreIndicator
                     anchors.centerIn: parent
                     size: BusyIndicatorSize.Small
-                    running: parent.active
+                    running: tabBase.loading
                 }
             }
         }
@@ -174,7 +174,7 @@ ChatInformationTabItemBase {
         interval: 600
         property int fetchLimit: 50
         onTriggered: {
-            if(isSuperGroup) {
+            if(isSuperGroup && !isChannel) {
                 tabBase.loading = true
                 tdLibWrapper.getSupergroupMembers(chatInformationPage.chatPartnerGroupId, fetchLimit, membersList.count);
                 fetchLimit = 200

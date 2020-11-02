@@ -191,6 +191,10 @@
         <source>This group is empty.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Channel members are anonymous.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemSettings</name>

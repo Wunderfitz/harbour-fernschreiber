@@ -41,7 +41,7 @@ Item {
 
         height: visible ? headerGrid.height : 0
         clip: true
-        visible: tabView.count > 1
+        visible: tabView.count > 0
 
         anchors {
             left: parent.left

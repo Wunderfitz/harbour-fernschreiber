@@ -191,6 +191,10 @@
         <source>Loading group members…</source>
         <translation>Carica membri del gruppo…</translation>
     </message>
+    <message>
+        <source>Channel members are anonymous.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemSettings</name>
