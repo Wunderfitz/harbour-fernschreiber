@@ -106,7 +106,6 @@ Item {
                 height: parent.height - Theme.paddingSmall
                 anchors.centerIn: parent
                 source: profileThumbnail.photoData.local.path
-
                 fillMode: Image.PreserveAspectCrop
                 autoTransform: true
                 asynchronous: true
