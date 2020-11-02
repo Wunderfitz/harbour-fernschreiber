@@ -299,11 +299,11 @@
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Messaggio cancellato</translation>
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia messaggio nella clipboard</translation>
     </message>
 </context>
 <context>
