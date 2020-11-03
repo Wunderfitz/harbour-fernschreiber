@@ -647,14 +647,14 @@ Page {
                             running: false
                             onTriggered: {
                                 if (typeof display.content !== "undefined") {
-                                    if(messageListItem.extraContentComponentName !== "") {
+                                    if (messageListItem.extraContentComponentName !== "") {
                                         extraContentLoader.setSource(
                                                     "../components/" +messageListItem.extraContentComponentName +".qml",
                                                     {
                                                        messageListItem: messageListItem
                                                    })
                                     } else {
-                                        if(typeof display.content.web_page !== "undefined") { // only in messageText
+                                        if (typeof display.content.web_page !== "undefined") { // only in messageText
                                             webPagePreviewLoader.active = true;
                                         }
                                     }
@@ -848,7 +848,7 @@ Page {
                                         active: false
                                         asynchronous: true
                                         width: parent.width
-                                        height: messageListItem.containsWebPage ? ( (parent.width * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) ) : 0
+                                        height: typeof display.content.web_page !== "undefined" ? ( (parent.width * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) ) : 0
 
                                         sourceComponent: Component {
                                             id: webPagePreviewComponent
@@ -859,7 +859,7 @@ Page {
                                                     webPagePreviewLoader.height = webPagePreview.implicitHeight;
                                                 }
 
-                                                webPageData: messageListItem.containsWebPage ? display.content.web_page : ""
+                                                webPageData: display.content.web_page
                                                 width: parent.width
                                             }
                                         }
