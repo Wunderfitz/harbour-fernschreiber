@@ -66,7 +66,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/PollResultsPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/VideoPage.qml \
-    rpm/harbour-fernschreiber.changes.in \
+    rpm/harbour-fernschreiber.changes \
     rpm/harbour-fernschreiber.spec \
     rpm/harbour-fernschreiber.yaml \
     translations/*.ts \
