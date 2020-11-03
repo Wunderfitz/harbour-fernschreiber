@@ -253,7 +253,7 @@ function enhanceMessageText(formattedText) {
         }
     }
 
-    messageInsertions.sort( function(a, b) { return b.offset - a.offset } );
+    messageInsertions.sort( function(a, b) { return (b.offset+b.removeLength) - (a.offset+a.removeLength) } );
 
     for (var z = 0; z < messageInsertions.length; z++) {
         messageText = messageText.substring(0, messageInsertions[z].offset) + messageInsertions[z].insertionString + messageText.substring(messageInsertions[z].offset + messageInsertions[z].removeLength);
