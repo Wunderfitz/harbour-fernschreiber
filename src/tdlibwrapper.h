@@ -92,6 +92,7 @@ public:
     Q_INVOKABLE TDLibWrapper::ConnectionState getConnectionState();
     Q_INVOKABLE QVariantMap getUserInformation();
     Q_INVOKABLE QVariantMap getUserInformation(const QString &userId);
+    Q_INVOKABLE QVariantMap getUserInformationByName(const QString &userName);
     Q_INVOKABLE QVariantMap getUnreadMessageInformation();
     Q_INVOKABLE QVariantMap getUnreadChatInformation();
     Q_INVOKABLE QVariantMap getBasicGroup(qlonglong groupId) const;
@@ -239,6 +240,7 @@ private:
     QVariantMap options;
     QVariantMap userInformation;
     QVariantMap allUsers;
+    QVariantMap allUserNames;
     QVariantMap chats;
     QVariantMap unreadMessageInformation;
     QVariantMap unreadChatInformation;

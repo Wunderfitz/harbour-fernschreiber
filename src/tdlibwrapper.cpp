@@ -708,6 +708,11 @@ QVariantMap TDLibWrapper::getUserInformation(const QString &userId)
     return this->allUsers.value(userId).toMap();
 }
 
+QVariantMap TDLibWrapper::getUserInformationByName(const QString &userName)
+{
+    return this->allUserNames.value(userName).toMap();
+}
+
 QVariantMap TDLibWrapper::getUnreadMessageInformation()
 {
     return this->unreadMessageInformation;
@@ -898,6 +903,7 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
     }
     LOG("User information updated:" << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString());
     this->allUsers.insert(updatedUserId, userInformation);
+    this->allUserNames.insert(userInformation.value("username").toString(), userInformation);
     emit userUpdated(updatedUserId, userInformation);
 }
 
@@ -911,6 +917,7 @@ void TDLibWrapper::handleUserStatusUpdated(const QString &userId, const QVariant
     QVariantMap updatedUserInformation = this->allUsers.value(userId).toMap();
     updatedUserInformation.insert("status", userStatusInformation);
     this->allUsers.insert(userId, updatedUserInformation);
+    this->allUserNames.insert(userInformation.value("username").toString(), userInformation);
     emit userUpdated(userId, updatedUserInformation);
 }
 

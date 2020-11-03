@@ -224,7 +224,7 @@ function enhanceMessageText(formattedText) {
             messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</i>", 0 ));
         }
         if (entityType === "textEntityTypeMention") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"user:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">", 0 ));
+            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"user://" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">", 0 ));
             messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
         }
         if (entityType === "textEntityTypeMentionName") {
@@ -277,9 +277,10 @@ function enhanceMessageText(formattedText) {
 
 function handleLink(link) {
     if (link.indexOf("user://") === 0) {
-        //pageStack.push(Qt.resolvedUrl("../pages/UserPage.qml"), {"userName": link.substring(7)});
-    } else if (link.indexOf("userid://") === 0) {
-        //pageStack.push(Qt.resolvedUrl("../pages/UserPage.qml"), {"userId": link.substring(9)});
+        var userInformation = tdLibWrapper.getUserInformationByName(link.substring(8));
+        tdLibWrapper.createPrivateChat(userInformation.id);
+    } else if (link.indexOf("userId://") === 0) {
+        tdLibWrapper.createPrivateChat(link.substring(9));
     }  else {
         Qt.openUrlExternally(link);
     }
