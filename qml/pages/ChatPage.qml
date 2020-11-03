@@ -686,6 +686,12 @@ Page {
                                         width: visible ? Theme.itemSizeSmall : 0
                                         height: visible ? Theme.itemSizeSmall : 0
                                         visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                                        MouseArea {
+                                            anchors.fill: parent
+                                            onClicked: {
+                                                tdLibWrapper.createPrivateChat(messageListItem.userInformation.id);
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -741,6 +747,12 @@ Page {
                                         textFormat: Text.StyledText
                                         horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
                                         visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                                        MouseArea {
+                                            anchors.fill: parent
+                                            onClicked: {
+                                                tdLibWrapper.createPrivateChat(messageListItem.userInformation.id);
+                                            }
+                                        }
                                     }
 
                                     InReplyToRow {
