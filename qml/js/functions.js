@@ -282,7 +282,24 @@ function handleLink(link) {
     } else if (link.indexOf("userId://") === 0) {
         tdLibWrapper.createPrivateChat(link.substring(9));
     }  else {
-        Qt.openUrlExternally(link);
+        var tMePrefix = tdLibWrapper.getOptionString("t_me_url");
+        if (link.indexOf(tMePrefix) === 0) {
+            if (link.indexOf("joinchat") !== -1) {
+                console.log("Joining Chatto: " + link);
+                tdLibWrapper.joinChatByInviteLink(link);
+                // Do the necessary stuff to open the chat if successful
+                // Fail with nice error message if it doesn't work
+            } else {
+                console.log("SUCH! " + link.substring(tMePrefix.length));
+                tdLibWrapper.searchPublicChat(link.substring(tMePrefix.length));
+                // Check responses for updateBasicGroup or updateSupergroup
+                // Fire createBasicGroupChat or createSupergroupChat
+                // Do the necessary stuff to open the chat
+                // Fail with nice error message if chat can't be found
+            }
+        } else {
+            Qt.openUrlExternally(link);
+        }
     }
 }
 

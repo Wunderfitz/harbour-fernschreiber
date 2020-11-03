@@ -687,6 +687,24 @@ void TDLibWrapper::getPollVoters(const QString &chatId, const qlonglong &message
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::searchPublicChat(const QString &userName)
+{
+    LOG("Search public chat" << userName);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "searchPublicChat");
+    requestObject.insert("username", userName);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::joinChatByInviteLink(const QString &inviteLink)
+{
+    LOG("Join chat by invite link" << inviteLink);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "joinChatByInviteLink");
+    requestObject.insert("invite_link", inviteLink);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
@@ -751,6 +769,11 @@ QVariantMap TDLibWrapper::getChat(const QString &chatId)
 {
     LOG("Returning chat information for ID" << chatId);
     return this->chats.value(chatId).toMap();
+}
+
+QString TDLibWrapper::getOptionString(const QString &optionName)
+{
+    return this->options.value(optionName).toString();
 }
 
 void TDLibWrapper::copyFileToDownloads(const QString &filePath)

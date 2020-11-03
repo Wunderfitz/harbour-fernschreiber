@@ -98,6 +98,7 @@ public:
     Q_INVOKABLE QVariantMap getBasicGroup(qlonglong groupId) const;
     Q_INVOKABLE QVariantMap getSuperGroup(qlonglong groupId) const;
     Q_INVOKABLE QVariantMap getChat(const QString &chatId);
+    Q_INVOKABLE QString getOptionString(const QString &optionName);
     Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
     Q_INVOKABLE void openFileOnDevice(const QString &filePath);
     Q_INVOKABLE void controlScreenSaver(bool enabled);
@@ -147,6 +148,8 @@ public:
     Q_INVOKABLE void setPollAnswer(const QString &chatId, const qlonglong &messageId, QVariantList optionIds);
     Q_INVOKABLE void stopPoll(const QString &chatId, const qlonglong &messageId);
     Q_INVOKABLE void getPollVoters(const QString &chatId, const qlonglong &messageId, const int &optionId, const int &limit, const int &offset, const QString &extra);
+    Q_INVOKABLE void searchPublicChat(const QString &userName);
+    Q_INVOKABLE void joinChatByInviteLink(const QString &inviteLink);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
