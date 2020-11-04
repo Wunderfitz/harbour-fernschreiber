@@ -341,12 +341,12 @@ Page {
     }
     Timer {
         id: viewMessageTimer
-        interval: 2000
+        interval: 1000
         property int lastQueuedIndex: -1
         function queueViewMessage(index) {
-            if(index > lastQueuedIndex) {
+            if (index > lastQueuedIndex) {
                 lastQueuedIndex = index;
-                start()
+                start();
             }
         }
 

@@ -137,6 +137,8 @@ public:
     Q_INVOKABLE void getGroupFullInfo(const QString &groupId, bool isSuperGroup);
     Q_INVOKABLE void getUserFullInfo(const QString &userId);
     Q_INVOKABLE void createPrivateChat(const QString &userId);
+    Q_INVOKABLE void createSupergroupChat(const QString &supergroupId);
+    Q_INVOKABLE void createBasicGroupChat(const QString &basicGroupId);
     Q_INVOKABLE void getGroupsInCommon(const QString &userId, int limit, int offset);
     Q_INVOKABLE void getUserProfilePhotos(const QString &userId, int limit, int offset);
     Q_INVOKABLE void setChatPermissions(const QString &chatId, const QVariantMap &chatPermissions);
@@ -218,6 +220,7 @@ public slots:
     void handleUserStatusUpdated(const QString &userId, const QVariantMap &userStatusInformation);
     void handleFileUpdated(const QVariantMap &fileInformation);
     void handleNewChatDiscovered(const QVariantMap &chatInformation);
+    void handleChatReceived(const QVariantMap &chatInformation);
     void handleUnreadMessageCountUpdated(const QVariantMap &messageCountInformation);
     void handleUnreadChatCountUpdated(const QVariantMap &chatCountInformation);
     void handleBasicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
@@ -250,6 +253,8 @@ private:
     QHash<qlonglong,Group*> basicGroups;
     QHash<qlonglong,Group*> superGroups;
     EmojiSearchWorker emojiSearchWorker;
+
+    QString activeChatSearchName;
 
 };
 
