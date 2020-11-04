@@ -280,7 +280,7 @@ Page {
             chatPage.loading = false;
             if (chatView.height > chatView.contentHeight) {
                 console.log("[ChatPage] Chat content quite small...");
-                tdLibWrapper.viewMessage(chatInformation.id, chatModel.getMessage(chatView.count - 1).id, false);
+                viewMessageTimer.queueViewMessage(chatView.count - 1);
             }
         }
         onNewMessageReceived: {
@@ -337,6 +337,27 @@ Page {
         repeat: true
         onTriggered: {
             updateChatPartnerStatusText();
+        }
+    }
+    Timer {
+        id: viewMessageTimer
+        interval: 2000
+        property int lastQueuedIndex: -1
+        function queueViewMessage(index) {
+            if(index > lastQueuedIndex) {
+                lastQueuedIndex = index;
+                start()
+            }
+        }
+
+        onTriggered: {
+            if(chatInformation.unread_count > 0 && lastQueuedIndex > -1) {
+                var messageToRead = chatModel.getMessage(lastQueuedIndex);
+                if(messageToRead && messageToRead.id) {
+                    tdLibWrapper.viewMessage(chatInformation.id, messageToRead.id, false);
+                }
+                lastQueuedIndex = -1
+            }
         }
     }
 
@@ -482,9 +503,9 @@ Page {
                     function handleScrollPositionChanged() {
                         console.log("Current position: " + chatView.contentY);
                         if(chatInformation.unread_count > 0) {
-                            var bottomItem = chatView.itemAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin ));
-                            if(typeof bottomItem !== "undefined") {
-                                tdLibWrapper.viewMessage(chatInformation.id, bottomItem.myMessage.id, false);
+                            var bottomIndex = chatView.indexAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin ));
+                            if(bottomIndex > -1) {
+                                viewMessageTimer.queueViewMessage(bottomIndex)
                             }
                         }
                         manuallyScrolledToBottom = chatView.atYEnd
@@ -714,6 +735,8 @@ Page {
                                     height: messageTextColumn.height + ( 2 * Theme.paddingMedium )
 
                                     color: index > ( chatView.count - chatInformation.unread_count - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                                    Behavior on color {  ColorAnimation { duration: 200 } }
+                                    Behavior on opacity { FadeAnimation {} }
                                     radius: parent.width / 50
                                     opacity: index > ( chatView.count - chatInformation.unread_count - 1 ) ? 0.5 : 0.2
                                     visible: appSettings.showStickersAsImages || display.content['@type'] !== "messageSticker"
@@ -961,6 +984,8 @@ Page {
                     anchors.rightMargin: Theme.paddingMedium
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: Theme.paddingMedium
+                    opacity: viewMessageTimer.running ? 0.5 : 1.0
+                    Behavior on opacity { FadeAnimation {} }
                     Rectangle {
                         id: chatUnreadMessagesCountBackground
                         color: Theme.highlightBackgroundColor
