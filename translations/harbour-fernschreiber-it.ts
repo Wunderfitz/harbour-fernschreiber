@@ -193,7 +193,7 @@
     </message>
     <message>
         <source>Channel members are anonymous.</source>
-        <translation type="unfinished"></translation>
+        <translation>I membri del canale sono anonimi.</translation>
     </message>
 </context>
 <context>
