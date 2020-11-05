@@ -60,5 +60,39 @@ QString FernschreiberUtils::getMessageShortText(const QVariantMap &messageConten
         }
         return myself ? tr("sent a poll", "myself") : tr("sent a poll");
     }
-    return tr("Unsupported message: %1").arg(contentType.mid(7));
+    if (contentType == "messageBasicGroupChatCreate" || contentType == "messageSupergroupChatCreate") {
+        return myself ? tr("created this group", "myself") : tr("created this group");
+    }
+    if (contentType == "messageChatChangePhoto") {
+        return myself ? tr("changed the chat photo", "myself") : tr("changed the chat photo");
+    }
+    if (contentType == "messageChatDeletePhoto") {
+        return myself ? tr("deleted the chat photo", "myself") : tr("deleted the chat photo");
+    }
+    if (contentType == "messageChatSetTtl") {
+        return myself ? tr("changed the secret chat TTL setting", "myself") : tr("changed the secret chat TTL setting");
+    }
+    if (contentType == "messageChatUpgradeFrom" || contentType == "messageChatUpgradeTo") {
+        return myself ? tr("upgraded this group to a supergroup", "myself") : tr("upgraded this group to a supergroup");
+    }
+    if (contentType == "messageCustomServiceAction") {
+        return messageContent.value("text").toString();
+    }
+    if (contentType == "messagePinMessage") {
+        return myself ? tr("changed the pinned message", "myself") : tr("changed the pinned message");
+    }
+    if (contentType == "messageExpiredPhoto") {
+        return myself ? tr("sent a self-destructing photo that is expired", "myself") : tr("sent a self-destructing photo that is expired");
+    }
+    if (contentType == "messageExpiredVideo") {
+        return myself ? tr("sent a self-destructing video that is expired", "myself") : tr("sent a self-destructing video that is expired");
+    }
+    if (contentType == "messageScreenshotTaken") {
+        return myself ? tr("created a screenshot in this chat", "myself") : tr("created a screenshot in this chat");
+    }
+    if (contentType == "messageUnsupported") {
+        return myself ? tr("sent an unsupported message", "myself") : tr("sent an unsupported message");
+    }
+
+    return myself ? tr("sent an unsupported message: %1", "myself").arg(contentType.mid(7)) : tr("sent an unsupported message: %1").arg(contentType.mid(7));
 }
