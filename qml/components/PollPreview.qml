@@ -28,7 +28,7 @@ Item {
 
 
     property ListItem messageListItem
-    property variant rawMessage: messageListItem.myMessage
+    property var rawMessage: messageListItem.myMessage
     property string chatId: messageListItem.page.chatInformation.id
 
     property bool isOwnMessage: messageListItem.isOwnMessage

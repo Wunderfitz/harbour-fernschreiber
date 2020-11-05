@@ -22,9 +22,9 @@ import Sailfish.Silica 1.0
 Item {
 
     property ListItem messageListItem
-    property variant rawMessage: messageListItem.myMessage
+    property var rawMessage: messageListItem.myMessage
 
-    property variant stickerData: rawMessage.content.sticker;
+    property var stickerData: rawMessage.content.sticker;
     property int usedFileId;
 
     width: stickerData.width

@@ -24,8 +24,8 @@ import "../js/functions.js" as Functions
 ListItem {
     id: messageListItem
     contentHeight: messageBackground.height + Theme.paddingMedium
-    property variant myMessage: display
-    property variant userInformation: tdLibWrapper.getUserInformation(display.sender_user_id)
+    property var myMessage: display
+    property var userInformation: tdLibWrapper.getUserInformation(display.sender_user_id)
     property Page page: chatPage
 
     property bool isOwnMessage: chatPage.myUserId === display.sender_user_id

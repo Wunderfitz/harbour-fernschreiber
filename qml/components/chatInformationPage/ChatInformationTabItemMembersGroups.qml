@@ -33,7 +33,7 @@ ChatInformationTabItemBase {
     loading: ( chatInformationPage.isSuperGroup || chatInformationPage.isPrivateChat) && !chatInformationPage.isChannel
     loadingVisible: loading && membersView.count === 0
 
-    property variant chatPartnerCommonGroupsIds: ([]);
+    property var chatPartnerCommonGroupsIds: ([]);
 
     SilicaListView {
         id: membersView

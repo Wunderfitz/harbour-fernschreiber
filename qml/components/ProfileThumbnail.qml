@@ -24,7 +24,7 @@ Item {
 
     id: profileThumbnail
 
-    property variant photoData;
+    property var photoData;
     property string replacementStringHint: "X"
     property bool forceElementUpdate: false
     property int radius: width / 2

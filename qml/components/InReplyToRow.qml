@@ -29,7 +29,7 @@ Row {
     height: inReplyToMessageColumn.height
 
     property string myUserId;
-    property variant inReplyToMessage;
+    property var inReplyToMessage;
     property bool editable: false;
 
     signal clearRequested()

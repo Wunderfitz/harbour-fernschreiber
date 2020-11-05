@@ -26,7 +26,7 @@ Page {
     id: aboutPage
     allowedOrientations: Orientation.All
 
-    property variant userInformation : tdLibWrapper.getUserInformation();
+    property var userInformation : tdLibWrapper.getUserInformation();
 
     SilicaFlickable {
         id: aboutContainer

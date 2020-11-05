@@ -29,12 +29,12 @@ Page {
                                     || (groupInformation.status["@type"] === "chatMemberStatusCreator" && groupInformation.status.is_member)
                                     )
 
-    property variant chatInformation:({});
-    property variant privateChatUserInformation:({});
-    property variant chatPartnerFullInformation:({});
-    property variant chatPartnerProfilePhotos:([]);
-    property variant groupInformation: ({});
-    property variant groupFullInformation: ({});
+    property var chatInformation:({});
+    property var privateChatUserInformation:({});
+    property var chatPartnerFullInformation:({});
+    property var chatPartnerProfilePhotos:([]);
+    property var groupInformation: ({});
+    property var groupFullInformation: ({});
 
     property alias membersList: membersList
 

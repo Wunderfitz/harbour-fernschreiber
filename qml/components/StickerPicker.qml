@@ -25,8 +25,8 @@ Item {
     id: stickerPickerOverlayItem
     anchors.fill: parent
 
-    property variant recentStickers: stickerManager.getRecentStickers()
-    property variant installedStickerSets: stickerManager.getInstalledStickerSets()
+    property var recentStickers: stickerManager.getRecentStickers()
+    property var installedStickerSets: stickerManager.getInstalledStickerSets()
     property bool pickerLoaded: false
 
     Timer {

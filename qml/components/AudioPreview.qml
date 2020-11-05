@@ -25,9 +25,9 @@ Item {
     id: audioMessageComponent
 
     property ListItem messageListItem
-    property variant rawMessage: messageListItem.myMessage
+    property var rawMessage: messageListItem.myMessage
 
-    property variant audioData: ( rawMessage.content['@type'] === "messageVoiceNote" ) ?  rawMessage.content.voice_note : ( ( rawMessage.content['@type'] === "messageAudio" ) ? rawMessage.content.audio : "");
+    property var audioData: ( rawMessage.content['@type'] === "messageVoiceNote" ) ?  rawMessage.content.voice_note : ( ( rawMessage.content['@type'] === "messageAudio" ) ? rawMessage.content.audio : "");
     property string audioUrl;
     property int previewFileId;
     property int audioFileId;
