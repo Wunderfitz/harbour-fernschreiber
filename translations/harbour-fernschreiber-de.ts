@@ -258,14 +258,6 @@
         <translation>%1 Abonnenten</translation>
     </message>
     <message>
-        <source>Reply to Message</source>
-        <translation>Auf Nachricht antworten</translation>
-    </message>
-    <message>
-        <source>You</source>
-        <translation>Sie</translation>
-    </message>
-    <message>
         <source>Loading messages...</source>
         <translation>Lade Nachrichten...</translation>
     </message>
@@ -282,32 +274,16 @@
         <translation>Nachricht bearbeiten</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Nachricht in die Zwischenablage kopieren</translation>
-    </message>
-    <message>
         <source>edited</source>
         <translation>bearbeitet</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Nachricht löschen</translation>
     </message>
     <message>
         <source>Uploading...</source>
         <translation>Lade hoch...</translation>
     </message>
     <message>
-        <source>Forwarded Message</source>
-        <translation>Weitergeleitete Nachricht</translation>
-    </message>
-    <message>
         <source>This chat is empty.</source>
         <translation>Dieser Chat ist leer.</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Nachricht gelöscht</translation>
     </message>
 </context>
 <context>
@@ -520,10 +496,6 @@
         <translation>hat diesen Chat verlassen</translation>
     </message>
     <message>
-        <source>Unsupported message: %1</source>
-        <translation>Nicht unterstützte Nachricht: %1</translation>
-    </message>
-    <message>
         <source>Sticker: %1</source>
         <translation>Sticker: %1</translation>
     </message>
@@ -567,6 +539,105 @@
     <message>
         <source>sent a quiz</source>
         <translation>hat ein Quiz geschickt</translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <comment>myself</comment>
+        <translation>haben diese Gruppe erstellt</translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <translation>hat diese Gruppe erstellt</translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <comment>myself</comment>
+        <translation>haben das Chatbild geändert</translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <translation>hat das Chatbild geändert</translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <comment>myself</comment>
+        <translation>haben das Chatbild gelöscht</translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <translation>hat das Chatbild gelöscht</translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <comment>myself</comment>
+        <translation>haben die TTL-Einstellung des geheimen Chats geändert</translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <translation>hat die TTL-Einstellung des geheimen Chats geändert</translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <comment>myself</comment>
+        <translation>haben die Gruppe zu einer Supergruppe erweitert</translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <comment>myself</comment>
+        <translation>haben die angeheftete Nachricht geändert</translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <translation>hat die angeheftete Nachricht geändert</translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <comment>myself</comment>
+        <translation>haben ein Bildschirmfoto dieses Chats erstellt</translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <translation>hat ein Bildschirmfoto dieses Chats erstellt</translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <comment>myself</comment>
+        <translation>haben eine nicht unterstützte Nachricht gesendet</translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <translation>hat eine nicht unterstützte Nachricht gesendet</translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <translation>hat eine nicht unterstützte Nachricht geschickt: %1</translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <translation>hat die Gruppe zu einer Supergruppe erweitert</translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <comment>myself</comment>
+        <translation>haben ein selbstzerstörendes Bild gesendet, das abgelaufen ist</translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <comment>myself</comment>
+        <translation>haben ein selbstzerstörendes Video gesendet, das abgelaufen ist</translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <translation>haben ein selbstzerstörendes Video gesendet, das abgelaufen ist</translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <comment>myself</comment>
+        <translation>haben eine nicht unterstützte Nachricht geschickt: %1</translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <translation>hat ein selbstzerstörendes Bild gesendet, das abgelaufen ist</translation>
     </message>
 </context>
 <context>
@@ -659,6 +730,44 @@
     <message>
         <source>Install Pure Maps to inspect this location.</source>
         <translation>Installieren Sie Pure Maps, um diesen Ort zu erkunden.</translation>
+    </message>
+</context>
+<context>
+    <name>MessageListViewItem</name>
+    <message>
+        <source>Reply to Message</source>
+        <translation>Auf Nachricht antworten</translation>
+    </message>
+    <message>
+        <source>Edit Message</source>
+        <translation>Nachricht bearbeiten</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Nachricht in die Zwischenablage kopieren</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Nachricht gelöscht</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Nachricht löschen</translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation>Sie</translation>
+    </message>
+    <message>
+        <source>Forwarded Message</source>
+        <translation>Weitergeleitete Nachricht</translation>
+    </message>
+</context>
+<context>
+    <name>MessageListViewItemSimple</name>
+    <message>
+        <source>You</source>
+        <translation>Sie</translation>
     </message>
 </context>
 <context>
@@ -991,10 +1100,6 @@
         <translation>Animation: %1</translation>
     </message>
     <message>
-        <source>Unsupported message: %1</source>
-        <translation>Nicht unterstützte Nachricht: %1</translation>
-    </message>
-    <message>
         <source>Document: %1</source>
         <translation>Dokument: %1</translation>
     </message>
@@ -1213,6 +1318,107 @@
     <message>
         <source>Poll</source>
         <translation>Umfrage</translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <comment>myself</comment>
+        <translation>haben diese Gruppe erstellt</translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <translation>hat diese Gruppe erstellt</translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <comment>myself</comment>
+        <translation>haben das Chatbild geändert</translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <translation>hat das Chatbild geändert</translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <comment>myself</comment>
+        <translation>haben das Chatbild gelöscht</translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <translation>hat das Chatbild gelöscht</translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <comment>myself; TTL = Time To Live</comment>
+        <translation>haben die TTL-Einstellung des geheimen Chats geändert</translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <comment>TTL = Time To Live</comment>
+        <translation>hat die TTL-Einstellung des geheimen Chats geändert</translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <comment>myself</comment>
+        <translation>haben die Gruppe zu einer Supergruppe erweitert</translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <comment>myself</comment>
+        <translation>haben die angeheftete Nachricht geändert</translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <translation>hat die angeheftete Nachricht geändert</translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <comment>myself</comment>
+        <translation>haben ein Bildschirmfoto dieses Chats erstellt</translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <translation>hat ein Bildschirmfoto dieses Chats erstellt</translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <comment>myself</comment>
+        <translation>haben eine nicht unterstützte Nachricht geschickt</translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <translation>hat eine nicht unterstützte Nachricht geschickt</translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <comment>myself; %1 is message type</comment>
+        <translation>haben eine nicht unterstützte Nachricht geschickt: %1</translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <comment>%1 is message type</comment>
+        <translation>hat eine nicht unterstützte Nachricht geschickt: %1</translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <translation>hat die Gruppe zu einer Supergruppe erweitert</translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <comment>myself</comment>
+        <translation>haben ein selbstzerstörendes Bild gesendet, das abgelaufen ist</translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <translation>hat ein selbstzerstörendes Bild gesendet, das abgelaufen ist</translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <comment>myself</comment>
+        <translation>haben ein selbstzerstörendes Video gesendet, das abgelaufen ist</translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <translation>hat ein selbstzerstörendes Bild gesendet, das abgelaufen ist</translation>
     </message>
 </context>
 </TS>

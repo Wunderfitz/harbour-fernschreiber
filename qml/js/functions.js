@@ -109,9 +109,43 @@ function getMessageText(message, simple, myself) {
         }
         return simple ? (myself ? qsTr("sent a poll", "myself") : qsTr("sent a poll")) : ("<b>" + qsTr("Poll") + "</b>");
     }
-    return qsTr("Unsupported message: %1").arg(message.content['@type'].substring(7));
-}
+    if (message.content['@type'] === 'messageBasicGroupChatCreate' || message.content['@type'] === 'messageSupergroupChatCreate') {
+        return myself ? qsTr("created this group", "myself") : qsTr("created this group");
+    }
+    if (message.content['@type'] === 'messageChatChangePhoto') {
+        return myself ? qsTr("changed the chat photo", "myself") : qsTr("changed the chat photo");
+    }
+    if (message.content['@type'] === 'messageChatDeletePhoto') {
+        return myself ? qsTr("deleted the chat photo", "myself") : qsTr("deleted the chat photo");
+    }
+    if (message.content['@type'] === 'messageChatSetTtl') {
+        return myself ? qsTr("changed the secret chat TTL setting", "myself; TTL = Time To Live") : qsTr("changed the secret chat TTL setting", "TTL = Time To Live");
+    }
 
+    if (message.content['@type'] === 'messageChatUpgradeFrom' || message.content['@type'] === 'messageChatUpgradeTo' ) {
+        return myself ? qsTr("upgraded this group to a supergroup", "myself") : qsTr("upgraded this group to a supergroup");
+    }
+    if (message.content['@type'] === 'messageCustomServiceAction') {
+        return message.content.text;
+    }
+    if (message.content['@type'] === 'messagePinMessage') {
+        return myself ? qsTr("changed the pinned message", "myself") : qsTr("changed the pinned message");
+    }
+    if (message.content['@type'] === 'messageExpiredPhoto') {
+        return myself ? qsTr("sent a self-destructing photo that is expired", "myself") : qsTr("sent a self-destructing photo that is expired");
+    }
+    if (message.content['@type'] === 'messageExpiredVideo') {
+        return myself ? qsTr("sent a self-destructing video that is expired", "myself") : qsTr("sent a self-destructing video that is expired");
+    }
+    if (message.content['@type'] === 'messageScreenshotTaken') {
+        return myself ? qsTr("created a screenshot in this chat", "myself") : qsTr("created a screenshot in this chat");
+    }
+    if (message.content['@type'] === 'messageUnsupported') {
+        return myself ? qsTr("sent an unsupported message", "myself") : qsTr("sent an unsupported message");
+    }
+
+    return myself ? qsTr("sent an unsupported message: %1", "myself; %1 is message type").arg(message.content['@type'].substring(7)) : qsTr("sent an unsupported message: %1", "%1 is message type").arg(message.content['@type'].substring(7));
+}
 function getChatPartnerStatusText(statusType, was_online) {
     switch(statusType) {
     case "userStatusEmpty":

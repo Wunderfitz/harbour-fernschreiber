@@ -258,14 +258,6 @@
         <translation>%1 feliratkozott</translation>
     </message>
     <message>
-        <source>Reply to Message</source>
-        <translation>Válasz az üzenetre</translation>
-    </message>
-    <message>
-        <source>You</source>
-        <translation>Te</translation>
-    </message>
-    <message>
         <source>Loading messages...</source>
         <translation>Üzenetek betöltése...</translation>
     </message>
@@ -286,27 +278,11 @@
         <translation>Szerkesztett</translation>
     </message>
     <message>
-        <source>Delete Message</source>
-        <translation>Üzenet törlése</translation>
-    </message>
-    <message>
         <source>Uploading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Forwarded Message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>This chat is empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy Message to Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -520,10 +496,6 @@
         <translation type="unfinished">kilépett a csevegésből</translation>
     </message>
     <message>
-        <source>Unsupported message: %1</source>
-        <translation type="unfinished">Nem támogatott üzenet: %1</translation>
-    </message>
-    <message>
         <source>Sticker: %1</source>
         <translation type="unfinished">Matrica: %1</translation>
     </message>
@@ -566,6 +538,105 @@
     </message>
     <message>
         <source>sent a quiz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -659,6 +730,44 @@
     <message>
         <source>Install Pure Maps to inspect this location.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageListViewItem</name>
+    <message>
+        <source>Reply to Message</source>
+        <translation type="unfinished">Válasz az üzenetre</translation>
+    </message>
+    <message>
+        <source>Edit Message</source>
+        <translation type="unfinished">Üzenet szerkesztése</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Üzenet törlése</translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Te</translation>
+    </message>
+    <message>
+        <source>Forwarded Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageListViewItemSimple</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Te</translation>
     </message>
 </context>
 <context>
@@ -985,10 +1094,6 @@
         <translation>Animáció: %1</translation>
     </message>
     <message>
-        <source>Unsupported message: %1</source>
-        <translation>Nem támogatott üzenet: %1</translation>
-    </message>
-    <message>
         <source>Document: %1</source>
         <translation>Dokument: %1</translation>
     </message>
@@ -1206,6 +1311,107 @@
     </message>
     <message>
         <source>Poll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <comment>myself; TTL = Time To Live</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <comment>TTL = Time To Live</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <comment>myself; %1 is message type</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <comment>%1 is message type</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -258,14 +258,6 @@
         <translation>%1 abbonati</translation>
     </message>
     <message>
-        <source>Reply to Message</source>
-        <translation>Rispondi al messaggio</translation>
-    </message>
-    <message>
-        <source>You</source>
-        <translation>Tu</translation>
-    </message>
-    <message>
         <source>Unmute Chat</source>
         <translation>Riattiva suoni chat</translation>
     </message>
@@ -282,14 +274,6 @@
         <translation>modificato</translation>
     </message>
     <message>
-        <source>Delete Message</source>
-        <translation>Cancella messaggio</translation>
-    </message>
-    <message>
-        <source>Forwarded Message</source>
-        <translation>Messaggio inoltrato</translation>
-    </message>
-    <message>
         <source>This chat is empty.</source>
         <translation>Questa chat è vuota.</translation>
     </message>
@@ -300,14 +284,6 @@
     <message>
         <source>Uploading...</source>
         <translation>Carica...</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Messaggio cancellato</translation>
-    </message>
-    <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Copia messaggio nella clipboard</translation>
     </message>
 </context>
 <context>
@@ -520,10 +496,6 @@
         <translation>ha lasciato questa chat</translation>
     </message>
     <message>
-        <source>Unsupported message: %1</source>
-        <translation>Messaggio non supportato: %1</translation>
-    </message>
-    <message>
         <source>Sticker: %1</source>
         <translation>Sticker: %1</translation>
     </message>
@@ -567,6 +539,105 @@
     <message>
         <source>sent a quiz</source>
         <translation>ha inviato un quiz</translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -659,6 +730,44 @@
     <message>
         <source>Install Pure Maps to inspect this location.</source>
         <translation>Installa Pure Maps per conoscere questo luogo.</translation>
+    </message>
+</context>
+<context>
+    <name>MessageListViewItem</name>
+    <message>
+        <source>Reply to Message</source>
+        <translation type="unfinished">Rispondi al messaggio</translation>
+    </message>
+    <message>
+        <source>Edit Message</source>
+        <translation type="unfinished">Modifica messaggio</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished">Copia messaggio nella clipboard</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished">Messaggio cancellato</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Cancella messaggio</translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Tu</translation>
+    </message>
+    <message>
+        <source>Forwarded Message</source>
+        <translation type="unfinished">Messaggio inoltrato</translation>
+    </message>
+</context>
+<context>
+    <name>MessageListViewItemSimple</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Tu</translation>
     </message>
 </context>
 <context>
@@ -991,10 +1100,6 @@
         <translation>Animazione: %1</translation>
     </message>
     <message>
-        <source>Unsupported message: %1</source>
-        <translation>Messaggio non supportato: %1</translation>
-    </message>
-    <message>
         <source>Document: %1</source>
         <translation>Documento: %1</translation>
     </message>
@@ -1213,6 +1318,107 @@
     <message>
         <source>Poll</source>
         <translation>Sondaggio</translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created this group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the chat photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleted the chat photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <comment>myself; TTL = Time To Live</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the secret chat TTL setting</source>
+        <comment>TTL = Time To Live</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the pinned message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>created a screenshot in this chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <comment>myself; %1 is message type</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an unsupported message: %1</source>
+        <comment>%1 is message type</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>upgraded this group to a supergroup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing photo that is expired</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a self-destructing video that is expired</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
