@@ -40,6 +40,8 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/ImagePreview.qml \
     qml/components/InReplyToRow.qml \
     qml/components/LocationPreview.qml \
+    qml/components/MessageListViewItem.qml \
+    qml/components/MessageListViewItemSimple.qml \
     qml/components/PollPreview.qml \
     qml/components/StickerPicker.qml \
     qml/components/PhotoTextsListItem.qml \
