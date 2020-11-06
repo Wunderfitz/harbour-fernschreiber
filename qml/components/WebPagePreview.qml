@@ -27,8 +27,8 @@ Column {
 
     id: webPagePreviewColumn
 
-    property variant webPageData;
-    property variant pictureFileInformation;
+    property var webPageData;
+    property var pictureFileInformation;
     property bool hasImage: false;
 
     spacing: Theme.paddingSmall

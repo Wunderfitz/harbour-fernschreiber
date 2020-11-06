@@ -33,15 +33,15 @@ Page {
     property bool loading: true;
     property bool isInitialized: false;
     property int myUserId: tdLibWrapper.getUserInformation().id;
-    property variant chatInformation;
+    property var chatInformation;
     property bool isPrivateChat: false;
     property bool isBasicGroup: false;
     property bool isSuperGroup: false;
     property bool isChannel: false;
-    property variant chatPartnerInformation;
-    property variant chatGroupInformation;
+    property var chatPartnerInformation;
+    property var chatGroupInformation;
     property int chatOnlineMemberCount: 0;
-    property variant emojiProposals;
+    property var emojiProposals;
 
     function updateChatPartnerStatusText() {
         var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
@@ -543,7 +543,7 @@ Page {
                     }
 
                     model: chatModel
-                    property variant contentComponentNames: ({
+                    property var contentComponentNames: ({
                                                               messageSticker: "StickerPreview",
                                                               messagePhoto: "ImagePreview",
                                                               messageVideo: "VideoPreview",
@@ -784,7 +784,7 @@ Page {
                     property bool isPicture: false;
                     property bool isVideo: false;
                     property bool isDocument: false;
-                    property variant fileProperties:({});
+                    property var fileProperties:({});
 
                     IconButton {
                         id: removeAttachmentsIconButton

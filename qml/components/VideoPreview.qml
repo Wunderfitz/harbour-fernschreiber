@@ -25,9 +25,9 @@ Item {
     id: videoMessageComponent
 
     property ListItem messageListItem
-    property variant rawMessage: messageListItem.myMessage
+    property var rawMessage: messageListItem.myMessage
 
-    property variant videoData:  ( rawMessage.content['@type'] === "messageVideo" ) ?  rawMessage.content.video : ( ( rawMessage.content['@type'] === "messageAnimation" ) ? rawMessage.content.animation : "")
+    property var videoData:  ( rawMessage.content['@type'] === "messageVideo" ) ?  rawMessage.content.video : ( ( rawMessage.content['@type'] === "messageAnimation" ) ? rawMessage.content.animation : "")
     property string videoUrl;
     property int previewFileId;
     property int videoFileId;

@@ -26,7 +26,7 @@ Page {
     id: videoPage
     allowedOrientations: Orientation.All
 
-    property variant videoData;
+    property var videoData;
 
     property int videoWidth : videoData.width
     property int videoHeight : videoData.height

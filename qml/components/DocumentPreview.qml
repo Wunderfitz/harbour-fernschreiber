@@ -26,9 +26,9 @@ Item {
     height: Theme.itemSizeLarge
 
     property ListItem messageListItem
-    property variant rawMessage: messageListItem.myMessage
+    property var rawMessage: messageListItem.myMessage
 
-    property variant documentData: rawMessage.content.document
+    property var documentData: rawMessage.content.document
     property bool openRequested: false;
 
     Component.onCompleted: {

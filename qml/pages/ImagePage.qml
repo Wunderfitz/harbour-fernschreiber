@@ -26,8 +26,8 @@ Page {
     allowedOrientations: Orientation.All
     backNavigation: !imageOnly
 
-    property variant photoData;
-    property variant pictureFileInformation;
+    property var photoData;
+    property var pictureFileInformation;
 
     property string imageUrl;
     property int imageWidth;
