@@ -13,7 +13,7 @@ PhotoTextsListItem {
     property url emojiBase: "../js/emoji/"
 
     // chat title
-    primaryText.text: title ? Emoji.emojify(title, Theme.fontSizeMedium, emojiBase) + ( display.notification_settings.mute_for > 0 ? Emoji.emojify(" 🔇", Theme.fontSizeMedium) : "" ) : qsTr("Unknown")
+    primaryText.text: title ? Emoji.emojify(title + ( display.notification_settings.mute_for > 0 ? " 🔇" : "" ), Theme.fontSizeMedium, emojiBase) : qsTr("Unknown")
     // last user
     prologSecondaryText.text: is_channel ? "" : ( last_message_sender_id ? ( last_message_sender_id !== ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(last_message_sender_id)), primaryText.font.pixelSize) : qsTr("You") ) : qsTr("Unknown") )
     // last message

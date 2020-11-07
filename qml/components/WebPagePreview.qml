@@ -124,6 +124,8 @@ Column {
             height: parent.height - Theme.paddingSmall
             anchors.centerIn: parent
 
+            sourceSize.width: width
+            sourceSize.height: height
             fillMode: Image.PreserveAspectCrop
             autoTransform: true
             asynchronous: true

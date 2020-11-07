@@ -531,13 +531,23 @@ Page {
                     clip: true
                     highlightMoveDuration: 0
                     highlightResizeDuration: 0
-                    highlightRangeMode: ListView.ApplyRange
-                    preferredHighlightBegin: 0
-                    preferredHighlightEnd: height
-                    highlight: Component {Item { } }
                     property int lastReadSentIndex: 0
                     property bool inCooldown: false
                     property bool manuallyScrolledToBottom
+                    property QtObject precalculatedValues: QtObject {
+                        property alias page: chatPage
+                        property bool showUserInfo: page.isBasicGroup || ( page.isSuperGroup && !page.isChannel)
+                        property int profileThumbnailDimensions: showUserInfo ? Theme.itemSizeSmall : 0
+                        property int pageMarginDouble: 2 * Theme.horizontalPageMargin
+                        property int paddingMediumDouble: 2 * Theme.paddingMedium
+                        property int entryWidth: chatView.width - pageMarginDouble
+                        property int textItemWidth: entryWidth - profileThumbnailDimensions - Theme.paddingSmall
+                        property int backgroundWidth: textItemWidth - pageMarginDouble
+                        property int backgroundRadius: textItemWidth/50
+                        property int textColumnWidth: backgroundWidth - Theme.horizontalPageMargin
+                        property int messageInReplyToHeight: Theme.fontSizeExtraSmall * 2.571428571 + Theme.paddingSmall;
+                        property int webPagePreviewHeight: ( (textColumnWidth * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) )
+                    }
 
                     function handleScrollPositionChanged() {
                         console.log("Current position: " + chatView.contentY);
@@ -552,7 +562,8 @@ Page {
 
                     function scrollToIndex(index) {
                         if(index > 0 && index < chatView.count) {
-                            currentIndex = index;
+                            positionViewAtIndex(index, ListView.Contain)
+//                            currentIndex = index;
                             if(index === chatView.count - 1) {
                                 manuallyScrolledToBottom = true;
                             }
@@ -616,7 +627,9 @@ Page {
                         width: chatView.width
                         Component {
                             id: messageListViewItemComponent
-                            MessageListViewItem {}
+                            MessageListViewItem {
+                                precalculatedValues: chatView.precalculatedValues
+                            }
                         }
                         Component {
                             id: messageListViewItemSimpleComponent
@@ -663,8 +676,6 @@ Page {
                     anchors.rightMargin: Theme.paddingMedium
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: Theme.paddingMedium
-                    opacity: viewMessageTimer.running ? 0.5 : 1.0
-                    Behavior on opacity { FadeAnimation {} }
                     Rectangle {
                         id: chatUnreadMessagesCountBackground
                         color: Theme.highlightBackgroundColor
