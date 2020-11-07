@@ -118,10 +118,6 @@
         <translation>%1 Mitglieder</translation>
     </message>
     <message>
-        <source>Leave Group</source>
-        <translation>Gruppe verlassen</translation>
-    </message>
-    <message>
         <source>Leaving chat</source>
         <translation>Verlasse Gruppe</translation>
     </message>
@@ -152,6 +148,14 @@
     <message>
         <source>Enter 1-128 characters</source>
         <translation>Geben Sie 1-128 Zeichen ein</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation>Chat verlassen</translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation>Chat beitreten</translation>
     </message>
 </context>
 <context>
@@ -284,6 +288,22 @@
     <message>
         <source>This chat is empty.</source>
         <translation>Dieser Chat ist leer.</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation>Chat verlassen</translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation>Chat beitreten</translation>
+    </message>
+    <message>
+        <source>Leaving chat</source>
+        <translation>Verlasse Chat</translation>
+    </message>
+    <message>
+        <source>You joined the chat %1</source>
+        <translation>Sie sind dem Chat %1 beigetreten.</translation>
     </message>
 </context>
 <context>

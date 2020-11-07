@@ -90,10 +90,6 @@
 <context>
     <name>ChatInformationPage</name>
     <message>
-        <source>Leave Group</source>
-        <translation>Lascia gruppo</translation>
-    </message>
-    <message>
         <source>Leaving chat</source>
         <translation>Lascia chat</translation>
     </message>
@@ -152,6 +148,14 @@
     <message>
         <source>Enter 1-128 characters</source>
         <translation>Inserisci da 1 a 128 caratteri</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -284,6 +288,22 @@
     <message>
         <source>Uploading...</source>
         <translation>Carica...</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leaving chat</source>
+        <translation type="unfinished">Lascia chat</translation>
+    </message>
+    <message>
+        <source>You joined the chat %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -115,6 +115,7 @@ public:
     Q_INVOKABLE void downloadFile(const QString &fileId);
     Q_INVOKABLE void openChat(const QString &chatId);
     Q_INVOKABLE void closeChat(const QString &chatId);
+    Q_INVOKABLE void joinChat(const QString &chatId);
     Q_INVOKABLE void leaveChat(const QString &chatId);
     Q_INVOKABLE void getChatHistory(const QString &chatId, const qlonglong &fromMessageId = 0, int offset = 0, int limit = 50, bool onlyLocal = false);
     Q_INVOKABLE void viewMessage(const QString &chatId, const QString &messageId, bool force);

@@ -184,17 +184,23 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                visible: (isBasicGroup || isSuperGroup) && userIsMember
-                text: qsTr("Leave Group")
+                visible: (chatPage.isSuperGroup || chatPage.isBasicGroup) && groupInformation && groupInformation.status["@type"] !== "chatMemberStatusBanned"
+                text: userIsMember ? qsTr("Leave Chat") : qsTr("Join Chat")
                 onClicked: {
                     // ensure it's done even if the page is closed:
-                    var remorse = Remorse.popupAction(appWindow, qsTr("Leaving chat"), (function(chatid) {
-                        return function() {
-                            tdLibWrapper.leaveChat(chatid);
-                            // this does not care about the response (ideally type "ok" without further reference) for now
-                            pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
-                        };
-                    }(chatInformation.id.toString())))
+                    if (userIsMember) {
+                        var remorse = Remorse.popupAction(appWindow, qsTr("Leaving chat"), (function(chatid) {
+                            return function() {
+                                tdLibWrapper.leaveChat(chatid);
+                                // this does not care about the response (ideally type "ok" without further reference) for now
+                                pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
+                            };
+                        }(chatInformation.id)))
+                    } else {
+                        tdLibWrapper.joinChat(chatInformation.id);
+                    }
+
+
                 }
             }
             MenuItem {

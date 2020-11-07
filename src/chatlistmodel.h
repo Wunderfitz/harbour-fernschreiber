@@ -56,6 +56,7 @@ private slots:
 signals:
     void showAllChatsChanged();
     void chatChanged(const qlonglong &changedChatId);
+    void chatJoined(const qlonglong &chatId, const QString &chatTitle);
 
 private:
     class ChatData;

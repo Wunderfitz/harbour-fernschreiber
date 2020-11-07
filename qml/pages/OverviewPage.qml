@@ -179,6 +179,10 @@ Page {
             }
         }
 
+        AppNotification {
+            id: overviewPageNotification
+        }
+
         Column {
             id: column
             width: parent.width

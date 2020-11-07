@@ -42,6 +42,13 @@ Page {
     property var chatGroupInformation;
     property int chatOnlineMemberCount: 0;
     property var emojiProposals;
+    property bool userIsMember: (isPrivateChat && chatInformation["@type"]) || // should be optimized
+                                (isBasicGroup || isSuperGroup) && (
+                                    (chatGroupInformation.status["@type"] === "chatMemberStatusMember")
+                                    || (chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator")
+                                    || (chatGroupInformation.status["@type"] === "chatMemberStatusRestricted" && chatGroupInformation.status.is_member)
+                                    || (chatGroupInformation.status["@type"] === "chatMemberStatusCreator" && chatGroupInformation.status.is_member)
+                                    )
 
     function updateChatPartnerStatusText() {
         var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
@@ -60,6 +67,7 @@ Page {
                 chatStatusText.text = qsTr("%1 members").arg(Functions.getShortenedCount(chatGroupInformation.member_count));
             }
         }
+        joinLeaveChatMenuItem.text = chatPage.userIsMember ? qsTr("Leave Chat") : qsTr("Join Chat");
     }
 
     function initializePage() {
@@ -310,6 +318,13 @@ Page {
         }
     }
 
+    Connections {
+        target: chatListModel
+        onChatJoined: {
+            chatPageNotification.show(qsTr("You joined the chat %1").arg(chatTitle));
+        }
+    }
+
     Timer {
         id: lostFocusTimer
         interval: 200
@@ -370,7 +385,27 @@ Page {
         PullDownMenu {
             visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active
             MenuItem {
+                id: joinLeaveChatMenuItem
+                visible: (chatPage.isSuperGroup || chatPage.isBasicGroup) && chatGroupInformation && chatGroupInformation.status["@type"] !== "chatMemberStatusBanned"
+                onClicked: {
+                    if (chatPage.userIsMember) {
+                        var remorse = Remorse.popupAction(appWindow, qsTr("Leaving chat"), (function(chatid) {
+                            return function() {
+                                tdLibWrapper.leaveChat(chatid);
+                                // this does not care about the response (ideally type "ok" without further reference) for now
+                                pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
+                            };
+                        }(chatInformation.id)))
+                    } else {
+                        tdLibWrapper.joinChat(chatInformation.id);
+                    }
+                }
+                text: chatPage.userIsMember ? qsTr("Leave Chat") : qsTr("Join Chat")
+            }
+
+            MenuItem {
                 id: muteChatMenuItem
+                visible: chatPage.userIsMember
                 onClicked: {
                     var newNotificationSettings = chatInformation.notification_settings;
                     if (newNotificationSettings.mute_for > 0) {
@@ -382,6 +417,10 @@ Page {
                 }
                 text: chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
             }
+        }
+
+        AppNotification {
+            id: chatPageNotification
         }
 
         BackgroundItem {

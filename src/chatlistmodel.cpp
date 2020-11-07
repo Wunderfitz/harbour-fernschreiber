@@ -405,10 +405,12 @@ void ChatListModel::addVisibleChat(ChatData *chat)
         chatIndexMap.insert(chatList.at(i)->chatId, i);
     }
     endInsertRows();
+    emit chatJoined(chat->chatId, chat->chatData.value("title").toString());
 }
 
 void ChatListModel::updateChatVisibility(const TDLibWrapper::Group *group)
 {
+    LOG("Updating chat visibility" << group->groupId);
     // See if any group has been removed from from view
     for (int i = 0; i < chatList.size(); i++) {
         ChatData *chat = chatList.at(i);

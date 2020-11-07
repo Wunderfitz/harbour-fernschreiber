@@ -237,6 +237,15 @@ void TDLibWrapper::closeChat(const QString &chatId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::joinChat(const QString &chatId)
+{
+    LOG("Joining chat " << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "joinChat");
+    requestObject.insert("chat_id", chatId);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::leaveChat(const QString &chatId)
 {
     LOG("Leaving chat " << chatId);
