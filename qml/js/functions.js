@@ -310,21 +310,28 @@ function enhanceMessageText(formattedText) {
 }
 
 function handleLink(link) {
+    var tMePrefix = tdLibWrapper.getOptionString("t_me_url");
     if (link.indexOf("user://") === 0) {
         var userInformation = tdLibWrapper.getUserInformationByName(link.substring(8));
         tdLibWrapper.createPrivateChat(userInformation.id);
     } else if (link.indexOf("userId://") === 0) {
         tdLibWrapper.createPrivateChat(link.substring(9));
+    } else if (link.indexOf("tg://") === 0) {
+        console.log("Special TG link: " + link);
+        if (link.indexOf("tg://join?invite=") === 0) {
+            tdLibWrapper.joinChatByInviteLink(tMePrefix + "joinchat/" + link.substring(17));
+        } else if (link.indexOf("tg://resolve?domain=") === 0) {
+            tdLibWrapper.searchPublicChat(link.substring(20));
+        }
     }  else {
-        var tMePrefix = tdLibWrapper.getOptionString("t_me_url");
         if (link.indexOf(tMePrefix) === 0) {
             if (link.indexOf("joinchat") !== -1) {
-                console.log("Joining Chatto: " + link);
+                console.log("Joining Chat: " + link);
                 tdLibWrapper.joinChatByInviteLink(link);
                 // Do the necessary stuff to open the chat if successful
                 // Fail with nice error message if it doesn't work
             } else {
-                console.log("SUCH! " + link.substring(tMePrefix.length));
+                console.log("Search public chat: " + link.substring(tMePrefix.length));
                 tdLibWrapper.searchPublicChat(link.substring(tMePrefix.length));
                 // Check responses for updateBasicGroup or updateSupergroup
                 // Fire createBasicGroupChat or createSupergroupChat

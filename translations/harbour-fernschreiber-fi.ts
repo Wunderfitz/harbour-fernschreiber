@@ -1063,6 +1063,14 @@
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
         <translation>Käytä ei-graafista palautetta (ääni, värinä) ilmoituksille</translation>
     </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

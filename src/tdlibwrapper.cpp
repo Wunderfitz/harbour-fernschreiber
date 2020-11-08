@@ -47,9 +47,10 @@ namespace {
     const QString _EXTRA("@extra");
 }
 
-TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
+TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(parent)
 {
     LOG("Initializing TD Lib...");
+    this->appSettings = appSettings;
     this->tdLibClient = td_json_client_create();
     this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
 
@@ -60,7 +61,11 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     }
 
     this->dbusInterface = new DBusInterface(this);
-    this->initializeOpenWith();
+    if (this->appSettings->getUseOpenWith()) {
+        this->initializeOpenWith();
+    } else {
+        this->removeOpenWith();
+    }
 
     connect(this->tdLibReceiver, SIGNAL(versionDetected(QString)), this, SLOT(handleVersionDetected(QString)));
     connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString, QVariantMap)), this, SLOT(handleAuthorizationStateChanged(QString, QVariantMap)));
@@ -109,6 +114,8 @@ TDLibWrapper::TDLibWrapper(QObject *parent) : QObject(parent)
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
+
+    connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
 
     this->tdLibReceiver->start();
 
@@ -737,6 +744,15 @@ void TDLibWrapper::joinChatByInviteLink(const QString &inviteLink)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::getDeepLinkInfo(const QString &link)
+{
+    LOG("Resolving TG deep link" << link);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getDeepLinkInfo");
+    requestObject.insert("link", link);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
@@ -1059,6 +1075,15 @@ void TDLibWrapper::handleEmojiSearchCompleted(const QString &queryString, const 
     emit emojiSearchSuccessful(resultList);
 }
 
+void TDLibWrapper::handleOpenWithChanged()
+{
+    if (this->appSettings->getUseOpenWith()) {
+        this->initializeOpenWith();
+    } else {
+        this->removeOpenWith();
+    }
+}
+
 void TDLibWrapper::setInitialParameters()
 {
     LOG("Sending initial parameters to TD Lib");
@@ -1105,6 +1130,39 @@ void TDLibWrapper::initializeOpenWith()
 {
     LOG("Initialize open-with");
 
+    qDebug() << "Checking standard open URL file...";
+    QString openUrlFilePath = QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/open-url.desktop";
+    if (QFile::exists(openUrlFilePath)) {
+        qDebug() << "Standard open URL file exists, good!";
+    } else {
+        qDebug() << "Copying standard open URL file to " << openUrlFilePath;
+        QFile::copy("/usr/share/applications/open-url.desktop", openUrlFilePath);
+        QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+    }
+
+    QString desktopFilePath = QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/harbour-fernschreiber-open-url.desktop";
+    QFile desktopFile(desktopFilePath);
+    if (!desktopFile.exists()) {
+        qDebug() << "Creating Open-With file at " << desktopFile.fileName();
+        if (desktopFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream fileOut(&desktopFile);
+            fileOut.setCodec("UTF-8");
+            fileOut << QString("[Desktop Entry]").toUtf8() << "\n";
+            fileOut << QString("Type=Application").toUtf8() << "\n";
+            fileOut << QString("Name=Fernschreiber").toUtf8() << "\n";
+            fileOut << QString("Icon=harbour-fernschreiber").toUtf8() << "\n";
+            fileOut << QString("NotShowIn=X-MeeGo;").toUtf8() << "\n";
+            fileOut << QString("MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/tg;").toUtf8() << "\n";
+            fileOut << QString("X-Maemo-Service=de.ygriega.fernschreiber").toUtf8() << "\n";
+            fileOut << QString("X-Maemo-Object-Path=/de/ygriega/fernschreiber").toUtf8() << "\n";
+            fileOut << QString("X-Maemo-Method=de.ygriega.fernschreiber.openUrl").toUtf8() << "\n";
+            fileOut << QString("Hidden=true;").toUtf8() << "\n";
+            fileOut.flush();
+            desktopFile.close();
+            QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+        }
+    }
+
     QString dbusPathName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/dbus-1/services";
     QDir dbusPath(dbusPathName);
     if (!dbusPath.exists()) {
@@ -1125,6 +1183,13 @@ void TDLibWrapper::initializeOpenWith()
             dbusServiceFile.close();
         }
     }
+}
+
+void TDLibWrapper::removeOpenWith()
+{
+    LOG("Remove open-with");
+    QFile::remove(QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/harbour-fernschreiber-open-url.desktop");
+    QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
 }
 
 const TDLibWrapper::Group *TDLibWrapper::updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups)

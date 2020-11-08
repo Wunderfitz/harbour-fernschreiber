@@ -50,6 +50,10 @@ Page {
                 pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chatId) }, PageStackAction.Immediate)
             }
         }
+        onPleaseOpenUrl: {
+            console.log("[OverviewPage] Opening URL requested: " + url);
+            Functions.handleLink(url);
+        }
     }
 
     Timer {

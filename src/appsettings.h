@@ -24,6 +24,7 @@
 class AppSettings : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool sendByEnter READ getSendByEnter WRITE setSendByEnter NOTIFY sendByEnterChanged)
+    Q_PROPERTY(bool useOpenWith READ getUseOpenWith WRITE setUseOpenWith NOTIFY useOpenWithChanged)
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
 
@@ -41,6 +42,9 @@ public:
     bool getSendByEnter() const;
     void setSendByEnter(bool sendByEnter);
 
+    bool getUseOpenWith() const;
+    void setUseOpenWith(bool useOpenWith);
+
     bool showStickersAsImages() const;
     void setShowStickersAsImages(bool showAsImages);
 
@@ -49,6 +53,7 @@ public:
 
 signals:
     void sendByEnterChanged();
+    void useOpenWithChanged();
     void showStickersAsImagesChanged();
     void notificationFeedbackChanged();
 

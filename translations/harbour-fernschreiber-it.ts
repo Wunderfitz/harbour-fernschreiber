@@ -1062,6 +1062,14 @@
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
         <translation>Usa feedback non visuale come suoni e/o vibrazione per le notifiche</translation>
     </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

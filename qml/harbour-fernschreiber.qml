@@ -33,5 +33,8 @@ ApplicationWindow
         onPleaseOpenMessage: {
             appWindow.activate();
         }
+        onPleaseOpenUrl: {
+            appWindow.activate();
+        }
     }
 }
