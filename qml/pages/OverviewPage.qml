@@ -227,7 +227,6 @@ Page {
 
                     model: chatListModel
                     delegate: ChatListViewItem {
-                        pictureThumbnail.forceElementUpdate: overviewPage.chatListCreated
                         ownUserId: overviewPage.ownUserId
 
                         onClicked: {

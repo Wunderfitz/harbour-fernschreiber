@@ -30,6 +30,7 @@
 #include <QGuiApplication>
 
 #include "appsettings.h"
+#include "tdlibfile.h"
 #include "tdlibwrapper.h"
 #include "chatlistmodel.h"
 #include "chatmodel.h"
@@ -45,13 +46,16 @@ int main(int argc, char *argv[])
 
     QQmlContext *context = view.data()->rootContext();
 
+    const char *uri = "WerkWolf.Fernschreiber";
+    qmlRegisterType<TDLibFile>(uri, 1, 0, "TDLibFile");
+
     AppSettings *appSettings = new AppSettings(view.data());
     context->setContextProperty("appSettings", appSettings);
-    qmlRegisterUncreatableType<AppSettings>("WerkWolf.Fernschreiber", 1, 0, "AppSettings", QString());
+    qmlRegisterUncreatableType<AppSettings>(uri, 1, 0, "AppSettings", QString());
 
     TDLibWrapper *tdLibWrapper = new TDLibWrapper(view.data());
     context->setContextProperty("tdLibWrapper", tdLibWrapper);
-    qmlRegisterUncreatableType<TDLibWrapper>("WerkWolf.Fernschreiber", 1, 0, "TelegramAPI", QString());
+    qmlRegisterUncreatableType<TDLibWrapper>(uri, 1, 0, "TelegramAPI", QString());
 
     DBusAdaptor *dBusAdaptor = tdLibWrapper->getDBusAdaptor();
     context->setContextProperty("dBusAdaptor", dBusAdaptor);

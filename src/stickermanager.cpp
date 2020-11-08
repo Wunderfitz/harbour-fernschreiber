@@ -124,7 +124,7 @@ void StickerManager::handleStickerSetReceived(const QVariantMap &stickerSet)
         QVariantMap thumbnailFile = singleSticker.value("thumbnail").toMap().value("photo").toMap();
         QVariantMap thumbnailLocalFile = thumbnailFile.value("local").toMap();
         if (!thumbnailLocalFile.value("is_downloading_completed").toBool()) {
-            tdLibWrapper->downloadFile(thumbnailFile.value("id").toString());
+            tdLibWrapper->downloadFile(thumbnailFile.value("id").toInt());
             this->reloadNeeded = true;
         }
     }
