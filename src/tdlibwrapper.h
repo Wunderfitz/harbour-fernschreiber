@@ -25,12 +25,13 @@
 #include "dbusadaptor.h"
 #include "dbusinterface.h"
 #include "emojisearchworker.h"
+#include "appsettings.h"
 
 class TDLibWrapper : public QObject
 {
     Q_OBJECT
 public:
-    explicit TDLibWrapper(QObject *parent = nullptr);
+    explicit TDLibWrapper(AppSettings *appSettings, QObject *parent = nullptr);
     ~TDLibWrapper();
 
     enum AuthorizationState {
@@ -153,9 +154,12 @@ public:
     Q_INVOKABLE void getPollVoters(const QString &chatId, const qlonglong &messageId, const int &optionId, const int &limit, const int &offset, const QString &extra);
     Q_INVOKABLE void searchPublicChat(const QString &userName);
     Q_INVOKABLE void joinChatByInviteLink(const QString &inviteLink);
+    Q_INVOKABLE void getDeepLinkInfo(const QString &link);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
+    Q_INVOKABLE void initializeOpenWith();
+    Q_INVOKABLE void removeOpenWith();
 
 public:
     const Group* getGroup(qlonglong groupId) const;
@@ -228,16 +232,17 @@ public slots:
     void handleSuperGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void handleStickerSets(const QVariantList &stickerSets);
     void handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList);
+    void handleOpenWithChanged();
 
 private:
     void setInitialParameters();
     void setEncryptionKey();
     void setLogVerbosityLevel();
-    void initializeOpenWith();
     const Group *updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups);
 
 private:
     void *tdLibClient;
+    AppSettings *appSettings;
     TDLibReceiver *tdLibReceiver;
     DBusInterface *dbusInterface;
     QString version;

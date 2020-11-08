@@ -33,9 +33,11 @@ public:
 
 signals:
     void pleaseOpenMessage(const QString &chatId, const QString &messageId);
+    void pleaseOpenUrl(const QString &url);
 
 public slots:
     void openMessage(const QString &chatId, const QString &messageId);
+    void openUrl(const QStringList &arguments);
 
 };
 

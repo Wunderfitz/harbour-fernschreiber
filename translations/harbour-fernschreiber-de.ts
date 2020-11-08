@@ -1062,6 +1062,14 @@
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
         <translation>Nicht-grafische Rückmeldungen (Klänge, Vibration) bei Hinweisen nutzen</translation>
     </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation>Integration im Öffnen-Mit-Menü</translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation>Fernschreiber ins Öffnen-Mit-Menü von Sailfish OS integrieren</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

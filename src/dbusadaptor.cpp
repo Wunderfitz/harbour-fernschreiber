@@ -31,3 +31,11 @@ void DBusAdaptor::openMessage(const QString &chatId, const QString &messageId)
     qDebug() << "[DBusAdaptor] Open Message " << chatId << messageId;
     emit pleaseOpenMessage(chatId, messageId);
 }
+
+void DBusAdaptor::openUrl(const QStringList &arguments)
+{
+    qDebug() << "[DBusAdaptor] Open Url" << arguments;
+    if (arguments.length() >= 1) {
+        emit pleaseOpenUrl(arguments.first());
+    }
+}
