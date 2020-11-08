@@ -1391,7 +1391,7 @@
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translatio>creó un pantallazo en esta charla</translation>
+        <translation>creó un pantallazo en esta charla</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
