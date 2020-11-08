@@ -7,9 +7,7 @@ import "../js/functions.js" as Functions
 PhotoTextsListItem {
     id: listItem
     pictureThumbnail {
-//        forceElementUpdate: overviewPage.chatListCreated
         photoData: photo_small
-//                            replacementStringHint: primaryText.text
     }
     property int ownUserId
     property url emojiBase: "../js/emoji/"

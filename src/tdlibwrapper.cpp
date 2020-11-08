@@ -206,7 +206,7 @@ void TDLibWrapper::getChats()
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::downloadFile(const QString &fileId)
+void TDLibWrapper::downloadFile(int fileId)
 {
     LOG("Downloading file " << fileId);
     QVariantMap requestObject;

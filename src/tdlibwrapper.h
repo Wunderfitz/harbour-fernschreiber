@@ -112,7 +112,7 @@ public:
     Q_INVOKABLE void setAuthenticationPassword(const QString &authenticationPassword);
     Q_INVOKABLE void registerUser(const QString &firstName, const QString &lastName);
     Q_INVOKABLE void getChats();
-    Q_INVOKABLE void downloadFile(const QString &fileId);
+    Q_INVOKABLE void downloadFile(int fileId);
     Q_INVOKABLE void openChat(const QString &chatId);
     Q_INVOKABLE void closeChat(const QString &chatId);
     Q_INVOKABLE void joinChat(const QString &chatId);
