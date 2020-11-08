@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>usa la licencia GNU GPLv3</translation>
+        <translation>Usa la licencia GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
@@ -1405,34 +1405,34 @@
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation>envió un mensaje no admitido:   anslation>
+        <translation>envió un mensaje no admitido: %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>%1 is message type</comment>
-        <translation>envió un mensaje no admitidotranslation>
+        <translation>envió un mensaje no admitido: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation type="unfinished"></translation>
+        <translation>actualizó este grupo a un supergrupo</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió una foto autodestructiva que está caducada</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>envió una foto autodestructiva que está caducada</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió un vídeo autodestructivo que está caducado</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>envió un vídeo autodestructivo que está caducado</translation>
     </message>
 </context>
 </TS>
