@@ -151,11 +151,11 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Salir de charla</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Unirse a charla</translation>
     </message>
 </context>
 <context>
@@ -291,19 +291,19 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Salir de charla</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Unirse a charla</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished">Saliendo de la charla</translation>
+        <translation>Saliendo de charla</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Te uniste a charla</translation>
     </message>
 </context>
 <context>
@@ -563,101 +563,101 @@
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>creó este grupo</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation type="unfinished"></translation>
+        <translation>creó este grupo</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>cambió la foto de charla</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>cambió la foto de charla</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>borró la foto de charla</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>borró la foto de charla</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>cambió los ajustes de TTL en charla secreta</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation type="unfinished"></translation>
+        <translation>cambió los ajustes de TTL en charla secreta</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>actualizó este grupo a un supergrupo</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>actualizó este grupo a un supergrupo</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation type="unfinished"></translation>
+        <translation>cambió el mensaje fijado</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>creó un pantallazo en esta charla</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation type="unfinished"></translation>
+        <translation>creó un pantallazo en esta charla</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió un mensaje no admitido</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation type="unfinished"></translation>
+        <translation>envió un mensaje no admitido</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>envió un mensaje no admitido: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation type="unfinished"></translation>
+        <translation>actualizó este grupo a un supergrupo</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió una foto autodestructiva que está caducada</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió una foto autodestructiva que está caducada</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>envió un vídeo autodestructivo que está caducado</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió un mensaje no admitido: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>envió un foto autodestructivo que está caducado</translation>
     </message>
 </context>
 <context>
@@ -756,38 +756,38 @@
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
-        <translation type="unfinished">Responder</translation>
+        <translation>Responder</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation type="unfinished">Editar</translation>
+        <translation>Editar</translation>
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished">Copiar mensaje</translation>
+        <translation>Copiar mensaje</translation>
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished">Mensaje borrado</translation>
+        <translation>Mensaje borrado</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Borrar</translation>
+        <translation>Borrar</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Usted</translation>
+        <translation>Usted</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation type="unfinished">Mensaje reenviado</translation>
+        <translation>Mensaje reenviado</translation>
     </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Usted</translation>
+        <translation>Usted</translation>
     </message>
 </context>
 <context>
@@ -1336,81 +1336,81 @@
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>creó este grupo</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation type="unfinished"></translation>
+        <translation>creó este grupo</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>cambió la foto de charla</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>cambió la foto de charla</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>borró la foto de charla</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>borró la foto de charla</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation type="unfinished"></translation>
+        <translation>cambió los ajustes de TTL de charla secreta</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation type="unfinished"></translation>
+        <translation>cambió los ajustes de TTL de charla secreta</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>actualizó este grupo a un supergrupo</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>cambió el mensaje fijado</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation type="unfinished"></translation>
+        <translation>cambió el mensaje fijado</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>creó un pantallazo en esta charla</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation type="unfinished"></translation>
+        <translatio>creó un pantallazo en esta charla</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió un mensaje no admitido</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation type="unfinished"></translation>
+        <translation>envió un mensaje no admitido</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió un mensaje no admitido:   anslation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>%1 is message type</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió un mensaje no admitidotranslation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
