@@ -32,7 +32,7 @@ Page {
 
     property bool loading: true;
     property bool isInitialized: false;
-    property int myUserId: tdLibWrapper.getUserInformation().id;
+    readonly property int myUserId: tdLibWrapper.getUserInformation().id;
     property var chatInformation;
     property bool isPrivateChat: false;
     property bool isBasicGroup: false;
@@ -42,7 +42,7 @@ Page {
     property var chatGroupInformation;
     property int chatOnlineMemberCount: 0;
     property var emojiProposals;
-    property bool userIsMember: (isPrivateChat && chatInformation["@type"]) || // should be optimized
+    readonly property bool userIsMember: (isPrivateChat && chatInformation["@type"]) || // should be optimized
                                 (isBasicGroup || isSuperGroup) && (
                                     (chatGroupInformation.status["@type"] === "chatMemberStatusMember")
                                     || (chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator")
@@ -82,11 +82,11 @@ Page {
             chatPartnerInformation = tdLibWrapper.getUserInformation(chatInformation.type.user_id);
             updateChatPartnerStatusText();
         }
-        if (isBasicGroup) {
+        else if (isBasicGroup) {
             chatGroupInformation = tdLibWrapper.getBasicGroup(chatInformation.type.basic_group_id);
             updateGroupStatusText();
         }
-        if (isSuperGroup) {
+        else if (isSuperGroup) {
             chatGroupInformation = tdLibWrapper.getSuperGroup(chatInformation.type.supergroup_id);
             isChannel = chatGroupInformation.is_channel;
             updateGroupStatusText();
@@ -232,7 +232,6 @@ Page {
             }
             break;
         }
-
     }
 
     Connections {
@@ -535,18 +534,18 @@ Page {
                     property bool inCooldown: false
                     property bool manuallyScrolledToBottom
                     property QtObject precalculatedValues: QtObject {
-                        property alias page: chatPage
-                        property bool showUserInfo: page.isBasicGroup || ( page.isSuperGroup && !page.isChannel)
-                        property int profileThumbnailDimensions: showUserInfo ? Theme.itemSizeSmall : 0
-                        property int pageMarginDouble: 2 * Theme.horizontalPageMargin
-                        property int paddingMediumDouble: 2 * Theme.paddingMedium
-                        property int entryWidth: chatView.width - pageMarginDouble
-                        property int textItemWidth: entryWidth - profileThumbnailDimensions - Theme.paddingSmall
-                        property int backgroundWidth: textItemWidth - pageMarginDouble
-                        property int backgroundRadius: textItemWidth/50
-                        property int textColumnWidth: backgroundWidth - Theme.horizontalPageMargin
-                        property int messageInReplyToHeight: Theme.fontSizeExtraSmall * 2.571428571 + Theme.paddingSmall;
-                        property int webPagePreviewHeight: ( (textColumnWidth * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) )
+                        readonly property alias page: chatPage
+                        readonly property bool showUserInfo: page.isBasicGroup || ( page.isSuperGroup && !page.isChannel)
+                        readonly property int profileThumbnailDimensions: showUserInfo ? Theme.itemSizeSmall : 0
+                        readonly property int pageMarginDouble: 2 * Theme.horizontalPageMargin
+                        readonly property int paddingMediumDouble: 2 * Theme.paddingMedium
+                        readonly property int entryWidth: chatView.width - pageMarginDouble
+                        readonly property int textItemWidth: entryWidth - profileThumbnailDimensions - Theme.paddingSmall
+                        readonly property int backgroundWidth: textItemWidth - pageMarginDouble
+                        readonly property int backgroundRadius: textItemWidth/50
+                        readonly property int textColumnWidth: backgroundWidth - Theme.horizontalPageMargin
+                        readonly property int messageInReplyToHeight: Theme.fontSizeExtraSmall * 2.571428571 + Theme.paddingSmall;
+                        readonly property int webPagePreviewHeight: ( (textColumnWidth * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) )
                     }
 
                     function handleScrollPositionChanged() {
@@ -593,7 +592,7 @@ Page {
                     }
 
                     model: chatModel
-                    property var contentComponentNames: ({
+                    readonly property var contentComponentNames: ({
                                                               messageSticker: "StickerPreview",
                                                               messagePhoto: "ImagePreview",
                                                               messageVideo: "VideoPreview",
@@ -622,7 +621,7 @@ Page {
                         }
                     }
 
-                    property var simpleDelegateMessages: ["messageBasicGroupChatCreate", "messageChatAddMembers", "messageChatChangePhoto", "messageChatChangeTitle", "messageChatDeleteMember", "messageChatDeletePhoto", "messageChatJoinByLink", "messageChatSetTtl", "messageChatUpgradeFrom", "messageChatUpgradeTo", "messageCustomServiceAction", "messagePinMessage", "messageScreenshotTaken", "messageSupergroupChatCreate", "messageUnsupported"]
+                    readonly property var simpleDelegateMessages: ["messageBasicGroupChatCreate", "messageChatAddMembers", "messageChatChangePhoto", "messageChatChangeTitle", "messageChatDeleteMember", "messageChatDeletePhoto", "messageChatJoinByLink", "messageChatSetTtl", "messageChatUpgradeFrom", "messageChatUpgradeTo", "messageCustomServiceAction", "messagePinMessage", "messageScreenshotTaken", "messageSupergroupChatCreate", "messageUnsupported"]
                     delegate: Loader {
                         width: chatView.width
                         Component {

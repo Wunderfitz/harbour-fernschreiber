@@ -25,19 +25,19 @@ import QtQml.Models 2.3
 ListItem {
     id: messageListItem
     contentHeight: messageBackground.height + Theme.paddingMedium
-    property var myMessage: display
-    property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender_user_id)
+    readonly property var myMessage: display
+    readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender_user_id)
     property QtObject precalculatedValues: ListView.view.precalculatedValues
-    property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
-    property int textAlign: isOwnMessage ? Text.AlignRight : Text.AlignLeft
-    property Page page: precalculatedValues.page
+    readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
+    readonly property int textAlign: isOwnMessage ? Text.AlignRight : Text.AlignLeft
+    readonly property Page page: precalculatedValues.page
 
-    property bool isOwnMessage: page.myUserId === myMessage.sender_user_id
-    property string extraContentComponentName: typeof myMessage.content !== "undefined"
+    readonly property bool isOwnMessage: page.myUserId === myMessage.sender_user_id
+    readonly property string extraContentComponentName: typeof myMessage.content !== "undefined"
                                                && typeof chatView.contentComponentNames[myMessage.content['@type']]  !== "undefined" ?
                                                    chatView.contentComponentNames[myMessage.content['@type']] : ""
 
-    property ObjectModel additionalContextItems: ObjectModel {}
+    readonly property ObjectModel additionalContextItems: ObjectModel {}
 
     onPressAndHold: {
         contextMenuLoader.active = true;
