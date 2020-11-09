@@ -14,9 +14,11 @@ TARGET = harbour-fernschreiber
 
 CONFIG += sailfishapp sailfishapp_i18n
 
-PKGCONFIG += nemonotifications-qt5 ngf-qt5
+PKGCONFIG += nemonotifications-qt5 ngf-qt5 zlib
 
 QT += core dbus sql
+
+DEFINES += QT_STATICPLUGIN
 
 SOURCES += src/harbour-fernschreiber.cpp \
     src/appsettings.cpp \
@@ -31,7 +33,8 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/stickermanager.cpp \
     src/tdlibfile.cpp \
     src/tdlibreceiver.cpp \
-    src/tdlibwrapper.cpp
+    src/tdlibwrapper.cpp \
+    src/tgsplugin.cpp
 
 DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/AudioPreview.qml \
@@ -145,7 +148,8 @@ HEADERS += \
     src/tdlibfile.h \
     src/tdlibreceiver.h \
     src/tdlibsecrets.h \
-    src/tdlibwrapper.h
+    src/tdlibwrapper.h \
+    src/tgsplugin.h
 
 # https://github.com/Samsung/rlottie.git
 

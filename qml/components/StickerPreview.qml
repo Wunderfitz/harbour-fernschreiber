@@ -18,76 +18,77 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 
 Item {
-
     property ListItem messageListItem
-    property var rawMessage: messageListItem.myMessage
 
-    property var stickerData: rawMessage.content.sticker;
-    property int usedFileId;
+    readonly property var stickerData: messageListItem.myMessage.content.sticker;
+    readonly property bool animated: stickerData.is_animated
+    readonly property bool stickerVisible: staticStickerLoader.item ? staticStickerLoader.item.visible :
+        animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
 
-    width: stickerData.width
-    height: stickerData.height
+    implicitWidth: stickerData.width
+    implicitHeight: stickerData.height
 
-    Component.onCompleted: {
-        if (stickerData) {
-            if (stickerData.is_animated) {
-                // Use thumbnail until we can decode TGS files
-                usedFileId = stickerData.thumbnail.photo.id;
-                if (stickerData.thumbnail.photo.local.is_downloading_completed) {
-                    stickerImage.source = stickerData.thumbnail.photo.local.path;
-                } else {
-                    tdLibWrapper.downloadFile(usedFileId);
-                }
-            } else {
-                usedFileId = stickerData.sticker.id;
-                if (stickerData.sticker.local.is_downloading_completed) {
-                    stickerImage.source = stickerData.sticker.local.path;
-                } else {
-                    tdLibWrapper.downloadFile(usedFileId);
-                }
-            }
-        }
+    TDLibFile {
+        id: file
+        tdlib: tdLibWrapper
+        fileInformation: stickerData.sticker
+        autoLoad: true
     }
 
-    Connections {
-        target: tdLibWrapper
-        onFileUpdated: {
-            if (stickerData) {
-                if (fileId === usedFileId && fileInformation.local.is_downloading_completed) {
-                    if (stickerData.is_animated) {
-                        stickerData.thumbnail.photo = fileInformation;
-                    } else {
-                        stickerData.sticker = fileInformation;
-                    }
-                    stickerImage.source = fileInformation.local.path;
+    Item {
+        width: stickerData.width
+        height: stickerData.height
+        // (centered in image mode, text-like in sticker mode)
+        x: appSettings.showStickersAsImages ? (parent.width - width)/2 :
+            messageListItem.isOwnMessage ? (parent.width - width) : 0
+        anchors.verticalCenter: parent.verticalCenter
+
+        Loader {
+            id: animatedStickerLoader
+            anchors.fill: parent
+            active: animated
+            sourceComponent: Component {
+                AnimatedImage {
+                    anchors.fill: parent
+                    source: file.path
+                    asynchronous: true
+                    paused: !Qt.application.active
+                    cache: false
                 }
             }
         }
-    }
 
-    Image {
-        id: stickerImage
-        anchors.fill: parent
-
-        fillMode: Image.PreserveAspectFit
-        autoTransform: true
-        asynchronous: true
-        visible: opacity > 0
-        opacity: status === Image.Ready ? 1 : 0
-        Behavior on opacity { FadeAnimation {} }
-    }
-
-    Loader {
-        anchors.fill: parent
-        sourceComponent: Component {
-            BackgroundImage {}
+        Loader {
+            id: staticStickerLoader
+            anchors.fill: parent
+            active: !animated
+            sourceComponent: Component {
+                Image {
+                    anchors.fill: parent
+                    source: file.path
+                    fillMode: Image.PreserveAspectFit
+                    autoTransform: true
+                    asynchronous: true
+                    visible: opacity > 0
+                    opacity: status === Image.Ready ? 1 : 0
+                    Behavior on opacity { FadeAnimation {} }
+                }
+            }
         }
 
-        active: opacity > 0
-        opacity: !stickerImage.visible && !placeHolderDelayTimer.running ? 0.15 : 0
-        Behavior on opacity { FadeAnimation {} }
+        Loader {
+            anchors.fill: parent
+            sourceComponent: Component {
+                BackgroundImage {}
+            }
+
+            active: opacity > 0
+            opacity: !stickerVisible && !placeHolderDelayTimer.running ? 0.15 : 0
+            Behavior on opacity { FadeAnimation {} }
+        }
     }
 
     Timer {

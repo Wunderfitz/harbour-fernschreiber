@@ -38,6 +38,9 @@
 #include "dbusadaptor.h"
 #include "processlauncher.h"
 #include "stickermanager.h"
+#include "tgsplugin.h"
+
+Q_IMPORT_PLUGIN(TgsIOPlugin)
 
 int main(int argc, char *argv[])
 {
