@@ -103,6 +103,8 @@ public:
     Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
     Q_INVOKABLE void openFileOnDevice(const QString &filePath);
     Q_INVOKABLE void controlScreenSaver(bool enabled);
+    Q_INVOKABLE bool getJoinChatRequested();
+    Q_INVOKABLE void registerJoinChat();
 
     DBusAdaptor *getDBusAdaptor();
 
@@ -215,6 +217,7 @@ signals:
     void chatPermissionsUpdated(const QString &chatId, const QVariantMap &permissions);
     void chatTitleUpdated(const QString &chatId, const QString &title);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
+    void errorReceived(const int code, const QString &message);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -261,6 +264,7 @@ private:
     EmojiSearchWorker emojiSearchWorker;
 
     QString activeChatSearchName;
+    bool joinChatRequested;
 
 };
 

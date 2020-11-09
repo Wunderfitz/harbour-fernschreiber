@@ -112,6 +112,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(
     connect(this->tdLibReceiver, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)), this, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SIGNAL(chatTitleUpdated(QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString)), this, SIGNAL(errorReceived(int, QString)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
@@ -250,6 +251,7 @@ void TDLibWrapper::joinChat(const QString &chatId)
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "joinChat");
     requestObject.insert("chat_id", chatId);
+    this->joinChatRequested = true;
     this->sendRequest(requestObject);
 }
 
@@ -741,6 +743,7 @@ void TDLibWrapper::joinChatByInviteLink(const QString &inviteLink)
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "joinChatByInviteLink");
     requestObject.insert("invite_link", inviteLink);
+    this->joinChatRequested = true;
     this->sendRequest(requestObject);
 }
 
@@ -870,6 +873,16 @@ void TDLibWrapper::controlScreenSaver(bool enabled)
         qDebug() << "Disabling screensaver";
         dbusInterface.call("req_display_blanking_pause");
     }
+}
+
+bool TDLibWrapper::getJoinChatRequested()
+{
+    return this->joinChatRequested;
+}
+
+void TDLibWrapper::registerJoinChat()
+{
+    this->joinChatRequested = false;
 }
 
 DBusAdaptor *TDLibWrapper::getDBusAdaptor()

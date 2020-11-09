@@ -839,6 +839,10 @@
         <source>You don&apos;t have any chats yet.</source>
         <translation>No hay todavía ninguna charla.</translation>
     </message>
+    <message>
+        <source>You are already a member of this chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PollCreationPage</name>
@@ -1441,6 +1445,10 @@
     <message>
         <source>sent a self-destructing video that is expired</source>
         <translation>envió un vídeo autodestructivo que está caducado</translation>
+    </message>
+    <message>
+        <source>Unable to find user %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

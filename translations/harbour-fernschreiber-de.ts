@@ -839,6 +839,10 @@
         <source>You don&apos;t have any chats yet.</source>
         <translation>Sie haben noch keine Chats.</translation>
     </message>
+    <message>
+        <source>You are already a member of this chat.</source>
+        <translation>Sie sind bereits Mitglied dieses Chats.</translation>
+    </message>
 </context>
 <context>
     <name>PollCreationPage</name>
@@ -1447,6 +1451,10 @@
     <message>
         <source>sent a self-destructing video that is expired</source>
         <translation>hat ein selbstzerstörendes Bild gesendet, das abgelaufen ist</translation>
+    </message>
+    <message>
+        <source>Unable to find user %1</source>
+        <translation>Konnte Benutzer %1 nicht finden</translation>
     </message>
 </context>
 </TS>

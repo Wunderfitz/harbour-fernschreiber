@@ -117,6 +117,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateChatPermissions", &TDLibReceiver::processUpdateChatPermissions);
     handlers.insert("updateChatTitle", &TDLibReceiver::processUpdateChatTitle);
     handlers.insert("users", &TDLibReceiver::processUsers);
+    handlers.insert("error", &TDLibReceiver::processError);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -500,4 +501,10 @@ void TDLibReceiver::processUsers(const QVariantMap &receivedInformation)
 {
     LOG("Received Users");
     emit usersReceived(receivedInformation.value(EXTRA).toString(), receivedInformation.value("user_ids").toList(), receivedInformation.value("total_count").toInt());
+}
+
+void TDLibReceiver::processError(const QVariantMap &receivedInformation)
+{
+    LOG("Received an error");
+    emit errorReceived(receivedInformation.value("code").toInt(), receivedInformation.value("message").toString());
 }

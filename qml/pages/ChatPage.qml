@@ -320,7 +320,7 @@ Page {
     Connections {
         target: chatListModel
         onChatJoined: {
-            chatPageNotification.show(qsTr("You joined the chat %1").arg(chatTitle));
+            appNotification.show(qsTr("You joined the chat %1").arg(chatTitle));
         }
     }
 
@@ -419,7 +419,7 @@ Page {
         }
 
         AppNotification {
-            id: chatPageNotification
+            id: appNotification
         }
 
         BackgroundItem {
@@ -469,13 +469,6 @@ Page {
                         width: parent.width
                         maximumLineCount: 1
                         horizontalAlignment: Text.AlignRight
-                        onTruncatedChanged: {
-                            // There is obviously a bug in QML in truncating text with images.
-                            // We simply remove Emojis then...
-                            if (truncated) {
-                                text = text.replace(/\<img [^>]+\/\>/g, "");
-                            }
-                        }
                     }
                     Text {
                         id: chatStatusText

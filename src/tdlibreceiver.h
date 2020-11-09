@@ -81,6 +81,7 @@ signals:
     void chatPermissionsUpdated(const QString &chatId, const QVariantMap &chatPermissions);
     void chatTitleUpdated(const QString &chatId, const QString &title);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
+    void errorReceived(const int code, const QString &message);
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
 
@@ -136,6 +137,7 @@ private:
     void processUpdateChatPermissions(const QVariantMap &receivedInformation);
     void processUpdateChatTitle(const QVariantMap &receivedInformation);
     void processUsers(const QVariantMap &receivedInformation);
+    void processError(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

@@ -839,6 +839,10 @@
         <source>Loading chat list...</source>
         <translation>Carica lista chat...</translation>
     </message>
+    <message>
+        <source>You are already a member of this chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PollCreationPage</name>
@@ -1447,6 +1451,10 @@
     <message>
         <source>sent a self-destructing video that is expired</source>
         <translation>ha inviato un video effimero già scaduto</translation>
+    </message>
+    <message>
+        <source>Unable to find user %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

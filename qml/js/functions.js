@@ -312,8 +312,13 @@ function enhanceMessageText(formattedText) {
 function handleLink(link) {
     var tMePrefix = tdLibWrapper.getOptionString("t_me_url");
     if (link.indexOf("user://") === 0) {
-        var userInformation = tdLibWrapper.getUserInformationByName(link.substring(8));
-        tdLibWrapper.createPrivateChat(userInformation.id);
+        var userName = link.substring(8);
+        var userInformation = tdLibWrapper.getUserInformationByName(userName);
+        if (typeof userInformation.id === "undefined") {
+            appNotification.show(qsTr("Unable to find user %1").arg(userName));
+        } else {
+            tdLibWrapper.createPrivateChat(userInformation.id);
+        }
     } else if (link.indexOf("userId://") === 0) {
         tdLibWrapper.createPrivateChat(link.substring(9));
     } else if (link.indexOf("tg://") === 0) {

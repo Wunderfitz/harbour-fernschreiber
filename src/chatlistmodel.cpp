@@ -405,7 +405,10 @@ void ChatListModel::addVisibleChat(ChatData *chat)
         chatIndexMap.insert(chatList.at(i)->chatId, i);
     }
     endInsertRows();
-    emit chatJoined(chat->chatId, chat->chatData.value("title").toString());
+    if (this->tdLibWrapper->getJoinChatRequested()) {
+        this->tdLibWrapper->registerJoinChat();
+        emit chatJoined(chat->chatId, chat->chatData.value("title").toString());
+    }
 }
 
 void ChatListModel::updateChatVisibility(const TDLibWrapper::Group *group)

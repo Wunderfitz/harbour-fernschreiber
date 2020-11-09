@@ -159,6 +159,11 @@ Page {
                 pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chat.id) });
             }
         }
+        onErrorReceived: {
+            if (message === "USER_ALREADY_PARTICIPANT") {
+                appNotification.show(qsTr("You are already a member of this chat."));
+            }
+        }
     }
 
     Component.onCompleted: {
@@ -184,7 +189,7 @@ Page {
         }
 
         AppNotification {
-            id: overviewPageNotification
+            id: appNotification
         }
 
         Column {
