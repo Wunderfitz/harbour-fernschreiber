@@ -20,76 +20,97 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
+import QtQml.Models 2.3
 
 ListItem {
     id: messageListItem
     contentHeight: messageBackground.height + Theme.paddingMedium
-    property var myMessage: display
-    property var userInformation: tdLibWrapper.getUserInformation(display.sender_user_id)
-    property Page page: chatPage
+    readonly property var myMessage: display
+    readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender_user_id)
+    property QtObject precalculatedValues: ListView.view.precalculatedValues
+    readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
+    readonly property int textAlign: isOwnMessage ? Text.AlignRight : Text.AlignLeft
+    readonly property Page page: precalculatedValues.page
 
-    property bool isOwnMessage: chatPage.myUserId === display.sender_user_id
-    property string extraContentComponentName: typeof display.content !== "undefined"
-                                               && chatView.contentComponentNames.hasOwnProperty(display.content['@type']) ?
-                                                   chatView.contentComponentNames[display.content['@type']] : ""
-    menu: ContextMenu {
-        MenuItem {
-            onClicked: {
-                newMessageInReplyToRow.inReplyToMessage = display;
-                newMessageTextField.focus = true;
+    readonly property bool isOwnMessage: page.myUserId === myMessage.sender_user_id
+    readonly property string extraContentComponentName: typeof myMessage.content !== "undefined"
+                                               && typeof chatView.contentComponentNames[myMessage.content['@type']]  !== "undefined" ?
+                                                   chatView.contentComponentNames[myMessage.content['@type']] : ""
+
+    readonly property ObjectModel additionalContextItems: ObjectModel {}
+
+    onPressAndHold: {
+        contextMenuLoader.active = true;
+    }
+    Loader {
+        id: contextMenuLoader
+        active: false
+        asynchronous: true
+        onStatusChanged: {
+            if(status === Loader.Ready) {
+                messageListItem.menu = item;
+                messageListItem.openMenu();
             }
-            text: qsTr("Reply to Message")
         }
-        MenuItem {
-            onClicked: {
-                newMessageColumn.editMessageId = display.id;
-                newMessageTextField.text = Functions.getMessageText(display, false, false);
-                newMessageTextField.focus = true;
+        sourceComponent: Component {
+            ContextMenu {
+                Repeater {
+                    model: messageListItem.additionalContextItems
+                }
+
+                MenuItem {
+                    onClicked: {
+                        newMessageInReplyToRow.inReplyToMessage = myMessage;
+                        newMessageTextField.focus = true;
+                    }
+                    text: qsTr("Reply to Message")
+                }
+                MenuItem {
+                    onClicked: {
+                        newMessageColumn.editMessageId = myMessage.id;
+                        newMessageTextField.text = Functions.getMessageText(myMessage, false, false);
+                        newMessageTextField.focus = true;
+                    }
+                    text: qsTr("Edit Message")
+                    visible: myMessage.can_be_edited
+                }
+                MenuItem {
+                    onClicked: {
+                        Clipboard.text = Functions.getMessageText(myMessage, true, false);
+                    }
+                    text: qsTr("Copy Message to Clipboard")
+                }
+                MenuItem {
+                    onClicked: {
+                        var chatId = page.chatInformation.id;
+                        var messageId = myMessage.id;
+                        Remorse.itemAction(messageListItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId]);  })
+                    }
+                    text: qsTr("Delete Message")
+                    visible: myMessage.can_be_deleted_for_all_users || (myMessage.can_be_deleted_only_for_self && myMessage.chat_id === page.myUserId)
+                }
             }
-            text: qsTr("Edit Message")
-            visible: display.can_be_edited
-        }
-        MenuItem {
-            onClicked: {
-                Clipboard.text = Functions.getMessageText(display, true, false);
-            }
-            text: qsTr("Copy Message to Clipboard")
-        }
-        MenuItem {
-            onClicked: {
-                var chatId = chatInformation.id;
-                var messageId = display.id;
-                Remorse.itemAction(messageListItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId]);  })
-            }
-            text: qsTr("Delete Message")
-            visible: display.can_be_deleted_for_all_users || (display.can_be_deleted_only_for_self && display.chat_id === chatPage.myUserId)
         }
     }
 
     Connections {
         target: chatModel
         onUnreadCountUpdated: {
-            messageBackground.color = index > ( chatView.count - unreadCount - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor;
-            messageBackground.opacity = index > ( chatView.count - unreadCount - 1 ) ? 0.5 : 0.2;
+            messageBackground.isUnread = index > ( chatView.count - unreadCount - 1 );
         }
         onNewMessageReceived: {
-            messageBackground.color = index > ( chatView.count - chatInformation.unreadCount - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor;
-            messageBackground.opacity = index > ( chatView.count - chatInformation.unreadCount - 1 ) ? 0.5 : 0.2;
+            messageBackground.isUnread = index > ( chatView.count - page.chatInformation.unread_count - 1 );
         }
 
         onLastReadSentMessageUpdated: {
             console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + (index <= lastReadSentIndex));
-            messageDateText.text = getMessageStatusText(display, index, lastReadSentIndex, messageDateText.useElapsed);
+            messageDateText.text = getMessageStatusText(myMessage, index, lastReadSentIndex, messageDateText.useElapsed);
         }
         onMessageUpdated: {
             if (index === modelIndex) {
                 console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
-                messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
-                messageText.text = Emoji.emojify(Functions.getMessageText(display, false, messageListItem.isOwnMessage), messageText.font.pixelSize);
-                if(locationPreviewLoader.active && locationPreviewLoader.status === Loader.Ready) {
-                    locationPreviewLoader.item.locationData = display.content.location;
-                    locationPreviewLoader.item.updatePicture()
-                }
+                messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
+                messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, messageListItem.isOwnMessage), messageText.font.pixelSize);
             }
         }
     }
@@ -97,15 +118,18 @@ ListItem {
     Connections {
         target: tdLibWrapper
         onReceivedMessage: {
-            if (messageId === display.reply_to_message_id.toString()) {
-                messageInReplyToRow.inReplyToMessage = message;
-                messageInReplyToRow.visible = true;
+            if (messageId === myMessage.reply_to_message_id.toString()) {
+                messageInReplyToLoader.inReplyToMessage = message;
             }
         }
     }
 
     Component.onCompleted: {
         delegateComponentLoadingTimer.start();
+
+        if (myMessage.reply_to_message_id !== 0) {
+            tdLibWrapper.getMessage(page.chatInformation.id, myMessage.reply_to_message_id);
+        }
     }
 
     Timer {
@@ -114,7 +138,7 @@ ListItem {
         repeat: false
         running: false
         onTriggered: {
-            if (typeof display.content !== "undefined") {
+            if (typeof myMessage.content !== "undefined") {
                 if (messageListItem.extraContentComponentName !== "") {
                     extraContentLoader.setSource(
                                 "../components/" +messageListItem.extraContentComponentName +".qml",
@@ -122,7 +146,7 @@ ListItem {
                                     messageListItem: messageListItem
                                 })
                 } else {
-                    if (typeof display.content.web_page !== "undefined") { // only in messageText
+                    if (typeof myMessage.content.web_page !== "undefined") { // only in messageText
                         webPagePreviewLoader.active = true;
                     }
                 }
@@ -133,16 +157,15 @@ ListItem {
     Row {
         id: messageTextRow
         spacing: Theme.paddingSmall
-        width: parent.width - ( 2 * Theme.horizontalPageMargin )
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+        width: precalculatedValues.entryWidth
+        anchors.centerIn: parent
 
         Loader {
             id: profileThumbnailLoader
-            active: (( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel)
+            active: precalculatedValues.showUserInfo
             asynchronous: true
-            width: active ? Theme.itemSizeSmall : 0
-            height: active ? Theme.itemSizeSmall : 0
+            width: precalculatedValues.profileThumbnailDimensions
+            height: width
             anchors.bottom: parent.bottom
             anchors.bottomMargin: Theme.paddingSmall
             sourceComponent: Component {
@@ -150,9 +173,9 @@ ListItem {
                     id: messagePictureThumbnail
                     photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ""
                     replacementStringHint: userText.text
-                    width: visible ? Theme.itemSizeSmall : 0
-                    height: visible ? Theme.itemSizeSmall : 0
-                    visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                    width: Theme.itemSizeSmall
+                    height: Theme.itemSizeSmall
+                    visible: precalculatedValues.showUserInfo
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
@@ -166,24 +189,23 @@ ListItem {
         Item {
             id: messageTextItem
 
-            width: parent.width - profileThumbnailLoader.width - Theme.paddingSmall
+            width: precalculatedValues.textItemWidth
             height: messageBackground.height
 
             Rectangle {
                 id: messageBackground
                 anchors {
                     left: parent.left
-                    leftMargin: messageListItem.isOwnMessage ? 2 * Theme.horizontalPageMargin : 0
-                    right: parent.right
-                    rightMargin: messageListItem.isOwnMessage ? 0 : 2 * Theme.horizontalPageMargin
+                    leftMargin: messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0
                     verticalCenter: parent.verticalCenter
                 }
-                height: messageTextColumn.height + ( 2 * Theme.paddingMedium )
-
-                color: index > ( chatView.count - chatInformation.unread_count - 1 ) ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                height: messageTextColumn.height +  precalculatedValues.paddingMediumDouble
+                width: precalculatedValues.backgroundWidth
+                property bool isUnread: index > ( chatView.count - page.chatInformation.unread_count - 1 )
+                color: isUnread ? Theme.secondaryHighlightColor : Theme.secondaryColor
                 radius: parent.width / 50
-                opacity: index > ( chatView.count - chatInformation.unread_count - 1 ) ? 0.5 : 0.2
-                visible: appSettings.showStickersAsImages || display.content['@type'] !== "messageSticker"
+                opacity: isUnread ? 0.5 : 0.2
+                visible: appSettings.showStickersAsImages || myMessage.content['@type'] !== "messageSticker"
                 Behavior on color { ColorAnimation { duration: 200 } }
                 Behavior on opacity { FadeAnimation {} }
             }
@@ -193,29 +215,23 @@ ListItem {
 
                 spacing: Theme.paddingSmall
 
-                width: messageBackground.width - Theme.horizontalPageMargin
+                width: precalculatedValues.textColumnWidth
                 anchors.centerIn: messageBackground
-
-                Component.onCompleted: {
-                    if (display.reply_to_message_id !== 0) {
-                        tdLibWrapper.getMessage(chatInformation.id, display.reply_to_message_id);
-                    }
-                }
 
 
                 Text {
                     id: userText
 
                     width: parent.width
-                    text: !messageListItem.isOwnMessage ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")
+                    text: messageListItem.isOwnMessage ? qsTr("You") : Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize)
                     font.pixelSize: Theme.fontSizeExtraSmall
                     font.weight: Font.ExtraBold
-                    color: messageListItem.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
+                    color: messageListItem.textColor
                     maximumLineCount: 1
                     elide: Text.ElideRight
                     textFormat: Text.StyledText
-                    horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
-                    visible: ( chatPage.isBasicGroup || chatPage.isSuperGroup ) && !chatPage.isChannel
+                    horizontalAlignment: messageListItem.textAlign
+                    visible: precalculatedValues.showUserInfo
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
@@ -224,18 +240,29 @@ ListItem {
                     }
                 }
 
-                InReplyToRow {
-                    id: messageInReplyToRow
-                    myUserId: chatPage.myUserId
-                    visible: false
+                Loader {
+                    id: messageInReplyToLoader
+                    active: myMessage.reply_to_message_id !== 0
+                    width: parent.width
+                    // text height ~= 1,28*font.pixelSize
+                    height: active ? precalculatedValues.messageInReplyToHeight : 0
+                    property var inReplyToMessage;
+                    sourceComponent: Component {
+                        InReplyToRow {
+                            id: messageInReplyToRow
+                            myUserId: page.myUserId
+                            visible: true
+                            inReplyToMessage: messageInReplyToLoader.inReplyToMessage
+                        }
+                    }
                 }
 
                 Loader {
                     id: forwardedInformationLoader
-                    active: typeof display.forward_info !== "undefined"
+                    active: typeof myMessage.forward_info !== "undefined"
                     asynchronous: true
                     width: parent.width
-                    //                                        height: active ? ( item ? item.height : Theme.itemSizeExtraSmall ) : 0
+                    height: active ? ( item ? item.height : Theme.itemSizeExtraSmall ) : 0
                     sourceComponent: Component {
                         Row {
                             id: forwardedMessageInformationRow
@@ -243,17 +270,17 @@ ListItem {
                             width: parent.width
 
                             Component.onCompleted: {
-                                if (display.forward_info.origin["@type"] === "messageForwardOriginChannel") {
-                                    var otherChatInformation = tdLibWrapper.getChat(display.forward_info.origin.chat_id);
+                                if (myMessage.forward_info.origin["@type"] === "messageForwardOriginChannel") {
+                                    var otherChatInformation = tdLibWrapper.getChat(myMessage.forward_info.origin.chat_id);
                                     forwardedThumbnail.photoData = (typeof otherChatInformation.photo !== "undefined") ? otherChatInformation.photo.small : "";
                                     forwardedChannelText.text = Emoji.emojify(otherChatInformation.title, Theme.fontSizeExtraSmall);
-                                } else if (display.forward_info.origin["@type"] === "messageForwardOriginUser") {
-                                    var otherUserInformation = tdLibWrapper.getUserInformation(display.forward_info.origin.sender_user_id);
+                                } else if (myMessage.forward_info.origin["@type"] === "messageForwardOriginUser") {
+                                    var otherUserInformation = tdLibWrapper.getUserInformation(myMessage.forward_info.origin.sender_user_id);
                                     forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : "";
                                     forwardedChannelText.text = Emoji.emojify(Functions.getUserName(otherUserInformation), Theme.fontSizeExtraSmall);
                                 } else {
                                     forwardedThumbnail.photoData = "";
-                                    forwardedChannelText.text = Emoji.emojify(display.forward_info.origin.sender_user_name, Theme.fontSizeExtraSmall);
+                                    forwardedChannelText.text = Emoji.emojify(myMessage.forward_info.origin.sender_user_name, Theme.fontSizeExtraSmall);
                                 }
                             }
 
@@ -310,15 +337,15 @@ ListItem {
                 Text {
                     id: messageText
                     width: parent.width
-                    text: Emoji.emojify(Functions.getMessageText(display, false, messageListItem.isOwnMessage), font.pixelSize)
+                    text: Emoji.emojify(Functions.getMessageText(myMessage, false, messageListItem.isOwnMessage), font.pixelSize)
                     font.pixelSize: Theme.fontSizeSmall
-                    color: messageListItem.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
+                    color: messageListItem.textColor
                     wrapMode: Text.Wrap
                     textFormat: Text.StyledText
                     onLinkActivated: {
                         Functions.handleLink(link);
                     }
-                    horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
+                    horizontalAlignment: messageListItem.textAlign
                     linkColor: Theme.highlightColor
                     visible: (text !== "")
                 }
@@ -328,7 +355,7 @@ ListItem {
                     active: false
                     asynchronous: true
                     width: parent.width
-                    height: typeof display.content.web_page !== "undefined" ? ( (parent.width * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) ) : 0
+                    height: typeof myMessage.content.web_page !== "undefined" ? precalculatedValues.webPagePreviewHeight : 0
 
                     sourceComponent: Component {
                         id: webPagePreviewComponent
@@ -339,7 +366,7 @@ ListItem {
                                 webPagePreviewLoader.height = webPagePreview.implicitHeight;
                             }
 
-                            webPageData: display.content.web_page
+                            webPageData: myMessage.content.web_page
                             width: parent.width
                         }
                     }
@@ -348,8 +375,7 @@ ListItem {
                     id: extraContentLoader
                     width: parent.width
                     asynchronous: true
-                    property int heightPreset: messageListItem.extraContentComponentName !== "" ? chatView.getContentComponentHeight(messageListItem.extraContentComponentName, display.content, width) : 0
-                    height: item ? item.height : heightPreset
+                    height: item ? item.height : (messageListItem.extraContentComponentName !== "" ? chatView.getContentComponentHeight(messageListItem.extraContentComponentName, myMessage.content, width) : 0)
                 }
 
                 Timer {
@@ -358,7 +384,7 @@ ListItem {
                     running: true
                     repeat: true
                     onTriggered: {
-                        messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
+                        messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
                     }
                 }
 
@@ -371,13 +397,13 @@ ListItem {
                     id: messageDateText
                     font.pixelSize: Theme.fontSizeTiny
                     color: messageListItem.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
-                    horizontalAlignment: messageListItem.isOwnMessage ? Text.AlignRight : Text.AlignLeft
-                    text: getMessageStatusText(display, index, chatView.lastReadSentIndex, messageDateText.useElapsed)
+                    horizontalAlignment: messageListItem.textAlign
+                    text: getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed)
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
                             messageDateText.useElapsed = !messageDateText.useElapsed;
-                            messageDateText.text = getMessageStatusText(display, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
+                            messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
                         }
                     }
                 }

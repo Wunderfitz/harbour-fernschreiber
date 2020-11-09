@@ -288,9 +288,9 @@ Item {
 
     Component.onCompleted: {
         opacity = 1;
-        if(messageListItem && messageListItem.menu ) { // workaround to add menu entries
-            closePollMenuItemComponent.createObject(messageListItem.menu._contentColumn);
-            resetAnswerMenuItemComponent.createObject(messageListItem.menu._contentColumn);
+        if(messageListItem && messageListItem.additionalContextItems ) {
+            messageListItem.additionalContextItems.append(closePollMenuItemComponent.createObject());
+            messageListItem.additionalContextItems.append(resetAnswerMenuItemComponent.createObject());
         }
     }
 }

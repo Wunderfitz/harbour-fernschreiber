@@ -64,9 +64,11 @@ Item {
             Image {
                 id: singleImage
                 width: parent.width - Theme.paddingSmall
-                height: parent.height - Theme.paddingSmall
+                height: width
                 anchors.centerIn: parent
                 source: file.path
+                sourceSize.width: width
+                sourceSize.height: height
                 fillMode: Image.PreserveAspectCrop
                 autoTransform: true
                 asynchronous: true
