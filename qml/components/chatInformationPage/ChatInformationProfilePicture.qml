@@ -32,6 +32,7 @@ Item {
         photoData: (typeof chatInformation.photo !== "undefined") ? chatInformation.photo.big : ""
         replacementStringHint: ""
         radius: chatPictureThumbnail.radius
+        optimizeImageSize: false
     }
 
     MouseArea {

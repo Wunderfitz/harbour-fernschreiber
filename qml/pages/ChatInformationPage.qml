@@ -260,6 +260,7 @@ Page {
                     height: width
                     radius: imageContainer.minDimension / 2
                     opacity: profilePictureLoader.status !== Loader.Ready || profilePictureLoader.item.opacity < 1 ? 1.0 : 0.0
+                    optimizeImageSize: false
                 }
                 Loader {
                     id: profilePictureLoader

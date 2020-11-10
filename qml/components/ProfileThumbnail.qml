@@ -29,6 +29,7 @@ Item {
     property string replacementStringHint: "X"
     property int radius: width / 2
     property int imageStatus: -1
+    property bool optimizeImageSize: true
 
     function getReplacementString() {
         if (replacementStringHint.length > 2) {
@@ -67,8 +68,8 @@ Item {
                 height: width
                 anchors.centerIn: parent
                 source: file.path
-                sourceSize.width: width
-                sourceSize.height: height
+                sourceSize.width: optimizeImageSize ? width : undefined
+                sourceSize.height: optimizeImageSize ? height : undefined
                 fillMode: Image.PreserveAspectCrop
                 autoTransform: true
                 asynchronous: true
