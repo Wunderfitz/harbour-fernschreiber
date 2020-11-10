@@ -146,3 +146,67 @@ HEADERS += \
     src/tdlibreceiver.h \
     src/tdlibsecrets.h \
     src/tdlibwrapper.h
+
+# https://github.com/Samsung/rlottie.git
+
+RLOTTIE_CONFIG = $${PWD}/rlottie/src/vector/config.h
+PRE_TARGETDEPS += $${RLOTTIE_CONFIG}
+QMAKE_EXTRA_TARGETS += rlottie_config
+
+rlottie_config.target = $${RLOTTIE_CONFIG}
+rlottie_config.commands = touch $${RLOTTIE_CONFIG} # Empty config is fine
+
+DEFINES += LOTTIE_THREAD_SUPPORT
+
+INCLUDEPATH += \
+    rlottie/inc \
+    rlottie/src/vector \
+    rlottie/src/vector/freetype
+
+SOURCES += \
+    rlottie/src/lottie/lottieanimation.cpp \
+    rlottie/src/lottie/lottieitem.cpp \
+    rlottie/src/lottie/lottieitem_capi.cpp \
+    rlottie/src/lottie/lottiekeypath.cpp \
+    rlottie/src/lottie/lottieloader.cpp \
+    rlottie/src/lottie/lottiemodel.cpp \
+    rlottie/src/lottie/lottieparser.cpp
+
+SOURCES += \
+    rlottie/src/vector/freetype/v_ft_math.cpp \
+    rlottie/src/vector/freetype/v_ft_raster.cpp \
+    rlottie/src/vector/freetype/v_ft_stroker.cpp \
+    rlottie/src/vector/stb/stb_image.cpp \
+    rlottie/src/vector/varenaalloc.cpp \
+    rlottie/src/vector/vbezier.cpp \
+    rlottie/src/vector/vbitmap.cpp \
+    rlottie/src/vector/vbrush.cpp \
+    rlottie/src/vector/vdasher.cpp \
+    rlottie/src/vector/vdrawable.cpp \
+    rlottie/src/vector/vdrawhelper.cpp \
+    rlottie/src/vector/vdrawhelper_common.cpp \
+    rlottie/src/vector/vdrawhelper_neon.cpp \
+    rlottie/src/vector/vdrawhelper_sse2.cpp \
+    rlottie/src/vector/vmatrix.cpp \
+    rlottie/src/vector/vimageloader.cpp \
+    rlottie/src/vector/vinterpolator.cpp \
+    rlottie/src/vector/vpainter.cpp \
+    rlottie/src/vector/vpath.cpp \
+    rlottie/src/vector/vpathmesure.cpp \
+    rlottie/src/vector/vraster.cpp \
+    rlottie/src/vector/vrle.cpp
+
+NEON = $$system(g++ -dM -E -x c++ - < /dev/null | grep __ARM_NEON__)
+SSE2 = $$system(g++ -dM -E -x c++ - < /dev/null | grep __SSE2__)
+
+!isEmpty(NEON) {
+    message(Using NEON render functions)
+    SOURCES += rlottie/src/vector/pixman/pixman-arm-neon-asm.S
+} else {
+    !isEmpty(SSE2) {
+        message(Using SSE2 render functions)
+        SOURCES += rlottie/src/vector/vdrawhelper_sse2.cpp
+    } else {
+        message(Using default render functions)
+    }
+}
