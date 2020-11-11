@@ -1084,7 +1084,7 @@
     </message>
     <message>
         <source>Animate stickers</source>
-        <translation>Sticker animati</translation>
+        <translation>Riproduci sticker animati</translation>
     </message>
 </context>
 <context>
