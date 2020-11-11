@@ -742,7 +742,7 @@
     </message>
     <message>
         <source>Enter your Last Name</source>
-        <translation>Bitte geben Sie ihren Vornamen ein</translation>
+        <translation>Bitte geben Sie ihren Nachnamen ein</translation>
     </message>
     <message>
         <source>User Registration</source>

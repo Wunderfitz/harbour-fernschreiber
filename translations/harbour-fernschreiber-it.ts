@@ -159,11 +159,11 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Lascia chat</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Entra nella chat</translation>
     </message>
 </context>
 <context>
@@ -299,19 +299,19 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Lascia chat</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Entra nella chat</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished">Lascia chat</translation>
+        <translation>Lascia chat</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sei entrato nella chat %1</translation>
     </message>
 </context>
 <context>
@@ -849,7 +849,7 @@
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sei già un membro di questa chat.</translation>
     </message>
 </context>
 <context>
@@ -1076,15 +1076,15 @@
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation type="unfinished"></translation>
+        <translation>Integrazione menù Apri con</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi Fernschreiber al menù Apri con di Sailfish OS</translation>
     </message>
     <message>
         <source>Animate stickers</source>
-        <translation type="unfinished"></translation>
+        <translation>Sticker animati</translation>
     </message>
 </context>
 <context>
@@ -1466,7 +1466,7 @@
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile trovare l'utente %1</translation>
     </message>
 </context>
 </TS>
