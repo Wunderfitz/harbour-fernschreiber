@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Questo progetto utilizza twemoji. Copyright 2018 Twitter, Inc. e altri collaboratori. Grazie per averle rese disponibili secondo le licenze MIT License (codice) e CC-BY 4.0 (grafica)!</translation>
+        <translation>Questo progetto utilizza twemoji. Copyright 2018 Twitter, Inc. e altri collaboratori. Grazie per averle rese disponibili secondo la Licenza MIT (codice) e CC-BY 4.0 (grafica)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -77,11 +77,11 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo progetto utilizza rlottie. Copyright 2020 Samsung Electronics Co., Ltd. e altri collaboratori. Grazie per averlo reso disponibile secondo la Licenza MIT!</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri rlottie su GitHub</translation>
     </message>
 </context>
 <context>
@@ -849,7 +849,7 @@
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation>Sei già un membro di questa chat.</translation>
+        <translation>Sei già membro di questa chat.</translation>
     </message>
 </context>
 <context>
