@@ -1074,6 +1074,10 @@
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

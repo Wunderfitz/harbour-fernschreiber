@@ -1074,6 +1074,10 @@
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
         <translation>Fernschreiber ins Öffnen-Mit-Menü von Sailfish OS integrieren</translation>
     </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation>Sticker animieren</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

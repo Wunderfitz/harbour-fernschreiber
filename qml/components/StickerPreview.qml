@@ -27,6 +27,7 @@ Item {
     readonly property bool animated: stickerData.is_animated && appSettings.animateStickers
     readonly property bool stickerVisible: staticStickerLoader.item ? staticStickerLoader.item.visible :
         animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
+    property real aspectRatio: stickerData.width / stickerData.height
 
     implicitWidth: stickerData.width
     implicitHeight: stickerData.height
@@ -39,8 +40,8 @@ Item {
     }
 
     Item {
-        width: stickerData.width
-        height: stickerData.height
+        width: Math.min( stickerData.width, parent.width )
+        height: width * aspectRatio
         // (centered in image mode, text-like in sticker mode)
         x: appSettings.showStickersAsImages ? (parent.width - width)/2 :
             messageListItem.isOwnMessage ? (parent.width - width) : 0
