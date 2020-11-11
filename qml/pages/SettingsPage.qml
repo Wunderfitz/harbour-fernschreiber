@@ -118,6 +118,15 @@ Page {
             }
 
             TextSwitch {
+                checked: appSettings.animateStickers
+                text: qsTr("Animate stickers")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.animateStickers = !checked
+                }
+            }
+
+            TextSwitch {
                 checked: appSettings.showStickersAsImages
                 text: qsTr("Show stickers as images")
                 description: qsTr("Show background for stickers and align them centrally like images")

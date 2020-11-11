@@ -24,7 +24,7 @@ Item {
     property ListItem messageListItem
 
     readonly property var stickerData: messageListItem.myMessage.content.sticker;
-    readonly property bool animated: stickerData.is_animated
+    readonly property bool animated: stickerData.is_animated && appSettings.animateStickers
     readonly property bool stickerVisible: staticStickerLoader.item ? staticStickerLoader.item.visible :
         animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
 
