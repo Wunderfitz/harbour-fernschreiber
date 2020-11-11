@@ -263,6 +263,28 @@ Page {
             }
 
             Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                text: qsTr("This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+
+            Text {
+                text: "<a href=\"https://github.com/Samsung/rlottie\">" + qsTr("Open rlottie on GitHub") + "</a>"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                font.pixelSize: Theme.fontSizeSmall
+                linkColor: Theme.highlightColor
+
+                onLinkActivated: Qt.openUrlExternally("https://github.com/Samsung/rlottie")
+            }
+
+            Label {
                 id: separatorLabel
                 x: Theme.horizontalPageMargin
                 width: parent.width  - ( 2 * Theme.horizontalPageMargin )

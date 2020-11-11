@@ -75,6 +75,14 @@
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
         <translation>Di Sebastian J. Wolf e &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;altri collaboratori&lt;/a&gt;</translation>
     </message>
+    <message>
+        <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open rlottie on GitHub</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>

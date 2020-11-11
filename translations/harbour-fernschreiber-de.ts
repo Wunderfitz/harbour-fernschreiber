@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Dieses Projekt nutzt die twemoji. Copyright 2018 Twitter, Inc. und andere Beitragende. Vielen Dank dafür, dass sie unter den Bedingungen der MIT License (Coding) und CC-BY 4.0 (Grafiken) verfügbar gemacht wurde!</translation>
+        <translation>Dieses Projekt nutzt twemoji. Copyright 2018 Twitter, Inc. und andere Beitragende. Vielen Dank dafür, dass es unter den Bedingungen der MIT License (Coding) und CC-BY 4.0 (Grafiken) verfügbar gemacht wurde!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -74,6 +74,14 @@
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
         <translation>Von Sebastian J. Wolf und &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;anderen Beitragenden&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
+        <translation>Dieses Projekt nutzt rlottie. Copyright 2020 Samsung Electronics Co., Ltd. und andere Beitragende. Vielen Dank dafür, dass es unter den Bedingungen der MIT License verfügbar gemacht wurde!</translation>
+    </message>
+    <message>
+        <source>Open rlottie on GitHub</source>
+        <translation>rlottie auf GitHub öffnen</translation>
     </message>
 </context>
 <context>

@@ -12,6 +12,26 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Wed Nov 11 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.4
+- Support for animated stickers - thanks to monich
+- Chat information page (members, picture(s), settings...) - thanks to jgibbon
+- Support for polls - thanks to jgibbon
+- Code & performance optimizations - thanks to monich and jgibbon
+- Improve chat scroll position on open - thanks to jgibbon
+- Start chats from @-mention or name
+- Integration in Sailfish OS open with menu
+- Join and leave chats
+- Fixes and improvements to notifications - thanks to monich
+- Differentiate between simple and normal messages in chats - thanks to jgibbon
+- Switch to SVG icons - thanks to jgibbon
+- Mark all messages as read - thanks to jgibbon
+- Copy message to clipboard - thanks to chstem
+- New sticker icon - thanks to jgibbon
+- Fixes to link and HTML entity handling
+- Switch message sent date display on tap (... ago <-> Monday, ...)
+- Many translations updated - thanks to all contributors
+- Swedish translation - thanks to eson57
+
 * Sun Oct 18 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.3
 - Support for sending stickers
 - Search for emojis from message input field, use :<keyword> to start searching
