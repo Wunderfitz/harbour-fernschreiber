@@ -127,7 +127,7 @@
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выход из чата</translation>
     </message>
     <message>
         <source>Info</source>

@@ -1466,7 +1466,7 @@
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation>Impossibile trovare l'utente %1</translation>
+        <translation>Impossibile trovare l&apos;utente %1</translation>
     </message>
 </context>
 </TS>

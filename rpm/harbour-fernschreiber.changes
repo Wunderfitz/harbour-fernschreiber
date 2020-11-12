@@ -12,6 +12,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Thu Nov 12 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.4.1
+- Several translations updated - thanks to all contributors
+
 * Wed Nov 11 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.4
 - Support for animated stickers - thanks to monich
 - Chat information page (members, picture(s), settings...) - thanks to jgibbon

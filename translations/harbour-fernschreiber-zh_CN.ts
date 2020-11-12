@@ -1429,7 +1429,7 @@
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation>发送不受支持的消息: %1</</translation>
+        <translation>发送不受支持的消息: %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
