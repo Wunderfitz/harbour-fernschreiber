@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Этот проект использует twemoji. Copyright 2018 Twitter, Inc. и другие участники. Спасибо, что сделали её доступной на условиях лицензии MIT License (программирование) und CC-BY 4.0 (графика)!</translation>
+        <translation>Этот проект использует twemoji. Copyright 2018 Twitter, Inc. и др. Спасибо, что сделали её доступной на условиях лицензии MIT License (программирование) und CC-BY 4.0 (графика)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -77,11 +77,11 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation type="unfinished"></translation>
+        <translation>Этот проект использует rlottie. Copyright 2020 Samsung Electronics Co., Ltd. и др. Спасибо, что сделали её доступной на условиях лицензии MIT License!</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Открыть rlottie на GitHub</translation>
     </message>
 </context>
 <context>
@@ -99,11 +99,11 @@
     <name>ChatInformationPage</name>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Включить уведомления</translation>
+        <translation>Включить уведомления</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Выключить уведомления</translation>
+        <translation>Выключить уведомления</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -111,7 +111,7 @@
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ссылка для приглашения скопирована в буффер обмена</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
@@ -132,38 +132,38 @@
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Номер телефона</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ссылка для приглашения</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация отсутствует</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Заголовок чата</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите 1-128 символов</translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Выйти из чата</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Зайти в чат</translation>
     </message>
 </context>
 <context>
@@ -171,41 +171,41 @@
     <message>
         <source>Loading common chats…</source>
         <comment>chats you have in common with a user</comment>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка общих чатов…</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>нет информации</translation>
     </message>
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished"></translation>
+        <translation>Группы</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished"></translation>
+        <translation>Участники группы</translation>
     </message>
     <message>
         <source>Loading group members…</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка списка участников…</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Вы</translation>
+        <translation>Вы</translation>
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
-        <translation type="unfinished"></translation>
+        <translation>У вас нет общих групп с этим пользователем</translation>
     </message>
     <message>
         <source>This group is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>В этой группе никого нет.</translation>
     </message>
     <message>
         <source>Channel members are anonymous.</source>
-        <translation type="unfinished"></translation>
+        <translation>Участники группы анонимны.</translation>
     </message>
 </context>
 <context>
@@ -213,38 +213,38 @@
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
     <name>ChatListViewItem</name>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>нет информации</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Вы</translation>
+        <translation>Вы</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Включить уведомления</translation>
+        <translation>Включить уведомления</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Выключить уведомления</translation>
+        <translation>Выключить уведомления</translation>
     </message>
     <message>
         <source>User Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация о пользователе</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация о группе</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Отметить все сообщения как прочитанные</translation>
     </message>
 </context>
 <context>
@@ -295,23 +295,23 @@
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Пустой чат.</translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Выйти из чата</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Зайти в чат</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Выход из чата</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы зашли в чат «%1»</translation>
     </message>
 </context>
 <context>
@@ -373,67 +373,67 @@
     <message>
         <source>Group Member Permissions</source>
         <comment>what can normal group members do</comment>
-        <translation type="unfinished"></translation>
+        <translation>Права участников группы</translation>
     </message>
     <message>
         <source>Send Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Посылать сообщения</translation>
     </message>
     <message>
         <source>Send Media Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Посылать медиа-сообщения</translation>
     </message>
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Посылать другие сообщения</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Добавлять предпросмотр веб страниц</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Менять информацию о чате</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Приглашать участников</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Прицеплять сообщения</translation>
     </message>
     <message>
         <source>New Members</source>
         <comment>what can new group members do</comment>
-        <translation type="unfinished"></translation>
+        <translation>Новые участники</translation>
     </message>
     <message>
         <source>New members can see older messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Новые участники могут видеть старые сообщения</translation>
     </message>
 </context>
 <context>
     <name>EditSuperGroupSlowModeColumn</name>
     <message>
         <source>Slow Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Медленный режим</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Выкл</translation>
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Задержка между сообщениями</translation>
     </message>
 </context>
 <context>
@@ -750,7 +750,7 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Используйте международный формат, например %1</translation>
     </message>
 </context>
 <context>
@@ -764,38 +764,38 @@
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
-        <translation type="unfinished">Ответить</translation>
+        <translation>Ответить</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation type="unfinished">Редактировать</translation>
+        <translation>Редактировать</translation>
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Скопировать в буфер обмена</translation>
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Сообщение удалено</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Вы</translation>
+        <translation>Вы</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation type="unfinished">Пересланное сообщение</translation>
+        <translation>Пересланное сообщение</translation>
     </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Вы</translation>
+        <translation>Вы</translation>
     </message>
 </context>
 <context>
@@ -849,7 +849,7 @@
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы уже в этом чате.</translation>
     </message>
 </context>
 <context>
@@ -1090,7 +1090,7 @@
     </message>
     <message>
         <source>Animate stickers</source>
-        <translation type="unfinished"></translation>
+        <translation>Анимировать стикеры</translation>
     </message>
 </context>
 <context>
