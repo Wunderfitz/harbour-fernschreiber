@@ -77,11 +77,11 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation type="unfinished"></translation>
+        <translation>Detta projekt använder rlottie. Copyright 2018 Samsung Electronics Co. och andra medverkande. Tack för att det gjorts tillgängligt under villkoren för MIT License!</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna rlottie på GitHub</translation>
     </message>
 </context>
 <context>
@@ -159,11 +159,11 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Lämna chatten</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Anslut till chatten</translation>
     </message>
 </context>
 <context>
@@ -205,7 +205,7 @@
     </message>
     <message>
         <source>Channel members are anonymous.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanalmedlemmar är anonyma.</translation>
     </message>
 </context>
 <context>
@@ -299,19 +299,19 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Lämna chatten</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Anslut till chatten</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished">Lämnar chatten</translation>
+        <translation>Lämnar chatten</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Du anslöt till chatten %1</translation>
     </message>
 </context>
 <context>
@@ -571,101 +571,101 @@
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skapade denna grupp</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation type="unfinished"></translation>
+        <translation>skapade denna grupp</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>bytte chattfoto</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>bytte chattfoto</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>tog bort chattfoto</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>tog bort chattfoto</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ändrade den hemliga chattens livstidsinställning</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation type="unfinished"></translation>
+        <translation>ändrade den hemliga chattens livstidsinställning</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>uppgraderade denna grupp till en supergrupp</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ändrade det fästa meddelandet</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation type="unfinished"></translation>
+        <translation>ändrade det fästa meddelandet</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skapade ett skärmklipp i denna chatt</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation type="unfinished"></translation>
+        <translation>skapade ett skärmklipp i denna chatt</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett meddelande som inte stöds</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett meddelande som inte stöds</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett meddelande som inte stöds: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation type="unfinished"></translation>
+        <translation>uppgraderade denna grupp till en supergrupp</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett självförstörande foto som är utgånget</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade en självförstörande video som är utgången</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>skickade en självförstörande video som är utgången</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett meddelande som inte stöds: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett självförstörande foto som är utgånget</translation>
     </message>
 </context>
 <context>
@@ -702,7 +702,7 @@
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Ange ditt telefonnummer för att förtsätta.</translation>
+        <translation>Ange ditt telefonnummer för att fortsätta.</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -764,38 +764,38 @@
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
-        <translation type="unfinished">Svara på meddelandet</translation>
+        <translation>Svara på meddelandet</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation type="unfinished">Redigera meddelandet</translation>
+        <translation>Redigera meddelandet</translation>
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera meddelandet till urklipp</translation>
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Mededelande borttaget</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Ta bort meddelandet</translation>
+        <translation>Ta bort meddelandet</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Du</translation>
+        <translation>Du</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation type="unfinished">Vidarebefordrat meddelande</translation>
+        <translation>Vidarebefordrat meddelande</translation>
     </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Du</translation>
+        <translation>Du</translation>
     </message>
 </context>
 <context>
@@ -849,7 +849,7 @@
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du är redan medlem i den här chatten.</translation>
     </message>
 </context>
 <context>
@@ -1076,15 +1076,15 @@
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation type="unfinished"></translation>
+        <translation>Integrering av menyn &quot;Öppna med&quot;</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation type="unfinished"></translation>
+        <translation>Integrera Fernschreiber med menyn &quot;Öppna med&quot;, i Sailfish OS</translation>
     </message>
     <message>
         <source>Animate stickers</source>
-        <translation type="unfinished"></translation>
+        <translation>Animera dekaler</translation>
     </message>
 </context>
 <context>
@@ -1349,124 +1349,124 @@
     </message>
     <message>
         <source>Anonymous Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonym frågesport</translation>
     </message>
     <message>
         <source>Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>Frågesport</translation>
     </message>
     <message>
         <source>Anonymous Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonym omröstning</translation>
     </message>
     <message>
         <source>Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Omröstning</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skapade denna grupp</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation type="unfinished"></translation>
+        <translation>skapade denna grupp</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>bytte chattfoto</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>bytte chattfoto</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>tog bort chattfotot</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>tog bort chattfotot</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation type="unfinished"></translation>
+        <translation>ändrade den hemliga chattens livstidsinställning</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation type="unfinished"></translation>
+        <translation>ändrade den hemliga chattens livstidsinställning</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>uppgraderade denna grupp till en supergrupp</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ändrade det fästa meddelandet</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation type="unfinished"></translation>
+        <translation>ändrade det fästa meddelandet</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skapade ett skärmklipp i denna chatt</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation type="unfinished"></translation>
+        <translation>skapade ett skärmklipp i denna chatt</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett meddelande som inte stöds</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett meddelande som inte stöds</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett meddelande som inte stöds: %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>%1 is message type</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett meddelande som inte stöds: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation type="unfinished"></translation>
+        <translation>uppgraderade denna grupp till en supergrupp</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett självförstörande foto som är utgånget</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett självförstörande foto som är utgånget</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade en självförstörande video som är utgången</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>skickade en självförstörande video som är utgången</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte hitta användare %1</translation>
     </message>
 </context>
 </TS>
