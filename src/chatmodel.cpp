@@ -213,8 +213,8 @@ void ChatModel::handleMessageSendSucceeded(const QString &messageId, const QStri
         this->calculateMessageIndexMap();
         qDebug() << "[ChatModel] Message was replaced at index " << messageIndex;
         this->messagesMutex.unlock();
-        emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
         emit dataChanged(index(messageIndex), index(messageIndex));
+        emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
     }
 }
 
