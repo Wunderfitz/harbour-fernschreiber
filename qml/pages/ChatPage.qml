@@ -412,6 +412,7 @@ Page {
                     } else {
                         newNotificationSettings.mute_for = 6666666;
                     }
+                    newNotificationSettings.use_default_mute_for = false;
                     tdLibWrapper.setChatNotificationSettings(chatInformation.id, newNotificationSettings);
                 }
                 text: chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
