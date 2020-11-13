@@ -77,7 +77,7 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation>该项目使用 rlottie 版权所有 2020 三星电子有限责任公司。感谢使它在 MIT 许可证下可用</translation>
+        <translation>该项目使用 rlottie 版权所有 2020 三星电子有限责任公司。感谢使它在 MIT 许可证下可用。</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
@@ -672,7 +672,7 @@
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
-        <translation>已下载图片</translation>
+        <translation>下载图片</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
