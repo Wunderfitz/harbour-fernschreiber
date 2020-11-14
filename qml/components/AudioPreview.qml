@@ -101,6 +101,10 @@ Item {
                         }
                     }
                 }
+                if (fileId === audioFileId) {
+                    downloadingProgressBar.maximumValue = fileInformation.size;
+                    downloadingProgressBar.value = fileInformation.local.downloaded_size;
+                }
             }
         }
     }
@@ -128,36 +132,51 @@ Item {
         visible: playButton.visible
     }
 
-    Row {
+    Column {
         width: parent.width
-        height: parent.height
-        Item {
-            height: parent.height
+        height: downloadingProgressBar.height + audioControlRow.height
+        anchors.centerIn: parent
+        Row {
+            id: audioControlRow
             width: parent.width
-            Image {
-                id: playButton
-                anchors.centerIn: parent
-                width: Theme.iconSizeLarge
+            height: Theme.iconSizeLarge
+            Item {
                 height: Theme.iconSizeLarge
-                source: "image://theme/icon-l-play?white"
-                asynchronous: true
-                visible: placeholderImage.status === Image.Ready ? true : false
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        handlePlay();
+                width: parent.width
+                Image {
+                    id: playButton
+                    anchors.centerIn: parent
+                    width: Theme.iconSizeLarge
+                    height: Theme.iconSizeLarge
+                    source: "image://theme/icon-l-play?white"
+                    asynchronous: true
+                    visible: placeholderImage.status === Image.Ready ? true : false
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            handlePlay();
+                        }
                     }
                 }
-            }
-            BusyIndicator {
-                id: audioDownloadBusyIndicator
-                running: false
-                visible: running
-                anchors.centerIn: parent
-                size: BusyIndicatorSize.Large
+                BusyIndicator {
+                    id: audioDownloadBusyIndicator
+                    running: false
+                    visible: running
+                    anchors.centerIn: parent
+                    size: BusyIndicatorSize.Large
+                }
             }
         }
+        ProgressBar {
+            id: downloadingProgressBar
+            minimumValue: 0
+            maximumValue: 100
+            value: 0
+            visible: audioDownloadBusyIndicator.visible
+            width: parent.width
+        }
     }
+
 
     Rectangle {
         id: audioErrorShade

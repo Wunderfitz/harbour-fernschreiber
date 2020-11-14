@@ -608,7 +608,7 @@ Page {
                         case "LocationPreview":
                             return parentWidth * 0.66666666; // 2 / 3;
                         case "VideoPreview":
-                            return ( content['@type'] === "messageVideoNote" ) ? content.video_note.length : ( Functions.getVideoHeight(parentWidth, ( content['@type'] === "messageVideo" ) ? content.video : content.animation) );
+                            return ( content['@type'] === "messageVideoNote" ) ? parentWidth : ( Functions.getVideoHeight(parentWidth, ( content['@type'] === "messageVideo" ) ? content.video : content.animation) );
                         case "AudioPreview":
                             return parentWidth / 2;
                         case "DocumentPreview":

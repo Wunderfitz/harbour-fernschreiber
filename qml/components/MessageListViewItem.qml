@@ -362,6 +362,10 @@ ListItem {
                         WebPagePreview {
                             id: webPagePreview
 
+                            Component.onCompleted: {
+                                webPagePreviewLoader.height = 0;
+                            }
+
                             onImplicitHeightChanged: {
                                 webPagePreviewLoader.height = webPagePreview.implicitHeight;
                             }

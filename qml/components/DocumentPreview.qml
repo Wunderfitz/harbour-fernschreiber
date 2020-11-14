@@ -52,7 +52,7 @@ Item {
         onFileUpdated: {
             if (documentData) {
                 if (!fileInformation.remote.is_uploading_active && fileId === documentData.document.id && fileInformation.local.is_downloading_completed) {
-                    downloadBusyIndicator.running = false;
+                    downloadingProgressBar.visible = false;
                     documentData.document = fileInformation;
                     downloadDocumentButton.visible = false;
                     openDocumentButton.visible = true;
@@ -60,6 +60,10 @@ Item {
                         documentPreviewItem.openRequested = false;
                         tdLibWrapper.openFileOnDevice(documentData.document.local.path);
                     }
+                }
+                if (fileId === documentData.document.id) {
+                    downloadingProgressBar.maximumValue = fileInformation.size;
+                    downloadingProgressBar.value = fileInformation.local.downloaded_size;
                 }
             }
         }
@@ -73,16 +77,18 @@ Item {
         visible: false
         onClicked: {
             downloadDocumentButton.visible = false;
-            downloadBusyIndicator.running = true;
+            downloadingProgressBar.visible = true;
             tdLibWrapper.downloadFile(documentData.document.id);
         }
     }
 
-    BusyIndicator {
-        id: downloadBusyIndicator
-        running: false
-        size: BusyIndicatorSize.Medium
-        visible: running
+    ProgressBar {
+        id: downloadingProgressBar
+        minimumValue: 0
+        maximumValue: 100
+        value: 0
+        visible: false
+        width: parent.width
         anchors.centerIn: parent
     }
 
