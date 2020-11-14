@@ -367,3 +367,30 @@ function getVideoHeight(videoWidth, videoData) {
 function replaceUrlsWithLinks(string) {
     return string.replace(/((\w+):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, "<a href=\"$1\">$1</a>");
 }
+
+function sortMessagesArrayByDate(messages) {
+    messages.sort(function(a, b) {
+      return a.date - b.date;
+    });
+}
+
+function getMessagesArrayIds(messages) {
+    sortMessagesArrayByDate(messages);
+    return messages.map(function(message){return message.id.toString()});
+}
+
+function getMessagesArrayText(messages) {
+    sortMessagesArrayByDate(messages);
+    var lastSenderName = "";
+    var lines = [];
+    for(var i = 0; i < messages.length; i += 1) {
+        var senderName = getUserName(tdLibWrapper.getUserInformation(messages[i].sender_user_id));
+        if(senderName !== lastSenderName) {
+            lines.push(senderName);
+        }
+        lastSenderName = senderName;
+        lines.push(getMessageText(messages[i], true, false));
+        lines.push("");
+    }
+    return lines.join("\n");
+}

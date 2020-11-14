@@ -128,6 +128,7 @@ public:
     Q_INVOKABLE void sendDocumentMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendStickerMessage(const QString &chatId, const QString &fileId, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, const bool &anonymous, const int &correctOption, const bool &multiple, const QString &replyToMessageId = "0");
+    Q_INVOKABLE void forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, const bool sendCopy, const bool removeCaption);
     Q_INVOKABLE void getMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void setOptionInteger(const QString &optionName, int optionValue);
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);

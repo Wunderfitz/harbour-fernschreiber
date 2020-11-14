@@ -313,6 +313,51 @@
         <source>You joined the chat %1</source>
         <translation>Du anslöt till chatten %1</translation>
     </message>
+    <message>
+        <source>Select Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n Messages deleted</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n messages have been copied</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n messages selected</source>
+        <comment>number of messages selected</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>Forward %n messages</source>
+        <comment>dialog header</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>ChatSelectionPage</name>
+    <message>
+        <source>Select Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You don&apos;t have any chats yet.</source>
+        <translation type="unfinished">Du har inga chattar än.</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -789,6 +834,10 @@
     <message>
         <source>Forwarded Message</source>
         <translation>Vidarebefordrat meddelande</translation>
+    </message>
+    <message>
+        <source>Select Message</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

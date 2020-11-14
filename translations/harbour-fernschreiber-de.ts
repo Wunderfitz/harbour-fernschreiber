@@ -313,6 +313,51 @@
         <source>You joined the chat %1</source>
         <translation>Sie sind dem Chat %1 beigetreten.</translation>
     </message>
+    <message>
+        <source>Select Messages</source>
+        <translation>Nachrichtenauswahl</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n Messages deleted</source>
+        <translation>
+            <numerusform>%n Nachrichten gelöscht</numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n messages have been copied</source>
+        <translation>
+            <numerusform>%n Nachrichten wurden kopiert</numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n messages selected</source>
+        <comment>number of messages selected</comment>
+        <translation>
+            <numerusform>%n Nachricht ausgewählt</numerusform>
+            <numerusform>%n Nachrichten ausgewählt</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>Forward %n messages</source>
+        <comment>dialog header</comment>
+        <translation>
+            <numerusform>%n Nachricht weiterleiten</numerusform>
+            <numerusform>%n Nachrichten weiterleiten</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>ChatSelectionPage</name>
+    <message>
+        <source>Select Chat</source>
+        <translation>Chat auswählen</translation>
+    </message>
+    <message>
+        <source>You don&apos;t have any chats yet.</source>
+        <translation>Sie haben noch keine Chats.</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -790,6 +835,10 @@
         <source>Forwarded Message</source>
         <translation>Weitergeleitete Nachricht</translation>
     </message>
+    <message>
+        <source>Select Message</source>
+        <translation>Nachricht auswählen</translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
@@ -1052,7 +1101,7 @@
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation>Hintergrund für Sticker anzeigen und sie wie Bilder mittig platzieren.</translation>
+        <translation>Hintergrund für Sticker anzeigen und sie wie Bilder mittig platzieren</translation>
     </message>
     <message>
         <source>Notification feedback</source>

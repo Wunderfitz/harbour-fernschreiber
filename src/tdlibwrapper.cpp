@@ -433,6 +433,20 @@ void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &questio
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, const bool sendCopy, const bool removeCaption)
+{
+    LOG("Forwarding messages" << chatId << fromChatId << messageIds);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "forwardMessages");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("from_chat_id", fromChatId);
+    requestObject.insert("message_ids", messageIds);
+    requestObject.insert("send_copy", sendCopy);
+    requestObject.insert("remove_caption", removeCaption);
+
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
 {
     LOG("Retrieving message" << chatId << messageId);
