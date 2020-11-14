@@ -77,11 +77,11 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämä projekti käyttää rlottieta. Tekijänoikeus 2020 Samsung Electronics Co., Ltd. ja muut tekijät. Kiitokset sen julkaisusta MIT‑lisenssillä!</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa rlottie GitHubissa</translation>
     </message>
 </context>
 <context>
@@ -159,11 +159,11 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistu keskustelusta</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Liity keskusteluun</translation>
     </message>
 </context>
 <context>
@@ -205,7 +205,7 @@
     </message>
     <message>
         <source>Channel members are anonymous.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanavan jäsenet ovat anonyymejä.</translation>
     </message>
 </context>
 <context>
@@ -299,19 +299,19 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistu keskustelusta</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Liity keskusteluun</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished">Poistutaan keskustelusta</translation>
+        <translation>Poistutaan keskustelusta</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Liityit keskusteluun %1</translation>
     </message>
 </context>
 <context>
@@ -326,7 +326,7 @@
     </message>
     <message>
         <source>in</source>
-        <translatorcomment>The preposition &apos;in&apos; is translated to Finnish using the inessive case (suffix -ssa/-ssä), so this string should be left empty in the translation. Unfortunately Qt will ignore empty translations, so let&apos;s use the character U+200B (zero width space) instead.</translatorcomment>
+        <translatorcomment>The preposition &apos;in&apos; is translated to Finnish using the inessive case (suffix ‑ssa/‑ssä), so this string should be left empty in the translation. Unfortunately Qt will ignore empty translations, so let&apos;s use the character U+200B (zero width space) instead.</translatorcomment>
         <translation>​</translation>
     </message>
     <message>
@@ -554,119 +554,119 @@
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit kyselyn</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti kyselyn</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit visan</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti visan</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>loit tämän ryhmän</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation type="unfinished"></translation>
+        <translation>loi tämän ryhmän</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>vaihdoit keskustelun kuvakkeen</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>vaihtoi keskustelun kuvakkeen</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>poistit keskustelun kuvakkeen</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>poisti keskustelun kuvakkeen</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>vaihdoit salaisen keskustelun viestien elinajan</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation type="unfinished"></translation>
+        <translation>vaihtoi salaisen keskustelun viestien elinajan</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>muutit tämän ryhmän superryhmäksi</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>vaihdoit kiinnitetyn viestin</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation type="unfinished"></translation>
+        <translation>vaihtoi kiinnitetyn viestin</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>otit kuvakaappauksen tästä keskustelusta</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation type="unfinished"></translation>
+        <translation>otti kuvakaappauksen tästä keskustelusta</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit ei-tuetun viestin</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti ei-tuetun viestin</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti ei-tuetun viestin: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation type="unfinished"></translation>
+        <translation>muutti tämän ryhmän superryhmäksi</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit itsetuhoutuvan kuvan joka vanheni</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit itsetuhoutuvan videon joka vanheni</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti itsetuhoutuvan videon joka vanheni</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit ei-tuetun viestin: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti itsetuhoutuvan kuvan joka vanheni</translation>
     </message>
 </context>
 <context>
@@ -765,38 +765,38 @@
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
-        <translation type="unfinished">Vastaa viestiin</translation>
+        <translation>Vastaa viestiin</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation type="unfinished">Muokkaa viestiä</translation>
+        <translation>Muokkaa viestiä</translation>
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopioi viesti leikepöydälle</translation>
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Viesti poistettu</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Poista viesti</translation>
+        <translation>Poista viesti</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Sinä</translation>
+        <translation>Sinä</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation type="unfinished">Välitetty viesti</translation>
+        <translation>Välitetty viesti</translation>
     </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Sinä</translation>
+        <translation>Sinä</translation>
     </message>
 </context>
 <context>
@@ -850,92 +850,92 @@
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>Olet jo tämän ryhmän jäsen.</translation>
     </message>
 </context>
 <context>
     <name>PollCreationPage</name>
     <message>
         <source>All answers have to contain 1-100 characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaikkien vastauksien tulee sisältää 1-100 merkkiä.</translation>
     </message>
     <message>
         <source>To send a quiz, you have to specify the right answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähettääksesi visan, sinun täytyy määrittää oikea vastaus.</translation>
     </message>
     <message>
         <source>You have to enter a question.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinun täytyy syöttää kysymys.</translation>
     </message>
     <message>
         <source>The question has to be shorter than 256 characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämän kysymyksen täytyy olla lyhyempi kuin 256 merkkiä.</translation>
     </message>
     <message>
         <source>A poll requires 2-10 answers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kysely tarvitsee 2-10 vastausta.</translation>
     </message>
     <message>
         <source>Create a Poll</source>
         <comment>Dialog Header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Luo kysely</translation>
     </message>
     <message>
         <source>in %1</source>
         <comment>After dialog header… Create a Poll in [group name]</comment>
-        <translation type="unfinished"></translation>
+        <translation>ryhmään %1</translation>
     </message>
     <message>
         <source>Enter your question here</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjoita kysymyksesi tähän</translation>
     </message>
     <message numerus="yes">
         <source>Question (%n1 characters left)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Kysymys (%n merkki jäljellä)</numerusform>
+            <numerusform>Kysymys (%n merkkiä jäljellä)</numerusform>
         </translation>
     </message>
     <message>
         <source>Answers</source>
         <comment>Section header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vastaukset</translation>
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjoita vastaus tähän</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%n1 characters left)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vastaus (%n merkki jäljellä)</numerusform>
+            <numerusform>Vastaus (%n merkkiä jäljellä)</numerusform>
         </translation>
     </message>
     <message>
         <source>Add an answer</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisää vastaus</translation>
     </message>
     <message>
         <source>Poll Options</source>
         <comment>Section header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kyselyn asetukset</translation>
     </message>
     <message>
         <source>Anonymous answers</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonyymit vastaukset</translation>
     </message>
     <message>
         <source>Multiple answers allowed</source>
-        <translation type="unfinished"></translation>
+        <translation>Salli monta vastausta</translation>
     </message>
     <message>
         <source>Quiz Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Visatila</translation>
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-        <translation type="unfinished"></translation>
+        <translation>Visoilla on yksi oikea vastaus. Osallistujat eivät voi kumota vastaustaan.</translation>
     </message>
 </context>
 <context>
@@ -943,85 +943,85 @@
     <message>
         <source>%L1%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished"></translation>
+        <translation>%L1%</translation>
     </message>
     <message>
         <source>Final Result:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lopullinen tulos:</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Useampi vastaus sallittu.</translation>
     </message>
     <message numerus="yes">
         <source>%L1 vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>yhteensä %L1 ääni</numerusform>
+            <numerusform>yhteensä %L1 ääntä</numerusform>
         </translation>
     </message>
     <message>
         <source>Close Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Sulje kysely</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyhjennä vastaus</translation>
     </message>
 </context>
 <context>
     <name>PollResultsPage</name>
     <message>
         <source>Quiz Results</source>
-        <translation type="unfinished"></translation>
+        <translation>Visan tulokset</translation>
     </message>
     <message>
         <source>Poll Results</source>
-        <translation type="unfinished"></translation>
+        <translation>Kyselyn tulokset</translation>
     </message>
     <message numerus="yes">
         <source>%L1 vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>yhteensä %L1 ääni </numerusform>
+            <numerusform>yhteensä %L1 ääntä</numerusform>
         </translation>
     </message>
     <message>
         <source>Question</source>
         <comment>section header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kysymys</translation>
     </message>
     <message>
         <source>Results</source>
         <comment>section header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tulokset</translation>
     </message>
     <message numerus="yes">
         <source>%L1 vote(s)</source>
         <comment>number of votes for option</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%L1 ääni</numerusform>
+            <numerusform>%L1 ääntä</numerusform>
         </translation>
     </message>
     <message>
         <source>%L1%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished"></translation>
+        <translation>%L1%</translation>
     </message>
     <message>
         <source>Chosen by:</source>
         <comment>This answer has been chosen by the following users</comment>
-        <translation type="unfinished"></translation>
+        <translation>Valinnut:</translation>
     </message>
     <message numerus="yes">
         <source>%L1 vote(s) including yours</source>
         <comment>number of votes for option</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%L1 ääni (sinun)</numerusform>
+            <numerusform>%L1 ääntä (mukaan lukien sinun)</numerusform>
         </translation>
     </message>
 </context>
@@ -1077,15 +1077,15 @@
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa sovelluksessa ‑integraatio</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation type="unfinished"></translation>
+        <translation>Sisällytä Fernschreiber Sailfish OS:n avaa sovelluksella ‑valikkoon</translation>
     </message>
     <message>
         <source>Animate stickers</source>
-        <translation type="unfinished"></translation>
+        <translation>Animoi tarrat</translation>
     </message>
 </context>
 <context>
@@ -1315,159 +1315,159 @@
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit kyselyn</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti kyselyn</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit anonyymin visan</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti anonyymin visan</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit visan</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti visan</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit anonyymin kyselyn</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti anonyymin kyselyn</translation>
     </message>
     <message>
         <source>Anonymous Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonyymi visa</translation>
     </message>
     <message>
         <source>Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa</translation>
     </message>
     <message>
         <source>Anonymous Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonyymi kysely</translation>
     </message>
     <message>
         <source>Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Kysely</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>loit tämän ryhmän</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation type="unfinished"></translation>
+        <translation>loi tämän ryhmän</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>vaihdoit keskustelun kuvakkeen</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>vaihtoi keskustelun kuvakkeen</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>poistit keskustelun kuvakkeen</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation>poisti keskustelun kuvakkeen</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation type="unfinished"></translation>
+        <translation>vaihdoit salaisen keskustelun viestien elinajan</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation type="unfinished"></translation>
+        <translation>vaihtoi salaisen keskustelun viestien elinajan</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>muutit tämän ryhmän superryhmäksi</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>vaihdoit kiinnitetyn viestin</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation type="unfinished"></translation>
+        <translation>vaihtoi kiinnitetyn viestin</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>otit kuvakaappauksen tästä keskustelusta</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation type="unfinished"></translation>
+        <translation>otti kuvakaappauksen tästä keskustelusta</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit ei-tuetun viestin</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti ei-tuetun viestin</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit ei-tuetun viestin: %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>%1 is message type</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetti ei-tuetun viestin: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation type="unfinished"></translation>
+        <translation>muutti tämän ryhmän superryhmäksi</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit itsetuhoutuvan kuvan joka vanheni</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti itsetuhoutuvan kuvan joka vanheni</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit itsetuhoutuvan videon joka vanheni</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti itsetuhoutuvan videon joka vanheni</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttäjää ei löydy: %1</translation>
     </message>
 </context>
 </TS>
