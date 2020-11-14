@@ -47,7 +47,7 @@ namespace {
     const QString _EXTRA("@extra");
 }
 
-TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(parent)
+TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(parent), joinChatRequested(false)
 {
     LOG("Initializing TD Lib...");
     this->appSettings = appSettings;
