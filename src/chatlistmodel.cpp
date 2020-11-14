@@ -42,6 +42,7 @@ namespace {
     const QString NOTIFICATION_SETTINGS("notification_settings");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
+    const QString SENDING_STATE("sending_state");
     const QString IS_CHANNEL("is_channel");
     const QString _TYPE("@type");
 }
@@ -60,6 +61,7 @@ public:
         RoleLastMessageSenderId,
         RoleLastMessageDate,
         RoleLastMessageText,
+        RoleLastMessageStatus,
         RoleChatMemberStatus,
         RoleIsChannel
     };
@@ -76,6 +78,7 @@ public:
     qlonglong senderUserId() const;
     qlonglong senderMessageDate() const;
     QString senderMessageText() const;
+    QString senderMessageStatus() const;
     bool isChannel() const;
     bool isHidden() const;
     bool updateUnreadCount(int unreadCount);
@@ -176,6 +179,28 @@ QString ChatListModel::ChatData::senderMessageText() const
     return FernschreiberUtils::getMessageShortText(lastMessage(CONTENT).toMap(), this->userInformation.value(ID).toLongLong() == senderUserId());
 }
 
+QString ChatListModel::ChatData::senderMessageStatus() const
+{
+    if (isChannel() || this->userInformation.value(ID).toLongLong() != senderUserId() || this->userInformation.value(ID).toLongLong() == chatId) {
+        return "";
+    }
+    if (lastMessage(ID) == chatData.value(LAST_READ_OUTBOX_MESSAGE_ID)) {
+        return "&nbsp;&nbsp;✅";
+    } else {
+        QVariantMap lastMessage = chatData.value(LAST_MESSAGE).toMap();
+        if (lastMessage.contains(SENDING_STATE)) {
+            QVariantMap sendingState = lastMessage.value(SENDING_STATE).toMap();
+            if (sendingState.value(_TYPE).toString() == "messageSendingStatePending") {
+                return "&nbsp;&nbsp;🕙";
+            } else {
+                return "&nbsp;&nbsp;❌";
+            }
+        } else {
+            return "&nbsp;&nbsp;☑️";
+        }
+    }
+}
+
 bool ChatListModel::ChatData::isChannel() const
 {
     return chatData.value(TYPE).toMap().value(IS_CHANNEL).toBool();
@@ -226,6 +251,8 @@ QVector<int> ChatListModel::ChatData::updateLastMessage(const QVariantMap &messa
     const qlonglong prevSenderUserId(senderUserId());
     const qlonglong prevSenderMessageDate(senderMessageDate());
     const QString prevSenderMessageText(senderMessageText());
+    const QString prevSenderMessageStatus(senderMessageStatus());
+
 
     chatData.insert(LAST_MESSAGE, message);
 
@@ -239,6 +266,9 @@ QVector<int> ChatListModel::ChatData::updateLastMessage(const QVariantMap &messa
     }
     if (prevSenderMessageText != senderMessageText()) {
         changedRoles.append(RoleLastMessageText);
+    }
+    if (prevSenderMessageStatus != senderMessageStatus()) {
+        changedRoles.append(RoleLastMessageStatus);
     }
     return changedRoles;
 }
@@ -297,6 +327,7 @@ QHash<int,QByteArray> ChatListModel::roleNames() const
     roles.insert(ChatData::RoleLastMessageSenderId, "last_message_sender_id");
     roles.insert(ChatData::RoleLastMessageDate, "last_message_date");
     roles.insert(ChatData::RoleLastMessageText, "last_message_text");
+    roles.insert(ChatData::RoleLastMessageStatus, "last_message_status");
     roles.insert(ChatData::RoleChatMemberStatus, "chat_member_status");
     roles.insert(ChatData::RoleIsChannel, "is_channel");
     return roles;
@@ -323,6 +354,7 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatData::RoleLastMessageSenderId: return data->senderUserId();
         case ChatData::RoleLastMessageText: return data->senderMessageText();
         case ChatData::RoleLastMessageDate: return data->senderMessageDate();
+        case ChatData::RoleLastMessageStatus: return data->senderMessageStatus();
         case ChatData::RoleChatMemberStatus: return data->memberStatus;
         case ChatData::RoleIsChannel: return data->isChannel();
         }

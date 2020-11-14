@@ -19,7 +19,7 @@ PhotoTextsListItem {
     // last message
     secondaryText.text: last_message_text ? Emoji.emojify(last_message_text, Theme.fontSizeExtraSmall, emojiBase) : qsTr("Unknown")
     // message date
-    tertiaryText.text: last_message_date ? Functions.getDateTimeElapsed(last_message_date) : qsTr("Unknown")
+    tertiaryText.text: ( last_message_date ? Functions.getDateTimeElapsed(last_message_date) : qsTr("Unknown") ) + Emoji.emojify(last_message_status, tertiaryText.font.pixelSize)
     unreadCount: unread_count
 
     openMenuOnPressAndHold: true//chat_id != overviewPage.ownUserId
