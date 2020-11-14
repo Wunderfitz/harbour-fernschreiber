@@ -1469,5 +1469,14 @@
         <source>Unable to find user %1</source>
         <translation>Käyttäjää ei löydy: %1</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

@@ -279,8 +279,8 @@ ListItem {
                                     forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : "";
                                     forwardedChannelText.text = Emoji.emojify(Functions.getUserName(otherUserInformation), Theme.fontSizeExtraSmall);
                                 } else {
-                                    forwardedThumbnail.photoData = "";
-                                    forwardedChannelText.text = Emoji.emojify(myMessage.forward_info.origin.sender_user_name, Theme.fontSizeExtraSmall);
+                                    forwardedChannelText.text = Emoji.emojify(myMessage.forward_info.origin.sender_name, Theme.fontSizeExtraSmall);
+                                    forwardedThumbnail.photoData = {};
                                 }
                             }
 
@@ -293,7 +293,7 @@ ListItem {
 
                             Column {
                                 spacing: Theme.paddingSmall
-                                width: parent.width
+                                width: parent.width - forwardedThumbnail.width - Theme.paddingSmall
                                 Text {
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     color: Theme.primaryColor

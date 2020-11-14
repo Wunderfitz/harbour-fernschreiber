@@ -1468,5 +1468,14 @@
         <source>Unable to find user %1</source>
         <translation>Konnte Benutzer %1 nicht finden</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>haben eine Videonachricht geschicht</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>hat eine Videonachricht geschickt</translation>
+    </message>
 </context>
 </TS>

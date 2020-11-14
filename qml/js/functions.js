@@ -48,6 +48,9 @@ function getMessageText(message, simple, myself) {
             return simple ? (myself ? qsTr("sent a video", "myself") : qsTr("sent a video")) : "";
         }
     }
+    if (message.content['@type'] === 'messageVideoNote') {
+        return simple ? (myself ? qsTr("sent a video note", "myself") : qsTr("sent a video note")) : "";
+    }
     if (message.content['@type'] === 'messageAnimation') {
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Animation: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)

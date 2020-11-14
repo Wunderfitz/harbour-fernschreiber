@@ -1468,5 +1468,14 @@
         <source>Unable to find user %1</source>
         <translation>Impossibile trovare l&apos;utente %1</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

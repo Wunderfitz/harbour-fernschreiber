@@ -27,7 +27,7 @@ Item {
     property ListItem messageListItem
     property var rawMessage: messageListItem.myMessage
 
-    property var videoData:  ( rawMessage.content['@type'] === "messageVideo" ) ?  rawMessage.content.video : ( ( rawMessage.content['@type'] === "messageAnimation" ) ? rawMessage.content.animation : "")
+    property var videoData:  ( rawMessage.content['@type'] === "messageVideo" ) ?  rawMessage.content.video : ( ( rawMessage.content['@type'] === "messageAnimation" ) ? rawMessage.content.animation : rawMessage.content.video_note )
     property string videoUrl;
     property int previewFileId;
     property int videoFileId;
@@ -37,7 +37,7 @@ Item {
     property bool playRequested: false;
 
     width: parent.width
-    height: Functions.getVideoHeight(width, videoData)
+    height: ( rawMessage.content['@type'] === "messageVideoNote" ) ? width : Functions.getVideoHeight(width, videoData)
 
     Timer {
         id: screensaverTimer
@@ -78,7 +78,11 @@ Item {
 
     function updateVideoThumbnail() {
         if (videoData) {
-            videoType = videoData['@type'];
+            if (rawMessage.content['@type'] === "messageVideoNote") {
+                videoType = "video";
+            } else {
+                videoType = videoData['@type'];
+            }
             videoFileId = videoData[videoType].id;
             if (typeof videoData.thumbnail !== "undefined") {
                 previewFileId = videoData.thumbnail.photo.id;

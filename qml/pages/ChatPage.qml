@@ -590,6 +590,7 @@ Page {
                                                               messageSticker: "StickerPreview",
                                                               messagePhoto: "ImagePreview",
                                                               messageVideo: "VideoPreview",
+                                                              messageVideoNote: "VideoPreview",
                                                               messageAnimation: "VideoPreview",
                                                               messageAudio: "AudioPreview",
                                                               messageVoiceNote: "AudioPreview",
@@ -605,7 +606,7 @@ Page {
                         case "LocationPreview":
                             return parentWidth * 0.66666666; // 2 / 3;
                         case "VideoPreview":
-                            return Functions.getVideoHeight(parentWidth, ( content['@type'] === "messageVideo" ) ? content.video : content.animation);
+                            return ( content['@type'] === "messageVideoNote" ) ? content.video_note.length : ( Functions.getVideoHeight(parentWidth, ( content['@type'] === "messageVideo" ) ? content.video : content.animation) );
                         case "AudioPreview":
                             return parentWidth / 2;
                         case "DocumentPreview":
@@ -615,7 +616,21 @@ Page {
                         }
                     }
 
-                    readonly property var simpleDelegateMessages: ["messageBasicGroupChatCreate", "messageChatAddMembers", "messageChatChangePhoto", "messageChatChangeTitle", "messageChatDeleteMember", "messageChatDeletePhoto", "messageChatJoinByLink", "messageChatSetTtl", "messageChatUpgradeFrom", "messageChatUpgradeTo", "messageCustomServiceAction", "messagePinMessage", "messageScreenshotTaken", "messageSupergroupChatCreate", "messageUnsupported"]
+                    readonly property var simpleDelegateMessages: ["messageBasicGroupChatCreate",
+                                                                   "messageChatAddMembers",
+                                                                   "messageChatChangePhoto",
+                                                                   "messageChatChangeTitle",
+                                                                   "messageChatDeleteMember",
+                                                                   "messageChatDeletePhoto",
+                                                                   "messageChatJoinByLink",
+                                                                   "messageChatSetTtl",
+                                                                   "messageChatUpgradeFrom",
+                                                                   "messageChatUpgradeTo",
+                                                                   "messageCustomServiceAction",
+                                                                   "messagePinMessage",
+                                                                   "messageScreenshotTaken",
+                                                                   "messageSupergroupChatCreate",
+                                                                   "messageUnsupported"]
                     delegate: Loader {
                         width: chatView.width
                         Component {
