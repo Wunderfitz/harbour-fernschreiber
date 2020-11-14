@@ -263,8 +263,10 @@ Page {
         }
         onFileUpdated: {
             uploadStatusRow.visible = fileInformation.remote.is_uploading_active;
-            uploadingProgressBar.maximumValue = fileInformation.size;
-            uploadingProgressBar.value = fileInformation.remote.uploaded_size;
+            if (uploadStatusRow.visible) {
+                uploadingProgressBar.maximumValue = fileInformation.size;
+                uploadingProgressBar.value = fileInformation.remote.uploaded_size;
+            }
         }
         onEmojiSearchSuccessful: {
             chatPage.emojiProposals = result;

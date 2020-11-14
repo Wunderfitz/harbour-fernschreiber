@@ -127,6 +127,10 @@ Item {
                         videoComponentLoader.active = true;
                     }
                 }
+                if (fileId === videoFileId) {
+                    downloadingProgressBar.maximumValue = fileInformation.size;
+                    downloadingProgressBar.value = fileInformation.local.downloaded_size;
+                }
             }
         }
     }
@@ -154,59 +158,73 @@ Item {
         visible: playButton.visible
     }
 
-    Row {
+    Column {
         width: parent.width
-        height: parent.height
-        Item {
-            height: parent.height
-            width: videoMessageComponent.fullscreen ? parent.width : ( parent.width / 2 )
-            Image {
-                id: playButton
-                anchors.centerIn: parent
-                width: Theme.iconSizeLarge
+        height: downloadingProgressBar.height + videoControlRow.height
+        anchors.centerIn: parent
+
+        Row {
+            id: videoControlRow
+            width: parent.width
+            Item {
+                width: videoMessageComponent.fullscreen ? parent.width : ( parent.width / 2 )
                 height: Theme.iconSizeLarge
-                source: "image://theme/icon-l-play?white"
-                asynchronous: true
-                visible: placeholderImage.status === Image.Ready ? true : false
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        fullscreenItem.visible = false;
-                        handlePlay();
+                Image {
+                    id: playButton
+                    anchors.centerIn: parent
+                    width: Theme.iconSizeLarge
+                    height: Theme.iconSizeLarge
+                    source: "image://theme/icon-l-play?white"
+                    asynchronous: true
+                    visible: placeholderImage.status === Image.Ready ? true : false
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            fullscreenItem.visible = false;
+                            handlePlay();
+                        }
                     }
                 }
+                BusyIndicator {
+                    id: videoDownloadBusyIndicator
+                    running: false
+                    visible: running
+                    anchors.centerIn: parent
+                    size: BusyIndicatorSize.Large
+                }
             }
-            BusyIndicator {
-                id: videoDownloadBusyIndicator
-                running: false
-                visible: running
-                anchors.centerIn: parent
-                size: BusyIndicatorSize.Large
+            Item {
+                id: fullscreenItem
+                width: parent.width / 2
+                height: Theme.iconSizeLarge
+                visible: !videoMessageComponent.fullscreen
+                IconButton {
+                    id: fullscreenButton
+                    anchors.centerIn: parent
+                    width: Theme.iconSizeLarge
+                    height: Theme.iconSizeLarge
+                    icon {
+                        asynchronous: true
+                        source: "../../images/icon-l-fullscreen.svg"
+                        sourceSize {
+                            width: Theme.iconSizeLarge
+                            height: Theme.iconSizeLarge
+                        }
+                    }
+                    visible: ( placeholderImage.status === Image.Ready && !videoMessageComponent.fullscreen ) ? true : false
+                    onClicked: {
+                        pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
+                    }
+                }
             }
         }
-        Item {
-            id: fullscreenItem
-            height: parent.height
-            width: parent.width / 2
-            visible: !videoMessageComponent.fullscreen
-            IconButton {
-                id: fullscreenButton
-                anchors.centerIn: parent
-                width: Theme.iconSizeLarge
-                height: Theme.iconSizeLarge
-                icon {
-                    asynchronous: true
-                    source: "../../images/icon-l-fullscreen.svg"
-                    sourceSize {
-                        width: Theme.iconSizeLarge
-                        height: Theme.iconSizeLarge
-                    }
-                }
-                visible: ( placeholderImage.status === Image.Ready && !videoMessageComponent.fullscreen ) ? true : false
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
-                }
-            }
+        ProgressBar {
+            id: downloadingProgressBar
+            minimumValue: 0
+            maximumValue: 100
+            value: 0
+            visible: videoDownloadBusyIndicator.visible
+            width: parent.width
         }
     }
 
@@ -246,7 +264,7 @@ Item {
         id: videoComponentLoader
         active: false
         width: parent.width
-        height: Functions.getVideoHeight(parent.width, videoData)
+        height: ( rawMessage.content['@type'] === "messageVideoNote" ) ? width : Functions.getVideoHeight(parent.width, videoData)
         sourceComponent: videoComponent
     }
 
