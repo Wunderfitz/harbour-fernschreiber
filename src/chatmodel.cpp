@@ -31,6 +31,7 @@ namespace {
     const QString PHOTO("photo");
     const QString SMALL("small");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
+    const QString SENDER_USER_ID("sender_user_id");
 }
 
 ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
@@ -128,7 +129,11 @@ QVariantMap ChatModel::getMessage(int index)
 
 int ChatModel::getLastReadMessageIndex()
 {
-    return this->messageIndexMap.value(this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toString()).toInt();
+    if (this->messages.isEmpty()) {
+        return 0;
+    } else {
+        return (this->messages.last().toMap().value(SENDER_USER_ID).toString() == tdLibWrapper->getUserInformation().value(ID).toString()) ? (this->messages.size() - 1) : this->messageIndexMap.value(this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toString()).toInt();
+    }
 }
 
 QVariantMap ChatModel::smallPhoto() const
