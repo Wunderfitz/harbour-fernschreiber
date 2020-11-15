@@ -520,7 +520,7 @@ Page {
 
                 ProfileThumbnail {
                     id: chatPictureThumbnail
-                    photoData: (typeof chatInformation.photo !== "undefined") ? chatInformation.photo.small : ""
+                    photoData: chatModel.smallPhoto
                     replacementStringHint: chatNameText.text
                     width: chatOverviewColumn.height
                     height: chatOverviewColumn.height

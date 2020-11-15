@@ -23,24 +23,35 @@
 #include <QByteArray>
 #include <QBitArray>
 
-ChatModel::ChatModel(TDLibWrapper *tdLibWrapper)
+#define LOG(x) qDebug() << "[ChatModel]" << x
+
+namespace {
+    const QString ID("id");
+    const QString CHAT_ID("chat_id");
+    const QString PHOTO("photo");
+    const QString SMALL("small");
+}
+
+ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
+    chatId(0),
+    inReload(false),
+    inIncrementalUpdate(false)
 {
     this->tdLibWrapper = tdLibWrapper;
-    this->inReload = false;
-    this->inIncrementalUpdate = false;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(QString, QVariantMap)), this, SLOT(handleNewMessageReceived(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
     connect(this->tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
     connect(this->tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SLOT(handleChatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)), this, SLOT(handleMessageContentUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messagesDeleted(QString, QVariantList)), this, SLOT(handleMessagesDeleted(QString, QVariantList)));
 }
 
 ChatModel::~ChatModel()
 {
-    qDebug() << "[ChatModel] Destroying myself...";
+    LOG("Destroying myself...");
 }
 
 int ChatModel::rowCount(const QModelIndex &) const
@@ -58,7 +69,7 @@ QVariant ChatModel::data(const QModelIndex &index, int role) const
 
 bool ChatModel::insertRows(int row, int count, const QModelIndex &parent)
 {
-    qDebug() << "[ChatModel] Inserting at " << row << ", row count: " << count;
+    LOG("Inserting at" << row << ", row count:" << count);
     beginInsertRows(parent, row, row + count - 1);
     for (int i = 0; i < count; i++) {
         this->messages.insert(row + i, this->messagesToBeAdded.at(i));
@@ -70,23 +81,24 @@ bool ChatModel::insertRows(int row, int count, const QModelIndex &parent)
 
 void ChatModel::initialize(const QVariantMap &chatInformation)
 {
-    qDebug() << "[ChatModel] Initializing chat model...";
-    this->chatInformation = chatInformation;
+    LOG("Initializing chat model...");
     beginResetModel();
+    this->chatInformation = chatInformation;
+    this->chatId = chatInformation.value(ID).toLongLong();
     this->messages.clear();
     this->messageIndexMap.clear();
     this->messagesToBeAdded.clear();
     endResetModel();
-    this->chatId = chatInformation.value("id").toString();
-    tdLibWrapper->getChatHistory(this->chatId);
+    emit smallPhotoChanged();
+    tdLibWrapper->getChatHistory(chatId);
 }
 
 void ChatModel::triggerLoadMoreHistory()
 {
     if (!this->inIncrementalUpdate && !messages.isEmpty()) {
-        qDebug() << "[ChatModel] Trigger loading older history...";
+        LOG("Trigger loading older history...");
         this->inIncrementalUpdate = true;
-        this->tdLibWrapper->getChatHistory(this->chatId, this->messages.first().toMap().value("id").toLongLong());
+        this->tdLibWrapper->getChatHistory(chatId, messages.first().toMap().value(ID).toLongLong());
     }
 }
 
@@ -95,7 +107,7 @@ QVariantMap ChatModel::getChatInformation()
     return this->chatInformation;
 }
 
-QVariantMap ChatModel::getMessage(const int &index)
+QVariantMap ChatModel::getMessage(int index)
 {
     if (index < this->messages.size()) {
         return this->messages.at(index).toMap();
@@ -104,23 +116,24 @@ QVariantMap ChatModel::getMessage(const int &index)
     }
 }
 
-bool compareMessages(const QVariant &message1, const QVariant &message2)
+QVariantMap ChatModel::smallPhoto() const
 {
-    QVariantMap messageMap1 = message1.toMap();
-    QVariantMap messageMap2 = message2.toMap();
-    if (messageMap1.value("id").toLongLong() < messageMap2.value("id").toLongLong()) {
-        return true;
-    } else {
-        return false;
-    }
+    return chatInformation.value(PHOTO).toMap().value(SMALL).toMap();
 }
 
-void ChatModel::handleMessagesReceived(const QVariantList &messages, const int &totalCount)
+static bool compareMessages(const QVariant &message1, const QVariant &message2)
 {
-    qDebug() << "[ChatModel] Receiving new messages :)" << messages.size();
+    const QVariantMap messageMap1 = message1.toMap();
+    const QVariantMap messageMap2 = message2.toMap();
+    return messageMap1.value(ID).toLongLong() < messageMap2.value(ID).toLongLong();
+}
+
+void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCount)
+{
+    LOG("Receiving new messages :)" << messages.size());
 
     if (messages.size() == 0) {
-        qDebug() << "[ChatModel] No additional messages loaded, notifying chat UI...";
+        LOG("No additional messages loaded, notifying chat UI...");
         this->inReload = false;
         int listInboxPosition = this->calculateLastKnownMessageId();
         int listOutboxPosition = this->calculateLastReadSentMessageId();
@@ -136,7 +149,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, const int &
         QListIterator<QVariant> messagesIterator(messages);
         while (messagesIterator.hasNext()) {
             QVariantMap currentMessage = messagesIterator.next().toMap();
-            if (currentMessage.value("chat_id").toString() == this->chatId) {
+            if (currentMessage.value(CHAT_ID).toLongLong() == chatId) {
                 this->messagesToBeAdded.append(currentMessage);
             }
         }
@@ -147,11 +160,11 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, const int &
 
         // First call only returns a few messages, we need to get a little more than that...
         if (this->messagesToBeAdded.size() < 10 && !this->inReload) {
-            qDebug() << "[ChatModel] Only a few messages received in first call, loading more...";
+            LOG("Only a few messages received in first call, loading more...");
             this->inReload = true;
-            this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value("id").toLongLong());
+            this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value(ID).toLongLong());
         } else {
-            qDebug() << "[ChatModel] Messages loaded, notifying chat UI...";
+            LOG("Messages loaded, notifying chat UI...");
             this->inReload = false;
             int listInboxPosition = this->calculateLastKnownMessageId();
             int listOutboxPosition = this->calculateLastReadSentMessageId();
@@ -166,10 +179,10 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, const int &
 
 }
 
-void ChatModel::handleNewMessageReceived(const QString &chatId, const QVariantMap &message)
+void ChatModel::handleNewMessageReceived(const QString &id, const QVariantMap &message)
 {
-    if (chatId == this->chatId) {
-        qDebug() << "[ChatModel] New message received for this chat";
+    if (id.toLongLong() == chatId) {
+        LOG("New message received for this chat");
         this->messagesMutex.lock();
 
         this->messagesToBeAdded.clear();
@@ -181,83 +194,92 @@ void ChatModel::handleNewMessageReceived(const QString &chatId, const QVariantMa
     }
 }
 
-void ChatModel::handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, const int &unreadCount)
+void ChatModel::handleChatReadInboxUpdated(const QString &id, const QString &lastReadInboxMessageId, int unreadCount)
 {
-    if (chatId == this->chatId) {
-        qDebug() << "[ChatModel] Updating chat unread count, unread messages " << unreadCount << ", last read message ID: " << lastReadInboxMessageId;
+    if (id.toLongLong() == chatId) {
+        LOG("Updating chat unread count, unread messages" << unreadCount << ", last read message ID:" << lastReadInboxMessageId);
         this->chatInformation.insert("unread_count", unreadCount);
         this->chatInformation.insert("last_read_inbox_message_id", lastReadInboxMessageId);
         emit unreadCountUpdated(unreadCount, lastReadInboxMessageId);
     }
 }
 
-void ChatModel::handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId)
+void ChatModel::handleChatReadOutboxUpdated(const QString &id, const QString &lastReadOutboxMessageId)
 {
-    if (chatId == this->chatId) {
+    if (id.toLongLong() == chatId) {
         this->chatInformation.insert("last_read_outbox_message_id", lastReadOutboxMessageId);
         int sentIndex = calculateLastReadSentMessageId();
-        qDebug() << "[ChatModel] Updating sent message ID, new index " << sentIndex;
+        LOG("Updating sent message ID, new index" << sentIndex);
         emit lastReadSentMessageUpdated(sentIndex);
     }
 }
 
 void ChatModel::handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message)
 {
-    qDebug() << "[ChatModel] Message send succeeded, new message ID " << messageId << "old message ID " << oldMessageId << ", chat ID" << message.value("chat_id").toString();
-    qDebug() << "[ChatModel] index map: " << this->messageIndexMap.contains(oldMessageId) << ", index count: " << this->messageIndexMap.size() << ", message count: " << this->messages.size();
+    LOG("Message send succeeded, new message ID" << messageId << "old message ID" << oldMessageId << ", chat ID" << message.value(CHAT_ID).toString());
+    LOG("index map:" << messageIndexMap.contains(oldMessageId) << ", index count:" << messageIndexMap.size() << ", message count:" << messages.size());
     if (this->messageIndexMap.contains(oldMessageId)) {
         this->messagesMutex.lock();
-        qDebug() << "[ChatModel] Message was successfully sent " << oldMessageId;
+        LOG("Message was successfully sent" << oldMessageId);
         int messageIndex = this->messageIndexMap.value(oldMessageId).toInt();
         this->messages.replace(messageIndex, message);
         this->calculateMessageIndexMap();
-        qDebug() << "[ChatModel] Message was replaced at index " << messageIndex;
+        LOG("Message was replaced at index" << messageIndex);
         this->messagesMutex.unlock();
         emit dataChanged(index(messageIndex), index(messageIndex));
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
     }
 }
 
-void ChatModel::handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings)
+void ChatModel::handleChatNotificationSettingsUpdated(const QString &id, const QVariantMap &chatNotificationSettings)
 {
-    if (chatId == this->chatId) {
+    if (id.toLongLong() == chatId) {
         this->chatInformation.insert("notification_settings", chatNotificationSettings);
-        qDebug() << "[ChatModel] Notification settings updated";
+        LOG("Notification settings updated");
         emit notificationSettingsUpdated();
     }
 }
 
-void ChatModel::handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent)
+void ChatModel::handleChatPhotoUpdated(qlonglong id, const QVariantMap &photo)
 {
-    qDebug() << "[ChatModel] Message content updated" << chatId << messageId;
-    if (chatId == this->chatId && this->messageIndexMap.contains(messageId)) {
+    if (id == chatId) {
+        LOG("Chat photo updated" << chatId);
+        chatInformation.insert(PHOTO, photo);
+        emit smallPhotoChanged();
+    }
+}
+
+void ChatModel::handleMessageContentUpdated(const QString &id, const QString &messageId, const QVariantMap &newContent)
+{
+    LOG("Message content updated" << id << messageId);
+    if (id.toLongLong() == chatId && messageIndexMap.contains(messageId)) {
         this->messagesMutex.lock();
-        qDebug() << "[ChatModel] We know the message that was updated " << messageId;
+        LOG("We know the message that was updated " << messageId);
         int messageIndex = this->messageIndexMap.value(messageId).toInt();
         QVariantMap messageToBeUpdated = this->messages.at(messageIndex).toMap();
         messageToBeUpdated.insert("content", newContent);
         this->messages.replace(messageIndex, messageToBeUpdated);
         this->calculateMessageIndexMap();
-        qDebug() << "[ChatModel] Message was replaced at index " << messageIndex;
+        LOG("Message was replaced at index" << messageIndex);
         this->messagesMutex.unlock();
         emit messageUpdated(messageIndex);
         emit dataChanged(index(messageIndex), index(messageIndex));
     }
 }
 
-void ChatModel::handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds)
+void ChatModel::handleMessagesDeleted(const QString &id, const QVariantList &messageIds)
 {
-    qDebug() << "[ChatModel] Messages were deleted in a chat" << chatId;
-    if (chatId == this->chatId) {
+    LOG("Messages were deleted in a chat" << id);
+    if (id.toLongLong() == chatId) {
         this->messagesMutex.lock();
-        qDebug() << "[ChatModel] Messages in this chat were deleted...";
+        LOG("Messages in this chat were deleted...");
         QListIterator<QVariant> messageIdIterator(messageIds);
         while (messageIdIterator.hasNext()) {
             QString messageId = messageIdIterator.next().toString();
             if (this->messageIndexMap.contains(messageId)) {
                 int messageIndex = this->messageIndexMap.value(messageId).toInt();
                 beginRemoveRows(QModelIndex(), messageIndex, messageIndex);
-                qDebug() << "[ChatModel] ...and we even know this message!" << messageId << messageIndex;
+                LOG("...and we even know this message!" << messageId << messageIndex);
                 this->messages.removeAt(messageIndex);
                 this->calculateMessageIndexMap();
                 endRemoveRows();
@@ -277,7 +299,7 @@ void ChatModel::insertMessages()
         endResetModel();
     } else {
         // There is only an append or a prepend, tertium non datur! (probably ;))
-        if (this->messages.last().toMap().value("id").toLongLong() < this->messagesToBeAdded.first().toMap().value("id").toLongLong()) {
+        if (this->messages.last().toMap().value(ID).toLongLong() < this->messagesToBeAdded.first().toMap().value(ID).toLongLong()) {
             // Append
             this->insertRows(rowCount(QModelIndex()), this->messagesToBeAdded.size());
         } else {
@@ -320,36 +342,36 @@ QVariantMap ChatModel::enhanceMessage(const QVariantMap &message)
 
 int ChatModel::calculateLastKnownMessageId()
 {
-    qDebug() << "[ChatModel] calculateLastKnownMessageId";
+    LOG("calculateLastKnownMessageId");
     QString lastKnownMessageId = this->chatInformation.value("last_read_inbox_message_id").toString();
-    qDebug() << "[ChatModel] lastKnownMessageId" << lastKnownMessageId;
-    qDebug() << "[ChatModel] size messageIndexMap" << this->messageIndexMap.size();
-    qDebug() << "[ChatModel] contains ID?" << this->messageIndexMap.contains(lastKnownMessageId);
+    LOG("lastKnownMessageId" << lastKnownMessageId);
+    LOG("size messageIndexMap" << messageIndexMap.size());
+    LOG("contains ID?" << messageIndexMap.contains(lastKnownMessageId));
     int listInboxPosition = this->messageIndexMap.value(lastKnownMessageId, this->messages.size() - 1).toInt();
     if (listInboxPosition > this->messages.size() - 1 ) {
         listInboxPosition = this->messages.size() - 1;
     }
-    qDebug() << "[ChatModel] Last known message is at position" << listInboxPosition;
+    LOG("Last known message is at position" << listInboxPosition);
     return listInboxPosition;
 }
 
 int ChatModel::calculateLastReadSentMessageId()
 {
-    qDebug() << "[ChatModel] calculateLastReadSentMessageId";
+    LOG("calculateLastReadSentMessageId");
     QString lastReadSentMessageId = this->chatInformation.value("last_read_outbox_message_id").toString();
-    qDebug() << "[ChatModel] lastReadSentMessageId" << lastReadSentMessageId;
-    qDebug() << "[ChatModel] size messageIndexMap" << this->messageIndexMap.size();
-    qDebug() << "[ChatModel] contains ID?" << this->messageIndexMap.contains(lastReadSentMessageId);
+    LOG("lastReadSentMessageId" << lastReadSentMessageId);
+    LOG("size messageIndexMap" << messageIndexMap.size());
+    LOG("contains ID?" << messageIndexMap.contains(lastReadSentMessageId));
     int listOutboxPosition = this->messageIndexMap.value(lastReadSentMessageId, this->messages.size() - 1).toInt();
-    qDebug() << "[ChatModel] Last read sent message is at position" << listOutboxPosition;
+    LOG("Last read sent message is at position" << listOutboxPosition);
     return listOutboxPosition;
 }
 
 void ChatModel::calculateMessageIndexMap()
 {
-    qDebug() << "[ChatModel] calculateMessageIndexMap";
+    LOG("calculateMessageIndexMap");
     this->messageIndexMap.clear();
     for (int i = 0; i < this->messages.size(); i++) {
-        this->messageIndexMap.insert(this->messages.at(i).toMap().value("id").toString(), i);
+        this->messageIndexMap.insert(this->messages.at(i).toMap().value(ID).toString(), i);
     }
 }

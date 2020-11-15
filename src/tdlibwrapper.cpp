@@ -110,6 +110,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(
     connect(this->tdLibReceiver, SIGNAL(supergroupFullInfoUpdated(QString, QVariantMap)), this, SIGNAL(supergroupFullInfoUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(userProfilePhotos(QString, QVariantList, int)), this, SIGNAL(userProfilePhotosReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)), this, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SIGNAL(chatTitleUpdated(QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString)), this, SIGNAL(errorReceived(int, QString)));
@@ -264,7 +265,7 @@ void TDLibWrapper::leaveChat(const QString &chatId)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getChatHistory(const QString &chatId, const qlonglong &fromMessageId, int offset, int limit, bool onlyLocal)
+void TDLibWrapper::getChatHistory(qlonglong chatId, const qlonglong &fromMessageId, int offset, int limit, bool onlyLocal)
 {
     LOG("Retrieving chat history" << chatId << fromMessageId << offset << limit << onlyLocal);
     QVariantMap requestObject;
