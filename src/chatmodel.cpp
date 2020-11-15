@@ -30,6 +30,7 @@ namespace {
     const QString CHAT_ID("chat_id");
     const QString PHOTO("photo");
     const QString SMALL("small");
+    const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
 }
 
 ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
@@ -90,7 +91,7 @@ void ChatModel::initialize(const QVariantMap &chatInformation)
     this->messagesToBeAdded.clear();
     endResetModel();
     emit smallPhotoChanged();
-    tdLibWrapper->getChatHistory(chatId);
+    tdLibWrapper->getChatHistory(chatId, this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong());
 }
 
 void ChatModel::triggerLoadMoreHistory()
@@ -99,6 +100,15 @@ void ChatModel::triggerLoadMoreHistory()
         LOG("Trigger loading older history...");
         this->inIncrementalUpdate = true;
         this->tdLibWrapper->getChatHistory(chatId, messages.first().toMap().value(ID).toLongLong());
+    }
+}
+
+void ChatModel::triggerLoadMoreFuture()
+{
+    if (!this->inIncrementalUpdate && !messages.isEmpty()) {
+        LOG("Trigger loading newer future...");
+        this->inIncrementalUpdate = true;
+        this->tdLibWrapper->getChatHistory(chatId, messages.last().toMap().value(ID).toLongLong(), -49);
     }
 }
 
@@ -114,6 +124,11 @@ QVariantMap ChatModel::getMessage(int index)
     } else {
         return QVariantMap();
     }
+}
+
+int ChatModel::getLastReadMessageIndex()
+{
+    return this->messageIndexMap.value(this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toString()).toInt();
 }
 
 QVariantMap ChatModel::smallPhoto() const
@@ -149,17 +164,21 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
         QListIterator<QVariant> messagesIterator(messages);
         while (messagesIterator.hasNext()) {
             QVariantMap currentMessage = messagesIterator.next().toMap();
-            if (currentMessage.value(CHAT_ID).toLongLong() == chatId) {
+            if (currentMessage.value(CHAT_ID).toLongLong() == chatId && !this->messageIndexMap.contains(currentMessage.value(ID).toString())) {
+                LOG("New message will be added: " + currentMessage.value(ID).toString());
                 this->messagesToBeAdded.append(currentMessage);
             }
         }
+
         std::sort(this->messagesToBeAdded.begin(), this->messagesToBeAdded.end(), compareMessages);
 
-        this->insertMessages();
+        if (!this->messagesToBeAdded.isEmpty()) {
+            this->insertMessages();
+        }
         this->messagesMutex.unlock();
 
         // First call only returns a few messages, we need to get a little more than that...
-        if (this->messagesToBeAdded.size() < 10 && !this->inReload) {
+        if ((this->messagesToBeAdded.size() + this->messages.size()) < 10 && !this->inReload) {
             LOG("Only a few messages received in first call, loading more...");
             this->inReload = true;
             this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value(ID).toLongLong());
@@ -181,7 +200,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
 
 void ChatModel::handleNewMessageReceived(const QString &id, const QVariantMap &message)
 {
-    if (id.toLongLong() == chatId) {
+    if (id.toLongLong() == chatId && !this->messageIndexMap.contains(id)) {
         LOG("New message received for this chat");
         this->messagesMutex.lock();
 
@@ -199,7 +218,7 @@ void ChatModel::handleChatReadInboxUpdated(const QString &id, const QString &las
     if (id.toLongLong() == chatId) {
         LOG("Updating chat unread count, unread messages" << unreadCount << ", last read message ID:" << lastReadInboxMessageId);
         this->chatInformation.insert("unread_count", unreadCount);
-        this->chatInformation.insert("last_read_inbox_message_id", lastReadInboxMessageId);
+        this->chatInformation.insert(LAST_READ_INBOX_MESSAGE_ID, lastReadInboxMessageId);
         emit unreadCountUpdated(unreadCount, lastReadInboxMessageId);
     }
 }
@@ -299,11 +318,16 @@ void ChatModel::insertMessages()
         endResetModel();
     } else {
         // There is only an append or a prepend, tertium non datur! (probably ;))
-        if (this->messages.last().toMap().value(ID).toLongLong() < this->messagesToBeAdded.first().toMap().value(ID).toLongLong()) {
+        qlonglong lastKnownId = this->messages.last().toMap().value(ID).toLongLong();
+        qlonglong firstNewId = this->messagesToBeAdded.first().toMap().value(ID).toLongLong();
+        LOG("Inserting messages, last known ID: " + QString::number(lastKnownId) + ", first new ID: " + QString::number(firstNewId));
+        if (lastKnownId < firstNewId) {
             // Append
+            LOG("Appending new messages...");
             this->insertRows(rowCount(QModelIndex()), this->messagesToBeAdded.size());
         } else {
             // Prepend
+            LOG("Prepending new messages...");
             this->insertRows(0, this->messagesToBeAdded.size());
         }
     }
@@ -343,7 +367,7 @@ QVariantMap ChatModel::enhanceMessage(const QVariantMap &message)
 int ChatModel::calculateLastKnownMessageId()
 {
     LOG("calculateLastKnownMessageId");
-    QString lastKnownMessageId = this->chatInformation.value("last_read_inbox_message_id").toString();
+    QString lastKnownMessageId = this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toString();
     LOG("lastKnownMessageId" << lastKnownMessageId);
     LOG("size messageIndexMap" << messageIndexMap.size());
     LOG("contains ID?" << messageIndexMap.contains(lastKnownMessageId));

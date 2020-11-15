@@ -116,13 +116,18 @@ ListItem {
 
     Connections {
         target: chatModel
-        onUnreadCountUpdated: {
-            messageBackground.isUnread = index > ( chatView.count - unreadCount - 1 );
+        onMessagesReceived: {
+            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex();
+        }
+        onMessagesIncrementalUpdate: {
+            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex();
         }
         onNewMessageReceived: {
-            messageBackground.isUnread = index > ( chatView.count - page.chatInformation.unread_count - 1 );
+            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex();
         }
-
+        onUnreadCountUpdated: {
+            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex();
+        }
         onLastReadSentMessageUpdated: {
             console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + (index <= lastReadSentIndex));
             messageDateText.text = getMessageStatusText(myMessage, index, lastReadSentIndex, messageDateText.useElapsed);
@@ -216,6 +221,7 @@ ListItem {
 
             Rectangle {
                 id: messageBackground
+
                 anchors {
                     left: parent.left
                     leftMargin: messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0
@@ -223,7 +229,7 @@ ListItem {
                 }
                 height: messageTextColumn.height +  precalculatedValues.paddingMediumDouble
                 width: precalculatedValues.backgroundWidth
-                property bool isUnread: index > ( chatView.count - page.chatInformation.unread_count - 1 )
+                property bool isUnread: index > chatModel.getLastReadMessageIndex()
                 color: isUnread ? Theme.secondaryHighlightColor : Theme.secondaryColor
                 radius: parent.width / 50
                 opacity: isUnread ? 0.5 : 0.2

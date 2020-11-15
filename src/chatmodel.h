@@ -41,8 +41,10 @@ public:
 
     Q_INVOKABLE void initialize(const QVariantMap &chatInformation);
     Q_INVOKABLE void triggerLoadMoreHistory();
+    Q_INVOKABLE void triggerLoadMoreFuture();
     Q_INVOKABLE QVariantMap getChatInformation();
     Q_INVOKABLE QVariantMap getMessage(int index);
+    Q_INVOKABLE int getLastReadMessageIndex();
     QVariantMap smallPhoto() const;
 
 signals:

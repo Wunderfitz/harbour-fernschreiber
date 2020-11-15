@@ -356,6 +356,11 @@ Page {
             chatView.lastReadSentIndex = lastReadSentIndex;
             chatView.scrollToIndex(modelIndex);
             chatPage.loading = false;
+            if (modelIndex >= (chatView.count - 10)) {
+                chatView.inCooldown = true;
+                chatModel.triggerLoadMoreFuture();
+            }
+
             if (chatView.height > chatView.contentHeight) {
                 console.log("[ChatPage] Chat content quite small...");
                 viewMessageTimer.queueViewMessage(chatView.count - 1);
@@ -438,7 +443,7 @@ Page {
         onTriggered: {
             if(chatInformation.unread_count > 0 && lastQueuedIndex > -1) {
                 var messageToRead = chatModel.getMessage(lastQueuedIndex);
-                if(messageToRead && messageToRead.id) {
+                if (messageToRead && messageToRead.id) {
                     tdLibWrapper.viewMessage(chatInformation.id, messageToRead.id, false);
                 }
                 lastQueuedIndex = -1
@@ -620,9 +625,9 @@ Page {
 
                     function handleScrollPositionChanged() {
                         console.log("Current position: " + chatView.contentY);
-                        if(chatInformation.unread_count > 0) {
+                        if (chatInformation.unread_count > 0) {
                             var bottomIndex = chatView.indexAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin ));
-                            if(bottomIndex > -1) {
+                            if (bottomIndex > -1) {
                                 viewMessageTimer.queueViewMessage(bottomIndex)
                             }
                         }
@@ -640,10 +645,16 @@ Page {
                     }
 
                     onContentYChanged: {
-                        if (!chatPage.loading && !chatView.inCooldown && chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
-                            console.log("[ChatPage] Trying to get older history items...");
-                            chatView.inCooldown = true;
-                            chatModel.triggerLoadMoreHistory();
+                        if (!chatPage.loading && !chatView.inCooldown) {
+                            if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
+                                console.log("[ChatPage] Trying to get older history items...");
+                                chatView.inCooldown = true;
+                                chatModel.triggerLoadMoreHistory();
+                            } else if (chatView.indexAt(chatView.contentX, chatView.contentY) > ( count - 10)) {
+                                console.log("[ChatPage] Trying to get newer history items...");
+                                chatView.inCooldown = true;
+                                chatModel.triggerLoadMoreFuture();
+                            }
                         }
                     }
 
