@@ -118,6 +118,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateChatTitle", &TDLibReceiver::processUpdateChatTitle);
     handlers.insert("users", &TDLibReceiver::processUsers);
     handlers.insert("error", &TDLibReceiver::processError);
+    handlers.insert("ok", &TDLibReceiver::nop);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -507,4 +508,8 @@ void TDLibReceiver::processError(const QVariantMap &receivedInformation)
 {
     LOG("Received an error");
     emit errorReceived(receivedInformation.value("code").toInt(), receivedInformation.value("message").toString());
+}
+
+void TDLibReceiver::nop(const QVariantMap &)
+{
 }

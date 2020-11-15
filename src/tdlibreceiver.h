@@ -138,6 +138,7 @@ private:
     void processUpdateChatTitle(const QVariantMap &receivedInformation);
     void processUsers(const QVariantMap &receivedInformation);
     void processError(const QVariantMap &receivedInformation);
+    void nop(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H
