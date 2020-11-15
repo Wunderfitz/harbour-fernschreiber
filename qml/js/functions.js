@@ -298,15 +298,15 @@ function enhanceMessageText(formattedText) {
 
     messageText = messageText.replace(new RegExp("\r?\n", "g"), "<br>");
 
-    var spaceRegex = /\s{2,}/g;
-    function spaceReplacer(match, p1, offset, string) {
-        var replaceString = "";
-        for (var i = 0; i < match.length; i++) {
-            replaceString += "&nbsp;";
-        }
-        return replaceString;
-    }
-    messageText = messageText.replace(spaceRegex, spaceReplacer);
+//    var spaceRegex = /\s{2,}/g;
+//    function spaceReplacer(match, p1, offset, string) {
+//        var replaceString = "";
+//        for (var i = 0; i < match.length; i++) {
+//            replaceString += "&nbsp;";
+//        }
+//        return replaceString;
+//    }
+//    messageText = messageText.replace(spaceRegex, spaceReplacer);
 
     return messageText;
 
