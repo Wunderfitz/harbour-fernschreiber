@@ -347,6 +347,10 @@
             <numerusform></numerusform>
         </translation>
     </message>
+    <message>
+        <source>You are already a member of this chat.</source>
+        <translation type="unfinished">Du är redan medlem i den här chatten.</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

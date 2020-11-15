@@ -347,6 +347,10 @@
             <numerusform>Forward %n messages</numerusform>
         </translation>
     </message>
+    <message>
+        <source>You are already a member of this chat.</source>
+        <translation type="unfinished">You are already a member of this chat.</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

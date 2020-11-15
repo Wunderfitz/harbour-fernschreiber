@@ -351,6 +351,10 @@
             <numerusform></numerusform>
         </translation>
     </message>
+    <message>
+        <source>You are already a member of this chat.</source>
+        <translation type="unfinished">Вы уже в этом чате.</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
