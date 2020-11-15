@@ -13,11 +13,11 @@
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Enviar correo</translation>
+        <translation>Enviar correo-e</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Usa la licencia GNU GPLv3</translation>
+        <translation>Usa la licencia GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
@@ -37,11 +37,11 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Este proyecto usa la biblioteca TDLib de Telegram. ¡Gracias por estar disponible bajo las condiciones de la licencia de software-boost 1.0!</translation>
+        <translation>Este proyecto usa la librería TDLib de Telegram. ¡Gracias por estar disponible bajo las condiciones de la licencia de software-boost 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Biblioteca TDLib</translation>
+        <translation>Librería TDLib</translation>
     </message>
     <message>
         <source>About Telegram</source>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Este proyecto usa la biblioteca twemoji de Tweeter. Derechos de autor 2018 Twitter, Inc. y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT (codificación) y CC-BY 4.0 (gráficos)!</translation>
+        <translation>Este proyecto usa la librería twemoji de Tweeter. Derechos de autor 2018 Twitter, Inc. y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT (codificación) y CC-BY 4.0 (gráficos)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -77,11 +77,11 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation type="unfinished"></translation>
+        <translation>Este proyecto usa la librería rlottie de Samsung Electronics Co. Y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Librería rlottie</translation>
     </message>
 </context>
 <context>
@@ -127,12 +127,12 @@
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Saliendo de la charla</translation>
+        <translation>Saliendo del grupo</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation>Detalles</translation>
+        <translation>Información</translation>
     </message>
     <message>
         <source>Phone Number</source>
@@ -151,7 +151,7 @@
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation>Título de charla</translation>
+        <translation>Título del grupo</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
@@ -159,11 +159,11 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation>Salir de charla</translation>
+        <translation>Salir del grupo</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation>Unirse a charla</translation>
+        <translation>Unirse al grupo</translation>
     </message>
 </context>
 <context>
@@ -171,7 +171,7 @@
     <message>
         <source>Loading common chats…</source>
         <comment>chats you have in common with a user</comment>
-        <translation>Cargando charlas comunes…</translation>
+        <translation>Cargando las charlas comunes…</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -205,7 +205,7 @@
     </message>
     <message>
         <source>Channel members are anonymous.</source>
-        <translation type="unfinished"></translation>
+        <translation>Los miembros del grupo son anónimos.</translation>
     </message>
 </context>
 <context>
@@ -236,15 +236,15 @@
     </message>
     <message>
         <source>User Info</source>
-        <translation>detalle de usuario</translation>
+        <translation>Usuario</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation>Detalle  de grupo</translation>
+        <translation>Grupo</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
-        <translation>Marcar todos los mensajes como leídos</translation>
+        <translation>Marcar todos como leídos</translation>
     </message>
 </context>
 <context>
@@ -255,7 +255,7 @@
     </message>
     <message>
         <source>Your message</source>
-        <translation>Introducir texto</translation>
+        <translation>Abc</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
@@ -299,19 +299,19 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation>Salir de charla</translation>
+        <translation>Salir del grupo</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation>Unirse a charla</translation>
+        <translation>Unirse al grupo</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Saliendo de charla</translation>
+        <translation>Saliendo del grupo</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
-        <translation>Te uniste a charla</translation>
+        <translation>Te uniste al grupo</translation>
     </message>
     <message>
         <source>Select Messages</source>
@@ -371,7 +371,7 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Esperando conexión...</translation>
+        <translation>Esperando la red...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
@@ -439,12 +439,12 @@
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation>Cambiar detalle de la charla</translation>
+        <translation>Cambiar detalles de charla</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation>Invitar a usuarios</translation>
+        <translation>Invitar usuarios</translation>
     </message>
     <message>
         <source>Pin Messages</source>
@@ -540,20 +540,20 @@
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>se unió a esta charla</translation>
+        <translation>se unió al grupo</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>se unió a esta charla</translation>
+        <translation>se unió a este grupo</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>se añadió a esta charla</translation>
+        <translation>se añadió a este grupo</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>se añadió a esta charla</translation>
+        <translation>se añadió al grupo</translation>
     </message>
     <message>
         <source>left this chat</source>
@@ -585,11 +585,11 @@
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation>el título del charla se cambió</translation>
+        <translation>el título de charla se cambió</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation>el título del charla se cambió</translation>
+        <translation>el título de charla se cambió</translation>
     </message>
     <message>
         <source>sent a poll</source>
@@ -621,20 +621,20 @@
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>cambió la foto de charla</translation>
+        <translation>cambió la foto del grupo</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation>cambió la foto de charla</translation>
+        <translation>cambió la foto del grupo</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>borró la foto de charla</translation>
+        <translation>borró la foto de la charla</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>borró la foto de charla</translation>
+        <translation>borró la foto de la charla</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
@@ -743,7 +743,7 @@
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Introducir número de teléfono para continuar.</translation>
+        <translation>Marcar número de teléfono para continuar.</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -751,7 +751,7 @@
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Introducir el código recibido:</translation>
+        <translation>Marcar el código recibido:</translation>
     </message>
     <message>
         <source>Loading...</source>
@@ -763,7 +763,7 @@
     </message>
     <message>
         <source>Enter code again</source>
-        <translation>Introducir código de nuevo</translation>
+        <translation>Marcar código de nuevo</translation>
     </message>
     <message>
         <source>Restart authentication</source>
@@ -771,7 +771,7 @@
     </message>
     <message>
         <source>Please enter your password:</source>
-        <translation>Por favor, introducir el código:</translation>
+        <translation>Por favor, marcar el código:</translation>
     </message>
     <message>
         <source>Register User</source>
@@ -779,11 +779,11 @@
     </message>
     <message>
         <source>Enter your First Name</source>
-        <translation>Introducir el nombre</translation>
+        <translation>Marcar el nombre</translation>
     </message>
     <message>
         <source>Enter your Last Name</source>
-        <translation>Introducir el apellido</translation>
+        <translation>Marcar el apellido</translation>
     </message>
     <message>
         <source>User Registration</source>
@@ -791,7 +791,7 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation>Usar el formato internacional, Ejemplo.</translation>
+        <translation>Usar el formato internacional %1</translation>
     </message>
 </context>
 <context>
@@ -894,7 +894,7 @@
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ya eres miembro de este grupo.</translation>
     </message>
 </context>
 <context>
@@ -909,7 +909,7 @@
     </message>
     <message>
         <source>You have to enter a question.</source>
-        <translation>Introducir  una pregunta.</translation>
+        <translation>Hacer una pregunta.</translation>
     </message>
     <message>
         <source>The question has to be shorter than 256 characters.</source>
@@ -1115,15 +1115,15 @@
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation type="unfinished"></translation>
+        <translation>Integrar opción abrir-con</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation type="unfinished"></translation>
+        <translation>Integra Fernschreiber con la opción abrir-con de Sailfish SO</translation>
     </message>
     <message>
         <source>Animate stickers</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar pegatinas animadas</translation>
     </message>
 </context>
 <context>
@@ -1344,11 +1344,11 @@
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>se cambió el título de la charla a %1</translation>
+        <translation>se cambió el título de charla a %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation>se cambió el título de la charla a %1</translation>
+        <translation>se cambió el título de charla a %1</translation>
     </message>
     <message>
         <source>sent a poll</source>
@@ -1418,16 +1418,16 @@
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation>cambió la foto de charla</translation>
+        <translation>cambió la foto del grupo</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>borró la foto de charla</translation>
+        <translation>borró la foto del grupo</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>borró la foto de charla</translation>
+        <translation>borró la foto del grupo</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
@@ -1456,11 +1456,11 @@
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>creó un pantallazo en esta charla</translation>
+        <translation>creó un pantallazo a esta charla</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>creó un pantallazo en esta charla</translation>
+        <translation>creó un pantallazo a esta charla</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
@@ -1505,16 +1505,16 @@
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al buscar %1</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió una nota de video</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished"></translation>
+        <translation>envió una nota de video</translation>
     </message>
 </context>
 </TS>
