@@ -40,6 +40,7 @@ namespace {
     const QString VALUE("value");
     const QString POSITION("position");
     const QString POSITIONS("positions");
+    const QString PHOTO("photo");
     const QString ORDER("order");
     const QString BASIC_GROUP("basic_group");
     const QString SUPERGROUP("supergroup");
@@ -124,6 +125,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateSupergroupFullInfo", &TDLibReceiver::processUpdateSupergroupFullInfo);
     handlers.insert("userProfilePhotos", &TDLibReceiver::processUserProfilePhotos);
     handlers.insert("updateChatPermissions", &TDLibReceiver::processUpdateChatPermissions);
+    handlers.insert("updateChatPhoto", &TDLibReceiver::processUpdateChatPhoto);
     handlers.insert("updateChatTitle", &TDLibReceiver::processUpdateChatTitle);
     handlers.insert("users", &TDLibReceiver::processUsers);
     handlers.insert("error", &TDLibReceiver::processError);
@@ -489,6 +491,13 @@ void TDLibReceiver::processUserProfilePhotos(const QVariantMap &receivedInformat
 void TDLibReceiver::processUpdateChatPermissions(const QVariantMap &receivedInformation)
 {
     emit chatPermissionsUpdated(receivedInformation.value(CHAT_ID).toString(), receivedInformation.value("permissions").toMap());
+}
+
+void TDLibReceiver::processUpdateChatPhoto(const QVariantMap &receivedInformation)
+{
+    const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
+    LOG("Photo updated for chat" << chatId);
+    emit chatPhotoUpdated(chatId, receivedInformation.value(PHOTO).toMap());
 }
 
 void TDLibReceiver::processUpdateChatTitle(const QVariantMap &receivedInformation)

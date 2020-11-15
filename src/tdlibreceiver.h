@@ -79,9 +79,11 @@ signals:
     void supergroupFullInfoUpdated(const QString &groupId, const QVariantMap &groupFullInfo);
     void userProfilePhotos(const QString &extra, const QVariantList &photos, int totalPhotos);
     void chatPermissionsUpdated(const QString &chatId, const QVariantMap &chatPermissions);
+    void chatPhotoUpdated(qlonglong chatId, const QVariantMap &photo);
     void chatTitleUpdated(const QString &chatId, const QString &title);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
     void errorReceived(const int code, const QString &message);
+
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
 
@@ -135,6 +137,7 @@ private:
     void processUpdateSupergroupFullInfo(const QVariantMap &receivedInformation);
     void processUserProfilePhotos(const QVariantMap &receivedInformation);
     void processUpdateChatPermissions(const QVariantMap &receivedInformation);
+    void processUpdateChatPhoto(const QVariantMap &receivedInformation);
     void processUpdateChatTitle(const QVariantMap &receivedInformation);
     void processUsers(const QVariantMap &receivedInformation);
     void processError(const QVariantMap &receivedInformation);
