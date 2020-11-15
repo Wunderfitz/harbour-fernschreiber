@@ -7,7 +7,7 @@ import "../js/functions.js" as Functions
 PhotoTextsListItem {
     id: listItem
     pictureThumbnail {
-        photoData: photo_small
+        photoData: photo_small || ({})
     }
     property int ownUserId
     property url emojiBase: "../js/emoji/"

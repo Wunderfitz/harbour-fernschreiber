@@ -31,16 +31,31 @@ ListItem {
     readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
     readonly property int textAlign: isOwnMessage ? Text.AlignRight : Text.AlignLeft
     readonly property Page page: precalculatedValues.page
-
+    readonly property bool isSelected: messageListItem.precalculatedValues.pageIsSelecting && page.selectedMessages.some(function(existingMessage) {
+        return existingMessage.id === myMessage.id;
+    });
     readonly property bool isOwnMessage: page.myUserId === myMessage.sender_user_id
     readonly property string extraContentComponentName: typeof myMessage.content !== "undefined"
                                                && typeof chatView.contentComponentNames[myMessage.content['@type']]  !== "undefined" ?
                                                    chatView.contentComponentNames[myMessage.content['@type']] : ""
 
     readonly property ObjectModel additionalContextItems: ObjectModel {}
+    highlighted: down || isSelected
+    openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
+
+    onClicked: {
+        if(messageListItem.precalculatedValues.pageIsSelecting) {
+            page.toggleMessageSelection(myMessage);
+        }
+    }
 
     onPressAndHold: {
-        contextMenuLoader.active = true;
+        if(messageListItem.precalculatedValues.pageIsSelecting) {
+            page.selectedMessages = [];
+            page.state = ""
+        } else {
+            contextMenuLoader.active = true;
+        }
     }
     Loader {
         id: contextMenuLoader
@@ -79,6 +94,12 @@ ListItem {
                         Clipboard.text = Functions.getMessageText(myMessage, true, false);
                     }
                     text: qsTr("Copy Message to Clipboard")
+                }
+                MenuItem {
+                    onClicked: {
+                        page.toggleMessageSelection(myMessage);
+                    }
+                    text: qsTr("Select Message")
                 }
                 MenuItem {
                     onClicked: {
@@ -171,13 +192,14 @@ ListItem {
             sourceComponent: Component {
                 ProfileThumbnail {
                     id: messagePictureThumbnail
-                    photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ""
+                    photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ({})
                     replacementStringHint: userText.text
                     width: Theme.itemSizeSmall
                     height: Theme.itemSizeSmall
                     visible: precalculatedValues.showUserInfo
                     MouseArea {
                         anchors.fill: parent
+                        enabled: !messageListItem.precalculatedValues.pageIsSelecting
                         onClicked: {
                             tdLibWrapper.createPrivateChat(messageListItem.userInformation.id);
                         }
@@ -234,6 +256,7 @@ ListItem {
                     visible: precalculatedValues.showUserInfo
                     MouseArea {
                         anchors.fill: parent
+                        enabled: !messageListItem.precalculatedValues.pageIsSelecting
                         onClicked: {
                             tdLibWrapper.createPrivateChat(messageListItem.userInformation.id);
                         }
@@ -272,11 +295,11 @@ ListItem {
                             Component.onCompleted: {
                                 if (myMessage.forward_info.origin["@type"] === "messageForwardOriginChannel") {
                                     var otherChatInformation = tdLibWrapper.getChat(myMessage.forward_info.origin.chat_id);
-                                    forwardedThumbnail.photoData = (typeof otherChatInformation.photo !== "undefined") ? otherChatInformation.photo.small : "";
+                                    forwardedThumbnail.photoData = (typeof otherChatInformation.photo !== "undefined") ? otherChatInformation.photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(otherChatInformation.title, Theme.fontSizeExtraSmall);
                                 } else if (myMessage.forward_info.origin["@type"] === "messageForwardOriginUser") {
                                     var otherUserInformation = tdLibWrapper.getUserInformation(myMessage.forward_info.origin.sender_user_id);
-                                    forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : "";
+                                    forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(Functions.getUserName(otherUserInformation), Theme.fontSizeExtraSmall);
                                 } else {
                                     forwardedChannelText.text = Emoji.emojify(myMessage.forward_info.origin.sender_name, Theme.fontSizeExtraSmall);
@@ -405,6 +428,7 @@ ListItem {
                     text: getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed)
                     MouseArea {
                         anchors.fill: parent
+                        enabled: !messageListItem.precalculatedValues.pageIsSelecting
                         onClicked: {
                             messageDateText.useElapsed = !messageDateText.useElapsed;
                             messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
