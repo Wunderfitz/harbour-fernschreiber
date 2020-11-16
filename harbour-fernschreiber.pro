@@ -51,6 +51,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/PhotoTextsListItem.qml \
     qml/components/WebPagePreview.qml \
     qml/components/chatInformationPage/ChatInformationEditArea.qml \
+    qml/components/chatInformationPage/ChatInformationPageContent.qml \
     qml/components/chatInformationPage/ChatInformationProfilePicture.qml \
     qml/components/chatInformationPage/ChatInformationProfilePictureList.qml \
     qml/components/chatInformationPage/ChatInformationTabItemBase.qml \

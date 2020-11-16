@@ -30,15 +30,12 @@ Item {
     property alias loadingVisible: loadingColumn.loadingVisible
     property string loadingText
 
-    property int tabIndex: tabItem.VisualItemModel.index
-    property bool active: tabItem.ListView.isCurrentItem
+    property int tabIndex: index
+    property bool active: index === tabView.currentIndex
 
     default property alias _data: contentItem.data
 
-
-    width: parent.width
-    height: tabView.maxHeight//Math.max(contentItem.height, loadingColumn.height)
-    opacity: active ? 1.0 : 0.0
+    opacity: active ? 1.0 : 0.2
     Behavior on opacity { PropertyAnimation {duration: 300}}
 
     Column {

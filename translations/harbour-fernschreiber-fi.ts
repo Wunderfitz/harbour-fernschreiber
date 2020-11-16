@@ -96,74 +96,74 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationPage</name>
-    <message>
-        <source>Unmute Chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Vaimenna keskustelu</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Tuntematon</translation>
-    </message>
-    <message>
-        <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>Kutsulinkki on kopioitu leikepöydälle.</translation>
-    </message>
+    <name>ChatInformationPageContent</name>
     <message>
         <source>%1 members, %2 online</source>
-        <translation>%1 jäsentä, %2 paikalla</translation>
+        <translation type="unfinished">%1 jäsentä, %2 paikalla</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation>%1 tilaajaa</translation>
+        <translation type="unfinished">%1 tilaajaa</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 jäsentä</translation>
+        <translation type="unfinished">%1 jäsentä</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation type="unfinished">Poistu keskustelusta</translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation type="unfinished">Liity keskusteluun</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Poistutaan keskustelusta</translation>
+        <translation type="unfinished">Poistutaan keskustelusta</translation>
     </message>
     <message>
-        <source>Info</source>
-        <comment>group or user infotext header</comment>
-        <translation>Tietoa</translation>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">Poista keskustelun vaimennus</translation>
     </message>
     <message>
-        <source>Phone Number</source>
-        <comment>user phone number header</comment>
-        <translation>Puhelinnumero</translation>
+        <source>Mute Chat</source>
+        <translation type="unfinished">Vaimenna keskustelu</translation>
     </message>
     <message>
-        <source>Invite Link</source>
-        <comment>header</comment>
-        <translation>Kutsulinkki</translation>
-    </message>
-    <message>
-        <source>There is no information text available, yet.</source>
-        <translation>Tietoa ei ole vielä saatavilla.</translation>
+        <source>Unknown</source>
+        <translation type="unfinished">Tuntematon</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation>Keskustelun otsikko</translation>
+        <translation type="unfinished">Keskustelun otsikko</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation>Syötä 1-128 merkkiä</translation>
+        <translation type="unfinished">Syötä 1-128 merkkiä</translation>
     </message>
     <message>
-        <source>Leave Chat</source>
-        <translation>Poistu keskustelusta</translation>
+        <source>There is no information text available, yet.</source>
+        <translation type="unfinished">Tietoa ei ole vielä saatavilla.</translation>
     </message>
     <message>
-        <source>Join Chat</source>
-        <translation>Liity keskusteluun</translation>
+        <source>Info</source>
+        <comment>group or user infotext header</comment>
+        <translation type="unfinished">Tietoa</translation>
+    </message>
+    <message>
+        <source>Phone Number</source>
+        <comment>user phone number header</comment>
+        <translation type="unfinished">Puhelinnumero</translation>
+    </message>
+    <message>
+        <source>Invite Link</source>
+        <comment>header</comment>
+        <translation type="unfinished">Kutsulinkki</translation>
+    </message>
+    <message>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation type="unfinished">Kutsulinkki on kopioitu leikepöydälle.</translation>
     </message>
 </context>
 <context>
@@ -176,16 +176,6 @@
     <message>
         <source>Unknown</source>
         <translation>Tuntematon</translation>
-    </message>
-    <message>
-        <source>Groups</source>
-        <comment>Button: groups in common (short)</comment>
-        <translation>Ryhmät</translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <comment>Button: Group Members</comment>
-        <translation>Jäsenet</translation>
     </message>
     <message>
         <source>Loading group members…</source>
@@ -209,11 +199,21 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationTabItemSettings</name>
+    <name>ChatInformationTabView</name>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation type="unfinished">Ryhmät</translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation type="unfinished">Jäsenet</translation>
+    </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation>Asetukset</translation>
+        <translation type="unfinished">Asetukset</translation>
     </message>
 </context>
 <context>

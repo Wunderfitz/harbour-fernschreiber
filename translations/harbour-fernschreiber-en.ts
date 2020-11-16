@@ -96,74 +96,74 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationPage</name>
-    <message>
-        <source>Unmute Chat</source>
-        <translation>Unmute Chat</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Mute Chat</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Unknown</translation>
-    </message>
-    <message>
-        <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>The Invite Link has been copied to the clipboard.</translation>
-    </message>
+    <name>ChatInformationPageContent</name>
     <message>
         <source>%1 members, %2 online</source>
-        <translation>%1 members, %2 online</translation>
+        <translation type="unfinished">%1 members, %2 online</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation>%1 subscribers</translation>
+        <translation type="unfinished">%1 subscribers</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 members</translation>
+        <translation type="unfinished">%1 members</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation type="unfinished">Leave Chat</translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation type="unfinished">Join Chat</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Leaving chat</translation>
+        <translation type="unfinished">Leaving chat</translation>
     </message>
     <message>
-        <source>Info</source>
-        <comment>group or user infotext header</comment>
-        <translation>Info</translation>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">Unmute Chat</translation>
     </message>
     <message>
-        <source>Phone Number</source>
-        <comment>user phone number header</comment>
-        <translation>Phone Number</translation>
+        <source>Mute Chat</source>
+        <translation type="unfinished">Mute Chat</translation>
     </message>
     <message>
-        <source>Invite Link</source>
-        <comment>header</comment>
-        <translation>Invite Link</translation>
-    </message>
-    <message>
-        <source>There is no information text available, yet.</source>
-        <translation>There is no information text available, yet.</translation>
+        <source>Unknown</source>
+        <translation type="unfinished">Unknown</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation>Chat Title</translation>
+        <translation type="unfinished">Chat Title</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation>Enter 1-128 characters</translation>
+        <translation type="unfinished">Enter 1-128 characters</translation>
     </message>
     <message>
-        <source>Leave Chat</source>
-        <translation>Leave Chat</translation>
+        <source>There is no information text available, yet.</source>
+        <translation type="unfinished">There is no information text available, yet.</translation>
     </message>
     <message>
-        <source>Join Chat</source>
-        <translation>Join Chat</translation>
+        <source>Info</source>
+        <comment>group or user infotext header</comment>
+        <translation type="unfinished">Info</translation>
+    </message>
+    <message>
+        <source>Phone Number</source>
+        <comment>user phone number header</comment>
+        <translation type="unfinished">Phone Number</translation>
+    </message>
+    <message>
+        <source>Invite Link</source>
+        <comment>header</comment>
+        <translation type="unfinished">Invite Link</translation>
+    </message>
+    <message>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation type="unfinished">The Invite Link has been copied to the clipboard.</translation>
     </message>
 </context>
 <context>
@@ -176,16 +176,6 @@
     <message>
         <source>Unknown</source>
         <translation>Unknown</translation>
-    </message>
-    <message>
-        <source>Groups</source>
-        <comment>Button: groups in common (short)</comment>
-        <translation>Groups</translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <comment>Button: Group Members</comment>
-        <translation>Members</translation>
     </message>
     <message>
         <source>Loading group members…</source>
@@ -209,11 +199,21 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationTabItemSettings</name>
+    <name>ChatInformationTabView</name>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation type="unfinished">Groups</translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation type="unfinished">Members</translation>
+    </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation>Settings</translation>
+        <translation type="unfinished">Settings</translation>
     </message>
 </context>
 <context>

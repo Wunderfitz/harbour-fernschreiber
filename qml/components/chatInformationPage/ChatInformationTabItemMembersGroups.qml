@@ -27,8 +27,6 @@ import "../../js/functions.js" as Functions
 
 ChatInformationTabItemBase {
     id: tabBase
-    title: chatInformationPage.isPrivateChat ? qsTr("Groups", "Button: groups in common (short)") : qsTr("Members", "Button: Group Members")
-    image: "image://theme/icon-m-people"
     loadingText:  isPrivateChat ? qsTr("Loading common chats…", "chats you have in common with a user") : qsTr("Loading group members…")
     loading: ( chatInformationPage.isSuperGroup || chatInformationPage.isPrivateChat) && !chatInformationPage.isChannel
     loadingVisible: loading && membersView.count === 0
@@ -37,7 +35,7 @@ ChatInformationTabItemBase {
 
     SilicaListView {
         id: membersView
-        model: isPrivateChat ? (chatPartnerCommonGroupsIds.length > 0 ? delegateModel : null) : chatInformationPage.membersList
+        model: chatInformationPage.isPrivateChat ? (chatPartnerCommonGroupsIds.length > 0 ? delegateModel : null) : pageContent.membersList
         clip: true
         height: tabBase.height
         width: tabBase.width
@@ -46,9 +44,9 @@ ChatInformationTabItemBase {
         function handleScrollIntoView(force){
             if(!tabBase.loading && !dragging && !quickScrollAnimating ) {
                 if(!atYBeginning) {
-                    chatInformationPage.scrollDown()
+                    pageContent.scrollDown()
                 } else {
-                    chatInformationPage.scrollUp(force);
+                    pageContent.scrollUp(force);
                 }
             }
         }
@@ -59,8 +57,9 @@ ChatInformationTabItemBase {
             handleScrollIntoView()
         }
         onAtYEndChanged: {
-            if(tabBase.active && !tabBase.loading && chatInformationPage.isSuperGroup && (groupInformation.member_count > membersView.count) && membersView.atYEnd) {
+            if(tabBase.active && !tabBase.loading && chatInformationPage.isSuperGroup && (chatInformationPage.groupInformation.member_count > membersView.count) && membersView.atYEnd) {
                 tabBase.loading = true;
+                console.log("LOAD MEMBERS BECAUSE ATYEND")
                 fetchMoreMembersTimer.start()
             }
         }
@@ -78,7 +77,7 @@ ChatInformationTabItemBase {
             }
             width: parent.width
 
-            // chat title    isPrivateChat ? () :
+            // chat title
             primaryText.text: Emoji.emojify(Functions.getUserName(user), primaryText.font.pixelSize, "../js/emoji/")
             // last user
             prologSecondaryText.text: "@"+(user.username !== "" ? user.username : user_id) + (user_id === chatInformationPage.myUserId ? " " + qsTr("You") : "")
@@ -100,7 +99,7 @@ ChatInformationTabItemBase {
         }
         footer: Component {
             Item {
-                property bool active: tabBase.active && chatInformationPage.isSuperGroup && (groupInformation.member_count > membersView.count)
+                property bool active: tabBase.active && chatInformationPage.isSuperGroup && (chatInformationPage.groupInformation.member_count > membersView.count)
                 width: tabBase.width
                 height: active ? Theme.itemSizeLarge : Theme.paddingMedium
 
@@ -174,9 +173,9 @@ ChatInformationTabItemBase {
         interval: 600
         property int fetchLimit: 50
         onTriggered: {
-            if(isSuperGroup && !isChannel) {
+            if(chatInformationPage.isSuperGroup && !chatInformationPage.isChannel && (chatInformationPage.groupInformation.member_count > membersView.count)) { //
                 tabBase.loading = true
-                tdLibWrapper.getSupergroupMembers(chatInformationPage.chatPartnerGroupId, fetchLimit, membersList.count);
+                tdLibWrapper.getSupergroupMembers(chatInformationPage.chatPartnerGroupId, fetchLimit, pageContent.membersList.count);
                 fetchLimit = 200
                 interval = 400
             }
@@ -187,20 +186,20 @@ ChatInformationTabItemBase {
         target: tdLibWrapper
 
         onChatMembersReceived: {
-            if (isSuperGroup && chatInformationPage.chatPartnerGroupId === extra) {
-                if(members && members.length > 0) {
+            if (chatInformationPage.isSuperGroup && chatInformationPage.chatPartnerGroupId === extra) {
+                if(members && members.length > 0 && chatInformationPage.groupInformation.member_count > membersView.count) {
                     for(var memberIndex in members) {
                         var memberData = members[memberIndex];
                         var userInfo = tdLibWrapper.getUserInformation(memberData.user_id) || {user:{}, bot_info:{}};
                         memberData.user = userInfo;
                         memberData.bot_info = memberData.bot_info || {};
-                        membersList.append(memberData);
+                        pageContent.membersList.append(memberData);
                     }
-                    groupInformation.member_count = totalMembers
+                    chatInformationPage.groupInformation.member_count = totalMembers
                     updateGroupStatusText();
-                    if(membersList.count < totalMembers) {
+//                    if(pageContent.membersList.count < totalMembers) {
 //                        fetchMoreMembersTimer.start()
-                    }
+//                    }
                 }
                 // if we set it directly, the views start scrolling
                 loadedTimer.start();
@@ -224,9 +223,9 @@ ChatInformationTabItemBase {
     }
 
     Component.onCompleted: {
-        if(isPrivateChat) {
+        if(chatInformationPage.isPrivateChat) {
             tdLibWrapper.getGroupsInCommon(chatInformationPage.chatPartnerGroupId, 200, 0); // we only use the first 200
-        } else if(isSuperGroup) {
+        } else if(chatInformationPage.isSuperGroup) {
             fetchMoreMembersTimer.start();
         }
     }

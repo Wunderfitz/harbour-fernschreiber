@@ -96,23 +96,7 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationPage</name>
-    <message>
-        <source>Unmute Chat</source>
-        <translation type="unfinished">Csevegés némítás feloldása</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation type="unfinished">Csevegés némítása</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation type="unfinished">Ismeretlen</translation>
-    </message>
-    <message>
-        <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
-    </message>
+    <name>ChatInformationPageContent</name>
     <message>
         <source>%1 members, %2 online</source>
         <translation type="unfinished">%1 tag, %2 online</translation>
@@ -126,7 +110,40 @@
         <translation type="unfinished">%1 tag</translation>
     </message>
     <message>
+        <source>Leave Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Leaving chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">Csevegés némítás feloldása</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation type="unfinished">Csevegés némítása</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">Ismeretlen</translation>
+    </message>
+    <message>
+        <source>Chat Title</source>
+        <comment>group title header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter 1-128 characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There is no information text available, yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -145,24 +162,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>There is no information text available, yet.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chat Title</source>
-        <comment>group title header</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter 1-128 characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Join Chat</source>
+        <source>The Invite Link has been copied to the clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -176,16 +176,6 @@
     <message>
         <source>Unknown</source>
         <translation type="unfinished">Ismeretlen</translation>
-    </message>
-    <message>
-        <source>Groups</source>
-        <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <comment>Button: Group Members</comment>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Loading group members…</source>
@@ -209,7 +199,17 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationTabItemSettings</name>
+    <name>ChatInformationTabView</name>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
