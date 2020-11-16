@@ -273,7 +273,7 @@ Page {
                     (chatGroupInformation.status["@type"] === "chatMemberStatusMember" && chatGroupInformation.status.permissions[privilege])
                     || chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator"
                     || chatGroupInformation.status["@type"] === "chatMemberStatusCreator"
-                    || (chatGroupInformation.status["@type"] === "chatMemberStatusRestricted" && chatInformation.permissions[privilege])
+                    || (chatGroupInformation.status["@type"] === "chatMemberStatusRestricted" && chatGroupInformation.status.permissions[privilege])
                  )
     }
 
