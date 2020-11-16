@@ -227,7 +227,7 @@ ListItem {
                     leftMargin: messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0
                     verticalCenter: parent.verticalCenter
                 }
-                height: messageTextColumn.height +  precalculatedValues.paddingMediumDouble
+                height: messageTextColumn.height + precalculatedValues.paddingMediumDouble
                 width: precalculatedValues.backgroundWidth
                 property bool isUnread: index > chatModel.getLastReadMessageIndex()
                 color: isUnread ? Theme.secondaryHighlightColor : Theme.secondaryColor
@@ -390,10 +390,6 @@ ListItem {
                         id: webPagePreviewComponent
                         WebPagePreview {
                             id: webPagePreview
-
-                            Component.onCompleted: {
-                                webPagePreviewLoader.height = 0;
-                            }
 
                             onImplicitHeightChanged: {
                                 webPagePreviewLoader.height = webPagePreview.implicitHeight;

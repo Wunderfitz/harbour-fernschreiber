@@ -1159,6 +1159,13 @@
     </message>
 </context>
 <context>
+    <name>WebPagePreview</name>
+    <message>
+        <source>Preview not supported for this link...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>functions</name>
     <message>
         <source>Video: %1</source>

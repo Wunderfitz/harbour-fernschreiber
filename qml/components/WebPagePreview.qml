@@ -145,4 +145,19 @@ Column {
         }
     }
 
+    Text {
+        id: noPreviewAvailableText
+
+        width: parent.width
+        text: qsTr("Preview not supported for this link...")
+        font.pixelSize: Theme.fontSizeTiny
+        font.italic: true
+        color: Theme.secondaryColor
+        elide: Text.ElideRight
+        wrapMode: Text.Wrap
+        maximumLineCount: 1
+        textFormat: Text.StyledText
+        visible: !siteNameText.visible && !titleText.visible && !descriptionText.visible && !webPagePreviewImageItem.visible
+    }
+
 }
