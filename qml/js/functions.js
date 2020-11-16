@@ -412,7 +412,7 @@ function getMessagesNeededForwardPermissions(messages) {
 
     var mediaMessageTypes = ["messageAudio", "messageDocument", "messagePhoto", "messageVideo", "messageVideoNote", "messageVoiceNote"];
     var otherMessageTypes = ["messageAnimation", "messageGame", "messageSticker"]
-    for(var i = 0; i < messages.length; i += 1) {
+    for(var i = 0; i < messages.length && neededPermissions.length < 3; i += 1) {
         var type = messages[i]["content"]["@type"];
         var permission = "";
         if(type === "messageText") {
