@@ -898,6 +898,13 @@
     </message>
 </context>
 <context>
+    <name>PinnedMessageItem</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">You</translation>
+    </message>
+</context>
+<context>
     <name>PollCreationPage</name>
     <message>
         <source>All answers have to contain 1-100 characters.</source>

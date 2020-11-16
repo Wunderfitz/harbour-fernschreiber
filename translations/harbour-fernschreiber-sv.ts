@@ -898,6 +898,13 @@
     </message>
 </context>
 <context>
+    <name>PinnedMessageItem</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Du</translation>
+    </message>
+</context>
+<context>
     <name>PollCreationPage</name>
     <message>
         <source>You have to enter a question.</source>
