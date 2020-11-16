@@ -155,7 +155,7 @@
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation>Introducir 1-128 caracteres</translation>
+        <translation>Marcar los caracteres 1-128</translation>
     </message>
     <message>
         <source>Leave Chat</source>
@@ -315,48 +315,48 @@
     </message>
     <message>
         <source>Select Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar mensajes</translation>
     </message>
     <message numerus="yes">
         <source>%n Messages deleted</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Mensajes borrados</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n messages have been copied</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n se han copiado los mensajes</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n mensajes seleccionados</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>Forward %n messages</source>
         <comment>dialog header</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Reenviar %n mensajes</numerusform>
         </translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation type="unfinished">Ya eres miembro de este grupo.</translation>
+        <translation>Ya eres miembro de este grupo.</translation>
     </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
     <message>
         <source>Select Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar charla</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished">No hay todavía ninguna charla.</translation>
+        <translation>No hay todavía ninguna charla.</translation>
     </message>
 </context>
 <context>
@@ -763,7 +763,7 @@
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
-        <translation>No se pudo autenticar con el código introducido.</translation>
+        <translation>No se pudo autenticar con el código marcado.</translation>
     </message>
     <message>
         <source>Enter code again</source>
@@ -837,7 +837,7 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar mensaje</translation>
     </message>
 </context>
 <context>
@@ -935,7 +935,7 @@
     </message>
     <message>
         <source>Enter your question here</source>
-        <translation>Introducir su pregunta aquí</translation>
+        <translation>Marcar su pregunta aquí</translation>
     </message>
     <message numerus="yes">
         <source>Question (%n1 characters left)</source>
@@ -950,7 +950,7 @@
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation>Introducir una respuesta aquí</translation>
+        <translation>Marcar una respuesta aquí</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%n1 characters left)</source>
