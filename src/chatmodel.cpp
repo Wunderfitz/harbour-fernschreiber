@@ -22,6 +22,7 @@
 #include <QListIterator>
 #include <QByteArray>
 #include <QBitArray>
+#include <QDebug>
 
 #define LOG(x) qDebug() << "[ChatModel]" << x
 
@@ -178,7 +179,6 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
         }
     } else {
         if (this->isMostRecentMessageLoaded() || this->inIncrementalUpdate) {
-            this->messagesMutex.lock();
             this->messagesToBeAdded.clear();
             QListIterator<QVariant> messagesIterator(messages);
             while (messagesIterator.hasNext()) {
@@ -194,7 +194,6 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
             if (!this->messagesToBeAdded.isEmpty()) {
                 this->insertMessages();
             }
-            this->messagesMutex.unlock();
 
             // First call only returns a few messages, we need to get a little more than that...
             if (!this->messagesToBeAdded.isEmpty() && (this->messagesToBeAdded.size() + this->messages.size()) < 10 && !this->inReload) {
@@ -228,13 +227,11 @@ void ChatModel::handleNewMessageReceived(const QString &id, const QVariantMap &m
     if (id.toLongLong() == chatId && !this->messageIndexMap.contains(id)) {
         if (this->isMostRecentMessageLoaded()) {
             LOG("New message received for this chat");
-            this->messagesMutex.lock();
 
             this->messagesToBeAdded.clear();
             this->messagesToBeAdded.append(message);
 
             this->insertMessages();
-            this->messagesMutex.unlock();
             emit newMessageReceived(message);
         } else {
             LOG("New message in this chat, but not relevant as less recent messages need to be loaded first!");
@@ -267,13 +264,11 @@ void ChatModel::handleMessageSendSucceeded(const QString &messageId, const QStri
     LOG("Message send succeeded, new message ID" << messageId << "old message ID" << oldMessageId << ", chat ID" << message.value(CHAT_ID).toString());
     LOG("index map:" << messageIndexMap.contains(oldMessageId) << ", index count:" << messageIndexMap.size() << ", message count:" << messages.size());
     if (this->messageIndexMap.contains(oldMessageId)) {
-        this->messagesMutex.lock();
         LOG("Message was successfully sent" << oldMessageId);
         int messageIndex = this->messageIndexMap.value(oldMessageId).toInt();
         this->messages.replace(messageIndex, message);
         this->calculateMessageIndexMap();
         LOG("Message was replaced at index" << messageIndex);
-        this->messagesMutex.unlock();
         emit dataChanged(index(messageIndex), index(messageIndex));
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
     }
@@ -301,7 +296,6 @@ void ChatModel::handleMessageContentUpdated(const QString &id, const QString &me
 {
     LOG("Message content updated" << id << messageId);
     if (id.toLongLong() == chatId && messageIndexMap.contains(messageId)) {
-        this->messagesMutex.lock();
         LOG("We know the message that was updated " << messageId);
         int messageIndex = this->messageIndexMap.value(messageId).toInt();
         QVariantMap messageToBeUpdated = this->messages.at(messageIndex).toMap();
@@ -309,7 +303,6 @@ void ChatModel::handleMessageContentUpdated(const QString &id, const QString &me
         this->messages.replace(messageIndex, messageToBeUpdated);
         this->calculateMessageIndexMap();
         LOG("Message was replaced at index" << messageIndex);
-        this->messagesMutex.unlock();
         emit messageUpdated(messageIndex);
         emit dataChanged(index(messageIndex), index(messageIndex));
     }
@@ -319,7 +312,6 @@ void ChatModel::handleMessagesDeleted(const QString &id, const QVariantList &mes
 {
     LOG("Messages were deleted in a chat" << id);
     if (id.toLongLong() == chatId) {
-        this->messagesMutex.lock();
         LOG("Messages in this chat were deleted...");
         QListIterator<QVariant> messageIdIterator(messageIds);
         while (messageIdIterator.hasNext()) {
@@ -333,7 +325,6 @@ void ChatModel::handleMessagesDeleted(const QString &id, const QVariantList &mes
                 endRemoveRows();
             }
         }
-        this->messagesMutex.unlock();
         emit messagesDeleted();
     }
 }
