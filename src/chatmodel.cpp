@@ -197,7 +197,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
             this->messagesMutex.unlock();
 
             // First call only returns a few messages, we need to get a little more than that...
-            if ((this->messagesToBeAdded.size() + this->messages.size()) < 10 && !this->inReload) {
+            if (!this->messagesToBeAdded.isEmpty() && (this->messagesToBeAdded.size() + this->messages.size()) < 10 && !this->inReload) {
                 LOG("Only a few messages received in first call, loading more...");
                 this->inReload = true;
                 this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value(ID).toLongLong());

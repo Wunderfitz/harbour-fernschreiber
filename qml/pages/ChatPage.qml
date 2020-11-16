@@ -42,6 +42,7 @@ Page {
     property var chatGroupInformation;
     property int chatOnlineMemberCount: 0;
     property var emojiProposals;
+    property bool iterativeInitialization: false;
     readonly property bool userIsMember: (isPrivateChat && chatInformation["@type"]) || // should be optimized
                                 (isBasicGroup || isSuperGroup) && (
                                     (chatGroupInformation.status["@type"] === "chatMemberStatusMember")
@@ -349,11 +350,16 @@ Page {
         target: chatModel
         onMessagesReceived: {
             console.log("[ChatPage] Messages received, view has " + chatView.count + " messages, setting view to index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
-            if(totalCount === 0) {
-                console.log("[ChatPage] actually, skipping that: No Messages in Chat.");
-                chatView.positionViewAtEnd();
-                chatPage.loading = false;
-                return;
+            if (totalCount === 0) {
+                if (chatPage.iterativeInitialization) {
+                    chatPage.iterativeInitialization = false;
+                    console.log("[ChatPage] actually, skipping that: No Messages in Chat.");
+                    chatView.positionViewAtEnd();
+                    chatPage.loading = false;
+                    return;
+                } else {
+                    chatPage.iterativeInitialization = true;
+                }
             }
 
             chatView.lastReadSentIndex = lastReadSentIndex;
