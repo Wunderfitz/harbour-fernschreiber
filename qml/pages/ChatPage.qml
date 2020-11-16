@@ -145,10 +145,14 @@ Page {
             updateGroupStatusText();
         }
         if (stickerManager.needsReload()) {
-            console.log("Stickers will be reloaded!");
+            console.log("[ChatPage] Stickers will be reloaded!");
             tdLibWrapper.getRecentStickers();
             tdLibWrapper.getInstalledStickerSets();
             stickerManager.setNeedsReload(false);
+        }
+        if (chatInformation.pinned_message_id.toString() !== "0") {
+            console.log("[ChatPage] Loading pinned message " + chatInformation.pinned_message_id);
+            tdLibWrapper.getMessage(chatInformation.id, chatInformation.pinned_message_id);
         }
     }
 
@@ -359,6 +363,12 @@ Page {
         onErrorReceived: {
             Functions.handleErrorMessage(code, message);
         }
+        onReceivedMessage: {
+            if (messageId === chatInformation.pinned_message_id.toString()) {
+                console.log("[ChatPage] Received pinned message");
+                pinnedMessageItem.pinnedMessage = message;
+            }
+        }
     }
 
     Connections {
@@ -535,6 +545,7 @@ Page {
                 }
             }
         }
+
         Column {
             id: chatColumn
             width: parent.width
@@ -589,10 +600,14 @@ Page {
                 }
             }
 
+            PinnedMessageItem {
+                id: pinnedMessageItem
+            }
+
             Item {
                 id: chatViewItem
                 width: parent.width
-                height: parent.height - headerRow.height -  newMessageColumn.height - selectedMessagesActions.height
+                height: parent.height - headerRow.height - ( pinnedMessageItem.visible ? pinnedMessageItem.height : 0 ) - newMessageColumn.height - selectedMessagesActions.height
 
                 property int previousHeight;
 
@@ -1256,7 +1271,6 @@ Page {
                     }
                 }
             }
-
         }
     }
 
