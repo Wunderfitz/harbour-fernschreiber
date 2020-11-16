@@ -347,10 +347,6 @@
             <numerusform>%n Nachrichten weiterleiten</numerusform>
         </translation>
     </message>
-    <message>
-        <source>You are already a member of this chat.</source>
-        <translation>Sie sind bereits Mitglied dieses Chats.</translation>
-    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -899,10 +895,6 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Sie haben noch keine Chats.</translation>
-    </message>
-    <message>
-        <source>You are already a member of this chat.</source>
-        <translation>Sie sind bereits Mitglied dieses Chats.</translation>
     </message>
 </context>
 <context>
@@ -1529,6 +1521,10 @@
     <message>
         <source>sent a video note</source>
         <translation>hat eine Videonachricht geschickt</translation>
+    </message>
+    <message>
+        <source>You are already a member of this chat.</source>
+        <translation>Sie sind bereits Mitglied dieses Chats.</translation>
     </message>
 </context>
 </TS>

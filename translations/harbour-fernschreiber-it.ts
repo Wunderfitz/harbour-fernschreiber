@@ -347,10 +347,6 @@
             <numerusform></numerusform>
         </translation>
     </message>
-    <message>
-        <source>You are already a member of this chat.</source>
-        <translation type="unfinished">Sei già membro di questa chat.</translation>
-    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -899,10 +895,6 @@
     <message>
         <source>Loading chat list...</source>
         <translation>Carica lista chat...</translation>
-    </message>
-    <message>
-        <source>You are already a member of this chat.</source>
-        <translation>Sei già membro di questa chat.</translation>
     </message>
 </context>
 <context>
@@ -1529,6 +1521,10 @@
     <message>
         <source>sent a video note</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are already a member of this chat.</source>
+        <translation>Sei già membro di questa chat.</translation>
     </message>
 </context>
 </TS>

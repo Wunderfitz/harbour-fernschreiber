@@ -160,11 +160,7 @@ Page {
             }
         }
         onErrorReceived: {
-            if (message === "USER_ALREADY_PARTICIPANT") {
-                appNotification.show(qsTr("You are already a member of this chat."));
-            } else {
-                appNotification.show(message);
-            }
+            Functions.handleErrorMessage(code, message);
         }
     }
 

@@ -347,10 +347,6 @@
             <numerusform>Forward %n messages</numerusform>
         </translation>
     </message>
-    <message>
-        <source>You are already a member of this chat.</source>
-        <translation type="unfinished">You are already a member of this chat.</translation>
-    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -899,10 +895,6 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>You don&apos;t have any chats yet.</translation>
-    </message>
-    <message>
-        <source>You are already a member of this chat.</source>
-        <translation>You are already a member of this chat.</translation>
     </message>
 </context>
 <context>
@@ -1529,6 +1521,10 @@
     <message>
         <source>sent a video note</source>
         <translation>sent a video note</translation>
+    </message>
+    <message>
+        <source>You are already a member of this chat.</source>
+        <translation>You are already a member of this chat.</translation>
     </message>
 </context>
 </TS>

@@ -343,10 +343,6 @@
             <numerusform>Reenviar %n mensajes</numerusform>
         </translation>
     </message>
-    <message>
-        <source>You are already a member of this chat.</source>
-        <translation>Ya eres miembro de este grupo.</translation>
-    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -895,10 +891,6 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>No hay todavía ninguna charla.</translation>
-    </message>
-    <message>
-        <source>You are already a member of this chat.</source>
-        <translation>Ya eres miembro de este grupo.</translation>
     </message>
 </context>
 <context>
@@ -1519,6 +1511,10 @@
     <message>
         <source>sent a video note</source>
         <translation>envió una nota de video</translation>
+    </message>
+    <message>
+        <source>You are already a member of this chat.</source>
+        <translation>Ya eres miembro de este grupo.</translation>
     </message>
 </context>
 </TS>

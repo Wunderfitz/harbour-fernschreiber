@@ -394,3 +394,15 @@ function getMessagesArrayText(messages) {
     }
     return lines.join("\n");
 }
+
+function handleErrorMessage(code, message) {
+    if (code === 404) {
+        // Silently ignore 404 Not Found messages (occur sometimes, without clear context...)
+        return;
+    }
+    if (message === "USER_ALREADY_PARTICIPANT") {
+        appNotification.show(qsTr("You are already a member of this chat."));
+    } else {
+        appNotification.show(message);
+    }
+}
