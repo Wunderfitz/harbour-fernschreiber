@@ -31,6 +31,10 @@ Dialog {
     acceptDestinationReplaceTarget: pageStack.find( function(page){ return(page._depth === 0)} )
     property alias headerTitle: pageHeader.title
     property alias headerDescription: pageHeader.description
+    /*
+        payload dependent on chatSelectionPage.state
+         - forwardMessages: {fromChatId, messageIds, neededPermissions}
+    */
     property var payload: ({})
 
     onAccepted: {
@@ -38,6 +42,7 @@ Dialog {
         case "forwardMessages":
             acceptDestinationInstance.forwardMessages(payload.fromChatId, payload.messageIds)
             break;
+        // future uses of chat selection can be processed here
         }
     }
 
@@ -62,7 +67,52 @@ Dialog {
         model: chatListModel
         delegate: ChatListViewItem {
             ownUserId: overviewPage.ownUserId
+            Loader { // checking permissions takes a while, so we defer those calculations
+                id: visibleLoader
+                asynchronous: true
+                sourceComponent: Component {
+                    QtObject {
+                        property var chatGroupInformation: ({})
+                        property bool visible: false
+                        Component.onCompleted: {
+                            if(chatSelectionPage.state === "forwardMessages") {
+                                var chatType = display.type['@type'];
+                                if(chatType === "chatTypePrivate" || chatType === "chatTypeSecret") {
+                                    visible = true
+                                    return;
+                                }
+                                else if (chatType === "chatTypeBasicGroup" ) {
+                                    chatGroupInformation = tdLibWrapper.getBasicGroup(display.type.basic_group_id);
+                                }
+                                else if (chatType === "chatTypeSupergroup" ) {
+                                    chatGroupInformation = tdLibWrapper.getSuperGroup(display.type.supergroup_id);
+                                }
 
+                                visible = (chatGroupInformation.status["@type"] === "chatMemberStatusCreator"
+                                        || chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator"
+                                        || (chatGroupInformation.status["@type"] === "chatMemberStatusMember"
+                                                && chatSelectionPage.payload.neededPermissions.every(function(neededPermission){
+                                                    return display.permissions[neededPermission];
+                                                })
+                                            )
+                                        );
+                            } else { // future uses of chat selection can be processed here
+                                visible = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            property bool valid: visibleLoader && visibleLoader.item && visibleLoader.item.visible
+            opacity: valid ? 1.0 : 0.5
+
+            Behavior on opacity { FadeAnimation {}}
+            Behavior on height { NumberAnimation {}}
+
+            // normal height while calculating, otherwise all elements get displayed at once
+            height: !visibleLoader.item || visible ? contentHeight : 0
+            enabled: valid
             onClicked: {
                 var chat = tdLibWrapper.getChat(display.id);
                 switch(chatSelectionPage.state) {

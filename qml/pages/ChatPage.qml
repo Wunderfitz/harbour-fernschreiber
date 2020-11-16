@@ -266,6 +266,17 @@ Page {
         forwardMessagesTimer.messageIds = messageIds;
         forwardMessagesTimer.start();
     }
+    function hasSendPrivilege(privilege) {
+        return chatPage.isPrivateChat ||
+                chatGroupInformation &&
+                (
+                    (chatGroupInformation.status["@type"] === "chatMemberStatusMember" && chatGroupInformation.status.permissions[privilege])
+                    || chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator"
+                    || chatGroupInformation.status["@type"] === "chatMemberStatusCreator"
+                    || (chatGroupInformation.status["@type"] === "chatMemberStatusRestricted" && chatInformation.permissions[privilege])
+                 )
+    }
+
     Timer {
         id: forwardMessagesTimer
         interval: 200
@@ -822,7 +833,7 @@ Page {
                 topPadding: Theme.paddingSmall
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 anchors.horizontalCenter: parent.horizontalCenter
-                visible: !chatPage.isChannel
+                visible: chatPage.hasSendPrivilege("can_send_messages")
                 height: visible ? implicitHeight : 0
                 Behavior on opacity { FadeAnimation {} }
 
@@ -859,7 +870,7 @@ Page {
                     layoutDirection: Qt.RightToLeft
                     spacing: Theme.paddingMedium
                     IconButton {
-                        id: imageAttachmentButton
+                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-image"
                         onClicked: {
                             var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
@@ -874,7 +885,7 @@ Page {
                         }
                     }
                     IconButton {
-                        id: videoAttachmentButton
+                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-video"
                         onClicked: {
                             var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage");
@@ -889,7 +900,7 @@ Page {
                         }
                     }
                     IconButton {
-                        id: documentAttachmentButton
+                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-document"
                         onClicked: {
                             var picker = pageStack.push("Sailfish.Pickers.DocumentPickerPage");
@@ -905,6 +916,8 @@ Page {
                     }
 
                     IconButton {
+
+                        visible: chatPage.hasSendPrivilege("can_send_other_messages")
                         icon.source: "../../images/icon-m-sticker.svg"
                         icon.sourceSize {
                             width: Theme.iconSizeMedium
@@ -917,10 +930,7 @@ Page {
                         }
                     }
                     IconButton {
-                        visible: !chatPage.isPrivateChat && chatGroupInformation &&
-                                 (chatGroupInformation.status["@type"] === "chatMemberStatusCreator"
-                                  || chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator"
-                                  || (chatGroupInformation.status["@type"] === "chatMemberStatusMember" && chatInformation.permissions.can_send_polls))
+                        visible: !chatPage.isPrivateChat && chatPage.hasSendPrivilege("can_send_polls")
                         icon.source: "image://theme/icon-m-question"
                         onClicked: {
                             pageStack.push(Qt.resolvedUrl("../pages/PollCreationPage.qml"), { "chatId" : chatInformation.id, groupName: chatInformation.title});
@@ -1205,12 +1215,11 @@ Page {
                             icon.source: "image://theme/icon-m-forward"
                             onClicked: {
                                 var ids = Functions.getMessagesArrayIds(chatPage.selectedMessages);
-
+                                var neededPermissions = Functions.getMessagesNeededForwardPermissions(chatPage.selectedMessages);
                                 var chatId = chatInformation.id;
-
                                 pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
                                     headerDescription: qsTr("Forward %n messages", "dialog header", ids.length).arg(ids.length),
-                                    payload: {fromChatId: chatId, messageIds:ids},
+                                    payload: {fromChatId: chatId, messageIds:ids, neededPermissions: neededPermissions},
                                     state: "forwardMessages"
                                 });
                             }

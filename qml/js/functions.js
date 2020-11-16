@@ -406,3 +406,28 @@ function handleErrorMessage(code, message) {
         appNotification.show(message);
     }
 }
+
+function getMessagesNeededForwardPermissions(messages) {
+    var neededPermissions = ["can_send_messages"];
+
+    var mediaMessageTypes = ["messageAudio", "messageDocument", "messagePhoto", "messageVideo", "messageVideoNote", "messageVoiceNote"];
+    var otherMessageTypes = ["messageAnimation", "messageGame", "messageSticker"]
+    for(var i = 0; i < messages.length; i += 1) {
+        var type = messages[i]["content"]["@type"];
+        var permission = "";
+        if(type === "messageText") {
+            continue;
+        } else if(type === "messagePoll") {
+            permission = "can_send_polls";
+        } else if(mediaMessageTypes.indexOf(type) > -1) {
+            permission = "can_send_media_messages";
+        } else if(otherMessageTypes.indexOf(type) > -1) {
+            permission = "can_send_other_messages";
+        }
+
+        if(permission !== "" && neededPermissions.indexOf(permission) === -1) {
+            neededPermissions.push(permission);
+        }
+    }
+    return neededPermissions;
+}
