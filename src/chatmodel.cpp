@@ -30,6 +30,7 @@ namespace {
     const QString CHAT_ID("chat_id");
     const QString PHOTO("photo");
     const QString SMALL("small");
+    const QString UNREAD_COUNT("unread_count");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString SENDER_USER_ID("sender_user_id");
 }
@@ -129,10 +130,22 @@ QVariantMap ChatModel::getMessage(int index)
 
 int ChatModel::getLastReadMessageIndex()
 {
+    LOG("Obtaining last read message index");
     if (this->messages.isEmpty()) {
+        LOG("Messages are empty, nothing to do...");
         return 0;
+    } else if (this->messages.last().toMap().value(SENDER_USER_ID).toString() == tdLibWrapper->getUserInformation().value(ID).toString()) {
+        LOG("Last message is an own one, then simply set the last read to the last one...");
+        return this->messages.size() - 1;
     } else {
-        return (this->messages.last().toMap().value(SENDER_USER_ID).toString() == tdLibWrapper->getUserInformation().value(ID).toString()) ? (this->messages.size() - 1) : this->messageIndexMap.value(this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toString()).toInt();
+        int lastReadMessageIndex = this->messageIndexMap.value(this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toString()).toInt();
+        if (lastReadMessageIndex == 0) {
+            LOG("Last read message not found in the list of messages. That shouldn't happen, therefore setting the unread indicator to the end of the list.");
+            return this->messages.size() - 1;
+        } else {
+            LOG("Found last read message in the already loaded messages. Index: " << lastReadMessageIndex);
+            return lastReadMessageIndex;
+        }
     }
 }
 
@@ -164,40 +177,47 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
             emit messagesReceived(listInboxPosition, listOutboxPosition, totalCount);
         }
     } else {
-        this->messagesMutex.lock();
-        this->messagesToBeAdded.clear();
-        QListIterator<QVariant> messagesIterator(messages);
-        while (messagesIterator.hasNext()) {
-            QVariantMap currentMessage = messagesIterator.next().toMap();
-            if (currentMessage.value(CHAT_ID).toLongLong() == chatId && !this->messageIndexMap.contains(currentMessage.value(ID).toString())) {
-                LOG("New message will be added: " + currentMessage.value(ID).toString());
-                this->messagesToBeAdded.append(currentMessage);
+        if (this->isMostRecentMessageLoaded() || this->inIncrementalUpdate) {
+            this->messagesMutex.lock();
+            this->messagesToBeAdded.clear();
+            QListIterator<QVariant> messagesIterator(messages);
+            while (messagesIterator.hasNext()) {
+                QVariantMap currentMessage = messagesIterator.next().toMap();
+                if (currentMessage.value(CHAT_ID).toLongLong() == chatId && !this->messageIndexMap.contains(currentMessage.value(ID).toString())) {
+                    LOG("New message will be added: " + currentMessage.value(ID).toString());
+                    this->messagesToBeAdded.append(currentMessage);
+                }
             }
-        }
 
-        std::sort(this->messagesToBeAdded.begin(), this->messagesToBeAdded.end(), compareMessages);
+            std::sort(this->messagesToBeAdded.begin(), this->messagesToBeAdded.end(), compareMessages);
 
-        if (!this->messagesToBeAdded.isEmpty()) {
-            this->insertMessages();
-        }
-        this->messagesMutex.unlock();
+            if (!this->messagesToBeAdded.isEmpty()) {
+                this->insertMessages();
+            }
+            this->messagesMutex.unlock();
 
-        // First call only returns a few messages, we need to get a little more than that...
-        if ((this->messagesToBeAdded.size() + this->messages.size()) < 10 && !this->inReload) {
-            LOG("Only a few messages received in first call, loading more...");
-            this->inReload = true;
-            this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value(ID).toLongLong());
-        } else {
-            LOG("Messages loaded, notifying chat UI...");
-            this->inReload = false;
-            int listInboxPosition = this->calculateLastKnownMessageId();
-            int listOutboxPosition = this->calculateLastReadSentMessageId();
-            if (this->inIncrementalUpdate) {
-                this->inIncrementalUpdate = false;
-                emit messagesIncrementalUpdate(listInboxPosition, listOutboxPosition);
+            // First call only returns a few messages, we need to get a little more than that...
+            if ((this->messagesToBeAdded.size() + this->messages.size()) < 10 && !this->inReload) {
+                LOG("Only a few messages received in first call, loading more...");
+                this->inReload = true;
+                this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value(ID).toLongLong());
             } else {
-                emit messagesReceived(listInboxPosition, listOutboxPosition, totalCount);
+                LOG("Messages loaded, notifying chat UI...");
+                this->inReload = false;
+                int listInboxPosition = this->calculateLastKnownMessageId();
+                int listOutboxPosition = this->calculateLastReadSentMessageId();
+                if (this->inIncrementalUpdate) {
+                    this->inIncrementalUpdate = false;
+                    emit messagesIncrementalUpdate(listInboxPosition, listOutboxPosition);
+                } else {
+                    emit messagesReceived(listInboxPosition, listOutboxPosition, totalCount);
+                }
             }
+        } else {
+            // Cleanup... Is that really needed? Well, let's see...
+            this->inReload = false;
+            this->inIncrementalUpdate = false;
+            LOG("New messages in this chat, but not relevant as less recent messages need to be loaded first!");
         }
     }
 
@@ -206,15 +226,19 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
 void ChatModel::handleNewMessageReceived(const QString &id, const QVariantMap &message)
 {
     if (id.toLongLong() == chatId && !this->messageIndexMap.contains(id)) {
-        LOG("New message received for this chat");
-        this->messagesMutex.lock();
+        if (this->isMostRecentMessageLoaded()) {
+            LOG("New message received for this chat");
+            this->messagesMutex.lock();
 
-        this->messagesToBeAdded.clear();
-        this->messagesToBeAdded.append(message);
+            this->messagesToBeAdded.clear();
+            this->messagesToBeAdded.append(message);
 
-        this->insertMessages();
-        this->messagesMutex.unlock();
-        emit newMessageReceived(message);
+            this->insertMessages();
+            this->messagesMutex.unlock();
+            emit newMessageReceived(message);
+        } else {
+            LOG("New message in this chat, but not relevant as less recent messages need to be loaded first!");
+        }
     }
 }
 
@@ -403,4 +427,11 @@ void ChatModel::calculateMessageIndexMap()
     for (int i = 0; i < this->messages.size(); i++) {
         this->messageIndexMap.insert(this->messages.at(i).toMap().value(ID).toString(), i);
     }
+}
+
+bool ChatModel::isMostRecentMessageLoaded()
+{
+    // Need to check if we can actually add messages (only possible if the previously latest messages are loaded)
+    // Trying with half of the size of an initial list to ensure that everything is there...
+    return this->getLastReadMessageIndex() >= this->messages.size() - 25;
 }

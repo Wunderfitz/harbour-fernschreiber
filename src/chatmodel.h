@@ -85,6 +85,7 @@ private:
     int calculateLastKnownMessageId();
     int calculateLastReadSentMessageId();
     void calculateMessageIndexMap();
+    bool isMostRecentMessageLoaded();
 };
 
 #endif // CHATMODEL_H
