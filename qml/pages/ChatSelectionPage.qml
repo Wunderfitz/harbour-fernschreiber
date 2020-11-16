@@ -29,6 +29,7 @@ Dialog {
     canAccept: false
     acceptDestinationAction: PageStackAction.Replace
     acceptDestinationReplaceTarget: pageStack.find( function(page){ return(page._depth === 0)} )
+    property int myUserId: tdLibWrapper.getUserInformation().id;
     property alias headerTitle: pageHeader.title
     property alias headerDescription: pageHeader.description
     /*
@@ -66,7 +67,7 @@ Dialog {
 
         model: chatListModel
         delegate: ChatListViewItem {
-            ownUserId: overviewPage.ownUserId
+            ownUserId: chatSelectionPage.myUserId
             Loader { // checking permissions takes a while, so we defer those calculations
                 id: visibleLoader
                 asynchronous: true
@@ -105,13 +106,13 @@ Dialog {
             }
 
             property bool valid: visibleLoader && visibleLoader.item && visibleLoader.item.visible
-            opacity: valid ? 1.0 : 0.5
+            opacity: valid ? 1.0 : 0
 
             Behavior on opacity { FadeAnimation {}}
             Behavior on height { NumberAnimation {}}
 
             // normal height while calculating, otherwise all elements get displayed at once
-            height: !visibleLoader.item || visible ? contentHeight : 0
+            height: !visibleLoader.item || valid ? contentHeight : 0
             enabled: valid
             onClicked: {
                 var chat = tdLibWrapper.getChat(display.id);

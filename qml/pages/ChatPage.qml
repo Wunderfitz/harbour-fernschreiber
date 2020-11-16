@@ -1208,7 +1208,7 @@ Page {
                                 leftMargin: visible ? Theme.paddingSmall : 0
                                 verticalCenter: parent.verticalCenter
                             }
-                            visible: chatPage.chatInformation.can_be_forwarded &&  selectedMessages.every(function(message){
+                            visible: selectedMessages.every(function(message){
                                 return message.can_be_forwarded
                             })
                             width: visible ? Theme.itemSizeMedium : 0
@@ -1218,6 +1218,7 @@ Page {
                                 var neededPermissions = Functions.getMessagesNeededForwardPermissions(chatPage.selectedMessages);
                                 var chatId = chatInformation.id;
                                 pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
+                                    myUserId: chatPage.myUserId,
                                     headerDescription: qsTr("Forward %n messages", "dialog header", ids.length).arg(ids.length),
                                     payload: {fromChatId: chatId, messageIds:ids, neededPermissions: neededPermissions},
                                     state: "forwardMessages"
