@@ -24,7 +24,8 @@ Item {
     id: imagePreviewItem
 
     property ListItem messageListItem
-    property var rawMessage: messageListItem.myMessage
+    property MessageOverlayFlickable overlayFlickable
+    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
     property var photoData: rawMessage.content.photo;
     property var pictureFileInformation;
 
