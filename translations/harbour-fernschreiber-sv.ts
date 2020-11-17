@@ -315,36 +315,36 @@
     </message>
     <message>
         <source>Select Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj meddelanden</translation>
     </message>
     <message numerus="yes">
         <source>%n Messages deleted</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n meddelande borttaget</numerusform>
+            <numerusform>%n meddelanden borttagna</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n messages have been copied</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n meddelande har kopierats</numerusform>
+            <numerusform>%n meddelanden har kopierats</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n meddelande valt</numerusform>
+            <numerusform>%n meddelanden valda</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>Forward %n messages</source>
         <comment>dialog header</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vidarebefordra %n meddelande</numerusform>
+            <numerusform>Vidarebefordra %n meddelanden</numerusform>
         </translation>
     </message>
 </context>
@@ -352,11 +352,11 @@
     <name>ChatSelectionPage</name>
     <message>
         <source>Select Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj chatt</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished">Du har inga chattar än.</translation>
+        <translation>Du har inga chattar än.</translation>
     </message>
 </context>
 <context>
@@ -837,7 +837,7 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj meddelande</translation>
     </message>
 </context>
 <context>
@@ -1162,7 +1162,7 @@
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation type="unfinished"></translation>
+        <translation>Stöd för förhandsvisning av denna länk saknas...</translation>
     </message>
 </context>
 <context>
@@ -1523,11 +1523,11 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade en videonotis</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished"></translation>
+        <translation>skickade en videonotis</translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
