@@ -114,7 +114,7 @@ SilicaFlickable {
 
         onChatOnlineMemberCountUpdated: {
             if ((chatInformationPage.isSuperGroup || chatInformationPage.isBasicGroup) && chatInformationPage.chatInformation.id.toString() === chatId) {
-                chatInformationPage.chatOnlineMemberCount = chatInformationPage.onlineMemberCount;
+                chatInformationPage.chatOnlineMemberCount = onlineMemberCount;
                 updateGroupStatusText();
             }
         }
