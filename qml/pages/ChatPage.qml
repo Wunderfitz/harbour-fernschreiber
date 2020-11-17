@@ -410,6 +410,15 @@ Page {
             chatInformation = chatModel.getChatInformation();
             muteChatMenuItem.text = chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat");
         }
+        onPinnedMessageChanged: {
+            chatInformation = chatModel.getChatInformation();
+            if (chatInformation.pinned_message_id.toString() !== "0") {
+                console.log("[ChatPage] Loading pinned message " + chatInformation.pinned_message_id);
+                tdLibWrapper.getMessage(chatInformation.id, chatInformation.pinned_message_id);
+            } else {
+                pinnedMessageItem.pinnedMessage = undefined;
+            }
+        }
     }
 
     Connections {
@@ -477,7 +486,7 @@ Page {
         contentWidth: width
 
         PullDownMenu {
-            visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active
+            visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !messageOverlayLoader.active
             MenuItem {
                 id: joinLeaveChatMenuItem
                 visible: (chatPage.isSuperGroup || chatPage.isBasicGroup) && chatGroupInformation && chatGroupInformation.status["@type"] !== "chatMemberStatusBanned"
@@ -587,6 +596,10 @@ Page {
 
             PinnedMessageItem {
                 id: pinnedMessageItem
+                onRequestShowMessage: {
+                    messageOverlayLoader.overlayMessage = pinnedMessageItem.pinnedMessage;
+                    messageOverlayLoader.active = !messageOverlayLoader.active;
+                }
             }
 
             Item {
@@ -827,6 +840,26 @@ Page {
                     width: parent.width
                     height: active ? parent.height : 0
                     source: "../components/StickerPicker.qml"
+                }
+
+                Loader {
+                    id: messageOverlayLoader
+
+                    property var overlayMessage;
+
+                    active: false
+                    asynchronous: true
+                    width: parent.width
+                    height: active ? parent.height : 0
+                    sourceComponent: Component {
+                        MessageOverlayFlickable {
+                            overlayMessage: messageOverlayLoader.overlayMessage
+                            showHeader: !chatPage.isChannel
+                            onRequestClose: {
+                                messageOverlayLoader.active = false;
+                            }
+                        }
+                    }
                 }
 
             }

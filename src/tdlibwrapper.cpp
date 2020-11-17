@@ -112,6 +112,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(
     connect(this->tdLibReceiver, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)), this, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SIGNAL(chatTitleUpdated(QString, QString)));
+    connect(this->tdLibReceiver, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString)), this, SIGNAL(errorReceived(int, QString)));
 
