@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>Klien Telegram dla Sailfish OS</translation>
+        <translation>Klient Telegram dla Sailfish OS</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
@@ -81,7 +81,7 @@
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Otwórz rlottie na GitHub</translation>
     </message>
 </context>
 <context>
@@ -99,71 +99,71 @@
     <name>ChatInformationPage</name>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Wyłącz wyciszenie czatu</translation>
+        <translation>Wyłącz wyciszenie czatu</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Wycisz czat</translation>
+        <translation>Wycisz czat</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Nieznany</translation>
+        <translation>Nieznany</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Link do zaproszenia został skopiowany do schowka.</translation>
     </message>
     <message>
         <source>%1 members, %2 online</source>
-        <translation type="unfinished">$1 członków, %2 online </translation>
+        <translation>$1 członków, %2 online </translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 subskrybentów</translation>
+        <translation>%1 subskrybentów</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished">%1 czlonków</translation>
+        <translation>%1 czlonków</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Opuszcza czat</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Informacja</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Numer telefonu</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Link z zaproszeniem</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie ma jeszcze dostępnego tekstu informacyjnego.</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tytuł czatu</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź znaki 1-128</translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Opuść czat</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Dołącz do czatu</translation>
     </message>
 </context>
 <context>
@@ -171,41 +171,41 @@
     <message>
         <source>Loading common chats…</source>
         <comment>chats you have in common with a user</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ładowanie wspólnych czatów...</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Nieznany</translation>
+        <translation>Nieznany</translation>
     </message>
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grupy</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished"></translation>
+        <translation>Członkowie</translation>
     </message>
     <message>
         <source>Loading group members…</source>
-        <translation type="unfinished"></translation>
+        <translation>Ładowanie członków grupy</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Ty</translation>
+        <translation>Ty</translation>
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie masz żadnych wspólnych grup z tym użytkownikiem.</translation>
     </message>
     <message>
         <source>This group is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta grupa jest pusta</translation>
     </message>
     <message>
         <source>Channel members are anonymous.</source>
-        <translation type="unfinished"></translation>
+        <translation>Członkowie kanału są anonimowi</translation>
     </message>
 </context>
 <context>
@@ -213,38 +213,38 @@
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">Ustawienia</translation>
+        <translation>Ustawienia</translation>
     </message>
 </context>
 <context>
     <name>ChatListViewItem</name>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Nieznany</translation>
+        <translation>Nieznany</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Ty</translation>
+        <translation>Ty</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Wyłącz wyciszenie czatu</translation>
+        <translation>Wyłącz wyciszenie czatu</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Wycisz czat</translation>
+        <translation>Wycisz czat</translation>
     </message>
     <message>
         <source>User Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Informacje o użytkowniku</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Informacje o grupie</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaznacz wszystkie wiadomości jako przeczytane</translation>
     </message>
 </context>
 <context>
@@ -295,60 +295,60 @@
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ten czat jest pusty</translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Opuść czat</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Dołącz do czatu</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Opuszczanie czatu</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Dołączyłeś do czatu %1</translation>
     </message>
     <message>
         <source>Select Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz wiadomości</translation>
     </message>
     <message numerus="yes">
         <source>%n Messages deleted</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n wiadomość została usunięta</numerusform>
+            <numerusform>%n wiadomości zostały usunięte</numerusform>
+            <numerusform>%n wiadomości zostało usunięte</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n messages have been copied</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n wiadomość została skopiowana</numerusform>
+            <numerusform>%n wiadomości zostały skopiowane</numerusform>
+            <numerusform>%n wiadomość zostało skopiowane</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n wiadomość została wybrana</numerusform>
+            <numerusform>%n wiadomości zostały wybrane</numerusform>
+            <numerusform>%n wiadomości zostało wybrane</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>Forward %n messages</source>
         <comment>dialog header</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Przekaż %n wiadomość</numerusform>
+            <numerusform>Przekaż %n wiadomości</numerusform>
+            <numerusform>Przekaż %n wiadomości</numerusform>
         </translation>
     </message>
 </context>
@@ -360,7 +360,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished">Nie masz jeszcze żadnych czatów.</translation>
+        <translation>Nie masz jeszcze żadnych czatów.</translation>
     </message>
 </context>
 <context>
@@ -422,22 +422,22 @@
     <message>
         <source>Group Member Permissions</source>
         <comment>what can normal group members do</comment>
-        <translation type="unfinished"></translation>
+        <translation>Uprawnienia członka grupy</translation>
     </message>
     <message>
         <source>Send Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wyślij wiadomości</translation>
     </message>
     <message>
         <source>Send Media Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wyślij wiadomość multimedialną</translation>
     </message>
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wyślij inne wiadomości</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
@@ -447,12 +447,12 @@
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zmień informacje o czacie</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zaproś użytkowników</translation>
     </message>
     <message>
         <source>Pin Messages</source>
@@ -462,12 +462,12 @@
     <message>
         <source>New Members</source>
         <comment>what can new group members do</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nowi członkowie</translation>
     </message>
     <message>
         <source>New members can see older messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nowi członkowie mogą zobaczyć starsze wiadomości</translation>
     </message>
 </context>
 <context>
