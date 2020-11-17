@@ -28,10 +28,11 @@ Item {
 
 
     property ListItem messageListItem
-    property var rawMessage: messageListItem.myMessage
-    property string chatId: messageListItem.page.chatInformation.id
+    property MessageOverlayFlickable overlayFlickable
+    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
+    property string chatId: rawMessage.chat_id
 
-    property bool isOwnMessage: messageListItem.isOwnMessage
+    property bool isOwnMessage: messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
 
     property string messageId: rawMessage.id
     property bool canEdit: rawMessage.can_be_edited

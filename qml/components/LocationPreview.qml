@@ -25,11 +25,12 @@ Item {
     id: imagePreviewItem
 
     property ListItem messageListItem
-    property var rawMessage: messageListItem.myMessage
+    property MessageOverlayFlickable overlayFlickable
+    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
 
     property var locationData : ( rawMessage.content['@type'] === "messageLocation" ) ?  rawMessage.content.location : ( ( rawMessage.content['@type'] === "messageVenue" ) ? rawMessage.content.venue.location : "" )
 
-    property string chatId: messageListItem.page.chatInformation.id
+    property string chatId: rawMessage.chat_id
     property var pictureFileInformation;
     width: parent.width
     height: width / 2

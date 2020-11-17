@@ -33,6 +33,8 @@ Flickable {
     property bool showHeader: true
     readonly property var userInformation: tdLibWrapper.getUserInformation(overlayMessage.sender_user_id);
     readonly property bool isOwnMessage: tdLibWrapper.getUserInformation().id === overlayMessage.sender_user_id;
+    readonly property string extraContentComponentName: (typeof overlayMessage.content !== "undefined" && typeof chatView.contentComponentNames[overlayMessage.content['@type']] !== "undefined" )
+                                                        ? chatView.contentComponentNames[overlayMessage.content['@type']] : ""
     signal requestClose;
 
     function getOriginalAuthor(forwardInformation, fontSize) {
@@ -58,17 +60,17 @@ Flickable {
         running: false
         onTriggered: {
             if (typeof overlayMessage.content !== "undefined") {
-//                if (messageListItem.extraContentComponentName !== "") {
-//                    extraContentLoader.setSource(
-//                                "../components/" +messageListItem.extraContentComponentName +".qml",
-//                                {
-//                                    messageListItem: messageListItem
-//                                })
-//                } else {
+                if (messageOverlayFlickable.extraContentComponentName !== "") {
+                    overlayExtraContentLoader.setSource(
+                                "../components/" + messageOverlayFlickable.extraContentComponentName + ".qml",
+                                {
+                                    overlayFlickable: messageOverlayFlickable
+                                })
+                } else {
                     if (typeof overlayMessage.content.web_page !== "undefined") {
                         overlayWebPagePreviewLoader.active = true;
                     }
-//                }
+                }
             }
         }
     }
@@ -165,6 +167,40 @@ Flickable {
                     webPageData: overlayMessage.content.web_page
                     largerFontSize: true
                     width: parent.width
+                }
+            }
+        }
+
+        Loader {
+            id: overlayExtraContentLoader
+            width: parent.width
+            asynchronous: true
+        }
+
+        Timer {
+            id: messageDateUpdater
+            interval: 60000
+            running: true
+            repeat: true
+            onTriggered: {
+                overlayMessageDateText.text = ( overlayMessageDateText.useElapsed ? Functions.getDateTimeElapsed(overlayMessage.date) : Functions.getDateTimeTranslated(overlayMessage.date) );
+            }
+        }
+
+        Text {
+            width: parent.width
+
+            property bool useElapsed: true
+
+            id: overlayMessageDateText
+            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.secondaryColor
+            text: ( useElapsed ? Functions.getDateTimeElapsed(overlayMessage.date) : Functions.getDateTimeTranslated(overlayMessage.date) )
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    overlayMessageDateText.useElapsed = !overlayMessageDateText.useElapsed;
+                    overlayMessageDateText.text = ( useElapsed ? Functions.getDateTimeElapsed(overlayMessage.date) : Functions.getDateTimeTranslated(overlayMessage.date) );
                 }
             }
         }

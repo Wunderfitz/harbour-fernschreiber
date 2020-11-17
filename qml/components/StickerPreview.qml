@@ -21,12 +21,15 @@ import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 
 Item {
-    property ListItem messageListItem
 
-    readonly property var stickerData: messageListItem.myMessage.content.sticker;
+    property ListItem messageListItem
+    property MessageOverlayFlickable overlayFlickable
+
+    readonly property var stickerData: messageListItem ? messageListItem.myMessage.content.sticker : overlayFlickable.overlayMessage.content.sticker;
     readonly property bool animated: stickerData.is_animated && appSettings.animateStickers
     readonly property bool stickerVisible: staticStickerLoader.item ? staticStickerLoader.item.visible :
         animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
+    readonly property bool isOwnSticker : messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
     property real aspectRatio: stickerData.width / stickerData.height
 
     implicitWidth: stickerData.width
@@ -43,8 +46,8 @@ Item {
         width: Math.min( stickerData.width, parent.width )
         height: width * aspectRatio
         // (centered in image mode, text-like in sticker mode)
-        x: appSettings.showStickersAsImages ? (parent.width - width)/2 :
-            messageListItem.isOwnMessage ? (parent.width - width) : 0
+        x: appSettings.showStickersAsImages ? (parent.width - width) / 2 :
+            isOwnSticker ? (parent.width - width) : 0
         anchors.verticalCenter: parent.verticalCenter
 
         Loader {

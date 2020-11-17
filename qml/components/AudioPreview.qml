@@ -25,13 +25,14 @@ Item {
     id: audioMessageComponent
 
     property ListItem messageListItem
-    property var rawMessage: messageListItem.myMessage
+    property MessageOverlayFlickable overlayFlickable
+    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
 
     property var audioData: ( rawMessage.content['@type'] === "messageVoiceNote" ) ?  rawMessage.content.voice_note : ( ( rawMessage.content['@type'] === "messageAudio" ) ? rawMessage.content.audio : "");
     property string audioUrl;
     property int previewFileId;
     property int audioFileId;
-    property bool onScreen: messageListItem.page.status === PageStatus.Active
+    property bool onScreen: messageListItem ? messageListItem.page.status === PageStatus.Active : true
     property string audioType : "voiceNote";
 
     width: parent.width
