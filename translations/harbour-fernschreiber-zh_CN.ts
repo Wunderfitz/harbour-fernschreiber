@@ -315,32 +315,32 @@
     </message>
     <message>
         <source>Select Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>选择消息</translation>
     </message>
     <message numerus="yes">
         <source>%n Messages deleted</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>已删除 %n 则消息</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n messages have been copied</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>已复制 %n 则消息</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>已选择 %n 则消息</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>Forward %n messages</source>
         <comment>dialog header</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>转发 %n 则消息</numerusform>
         </translation>
     </message>
 </context>
@@ -348,11 +348,11 @@
     <name>ChatSelectionPage</name>
     <message>
         <source>Select Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>选择对话</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished">你还没有任何对话。</translation>
+        <translation>你还没有任何对话。</translation>
     </message>
 </context>
 <context>
@@ -833,7 +833,7 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation type="unfinished"></translation>
+        <translation>选择消息</translation>
     </message>
 </context>
 <context>
@@ -1152,7 +1152,7 @@
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation type="unfinished"></translation>
+        <translation>不支持预览此链接…</translation>
     </message>
 </context>
 <context>
@@ -1513,15 +1513,15 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>发送视频消息</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished"></translation>
+        <translation>发送视频消息</translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation>你已是此对话的成员。</translation>
+        <translation>你已是此对话成员。</translation>
     </message>
 </context>
 </TS>
