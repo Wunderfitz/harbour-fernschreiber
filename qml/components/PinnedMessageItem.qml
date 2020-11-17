@@ -67,45 +67,43 @@ Item {
             }
         }
 
-        Column {
-            id: pinnedMessageColumn
-            spacing: Theme.paddingSmall
+        Item {
             width: parent.width - pinnedMessageButton.width - removePinnedMessageIconButton.width
+            height: pinnedMessageColumn.height
             anchors.verticalCenter: parent.verticalCenter
-
-            Text {
-                id: pinnedMessageUserText
-
+            Column {
+                id: pinnedMessageColumn
+                spacing: Theme.paddingSmall
                 width: parent.width
-                font.pixelSize: Theme.fontSizeExtraSmall
-                font.weight: Font.ExtraBold
-                color: Theme.primaryColor
-                maximumLineCount: 1
-                elide: Text.ElideRight
-                textFormat: Text.StyledText
-                horizontalAlignment: Text.AlignLeft
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        pinnedMessageItem.requestShowMessage();
-                    }
+
+                Text {
+                    id: pinnedMessageUserText
+
+                    width: parent.width
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.weight: Font.ExtraBold
+                    color: Theme.primaryColor
+                    maximumLineCount: 1
+                    elide: Text.ElideRight
+                    textFormat: Text.StyledText
+                    horizontalAlignment: Text.AlignLeft
+                }
+
+                Text {
+                    id: pinnedMessageText
+
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.primaryColor
+                    width: parent.width
+                    elide: Text.ElideRight
+                    maximumLineCount: 1
+                    textFormat: Text.StyledText
                 }
             }
-
-            Text {
-                id: pinnedMessageText
-
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.primaryColor
-                width: parent.width
-                elide: Text.ElideRight
-                maximumLineCount: 1
-                textFormat: Text.StyledText
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        pinnedMessageItem.requestShowMessage();
-                    }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    pinnedMessageItem.requestShowMessage();
                 }
             }
         }
