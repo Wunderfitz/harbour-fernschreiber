@@ -108,6 +108,9 @@ Page {
     }
 
     function updateGroupStatusText() {
+        if(chatPage.state === "selectMessages") {
+            return
+        }
         if (chatOnlineMemberCount > 0) {
             chatStatusText.text = qsTr("%1 members, %2 online").arg(Functions.getShortenedCount(chatGroupInformation.member_count)).arg(Functions.getShortenedCount(chatOnlineMemberCount));
         } else {
@@ -268,14 +271,12 @@ Page {
     }
     function hasSendPrivilege(privilege) {
         var groupStatus = chatGroupInformation ? chatGroupInformation.status : null;
-        var groupStatusType = grouptStatus ? groupStatus["@type"] : null;
+        var groupStatusType = groupStatus ? groupStatus["@type"] : null;
         return chatPage.isPrivateChat
                     || (groupStatusType === "chatMemberStatusMember" && chatInformation.permissions[privilege])
                     || groupStatusType === "chatMemberStatusAdministrator"
                     || groupStatusType === "chatMemberStatusCreator"
                     || (groupStatusType === "chatMemberStatusRestricted" && groupStatus.permissions[privilege])
-
-
     }
 
     Timer {
