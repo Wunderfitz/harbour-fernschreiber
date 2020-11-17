@@ -292,6 +292,17 @@ void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId, 
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::pinMessage(const QString &chatId, const QString &messageId, bool disableNotification)
+{
+    LOG("Pin message to chat" << chatId << messageId << disableNotification);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "pinChatMessage");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_id", messageId);
+    requestObject.insert("disable_notification", disableNotification);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId)
 {
     LOG("Sending text message" << chatId << message << replyToMessageId);

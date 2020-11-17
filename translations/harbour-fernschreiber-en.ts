@@ -839,6 +839,10 @@
         <source>Select Message</source>
         <translation>Select Message</translation>
     </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
