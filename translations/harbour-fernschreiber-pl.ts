@@ -799,7 +799,7 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj międzynarodowego formatu, %1</translation>
     </message>
 </context>
 <context>
@@ -821,34 +821,34 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Skopiuj wiadomość do schowka</translation>
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiadomość usunięta</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Usuń wiadomość</translation>
+        <translation>Usuń wiadomość</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished">Ty</translation>
+        <translation>Ty</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiadomość przekazana</translation>
     </message>
     <message>
         <source>Select Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz wiadomość</translation>
     </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Ty</translation>
+        <translation>Ty</translation>
     </message>
 </context>
 <context>
@@ -898,7 +898,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished">Nie masz jeszcze żadnych czatów.</translation>
+        <translation>Nie masz jeszcze żadnych czatów.</translation>
     </message>
 </context>
 <context>
@@ -926,16 +926,16 @@
     <message>
         <source>Create a Poll</source>
         <comment>Dialog Header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Utórz ankietę</translation>
     </message>
     <message>
         <source>in %1</source>
         <comment>After dialog header… Create a Poll in [group name]</comment>
-        <translation type="unfinished"></translation>
+        <translation>w %1</translation>
     </message>
     <message>
         <source>Enter your question here</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź tutaj swoje pytanie</translation>
     </message>
     <message numerus="yes">
         <source>Question (%n1 characters left)</source>
@@ -948,11 +948,11 @@
     <message>
         <source>Answers</source>
         <comment>Section header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Odpowiedzi</translation>
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź tutaj swoją odpowiedź</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%n1 characters left)</source>
@@ -964,24 +964,24 @@
     </message>
     <message>
         <source>Add an answer</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj odpowiedź</translation>
     </message>
     <message>
         <source>Poll Options</source>
         <comment>Section header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Opcje ankiety</translation>
     </message>
     <message>
         <source>Anonymous answers</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonimowa odpowiedź</translation>
     </message>
     <message>
         <source>Multiple answers allowed</source>
-        <translation type="unfinished"></translation>
+        <translation>Wielokrotna odpowiedź dozwolona</translation>
     </message>
     <message>
         <source>Quiz Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Tryb quizu</translation>
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
@@ -993,11 +993,11 @@
     <message>
         <source>%L1%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished"></translation>
+        <translation>%L1%</translation>
     </message>
     <message>
         <source>Final Result:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ostateczny wynik:</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
@@ -1014,11 +1014,11 @@
     </message>
     <message>
         <source>Close Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamknij ankietę</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation type="unfinished"></translation>
+        <translation>Resetuj odpowiedź</translation>
     </message>
 </context>
 <context>
@@ -1062,7 +1062,7 @@
     <message>
         <source>%L1%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished"></translation>
+        <translation>%L1%</translation>
     </message>
     <message>
         <source>Chosen by:</source>
