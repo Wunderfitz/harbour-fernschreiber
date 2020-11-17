@@ -839,6 +839,10 @@
         <source>Select Message</source>
         <translation>Nachricht auswählen</translation>
     </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Nachricht anheften</translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
@@ -851,11 +855,11 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Sie</translation>
+        <translation>Sie</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Nachricht wurde weitergeleitet. Ursprünglicher Autor: %1</translation>
     </message>
 </context>
 <context>
@@ -912,11 +916,11 @@
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Sie</translation>
+        <translation>Sie</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Angeheftete Nachricht</translation>
     </message>
 </context>
 <context>
