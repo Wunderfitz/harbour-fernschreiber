@@ -852,6 +852,17 @@
     </message>
 </context>
 <context>
+    <name>MessageOverlayFlickable</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Вы</translation>
+    </message>
+    <message>
+        <source>This message was forwarded. Original author: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NotificationManager</name>
     <message>
         <source>%1 unread messages</source>
@@ -906,6 +917,10 @@
     <message>
         <source>You</source>
         <translation type="unfinished">Вы</translation>
+    </message>
+    <message>
+        <source>Pinned Message</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

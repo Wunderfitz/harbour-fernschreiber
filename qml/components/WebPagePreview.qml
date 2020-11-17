@@ -30,6 +30,7 @@ Column {
     property var webPageData;
     property var pictureFileInformation;
     property bool hasImage: false;
+    property bool largerFontSize: false;
 
     spacing: Theme.paddingSmall
 
@@ -74,7 +75,7 @@ Column {
 
         width: parent.width
         text: webPageData.site_name ? Emoji.emojify(webPageData.site_name, font.pixelSize) : ""
-        font.pixelSize: Theme.fontSizeExtraSmall
+        font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
         font.bold: true
         color: Theme.secondaryHighlightColor
         elide: Text.ElideRight
@@ -88,7 +89,7 @@ Column {
 
         width: parent.width
         text: webPageData.title ? Emoji.emojify(webPageData.title, font.pixelSize) : ""
-        font.pixelSize: Theme.fontSizeExtraSmall
+        font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
         font.bold: true
         color: Theme.primaryColor
         elide: Text.ElideRight
@@ -103,7 +104,7 @@ Column {
 
         width: parent.width
         text: webPageData.description ? Emoji.emojify(webPageData.description, font.pixelSize) : ""
-        font.pixelSize: Theme.fontSizeExtraSmall
+        font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
         color: Theme.primaryColor
         elide: Text.ElideRight
         wrapMode: Text.Wrap
@@ -150,7 +151,7 @@ Column {
 
         width: parent.width
         text: qsTr("Preview not supported for this link...")
-        font.pixelSize: Theme.fontSizeTiny
+        font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeExtraSmall : Theme.fontSizeTiny
         font.italic: true
         color: Theme.secondaryColor
         elide: Text.ElideRight

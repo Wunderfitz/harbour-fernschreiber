@@ -26,11 +26,13 @@ Item {
     id: pinnedMessageItem
 
     property var pinnedMessage;
+    signal requestShowMessage;
 
     onPinnedMessageChanged: {
         if (pinnedMessage) {
             console.log("[ChatPage] Activating pinned message");
-            pinnedMessageUserText.text = (pinnedMessage.sender_user_id !== chatPage.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(pinnedMessage.sender_user_id)), pinnedMessageUserText.font.pixelSize) : qsTr("You");
+            var messageUserText = (pinnedMessage.sender_user_id !== chatPage.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(pinnedMessage.sender_user_id)), pinnedMessageUserText.font.pixelSize) : qsTr("You");
+            pinnedMessageUserText.text = (messageUserText === "" ? qsTr("Pinned Message") : messageUserText );
             pinnedMessageText.text = Emoji.emojify(Functions.getMessageText(pinnedMessage, true, pinnedMessage.sender_user_id === chatPage.myUserId), pinnedMessageText.font.pixelSize);
             pinnedMessageItem.visible = true;
         } else {
@@ -61,7 +63,7 @@ Item {
             height: Theme.itemSizeLarge
             icon.source: "image://theme/icon-m-mark-unread"
             onClicked: {
-                console.log("Opening pinned message");
+                pinnedMessageItem.requestShowMessage();
             }
         }
 
@@ -85,7 +87,7 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        console.log("Opening pinned message");
+                        pinnedMessageItem.requestShowMessage();
                     }
                 }
             }
@@ -102,7 +104,7 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        console.log("Opening pinned message");
+                        pinnedMessageItem.requestShowMessage();
                     }
                 }
             }

@@ -127,6 +127,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateChatPermissions", &TDLibReceiver::processUpdateChatPermissions);
     handlers.insert("updateChatPhoto", &TDLibReceiver::processUpdateChatPhoto);
     handlers.insert("updateChatTitle", &TDLibReceiver::processUpdateChatTitle);
+    handlers.insert("updateChatPinnedMessage", &TDLibReceiver::processUpdateChatPinnedMessage);
     handlers.insert("users", &TDLibReceiver::processUsers);
     handlers.insert("error", &TDLibReceiver::processError);
     handlers.insert("ok", &TDLibReceiver::nop);
@@ -504,6 +505,12 @@ void TDLibReceiver::processUpdateChatTitle(const QVariantMap &receivedInformatio
 {
     LOG("Received UpdateChatTitle");
     emit chatTitleUpdated(receivedInformation.value(CHAT_ID).toString(), receivedInformation.value(TITLE).toString());
+}
+
+void TDLibReceiver::processUpdateChatPinnedMessage(const QVariantMap &receivedInformation)
+{
+    LOG("Received UpdateChatPinnedMessage");
+    emit chatPinnedMessageUpdated(receivedInformation.value(CHAT_ID).toLongLong(), receivedInformation.value("pinned_message_id").toLongLong());
 }
 
 void TDLibReceiver::processUsers(const QVariantMap &receivedInformation)
