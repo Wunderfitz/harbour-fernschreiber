@@ -21,8 +21,6 @@
 #define CHATMODEL_H
 
 #include <QAbstractListModel>
-#include <QDebug>
-#include <QMutex>
 #include "tdlibwrapper.h"
 
 class ChatModel : public QAbstractListModel
@@ -74,7 +72,6 @@ private:
     QVariantList messages;
     QVariantList messagesToBeAdded;
     QVariantMap messageIndexMap;
-    QMutex messagesMutex;
     QVariantMap chatInformation;
     qlonglong chatId;
     bool inReload;
