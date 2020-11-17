@@ -28,7 +28,6 @@ SilicaFlickable {
     property alias membersList: membersList
 
     function initializePage() {
-        console.log("[ChatInformationPage] Initializing chat info page...");
         membersList.clear();
         var chatType = chatInformation.type["@type"];
         switch(chatType) {
@@ -294,7 +293,7 @@ SilicaFlickable {
         id: contentFlickable
         contentHeight: groupInfoItem.height + tabViewLoader.height
         clip: true
-        interactive: true//groupInfoItem.height > pageContent.height * 0.5
+        interactive: !scrollUpAnimation.running && !scrollDownAnimation.running
 
         anchors {
             top: headerItem.bottom
@@ -435,7 +434,7 @@ SilicaFlickable {
                 horizontalAlignment: Qt.AlignHCenter
                 opacity: (tabViewLoader.status === Loader.Ready && tabViewLoader.item.count > 0) ? 1.0 : 0.0
 
-                Behavior on opacity { PropertyAnimation {duration: 500}}
+                Behavior on opacity { FadeAnimation {}}
             }
         }
 

@@ -299,7 +299,7 @@ Page {
             if (!chatPage.isInitialized) {
                 chatModel.initialize(chatInformation);
 
-                pageStack.pushAttached(Qt.resolvedUrl("../pages/ChatInformationPage.qml"), { "chatInformation" : chatInformation, "privateChatUserInformation": chatPartnerInformation, "groupInformation": chatGroupInformation, "chatOnlineMemberCount": chatOnlineMemberCount});
+                pageStack.pushAttached(Qt.resolvedUrl("ChatInformationPage.qml"), { "chatInformation" : chatInformation, "privateChatUserInformation": chatPartnerInformation, "groupInformation": chatGroupInformation, "chatOnlineMemberCount": chatOnlineMemberCount});
                 chatPage.isInitialized = true;
             }
             break;

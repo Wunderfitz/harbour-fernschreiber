@@ -40,7 +40,7 @@ ChatInformationTabItemBase {
         height: tabBase.height
         width: tabBase.width
         opacity: tabBase.loading ? (count > 0 ? 0.5 : 0.0) : 1.0
-        Behavior on opacity { NumberAnimation {} }
+        Behavior on opacity { FadeAnimation {} }
         function handleScrollIntoView(force){
             if(!tabBase.loading && !dragging && !quickScrollAnimating ) {
                 if(!atYBeginning) {

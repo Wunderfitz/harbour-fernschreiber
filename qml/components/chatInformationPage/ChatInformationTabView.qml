@@ -61,8 +61,8 @@ Item {
                     width: loaded ? (headerGrid.width / tabView.count) : 0
                     opacity: loaded ? 1.0 : 0.0
 
-                    Behavior on width { PropertyAnimation {duration: 300}}
-                    Behavior on opacity { PropertyAnimation {duration: 300}}
+                    Behavior on width { PropertyAnimation {duration: 200}}
+                    Behavior on opacity { FadeAnimation {}}
                     height: Theme.itemSizeLarge
                     property int itemIndex: index
                     property bool itemIsActive: tabView.currentIndex === itemIndex

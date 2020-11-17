@@ -35,8 +35,8 @@ Item {
 
     default property alias _data: contentItem.data
 
-    opacity: active ? 1.0 : 0.2
-    Behavior on opacity { PropertyAnimation {duration: 300}}
+    opacity: active ? 1.0 : 0.0
+    Behavior on opacity { FadeAnimation {}}
 
     Column {
         id: loadingColumn
@@ -47,7 +47,7 @@ Item {
         topPadding: Theme.paddingLarge
         anchors.top: parent.top
         opacity: loadingVisible ? 1.0 : 0.0
-        Behavior on opacity { NumberAnimation {} }
+        Behavior on opacity { FadeAnimation {} }
         visible: tabItem.loading
 
         InfoLabel {
