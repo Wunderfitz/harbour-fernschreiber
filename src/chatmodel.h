@@ -55,6 +55,7 @@ signals:
     void messageUpdated(int modelIndex);
     void messagesDeleted();
     void smallPhotoChanged();
+    void pinnedMessageChanged();
 
 public slots:
     void handleMessagesReceived(const QVariantList &messages, int totalCount);
@@ -64,6 +65,7 @@ public slots:
     void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
     void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
     void handleChatPhotoUpdated(qlonglong chatId, const QVariantMap &photo);
+    void handleChatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
     void handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds);
 

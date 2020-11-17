@@ -44,6 +44,7 @@ namespace {
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
     const QString SENDING_STATE("sending_state");
     const QString IS_CHANNEL("is_channel");
+    const QString PINNED_MESSAGE_ID("pinned_message_id");
     const QString _TYPE("@type");
 }
 
@@ -296,6 +297,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper) : showHiddenChats(false
     connect(tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
     connect(tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
     connect(tdLibWrapper, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SLOT(handleChatPhotoUpdated(qlonglong, QVariantMap)));
+    connect(tdLibWrapper, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SLOT(handleChatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(superGroupUpdated(qlonglong)), this, SLOT(handleGroupUpdated(qlonglong)));
@@ -631,6 +633,22 @@ void ChatListModel::handleChatPhotoUpdated(qlonglong chatId, const QVariantMap &
         if (chat) {
             LOG("Updating photo for hidden chat" << chatId);
             chat->chatData.insert(PHOTO, photo);
+        }
+    }
+}
+
+void ChatListModel::handleChatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId)
+{
+    if (chatIndexMap.contains(chatId)) {
+        LOG("Updating pinned message for" << chatId);
+        const int chatIndex = chatIndexMap.value(chatId);
+        ChatData *chat = chatList.at(chatIndex);
+        chat->chatData.insert(PINNED_MESSAGE_ID, pinnedMessageId);
+    } else {
+        ChatData *chat = hiddenChats.value(chatId);
+        if (chat) {
+            LOG("Updating pinned message for hidden chat" << chatId);
+            chat->chatData.insert(PINNED_MESSAGE_ID, pinnedMessageId);
         }
     }
 }
