@@ -73,11 +73,11 @@ Dialog {
                 asynchronous: true
                 sourceComponent: Component {
                     QtObject {
-                        property var chatGroupInformation: ({})
                         property bool visible: false
                         Component.onCompleted: {
                             if(chatSelectionPage.state === "forwardMessages") {
                                 var chatType = display.type['@type'];
+                                var chatGroupInformation;
                                 if(chatType === "chatTypePrivate" || chatType === "chatTypeSecret") {
                                     visible = true
                                     return;
@@ -88,14 +88,22 @@ Dialog {
                                 else if (chatType === "chatTypeSupergroup" ) {
                                     chatGroupInformation = tdLibWrapper.getSuperGroup(display.type.supergroup_id);
                                 }
-
-                                visible = (chatGroupInformation.status["@type"] === "chatMemberStatusCreator"
-                                        || chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator"
-                                        || (chatGroupInformation.status["@type"] === "chatMemberStatusMember"
+                                var groupStatus = chatGroupInformation.status;
+                                var groupStatusType = groupStatus["@type"];
+                                var groupStatusPermissions = groupStatus.permissions;
+                                var groupPermissions = display.permissions;
+                                visible = (groupStatusType === "chatMemberStatusCreator"
+                                        || groupStatusType === "chatMemberStatusAdministrator"
+                                        || (groupStatusType === "chatMemberStatusMember"
                                                 && chatSelectionPage.payload.neededPermissions.every(function(neededPermission){
-                                                    return display.permissions[neededPermission];
+                                                    return groupPermissions[neededPermission];
                                                 })
                                             )
+                                        || (groupStatusType === "chatMemberStatusRestricted"
+                                           && chatSelectionPage.payload.neededPermissions.every(function(neededPermission){
+                                               return groupStatusPermissions[neededPermission];
+                                           })
+                                       )
                                         );
                             } else { // future uses of chat selection can be processed here
                                 visible = true;

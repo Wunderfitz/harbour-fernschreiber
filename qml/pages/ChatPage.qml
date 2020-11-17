@@ -267,14 +267,15 @@ Page {
         forwardMessagesTimer.start();
     }
     function hasSendPrivilege(privilege) {
-        return chatPage.isPrivateChat ||
-                chatGroupInformation &&
-                (
-                    (chatGroupInformation.status["@type"] === "chatMemberStatusMember" && chatGroupInformation.status.permissions[privilege])
-                    || chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator"
-                    || chatGroupInformation.status["@type"] === "chatMemberStatusCreator"
-                    || (chatGroupInformation.status["@type"] === "chatMemberStatusRestricted" && chatGroupInformation.status.permissions[privilege])
-                 )
+        var groupStatus = chatGroupInformation ? chatGroupInformation.status : null;
+        var groupStatusType = grouptStatus ? groupStatus["@type"] : null;
+        return chatPage.isPrivateChat
+                    || (groupStatusType === "chatMemberStatusMember" && chatInformation.permissions[privilege])
+                    || groupStatusType === "chatMemberStatusAdministrator"
+                    || groupStatusType === "chatMemberStatusCreator"
+                    || (groupStatusType === "chatMemberStatusRestricted" && groupStatus.permissions[privilege])
+
+
     }
 
     Timer {
