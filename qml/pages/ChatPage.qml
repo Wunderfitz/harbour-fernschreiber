@@ -528,7 +528,7 @@ Page {
             Row {
                 id: headerRow
                 width: parent.width - (3 * Theme.horizontalPageMargin)
-                height: chatOverviewColumn.height + Theme.paddingLarge + Theme.paddingSmall
+                height: chatOverviewColumn.height + ( chatPage.isPortrait ? (2 * Theme.paddingMedium) : (2 * Theme.paddingSmall) )
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingMedium
 
@@ -539,19 +539,19 @@ Page {
                     width: chatOverviewColumn.height
                     height: chatOverviewColumn.height
                     anchors.bottom: parent.bottom
-                    anchors.bottomMargin: Theme.paddingSmall
+                    anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingMedium : Theme.paddingSmall
                 }
 
                 Column {
                     id: chatOverviewColumn
                     width: parent.width - chatPictureThumbnail.width - Theme.paddingMedium
                     anchors.bottom: parent.bottom
-                    anchors.bottomMargin: Theme.paddingSmall
+                    anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingMedium : Theme.paddingSmall
                     Text {
                         id: chatNameText
                         text: chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, font.pixelSize) : qsTr("Unknown")
                         textFormat: Text.StyledText
-                        font.pixelSize: Theme.fontSizeLarge
+                        font.pixelSize: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
                         font.family: Theme.fontFamilyHeading
                         color: Theme.highlightColor
                         elide: Text.ElideRight
@@ -563,7 +563,7 @@ Page {
                         id: chatStatusText
                         text: ""
                         textFormat: Text.StyledText
-                        font.pixelSize: Theme.fontSizeExtraSmall
+                        font.pixelSize: chatPage.isPortrait ? Theme.fontSizeExtraSmall : Theme.fontSizeTiny
                         font.family: Theme.fontFamilyHeading
                         color: headerMouseArea.pressed ? Theme.secondaryHighlightColor : Theme.secondaryColor
                         elide: Text.ElideRight
