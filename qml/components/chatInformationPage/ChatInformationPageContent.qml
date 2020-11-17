@@ -18,9 +18,9 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import "./chatInformationPage"
-import "../js/twemoji.js" as Emoji
-import "../js/functions.js" as Functions
+import "../"
+import "../../js/twemoji.js" as Emoji
+import "../../js/functions.js" as Functions
 
 
 SilicaFlickable {
