@@ -922,6 +922,10 @@
         <source>Pinned Message</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PollCreationPage</name>

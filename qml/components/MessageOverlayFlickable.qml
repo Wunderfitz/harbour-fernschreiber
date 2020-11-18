@@ -38,14 +38,15 @@ Flickable {
     signal requestClose;
 
     function getOriginalAuthor(forwardInformation, fontSize) {
-        if (forwardInformation.origin["@type"] === "messageForwardOriginChannel") {
-            var otherChatInformation = tdLibWrapper.getChat(forwardInformation.origin.chat_id);
-            return Emoji.emojify(otherChatInformation.title, fontSize);
-        } else if (forwardInformation.origin["@type"] === "messageForwardOriginUser") {
-            var otherUserInformation = tdLibWrapper.getUserInformation(forwardInformation.origin.sender_user_id);
-            return Emoji.emojify(Functions.getUserName(otherUserInformation), fontSize);
-        } else {
-            return Emoji.emojify(forwardInformation.origin.sender_name, fontSize);
+        switch (forwardInformation.origin["@type"]) {
+            case "messageForwardOriginChannel":
+                var otherChatInformation = tdLibWrapper.getChat(forwardInformation.origin.chat_id);
+                return Emoji.emojify(otherChatInformation.title, fontSize);
+            case "messageForwardOriginUser":
+                var otherUserInformation = tdLibWrapper.getUserInformation(forwardInformation.origin.sender_user_id);
+                return Emoji.emojify(Functions.getUserName(otherUserInformation), fontSize);
+            default:
+                return Emoji.emojify(forwardInformation.origin.sender_name, fontSize);
         }
     }
 
@@ -77,7 +78,8 @@ Flickable {
 
     Rectangle {
         id: messageContentBackground
-        color: (Theme.colorScheme === Theme.LightOnDark) ? Theme.darkSecondaryColor : Theme.lightSecondaryColor
+        color: Theme.overlayBackgroundColor
+        opacity: 0.7
         width: parent.width
         height: messageContentColumn.height >= messageOverlayFlickable.height ? messageContentColumn.height : messageOverlayFlickable.height
         MouseArea {
