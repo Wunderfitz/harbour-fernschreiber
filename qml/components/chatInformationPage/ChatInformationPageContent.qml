@@ -98,13 +98,17 @@ SilicaFlickable {
         }
     }
     function updateGroupStatusText() {
-        if (chatOnlineMemberCount > 0) {
-            headerItem.description = qsTr("%1 members, %2 online").arg(Functions.getShortenedCount(chatInformationPage.groupInformation.member_count)).arg(Functions.getShortenedCount(chatInformationPage.chatOnlineMemberCount));
+        if (chatInformationPage.chatOnlineMemberCount > 0) {
+            headerItem.description = qsTr("%1, %2", "combination of '[x members], [y online]', which are separate translations")
+                .arg(qsTr("%1 members", "", chatInformationPage.groupInformation.member_count)
+                    .arg(Functions.getShortenedCount(chatInformationPage.groupInformation.member_count)))
+                .arg(qsTr("%1 online", "", chatInformationPage.chatOnlineMemberCount)
+                    .arg(Functions.getShortenedCount(chatInformationPage.chatOnlineMemberCount)));
         } else {
             if (isChannel) {
-                headerItem.description = qsTr("%1 subscribers").arg(Functions.getShortenedCount(chatInformationPage.groupInformation.member_count));
+                headerItem.description = qsTr("%1 subscribers", "", chatInformationPage.groupInformation.member_count ).arg(Functions.getShortenedCount(chatInformationPage.groupInformation.member_count));
             } else {
-                headerItem.description = qsTr("%1 members").arg(Functions.getShortenedCount(chatInformationPage.groupInformation.member_count));
+                headerItem.description = qsTr("%1 members", "", chatInformationPage.groupInformation.member_count).arg(Functions.getShortenedCount(chatInformationPage.groupInformation.member_count));
             }
         }
     }

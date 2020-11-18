@@ -97,17 +97,19 @@
 </context>
 <context>
     <name>ChatInformationPageContent</name>
-    <message>
-        <source>%1 members, %2 online</source>
-        <translation type="unfinished">%1 medlem(mar), %2 inloggad(e)</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 prenumerant(er)</translation>
+        <translation type="unfinished">
+            <numerusform>%1 prenumerant(er)</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 medlem(mar)</translation>
+        <translation type="unfinished">
+            <numerusform>%1 medlem(mar)</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Leave Chat</source>
@@ -164,6 +166,18 @@
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
         <translation type="unfinished">Inbjudningslänken har kopierats till urklipp.</translation>
+    </message>
+    <message>
+        <source>%1, %2</source>
+        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 online</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -257,17 +271,19 @@
         <source>Your message</source>
         <translation>Ditt meddelande</translation>
     </message>
-    <message>
-        <source>%1 members, %2 online</source>
-        <translation>%1 medlem(mar), %2 inloggad(e)</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation>%1 medlem(mar)</translation>
+        <translation type="unfinished">
+            <numerusform>%1 medlem(mar)</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation>%1 prenumerant(er)</translation>
+        <translation type="unfinished">
+            <numerusform>%1 prenumerant(er)</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Loading messages...</source>
@@ -332,19 +348,31 @@
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages selected</source>
-        <comment>number of messages selected</comment>
-        <translation>
-            <numerusform>%n meddelande valt</numerusform>
-            <numerusform>%n meddelanden valda</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
         <source>Forward %n messages</source>
         <comment>dialog header</comment>
         <translation>
             <numerusform>Vidarebefordra %n meddelande</numerusform>
             <numerusform>Vidarebefordra %n meddelanden</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln messages selected</source>
+        <comment>number of messages selected</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1, %2</source>
+        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 online</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -864,9 +892,12 @@
 </context>
 <context>
     <name>NotificationManager</name>
-    <message>
-        <source>%1 unread messages</source>
-        <translation>%1 oläst(a) meddelande(n)</translation>
+    <message numerus="yes">
+        <source>%Ln unread messages</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

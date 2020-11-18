@@ -371,7 +371,7 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     } else {
         // Either we have more than one notification or we have no content to display
         LOG("Group" << notificationGroup->notificationGroupId << "has" << notificationGroup->totalCount << "notifications");
-        notificationBody = tr("%1 unread messages").arg(notificationGroup->totalCount);
+        notificationBody = tr("%Ln unread messages", "", notificationGroup->totalCount).arg(notificationGroup->totalCount);
     }
 
     nemoNotification->setBody(notificationBody);

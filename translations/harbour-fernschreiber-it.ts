@@ -97,17 +97,19 @@
 </context>
 <context>
     <name>ChatInformationPageContent</name>
-    <message>
-        <source>%1 members, %2 online</source>
-        <translation type="unfinished">%1 membri, %2 online</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 abbonati</translation>
+        <translation type="unfinished">
+            <numerusform>%1 abbonati</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 membri</translation>
+        <translation type="unfinished">
+            <numerusform>%1 membri</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Leave Chat</source>
@@ -164,6 +166,18 @@
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
         <translation type="unfinished">Il link d&apos;invito è stato copiato nella clipboard.</translation>
+    </message>
+    <message>
+        <source>%1, %2</source>
+        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 online</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -257,17 +271,19 @@
         <source>Your message</source>
         <translation>Tuo messaggio</translation>
     </message>
-    <message>
-        <source>%1 members, %2 online</source>
-        <translation>%1 membri, %2 online</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation>%1 membri</translation>
+        <translation type="unfinished">
+            <numerusform>%1 membri</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation>%1 abbonati</translation>
+        <translation type="unfinished">
+            <numerusform>%1 abbonati</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Unmute Chat</source>
@@ -332,16 +348,28 @@
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages selected</source>
-        <comment>number of messages selected</comment>
+        <source>Forward %n messages</source>
+        <comment>dialog header</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>Forward %n messages</source>
-        <comment>dialog header</comment>
+        <source>%Ln messages selected</source>
+        <comment>number of messages selected</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1, %2</source>
+        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 online</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
@@ -864,9 +892,12 @@
 </context>
 <context>
     <name>NotificationManager</name>
-    <message>
-        <source>%1 unread messages</source>
-        <translation>%1 messaggi non letti</translation>
+    <message numerus="yes">
+        <source>%Ln unread messages</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

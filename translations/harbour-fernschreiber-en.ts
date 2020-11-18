@@ -97,73 +97,87 @@
 </context>
 <context>
     <name>ChatInformationPageContent</name>
-    <message>
-        <source>%1 members, %2 online</source>
-        <translation type="unfinished">%1 members, %2 online</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 subscribers</translation>
+        <translation>
+            <numerusform>%1 subscriber</numerusform>
+            <numerusform>%1 subscribers</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 members</translation>
+        <translation>
+            <numerusform>%1 member</numerusform>
+            <numerusform>%1 members</numerusform>
+        </translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished">Leave Chat</translation>
+        <translation>Leave Chat</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished">Join Chat</translation>
+        <translation>Join Chat</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished">Leaving chat</translation>
+        <translation>Leaving chat</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Unmute Chat</translation>
+        <translation>Unmute Chat</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Mute Chat</translation>
+        <translation>Mute Chat</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Unknown</translation>
+        <translation>Unknown</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished">Chat Title</translation>
+        <translation>Chat Title</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished">Enter 1-128 characters</translation>
+        <translation>Enter 1-128 characters</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished">There is no information text available, yet.</translation>
+        <translation>There is no information text available, yet.</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished">Info</translation>
+        <translation>Info</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished">Phone Number</translation>
+        <translation>Phone Number</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished">Invite Link</translation>
+        <translation>Invite Link</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished">The Invite Link has been copied to the clipboard.</translation>
+        <translation>The Invite Link has been copied to the clipboard.</translation>
+    </message>
+    <message>
+        <source>%1, %2</source>
+        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
+        <translation>%1, %2</translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 online</source>
+        <translation>
+            <numerusform>%1 online</numerusform>
+            <numerusform>%1 online</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -203,17 +217,17 @@
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished">Groups</translation>
+        <translation>Groups</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished">Members</translation>
+        <translation>Members</translation>
     </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">Settings</translation>
+        <translation>Settings</translation>
     </message>
 </context>
 <context>
@@ -257,17 +271,19 @@
         <source>Your message</source>
         <translation>Your message</translation>
     </message>
-    <message>
-        <source>%1 members, %2 online</source>
-        <translation>%1 members, %2 online</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation>%1 members</translation>
+        <translation>
+            <numerusform>%1 member</numerusform>
+            <numerusform>%1 members</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation>%1 subscribers</translation>
+        <translation>
+            <numerusform>%1 subscriber</numerusform>
+            <numerusform>%1 subscribers</numerusform>
+        </translation>
     </message>
     <message>
         <source>Loading messages...</source>
@@ -332,19 +348,31 @@
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages selected</source>
-        <comment>number of messages selected</comment>
-        <translation>
-            <numerusform>%n message selected</numerusform>
-            <numerusform>%n messages selected</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
         <source>Forward %n messages</source>
         <comment>dialog header</comment>
         <translation>
             <numerusform>Forward %n message</numerusform>
             <numerusform>Forward %n messages</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln messages selected</source>
+        <comment>number of messages selected</comment>
+        <translation>
+            <numerusform>%Ln message selected</numerusform>
+            <numerusform>%Ln messages selected</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1, %2</source>
+        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
+        <translation></translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 online</source>
+        <translation>
+            <numerusform>%1 online</numerusform>
+            <numerusform>%1 online</numerusform>
         </translation>
     </message>
 </context>
@@ -864,9 +892,12 @@
 </context>
 <context>
     <name>NotificationManager</name>
-    <message>
-        <source>%1 unread messages</source>
-        <translation>%1 unread messages</translation>
+    <message numerus="yes">
+        <source>%Ln unread messages</source>
+        <translation>
+            <numerusform>%Ln unread message</numerusform>
+            <numerusform>%Ln unread messages</numerusform>
+        </translation>
     </message>
 </context>
 <context>
