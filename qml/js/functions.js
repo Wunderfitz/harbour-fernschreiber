@@ -408,26 +408,26 @@ function handleErrorMessage(code, message) {
 }
 
 function getMessagesNeededForwardPermissions(messages) {
-    var neededPermissions = ["can_send_messages"];
+    var neededPermissions = ["can_send_messages"]
 
-    var mediaMessageTypes = ["messageAudio", "messageDocument", "messagePhoto", "messageVideo", "messageVideoNote", "messageVoiceNote"];
+    var mediaMessageTypes = ["messageAudio", "messageDocument", "messagePhoto", "messageVideo", "messageVideoNote", "messageVoiceNote"]
     var otherMessageTypes = ["messageAnimation", "messageGame", "messageSticker"]
     for(var i = 0; i < messages.length && neededPermissions.length < 3; i += 1) {
-        var type = messages[i]["content"]["@type"];
-        var permission = "";
+        var type = messages[i]["content"]["@type"]
+        var permission = ""
         if(type === "messageText") {
-            continue;
+            continue
         } else if(type === "messagePoll") {
-            permission = "can_send_polls";
+            permission = "can_send_polls"
         } else if(mediaMessageTypes.indexOf(type) > -1) {
-            permission = "can_send_media_messages";
+            permission = "can_send_media_messages"
         } else if(otherMessageTypes.indexOf(type) > -1) {
-            permission = "can_send_other_messages";
+            permission = "can_send_other_messages"
         }
 
         if(permission !== "" && neededPermissions.indexOf(permission) === -1) {
-            neededPermissions.push(permission);
+            neededPermissions.push(permission)
         }
     }
-    return neededPermissions;
+    return neededPermissions
 }

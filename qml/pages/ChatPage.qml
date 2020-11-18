@@ -270,8 +270,8 @@ Page {
         forwardMessagesTimer.start();
     }
     function hasSendPrivilege(privilege) {
-        var groupStatus = chatGroupInformation ? chatGroupInformation.status : null;
-        var groupStatusType = groupStatus ? groupStatus["@type"] : null;
+        var groupStatus = chatGroupInformation ? chatGroupInformation.status : null
+        var groupStatusType = groupStatus ? groupStatus["@type"] : null
         return chatPage.isPrivateChat
                     || (groupStatusType === "chatMemberStatusMember" && chatInformation.permissions[privilege])
                     || groupStatusType === "chatMemberStatusAdministrator"
@@ -1216,15 +1216,15 @@ Page {
                             width: visible ? Theme.itemSizeMedium : 0
                             icon.source: "image://theme/icon-m-forward"
                             onClicked: {
-                                var ids = Functions.getMessagesArrayIds(chatPage.selectedMessages);
-                                var neededPermissions = Functions.getMessagesNeededForwardPermissions(chatPage.selectedMessages);
-                                var chatId = chatInformation.id;
+                                var ids = Functions.getMessagesArrayIds(chatPage.selectedMessages)
+                                var neededPermissions = Functions.getMessagesNeededForwardPermissions(chatPage.selectedMessages)
+                                var chatId = chatInformation.id
                                 pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
                                     myUserId: chatPage.myUserId,
                                     headerDescription: qsTr("Forward %n messages", "dialog header", ids.length).arg(ids.length),
                                     payload: {fromChatId: chatId, messageIds:ids, neededPermissions: neededPermissions},
                                     state: "forwardMessages"
-                                });
+                                })
                             }
 
                         }

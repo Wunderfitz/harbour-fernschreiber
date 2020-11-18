@@ -29,7 +29,7 @@ Dialog {
     canAccept: false
     acceptDestinationAction: PageStackAction.Replace
     acceptDestinationReplaceTarget: pageStack.find( function(page){ return(page._depth === 0)} )
-    property int myUserId: tdLibWrapper.getUserInformation().id;
+    property int myUserId: tdLibWrapper.getUserInformation().id
     property alias headerTitle: pageHeader.title
     property alias headerDescription: pageHeader.description
     /*
@@ -76,37 +76,37 @@ Dialog {
                         property bool visible: false
                         Component.onCompleted: {
                             if(chatSelectionPage.state === "forwardMessages") {
-                                var chatType = display.type['@type'];
-                                var chatGroupInformation;
+                                var chatType = display.type['@type']
+                                var chatGroupInformation
                                 if(chatType === "chatTypePrivate" || chatType === "chatTypeSecret") {
                                     visible = true
                                     return;
                                 }
                                 else if (chatType === "chatTypeBasicGroup" ) {
-                                    chatGroupInformation = tdLibWrapper.getBasicGroup(display.type.basic_group_id);
+                                    chatGroupInformation = tdLibWrapper.getBasicGroup(display.type.basic_group_id)
                                 }
                                 else if (chatType === "chatTypeSupergroup" ) {
-                                    chatGroupInformation = tdLibWrapper.getSuperGroup(display.type.supergroup_id);
+                                    chatGroupInformation = tdLibWrapper.getSuperGroup(display.type.supergroup_id)
                                 }
-                                var groupStatus = chatGroupInformation.status;
-                                var groupStatusType = groupStatus["@type"];
-                                var groupStatusPermissions = groupStatus.permissions;
-                                var groupPermissions = display.permissions;
+                                var groupStatus = chatGroupInformation.status
+                                var groupStatusType = groupStatus["@type"]
+                                var groupStatusPermissions = groupStatus.permissions
+                                var groupPermissions = display.permissions
                                 visible = (groupStatusType === "chatMemberStatusCreator"
                                         || groupStatusType === "chatMemberStatusAdministrator"
                                         || (groupStatusType === "chatMemberStatusMember"
                                                 && chatSelectionPage.payload.neededPermissions.every(function(neededPermission){
-                                                    return groupPermissions[neededPermission];
+                                                    return groupPermissions[neededPermission]
                                                 })
                                             )
                                         || (groupStatusType === "chatMemberStatusRestricted"
                                            && chatSelectionPage.payload.neededPermissions.every(function(neededPermission){
-                                               return groupStatusPermissions[neededPermission];
+                                               return groupStatusPermissions[neededPermission]
                                            })
                                        )
-                                        );
+                                    )
                             } else { // future uses of chat selection can be processed here
-                                visible = true;
+                                visible = true
                             }
                         }
                     }
