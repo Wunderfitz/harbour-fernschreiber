@@ -178,16 +178,6 @@
         <translation>Nieznany</translation>
     </message>
     <message>
-        <source>Groups</source>
-        <comment>Button: groups in common (short)</comment>
-        <translation>Grupy</translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <comment>Button: Group Members</comment>
-        <translation>Członkowie</translation>
-    </message>
-    <message>
         <source>Loading group members…</source>
         <translation>Ładowanie członków grupy</translation>
     </message>
@@ -213,12 +203,12 @@
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grupy</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished"></translation>
+        <translation>Członkowie</translation>
     </message>
     <message>
         <source>Settings</source>
