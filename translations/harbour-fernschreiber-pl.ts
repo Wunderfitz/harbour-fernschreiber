@@ -847,12 +847,27 @@
         <source>Pin Message</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
         <translation>Ty</translation>
+    </message>
+</context>
+<context>
+    <name>MessageOverlayFlickable</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Ty</translation>
+    </message>
+    <message>
+        <source>This message was forwarded. Original author: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -928,6 +943,17 @@
     </message>
     <message>
         <source>Message unpinned</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PinnedMessageItem</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Ty</translation>
+    </message>
+    <message>
+        <source>Pinned Message</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
