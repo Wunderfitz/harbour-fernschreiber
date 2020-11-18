@@ -192,7 +192,7 @@ SilicaFlickable {
     }
     PullDownMenu {
         MenuItem {
-            visible: (chatPage.isSuperGroup || chatPage.isBasicGroup) && groupInformation && groupInformation.status["@type"] !== "chatMemberStatusBanned"
+            visible: (chatInformationPage.isSuperGroup || chatInformationPage.isBasicGroup) && chatInformationPage.groupInformation && chatInformationPage.groupInformation.status["@type"] !== "chatMemberStatusBanned"
             text: chatInformationPage.userIsMember ? qsTr("Leave Chat") : qsTr("Join Chat")
             onClicked: {
                 // ensure it's done even if the page is closed:
