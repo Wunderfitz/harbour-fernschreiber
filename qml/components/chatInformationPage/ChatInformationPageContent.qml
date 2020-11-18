@@ -177,8 +177,7 @@ SilicaFlickable {
 
 
 
-    Component.onCompleted: {
-        console.log("completed chatinformationpage");
+    Component.onCompleted: {7
         initializePage();
     }
 
@@ -245,7 +244,7 @@ SilicaFlickable {
             property int maxDimension: Screen.width / 2
             property int minX: Theme.horizontalPageMargin
             property int maxX: (chatInformationPage.width - maxDimension)/2
-            property int minY: (parent.height - minDimension)/2
+            property int minY: Theme.paddingSmall//(parent.height - minDimension)/2
             property int maxY: parent.height
             property double tweenFactor: {
                 if(!hasImage) {
@@ -284,7 +283,7 @@ SilicaFlickable {
         }
         // PageHeader changes the html base path:
         property url emojiBase: "../js/emoji/"
-        leftMargin: imageContainer.minDimension + Theme.horizontalPageMargin + Theme.paddingMedium
+        leftMargin: imageContainer.getEased((imageContainer.minDimension + Theme.paddingMedium), 0, imageContainer.tweenFactor) + Theme.horizontalPageMargin
         title: chatInformationPage.chatInformation.title !== "" ? Emoji.emojify(chatInformationPage.chatInformation.title, Theme.fontSizeLarge, emojiBase) : qsTr("Unknown")
         description: chatInformationPage.isPrivateChat ? ("@"+(chatInformationPage.privateChatUserInformation.username || chatInformationPage.chatPartnerGroupId)) : ""
     }
