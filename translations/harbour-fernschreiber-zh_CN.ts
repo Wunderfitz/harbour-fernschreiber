@@ -96,74 +96,74 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationPage</name>
-    <message>
-        <source>Unmute Chat</source>
-        <translation>取消对话静音</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>静音对话</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>未知</translation>
-    </message>
-    <message>
-        <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>邀请链接已复制到剪切板</translation>
-    </message>
+    <name>ChatInformationPageContent</name>
     <message>
         <source>%1 members, %2 online</source>
-        <translation>%1 位成员, %2 位在线</translation>
+        <translation type="unfinished">%1 位成员, %2 位在线</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation>%1 位订阅者</translation>
+        <translation type="unfinished">%1 位订阅者</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 位成员</translation>
+        <translation type="unfinished">%1 位成员</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation type="unfinished">离开对话</translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation type="unfinished">加入对话</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>正在离开对话</translation>
+        <translation type="unfinished">正在离开对话</translation>
     </message>
     <message>
-        <source>Info</source>
-        <comment>group or user infotext header</comment>
-        <translation>信息</translation>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">取消对话静音</translation>
     </message>
     <message>
-        <source>Phone Number</source>
-        <comment>user phone number header</comment>
-        <translation>电话号码</translation>
+        <source>Mute Chat</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Invite Link</source>
-        <comment>header</comment>
-        <translation>邀请链接</translation>
-    </message>
-    <message>
-        <source>There is no information text available, yet.</source>
-        <translation>暂无信息</translation>
+        <source>Unknown</source>
+        <translation type="unfinished">未知</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation>对话标题</translation>
+        <translation type="unfinished">对话标题</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation>输入 1-128 个字符</translation>
+        <translation type="unfinished">输入 1-128 个字符</translation>
     </message>
     <message>
-        <source>Leave Chat</source>
-        <translation>离开对话</translation>
+        <source>There is no information text available, yet.</source>
+        <translation type="unfinished">暂无信息</translation>
     </message>
     <message>
-        <source>Join Chat</source>
-        <translation>加入对话</translation>
+        <source>Info</source>
+        <comment>group or user infotext header</comment>
+        <translation type="unfinished">信息</translation>
+    </message>
+    <message>
+        <source>Phone Number</source>
+        <comment>user phone number header</comment>
+        <translation type="unfinished">电话号码</translation>
+    </message>
+    <message>
+        <source>Invite Link</source>
+        <comment>header</comment>
+        <translation type="unfinished">邀请链接</translation>
+    </message>
+    <message>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation type="unfinished">邀请链接已复制到剪切板</translation>
     </message>
 </context>
 <context>
@@ -176,16 +176,6 @@
     <message>
         <source>Unknown</source>
         <translation>未知</translation>
-    </message>
-    <message>
-        <source>Groups</source>
-        <comment>Button: groups in common (short)</comment>
-        <translation>群组</translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <comment>Button: Group Members</comment>
-        <translation>成员</translation>
     </message>
     <message>
         <source>Loading group members…</source>
@@ -209,11 +199,21 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationTabItemSettings</name>
+    <name>ChatInformationTabView</name>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation type="unfinished">群组</translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation type="unfinished">成员</translation>
+    </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation>设置</translation>
+        <translation type="unfinished">设置</translation>
     </message>
 </context>
 <context>

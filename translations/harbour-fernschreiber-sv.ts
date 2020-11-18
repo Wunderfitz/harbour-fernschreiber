@@ -96,74 +96,74 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationPage</name>
-    <message>
-        <source>Unmute Chat</source>
-        <translation>Slå på chatten</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Stäng av chatten</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Okänd</translation>
-    </message>
-    <message>
-        <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>Inbjudningslänken har kopierats till urklipp.</translation>
-    </message>
+    <name>ChatInformationPageContent</name>
     <message>
         <source>%1 members, %2 online</source>
-        <translation>%1 medlemmar, %2 inloggade</translation>
+        <translation type="unfinished">%1 medlem(mar), %2 inloggad(e)</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation>%1 prenumeranter</translation>
+        <translation type="unfinished">%1 prenumerant(er)</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 medlemmar</translation>
+        <translation type="unfinished">%1 medlem(mar)</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation type="unfinished">Lämna chatten</translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation type="unfinished">Anslut till chatten</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Lämnar chatten</translation>
+        <translation type="unfinished">Lämnar chatten</translation>
     </message>
     <message>
-        <source>Info</source>
-        <comment>group or user infotext header</comment>
-        <translation>Info</translation>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">Slå på chatten</translation>
     </message>
     <message>
-        <source>Phone Number</source>
-        <comment>user phone number header</comment>
-        <translation>Telefonnummer</translation>
+        <source>Mute Chat</source>
+        <translation type="unfinished">Stäng av chatten</translation>
     </message>
     <message>
-        <source>Invite Link</source>
-        <comment>header</comment>
-        <translation>Inbjudningslänk</translation>
-    </message>
-    <message>
-        <source>There is no information text available, yet.</source>
-        <translation>Det finns ingen informationstext än.</translation>
+        <source>Unknown</source>
+        <translation type="unfinished">Okänd</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation>Chattnamn</translation>
+        <translation type="unfinished">Chattnamn</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation>Ange 1-128 tecken</translation>
+        <translation type="unfinished">Ange 1-128 tecken</translation>
     </message>
     <message>
-        <source>Leave Chat</source>
-        <translation>Lämna chatten</translation>
+        <source>There is no information text available, yet.</source>
+        <translation type="unfinished">Det finns ingen informationstext än.</translation>
     </message>
     <message>
-        <source>Join Chat</source>
-        <translation>Anslut till chatten</translation>
+        <source>Info</source>
+        <comment>group or user infotext header</comment>
+        <translation type="unfinished">Info</translation>
+    </message>
+    <message>
+        <source>Phone Number</source>
+        <comment>user phone number header</comment>
+        <translation type="unfinished">Telefonnummer</translation>
+    </message>
+    <message>
+        <source>Invite Link</source>
+        <comment>header</comment>
+        <translation type="unfinished">Inbjudningslänk</translation>
+    </message>
+    <message>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation type="unfinished">Inbjudningslänken har kopierats till urklipp.</translation>
     </message>
 </context>
 <context>
@@ -176,16 +176,6 @@
     <message>
         <source>Unknown</source>
         <translation>Okänd</translation>
-    </message>
-    <message>
-        <source>Groups</source>
-        <comment>Button: groups in common (short)</comment>
-        <translation>Grupper</translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <comment>Button: Group Members</comment>
-        <translation>Medlemmar</translation>
     </message>
     <message>
         <source>Loading group members…</source>
@@ -209,11 +199,21 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationTabItemSettings</name>
+    <name>ChatInformationTabView</name>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation type="unfinished">Grupper</translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation type="unfinished">Medlemmar</translation>
+    </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation>Inställningar</translation>
+        <translation type="unfinished">Inställningar</translation>
     </message>
 </context>
 <context>

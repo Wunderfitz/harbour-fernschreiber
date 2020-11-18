@@ -25,7 +25,7 @@ Item {
     property bool isActive: imageContainer.tweenFactor === 1.0
 
     opacity: isActive ? 1.0 : 0.0
-    Behavior on opacity { NumberAnimation {} }
+    Behavior on opacity { FadeAnimation {} }
 
     SlideshowView {
         id: bigProfilePictureList

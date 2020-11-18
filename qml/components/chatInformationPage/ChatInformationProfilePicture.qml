@@ -25,7 +25,7 @@ Item {
     visible: imageContainer.tweenFactor > 0.8 && chatPictureDetail.imageStatus === Image.Ready
     property bool isActive: imageContainer.tweenFactor === 1.0
     opacity: isActive ? 1.0 : 0.0
-    Behavior on opacity { NumberAnimation {} }
+    Behavior on opacity { FadeAnimation {} }
     ProfileThumbnail {
         id: chatPictureDetail
         anchors.fill: parent

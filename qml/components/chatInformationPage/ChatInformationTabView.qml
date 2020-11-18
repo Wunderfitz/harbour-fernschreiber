@@ -54,22 +54,21 @@ Item {
             width: parent.width
             columns: tabView.count
             Repeater {
-                model: tabView.count
+                model: tabModel
                 delegate: BackgroundItem {
                     id: headerItem
-                    property bool loaded: tabItem.image !== "" && tabItem.title !== ""
+                    property bool loaded: image !== "" && title !== ""
                     width: loaded ? (headerGrid.width / tabView.count) : 0
                     opacity: loaded ? 1.0 : 0.0
 
-                    Behavior on width { PropertyAnimation {duration: 300}}
-                    Behavior on opacity { PropertyAnimation {duration: 300}}
+                    Behavior on width { PropertyAnimation {duration: 200}}
+                    Behavior on opacity { FadeAnimation {}}
                     height: Theme.itemSizeLarge
-                    property ChatInformationTabItemBase tabItem: tabView.model.get(index)
                     property int itemIndex: index
-                    property bool itemIsActive: tabItem.active
+                    property bool itemIsActive: tabView.currentIndex === itemIndex
                     Icon {
                         id: headerIcon
-                        source: headerItem.tabItem.image
+                        source: image
                         highlighted: headerItem.pressed || headerItem.itemIsActive
                         anchors {
                             top: parent.top
@@ -77,7 +76,7 @@ Item {
                         }
                     }
                     Label {
-                        text: headerItem.tabItem.title
+                        text: title
                         width: parent.width
                         horizontalAlignment: Text.AlignHCenter
                         anchors.top: headerIcon.bottom
@@ -85,7 +84,7 @@ Item {
                         font.pixelSize: Theme.fontSizeTiny
                     }
                     onClicked: {
-                        chatInformationPage.scrollDown()
+                        pageContent.scrollDown()
                         tabView.openTab(itemIndex)
                     }
                 }
@@ -105,7 +104,6 @@ Item {
         highlightMoveDuration: 500
         property int maxHeight: tabViewItem.height - tabViewHeader.height
 
-
         anchors {
             top: tabViewHeader.bottom
             left: parent.left
@@ -116,51 +114,33 @@ Item {
         function openTab(index) {
             currentIndex = index;
         }
-        model: VisualItemModel {
+        model: ListModel {
             id: tabModel
         }
-    }
-    Component {
-        id: membersGroupComponent
-        ChatInformationTabItemMembersGroups{
+        delegate: Loader {
             width: tabView.width
+            height: tabView.maxHeight
+            asynchronous: true
+            source: Qt.resolvedUrl(tab+".qml")
         }
     }
-    Component {
-        id: settingsComponent
-        ChatInformationTabItemSettings {
-            width: tabView.width
-        }
-    }
-    Component {
-        id: debugComponent
-        ChatInformationTabItemDebug {
-            width: tabView.width
-        }
-    }
-    property var tabItems: {
-        var items = [];
+    Component.onCompleted: {
         if(!(isPrivateChat && chatPartnerGroupId === myUserId.toString())) {
-            items.push(membersGroupComponent);
+            tabModel.append({
+                tab:"ChatInformationTabItemMembersGroups",
+                title: chatInformationPage.isPrivateChat ? qsTr("Groups", "Button: groups in common (short)") : qsTr("Members", "Button: Group Members"),
+                image: "image://theme/icon-m-people"
+            });
         }
         if(!isPrivateChat && (groupInformation.status.can_restrict_members || groupInformation.status["@type"] === "chatMemberStatusCreator")) {
-            items.push(settingsComponent);
+            tabModel.append({
+                tab:"ChatInformationTabItemSettings",
+                title: qsTr("Settings", "Button: Chat Settings"),
+                image: "image://theme/icon-m-developer-mode"
+            });
         }
-//        items.push(debugComponent);
+//        tabModel.append({tab:"ChatInformationTabItemDebug"});
 
-        return items;
-    }
-    onTabItemsChanged: fillTabItems()
-
-    function fillTabItems() {
-        tabModel.clear()
-        for(var i in tabItems) {
-            tabModel.append(tabItems[i].createObject(tabModel));
-        }
-    }
-
-    Component.onCompleted: {
-        fillTabItems()
     }
 
 }

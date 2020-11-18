@@ -96,23 +96,7 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationPage</name>
-    <message>
-        <source>Unmute Chat</source>
-        <translation>Включить уведомления</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Выключить уведомления</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>Ссылка для приглашения скопирована в буффер обмена</translation>
-    </message>
+    <name>ChatInformationPageContent</name>
     <message>
         <source>%1 members, %2 online</source>
         <translation type="unfinished">%1 участников, %2 онлайн</translation>
@@ -126,44 +110,60 @@
         <translation type="unfinished">%1 участников</translation>
     </message>
     <message>
+        <source>Leave Chat</source>
+        <translation type="unfinished">Выйти из чата</translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation type="unfinished">Зайти в чат</translation>
+    </message>
+    <message>
         <source>Leaving chat</source>
         <translation type="unfinished">Выход из чата</translation>
     </message>
     <message>
-        <source>Info</source>
-        <comment>group or user infotext header</comment>
-        <translation>Информация</translation>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">Включить уведомления</translation>
     </message>
     <message>
-        <source>Phone Number</source>
-        <comment>user phone number header</comment>
-        <translation>Номер телефона</translation>
+        <source>Mute Chat</source>
+        <translation type="unfinished">Выключить уведомления</translation>
     </message>
     <message>
-        <source>Invite Link</source>
-        <comment>header</comment>
-        <translation>Ссылка для приглашения</translation>
-    </message>
-    <message>
-        <source>There is no information text available, yet.</source>
-        <translation>Информация отсутствует</translation>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation>Заголовок чата</translation>
+        <translation type="unfinished">Заголовок чата</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation>Введите 1-128 символов</translation>
+        <translation type="unfinished">Введите 1-128 символов</translation>
     </message>
     <message>
-        <source>Leave Chat</source>
-        <translation>Выйти из чата</translation>
+        <source>There is no information text available, yet.</source>
+        <translation type="unfinished">Информация отсутствует</translation>
     </message>
     <message>
-        <source>Join Chat</source>
-        <translation>Зайти в чат</translation>
+        <source>Info</source>
+        <comment>group or user infotext header</comment>
+        <translation type="unfinished">Информация</translation>
+    </message>
+    <message>
+        <source>Phone Number</source>
+        <comment>user phone number header</comment>
+        <translation type="unfinished">Номер телефона</translation>
+    </message>
+    <message>
+        <source>Invite Link</source>
+        <comment>header</comment>
+        <translation type="unfinished">Ссылка для приглашения</translation>
+    </message>
+    <message>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation type="unfinished">Ссылка для приглашения скопирована в буффер обмена</translation>
     </message>
 </context>
 <context>
@@ -176,16 +176,6 @@
     <message>
         <source>Unknown</source>
         <translation>нет информации</translation>
-    </message>
-    <message>
-        <source>Groups</source>
-        <comment>Button: groups in common (short)</comment>
-        <translation>Группы</translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <comment>Button: Group Members</comment>
-        <translation>Участники группы</translation>
     </message>
     <message>
         <source>Loading group members…</source>
@@ -209,11 +199,21 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationTabItemSettings</name>
+    <name>ChatInformationTabView</name>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation type="unfinished">Группы</translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation type="unfinished">Участники группы</translation>
+    </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation>Настройки</translation>
+        <translation type="unfinished">Настройки</translation>
     </message>
 </context>
 <context>

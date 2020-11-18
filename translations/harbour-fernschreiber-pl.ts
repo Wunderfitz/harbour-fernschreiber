@@ -96,7 +96,7 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationPage</name>
+    <name>ChatInformationPageContent</name>
     <message>
         <source>Unmute Chat</source>
         <translation>Wyłącz wyciszenie czatu</translation>
@@ -209,7 +209,17 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationTabItemSettings</name>
+    <name>ChatInformationTabView</name>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>

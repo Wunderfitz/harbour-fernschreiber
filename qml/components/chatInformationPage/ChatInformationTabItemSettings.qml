@@ -27,8 +27,8 @@ import "../../js/functions.js" as Functions
 
 ChatInformationTabItemBase {
     id: tabBase
-    title: qsTr("Settings", "Button: Chat Settings")
-    image: "image://theme/icon-m-developer-mode"
+//    title: qsTr("Settings", "Button: Chat Settings")
+//    image: "image://theme/icon-m-developer-mode"
 
     SilicaFlickable {
         height: tabBase.height

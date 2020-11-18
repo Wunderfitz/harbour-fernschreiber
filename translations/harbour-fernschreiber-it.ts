@@ -96,88 +96,78 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationPage</name>
-    <message>
-        <source>Leaving chat</source>
-        <translation>Lascia chat</translation>
-    </message>
-    <message>
-        <source>Unmute Chat</source>
-        <translation>Riattiva suoni chat</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Silenzia chat</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Sconosciuto</translation>
-    </message>
-    <message>
-        <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>Il link d&apos;invito è stato copiato nella clipboard.</translation>
-    </message>
+    <name>ChatInformationPageContent</name>
     <message>
         <source>%1 members, %2 online</source>
-        <translation>%1 membri, %2 online</translation>
+        <translation type="unfinished">%1 membri, %2 online</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation>%1 abbonati</translation>
+        <translation type="unfinished">%1 abbonati</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 membri</translation>
+        <translation type="unfinished">%1 membri</translation>
     </message>
     <message>
-        <source>Info</source>
-        <comment>group or user infotext header</comment>
-        <translation>Info</translation>
+        <source>Leave Chat</source>
+        <translation type="unfinished">Lascia chat</translation>
     </message>
     <message>
-        <source>Phone Number</source>
-        <comment>user phone number header</comment>
-        <translation>Telefono</translation>
+        <source>Join Chat</source>
+        <translation type="unfinished">Entra nella chat</translation>
     </message>
     <message>
-        <source>Invite Link</source>
-        <comment>header</comment>
-        <translation>Link d&apos;invito</translation>
+        <source>Leaving chat</source>
+        <translation type="unfinished">Lascia chat</translation>
     </message>
     <message>
-        <source>There is no information text available, yet.</source>
-        <translation>Attualmente non è disponibile nessuna informazione.</translation>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">Riattiva suoni chat</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation type="unfinished">Silenzia chat</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">Sconosciuto</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation>Titolo chat</translation>
+        <translation type="unfinished">Titolo chat</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation>Inserisci da 1 a 128 caratteri</translation>
+        <translation type="unfinished">Inserisci da 1 a 128 caratteri</translation>
     </message>
     <message>
-        <source>Leave Chat</source>
-        <translation>Lascia chat</translation>
+        <source>There is no information text available, yet.</source>
+        <translation type="unfinished">Attualmente non è disponibile nessuna informazione.</translation>
     </message>
     <message>
-        <source>Join Chat</source>
-        <translation>Entra nella chat</translation>
+        <source>Info</source>
+        <comment>group or user infotext header</comment>
+        <translation type="unfinished">Info</translation>
+    </message>
+    <message>
+        <source>Phone Number</source>
+        <comment>user phone number header</comment>
+        <translation type="unfinished">Telefono</translation>
+    </message>
+    <message>
+        <source>Invite Link</source>
+        <comment>header</comment>
+        <translation type="unfinished">Link d&apos;invito</translation>
+    </message>
+    <message>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation type="unfinished">Il link d&apos;invito è stato copiato nella clipboard.</translation>
     </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
-    <message>
-        <source>Groups</source>
-        <comment>Button: groups in common (short)</comment>
-        <translation>Gruppi</translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <comment>Button: Group Members</comment>
-        <translation>Membri</translation>
-    </message>
     <message>
         <source>You</source>
         <translation>Tu</translation>
@@ -209,11 +199,21 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationTabItemSettings</name>
+    <name>ChatInformationTabView</name>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation type="unfinished">Gruppi</translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation type="unfinished">Membri</translation>
+    </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation>Impostazioni</translation>
+        <translation type="unfinished">Impostazioni</translation>
     </message>
 </context>
 <context>
