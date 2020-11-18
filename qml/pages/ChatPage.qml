@@ -108,6 +108,9 @@ Page {
     }
 
     function updateGroupStatusText() {
+        if(chatPage.state === "selectMessages") {
+            return
+        }
         if (chatOnlineMemberCount > 0) {
             chatStatusText.text = qsTr("%1 members, %2 online").arg(Functions.getShortenedCount(chatGroupInformation.member_count)).arg(Functions.getShortenedCount(chatOnlineMemberCount));
         } else {
@@ -266,6 +269,16 @@ Page {
         forwardMessagesTimer.messageIds = messageIds;
         forwardMessagesTimer.start();
     }
+    function hasSendPrivilege(privilege) {
+        var groupStatus = chatGroupInformation ? chatGroupInformation.status : null
+        var groupStatusType = groupStatus ? groupStatus["@type"] : null
+        return chatPage.isPrivateChat
+                    || (groupStatusType === "chatMemberStatusMember" && chatInformation.permissions[privilege])
+                    || groupStatusType === "chatMemberStatusAdministrator"
+                    || groupStatusType === "chatMemberStatusCreator"
+                    || (groupStatusType === "chatMemberStatusRestricted" && groupStatus.permissions[privilege])
+    }
+
     Timer {
         id: forwardMessagesTimer
         interval: 200
@@ -824,7 +837,7 @@ Page {
                 topPadding: Theme.paddingSmall
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 anchors.horizontalCenter: parent.horizontalCenter
-                visible: !chatPage.isChannel
+                visible: chatPage.hasSendPrivilege("can_send_messages")
                 height: visible ? implicitHeight : 0
                 Behavior on opacity { FadeAnimation {} }
 
@@ -861,7 +874,7 @@ Page {
                     layoutDirection: Qt.RightToLeft
                     spacing: Theme.paddingMedium
                     IconButton {
-                        id: imageAttachmentButton
+                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-image"
                         onClicked: {
                             var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
@@ -876,7 +889,7 @@ Page {
                         }
                     }
                     IconButton {
-                        id: videoAttachmentButton
+                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-video"
                         onClicked: {
                             var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage");
@@ -891,7 +904,7 @@ Page {
                         }
                     }
                     IconButton {
-                        id: documentAttachmentButton
+                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-document"
                         onClicked: {
                             var picker = pageStack.push("Sailfish.Pickers.DocumentPickerPage");
@@ -907,6 +920,8 @@ Page {
                     }
 
                     IconButton {
+
+                        visible: chatPage.hasSendPrivilege("can_send_other_messages")
                         icon.source: "../../images/icon-m-sticker.svg"
                         icon.sourceSize {
                             width: Theme.iconSizeMedium
@@ -919,10 +934,7 @@ Page {
                         }
                     }
                     IconButton {
-                        visible: !chatPage.isPrivateChat && chatGroupInformation &&
-                                 (chatGroupInformation.status["@type"] === "chatMemberStatusCreator"
-                                  || chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator"
-                                  || (chatGroupInformation.status["@type"] === "chatMemberStatusMember" && chatInformation.permissions.can_send_polls))
+                        visible: !chatPage.isPrivateChat && chatPage.hasSendPrivilege("can_send_polls")
                         icon.source: "image://theme/icon-m-question"
                         onClicked: {
                             pageStack.push(Qt.resolvedUrl("../pages/PollCreationPage.qml"), { "chatId" : chatInformation.id, groupName: chatInformation.title});
@@ -1200,21 +1212,21 @@ Page {
                                 leftMargin: visible ? Theme.paddingSmall : 0
                                 verticalCenter: parent.verticalCenter
                             }
-                            visible: chatPage.chatInformation.can_be_forwarded &&  selectedMessages.every(function(message){
+                            visible: selectedMessages.every(function(message){
                                 return message.can_be_forwarded
                             })
                             width: visible ? Theme.itemSizeMedium : 0
                             icon.source: "image://theme/icon-m-forward"
                             onClicked: {
-                                var ids = Functions.getMessagesArrayIds(chatPage.selectedMessages);
-
-                                var chatId = chatInformation.id;
-
+                                var ids = Functions.getMessagesArrayIds(chatPage.selectedMessages)
+                                var neededPermissions = Functions.getMessagesNeededForwardPermissions(chatPage.selectedMessages)
+                                var chatId = chatInformation.id
                                 pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
+                                    myUserId: chatPage.myUserId,
                                     headerDescription: qsTr("Forward %n messages", "dialog header", ids.length).arg(ids.length),
-                                    payload: {fromChatId: chatId, messageIds:ids},
+                                    payload: {fromChatId: chatId, messageIds:ids, neededPermissions: neededPermissions},
                                     state: "forwardMessages"
-                                });
+                                })
                             }
 
                         }

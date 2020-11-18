@@ -29,8 +29,13 @@ Dialog {
     canAccept: false
     acceptDestinationAction: PageStackAction.Replace
     acceptDestinationReplaceTarget: pageStack.find( function(page){ return(page._depth === 0)} )
+    property int myUserId: tdLibWrapper.getUserInformation().id
     property alias headerTitle: pageHeader.title
     property alias headerDescription: pageHeader.description
+    /*
+        payload dependent on chatSelectionPage.state
+         - forwardMessages: {fromChatId, messageIds, neededPermissions}
+    */
     property var payload: ({})
 
     onAccepted: {
@@ -38,6 +43,7 @@ Dialog {
         case "forwardMessages":
             acceptDestinationInstance.forwardMessages(payload.fromChatId, payload.messageIds)
             break;
+        // future uses of chat selection can be processed here
         }
     }
 
@@ -61,8 +67,61 @@ Dialog {
 
         model: chatListModel
         delegate: ChatListViewItem {
-            ownUserId: overviewPage.ownUserId
+            ownUserId: chatSelectionPage.myUserId
+            Loader { // checking permissions takes a while, so we defer those calculations
+                id: visibleLoader
+                asynchronous: true
+                sourceComponent: Component {
+                    QtObject {
+                        property bool visible: false
+                        Component.onCompleted: {
+                            if(chatSelectionPage.state === "forwardMessages") {
+                                var chatType = display.type['@type']
+                                var chatGroupInformation
+                                if(chatType === "chatTypePrivate" || chatType === "chatTypeSecret") {
+                                    visible = true
+                                    return;
+                                }
+                                else if (chatType === "chatTypeBasicGroup" ) {
+                                    chatGroupInformation = tdLibWrapper.getBasicGroup(display.type.basic_group_id)
+                                }
+                                else if (chatType === "chatTypeSupergroup" ) {
+                                    chatGroupInformation = tdLibWrapper.getSuperGroup(display.type.supergroup_id)
+                                }
+                                var groupStatus = chatGroupInformation.status
+                                var groupStatusType = groupStatus["@type"]
+                                var groupStatusPermissions = groupStatus.permissions
+                                var groupPermissions = display.permissions
+                                visible = (groupStatusType === "chatMemberStatusCreator"
+                                        || groupStatusType === "chatMemberStatusAdministrator"
+                                        || (groupStatusType === "chatMemberStatusMember"
+                                                && chatSelectionPage.payload.neededPermissions.every(function(neededPermission){
+                                                    return groupPermissions[neededPermission]
+                                                })
+                                            )
+                                        || (groupStatusType === "chatMemberStatusRestricted"
+                                           && chatSelectionPage.payload.neededPermissions.every(function(neededPermission){
+                                               return groupStatusPermissions[neededPermission]
+                                           })
+                                       )
+                                    )
+                            } else { // future uses of chat selection can be processed here
+                                visible = true
+                            }
+                        }
+                    }
+                }
+            }
 
+            property bool valid: visibleLoader && visibleLoader.item && visibleLoader.item.visible
+            opacity: valid ? 1.0 : 0
+
+            Behavior on opacity { FadeAnimation {}}
+            Behavior on height { NumberAnimation {}}
+
+            // normal height while calculating, otherwise all elements get displayed at once
+            height: !visibleLoader.item || valid ? contentHeight : 0
+            enabled: valid
             onClicked: {
                 var chat = tdLibWrapper.getChat(display.id);
                 switch(chatSelectionPage.state) {

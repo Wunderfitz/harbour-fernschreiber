@@ -39,6 +39,7 @@
 #include "processlauncher.h"
 #include "stickermanager.h"
 #include "tgsplugin.h"
+#include "fernschreiberutils.h"
 
 Q_IMPORT_PLUGIN(TgsIOPlugin)
 
@@ -59,6 +60,9 @@ int main(int argc, char *argv[])
     TDLibWrapper *tdLibWrapper = new TDLibWrapper(appSettings, view.data());
     context->setContextProperty("tdLibWrapper", tdLibWrapper);
     qmlRegisterUncreatableType<TDLibWrapper>(uri, 1, 0, "TelegramAPI", QString());
+
+    FernschreiberUtils *fernschreiberUtils = new FernschreiberUtils(view.data());
+    context->setContextProperty("fernschreiberUtils", fernschreiberUtils);
 
     DBusAdaptor *dBusAdaptor = tdLibWrapper->getDBusAdaptor();
     context->setContextProperty("dBusAdaptor", dBusAdaptor);
