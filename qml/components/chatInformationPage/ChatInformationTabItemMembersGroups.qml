@@ -57,9 +57,8 @@ ChatInformationTabItemBase {
             handleScrollIntoView()
         }
         onAtYEndChanged: {
-            if(tabBase.active && !tabBase.loading && chatInformationPage.isSuperGroup && (chatInformationPage.groupInformation.member_count > membersView.count) && membersView.atYEnd) {
+            if(tabBase.active && !tabBase.loading && chatInformationPage.isSuperGroup && !chatInformationPage.isChannel && (chatInformationPage.groupInformation.member_count > membersView.count) && membersView.atYEnd) {
                 tabBase.loading = true;
-                console.log("LOAD MEMBERS BECAUSE ATYEND")
                 fetchMoreMembersTimer.start()
             }
         }
