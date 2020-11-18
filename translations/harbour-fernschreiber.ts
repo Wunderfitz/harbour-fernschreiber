@@ -960,7 +960,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <source>Question (%n1 characters left)</source>
+        <source>Question (%Ln characters left)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
@@ -975,7 +975,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <source>Answer (%n1 characters left)</source>
+        <source>Answer (%Ln characters left)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
@@ -1009,7 +1009,7 @@
 <context>
     <name>PollPreview</name>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -1022,7 +1022,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -1048,7 +1048,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -1065,14 +1065,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s)</source>
+        <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -1082,7 +1082,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) including yours</source>
+        <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation type="unfinished">
             <numerusform></numerusform>

@@ -964,10 +964,10 @@
         <translation>Geben Sie Ihre Frage ein</translation>
     </message>
     <message numerus="yes">
-        <source>Question (%n1 characters left)</source>
+        <source>Question (%Ln characters left)</source>
         <translation>
-            <numerusform>Frage (%n1 Zeichen übrig)</numerusform>
-            <numerusform>Frage (%n1 Zeichen übrig)</numerusform>
+            <numerusform>Frage (%Ln Zeichen übrig)</numerusform>
+            <numerusform>Frage (%Ln Zeichen übrig)</numerusform>
         </translation>
     </message>
     <message>
@@ -980,10 +980,10 @@
         <translation>Geben Sie eine Antwort ein</translation>
     </message>
     <message numerus="yes">
-        <source>Answer (%n1 characters left)</source>
+        <source>Answer (%Ln characters left)</source>
         <translation>
-            <numerusform>Antwort (%n1 Zeichen übrig)</numerusform>
-            <numerusform>Antwort (%n1 Zeichen übrig)</numerusform>
+            <numerusform>Antwort (%Ln Zeichen übrig)</numerusform>
+            <numerusform>Antwort (%Ln Zeichen übrig)</numerusform>
         </translation>
     </message>
     <message>
@@ -1015,9 +1015,9 @@
 <context>
     <name>PollPreview</name>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation>%Ln%</translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1028,11 +1028,11 @@
         <translation>Mehrfachauswahl ist erlaubt.</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 Stimme insgesamt</numerusform>
-            <numerusform>%L1 Stimmen insgesamt</numerusform>
+            <numerusform>%Ln Stimme insgesamt</numerusform>
+            <numerusform>%Ln Stimmen insgesamt</numerusform>
         </translation>
     </message>
     <message>
@@ -1055,11 +1055,11 @@
         <translation>Umfrageergebnis</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 Stimme insgesamt</numerusform>
-            <numerusform>%L1 Stimmen insgesamt</numerusform>
+            <numerusform>%Ln Stimme insgesamt</numerusform>
+            <numerusform>%Ln Stimmen insgesamt</numerusform>
         </translation>
     </message>
     <message>
@@ -1073,17 +1073,17 @@
         <translation>Ergebnis</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s)</source>
+        <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 Antwort</numerusform>
-            <numerusform>%L1 Antworten</numerusform>
+            <numerusform>%Ln Antwort</numerusform>
+            <numerusform>%Ln Antworten</numerusform>
         </translation>
     </message>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation>%Ln%</translation>
     </message>
     <message>
         <source>Chosen by:</source>
@@ -1091,11 +1091,11 @@
         <translation>Gewählt von:</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) including yours</source>
+        <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 Antwort inklusive Ihrer</numerusform>
-            <numerusform>%L1 Antworten inklusive Ihrer</numerusform>
+            <numerusform>%Ln Antwort inklusive Ihrer</numerusform>
+            <numerusform>%Ln Antworten inklusive Ihrer</numerusform>
         </translation>
     </message>
 </context>

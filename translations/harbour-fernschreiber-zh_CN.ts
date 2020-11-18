@@ -960,9 +960,9 @@
         <translation>在此输入你的问题</translation>
     </message>
     <message numerus="yes">
-        <source>Question (%n1 characters left)</source>
+        <source>Question (%Ln characters left)</source>
         <translation>
-            <numerusform>问题(剩余 %n1 个字符)</numerusform>
+            <numerusform>问题(剩余 %Ln 个字符)</numerusform>
         </translation>
     </message>
     <message>
@@ -975,9 +975,9 @@
         <translation>在此输入回答</translation>
     </message>
     <message numerus="yes">
-        <source>Answer (%n1 characters left)</source>
+        <source>Answer (%Ln characters left)</source>
         <translation>
-            <numerusform>回答(剩余 %n1 个字符)</numerusform>
+            <numerusform>回答(剩余 %Ln 个字符)</numerusform>
         </translation>
     </message>
     <message>
@@ -1009,9 +1009,9 @@
 <context>
     <name>PollPreview</name>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation>%Ln%</translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1022,10 +1022,10 @@
         <translation>允许多个回答。</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>总计 %L1 次回答</numerusform>
+            <numerusform>总计 %Ln 次回答</numerusform>
         </translation>
     </message>
     <message>
@@ -1048,10 +1048,10 @@
         <translation>投票结果</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>总计 %L1 次投票</numerusform>
+            <numerusform>总计 %Ln 次投票</numerusform>
         </translation>
     </message>
     <message>
@@ -1065,16 +1065,16 @@
         <translation>结果</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s)</source>
+        <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 次投票</numerusform>
+            <numerusform>%Ln 次投票</numerusform>
         </translation>
     </message>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation>%Ln%</translation>
     </message>
     <message>
         <source>Chosen by:</source>
@@ -1082,10 +1082,10 @@
         <translation>选择此项的人:</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) including yours</source>
+        <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 次投票，包括你</numerusform>
+            <numerusform>%Ln 次投票，包括你</numerusform>
         </translation>
     </message>
 </context>

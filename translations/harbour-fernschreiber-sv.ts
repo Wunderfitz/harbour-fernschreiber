@@ -964,10 +964,10 @@
         <translation>Ange din fråga här</translation>
     </message>
     <message numerus="yes">
-        <source>Question (%n1 characters left)</source>
+        <source>Question (%Ln characters left)</source>
         <translation>
-            <numerusform>Fråga (%n1 tecken kvar)</numerusform>
-            <numerusform>Fråga (%n1 tecken kvar)</numerusform>
+            <numerusform>Fråga (%Ln tecken kvar)</numerusform>
+            <numerusform>Fråga (%Ln tecken kvar)</numerusform>
         </translation>
     </message>
     <message>
@@ -980,10 +980,10 @@
         <translation>Ange svaret här</translation>
     </message>
     <message numerus="yes">
-        <source>Answer (%n1 characters left)</source>
+        <source>Answer (%Ln characters left)</source>
         <translation>
-            <numerusform>Svar (%n1 tecken kvar)</numerusform>
-            <numerusform>Svar (%n1 tecken kvar)</numerusform>
+            <numerusform>Svar (%Ln tecken kvar)</numerusform>
+            <numerusform>Svar (%Ln tecken kvar)</numerusform>
         </translation>
     </message>
     <message>
@@ -1023,16 +1023,16 @@
         <translation>Flera svarsalternativ tillåtna.</translation>
     </message>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation>%Ln%</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 röst sammanlagt</numerusform>
-            <numerusform>%L1 röster sammanlagt</numerusform>
+            <numerusform>%Ln röst sammanlagt</numerusform>
+            <numerusform>%Ln röster sammanlagt</numerusform>
         </translation>
     </message>
     <message>
@@ -1055,11 +1055,11 @@
         <translation>Omröstningsresultat</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 röst sammanlagt</numerusform>
-            <numerusform>%L1 röster sammanlagt</numerusform>
+            <numerusform>%Ln röst sammanlagt</numerusform>
+            <numerusform>%Ln röster sammanlagt</numerusform>
         </translation>
     </message>
     <message>
@@ -1073,25 +1073,25 @@
         <translation>Resultat</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) including yours</source>
+        <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 röst inklusive din</numerusform>
-            <numerusform>%L1 röster inklusive din</numerusform>
+            <numerusform>%Ln röst inklusive din</numerusform>
+            <numerusform>%Ln röster inklusive din</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s)</source>
+        <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 röst</numerusform>
-            <numerusform>%L1 röster</numerusform>
+            <numerusform>%Ln röst</numerusform>
+            <numerusform>%Ln röster</numerusform>
         </translation>
     </message>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation>%Ln%</translation>
     </message>
     <message>
         <source>Chosen by:</source>

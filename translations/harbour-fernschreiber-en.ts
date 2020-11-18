@@ -964,10 +964,10 @@
         <translation>Enter your question here</translation>
     </message>
     <message numerus="yes">
-        <source>Question (%n1 characters left)</source>
+        <source>Question (%Ln characters left)</source>
         <translation>
-            <numerusform>Question (%n1 character left)</numerusform>
-            <numerusform>Question (%n1 characters left)</numerusform>
+            <numerusform>Question (%Ln character left)</numerusform>
+            <numerusform>Question (%Ln characters left)</numerusform>
         </translation>
     </message>
     <message>
@@ -980,10 +980,10 @@
         <translation>Enter an answer here</translation>
     </message>
     <message numerus="yes">
-        <source>Answer (%n1 characters left)</source>
+        <source>Answer (%Ln characters left)</source>
         <translation>
-            <numerusform>Answer (%n1 character left)</numerusform>
-            <numerusform>Answer (%n1 characters left)</numerusform>
+            <numerusform>Answer (%Ln character left)</numerusform>
+            <numerusform>Answer (%Ln characters left)</numerusform>
         </translation>
     </message>
     <message>
@@ -1015,9 +1015,9 @@
 <context>
     <name>PollPreview</name>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation>%Ln%</translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1028,11 +1028,11 @@
         <translation>Multiple Answers are allowed.</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 vote total</numerusform>
-            <numerusform>%L1 votes total</numerusform>
+            <numerusform>%Ln vote total</numerusform>
+            <numerusform>%Ln votes total</numerusform>
         </translation>
     </message>
     <message>
@@ -1055,11 +1055,11 @@
         <translation>Poll Results</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 vote total</numerusform>
-            <numerusform>%L1 votes total</numerusform>
+            <numerusform>%Ln vote total</numerusform>
+            <numerusform>%Ln votes total</numerusform>
         </translation>
     </message>
     <message>
@@ -1073,17 +1073,17 @@
         <translation>Results</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s)</source>
+        <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 vote</numerusform>
-            <numerusform>%L1 votes</numerusform>
+            <numerusform>%Ln vote</numerusform>
+            <numerusform>%Ln votes</numerusform>
         </translation>
     </message>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation>%Ln%</translation>
     </message>
     <message>
         <source>Chosen by:</source>
@@ -1091,11 +1091,11 @@
         <translation>Chosen by:</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) including yours</source>
+        <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 vote including yours</numerusform>
-            <numerusform>%L1 votes including yours</numerusform>
+            <numerusform>%Ln vote including yours</numerusform>
+            <numerusform>%Ln votes including yours</numerusform>
         </translation>
     </message>
 </context>

@@ -193,7 +193,7 @@ Dialog {
                 placeholderText: qsTr("Enter your question here")
                 property int charactersLeft: 255 - text.length
                 color: charactersLeft < 0 ? Theme.errorColor : Theme.highlightColor
-                label: qsTr("Question (%n1 characters left)", "", charactersLeft).arg(charactersLeft)
+                label: qsTr("Question (%Ln characters left)", "", charactersLeft).arg(charactersLeft)
                 wrapMode: TextEdit.Wrap
                 onFocusChanged: {
                     validate();
@@ -253,7 +253,7 @@ Dialog {
                             placeholderText: qsTr("Enter an answer here")
                             property int charactersLeft: 100 - text.length
                             color: charactersLeft < 0 ? Theme.errorColor : Theme.highlightColor
-                            label: qsTr("Answer (%n1 characters left)", "", charactersLeft).arg(charactersLeft)
+                            label: qsTr("Answer (%Ln characters left)", "", charactersLeft).arg(charactersLeft)
                             property bool hasNextOption: index < pollCreationPage.options.count - 1
                             EnterKey.onClicked: {
                                 if(hasNextOption) {

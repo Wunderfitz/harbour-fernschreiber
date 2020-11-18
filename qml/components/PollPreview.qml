@@ -178,7 +178,7 @@ Item {
                     Label {
                         id: optionVoterPercentage
                         font.pixelSize: Theme.fontSizeTiny
-                        text: qsTr("%L1\%", "% of votes for option").arg(modelData.vote_percentage)
+                        text: qsTr("%Ln\%", "% of votes for option").arg(modelData.vote_percentage)
                         horizontalAlignment: Text.AlignRight
                         anchors {
                             right: parent.right
@@ -226,7 +226,7 @@ Item {
                 id: totalVoterCount
                 font.pixelSize: Theme.fontSizeTiny
                 anchors.verticalCenter: parent.verticalCenter
-                text: qsTr("%L1 vote(s) total", "number of total votes", pollData.total_voter_count).arg(pollData.total_voter_count)
+                text: qsTr("%Ln vote(s) total", "number of total votes", pollData.total_voter_count).arg(pollData.total_voter_count)
                 width: contentWidth
                 height: contentHeight
                 horizontalAlignment: Text.AlignRight

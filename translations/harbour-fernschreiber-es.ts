@@ -960,9 +960,9 @@
         <translation>Marcar su pregunta aquí</translation>
     </message>
     <message numerus="yes">
-        <source>Question (%n1 characters left)</source>
+        <source>Question (%Ln characters left)</source>
         <translation>
-            <numerusform>Pregunta (quedan %n1 caracteres)</numerusform>
+            <numerusform>Pregunta (quedan %Ln caracteres)</numerusform>
         </translation>
     </message>
     <message>
@@ -975,9 +975,9 @@
         <translation>Marcar una respuesta aquí</translation>
     </message>
     <message numerus="yes">
-        <source>Answer (%n1 characters left)</source>
+        <source>Answer (%Ln characters left)</source>
         <translation>
-            <numerusform>Respuesta (quedan %n1 caracteres)</numerusform>
+            <numerusform>Respuesta (quedan %Ln caracteres)</numerusform>
         </translation>
     </message>
     <message>
@@ -1009,9 +1009,9 @@
 <context>
     <name>PollPreview</name>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation>%Ln%</translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1022,10 +1022,10 @@
         <translation>Se permiten múltiples respuestas.</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 votos totales</numerusform>
+            <numerusform>%Ln votos totales</numerusform>
         </translation>
     </message>
     <message>
@@ -1048,10 +1048,10 @@
         <translation>Resultados de encuesta</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 total de votos</numerusform>
+            <numerusform>%Ln total de votos</numerusform>
         </translation>
     </message>
     <message>
@@ -1065,16 +1065,16 @@
         <translation>Resultados</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s)</source>
+        <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 votos</numerusform>
+            <numerusform>%Ln votos</numerusform>
         </translation>
     </message>
     <message>
-        <source>%L1%</source>
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation>%Ln%</translation>
     </message>
     <message>
         <source>Chosen by:</source>
@@ -1082,10 +1082,10 @@
         <translation>Elegido por:</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) including yours</source>
+        <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 votos incluyendo el suyo</numerusform>
+            <numerusform>%Ln votos incluyendo el suyo</numerusform>
         </translation>
     </message>
 </context>
