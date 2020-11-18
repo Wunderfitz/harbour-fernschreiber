@@ -303,6 +303,15 @@ void TDLibWrapper::pinMessage(const QString &chatId, const QString &messageId, b
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::unpinMessage(const QString &chatId)
+{
+    LOG("Unpin message from chat" << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "unpinChatMessage");
+    requestObject.insert("chat_id", chatId);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId)
 {
     LOG("Sending text message" << chatId << message << replyToMessageId);

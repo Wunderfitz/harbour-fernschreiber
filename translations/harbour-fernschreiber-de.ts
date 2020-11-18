@@ -922,6 +922,10 @@
         <source>Pinned Message</source>
         <translation>Angeheftete Nachricht</translation>
     </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Nachricht losgeheftet</translation>
+    </message>
 </context>
 <context>
     <name>PollCreationPage</name>

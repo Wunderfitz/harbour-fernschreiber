@@ -27,6 +27,7 @@ Item {
 
     property var pinnedMessage;
     signal requestShowMessage;
+    signal requestCloseMessage;
 
     onPinnedMessageChanged: {
         if (pinnedMessage) {
@@ -43,7 +44,7 @@ Item {
     visible: false
     anchors.left: parent.left
     anchors.right: parent.right
-    height: pinnedMessageRow.height
+    height: visible ? pinnedMessageRow.height : 0
 
     Rectangle {
         id: pinnedMessageBackground
@@ -68,7 +69,7 @@ Item {
         }
 
         Item {
-            width: parent.width - pinnedMessageButton.width - removePinnedMessageIconButton.width
+            width: parent.width - pinnedMessageButton.width - unpinMessageIconLoader.width - removePinnedMessageIconButton.width
             height: pinnedMessageColumn.height
             anchors.verticalCenter: parent.verticalCenter
             Column {
@@ -108,11 +109,33 @@ Item {
             }
         }
 
+        Loader {
+            id: unpinMessageIconLoader
+            asynchronous: true
+            active: canPinMessages()
+            Behavior on opacity { FadeAnimation {} }
+            width: active ? item.width : 0
+            height: active ? item.height : 0
+            anchors.verticalCenter: parent.verticalCenter
+            sourceComponent: Component {
+                IconButton {
+                    id: unpinMessageIconButton
+                    icon.source: "image://theme/icon-m-remove"
+                    onClicked: {
+                        Remorse.itemAction(pinnedMessageRow, qsTr("Message unpinned"), function() { tdLibWrapper.unpinMessage(chatPage.chatInformation.id);
+                                                                                                     pinnedMessageItem.requestCloseMessage(); });
+
+                    }
+                }
+            }
+        }
+
         IconButton {
             id: removePinnedMessageIconButton
             icon.source: "image://theme/icon-m-clear"
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
+                pinnedMessageItem.requestCloseMessage();
                 pinnedMessage = undefined;
             }
         }

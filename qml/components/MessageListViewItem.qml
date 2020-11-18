@@ -102,34 +102,11 @@ ListItem {
                     text: qsTr("Select Message")
                 }
                 MenuItem {
-
-                    function amIVisible() {
-                        console.log("Is pin message menu visible?");
-                        if (page.isPrivateChat) {
-                            console.log("Private Chat: No!");
-                            return false;
-                        }
-                        if (page.chatGroupInformation.status["@type"] === "chatMemberStatusCreator") {
-                            console.log("Creator of this chat: Yes!");
-                            return true;
-                        }
-                        if (page.chatInformation.permissions.can_pin_messages) {
-                            console.log("All people can pin: Yes!");
-                            return true;
-                        }
-                        if (page.chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator") {
-                            console.log("Admin with privileges? " + page.chatGroupInformation.status.can_pin_messages);
-                            return page.chatGroupInformation.status.can_pin_messages;
-                        }
-                        console.log("Something else: No!");
-                        return false;
-                    }
-
                     onClicked: {
                         tdLibWrapper.pinMessage(page.chatInformation.id, myMessage.id);
                     }
                     text: qsTr("Pin Message")
-                    visible: amIVisible()
+                    visible: canPinMessages()
                 }
                 MenuItem {
                     onClicked: {
