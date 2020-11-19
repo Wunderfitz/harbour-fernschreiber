@@ -291,7 +291,7 @@
     </message>
     <message>
         <source>Uploading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Przesyłanie...</translation>
     </message>
     <message>
         <source>This chat is empty.</source>
@@ -356,7 +356,7 @@
     <name>ChatSelectionPage</name>
     <message>
         <source>Select Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz czat</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
@@ -442,7 +442,7 @@
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj podglad stron internetowych</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
@@ -478,7 +478,7 @@
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłączony</translation>
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
@@ -813,11 +813,11 @@
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
-        <translation type="unfinished">Odpowiedz na wiadomość</translation>
+        <translation>Odpowiedz na wiadomość</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation type="unfinished">Edytuj widomość</translation>
+        <translation>Edytuj widomość</translation>
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
@@ -905,23 +905,23 @@
     <name>PollCreationPage</name>
     <message>
         <source>All answers have to contain 1-100 characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wszystkie odpowiedzi musza zawierać od 1 do 100 znaków.</translation>
     </message>
     <message>
         <source>To send a quiz, you have to specify the right answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aby wysłać quiz musisz wskazać prawidłową odpowiedź.</translation>
     </message>
     <message>
         <source>You have to enter a question.</source>
-        <translation type="unfinished"></translation>
+        <translation>Musisz wprowadzić pytanie.</translation>
     </message>
     <message>
         <source>The question has to be shorter than 256 characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pytanie musi byś krótsze niż 256 znaków.</translation>
     </message>
     <message>
         <source>A poll requires 2-10 answers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ankieta wymaga od 2 do 10 odpowiedzi.</translation>
     </message>
     <message>
         <source>Create a Poll</source>
@@ -939,10 +939,10 @@
     </message>
     <message numerus="yes">
         <source>Question (%n1 characters left)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Pytanie (pozostał %n1 znak)</numerusform>
+            <numerusform>Pytanie (pozostały %n1 znaki)</numerusform>
+            <numerusform>Pytanie (pozostało %n1 znaków)</numerusform>
         </translation>
     </message>
     <message>
@@ -956,10 +956,10 @@
     </message>
     <message numerus="yes">
         <source>Answer (%n1 characters left)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Odpowiedź (pozostał %n1 znak)</numerusform>
+            <numerusform>Odpowiedź (pozostały %n1 znaki)</numerusform>
+            <numerusform>Odpowiedź (pozostało %n1 znaków)</numerusform>
         </translation>
     </message>
     <message>
@@ -985,7 +985,7 @@
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-        <translation type="unfinished"></translation>
+        <translation>Quizy mają jedną poprawną odpowiedź. Uczestnicy nie mogą odwołać swoich odpowiedzi.</translation>
     </message>
 </context>
 <context>
@@ -1001,15 +1001,15 @@
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dozwolonych jest wiele odpowiedzi.</translation>
     </message>
     <message numerus="yes">
         <source>%L1 vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%L1 odpowiedź</numerusform>
+            <numerusform>%L1 odpowiedzi</numerusform>
+            <numerusform>%L1 odpowiedzi</numerusform>
         </translation>
     </message>
     <message>
@@ -1025,38 +1025,38 @@
     <name>PollResultsPage</name>
     <message>
         <source>Quiz Results</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyniki quizu</translation>
     </message>
     <message>
         <source>Poll Results</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyniki ankiety</translation>
     </message>
     <message numerus="yes">
         <source>%L1 vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%L1 odpowiedź</numerusform>
+            <numerusform>%L1 odpowiedzi</numerusform>
+            <numerusform>%L1 odpowiedzi</numerusform>
         </translation>
     </message>
     <message>
         <source>Question</source>
         <comment>section header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pytanie</translation>
     </message>
     <message>
         <source>Results</source>
         <comment>section header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wyniki</translation>
     </message>
     <message numerus="yes">
         <source>%L1 vote(s)</source>
         <comment>number of votes for option</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%L1 glos</numerusform>
+            <numerusform>%L1 głosy</numerusform>
+            <numerusform>%L1 głosów</numerusform>
         </translation>
     </message>
     <message>
@@ -1067,15 +1067,15 @@
     <message>
         <source>Chosen by:</source>
         <comment>This answer has been chosen by the following users</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wybrany przez:</translation>
     </message>
     <message numerus="yes">
         <source>%L1 vote(s) including yours</source>
         <comment>number of votes for option</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%L1 głos, w tym twój</numerusform>
+            <numerusform>%L1 głosy, w tym twój</numerusform>
+            <numerusform>%L1 głosów, w tym twój</numerusform>
         </translation>
     </message>
 </context>
@@ -1107,7 +1107,7 @@
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż tło naklejek i wyrównaj je centralnie, jak obrazy</translation>
     </message>
     <message>
         <source>Notification feedback</source>
@@ -1115,15 +1115,15 @@
     </message>
     <message>
         <source>All events</source>
-        <translation type="unfinished"></translation>
+        <translation>Wszystkie wydarzenia</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation type="unfinished"></translation>
+        <translation>Tylko nowe wydarzenia</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Żadne</translation>
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
@@ -1139,7 +1139,7 @@
     </message>
     <message>
         <source>Animate stickers</source>
-        <translation type="unfinished"></translation>
+        <translation>Animowane naklejki</translation>
     </message>
 </context>
 <context>
@@ -1172,7 +1172,7 @@
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation type="unfinished"></translation>
+        <translation>Podgląd jest niewspierany dla tego odnośnika</translation>
     </message>
 </context>
 <context>
@@ -1322,42 +1322,42 @@
     </message>
     <message>
         <source>was never online</source>
-        <translation type="unfinished">nigdy nie był online</translation>
+        <translation>nigdy nie był online</translation>
     </message>
     <message>
         <source>offline, last online: last month</source>
-        <translation type="unfinished">offline, ostatnio online: w zeszłym miesiącu</translation>
+        <translation>offline, ostatnio online: w zeszłym miesiącu</translation>
     </message>
     <message>
         <source>offline, last online: last week</source>
-        <translation type="unfinished">offline, ostatnio online: w zeszłym tygodniu</translation>
+        <translation>offline, ostatnio online: w zeszłym tygodniu</translation>
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation type="unfinished">offline, ostatnio online: %1</translation>
+        <translation>offline, ostatnio online: %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation type="unfinished">online</translation>
+        <translation>online</translation>
     </message>
     <message>
         <source>offline, was recently online</source>
-        <translation type="unfinished">offline, był niedawno online</translation>
+        <translation>offline, był niedawno online</translation>
     </message>
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Admin</translation>
     </message>
     <message>
         <source>Banned</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zbanowany</translation>
     </message>
     <message>
         <source>Creator</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation>Twórca</translation>
     </message>
     <message>
         <source>Restricted</source>
@@ -1411,19 +1411,19 @@
     </message>
     <message>
         <source>Anonymous Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonimowy quiz</translation>
     </message>
     <message>
         <source>Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation>Quiz</translation>
     </message>
     <message>
         <source>Anonymous Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonimowa ankieta</translation>
     </message>
     <message>
         <source>Poll</source>
-        <translation type="unfinished"></translation>
+        <translation>Ankieta</translation>
     </message>
     <message>
         <source>created this group</source>
@@ -1541,7 +1541,7 @@
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jesteś już członkiem tego czatu.</translation>
     </message>
 </context>
 </TS>
