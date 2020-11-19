@@ -835,12 +835,27 @@
         <source>Select Message</source>
         <translation>Seleccionar mensaje</translation>
     </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
         <translation>Usted</translation>
+    </message>
+</context>
+<context>
+    <name>MessageOverlayFlickable</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Usted</translation>
+    </message>
+    <message>
+        <source>This message was forwarded. Original author: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -891,6 +906,21 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>No hay todavía ninguna charla.</translation>
+    </message>
+</context>
+<context>
+    <name>PinnedMessageItem</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Usted</translation>
+    </message>
+    <message>
+        <source>Pinned Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

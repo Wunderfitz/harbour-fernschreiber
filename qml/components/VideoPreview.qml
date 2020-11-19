@@ -25,19 +25,21 @@ Item {
     id: videoMessageComponent
 
     property ListItem messageListItem
-    property var rawMessage: messageListItem.myMessage
+    property MessageOverlayFlickable overlayFlickable
+    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
 
     property var videoData:  ( rawMessage.content['@type'] === "messageVideo" ) ?  rawMessage.content.video : ( ( rawMessage.content['@type'] === "messageAnimation" ) ? rawMessage.content.animation : rawMessage.content.video_note )
     property string videoUrl;
     property int previewFileId;
     property int videoFileId;
+    property bool isVideoNote : false;
     property bool fullscreen : false;
-    property bool onScreen: messageListItem.page.status === PageStatus.Active;
+    property bool onScreen: messageListItem ? messageListItem.page.status === PageStatus.Active : true;
     property string videoType : "video";
     property bool playRequested: false;
 
     width: parent.width
-    height: ( rawMessage.content['@type'] === "messageVideoNote" ) ? width : Functions.getVideoHeight(width, videoData)
+    height: videoMessageComponent.isVideoNote ? width : Functions.getVideoHeight(width, videoData)
 
     Timer {
         id: screensaverTimer
@@ -78,11 +80,11 @@ Item {
 
     function updateVideoThumbnail() {
         if (videoData) {
-            if (rawMessage.content['@type'] === "messageVideoNote") {
-                videoType = "video";
-            } else {
-                videoType = videoData['@type'];
+            if (typeof rawMessage !== "undefined") {
+                videoMessageComponent.isVideoNote = rawMessage.content['@type'] === "messageVideoNote";
             }
+
+            videoMessageComponent.videoType = videoMessageComponent.isVideoNote ? "video" : videoData['@type'];
             videoFileId = videoData[videoType].id;
             if (typeof videoData.thumbnail !== "undefined") {
                 previewFileId = videoData.thumbnail.photo.id;
@@ -264,7 +266,7 @@ Item {
         id: videoComponentLoader
         active: false
         width: parent.width
-        height: ( rawMessage.content['@type'] === "messageVideoNote" ) ? width : Functions.getVideoHeight(parent.width, videoData)
+        height: videoMessageComponent.isVideoNote ? width : Functions.getVideoHeight(parent.width, videoData)
         sourceComponent: videoComponent
     }
 

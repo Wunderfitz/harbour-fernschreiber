@@ -34,6 +34,7 @@ namespace {
     const QString UNREAD_COUNT("unread_count");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString SENDER_USER_ID("sender_user_id");
+    const QString PINNED_MESSAGE_ID("pinned_message_id");
 }
 
 ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
@@ -49,6 +50,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
     connect(this->tdLibWrapper, SIGNAL(messageSendSucceeded(QString, QString, QVariantMap)), this, SLOT(handleMessageSendSucceeded(QString, QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SLOT(handleChatPhotoUpdated(qlonglong, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SLOT(handleChatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibWrapper, SIGNAL(messageContentUpdated(QString, QString, QVariantMap)), this, SLOT(handleMessageContentUpdated(QString, QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messagesDeleted(QString, QVariantList)), this, SLOT(handleMessagesDeleted(QString, QVariantList)));
 }
@@ -289,6 +291,15 @@ void ChatModel::handleChatPhotoUpdated(qlonglong id, const QVariantMap &photo)
         LOG("Chat photo updated" << chatId);
         chatInformation.insert(PHOTO, photo);
         emit smallPhotoChanged();
+    }
+}
+
+void ChatModel::handleChatPinnedMessageUpdated(qlonglong id, qlonglong pinnedMessageId)
+{
+    if (id == chatId) {
+        LOG("Pinned message updated" << chatId);
+        chatInformation.insert(PINNED_MESSAGE_ID, pinnedMessageId);
+        emit pinnedMessageChanged();
     }
 }
 

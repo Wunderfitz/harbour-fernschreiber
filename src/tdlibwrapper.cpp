@@ -112,6 +112,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(
     connect(this->tdLibReceiver, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)), this, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SIGNAL(chatTitleUpdated(QString, QString)));
+    connect(this->tdLibReceiver, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString)), this, SIGNAL(errorReceived(int, QString)));
 
@@ -288,6 +289,26 @@ void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId, 
     QVariantList messageIds;
     messageIds.append(messageId);
     requestObject.insert("message_ids", messageIds);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::pinMessage(const QString &chatId, const QString &messageId, bool disableNotification)
+{
+    LOG("Pin message to chat" << chatId << messageId << disableNotification);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "pinChatMessage");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_id", messageId);
+    requestObject.insert("disable_notification", disableNotification);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::unpinMessage(const QString &chatId)
+{
+    LOG("Unpin message from chat" << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "unpinChatMessage");
+    requestObject.insert("chat_id", chatId);
     this->sendRequest(requestObject);
 }
 

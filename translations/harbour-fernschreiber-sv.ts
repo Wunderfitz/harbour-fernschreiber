@@ -839,12 +839,27 @@
         <source>Select Message</source>
         <translation>Välj meddelande</translation>
     </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
         <translation>Du</translation>
+    </message>
+</context>
+<context>
+    <name>MessageOverlayFlickable</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Du</translation>
+    </message>
+    <message>
+        <source>This message was forwarded. Original author: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -895,6 +910,21 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Du har inga chattar än.</translation>
+    </message>
+</context>
+<context>
+    <name>PinnedMessageItem</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Du</translation>
+    </message>
+    <message>
+        <source>Pinned Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

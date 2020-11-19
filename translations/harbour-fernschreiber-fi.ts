@@ -840,12 +840,27 @@
         <source>Select Message</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
         <translation>Sinä</translation>
+    </message>
+</context>
+<context>
+    <name>MessageOverlayFlickable</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Sinä</translation>
+    </message>
+    <message>
+        <source>This message was forwarded. Original author: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -896,6 +911,21 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Sinulla ei ole vielä keskusteluja.</translation>
+    </message>
+</context>
+<context>
+    <name>PinnedMessageItem</name>
+    <message>
+        <source>You</source>
+        <translation type="unfinished">Sinä</translation>
+    </message>
+    <message>
+        <source>Pinned Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

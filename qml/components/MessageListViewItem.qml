@@ -103,6 +103,13 @@ ListItem {
                 }
                 MenuItem {
                     onClicked: {
+                        tdLibWrapper.pinMessage(page.chatInformation.id, myMessage.id);
+                    }
+                    text: qsTr("Pin Message")
+                    visible: canPinMessages()
+                }
+                MenuItem {
+                    onClicked: {
                         var chatId = page.chatInformation.id;
                         var messageId = myMessage.id;
                         Remorse.itemAction(messageListItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId]);  })
@@ -277,11 +284,22 @@ ListItem {
                     height: active ? precalculatedValues.messageInReplyToHeight : 0
                     property var inReplyToMessage;
                     sourceComponent: Component {
-                        InReplyToRow {
-                            id: messageInReplyToRow
-                            myUserId: page.myUserId
-                            visible: true
-                            inReplyToMessage: messageInReplyToLoader.inReplyToMessage
+                        Item {
+                            width: messageInReplyToRow.width
+                            height: messageInReplyToRow.height
+                            InReplyToRow {
+                                id: messageInReplyToRow
+                                myUserId: page.myUserId
+                                visible: true
+                                inReplyToMessage: messageInReplyToLoader.inReplyToMessage
+                            }
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    messageOverlayLoader.overlayMessage = messageInReplyToRow.inReplyToMessage;
+                                    messageOverlayLoader.active = true;
+                                }
+                            }
                         }
                     }
                 }
@@ -357,8 +375,6 @@ ListItem {
                                     }
                                 }
                             }
-
-
                         }
                     }
                 }

@@ -17,6 +17,7 @@
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
 import QtQuick 2.6
+import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 import Sailfish.Pickers 1.0
 import Nemo.Thumbnailer 1.0
@@ -145,10 +146,14 @@ Page {
             updateGroupStatusText();
         }
         if (stickerManager.needsReload()) {
-            console.log("Stickers will be reloaded!");
+            console.log("[ChatPage] Stickers will be reloaded!");
             tdLibWrapper.getRecentStickers();
             tdLibWrapper.getInstalledStickerSets();
             stickerManager.setNeedsReload(false);
+        }
+        if (chatInformation.pinned_message_id.toString() !== "0") {
+            console.log("[ChatPage] Loading pinned message " + chatInformation.pinned_message_id);
+            tdLibWrapper.getMessage(chatInformation.id, chatInformation.pinned_message_id);
         }
     }
 
@@ -278,6 +283,31 @@ Page {
                     || groupStatusType === "chatMemberStatusCreator"
                     || (groupStatusType === "chatMemberStatusRestricted" && groupStatus.permissions[privilege])
     }
+    function canPinMessages() {
+        console.log("Can we pin messages?");
+        if (chatPage.isPrivateChat) {
+            console.log("Private Chat: No!");
+            return false;
+        }
+        if (chatPage.chatGroupInformation.status["@type"] === "chatMemberStatusCreator") {
+            console.log("Creator of this chat: Yes!");
+            return true;
+        }
+        if (chatPage.chatInformation.permissions.can_pin_messages) {
+            console.log("All people can pin: Yes!");
+            return true;
+        }
+        if (chatPage.chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator") {
+            console.log("Admin with privileges? " + chatPage.chatGroupInformation.status.can_pin_messages);
+            return chatPage.chatGroupInformation.status.can_pin_messages;
+        }
+        if (chatPage.chatGroupInformation.status["@type"] === "chatMemberStatusRestricted") {
+            console.log("Restricted, but can pin messages? " + chatPage.chatGroupInformation.status.permissions.can_pin_messages);
+            return chatPage.chatGroupInformation.status.permissions.can_pin_messages;
+        }
+        console.log("Something else: No!");
+        return false;
+    }
 
     Timer {
         id: forwardMessagesTimer
@@ -359,6 +389,12 @@ Page {
         onErrorReceived: {
             Functions.handleErrorMessage(code, message);
         }
+        onReceivedMessage: {
+            if (messageId === chatInformation.pinned_message_id.toString()) {
+                console.log("[ChatPage] Received pinned message");
+                pinnedMessageItem.pinnedMessage = message;
+            }
+        }
     }
 
     Connections {
@@ -414,6 +450,15 @@ Page {
         onNotificationSettingsUpdated: {
             chatInformation = chatModel.getChatInformation();
             muteChatMenuItem.text = chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat");
+        }
+        onPinnedMessageChanged: {
+            chatInformation = chatModel.getChatInformation();
+            if (chatInformation.pinned_message_id.toString() !== "0") {
+                console.log("[ChatPage] Loading pinned message " + chatInformation.pinned_message_id);
+                tdLibWrapper.getMessage(chatInformation.id, chatInformation.pinned_message_id);
+            } else {
+                pinnedMessageItem.pinnedMessage = undefined;
+            }
         }
     }
 
@@ -482,7 +527,7 @@ Page {
         contentWidth: width
 
         PullDownMenu {
-            visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active
+            visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !messageOverlayLoader.active
             MenuItem {
                 id: joinLeaveChatMenuItem
                 visible: (chatPage.isSuperGroup || chatPage.isBasicGroup) && chatGroupInformation && chatGroupInformation.status["@type"] !== "chatMemberStatusBanned"
@@ -535,6 +580,7 @@ Page {
                 }
             }
         }
+
         Column {
             id: chatColumn
             width: parent.width
@@ -589,10 +635,22 @@ Page {
                 }
             }
 
+            PinnedMessageItem {
+                id: pinnedMessageItem
+                onRequestShowMessage: {
+                    messageOverlayLoader.overlayMessage = pinnedMessageItem.pinnedMessage;
+                    messageOverlayLoader.active = true;
+                }
+                onRequestCloseMessage: {
+                    messageOverlayLoader.overlayMessage = undefined;
+                    messageOverlayLoader.active = false;
+                }
+            }
+
             Item {
                 id: chatViewItem
                 width: parent.width
-                height: parent.height - headerRow.height -  newMessageColumn.height - selectedMessagesActions.height
+                height: parent.height - headerRow.height - pinnedMessageItem.height - newMessageColumn.height - selectedMessagesActions.height
 
                 property int previousHeight;
 
@@ -617,9 +675,23 @@ Page {
                     }
                 }
 
+                Loader {
+                    asynchronous: true
+                    active: chatView.blurred
+                    anchors.fill: chatView
+                    sourceComponent: Component {
+                        FastBlur {
+                            source: chatView
+                            radius: Theme.paddingLarge
+                        }
+                    }
+                }
 
                 SilicaListView {
                     id: chatView
+
+                    visible: !blurred
+                    property bool blurred: messageOverlayLoader.item
 
                     anchors.fill: parent
                     opacity: chatPage.loading ? 0 : 1
@@ -827,6 +899,26 @@ Page {
                     width: parent.width
                     height: active ? parent.height : 0
                     source: "../components/StickerPicker.qml"
+                }
+
+                Loader {
+                    id: messageOverlayLoader
+
+                    property var overlayMessage;
+
+                    active: false
+                    asynchronous: true
+                    width: parent.width
+                    height: active ? parent.height : 0
+                    sourceComponent: Component {
+                        MessageOverlayFlickable {
+                            overlayMessage: messageOverlayLoader.overlayMessage
+                            showHeader: !chatPage.isChannel
+                            onRequestClose: {
+                                messageOverlayLoader.active = false;
+                            }
+                        }
+                    }
                 }
 
             }
@@ -1160,6 +1252,7 @@ Page {
                     }
                 }
             }
+
             Loader {
                 id: selectedMessagesActions
                 asynchronous: true
@@ -1256,7 +1349,6 @@ Page {
                     }
                 }
             }
-
         }
     }
 
