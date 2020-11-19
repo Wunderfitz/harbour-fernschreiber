@@ -67,7 +67,7 @@ Page {
             }
             PropertyChanges {
                 target: chatStatusText
-                text: qsTr("%Ln messages selected", "number of messages selected", chatPage.selectedMessages.length).arg(chatPage.selectedMessages.length)
+                text: qsTr("%Ln messages selected", "number of messages selected", chatPage.selectedMessages.length)
             }
             PropertyChanges {
                 target: selectedMessagesActions
