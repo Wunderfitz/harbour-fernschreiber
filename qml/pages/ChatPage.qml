@@ -595,12 +595,21 @@ Page {
 
                 ProfileThumbnail {
                     id: chatPictureThumbnail
-                    photoData: chatModel.smallPhoto
                     replacementStringHint: chatNameText.text
                     width: chatOverviewColumn.height
                     height: chatOverviewColumn.height
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingMedium : Theme.paddingSmall
+
+                    // Setting it directly may cause an stale state for the thumbnail in case the chat page
+                    // was previously loaded with a picture and now it doesn't have one. Instead setting it
+                    // when the ChatModel indicates a change. This also avoids flickering when the page is loaded...
+                    Connections {
+                        target: chatModel
+                        onSmallPhotoChanged: {
+                            chatPictureThumbnail.photoData = chatModel.smallPhoto;
+                        }
+                    }
                 }
 
                 Column {
