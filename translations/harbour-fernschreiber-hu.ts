@@ -329,19 +329,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <source>%n Messages deleted</source>
+        <source>%Ln Messages deleted</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages have been copied</source>
+        <source>%Ln messages have been copied</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>Forward %n messages</source>
+        <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -1032,10 +1032,12 @@
 </context>
 <context>
     <name>PollPreview</name>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1095,10 +1097,12 @@
             <numerusform></numerusform>
         </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Chosen by:</source>

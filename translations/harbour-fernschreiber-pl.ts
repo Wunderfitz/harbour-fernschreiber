@@ -339,28 +339,28 @@
         <translation>Wybierz wiadomości</translation>
     </message>
     <message numerus="yes">
-        <source>%n Messages deleted</source>
+        <source>%Ln Messages deleted</source>
         <translation>
-            <numerusform>%n wiadomość została usunięta</numerusform>
-            <numerusform>%n wiadomości zostały usunięte</numerusform>
-            <numerusform>%n wiadomości zostało usunięte</numerusform>
+            <numerusform>%Ln wiadomość została usunięta</numerusform>
+            <numerusform>%Ln wiadomości zostały usunięte</numerusform>
+            <numerusform>%Ln wiadomości zostało usunięte</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages have been copied</source>
+        <source>%Ln messages have been copied</source>
         <translation>
-            <numerusform>%n wiadomość została skopiowana</numerusform>
-            <numerusform>%n wiadomości zostały skopiowane</numerusform>
-            <numerusform>%n wiadomość zostało skopiowane</numerusform>
+            <numerusform>%Ln wiadomość została skopiowana</numerusform>
+            <numerusform>%Ln wiadomości zostały skopiowane</numerusform>
+            <numerusform>%Ln wiadomość zostało skopiowane</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>Forward %n messages</source>
+        <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation>
-            <numerusform>Przekaż %n wiadomość</numerusform>
-            <numerusform>Przekaż %n wiadomości</numerusform>
-            <numerusform>Przekaż %n wiadomości</numerusform>
+            <numerusform>Przekaż %Ln wiadomość</numerusform>
+            <numerusform>Przekaż %Ln wiadomości</numerusform>
+            <numerusform>Przekaż %Ln wiadomości</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1058,10 +1058,14 @@
 </context>
 <context>
     <name>PollPreview</name>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1127,10 +1131,14 @@
             <numerusform>%Ln głosów</numerusform>
         </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Chosen by:</source>

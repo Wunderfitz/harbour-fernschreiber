@@ -1299,7 +1299,7 @@ Page {
                             }
                             onClicked: {
                                 Clipboard.text = Functions.getMessagesArrayText(chatPage.selectedMessages);
-                                appNotification.show(qsTr("%n messages have been copied", "", selectedMessages.length).arg(selectedMessages.length));
+                                appNotification.show(qsTr("%Ln messages have been copied", "", selectedMessages.length));
                                 chatPage.selectedMessages = [];
                             }
                         }
@@ -1323,7 +1323,7 @@ Page {
                                 var chatId = chatInformation.id
                                 pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
                                     myUserId: chatPage.myUserId,
-                                    headerDescription: qsTr("Forward %n messages", "dialog header", ids.length).arg(ids.length),
+                                    headerDescription: qsTr("Forward %Ln messages", "dialog header", ids.length),
                                     payload: {fromChatId: chatId, messageIds:ids, neededPermissions: neededPermissions},
                                     state: "forwardMessages"
                                 })
@@ -1347,7 +1347,7 @@ Page {
                                 var ids = Functions.getMessagesArrayIds(selectedMessages);
                                 var chatId = chatInformation.id
                                 var wrapper = tdLibWrapper;
-                                Remorse.popupAction(chatPage, qsTr("%n Messages deleted", "", ids.length).arg(ids.length), function() {
+                                Remorse.popupAction(chatPage, qsTr("%Ln Messages deleted", "", ids.length), function() {
                                     wrapper.deleteMessages(chatId, ids);
                                 });
                                 chatPage.selectedMessages = [];

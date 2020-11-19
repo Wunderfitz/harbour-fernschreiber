@@ -334,25 +334,25 @@
         <translation>Nachrichtenauswahl</translation>
     </message>
     <message numerus="yes">
-        <source>%n Messages deleted</source>
+        <source>%Ln Messages deleted</source>
         <translation>
-            <numerusform>%n Nachrichten gelöscht</numerusform>
+            <numerusform>%Ln Nachrichten gelöscht</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages have been copied</source>
+        <source>%Ln messages have been copied</source>
         <translation>
-            <numerusform>%n Nachrichten wurden kopiert</numerusform>
+            <numerusform>%Ln Nachrichten wurden kopiert</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>Forward %n messages</source>
+        <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation>
-            <numerusform>%n Nachricht weiterleiten</numerusform>
-            <numerusform>%n Nachrichten weiterleiten</numerusform>
+            <numerusform>%Ln Nachricht weiterleiten</numerusform>
+            <numerusform>%Ln Nachrichten weiterleiten</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1045,10 +1045,13 @@
 </context>
 <context>
     <name>PollPreview</name>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation>
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
+        </translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1111,10 +1114,13 @@
             <numerusform>%Ln Antworten</numerusform>
         </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation>
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
+        </translation>
     </message>
     <message>
         <source>Chosen by:</source>

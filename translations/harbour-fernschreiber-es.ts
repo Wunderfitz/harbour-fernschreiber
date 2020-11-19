@@ -329,22 +329,22 @@
         <translation>Seleccionar mensajes</translation>
     </message>
     <message numerus="yes">
-        <source>%n Messages deleted</source>
+        <source>%Ln Messages deleted</source>
         <translation>
-            <numerusform>%n Mensajes borrados</numerusform>
+            <numerusform>%Ln Mensajes borrados</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages have been copied</source>
+        <source>%Ln messages have been copied</source>
         <translation>
-            <numerusform>%n se han copiado los mensajes</numerusform>
+            <numerusform>%Ln se han copiado los mensajes</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>Forward %n messages</source>
+        <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation>
-            <numerusform>Reenviar %n mensajes</numerusform>
+            <numerusform>Reenviar %Ln mensajes</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1032,10 +1032,12 @@
 </context>
 <context>
     <name>PollPreview</name>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+        </translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1095,10 +1097,12 @@
             <numerusform>%Ln votos</numerusform>
         </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+        </translation>
     </message>
     <message>
         <source>Chosen by:</source>

@@ -334,21 +334,21 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <source>%n Messages deleted</source>
+        <source>%Ln Messages deleted</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages have been copied</source>
+        <source>%Ln messages have been copied</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>Forward %n messages</source>
+        <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -998,8 +998,8 @@
     <message numerus="yes">
         <source>Question (%Ln characters left)</source>
         <translation>
-            <numerusform>Kysymys (%n merkki jäljellä)</numerusform>
-            <numerusform>Kysymys (%n merkkiä jäljellä)</numerusform>
+            <numerusform>Kysymys (%Ln merkki jäljellä)</numerusform>
+            <numerusform>Kysymys (%Ln merkkiä jäljellä)</numerusform>
         </translation>
     </message>
     <message>
@@ -1014,8 +1014,8 @@
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
         <translation>
-            <numerusform>Vastaus (%n merkki jäljellä)</numerusform>
-            <numerusform>Vastaus (%n merkkiä jäljellä)</numerusform>
+            <numerusform>Vastaus (%Ln merkki jäljellä)</numerusform>
+            <numerusform>Vastaus (%Ln merkkiä jäljellä)</numerusform>
         </translation>
     </message>
     <message>
@@ -1046,10 +1046,13 @@
 </context>
 <context>
     <name>PollPreview</name>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1112,10 +1115,13 @@
             <numerusform>%Ln ääntä</numerusform>
         </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Chosen by:</source>

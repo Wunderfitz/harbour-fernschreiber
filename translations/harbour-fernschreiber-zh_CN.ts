@@ -329,22 +329,22 @@
         <translation>选择消息</translation>
     </message>
     <message numerus="yes">
-        <source>%n Messages deleted</source>
+        <source>%Ln Messages deleted</source>
         <translation>
-            <numerusform>已删除 %n 则消息</numerusform>
+            <numerusform>已删除 %Ln 则消息</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages have been copied</source>
+        <source>%Ln messages have been copied</source>
         <translation>
-            <numerusform>已复制 %n 则消息</numerusform>
+            <numerusform>已复制 %Ln 则消息</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>Forward %n messages</source>
+        <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation>
-            <numerusform>转发 %n 则消息</numerusform>
+            <numerusform>转发 %Ln 则消息</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1032,10 +1032,12 @@
 </context>
 <context>
     <name>PollPreview</name>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+        </translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1095,10 +1097,12 @@
             <numerusform>%Ln 次投票</numerusform>
         </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+        </translation>
     </message>
     <message>
         <source>Chosen by:</source>

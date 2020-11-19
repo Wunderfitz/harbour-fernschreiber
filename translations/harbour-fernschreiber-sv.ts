@@ -334,25 +334,25 @@
         <translation>Välj meddelanden</translation>
     </message>
     <message numerus="yes">
-        <source>%n Messages deleted</source>
+        <source>%Ln Messages deleted</source>
         <translation>
-            <numerusform>%n meddelande borttaget</numerusform>
-            <numerusform>%n meddelanden borttagna</numerusform>
+            <numerusform>%Ln meddelande borttaget</numerusform>
+            <numerusform>%Ln meddelanden borttagna</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages have been copied</source>
+        <source>%Ln messages have been copied</source>
         <translation>
-            <numerusform>%n meddelande har kopierats</numerusform>
-            <numerusform>%n meddelanden har kopierats</numerusform>
+            <numerusform>%Ln meddelande har kopierats</numerusform>
+            <numerusform>%Ln meddelanden har kopierats</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>Forward %n messages</source>
+        <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation>
-            <numerusform>Vidarebefordra %n meddelande</numerusform>
-            <numerusform>Vidarebefordra %n meddelanden</numerusform>
+            <numerusform>Vidarebefordra %Ln meddelande</numerusform>
+            <numerusform>Vidarebefordra %Ln meddelanden</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1053,10 +1053,13 @@
         <source>Multiple Answers are allowed.</source>
         <translation>Flera svarsalternativ tillåtna.</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
@@ -1119,10 +1122,13 @@
             <numerusform>%Ln röster</numerusform>
         </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%Ln%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Chosen by:</source>
