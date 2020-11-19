@@ -113,17 +113,21 @@
         <source>The Invite Link has been copied to the clipboard.</source>
         <translation>Link do zaproszenia został skopiowany do schowka.</translation>
     </message>
-    <message>
-        <source>%1 members, %2 online</source>
-        <translation>$1 członków, %2 online </translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation>%1 subskrybentów</translation>
+        <translation type="unfinished">
+            <numerusform>%1 subskrybentów</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation>%1 czlonków</translation>
+        <translation type="unfinished">
+            <numerusform>%1 czlonków</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Leaving chat</source>
@@ -164,6 +168,19 @@
     <message>
         <source>Join Chat</source>
         <translation>Dołącz do czatu</translation>
+    </message>
+    <message>
+        <source>%1, %2</source>
+        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 online</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -257,17 +274,21 @@
         <source>Your message</source>
         <translation>Twoja wiadomość</translation>
     </message>
-    <message>
-        <source>%1 members, %2 online</source>
-        <translation>$1 członków, %2 online </translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation>%1 czlonków</translation>
+        <translation type="unfinished">
+            <numerusform>%1 czlonków</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation>%1 subskrybentów</translation>
+        <translation type="unfinished">
+            <numerusform>%1 subskrybentów</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Loading messages...</source>
@@ -318,37 +339,50 @@
         <translation>Wybierz wiadomości</translation>
     </message>
     <message numerus="yes">
-        <source>%n Messages deleted</source>
+        <source>%Ln Messages deleted</source>
         <translation>
-            <numerusform>%n wiadomość została usunięta</numerusform>
-            <numerusform>%n wiadomości zostały usunięte</numerusform>
-            <numerusform>%n wiadomości zostało usunięte</numerusform>
+            <numerusform>%Ln wiadomość została usunięta</numerusform>
+            <numerusform>%Ln wiadomości zostały usunięte</numerusform>
+            <numerusform>%Ln wiadomości zostało usunięte</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages have been copied</source>
+        <source>%Ln messages have been copied</source>
         <translation>
-            <numerusform>%n wiadomość została skopiowana</numerusform>
-            <numerusform>%n wiadomości zostały skopiowane</numerusform>
-            <numerusform>%n wiadomość zostało skopiowane</numerusform>
+            <numerusform>%Ln wiadomość została skopiowana</numerusform>
+            <numerusform>%Ln wiadomości zostały skopiowane</numerusform>
+            <numerusform>%Ln wiadomość zostało skopiowane</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages selected</source>
-        <comment>number of messages selected</comment>
-        <translation>
-            <numerusform>%n wiadomość została wybrana</numerusform>
-            <numerusform>%n wiadomości zostały wybrane</numerusform>
-            <numerusform>%n wiadomości zostało wybrane</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>Forward %n messages</source>
+        <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation>
-            <numerusform>Przekaż %n wiadomość</numerusform>
-            <numerusform>Przekaż %n wiadomości</numerusform>
-            <numerusform>Przekaż %n wiadomości</numerusform>
+            <numerusform>Przekaż %Ln wiadomość</numerusform>
+            <numerusform>Przekaż %Ln wiadomości</numerusform>
+            <numerusform>Przekaż %Ln wiadomości</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln messages selected</source>
+        <comment>number of messages selected</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1, %2</source>
+        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 online</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -868,9 +902,13 @@
 </context>
 <context>
     <name>NotificationManager</name>
-    <message>
-        <source>%1 unread messages</source>
-        <translation>%1 nieprzeczytanych wiadomości</translation>
+    <message numerus="yes">
+        <source>%Ln unread messages</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -968,11 +1006,11 @@
         <translation>Wprowadź tutaj swoje pytanie</translation>
     </message>
     <message numerus="yes">
-        <source>Question (%n1 characters left)</source>
+        <source>Question (%Ln characters left)</source>
         <translation>
-            <numerusform>Pytanie (pozostał %n1 znak)</numerusform>
-            <numerusform>Pytanie (pozostały %n1 znaki)</numerusform>
-            <numerusform>Pytanie (pozostało %n1 znaków)</numerusform>
+            <numerusform>Pytanie (pozostał %Ln znak)</numerusform>
+            <numerusform>Pytanie (pozostały %Ln znaki)</numerusform>
+            <numerusform>Pytanie (pozostało %Ln znaków)</numerusform>
         </translation>
     </message>
     <message>
@@ -985,11 +1023,11 @@
         <translation>Wprowadź tutaj swoją odpowiedź</translation>
     </message>
     <message numerus="yes">
-        <source>Answer (%n1 characters left)</source>
+        <source>Answer (%Ln characters left)</source>
         <translation>
-            <numerusform>Odpowiedź (pozostał %n1 znak)</numerusform>
-            <numerusform>Odpowiedź (pozostały %n1 znaki)</numerusform>
-            <numerusform>Odpowiedź (pozostało %n1 znaków)</numerusform>
+            <numerusform>Odpowiedź (pozostał %Ln znak)</numerusform>
+            <numerusform>Odpowiedź (pozostały %Ln znaki)</numerusform>
+            <numerusform>Odpowiedź (pozostało %Ln znaków)</numerusform>
         </translation>
     </message>
     <message>
@@ -1020,10 +1058,14 @@
 </context>
 <context>
     <name>PollPreview</name>
-    <message>
-        <source>%L1%</source>
+    <message numerus="yes">
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1034,12 +1076,12 @@
         <translation>Dozwolonych jest wiele odpowiedzi.</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 odpowiedź</numerusform>
-            <numerusform>%L1 odpowiedzi</numerusform>
-            <numerusform>%L1 odpowiedzi</numerusform>
+            <numerusform>%Ln odpowiedź</numerusform>
+            <numerusform>%Ln odpowiedzi</numerusform>
+            <numerusform>%Ln odpowiedzi</numerusform>
         </translation>
     </message>
     <message>
@@ -1062,12 +1104,12 @@
         <translation>Wyniki ankiety</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 odpowiedź</numerusform>
-            <numerusform>%L1 odpowiedzi</numerusform>
-            <numerusform>%L1 odpowiedzi</numerusform>
+            <numerusform>%Ln odpowiedź</numerusform>
+            <numerusform>%Ln odpowiedzi</numerusform>
+            <numerusform>%Ln odpowiedzi</numerusform>
         </translation>
     </message>
     <message>
@@ -1081,18 +1123,22 @@
         <translation>Wyniki</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s)</source>
+        <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 glos</numerusform>
-            <numerusform>%L1 głosy</numerusform>
-            <numerusform>%L1 głosów</numerusform>
+            <numerusform>%Ln glos</numerusform>
+            <numerusform>%Ln głosy</numerusform>
+            <numerusform>%Ln głosów</numerusform>
         </translation>
     </message>
-    <message>
-        <source>%L1%</source>
+    <message numerus="yes">
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Chosen by:</source>
@@ -1100,12 +1146,12 @@
         <translation>Wybrany przez:</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) including yours</source>
+        <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 głos, w tym twój</numerusform>
-            <numerusform>%L1 głosy, w tym twój</numerusform>
-            <numerusform>%L1 głosów, w tym twój</numerusform>
+            <numerusform>%Ln głos, w tym twój</numerusform>
+            <numerusform>%Ln głosy, w tym twój</numerusform>
+            <numerusform>%Ln głosów, w tym twój</numerusform>
         </translation>
     </message>
 </context>

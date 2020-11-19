@@ -56,7 +56,7 @@ Page {
         PageHeader {
             id: pageHeader
             title: pollResultsPage.isQuiz ? qsTr("Quiz Results") : qsTr("Poll Results")
-            description: qsTr("%L1 vote(s) total", "number of total votes", pollData.total_voter_count).arg(pollData.total_voter_count)
+            description: qsTr("%Ln vote(s) total", "number of total votes", pollData.total_voter_count)
             leftMargin: headerPictureThumbnail.width + Theme.paddingLarge + Theme.horizontalPageMargin
             ProfileThumbnail {
                 id: headerPictureThumbnail
@@ -205,7 +205,7 @@ Page {
                             Label {
                                 id: optionVoterCount
                                 font.pixelSize: Theme.fontSizeTiny
-                                text: modelData.is_chosen ? qsTr("%L1 vote(s) including yours", "number of votes for option", modelData.voter_count).arg(modelData.voter_count) : qsTr("%L1 vote(s)", "number of votes for option", modelData.voter_count).arg(modelData.voter_count)
+                                text: modelData.is_chosen ? qsTr("%Ln vote(s) including yours", "number of votes for option", modelData.voter_count) : qsTr("%Ln vote(s)", "number of votes for option", modelData.voter_count)
                                 anchors {
                                     left: parent.left
                                     right: parent.horizontalCenter
@@ -216,7 +216,7 @@ Page {
                             Label {
                                 id: optionVoterPercentage
                                 font.pixelSize: Theme.fontSizeTiny
-                                text: qsTr("%L1\%", "% of votes for option").arg(modelData.vote_percentage)
+                                text: qsTr("%Ln\%", "% of votes for option", modelData.vote_percentage)
                                 horizontalAlignment: Text.AlignRight
                                 anchors {
                                     right: parent.right

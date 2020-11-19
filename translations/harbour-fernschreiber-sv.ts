@@ -97,17 +97,19 @@
 </context>
 <context>
     <name>ChatInformationPageContent</name>
-    <message>
-        <source>%1 members, %2 online</source>
-        <translation type="unfinished">%1 medlem(mar), %2 inloggad(e)</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 prenumerant(er)</translation>
+        <translation type="unfinished">
+            <numerusform>%1 prenumerant(er)</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 medlem(mar)</translation>
+        <translation type="unfinished">
+            <numerusform>%1 medlem(mar)</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Leave Chat</source>
@@ -164,6 +166,18 @@
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
         <translation type="unfinished">Inbjudningslänken har kopierats till urklipp.</translation>
+    </message>
+    <message>
+        <source>%1, %2</source>
+        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 online</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -257,17 +271,19 @@
         <source>Your message</source>
         <translation>Ditt meddelande</translation>
     </message>
-    <message>
-        <source>%1 members, %2 online</source>
-        <translation>%1 medlem(mar), %2 inloggad(e)</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation>%1 medlem(mar)</translation>
+        <translation type="unfinished">
+            <numerusform>%1 medlem(mar)</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation>%1 prenumerant(er)</translation>
+        <translation type="unfinished">
+            <numerusform>%1 prenumerant(er)</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Loading messages...</source>
@@ -318,33 +334,45 @@
         <translation>Välj meddelanden</translation>
     </message>
     <message numerus="yes">
-        <source>%n Messages deleted</source>
+        <source>%Ln Messages deleted</source>
         <translation>
-            <numerusform>%n meddelande borttaget</numerusform>
-            <numerusform>%n meddelanden borttagna</numerusform>
+            <numerusform>%Ln meddelande borttaget</numerusform>
+            <numerusform>%Ln meddelanden borttagna</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages have been copied</source>
+        <source>%Ln messages have been copied</source>
         <translation>
-            <numerusform>%n meddelande har kopierats</numerusform>
-            <numerusform>%n meddelanden har kopierats</numerusform>
+            <numerusform>%Ln meddelande har kopierats</numerusform>
+            <numerusform>%Ln meddelanden har kopierats</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%n messages selected</source>
-        <comment>number of messages selected</comment>
-        <translation>
-            <numerusform>%n meddelande valt</numerusform>
-            <numerusform>%n meddelanden valda</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>Forward %n messages</source>
+        <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation>
-            <numerusform>Vidarebefordra %n meddelande</numerusform>
-            <numerusform>Vidarebefordra %n meddelanden</numerusform>
+            <numerusform>Vidarebefordra %Ln meddelande</numerusform>
+            <numerusform>Vidarebefordra %Ln meddelanden</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln messages selected</source>
+        <comment>number of messages selected</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1, %2</source>
+        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 online</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -864,9 +892,12 @@
 </context>
 <context>
     <name>NotificationManager</name>
-    <message>
-        <source>%1 unread messages</source>
-        <translation>%1 oläst(a) meddelande(n)</translation>
+    <message numerus="yes">
+        <source>%Ln unread messages</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -964,10 +995,10 @@
         <translation>Ange din fråga här</translation>
     </message>
     <message numerus="yes">
-        <source>Question (%n1 characters left)</source>
+        <source>Question (%Ln characters left)</source>
         <translation>
-            <numerusform>Fråga (%n1 tecken kvar)</numerusform>
-            <numerusform>Fråga (%n1 tecken kvar)</numerusform>
+            <numerusform>Fråga (%Ln tecken kvar)</numerusform>
+            <numerusform>Fråga (%Ln tecken kvar)</numerusform>
         </translation>
     </message>
     <message>
@@ -980,10 +1011,10 @@
         <translation>Ange svaret här</translation>
     </message>
     <message numerus="yes">
-        <source>Answer (%n1 characters left)</source>
+        <source>Answer (%Ln characters left)</source>
         <translation>
-            <numerusform>Svar (%n1 tecken kvar)</numerusform>
-            <numerusform>Svar (%n1 tecken kvar)</numerusform>
+            <numerusform>Svar (%Ln tecken kvar)</numerusform>
+            <numerusform>Svar (%Ln tecken kvar)</numerusform>
         </translation>
     </message>
     <message>
@@ -1022,17 +1053,20 @@
         <source>Multiple Answers are allowed.</source>
         <translation>Flera svarsalternativ tillåtna.</translation>
     </message>
-    <message>
-        <source>%L1%</source>
+    <message numerus="yes">
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 röst sammanlagt</numerusform>
-            <numerusform>%L1 röster sammanlagt</numerusform>
+            <numerusform>%Ln röst sammanlagt</numerusform>
+            <numerusform>%Ln röster sammanlagt</numerusform>
         </translation>
     </message>
     <message>
@@ -1055,11 +1089,11 @@
         <translation>Omröstningsresultat</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) total</source>
+        <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%L1 röst sammanlagt</numerusform>
-            <numerusform>%L1 röster sammanlagt</numerusform>
+            <numerusform>%Ln röst sammanlagt</numerusform>
+            <numerusform>%Ln röster sammanlagt</numerusform>
         </translation>
     </message>
     <message>
@@ -1073,25 +1107,28 @@
         <translation>Resultat</translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s) including yours</source>
+        <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 röst inklusive din</numerusform>
-            <numerusform>%L1 röster inklusive din</numerusform>
+            <numerusform>%Ln röst inklusive din</numerusform>
+            <numerusform>%Ln röster inklusive din</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <source>%L1 vote(s)</source>
+        <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%L1 röst</numerusform>
-            <numerusform>%L1 röster</numerusform>
+            <numerusform>%Ln röst</numerusform>
+            <numerusform>%Ln röster</numerusform>
         </translation>
     </message>
-    <message>
-        <source>%L1%</source>
+    <message numerus="yes">
+        <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation>%L1%</translation>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Chosen by:</source>

@@ -67,7 +67,7 @@ Page {
             }
             PropertyChanges {
                 target: chatStatusText
-                text: qsTr("%n messages selected", "number of messages selected", chatPage.selectedMessages.length).arg(chatPage.selectedMessages.length)
+                text: qsTr("%Ln messages selected", "number of messages selected", chatPage.selectedMessages.length)
             }
             PropertyChanges {
                 target: selectedMessagesActions
@@ -102,6 +102,9 @@ Page {
     }
 
     function updateChatPartnerStatusText() {
+        if(chatPage.state === "selectMessages") {
+            return
+        }
         var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
         if(statusText) {
             chatStatusText.text = statusText;
@@ -113,12 +116,16 @@ Page {
             return
         }
         if (chatOnlineMemberCount > 0) {
-            chatStatusText.text = qsTr("%1 members, %2 online").arg(Functions.getShortenedCount(chatGroupInformation.member_count)).arg(Functions.getShortenedCount(chatOnlineMemberCount));
+            chatStatusText.text = qsTr("%1, %2", "combination of '[x members], [y online]', which are separate translations")
+                .arg(qsTr("%1 members", "", chatGroupInformation.member_count)
+                    .arg(Functions.getShortenedCount(chatGroupInformation.member_count)))
+                .arg(qsTr("%1 online", "", chatOnlineMemberCount)
+                    .arg(Functions.getShortenedCount(chatOnlineMemberCount)));
         } else {
             if (isChannel) {
-                chatStatusText.text = qsTr("%1 subscribers").arg(Functions.getShortenedCount(chatGroupInformation.member_count));
+                chatStatusText.text = qsTr("%1 subscribers", "", chatGroupInformation.member_count).arg(Functions.getShortenedCount(chatGroupInformation.member_count));
             } else {
-                chatStatusText.text = qsTr("%1 members").arg(Functions.getShortenedCount(chatGroupInformation.member_count));
+                chatStatusText.text = qsTr("%1 members", "", chatGroupInformation.member_count).arg(Functions.getShortenedCount(chatGroupInformation.member_count));
             }
         }
         joinLeaveChatMenuItem.text = chatPage.userIsMember ? qsTr("Leave Chat") : qsTr("Join Chat");
@@ -1301,7 +1308,7 @@ Page {
                             }
                             onClicked: {
                                 Clipboard.text = Functions.getMessagesArrayText(chatPage.selectedMessages);
-                                appNotification.show(qsTr("%n messages have been copied", "", selectedMessages.length).arg(selectedMessages.length));
+                                appNotification.show(qsTr("%Ln messages have been copied", "", selectedMessages.length));
                                 chatPage.selectedMessages = [];
                             }
                         }
@@ -1325,7 +1332,7 @@ Page {
                                 var chatId = chatInformation.id
                                 pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
                                     myUserId: chatPage.myUserId,
-                                    headerDescription: qsTr("Forward %n messages", "dialog header", ids.length).arg(ids.length),
+                                    headerDescription: qsTr("Forward %Ln messages", "dialog header", ids.length),
                                     payload: {fromChatId: chatId, messageIds:ids, neededPermissions: neededPermissions},
                                     state: "forwardMessages"
                                 })
@@ -1349,7 +1356,7 @@ Page {
                                 var ids = Functions.getMessagesArrayIds(selectedMessages);
                                 var chatId = chatInformation.id
                                 var wrapper = tdLibWrapper;
-                                Remorse.popupAction(chatPage, qsTr("%n Messages deleted", "", ids.length).arg(ids.length), function() {
+                                Remorse.popupAction(chatPage, qsTr("%Ln Messages deleted", "", ids.length), function() {
                                     wrapper.deleteMessages(chatId, ids);
                                 });
                                 chatPage.selectedMessages = [];
