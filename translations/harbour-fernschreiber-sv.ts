@@ -99,84 +99,84 @@
     <name>ChatInformationPageContent</name>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
-            <numerusform>%1 prenumerant(er)</numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 prenumerant</numerusform>
+            <numerusform>%1 prenumeranter</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
-            <numerusform>%1 medlem(mar)</numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 medlem</numerusform>
+            <numerusform>%1 medlemmar</numerusform>
         </translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished">Lämna chatten</translation>
+        <translation>Lämna chatten</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished">Anslut till chatten</translation>
+        <translation>Anslut till chatten</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished">Lämnar chatten</translation>
+        <translation>Lämnar chatten</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Slå på chatten</translation>
+        <translation>Slå på chatten</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Stäng av chatten</translation>
+        <translation>Stäng av chatten</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Okänd</translation>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished">Chattnamn</translation>
+        <translation>Chattnamn</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished">Ange 1-128 tecken</translation>
+        <translation>Ange 1-128 tecken</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished">Det finns ingen informationstext än.</translation>
+        <translation>Det finns ingen informationstext än.</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished">Info</translation>
+        <translation>Info</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished">Telefonnummer</translation>
+        <translation>Telefonnummer</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished">Inbjudningslänk</translation>
+        <translation>Inbjudningslänk</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished">Inbjudningslänken har kopierats till urklipp.</translation>
+        <translation>Inbjudningslänken har kopierats till urklipp.</translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 online</numerusform>
+            <numerusform>%1 online</numerusform>
         </translation>
     </message>
 </context>
@@ -217,17 +217,17 @@
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished">Grupper</translation>
+        <translation>Grupper</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished">Medlemmar</translation>
+        <translation>Medlemmar</translation>
     </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">Inställningar</translation>
+        <translation>Inställningar</translation>
     </message>
 </context>
 <context>
@@ -273,16 +273,16 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
-            <numerusform>%1 medlem(mar)</numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 medlem</numerusform>
+            <numerusform>%1 medlemmar</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
-            <numerusform>%1 prenumerant(er)</numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 prenumerant</numerusform>
+            <numerusform>%1 prenumeranter</numerusform>
         </translation>
     </message>
     <message>
@@ -358,21 +358,21 @@
     <message numerus="yes">
         <source>%Ln messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln meddelande valt</numerusform>
+            <numerusform>%Ln meddelanden valda</numerusform>
         </translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 online</numerusform>
+            <numerusform>%1 online</numerusform>
         </translation>
     </message>
 </context>
@@ -869,7 +869,7 @@
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Fäst meddelandet</translation>
     </message>
 </context>
 <context>
@@ -883,20 +883,20 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Du</translation>
+        <translation>Du</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Detta meddelande är vidarebefordrat. Ursprunglig avsändare: %1</translation>
     </message>
 </context>
 <context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln oläst meddelande</numerusform>
+            <numerusform>%Ln olästa meddelanden</numerusform>
         </translation>
     </message>
 </context>
@@ -947,15 +947,15 @@
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Du</translation>
+        <translation>Du</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Fäst meddelande</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished"></translation>
+        <translation>Meddelandet lösgjort</translation>
     </message>
 </context>
 <context>
@@ -1056,9 +1056,9 @@
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%Ln%</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1125,15 +1125,15 @@
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%Ln%</numerusform>
         </translation>
     </message>
     <message>
         <source>Chosen by:</source>
         <comment>This answer has been chosen by the following users</comment>
-        <translation>Valt av</translation>
+        <translation>Valt av:</translation>
     </message>
 </context>
 <context>
@@ -1590,11 +1590,11 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>skickade en videonotis</translation>
+        <translation>skickade ett videomeddelande</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation>skickade en videonotis</translation>
+        <translation>skickade ett videomeddelande</translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
