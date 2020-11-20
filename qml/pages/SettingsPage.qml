@@ -113,6 +113,19 @@ Page {
                 }
             }
 
+            TextSwitch {
+                checked: appSettings.notificationTurnsDisplayOn && enabled
+                text: qsTr("Notification turns on the display")
+                height: appSettings.notificationFeedback === AppSettings.NotificationFeedbackNone ? 0 : implicitHeight
+                clip: height < implicitHeight
+                visible: height > 0
+                automaticCheck: false
+                onClicked: {
+                    appSettings.notificationTurnsDisplayOn = !checked
+                }
+                Behavior on height { SmoothedAnimation { duration: 200 } }
+            }
+
             SectionHeader {
                 text: qsTr("Appearance")
             }
