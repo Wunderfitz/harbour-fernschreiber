@@ -106,6 +106,7 @@ public:
     Q_INVOKABLE void controlScreenSaver(bool enabled);
     Q_INVOKABLE bool getJoinChatRequested();
     Q_INVOKABLE void registerJoinChat();
+    Q_INVOKABLE QVariantList getContactsFullInfo();
 
     DBusAdaptor *getDBusAdaptor();
 
@@ -265,6 +266,7 @@ private:
     QVariantMap allUsers;
     QVariantMap allUserNames;
     QVariantMap chats;
+    QList<QString> contacts;
     QVariantMap unreadMessageInformation;
     QVariantMap unreadChatInformation;
     QHash<qlonglong,Group*> basicGroups;

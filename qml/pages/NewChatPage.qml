@@ -29,6 +29,12 @@ Page {
     property var contacts;
     property bool isLoading: true;
 
+    onStatusChanged: {
+        if (status === PageStatus.Active) {
+            newChatPage.contacts = tdLibWrapper.getContactsFullInfo();
+        }
+    }
+
     SilicaFlickable {
         id: newChatContainer
         contentHeight: newChatPage.height
@@ -50,7 +56,7 @@ Page {
                 clip: true
                 height: newChatPageColumn.height - newChatPageHeader.height
                 width: newChatPageColumn.width
-                opacity: newChatPage.isLoading ? 0 : 1
+                //opacity: newChatPage.isLoading ? 0 : 1
                 Behavior on opacity { FadeAnimation {} }
 
                 ViewPlaceholder {
@@ -80,7 +86,7 @@ Page {
                     }
 
                     onClicked: {
-                        tdLibWrapper.createPrivateChat(user_id);
+                        tdLibWrapper.createPrivateChat(modelData.id);
                     }
                 }
 
