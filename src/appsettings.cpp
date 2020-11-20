@@ -25,6 +25,7 @@ namespace {
     const QString KEY_USE_OPEN_WITH("useOpenWith");
     const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
     const QString KEY_ANIMATE_STICKERS("animateStickers");
+    const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
 }
 
@@ -85,6 +86,20 @@ void AppSettings::setAnimateStickers(bool animate)
         LOG(KEY_ANIMATE_STICKERS << animate);
         settings.setValue(KEY_ANIMATE_STICKERS, animate);
         emit animateStickersChanged();
+    }
+}
+
+bool AppSettings::notificationTurnsDisplayOn() const
+{
+    return settings.value(KEY_NOTIFICATION_TURNS_DISPLAY_ON, false).toBool();
+}
+
+void AppSettings::setNotificationTurnsDisplayOn(bool turnOn)
+{
+    if (notificationTurnsDisplayOn() != turnOn) {
+        LOG(KEY_NOTIFICATION_TURNS_DISPLAY_ON << turnOn);
+        settings.setValue(KEY_NOTIFICATION_TURNS_DISPLAY_ON, turnOn);
+        emit notificationTurnsDisplayOnChanged();
     }
 }
 
