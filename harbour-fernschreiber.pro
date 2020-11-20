@@ -64,6 +64,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/chatInformationPage/ChatInformationTextItem.qml \
     qml/components/chatInformationPage/EditGroupChatPermissionsColumn.qml \
     qml/components/chatInformationPage/EditSuperGroupSlowModeColumn.qml \
+    qml/js/debug.js \
     qml/js/functions.js \
     qml/pages/ChatInformationPage.qml \
     qml/pages/ChatPage.qml \
@@ -146,6 +147,7 @@ HEADERS += \
     src/dbusadaptor.h \
     src/dbusinterface.h \
     src/debuglog.h \
+    src/debuglogjs.h \
     src/emojisearchworker.h \
     src/fernschreiberutils.h \
     src/notificationmanager.h \

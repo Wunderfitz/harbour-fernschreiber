@@ -23,6 +23,7 @@ import Sailfish.Pickers 1.0
 import Nemo.Thumbnailer 1.0
 import WerkWolf.Fernschreiber 1.0
 import "../components"
+import "../js/debug.js" as Debug
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
 
@@ -133,7 +134,7 @@ Page {
     }
 
     function initializePage() {
-        console.log("[ChatPage] Initializing chat page...");
+        Debug.log("[ChatPage] Initializing chat page...");
         chatView.currentIndex = -1;
         chatView.lastReadSentIndex = 0;
         var chatType = chatInformation.type['@type'];
@@ -154,13 +155,13 @@ Page {
             updateGroupStatusText();
         }
         if (stickerManager.needsReload()) {
-            console.log("[ChatPage] Stickers will be reloaded!");
+            Debug.log("[ChatPage] Stickers will be reloaded!");
             tdLibWrapper.getRecentStickers();
             tdLibWrapper.getInstalledStickerSets();
             stickerManager.setNeedsReload(false);
         }
         if (chatInformation.pinned_message_id.toString() !== "0") {
-            console.log("[ChatPage] Loading pinned message " + chatInformation.pinned_message_id);
+            Debug.log("[ChatPage] Loading pinned message ", chatInformation.pinned_message_id);
             tdLibWrapper.getMessage(chatInformation.id, chatInformation.pinned_message_id);
         }
     }
@@ -292,28 +293,28 @@ Page {
                     || (groupStatusType === "chatMemberStatusRestricted" && groupStatus.permissions[privilege])
     }
     function canPinMessages() {
-        console.log("Can we pin messages?");
+        Debug.log("Can we pin messages?");
         if (chatPage.isPrivateChat) {
-            console.log("Private Chat: No!");
+            Debug.log("Private Chat: No!");
             return false;
         }
         if (chatPage.chatGroupInformation.status["@type"] === "chatMemberStatusCreator") {
-            console.log("Creator of this chat: Yes!");
+            Debug.log("Creator of this chat: Yes!");
             return true;
         }
         if (chatPage.chatInformation.permissions.can_pin_messages) {
-            console.log("All people can pin: Yes!");
+            Debug.log("All people can pin: Yes!");
             return true;
         }
         if (chatPage.chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator") {
-            console.log("Admin with privileges? " + chatPage.chatGroupInformation.status.can_pin_messages);
+            Debug.log("Admin with privileges? ", chatPage.chatGroupInformation.status.can_pin_messages);
             return chatPage.chatGroupInformation.status.can_pin_messages;
         }
         if (chatPage.chatGroupInformation.status["@type"] === "chatMemberStatusRestricted") {
-            console.log("Restricted, but can pin messages? " + chatPage.chatGroupInformation.status.permissions.can_pin_messages);
+            Debug.log("Restricted, but can pin messages? ", chatPage.chatGroupInformation.status.permissions.can_pin_messages);
             return chatPage.chatGroupInformation.status.permissions.can_pin_messages;
         }
-        console.log("Something else: No!");
+        Debug.log("Something else: No!");
         return false;
     }
 
@@ -384,7 +385,7 @@ Page {
             }
         }
         onChatOnlineMemberCountUpdated: {
-            console.log(isSuperGroup + "/" + isBasicGroup + "/" + chatInformation.id.toString() + "/" + chatId);
+            Debug.log(isSuperGroup, "/", isBasicGroup, "/", chatInformation.id.toString(), "/", chatId);
             if ((isSuperGroup || isBasicGroup) && chatInformation.id.toString() === chatId) {
                 chatOnlineMemberCount = onlineMemberCount;
                 updateGroupStatusText();
@@ -405,7 +406,7 @@ Page {
         }
         onReceivedMessage: {
             if (messageId === chatInformation.pinned_message_id.toString()) {
-                console.log("[ChatPage] Received pinned message");
+                Debug.log("[ChatPage] Received pinned message");
                 pinnedMessageItem.pinnedMessage = message;
             }
         }
@@ -414,11 +415,11 @@ Page {
     Connections {
         target: chatModel
         onMessagesReceived: {
-            console.log("[ChatPage] Messages received, view has " + chatView.count + " messages, setting view to index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
+            Debug.log("[ChatPage] Messages received, view has ", chatView.count, " messages, setting view to index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
             if (totalCount === 0) {
                 if (chatPage.iterativeInitialization) {
                     chatPage.iterativeInitialization = false;
-                    console.log("[ChatPage] actually, skipping that: No Messages in Chat.");
+                    Debug.log("[ChatPage] actually, skipping that: No Messages in Chat.");
                     chatView.positionViewAtEnd();
                     chatPage.loading = false;
                     return;
@@ -436,28 +437,28 @@ Page {
             }
 
             if (chatView.height > chatView.contentHeight) {
-                console.log("[ChatPage] Chat content quite small...");
+                Debug.log("[ChatPage] Chat content quite small...");
                 viewMessageTimer.queueViewMessage(chatView.count - 1);
             }
         }
         onNewMessageReceived: {
             if (chatView.manuallyScrolledToBottom || message.sender_user_id === chatPage.myUserId) {
-                console.log("[ChatPage] Own message received or was scrolled to bottom, scrolling down to see it...");
+                Debug.log("[ChatPage] Own message received or was scrolled to bottom, scrolling down to see it...");
                 chatView.scrollToIndex(chatView.count - 1);
             }
         }
         onUnreadCountUpdated: {
-            console.log("[ChatPage] Unread count updated, new count: " + unreadCount);
+            Debug.log("[ChatPage] Unread count updated, new count: ", unreadCount);
             chatInformation.unread_count = unreadCount;
             chatUnreadMessagesCountBackground.visible = ( !chatPage.loading && unreadCount > 0 );
             chatUnreadMessagesCount.text = unreadCount > 99 ? "99+" : unreadCount;
         }
         onLastReadSentMessageUpdated: {
-            console.log("[ChatPage] Updating last read sent index, new index: " + lastReadSentIndex);
+            Debug.log("[ChatPage] Updating last read sent index, new index: ", lastReadSentIndex);
             chatView.lastReadSentIndex = lastReadSentIndex;
         }
         onMessagesIncrementalUpdate: {
-            console.log("Incremental update received. View now has " + chatView.count + " messages, view is on index " + modelIndex + ", own messages were read before index " + lastReadSentIndex);
+            Debug.log("Incremental update received. View now has ", chatView.count, " messages, view is on index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
             chatView.lastReadSentIndex = lastReadSentIndex;
             chatViewCooldownTimer.start();
         }
@@ -468,7 +469,7 @@ Page {
         onPinnedMessageChanged: {
             chatInformation = chatModel.getChatInformation();
             if (chatInformation.pinned_message_id.toString() !== "0") {
-                console.log("[ChatPage] Loading pinned message " + chatInformation.pinned_message_id);
+                Debug.log("[ChatPage] Loading pinned message ", chatInformation.pinned_message_id);
                 tdLibWrapper.getMessage(chatInformation.id, chatInformation.pinned_message_id);
             } else {
                 pinnedMessageItem.pinnedMessage = undefined;
@@ -697,7 +698,7 @@ Page {
                     repeat: false
                     running: false
                     onTriggered: {
-                        console.log("[ChatPage] Cooldown completed...");
+                        Debug.log("[ChatPage] Cooldown completed...");
                         chatView.inCooldown = false;
                     }
                 }
@@ -747,7 +748,7 @@ Page {
                     }
 
                     function handleScrollPositionChanged() {
-                        console.log("Current position: " + chatView.contentY);
+                        Debug.log("Current position: ", chatView.contentY);
                         if (chatInformation.unread_count > 0) {
                             var bottomIndex = chatView.indexAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin ));
                             if (bottomIndex > -1) {
@@ -770,11 +771,11 @@ Page {
                     onContentYChanged: {
                         if (!chatPage.loading && !chatView.inCooldown) {
                             if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
-                                console.log("[ChatPage] Trying to get older history items...");
+                                Debug.log("[ChatPage] Trying to get older history items...");
                                 chatView.inCooldown = true;
                                 chatModel.triggerLoadMoreHistory();
                             } else if (chatView.indexAt(chatView.contentX, chatView.contentY) > ( count - 10)) {
-                                console.log("[ChatPage] Trying to get newer history items...");
+                                Debug.log("[ChatPage] Trying to get newer history items...");
                                 chatView.inCooldown = true;
                                 chatModel.triggerLoadMoreFuture();
                             }
@@ -999,7 +1000,7 @@ Page {
                             var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
                             picker.selectedContentPropertiesChanged.connect(function(){
                                 attachmentOptionsRow.visible = false;
-                                console.log("Selected document: " + picker.selectedContentProperties.filePath );
+                                Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
                                 attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
                                 attachmentPreviewRow.isPicture = true;
                                 attachmentPreviewRow.visible = true;
@@ -1014,7 +1015,7 @@ Page {
                             var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage");
                             picker.selectedContentPropertiesChanged.connect(function(){
                                 attachmentOptionsRow.visible = false;
-                                console.log("Selected video: " + picker.selectedContentProperties.filePath );
+                                Debug.log("Selected video: ", picker.selectedContentProperties.filePath );
                                 attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
                                 attachmentPreviewRow.isVideo = true;
                                 attachmentPreviewRow.visible = true;
@@ -1029,7 +1030,7 @@ Page {
                             var picker = pageStack.push("Sailfish.Pickers.DocumentPickerPage");
                             picker.selectedContentPropertiesChanged.connect(function(){
                                 attachmentOptionsRow.visible = false;
-                                console.log("Selected document: " + picker.selectedContentProperties.filePath );
+                                Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
                                 attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
                                 attachmentPreviewRow.isDocument = true;
                                 attachmentPreviewRow.visible = true;

@@ -17,6 +17,10 @@
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
 
+.pragma library
+.import "debug.js" as Debug
+.import Sailfish.Silica 1.0 as Silica
+
 function getUserName(userInformation) {
     var firstName = typeof userInformation.first_name !== "undefined" ? userInformation.first_name : "";
     var lastName = typeof userInformation.last_name !== "undefined" ? userInformation.last_name : "";
@@ -194,7 +198,7 @@ function getShortenedCount(count) {
 }
 
 function getDateTimeElapsed(timestamp) {
-    return Format.formatDate(new Date(timestamp * 1000), Formatter.DurationElapsed);
+    return Silica.Format.formatDate(new Date(timestamp * 1000), Silica.Formatter.DurationElapsed);
 }
 
 function getDateTimeTranslated(timestamp) {
@@ -344,7 +348,7 @@ function handleLink(link) {
     } else if (link.indexOf("userId://") === 0) {
         tdLibWrapper.createPrivateChat(link.substring(9));
     } else if (link.indexOf("tg://") === 0) {
-        console.log("Special TG link: " + link);
+        Debug.log("Special TG link: ", link);
         if (link.indexOf("tg://join?invite=") === 0) {
             tdLibWrapper.joinChatByInviteLink(tMePrefix + "joinchat/" + link.substring(17));
         } else if (link.indexOf("tg://resolve?domain=") === 0) {
@@ -353,12 +357,12 @@ function handleLink(link) {
     }  else {
         if (link.indexOf(tMePrefix) === 0) {
             if (link.indexOf("joinchat") !== -1) {
-                console.log("Joining Chat: " + link);
+                Debug.log("Joining Chat: ", link);
                 tdLibWrapper.joinChatByInviteLink(link);
                 // Do the necessary stuff to open the chat if successful
                 // Fail with nice error message if it doesn't work
             } else {
-                console.log("Search public chat: " + link.substring(tMePrefix.length));
+                Debug.log("Search public chat: ", link.substring(tMePrefix.length));
                 tdLibWrapper.searchPublicChat(link.substring(tMePrefix.length));
                 // Check responses for updateBasicGroup or updateSupergroup
                 // Fire createBasicGroupChat or createSupergroupChat

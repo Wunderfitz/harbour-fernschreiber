@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "../components"
 import "../js/functions.js" as Functions
 import "../js/twemoji.js" as Emoji
+import "../js/debug.js" as Debug
 
 Page {
     id: pollResultsPage
@@ -146,7 +147,6 @@ Page {
                                 if(extra === optionDelegate.usersResponseIdentifierString) {
                                     for(var i = 0; i < userIds.length; i += 1) {
                                         optionDelegate.users.append({id: userIds[i], user:tdLibWrapper.getUserInformation(userIds[i])});
-                                        console.log("APPEND USER", JSON.stringify({id: userIds[i], user:tdLibWrapper.getUserInformation(userIds[i])}));
                                     }
                                     loadUsersTimer.start();
                                 }

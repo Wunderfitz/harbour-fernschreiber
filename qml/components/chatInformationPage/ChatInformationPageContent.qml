@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "../"
 import "../../js/twemoji.js" as Emoji
 import "../../js/functions.js" as Functions
+import "../../js/debug.js" as Debug
 
 
 SilicaFlickable {
@@ -59,7 +60,7 @@ SilicaFlickable {
             chatInformationPage.isChannel = chatInformationPage.groupInformation.is_channel;
             break;
         }
-        console.log("is set up", chatInformationPage.isPrivateChat, chatInformationPage.isBasicGroup, chatInformationPage.isSuperGroup, chatInformationPage.chatPartnerGroupId)
+        Debug.log("is set up", chatInformationPage.isPrivateChat, chatInformationPage.isBasicGroup, chatInformationPage.isSuperGroup, chatInformationPage.chatPartnerGroupId)
         if(!chatInformationPage.isPrivateChat) {
             updateGroupStatusText();
         }
@@ -123,13 +124,13 @@ SilicaFlickable {
             }
         }
         onSupergroupFullInfoReceived: {
-            console.log("onSupergroupFullInfoReceived", chatInformationPage.isSuperGroup, chatInformationPage.chatPartnerGroupId, groupId)
+            Debug.log("onSupergroupFullInfoReceived", chatInformationPage.isSuperGroup, chatInformationPage.chatPartnerGroupId, groupId)
             if(chatInformationPage.isSuperGroup && chatInformationPage.chatPartnerGroupId === groupId) {
                 chatInformationPage.groupFullInformation = groupFullInfo;
             }
         }
         onSupergroupFullInfoUpdated: {
-            console.log("onSupergroupFullInfoUpdated", chatInformationPage.isSuperGroup, chatInformationPage.chatPartnerGroupId, groupId)
+            Debug.log("onSupergroupFullInfoUpdated", chatInformationPage.isSuperGroup, chatInformationPage.chatPartnerGroupId, groupId)
             if(chatInformationPage.isSuperGroup && chatInformationPage.chatPartnerGroupId === groupId) {
                 chatInformationPage.groupFullInformation = groupFullInfo;
             }
