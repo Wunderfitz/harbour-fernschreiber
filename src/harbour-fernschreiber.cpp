@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
     ChatModel chatModel(tdLibWrapper);
     context->setContextProperty("chatModel", &chatModel);
 
-    NotificationManager notificationManager(tdLibWrapper, appSettings);
+    NotificationManager notificationManager(tdLibWrapper, appSettings, &chatModel);
     context->setContextProperty("notificationManager", &notificationManager);
 
     ProcessLauncher processLauncher;
