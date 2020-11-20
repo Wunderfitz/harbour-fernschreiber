@@ -99,81 +99,81 @@
     <name>ChatInformationPageContent</name>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 位订阅者</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 位成员</numerusform>
         </translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished">离开对话</translation>
+        <translation>离开对话</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished">加入对话</translation>
+        <translation>加入对话</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished">正在离开对话</translation>
+        <translation>正在离开对话</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">取消对话静音</translation>
+        <translation>取消对话静音</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>静音对话</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">未知</translation>
+        <translation>未知</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished">对话标题</translation>
+        <translation>对话标题</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished">输入 1-128 个字符</translation>
+        <translation>输入 1-128 个字符</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished">暂无信息</translation>
+        <translation>暂无信息</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished">信息</translation>
+        <translation>信息</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished">电话号码</translation>
+        <translation>电话号码</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished">邀请链接</translation>
+        <translation>邀请链接</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished">邀请链接已复制到剪切板</translation>
+        <translation>邀请链接已复制到剪切板</translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 位在线</numerusform>
         </translation>
     </message>
 </context>
@@ -214,17 +214,17 @@
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished">群组</translation>
+        <translation>群组</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished">成员</translation>
+        <translation>成员</translation>
     </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">设置</translation>
+        <translation>设置</translation>
     </message>
 </context>
 <context>
@@ -270,13 +270,13 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 位成员</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 位订阅者</numerusform>
         </translation>
     </message>
@@ -350,19 +350,19 @@
     <message numerus="yes">
         <source>%Ln messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>已选择 %Ln 则消息</numerusform>
         </translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 位在线</numerusform>
         </translation>
     </message>
 </context>
@@ -859,7 +859,7 @@
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>置顶消息</translation>
     </message>
 </context>
 <context>
@@ -873,19 +873,19 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">你</translation>
+        <translation>你</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>此消息为转发消息，原作者: %1</translation>
     </message>
 </context>
 <context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln 则消息</numerusform>
         </translation>
     </message>
 </context>
@@ -936,15 +936,15 @@
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">你</translation>
+        <translation>你</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation type="unfinished"></translation>
+        <translation>已置顶消息</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished"></translation>
+        <translation>已取消置顶消息</translation>
     </message>
 </context>
 <context>
@@ -1035,7 +1035,7 @@
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
         </translation>
     </message>
@@ -1100,7 +1100,7 @@
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
         </translation>
     </message>
@@ -1229,7 +1229,7 @@
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation>贴图: %1</translation>
+        <translation>表情贴图: %1</translation>
     </message>
     <message>
         <source>Audio: %1</source>
