@@ -99,81 +99,81 @@
     <name>ChatInformationPageContent</name>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 suscriptores</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 miembros</numerusform>
         </translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished">Salir del grupo</translation>
+        <translation>Salir del grupo</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished">Unirse al grupo</translation>
+        <translation>Unirse al grupo</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished">Saliendo del grupo</translation>
+        <translation>Saliendo de la charla</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">habilitar notificación</translation>
+        <translation>Notificar</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">deshabilitar notificación</translation>
+        <translation>No notificar</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Desconocido</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished">Título del grupo</translation>
+        <translation>Título del grupo</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished">Marcar los caracteres 1-128</translation>
+        <translation>Marcar caracteres 1-128</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished">Aún no hay texto de información disponible.</translation>
+        <translation>Aún no hay texto de información disponible.</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished">Información</translation>
+        <translation>Información</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished">Número de teléfono</translation>
+        <translation>Número telefónico</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished">Enlace de invitación</translation>
+        <translation>Enlace de invitación</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished">El enlace de invitación se ha copiado en el portapapeles.</translation>
+        <translation>El enlace de invitación se ha copiado en el portapapeles.</translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 en línea</numerusform>
         </translation>
     </message>
 </context>
@@ -214,17 +214,17 @@
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished">Grupos</translation>
+        <translation>Grupos</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished">Miembros</translation>
+        <translation>Miembros</translation>
     </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">Ajustes</translation>
+        <translation>Ajustes</translation>
     </message>
 </context>
 <context>
@@ -239,11 +239,11 @@
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>habilitar notificación</translation>
+        <translation>Notificar</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>deshabilitar notificación</translation>
+        <translation>No notificar</translation>
     </message>
     <message>
         <source>User Info</source>
@@ -270,13 +270,13 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 miembros</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 suscriptores</numerusform>
         </translation>
     </message>
@@ -286,11 +286,11 @@
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>habilitar notificación</translation>
+        <translation>Notificar</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>deshabilitar notificación</translation>
+        <translation>No notificar</translation>
     </message>
     <message>
         <source>Edit Message</source>
@@ -318,7 +318,7 @@
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Saliendo del grupo</translation>
+        <translation>Saliendo de la charla</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
@@ -350,19 +350,19 @@
     <message numerus="yes">
         <source>%Ln messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln mensajes seleccionados</numerusform>
         </translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 en línea</numerusform>
         </translation>
     </message>
 </context>
@@ -859,7 +859,7 @@
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Anclar mensaje </translation>
     </message>
 </context>
 <context>
@@ -873,19 +873,19 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Usted</translation>
+        <translation>Usted</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Este mensaje fue reenviado. Autor original: %1</translation>
     </message>
 </context>
 <context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln mensajes no leídos</numerusform>
         </translation>
     </message>
 </context>
@@ -936,15 +936,15 @@
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Usted</translation>
+        <translation>Usted</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Mensaje anclado</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished"></translation>
+        <translation>Desanclar mensaje</translation>
     </message>
 </context>
 <context>
@@ -1035,7 +1035,7 @@
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
         </translation>
     </message>
@@ -1100,7 +1100,7 @@
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
         </translation>
     </message>
@@ -1210,7 +1210,7 @@
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista previa no compatible con este enlace ...</translation>
     </message>
 </context>
 <context>
@@ -1364,15 +1364,15 @@
     </message>
     <message>
         <source>offline, last online: last month</source>
-        <translation>sin línea, hace: hace 1 mes</translation>
+        <translation>hace 1 mes</translation>
     </message>
     <message>
         <source>offline, last online: last week</source>
-        <translation>sin línea, hace: hace 1 semana</translation>
+        <translation>hace 1 semana</translation>
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation>sin línea, hace: %1</translation>
+        <translation>hace: %1</translation>
     </message>
     <message>
         <source>online</source>
