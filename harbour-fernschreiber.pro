@@ -14,7 +14,7 @@ TARGET = harbour-fernschreiber
 
 CONFIG += sailfishapp sailfishapp_i18n
 
-PKGCONFIG += nemonotifications-qt5 ngf-qt5 zlib
+PKGCONFIG += nemonotifications-qt5 zlib
 
 QT += core dbus sql
 

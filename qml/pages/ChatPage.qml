@@ -35,6 +35,7 @@ Page {
     property bool isInitialized: false;
     readonly property int myUserId: tdLibWrapper.getUserInformation().id;
     property var chatInformation;
+    property alias chatPicture: chatPictureThumbnail.photoData
     property bool isPrivateChat: false;
     property bool isBasicGroup: false;
     property bool isSuperGroup: false;
@@ -352,6 +353,9 @@ Page {
                 pageStack.pushAttached(Qt.resolvedUrl("ChatInformationPage.qml"), { "chatInformation" : chatInformation, "privateChatUserInformation": chatPartnerInformation, "groupInformation": chatGroupInformation, "chatOnlineMemberCount": chatOnlineMemberCount});
                 chatPage.isInitialized = true;
             }
+            break;
+        case PageStatus.Inactive:
+            chatModel.clear();
             break;
         }
     }

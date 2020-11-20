@@ -36,14 +36,16 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const override;
     virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
-
+    Q_INVOKABLE void clear();
     Q_INVOKABLE void initialize(const QVariantMap &chatInformation);
     Q_INVOKABLE void triggerLoadMoreHistory();
     Q_INVOKABLE void triggerLoadMoreFuture();
     Q_INVOKABLE QVariantMap getChatInformation();
     Q_INVOKABLE QVariantMap getMessage(int index);
     Q_INVOKABLE int getLastReadMessageIndex();
+
     QVariantMap smallPhoto() const;
+    qlonglong getChatId() const;
 
 signals:
     void messagesReceived(int modelIndex, int lastReadSentIndex, int totalCount);

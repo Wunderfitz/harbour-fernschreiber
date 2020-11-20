@@ -237,7 +237,10 @@ Page {
                         ownUserId: overviewPage.ownUserId
 
                         onClicked: {
-                           pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : display });
+                            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), {
+                                chatInformation : display,
+                                chatPicture: photo_small
+                            })
                         }
 
                         Connections {

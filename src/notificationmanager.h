@@ -23,9 +23,10 @@
 #include <QObject>
 #include <QDBusInterface>
 #include <nemonotifications-qt5/notification.h>
-#include <ngf-qt5/NgfClient>
 #include "tdlibwrapper.h"
 #include "appsettings.h"
+
+class ChatModel;
 
 class NotificationManager : public QObject
 {
@@ -35,7 +36,7 @@ class NotificationManager : public QObject
 
 public:
 
-    NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings);
+    NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings, ChatModel *chatModel);
     ~NotificationManager() override;
 
 public slots:
@@ -45,11 +46,6 @@ public slots:
     void handleUpdateNotification(const QVariantMap &updatedNotification);
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
     void handleChatTitleUpdated(const QString &chatId, const QString &title);
-    void handleNgfConnectionStatus(bool connected);
-    void handleNgfEventFailed(quint32 eventId);
-    void handleNgfEventCompleted(quint32 eventId);
-    void handleNgfEventPlaying(quint32 eventId);
-    void handleNgfEventPaused(quint32 eventId);
 
 private:
 
@@ -65,7 +61,7 @@ private:
 
     TDLibWrapper *tdLibWrapper;
     AppSettings *appSettings;
-    Ngf::Client *ngfClient;
+    ChatModel *chatModel;
     QMap<qlonglong,ChatInfo*> chatMap;
     QMap<int,NotificationGroup*> notificationGroups;
     QDBusInterface mceInterface;
