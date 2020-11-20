@@ -70,6 +70,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/ChatSelectionPage.qml \
     qml/pages/CoverPage.qml \
     qml/pages/InitializationPage.qml \
+    qml/pages/NewChatPage.qml \
     qml/pages/OverviewPage.qml \
     qml/pages/AboutPage.qml \
     qml/pages/PollCreationPage.qml \

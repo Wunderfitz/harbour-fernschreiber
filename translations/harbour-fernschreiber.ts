@@ -883,10 +883,21 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">You</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NewChatPage</name>
+    <message>
+        <source>Your Contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You don&apos;t have any contacts.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -942,12 +953,16 @@
         <source>You don&apos;t have any chats yet.</source>
         <translation>You don&apos;t have any chats yet.</translation>
     </message>
+    <message>
+        <source>New Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">You</translation>
     </message>
     <message>
         <source>Pinned Message</source>

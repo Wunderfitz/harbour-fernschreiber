@@ -93,6 +93,7 @@ public:
     Q_INVOKABLE TDLibWrapper::ConnectionState getConnectionState();
     Q_INVOKABLE QVariantMap getUserInformation();
     Q_INVOKABLE QVariantMap getUserInformation(const QString &userId);
+    Q_INVOKABLE bool hasUserInformation(const QString &userId);
     Q_INVOKABLE QVariantMap getUserInformationByName(const QString &userName);
     Q_INVOKABLE QVariantMap getUnreadMessageInformation();
     Q_INVOKABLE QVariantMap getUnreadChatInformation();
@@ -160,6 +161,7 @@ public:
     Q_INVOKABLE void searchPublicChat(const QString &userName);
     Q_INVOKABLE void joinChatByInviteLink(const QString &inviteLink);
     Q_INVOKABLE void getDeepLinkInfo(const QString &link);
+    Q_INVOKABLE void getContacts();
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -241,6 +243,7 @@ public slots:
     void handleStickerSets(const QVariantList &stickerSets);
     void handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList);
     void handleOpenWithChanged();
+    void handleUsersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
 
 private:
     void setInitialParameters();
@@ -270,6 +273,7 @@ private:
 
     QString activeChatSearchName;
     bool joinChatRequested;
+    bool contactsRequested;
 
 };
 

@@ -892,6 +892,17 @@
     </message>
 </context>
 <context>
+    <name>NewChatPage</name>
+    <message>
+        <source>Your Contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You don&apos;t have any contacts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
@@ -942,6 +953,10 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Sinulla ei ole vielä keskusteluja.</translation>
+    </message>
+    <message>
+        <source>New Chat</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

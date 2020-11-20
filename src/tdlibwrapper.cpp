@@ -47,7 +47,7 @@ namespace {
     const QString _EXTRA("@extra");
 }
 
-TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(parent), joinChatRequested(false)
+TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(parent), joinChatRequested(false), contactsRequested(false)
 {
     LOG("Initializing TD Lib...");
     this->appSettings = appSettings;
@@ -113,7 +113,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(
     connect(this->tdLibReceiver, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SIGNAL(chatTitleUpdated(QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)));
-    connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SLOT(handleUsersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString)), this, SIGNAL(errorReceived(int, QString)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
@@ -605,7 +605,7 @@ void TDLibWrapper::getGroupFullInfo(const QString &groupId, bool isSuperGroup)
 
 void TDLibWrapper::getUserFullInfo(const QString &userId)
 {
-    LOG("Retrieving UserFullInfo");
+    LOG("Retrieving UserFullInfo" << userId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getUserFullInfo");
     requestObject.insert(_EXTRA, userId);
@@ -792,6 +792,15 @@ void TDLibWrapper::getDeepLinkInfo(const QString &link)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::getContacts()
+{
+    LOG("Retrieving contacts");
+    this->contactsRequested = true;
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getContacts");
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
@@ -811,6 +820,11 @@ QVariantMap TDLibWrapper::getUserInformation(const QString &userId)
 {
     // LOG("Returning user information for ID" << userId);
     return this->allUsers.value(userId).toMap();
+}
+
+bool TDLibWrapper::hasUserInformation(const QString &userId)
+{
+    return this->allUsers.contains(userId);
 }
 
 QVariantMap TDLibWrapper::getUserInformationByName(const QString &userName)
@@ -1131,6 +1145,22 @@ void TDLibWrapper::handleOpenWithChanged()
     } else {
         this->removeOpenWith();
     }
+}
+
+void TDLibWrapper::handleUsersReceived(const QString &extra, const QVariantList &userIds, int totalUsers)
+{
+    if (this->contactsRequested) {
+        LOG("Received contacts list...");
+        this->contactsRequested = false;
+        QListIterator<QVariant> userIdIterator(userIds);
+        while (userIdIterator.hasNext()) {
+            QString nextUserId = userIdIterator.next().toString();
+            if (!this->hasUserInformation(nextUserId)) {
+                this->getUserFullInfo(nextUserId);
+            }
+        }
+    }
+    emit usersReceived(extra, userIds, totalUsers);
 }
 
 void TDLibWrapper::setInitialParameters()
