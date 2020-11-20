@@ -883,7 +883,7 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">You</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
@@ -947,7 +947,7 @@
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">You</translation>
     </message>
     <message>
         <source>Pinned Message</source>

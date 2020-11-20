@@ -47,7 +47,7 @@ Page {
             console.log("[OverviewPage] Opening chat from external call...")
             if (chatListCreated) {
                 pageStack.pop(overviewPage, PageStackAction.Immediate)
-                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chatId) }, PageStackAction.Immediate)
+                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : chatListModel.getById(chatId) }, PageStackAction.Immediate)
             }
         }
         onPleaseOpenUrl: {
