@@ -26,6 +26,7 @@
 #include <QUrl>
 #include <QDateTime>
 #include <QDBusConnection>
+#include <QGuiApplication>
 
 #define LOG(x) qDebug() << "[NotificationManager]" << x
 
