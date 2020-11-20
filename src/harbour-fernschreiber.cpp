@@ -29,8 +29,8 @@
 #include <QQmlEngine>
 #include <QGuiApplication>
 #include <QLoggingCategory>
-
 #include "appsettings.h"
+#include "debuglogjs.h"
 #include "tdlibfile.h"
 #include "tdlibwrapper.h"
 #include "chatlistmodel.h"
@@ -63,6 +63,7 @@ int main(int argc, char *argv[])
 
     const char *uri = "WerkWolf.Fernschreiber";
     qmlRegisterType<TDLibFile>(uri, 1, 0, "TDLibFile");
+    qmlRegisterSingletonType<DebugLogJS>(uri, 1, 0, "DebugLog", DebugLogJS::createSingleton);
 
     AppSettings *appSettings = new AppSettings(view.data());
     context->setContextProperty("appSettings", appSettings);

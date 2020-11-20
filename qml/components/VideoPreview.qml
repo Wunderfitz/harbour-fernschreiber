@@ -20,6 +20,7 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import QtMultimedia 5.6
 import "../js/functions.js" as Functions
+import "../js/debug.js" as Debug
 
 Item {
     id: videoMessageComponent
@@ -302,39 +303,39 @@ Item {
 
                 onStatusChanged: {
                     if (status == MediaPlayer.NoMedia) {
-                        console.log("No Media");
+                        Debug.log("No Media");
                         videoBusyIndicator.visible = false;
                     }
                     if (status == MediaPlayer.Loading) {
-                        console.log("Loading");
+                        Debug.log("Loading");
                         videoBusyIndicator.visible = true;
                     }
                     if (status == MediaPlayer.Loaded) {
-                        console.log("Loaded");
+                        Debug.log("Loaded");
                         videoBusyIndicator.visible = false;
                     }
                     if (status == MediaPlayer.Buffering) {
-                        console.log("Buffering");
+                        Debug.log("Buffering");
                         videoBusyIndicator.visible = true;
                     }
                     if (status == MediaPlayer.Stalled) {
-                        console.log("Stalled");
+                        Debug.log("Stalled");
                         videoBusyIndicator.visible = true;
                     }
                     if (status == MediaPlayer.Buffered) {
-                        console.log("Buffered");
+                        Debug.log("Buffered");
                         videoBusyIndicator.visible = false;
                     }
                     if (status == MediaPlayer.EndOfMedia) {
-                        console.log("End of Media");
+                        Debug.log("End of Media");
                         videoBusyIndicator.visible = false;
                     }
                     if (status == MediaPlayer.InvalidMedia) {
-                        console.log("Invalid Media");
+                        Debug.log("Invalid Media");
                         videoBusyIndicator.visible = false;
                     }
                     if (status == MediaPlayer.UnknownStatus) {
-                        console.log("Unknown Status");
+                        Debug.log("Unknown Status");
                         videoBusyIndicator.visible = false;
                     }
                 }

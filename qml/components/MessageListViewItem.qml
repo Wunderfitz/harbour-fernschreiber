@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
 import QtQml.Models 2.3
+import "../js/debug.js" as Debug
 
 ListItem {
     id: messageListItem
@@ -136,12 +137,12 @@ ListItem {
             messageBackground.isUnread = index > chatModel.getLastReadMessageIndex();
         }
         onLastReadSentMessageUpdated: {
-            console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + (index <= lastReadSentIndex));
+            Debug.log("[ChatModel] Messages in this chat were read, new last read: ", lastReadSentIndex, ", updating description for index ", index, ", status: ", (index <= lastReadSentIndex));
             messageDateText.text = getMessageStatusText(myMessage, index, lastReadSentIndex, messageDateText.useElapsed);
         }
         onMessageUpdated: {
             if (index === modelIndex) {
-                console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
+                Debug.log("[ChatModel] This message was updated, index ", index, ", updating content...");
                 messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
                 messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, messageListItem.isOwnMessage), messageText.font.pixelSize);
             }

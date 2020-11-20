@@ -23,6 +23,7 @@ import WerkWolf.Fernschreiber 1.0
 import "../components"
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
+import "../js/debug.js" as Debug
 
 Page {
     id: overviewPage
@@ -44,14 +45,14 @@ Page {
     Connections {
         target: dBusAdaptor
         onPleaseOpenMessage: {
-            console.log("[OverviewPage] Opening chat from external call...")
+            Debug.log("[OverviewPage] Opening chat from external call...")
             if (chatListCreated) {
                 pageStack.pop(overviewPage, PageStackAction.Immediate)
                 pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : chatListModel.getById(chatId) }, PageStackAction.Immediate)
             }
         }
         onPleaseOpenUrl: {
-            console.log("[OverviewPage] Opening URL requested: " + url);
+            Debug.log("[OverviewPage] Opening URL requested: ", url);
             Functions.handleLink(url);
         }
     }

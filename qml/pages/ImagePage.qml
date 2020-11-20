@@ -20,6 +20,7 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/functions.js" as Functions
+import "../js/debug.js" as Debug
 
 Page {
     id: imagePage
@@ -73,7 +74,7 @@ Page {
         target: tdLibWrapper
         onFileUpdated: {
             if (fileId === imagePage.pictureFileInformation.id) {
-                console.log("File updated, completed? " + fileInformation.local.is_downloading_completed);
+                Debug.log("File updated, completed? ", fileInformation.local.is_downloading_completed);
                 if (fileInformation.local.is_downloading_completed) {
                     imagePage.pictureFileInformation = fileInformation;
                     imagePage.imageUrl = fileInformation.local.path;
