@@ -19,6 +19,7 @@
 
 #include "notificationmanager.h"
 #include "fernschreiberutils.h"
+#include "chatmodel.h"
 #include <sailfishapp.h>
 #include <QDebug>
 #include <QListIterator>
@@ -50,15 +51,17 @@ namespace {
     const QString CHAT_TYPE_BASIC_GROUP("chatTypeBasicGroup");
     const QString CHAT_TYPE_SUPERGROUP("chatTypeSupergroup");
 
-    const QString NOTIFICATION_CATEGORY("x-nemo.messaging.im");
-    const QString NGF_EVENT("chat");
-
     const QString APP_NAME("Fernschreiber");
 
     // Notification hints
     const QString HINT_GROUP_ID("x-fernschreiber.group_id");        // int
     const QString HINT_CHAT_ID("x-fernschreiber.chat_id");          // qlonglong
     const QString HINT_TOTAL_COUNT("x-fernschreiber.total_count");  // int
+
+    const QString HINT_VIBRA("x-nemo-vibrate");                     // bool
+    const QString HINT_DISPLAY_ON("x-nemo-display-on");             // bool
+    const QString HINT_VISIBILITY("x-nemo-visibility");             // QString
+    const QString VISIBILITY_PUBLIC("public");
 }
 
 class NotificationManager::ChatInfo
@@ -116,30 +119,21 @@ NotificationManager::NotificationGroup::~NotificationGroup()
     delete nemoNotification;
 }
 
-NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings) :
+NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings, ChatModel *chatModel) :
     mceInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", QDBusConnection::systemBus()),
     appIconFile(SailfishApp::pathTo("images/fernschreiber-notification.png").toLocalFile())
 {
     LOG("Initializing...");
     this->tdLibWrapper = tdLibWrapper;
     this->appSettings = appSettings;
-    this->ngfClient = new Ngf::Client(this);
+    this->appSettings = appSettings;
+    this->chatModel = chatModel;
 
     connect(this->tdLibWrapper, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SLOT(handleUpdateActiveNotifications(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(notificationGroupUpdated(QVariantMap)), this, SLOT(handleUpdateNotificationGroup(QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(notificationUpdated(QVariantMap)), this, SLOT(handleUpdateNotification(QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
-    connect(this->ngfClient, SIGNAL(connectionStatus(bool)), this, SLOT(handleNgfConnectionStatus(bool)));
-    connect(this->ngfClient, SIGNAL(eventCompleted(quint32)), this, SLOT(handleNgfEventCompleted(quint32)));
-    connect(this->ngfClient, SIGNAL(eventFailed(quint32)), this, SLOT(handleNgfEventFailed(quint32)));
-    connect(this->ngfClient, SIGNAL(eventPlaying(quint32)), this, SLOT(handleNgfEventPlaying(quint32)));
-
-    if (this->ngfClient->connect()) {
-        LOG("NGF Client successfully initialized...");
-    } else {
-        LOG("Failed to initialize NGF Client...");
-    }
 
     this->controlLedNotification(false);
 
@@ -236,6 +230,12 @@ void NotificationManager::updateNotificationGroup(int groupId, qlonglong chatId,
             notificationGroup->notificationOrder.removeOne(removedId);
         }
 
+        // Make sure that if there's no notifications, order is empty too.
+        // That's usually already the case but double-check won't wort. It's cheap.
+        if (notificationGroup->activeNotifications.isEmpty()) {
+            notificationGroup->notificationOrder.clear();
+        }
+
         // Decide if we need a bzzz
         switch (feedback) {
         case AppSettings::NotificationFeedbackNone:
@@ -251,6 +251,7 @@ void NotificationManager::updateNotificationGroup(int groupId, qlonglong chatId,
         }
 
         // Publish new or update the existing notification
+        LOG("Feedback" << needFeedback);
         publishNotification(notificationGroup, needFeedback);
     } else if (notificationGroup) {
         // No active notifications left in this group
@@ -307,31 +308,6 @@ void NotificationManager::handleChatTitleUpdated(const QString &chatId, const QS
     }
 }
 
-void NotificationManager::handleNgfConnectionStatus(bool connected)
-{
-    LOG("NGF Daemon connection status changed" << connected);
-}
-
-void NotificationManager::handleNgfEventFailed(quint32 eventId)
-{
-    LOG("NGF event failed, id:" << eventId);
-}
-
-void NotificationManager::handleNgfEventCompleted(quint32 eventId)
-{
-    LOG("NGF event completed, id:" << eventId);
-}
-
-void NotificationManager::handleNgfEventPlaying(quint32 eventId)
-{
-    LOG("NGF event playing, id:" << eventId);
-}
-
-void NotificationManager::handleNgfEventPaused(quint32 eventId)
-{
-    LOG("NGF event paused, id:" << eventId);
-}
-
 void NotificationManager::publishNotification(const NotificationGroup *notificationGroup, bool needFeedback)
 {
     QVariantMap messageMap;
@@ -374,25 +350,24 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
         notificationBody = tr("%Ln unread messages", "", notificationGroup->totalCount);
     }
 
+    const QString summary(chatInformation ? chatInformation->title : QString());
     nemoNotification->setBody(notificationBody);
-    nemoNotification->setSummary(chatInformation ? chatInformation->title : QString());
-    if (needFeedback) {
-        nemoNotification->setCategory(NOTIFICATION_CATEGORY);
+    nemoNotification->setSummary(summary);
+    nemoNotification->setPreviewBody(notificationBody);
+    nemoNotification->setPreviewSummary(summary);
+    nemoNotification->setHintValue(HINT_VIBRA, needFeedback);
 
-        // Setting preview body & summary to a non-empty string causes a notification popup,
-        // no matter if we are in the current chat, in the app or not. That might be annoying
-        // In the future, we can show this popup depending if the app/chat is open or not
-        //
-        // nemoNotification->setPreviewBody(nemoNotification->body());
-        // nemoNotification->setPreviewSummary(nemoNotification->summary());
-
-        nemoNotification->setPreviewBody(QString());
-        nemoNotification->setPreviewSummary(QString());
-        ngfClient->play(NGF_EVENT);
+    // Don't show popup for the currently open chat
+    if (!needFeedback || (chatModel->getChatId() == notificationGroup->chatId &&
+            qGuiApp->applicationState() == Qt::ApplicationActive)) {
+        nemoNotification->setHintValue(HINT_DISPLAY_ON, false);
+        nemoNotification->setHintValue(HINT_VISIBILITY, QVariant());
+        nemoNotification->setUrgency(Notification::Low);
     } else {
-        nemoNotification->setCategory(QString());
-        nemoNotification->setPreviewBody(QString());
-        nemoNotification->setPreviewSummary(QString());
+        // The "display on" option will be configurable
+        nemoNotification->setHintValue(HINT_DISPLAY_ON, true);
+        nemoNotification->setHintValue(HINT_VISIBILITY, VISIBILITY_PUBLIC);
+        nemoNotification->setUrgency(Notification::Normal);
     }
 
     nemoNotification->publish();

@@ -85,6 +85,23 @@ bool ChatModel::insertRows(int row, int count, const QModelIndex &parent)
     return true;
 }
 
+void ChatModel::clear()
+{
+    LOG("Clearing chat model");
+    chatId = 0;
+    inReload = false;
+    inIncrementalUpdate = false;
+    if (!messages.isEmpty()) {
+        beginResetModel();
+        messages.clear();
+        endResetModel();
+    }
+    if (!chatInformation.isEmpty()) {
+        chatInformation.clear();
+        emit smallPhotoChanged();
+    }
+}
+
 void ChatModel::initialize(const QVariantMap &chatInformation)
 {
     LOG("Initializing chat model...");
@@ -155,6 +172,11 @@ int ChatModel::getLastReadMessageIndex()
 QVariantMap ChatModel::smallPhoto() const
 {
     return chatInformation.value(PHOTO).toMap().value(SMALL).toMap();
+}
+
+qlonglong ChatModel::getChatId() const
+{
+    return chatId;
 }
 
 static bool compareMessages(const QVariant &message1, const QVariant &message2)
