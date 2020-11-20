@@ -115,18 +115,18 @@
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 subskrybent</numerusform>
             <numerusform>%1 subskrybentów</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 subskrybentów</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
-            <numerusform>%1 czlonków</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 członek</numerusform>
+            <numerusform>%1 członków</numerusform>
+            <numerusform>%1 członków</numerusform>
         </translation>
     </message>
     <message>
@@ -172,14 +172,14 @@
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 online</numerusform>
+            <numerusform>%1 online</numerusform>
+            <numerusform>%1 online</numerusform>
         </translation>
     </message>
 </context>
@@ -276,18 +276,18 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
-            <numerusform>%1 czlonków</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 członek</numerusform>
+            <numerusform>%1 członków</numerusform>
+            <numerusform>%1 członków</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 subskrybent</numerusform>
             <numerusform>%1 subskrybentów</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 subskrybentów</numerusform>
         </translation>
     </message>
     <message>
@@ -366,23 +366,23 @@
     <message numerus="yes">
         <source>%Ln messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln wiadomość zaznaczona</numerusform>
+            <numerusform>%Ln wiadomości zaznaczone</numerusform>
+            <numerusform>%Ln wiadomości zaznaczonych</numerusform>
         </translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 online</numerusform>
+            <numerusform>%1 online</numerusform>
+            <numerusform>%1 online</numerusform>
         </translation>
     </message>
 </context>
@@ -491,7 +491,7 @@
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Przypnij wiadomość</translation>
     </message>
     <message>
         <source>New Members</source>
@@ -516,7 +516,7 @@
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustaw, jak długo każdy członek czatu ma czekać pomiędzy wiadomościami</translation>
     </message>
 </context>
 <context>
@@ -533,7 +533,7 @@
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation type="unfinished">wyślij film</translation>
+        <translation>wysłałem film</translation>
     </message>
     <message>
         <source>sent a video</source>
@@ -627,20 +627,20 @@
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>zmieniłem tytuł czatu</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation type="unfinished"></translation>
+        <translation>tytuł czatu został zmieniony</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>wysłałem ankietę</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation type="unfinished"></translation>
+        <translation>wysłano ankietę</translation>
     </message>
     <message>
         <source>sent a quiz</source>
@@ -904,10 +904,10 @@
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln nieprzeczytana wiadomość</numerusform>
+            <numerusform>%Ln nieprzeczytane wiadomości</numerusform>
+            <numerusform>%Ln nieprzeczytanych wiadomośći</numerusform>
         </translation>
     </message>
 </context>
@@ -958,15 +958,15 @@
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Ty</translation>
+        <translation>Ty</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Przypieta wiadomość</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiadomość opięta</translation>
     </message>
 </context>
 <context>
