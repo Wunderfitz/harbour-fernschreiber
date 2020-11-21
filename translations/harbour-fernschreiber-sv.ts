@@ -331,7 +331,7 @@
     </message>
     <message>
         <source>Select Messages</source>
-        <translation>Välj meddelanden</translation>
+        <translation>Markera meddelanden</translation>
     </message>
     <message numerus="yes">
         <source>%Ln Messages deleted</source>
@@ -359,8 +359,8 @@
         <source>%Ln messages selected</source>
         <comment>number of messages selected</comment>
         <translation>
-            <numerusform>%Ln meddelande valt</numerusform>
-            <numerusform>%Ln meddelanden valda</numerusform>
+            <numerusform>%Ln meddelande markerat</numerusform>
+            <numerusform>%Ln meddelanden markerade</numerusform>
         </translation>
     </message>
     <message>
@@ -540,7 +540,7 @@
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>skickade en röstanteckning</translation>
+        <translation>skickade ett röstmeddelande</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -603,16 +603,16 @@
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>skickade en röstanteckning</translation>
+        <translation>skickade ett röstmeddelande</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>skickade en mötesplats</translation>
+        <translation>skickade en plats</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>skickade en mötesplats</translation>
+        <translation>skickade en plats</translation>
     </message>
     <message>
         <source>changed the chat title</source>
@@ -865,7 +865,7 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation>Välj meddelande</translation>
+        <translation>Markera meddelanden</translation>
     </message>
     <message>
         <source>Pin Message</source>
@@ -1256,7 +1256,7 @@
     </message>
     <message>
         <source>Voice Note: %1</source>
-        <translation>Ljudmeddelande: %1</translation>
+        <translation>Röstmeddelande: %1</translation>
     </message>
     <message>
         <source>Animation: %1</source>
@@ -1284,7 +1284,7 @@
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>skickade ett röstanteckning</translation>
+        <translation>skickade ett röstmeddelande</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -1316,7 +1316,7 @@
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>skickade en mötesplats</translation>
+        <translation>skickade en plats</translation>
     </message>
     <message>
         <source>sent a picture</source>
@@ -1341,7 +1341,7 @@
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>skickade en röstanteckning</translation>
+        <translation>skickade ett röstmeddelande</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -1356,7 +1356,7 @@
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>skickade en mötesplats</translation>
+        <translation>skickade en plats</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
