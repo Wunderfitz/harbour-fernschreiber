@@ -355,7 +355,10 @@ Page {
             }
             break;
         case PageStatus.Inactive:
-            chatModel.clear();
+            if (pageStack.depth === 1) {
+                // Only clear chat model if navigated back to overview page. In other cases we keep the information...
+                chatModel.clear();
+            }
             break;
         }
     }
