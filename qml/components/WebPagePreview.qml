@@ -70,7 +70,7 @@ Column {
         }
     }
 
-    Text {
+    Label {
         id: siteNameText
 
         width: parent.width
@@ -78,35 +78,33 @@ Column {
         font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
         font.bold: true
         color: Theme.secondaryHighlightColor
-        elide: Text.ElideRight
+        truncationMode: TruncationMode.Fade
         maximumLineCount: 1
         textFormat: Text.StyledText
         visible: (text !== "")
     }
 
-    Text {
+    Label {
         id: titleText
 
         width: parent.width
         text: webPageData.title ? Emoji.emojify(webPageData.title, font.pixelSize) : ""
         font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
         font.bold: true
-        color: Theme.primaryColor
-        elide: Text.ElideRight
+        truncationMode: TruncationMode.Fade
         wrapMode: Text.Wrap
         maximumLineCount: 2
         textFormat: Text.StyledText
         visible: (text !== "")
     }
 
-    Text {
+    Label {
         id: descriptionText
 
         width: parent.width
         text: webPageData.description ? Emoji.emojify(webPageData.description, font.pixelSize) : ""
         font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
-        color: Theme.primaryColor
-        elide: Text.ElideRight
+        truncationMode: TruncationMode.Fade
         wrapMode: Text.Wrap
         maximumLineCount: 3
         textFormat: Text.StyledText
@@ -146,7 +144,7 @@ Column {
         }
     }
 
-    Text {
+    Label {
         id: noPreviewAvailableText
 
         width: parent.width
@@ -154,7 +152,7 @@ Column {
         font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeExtraSmall : Theme.fontSizeTiny
         font.italic: true
         color: Theme.secondaryColor
-        elide: Text.ElideRight
+        truncationMode: TruncationMode.Fade
         wrapMode: Text.Wrap
         maximumLineCount: 1
         textFormat: Text.StyledText

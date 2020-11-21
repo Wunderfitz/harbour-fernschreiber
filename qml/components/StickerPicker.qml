@@ -63,13 +63,12 @@ Item {
             id: stickerPickerColumn
             spacing: Theme.paddingMedium
             width: stickerPickerFlickable.width
-            Text {
+            Label {
                 font.pixelSize: Theme.fontSizeMedium
                 font.bold: true
-                color: Theme.primaryColor
                 width: parent.width
                 maximumLineCount: 1
-                elide: Text.ElideRight
+                truncationMode: TruncationMode.Fade
                 text: qsTr("Recently used")
             }
 
@@ -122,13 +121,12 @@ Item {
                 Column {
                     spacing: Theme.paddingMedium
                     width: parent.width
-                    Text {
+                    Label {
                         font.pixelSize: Theme.fontSizeMedium
                         font.bold: true
-                        color: Theme.primaryColor
                         width: parent.width
                         maximumLineCount: 1
-                        elide: Text.ElideRight
+                        truncationMode: TruncationMode.Fade
                         text: modelData.title
                     }
 
@@ -159,12 +157,11 @@ Item {
                                     }
                                 }
                             }
-                            Text {
+                            Label {
                                 font.pixelSize: Theme.fontSizeHuge
-                                color: Theme.primaryColor
                                 anchors.fill: parent
                                 maximumLineCount: 1
-                                elide: Text.ElideRight
+                                truncationMode: TruncationMode.Fade
                                 text: Emoji.emojify(modelData.emoji, font.pixelSize)
                                 visible: !modelData.thumbnail.photo.local.is_downloading_completed
                             }

@@ -77,7 +77,7 @@ Item {
                 spacing: Theme.paddingSmall
                 width: parent.width
 
-                Text {
+                Label {
                     id: pinnedMessageUserText
 
                     width: parent.width
@@ -85,18 +85,18 @@ Item {
                     font.weight: Font.ExtraBold
                     color: Theme.primaryColor
                     maximumLineCount: 1
-                    elide: Text.ElideRight
+                    truncationMode: TruncationMode.Fade
                     textFormat: Text.StyledText
                     horizontalAlignment: Text.AlignLeft
                 }
 
-                Text {
+                Label {
                     id: pinnedMessageText
 
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
                     width: parent.width
-                    elide: Text.ElideRight
+                    truncationMode: TruncationMode.Fade
                     maximumLineCount: 1
                     textFormat: Text.StyledText
                 }

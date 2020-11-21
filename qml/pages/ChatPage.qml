@@ -603,15 +603,15 @@ Page {
             Row {
                 id: headerRow
                 width: parent.width - (3 * Theme.horizontalPageMargin)
-                height: chatOverviewColumn.height + ( chatPage.isPortrait ? (2 * Theme.paddingMedium) : (2 * Theme.paddingSmall) )
+                height: chatOverviewItem.height + ( chatPage.isPortrait ? (2 * Theme.paddingMedium) : (2 * Theme.paddingSmall) )
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingMedium
 
                 ProfileThumbnail {
                     id: chatPictureThumbnail
                     replacementStringHint: chatNameText.text
-                    width: chatOverviewColumn.height
-                    height: chatOverviewColumn.height
+                    width: chatOverviewItem.height
+                    height: chatOverviewItem.height
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingMedium : Theme.paddingSmall
 
@@ -626,34 +626,38 @@ Page {
                     }
                 }
 
-                Column {
-                    id: chatOverviewColumn
+                Item {
+                    id: chatOverviewItem
                     width: parent.width - chatPictureThumbnail.width - Theme.paddingMedium
+                    height: chatNameText.height + chatStatusText.height
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingMedium : Theme.paddingSmall
-                    Text {
+                    Label {
                         id: chatNameText
+                        width: Math.min(implicitWidth, parent.width)
+                        anchors.right: parent.right
                         text: chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, font.pixelSize) : qsTr("Unknown")
                         textFormat: Text.StyledText
                         font.pixelSize: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
                         font.family: Theme.fontFamilyHeading
                         color: Theme.highlightColor
-                        elide: Text.ElideRight
-                        width: parent.width
+                        truncationMode: TruncationMode.Fade
                         maximumLineCount: 1
-                        horizontalAlignment: Text.AlignRight
                     }
-                    Text {
+                    Label {
                         id: chatStatusText
+                        width: Math.min(implicitWidth, parent.width)
+                        anchors {
+                            right: parent.right
+                            bottom: parent.bottom
+                        }
                         text: ""
                         textFormat: Text.StyledText
                         font.pixelSize: chatPage.isPortrait ? Theme.fontSizeExtraSmall : Theme.fontSizeTiny
                         font.family: Theme.fontFamilyHeading
                         color: headerMouseArea.pressed ? Theme.secondaryHighlightColor : Theme.secondaryColor
-                        elide: Text.ElideRight
-                        width: parent.width
+                        truncationMode: TruncationMode.Fade
                         maximumLineCount: 1
-                        horizontalAlignment: Text.AlignRight
                     }
                 }
             }
@@ -1093,14 +1097,14 @@ Page {
                         visible: attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo
                     }
 
-                    Text {
+                    Label {
                         id: attachmentPreviewText
                         font.pixelSize: Theme.fontSizeSmall
                         text: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.fileName || "" : "";
                         anchors.verticalCenter: parent.verticalCenter
 
                         maximumLineCount: 1
-                        elide: Text.ElideRight
+                        truncationMode: TruncationMode.Fade
                         color: Theme.secondaryColor
                         visible: attachmentPreviewRow.isDocument
                     }

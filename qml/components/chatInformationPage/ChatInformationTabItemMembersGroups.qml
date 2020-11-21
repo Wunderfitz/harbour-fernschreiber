@@ -89,7 +89,6 @@ ChatInformationTabItemBase {
             tertiaryText {
                 maximumLineCount: 1
                 text: user.type["@type"] === "userTypeBot" ? (Emoji.emojify("🤖 "+bot_info.description, tertiaryText.font.pixelSize)) : Functions.getChatPartnerStatusText(user.status["@type"], user.status.was_online);
-                elide: Text.ElideRight
             }
 
             onClicked: {

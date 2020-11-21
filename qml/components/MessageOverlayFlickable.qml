@@ -109,7 +109,7 @@ Flickable {
                 width: Theme.itemSizeLarge
                 height: Theme.itemSizeLarge
             }
-            Text {
+            Label {
                 id: overlayMessageUserText
 
                 width: parent.width - overlayMessagePictureThumbnail.width
@@ -117,9 +117,8 @@ Flickable {
                 text: messageOverlayFlickable.isOwnMessage ? qsTr("You") : Emoji.emojify(Functions.getUserName(messageOverlayFlickable.userInformation), font.pixelSize)
                 font.pixelSize: Theme.fontSizeExtraLarge
                 font.weight: Font.ExtraBold
-                color: Theme.primaryColor
                 maximumLineCount: 1
-                elide: Text.ElideRight
+                truncationMode: TruncationMode.Fade
                 textFormat: Text.StyledText
             }
         }
