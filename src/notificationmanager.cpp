@@ -362,11 +362,10 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     if (!needFeedback || (chatModel->getChatId() == notificationGroup->chatId &&
             qGuiApp->applicationState() == Qt::ApplicationActive)) {
         nemoNotification->setHintValue(HINT_DISPLAY_ON, false);
-        nemoNotification->setHintValue(HINT_VISIBILITY, QVariant());
+        nemoNotification->setHintValue(HINT_VISIBILITY, QString());
         nemoNotification->setUrgency(Notification::Low);
     } else {
-        // The "display on" option will be configurable
-        nemoNotification->setHintValue(HINT_DISPLAY_ON, true);
+        nemoNotification->setHintValue(HINT_DISPLAY_ON, appSettings->notificationTurnsDisplayOn());
         nemoNotification->setHintValue(HINT_VISIBILITY, VISIBILITY_PUBLIC);
         nemoNotification->setUrgency(Notification::Normal);
     }
