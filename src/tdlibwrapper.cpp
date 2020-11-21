@@ -945,11 +945,14 @@ static bool compareUsers(const QVariant &user1, const QVariant &user2)
 
     const QString lastName1 = userMap1.value(LAST_NAME).toString();
     const QString lastName2 = userMap2.value(LAST_NAME).toString();
-    if (lastName1 < lastName2) {
-        return true;
-    } else if (lastName1 > lastName2) {
-        return false;
+    if (!lastName1.isEmpty()) {
+        if (lastName1 < lastName2) {
+            return true;
+        } else if (lastName1 > lastName2) {
+            return false;
+        }
     }
+
     const QString firstName1 = userMap1.value(FIRST_NAME).toString();
     const QString firstName2 = userMap2.value(FIRST_NAME).toString();
     if (firstName1 < firstName2) {

@@ -900,6 +900,14 @@
         <source>You don&apos;t have any contacts.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Loading contacs...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Private Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NotificationManager</name>
