@@ -285,10 +285,8 @@ SilicaFlickable {
                         : "../components/chatInformationPage/ChatInformationProfilePicture.qml"
             }
         }
-        // PageHeader changes the html base path:
-        property url emojiBase: "../js/emoji/"
         leftMargin: imageContainer.getEased((imageContainer.minDimension + Theme.paddingMedium), 0, imageContainer.tweenFactor) + Theme.horizontalPageMargin
-        title: chatInformationPage.chatInformation.title !== "" ? Emoji.emojify(chatInformationPage.chatInformation.title, Theme.fontSizeLarge, emojiBase) : qsTr("Unknown")
+        title: chatInformationPage.chatInformation.title !== "" ? Emoji.emojify(chatInformationPage.chatInformation.title, Theme.fontSizeLarge) : qsTr("Unknown")
         description: chatInformationPage.isPrivateChat ? ("@"+(chatInformationPage.privateChatUserInformation.username || chatInformationPage.chatPartnerGroupId)) : ""
     }
 

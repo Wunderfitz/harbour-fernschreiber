@@ -10,14 +10,13 @@ PhotoTextsListItem {
         photoData: photo_small || ({})
     }
     property int ownUserId
-    property url emojiBase: "../js/emoji/"
 
     // chat title
-    primaryText.text: title ? Emoji.emojify(title + ( display.notification_settings.mute_for > 0 ? " 🔇" : "" ), Theme.fontSizeMedium, emojiBase) : qsTr("Unknown")
+    primaryText.text: title ? Emoji.emojify(title + ( display.notification_settings.mute_for > 0 ? " 🔇" : "" ), Theme.fontSizeMedium) : qsTr("Unknown")
     // last user
     prologSecondaryText.text: is_channel ? "" : ( last_message_sender_id ? ( last_message_sender_id !== ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(last_message_sender_id)), primaryText.font.pixelSize) : qsTr("You") ) : qsTr("Unknown") )
     // last message
-    secondaryText.text: last_message_text ? Emoji.emojify(Functions.enhanceHtmlEntities(last_message_text), Theme.fontSizeExtraSmall, emojiBase) : qsTr("Unknown")
+    secondaryText.text: last_message_text ? Emoji.emojify(Functions.enhanceHtmlEntities(last_message_text), Theme.fontSizeExtraSmall) : qsTr("Unknown")
     // message date
     tertiaryText.text: ( last_message_date ? Functions.getDateTimeElapsed(last_message_date) : qsTr("Unknown") ) + Emoji.emojify(last_message_status, tertiaryText.font.pixelSize)
     unreadCount: unread_count
