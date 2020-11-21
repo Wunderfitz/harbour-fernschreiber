@@ -1194,6 +1194,10 @@
         <source>Animate stickers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Notification turns on the display</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

@@ -1232,6 +1232,10 @@
         <source>Animate stickers</source>
         <translation>Анимировать стикеры</translation>
     </message>
+    <message>
+        <source>Notification turns on the display</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

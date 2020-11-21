@@ -27,6 +27,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool useOpenWith READ getUseOpenWith WRITE setUseOpenWith NOTIFY useOpenWithChanged)
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
+    Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
 
 public:
@@ -52,6 +53,9 @@ public:
     bool animateStickers() const;
     void setAnimateStickers(bool animate);
 
+    bool notificationTurnsDisplayOn() const;
+    void setNotificationTurnsDisplayOn(bool turnOn);
+
     NotificationFeedback notificationFeedback() const;
     void setNotificationFeedback(NotificationFeedback feedback);
 
@@ -60,6 +64,7 @@ signals:
     void useOpenWithChanged();
     void showStickersAsImagesChanged();
     void animateStickersChanged();
+    void notificationTurnsDisplayOnChanged();
     void notificationFeedbackChanged();
 
 private:

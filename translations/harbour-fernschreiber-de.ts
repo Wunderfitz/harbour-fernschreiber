@@ -1213,6 +1213,10 @@
         <source>Animate stickers</source>
         <translation>Sticker animieren</translation>
     </message>
+    <message>
+        <source>Notification turns on the display</source>
+        <translation>Hinweis schaltet den Bildschirm an</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
