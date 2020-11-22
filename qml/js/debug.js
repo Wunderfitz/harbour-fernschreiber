@@ -29,8 +29,8 @@ var count = enabled ? console.count : function(){};
 var profile = enabled ? console.profile : function(){};
 var exception = enabled ? console.exception : function(){};
 
-Fernschreiber.DebugLog.enabledChanged.connect(function(isEnabled) {
-    enabled = isEnabled;
+Fernschreiber.DebugLog.enabledChanged.connect(function() {
+    enabled = Fernschreiber.DebugLog.enabled;
     if(isEnabled) {
         log = console.log;
         assert = console.assert;
