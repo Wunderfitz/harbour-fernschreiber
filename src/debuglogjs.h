@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QLoggingCategory>
 
 class DebugLogJS : public QObject
 {
@@ -30,11 +31,9 @@ class DebugLogJS : public QObject
     Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled NOTIFY enabledChanged)
 public:
 
-#ifdef QT_QML_DEBUG
-    DebugLogJS(QObject* parent = Q_NULLPTR) : QObject(parent), enabled(true) {}
-#else
-    DebugLog(QObject* parent = Q_NULLPTR) : QObject(parent), enabled(false) {}
-#endif
+    DebugLogJS(QObject* parent = Q_NULLPTR) : QObject(parent), category("fernschreiber.JS") {
+        enabled = category.isDebugEnabled();
+    }
     static QObject* createSingleton(QQmlEngine*, QJSEngine*) { return new DebugLogJS(); }
     bool isEnabled() const { return enabled; }
     void setEnabled(bool value) {
@@ -47,6 +46,7 @@ Q_SIGNALS:
     void enabledChanged(bool value);
 private:
     bool enabled;
+    const QLoggingCategory category;
 };
 
 #endif // DEBUGLOG_H
