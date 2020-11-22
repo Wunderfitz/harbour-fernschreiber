@@ -99,84 +99,84 @@
     <name>ChatInformationPageContent</name>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 tilaaja</numerusform>
             <numerusform>%1 tilaajaa</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 jäsen</numerusform>
             <numerusform>%1 jäsentä</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished">Poistu keskustelusta</translation>
+        <translation>Poistu keskustelusta</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished">Liity keskusteluun</translation>
+        <translation>Liity keskusteluun</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished">Poistutaan keskustelusta</translation>
+        <translation>Poistutaan keskustelusta</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Poista keskustelun vaimennus</translation>
+        <translation>Poista keskustelun vaimennus</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Vaimenna keskustelu</translation>
+        <translation>Vaimenna keskustelu</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Tuntematon</translation>
+        <translation>Tuntematon</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished">Keskustelun otsikko</translation>
+        <translation>Keskustelun otsikko</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished">Syötä 1-128 merkkiä</translation>
+        <translation>Syötä 1-128 merkkiä</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished">Tietoa ei ole vielä saatavilla.</translation>
+        <translation>Tietoa ei ole vielä saatavilla.</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished">Tietoa</translation>
+        <translation>Tietoa</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished">Puhelinnumero</translation>
+        <translation>Puhelinnumero</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished">Kutsulinkki</translation>
+        <translation>Kutsulinkki</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished">Kutsulinkki on kopioitu leikepöydälle.</translation>
+        <translation>Kutsulinkki on kopioitu leikepöydälle.</translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 paikalla</numerusform>
+            <numerusform>%1 paikalla</numerusform>
         </translation>
     </message>
 </context>
@@ -217,17 +217,17 @@
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished">Ryhmät</translation>
+        <translation>Ryhmät</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished">Jäsenet</translation>
+        <translation>Jäsenet</translation>
     </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">Asetukset</translation>
+        <translation>Asetukset</translation>
     </message>
 </context>
 <context>
@@ -273,16 +273,16 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 jäsen</numerusform>
             <numerusform>%1 jäsentä</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 tilaaja</numerusform>
             <numerusform>%1 tilaajaa</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -331,48 +331,48 @@
     </message>
     <message>
         <source>Select Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse viestejä</translation>
     </message>
     <message numerus="yes">
         <source>%Ln Messages deleted</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln Viesti poistettu</numerusform>
+            <numerusform>%Ln Viestiä poistettu</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln messages have been copied</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln viesti kopioitu</numerusform>
+            <numerusform>%Ln viestiä kopioitu</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Välitä %Ln viesti</numerusform>
+            <numerusform>Välitä %Ln viestiä</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln viesti valittu</numerusform>
+            <numerusform>%Ln viestiä valittu</numerusform>
         </translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 paikalla</numerusform>
+            <numerusform>%1 paikalla</numerusform>
         </translation>
     </message>
 </context>
@@ -380,11 +380,11 @@
     <name>ChatSelectionPage</name>
     <message>
         <source>Select Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse keskustelu</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished">Sinulla ei ole vielä keskusteluja.</translation>
+        <translation>Sinulla ei ole vielä keskusteluja.</translation>
     </message>
 </context>
 <context>
@@ -866,11 +866,11 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse viesti</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiinnitä viesti</translation>
     </message>
 </context>
 <context>
@@ -884,20 +884,20 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Sinä</translation>
+        <translation>Sinä</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Välitetty viesti. Alkuperäinen lähettäjä: %1</translation>
     </message>
 </context>
 <context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln lukematon viesti</numerusform>
+            <numerusform>%Ln lukematonta viestiä</numerusform>
         </translation>
     </message>
 </context>
@@ -948,15 +948,15 @@
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Sinä</translation>
+        <translation>Sinä</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiinnitetty viesti</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished"></translation>
+        <translation>Viestin kiinnitys poistettu</translation>
     </message>
 </context>
 <context>
@@ -1049,9 +1049,9 @@
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%Ln%</numerusform>
         </translation>
     </message>
     <message>
@@ -1118,9 +1118,9 @@
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%Ln%</numerusform>
         </translation>
     </message>
     <message>
@@ -1201,7 +1201,7 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilmoitus kytkee näytön päälle</translation>
     </message>
 </context>
 <context>
@@ -1234,7 +1234,7 @@
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation type="unfinished"></translation>
+        <translation>Esikatselua ei tueta tälle linkille...</translation>
     </message>
 </context>
 <context>
@@ -1595,11 +1595,11 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit videoviestin</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti videoviestin</translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
