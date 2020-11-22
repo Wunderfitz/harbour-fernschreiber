@@ -31,7 +31,7 @@ var exception = enabled ? console.exception : function(){};
 
 Fernschreiber.DebugLog.enabledChanged.connect(function() {
     enabled = Fernschreiber.DebugLog.enabled;
-    if(isEnabled) {
+    if(enabled) {
         log = console.log;
         assert = console.assert;
         time = console.time;
