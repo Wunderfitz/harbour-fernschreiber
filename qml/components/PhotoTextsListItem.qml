@@ -101,6 +101,8 @@ ListItem {
                     Text {
                         id: prologSecondaryText
                         font.pixelSize: Theme.fontSizeExtraSmall
+                        width: Math.min(implicitWidth, parent.width)
+                        elide: Text.ElideRight
                         color: Theme.highlightColor
                         textFormat: Text.StyledText
                         onTruncatedChanged: {
