@@ -106,11 +106,9 @@ Item {
             id: canAnswerDelegate
             TextSwitch {
                 id: optionDelegate
-                // TextSwitch changes the html base path:
-                property url emojiBase: "../js/emoji/"
                 width: pollMessageComponent.width
                 automaticCheck: false
-                text: Emoji.emojify(modelData.text, Theme.fontSizeMedium, emojiBase)
+                text: Emoji.emojify(modelData.text, Theme.fontSizeMedium)
                 checked: pollMessageComponent.chosenIndexes.indexOf(index) > -1
                 onClicked: {
                     pollMessageComponent.handleChoose(index);

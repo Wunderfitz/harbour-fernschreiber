@@ -50,7 +50,7 @@ Column {
             font.pixelSize: Theme.fontSizeSmall
             textFormat: Text.StyledText
             color: Theme.primaryColor
-            text: Emoji.emojify( Functions.replaceUrlsWithLinks(textItem.text).replace(/\n/g, "<br>"), Theme.fontSizeExtraSmall, "../../js/emoji/")
+            text: Emoji.emojify( Functions.replaceUrlsWithLinks(textItem.text).replace(/\n/g, "<br>"), Theme.fontSizeExtraSmall)
             linkColor: Theme.highlightColor
             visible: text !== ""
             onLinkActivated: {

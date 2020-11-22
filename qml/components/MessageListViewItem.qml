@@ -254,7 +254,7 @@ ListItem {
                 anchors.centerIn: messageBackground
 
 
-                Text {
+                Label {
                     id: userText
 
                     width: parent.width
@@ -263,7 +263,7 @@ ListItem {
                     font.weight: Font.ExtraBold
                     color: messageListItem.textColor
                     maximumLineCount: 1
-                    elide: Text.ElideRight
+                    truncationMode: TruncationMode.Fade
                     textFormat: Text.StyledText
                     horizontalAlignment: messageListItem.textAlign
                     visible: precalculatedValues.showUserInfo
@@ -341,38 +341,23 @@ ListItem {
                             Column {
                                 spacing: Theme.paddingSmall
                                 width: parent.width - forwardedThumbnail.width - Theme.paddingSmall
-                                Text {
+                                Label {
                                     font.pixelSize: Theme.fontSizeExtraSmall
-                                    color: Theme.primaryColor
                                     width: parent.width
                                     font.italic: true
-                                    elide: Text.ElideRight
+                                    truncationMode: TruncationMode.Fade
                                     textFormat: Text.StyledText
                                     text: qsTr("Forwarded Message")
-                                    onTruncatedChanged: {
-                                        // There is obviously a bug in QML in truncating text with images.
-                                        // We simply remove Emojis then...
-                                        if (truncated) {
-                                            text = text.replace(/\<img [^>]+\/\>/g, "");
-                                        }
-                                    }
                                 }
-                                Text {
+                                Label {
                                     id: forwardedChannelText
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     color: Theme.primaryColor
                                     width: parent.width
                                     font.bold: true
-                                    elide: Text.ElideRight
+                                    truncationMode: TruncationMode.Fade
                                     textFormat: Text.StyledText
                                     text: Emoji.emojify(forwardedMessageInformationRow.otherChatInformation.title, font.pixelSize)
-                                    onTruncatedChanged: {
-                                        // There is obviously a bug in QML in truncating text with images.
-                                        // We simply remove Emojis then...
-                                        if (truncated) {
-                                            text = text.replace(/\<img [^>]+\/\>/g, "");
-                                        }
-                                    }
                                 }
                             }
                         }

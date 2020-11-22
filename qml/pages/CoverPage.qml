@@ -120,15 +120,14 @@ CoverBackground {
                 color: Theme.primaryColor
                 text: Functions.getShortenedCount(coverPage.unreadMessages)
             }
-            Text {
+            Label {
                 id: unreadMessagesText
                 font.pixelSize: Theme.fontSizeSmall
-                color: Theme.primaryColor
                 width: parent.width - unreadMessagesCountText.width - Theme.paddingMedium
                 wrapMode: Text.Wrap
                 anchors.verticalCenter: unreadMessagesCountText.verticalCenter
                 maximumLineCount: 2
-                elide: Text.ElideRight
+                truncationMode: TruncationMode.Fade
             }
         }
 
