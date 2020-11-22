@@ -18,7 +18,6 @@
 #include "tgsplugin.h"
 #include "rlottie.h"
 
-#include <QDebug>
 #include <QSize>
 #include <QImage>
 #include <QImageIOHandler>
@@ -27,8 +26,9 @@
 
 #include <zlib.h>
 
-#define LOG(x) qDebug() << "[TgsIOHandler]" << qPrintable(fileName) << x
-#define WARN(x) qWarning() << "[TgsIOHandler]" << qPrintable(fileName) << x
+#define DEBUG_MODULE TgsIOHandler
+#include "debuglog.h"
+#define LOG_(x) LOG(qPrintable(fileName) << x)
 
 class TgsIOHandler : public QImageIOHandler
 {
@@ -93,7 +93,7 @@ TgsIOHandler::~TgsIOHandler()
     if (currentRender.valid()) {
         currentRender.get();
     }
-    LOG("Done");
+    LOG_("Done");
 }
 
 TgsIOHandler::ByteArray TgsIOHandler::uncompress()
@@ -112,7 +112,7 @@ TgsIOHandler::ByteArray TgsIOHandler::uncompress()
             unzip.next_out = (Bytef*)unzipped.data();
             unzip.avail_in = zipped.size();
             unzip.avail_out = chunk;
-            LOG("Compressed size" << zipped.size());
+            LOG_("Compressed size" << zipped.size());
             while (unzip.avail_out > 0 && zerr == Z_OK) {
                 zerr = inflate(&unzip, Z_NO_FLUSH);
                 if (zerr == Z_OK && unzip.avail_out < chunk) {
@@ -124,7 +124,7 @@ TgsIOHandler::ByteArray TgsIOHandler::uncompress()
             }
             if (zerr == Z_STREAM_END) {
                 unzipped.resize(unzip.next_out - (Bytef*)unzipped.data());
-                LOG("Uncompressed size" << unzipped.size());
+                LOG_("Uncompressed size" << unzipped.size());
             } else {
                 unzipped.clear();
             }
@@ -146,7 +146,7 @@ bool TgsIOHandler::load()
                 frameRate = animation->frameRate();
                 frameCount = (int) animation->totalFrame();
                 size = QSize(width, height);
-                LOG(size << frameCount << "frames," << frameRate << "fps");
+                LOG_(size << frameCount << "frames," << frameRate << "fps");
                 render(0); // Pre-render first frame
             }
         }
@@ -160,7 +160,7 @@ void TgsIOHandler::finishRendering()
         currentRender.get();
         prevImage = currentImage;
         if (!currentFrame && !firstImage.isNull()) {
-            LOG("Rendered first frame");
+            LOG_("Rendered first frame");
             firstImage = currentImage;
         }
     } else {
@@ -192,7 +192,7 @@ bool TgsIOHandler::read(QImage* out)
         if (currentFrame && currentRender.valid()) {
             std::future_status status = currentRender.wait_for(std::chrono::milliseconds(0));
             if (status != std::future_status::ready) {
-                LOG("Skipping frame" << currentFrame);
+                LOG_("Skipping frame" << currentFrame);
                 currentFrame = (currentFrame + 1) % frameCount;
                 *out = prevImage;
                 return true;

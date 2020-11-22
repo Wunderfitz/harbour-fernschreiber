@@ -19,9 +19,9 @@
 
 #include "chatlistmodel.h"
 #include "fernschreiberutils.h"
-#include <QDebug>
 
-#define LOG(x) qDebug() << "[ChatListModel]" << x
+#define DEBUG_MODULE ChatListModel
+#include "debuglog.h"
 
 namespace {
     const QString ID("id");

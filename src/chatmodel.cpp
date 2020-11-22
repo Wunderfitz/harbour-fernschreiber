@@ -22,9 +22,9 @@
 #include <QListIterator>
 #include <QByteArray>
 #include <QBitArray>
-#include <QDebug>
 
-#define LOG(x) qDebug() << "[ChatModel]" << x
+#define DEBUG_MODULE ChatModel
+#include "debuglog.h"
 
 namespace {
     const QString ID("id");

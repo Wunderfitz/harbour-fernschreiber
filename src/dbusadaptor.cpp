@@ -19,22 +19,22 @@
 
 #include "dbusadaptor.h"
 
-#include <QDebug>
+#define DEBUG_MODULE DBusAdaptor
+#include "debuglog.h"
 
 DBusAdaptor::DBusAdaptor(QObject *parent): QDBusAbstractAdaptor(parent)
 {
-
 }
 
 void DBusAdaptor::openMessage(const QString &chatId, const QString &messageId)
 {
-    qDebug() << "[DBusAdaptor] Open Message " << chatId << messageId;
+    LOG("Open Message" << chatId << messageId);
     emit pleaseOpenMessage(chatId, messageId);
 }
 
 void DBusAdaptor::openUrl(const QStringList &arguments)
 {
-    qDebug() << "[DBusAdaptor] Open Url" << arguments;
+    LOG("Open Url" << arguments);
     if (arguments.length() >= 1) {
         emit pleaseOpenUrl(arguments.first());
     }

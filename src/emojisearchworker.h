@@ -24,7 +24,6 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QVariantList>
-#include <QDebug>
 
 class EmojiSearchWorker : public QThread
 {
