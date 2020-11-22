@@ -918,6 +918,18 @@
         <source>Private Chat</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Transport-encrypted, stored in Telegram Cloud, sharable across devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Secret Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>End-to-end-encrypted, accessible on this device only</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NotificationManager</name>
