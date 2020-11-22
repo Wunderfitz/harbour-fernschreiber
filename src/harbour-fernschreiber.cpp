@@ -36,6 +36,7 @@
 #include "chatlistmodel.h"
 #include "chatmodel.h"
 #include "notificationmanager.h"
+#include "mceinterface.h"
 #include "dbusadaptor.h"
 #include "processlauncher.h"
 #include "stickermanager.h"
@@ -69,7 +70,8 @@ int main(int argc, char *argv[])
     context->setContextProperty("appSettings", appSettings);
     qmlRegisterUncreatableType<AppSettings>(uri, 1, 0, "AppSettings", QString());
 
-    TDLibWrapper *tdLibWrapper = new TDLibWrapper(appSettings, view.data());
+    MceInterface *mceInterface = new MceInterface(view.data());
+    TDLibWrapper *tdLibWrapper = new TDLibWrapper(appSettings, mceInterface, view.data());
     context->setContextProperty("tdLibWrapper", tdLibWrapper);
     qmlRegisterUncreatableType<TDLibWrapper>(uri, 1, 0, "TelegramAPI", QString());
 
@@ -85,7 +87,7 @@ int main(int argc, char *argv[])
     ChatModel chatModel(tdLibWrapper);
     context->setContextProperty("chatModel", &chatModel);
 
-    NotificationManager notificationManager(tdLibWrapper, appSettings, &chatModel);
+    NotificationManager notificationManager(tdLibWrapper, appSettings, mceInterface, &chatModel);
     context->setContextProperty("notificationManager", &notificationManager);
 
     ProcessLauncher processLauncher;
