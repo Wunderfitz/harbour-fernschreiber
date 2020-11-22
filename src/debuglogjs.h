@@ -17,9 +17,8 @@
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef DEBUGLOG_H
-#define DEBUGLOG_H
-
+#ifndef DEBUGLOGJS_H
+#define DEBUGLOGJS_H
 
 #include <QObject>
 #include <QQmlEngine>
@@ -39,14 +38,14 @@ public:
     void setEnabled(bool value) {
         if (enabled != value) {
             enabled = value;
-            Q_EMIT enabledChanged(value);
+            Q_EMIT enabledChanged();
         }
     }
 Q_SIGNALS:
-    void enabledChanged(bool value);
+    void enabledChanged();
 private:
     bool enabled;
     const QLoggingCategory category;
 };
 
-#endif // DEBUGLOG_H
+#endif // DEBUGLOGJS_H
