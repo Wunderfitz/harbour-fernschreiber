@@ -18,9 +18,9 @@
 */
 
 #include "tdlibfile.h"
-#include <QDebug>
 
-#define LOG(x) qDebug() << "[TDLibFile]" << x
+#define DEBUG_MODULE TDLibFile
+#include "debuglog.h"
 
 namespace {
     const QString ID("id");

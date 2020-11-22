@@ -16,9 +16,9 @@
 */
 
 #include "appsettings.h"
-#include <QDebug>
 
-#define LOG(x) qDebug() << "[AppSettings]" << x
+#define DEBUG_MODULE AppSettings
+#include "debuglog.h"
 
 namespace {
     const QString KEY_SEND_BY_ENTER("sendByEnter");

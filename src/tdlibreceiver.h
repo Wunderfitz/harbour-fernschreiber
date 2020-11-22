@@ -19,7 +19,8 @@
 #ifndef TDLIBRECEIVER_H
 #define TDLIBRECEIVER_H
 
-#include <QDebug>
+#include <QHash>
+#include <QVariantMap>
 #include <QThread>
 #include <QJsonDocument>
 #include <QJsonObject>

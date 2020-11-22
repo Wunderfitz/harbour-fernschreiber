@@ -18,10 +18,10 @@
 */
 
 #include "stickermanager.h"
-#include <QDebug>
 #include <QListIterator>
 
-#define LOG(x) qDebug() << "[StickerManager]" << x
+#define DEBUG_MODULE StickerManager
+#include "debuglog.h"
 
 StickerManager::StickerManager(TDLibWrapper *tdLibWrapper, QObject *parent) : QObject(parent)
 {

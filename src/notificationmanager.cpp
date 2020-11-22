@@ -21,14 +21,14 @@
 #include "fernschreiberutils.h"
 #include "chatmodel.h"
 #include <sailfishapp.h>
-#include <QDebug>
 #include <QListIterator>
 #include <QUrl>
 #include <QDateTime>
 #include <QDBusConnection>
 #include <QGuiApplication>
 
-#define LOG(x) qDebug() << "[NotificationManager]" << x
+#define DEBUG_MODULE NotificationManager
+#include "debuglog.h"
 
 namespace {
     const QString _TYPE("@type");

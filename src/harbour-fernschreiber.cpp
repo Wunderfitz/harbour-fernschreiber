@@ -28,6 +28,7 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QGuiApplication>
+#include <QLoggingCategory>
 
 #include "appsettings.h"
 #include "tdlibfile.h"
@@ -41,10 +42,20 @@
 #include "tgsplugin.h"
 #include "fernschreiberutils.h"
 
+// The default filter can be overridden by QT_LOGGING_RULES envinronment variable, e.g.
+// QT_LOGGING_RULES="fernschreiber.*=true" harbour-fernschreiber
+#if defined (QT_DEBUG) || defined(DEBUG)
+#  define DEFAULT_LOG_FILTER "fernschreiber.*=true"
+#else
+#  define DEFAULT_LOG_FILTER "fernschreiber.*=false"
+#endif
+
 Q_IMPORT_PLUGIN(TgsIOPlugin)
 
 int main(int argc, char *argv[])
 {
+    QLoggingCategory::setFilterRules(DEFAULT_LOG_FILTER);
+
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 

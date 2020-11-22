@@ -145,6 +145,7 @@ HEADERS += \
     src/chatmodel.h \
     src/dbusadaptor.h \
     src/dbusinterface.h \
+    src/debuglog.h \
     src/emojisearchworker.h \
     src/fernschreiberutils.h \
     src/notificationmanager.h \

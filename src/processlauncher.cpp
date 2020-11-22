@@ -1,18 +1,23 @@
 #include "processlauncher.h"
+#include <QProcess>
+#include <QStandardPaths>
 
-#define LOG(x) qDebug() << "[ProcessLauncher]" << x
+#define DEBUG_MODULE ProcessLauncher
+#include "debuglog.h"
 
 ProcessLauncher::ProcessLauncher(QObject *parent) : QObject(parent)
 {
-
 }
+
 bool ProcessLauncher::launchProgram(const QString &program, const QStringList &arguments)
 {
-    QString executablePath = QStandardPaths::findExecutable(program);
-    if(executablePath == "") {
-        LOG("[ProcessLauncher] Program " + program + "not found");
+    const QString executablePath(QStandardPaths::findExecutable(program));
+    if (executablePath.isEmpty()) {
+        LOG("Program" << program << "not found");
         return false;
     }
-    QProcess *externalProcess = new QProcess(this);
-    return externalProcess->startDetached(program, arguments);
+
+    QProcess *process = new QProcess(this);
+    connect(process, SIGNAL(finished(int)), process, SLOT(deleteLater()));
+    return process->startDetached(program, arguments);
 }
