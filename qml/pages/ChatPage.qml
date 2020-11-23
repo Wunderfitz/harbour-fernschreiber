@@ -579,10 +579,6 @@ Page {
             }
         }
 
-        AppNotification {
-            id: appNotification
-        }
-
         BackgroundItem {
             id: headerMouseArea
             height: headerRow.height

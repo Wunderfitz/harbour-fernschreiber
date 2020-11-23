@@ -192,9 +192,6 @@ SilicaFlickable {
         id: membersList
     }
 
-    AppNotification {
-        id: infoNotification
-    }
     PullDownMenu {
         MenuItem {
             visible: (chatInformationPage.isSuperGroup || chatInformationPage.isBasicGroup) && chatInformationPage.groupInformation && chatInformationPage.groupInformation.status["@type"] !== "chatMemberStatusBanned"
@@ -420,7 +417,7 @@ SilicaFlickable {
                     anchors.verticalCenter: inviteLinkItem.verticalCenter
                     onClicked: {
                         Clipboard.text = chatInformationPage.groupFullInformation.invite_link
-                        infoNotification.show(qsTr("The Invite Link has been copied to the clipboard."));
+                        appNotification.show(qsTr("The Invite Link has been copied to the clipboard."));
                     }
                 }
             }
