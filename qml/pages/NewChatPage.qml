@@ -96,7 +96,6 @@ Page {
                             tertiaryText {
                                 maximumLineCount: 1
                                 text: Functions.getChatPartnerStatusText(modelData.status["@type"], modelData.status.was_online);
-                                elide: Text.ElideRight
                             }
 
                             onClicked: {

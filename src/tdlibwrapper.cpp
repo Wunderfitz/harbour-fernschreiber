@@ -44,7 +44,7 @@ namespace {
     const QString _EXTRA("@extra");
 }
 
-TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent) : QObject(parent), joinChatRequested(false), contactsRequested(false)
+TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent) : QObject(parent), joinChatRequested(false)
 {
     LOG("Initializing TD Lib...");
     this->appSettings = appSettings;
@@ -793,9 +793,9 @@ void TDLibWrapper::getDeepLinkInfo(const QString &link)
 void TDLibWrapper::getContacts()
 {
     LOG("Retrieving contacts");
-    this->contactsRequested = true;
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getContacts");
+    requestObject.insert(_EXTRA, "contactsRequested");
     this->sendRequest(requestObject);
 }
 
@@ -1187,9 +1187,8 @@ void TDLibWrapper::handleOpenWithChanged()
 
 void TDLibWrapper::handleUsersReceived(const QString &extra, const QVariantList &userIds, int totalUsers)
 {
-    if (this->contactsRequested) {
+    if (extra == "contactsRequested") {
         LOG("Received contacts list...");
-        this->contactsRequested = false;
         contacts.clear();
         QListIterator<QVariant> userIdIterator(userIds);
         while (userIdIterator.hasNext()) {

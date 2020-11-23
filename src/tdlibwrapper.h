@@ -277,7 +277,6 @@ private:
 
     QString activeChatSearchName;
     bool joinChatRequested;
-    bool contactsRequested;
 
 };
 
