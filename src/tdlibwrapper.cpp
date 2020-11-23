@@ -41,10 +41,11 @@ namespace {
     const QString _EXTRA("@extra");
 }
 
-TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(parent), joinChatRequested(false)
+TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent) : QObject(parent), joinChatRequested(false)
 {
     LOG("Initializing TD Lib...");
     this->appSettings = appSettings;
+    this->mceInterface = mceInterface;
     this->tdLibClient = td_json_client_create();
     this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
 
@@ -892,16 +893,10 @@ void TDLibWrapper::openFileOnDevice(const QString &filePath)
 
 void TDLibWrapper::controlScreenSaver(bool enabled)
 {
-    LOG("Controlling device screen saver" << enabled);
-    QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
-    QDBusInterface dbusInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", dbusConnection);
-
     if (enabled) {
-        LOG("Enabling screensaver");
-        dbusInterface.call("req_display_cancel_blanking_pause");
+        mceInterface->displayCancelBlankingPause();
     } else {
-        LOG("Disabling screensaver");
-        dbusInterface.call("req_display_blanking_pause");
+        mceInterface->displayBlankingPause();
     }
 }
 
