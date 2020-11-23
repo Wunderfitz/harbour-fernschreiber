@@ -134,6 +134,7 @@ public:
     Q_INVOKABLE void forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, const bool sendCopy, const bool removeCaption);
     Q_INVOKABLE void getMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void setOptionInteger(const QString &optionName, int optionValue);
+    Q_INVOKABLE void setOptionBoolean(const QString &optionName, bool optionValue);
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);
     Q_INVOKABLE void editMessageText(const QString &chatId, const QString &messageId, const QString &message);
     Q_INVOKABLE void deleteMessages(const QString &chatId, const QVariantList messageIds);
@@ -242,8 +243,10 @@ public slots:
     void handleStickerSets(const QVariantList &stickerSets);
     void handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList);
     void handleOpenWithChanged();
+    void handleStorageOptimizerChanged();
 
 private:
+    void setOption(const QString &name, const QString &type, const QVariant &value);
     void setInitialParameters();
     void setEncryptionKey();
     void setLogVerbosityLevel();
