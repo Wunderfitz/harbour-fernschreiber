@@ -282,8 +282,8 @@ SilicaFlickable {
                 asynchronous: true
                 anchors.fill: chatPictureThumbnail
                 source: chatInformationPage.isPrivateChat
-                        ? "../components/chatInformationPage/ChatInformationProfilePictureList.qml"
-                        : "../components/chatInformationPage/ChatInformationProfilePicture.qml"
+                        ? "ChatInformationProfilePictureList.qml"
+                        : "ChatInformationProfilePicture.qml"
             }
         }
         leftMargin: imageContainer.getEased((imageContainer.minDimension + Theme.paddingMedium), 0, imageContainer.tweenFactor) + Theme.horizontalPageMargin
