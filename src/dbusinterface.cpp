@@ -19,27 +19,29 @@
 
 #include "dbusinterface.h"
 
+#define DEBUG_MODULE DBusInterface
+#include "debuglog.h"
+
 DBusInterface::DBusInterface(QObject *parent) : QObject(parent)
 {
-    qDebug() << "[DBusInterface] Initializing D-BUS connectivity";
+    LOG("Initializing D-BUS connectivity");
     this->dbusAdaptor = new DBusAdaptor(this);
     QDBusConnection sessionBusConnection = QDBusConnection::sessionBus();
 
     if (!sessionBusConnection.isConnected()) {
-        qDebug() << "[DBusInterface] Error connecting to D-BUS";
+        WARN("Error connecting to D-BUS");
         return;
     }
 
     if (!sessionBusConnection.registerObject(PATH_NAME, this)) {
-        qDebug() << "[DBusInterface] Error registering root object to D-BUS" << sessionBusConnection.lastError().message();
+        WARN("Error registering root object to D-BUS" << sessionBusConnection.lastError().message());
         return;
     }
 
     if (!sessionBusConnection.registerService(INTERFACE_NAME)) {
-        qDebug() << "[DBusInterface] Error registering interface to D-BUS" << sessionBusConnection.lastError().message();
+        WARN("Error registering interface to D-BUS" << sessionBusConnection.lastError().message());
         return;
     }
-
 }
 
 DBusAdaptor *DBusInterface::getDBusAdaptor()

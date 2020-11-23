@@ -18,7 +18,8 @@
 */
 #include "emojisearchworker.h"
 
-#define LOG(x) qDebug() << "[EmojiSearchWorker]" << x
+#define DEBUG_MODULE EmojiSearchWorker
+#include "debuglog.h"
 
 EmojiSearchWorker::~EmojiSearchWorker()
 {

@@ -78,61 +78,41 @@ ListItem {
                 width: parent.width * 5 / 6 - Theme.horizontalPageMargin
                 spacing: Theme.paddingSmall
 
-                Text {
+                Label {
                     id: primaryText
                     textFormat: Text.StyledText
                     font.pixelSize: Theme.fontSizeMedium
-                    color: Theme.primaryColor
-                    elide: Text.ElideRight
+                    truncationMode: TruncationMode.Fade
                     width: parent.width
-                    onTruncatedChanged: {
-                        // There is obviously a bug in QML in truncating text with images.
-                        // We simply remove Emojis then...
-                        if (truncated) {
-                            text = text.replace(/\<img [^>]+\/\>/g, "");
-                        }
-                    }
                 }
 
                 Row {
                     id: additionalTextRow
                     width: parent.width
                     spacing: Theme.paddingSmall
-                    Text {
+                    Label {
                         id: prologSecondaryText
                         font.pixelSize: Theme.fontSizeExtraSmall
+                        width: Math.min(implicitWidth, parent.width)
                         color: Theme.highlightColor
                         textFormat: Text.StyledText
-                        onTruncatedChanged: {
-                            // There is obviously a bug in QML in truncating text with images.
-                            // We simply remove Emojis then...
-                            if (truncated) {
-                                text = text.replace(/\<img [^>]+\/\>/g, "");
-                            }
-                        }
+                        truncationMode: TruncationMode.Fade
                     }
-                    Text {
+                    Label {
                         id: secondaryText
                         font.pixelSize: Theme.fontSizeExtraSmall
-                        color: Theme.primaryColor
                         width: parent.width - Theme.paddingMedium - prologSecondaryText.width
-                        elide: Text.ElideRight
+                        truncationMode: TruncationMode.Fade
                         textFormat: Text.StyledText
-                        onTruncatedChanged: {
-                            // There is obviously a bug in QML in truncating text with images.
-                            // We simply remove Emojis then...
-                            if (truncated) {
-                                text = text.replace(/\<img [^>]+\/\>/g, "");
-                            }
-                        }
                     }
                 }
 
-                Text {
+                Label {
                     id: tertiaryText
                     width: parent.width
                     font.pixelSize: Theme.fontSizeTiny
                     color: Theme.secondaryColor
+                    truncationMode: TruncationMode.Fade
                 }
             }
         }

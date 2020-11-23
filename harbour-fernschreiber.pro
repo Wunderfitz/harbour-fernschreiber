@@ -28,6 +28,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/dbusinterface.cpp \
     src/emojisearchworker.cpp \
     src/fernschreiberutils.cpp \
+    src/mceinterface.cpp \
     src/notificationmanager.cpp \
     src/processlauncher.cpp \
     src/stickermanager.cpp \
@@ -64,6 +65,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/chatInformationPage/ChatInformationTextItem.qml \
     qml/components/chatInformationPage/EditGroupChatPermissionsColumn.qml \
     qml/components/chatInformationPage/EditSuperGroupSlowModeColumn.qml \
+    qml/js/debug.js \
     qml/js/functions.js \
     qml/pages/ChatInformationPage.qml \
     qml/pages/ChatPage.qml \
@@ -146,8 +148,11 @@ HEADERS += \
     src/chatmodel.h \
     src/dbusadaptor.h \
     src/dbusinterface.h \
+    src/debuglog.h \
+    src/debuglogjs.h \
     src/emojisearchworker.h \
     src/fernschreiberutils.h \
+    src/mceinterface.h \
     src/notificationmanager.h \
     src/processlauncher.h \
     src/stickermanager.h \

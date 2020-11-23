@@ -9,8 +9,8 @@ Sebastian J. Wolf [sebastian@ygriega.de](mailto:sebastian@ygriega.de) and severa
 Fernschreiber wouldn't be the same without all the people helping in making it better. Thank you very much to all contributors!
 
 ### Code (Features, Bugfixes, Optimizations etc.)
-- Chat list model, notifications, TDLib receiver, animated stickers, project dependencies: [Slava Monich](https://github.com/monich)
-- Chat info page, performance improvements to chat page, location support, app initialization/registration with Telegram, project dependencies: [jgibbon](https://github.com/jgibbon)
+- Chat list model, chat model, notifications, TDLib receiver, animated stickers, project dependencies, qml/c++ optimizations, chatPhoto, TDLibFile, code reviews, logging categories: [Slava Monich](https://github.com/monich)
+- Chat info page, performance improvements to chat page, location support, app initialization/registration with Telegram, project dependencies, emoji handling, qml/js optimizations, multi-message actions, i18n fixes, chat permission handling, code reviews, logging categories: [jgibbon](https://github.com/jgibbon)
 - Copy message to clipboard [Christian Stemmle](https://github.com/chstem)
 
 ### Logo/Icon
@@ -43,6 +43,13 @@ const char TDLIB_API_HASH[] = "1234567890abcdef1234567890abcdef";
 You get the Telegram API ID and hash as soon as you've registered your own application on [https://my.telegram.org](https://my.telegram.org).
 
 Moreover, you need to have a compiled version of [TDLib](https://github.com/tdlib/td) in the sub-directory `tdlib`. This sub-directory must contain another sub-directory that fits to the target device architecture (e.g. armv7hl, i486). Within this directory, there needs to be a folder called `lib` that contains at least `libtdjson.so`. For armv7hl the relative path would consequently be `tdlib/armv7hl/lib`.
+
+## Debug
+Fernschreiber does only output a few TDLib messages by default. To get its own debug log messages, you can either run a debug build to see all of them or use the environment variable `QT_LOGGING_RULES` to specify/filter which messages you'd like to see.
+
+Run `QT_LOGGING_RULES="fernschreiber.*=true" harbour-fernschreiber` to see all messages or replace the `*` with specific logging categories. You'll find the logging category inside the corresponding `.cpp` file for backend usage or you can use `JS` to only see frontend messages.
+
+## Contribute
 
 If you want to contribute bug fixes, improvements, new features etc. please create a pull request (PR). PRs are always welcome and will be reviewed as soon as possible, but may take some time. :)
 

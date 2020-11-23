@@ -25,19 +25,13 @@
 #include <QLocale>
 #include <QProcess>
 #include <QSysInfo>
-#include <QDebug>
 #include <QJsonDocument>
 #include <QStandardPaths>
 #include <QDBusConnection>
 #include <QDBusInterface>
 
-#define LOG(x) qDebug() << "[TDLibWrapper]" << x
-
-#if defined (QT_DEBUG) || defined (DEBUG)
-#  define VERBOSE(x) LOG(x)
-#else
-#  define VERBOSE(x)
-#endif
+#define DEBUG_MODULE TDLibWrapper
+#include "debuglog.h"
 
 namespace {
     const QString STATUS("status");
@@ -50,10 +44,11 @@ namespace {
     const QString _EXTRA("@extra");
 }
 
-TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(parent), joinChatRequested(false), contactsRequested(false)
+TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent) : QObject(parent), joinChatRequested(false), contactsRequested(false)
 {
     LOG("Initializing TD Lib...");
     this->appSettings = appSettings;
+    this->mceInterface = mceInterface;
     this->tdLibClient = td_json_client_create();
     this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
 
@@ -202,7 +197,7 @@ void TDLibWrapper::setAuthenticationPassword(const QString &authenticationPasswo
 
 void TDLibWrapper::registerUser(const QString &firstName, const QString &lastName)
 {
-    qDebug() << "[TDLibWrapper] Register User " << firstName << lastName;
+    LOG("Register User " << firstName << lastName);
     QVariantMap requestObject;
     requestObject.insert("@type", "registerUser");
     requestObject.insert("first_name", firstName);
@@ -907,24 +902,18 @@ void TDLibWrapper::openFileOnDevice(const QString &filePath)
     argumentsList.append(filePath);
     bool successfullyStarted = QProcess::startDetached("xdg-open", argumentsList);
     if (successfullyStarted) {
-        qDebug() << "Successfully opened file " << filePath;
+        LOG("Successfully opened file " << filePath);
     } else {
-        qDebug() << "Error opening file " << filePath;
+        LOG("Error opening file " << filePath);
     }
 }
 
 void TDLibWrapper::controlScreenSaver(bool enabled)
 {
-    LOG("Controlling device screen saver" << enabled);
-    QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
-    QDBusInterface dbusInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", dbusConnection);
-
     if (enabled) {
-        qDebug() << "Enabling screensaver";
-        dbusInterface.call("req_display_cancel_blanking_pause");
+        mceInterface->displayCancelBlankingPause();
     } else {
-        qDebug() << "Disabling screensaver";
-        dbusInterface.call("req_display_blanking_pause");
+        mceInterface->displayBlankingPause();
     }
 }
 
@@ -1259,21 +1248,21 @@ void TDLibWrapper::setLogVerbosityLevel()
 void TDLibWrapper::initializeOpenWith()
 {
     LOG("Initialize open-with");
-
-    qDebug() << "Checking standard open URL file...";
-    QString openUrlFilePath = QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/open-url.desktop";
+    LOG("Checking standard open URL file...");
+    const QString applicationsLocation(QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+    const QString openUrlFilePath(applicationsLocation + "/open-url.desktop");
     if (QFile::exists(openUrlFilePath)) {
-        qDebug() << "Standard open URL file exists, good!";
+        LOG("Standard open URL file exists, good!");
     } else {
-        qDebug() << "Copying standard open URL file to " << openUrlFilePath;
+        LOG("Copying standard open URL file to " << openUrlFilePath);
         QFile::copy("/usr/share/applications/open-url.desktop", openUrlFilePath);
-        QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+        QProcess::startDetached("update-desktop-database " + applicationsLocation);
     }
 
-    QString desktopFilePath = QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/harbour-fernschreiber-open-url.desktop";
+    const QString desktopFilePath(applicationsLocation + "/harbour-fernschreiber-open-url.desktop");
     QFile desktopFile(desktopFilePath);
     if (!desktopFile.exists()) {
-        qDebug() << "Creating Open-With file at " << desktopFile.fileName();
+        LOG("Creating Open-With file at " << desktopFile.fileName());
         if (desktopFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QTextStream fileOut(&desktopFile);
             fileOut.setCodec("UTF-8");
@@ -1289,7 +1278,7 @@ void TDLibWrapper::initializeOpenWith()
             fileOut << QString("Hidden=true;").toUtf8() << "\n";
             fileOut.flush();
             desktopFile.close();
-            QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+            QProcess::startDetached("update-desktop-database " + applicationsLocation);
         }
     }
 

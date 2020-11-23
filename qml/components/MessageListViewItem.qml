@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
 import QtQml.Models 2.3
+import "../js/debug.js" as Debug
 
 ListItem {
     id: messageListItem
@@ -136,12 +137,12 @@ ListItem {
             messageBackground.isUnread = index > chatModel.getLastReadMessageIndex();
         }
         onLastReadSentMessageUpdated: {
-            console.log("[ChatModel] Messages in this chat were read, new last read: " + lastReadSentIndex + ", updating description for index " + index + ", status: " + (index <= lastReadSentIndex));
+            Debug.log("[ChatModel] Messages in this chat were read, new last read: ", lastReadSentIndex, ", updating description for index ", index, ", status: ", (index <= lastReadSentIndex));
             messageDateText.text = getMessageStatusText(myMessage, index, lastReadSentIndex, messageDateText.useElapsed);
         }
         onMessageUpdated: {
             if (index === modelIndex) {
-                console.log("[ChatModel] This message was updated, index " + index + ", updating content...");
+                Debug.log("[ChatModel] This message was updated, index ", index, ", updating content...");
                 messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
                 messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, messageListItem.isOwnMessage), messageText.font.pixelSize);
             }
@@ -254,7 +255,7 @@ ListItem {
                 anchors.centerIn: messageBackground
 
 
-                Text {
+                Label {
                     id: userText
 
                     width: parent.width
@@ -263,7 +264,7 @@ ListItem {
                     font.weight: Font.ExtraBold
                     color: messageListItem.textColor
                     maximumLineCount: 1
-                    elide: Text.ElideRight
+                    truncationMode: TruncationMode.Fade
                     textFormat: Text.StyledText
                     horizontalAlignment: messageListItem.textAlign
                     visible: precalculatedValues.showUserInfo
@@ -341,38 +342,23 @@ ListItem {
                             Column {
                                 spacing: Theme.paddingSmall
                                 width: parent.width - forwardedThumbnail.width - Theme.paddingSmall
-                                Text {
+                                Label {
                                     font.pixelSize: Theme.fontSizeExtraSmall
-                                    color: Theme.primaryColor
                                     width: parent.width
                                     font.italic: true
-                                    elide: Text.ElideRight
+                                    truncationMode: TruncationMode.Fade
                                     textFormat: Text.StyledText
                                     text: qsTr("Forwarded Message")
-                                    onTruncatedChanged: {
-                                        // There is obviously a bug in QML in truncating text with images.
-                                        // We simply remove Emojis then...
-                                        if (truncated) {
-                                            text = text.replace(/\<img [^>]+\/\>/g, "");
-                                        }
-                                    }
                                 }
-                                Text {
+                                Label {
                                     id: forwardedChannelText
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     color: Theme.primaryColor
                                     width: parent.width
                                     font.bold: true
-                                    elide: Text.ElideRight
+                                    truncationMode: TruncationMode.Fade
                                     textFormat: Text.StyledText
                                     text: Emoji.emojify(forwardedMessageInformationRow.otherChatInformation.title, font.pixelSize)
-                                    onTruncatedChanged: {
-                                        // There is obviously a bug in QML in truncating text with images.
-                                        // We simply remove Emojis then...
-                                        if (truncated) {
-                                            text = text.replace(/\<img [^>]+\/\>/g, "");
-                                        }
-                                    }
                                 }
                             }
                         }

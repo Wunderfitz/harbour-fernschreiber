@@ -16,36 +16,36 @@
     You should have received a copy of the GNU General Public License
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef EMOJISEARCHWORKER_H
-#define EMOJISEARCHWORKER_H
 
-#include <QThread>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QVariantList>
+#ifndef DEBUGLOGJS_H
+#define DEBUGLOGJS_H
 
-class EmojiSearchWorker : public QThread
+#include <QObject>
+#include <QQmlEngine>
+#include <QLoggingCategory>
+
+class DebugLogJS : public QObject
 {
     Q_OBJECT
-    void run() Q_DECL_OVERRIDE {
-        performSearch();
-    }
+    Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled NOTIFY enabledChanged)
 public:
-    ~EmojiSearchWorker() override;
-    explicit EmojiSearchWorker(QObject *parent = nullptr);
-    void setParameters(const QString &queryString);
 
-signals:
-    void searchCompleted(const QString &queryString, const QVariantList &resultList);
-
-public slots:
-
+    DebugLogJS(QObject* parent = Q_NULLPTR) : QObject(parent), category("fernschreiber.JS") {
+        enabled = category.isDebugEnabled();
+    }
+    static QObject* createSingleton(QQmlEngine*, QJSEngine*) { return new DebugLogJS(); }
+    bool isEnabled() const { return enabled; }
+    void setEnabled(bool value) {
+        if (enabled != value) {
+            enabled = value;
+            Q_EMIT enabledChanged();
+        }
+    }
+Q_SIGNALS:
+    void enabledChanged();
 private:
-    QSqlDatabase database;
-    QString queryString;
-
-    void performSearch();
+    bool enabled;
+    const QLoggingCategory category;
 };
 
-#endif // EMOJISEARCHWORKER_H
+#endif // DEBUGLOGJS_H

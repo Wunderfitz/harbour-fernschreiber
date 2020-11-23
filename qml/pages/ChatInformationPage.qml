@@ -22,6 +22,7 @@ import "../components"
 import "../components/chatInformationPage"
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
+import "../js/debug.js" as Debug
 
 Page {
     id: chatInformationPage
@@ -59,7 +60,7 @@ Page {
     onStatusChanged: {
         switch(status) {
         case PageStatus.Activating:
-            console.log("activating Loader")
+            Debug.log("activating Loader")
             mainContentLoader.active = true
             break;
         case PageStatus.Active:

@@ -18,13 +18,8 @@
 */
 #include "tdlibreceiver.h"
 
-#define LOG(x) qDebug() << "[TDLibReceiver]" << x
-
-#if defined (QT_DEBUG) || defined (DEBUG)
-#  define VERBOSE(x) LOG(x)
-#else
-#  define VERBOSE(x)
-#endif
+#define DEBUG_MODULE TDLibReceiver
+#include "debuglog.h"
 
 namespace {
     const QString ID("id");

@@ -2,9 +2,6 @@
 #define PROCESSLAUNCHER_H
 
 #include <QObject>
-#include <QProcess>
-#include <QStandardPaths>
-#include <QDebug>
 
 class ProcessLauncher : public QObject
 {

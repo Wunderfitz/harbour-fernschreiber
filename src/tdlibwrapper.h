@@ -26,12 +26,13 @@
 #include "dbusinterface.h"
 #include "emojisearchworker.h"
 #include "appsettings.h"
+#include "mceinterface.h"
 
 class TDLibWrapper : public QObject
 {
     Q_OBJECT
 public:
-    explicit TDLibWrapper(AppSettings *appSettings, QObject *parent = nullptr);
+    explicit TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent = nullptr);
     ~TDLibWrapper();
 
     enum AuthorizationState {
@@ -255,6 +256,7 @@ private:
 private:
     void *tdLibClient;
     AppSettings *appSettings;
+    MceInterface *mceInterface;
     TDLibReceiver *tdLibReceiver;
     DBusInterface *dbusInterface;
     QString version;

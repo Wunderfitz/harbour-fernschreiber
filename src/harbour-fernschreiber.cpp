@@ -28,23 +28,35 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QGuiApplication>
-
+#include <QLoggingCategory>
 #include "appsettings.h"
+#include "debuglogjs.h"
 #include "tdlibfile.h"
 #include "tdlibwrapper.h"
 #include "chatlistmodel.h"
 #include "chatmodel.h"
 #include "notificationmanager.h"
+#include "mceinterface.h"
 #include "dbusadaptor.h"
 #include "processlauncher.h"
 #include "stickermanager.h"
 #include "tgsplugin.h"
 #include "fernschreiberutils.h"
 
+// The default filter can be overridden by QT_LOGGING_RULES envinronment variable, e.g.
+// QT_LOGGING_RULES="fernschreiber.*=true" harbour-fernschreiber
+#if defined (QT_DEBUG) || defined(DEBUG)
+#  define DEFAULT_LOG_FILTER "fernschreiber.*=true"
+#else
+#  define DEFAULT_LOG_FILTER "fernschreiber.*=false"
+#endif
+
 Q_IMPORT_PLUGIN(TgsIOPlugin)
 
 int main(int argc, char *argv[])
 {
+    QLoggingCategory::setFilterRules(DEFAULT_LOG_FILTER);
+
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
@@ -52,12 +64,14 @@ int main(int argc, char *argv[])
 
     const char *uri = "WerkWolf.Fernschreiber";
     qmlRegisterType<TDLibFile>(uri, 1, 0, "TDLibFile");
+    qmlRegisterSingletonType<DebugLogJS>(uri, 1, 0, "DebugLog", DebugLogJS::createSingleton);
 
     AppSettings *appSettings = new AppSettings(view.data());
     context->setContextProperty("appSettings", appSettings);
     qmlRegisterUncreatableType<AppSettings>(uri, 1, 0, "AppSettings", QString());
 
-    TDLibWrapper *tdLibWrapper = new TDLibWrapper(appSettings, view.data());
+    MceInterface *mceInterface = new MceInterface(view.data());
+    TDLibWrapper *tdLibWrapper = new TDLibWrapper(appSettings, mceInterface, view.data());
     context->setContextProperty("tdLibWrapper", tdLibWrapper);
     qmlRegisterUncreatableType<TDLibWrapper>(uri, 1, 0, "TelegramAPI", QString());
 
@@ -73,7 +87,7 @@ int main(int argc, char *argv[])
     ChatModel chatModel(tdLibWrapper);
     context->setContextProperty("chatModel", &chatModel);
 
-    NotificationManager notificationManager(tdLibWrapper, appSettings, &chatModel);
+    NotificationManager notificationManager(tdLibWrapper, appSettings, mceInterface, &chatModel);
     context->setContextProperty("notificationManager", &notificationManager);
 
     ProcessLauncher processLauncher;

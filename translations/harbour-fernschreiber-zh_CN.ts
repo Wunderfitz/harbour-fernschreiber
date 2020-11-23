@@ -1216,7 +1216,7 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation type="unfinished"></translation>
+        <translation>收到通知时点亮屏幕</translation>
     </message>
 </context>
 <context>

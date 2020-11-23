@@ -21,14 +21,14 @@
 #include "fernschreiberutils.h"
 #include "chatmodel.h"
 #include <sailfishapp.h>
-#include <QDebug>
 #include <QListIterator>
 #include <QUrl>
 #include <QDateTime>
 #include <QDBusConnection>
 #include <QGuiApplication>
 
-#define LOG(x) qDebug() << "[NotificationManager]" << x
+#define DEBUG_MODULE NotificationManager
+#include "debuglog.h"
 
 namespace {
     const QString _TYPE("@type");
@@ -120,14 +120,13 @@ NotificationManager::NotificationGroup::~NotificationGroup()
     delete nemoNotification;
 }
 
-NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings, ChatModel *chatModel) :
-    mceInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", QDBusConnection::systemBus()),
+NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings, MceInterface *mceInterface, ChatModel *chatModel) :
     appIconFile(SailfishApp::pathTo("images/fernschreiber-notification.png").toLocalFile())
 {
     LOG("Initializing...");
     this->tdLibWrapper = tdLibWrapper;
     this->appSettings = appSettings;
-    this->appSettings = appSettings;
+    this->mceInterface = mceInterface;
     this->chatModel = chatModel;
 
     connect(this->tdLibWrapper, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SLOT(handleUpdateActiveNotifications(QVariantList)));
@@ -383,9 +382,9 @@ QString NotificationManager::getNotificationText(const QVariantMap &notification
 void NotificationManager::controlLedNotification(bool enabled)
 {
     static const QString PATTERN("PatternCommunicationIM");
-    static const QString ACTIVATE("req_led_pattern_activate");
-    static const QString DEACTIVATE("req_led_pattern_deactivate");
-
-    LOG("Controlling notification LED" << enabled);
-    mceInterface.call(enabled ? ACTIVATE : DEACTIVATE, PATTERN);
+    if (enabled) {
+        mceInterface->ledPatternActivate(PATTERN);
+    } else {
+        mceInterface->ledPatternDeactivate(PATTERN);
+    }
 }

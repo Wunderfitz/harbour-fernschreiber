@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "../components"
 import "../js/functions.js" as Functions
 import "../js/twemoji.js" as Emoji
+import "../js/debug.js" as Debug
 
 Item {
     id: pinnedMessageItem
@@ -31,7 +32,7 @@ Item {
 
     onPinnedMessageChanged: {
         if (pinnedMessage) {
-            console.log("[ChatPage] Activating pinned message");
+            Debug.log("[ChatPage] Activating pinned message");
             var messageUserText = (pinnedMessage.sender_user_id !== chatPage.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(pinnedMessage.sender_user_id)), pinnedMessageUserText.font.pixelSize) : qsTr("You");
             pinnedMessageUserText.text = (messageUserText === "" ? qsTr("Pinned Message") : messageUserText );
             pinnedMessageText.text = Emoji.emojify(Functions.getMessageText(pinnedMessage, true, pinnedMessage.sender_user_id === chatPage.myUserId), pinnedMessageText.font.pixelSize);
@@ -77,7 +78,7 @@ Item {
                 spacing: Theme.paddingSmall
                 width: parent.width
 
-                Text {
+                Label {
                     id: pinnedMessageUserText
 
                     width: parent.width
@@ -85,18 +86,18 @@ Item {
                     font.weight: Font.ExtraBold
                     color: Theme.primaryColor
                     maximumLineCount: 1
-                    elide: Text.ElideRight
+                    truncationMode: TruncationMode.Fade
                     textFormat: Text.StyledText
                     horizontalAlignment: Text.AlignLeft
                 }
 
-                Text {
+                Label {
                     id: pinnedMessageText
 
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
                     width: parent.width
-                    elide: Text.ElideRight
+                    truncationMode: TruncationMode.Fade
                     maximumLineCount: 1
                     textFormat: Text.StyledText
                 }
