@@ -1200,7 +1200,7 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation type="unfinished"></translation>
+        <translation>Avisering tänder skärmen</translation>
     </message>
 </context>
 <context>
