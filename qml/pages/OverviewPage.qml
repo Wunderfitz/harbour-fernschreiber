@@ -192,10 +192,6 @@ Page {
             }
         }
 
-        AppNotification {
-            id: appNotification
-        }
-
         Column {
             id: column
             width: parent.width
