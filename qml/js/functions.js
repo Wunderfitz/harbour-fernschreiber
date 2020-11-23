@@ -21,6 +21,13 @@
 .import "debug.js" as Debug
 .import Sailfish.Silica 1.0 as Silica
 
+var tdLibWrapper;
+var appNotification;
+function setGlobals(globals) {
+    tdLibWrapper = globals.tdLibWrapper;
+    appNotification = globals.appNotification;
+}
+
 function getUserName(userInformation) {
     var firstName = typeof userInformation.first_name !== "undefined" ? userInformation.first_name : "";
     var lastName = typeof userInformation.last_name !== "undefined" ? userInformation.last_name : "";
