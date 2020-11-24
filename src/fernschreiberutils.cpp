@@ -10,6 +10,10 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
 
 QString FernschreiberUtils::getMessageShortText(const QVariantMap &messageContent, const bool &myself)
 {
+    if (messageContent.isEmpty()) {
+        return QString();
+    }
+
     QString contentType = messageContent.value("@type").toString();
 
     if (contentType == "messageText") {

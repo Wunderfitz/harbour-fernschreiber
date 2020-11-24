@@ -160,6 +160,7 @@ function getMessageText(message, simple, myself) {
 
     return myself ? qsTr("sent an unsupported message: %1", "myself; %1 is message type").arg(message.content['@type'].substring(7)) : qsTr("sent an unsupported message: %1", "%1 is message type").arg(message.content['@type'].substring(7));
 }
+
 function getChatPartnerStatusText(statusType, was_online) {
     switch(statusType) {
     case "userStatusEmpty":
@@ -176,6 +177,18 @@ function getChatPartnerStatusText(statusType, was_online) {
         return qsTr("offline, was recently online");
     }
 }
+
+function getSecretChatStatus(secretChatDetails) {
+    switch (secretChatDetails.state["@type"]) {
+    case "secretChatStateClosed":
+        return "<b>" + qsTr("Closed!") + "</b>";
+    case "secretChatStatePending":
+        return qsTr("Pending acknowledgement");
+    case "secretChatStateReady":
+        return qsTr("Ready to use");
+    }
+}
+
 function getChatMemberStatusText(statusType) {
 //    chatMemberStatusAdministrator, chatMemberStatusBanned, chatMemberStatusCreator, chatMemberStatusLeft, chatMemberStatusMember, and chatMemberStatusRestricted.
     switch(statusType) {

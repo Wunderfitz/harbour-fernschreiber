@@ -260,6 +260,10 @@
         <source>Mark all messages as read</source>
         <translation>Nachrichten als gelesen markieren</translation>
     </message>
+    <message>
+        <source>No message in this chat.</source>
+        <translation>Keine Nachricht in diesem Chat</translation>
+    </message>
 </context>
 <context>
     <name>ChatPage</name>
@@ -894,35 +898,35 @@
     <name>NewChatPage</name>
     <message>
         <source>Your Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Ihre Kontakte</translation>
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Loading contacs...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie haben keine Kontakte</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Privater Chat</translation>
     </message>
     <message>
-        <source>Transport-encrypted, stored in Telegram Cloud, sharable across devices</source>
-        <translation type="unfinished"></translation>
+        <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
+        <translation>Transportverschlüsselt, nutzt Telegram-Cloud, teilbar zwischen Geräten</translation>
     </message>
     <message>
         <source>Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Geheimer Chat</translation>
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation type="unfinished"></translation>
+        <translation>Ende-zu-Ende-verschlüsselt, nur auf diesem Gerät zugreifbar</translation>
     </message>
     <message>
         <source>Search a contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchen Sie einen Kontakt</translation>
+    </message>
+    <message>
+        <source>Loading contacts...</source>
+        <translation>Lade Kontakte...</translation>
     </message>
 </context>
 <context>
@@ -979,7 +983,7 @@
     </message>
     <message>
         <source>New Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Neuer Chat</translation>
     </message>
 </context>
 <context>
@@ -1642,6 +1646,18 @@
     <message>
         <source>You are already a member of this chat.</source>
         <translation>Sie sind bereits Mitglied dieses Chats.</translation>
+    </message>
+    <message>
+        <source>Closed!</source>
+        <translation>Geschlossen!</translation>
+    </message>
+    <message>
+        <source>Pending acknowledgement</source>
+        <translation>Ausstehende Bestätigung</translation>
+    </message>
+    <message>
+        <source>Ready to use</source>
+        <translation>Einsatzbereit</translation>
     </message>
 </context>
 </TS>

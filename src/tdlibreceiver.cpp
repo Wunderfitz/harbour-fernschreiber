@@ -126,6 +126,8 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("users", &TDLibReceiver::processUsers);
     handlers.insert("error", &TDLibReceiver::processError);
     handlers.insert("ok", &TDLibReceiver::nop);
+    handlers.insert("secretChat", &TDLibReceiver::processSecretChat);
+    handlers.insert("updateSecretChat", &TDLibReceiver::processUpdateSecretChat);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -522,4 +524,16 @@ void TDLibReceiver::processError(const QVariantMap &receivedInformation)
 
 void TDLibReceiver::nop(const QVariantMap &)
 {
+}
+
+void TDLibReceiver::processSecretChat(const QVariantMap &receivedInformation)
+{
+    LOG("Received a secret chat");
+    emit secretChat(receivedInformation.value(ID).toString(), receivedInformation);
+}
+
+void TDLibReceiver::processUpdateSecretChat(const QVariantMap &receivedInformation)
+{
+    LOG("A secret chat was updated");
+    emit secretChatUpdated(receivedInformation.value(ID).toString(), receivedInformation);
 }

@@ -164,6 +164,7 @@ public:
     Q_INVOKABLE void joinChatByInviteLink(const QString &inviteLink);
     Q_INVOKABLE void getDeepLinkInfo(const QString &link);
     Q_INVOKABLE void getContacts();
+    Q_INVOKABLE void getSecretChat(const QString &secretChatId);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -207,6 +208,8 @@ signals:
     void messagesDeleted(const QString &chatId, const QVariantList &messageIds);
     void chatsReceived(const QVariantMap &chats);
     void chatReceived(const QVariantMap &chat);
+    void secretChatReceived(const QString &secretChatId, const QVariantMap &secretChat);
+    void secretChatUpdated(const QString &secretChatId, const QVariantMap &secretChat);
     void recentStickersUpdated(const QVariantList &stickerIds);
     void stickersReceived(const QVariantList &stickers);
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);

@@ -166,7 +166,7 @@ Page {
                                     Item {
                                         id: privateChatItem
                                         height: parent.height
-                                        width: parent.width / 2 + ( Theme.horizontalPageMargin / 2 )
+                                        width: parent.width / 2 // - ( Theme.horizontalPageMargin / 2 )
                                         anchors.left: parent.left
                                         anchors.top: parent.top
 
@@ -218,7 +218,7 @@ Page {
                                                     wrapMode: Text.Wrap
                                                     elide: Text.ElideRight
                                                     textFormat: Text.StyledText
-                                                    text: qsTr("Transport-encrypted, stored in Telegram Cloud, sharable across devices")
+                                                    text: qsTr("Transport-encrypted, uses Telegram Cloud, sharable across devices")
                                                 }
                                             }
 
@@ -241,7 +241,7 @@ Page {
                                     Item {
                                         id: secretChatItem
                                         height: parent.height
-                                        width: parent.width / 2 + ( Theme.horizontalPageMargin / 2 )
+                                        width: parent.width / 2 //+ ( Theme.horizontalPageMargin / 2 )
                                         anchors.left: privateChatItem.right
                                         anchors.top: parent.top
 
@@ -301,7 +301,7 @@ Page {
                                         MouseArea {
                                             anchors.fill: parent
                                             onClicked: {
-                                                console.log("SECRET CHAT!");
+                                                tdLibWrapper.createNewSecretChat(display.id);
                                             }
                                             onPressed: {
                                                 secretChatHighlightBackground.visible = true;
@@ -344,7 +344,7 @@ Page {
 
                     InfoLabel {
                         id: loadingLabel
-                        text: qsTr("Loading contacs...")
+                        text: qsTr("Loading contacts...")
                     }
 
                     BusyIndicator {

@@ -94,6 +94,8 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(messagesDeleted(QString, QVariantList)), this, SIGNAL(messagesDeleted(QString, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SIGNAL(chatsReceived(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chat(QVariantMap)), this, SLOT(handleChatReceived(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(secretChat(QString, QVariantMap)), this, SIGNAL(secretChatReceived(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(secretChatUpdated(QString, QVariantMap)), this, SIGNAL(secretChatUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SIGNAL(recentStickersUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SIGNAL(stickersReceived(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SIGNAL(installedStickerSetsUpdated(QVariantList)));
@@ -806,6 +808,15 @@ void TDLibWrapper::getContacts()
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getContacts");
     requestObject.insert(_EXTRA, "contactsRequested");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getSecretChat(const QString &secretChatId)
+{
+    LOG("Getting detailed information about secret chat" << secretChatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getSecretChat");
+    requestObject.insert("secret_chat_id", secretChatId);
     this->sendRequest(requestObject);
 }
 

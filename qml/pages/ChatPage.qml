@@ -36,8 +36,10 @@ Page {
     property bool isInitialized: false;
     readonly property int myUserId: tdLibWrapper.getUserInformation().id;
     property var chatInformation;
+    property var secretChatDetails;
     property alias chatPicture: chatPictureThumbnail.photoData
     property bool isPrivateChat: false;
+    property bool isSecretChat: false;
     property bool isBasicGroup: false;
     property bool isSuperGroup: false;
     property bool isChannel: false;
@@ -104,11 +106,18 @@ Page {
     }
 
     function updateChatPartnerStatusText() {
-        if(chatPage.state === "selectMessages") {
+        if (chatPage.state === "selectMessages") {
             return
         }
         var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
-        if(statusText) {
+        if (chatPage.secretChatDetails) {
+            if (statusText) {
+                statusText += " - ";
+            }
+            statusText += Functions.getSecretChatStatus(chatPage.secretChatDetails);
+        }
+
+        if (statusText) {
             chatStatusText.text = statusText;
         }
     }
@@ -138,12 +147,16 @@ Page {
         chatView.currentIndex = -1;
         chatView.lastReadSentIndex = 0;
         var chatType = chatInformation.type['@type'];
-        isPrivateChat = ( chatType === "chatTypePrivate" );
+        isPrivateChat = ( chatType === "chatTypePrivate"|| chatType === "chatTypeSecret" );
+        isSecretChat = chatType === "chatTypeSecret";
         isBasicGroup = ( chatType === "chatTypeBasicGroup" );
         isSuperGroup = ( chatType === "chatTypeSupergroup" );
         if (isPrivateChat) {
             chatPartnerInformation = tdLibWrapper.getUserInformation(chatInformation.type.user_id);
             updateChatPartnerStatusText();
+            if (isSecretChat) {
+                tdLibWrapper.getSecretChat(chatInformation.type.secret_chat_id);
+            }
         }
         else if (isBasicGroup) {
             chatGroupInformation = tdLibWrapper.getBasicGroup(chatInformation.type.basic_group_id);
@@ -410,6 +423,20 @@ Page {
                 pinnedMessageItem.pinnedMessage = message;
             }
         }
+        onSecretChatReceived: {
+            if (secretChatId === chatInformation.type.secret_chat_id.toString()) {
+                Debug.log("[ChatPage] Received detailed information about this secret chat");
+                chatPage.secretChatDetails = secretChat;
+                updateChatPartnerStatusText();
+            }
+        }
+        onSecretChatUpdated: {
+            if (secretChatId === chatInformation.type.secret_chat_id.toString()) {
+                Debug.log("[ChatPage] Detailed information about this secret chat was updated");
+                chatPage.secretChatDetails = secretChat;
+                updateChatPartnerStatusText();
+            }
+        }
     }
 
     Connections {
@@ -604,23 +631,49 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingMedium
 
-                ProfileThumbnail {
-                    id: chatPictureThumbnail
-                    replacementStringHint: chatNameText.text
+                Item {
                     width: chatOverviewItem.height
                     height: chatOverviewItem.height
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingMedium : Theme.paddingSmall
 
-                    // Setting it directly may cause an stale state for the thumbnail in case the chat page
-                    // was previously loaded with a picture and now it doesn't have one. Instead setting it
-                    // when the ChatModel indicates a change. This also avoids flickering when the page is loaded...
-                    Connections {
-                        target: chatModel
-                        onSmallPhotoChanged: {
-                            chatPictureThumbnail.photoData = chatModel.smallPhoto;
+                    ProfileThumbnail {
+                        id: chatPictureThumbnail
+                        replacementStringHint: chatNameText.text
+                        width: parent.height
+                        height: parent.height
+
+                        // Setting it directly may cause an stale state for the thumbnail in case the chat page
+                        // was previously loaded with a picture and now it doesn't have one. Instead setting it
+                        // when the ChatModel indicates a change. This also avoids flickering when the page is loaded...
+                        Connections {
+                            target: chatModel
+                            onSmallPhotoChanged: {
+                                chatPictureThumbnail.photoData = chatModel.smallPhoto;
+                            }
                         }
                     }
+
+                    Rectangle {
+                        id: chatSecretBackground
+                        color: Theme.overlayBackgroundColor
+                        width: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
+                        height: width
+                        anchors.left: parent.left
+                        anchors.bottom: parent.bottom
+                        radius: parent.width / 2
+                        visible: chatPage.isSecretChat
+                    }
+
+                    Image {
+                        id: chatSecretImage
+                        source: "image://theme/icon-s-secure"
+                        width: chatPage.isPortrait ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
+                        height: width
+                        anchors.centerIn: chatSecretBackground
+                        visible: chatPage.isSecretChat
+                    }
+
                 }
 
                 Item {

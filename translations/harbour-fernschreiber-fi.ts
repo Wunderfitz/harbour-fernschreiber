@@ -260,6 +260,10 @@
         <source>Mark all messages as read</source>
         <translation>Merkitse kaikki viestit luetuiksi</translation>
     </message>
+    <message>
+        <source>No message in this chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatPage</name>
@@ -902,15 +906,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Loading contacs...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Private Chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Transport-encrypted, stored in Telegram Cloud, sharable across devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -923,6 +919,14 @@
     </message>
     <message>
         <source>Search a contact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading contacts...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1643,6 +1647,18 @@
     <message>
         <source>You are already a member of this chat.</source>
         <translation>Olet jo tämän ryhmän jäsen.</translation>
+    </message>
+    <message>
+        <source>Closed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pending acknowledgement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ready to use</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
