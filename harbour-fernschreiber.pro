@@ -24,6 +24,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/appsettings.cpp \
     src/chatlistmodel.cpp \
     src/chatmodel.cpp \
+    src/contactsmodel.cpp \
     src/dbusadaptor.cpp \
     src/dbusinterface.cpp \
     src/emojisearchworker.cpp \
@@ -146,6 +147,7 @@ HEADERS += \
     src/appsettings.h \
     src/chatlistmodel.h \
     src/chatmodel.h \
+    src/contactsmodel.h \
     src/dbusadaptor.h \
     src/dbusinterface.h \
     src/debuglog.h \

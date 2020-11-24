@@ -26,12 +26,12 @@ Page {
     id: newChatPage
     allowedOrientations: Orientation.All
 
-    property var contacts;
     property bool isLoading: true;
 
     onStatusChanged: {
         if (status === PageStatus.Active) {
-            newChatPage.contacts = tdLibWrapper.getContactsFullInfo();
+            contactsModel.hydrateContacts();
+            contactsListView.model = contactsModel;
             newChatPage.isLoading = false;
         }
     }
@@ -59,7 +59,6 @@ Page {
 
                 SilicaListView {
                     id: contactsListView
-                    model: newChatPage.contacts
                     clip: true
                     width: parent.width
                     height: parent.height
@@ -87,15 +86,15 @@ Page {
                             Behavior on opacity { FadeAnimation {} }
 
                             pictureThumbnail {
-                                photoData: (typeof modelData.profile_photo !== "undefined") ? modelData.profile_photo.small : {}
+                                photoData: (typeof display.profile_photo !== "undefined") ? display.profile_photo.small : {}
                             }
                             width: parent.width
 
-                            primaryText.text: Emoji.emojify(Functions.getUserName(modelData), primaryText.font.pixelSize, "../js/emoji/")
-                            prologSecondaryText.text: "@" + ( modelData.username !== "" ? modelData.username : modelData.id )
+                            primaryText.text: Emoji.emojify(Functions.getUserName(display), primaryText.font.pixelSize, "../js/emoji/")
+                            prologSecondaryText.text: "@" + ( display.username !== "" ? display.username : display.id )
                             tertiaryText {
                                 maximumLineCount: 1
-                                text: Functions.getChatPartnerStatusText(modelData.status["@type"], modelData.status.was_online);
+                                text: Functions.getChatPartnerStatusText(display.status["@type"], display.status.was_online);
                             }
 
                             onClicked: {
@@ -159,7 +158,7 @@ Page {
                                             icon.source: "image://theme/icon-m-chat"
                                             anchors.verticalCenter: parent.verticalCenter
                                             onClicked: {
-                                                tdLibWrapper.createPrivateChat(modelData.id);
+                                                tdLibWrapper.createPrivateChat(display.id);
                                             }
                                         }
 
@@ -196,7 +195,7 @@ Page {
                                     MouseArea {
                                         anchors.fill: parent
                                         onClicked: {
-                                            tdLibWrapper.createPrivateChat(modelData.id);
+                                            tdLibWrapper.createPrivateChat(display.id);
                                         }
                                         onPressed: {
                                             privateChatHighlightBackground.visible = true;

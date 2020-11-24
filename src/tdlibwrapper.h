@@ -107,7 +107,6 @@ public:
     Q_INVOKABLE void controlScreenSaver(bool enabled);
     Q_INVOKABLE bool getJoinChatRequested();
     Q_INVOKABLE void registerJoinChat();
-    Q_INVOKABLE QVariantList getContactsFullInfo();
 
     DBusAdaptor *getDBusAdaptor();
 
@@ -147,6 +146,7 @@ public:
     Q_INVOKABLE void getGroupFullInfo(const QString &groupId, bool isSuperGroup);
     Q_INVOKABLE void getUserFullInfo(const QString &userId);
     Q_INVOKABLE void createPrivateChat(const QString &userId);
+    Q_INVOKABLE void createNewSecretChat(const QString &userId);
     Q_INVOKABLE void createSupergroupChat(const QString &supergroupId);
     Q_INVOKABLE void createBasicGroupChat(const QString &basicGroupId);
     Q_INVOKABLE void getGroupsInCommon(const QString &userId, int limit, int offset);
@@ -245,7 +245,6 @@ public slots:
     void handleStickerSets(const QVariantList &stickerSets);
     void handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList);
     void handleOpenWithChanged();
-    void handleUsersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
 
 private:
     void setInitialParameters();
@@ -268,7 +267,6 @@ private:
     QVariantMap allUsers;
     QVariantMap allUserNames;
     QVariantMap chats;
-    QList<QString> contacts;
     QVariantMap unreadMessageInformation;
     QVariantMap unreadChatInformation;
     QHash<qlonglong,Group*> basicGroups;

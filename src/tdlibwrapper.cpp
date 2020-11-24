@@ -111,7 +111,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SIGNAL(chatTitleUpdated(QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)));
-    connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SLOT(handleUsersReceived(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString)), this, SIGNAL(errorReceived(int, QString)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
@@ -621,6 +621,16 @@ void TDLibWrapper::createPrivateChat(const QString &userId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::createNewSecretChat(const QString &userId)
+{
+    LOG("Creating new secret chat");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "createNewSecretChat");
+    requestObject.insert("user_id", userId);
+    requestObject.insert(_EXTRA, "openDirectly"); //gets matched in qml
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::createSupergroupChat(const QString &supergroupId)
 {
     LOG("Creating Supergroup Chat");
@@ -927,52 +937,6 @@ void TDLibWrapper::registerJoinChat()
     this->joinChatRequested = false;
 }
 
-static bool compareUsers(const QVariant &user1, const QVariant &user2)
-{
-    const QVariantMap userMap1 = user1.toMap();
-    const QVariantMap userMap2 = user2.toMap();
-
-    const QString lastName1 = userMap1.value(LAST_NAME).toString();
-    const QString lastName2 = userMap2.value(LAST_NAME).toString();
-    if (!lastName1.isEmpty()) {
-        if (lastName1 < lastName2) {
-            return true;
-        } else if (lastName1 > lastName2) {
-            return false;
-        }
-    }
-
-    const QString firstName1 = userMap1.value(FIRST_NAME).toString();
-    const QString firstName2 = userMap2.value(FIRST_NAME).toString();
-    if (firstName1 < firstName2) {
-        return true;
-    } else if (firstName1 > firstName2) {
-        return false;
-    }
-    const QString userName1 = userMap1.value(USERNAME).toString();
-    const QString userName2 = userMap2.value(USERNAME).toString();
-    if (userName1 < userName2) {
-        return true;
-    } else if (userName1 > userName2) {
-        return false;
-    }
-    return userMap1.value(ID).toLongLong() < userMap2.value(ID).toLongLong();
-}
-
-QVariantList TDLibWrapper::getContactsFullInfo()
-{
-    QVariantList preparedContacts;
-    QListIterator<QString> userIdIterator(contacts);
-    while (userIdIterator.hasNext()) {
-        QString nextUserId = userIdIterator.next();
-        if (allUsers.contains(nextUserId)) {
-            preparedContacts.append(allUsers.value(nextUserId));
-        }
-    }
-    std::sort(preparedContacts.begin(), preparedContacts.end(), compareUsers);
-    return preparedContacts;
-}
-
 DBusAdaptor *TDLibWrapper::getDBusAdaptor()
 {
     return this->dbusInterface->getDBusAdaptor();
@@ -1183,23 +1147,6 @@ void TDLibWrapper::handleOpenWithChanged()
     } else {
         this->removeOpenWith();
     }
-}
-
-void TDLibWrapper::handleUsersReceived(const QString &extra, const QVariantList &userIds, int totalUsers)
-{
-    if (extra == "contactsRequested") {
-        LOG("Received contacts list...");
-        contacts.clear();
-        QListIterator<QVariant> userIdIterator(userIds);
-        while (userIdIterator.hasNext()) {
-            QString nextUserId = userIdIterator.next().toString();
-            if (!this->hasUserInformation(nextUserId)) {
-                this->getUserFullInfo(nextUserId);
-            }
-            contacts.append(nextUserId);
-        }
-    }
-    emit usersReceived(extra, userIds, totalUsers);
 }
 
 void TDLibWrapper::setInitialParameters()

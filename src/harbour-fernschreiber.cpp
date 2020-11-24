@@ -42,6 +42,7 @@
 #include "stickermanager.h"
 #include "tgsplugin.h"
 #include "fernschreiberutils.h"
+#include "contactsmodel.h"
 
 // The default filter can be overridden by QT_LOGGING_RULES envinronment variable, e.g.
 // QT_LOGGING_RULES="fernschreiber.*=true" harbour-fernschreiber
@@ -95,6 +96,9 @@ int main(int argc, char *argv[])
 
     StickerManager stickerManager(tdLibWrapper);
     context->setContextProperty("stickerManager", &stickerManager);
+
+    ContactsModel contactsModel(tdLibWrapper, view.data());
+    context->setContextProperty("contactsModel", &contactsModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-fernschreiber.qml"));
     view->show();
