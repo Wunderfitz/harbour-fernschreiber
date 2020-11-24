@@ -920,6 +920,10 @@
         <source>End-to-end-encrypted, accessible on this device only</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Search a contact</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NotificationManager</name>

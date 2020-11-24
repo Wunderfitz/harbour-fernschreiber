@@ -44,13 +44,13 @@ ContactsModel::ContactsModel(TDLibWrapper *tdLibWrapper, QObject *parent)
 
 int ContactsModel::rowCount(const QModelIndex &) const
 {
-    return this->contacts.size();
+    return this->filter.isEmpty() ? this->contacts.size() : this->filteredContacts.size();
 }
 
 QVariant ContactsModel::data(const QModelIndex &index, int role) const
 {
     if (index.isValid() && role == Qt::DisplayRole) {
-        return QVariant(contacts.value(index.row()));
+        return this->filter.isEmpty() ? QVariant(contacts.value(index.row())) : QVariant(filteredContacts.value(index.row())) ;
     }
     return QVariant();
 }
@@ -115,4 +115,31 @@ void ContactsModel::hydrateContacts()
     }
     LOG("Hydrated contacts:" << this->contacts.size());
     std::sort(this->contacts.begin(), this->contacts.end(), compareUsers);
+}
+
+void ContactsModel::applyFilter(const QString &filter)
+{
+    LOG("Applying filter:" << filter);
+    beginResetModel();
+    this->filter = filter;
+    this->filteredContacts.clear();
+    if (!this->filter.isEmpty()) {
+        QListIterator<QVariant> contactIterator(this->contacts);
+        while (contactIterator.hasNext()) {
+            QVariantMap contact = contactIterator.next().toMap();
+            if (contact.value(LAST_NAME).toString().contains(this->filter, Qt::CaseInsensitive)) {
+                this->filteredContacts.append(contact);
+                continue;
+            }
+            if (contact.value(FIRST_NAME).toString().contains(this->filter, Qt::CaseInsensitive)) {
+                this->filteredContacts.append(contact);
+                continue;
+            }
+            if (contact.value(USERNAME).toString().contains(this->filter, Qt::CaseInsensitive)) {
+                this->filteredContacts.append(contact);
+                continue;
+            }
+        }
+    }
+    endResetModel();
 }

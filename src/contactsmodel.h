@@ -35,6 +35,7 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const;
 
     Q_INVOKABLE void hydrateContacts();
+    Q_INVOKABLE void applyFilter(const QString &filter);
 
 public slots:
     void handleUsersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
@@ -42,7 +43,9 @@ public slots:
 private:
     TDLibWrapper *tdLibWrapper;
     QVariantList contacts;
+    QVariantList filteredContacts;
     QList<QString> contactIds;
+    QString filter;
 };
 
 #endif // CONTACTSMODEL_H
