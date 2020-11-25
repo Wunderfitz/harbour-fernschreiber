@@ -94,8 +94,8 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(messagesDeleted(QString, QVariantList)), this, SIGNAL(messagesDeleted(QString, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SIGNAL(chatsReceived(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chat(QVariantMap)), this, SLOT(handleChatReceived(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(secretChat(QString, QVariantMap)), this, SIGNAL(secretChatReceived(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(secretChatUpdated(QString, QVariantMap)), this, SIGNAL(secretChatUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(secretChat(QString, QVariantMap)), this, SLOT(handleSecretChatReceived(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(secretChatUpdated(QString, QVariantMap)), this, SLOT(handleSecretChatUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SIGNAL(recentStickersUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SIGNAL(stickersReceived(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SIGNAL(installedStickerSetsUpdated(QVariantList)));
@@ -891,6 +891,11 @@ QVariantMap TDLibWrapper::getChat(const QString &chatId)
     return this->chats.value(chatId).toMap();
 }
 
+QVariantMap TDLibWrapper::getSecretChatFromCache(const QString &secretChatId)
+{
+    return this->secretChats.value(secretChatId).toMap();
+}
+
 QString TDLibWrapper::getOptionString(const QString &optionName)
 {
     return this->options.value(optionName).toString();
@@ -1160,6 +1165,18 @@ void TDLibWrapper::handleOpenWithChanged()
     }
 }
 
+void TDLibWrapper::handleSecretChatReceived(const QString &secretChatId, const QVariantMap &secretChat)
+{
+    this->secretChats.insert(secretChatId, secretChat);
+    emit secretChatReceived(secretChatId, secretChat);
+}
+
+void TDLibWrapper::handleSecretChatUpdated(const QString &secretChatId, const QVariantMap &secretChat)
+{
+    this->secretChats.insert(secretChatId, secretChat);
+    emit secretChatUpdated(secretChatId, secretChat);
+}
+
 void TDLibWrapper::setInitialParameters()
 {
     LOG("Sending initial parameters to TD Lib");
@@ -1172,7 +1189,7 @@ void TDLibWrapper::setInitialParameters()
     initialParameters.insert("use_file_database", true);
     initialParameters.insert("use_chat_info_database", true);
     initialParameters.insert("use_message_database", true);
-    initialParameters.insert("use_secret_chats", false);
+    initialParameters.insert("use_secret_chats", true);
     initialParameters.insert("system_language_code", QLocale::system().name());
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
     initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
@@ -1306,7 +1323,15 @@ TDLibWrapper::ChatMemberStatus TDLibWrapper::chatMemberStatusFromString(const QS
         (status == QStringLiteral("chatMemberStatusAdministrator")) ?  ChatMemberStatusAdministrator :
         (status == QStringLiteral("chatMemberStatusRestricted")) ? ChatMemberStatusRestricted :
         (status == QStringLiteral("chatMemberStatusBanned")) ?  ChatMemberStatusBanned :
-        ChatMemberStatusUnknown;
+                                                                ChatMemberStatusUnknown;
+}
+
+TDLibWrapper::SecretChatState TDLibWrapper::secretChatStateFromString(const QString &state)
+{
+    return (state == QStringLiteral("secretChatStateClosed")) ? SecretChatStateClosed :
+        (state == QStringLiteral("secretChatStatePending")) ? SecretChatStatePending :
+        (state == QStringLiteral("secretChatStateReady")) ? SecretChatStateReady :
+        SecretChatStateUnknown;
 }
 
 TDLibWrapper::ChatMemberStatus TDLibWrapper::Group::chatMemberStatus() const

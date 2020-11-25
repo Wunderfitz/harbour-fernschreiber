@@ -79,6 +79,14 @@ public:
     };
     Q_ENUM(ChatMemberStatus)
 
+    enum SecretChatState {
+        SecretChatStateUnknown,
+        SecretChatStateClosed,
+        SecretChatStatePending,
+        SecretChatStateReady,
+    };
+    Q_ENUM(SecretChatState)
+
     class Group {
     public:
         Group(qlonglong id) : groupId(id) { }
@@ -101,6 +109,7 @@ public:
     Q_INVOKABLE QVariantMap getBasicGroup(qlonglong groupId) const;
     Q_INVOKABLE QVariantMap getSuperGroup(qlonglong groupId) const;
     Q_INVOKABLE QVariantMap getChat(const QString &chatId);
+    Q_INVOKABLE QVariantMap getSecretChatFromCache(const QString &secretChatId);
     Q_INVOKABLE QString getOptionString(const QString &optionName);
     Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
     Q_INVOKABLE void openFileOnDevice(const QString &filePath);
@@ -175,6 +184,7 @@ public:
     const Group* getGroup(qlonglong groupId) const;
     static ChatType chatTypeFromString(const QString &type);
     static ChatMemberStatus chatMemberStatusFromString(const QString &status);
+    static SecretChatState secretChatStateFromString(const QString &state);
 
 signals:
     void versionDetected(const QString &version);
@@ -248,6 +258,8 @@ public slots:
     void handleStickerSets(const QVariantList &stickerSets);
     void handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList);
     void handleOpenWithChanged();
+    void handleSecretChatReceived(const QString &secretChatId, const QVariantMap &secretChat);
+    void handleSecretChatUpdated(const QString &secretChatId, const QVariantMap &secretChat);
 
 private:
     void setInitialParameters();
@@ -270,6 +282,7 @@ private:
     QVariantMap allUsers;
     QVariantMap allUserNames;
     QVariantMap chats;
+    QVariantMap secretChats;
     QVariantMap unreadMessageInformation;
     QVariantMap unreadChatInformation;
     QHash<qlonglong,Group*> basicGroups;

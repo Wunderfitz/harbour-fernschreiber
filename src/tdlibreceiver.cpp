@@ -44,6 +44,7 @@ namespace {
     const QString UNREAD_COUNT("unread_count");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
+    const QString SECRET_CHAT("secret_chat");
 
     const QString TYPE("@type");
     const QString EXTRA("@extra");
@@ -529,11 +530,13 @@ void TDLibReceiver::nop(const QVariantMap &)
 void TDLibReceiver::processSecretChat(const QVariantMap &receivedInformation)
 {
     LOG("Received a secret chat");
-    emit secretChat(receivedInformation.value(ID).toString(), receivedInformation);
+    QVariantMap discoveredSecretChat = receivedInformation.value(SECRET_CHAT).toMap();
+    emit secretChat(discoveredSecretChat.value(ID).toString(), discoveredSecretChat);
 }
 
 void TDLibReceiver::processUpdateSecretChat(const QVariantMap &receivedInformation)
 {
     LOG("A secret chat was updated");
-    emit secretChatUpdated(receivedInformation.value(ID).toString(), receivedInformation);
+    QVariantMap updatedSecretChat = receivedInformation.value(SECRET_CHAT).toMap();
+    emit secretChatUpdated(updatedSecretChat.value(ID).toString(), updatedSecretChat);
 }
