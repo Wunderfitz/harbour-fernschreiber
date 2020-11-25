@@ -262,7 +262,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>No message in this chat.</translation>
     </message>
 </context>
 <context>
@@ -378,6 +378,10 @@
             <numerusform>%1 online</numerusform>
             <numerusform>%1 online</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
+        <translation>This secret chat is not yet ready. Your chat partner needs to go online first.</translation>
     </message>
 </context>
 <context>
@@ -873,7 +877,7 @@
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Pin Message</translation>
     </message>
 </context>
 <context>
@@ -887,46 +891,46 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">You</translation>
+        <translation>You</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>This message was forwarded. Original author: %1</translation>
     </message>
 </context>
 <context>
     <name>NewChatPage</name>
     <message>
         <source>Your Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Your Contacts</translation>
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation type="unfinished"></translation>
+        <translation>You don&apos;t have any contacts.</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Private Chat</translation>
     </message>
     <message>
         <source>Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Secret Chat</translation>
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation type="unfinished"></translation>
+        <translation>End-to-end-encrypted, accessible on this device only</translation>
     </message>
     <message>
-        <source>Search a contact</source>
-        <translation type="unfinished"></translation>
+        <source>Search a contact...</source>
+        <translation>Search a contact...</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
-        <translation type="unfinished"></translation>
+        <translation>Loading contacts...</translation>
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Transport-encrypted, uses Telegram Cloud, sharable across devices</translation>
     </message>
 </context>
 <context>
@@ -983,22 +987,22 @@
     </message>
     <message>
         <source>New Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>New Chat</translation>
     </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">You</translation>
+        <translation>You</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Pinned Message</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished"></translation>
+        <translation>Message unpinned</translation>
     </message>
 </context>
 <context>
@@ -1243,7 +1247,7 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation type="unfinished"></translation>
+        <translation>Notification turns on the display</translation>
     </message>
 </context>
 <context>
@@ -1649,15 +1653,11 @@
     </message>
     <message>
         <source>Closed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Closed!</translation>
     </message>
     <message>
         <source>Pending acknowledgement</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ready to use</source>
-        <translation type="unfinished"></translation>
+        <translation>Pending acknowledgement</translation>
     </message>
 </context>
 </TS>

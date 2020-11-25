@@ -185,7 +185,7 @@ function getSecretChatStatus(secretChatDetails) {
     case "secretChatStatePending":
         return qsTr("Pending acknowledgement");
     case "secretChatStateReady":
-        return qsTr("Ready to use");
+        return "";
     }
 }
 

@@ -46,6 +46,7 @@ namespace {
     const QString IS_CHANNEL("is_channel");
     const QString PINNED_MESSAGE_ID("pinned_message_id");
     const QString _TYPE("@type");
+    const QString SECRET_CHAT_ID("secret_chat_id");
 }
 
 class ChatListModel::ChatData
@@ -518,11 +519,14 @@ void ChatListModel::updateChatVisibility(const TDLibWrapper::Group *group)
 
 void ChatListModel::updateSecretChatVisibility(const QVariantMap secretChatDetails)
 {
-    LOG("Updating secret chat visibility" << secretChatDetails.value(ID));
-    // See if any group has been removed from from view
+    LOG("Updating secret chat visibility" << secretChatDetails.value(ID).toString());
+    // See if any secret chat has been closed
     for (int i = 0; i < chatList.size(); i++) {
         ChatData *chat = chatList.at(i);
         if (chat->chatType != TDLibWrapper::ChatTypeSecret) {
+            continue;
+        }
+        if (chat->chatData.value(TYPE).toMap().value(SECRET_CHAT_ID).toString() != secretChatDetails.value(ID).toString()) {
             continue;
         }
         const QVector<int> changedRoles(chat->updateSecretChat(secretChatDetails));
@@ -541,21 +545,6 @@ void ChatListModel::updateSecretChatVisibility(const QVariantMap secretChatDetai
         } else if (!changedRoles.isEmpty()) {
             const QModelIndex modelIndex(index(i));
             emit dataChanged(modelIndex, modelIndex, changedRoles);
-        }
-    }
-
-    // And see if any group been added to the view
-    const QList<ChatData*> hiddenChatList = hiddenChats.values();
-    const int n = hiddenChatList.size();
-    for (int j = 0; j < n; j++) {
-        ChatData *chat = hiddenChatList.at(j);
-        if (chat->chatType != TDLibWrapper::ChatTypeSecret) {
-            continue;
-        }
-        chat->updateSecretChat(secretChatDetails);
-        if (!chat->isHidden() || showHiddenChats) {
-            hiddenChats.remove(chat->chatId);
-            addVisibleChat(chat);
         }
     }
 }
@@ -584,7 +573,7 @@ void ChatListModel::handleChatDiscovered(const QString &, const QVariantMap &cha
     }
 
     if (chat->chatType == TDLibWrapper::ChatTypeSecret) {
-        QVariantMap secretChatDetails = tdLibWrapper->getSecretChatFromCache(chatToBeAdded.value(TYPE).toMap().value("secret_chat_id").toString());
+        QVariantMap secretChatDetails = tdLibWrapper->getSecretChatFromCache(chatToBeAdded.value(TYPE).toMap().value(SECRET_CHAT_ID).toString());
         if (!secretChatDetails.isEmpty()) {
             chat->updateSecretChat(secretChatDetails);
         }

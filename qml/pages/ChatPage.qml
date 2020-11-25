@@ -40,6 +40,7 @@ Page {
     property alias chatPicture: chatPictureThumbnail.photoData
     property bool isPrivateChat: false;
     property bool isSecretChat: false;
+    property bool isSecretChatReady: false;
     property bool isBasicGroup: false;
     property bool isSuperGroup: false;
     property bool isChannel: false;
@@ -48,7 +49,7 @@ Page {
     property int chatOnlineMemberCount: 0;
     property var emojiProposals;
     property bool iterativeInitialization: false;
-    readonly property bool userIsMember: (isPrivateChat && chatInformation["@type"]) || // should be optimized
+    readonly property bool userIsMember: ((isPrivateChat || isSecretChat) && chatInformation["@type"]) || // should be optimized
                                 (isBasicGroup || isSuperGroup) && (
                                     (chatGroupInformation.status["@type"] === "chatMemberStatusMember")
                                     || (chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator")
@@ -111,10 +112,13 @@ Page {
         }
         var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
         if (chatPage.secretChatDetails) {
-            if (statusText) {
+            var secretChatStatus = Functions.getSecretChatStatus(chatPage.secretChatDetails);
+            if (statusText && secretChatStatus) {
                 statusText += " - ";
             }
-            statusText += Functions.getSecretChatStatus(chatPage.secretChatDetails);
+            if (secretChatStatus) {
+                statusText += secretChatStatus;
+            }
         }
 
         if (statusText) {
@@ -147,11 +151,11 @@ Page {
         chatView.currentIndex = -1;
         chatView.lastReadSentIndex = 0;
         var chatType = chatInformation.type['@type'];
-        isPrivateChat = ( chatType === "chatTypePrivate"|| chatType === "chatTypeSecret" );
+        isPrivateChat = chatType === "chatTypePrivate";
         isSecretChat = chatType === "chatTypeSecret";
         isBasicGroup = ( chatType === "chatTypeBasicGroup" );
         isSuperGroup = ( chatType === "chatTypeSupergroup" );
-        if (isPrivateChat) {
+        if (isPrivateChat || isSecretChat) {
             chatPartnerInformation = tdLibWrapper.getUserInformation(chatInformation.type.user_id);
             updateChatPartnerStatusText();
             if (isSecretChat) {
@@ -304,11 +308,12 @@ Page {
                     || groupStatusType === "chatMemberStatusAdministrator"
                     || groupStatusType === "chatMemberStatusCreator"
                     || (groupStatusType === "chatMemberStatusRestricted" && groupStatus.permissions[privilege])
+                    || (chatPage.isSecretChat && chatPage.isSecretChatReady)
     }
     function canPinMessages() {
         Debug.log("Can we pin messages?");
-        if (chatPage.isPrivateChat) {
-            Debug.log("Private Chat: No!");
+        if (chatPage.isPrivateChat || chatPage.isSecretChat) {
+            Debug.log("Private/Secret Chat: No!");
             return false;
         }
         if (chatPage.chatGroupInformation.status["@type"] === "chatMemberStatusCreator") {
@@ -380,7 +385,7 @@ Page {
     Connections {
         target: tdLibWrapper
         onUserUpdated: {
-            if (isPrivateChat && chatPartnerInformation.id.toString() === userId ) {
+            if ((isPrivateChat || isSecretChat) && chatPartnerInformation.id.toString() === userId ) {
                 chatPartnerInformation = userInformation;
                 updateChatPartnerStatusText();
             }
@@ -428,6 +433,7 @@ Page {
                 Debug.log("[ChatPage] Received detailed information about this secret chat");
                 chatPage.secretChatDetails = secretChat;
                 updateChatPartnerStatusText();
+                chatPage.isSecretChatReady = chatPage.secretChatDetails.state["@type"] === "secretChatStateReady";
             }
         }
         onSecretChatUpdated: {
@@ -435,6 +441,7 @@ Page {
                 Debug.log("[ChatPage] Detailed information about this secret chat was updated");
                 chatPage.secretChatDetails = secretChat;
                 updateChatPartnerStatusText();
+                chatPage.isSecretChatReady = chatPage.secretChatDetails.state["@type"] === "secretChatStateReady";
             }
         }
     }
@@ -534,7 +541,7 @@ Page {
     Timer {
         id: chatContactTimeUpdater
         interval: 60000
-        running: isPrivateChat
+        running: isPrivateChat || isSecretChat
         repeat: true
         onTriggered: {
             updateChatPartnerStatusText();
@@ -686,7 +693,7 @@ Page {
                         id: chatNameText
                         width: Math.min(implicitWidth, parent.width)
                         anchors.right: parent.right
-                        text: chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, font.pixelSize) : qsTr("Unknown")
+                        text: chatInformation.title !== "" ? Emoji.emojify((chatPage.isSecretChat ? "🔒 " : "" ) + chatInformation.title, font.pixelSize) : qsTr("Unknown")
                         textFormat: Text.StyledText
                         font.pixelSize: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
                         font.family: Theme.fontFamilyHeading
@@ -908,8 +915,9 @@ Page {
                     VerticalScrollDecorator {}
 
                     ViewPlaceholder {
+                        id: chatViewPlaceholder
                         enabled: chatView.count === 0
-                        text: qsTr("This chat is empty.")
+                        text: (chatPage.isSecretChat && !chatPage.isSecretChatReady) ? qsTr("This secret chat is not yet ready. Your chat partner needs to go online first.") : qsTr("This chat is empty.")
                     }
                 }
 
@@ -1103,7 +1111,7 @@ Page {
                         }
                     }
                     IconButton {
-                        visible: !chatPage.isPrivateChat && chatPage.hasSendPrivilege("can_send_polls")
+                        visible: !(chatPage.isPrivateChat || chatPage.isSecretChat) && chatPage.hasSendPrivilege("can_send_polls")
                         icon.source: "image://theme/icon-m-question"
                         onClicked: {
                             pageStack.push(Qt.resolvedUrl("../pages/PollCreationPage.qml"), { "chatId" : chatInformation.id, groupName: chatInformation.title});
@@ -1383,7 +1391,7 @@ Page {
                                 verticalCenter: parent.verticalCenter
                             }
                             visible: selectedMessages.every(function(message){
-                                return message.can_be_forwarded
+                                return message.can_be_forwarded && !chatPage.isSecretChat
                             })
                             width: visible ? Theme.itemSizeMedium : 0
                             icon.source: "image://theme/icon-m-forward"

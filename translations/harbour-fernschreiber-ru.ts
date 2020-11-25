@@ -389,6 +389,10 @@
             <numerusform></numerusform>
         </translation>
     </message>
+    <message>
+        <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -927,15 +931,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Search a contact</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Loading contacts...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search a contact...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1672,10 +1676,6 @@
     </message>
     <message>
         <source>Pending acknowledgement</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ready to use</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

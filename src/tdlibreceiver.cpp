@@ -530,8 +530,7 @@ void TDLibReceiver::nop(const QVariantMap &)
 void TDLibReceiver::processSecretChat(const QVariantMap &receivedInformation)
 {
     LOG("Received a secret chat");
-    QVariantMap discoveredSecretChat = receivedInformation.value(SECRET_CHAT).toMap();
-    emit secretChat(discoveredSecretChat.value(ID).toString(), discoveredSecretChat);
+    emit secretChat(receivedInformation.value(ID).toString(), receivedInformation);
 }
 
 void TDLibReceiver::processUpdateSecretChat(const QVariantMap &receivedInformation)

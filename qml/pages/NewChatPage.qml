@@ -69,7 +69,7 @@ Page {
                     SearchField {
                         id: contactsSearchField
                         width: parent.width
-                        placeholderText: qsTr("Search a contact")
+                        placeholderText: qsTr("Search a contact...")
                         active: !newChatPage.isLoading
                         onTextChanged: contactsModel.applyFilter(text);
                         EnterKey.iconSource: "image://theme/icon-m-enter-close"

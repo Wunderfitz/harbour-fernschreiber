@@ -379,6 +379,10 @@
             <numerusform>%1 online</numerusform>
         </translation>
     </message>
+    <message>
+        <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
+        <translation>Dieser geheime Chat ist noch nicht bereit. Ihr Chatpartner muss erst noch online gehen.</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -921,8 +925,8 @@
         <translation>Ende-zu-Ende-verschlüsselt, nur auf diesem Gerät zugreifbar</translation>
     </message>
     <message>
-        <source>Search a contact</source>
-        <translation>Suchen Sie einen Kontakt</translation>
+        <source>Search a contact...</source>
+        <translation>Einen Kontakt suchen...</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
@@ -1654,10 +1658,6 @@
     <message>
         <source>Pending acknowledgement</source>
         <translation>Ausstehende Bestätigung</translation>
-    </message>
-    <message>
-        <source>Ready to use</source>
-        <translation>Einsatzbereit</translation>
     </message>
 </context>
 </TS>
