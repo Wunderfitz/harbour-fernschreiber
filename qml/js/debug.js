@@ -27,7 +27,11 @@ var timeEnd = enabled ? console.timeEnd : function(){};
 var trace = enabled ? console.trace : function(){};
 var count = enabled ? console.count : function(){};
 var profile = enabled ? console.profile : function(){};
+var profileEnd = enabled ? console.profileEnd : function(){};
 var exception = enabled ? console.exception : function(){};
+var warn = enabled ? console.warn: function(){};
+// Debug.error is always enabled.
+var error = console.error;
 
 Fernschreiber.DebugLog.enabledChanged.connect(function() {
     enabled = Fernschreiber.DebugLog.enabled;
@@ -39,9 +43,10 @@ Fernschreiber.DebugLog.enabledChanged.connect(function() {
         trace = console.trace;
         count = console.count;
         profile = console.profile;
+        profileEnd = console.profileEnd;
         exception = console.exception;
     } else {
-        log = assert = time = timeEnd = trace = count = profile = exception = function(){};
+        log = assert = time = timeEnd = trace = count = profile = profileEnd = exception = warn = function(){};
     }
 
 });

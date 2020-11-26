@@ -29,89 +29,72 @@ function setGlobals(globals) {
 }
 
 function getUserName(userInformation) {
-    var firstName = typeof userInformation.first_name !== "undefined" ? userInformation.first_name : "";
-    var lastName = typeof userInformation.last_name !== "undefined" ? userInformation.last_name : "";
-    return (firstName + " " + lastName).trim();
+    return ((userInformation.first_name || "") + " " + (userInformation.last_name || "")).trim();
 }
 
 function getMessageText(message, simple, myself, ignoreEntities) {
-    if (message.content['@type'] === 'messageText') {
+    switch(message.content['@type']) {
+    case 'messageText':
         if (simple) {
             return message.content.text.text;
         } else {
             return enhanceMessageText(message.content.text, ignoreEntities);
         }
-    }
-    if (message.content['@type'] === 'messageSticker') {
+    case 'messageSticker':
         return simple ? qsTr("Sticker: %1").arg(message.content.sticker.emoji) : "";
-    }
-    if (message.content['@type'] === 'messagePhoto') {
+    case 'messagePhoto':
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Picture: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
             return simple ? (myself ? qsTr("sent a picture", "myself") : qsTr("sent a picture")) : "";
         }
-    }
-    if (message.content['@type'] === 'messageVideo') {
+    case 'messageVideo':
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Video: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
             return simple ? (myself ? qsTr("sent a video", "myself") : qsTr("sent a video")) : "";
         }
-    }
-    if (message.content['@type'] === 'messageVideoNote') {
+    case 'messageVideoNote':
         return simple ? (myself ? qsTr("sent a video note", "myself") : qsTr("sent a video note")) : "";
-    }
-    if (message.content['@type'] === 'messageAnimation') {
+    case 'messageAnimation':
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Animation: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
             return simple ? (myself ? qsTr("sent an animation", "myself") : qsTr("sent an animation")) : "";
         }
-    }
-    if (message.content['@type'] === 'messageAudio') {
+    case 'messageAudio':
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Audio: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
             return simple ? (myself ? qsTr("sent an audio", "myself") : qsTr("sent an audio")) : "";
         }
-    }
-    if (message.content['@type'] === 'messageVoiceNote') {
+    case 'messageVoiceNote':
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Voice Note: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
             return simple ? (myself ? qsTr("sent a voice note", "myself") : qsTr("sent a voice note")) : "";
         }
-    }
-    if (message.content['@type'] === 'messageDocument') {
+    case 'messageDocument':
         if (message.content.document.file_name !== "") {
             return simple ? qsTr("Document: %1").arg(message.content.document.file_name) : (message.content.document.file_name + ( message.content.caption.text !== "" ? ("<br />" + enhanceMessageText(message.content.caption, ignoreEntities) ) : "")).trim();
         } else {
             return simple ? (myself ? qsTr("sent a document", "myself") : qsTr("sent a document")) : "";
         }
-    }
-    if (message.content['@type'] === 'messageLocation') {
+    case 'messageLocation':
         return simple ? (myself ? qsTr("sent a location", "myself") : qsTr("sent a location")) : "";
-    }
-    if (message.content['@type'] === 'messageVenue') {
+    case 'messageVenue':
         return simple ? (myself ? qsTr("sent a venue", "myself") : qsTr("sent a venue")) : ( "<b>" + message.content.venue.title + "</b>, " + message.content.venue.address );
-    }
-    if (message.content['@type'] === 'messageContactRegistered') {
+    case 'messageContactRegistered':
         return myself ? qsTr("have registered with Telegram") : qsTr("has registered with Telegram");
-    }
-    if (message.content['@type'] === 'messageChatJoinByLink') {
+    case 'messageChatJoinByLink':
         return myself ? qsTr("joined this chat", "myself") : qsTr("joined this chat");
-    }
-    if (message.content['@type'] === 'messageChatAddMembers') {
+    case 'messageChatAddMembers':
         return myself ? qsTr("were added to this chat", "myself") : qsTr("was added to this chat");
-    }
-    if (message.content['@type'] === 'messageChatDeleteMember') {
+    case 'messageChatDeleteMember':
         return myself ? qsTr("left this chat", "myself") : qsTr("left this chat");
-    }
-    if (message.content['@type'] === 'messageChatChangeTitle') {
+    case 'messageChatChangeTitle':
         return myself ? qsTr("changed the chat title to %1", "myself").arg(message.content.title) : qsTr("changed the chat title to %1").arg(message.content.title);
-    }
-    if (message.content['@type'] === 'messagePoll') {
+    case 'messagePoll':
         if (message.content.poll.type['@type'] === "pollTypeQuiz") {
             if (message.content.poll.is_anonymous) {
                 return simple ? (myself ? qsTr("sent an anonymous quiz", "myself") : qsTr("sent an anonymous quiz")) : ("<b>" + qsTr("Anonymous Quiz") + "</b>");
@@ -122,43 +105,33 @@ function getMessageText(message, simple, myself, ignoreEntities) {
             return simple ? (myself ? qsTr("sent an anonymous poll", "myself") : qsTr("sent an anonymous poll")) : ("<b>" + qsTr("Anonymous Poll") + "</b>");
         }
         return simple ? (myself ? qsTr("sent a poll", "myself") : qsTr("sent a poll")) : ("<b>" + qsTr("Poll") + "</b>");
-    }
-    if (message.content['@type'] === 'messageBasicGroupChatCreate' || message.content['@type'] === 'messageSupergroupChatCreate') {
+    case 'messageBasicGroupChatCreate':
+    case 'messageSupergroupChatCreate':
         return myself ? qsTr("created this group", "myself") : qsTr("created this group");
-    }
-    if (message.content['@type'] === 'messageChatChangePhoto') {
+    case 'messageChatChangePhoto':
         return myself ? qsTr("changed the chat photo", "myself") : qsTr("changed the chat photo");
-    }
-    if (message.content['@type'] === 'messageChatDeletePhoto') {
+    case 'messageChatDeletePhoto':
         return myself ? qsTr("deleted the chat photo", "myself") : qsTr("deleted the chat photo");
-    }
-    if (message.content['@type'] === 'messageChatSetTtl') {
+    case 'messageChatSetTtl':
         return myself ? qsTr("changed the secret chat TTL setting", "myself; TTL = Time To Live") : qsTr("changed the secret chat TTL setting", "TTL = Time To Live");
-    }
-
-    if (message.content['@type'] === 'messageChatUpgradeFrom' || message.content['@type'] === 'messageChatUpgradeTo' ) {
+    case 'messageChatUpgradeFrom':
+    case 'messageChatUpgradeTo':
         return myself ? qsTr("upgraded this group to a supergroup", "myself") : qsTr("upgraded this group to a supergroup");
-    }
-    if (message.content['@type'] === 'messageCustomServiceAction') {
+    case 'messageCustomServiceAction':
         return message.content.text;
-    }
-    if (message.content['@type'] === 'messagePinMessage') {
+    case 'messagePinMessage':
         return myself ? qsTr("changed the pinned message", "myself") : qsTr("changed the pinned message");
-    }
-    if (message.content['@type'] === 'messageExpiredPhoto') {
+    case 'messageExpiredPhoto':
         return myself ? qsTr("sent a self-destructing photo that is expired", "myself") : qsTr("sent a self-destructing photo that is expired");
-    }
-    if (message.content['@type'] === 'messageExpiredVideo') {
+    case 'messageExpiredVideo':
         return myself ? qsTr("sent a self-destructing video that is expired", "myself") : qsTr("sent a self-destructing video that is expired");
-    }
-    if (message.content['@type'] === 'messageScreenshotTaken') {
+    case 'messageScreenshotTaken':
         return myself ? qsTr("created a screenshot in this chat", "myself") : qsTr("created a screenshot in this chat");
-    }
-    if (message.content['@type'] === 'messageUnsupported') {
+    case 'messageUnsupported':
         return myself ? qsTr("sent an unsupported message", "myself") : qsTr("sent an unsupported message");
+    default:
+        return myself ? qsTr("sent an unsupported message: %1", "myself; %1 is message type").arg(message.content['@type'].substring(7)) : qsTr("sent an unsupported message: %1", "%1 is message type").arg(message.content['@type'].substring(7));
     }
-
-    return myself ? qsTr("sent an unsupported message: %1", "myself; %1 is message type").arg(message.content['@type'].substring(7)) : qsTr("sent an unsupported message: %1", "%1 is message type").arg(message.content['@type'].substring(7));
 }
 
 function getChatPartnerStatusText(statusType, was_online) {
@@ -190,7 +163,6 @@ function getSecretChatStatus(secretChatDetails) {
 }
 
 function getChatMemberStatusText(statusType) {
-//    chatMemberStatusAdministrator, chatMemberStatusBanned, chatMemberStatusCreator, chatMemberStatusLeft, chatMemberStatusMember, and chatMemberStatusRestricted.
     switch(statusType) {
     case "chatMemberStatusAdministrator":
         return qsTr("Admin", "channel user role");
@@ -225,128 +197,136 @@ function getDateTimeTranslated(timestamp) {
     return new Date(timestamp * 1000).toLocaleString();
 }
 
-function MessageInsertion(offset, insertionString, removeLength) {
-    this.offset = offset;
-    this.insertionString = insertionString;
-    this.removeLength = removeLength;
-}
-
-MessageInsertion.prototype.toString = function insertionToString() {
-    return "Offset: " + this.offset + ", Insertion String: " + this.insertionString + ", Remove Length: " + this.removeLength;
-}
-
 function handleHtmlEntity(messageText, messageInsertions, originalString, replacementString) {
-    var continueSearch = true;
-    var fromIndex = 0;
-    var nextIndex = 0;
-    while (continueSearch) {
-        nextIndex = messageText.indexOf(originalString, fromIndex);
-        if (nextIndex < 0) {
-            continueSearch = false;
-        } else {
-            messageInsertions.push(new MessageInsertion(nextIndex, replacementString, originalString.length));
-            fromIndex = nextIndex + 1;
-        }
+    var nextIndex = -1;
+    while ((nextIndex = messageText.indexOf(originalString, nextIndex + 1)) > -1) {
+        messageInsertions.push({ offset: nextIndex, insertionString: replacementString, removeLength: originalString.length });
     }
 }
+
+var rawNewLineRegExp = /\r?\n/g;
+var ampRegExp = /&/g;
+var ltRegExp = /</g;
+var gtRegExp = />/g;
 
 function enhanceHtmlEntities(simpleText) {
-
-    var messageInsertions = [];
-    var messageText = simpleText;
-
-    handleHtmlEntity(messageText, messageInsertions, "&", "&amp;");
-    handleHtmlEntity(messageText, messageInsertions, "<", "&lt;");
-    handleHtmlEntity(messageText, messageInsertions, ">", "&gt;");
-
-    messageInsertions.sort( function(a, b) { return (b.offset+b.removeLength) - (a.offset+a.removeLength) } );
-
-    for (var z = 0; z < messageInsertions.length; z++) {
-        messageText = messageText.substring(0, messageInsertions[z].offset) + messageInsertions[z].insertionString + messageText.substring(messageInsertions[z].offset + messageInsertions[z].removeLength);
-    }
-
-    return messageText;
-
+    return simpleText.replace(ampRegExp, "&amp;").replace(ltRegExp, "&lt;").replace(gtRegExp, "&gt;");//.replace(rawNewLineRegExp, "<br>");
 }
+
+
+function messageInsertionSorter(a, b) { return (b.offset+b.removeLength) - (a.offset+a.removeLength) }
 
 function enhanceMessageText(formattedText, ignoreEntities) {
 
     var messageInsertions = [];
     var messageText = formattedText.text;
-
+    var entity;
     if (ignoreEntities) {
         return messageText;
+    }
+    if(formattedText.entities.length === 0) {
+        return messageText.replace(ampRegExp, "&amp;").replace(ltRegExp, "&lt;").replace(gtRegExp, "&gt;").replace(rawNewLineRegExp, "<br>");
+    }
+
+    for (var i = 0; i < formattedText.entities.length; i++) {
+        entity = formattedText.entities[i];
+        if (entity['@type'] !== "textEntity") {
+            continue;
+        }
+        switch(entity.type['@type']) {
+            case "textEntityTypeBold":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<b>", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</b>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypeUrl":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<a href=\"" + messageText.substring(entity.offset, ( entity.offset + entity.length )) + "\">", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</a>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypeCode":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<pre>", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</pre>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypeEmailAddress":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<a href=\"mailto:" + messageText.substring(entity.offset, ( entity.offset + entity.length )) + "\">", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</a>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypeItalic":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<i>", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</i>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypeMention":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<a href=\"user://" + messageText.substring(entity.offset, ( entity.offset + entity.length )) + "\">", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</a>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypeMentionName":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<a href=\"userId://" + entity.type.user_id + "\">", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</a>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypePhoneNumber":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<a href=\"tel:" + messageText.substring(entity.offset, ( entity.offset + entity.length )) + "\">", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</a>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypePre":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<pre>", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</pre>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypePreCode":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<pre>", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</pre>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypeTextUrl":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<a href=\"" + entity.type.url + "\">", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</a>", removeLength: 0 }
+                );
+            break;
+            case "textEntityTypeUnderline":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<u>", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</u>", removeLength: 0 }
+                );
+            break;
+        }
+    }
+
+    if(messageInsertions.length === 0) {
+        return messageText.replace(ampRegExp, "&amp;").replace(ltRegExp, "&lt;").replace(gtRegExp, "&gt;").replace(rawNewLineRegExp, "<br>");
     }
 
     handleHtmlEntity(messageText, messageInsertions, "&", "&amp;");
     handleHtmlEntity(messageText, messageInsertions, "<", "&lt;");
     handleHtmlEntity(messageText, messageInsertions, ">", "&gt;");
-
-    for (var i = 0; i < formattedText.entities.length; i++) {
-        if (formattedText.entities[i]['@type'] !== "textEntity") {
-            continue;
-        }
-        var entityType = formattedText.entities[i].type['@type'];
-        if (entityType === "textEntityTypeBold") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<b>", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</b>", 0 ));
-        }
-        if (entityType === "textEntityTypeUrl") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
-        }
-        if (entityType === "textEntityTypeCode") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>", 0 ));
-        }
-        if (entityType === "textEntityTypeEmailAddress") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"mailto:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
-        }
-        if (entityType === "textEntityTypeItalic") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<i>", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</i>", 0 ));
-        }
-        if (entityType === "textEntityTypeMention") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"user://" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
-        }
-        if (entityType === "textEntityTypeMentionName") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"userId://" + formattedText.entities[i].type.user_id + "\">", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
-        }
-        if (entityType === "textEntityTypePhoneNumber") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"tel:" + messageText.substring(formattedText.entities[i].offset, ( formattedText.entities[i].offset + formattedText.entities[i].length )) + "\">", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
-        }
-        if (entityType === "textEntityTypePre") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>", 0 ));
-        }
-        if (entityType === "textEntityTypePreCode") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<pre>", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</pre>", 0 ));
-        }
-        if (entityType === "textEntityTypeTextUrl") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<a href=\"" + formattedText.entities[i].type.url + "\">", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</a>", 0 ));
-        }
-        if (entityType === "textEntityTypeUnderline") {
-            messageInsertions.push(new MessageInsertion(formattedText.entities[i].offset, "<u>", 0 ));
-            messageInsertions.push(new MessageInsertion((formattedText.entities[i].offset + formattedText.entities[i].length), "</u>", 0 ));
-        }
-    }
-
-    messageInsertions.sort( function(a, b) { return (b.offset+b.removeLength) - (a.offset+a.removeLength) } );
+    messageInsertions.sort(messageInsertionSorter);
 
     for (var z = 0; z < messageInsertions.length; z++) {
-        messageText = messageText.substring(0, messageInsertions[z].offset) + messageInsertions[z].insertionString + messageText.substring(messageInsertions[z].offset + messageInsertions[z].removeLength);
+        messageText = messageText.substring(0, messageInsertions[z].offset)
+         + messageInsertions[z].insertionString
+         + messageText.substring(messageInsertions[z].offset + messageInsertions[z].removeLength);
     }
 
-    messageText = messageText.replace(new RegExp("\r?\n", "g"), "<br>");
+    messageText = messageText.replace(rawNewLineRegExp, "<br>");
 
     return messageText;
-
 }
 
 function handleLink(link) {
@@ -467,4 +447,82 @@ function getMessagesNeededForwardPermissions(messages) {
         }
     }
     return neededPermissions
+}
+
+/**
+ * @function compareAndRepeat
+ * This function compares results of two functions for multiple sets of arguments and then repeats  those calls to compare them with profiling.
+ * Testing showed that results are slightly skewed in favor of the secondaryProfileFunction, which (together with external factors)
+ * is almost compensated by running the calls often.
+ *
+ * @param {string} title - used for Debug output
+ * @param {function} profileFunction - function to compare
+ * @param {function} [secondaryProfileFunction] - secondary function to compare. Use falsy value to skip comparison.
+ * @param {Array.<Array.<*>>} [functionArgumentsArray = []] - argument sets to run both functions with
+ * @param {number} [testCount = 10000] - times to run each function in addition to result comparison
+ * @param {Object} [testContext = null] - If the functions use `this` or otherwise depend on a Closure/Execution context, it can be set here. If they, for example, use properties of a QML `Item`, you can use that `Item` as `testContext`.
+ *
+ * @example
+ * // to compare the results of Debug.log("first", "second", "third")
+ * // and Debug.log("some value")
+ * // with the same calls of console.log and run 100 times each:
+ * Functions.compareBenchmark("Debuglog",
+ *   Debug.log, console.log,
+ *   [["first", "second", "third"], ["some value"]],
+ *   100
+ * );
+ *
+*/
+
+function compareAndRepeat(title, profileFunction, secondaryProfileFunction, functionArgumentsArray, testCount, testContext) {
+    if(!Debug.enabled) {
+        Debug.log("Debugging disabled, compareAndRepeat ran uselessly:", title);
+        return;
+    }
+    var numberOfTests = testCount || 10000,
+    context = testContext || null,
+    args = functionArgumentsArray || [],
+    argumentIterator  = args.length || 1,
+    results,
+    resultsComparison,
+    functionIterator = numberOfTests;
+
+    if(secondaryProfileFunction) {
+        while(argumentIterator--) {
+            results = JSON.stringify(profileFunction.apply(context, args[argumentIterator] || null));
+            resultsComparison = JSON.stringify(secondaryProfileFunction.apply(context, args[argumentIterator] || null));
+            if(resultsComparison !== results) {
+                Debug.warn("\x1b[1m✘ Different return values!\x1b[0m", title)
+                Debug.warn("profileFunction result:", results);
+                Debug.warn("secondaryProfileFunction result:", resultsComparison);
+                return;
+            }
+        }
+        Debug.log("\x1b[1m✔ Comparison of", title, "return values successful!\x1b[0m")
+    }
+    Debug.log("Running", title, "with", args.length, "different argument sets", numberOfTests, "times each")
+
+    if(secondaryProfileFunction) {
+        // "secondaryProfileFunction"
+        functionIterator = numberOfTests;
+
+        while(functionIterator--) {
+            argumentIterator = args.length || 1;
+            while(argumentIterator--) {
+                secondaryProfileFunction.apply(context, args[argumentIterator] || null);
+            }
+        }
+    }
+
+    // "profileFunction"
+    functionIterator = numberOfTests;
+    while(functionIterator--) {
+        argumentIterator = args.length || 1;
+        while(argumentIterator--) {
+            profileFunction.apply(context, args[argumentIterator] || null);
+        }
+    }
+
+    Debug.log("Ran", title, args.length * numberOfTests, "times", secondaryProfileFunction ? "and compared results successfully" : "");
+
 }
