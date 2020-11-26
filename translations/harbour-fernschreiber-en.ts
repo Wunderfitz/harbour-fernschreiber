@@ -833,6 +833,10 @@
         <source>Use the international format, e.g. %1</source>
         <translation>Use the international format, e.g. %1</translation>
     </message>
+    <message>
+        <source>About Fernschreiber</source>
+        <translation>About Fernschreiber</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -1248,6 +1252,14 @@
     <message>
         <source>Notification turns on the display</source>
         <translation>Notification turns on the display</translation>
+    </message>
+    <message>
+        <source>Storage</source>
+        <translation>Storage</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>Enable storage optimizer</translation>
     </message>
 </context>
 <context>

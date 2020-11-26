@@ -834,6 +834,10 @@
         <source>Use the international format, e.g. %1</source>
         <translation>Käytä kansainvälistä muotoa, esimerkiksi %1</translation>
     </message>
+    <message>
+        <source>About Fernschreiber</source>
+        <translation>Tietoa Fernschreiberista</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -1249,6 +1253,14 @@
     <message>
         <source>Notification turns on the display</source>
         <translation>Ilmoitus kytkee näytön päälle</translation>
+    </message>
+    <message>
+        <source>Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

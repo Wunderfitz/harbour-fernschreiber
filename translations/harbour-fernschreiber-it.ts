@@ -833,6 +833,10 @@
         <source>Loading...</source>
         <translation>Carica...</translation>
     </message>
+    <message>
+        <source>About Fernschreiber</source>
+        <translation>Informazioni su Fernschreiber</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -1248,6 +1252,14 @@
     <message>
         <source>Notification turns on the display</source>
         <translation>Notifiche attivano il display</translation>
+    </message>
+    <message>
+        <source>Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

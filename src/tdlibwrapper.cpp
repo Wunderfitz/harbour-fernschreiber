@@ -40,6 +40,7 @@ namespace {
     const QString LAST_NAME("last_name");
     const QString FIRST_NAME("first_name");
     const QString USERNAME("username");
+    const QString VALUE("value");
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
 }
@@ -119,6 +120,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
     connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
+    connect(this->appSettings, SIGNAL(storageOptimizerChanged()), this, SLOT(handleStorageOptimizerChanged()));
 
     this->tdLibReceiver->start();
 
@@ -482,14 +484,25 @@ void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
 void TDLibWrapper::setOptionInteger(const QString &optionName, int optionValue)
 {
     LOG("Setting integer option" << optionName << optionValue);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "setOption");
-    requestObject.insert("name", optionName);
-    QVariantMap optionValueMap;
-    optionValueMap.insert(_TYPE, "optionValueInteger");
-    optionValueMap.insert("value", optionValue);
-    requestObject.insert("value", optionValueMap);
-    this->sendRequest(requestObject);
+    setOption(optionName, "optionValueInteger", optionValue);
+}
+
+void TDLibWrapper::setOptionBoolean(const QString &optionName, bool optionValue)
+{
+    LOG("Setting boolean option" << optionName << optionValue);
+    setOption(optionName, "optionValueBoolean", optionValue);
+}
+
+void TDLibWrapper::setOption(const QString &name, const QString &type, const QVariant &value)
+{
+    QVariantMap optionValue;
+    optionValue.insert(_TYPE, type);
+    optionValue.insert(VALUE, value);
+    QVariantMap request;
+    request.insert(_TYPE, "setOption");
+    request.insert("name", name);
+    request.insert(VALUE, optionValue);
+    sendRequest(request);
 }
 
 void TDLibWrapper::setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings)
@@ -1177,6 +1190,11 @@ void TDLibWrapper::handleSecretChatUpdated(const QString &secretChatId, const QV
     emit secretChatUpdated(secretChatId, secretChat);
 }
 
+void TDLibWrapper::handleStorageOptimizerChanged()
+{
+    setOptionBoolean("use_storage_optimizer", appSettings->storageOptimizer());
+}
+
 void TDLibWrapper::setInitialParameters()
 {
     LOG("Sending initial parameters to TD Lib");
@@ -1195,6 +1213,7 @@ void TDLibWrapper::setInitialParameters()
     initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     initialParameters.insert("system_version", QSysInfo::prettyProductName());
     initialParameters.insert("application_version", "0.5");
+    initialParameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
     // initialParameters.insert("use_test_dc", true);
     requestObject.insert("parameters", initialParameters);
     this->sendRequest(requestObject);

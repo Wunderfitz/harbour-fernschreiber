@@ -823,6 +823,10 @@
         <source>Use the international format, e.g. %1</source>
         <translation>请使用国际区号格式，例如 %1</translation>
     </message>
+    <message>
+        <source>About Fernschreiber</source>
+        <translation>关于 Fernschreiber</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -1229,6 +1233,14 @@
     <message>
         <source>Notification turns on the display</source>
         <translation>收到通知时点亮屏幕</translation>
+    </message>
+    <message>
+        <source>Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
