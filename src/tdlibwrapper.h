@@ -175,6 +175,7 @@ public:
     Q_INVOKABLE void getDeepLinkInfo(const QString &link);
     Q_INVOKABLE void getContacts();
     Q_INVOKABLE void getSecretChat(const QString &secretChatId);
+    Q_INVOKABLE void closeSecretChat(const QString &secretChatId);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);

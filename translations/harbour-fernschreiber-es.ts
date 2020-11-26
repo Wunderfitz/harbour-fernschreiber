@@ -373,6 +373,14 @@
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Closing chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

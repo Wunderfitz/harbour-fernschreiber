@@ -833,6 +833,15 @@ void TDLibWrapper::getSecretChat(const QString &secretChatId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::closeSecretChat(const QString &secretChatId)
+{
+    LOG("Closing secret chat" << secretChatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "closeSecretChat");
+    requestObject.insert("secret_chat_id", secretChatId);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);

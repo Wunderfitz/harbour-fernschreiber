@@ -578,6 +578,19 @@ Page {
         PullDownMenu {
             visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !messageOverlayLoader.active
             MenuItem {
+                id: closeSecretChatMenuItem
+                visible: chatPage.isSecretChat && chatPage.secretChatDetails.state["@type"] !== "secretChatStateClosed"
+                onClicked: {
+                    var remorse = Remorse.popupAction(appWindow, qsTr("Closing chat"), (function(secretChatId) {
+                        return function() {
+                            tdLibWrapper.closeSecretChat(secretChatId);
+                        };
+                    }(chatPage.secretChatDetails.id)))
+                }
+                text: qsTr("Close Chat")
+            }
+
+            MenuItem {
                 id: joinLeaveChatMenuItem
                 visible: (chatPage.isSuperGroup || chatPage.isBasicGroup) && chatGroupInformation && chatGroupInformation.status["@type"] !== "chatMemberStatusBanned"
                 onClicked: {

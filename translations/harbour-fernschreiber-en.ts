@@ -383,6 +383,14 @@
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
         <translation>This secret chat is not yet ready. Your chat partner needs to go online first.</translation>
     </message>
+    <message>
+        <source>Closing chat</source>
+        <translation>Closing chat</translation>
+    </message>
+    <message>
+        <source>Close Chat</source>
+        <translation>Close Chat</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
