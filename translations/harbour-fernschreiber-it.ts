@@ -825,6 +825,10 @@
         <source>Loading...</source>
         <translation>Carica...</translation>
     </message>
+    <message>
+        <source>About Fernschreiber</source>
+        <translation>Informazioni su Fernschreiber</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
