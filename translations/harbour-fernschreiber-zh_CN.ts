@@ -815,6 +815,10 @@
         <source>Use the international format, e.g. %1</source>
         <translation>请使用国际区号格式，例如 %1</translation>
     </message>
+    <message>
+        <source>About Fernschreiber</source>
+        <translation>关于 Fernschreiber</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>

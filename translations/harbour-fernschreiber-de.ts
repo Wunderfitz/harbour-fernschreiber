@@ -825,6 +825,10 @@
         <source>Use the international format, e.g. %1</source>
         <translation>Nutzen Sie das internationale Format, z.B. %1</translation>
     </message>
+    <message>
+        <source>About Fernschreiber</source>
+        <translation>Über Fernschreiber</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>

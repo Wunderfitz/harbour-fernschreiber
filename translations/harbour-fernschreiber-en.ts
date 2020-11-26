@@ -825,6 +825,10 @@
         <source>Use the international format, e.g. %1</source>
         <translation>Use the international format, e.g. %1</translation>
     </message>
+    <message>
+        <source>About Fernschreiber</source>
+        <translation>About Fernschreiber</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -869,7 +873,7 @@
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Pin Message</translation>
     </message>
 </context>
 <context>
@@ -883,11 +887,11 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">You</translation>
+        <translation>You</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>This message was forwarded. Original author: %1</translation>
     </message>
 </context>
 <context>
@@ -947,15 +951,15 @@
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">You</translation>
+        <translation>You</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Pinned Message</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished"></translation>
+        <translation>Message unpinned</translation>
     </message>
 </context>
 <context>
@@ -1200,7 +1204,7 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation type="unfinished"></translation>
+        <translation>Notification turns on the display</translation>
     </message>
 </context>
 <context>
