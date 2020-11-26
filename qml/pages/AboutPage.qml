@@ -166,7 +166,7 @@ Page {
                             x: Theme.horizontalPageMargin
                             width: parent.width  - ( 2 * Theme.horizontalPageMargin )
                             horizontalAlignment: Text.AlignHCenter
-                            text: qsTr("Logged in as %1").arg(Emoji.emojify(aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name + typeof aboutPage.userInformation + JSON.stringify(aboutPage.userInformation), Theme.fontSizeSmall))
+                            text: qsTr("Logged in as %1").arg(Emoji.emojify(aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name, Theme.fontSizeSmall))
                             font.pixelSize: Theme.fontSizeSmall
                             wrapMode: Text.Wrap
                             color: Theme.primaryColor
