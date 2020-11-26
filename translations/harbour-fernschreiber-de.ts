@@ -1206,6 +1206,14 @@
         <source>Notification turns on the display</source>
         <translation>Hinweis schaltet den Bildschirm an</translation>
     </message>
+    <message>
+        <source>Storage</source>
+        <translation>Speicher</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>Speicheroptimierer einschalten</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

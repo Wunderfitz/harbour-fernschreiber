@@ -1207,6 +1207,14 @@
         <source>Notification turns on the display</source>
         <translation>Ilmoitus kytkee näytön päälle</translation>
     </message>
+    <message>
+        <source>Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
