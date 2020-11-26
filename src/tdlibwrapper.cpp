@@ -116,6 +116,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString)), this, SIGNAL(errorReceived(int, QString)));
+    connect(this->tdLibReceiver, SIGNAL(contactsImported(QVariantList, QVariantList)), this, SIGNAL(contactsImported(QVariantList, QVariantList)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
@@ -839,6 +840,15 @@ void TDLibWrapper::closeSecretChat(const QString &secretChatId)
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "closeSecretChat");
     requestObject.insert("secret_chat_id", secretChatId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::importContacts(const QVariantList &contacts)
+{
+    LOG("Importing contacts");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "importContacts");
+    requestObject.insert("contacts", contacts);
     this->sendRequest(requestObject);
 }
 

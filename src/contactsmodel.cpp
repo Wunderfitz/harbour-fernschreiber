@@ -38,8 +38,17 @@ ContactsModel::ContactsModel(TDLibWrapper *tdLibWrapper, QObject *parent)
     : QAbstractListModel(parent)
 {
     this->tdLibWrapper = tdLibWrapper;
-
     connect(this->tdLibWrapper, SIGNAL(usersReceived(QString, QVariantList, int)), this, SLOT(handleUsersReceived(QString, QVariantList, int)));
+
+    this->deviceContactsDatabase = QSqlDatabase::addDatabase("QSQLITE", "contacts");
+    this->deviceContactsDatabase.setDatabaseName(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.local/share/system/Contacts/qtcontacts-sqlite/contacts.db");
+    if (this->deviceContactsDatabase.open()) {
+        LOG("Device's contacts database successfully opened :)");
+        this->canUseDeviceContacts = true;
+    } else {
+        LOG("Error opening device's contacts database :(");
+        this->canUseDeviceContacts = false;
+    }
 }
 
 int ContactsModel::rowCount(const QModelIndex &) const
@@ -142,4 +151,37 @@ void ContactsModel::applyFilter(const QString &filter)
         }
     }
     endResetModel();
+}
+
+void ContactsModel::synchronizeContacts()
+{
+    LOG("Synchronizing device contacts");
+    QVariantList deviceContacts;
+    QSqlQuery databaseQuery(this->deviceContactsDatabase);
+    databaseQuery.prepare("select distinct c.contactId, c.firstName, c.lastName, n.phoneNumber from Contacts as c inner join PhoneNumbers as n on c.contactId = n.contactId where n.phoneNumber is not null and ( c.firstName is not null or c.lastName is not null );");
+    if (databaseQuery.exec()) {
+        LOG("Device contacts successfully selected from database!");
+        while (databaseQuery.next()) {
+            QVariantMap singleContact;
+            singleContact.insert("first_name", databaseQuery.value(1).toString());
+            singleContact.insert("last_name", databaseQuery.value(2).toString());
+            singleContact.insert("phone_number", databaseQuery.value(3).toString());
+            deviceContacts.append(singleContact);
+            LOG("Found contact" << singleContact.value("first_name").toString() << singleContact.value("last_name").toString() << singleContact.value("phone_number").toString());
+        }
+        if (!deviceContacts.isEmpty()) {
+            LOG("Importing found contacts" << deviceContacts.size());
+            this->tdLibWrapper->importContacts(deviceContacts);
+        }
+        emit contactsSynchronized();
+    } else {
+        LOG("Error selecting contacts from database!");
+        emit errorSynchronizingContacts();
+    }
+
+}
+
+bool ContactsModel::canSynchronizeContacts()
+{
+    return this->canUseDeviceContacts;
 }

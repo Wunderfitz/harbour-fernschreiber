@@ -28,23 +28,55 @@ Page {
 
     property bool isLoading: true;
 
-    onStatusChanged: {
-        if (status === PageStatus.Active) {
-            contactsModel.hydrateContacts();
-            contactsListView.model = contactsModel;
-            newChatPage.isLoading = false;
-        }
-    }
-
     function resetFocus() {
         contactsSearchField.focus = false;
         newChatPage.focus = true;
+    }
+
+    function reloadContacts() {
+        contactsModel.hydrateContacts();
+        contactsListView.model = contactsModel;
+        newChatPage.isLoading = false;
+    }
+
+
+    onStatusChanged: {
+        if (status === PageStatus.Active) {
+            reloadContacts();
+        }
+    }
+
+    Connections {
+        target: contactsModel
+        onErrorSynchronizingContacts: {
+            reloadContacts();
+            appNotification.show(qsTr("Could not synchronize your contacts with Telegram."));
+        }
+    }
+
+    Connections {
+        target: tdLibWrapper
+        onContactsImported: {
+            reloadContacts();
+            appNotification.show(qsTr("Contacts successfully synchronized with Telegram."));
+        }
     }
 
     SilicaFlickable {
         id: newChatContainer
         contentHeight: newChatPage.height
         anchors.fill: parent
+
+        PullDownMenu {
+            visible: contactsModel.canSynchronizeContacts()
+            MenuItem {
+                onClicked: {
+                    newChatPage.isLoading = true;
+                    contactsModel.synchronizeContacts();
+                }
+                text: qsTr("Synchronize Contacts with Telegram")
+            }
+        }
 
         Column {
             id: newChatPageColumn

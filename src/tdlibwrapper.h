@@ -176,6 +176,7 @@ public:
     Q_INVOKABLE void getContacts();
     Q_INVOKABLE void getSecretChat(const QString &secretChatId);
     Q_INVOKABLE void closeSecretChat(const QString &secretChatId);
+    Q_INVOKABLE void importContacts(const QVariantList &contacts);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -242,6 +243,7 @@ signals:
     void chatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
     void errorReceived(const int code, const QString &message);
+    void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
 
 public slots:
     void handleVersionDetected(const QString &version);

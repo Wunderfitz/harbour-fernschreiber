@@ -22,6 +22,8 @@
 
 #include <QAbstractListModel>
 #include <QVariantList>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 
 #include "tdlibwrapper.h"
 
@@ -36,6 +38,12 @@ public:
 
     Q_INVOKABLE void hydrateContacts();
     Q_INVOKABLE void applyFilter(const QString &filter);
+    Q_INVOKABLE void synchronizeContacts();
+    Q_INVOKABLE bool canSynchronizeContacts();
+
+signals:
+    void contactsSynchronized();
+    void errorSynchronizingContacts();
 
 public slots:
     void handleUsersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
@@ -46,6 +54,8 @@ private:
     QVariantList filteredContacts;
     QList<QString> contactIds;
     QString filter;
+    QSqlDatabase deviceContactsDatabase;
+    bool canUseDeviceContacts;
 };
 
 #endif // CONTACTSMODEL_H

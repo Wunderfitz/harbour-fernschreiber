@@ -325,6 +325,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper) : showHiddenChats(false
     connect(tdLibWrapper, SIGNAL(basicGroupUpdated(qlonglong)), this, SLOT(handleGroupUpdated(qlonglong)));
     connect(tdLibWrapper, SIGNAL(secretChatUpdated(QString, QVariantMap)), this, SLOT(handleSecretChatUpdated(QString, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(secretChatReceived(QString, QVariantMap)), this, SLOT(handleSecretChatUpdated(QString, QVariantMap)));
+    connect(tdLibWrapper, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
 
     // Don't start the timer until we have at least one chat
     relativeTimeRefreshTimer = new QTimer(this);
@@ -777,6 +778,27 @@ void ChatListModel::handleSecretChatUpdated(const QString &secretChatId, const Q
 {
     LOG("Updating visibility of secret chat " << secretChatId);
     updateSecretChatVisibility(secretChat);
+}
+
+void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString &title)
+{
+    qlonglong chatIdLongLong = chatId.toLongLong();
+    if (chatIndexMap.contains(chatIdLongLong)) {
+        LOG("Updating title for" << chatId);
+        const int chatIndex = chatIndexMap.value(chatIdLongLong);
+        ChatData *chat = chatList.at(chatIndex);
+        chat->chatData.insert(TITLE, title);
+        QVector<int> changedRoles;
+        changedRoles.append(ChatData::RoleTitle);
+        const QModelIndex modelIndex(index(chatIndex));
+        emit dataChanged(modelIndex, modelIndex, changedRoles);
+    } else {
+        ChatData *chat = hiddenChats.value(chatId.toLongLong());
+        if (chat) {
+            LOG("Updating title for hidden chat" << chatId);
+            chat->chatData.insert(TITLE, title);
+        }
+    }
 }
 
 void ChatListModel::handleRelativeTimeRefreshTimer()

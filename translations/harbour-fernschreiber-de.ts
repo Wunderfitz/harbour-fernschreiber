@@ -944,6 +944,18 @@
         <source>Loading contacts...</source>
         <translation>Lade Kontakte...</translation>
     </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation>Kontakte mit Telegram synchronisieren</translation>
+    </message>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation>Konnte Ihre Kontakte nicht mit Telegram synchronisieren.</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation>Die Kontakte wurden erfolgreich mit Telegram synchronisiert.</translation>
+    </message>
 </context>
 <context>
     <name>NotificationManager</name>

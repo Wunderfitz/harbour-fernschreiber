@@ -87,6 +87,8 @@ signals:
     void errorReceived(const int code, const QString &message);
     void secretChat(const QString &secretChatId, const QVariantMap &secretChat);
     void secretChatUpdated(const QString &secretChatId, const QVariantMap &secretChat);
+    void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
+
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
 
@@ -148,6 +150,7 @@ private:
     void nop(const QVariantMap &receivedInformation);
     void processSecretChat(const QVariantMap &receivedInformation);
     void processUpdateSecretChat(const QVariantMap &receivedInformation);
+    void processImportedContacts(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

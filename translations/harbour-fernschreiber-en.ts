@@ -944,6 +944,18 @@
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
         <translation>Transport-encrypted, uses Telegram Cloud, sharable across devices</translation>
     </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation>Synchronize Contacts with Telegram</translation>
+    </message>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation>Could not synchronize your contacts with Telegram.</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation>Contacts successfully synchronized with Telegram.</translation>
+    </message>
 </context>
 <context>
     <name>NotificationManager</name>
