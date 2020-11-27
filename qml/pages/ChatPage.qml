@@ -429,7 +429,7 @@ Page {
             }
         }
         onSecretChatReceived: {
-            if (secretChatId === chatInformation.type.secret_chat_id.toString()) {
+            if (secretChatId.toString() === chatInformation.type.secret_chat_id.toString()) {
                 Debug.log("[ChatPage] Received detailed information about this secret chat");
                 chatPage.secretChatDetails = secretChat;
                 updateChatPartnerStatusText();
@@ -437,7 +437,7 @@ Page {
             }
         }
         onSecretChatUpdated: {
-            if (secretChatId === chatInformation.type.secret_chat_id.toString()) {
+            if (secretChatId.toString() === chatInformation.type.secret_chat_id.toString()) {
                 Debug.log("[ChatPage] Detailed information about this secret chat was updated");
                 chatPage.secretChatDetails = secretChat;
                 updateChatPartnerStatusText();

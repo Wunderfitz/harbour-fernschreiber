@@ -109,7 +109,7 @@ public:
     Q_INVOKABLE QVariantMap getBasicGroup(qlonglong groupId) const;
     Q_INVOKABLE QVariantMap getSuperGroup(qlonglong groupId) const;
     Q_INVOKABLE QVariantMap getChat(const QString &chatId);
-    Q_INVOKABLE QVariantMap getSecretChatFromCache(const QString &secretChatId);
+    Q_INVOKABLE QVariantMap getSecretChatFromCache(qlonglong secretChatId);
     Q_INVOKABLE QString getOptionString(const QString &optionName);
     Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
     Q_INVOKABLE void openFileOnDevice(const QString &filePath);
@@ -174,8 +174,8 @@ public:
     Q_INVOKABLE void joinChatByInviteLink(const QString &inviteLink);
     Q_INVOKABLE void getDeepLinkInfo(const QString &link);
     Q_INVOKABLE void getContacts();
-    Q_INVOKABLE void getSecretChat(const QString &secretChatId);
-    Q_INVOKABLE void closeSecretChat(const QString &secretChatId);
+    Q_INVOKABLE void getSecretChat(qlonglong secretChatId);
+    Q_INVOKABLE void closeSecretChat(qlonglong secretChatId);
     Q_INVOKABLE void importContacts(const QVariantList &contacts);
 
     // Others (candidates for extraction ;))
@@ -221,8 +221,8 @@ signals:
     void messagesDeleted(const QString &chatId, const QVariantList &messageIds);
     void chatsReceived(const QVariantMap &chats);
     void chatReceived(const QVariantMap &chat);
-    void secretChatReceived(const QString &secretChatId, const QVariantMap &secretChat);
-    void secretChatUpdated(const QString &secretChatId, const QVariantMap &secretChat);
+    void secretChatReceived(qlonglong secretChatId, const QVariantMap &secretChat);
+    void secretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void recentStickersUpdated(const QVariantList &stickerIds);
     void stickersReceived(const QVariantList &stickers);
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
@@ -262,8 +262,8 @@ public slots:
     void handleStickerSets(const QVariantList &stickerSets);
     void handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList);
     void handleOpenWithChanged();
-    void handleSecretChatReceived(const QString &secretChatId, const QVariantMap &secretChat);
-    void handleSecretChatUpdated(const QString &secretChatId, const QVariantMap &secretChat);
+    void handleSecretChatReceived(qlonglong secretChatId, const QVariantMap &secretChat);
+    void handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void handleStorageOptimizerChanged();
 
 private:
@@ -288,7 +288,7 @@ private:
     QVariantMap allUsers;
     QVariantMap allUserNames;
     QVariantMap chats;
-    QVariantMap secretChats;
+    QMap<qlonglong, QVariantMap> secretChats;
     QVariantMap unreadMessageInformation;
     QVariantMap unreadChatInformation;
     QHash<qlonglong,Group*> basicGroups;

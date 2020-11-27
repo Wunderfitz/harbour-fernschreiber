@@ -95,8 +95,8 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(messagesDeleted(QString, QVariantList)), this, SIGNAL(messagesDeleted(QString, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SIGNAL(chatsReceived(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chat(QVariantMap)), this, SLOT(handleChatReceived(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(secretChat(QString, QVariantMap)), this, SLOT(handleSecretChatReceived(QString, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(secretChatUpdated(QString, QVariantMap)), this, SLOT(handleSecretChatUpdated(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(secretChat(qlonglong, QVariantMap)), this, SLOT(handleSecretChatReceived(qlonglong, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(secretChatUpdated(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SIGNAL(recentStickersUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SIGNAL(stickersReceived(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SIGNAL(installedStickerSetsUpdated(QVariantList)));
@@ -825,7 +825,7 @@ void TDLibWrapper::getContacts()
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getSecretChat(const QString &secretChatId)
+void TDLibWrapper::getSecretChat(qlonglong secretChatId)
 {
     LOG("Getting detailed information about secret chat" << secretChatId);
     QVariantMap requestObject;
@@ -834,7 +834,7 @@ void TDLibWrapper::getSecretChat(const QString &secretChatId)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::closeSecretChat(const QString &secretChatId)
+void TDLibWrapper::closeSecretChat(qlonglong secretChatId)
 {
     LOG("Closing secret chat" << secretChatId);
     QVariantMap requestObject;
@@ -923,9 +923,9 @@ QVariantMap TDLibWrapper::getChat(const QString &chatId)
     return this->chats.value(chatId).toMap();
 }
 
-QVariantMap TDLibWrapper::getSecretChatFromCache(const QString &secretChatId)
+QVariantMap TDLibWrapper::getSecretChatFromCache(qlonglong secretChatId)
 {
-    return this->secretChats.value(secretChatId).toMap();
+    return this->secretChats.value(secretChatId);
 }
 
 QString TDLibWrapper::getOptionString(const QString &optionName)
@@ -1197,13 +1197,13 @@ void TDLibWrapper::handleOpenWithChanged()
     }
 }
 
-void TDLibWrapper::handleSecretChatReceived(const QString &secretChatId, const QVariantMap &secretChat)
+void TDLibWrapper::handleSecretChatReceived(qlonglong secretChatId, const QVariantMap &secretChat)
 {
     this->secretChats.insert(secretChatId, secretChat);
     emit secretChatReceived(secretChatId, secretChat);
 }
 
-void TDLibWrapper::handleSecretChatUpdated(const QString &secretChatId, const QVariantMap &secretChat)
+void TDLibWrapper::handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat)
 {
     this->secretChats.insert(secretChatId, secretChat);
     emit secretChatUpdated(secretChatId, secretChat);

@@ -531,14 +531,14 @@ void TDLibReceiver::nop(const QVariantMap &)
 void TDLibReceiver::processSecretChat(const QVariantMap &receivedInformation)
 {
     LOG("Received a secret chat");
-    emit secretChat(receivedInformation.value(ID).toString(), receivedInformation);
+    emit secretChat(receivedInformation.value(ID).toLongLong(), receivedInformation);
 }
 
 void TDLibReceiver::processUpdateSecretChat(const QVariantMap &receivedInformation)
 {
     LOG("A secret chat was updated");
     QVariantMap updatedSecretChat = receivedInformation.value(SECRET_CHAT).toMap();
-    emit secretChatUpdated(updatedSecretChat.value(ID).toString(), updatedSecretChat);
+    emit secretChatUpdated(updatedSecretChat.value(ID).toLongLong(), updatedSecretChat);
 }
 
 void TDLibReceiver::processImportedContacts(const QVariantMap &receivedInformation)

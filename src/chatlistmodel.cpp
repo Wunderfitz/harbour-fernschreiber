@@ -323,8 +323,8 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper) : showHiddenChats(false
     connect(tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(superGroupUpdated(qlonglong)), this, SLOT(handleGroupUpdated(qlonglong)));
     connect(tdLibWrapper, SIGNAL(basicGroupUpdated(qlonglong)), this, SLOT(handleGroupUpdated(qlonglong)));
-    connect(tdLibWrapper, SIGNAL(secretChatUpdated(QString, QVariantMap)), this, SLOT(handleSecretChatUpdated(QString, QVariantMap)));
-    connect(tdLibWrapper, SIGNAL(secretChatReceived(QString, QVariantMap)), this, SLOT(handleSecretChatUpdated(QString, QVariantMap)));
+    connect(tdLibWrapper, SIGNAL(secretChatUpdated(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
+    connect(tdLibWrapper, SIGNAL(secretChatReceived(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
 
     // Don't start the timer until we have at least one chat
@@ -527,7 +527,7 @@ void ChatListModel::updateSecretChatVisibility(const QVariantMap secretChatDetai
         if (chat->chatType != TDLibWrapper::ChatTypeSecret) {
             continue;
         }
-        if (chat->chatData.value(TYPE).toMap().value(SECRET_CHAT_ID).toString() != secretChatDetails.value(ID).toString()) {
+        if (chat->chatData.value(TYPE).toMap().value(SECRET_CHAT_ID).toLongLong() != secretChatDetails.value(ID).toLongLong()) {
             continue;
         }
         const QVector<int> changedRoles(chat->updateSecretChat(secretChatDetails));
@@ -574,7 +574,7 @@ void ChatListModel::handleChatDiscovered(const QString &, const QVariantMap &cha
     }
 
     if (chat->chatType == TDLibWrapper::ChatTypeSecret) {
-        QVariantMap secretChatDetails = tdLibWrapper->getSecretChatFromCache(chatToBeAdded.value(TYPE).toMap().value(SECRET_CHAT_ID).toString());
+        QVariantMap secretChatDetails = tdLibWrapper->getSecretChatFromCache(chatToBeAdded.value(TYPE).toMap().value(SECRET_CHAT_ID).toLongLong());
         if (!secretChatDetails.isEmpty()) {
             chat->updateSecretChat(secretChatDetails);
         }
@@ -774,7 +774,7 @@ void ChatListModel::handleGroupUpdated(qlonglong groupId)
     updateChatVisibility(tdLibWrapper->getGroup(groupId));
 }
 
-void ChatListModel::handleSecretChatUpdated(const QString &secretChatId, const QVariantMap &secretChat)
+void ChatListModel::handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat)
 {
     LOG("Updating visibility of secret chat " << secretChatId);
     updateSecretChatVisibility(secretChat);
