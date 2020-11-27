@@ -740,6 +740,15 @@
         <source>sent a self-destructing photo that is expired</source>
         <translation>hat ein selbstzerstörendes Bild gesendet, das abgelaufen ist</translation>
     </message>
+    <message>
+        <source>sent an audio</source>
+        <comment>myself</comment>
+        <translation>haben eine Audiodatei gesendet</translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <translation>hat eine Audiodatei gesendet</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>

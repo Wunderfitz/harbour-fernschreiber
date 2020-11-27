@@ -730,6 +730,15 @@
         <source>sent a self-destructing photo that is expired</source>
         <translation>envió un foto autodestructivo que está caducado</translation>
     </message>
+    <message>
+        <source>sent an audio</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió un audio</translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <translation type="unfinished">envió un audio</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>

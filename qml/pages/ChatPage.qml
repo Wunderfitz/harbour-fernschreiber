@@ -1023,7 +1023,7 @@ Page {
                         visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-document"
                         onClicked: {
-                            var picker = pageStack.push("Sailfish.Pickers.DocumentPickerPage");
+                            var picker = pageStack.push("Sailfish.Pickers.FilePickerPage");
                             picker.selectedContentPropertiesChanged.connect(function(){
                                 attachmentOptionsRow.visible = false;
                                 Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
