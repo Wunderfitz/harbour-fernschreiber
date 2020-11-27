@@ -766,6 +766,15 @@
         <source>sent a self-destructing photo that is expired</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>sent an audio</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>

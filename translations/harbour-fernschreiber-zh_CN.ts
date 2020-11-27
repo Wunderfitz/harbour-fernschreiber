@@ -746,6 +746,15 @@
         <source>sent a self-destructing photo that is expired</source>
         <translation>发送过期即自毁视频</translation>
     </message>
+    <message>
+        <source>sent an audio</source>
+        <comment>myself</comment>
+        <translation type="unfinished">发送音频</translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <translation type="unfinished">发送音频</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
