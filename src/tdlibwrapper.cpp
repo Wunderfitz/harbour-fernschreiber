@@ -51,6 +51,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     this->appSettings = appSettings;
     this->mceInterface = mceInterface;
     this->tdLibClient = td_json_client_create();
+    this->authorizationState = AuthorizationState::Closed;
     this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
 
     QString tdLibDatabaseDirectoryPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib";

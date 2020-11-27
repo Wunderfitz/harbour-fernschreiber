@@ -1252,15 +1252,15 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation type="unfinished"></translation>
+        <translation>Habilitar pantalla en notificaciones</translation>
     </message>
     <message>
         <source>Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Almacenamiento</translation>
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Habilitar optimizador de almacenamiento</translation>
     </message>
 </context>
 <context>
