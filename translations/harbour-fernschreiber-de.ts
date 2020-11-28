@@ -179,6 +179,10 @@
             <numerusform>%1 online</numerusform>
         </translation>
     </message>
+    <message>
+        <source>New Secret Chat</source>
+        <translation>Neuer geheimer Chat</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>

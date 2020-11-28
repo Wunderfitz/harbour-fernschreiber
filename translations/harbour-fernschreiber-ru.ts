@@ -182,6 +182,10 @@
             <numerusform></numerusform>
         </translation>
     </message>
+    <message>
+        <source>New Secret Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>

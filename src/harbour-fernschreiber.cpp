@@ -99,6 +99,11 @@ int main(int argc, char *argv[])
 
     ContactsModel contactsModel(tdLibWrapper, view.data());
     context->setContextProperty("contactsModel", &contactsModel);
+    QSortFilterProxyModel contactsProxyModel(view.data());
+    contactsProxyModel.setSourceModel(&contactsModel);
+    contactsProxyModel.setFilterRole(ContactsModel::RoleFilter);
+    contactsProxyModel.setFilterCaseSensitivity(Qt::CaseInsensitive);
+    context->setContextProperty("contactsProxyModel", &contactsProxyModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-fernschreiber.qml"));
     view->show();

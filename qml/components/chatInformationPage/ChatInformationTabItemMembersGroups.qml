@@ -27,15 +27,15 @@ import "../../js/functions.js" as Functions
 
 ChatInformationTabItemBase {
     id: tabBase
-    loadingText:  isPrivateChat ? qsTr("Loading common chats…", "chats you have in common with a user") : qsTr("Loading group members…")
-    loading: ( chatInformationPage.isSuperGroup || chatInformationPage.isPrivateChat) && !chatInformationPage.isChannel
+    loadingText:  (isPrivateChat || isSecretChat) ? qsTr("Loading common chats…", "chats you have in common with a user") : qsTr("Loading group members…")
+    loading: ( chatInformationPage.isSuperGroup || chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && !chatInformationPage.isChannel
     loadingVisible: loading && membersView.count === 0
 
     property var chatPartnerCommonGroupsIds: ([]);
 
     SilicaListView {
         id: membersView
-        model: chatInformationPage.isPrivateChat ? (chatPartnerCommonGroupsIds.length > 0 ? delegateModel : null) : pageContent.membersList
+        model: (chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) ? (chatPartnerCommonGroupsIds.length > 0 ? delegateModel : null) : pageContent.membersList
         clip: true
         height: tabBase.height
         width: tabBase.width
@@ -68,7 +68,7 @@ ChatInformationTabItemBase {
         ViewPlaceholder {
             y: Theme.paddingLarge
             enabled: membersView.count === 0
-            text: chatInformationPage.isPrivateChat ? qsTr("You don't have any groups in common with this user.") : ( chatInformationPage.isChannel ? qsTr("Channel members are anonymous.") : qsTr("This group is empty.") )
+            text: (chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) ? qsTr("You don't have any groups in common with this user.") : ( chatInformationPage.isChannel ? qsTr("Channel members are anonymous.") : qsTr("This group is empty.") )
         }
         delegate: PhotoTextsListItem {
             pictureThumbnail {
@@ -204,7 +204,7 @@ ChatInformationTabItemBase {
             }
         }
         onChatsReceived: {// common chats with user
-            if(isPrivateChat && chats["@extra"] === chatInformationPage.chatPartnerGroupId) {
+            if((isPrivateChat || isSecretChat) && chats["@extra"] === chatInformationPage.chatPartnerGroupId) {
                 tabBase.chatPartnerCommonGroupsIds = chats.chat_ids;
                 delegateModel.applyFilter();
                 // if we set it directly, the views start scrolling
@@ -221,7 +221,7 @@ ChatInformationTabItemBase {
     }
 
     Component.onCompleted: {
-        if(chatInformationPage.isPrivateChat) {
+        if(chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) {
             tdLibWrapper.getGroupsInCommon(chatInformationPage.chatPartnerGroupId, 200, 0); // we only use the first 200
         } else if(chatInformationPage.isSuperGroup) {
             fetchMoreMembersTimer.start();

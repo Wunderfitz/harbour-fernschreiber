@@ -31,19 +31,27 @@ class ContactsModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
+
+    enum ContactRole {
+        RoleDisplay = Qt::DisplayRole,
+        RolePhotoSmall,
+        RoleTitle,
+        RoleUserId,
+        RoleUsername,
+        RoleUserStatus,
+        RoleUserLastOnline,
+        RoleFilter
+    };
+
     ContactsModel(TDLibWrapper *tdLibWrapper, QObject *parent = nullptr);
 
-    virtual int rowCount(const QModelIndex &) const;
-    virtual QVariant data(const QModelIndex &index, int role) const;
+    virtual QHash<int,QByteArray> roleNames() const override;
+    virtual int rowCount(const QModelIndex &) const override;
+    virtual QVariant data(const QModelIndex &index, int role) const override;
 
     Q_INVOKABLE void hydrateContacts();
-    Q_INVOKABLE void applyFilter(const QString &filter);
-    Q_INVOKABLE void synchronizeContacts();
+    Q_INVOKABLE bool synchronizeContacts();
     Q_INVOKABLE bool canSynchronizeContacts();
-
-signals:
-    void contactsSynchronized();
-    void errorSynchronizingContacts();
 
 public slots:
     void handleUsersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
@@ -51,7 +59,6 @@ public slots:
 private:
     TDLibWrapper *tdLibWrapper;
     QVariantList contacts;
-    QVariantList filteredContacts;
     QList<QString> contactIds;
     QString filter;
     QSqlDatabase deviceContactsDatabase;

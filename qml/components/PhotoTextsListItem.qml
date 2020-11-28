@@ -11,7 +11,7 @@ ListItem {
     property alias secondaryText: secondaryText //usually last message
     property alias tertiaryText: tertiaryText //usually last message date
 
-    property int unreadCount
+    property int unreadCount: 0
     property bool isSecret: false
     property alias pictureThumbnail: pictureThumbnail
 
@@ -58,21 +58,18 @@ ListItem {
                         color: Theme.overlayBackgroundColor
                         width: Theme.fontSizeExtraLarge
                         height: Theme.fontSizeExtraLarge
-                        anchors.left: parent.left
                         anchors.bottom: parent.bottom
                         radius: parent.width / 2
                         visible: chatListViewItem.isSecret
                     }
 
                     Image {
-                        id: chatSecretImage
                         source: "image://theme/icon-s-secure"
                         height: Theme.fontSizeMedium
                         width: Theme.fontSizeMedium
                         anchors.centerIn: chatSecretBackground
                         visible: chatListViewItem.isSecret
                     }
-
 
                     Rectangle {
                         id: chatUnreadMessagesCountBackground

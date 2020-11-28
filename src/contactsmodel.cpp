@@ -51,15 +51,39 @@ ContactsModel::ContactsModel(TDLibWrapper *tdLibWrapper, QObject *parent)
     }
 }
 
+QHash<int, QByteArray> ContactsModel::roleNames() const
+{
+    QHash<int,QByteArray> roles;
+    roles.insert(ContactRole::RoleDisplay, "display");
+    roles.insert(ContactRole::RoleTitle, "title");
+    roles.insert(ContactRole::RoleUserId, "user_id");
+    roles.insert(ContactRole::RoleUsername, "username");
+    roles.insert(ContactRole::RolePhotoSmall, "photo_small");
+    roles.insert(ContactRole::RoleUserStatus, "user_status");
+    roles.insert(ContactRole::RoleUserLastOnline, "user_last_online");
+    roles.insert(ContactRole::RoleFilter, "filter");
+    return roles;
+}
+
 int ContactsModel::rowCount(const QModelIndex &) const
 {
-    return this->filter.isEmpty() ? this->contacts.size() : this->filteredContacts.size();
+    return this->contacts.size();
 }
 
 QVariant ContactsModel::data(const QModelIndex &index, int role) const
 {
-    if (index.isValid() && role == Qt::DisplayRole) {
-        return this->filter.isEmpty() ? QVariant(contacts.value(index.row())) : QVariant(filteredContacts.value(index.row())) ;
+    if (index.isValid()) {
+        QVariantMap requestedContact = contacts.value(index.row()).toMap();
+        switch (static_cast<ContactRole>(role)) {
+            case ContactRole::RoleDisplay: return requestedContact;
+            case ContactRole::RoleTitle: return QString(requestedContact.value("first_name").toString() + " " + requestedContact.value("last_name").toString()).trimmed();
+            case ContactRole::RoleUserId: return requestedContact.value("id");
+            case ContactRole::RoleUsername: return requestedContact.value("username");
+            case ContactRole::RolePhotoSmall: return requestedContact.value("profile_photo").toMap().value("small");
+            case ContactRole::RoleUserStatus: return requestedContact.value("status").toMap().value("@type");
+            case ContactRole::RoleUserLastOnline: return requestedContact.value("status").toMap().value("was_online");
+            case ContactRole::RoleFilter: return QString(requestedContact.value("first_name").toString() + " " + requestedContact.value("last_name").toString() + " " + requestedContact.value("username").toString()).trimmed();
+        }
     }
     return QVariant();
 }
@@ -126,34 +150,7 @@ void ContactsModel::hydrateContacts()
     std::sort(this->contacts.begin(), this->contacts.end(), compareUsers);
 }
 
-void ContactsModel::applyFilter(const QString &filter)
-{
-    LOG("Applying filter:" << filter);
-    beginResetModel();
-    this->filter = filter;
-    this->filteredContacts.clear();
-    if (!this->filter.isEmpty()) {
-        QListIterator<QVariant> contactIterator(this->contacts);
-        while (contactIterator.hasNext()) {
-            QVariantMap contact = contactIterator.next().toMap();
-            if (contact.value(LAST_NAME).toString().contains(this->filter, Qt::CaseInsensitive)) {
-                this->filteredContacts.append(contact);
-                continue;
-            }
-            if (contact.value(FIRST_NAME).toString().contains(this->filter, Qt::CaseInsensitive)) {
-                this->filteredContacts.append(contact);
-                continue;
-            }
-            if (contact.value(USERNAME).toString().contains(this->filter, Qt::CaseInsensitive)) {
-                this->filteredContacts.append(contact);
-                continue;
-            }
-        }
-    }
-    endResetModel();
-}
-
-void ContactsModel::synchronizeContacts()
+bool ContactsModel::synchronizeContacts()
 {
     LOG("Synchronizing device contacts");
     QVariantList deviceContacts;
@@ -173,10 +170,10 @@ void ContactsModel::synchronizeContacts()
             LOG("Importing found contacts" << deviceContacts.size());
             this->tdLibWrapper->importContacts(deviceContacts);
         }
-        emit contactsSynchronized();
+        return true;
     } else {
         LOG("Error selecting contacts from database!");
-        emit errorSynchronizingContacts();
+        return false;
     }
 
 }

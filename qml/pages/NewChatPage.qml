@@ -35,7 +35,7 @@ Page {
 
     function reloadContacts() {
         contactsModel.hydrateContacts();
-        contactsListView.model = contactsModel;
+        contactsListView.model = contactsProxyModel;
         newChatPage.isLoading = false;
     }
 
@@ -43,14 +43,6 @@ Page {
     onStatusChanged: {
         if (status === PageStatus.Active) {
             reloadContacts();
-        }
-    }
-
-    Connections {
-        target: contactsModel
-        onErrorSynchronizingContacts: {
-            reloadContacts();
-            appNotification.show(qsTr("Could not synchronize your contacts with Telegram."));
         }
     }
 
@@ -72,7 +64,11 @@ Page {
             MenuItem {
                 onClicked: {
                     newChatPage.isLoading = true;
-                    contactsModel.synchronizeContacts();
+                    if (!contactsModel.synchronizeContacts()) {
+                        reloadContacts();
+                        appNotification.show(qsTr("Could not synchronize your contacts with Telegram."));
+                    }
+                    // Success message is not fired before TDLib returned "Contacts imported" (see above)
                 }
                 text: qsTr("Synchronize Contacts with Telegram")
             }
@@ -103,7 +99,11 @@ Page {
                         width: parent.width
                         placeholderText: qsTr("Search a contact...")
                         active: !newChatPage.isLoading
-                        onTextChanged: contactsModel.applyFilter(text);
+
+                        onTextChanged: {
+                            contactsProxyModel.setFilterWildcard("*" + text + "*");
+                        }
+
                         EnterKey.iconSource: "image://theme/icon-m-enter-close"
                         EnterKey.onClicked: {
                             resetFocus();
@@ -140,15 +140,15 @@ Page {
                                 Behavior on opacity { FadeAnimation {} }
 
                                 pictureThumbnail {
-                                    photoData: (typeof display.profile_photo !== "undefined") ? display.profile_photo.small : {}
+                                    photoData: typeof photo_small !== "undefined" ? photo_small : {}
                                 }
                                 width: parent.width
 
-                                primaryText.text: Emoji.emojify(Functions.getUserName(display), primaryText.font.pixelSize, "../js/emoji/")
-                                prologSecondaryText.text: "@" + ( display.username !== "" ? display.username : display.id )
+                                primaryText.text: Emoji.emojify(title, primaryText.font.pixelSize, "../js/emoji/")
+                                prologSecondaryText.text: "@" + ( username !== "" ? username : user_id )
                                 tertiaryText {
                                     maximumLineCount: 1
-                                    text: Functions.getChatPartnerStatusText(display.status["@type"], display.status.was_online);
+                                    text: Functions.getChatPartnerStatusText(user_status, user_last_online);
                                 }
 
                                 onClicked: {
@@ -191,22 +191,20 @@ Page {
 
                                     Rectangle {
                                         anchors.fill: parent
-                                        opacity: 0.3
+                                        opacity: Theme.opacityLow
                                         color: Theme.overlayBackgroundColor
                                     }
 
                                     Item {
                                         id: privateChatItem
                                         height: parent.height
-                                        width: parent.width / 2 // - ( Theme.horizontalPageMargin / 2 )
-                                        anchors.left: parent.left
-                                        anchors.top: parent.top
+                                        width: parent.width / 2
 
                                         Rectangle {
                                             id: privateChatHighlightBackground
                                             anchors.fill: parent
                                             color: Theme.highlightBackgroundColor
-                                            opacity: 0.5
+                                            opacity: Theme.opacityHigh
                                             visible: false
                                         }
 
@@ -273,7 +271,7 @@ Page {
                                     Item {
                                         id: secretChatItem
                                         height: parent.height
-                                        width: parent.width / 2 //+ ( Theme.horizontalPageMargin / 2 )
+                                        width: parent.width / 2
                                         anchors.left: privateChatItem.right
                                         anchors.top: parent.top
 
@@ -281,7 +279,7 @@ Page {
                                             id: secretChatHighlightBackground
                                             anchors.fill: parent
                                             color: Theme.highlightBackgroundColor
-                                            opacity: 0.5
+                                            opacity: Theme.opacityHigh
                                             visible: false
                                         }
 
@@ -297,7 +295,7 @@ Page {
                                                 icon.source: "image://theme/icon-m-device-lock"
                                                 anchors.verticalCenter: parent.verticalCenter
                                                 onClicked: {
-                                                    console.log("SECRET CHAT!");
+                                                    tdLibWrapper.createNewSecretChat(display.id);
                                                 }
                                             }
 

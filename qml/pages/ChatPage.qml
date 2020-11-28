@@ -429,7 +429,7 @@ Page {
             }
         }
         onSecretChatReceived: {
-            if (secretChatId.toString() === chatInformation.type.secret_chat_id.toString()) {
+            if (secretChatId === chatInformation.type.secret_chat_id) {
                 Debug.log("[ChatPage] Received detailed information about this secret chat");
                 chatPage.secretChatDetails = secretChat;
                 updateChatPartnerStatusText();
@@ -706,7 +706,7 @@ Page {
                         id: chatNameText
                         width: Math.min(implicitWidth, parent.width)
                         anchors.right: parent.right
-                        text: chatInformation.title !== "" ? Emoji.emojify((chatPage.isSecretChat ? "🔒 " : "" ) + chatInformation.title, font.pixelSize) : qsTr("Unknown")
+                        text: chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, font.pixelSize) : qsTr("Unknown")
                         textFormat: Text.StyledText
                         font.pixelSize: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
                         font.family: Theme.fontFamilyHeading

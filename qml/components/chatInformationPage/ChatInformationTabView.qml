@@ -124,14 +124,14 @@ Item {
         }
     }
     Component.onCompleted: {
-        if(!(isPrivateChat && chatPartnerGroupId === myUserId.toString())) {
+        if(!((isPrivateChat || isSecretChat) && chatPartnerGroupId === myUserId.toString())) {
             tabModel.append({
                 tab:"ChatInformationTabItemMembersGroups",
-                title: chatInformationPage.isPrivateChat ? qsTr("Groups", "Button: groups in common (short)") : qsTr("Members", "Button: Group Members"),
+                title: ( chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat ) ? qsTr("Groups", "Button: groups in common (short)") : qsTr("Members", "Button: Group Members"),
                 image: "image://theme/icon-m-people"
             });
         }
-        if(!isPrivateChat && (groupInformation.status.can_restrict_members || groupInformation.status["@type"] === "chatMemberStatusCreator")) {
+        if(!(isPrivateChat || isSecretChat) && (groupInformation.status.can_restrict_members || groupInformation.status["@type"] === "chatMemberStatusCreator")) {
             tabModel.append({
                 tab:"ChatInformationTabItemSettings",
                 title: qsTr("Settings", "Button: Chat Settings"),
