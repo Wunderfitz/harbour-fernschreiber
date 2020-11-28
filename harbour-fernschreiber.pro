@@ -28,6 +28,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/dbusinterface.cpp \
     src/emojisearchworker.cpp \
     src/fernschreiberutils.cpp \
+    src/knownusersmodel.cpp \
     src/mceinterface.cpp \
     src/notificationmanager.cpp \
     src/processlauncher.cpp \
@@ -151,6 +152,7 @@ HEADERS += \
     src/debuglogjs.h \
     src/emojisearchworker.h \
     src/fernschreiberutils.h \
+    src/knownusersmodel.h \
     src/mceinterface.h \
     src/notificationmanager.h \
     src/processlauncher.h \
