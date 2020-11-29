@@ -1124,7 +1124,7 @@
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-rtt (1) korrekt svar. Deltagarna kan inte återkalla sina svar.</translation>
+<translation>Frågor har ett (1) korrekt svar. Deltagarna kan inte återkalla sina svar.</translation>
     </message>
 </context>
 <context>
