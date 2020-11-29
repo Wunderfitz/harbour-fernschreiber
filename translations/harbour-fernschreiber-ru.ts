@@ -647,137 +647,137 @@
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) название чата</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) название чата</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправил(а) опрос</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправил(а) опрос</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправил(а) тест</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправил(а) тест</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>создал(а) группу</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation type="unfinished"></translation>
+        <translation type>создал(а) группу</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) фото чата</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) фото чата</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>удалил(а) фото чата</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation type>удалил(а) фото чата</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) настройки TTL секретного чата</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) настройки TTL секретного чата</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>обновил(а) эту группу до супергруппы</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) закреплённое сообщение</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) закреплённое сообщение</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>создал(а) скриншот в этом чате</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation type="unfinished"></translation>
+        <translation type>создал(а) скриншот в этом чате</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено неподдерживаемое сообщение</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено неподдерживаемое сообщение</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено неподдерживаемое сообщение: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation type="unfinished"></translation>
+        <translation type>обновил(а) эту группу до супергруппы</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено самоисчезающее фото, срок которого истёк</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено самоисчезающее видео, срок которого истёк</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено самоисчезающее видео, срок которого истёк</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено неподдерживаемое сообщение: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено самоисчезающее фото, срок которого истёк</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation type="unfinished">отправил(а) аудио</translation>
+        <translation type>отправил(а) аудио</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation type="unfinished">отправил(а) аудио</translation>
+        <translation type>отправил(а) аудио</translation>
     </message>
 </context>
 <context>
@@ -908,11 +908,11 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation type="unfinished"></translation>
+        <translation type>Выбрать сообщение</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished"></translation>
+        <translation type>Закрепить сообщение</translation>
     </message>
 </context>
 <context>
@@ -926,18 +926,18 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Вы</translation>
+        <translation type>Вы</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type>Это сообщение было переадресовано. Первоначальный автор: %1</translation>
     </message>
 </context>
 <context>
     <name>NewChatPage</name>
     <message>
         <source>Your Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation type>Ваши контакты</translation>
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
@@ -945,39 +945,39 @@
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished"></translation>
+        <translation type>Приватный Чат</translation>
     </message>
     <message>
         <source>Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation type>Секретный Чат</translation>
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation type="unfinished"></translation>
+        <translation type>Сквозное шифрование, доступное только на этом устройстве</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
-        <translation type="unfinished"></translation>
+        <translation type>Загрузка контактов...</translation>
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation type="unfinished"></translation>
+        <translation type>Транспорт шифруется, используя облачную технологию Телеграм для использования на различных устройствах</translation>
     </message>
     <message>
         <source>Search a contact...</source>
-        <translation type="unfinished"></translation>
+        <translation type>Поиск контактов...</translation>
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation type="unfinished"></translation>
+        <translation type>Сихронизация контактов с Телеграм</translation>
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation type>Невозможно синхронизировать ваши контакты с Телеграм.</translation>
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation type>Контакты успешно синхронизированы с Телеграм.</translation>
     </message>
 </context>
 <context>
@@ -1035,59 +1035,59 @@
     </message>
     <message>
         <source>New Chat</source>
-        <translation type="unfinished"></translation>
+        <translation type>Новый Чат</translation>
     </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation type="unfinished">Вы</translation>
+        <translation type>Вы</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation type="unfinished"></translation>
+        <translation type>Закреплённое Сообщение</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished"></translation>
+        <translation type>Сообщение откреплено</translation>
     </message>
 </context>
 <context>
     <name>PollCreationPage</name>
     <message>
         <source>All answers have to contain 1-100 characters.</source>
-        <translation type="unfinished"></translation>
+        <translation type>Все ответы должны содержать 1-100 символов.</translation>
     </message>
     <message>
         <source>To send a quiz, you have to specify the right answer.</source>
-        <translation type="unfinished"></translation>
+        <translation type>Чтобы отправить тест, вы должны указать правильный ответ.</translation>
     </message>
     <message>
         <source>You have to enter a question.</source>
-        <translation type="unfinished"></translation>
+        <translation type>Вы должны ввести вопрос.</translation>
     </message>
     <message>
         <source>The question has to be shorter than 256 characters.</source>
-        <translation type="unfinished"></translation>
+        <translation type>Вопрос должен быть короче 256 символов.</translation>
     </message>
     <message>
         <source>A poll requires 2-10 answers.</source>
-        <translation type="unfinished"></translation>
+        <translation type>Опрос требует 2-10 ответов.</translation>
     </message>
     <message>
         <source>Create a Poll</source>
         <comment>Dialog Header</comment>
-        <translation type="unfinished"></translation>
+        <translation type>Создать Опрос</translation>
     </message>
     <message>
         <source>in %1</source>
         <comment>After dialog header… Create a Poll in [group name]</comment>
-        <translation type="unfinished"></translation>
+        <translation type>в %1</translation>
     </message>
     <message>
         <source>Enter your question here</source>
-        <translation type="unfinished"></translation>
+        <translation type>Введите ваш вопрос здесь</translation>
     </message>
     <message numerus="yes">
         <source>Question (%Ln characters left)</source>
@@ -1100,11 +1100,11 @@
     <message>
         <source>Answers</source>
         <comment>Section header</comment>
-        <translation type="unfinished"></translation>
+        <translation type>Ответы</translation>
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation type="unfinished"></translation>
+        <translation type>Введите ответ здесь</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
@@ -1116,24 +1116,24 @@
     </message>
     <message>
         <source>Add an answer</source>
-        <translation type="unfinished"></translation>
+        <translation type>Добавить ответ</translation>
     </message>
     <message>
         <source>Poll Options</source>
         <comment>Section header</comment>
-        <translation type="unfinished"></translation>
+        <translation type>Опции Опроса</translation>
     </message>
     <message>
         <source>Anonymous answers</source>
-        <translation type="unfinished"></translation>
+        <translation type>Анонимные ответы</translation>
     </message>
     <message>
         <source>Multiple answers allowed</source>
-        <translation type="unfinished"></translation>
+        <translation type>Разрешено несколько вариантов ответов</translation>
     </message>
     <message>
         <source>Quiz Mode</source>
-        <translation type="unfinished"></translation>
+        <translation type>Режим Теста</translation>
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
@@ -1153,11 +1153,11 @@
     </message>
     <message>
         <source>Final Result:</source>
-        <translation type="unfinished"></translation>
+        <translation type>Окончательный Результат</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation type="unfinished"></translation>
+        <translation type>Разрешено несколько вариантов ответов.</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
@@ -1170,22 +1170,22 @@
     </message>
     <message>
         <source>Close Poll</source>
-        <translation type="unfinished"></translation>
+        <translation type>Прекратить Опрос</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation type="unfinished"></translation>
+        <translation type>Обнулить Ответ</translation>
     </message>
 </context>
 <context>
     <name>PollResultsPage</name>
     <message>
         <source>Quiz Results</source>
-        <translation type="unfinished"></translation>
+        <translation type>Результаты Теста</translation>
     </message>
     <message>
         <source>Poll Results</source>
-        <translation type="unfinished"></translation>
+        <translation type>Результаты Опроса</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
@@ -1199,12 +1199,12 @@
     <message>
         <source>Question</source>
         <comment>section header</comment>
-        <translation type="unfinished"></translation>
+        <translation type>Вопрос</translation>
     </message>
     <message>
         <source>Results</source>
         <comment>section header</comment>
-        <translation type="unfinished"></translation>
+        <translation type>Результаты</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s)</source>
@@ -1227,7 +1227,7 @@
     <message>
         <source>Chosen by:</source>
         <comment>This answer has been chosen by the following users</comment>
-        <translation type="unfinished"></translation>
+        <translation type>Выбрано ими:</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) including yours</source>
@@ -1291,11 +1291,11 @@
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Меню "открыть с помощью"</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation type="unfinished"></translation>
+        <translation type>Встроить Fernschreiber в системное меню "открыть с помощью"</translation>
     </message>
     <message>
         <source>Animate stickers</source>
@@ -1303,15 +1303,15 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation type="unfinished"></translation>
+        <translation type>Уведомления включают дисплей</translation>
     </message>
     <message>
         <source>Storage</source>
-        <translation type="unfinished"></translation>
+        <translation type>Хранилище</translation>
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation type="unfinished"></translation>
+        <translation type>Включить оптимизацию хранилища</translation>
     </message>
 </context>
 <context>
@@ -1344,7 +1344,7 @@
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation type="unfinished"></translation>
+        <translation type>Предпросмотр не поддерживается для этой ссылки</translation>
     </message>
 </context>
 <context>
@@ -1609,107 +1609,107 @@
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) фото чата</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) фото чата</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>удалил(а) фото чата</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation type="unfinished"></translation>
+        <translation type>удалил(а) фото чата</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) настройки TTL секретного чата</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) настройки TTL секретного чата</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>обновил(а) эту группу до супергруппы</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) закреплённое сообщение</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation type="unfinished"></translation>
+        <translation type>изменил(а) закреплённое сообщение</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>создал(а) скриншот в этом чате</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation type="unfinished"></translation>
+        <translation type>создал(а) скриншот в этом чате</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено неподдерживаемое сообщение</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено неподдерживаемое сообщение</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено неподдерживаемое сообщение: %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>%1 is message type</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено неподдерживаемое сообщение: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation type="unfinished"></translation>
+        <translation type>обновил(а) эту группу до супергруппы</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено самоисчезающее фото, срок которого истёк</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено самоисчезающее фото, срок которого истёк</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено самоисчезающее видео, срок которого истёк</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправлено самоисчезающее видео, срок которого истёк</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation type="unfinished"></translation>
+        <translation type>Невозможно найти юзера %1</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправлена видео заметка</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправлена видео заметка</translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
@@ -1717,11 +1717,11 @@
     </message>
     <message>
         <source>Closed!</source>
-        <translation type="unfinished"></translation>
+        <translation type>Закрыто!</translation>
     </message>
     <message>
         <source>Pending acknowledgement</source>
-        <translation type="unfinished"></translation>
+        <translation type>Ожидание подтверждения</translation>
     </message>
 </context>
 </TS>
