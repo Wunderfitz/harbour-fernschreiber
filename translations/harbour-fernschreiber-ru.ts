@@ -344,7 +344,7 @@
     </message>
     <message>
         <source>Select Messages</source>
-        <translation type="unfinished"></translation>
+        <translation type>Выбрать сообщение</translation>
     </message>
     <message numerus="yes">
         <source>%Ln Messages deleted</source>
