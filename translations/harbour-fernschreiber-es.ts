@@ -1013,7 +1013,7 @@
     </message>
     <message>
         <source>New Chat</source>
-        <translation>Nueva charlan>
+        <translation>Nueva charla</translation>
     </message>
 </context>
 <context>
@@ -1679,11 +1679,11 @@
     </message>
     <message>
         <source>Closed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerrado!</translation>
     </message>
     <message>
         <source>Pending acknowledgement</source>
-        <translation type="unfinished"></translation>
+        <translation>Pendiente de reconocimiento</translation>
     </message>
 </context>
 </TS>
