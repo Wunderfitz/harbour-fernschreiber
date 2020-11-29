@@ -1494,117 +1494,117 @@
     </message>
     <message>
         <source>was never online</source>
-        <translation type="unfinished">никогда не был(а) онлайн</translation>
+        <translation type>никогда не был(а) онлайн</translation>
     </message>
     <message>
         <source>offline, last online: last month</source>
-        <translation type="unfinished">офлайн, был(а) онлайн: в прошлом месяце</translation>
+        <translation type>офлайн, был(а) онлайн: в прошлом месяце</translation>
     </message>
     <message>
         <source>offline, last online: last week</source>
-        <translation type="unfinished">офлайн, был(а) онлайн: на прошлой неделе</translation>
+        <translation type>офлайн, был(а) онлайн: на прошлой неделе</translation>
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation type="unfinished">офлайн, был(а) онлайн: %1</translation>
+        <translation type>офлайн, был(а) онлайн: %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation type="unfinished">онлайн</translation>
+        <translation type>онлайн</translation>
     </message>
     <message>
         <source>offline, was recently online</source>
-        <translation type="unfinished">офлайн, недавно был(а) онлайн</translation>
+        <translation type=>офлайн, недавно был(а) онлайн</translation>
     </message>
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation type>Админ</translation>
     </message>
     <message>
         <source>Banned</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation type>Забанен</translation>
     </message>
     <message>
         <source>Creator</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation type>Автор</translation>
     </message>
     <message>
         <source>Restricted</source>
         <comment>channel user role</comment>
-        <translation type="unfinished"></translation>
+        <translation type>Ограничен</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>название чата изменено на %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation type="unfinished"></translation>
+        <translation type>название чата изменено на %1</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправить опрос</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправить опрос</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправить анонимный тест</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправить анонимный тест</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправить тест</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправить тест</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>отправить анонимный опрос</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
-        <translation type="unfinished"></translation>
+        <translation type>отправить анонимный опрос</translation>
     </message>
     <message>
         <source>Anonymous Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation type>Анонимный Тест</translation>
     </message>
     <message>
         <source>Quiz</source>
-        <translation type="unfinished"></translation>
+        <translation type>Тест</translation>
     </message>
     <message>
         <source>Anonymous Poll</source>
-        <translation type="unfinished"></translation>
+        <translation type>Анонимный Опрос</translation>
     </message>
     <message>
         <source>Poll</source>
-        <translation type="unfinished"></translation>
+        <translation type>Опрос</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type>создал(а) эту группу</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation type="unfinished"></translation>
+        <translation type>создал(а) эту группу</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
