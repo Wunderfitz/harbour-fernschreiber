@@ -36,8 +36,11 @@ Page {
     property bool isInitialized: false;
     readonly property int myUserId: tdLibWrapper.getUserInformation().id;
     property var chatInformation;
+    property var secretChatDetails;
     property alias chatPicture: chatPictureThumbnail.photoData
     property bool isPrivateChat: false;
+    property bool isSecretChat: false;
+    property bool isSecretChatReady: false;
     property bool isBasicGroup: false;
     property bool isSuperGroup: false;
     property bool isChannel: false;
@@ -46,7 +49,7 @@ Page {
     property int chatOnlineMemberCount: 0;
     property var emojiProposals;
     property bool iterativeInitialization: false;
-    readonly property bool userIsMember: (isPrivateChat && chatInformation["@type"]) || // should be optimized
+    readonly property bool userIsMember: ((isPrivateChat || isSecretChat) && chatInformation["@type"]) || // should be optimized
                                 (isBasicGroup || isSuperGroup) && (
                                     (chatGroupInformation.status["@type"] === "chatMemberStatusMember")
                                     || (chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator")
@@ -104,11 +107,21 @@ Page {
     }
 
     function updateChatPartnerStatusText() {
-        if(chatPage.state === "selectMessages") {
+        if (chatPage.state === "selectMessages") {
             return
         }
         var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
-        if(statusText) {
+        if (chatPage.secretChatDetails) {
+            var secretChatStatus = Functions.getSecretChatStatus(chatPage.secretChatDetails);
+            if (statusText && secretChatStatus) {
+                statusText += " - ";
+            }
+            if (secretChatStatus) {
+                statusText += secretChatStatus;
+            }
+        }
+
+        if (statusText) {
             chatStatusText.text = statusText;
         }
     }
@@ -138,12 +151,16 @@ Page {
         chatView.currentIndex = -1;
         chatView.lastReadSentIndex = 0;
         var chatType = chatInformation.type['@type'];
-        isPrivateChat = ( chatType === "chatTypePrivate" );
+        isPrivateChat = chatType === "chatTypePrivate";
+        isSecretChat = chatType === "chatTypeSecret";
         isBasicGroup = ( chatType === "chatTypeBasicGroup" );
         isSuperGroup = ( chatType === "chatTypeSupergroup" );
-        if (isPrivateChat) {
+        if (isPrivateChat || isSecretChat) {
             chatPartnerInformation = tdLibWrapper.getUserInformation(chatInformation.type.user_id);
             updateChatPartnerStatusText();
+            if (isSecretChat) {
+                tdLibWrapper.getSecretChat(chatInformation.type.secret_chat_id);
+            }
         }
         else if (isBasicGroup) {
             chatGroupInformation = tdLibWrapper.getBasicGroup(chatInformation.type.basic_group_id);
@@ -291,11 +308,12 @@ Page {
                     || groupStatusType === "chatMemberStatusAdministrator"
                     || groupStatusType === "chatMemberStatusCreator"
                     || (groupStatusType === "chatMemberStatusRestricted" && groupStatus.permissions[privilege])
+                    || (chatPage.isSecretChat && chatPage.isSecretChatReady)
     }
     function canPinMessages() {
         Debug.log("Can we pin messages?");
-        if (chatPage.isPrivateChat) {
-            Debug.log("Private Chat: No!");
+        if (chatPage.isPrivateChat || chatPage.isSecretChat) {
+            Debug.log("Private/Secret Chat: No!");
             return false;
         }
         if (chatPage.chatGroupInformation.status["@type"] === "chatMemberStatusCreator") {
@@ -367,7 +385,7 @@ Page {
     Connections {
         target: tdLibWrapper
         onUserUpdated: {
-            if (isPrivateChat && chatPartnerInformation.id.toString() === userId ) {
+            if ((isPrivateChat || isSecretChat) && chatPartnerInformation.id.toString() === userId ) {
                 chatPartnerInformation = userInformation;
                 updateChatPartnerStatusText();
             }
@@ -408,6 +426,22 @@ Page {
             if (messageId === chatInformation.pinned_message_id.toString()) {
                 Debug.log("[ChatPage] Received pinned message");
                 pinnedMessageItem.pinnedMessage = message;
+            }
+        }
+        onSecretChatReceived: {
+            if (secretChatId === chatInformation.type.secret_chat_id) {
+                Debug.log("[ChatPage] Received detailed information about this secret chat");
+                chatPage.secretChatDetails = secretChat;
+                updateChatPartnerStatusText();
+                chatPage.isSecretChatReady = chatPage.secretChatDetails.state["@type"] === "secretChatStateReady";
+            }
+        }
+        onSecretChatUpdated: {
+            if (secretChatId.toString() === chatInformation.type.secret_chat_id.toString()) {
+                Debug.log("[ChatPage] Detailed information about this secret chat was updated");
+                chatPage.secretChatDetails = secretChat;
+                updateChatPartnerStatusText();
+                chatPage.isSecretChatReady = chatPage.secretChatDetails.state["@type"] === "secretChatStateReady";
             }
         }
     }
@@ -507,7 +541,7 @@ Page {
     Timer {
         id: chatContactTimeUpdater
         interval: 60000
-        running: isPrivateChat
+        running: isPrivateChat || isSecretChat
         repeat: true
         onTriggered: {
             updateChatPartnerStatusText();
@@ -543,6 +577,19 @@ Page {
 
         PullDownMenu {
             visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !messageOverlayLoader.active
+            MenuItem {
+                id: closeSecretChatMenuItem
+                visible: chatPage.isSecretChat && chatPage.secretChatDetails.state["@type"] !== "secretChatStateClosed"
+                onClicked: {
+                    var remorse = Remorse.popupAction(appWindow, qsTr("Closing chat"), (function(secretChatId) {
+                        return function() {
+                            tdLibWrapper.closeSecretChat(secretChatId);
+                        };
+                    }(chatPage.secretChatDetails.id)))
+                }
+                text: qsTr("Close Chat")
+            }
+
             MenuItem {
                 id: joinLeaveChatMenuItem
                 visible: (chatPage.isSuperGroup || chatPage.isBasicGroup) && chatGroupInformation && chatGroupInformation.status["@type"] !== "chatMemberStatusBanned"
@@ -604,23 +651,49 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingMedium
 
-                ProfileThumbnail {
-                    id: chatPictureThumbnail
-                    replacementStringHint: chatNameText.text
+                Item {
                     width: chatOverviewItem.height
                     height: chatOverviewItem.height
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingMedium : Theme.paddingSmall
 
-                    // Setting it directly may cause an stale state for the thumbnail in case the chat page
-                    // was previously loaded with a picture and now it doesn't have one. Instead setting it
-                    // when the ChatModel indicates a change. This also avoids flickering when the page is loaded...
-                    Connections {
-                        target: chatModel
-                        onSmallPhotoChanged: {
-                            chatPictureThumbnail.photoData = chatModel.smallPhoto;
+                    ProfileThumbnail {
+                        id: chatPictureThumbnail
+                        replacementStringHint: chatNameText.text
+                        width: parent.height
+                        height: parent.height
+
+                        // Setting it directly may cause an stale state for the thumbnail in case the chat page
+                        // was previously loaded with a picture and now it doesn't have one. Instead setting it
+                        // when the ChatModel indicates a change. This also avoids flickering when the page is loaded...
+                        Connections {
+                            target: chatModel
+                            onSmallPhotoChanged: {
+                                chatPictureThumbnail.photoData = chatModel.smallPhoto;
+                            }
                         }
                     }
+
+                    Rectangle {
+                        id: chatSecretBackground
+                        color: Theme.overlayBackgroundColor
+                        width: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
+                        height: width
+                        anchors.left: parent.left
+                        anchors.bottom: parent.bottom
+                        radius: parent.width / 2
+                        visible: chatPage.isSecretChat
+                    }
+
+                    Image {
+                        id: chatSecretImage
+                        source: "image://theme/icon-s-secure"
+                        width: chatPage.isPortrait ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
+                        height: width
+                        anchors.centerIn: chatSecretBackground
+                        visible: chatPage.isSecretChat
+                    }
+
                 }
 
                 Item {
@@ -855,8 +928,9 @@ Page {
                     VerticalScrollDecorator {}
 
                     ViewPlaceholder {
+                        id: chatViewPlaceholder
                         enabled: chatView.count === 0
-                        text: qsTr("This chat is empty.")
+                        text: (chatPage.isSecretChat && !chatPage.isSecretChatReady) ? qsTr("This secret chat is not yet ready. Your chat partner needs to go online first.") : qsTr("This chat is empty.")
                     }
                 }
 
@@ -1061,7 +1135,7 @@ Page {
                         }
                     }
                     IconButton {
-                        visible: !chatPage.isPrivateChat && chatPage.hasSendPrivilege("can_send_polls")
+                        visible: !(chatPage.isPrivateChat || chatPage.isSecretChat) && chatPage.hasSendPrivilege("can_send_polls")
                         icon.source: "image://theme/icon-m-question"
                         onClicked: {
                             pageStack.push(Qt.resolvedUrl("../pages/PollCreationPage.qml"), { "chatId" : chatInformation.id, groupName: chatInformation.title});
@@ -1340,7 +1414,7 @@ Page {
                                 verticalCenter: parent.verticalCenter
                             }
                             visible: selectedMessages.every(function(message){
-                                return message.can_be_forwarded
+                                return message.can_be_forwarded && !chatPage.isSecretChat
                             })
                             width: visible ? Theme.itemSizeMedium : 0
                             icon.source: "image://theme/icon-m-forward"

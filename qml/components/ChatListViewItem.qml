@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
@@ -14,12 +15,13 @@ PhotoTextsListItem {
     // chat title
     primaryText.text: title ? Emoji.emojify(title + ( display.notification_settings.mute_for > 0 ? " 🔇" : "" ), Theme.fontSizeMedium) : qsTr("Unknown")
     // last user
-    prologSecondaryText.text: is_channel ? "" : ( last_message_sender_id ? ( last_message_sender_id !== ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(last_message_sender_id)), primaryText.font.pixelSize) : qsTr("You") ) : qsTr("Unknown") )
+    prologSecondaryText.text: is_channel ? "" : ( last_message_sender_id ? ( last_message_sender_id !== ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(last_message_sender_id)), primaryText.font.pixelSize) : qsTr("You") ) : "" )
     // last message
-    secondaryText.text: last_message_text ? Emoji.emojify(Functions.enhanceHtmlEntities(last_message_text), Theme.fontSizeExtraSmall) : qsTr("Unknown")
+    secondaryText.text: last_message_text ? Emoji.emojify(Functions.enhanceHtmlEntities(last_message_text), Theme.fontSizeExtraSmall) : "<i>" + qsTr("No message in this chat.") + "</i>"
     // message date
-    tertiaryText.text: ( last_message_date ? Functions.getDateTimeElapsed(last_message_date) : qsTr("Unknown") ) + Emoji.emojify(last_message_status, tertiaryText.font.pixelSize)
+    tertiaryText.text: ( last_message_date ? ( last_message_date.length === 0 ? "" : Functions.getDateTimeElapsed(last_message_date) + Emoji.emojify(last_message_status, tertiaryText.font.pixelSize) ) : "" )
     unreadCount: unread_count
+    isSecret: ( chat_type === TelegramAPI.ChatTypeSecret )
 
     openMenuOnPressAndHold: true//chat_id != overviewPage.ownUserId
     menu: ContextMenu {

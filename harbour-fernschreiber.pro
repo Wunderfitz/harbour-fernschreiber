@@ -24,6 +24,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/appsettings.cpp \
     src/chatlistmodel.cpp \
     src/chatmodel.cpp \
+    src/contactsmodel.cpp \
     src/dbusadaptor.cpp \
     src/dbusinterface.cpp \
     src/emojisearchworker.cpp \
@@ -72,6 +73,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/ChatSelectionPage.qml \
     qml/pages/CoverPage.qml \
     qml/pages/InitializationPage.qml \
+    qml/pages/NewChatPage.qml \
     qml/pages/OverviewPage.qml \
     qml/pages/AboutPage.qml \
     qml/pages/PollCreationPage.qml \
@@ -145,6 +147,7 @@ HEADERS += \
     src/appsettings.h \
     src/chatlistmodel.h \
     src/chatmodel.h \
+    src/contactsmodel.h \
     src/dbusadaptor.h \
     src/dbusinterface.h \
     src/debuglog.h \

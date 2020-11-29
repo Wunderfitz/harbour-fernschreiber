@@ -105,6 +105,7 @@ Page {
         tdLibWrapper.getChats();
         tdLibWrapper.getRecentStickers();
         tdLibWrapper.getInstalledStickerSets();
+        tdLibWrapper.getContacts();
     }
 
     function initializePage() {
@@ -196,6 +197,10 @@ Page {
             MenuItem {
                 text: qsTr("Settings")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/SettingsPage.qml"))
+            }
+            MenuItem {
+                text: qsTr("New Chat")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/NewChatPage.qml"))
             }
         }
 

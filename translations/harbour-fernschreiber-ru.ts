@@ -182,6 +182,10 @@
             <numerusform></numerusform>
         </translation>
     </message>
+    <message>
+        <source>New Secret Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -262,6 +266,10 @@
     <message>
         <source>Mark all messages as read</source>
         <translation>Отметить все сообщения как прочитанные</translation>
+    </message>
+    <message>
+        <source>No message in this chat.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -384,6 +392,18 @@
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Closing chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close Chat</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -914,6 +934,53 @@
     </message>
 </context>
 <context>
+    <name>NewChatPage</name>
+    <message>
+        <source>Your Contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You don&apos;t have any contacts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Private Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Secret Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>End-to-end-encrypted, accessible on this device only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading contacts...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search a contact...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
@@ -965,6 +1032,10 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Тут пока ничего нет</translation>
+    </message>
+    <message>
+        <source>New Chat</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1643,6 +1714,14 @@
     <message>
         <source>You are already a member of this chat.</source>
         <translation>Вы уже в этом чате.</translation>
+    </message>
+    <message>
+        <source>Closed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pending acknowledgement</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
