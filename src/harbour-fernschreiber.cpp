@@ -42,6 +42,7 @@
 #include "stickermanager.h"
 #include "tgsplugin.h"
 #include "fernschreiberutils.h"
+#include "knownusersmodel.h"
 #include "contactsmodel.h"
 
 // The default filter can be overridden by QT_LOGGING_RULES envinronment variable, e.g.
@@ -97,6 +98,14 @@ int main(int argc, char *argv[])
     StickerManager stickerManager(tdLibWrapper);
     context->setContextProperty("stickerManager", &stickerManager);
 
+    KnownUsersModel knownUsersModel(tdLibWrapper, view.data());
+    context->setContextProperty("knownUsersModel", &knownUsersModel);
+    QSortFilterProxyModel knownUsersProxyModel(view.data());
+    knownUsersProxyModel.setSourceModel(&knownUsersModel);
+    knownUsersProxyModel.setFilterRole(KnownUsersModel::RoleFilter);
+    knownUsersProxyModel.setFilterCaseSensitivity(Qt::CaseInsensitive);
+    context->setContextProperty("knownUsersProxyModel", &knownUsersProxyModel);
+    
     ContactsModel contactsModel(tdLibWrapper, view.data());
     context->setContextProperty("contactsModel", &contactsModel);
     QSortFilterProxyModel contactsProxyModel(view.data());

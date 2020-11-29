@@ -285,6 +285,12 @@ Page {
         } else {
             chatPage.emojiProposals = null;
         }
+        if (currentWord.length > 1 && currentWord.charAt(0) === '@') {
+            knownUsersRepeater.model = knownUsersProxyModel;
+            knownUsersProxyModel.setFilterWildcard("*" + currentWord.substring(1) + "*");
+        } else {
+            knownUsersRepeater.model = undefined;
+        }
     }
 
     function replaceMessageText(text, cursorPosition, newText) {
@@ -1262,6 +1268,83 @@ Page {
                                         onClicked: {
                                             replaceMessageText(newMessageTextField.text, newMessageTextField.cursorPosition, modelData.emoji);
                                             emojiProposals = null;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+                Column {
+                    id: atMentionColumn
+                    width: parent.width
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    visible: knownUsersRepeater.count > 0 ? true : false
+                    opacity: knownUsersRepeater.count > 0 ? 1 : 0
+                    Behavior on opacity { NumberAnimation {} }
+                    spacing: Theme.paddingMedium
+
+                    Flickable {
+                        width: parent.width
+                        height: atMentionResultRow.height + Theme.paddingSmall
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        contentWidth: atMentionResultRow.width
+                        clip: true
+                        Row {
+                            id: atMentionResultRow
+                            spacing: Theme.paddingMedium
+                            Repeater {
+                                id: knownUsersRepeater
+
+                                Item {
+                                    id: knownUserItem
+                                    height: singleAtMentionRow.height
+                                    width: singleAtMentionRow.width
+
+                                    property string atMentionText: "@" + (user_name ? user_name : user_id + "(" + title + ")");
+
+                                    Row {
+                                        id: singleAtMentionRow
+                                        spacing: Theme.paddingSmall
+
+                                        Item {
+                                            width: Theme.fontSizeHuge
+                                            height: Theme.fontSizeHuge
+                                            anchors.verticalCenter: parent.verticalCenter
+                                            ProfileThumbnail {
+                                                id: atMentionThumbnail
+                                                replacementStringHint: title
+                                                width: parent.width
+                                                height: parent.width
+                                                photoData: photo_small
+                                            }
+                                        }
+
+                                        Column {
+                                            Text {
+                                                text: Emoji.emojify(title, Theme.fontSizeExtraSmall)
+                                                textFormat: Text.StyledText
+                                                color: Theme.primaryColor
+                                                font.pixelSize: Theme.fontSizeExtraSmall
+                                                font.bold: true
+                                            }
+                                            Text {
+                                                id: userHandleText
+                                                text: user_handle
+                                                textFormat: Text.StyledText
+                                                color: Theme.primaryColor
+                                                font.pixelSize: Theme.fontSizeExtraSmall
+                                            }
+                                        }
+                                    }
+
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: {
+                                            replaceMessageText(newMessageTextField.text, newMessageTextField.cursorPosition, knownUserItem.atMentionText);
+                                            knownUsersRepeater.model = undefined;
                                         }
                                     }
                                 }

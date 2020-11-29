@@ -29,6 +29,9 @@
 #include <QStandardPaths>
 #include <QDBusConnection>
 #include <QDBusInterface>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
+#include <QRegularExpressionMatchIterator>
 
 #define DEBUG_MODULE TDLibWrapper
 #include "debuglog.h"
@@ -316,6 +319,18 @@ void TDLibWrapper::unpinMessage(const QString &chatId)
     this->sendRequest(requestObject);
 }
 
+static bool compareReplacements(const QVariant &replacement1, const QVariant &replacement2)
+{
+    const QVariantMap replacementMap1 = replacement1.toMap();
+    const QVariantMap replacementMap2 = replacement2.toMap();
+
+    if (replacementMap1.value("startIndex").toInt() < replacementMap2.value("startIndex").toInt()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId)
 {
     LOG("Sending text message" << chatId << message << replyToMessageId);
@@ -327,8 +342,50 @@ void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message
     }
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageText");
+
+    // Postprocess message (e.g. for @-mentioning)
+    QString processedMessage = message;
+    QVariantList replacements;
+    QRegularExpression atMentionIdRegex("\\@(\\d+)\\(([^\\)]+)\\)");
+    QRegularExpressionMatchIterator atMentionIdMatchIterator = atMentionIdRegex.globalMatch(processedMessage);
+    while (atMentionIdMatchIterator.hasNext()) {
+        QRegularExpressionMatch nextAtMentionId = atMentionIdMatchIterator.next();
+        LOG("@Mentioning with user ID! Start Index: " << nextAtMentionId.capturedStart(0) << ", length: " << nextAtMentionId.capturedLength(0) << ", user ID: " << nextAtMentionId.captured(1) << ", plain text: " << nextAtMentionId.captured(2));
+        QVariantMap replacement;
+        replacement.insert("startIndex", nextAtMentionId.capturedStart(0));
+        replacement.insert("length", nextAtMentionId.capturedLength(0));
+        replacement.insert("userId", nextAtMentionId.captured(1));
+        replacement.insert("plainText", nextAtMentionId.captured(2));
+        replacements.append(replacement);
+    }
+
     QVariantMap formattedText;
-    formattedText.insert("text", message);
+
+    if (!replacements.isEmpty()) {
+        QVariantList entities;
+        std::sort(replacements.begin(), replacements.end(), compareReplacements);
+        QListIterator<QVariant> replacementsIterator(replacements);
+        int offsetCorrection = 0;
+        while (replacementsIterator.hasNext()) {
+            QVariantMap nextReplacement = replacementsIterator.next().toMap();
+            int replacementStartOffset = nextReplacement.value("startIndex").toInt();
+            int replacementLength = nextReplacement.value("length").toInt();
+            QString replacementPlainText = nextReplacement.value("plainText").toString();
+            processedMessage = processedMessage.replace(replacementStartOffset - offsetCorrection, replacementLength, replacementPlainText);
+            QVariantMap entity;
+            entity.insert("offset", replacementStartOffset - offsetCorrection);
+            entity.insert("length", replacementPlainText.length());
+            QVariantMap entityType;
+            entityType.insert(_TYPE, "textEntityTypeMentionName");
+            entityType.insert("user_id", nextReplacement.value("userId").toString());
+            entity.insert("type", entityType);
+            entities.append(entity);
+            offsetCorrection += replacementLength - replacementPlainText.length();
+        }
+        formattedText.insert("entities", entities);
+    }
+
+    formattedText.insert("text", processedMessage);
     formattedText.insert(_TYPE, "formattedText");
     inputMessageContent.insert("text", formattedText);
     requestObject.insert("input_message_content", inputMessageContent);
