@@ -945,7 +945,7 @@
     </message>
     <message>
         <source>Search a contact...</source>
-        <translation><搜索联系人…/translation>
+        <translation>搜索联系人…</translation>
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
