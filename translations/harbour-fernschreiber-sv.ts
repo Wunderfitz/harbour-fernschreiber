@@ -181,7 +181,7 @@
     </message>
     <message>
         <source>New Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny hemlig chatt</translation>
     </message>
 </context>
 <context>
@@ -266,7 +266,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inget meddelande i den här chatten.</translation>
     </message>
 </context>
 <context>
@@ -385,15 +385,15 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Den hemliga chatten är inte klar än. Din chattpartner måste gå online först.</translation>
     </message>
     <message>
         <source>Closing chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Stänger chatten</translation>
     </message>
     <message>
         <source>Close Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Stäng chatten</translation>
     </message>
 </context>
 <context>
@@ -763,11 +763,11 @@
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation type="unfinished">skickade en ljudfil</translation>
+        <translation>skickade en ljudfil</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation type="unfinished">skickade en ljudfil</translation>
+        <translation>skickade en ljudfil</translation>
     </message>
 </context>
 <context>
@@ -927,47 +927,47 @@
     <name>NewChatPage</name>
     <message>
         <source>Your Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Dina kontakter</translation>
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du har inga kontakter</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Privat chatt</translation>
     </message>
     <message>
         <source>Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Hemlig chatt</translation>
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation type="unfinished"></translation>
+        <translation>Slutpunkt till slutpunktskrypterad, åtkomlig endast på denna enhet.</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
-        <translation type="unfinished"></translation>
+        <translation>Läser in kontakter...</translation>
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Transportkrypterad, använder Telegram Cloud, kan delas mellan enheter.</translation>
     </message>
     <message>
         <source>Search a contact...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök en kontakt</translation>
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation type="unfinished"></translation>
+        <translation>Synkronisera kontakter med Telegram</translation>
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte synkronisera dina kontakter med Telegram.</translation>
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontakter synkroniserade med Telegram.</translation>
     </message>
 </context>
 <context>
@@ -1024,7 +1024,7 @@
     </message>
     <message>
         <source>New Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny chatt</translation>
     </message>
 </context>
 <context>
@@ -1120,11 +1120,11 @@
     </message>
     <message>
         <source>Quiz Mode</source>
-        <translation>Frågesportsläge</translation>
+        <translation>Frågesportläge</translation>
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-        <translation>Frågor har ett korrekt svar. Deltagarna kan inte återkalla sina svar.</translation>
+rtt (1) korrekt svar. Deltagarna kan inte återkalla sina svar.</translation>
     </message>
 </context>
 <context>
@@ -1236,7 +1236,7 @@
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Skicka meddelanden genom att trycka på returknappen</translation>
+        <translation>Skicka meddelanden genom att trycka på returtangenten</translation>
     </message>
     <message>
         <source>Appearance</source>
@@ -1288,11 +1288,11 @@
     </message>
     <message>
         <source>Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Lagring</translation>
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivera lagringsoptimering</translation>
     </message>
 </context>
 <context>
@@ -1698,11 +1698,11 @@
     </message>
     <message>
         <source>Closed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Stängd!</translation>
     </message>
     <message>
         <source>Pending acknowledgement</source>
-        <translation type="unfinished"></translation>
+        <translation>Väntar på bekräftelse</translation>
     </message>
 </context>
 </TS>
