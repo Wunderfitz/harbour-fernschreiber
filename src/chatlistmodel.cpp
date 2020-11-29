@@ -46,6 +46,7 @@ namespace {
     const QString IS_CHANNEL("is_channel");
     const QString PINNED_MESSAGE_ID("pinned_message_id");
     const QString _TYPE("@type");
+    const QString SECRET_CHAT_ID("secret_chat_id");
 }
 
 class ChatListModel::ChatData
@@ -64,6 +65,7 @@ public:
         RoleLastMessageText,
         RoleLastMessageStatus,
         RoleChatMemberStatus,
+        RoleSecretChatState,
         RoleIsChannel
     };
 
@@ -86,6 +88,7 @@ public:
     bool updateLastReadInboxMessageId(qlonglong messageId);
     QVector<int> updateLastMessage(const QVariantMap &message);
     QVector<int> updateGroup(const TDLibWrapper::Group *group);
+    QVector<int> updateSecretChat(const QVariantMap &secretChatDetails);
 
 public:
     QVariantMap chatData;
@@ -94,6 +97,7 @@ public:
     qlonglong groupId;
     TDLibWrapper::ChatType chatType;
     TDLibWrapper::ChatMemberStatus memberStatus;
+    TDLibWrapper::SecretChatState secretChatState;
     QVariantMap userInformation;
 };
 
@@ -103,6 +107,7 @@ ChatListModel::ChatData::ChatData(const QVariantMap &data, const QVariantMap &us
     order(data.value(ORDER).toLongLong()),
     groupId(0),
     memberStatus(TDLibWrapper::ChatMemberStatusUnknown),
+    secretChatState(TDLibWrapper::SecretChatStateUnknown),
     userInformation(userInfo)
 {
     const QVariantMap type(data.value(TYPE).toMap());
@@ -227,7 +232,11 @@ bool ChatListModel::ChatData::isHidden() const
         break;
     case TDLibWrapper::ChatTypeUnknown:
     case TDLibWrapper::ChatTypePrivate:
+        break;
     case TDLibWrapper::ChatTypeSecret:
+        if (secretChatState == TDLibWrapper::SecretChatStateClosed) {
+            return true;
+        }
         break;
     }
     return false;
@@ -288,6 +297,18 @@ QVector<int> ChatListModel::ChatData::updateGroup(const TDLibWrapper::Group *gro
     return changedRoles;
 }
 
+QVector<int> ChatListModel::ChatData::updateSecretChat(const QVariantMap &secretChatDetails)
+{
+    QVector<int> changedRoles;
+
+    TDLibWrapper::SecretChatState newSecretChatState = TDLibWrapper::secretChatStateFromString(secretChatDetails.value("state").toMap().value(_TYPE).toString());
+    if (newSecretChatState != secretChatState) {
+        secretChatState = newSecretChatState;
+        changedRoles.append(RoleSecretChatState);
+    }
+    return changedRoles;
+}
+
 ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper) : showHiddenChats(false)
 {
     this->tdLibWrapper = tdLibWrapper;
@@ -302,6 +323,9 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper) : showHiddenChats(false
     connect(tdLibWrapper, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SLOT(handleChatNotificationSettingsUpdated(QString, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(superGroupUpdated(qlonglong)), this, SLOT(handleGroupUpdated(qlonglong)));
     connect(tdLibWrapper, SIGNAL(basicGroupUpdated(qlonglong)), this, SLOT(handleGroupUpdated(qlonglong)));
+    connect(tdLibWrapper, SIGNAL(secretChatUpdated(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
+    connect(tdLibWrapper, SIGNAL(secretChatReceived(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
+    connect(tdLibWrapper, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
 
     // Don't start the timer until we have at least one chat
     relativeTimeRefreshTimer = new QTimer(this);
@@ -332,6 +356,7 @@ QHash<int,QByteArray> ChatListModel::roleNames() const
     roles.insert(ChatData::RoleLastMessageText, "last_message_text");
     roles.insert(ChatData::RoleLastMessageStatus, "last_message_status");
     roles.insert(ChatData::RoleChatMemberStatus, "chat_member_status");
+    roles.insert(ChatData::RoleSecretChatState, "secret_chat_state");
     roles.insert(ChatData::RoleIsChannel, "is_channel");
     return roles;
 }
@@ -359,6 +384,7 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatData::RoleLastMessageDate: return data->senderMessageDate();
         case ChatData::RoleLastMessageStatus: return data->senderMessageStatus();
         case ChatData::RoleChatMemberStatus: return data->memberStatus;
+        case ChatData::RoleSecretChatState: return data->secretChatState;
         case ChatData::RoleIsChannel: return data->isChannel();
         }
     }
@@ -492,6 +518,38 @@ void ChatListModel::updateChatVisibility(const TDLibWrapper::Group *group)
     }
 }
 
+void ChatListModel::updateSecretChatVisibility(const QVariantMap secretChatDetails)
+{
+    LOG("Updating secret chat visibility" << secretChatDetails.value(ID).toString());
+    // See if any secret chat has been closed
+    for (int i = 0; i < chatList.size(); i++) {
+        ChatData *chat = chatList.at(i);
+        if (chat->chatType != TDLibWrapper::ChatTypeSecret) {
+            continue;
+        }
+        if (chat->chatData.value(TYPE).toMap().value(SECRET_CHAT_ID).toLongLong() != secretChatDetails.value(ID).toLongLong()) {
+            continue;
+        }
+        const QVector<int> changedRoles(chat->updateSecretChat(secretChatDetails));
+        if (chat->isHidden() && !showHiddenChats) {
+            LOG("Hiding chat" << chat->chatId << "at" << i);
+            beginRemoveRows(QModelIndex(), i, i);
+            chatList.removeAt(i);
+            // Update damaged part of the map
+            const int n = chatList.size();
+            for (int pos = i; pos < n; pos++) {
+                chatIndexMap.insert(chatList.at(pos)->chatId, pos);
+            }
+            i--;
+            hiddenChats.insert(chat->chatId, chat);
+            endRemoveRows();
+        } else if (!changedRoles.isEmpty()) {
+            const QModelIndex modelIndex(index(i));
+            emit dataChanged(modelIndex, modelIndex, changedRoles);
+        }
+    }
+}
+
 bool ChatListModel::showAllChats() const
 {
     return showHiddenChats;
@@ -509,10 +567,19 @@ void ChatListModel::setShowAllChats(bool showAll)
 void ChatListModel::handleChatDiscovered(const QString &, const QVariantMap &chatToBeAdded)
 {
     ChatData *chat = new ChatData(chatToBeAdded, tdLibWrapper->getUserInformation());
+
     const TDLibWrapper::Group *group = tdLibWrapper->getGroup(chat->groupId);
     if (group) {
         chat->updateGroup(group);
     }
+
+    if (chat->chatType == TDLibWrapper::ChatTypeSecret) {
+        QVariantMap secretChatDetails = tdLibWrapper->getSecretChatFromCache(chatToBeAdded.value(TYPE).toMap().value(SECRET_CHAT_ID).toLongLong());
+        if (!secretChatDetails.isEmpty()) {
+            chat->updateSecretChat(secretChatDetails);
+        }
+    }
+
     if (chat->isHidden()) {
         LOG("Hidden chat" << chat->chatId);
         hiddenChats.insert(chat->chatId, chat);
@@ -705,6 +772,33 @@ void ChatListModel::handleChatNotificationSettingsUpdated(const QString &id, con
 void ChatListModel::handleGroupUpdated(qlonglong groupId)
 {
     updateChatVisibility(tdLibWrapper->getGroup(groupId));
+}
+
+void ChatListModel::handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat)
+{
+    LOG("Updating visibility of secret chat " << secretChatId);
+    updateSecretChatVisibility(secretChat);
+}
+
+void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString &title)
+{
+    qlonglong chatIdLongLong = chatId.toLongLong();
+    if (chatIndexMap.contains(chatIdLongLong)) {
+        LOG("Updating title for" << chatId);
+        const int chatIndex = chatIndexMap.value(chatIdLongLong);
+        ChatData *chat = chatList.at(chatIndex);
+        chat->chatData.insert(TITLE, title);
+        QVector<int> changedRoles;
+        changedRoles.append(ChatData::RoleTitle);
+        const QModelIndex modelIndex(index(chatIndex));
+        emit dataChanged(modelIndex, modelIndex, changedRoles);
+    } else {
+        ChatData *chat = hiddenChats.value(chatId.toLongLong());
+        if (chat) {
+            LOG("Updating title for hidden chat" << chatId);
+            chat->chatData.insert(TITLE, title);
+        }
+    }
 }
 
 void ChatListModel::handleRelativeTimeRefreshTimer()

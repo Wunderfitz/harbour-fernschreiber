@@ -179,6 +179,10 @@
             <numerusform>%1 online</numerusform>
         </translation>
     </message>
+    <message>
+        <source>New Secret Chat</source>
+        <translation>Neuer geheimer Chat</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -259,6 +263,10 @@
     <message>
         <source>Mark all messages as read</source>
         <translation>Nachrichten als gelesen markieren</translation>
+    </message>
+    <message>
+        <source>No message in this chat.</source>
+        <translation>Keine Nachricht in diesem Chat</translation>
     </message>
 </context>
 <context>
@@ -374,6 +382,18 @@
             <numerusform>%1 online</numerusform>
             <numerusform>%1 online</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
+        <translation>Dieser geheime Chat ist noch nicht bereit. Ihr Chatpartner muss erst noch online gehen.</translation>
+    </message>
+    <message>
+        <source>Closing chat</source>
+        <translation>Schließe Chat</translation>
+    </message>
+    <message>
+        <source>Close Chat</source>
+        <translation>Chat schließen</translation>
     </message>
 </context>
 <context>
@@ -904,6 +924,53 @@
     </message>
 </context>
 <context>
+    <name>NewChatPage</name>
+    <message>
+        <source>Your Contacts</source>
+        <translation>Ihre Kontakte</translation>
+    </message>
+    <message>
+        <source>You don&apos;t have any contacts.</source>
+        <translation>Sie haben keine Kontakte</translation>
+    </message>
+    <message>
+        <source>Private Chat</source>
+        <translation>Privater Chat</translation>
+    </message>
+    <message>
+        <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
+        <translation>Transportverschlüsselt, nutzt Telegram-Cloud, teilbar zwischen Geräten</translation>
+    </message>
+    <message>
+        <source>Secret Chat</source>
+        <translation>Geheimer Chat</translation>
+    </message>
+    <message>
+        <source>End-to-end-encrypted, accessible on this device only</source>
+        <translation>Ende-zu-Ende-verschlüsselt, nur auf diesem Gerät zugreifbar</translation>
+    </message>
+    <message>
+        <source>Search a contact...</source>
+        <translation>Einen Kontakt suchen...</translation>
+    </message>
+    <message>
+        <source>Loading contacts...</source>
+        <translation>Lade Kontakte...</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation>Kontakte mit Telegram synchronisieren</translation>
+    </message>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation>Konnte Ihre Kontakte nicht mit Telegram synchronisieren.</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation>Die Kontakte wurden erfolgreich mit Telegram synchronisiert.</translation>
+    </message>
+</context>
+<context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
@@ -954,6 +1021,10 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Sie haben noch keine Chats.</translation>
+    </message>
+    <message>
+        <source>New Chat</source>
+        <translation>Neuer Chat</translation>
     </message>
 </context>
 <context>
@@ -1624,6 +1695,14 @@
     <message>
         <source>You are already a member of this chat.</source>
         <translation>Sie sind bereits Mitglied dieses Chats.</translation>
+    </message>
+    <message>
+        <source>Closed!</source>
+        <translation>Geschlossen!</translation>
+    </message>
+    <message>
+        <source>Pending acknowledgement</source>
+        <translation>Ausstehende Bestätigung</translation>
     </message>
 </context>
 </TS>
