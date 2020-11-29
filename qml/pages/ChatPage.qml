@@ -928,10 +928,10 @@ Page {
                 Connections {
                     target: stickerPickerLoader.item
                     onStickerPicked: {
-                        console.log(stickerId)
-                        tdLibWrapper.sendStickerMessage(chatInformation.id, stickerId)
-                        stickerPickerLoader.active = false
-                        attachmentOptionsRow.isNeeded = false
+                        Debug.log("Sticker picked: " + stickerId);
+                        tdLibWrapper.sendStickerMessage(chatInformation.id, stickerId);
+                        stickerPickerLoader.active = false;
+                        attachmentOptionsRow.isNeeded = false;
                     }
                 }
 
