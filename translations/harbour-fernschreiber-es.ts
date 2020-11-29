@@ -178,7 +178,7 @@
     </message>
     <message>
         <source>New Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Nueva charla secreta</translation>
     </message>
 </context>
 <context>
@@ -263,7 +263,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>No hay mensaje en esta charla.</translation>
     </message>
 </context>
 <context>
@@ -375,15 +375,15 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Esta charla secreta aún no está lista. Su compañero de charla debe conectarse primero.</translation>
     </message>
     <message>
         <source>Closing chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerrando charla</translation>
     </message>
     <message>
         <source>Close Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerrar charla</translation>
     </message>
 </context>
 <context>
@@ -753,11 +753,11 @@
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation type="unfinished">envió un audio</translation>
+        <translation>envió un audio</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation type="unfinished">envió un audio</translation>
+        <translation>envió un audio</translation>
     </message>
 </context>
 <context>
@@ -917,47 +917,47 @@
     <name>NewChatPage</name>
     <message>
         <source>Your Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Sus contactos</translation>
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation type="unfinished"></translation>
+        <translation>No hay contactos.</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Charla privada</translation>
     </message>
     <message>
         <source>Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>charla secreta</translation>
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation type="unfinished"></translation>
+        <translation>Encriptado fin-a-fin, accesible solo en este dispositivo</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargando contactos...</translation>
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Transporte-encriptado, usa la nube de Telegram, se puede compartir entre dispositivos</translation>
     </message>
     <message>
         <source>Search a contact...</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar un contacto...</translation>
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation type="unfinished"></translation>
+        <translation>Sincronizar contactos con Telegram</translation>
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation>No se pudieron sincronizar los contactos con Telegram.</translation>
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation>Contactos sincronizados con éxito con Telegram.</translation>
     </message>
 </context>
 <context>
@@ -1013,7 +1013,7 @@
     </message>
     <message>
         <source>New Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Nueva charlan>
     </message>
 </context>
 <context>
