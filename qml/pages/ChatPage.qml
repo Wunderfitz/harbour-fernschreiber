@@ -587,11 +587,8 @@ Page {
                 id: closeSecretChatMenuItem
                 visible: chatPage.isSecretChat && chatPage.secretChatDetails.state["@type"] !== "secretChatStateClosed"
                 onClicked: {
-                    var remorse = Remorse.popupAction(appWindow, qsTr("Closing chat"), (function(secretChatId) {
-                        return function() {
-                            tdLibWrapper.closeSecretChat(secretChatId);
-                        };
-                    }(chatPage.secretChatDetails.id)))
+                    var secretChatId = chatPage.secretChatDetails.id;
+                    Remorse.popupAction(chatPage, qsTr("Closing chat"), function() { tdLibWrapper.closeSecretChat(secretChatId) });
                 }
                 text: qsTr("Close Chat")
             }
@@ -601,13 +598,12 @@ Page {
                 visible: (chatPage.isSuperGroup || chatPage.isBasicGroup) && chatGroupInformation && chatGroupInformation.status["@type"] !== "chatMemberStatusBanned"
                 onClicked: {
                     if (chatPage.userIsMember) {
-                        var remorse = Remorse.popupAction(appWindow, qsTr("Leaving chat"), (function(chatid) {
-                            return function() {
-                                tdLibWrapper.leaveChat(chatid);
-                                // this does not care about the response (ideally type "ok" without further reference) for now
-                                pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
-                            };
-                        }(chatInformation.id)))
+                        var chatId = chatInformation.id;
+                        Remorse.popupAction(chatPage, qsTr("Leaving chat"), function() {
+                            tdLibWrapper.leaveChat(chatId);
+                            // this does not care about the response (ideally type "ok" without further reference) for now
+                            pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
+                        });
                     } else {
                         tdLibWrapper.joinChat(chatInformation.id);
                     }

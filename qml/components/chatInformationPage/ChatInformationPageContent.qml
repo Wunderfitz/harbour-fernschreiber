@@ -204,18 +204,15 @@ SilicaFlickable {
             onClicked: {
                 // ensure it's done even if the page is closed:
                 if (chatInformationPage.userIsMember) {
-                    var remorse = Remorse.popupAction(appWindow, qsTr("Leaving chat"), (function(chatid) {
-                        return function() {
-                            tdLibWrapper.leaveChat(chatid);
-                            // this does not care about the response (ideally type "ok" without further reference) for now
-                            pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
-                        };
-                    }(chatInformationPage.chatInformation.id)))
+                    var chatId = chatInformationPage.chatInformation.id;
+                    Remorse.popupAction(chatInformationPage, qsTr("Leaving chat"), function() {
+                        tdLibWrapper.leaveChat(chatId);
+                        // this does not care about the response (ideally type "ok" without further reference) for now
+                        pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
+                    });
                 } else {
                     tdLibWrapper.joinChat(chatInformationPage.chatInformation.id);
                 }
-
-
             }
         }
         MenuItem {
@@ -251,7 +248,7 @@ SilicaFlickable {
             property int maxDimension: Screen.width / 2
             property int minX: Theme.horizontalPageMargin
             property int maxX: (chatInformationPage.width - maxDimension)/2
-            property int minY: Theme.paddingSmall//(parent.height - minDimension)/2
+            property int minY: Theme.paddingMedium
             property int maxY: parent.height
             property double tweenFactor: {
                 if(!hasImage) {
