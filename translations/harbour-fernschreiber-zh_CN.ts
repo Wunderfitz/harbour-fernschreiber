@@ -178,7 +178,7 @@
     </message>
     <message>
         <source>New Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>新加密对话</translation>
     </message>
 </context>
 <context>
@@ -263,7 +263,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>该对话没有消息…</translation>
     </message>
 </context>
 <context>
@@ -375,15 +375,15 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation type="unfinished"></translation>
+        <translation>加密对话未就绪，你的聊天对象必须先上线。</translation>
     </message>
     <message>
         <source>Closing chat</source>
-        <translation type="unfinished"></translation>
+        <translation>正在关闭对话</translation>
     </message>
     <message>
         <source>Close Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭对话</translation>
     </message>
 </context>
 <context>
@@ -753,11 +753,11 @@
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送音频</translation>
+        <translation>发送音频</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation type="unfinished">发送音频</translation>
+        <translation>发送音频</translation>
     </message>
 </context>
 <context>
@@ -917,47 +917,47 @@
     <name>NewChatPage</name>
     <message>
         <source>Your Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>你的联系人</translation>
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation type="unfinished"></translation>
+        <translation>你还没有任何联系人。</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>个人对话</translation>
     </message>
     <message>
         <source>Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>加密对话</translation>
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation type="unfinished"></translation>
+        <translation>端对端加密，仅能通过此设备访问。</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在加载联系人…</translation>
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation type="unfinished"></translation>
+        <translation>传输加密，使用 Telegram 云，可以在设备之间共享</translation>
     </message>
     <message>
         <source>Search a contact...</source>
-        <translation type="unfinished"></translation>
+        <translation><搜索联系人…/translation>
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation type="unfinished"></translation>
+        <translation>同步 Telegram 联系人</translation>
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation>无法同步你的云端 Telegram 联系人。</translation>
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation>已成功同步 Telegram 联系人。</translation>
     </message>
 </context>
 <context>
@@ -1013,7 +1013,7 @@
     </message>
     <message>
         <source>New Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>新对话</translation>
     </message>
 </context>
 <context>
@@ -1269,11 +1269,11 @@
     </message>
     <message>
         <source>Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>储存</translation>
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation type="unfinished"></translation>
+        <translation>启用储存加速器</translation>
     </message>
 </context>
 <context>
@@ -1589,12 +1589,12 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>修改私密对话保留时长设置</translation>
+        <translation>修改加密对话保留时长设置</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>修改私密对话保留时长设置</translation>
+        <translation>修改加密对话保留时长设置</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
@@ -1679,11 +1679,11 @@
     </message>
     <message>
         <source>Closed!</source>
-        <translation type="unfinished"></translation>
+        <translation>已关闭!</translation>
     </message>
     <message>
         <source>Pending acknowledgement</source>
-        <translation type="unfinished"></translation>
+        <translation>等待确认</translation>
     </message>
 </context>
 </TS>
