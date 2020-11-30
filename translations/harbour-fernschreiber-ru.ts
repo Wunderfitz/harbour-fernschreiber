@@ -135,7 +135,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Неизвестный</translation>
     </message>
     <message>
         <source>Chat Title</source>
@@ -184,7 +184,7 @@
     </message>
     <message>
         <source>New Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation type>Новый секретный чат</translation>
     </message>
 </context>
 <context>
@@ -269,7 +269,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation type>В чате нет сообщений</translation>
     </message>
 </context>
 <context>
@@ -395,22 +395,22 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation type="unfinished"></translation>
+        <translation type>Секретный чат не готов. Участники должны быть онлайн.</translation>
     </message>
     <message>
         <source>Closing chat</source>
-        <translation type="unfinished"></translation>
+        <translation type>Закрытие чата</translation>
     </message>
     <message>
         <source>Close Chat</source>
-        <translation type="unfinished"></translation>
+        <translation type>Закрыть чат</translation>
     </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
     <message>
         <source>Select Chat</source>
-        <translation type="unfinished"></translation>
+        <translation type>Выбрать чат</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
@@ -866,7 +866,7 @@
     </message>
     <message>
         <source>About Fernschreiber</source>
-        <translation type="unfinished"></translation>
+        <translation type>О Фэрншрайбе</translation>
     </message>
 </context>
 <context>
@@ -941,7 +941,7 @@
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">У вас нет никаких контактов.</translation>
     </message>
     <message>
         <source>Private Chat</source>
@@ -1137,7 +1137,7 @@
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-        <translation type="unfinished"></translation>
+        <translation type>Тесты имеют один правильный ответ. Участники не могут отозвать свои ответы.</translation>
     </message>
 </context>
 <context>
@@ -1291,7 +1291,7 @@
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation type="unfinished">Меню "открыть с помощью"</translation>
+        <translation type>Меню "открыть с помощью"</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
