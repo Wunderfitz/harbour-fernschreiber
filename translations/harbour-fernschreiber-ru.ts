@@ -1291,11 +1291,11 @@
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation>Меню "открыть с помощью"</translation>
+        <translation>Меню &quot;открыть с помощью&quot;</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Встроить Fernschreiber в системное меню "открыть с помощью"</translation>
+        <translation>Встроить Fernschreiber в системное меню &quot;открыть с помощью&quot;</translation>
     </message>
     <message>
         <source>Animate stickers</source>
