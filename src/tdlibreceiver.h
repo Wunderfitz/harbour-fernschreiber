@@ -85,9 +85,6 @@ signals:
     void chatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
     void errorReceived(const int code, const QString &message);
-    void secretChat(qlonglong secretChatId, const QVariantMap &secretChat);
-    void secretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
-    void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
 
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
@@ -148,9 +145,6 @@ private:
     void processUsers(const QVariantMap &receivedInformation);
     void processError(const QVariantMap &receivedInformation);
     void nop(const QVariantMap &receivedInformation);
-    void processSecretChat(const QVariantMap &receivedInformation);
-    void processUpdateSecretChat(const QVariantMap &receivedInformation);
-    void processImportedContacts(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

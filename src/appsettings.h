@@ -29,7 +29,6 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
     Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
-    Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
 
 public:
     enum NotificationFeedback {
@@ -60,9 +59,6 @@ public:
     NotificationFeedback notificationFeedback() const;
     void setNotificationFeedback(NotificationFeedback feedback);
 
-    bool storageOptimizer() const;
-    void setStorageOptimizer(bool enable);
-
 signals:
     void sendByEnterChanged();
     void useOpenWithChanged();
@@ -70,7 +66,6 @@ signals:
     void animateStickersChanged();
     void notificationTurnsDisplayOnChanged();
     void notificationFeedbackChanged();
-    void storageOptimizerChanged();
 
 private:
     QSettings settings;

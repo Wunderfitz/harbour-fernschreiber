@@ -29,8 +29,6 @@ Item {
     property var installedStickerSets: stickerManager.getInstalledStickerSets()
     property bool pickerLoaded: false
 
-    signal stickerPicked(var stickerId)
-
     Timer {
         id: stickerPickerLoadedTimer
         interval: 100
@@ -103,7 +101,12 @@ Item {
 
                     MouseArea {
                         anchors.fill: parent
-                        onClicked: stickerPickerOverlayItem.stickerPicked(modelData.sticker.remote.id)
+                        onClicked: {
+                            tdLibWrapper.sendStickerMessage(chatInformation.id, modelData.sticker.remote.id);
+                            stickerPickerOverlayItem.visible = false;
+                            attachmentOptionsRow.visible = false;
+                            stickerPickerLoader.active = false;
+                        }
                     }
 
                 }
@@ -165,7 +168,12 @@ Item {
 
                             MouseArea {
                                 anchors.fill: parent
-                                onClicked: stickerPickerOverlayItem.stickerPicked(modelData.sticker.remote.id)
+                                onClicked: {
+                                    tdLibWrapper.sendStickerMessage(chatInformation.id, modelData.sticker.remote.id);
+                                    stickerPickerOverlayItem.visible = false;
+                                    attachmentOptionsRow.visible = false;
+                                    stickerPickerLoader.active = false;
+                                }
                             }
                         }
 

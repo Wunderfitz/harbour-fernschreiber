@@ -82,11 +82,11 @@ Page {
             }
         }
         onCopyToDownloadsSuccessful: {
-            appNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
+            imageNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
         }
 
         onCopyToDownloadsError: {
-            appNotification.show(qsTr("Download failed."));
+            imageNotification.show(qsTr("Download failed."));
         }
     }
 
@@ -103,6 +103,10 @@ Page {
                     tdLibWrapper.copyFileToDownloads(imagePage.imageUrl);
                 }
             }
+        }
+
+        AppNotification {
+            id: imageNotification
         }
 
         SilicaFlickable {

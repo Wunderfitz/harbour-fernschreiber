@@ -182,10 +182,6 @@
             <numerusform>%1 online</numerusform>
         </translation>
     </message>
-    <message>
-        <source>New Secret Chat</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -266,10 +262,6 @@
     <message>
         <source>Mark all messages as read</source>
         <translation>Zaznacz wszystkie wiadomości jako przeczytane</translation>
-    </message>
-    <message>
-        <source>No message in this chat.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -392,18 +384,6 @@
             <numerusform>%1 online</numerusform>
             <numerusform>%1 online</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Closing chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close Chat</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -770,15 +750,6 @@
         <source>sent a self-destructing photo that is expired</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>sent an audio</source>
-        <comment>myself</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>sent an audio</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -864,10 +835,6 @@
         <source>Use the international format, e.g. %1</source>
         <translation>Użyj międzynarodowego formatu, %1</translation>
     </message>
-    <message>
-        <source>About Fernschreiber</source>
-        <translation>O Fernschreiber</translation>
-    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -934,53 +901,6 @@
     </message>
 </context>
 <context>
-    <name>NewChatPage</name>
-    <message>
-        <source>Your Contacts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You don&apos;t have any contacts.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Private Chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Secret Chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Loading contacts...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Search a contact...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Synchronize Contacts with Telegram</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Contacts successfully synchronized with Telegram.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
@@ -1032,10 +952,6 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Nie masz jeszcze żadnych czatów.</translation>
-    </message>
-    <message>
-        <source>New Chat</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1303,14 +1219,6 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Storage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable storage optimizer</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1714,14 +1622,6 @@
     <message>
         <source>You are already a member of this chat.</source>
         <translation>Jesteś już członkiem tego czatu.</translation>
-    </message>
-    <message>
-        <source>Closed!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pending acknowledgement</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

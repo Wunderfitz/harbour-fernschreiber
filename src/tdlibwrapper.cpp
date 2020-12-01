@@ -29,9 +29,6 @@
 #include <QStandardPaths>
 #include <QDBusConnection>
 #include <QDBusInterface>
-#include <QRegularExpression>
-#include <QRegularExpressionMatch>
-#include <QRegularExpressionMatchIterator>
 
 #define DEBUG_MODULE TDLibWrapper
 #include "debuglog.h"
@@ -40,21 +37,15 @@ namespace {
     const QString STATUS("status");
     const QString ID("id");
     const QString TYPE("type");
-    const QString LAST_NAME("last_name");
-    const QString FIRST_NAME("first_name");
-    const QString USERNAME("username");
-    const QString VALUE("value");
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
 }
 
-TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent) : QObject(parent), joinChatRequested(false)
+TDLibWrapper::TDLibWrapper(AppSettings *appSettings, QObject *parent) : QObject(parent), joinChatRequested(false)
 {
     LOG("Initializing TD Lib...");
     this->appSettings = appSettings;
-    this->mceInterface = mceInterface;
     this->tdLibClient = td_json_client_create();
-    this->authorizationState = AuthorizationState::Closed;
     this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
 
     QString tdLibDatabaseDirectoryPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib";
@@ -99,8 +90,6 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(messagesDeleted(QString, QVariantList)), this, SIGNAL(messagesDeleted(QString, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SIGNAL(chatsReceived(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chat(QVariantMap)), this, SLOT(handleChatReceived(QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(secretChat(qlonglong, QVariantMap)), this, SLOT(handleSecretChatReceived(qlonglong, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(secretChatUpdated(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SIGNAL(recentStickersUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SIGNAL(stickersReceived(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SIGNAL(installedStickerSetsUpdated(QVariantList)));
@@ -120,12 +109,10 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString)), this, SIGNAL(errorReceived(int, QString)));
-    connect(this->tdLibReceiver, SIGNAL(contactsImported(QVariantList, QVariantList)), this, SIGNAL(contactsImported(QVariantList, QVariantList)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
     connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
-    connect(this->appSettings, SIGNAL(storageOptimizerChanged()), this, SLOT(handleStorageOptimizerChanged()));
 
     this->tdLibReceiver->start();
 
@@ -319,18 +306,6 @@ void TDLibWrapper::unpinMessage(const QString &chatId)
     this->sendRequest(requestObject);
 }
 
-static bool compareReplacements(const QVariant &replacement1, const QVariant &replacement2)
-{
-    const QVariantMap replacementMap1 = replacement1.toMap();
-    const QVariantMap replacementMap2 = replacement2.toMap();
-
-    if (replacementMap1.value("startIndex").toInt() < replacementMap2.value("startIndex").toInt()) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId)
 {
     LOG("Sending text message" << chatId << message << replyToMessageId);
@@ -342,50 +317,8 @@ void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message
     }
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageText");
-
-    // Postprocess message (e.g. for @-mentioning)
-    QString processedMessage = message;
-    QVariantList replacements;
-    QRegularExpression atMentionIdRegex("\\@(\\d+)\\(([^\\)]+)\\)");
-    QRegularExpressionMatchIterator atMentionIdMatchIterator = atMentionIdRegex.globalMatch(processedMessage);
-    while (atMentionIdMatchIterator.hasNext()) {
-        QRegularExpressionMatch nextAtMentionId = atMentionIdMatchIterator.next();
-        LOG("@Mentioning with user ID! Start Index: " << nextAtMentionId.capturedStart(0) << ", length: " << nextAtMentionId.capturedLength(0) << ", user ID: " << nextAtMentionId.captured(1) << ", plain text: " << nextAtMentionId.captured(2));
-        QVariantMap replacement;
-        replacement.insert("startIndex", nextAtMentionId.capturedStart(0));
-        replacement.insert("length", nextAtMentionId.capturedLength(0));
-        replacement.insert("userId", nextAtMentionId.captured(1));
-        replacement.insert("plainText", nextAtMentionId.captured(2));
-        replacements.append(replacement);
-    }
-
     QVariantMap formattedText;
-
-    if (!replacements.isEmpty()) {
-        QVariantList entities;
-        std::sort(replacements.begin(), replacements.end(), compareReplacements);
-        QListIterator<QVariant> replacementsIterator(replacements);
-        int offsetCorrection = 0;
-        while (replacementsIterator.hasNext()) {
-            QVariantMap nextReplacement = replacementsIterator.next().toMap();
-            int replacementStartOffset = nextReplacement.value("startIndex").toInt();
-            int replacementLength = nextReplacement.value("length").toInt();
-            QString replacementPlainText = nextReplacement.value("plainText").toString();
-            processedMessage = processedMessage.replace(replacementStartOffset - offsetCorrection, replacementLength, replacementPlainText);
-            QVariantMap entity;
-            entity.insert("offset", replacementStartOffset - offsetCorrection);
-            entity.insert("length", replacementPlainText.length());
-            QVariantMap entityType;
-            entityType.insert(_TYPE, "textEntityTypeMentionName");
-            entityType.insert("user_id", nextReplacement.value("userId").toString());
-            entity.insert("type", entityType);
-            entities.append(entity);
-            offsetCorrection += replacementLength - replacementPlainText.length();
-        }
-        formattedText.insert("entities", entities);
-    }
-
-    formattedText.insert("text", processedMessage);
+    formattedText.insert("text", message);
     formattedText.insert(_TYPE, "formattedText");
     inputMessageContent.insert("text", formattedText);
     requestObject.insert("input_message_content", inputMessageContent);
@@ -543,25 +476,14 @@ void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
 void TDLibWrapper::setOptionInteger(const QString &optionName, int optionValue)
 {
     LOG("Setting integer option" << optionName << optionValue);
-    setOption(optionName, "optionValueInteger", optionValue);
-}
-
-void TDLibWrapper::setOptionBoolean(const QString &optionName, bool optionValue)
-{
-    LOG("Setting boolean option" << optionName << optionValue);
-    setOption(optionName, "optionValueBoolean", optionValue);
-}
-
-void TDLibWrapper::setOption(const QString &name, const QString &type, const QVariant &value)
-{
-    QVariantMap optionValue;
-    optionValue.insert(_TYPE, type);
-    optionValue.insert(VALUE, value);
-    QVariantMap request;
-    request.insert(_TYPE, "setOption");
-    request.insert("name", name);
-    request.insert(VALUE, optionValue);
-    sendRequest(request);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setOption");
+    requestObject.insert("name", optionName);
+    QVariantMap optionValueMap;
+    optionValueMap.insert(_TYPE, "optionValueInteger");
+    optionValueMap.insert("value", optionValue);
+    requestObject.insert("value", optionValueMap);
+    this->sendRequest(requestObject);
 }
 
 void TDLibWrapper::setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings)
@@ -677,7 +599,7 @@ void TDLibWrapper::getGroupFullInfo(const QString &groupId, bool isSuperGroup)
 
 void TDLibWrapper::getUserFullInfo(const QString &userId)
 {
-    LOG("Retrieving UserFullInfo" << userId);
+    LOG("Retrieving UserFullInfo");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getUserFullInfo");
     requestObject.insert(_EXTRA, userId);
@@ -690,16 +612,6 @@ void TDLibWrapper::createPrivateChat(const QString &userId)
     LOG("Creating Private Chat");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "createPrivateChat");
-    requestObject.insert("user_id", userId);
-    requestObject.insert(_EXTRA, "openDirectly"); //gets matched in qml
-    this->sendRequest(requestObject);
-}
-
-void TDLibWrapper::createNewSecretChat(const QString &userId)
-{
-    LOG("Creating new secret chat");
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "createNewSecretChat");
     requestObject.insert("user_id", userId);
     requestObject.insert(_EXTRA, "openDirectly"); //gets matched in qml
     this->sendRequest(requestObject);
@@ -874,42 +786,6 @@ void TDLibWrapper::getDeepLinkInfo(const QString &link)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getContacts()
-{
-    LOG("Retrieving contacts");
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "getContacts");
-    requestObject.insert(_EXTRA, "contactsRequested");
-    this->sendRequest(requestObject);
-}
-
-void TDLibWrapper::getSecretChat(qlonglong secretChatId)
-{
-    LOG("Getting detailed information about secret chat" << secretChatId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "getSecretChat");
-    requestObject.insert("secret_chat_id", secretChatId);
-    this->sendRequest(requestObject);
-}
-
-void TDLibWrapper::closeSecretChat(qlonglong secretChatId)
-{
-    LOG("Closing secret chat" << secretChatId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "closeSecretChat");
-    requestObject.insert("secret_chat_id", secretChatId);
-    this->sendRequest(requestObject);
-}
-
-void TDLibWrapper::importContacts(const QVariantList &contacts)
-{
-    LOG("Importing contacts");
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "importContacts");
-    requestObject.insert("contacts", contacts);
-    this->sendRequest(requestObject);
-}
-
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
@@ -929,11 +805,6 @@ QVariantMap TDLibWrapper::getUserInformation(const QString &userId)
 {
     // LOG("Returning user information for ID" << userId);
     return this->allUsers.value(userId).toMap();
-}
-
-bool TDLibWrapper::hasUserInformation(const QString &userId)
-{
-    return this->allUsers.contains(userId);
 }
 
 QVariantMap TDLibWrapper::getUserInformationByName(const QString &userName)
@@ -981,11 +852,6 @@ QVariantMap TDLibWrapper::getChat(const QString &chatId)
     return this->chats.value(chatId).toMap();
 }
 
-QVariantMap TDLibWrapper::getSecretChatFromCache(qlonglong secretChatId)
-{
-    return this->secretChats.value(secretChatId);
-}
-
 QString TDLibWrapper::getOptionString(const QString &optionName)
 {
     return this->options.value(optionName).toString();
@@ -1026,10 +892,16 @@ void TDLibWrapper::openFileOnDevice(const QString &filePath)
 
 void TDLibWrapper::controlScreenSaver(bool enabled)
 {
+    LOG("Controlling device screen saver" << enabled);
+    QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
+    QDBusInterface dbusInterface("com.nokia.mce", "/com/nokia/mce/request", "com.nokia.mce.request", dbusConnection);
+
     if (enabled) {
-        mceInterface->displayCancelBlankingPause();
+        LOG("Enabling screensaver");
+        dbusInterface.call("req_display_cancel_blanking_pause");
     } else {
-        mceInterface->displayBlankingPause();
+        LOG("Disabling screensaver");
+        dbusInterface.call("req_display_blanking_pause");
     }
 }
 
@@ -1255,23 +1127,6 @@ void TDLibWrapper::handleOpenWithChanged()
     }
 }
 
-void TDLibWrapper::handleSecretChatReceived(qlonglong secretChatId, const QVariantMap &secretChat)
-{
-    this->secretChats.insert(secretChatId, secretChat);
-    emit secretChatReceived(secretChatId, secretChat);
-}
-
-void TDLibWrapper::handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat)
-{
-    this->secretChats.insert(secretChatId, secretChat);
-    emit secretChatUpdated(secretChatId, secretChat);
-}
-
-void TDLibWrapper::handleStorageOptimizerChanged()
-{
-    setOptionBoolean("use_storage_optimizer", appSettings->storageOptimizer());
-}
-
 void TDLibWrapper::setInitialParameters()
 {
     LOG("Sending initial parameters to TD Lib");
@@ -1284,13 +1139,12 @@ void TDLibWrapper::setInitialParameters()
     initialParameters.insert("use_file_database", true);
     initialParameters.insert("use_chat_info_database", true);
     initialParameters.insert("use_message_database", true);
-    initialParameters.insert("use_secret_chats", true);
+    initialParameters.insert("use_secret_chats", false);
     initialParameters.insert("system_language_code", QLocale::system().name());
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
     initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     initialParameters.insert("system_version", QSysInfo::prettyProductName());
     initialParameters.insert("application_version", "0.5");
-    initialParameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
     // initialParameters.insert("use_test_dc", true);
     requestObject.insert("parameters", initialParameters);
     this->sendRequest(requestObject);
@@ -1419,15 +1273,7 @@ TDLibWrapper::ChatMemberStatus TDLibWrapper::chatMemberStatusFromString(const QS
         (status == QStringLiteral("chatMemberStatusAdministrator")) ?  ChatMemberStatusAdministrator :
         (status == QStringLiteral("chatMemberStatusRestricted")) ? ChatMemberStatusRestricted :
         (status == QStringLiteral("chatMemberStatusBanned")) ?  ChatMemberStatusBanned :
-                                                                ChatMemberStatusUnknown;
-}
-
-TDLibWrapper::SecretChatState TDLibWrapper::secretChatStateFromString(const QString &state)
-{
-    return (state == QStringLiteral("secretChatStateClosed")) ? SecretChatStateClosed :
-        (state == QStringLiteral("secretChatStatePending")) ? SecretChatStatePending :
-        (state == QStringLiteral("secretChatStateReady")) ? SecretChatStateReady :
-        SecretChatStateUnknown;
+        ChatMemberStatusUnknown;
 }
 
 TDLibWrapper::ChatMemberStatus TDLibWrapper::Group::chatMemberStatus() const

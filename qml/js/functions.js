@@ -21,13 +21,6 @@
 .import "debug.js" as Debug
 .import Sailfish.Silica 1.0 as Silica
 
-var tdLibWrapper;
-var appNotification;
-function setGlobals(globals) {
-    tdLibWrapper = globals.tdLibWrapper;
-    appNotification = globals.appNotification;
-}
-
 function getUserName(userInformation) {
     var firstName = typeof userInformation.first_name !== "undefined" ? userInformation.first_name : "";
     var lastName = typeof userInformation.last_name !== "undefined" ? userInformation.last_name : "";
@@ -160,7 +153,6 @@ function getMessageText(message, simple, myself) {
 
     return myself ? qsTr("sent an unsupported message: %1", "myself; %1 is message type").arg(message.content['@type'].substring(7)) : qsTr("sent an unsupported message: %1", "%1 is message type").arg(message.content['@type'].substring(7));
 }
-
 function getChatPartnerStatusText(statusType, was_online) {
     switch(statusType) {
     case "userStatusEmpty":
@@ -177,18 +169,6 @@ function getChatPartnerStatusText(statusType, was_online) {
         return qsTr("offline, was recently online");
     }
 }
-
-function getSecretChatStatus(secretChatDetails) {
-    switch (secretChatDetails.state["@type"]) {
-    case "secretChatStateClosed":
-        return "<b>" + qsTr("Closed!") + "</b>";
-    case "secretChatStatePending":
-        return qsTr("Pending acknowledgement");
-    case "secretChatStateReady":
-        return "";
-    }
-}
-
 function getChatMemberStatusText(statusType) {
 //    chatMemberStatusAdministrator, chatMemberStatusBanned, chatMemberStatusCreator, chatMemberStatusLeft, chatMemberStatusMember, and chatMemberStatusRestricted.
     switch(statusType) {

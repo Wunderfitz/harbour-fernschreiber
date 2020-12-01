@@ -27,7 +27,6 @@ namespace {
     const QString KEY_ANIMATE_STICKERS("animateStickers");
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
-    const QString KEY_STORAGE_OPTIMIZER("storageOptimizer");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
@@ -115,19 +114,5 @@ void AppSettings::setNotificationFeedback(NotificationFeedback feedback)
         LOG(KEY_NOTIFICATION_FEEDBACK << feedback);
         settings.setValue(KEY_NOTIFICATION_FEEDBACK, (int) feedback);
         emit notificationFeedbackChanged();
-    }
-}
-
-bool AppSettings::storageOptimizer() const
-{
-    return settings.value(KEY_STORAGE_OPTIMIZER, false).toBool();
-}
-
-void AppSettings::setStorageOptimizer(bool enable)
-{
-    if (storageOptimizer() != enable) {
-        LOG(KEY_STORAGE_OPTIMIZER << enable);
-        settings.setValue(KEY_STORAGE_OPTIMIZER, enable);
-        emit storageOptimizerChanged();
     }
 }

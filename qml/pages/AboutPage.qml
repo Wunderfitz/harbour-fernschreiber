@@ -156,48 +156,39 @@ Page {
                 }
             }
 
-            Loader {
-                active: !!aboutPage.userInformation.phone_number
-                width: parent.width
-                sourceComponent: Component {
-                    Column {
+            Text {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignHCenter
+                text: qsTr("Logged in as %1").arg(Emoji.emojify(aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name, Theme.fontSizeSmall))
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+                color: Theme.primaryColor
+                textFormat: Text.StyledText
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
 
-                        Text {
-                            x: Theme.horizontalPageMargin
-                            width: parent.width  - ( 2 * Theme.horizontalPageMargin )
-                            horizontalAlignment: Text.AlignHCenter
-                            text: qsTr("Logged in as %1").arg(Emoji.emojify(aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name, Theme.fontSizeSmall))
-                            font.pixelSize: Theme.fontSizeSmall
-                            wrapMode: Text.Wrap
-                            color: Theme.primaryColor
-                            textFormat: Text.StyledText
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                            }
-                        }
+            ProfileThumbnail {
+                photoData: aboutPage.userInformation.profile_photo.small
+                width: Theme.itemSizeExtraLarge
+                height: Theme.itemSizeExtraLarge
+                replacementStringHint: aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
 
-                        ProfileThumbnail {
-                            photoData: aboutPage.userInformation.profile_photo.small
-                            width: Theme.itemSizeExtraLarge
-                            height: Theme.itemSizeExtraLarge
-                            replacementStringHint: aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                            }
-                        }
-
-                        Label {
-                            x: Theme.horizontalPageMargin
-                            width: parent.width  - ( 2 * Theme.horizontalPageMargin )
-                            horizontalAlignment: Text.AlignHCenter
-                            text: qsTr("Phone number: +%1").arg(aboutPage.userInformation.phone_number)
-                            font.pixelSize: Theme.fontSizeSmall
-                            wrapMode: Text.Wrap
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                            }
-                        }
-                    }
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignHCenter
+                text: qsTr("Phone number: +%1").arg(aboutPage.userInformation.phone_number)
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
                 }
             }
 

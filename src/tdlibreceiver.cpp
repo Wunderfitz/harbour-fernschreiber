@@ -44,7 +44,6 @@ namespace {
     const QString UNREAD_COUNT("unread_count");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
-    const QString SECRET_CHAT("secret_chat");
 
     const QString TYPE("@type");
     const QString EXTRA("@extra");
@@ -127,9 +126,6 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("users", &TDLibReceiver::processUsers);
     handlers.insert("error", &TDLibReceiver::processError);
     handlers.insert("ok", &TDLibReceiver::nop);
-    handlers.insert("secretChat", &TDLibReceiver::processSecretChat);
-    handlers.insert("updateSecretChat", &TDLibReceiver::processUpdateSecretChat);
-    handlers.insert("importedContacts", &TDLibReceiver::processImportedContacts);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -526,23 +522,4 @@ void TDLibReceiver::processError(const QVariantMap &receivedInformation)
 
 void TDLibReceiver::nop(const QVariantMap &)
 {
-}
-
-void TDLibReceiver::processSecretChat(const QVariantMap &receivedInformation)
-{
-    LOG("Received a secret chat");
-    emit secretChat(receivedInformation.value(ID).toLongLong(), receivedInformation);
-}
-
-void TDLibReceiver::processUpdateSecretChat(const QVariantMap &receivedInformation)
-{
-    LOG("A secret chat was updated");
-    QVariantMap updatedSecretChat = receivedInformation.value(SECRET_CHAT).toMap();
-    emit secretChatUpdated(updatedSecretChat.value(ID).toLongLong(), updatedSecretChat);
-}
-
-void TDLibReceiver::processImportedContacts(const QVariantMap &receivedInformation)
-{
-    LOG("Contacts were imported");
-    emit contactsImported(receivedInformation.value("importer_count").toList(), receivedInformation.value("user_ids").toList());
 }

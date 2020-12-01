@@ -19,8 +19,6 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "pages"
-import "components"
-import "./js/functions.js" as Functions
 
 ApplicationWindow
 {
@@ -38,17 +36,5 @@ ApplicationWindow
         onPleaseOpenUrl: {
             appWindow.activate();
         }
-    }
-
-    AppNotification {
-        id: appNotification
-        parent: pageStack.currentPage
-    }
-
-    Component.onCompleted: {
-        Functions.setGlobals({
-            tdLibWrapper: tdLibWrapper,
-            appNotification: appNotification
-        });
     }
 }

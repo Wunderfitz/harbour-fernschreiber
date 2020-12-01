@@ -21,10 +21,10 @@
 #define NOTIFICATIONMANAGER_H
 
 #include <QObject>
+#include <QDBusInterface>
 #include <nemonotifications-qt5/notification.h>
 #include "tdlibwrapper.h"
 #include "appsettings.h"
-#include "mceinterface.h"
 
 class ChatModel;
 
@@ -36,7 +36,7 @@ class NotificationManager : public QObject
 
 public:
 
-    NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings, MceInterface *mceInterface, ChatModel *chatModel);
+    NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings *appSettings, ChatModel *chatModel);
     ~NotificationManager() override;
 
 public slots:
@@ -61,10 +61,10 @@ private:
 
     TDLibWrapper *tdLibWrapper;
     AppSettings *appSettings;
-    MceInterface *mceInterface;
     ChatModel *chatModel;
     QMap<qlonglong,ChatInfo*> chatMap;
     QMap<int,NotificationGroup*> notificationGroups;
+    QDBusInterface mceInterface;
     QString appIconFile;
 
 };

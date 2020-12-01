@@ -1,7 +1,5 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import WerkWolf.Fernschreiber 1.0
-
 ListItem {
 
     id: chatListViewItem
@@ -11,8 +9,7 @@ ListItem {
     property alias secondaryText: secondaryText //usually last message
     property alias tertiaryText: tertiaryText //usually last message date
 
-    property int unreadCount: 0
-    property bool isSecret: false
+    property int unreadCount
     property alias pictureThumbnail: pictureThumbnail
 
     contentHeight: mainRow.height + separator.height + 2 * Theme.paddingMedium
@@ -51,24 +48,6 @@ ListItem {
                         replacementStringHint: primaryText.text
                         width: parent.width
                         height: parent.width
-                    }
-
-                    Rectangle {
-                        id: chatSecretBackground
-                        color: Theme.overlayBackgroundColor
-                        width: Theme.fontSizeExtraLarge
-                        height: Theme.fontSizeExtraLarge
-                        anchors.bottom: parent.bottom
-                        radius: parent.width / 2
-                        visible: chatListViewItem.isSecret
-                    }
-
-                    Image {
-                        source: "image://theme/icon-s-secure"
-                        height: Theme.fontSizeMedium
-                        width: Theme.fontSizeMedium
-                        anchors.centerIn: chatSecretBackground
-                        visible: chatListViewItem.isSecret
                     }
 
                     Rectangle {
@@ -125,7 +104,6 @@ ListItem {
                         width: parent.width - Theme.paddingMedium - prologSecondaryText.width
                         truncationMode: TruncationMode.Fade
                         textFormat: Text.StyledText
-                        visible: prologSecondaryText.width < ( parent.width - Theme.paddingLarge )
                     }
                 }
 

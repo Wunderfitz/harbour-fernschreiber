@@ -74,12 +74,16 @@ Page {
                 }
             }
             onCopyToDownloadsSuccessful: {
-                appNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
+                videoNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
             }
 
             onCopyToDownloadsError: {
-                appNotification.show(qsTr("Download failed."));
+                videoNotification.show(qsTr("Download failed."));
             }
+        }
+
+        AppNotification {
+            id: videoNotification
         }
 
         Item {

@@ -54,10 +54,10 @@ function emojify(str, emojiSize) {
         basePath,
         iconId,
         '.svg',
-        '" align="bottom" width="',
-        Math.round(emojiSize * 6 / 5 ),
+        '" align="middle" width="',
+        emojiSize,
         '" height="',
-        Math.round(emojiSize * 6 / 5 ),
+        emojiSize,
         '"/>'
       );
     }

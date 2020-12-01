@@ -179,10 +179,6 @@
             <numerusform>%1 online</numerusform>
         </translation>
     </message>
-    <message>
-        <source>New Secret Chat</source>
-        <translation>Ny hemlig chatt</translation>
-    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -263,10 +259,6 @@
     <message>
         <source>Mark all messages as read</source>
         <translation>Markera alla meddelanden som lästa</translation>
-    </message>
-    <message>
-        <source>No message in this chat.</source>
-        <translation>Inget meddelande i den här chatten.</translation>
     </message>
 </context>
 <context>
@@ -382,18 +374,6 @@
             <numerusform>%1 online</numerusform>
             <numerusform>%1 online</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>Den hemliga chatten är inte klar än. Din chattpartner måste gå online först.</translation>
-    </message>
-    <message>
-        <source>Closing chat</source>
-        <translation>Stänger chatten</translation>
-    </message>
-    <message>
-        <source>Close Chat</source>
-        <translation>Stäng chatten</translation>
     </message>
 </context>
 <context>
@@ -760,15 +740,6 @@
         <source>sent a self-destructing photo that is expired</source>
         <translation>skickade ett självförstörande foto som är utgånget</translation>
     </message>
-    <message>
-        <source>sent an audio</source>
-        <comment>myself</comment>
-        <translation>skickade en ljudfil</translation>
-    </message>
-    <message>
-        <source>sent an audio</source>
-        <translation>skickade en ljudfil</translation>
-    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -854,10 +825,6 @@
         <source>Use the international format, e.g. %1</source>
         <translation>Använd internationellt format, t.ex. %1</translation>
     </message>
-    <message>
-        <source>About Fernschreiber</source>
-        <translation>Om Fernschreiber</translation>
-    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -924,53 +891,6 @@
     </message>
 </context>
 <context>
-    <name>NewChatPage</name>
-    <message>
-        <source>Your Contacts</source>
-        <translation>Dina kontakter</translation>
-    </message>
-    <message>
-        <source>You don&apos;t have any contacts.</source>
-        <translation>Du har inga kontakter</translation>
-    </message>
-    <message>
-        <source>Private Chat</source>
-        <translation>Privat chatt</translation>
-    </message>
-    <message>
-        <source>Secret Chat</source>
-        <translation>Hemlig chatt</translation>
-    </message>
-    <message>
-        <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation>Slutpunkt till slutpunktskrypterad, åtkomlig endast på denna enhet.</translation>
-    </message>
-    <message>
-        <source>Loading contacts...</source>
-        <translation>Läser in kontakter...</translation>
-    </message>
-    <message>
-        <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation>Transportkrypterad, använder Telegram Cloud, kan delas mellan enheter.</translation>
-    </message>
-    <message>
-        <source>Search a contact...</source>
-        <translation>Sök en kontakt</translation>
-    </message>
-    <message>
-        <source>Synchronize Contacts with Telegram</source>
-        <translation>Synkronisera kontakter med Telegram</translation>
-    </message>
-    <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Kunde inte synkronisera dina kontakter med Telegram.</translation>
-    </message>
-    <message>
-        <source>Contacts successfully synchronized with Telegram.</source>
-        <translation>Kontakter synkroniserade med Telegram.</translation>
-    </message>
-</context>
-<context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
@@ -1021,10 +941,6 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Du har inga chattar än.</translation>
-    </message>
-    <message>
-        <source>New Chat</source>
-        <translation>Ny chatt</translation>
     </message>
 </context>
 <context>
@@ -1120,11 +1036,11 @@
     </message>
     <message>
         <source>Quiz Mode</source>
-        <translation>Frågesportläge</translation>
+        <translation>Frågesportsläge</translation>
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-        <translation>Frågor har ett (1) korrekt svar. Deltagarna kan inte återkalla sina svar.</translation>
+        <translation>Frågor har ett korrekt svar. Deltagarna kan inte återkalla sina svar.</translation>
     </message>
 </context>
 <context>
@@ -1236,7 +1152,7 @@
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Skicka meddelanden genom att trycka på returtangenten</translation>
+        <translation>Skicka meddelanden genom att trycka på returknappen</translation>
     </message>
     <message>
         <source>Appearance</source>
@@ -1284,15 +1200,7 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation>Avisering tänder skärmen</translation>
-    </message>
-    <message>
-        <source>Storage</source>
-        <translation>Lagring</translation>
-    </message>
-    <message>
-        <source>Enable storage optimizer</source>
-        <translation>Aktivera lagringsoptimering</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1695,14 +1603,6 @@
     <message>
         <source>You are already a member of this chat.</source>
         <translation>Du är redan medlem i den här chatten.</translation>
-    </message>
-    <message>
-        <source>Closed!</source>
-        <translation>Stängd!</translation>
-    </message>
-    <message>
-        <source>Pending acknowledgement</source>
-        <translation>Väntar på bekräftelse</translation>
     </message>
 </context>
 </TS>

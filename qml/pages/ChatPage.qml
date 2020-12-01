@@ -36,11 +36,8 @@ Page {
     property bool isInitialized: false;
     readonly property int myUserId: tdLibWrapper.getUserInformation().id;
     property var chatInformation;
-    property var secretChatDetails;
     property alias chatPicture: chatPictureThumbnail.photoData
     property bool isPrivateChat: false;
-    property bool isSecretChat: false;
-    property bool isSecretChatReady: false;
     property bool isBasicGroup: false;
     property bool isSuperGroup: false;
     property bool isChannel: false;
@@ -49,7 +46,7 @@ Page {
     property int chatOnlineMemberCount: 0;
     property var emojiProposals;
     property bool iterativeInitialization: false;
-    readonly property bool userIsMember: ((isPrivateChat || isSecretChat) && chatInformation["@type"]) || // should be optimized
+    readonly property bool userIsMember: (isPrivateChat && chatInformation["@type"]) || // should be optimized
                                 (isBasicGroup || isSuperGroup) && (
                                     (chatGroupInformation.status["@type"] === "chatMemberStatusMember")
                                     || (chatGroupInformation.status["@type"] === "chatMemberStatusAdministrator")
@@ -107,21 +104,11 @@ Page {
     }
 
     function updateChatPartnerStatusText() {
-        if (chatPage.state === "selectMessages") {
+        if(chatPage.state === "selectMessages") {
             return
         }
         var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
-        if (chatPage.secretChatDetails) {
-            var secretChatStatus = Functions.getSecretChatStatus(chatPage.secretChatDetails);
-            if (statusText && secretChatStatus) {
-                statusText += " - ";
-            }
-            if (secretChatStatus) {
-                statusText += secretChatStatus;
-            }
-        }
-
-        if (statusText) {
+        if(statusText) {
             chatStatusText.text = statusText;
         }
     }
@@ -151,16 +138,12 @@ Page {
         chatView.currentIndex = -1;
         chatView.lastReadSentIndex = 0;
         var chatType = chatInformation.type['@type'];
-        isPrivateChat = chatType === "chatTypePrivate";
-        isSecretChat = chatType === "chatTypeSecret";
+        isPrivateChat = ( chatType === "chatTypePrivate" );
         isBasicGroup = ( chatType === "chatTypeBasicGroup" );
         isSuperGroup = ( chatType === "chatTypeSupergroup" );
-        if (isPrivateChat || isSecretChat) {
+        if (isPrivateChat) {
             chatPartnerInformation = tdLibWrapper.getUserInformation(chatInformation.type.user_id);
             updateChatPartnerStatusText();
-            if (isSecretChat) {
-                tdLibWrapper.getSecretChat(chatInformation.type.secret_chat_id);
-            }
         }
         else if (isBasicGroup) {
             chatGroupInformation = tdLibWrapper.getBasicGroup(chatInformation.type.basic_group_id);
@@ -285,12 +268,6 @@ Page {
         } else {
             chatPage.emojiProposals = null;
         }
-        if (currentWord.length > 1 && currentWord.charAt(0) === '@') {
-            knownUsersRepeater.model = knownUsersProxyModel;
-            knownUsersProxyModel.setFilterWildcard("*" + currentWord.substring(1) + "*");
-        } else {
-            knownUsersRepeater.model = undefined;
-        }
     }
 
     function replaceMessageText(text, cursorPosition, newText) {
@@ -314,12 +291,11 @@ Page {
                     || groupStatusType === "chatMemberStatusAdministrator"
                     || groupStatusType === "chatMemberStatusCreator"
                     || (groupStatusType === "chatMemberStatusRestricted" && groupStatus.permissions[privilege])
-                    || (chatPage.isSecretChat && chatPage.isSecretChatReady)
     }
     function canPinMessages() {
         Debug.log("Can we pin messages?");
-        if (chatPage.isPrivateChat || chatPage.isSecretChat) {
-            Debug.log("Private/Secret Chat: No!");
+        if (chatPage.isPrivateChat) {
+            Debug.log("Private Chat: No!");
             return false;
         }
         if (chatPage.chatGroupInformation.status["@type"] === "chatMemberStatusCreator") {
@@ -391,7 +367,7 @@ Page {
     Connections {
         target: tdLibWrapper
         onUserUpdated: {
-            if ((isPrivateChat || isSecretChat) && chatPartnerInformation.id.toString() === userId ) {
+            if (isPrivateChat && chatPartnerInformation.id.toString() === userId ) {
                 chatPartnerInformation = userInformation;
                 updateChatPartnerStatusText();
             }
@@ -432,22 +408,6 @@ Page {
             if (messageId === chatInformation.pinned_message_id.toString()) {
                 Debug.log("[ChatPage] Received pinned message");
                 pinnedMessageItem.pinnedMessage = message;
-            }
-        }
-        onSecretChatReceived: {
-            if (secretChatId === chatInformation.type.secret_chat_id) {
-                Debug.log("[ChatPage] Received detailed information about this secret chat");
-                chatPage.secretChatDetails = secretChat;
-                updateChatPartnerStatusText();
-                chatPage.isSecretChatReady = chatPage.secretChatDetails.state["@type"] === "secretChatStateReady";
-            }
-        }
-        onSecretChatUpdated: {
-            if (secretChatId.toString() === chatInformation.type.secret_chat_id.toString()) {
-                Debug.log("[ChatPage] Detailed information about this secret chat was updated");
-                chatPage.secretChatDetails = secretChat;
-                updateChatPartnerStatusText();
-                chatPage.isSecretChatReady = chatPage.secretChatDetails.state["@type"] === "secretChatStateReady";
             }
         }
     }
@@ -547,7 +507,7 @@ Page {
     Timer {
         id: chatContactTimeUpdater
         interval: 60000
-        running: isPrivateChat || isSecretChat
+        running: isPrivateChat
         repeat: true
         onTriggered: {
             updateChatPartnerStatusText();
@@ -584,26 +544,17 @@ Page {
         PullDownMenu {
             visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !messageOverlayLoader.active
             MenuItem {
-                id: closeSecretChatMenuItem
-                visible: chatPage.isSecretChat && chatPage.secretChatDetails.state["@type"] !== "secretChatStateClosed"
-                onClicked: {
-                    var secretChatId = chatPage.secretChatDetails.id;
-                    Remorse.popupAction(chatPage, qsTr("Closing chat"), function() { tdLibWrapper.closeSecretChat(secretChatId) });
-                }
-                text: qsTr("Close Chat")
-            }
-
-            MenuItem {
                 id: joinLeaveChatMenuItem
                 visible: (chatPage.isSuperGroup || chatPage.isBasicGroup) && chatGroupInformation && chatGroupInformation.status["@type"] !== "chatMemberStatusBanned"
                 onClicked: {
                     if (chatPage.userIsMember) {
-                        var chatId = chatInformation.id;
-                        Remorse.popupAction(chatPage, qsTr("Leaving chat"), function() {
-                            tdLibWrapper.leaveChat(chatId);
-                            // this does not care about the response (ideally type "ok" without further reference) for now
-                            pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
-                        });
+                        var remorse = Remorse.popupAction(appWindow, qsTr("Leaving chat"), (function(chatid) {
+                            return function() {
+                                tdLibWrapper.leaveChat(chatid);
+                                // this does not care about the response (ideally type "ok" without further reference) for now
+                                pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
+                            };
+                        }(chatInformation.id)))
                     } else {
                         tdLibWrapper.joinChat(chatInformation.id);
                     }
@@ -626,6 +577,10 @@ Page {
                 }
                 text: chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
             }
+        }
+
+        AppNotification {
+            id: appNotification
         }
 
         BackgroundItem {
@@ -653,49 +608,23 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingMedium
 
-                Item {
+                ProfileThumbnail {
+                    id: chatPictureThumbnail
+                    replacementStringHint: chatNameText.text
                     width: chatOverviewItem.height
                     height: chatOverviewItem.height
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingMedium : Theme.paddingSmall
 
-                    ProfileThumbnail {
-                        id: chatPictureThumbnail
-                        replacementStringHint: chatNameText.text
-                        width: parent.height
-                        height: parent.height
-
-                        // Setting it directly may cause an stale state for the thumbnail in case the chat page
-                        // was previously loaded with a picture and now it doesn't have one. Instead setting it
-                        // when the ChatModel indicates a change. This also avoids flickering when the page is loaded...
-                        Connections {
-                            target: chatModel
-                            onSmallPhotoChanged: {
-                                chatPictureThumbnail.photoData = chatModel.smallPhoto;
-                            }
+                    // Setting it directly may cause an stale state for the thumbnail in case the chat page
+                    // was previously loaded with a picture and now it doesn't have one. Instead setting it
+                    // when the ChatModel indicates a change. This also avoids flickering when the page is loaded...
+                    Connections {
+                        target: chatModel
+                        onSmallPhotoChanged: {
+                            chatPictureThumbnail.photoData = chatModel.smallPhoto;
                         }
                     }
-
-                    Rectangle {
-                        id: chatSecretBackground
-                        color: Theme.overlayBackgroundColor
-                        width: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
-                        height: width
-                        anchors.left: parent.left
-                        anchors.bottom: parent.bottom
-                        radius: parent.width / 2
-                        visible: chatPage.isSecretChat
-                    }
-
-                    Image {
-                        id: chatSecretImage
-                        source: "image://theme/icon-s-secure"
-                        width: chatPage.isPortrait ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
-                        height: width
-                        anchors.centerIn: chatSecretBackground
-                        visible: chatPage.isSecretChat
-                    }
-
                 }
 
                 Item {
@@ -930,9 +859,8 @@ Page {
                     VerticalScrollDecorator {}
 
                     ViewPlaceholder {
-                        id: chatViewPlaceholder
                         enabled: chatView.count === 0
-                        text: (chatPage.isSecretChat && !chatPage.isSecretChatReady) ? qsTr("This secret chat is not yet ready. Your chat partner needs to go online first.") : qsTr("This chat is empty.")
+                        text: qsTr("This chat is empty.")
                     }
                 }
 
@@ -1001,16 +929,6 @@ Page {
                     source: "../components/StickerPicker.qml"
                 }
 
-                Connections {
-                    target: stickerPickerLoader.item
-                    onStickerPicked: {
-                        Debug.log("Sticker picked: " + stickerId);
-                        tdLibWrapper.sendStickerMessage(chatInformation.id, stickerId);
-                        stickerPickerLoader.active = false;
-                        attachmentOptionsRow.isNeeded = false;
-                    }
-                }
-
                 Loader {
                     id: messageOverlayLoader
 
@@ -1070,22 +988,18 @@ Page {
 
                 Row {
                     id: attachmentOptionsRow
-                    property bool isNeeded: false
-                    visible: height > 0
-                    height: isNeeded ? implicitHeight : 0
+                    visible: false
                     anchors.right: parent.right
                     width: parent.width
                     layoutDirection: Qt.RightToLeft
                     spacing: Theme.paddingMedium
-                    clip: true
-                    Behavior on height { SmoothedAnimation { duration:  200 } }
                     IconButton {
                         visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-image"
                         onClicked: {
                             var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
                             picker.selectedContentPropertiesChanged.connect(function(){
-                                attachmentOptionsRow.isNeeded = false;
+                                attachmentOptionsRow.visible = false;
                                 Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
                                 attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
                                 attachmentPreviewRow.isPicture = true;
@@ -1100,7 +1014,7 @@ Page {
                         onClicked: {
                             var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage");
                             picker.selectedContentPropertiesChanged.connect(function(){
-                                attachmentOptionsRow.isNeeded = false;
+                                attachmentOptionsRow.visible = false;
                                 Debug.log("Selected video: ", picker.selectedContentProperties.filePath );
                                 attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
                                 attachmentPreviewRow.isVideo = true;
@@ -1113,9 +1027,9 @@ Page {
                         visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-document"
                         onClicked: {
-                            var picker = pageStack.push("Sailfish.Pickers.FilePickerPage");
+                            var picker = pageStack.push("Sailfish.Pickers.DocumentPickerPage");
                             picker.selectedContentPropertiesChanged.connect(function(){
-                                attachmentOptionsRow.isNeeded = false;
+                                attachmentOptionsRow.visible = false;
                                 Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
                                 attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
                                 attachmentPreviewRow.isDocument = true;
@@ -1124,24 +1038,27 @@ Page {
                             })
                         }
                     }
+
                     IconButton {
+
                         visible: chatPage.hasSendPrivilege("can_send_other_messages")
                         icon.source: "../../images/icon-m-sticker.svg"
                         icon.sourceSize {
                             width: Theme.iconSizeMedium
                             height: Theme.iconSizeMedium
                         }
+
                         highlighted: down || stickerPickerLoader.active
                         onClicked: {
                             stickerPickerLoader.active = !stickerPickerLoader.active;
                         }
                     }
                     IconButton {
-                        visible: !(chatPage.isPrivateChat || chatPage.isSecretChat) && chatPage.hasSendPrivilege("can_send_polls")
+                        visible: !chatPage.isPrivateChat && chatPage.hasSendPrivilege("can_send_polls")
                         icon.source: "image://theme/icon-m-question"
                         onClicked: {
                             pageStack.push(Qt.resolvedUrl("../pages/PollCreationPage.qml"), { "chatId" : chatInformation.id, groupName: chatInformation.title});
-                            attachmentOptionsRow.isNeeded = false;
+                            attachmentOptionsRow.visible = false;
                         }
                     }
                 }
@@ -1273,83 +1190,6 @@ Page {
                     }
                 }
 
-                Column {
-                    id: atMentionColumn
-                    width: parent.width
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    visible: knownUsersRepeater.count > 0 ? true : false
-                    opacity: knownUsersRepeater.count > 0 ? 1 : 0
-                    Behavior on opacity { NumberAnimation {} }
-                    spacing: Theme.paddingMedium
-
-                    Flickable {
-                        width: parent.width
-                        height: atMentionResultRow.height + Theme.paddingSmall
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        contentWidth: atMentionResultRow.width
-                        clip: true
-                        Row {
-                            id: atMentionResultRow
-                            spacing: Theme.paddingMedium
-                            Repeater {
-                                id: knownUsersRepeater
-
-                                Item {
-                                    id: knownUserItem
-                                    height: singleAtMentionRow.height
-                                    width: singleAtMentionRow.width
-
-                                    property string atMentionText: "@" + (user_name ? user_name : user_id + "(" + title + ")");
-
-                                    Row {
-                                        id: singleAtMentionRow
-                                        spacing: Theme.paddingSmall
-
-                                        Item {
-                                            width: Theme.fontSizeHuge
-                                            height: Theme.fontSizeHuge
-                                            anchors.verticalCenter: parent.verticalCenter
-                                            ProfileThumbnail {
-                                                id: atMentionThumbnail
-                                                replacementStringHint: title
-                                                width: parent.width
-                                                height: parent.width
-                                                photoData: photo_small
-                                            }
-                                        }
-
-                                        Column {
-                                            Text {
-                                                text: Emoji.emojify(title, Theme.fontSizeExtraSmall)
-                                                textFormat: Text.StyledText
-                                                color: Theme.primaryColor
-                                                font.pixelSize: Theme.fontSizeExtraSmall
-                                                font.bold: true
-                                            }
-                                            Text {
-                                                id: userHandleText
-                                                text: user_handle
-                                                textFormat: Text.StyledText
-                                                color: Theme.primaryColor
-                                                font.pixelSize: Theme.fontSizeExtraSmall
-                                            }
-                                        }
-                                    }
-
-                                    MouseArea {
-                                        anchors.fill: parent
-                                        onClicked: {
-                                            replaceMessageText(newMessageTextField.text, newMessageTextField.cursorPosition, knownUserItem.atMentionText);
-                                            knownUsersRepeater.model = undefined;
-                                        }
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                }
-
                 Row {
                     width: parent.width
                     spacing: Theme.paddingSmall
@@ -1411,16 +1251,17 @@ Page {
 
                     IconButton {
                         id: attachmentIconButton
-                        icon.source: "image://theme/icon-m-attach?" +  (attachmentOptionsRow.isNeeded ? Theme.highlightColor : Theme.primaryColor)
+                        icon.source: attachmentOptionsRow.visible ? "image://theme/icon-m-attach?" + Theme.highlightColor : "image://theme/icon-m-attach?" + Theme.primaryColor
+
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
                         enabled: !attachmentPreviewRow.visible
                         onClicked: {
-                            if (attachmentOptionsRow.isNeeded) {
-                                attachmentOptionsRow.isNeeded = false;
+                            if (attachmentOptionsRow.visible) {
+                                attachmentOptionsRow.visible = false;
                                 stickerPickerLoader.active = false;
                             } else {
-                                attachmentOptionsRow.isNeeded = true;
+                                attachmentOptionsRow.visible = true;
                             }
                         }
                     }
@@ -1493,7 +1334,7 @@ Page {
                                 verticalCenter: parent.verticalCenter
                             }
                             visible: selectedMessages.every(function(message){
-                                return message.can_be_forwarded && !chatPage.isSecretChat
+                                return message.can_be_forwarded
                             })
                             width: visible ? Theme.itemSizeMedium : 0
                             icon.source: "image://theme/icon-m-forward"

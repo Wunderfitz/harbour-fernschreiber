@@ -54,8 +54,6 @@ private slots:
     void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
     void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
     void handleGroupUpdated(qlonglong groupId);
-    void handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
-    void handleChatTitleUpdated(const QString &chatId, const QString &title);
     void handleRelativeTimeRefreshTimer();
 
 signals:
@@ -67,7 +65,6 @@ private:
     class ChatData;
     void addVisibleChat(ChatData *chat);
     void updateChatVisibility(const TDLibWrapper::Group *group);
-    void updateSecretChatVisibility(const QVariantMap secretChatDetails);
     int updateChatOrder(int chatIndex);
 
 private:

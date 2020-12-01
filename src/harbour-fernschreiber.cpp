@@ -36,14 +36,11 @@
 #include "chatlistmodel.h"
 #include "chatmodel.h"
 #include "notificationmanager.h"
-#include "mceinterface.h"
 #include "dbusadaptor.h"
 #include "processlauncher.h"
 #include "stickermanager.h"
 #include "tgsplugin.h"
 #include "fernschreiberutils.h"
-#include "knownusersmodel.h"
-#include "contactsmodel.h"
 
 // The default filter can be overridden by QT_LOGGING_RULES envinronment variable, e.g.
 // QT_LOGGING_RULES="fernschreiber.*=true" harbour-fernschreiber
@@ -72,8 +69,7 @@ int main(int argc, char *argv[])
     context->setContextProperty("appSettings", appSettings);
     qmlRegisterUncreatableType<AppSettings>(uri, 1, 0, "AppSettings", QString());
 
-    MceInterface *mceInterface = new MceInterface(view.data());
-    TDLibWrapper *tdLibWrapper = new TDLibWrapper(appSettings, mceInterface, view.data());
+    TDLibWrapper *tdLibWrapper = new TDLibWrapper(appSettings, view.data());
     context->setContextProperty("tdLibWrapper", tdLibWrapper);
     qmlRegisterUncreatableType<TDLibWrapper>(uri, 1, 0, "TelegramAPI", QString());
 
@@ -89,7 +85,7 @@ int main(int argc, char *argv[])
     ChatModel chatModel(tdLibWrapper);
     context->setContextProperty("chatModel", &chatModel);
 
-    NotificationManager notificationManager(tdLibWrapper, appSettings, mceInterface, &chatModel);
+    NotificationManager notificationManager(tdLibWrapper, appSettings, &chatModel);
     context->setContextProperty("notificationManager", &notificationManager);
 
     ProcessLauncher processLauncher;
@@ -97,22 +93,6 @@ int main(int argc, char *argv[])
 
     StickerManager stickerManager(tdLibWrapper);
     context->setContextProperty("stickerManager", &stickerManager);
-
-    KnownUsersModel knownUsersModel(tdLibWrapper, view.data());
-    context->setContextProperty("knownUsersModel", &knownUsersModel);
-    QSortFilterProxyModel knownUsersProxyModel(view.data());
-    knownUsersProxyModel.setSourceModel(&knownUsersModel);
-    knownUsersProxyModel.setFilterRole(KnownUsersModel::RoleFilter);
-    knownUsersProxyModel.setFilterCaseSensitivity(Qt::CaseInsensitive);
-    context->setContextProperty("knownUsersProxyModel", &knownUsersProxyModel);
-    
-    ContactsModel contactsModel(tdLibWrapper, view.data());
-    context->setContextProperty("contactsModel", &contactsModel);
-    QSortFilterProxyModel contactsProxyModel(view.data());
-    contactsProxyModel.setSourceModel(&contactsModel);
-    contactsProxyModel.setFilterRole(ContactsModel::RoleFilter);
-    contactsProxyModel.setFilterCaseSensitivity(Qt::CaseInsensitive);
-    context->setContextProperty("contactsProxyModel", &contactsProxyModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-fernschreiber.qml"));
     view->show();

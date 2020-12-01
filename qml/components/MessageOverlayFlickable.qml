@@ -162,7 +162,7 @@ Flickable {
                     id: webPagePreview
 
                     onImplicitHeightChanged: {
-                        overlayWebPagePreviewLoader.height = webPagePreview.implicitHeight;
+                        webPagePreviewLoader.height = webPagePreview.implicitHeight;
                     }
 
                     webPageData: overlayMessage.content.web_page

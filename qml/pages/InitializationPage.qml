@@ -105,13 +105,6 @@ Page {
         Behavior on contentHeight { NumberAnimation {} }
         anchors.fill: parent
 
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("About Fernschreiber")
-                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-            }
-        }
-
         Column {
             id: content
             width: parent.width

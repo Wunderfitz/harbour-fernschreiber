@@ -34,14 +34,13 @@ Page {
     property int myUserId: tdLibWrapper.getUserInformation().id;
 
     property bool isPrivateChat: false
-    property bool isSecretChat: false
     property bool isBasicGroup: false
     property bool isSuperGroup: false
     property bool isChannel: false
 
     property string chatPartnerGroupId
 
-    property bool userIsMember: ((isPrivateChat || isSecretChat ) && chatInformation["@type"]) || // should be optimized
+    property bool userIsMember: (isPrivateChat && chatInformation["@type"]) || // should be optimized
                                 (isBasicGroup || isSuperGroup) && (
                                     (groupInformation.status["@type"] === "chatMemberStatusMember")
                                     || (groupInformation.status["@type"] === "chatMemberStatusAdministrator")
