@@ -1083,7 +1083,9 @@ Page {
                         visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-image"
                         onClicked: {
-                            var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
+                            var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage", {
+                                allowedOrientations: chatPage.allowedOrientations
+                            })
                             picker.selectedContentPropertiesChanged.connect(function(){
                                 attachmentOptionsRow.isNeeded = false;
                                 Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
@@ -1098,7 +1100,9 @@ Page {
                         visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-video"
                         onClicked: {
-                            var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage");
+                            var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage", {
+                                allowedOrientations: chatPage.allowedOrientations
+                            })
                             picker.selectedContentPropertiesChanged.connect(function(){
                                 attachmentOptionsRow.isNeeded = false;
                                 Debug.log("Selected video: ", picker.selectedContentProperties.filePath );
@@ -1113,7 +1117,9 @@ Page {
                         visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-document"
                         onClicked: {
-                            var picker = pageStack.push("Sailfish.Pickers.FilePickerPage");
+                            var picker = pageStack.push("Sailfish.Pickers.FilePickerPage", {
+                                allowedOrientations: chatPage.allowedOrientations
+                            })
                             picker.selectedContentPropertiesChanged.connect(function(){
                                 attachmentOptionsRow.isNeeded = false;
                                 Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
