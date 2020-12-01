@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Enviar correo-e</translation>
+        <translation>Correo electrónico</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Phone number: +%1</source>
-        <translation>Número de teléfono: +%1</translation>
+        <translation>Número telefónico: +%1</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Biblioteca twemoji</translation>
+        <translation>Librería twemoji</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
@@ -149,7 +149,7 @@
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation>Información</translation>
+        <translation>Biografía</translation>
     </message>
     <message>
         <source>Phone Number</source>
@@ -178,7 +178,7 @@
     </message>
     <message>
         <source>New Secret Chat</source>
-        <translation>Nueva charla secreta</translation>
+        <translation>Charla secreta</translation>
     </message>
 </context>
 <context>
@@ -274,7 +274,7 @@
     </message>
     <message>
         <source>Your message</source>
-        <translation>Abc</translation>
+        <translation>A b c</translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
@@ -375,11 +375,11 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>Esta charla secreta aún no está lista. Su compañero de charla debe conectarse primero.</translation>
+        <translation>Esta charla secreta aún no está lista. El contacto no está conectado.</translation>
     </message>
     <message>
         <source>Closing chat</source>
-        <translation>Cerrando charla</translation>
+        <translation>Cerrando la charla</translation>
     </message>
     <message>
         <source>Close Chat</source>
@@ -496,7 +496,7 @@
     <message>
         <source>New Members</source>
         <comment>what can new group members do</comment>
-        <translation>Miembros nuevos</translation>
+        <translation>Nuevos miembros</translation>
     </message>
     <message>
         <source>New members can see older messages</source>
@@ -917,7 +917,7 @@
     <name>NewChatPage</name>
     <message>
         <source>Your Contacts</source>
-        <translation>Sus contactos</translation>
+        <translation>Contactos</translation>
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
@@ -925,11 +925,11 @@
     </message>
     <message>
         <source>Private Chat</source>
-        <translation>Charla privada</translation>
+        <translation>Privado</translation>
     </message>
     <message>
         <source>Secret Chat</source>
-        <translation>charla secreta</translation>
+        <translation>Secreto</translation>
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
@@ -1065,7 +1065,7 @@
     </message>
     <message>
         <source>Enter your question here</source>
-        <translation>Marcar su pregunta aquí</translation>
+        <translation>Hacer la pregunta</translation>
     </message>
     <message numerus="yes">
         <source>Question (%Ln characters left)</source>
@@ -1080,7 +1080,7 @@
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation>Marcar una respuesta aquí</translation>
+        <translation>Hacer la  respuesta</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
@@ -1103,7 +1103,7 @@
     </message>
     <message>
         <source>Multiple answers allowed</source>
-        <translation>Se permiten múltiples respuestas</translation>
+        <translation>Múltiples respuestas</translation>
     </message>
     <message>
         <source>Quiz Mode</source>
@@ -1253,11 +1253,11 @@
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation>Integrar opción abrir-con</translation>
+        <translation>Incluir abrir-con</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Integra Fernschreiber con la opción abrir-con de Sailfish SO</translation>
+        <translation>Fernschreiber usa la opción abrir-con de Sailfish SO</translation>
     </message>
     <message>
         <source>Animate stickers</source>
@@ -1468,7 +1468,7 @@
     </message>
     <message>
         <source>offline, last online: %1</source>
-        <translation>hace: %1</translation>
+        <translation>%1</translation>
     </message>
     <message>
         <source>online</source>
@@ -1476,7 +1476,7 @@
     </message>
     <message>
         <source>offline, was recently online</source>
-        <translation>estuvo en línea</translation>
+        <translation>hace instantes</translation>
     </message>
     <message>
         <source>Admin</source>
