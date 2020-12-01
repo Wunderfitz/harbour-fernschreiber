@@ -176,6 +176,10 @@
             <numerusform>%1 位在线</numerusform>
         </translation>
     </message>
+    <message>
+        <source>New Secret Chat</source>
+        <translation>新加密对话</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -256,6 +260,10 @@
     <message>
         <source>Mark all messages as read</source>
         <translation>标记全部消息为已读</translation>
+    </message>
+    <message>
+        <source>No message in this chat.</source>
+        <translation>该对话没有消息…</translation>
     </message>
 </context>
 <context>
@@ -364,6 +372,18 @@
         <translation>
             <numerusform>%1 位在线</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
+        <translation>加密对话未就绪，你的聊天对象必须先上线。</translation>
+    </message>
+    <message>
+        <source>Closing chat</source>
+        <translation>正在关闭对话</translation>
+    </message>
+    <message>
+        <source>Close Chat</source>
+        <translation>关闭对话</translation>
     </message>
 </context>
 <context>
@@ -730,6 +750,15 @@
         <source>sent a self-destructing photo that is expired</source>
         <translation>发送过期即自毁视频</translation>
     </message>
+    <message>
+        <source>sent an audio</source>
+        <comment>myself</comment>
+        <translation>发送音频</translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <translation>发送音频</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -815,6 +844,10 @@
         <source>Use the international format, e.g. %1</source>
         <translation>请使用国际区号格式，例如 %1</translation>
     </message>
+    <message>
+        <source>About Fernschreiber</source>
+        <translation>关于 Fernschreiber</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -881,6 +914,53 @@
     </message>
 </context>
 <context>
+    <name>NewChatPage</name>
+    <message>
+        <source>Your Contacts</source>
+        <translation>你的联系人</translation>
+    </message>
+    <message>
+        <source>You don&apos;t have any contacts.</source>
+        <translation>你还没有任何联系人。</translation>
+    </message>
+    <message>
+        <source>Private Chat</source>
+        <translation>个人对话</translation>
+    </message>
+    <message>
+        <source>Secret Chat</source>
+        <translation>加密对话</translation>
+    </message>
+    <message>
+        <source>End-to-end-encrypted, accessible on this device only</source>
+        <translation>端对端加密，仅能通过此设备访问。</translation>
+    </message>
+    <message>
+        <source>Loading contacts...</source>
+        <translation>正在加载联系人…</translation>
+    </message>
+    <message>
+        <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
+        <translation>传输加密，使用 Telegram 云，可以在设备之间共享</translation>
+    </message>
+    <message>
+        <source>Search a contact...</source>
+        <translation>搜索联系人…</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation>同步 Telegram 联系人</translation>
+    </message>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation>无法同步你的云端 Telegram 联系人。</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation>已成功同步 Telegram 联系人。</translation>
+    </message>
+</context>
+<context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
@@ -930,6 +1010,10 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>你还没有任何对话。</translation>
+    </message>
+    <message>
+        <source>New Chat</source>
+        <translation>新对话</translation>
     </message>
 </context>
 <context>
@@ -1181,7 +1265,15 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation type="unfinished"></translation>
+        <translation>收到通知时点亮屏幕</translation>
+    </message>
+    <message>
+        <source>Storage</source>
+        <translation>储存</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>启用储存加速器</translation>
     </message>
 </context>
 <context>
@@ -1497,12 +1589,12 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>修改私密对话保留时长设置</translation>
+        <translation>修改加密对话保留时长设置</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>修改私密对话保留时长设置</translation>
+        <translation>修改加密对话保留时长设置</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
@@ -1584,6 +1676,14 @@
     <message>
         <source>You are already a member of this chat.</source>
         <translation>你已是此对话成员。</translation>
+    </message>
+    <message>
+        <source>Closed!</source>
+        <translation>已关闭!</translation>
+    </message>
+    <message>
+        <source>Pending acknowledgement</source>
+        <translation>等待确认</translation>
     </message>
 </context>
 </TS>

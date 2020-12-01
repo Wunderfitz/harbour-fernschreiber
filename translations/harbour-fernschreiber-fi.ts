@@ -179,6 +179,10 @@
             <numerusform>%1 paikalla</numerusform>
         </translation>
     </message>
+    <message>
+        <source>New Secret Chat</source>
+        <translation>Uusi salattu keskustelu</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -259,6 +263,10 @@
     <message>
         <source>Mark all messages as read</source>
         <translation>Merkitse kaikki viestit luetuiksi</translation>
+    </message>
+    <message>
+        <source>No message in this chat.</source>
+        <translation>Tässä keskustelussa ei ole viestejä.</translation>
     </message>
 </context>
 <context>
@@ -374,6 +382,18 @@
             <numerusform>%1 paikalla</numerusform>
             <numerusform>%1 paikalla</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
+        <translation>Tämä salattu keskustelu ei ole vielä valmis. Keskustelukumppanisi täytyy ensin käydä online tilassa.</translation>
+    </message>
+    <message>
+        <source>Closing chat</source>
+        <translation>Suljetaan keskustelua</translation>
+    </message>
+    <message>
+        <source>Close Chat</source>
+        <translation>Sulje keskustelu</translation>
     </message>
 </context>
 <context>
@@ -741,6 +761,15 @@
         <source>sent a self-destructing photo that is expired</source>
         <translation>lähetti itsetuhoutuvan kuvan joka vanheni</translation>
     </message>
+    <message>
+        <source>sent an audio</source>
+        <comment>myself</comment>
+        <translation>lähetit äänitteen</translation>
+    </message>
+    <message>
+        <source>sent an audio</source>
+        <translation>lähetti äänitteen</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -826,6 +855,10 @@
         <source>Use the international format, e.g. %1</source>
         <translation>Käytä kansainvälistä muotoa, esimerkiksi %1</translation>
     </message>
+    <message>
+        <source>About Fernschreiber</source>
+        <translation>Tietoa Fernschreiberista</translation>
+    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -892,6 +925,53 @@
     </message>
 </context>
 <context>
+    <name>NewChatPage</name>
+    <message>
+        <source>Your Contacts</source>
+        <translation>Yhteystiedot</translation>
+    </message>
+    <message>
+        <source>You don&apos;t have any contacts.</source>
+        <translation>Sinulla ei ole yhteystietoja</translation>
+    </message>
+    <message>
+        <source>Private Chat</source>
+        <translation>Yksityinen keskustelu</translation>
+    </message>
+    <message>
+        <source>Secret Chat</source>
+        <translation>Salattu keskustelu</translation>
+    </message>
+    <message>
+        <source>End-to-end-encrypted, accessible on this device only</source>
+        <translation>Salattu päästä päähän, käytettävissä vain tällä laitteella</translation>
+    </message>
+    <message>
+        <source>Loading contacts...</source>
+        <translation>Ladataan yhteystietoja...</translation>
+    </message>
+    <message>
+        <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
+        <translation>Tiedonsiirto salattu, käyttää Telegramin pilveä, käytettävissä kaikilla laitteillasi</translation>
+    </message>
+    <message>
+        <source>Search a contact...</source>
+        <translation>Etsi yhteystietoa...</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation>Synkronoi yhteystiedot Telegramin kanssa</translation>
+    </message>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation>Yhteystietojasi ei voitu synkronoida Telegramin kanssa.</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation>Yhteystietojen synkronointi Telegramin kanssa onnistui.</translation>
+    </message>
+</context>
+<context>
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
@@ -942,6 +1022,10 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Sinulla ei ole vielä keskusteluja.</translation>
+    </message>
+    <message>
+        <source>New Chat</source>
+        <translation>Uusi keskustelu</translation>
     </message>
 </context>
 <context>
@@ -1202,6 +1286,14 @@
     <message>
         <source>Notification turns on the display</source>
         <translation>Ilmoitus kytkee näytön päälle</translation>
+    </message>
+    <message>
+        <source>Storage</source>
+        <translation>Tallennustila</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>Käytä tallennustilan optimointia</translation>
     </message>
 </context>
 <context>
@@ -1604,6 +1696,14 @@
     <message>
         <source>You are already a member of this chat.</source>
         <translation>Olet jo tämän ryhmän jäsen.</translation>
+    </message>
+    <message>
+        <source>Closed!</source>
+        <translation>Suljettu!</translation>
+    </message>
+    <message>
+        <source>Pending acknowledgement</source>
+        <translation>Odottaa hyväksyntää</translation>
     </message>
 </context>
 </TS>

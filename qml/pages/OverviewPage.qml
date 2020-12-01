@@ -68,6 +68,14 @@ Page {
         }
     }
 
+    Timer {
+        id: openInitializationPageTimer
+        interval: 0
+        onTriggered: {
+            pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+        }
+    }
+
     function setPageStatus() {
         switch (overviewPage.connectionState) {
         case TelegramAPI.WaitingForNetwork:
@@ -97,23 +105,28 @@ Page {
         tdLibWrapper.getChats();
         tdLibWrapper.getRecentStickers();
         tdLibWrapper.getInstalledStickerSets();
+        tdLibWrapper.getContacts();
     }
 
     function initializePage() {
         overviewPage.authorizationState = tdLibWrapper.getAuthorizationState();
-        overviewPage.handleAuthorizationState();
+        overviewPage.handleAuthorizationState(true);
         overviewPage.connectionState = tdLibWrapper.getConnectionState();
         overviewPage.setPageStatus();
     }
 
-    function handleAuthorizationState() {
+    function handleAuthorizationState(isOnInitialization) {
         switch (overviewPage.authorizationState) {
         case TelegramAPI.WaitPhoneNumber:
         case TelegramAPI.WaitCode:
         case TelegramAPI.WaitPassword:
         case TelegramAPI.WaitRegistration:
             overviewPage.loading = false;
-            pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+            if(isOnInitialization) { // pageStack isn't ready on Component.onCompleted
+                openInitializationPageTimer.start()
+            } else {
+                pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+            }
             break;
         case TelegramAPI.AuthorizationReady:
             overviewPage.loading = false;
@@ -185,10 +198,10 @@ Page {
                 text: qsTr("Settings")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/SettingsPage.qml"))
             }
-        }
-
-        AppNotification {
-            id: appNotification
+            MenuItem {
+                text: qsTr("New Chat")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/NewChatPage.qml"))
+            }
         }
 
         Column {

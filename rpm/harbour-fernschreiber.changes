@@ -12,6 +12,35 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Mon Nov 30 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.5
+- Support secret chats
+- Support Telegram contacts & synchronization with local contacts DB on request
+- Initiate private & secret chats from contact
+- Support pinned messages
+- Always position chat at last read state, even if unread message count is >50
+- Support message forwarding - thanks to jgibbon
+- Support multiple message selection - thanks to jgibbon
+- Support @-mentioning in message input field - simply type '@' followed by the name to properly mention somebody
+- Support video notes
+- Better notification handling - thanks to monich
+- Better chat permission handling - thanks to jgibbon
+- Chat information attached to chat page - thanks to jgibbon
+- Display message sent/received indicator in chat list
+- Display pinned/in-reply-to message on tap as overlay
+- Support for TDLib storage optimizer - thanks to monich
+- Switch from elide truncation mode to fade out
+- Switch to generic file picker for documents
+- Localization improvements (e.g. plural handling) - thanks to jgibbon
+- Logging/debugging improvements - thanks to monich and jgibbon
+- Several performance improvements - thanks to monich and jgibbon
+- Make emojis a little bigger and change alignment to address display issues (only a workaround as it seems to be a QML bug, but we need to use what we have...)
+- Fix: Wrong space allocation for some web page previews
+- Fix: Display correct chat photo - thanks to monich
+- Fix: Message pending indicator though message was sent successfully
+- Fix: Mute chats that have never been muted before
+- Fix: Truncate username correctly if it's very long
+- Several translations updated - thanks to all contributors
+
 * Thu Nov 12 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.4.1
 - Several translations updated - thanks to all contributors
 

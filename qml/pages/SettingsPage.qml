@@ -149,6 +149,23 @@ Page {
                 }
             }
 
+            SectionHeader {
+                text: qsTr("Storage")
+            }
+
+            TextSwitch {
+                checked: appSettings.storageOptimizer
+                text: qsTr("Enable storage optimizer")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.storageOptimizer = !checked
+                }
+            }
+
+            Item {
+                width: 1
+                height: Theme.paddingLarge // Some space at the bottom
+            }
         }
 
         VerticalScrollDecorator {}

@@ -10,6 +10,10 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
 
 QString FernschreiberUtils::getMessageShortText(const QVariantMap &messageContent, const bool &myself)
 {
+    if (messageContent.isEmpty()) {
+        return QString();
+    }
+
     QString contentType = messageContent.value("@type").toString();
 
     if (contentType == "messageText") {
@@ -26,6 +30,9 @@ QString FernschreiberUtils::getMessageShortText(const QVariantMap &messageConten
     }
     if (contentType == "messageAnimation") {
         return myself ? tr("sent an animation", "myself") : tr("sent an animation");
+    }
+    if (contentType == "messageAudio") {
+        return myself ? tr("sent an audio", "myself") : tr("sent an audio");
     }
     if (contentType == "messageVoiceNote") {
         return myself ? tr("sent a voice note", "myself") : tr("sent a voice note");
