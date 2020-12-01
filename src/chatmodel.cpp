@@ -336,8 +336,8 @@ void ChatModel::handleMessageContentUpdated(const QString &id, const QString &me
         this->messages.replace(messageIndex, messageToBeUpdated);
         this->calculateMessageIndexMap();
         LOG("Message was replaced at index" << messageIndex);
-        emit messageUpdated(messageIndex);
         emit dataChanged(index(messageIndex), index(messageIndex));
+        emit messageUpdated(messageIndex);
     }
 }
 

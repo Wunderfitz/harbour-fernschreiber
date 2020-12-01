@@ -84,7 +84,7 @@ ListItem {
                 MenuItem {
                     onClicked: {
                         newMessageColumn.editMessageId = myMessage.id;
-                        newMessageTextField.text = Functions.getMessageText(myMessage, false, false);
+                        newMessageTextField.text = Functions.getMessageText(myMessage, false, false, true);
                         newMessageTextField.focus = true;
                     }
                     text: qsTr("Edit Message")
@@ -92,7 +92,7 @@ ListItem {
                 }
                 MenuItem {
                     onClicked: {
-                        Clipboard.text = Functions.getMessageText(myMessage, true, false);
+                        Clipboard.text = Functions.getMessageText(myMessage, true, false, true);
                     }
                     text: qsTr("Copy Message to Clipboard")
                 }
@@ -144,7 +144,7 @@ ListItem {
             if (index === modelIndex) {
                 Debug.log("[ChatModel] This message was updated, index ", index, ", updating content...");
                 messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
-                messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, messageListItem.isOwnMessage), messageText.font.pixelSize);
+                messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, messageListItem.isOwnMessage. false), messageText.font.pixelSize);
             }
         }
     }
@@ -368,7 +368,7 @@ ListItem {
                 Text {
                     id: messageText
                     width: parent.width
-                    text: Emoji.emojify(Functions.getMessageText(myMessage, false, messageListItem.isOwnMessage), font.pixelSize)
+                    text: Emoji.emojify(Functions.getMessageText(myMessage, false, messageListItem.isOwnMessage, false), font.pixelSize)
                     font.pixelSize: Theme.fontSizeSmall
                     color: messageListItem.textColor
                     wrapMode: Text.Wrap

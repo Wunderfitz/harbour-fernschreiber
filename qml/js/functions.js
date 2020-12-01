@@ -34,12 +34,12 @@ function getUserName(userInformation) {
     return (firstName + " " + lastName).trim();
 }
 
-function getMessageText(message, simple, myself) {
+function getMessageText(message, simple, myself, ignoreEntities) {
     if (message.content['@type'] === 'messageText') {
         if (simple) {
             return message.content.text.text;
         } else {
-            return enhanceMessageText(message.content.text);
+            return enhanceMessageText(message.content.text, ignoreEntities);
         }
     }
     if (message.content['@type'] === 'messageSticker') {
@@ -47,14 +47,14 @@ function getMessageText(message, simple, myself) {
     }
     if (message.content['@type'] === 'messagePhoto') {
         if (message.content.caption.text !== "") {
-            return simple ? qsTr("Picture: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
+            return simple ? qsTr("Picture: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
             return simple ? (myself ? qsTr("sent a picture", "myself") : qsTr("sent a picture")) : "";
         }
     }
     if (message.content['@type'] === 'messageVideo') {
         if (message.content.caption.text !== "") {
-            return simple ? qsTr("Video: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
+            return simple ? qsTr("Video: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
             return simple ? (myself ? qsTr("sent a video", "myself") : qsTr("sent a video")) : "";
         }
@@ -64,28 +64,28 @@ function getMessageText(message, simple, myself) {
     }
     if (message.content['@type'] === 'messageAnimation') {
         if (message.content.caption.text !== "") {
-            return simple ? qsTr("Animation: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
+            return simple ? qsTr("Animation: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
             return simple ? (myself ? qsTr("sent an animation", "myself") : qsTr("sent an animation")) : "";
         }
     }
     if (message.content['@type'] === 'messageAudio') {
         if (message.content.caption.text !== "") {
-            return simple ? qsTr("Audio: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
+            return simple ? qsTr("Audio: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
             return simple ? (myself ? qsTr("sent an audio", "myself") : qsTr("sent an audio")) : "";
         }
     }
     if (message.content['@type'] === 'messageVoiceNote') {
         if (message.content.caption.text !== "") {
-            return simple ? qsTr("Voice Note: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption)
+            return simple ? qsTr("Voice Note: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
             return simple ? (myself ? qsTr("sent a voice note", "myself") : qsTr("sent a voice note")) : "";
         }
     }
     if (message.content['@type'] === 'messageDocument') {
         if (message.content.document.file_name !== "") {
-            return simple ? qsTr("Document: %1").arg(message.content.document.file_name) : (message.content.document.file_name + ( message.content.caption.text !== "" ? ("<br />" + enhanceMessageText(message.content.caption) ) : "")).trim();
+            return simple ? qsTr("Document: %1").arg(message.content.document.file_name) : (message.content.document.file_name + ( message.content.caption.text !== "" ? ("<br />" + enhanceMessageText(message.content.caption, ignoreEntities) ) : "")).trim();
         } else {
             return simple ? (myself ? qsTr("sent a document", "myself") : qsTr("sent a document")) : "";
         }
@@ -269,10 +269,14 @@ function enhanceHtmlEntities(simpleText) {
 
 }
 
-function enhanceMessageText(formattedText) {
+function enhanceMessageText(formattedText, ignoreEntities) {
 
     var messageInsertions = [];
     var messageText = formattedText.text;
+
+    if (ignoreEntities) {
+        return messageText;
+    }
 
     handleHtmlEntity(messageText, messageInsertions, "&", "&amp;");
     handleHtmlEntity(messageText, messageInsertions, "<", "&lt;");
@@ -340,16 +344,6 @@ function enhanceMessageText(formattedText) {
     }
 
     messageText = messageText.replace(new RegExp("\r?\n", "g"), "<br>");
-
-//    var spaceRegex = /\s{2,}/g;
-//    function spaceReplacer(match, p1, offset, string) {
-//        var replaceString = "";
-//        for (var i = 0; i < match.length; i++) {
-//            replaceString += "&nbsp;";
-//        }
-//        return replaceString;
-//    }
-//    messageText = messageText.replace(spaceRegex, spaceReplacer);
 
     return messageText;
 
