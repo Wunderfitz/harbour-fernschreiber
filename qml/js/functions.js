@@ -164,13 +164,13 @@ function getMessageText(message, simple, myself, ignoreEntities) {
 function getChatPartnerStatusText(statusType, was_online) {
     switch(statusType) {
     case "userStatusEmpty":
-        return qsTr("was never online");
+        return qsTr("never online");
     case "userStatusLastMonth":
-        return qsTr("offline, last online: last month");
+        return qsTr("last month");
     case "userStatusLastWeek":
-        return qsTr("offline, last online: last week");
+        return qsTr("last week");
     case "userStatusOffline":
-        return qsTr("offline, last online: %1").arg(getDateTimeElapsed(was_online));
+        return (%1) (getDateTimeElapsed(was_online));
     case "userStatusOnline":
         return qsTr("online");
     case "userStatusRecently":
