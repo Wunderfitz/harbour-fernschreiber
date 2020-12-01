@@ -181,7 +181,7 @@
     </message>
     <message>
         <source>New Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuova chat segreta</translation>
     </message>
 </context>
 <context>
@@ -266,7 +266,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun messaggio.</translation>
     </message>
 </context>
 <context>
@@ -385,15 +385,15 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questa chat non è ancora pronta. Il tuo interlocutore deve essere online.</translation>
     </message>
     <message>
         <source>Closing chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiudi chat</translation>
     </message>
     <message>
         <source>Close Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiudi chat</translation>
     </message>
 </context>
 <context>
@@ -763,11 +763,11 @@
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>hai inviato un audio</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation type="unfinished"></translation>
+        <translation>ha inviato un audio</translation>
     </message>
 </context>
 <context>
@@ -927,47 +927,47 @@
     <name>NewChatPage</name>
     <message>
         <source>Your Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Contatti</translation>
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation type="unfinished"></translation>
+        <translation>Non hai nessun contatto.</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Chat privata</translation>
     </message>
     <message>
         <source>Secret Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Chat segreta</translation>
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation type="unfinished"></translation>
+        <translation>Crittografia end-to-end, accessibile solo su questo dispositivo</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
-        <translation type="unfinished"></translation>
+        <translation>Carico contatti...</translation>
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Crittografia di trasporto, utilizza Telegram Cloud, accessibile su più dispositivi</translation>
     </message>
     <message>
         <source>Search a contact...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricerca contatto...</translation>
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation type="unfinished"></translation>
+        <translation>Sincronizza contatti con Telegram</translation>
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sincronizzazione contatti con Telegram non riuscita.</translation>
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sincronizzazione contatti con Telegram completata.</translation>
     </message>
 </context>
 <context>
@@ -1024,7 +1024,7 @@
     </message>
     <message>
         <source>New Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuova chat</translation>
     </message>
 </context>
 <context>
@@ -1288,11 +1288,11 @@
     </message>
     <message>
         <source>Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Memoria</translation>
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Abilita ottimizzazione memoria</translation>
     </message>
 </context>
 <context>
@@ -1698,11 +1698,11 @@
     </message>
     <message>
         <source>Closed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiuso!</translation>
     </message>
     <message>
         <source>Pending acknowledgement</source>
-        <translation type="unfinished"></translation>
+        <translation>In attesa di conferma</translation>
     </message>
 </context>
 </TS>
