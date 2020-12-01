@@ -170,7 +170,7 @@ function getChatPartnerStatusText(statusType, was_online) {
     case "userStatusLastWeek":
         return qsTr("last week");
     case "userStatusOffline":
-        return (%1) (getDateTimeElapsed(was_online));
+        return " %1" + (getDateTimeElapsed(was_online));
     case "userStatusOnline":
         return qsTr("online");
     case "userStatusRecently":
