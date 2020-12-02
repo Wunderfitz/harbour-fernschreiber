@@ -577,6 +577,17 @@ Page {
 
     SilicaFlickable {
         id: chatContainer
+
+        onContentYChanged: {
+            // For some strange reason contentY sometimes is > 0 which doesn't make sense without a PushUpMenu (?)
+            // That leads to the problem that the whole flickable is moved slightly (or sometimes considerably) up
+            // which creates UX issues... As a workaround we are setting it to 0 in such cases.
+            // Better solutions are highly appreciated, contributions always welcome! ;)
+            if (contentY > 0) {
+                contentY = 0;
+            }
+        }
+
         anchors.fill: parent
         contentHeight: height
         contentWidth: width
