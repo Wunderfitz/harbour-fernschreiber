@@ -3,7 +3,6 @@ import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 
 ListItem {
-
     id: chatListViewItem
 
     property alias primaryText: primaryText //usually chat name
@@ -13,12 +12,11 @@ ListItem {
 
     property int unreadCount: 0
     property bool isSecret: false
+    property bool isVerified: false
     property alias pictureThumbnail: pictureThumbnail
 
     contentHeight: mainRow.height + separator.height + 2 * Theme.paddingMedium
     contentWidth: parent.width
-
-
 
     Column {
         id: mainColumn
@@ -31,7 +29,6 @@ ListItem {
 
         Row {
             id: mainRow
-            width: parent.width
             height: contentColumn.height
             spacing: Theme.paddingMedium
 
@@ -42,7 +39,6 @@ ListItem {
                 anchors.verticalCenter: parent.verticalCenter
 
                 Item {
-                    id: chatListPictureItem
                     width: parent.width
                     height: parent.width
 
@@ -96,19 +92,33 @@ ListItem {
 
             Column {
                 id: contentColumn
-                width: parent.width * 5 / 6 - Theme.horizontalPageMargin
+                width: mainColumn.width - pictureColumn.width - mainRow.spacing
                 spacing: Theme.paddingSmall
 
-                Label {
-                    id: primaryText
-                    textFormat: Text.StyledText
-                    font.pixelSize: Theme.fontSizeMedium
-                    truncationMode: TruncationMode.Fade
-                    width: parent.width
+                Row {
+                    id: primaryTextRow
+                    spacing: Theme.paddingMedium
+
+                    Label {
+                        id: primaryText
+                        textFormat: Text.StyledText
+                        font.pixelSize: Theme.fontSizeMedium
+                        truncationMode: TruncationMode.Fade
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: Math.min(contentColumn.width - (verifiedImage.visible ? (verifiedImage.width + primaryTextRow.spacing) :  0), implicitWidth)
+                    }
+
+                    Image {
+                        id: verifiedImage
+                        anchors.verticalCenter: parent.verticalCenter
+                        source: chatListViewItem.isVerified ? "../../images/icon-verified.svg" : ""
+                        sourceSize.width: Theme.iconSizeExtraSmall
+                        width: Theme.iconSizeExtraSmall
+                        visible: status === Image.Ready
+                    }
                 }
 
                 Row {
-                    id: additionalTextRow
                     width: parent.width
                     spacing: Theme.paddingSmall
                     Label {

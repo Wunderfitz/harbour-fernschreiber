@@ -249,6 +249,7 @@ Page {
                     model: chatListModel
                     delegate: ChatListViewItem {
                         ownUserId: overviewPage.ownUserId
+                        isVerified: is_verified
 
                         onClicked: {
                             pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), {
