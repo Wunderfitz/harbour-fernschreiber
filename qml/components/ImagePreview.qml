@@ -18,70 +18,63 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 
 Item {
-
     id: imagePreviewItem
 
     property ListItem messageListItem
     property MessageOverlayFlickable overlayFlickable
     property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
-    property var photoData: rawMessage.content.photo;
-    property var pictureFileInformation;
+    property var photoData: rawMessage.content.photo
+    readonly property int defaultHeight: Math.round(width * 2 / 3)
 
     width: parent.width
-    height: width * 2 / 3
+    height: singleImage.visible ? Math.min(defaultHeight, singleImage.bestHeight + Theme.paddingSmall) : defaultHeight
 
     Component.onCompleted: {
-        updatePicture();
-    }
-
-    function updatePicture() {
         if (photoData) {
             // Check first which size fits best...
+            var photo
             for (var i = 0; i < photoData.sizes.length; i++) {
-                imagePreviewItem.pictureFileInformation = photoData.sizes[i].photo;
+                photo = photoData.sizes[i].photo
                 if (photoData.sizes[i].width >= imagePreviewItem.width) {
-                    break;
+                    break
                 }
             }
-
-            if (imagePreviewItem.pictureFileInformation.local.is_downloading_completed) {
-                singleImage.source = imagePreviewItem.pictureFileInformation.local.path;
-            } else {
-                tdLibWrapper.downloadFile(imagePreviewItem.pictureFileInformation.id);
+            if (photo) {
+                imageFile.fileInformation = photo
             }
         }
     }
 
-    Connections {
-        target: tdLibWrapper
-        onFileUpdated: {
-            if (imagePreviewItem.pictureFileInformation) {
-                if (fileId === imagePreviewItem.pictureFileInformation.id && fileInformation.local.is_downloading_completed) {
-                    imagePreviewItem.pictureFileInformation = fileInformation;
-                    singleImage.source = fileInformation.local.path;
-                }
-            }
-        }
+    TDLibFile {
+        id: imageFile
+        tdlib: tdLibWrapper
+        autoLoad: true
     }
 
     Image {
         id: singleImage
         width: parent.width - Theme.paddingSmall
         height: parent.height - Theme.paddingSmall
+        readonly property int bestHeight: (status === Image.Ready) ? Math.round(implicitHeight * width / implicitWidth) : 0
         anchors.centerIn: parent
 
         fillMode: Image.PreserveAspectCrop
         autoTransform: true
         asynchronous: true
+        source: imageFile.isDownloadingCompleted ? imageFile.path : ""
         visible: status === Image.Ready
-        opacity: status === Image.Ready ? 1 : 0
-        Behavior on opacity { NumberAnimation {} }
+        opacity: visible ? 1 : 0
+        Behavior on opacity { FadeAnimation {} }
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), { "photoData" : imagePreviewItem.photoData, "pictureFileInformation" : imagePreviewItem.pictureFileInformation });
+                pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {
+                    "photoData" : imagePreviewItem.photoData,
+                    "pictureFileInformation" : imageFile.fileInformation
+                })
             }
         }
     }
