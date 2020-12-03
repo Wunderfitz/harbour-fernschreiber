@@ -616,7 +616,6 @@
     <message>
         <source>was added to this chat</source>
         <translation>został dodany do tego czatu</translation>
-
     </message>
     <message>
         <source>left this chat</source>
@@ -1292,11 +1291,11 @@
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation>Integracja z menu "otwórz za pomocą"</translation>
+        <translation>Integracja z menu &quot;otwórz za pomocą&quot;</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Zintegruj Fernschreiber z menu "otwórz za pomocą" w SailfishOS</translation>
+        <translation>Zintegruj Fernschreiber z menu &quot;otwórz za pomocą&quot; w SailfishOS</translation>
     </message>
     <message>
         <source>Animate stickers</source>
