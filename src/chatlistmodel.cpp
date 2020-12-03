@@ -44,6 +44,7 @@ namespace {
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
     const QString SENDING_STATE("sending_state");
     const QString IS_CHANNEL("is_channel");
+    const QString IS_VERIFIED("is_verified");
     const QString PINNED_MESSAGE_ID("pinned_message_id");
     const QString _TYPE("@type");
     const QString SECRET_CHAT_ID("secret_chat_id");
@@ -66,6 +67,7 @@ public:
         RoleLastMessageStatus,
         RoleChatMemberStatus,
         RoleSecretChatState,
+        RoleIsVerified,
         RoleIsChannel
     };
 
@@ -95,6 +97,7 @@ public:
     qlonglong chatId;
     qlonglong order;
     qlonglong groupId;
+    bool verified;
     TDLibWrapper::ChatType chatType;
     TDLibWrapper::ChatMemberStatus memberStatus;
     TDLibWrapper::SecretChatState secretChatState;
@@ -106,6 +109,7 @@ ChatListModel::ChatData::ChatData(const QVariantMap &data, const QVariantMap &us
     chatId(data.value(ID).toLongLong()),
     order(data.value(ORDER).toLongLong()),
     groupId(0),
+    verified(false),
     memberStatus(TDLibWrapper::ChatMemberStatusUnknown),
     secretChatState(TDLibWrapper::SecretChatStateUnknown),
     userInformation(userInfo)
@@ -293,6 +297,13 @@ QVector<int> ChatListModel::ChatData::updateGroup(const TDLibWrapper::Group *gro
             memberStatus = groupMemberStatus;
             changedRoles.append(RoleChatMemberStatus);
         }
+        // There's no "is_verified" in "basic_group" but that's ok since
+        // it naturally becomes false
+        const bool groupIsVerified = group->groupInfo.value(IS_VERIFIED).toBool();
+        if (verified != groupIsVerified) {
+            verified = groupIsVerified;
+            changedRoles.append(RoleIsVerified);
+        }
     }
     return changedRoles;
 }
@@ -357,6 +368,7 @@ QHash<int,QByteArray> ChatListModel::roleNames() const
     roles.insert(ChatData::RoleLastMessageStatus, "last_message_status");
     roles.insert(ChatData::RoleChatMemberStatus, "chat_member_status");
     roles.insert(ChatData::RoleSecretChatState, "secret_chat_state");
+    roles.insert(ChatData::RoleIsVerified, "is_verified");
     roles.insert(ChatData::RoleIsChannel, "is_channel");
     return roles;
 }
@@ -385,6 +397,7 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatData::RoleLastMessageStatus: return data->senderMessageStatus();
         case ChatData::RoleChatMemberStatus: return data->memberStatus;
         case ChatData::RoleSecretChatState: return data->secretChatState;
+        case ChatData::RoleIsVerified: return data->verified;
         case ChatData::RoleIsChannel: return data->isChannel();
         }
     }
