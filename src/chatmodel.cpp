@@ -223,7 +223,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
             if (!this->messagesToBeAdded.isEmpty() && (this->messagesToBeAdded.size() + this->messages.size()) < 10 && !this->inReload) {
                 LOG("Only a few messages received in first call, loading more...");
                 this->inReload = true;
-                this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value(ID).toLongLong());
+                this->tdLibWrapper->getChatHistory(this->chatId, this->messagesToBeAdded.first().toMap().value(ID).toLongLong(), 0);
             } else {
                 LOG("Messages loaded, notifying chat UI...");
                 this->inReload = false;

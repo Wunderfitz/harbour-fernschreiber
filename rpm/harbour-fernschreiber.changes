@@ -12,6 +12,18 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Fri Dec 4 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.5.1
+- Add verification badge to verified chats - thanks to monich
+- Improve preview of wide images - thanks to monich
+- Fix: Editing functionality (was broken with newlines and didn't update correctly)
+- Fix: Show single message in a chat if on receiving side
+- Allow any screen orientation for picker dialogs - thanks to monich
+- Fix: Long tap on image preview items - thanks to monich and jgibbon
+- Press effect for image preview items - thanks to monich
+- Fix: Chat Page flickable misplaced under some circumstances
+- Fix: Short text for 'myself' short messages of channels in chat list
+- Several translations updated - thanks to all contributors
+
 * Mon Nov 30 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.5
 - Support secret chats
 - Support Telegram contacts & synchronization with local contacts DB on request
