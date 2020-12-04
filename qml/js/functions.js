@@ -213,7 +213,6 @@ function enhanceHtmlEntities(simpleText) {
     return simpleText.replace(ampRegExp, "&amp;").replace(ltRegExp, "&lt;").replace(gtRegExp, "&gt;");//.replace(rawNewLineRegExp, "<br>");
 }
 
-
 function messageInsertionSorter(a, b) { return (b.offset+b.removeLength) - (a.offset+a.removeLength) }
 
 function enhanceMessageText(formattedText, ignoreEntities) {
@@ -381,6 +380,7 @@ function getVideoHeight(videoWidth, videoData) {
         return 1;
     }
 }
+
 function replaceUrlsWithLinks(string) {
     return string.replace(/((\w+):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, "<a href=\"$1\">$1</a>");
 }
@@ -447,82 +447,4 @@ function getMessagesNeededForwardPermissions(messages) {
         }
     }
     return neededPermissions
-}
-
-/**
- * @function compareAndRepeat
- * This function compares results of two functions for multiple sets of arguments and then repeats  those calls to compare them with profiling.
- * Testing showed that results are slightly skewed in favor of the secondaryProfileFunction, which (together with external factors)
- * is almost compensated by running the calls often.
- *
- * @param {string} title - used for Debug output
- * @param {function} profileFunction - function to compare
- * @param {function} [secondaryProfileFunction] - secondary function to compare. Use falsy value to skip comparison.
- * @param {Array.<Array.<*>>} [functionArgumentsArray = []] - argument sets to run both functions with
- * @param {number} [testCount = 10000] - times to run each function in addition to result comparison
- * @param {Object} [testContext = null] - If the functions use `this` or otherwise depend on a Closure/Execution context, it can be set here. If they, for example, use properties of a QML `Item`, you can use that `Item` as `testContext`.
- *
- * @example
- * // to compare the results of Debug.log("first", "second", "third")
- * // and Debug.log("some value")
- * // with the same calls of console.log and run 100 times each:
- * Functions.compareBenchmark("Debuglog",
- *   Debug.log, console.log,
- *   [["first", "second", "third"], ["some value"]],
- *   100
- * );
- *
-*/
-
-function compareAndRepeat(title, profileFunction, secondaryProfileFunction, functionArgumentsArray, testCount, testContext) {
-    if(!Debug.enabled) {
-        Debug.log("Debugging disabled, compareAndRepeat ran uselessly:", title);
-        return;
-    }
-    var numberOfTests = testCount || 10000,
-    context = testContext || null,
-    args = functionArgumentsArray || [],
-    argumentIterator  = args.length || 1,
-    results,
-    resultsComparison,
-    functionIterator = numberOfTests;
-
-    if(secondaryProfileFunction) {
-        while(argumentIterator--) {
-            results = JSON.stringify(profileFunction.apply(context, args[argumentIterator] || null));
-            resultsComparison = JSON.stringify(secondaryProfileFunction.apply(context, args[argumentIterator] || null));
-            if(resultsComparison !== results) {
-                Debug.warn("\x1b[1m✘ Different return values!\x1b[0m", title)
-                Debug.warn("profileFunction result:", results);
-                Debug.warn("secondaryProfileFunction result:", resultsComparison);
-                return;
-            }
-        }
-        Debug.log("\x1b[1m✔ Comparison of", title, "return values successful!\x1b[0m")
-    }
-    Debug.log("Running", title, "with", args.length, "different argument sets", numberOfTests, "times each")
-
-    if(secondaryProfileFunction) {
-        // "secondaryProfileFunction"
-        functionIterator = numberOfTests;
-
-        while(functionIterator--) {
-            argumentIterator = args.length || 1;
-            while(argumentIterator--) {
-                secondaryProfileFunction.apply(context, args[argumentIterator] || null);
-            }
-        }
-    }
-
-    // "profileFunction"
-    functionIterator = numberOfTests;
-    while(functionIterator--) {
-        argumentIterator = args.length || 1;
-        while(argumentIterator--) {
-            profileFunction.apply(context, args[argumentIterator] || null);
-        }
-    }
-
-    Debug.log("Ran", title, args.length * numberOfTests, "times", secondaryProfileFunction ? "and compared results successfully" : "");
-
 }
