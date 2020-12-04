@@ -32,6 +32,13 @@ Item {
     width: parent.width
     height: singleImage.visible ? Math.min(defaultHeight, singleImage.bestHeight + Theme.paddingSmall) : defaultHeight
 
+    function clicked() {
+        pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {
+            "photoData" : imagePreviewItem.photoData,
+            "pictureFileInformation" : imageFile.fileInformation
+        })
+    }
+
     Component.onCompleted: {
         if (photoData) {
             // Check first which size fits best...
@@ -68,15 +75,6 @@ Item {
         visible: status === Image.Ready
         opacity: visible ? 1 : 0
         Behavior on opacity { FadeAnimation {} }
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {
-                    "photoData" : imagePreviewItem.photoData,
-                    "pictureFileInformation" : imageFile.fileInformation
-                })
-            }
-        }
     }
 
     BackgroundImage {
