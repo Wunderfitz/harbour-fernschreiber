@@ -186,7 +186,7 @@ qlonglong ChatListModel::ChatData::senderMessageDate() const
 
 QString ChatListModel::ChatData::senderMessageText() const
 {
-    return FernschreiberUtils::getMessageShortText(lastMessage(CONTENT).toMap(), this->userInformation.value(ID).toLongLong() == senderUserId());
+    return FernschreiberUtils::getMessageShortText(lastMessage(CONTENT).toMap(), ( isChannel() ? false : this->userInformation.value(ID).toLongLong() == senderUserId() ) );
 }
 
 QString ChatListModel::ChatData::senderMessageStatus() const
