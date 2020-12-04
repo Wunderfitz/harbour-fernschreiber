@@ -41,7 +41,7 @@ ListItem {
                                                    chatView.contentComponentNames[myMessage.content['@type']] : ""
 
     readonly property ObjectModel additionalContextItems: ObjectModel {}
-    highlighted: down || isSelected
+    highlighted: (down || isSelected) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
 
     onClicked: {
@@ -411,11 +411,19 @@ ListItem {
                         }
                     }
                 }
+
                 Loader {
                     id: extraContentLoader
                     width: parent.width
                     asynchronous: true
                     height: item ? item.height : (messageListItem.extraContentComponentName !== "" ? chatView.getContentComponentHeight(messageListItem.extraContentComponentName, myMessage.content, width) : 0)
+                }
+
+                Binding {
+                    target: extraContentLoader.item
+                    when: extraContentLoader.item && ("highlighted" in extraContentLoader.item) && (typeof extraContentLoader.item.highlighted === "boolean")
+                    property: "highlighted"
+                    value: messageListItem.highlighted
                 }
 
                 Timer {
