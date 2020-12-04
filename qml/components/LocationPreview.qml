@@ -38,7 +38,11 @@ Item {
     Component.onCompleted: {
         updatePicture();
     }
-
+    function clicked(){
+        if(!processLauncher.launchProgram('harbour-pure-maps', ["geo:"+locationData.latitude+","+locationData.longitude])) {
+            imageNotification.show(qsTr("Install Pure Maps to inspect this location."));
+        }
+    }
     function updatePicture() {
         imagePreviewItem.pictureFileInformation = null;
         if (locationData) {
@@ -93,20 +97,6 @@ Item {
                 samples: 17
                 color: Theme.colorScheme ? Theme.lightPrimaryColor : Theme.darkPrimaryColor
                 source: markerImage
-            }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                if(!processLauncher.launchProgram('harbour-pure-maps', ["geo:"+locationData.latitude+","+locationData.longitude])) {
-                    imageNotification.show(qsTr("Install Pure Maps to inspect this location."));
-                }
-            }
-            Rectangle {
-                anchors.fill: parent
-                color: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
-                opacity: parent.pressed ? 1.0 : 0.0
             }
         }
     }
