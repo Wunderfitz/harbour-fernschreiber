@@ -28,6 +28,7 @@ Item {
     property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
     property var photoData: rawMessage.content.photo
     readonly property int defaultHeight: Math.round(width * 2 / 3)
+    property bool highlighted
 
     width: parent.width
     height: singleImage.visible ? Math.min(defaultHeight, singleImage.bestHeight + Theme.paddingSmall) : defaultHeight
@@ -75,6 +76,8 @@ Item {
         visible: status === Image.Ready
         opacity: visible ? 1 : 0
         Behavior on opacity { FadeAnimation {} }
+        layer.enabled: imagePreviewItem.highlighted
+        layer.effect: PressEffect { source: singleImage }
     }
 
     BackgroundImage {
