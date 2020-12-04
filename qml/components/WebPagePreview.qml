@@ -31,6 +31,7 @@ Column {
     property var pictureFileInformation;
     property bool hasImage: false;
     property bool largerFontSize: false;
+    property bool highlighted
 
     spacing: Theme.paddingSmall
 
@@ -130,6 +131,8 @@ Column {
             asynchronous: true
             visible: hasImage && status === Image.Ready
             opacity: hasImage && status === Image.Ready ? 1 : 0
+            layer.enabled: webPagePreviewColumn.highlighted
+            layer.effect: PressEffect { source: singleImage }
             Behavior on opacity { NumberAnimation {} }
             MouseArea {
                 anchors.fill: parent
@@ -141,6 +144,8 @@ Column {
 
         BackgroundImage {
             visible: hasImage && singleImage.status !== Image.Ready
+            layer.enabled: webPagePreviewColumn.highlighted
+            layer.effect: PressEffect { source: singleImage }
         }
     }
 

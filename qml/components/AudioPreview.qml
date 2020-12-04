@@ -36,6 +36,8 @@ Item {
     property int audioFileId;
     property bool onScreen: messageListItem ? messageListItem.page.status === PageStatus.Active : true
     property string audioType : "voiceNote";
+    property bool highlighted;
+    signal clicked();
 
     width: parent.width
     height: width / 2
@@ -120,10 +122,14 @@ Item {
         asynchronous: true
         fillMode: Image.PreserveAspectCrop
         visible: status === Image.Ready ? true : false
+        layer.enabled: audioMessageComponent.highlighted
+        layer.effect: PressEffect { source: singleImage }
     }
 
     BackgroundImage {
         visible: placeholderImage.status !== Image.Ready
+        layer.enabled: audioMessageComponent.highlighted
+        layer.effect: PressEffect { source: singleImage }
     }
 
     Rectangle {
@@ -146,19 +152,19 @@ Item {
             Item {
                 height: Theme.iconSizeLarge
                 width: parent.width
-                Image {
+                IconButton {
                     id: playButton
                     anchors.centerIn: parent
                     width: Theme.iconSizeLarge
                     height: Theme.iconSizeLarge
-                    source: "image://theme/icon-l-play?white"
-                    asynchronous: true
+                    icon {
+                        source: "image://theme/icon-l-play?white"
+                        asynchronous: true
+                    }
+                    highlighted: audioMessageComponent.highlighted || down
                     visible: placeholderImage.status === Image.Ready ? true : false
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            handlePlay();
-                        }
+                    onClicked: {
+                        handlePlay();
                     }
                 }
                 BusyIndicator {
@@ -235,6 +241,19 @@ Item {
                 }
             }
 
+            Connections {
+                target: audioMessageComponent
+                onClicked: {
+                    if (messageAudio.playbackState === MediaPlayer.PlayingState) {
+                        messageAudio.pause();
+                        timeLeftItem.visible = true;
+                    } else {
+                        messageAudio.play();
+                        timeLeftTimer.start();
+                    }
+                }
+            }
+
             Audio {
                 id: messageAudio
 
@@ -296,19 +315,6 @@ Item {
                 }
             }
 
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    if (messageAudio.playbackState === MediaPlayer.PlayingState) {
-                        messageAudio.pause();
-                        timeLeftItem.visible = true;
-                    } else {
-                        messageAudio.play();
-                        timeLeftTimer.start();
-                    }
-                }
-            }
-
             BusyIndicator {
                 id: audioBusyIndicator
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -355,19 +361,19 @@ Item {
                     Item {
                         height: parent.height
                         width: parent.width
-                        Image {
+                        IconButton {
                             id: pausedPlayButton
                             anchors.centerIn: parent
                             width: Theme.iconSizeLarge
                             height: Theme.iconSizeLarge
-                            asynchronous: true
-                            source: "image://theme/icon-l-play?white"
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    messageAudio.play();
-                                    timeLeftTimer.start();
-                                }
+                            highlighted: videoMessageComponent.highlighted || down
+                            icon {
+                                asynchronous: true
+                                source: "image://theme/icon-l-play?white"
+                            }
+                            onClicked: {
+                                messageAudio.play();
+                                timeLeftTimer.start();
                             }
                         }
                     }
@@ -384,6 +390,7 @@ Item {
                     value: messageAudio.position
                     enabled: messageAudio.seekable
                     visible: (messageAudio.duration > 0)
+                    highlighted: videoMessageComponent.highlighted || down
                     onReleased: {
                         messageAudio.seek(Math.floor(value));
                         messageAudio.play();

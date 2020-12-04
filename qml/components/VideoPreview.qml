@@ -38,6 +38,7 @@ Item {
     property bool onScreen: messageListItem ? messageListItem.page.status === PageStatus.Active : true;
     property string videoType : "video";
     property bool playRequested: false;
+    property bool highlighted;
     signal clicked();
 
     width: parent.width
@@ -147,6 +148,8 @@ Item {
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
         visible: status === Image.Ready ? true : false
+        layer.enabled: videoMessageComponent.highlighted
+        layer.effect: PressEffect { source: singleImage }
     }
 
     BackgroundImage {
@@ -173,20 +176,20 @@ Item {
             Item {
                 width: videoMessageComponent.fullscreen ? parent.width : ( parent.width / 2 )
                 height: Theme.iconSizeLarge
-                Image {
+                IconButton {
                     id: playButton
                     anchors.centerIn: parent
                     width: Theme.iconSizeLarge
                     height: Theme.iconSizeLarge
-                    source: "image://theme/icon-l-play?white"
-                    asynchronous: true
+                    icon {
+                        source: "image://theme/icon-l-play?white"
+                        asynchronous: true
+                    }
+                    highlighted: videoMessageComponent.highlighted || down
                     visible: placeholderImage.status === Image.Ready ? true : false
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            fullscreenItem.visible = false;
-                            handlePlay();
-                        }
+                    onClicked: {
+                        fullscreenItem.visible = false;
+                        handlePlay();
                     }
                 }
                 BusyIndicator {
@@ -215,6 +218,7 @@ Item {
                             height: Theme.iconSizeLarge
                         }
                     }
+                    highlighted: videoMessageComponent.highlighted || down
                     visible: ( placeholderImage.status === Image.Ready && !videoMessageComponent.fullscreen ) ? true : false
                     onClicked: {
                         pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
@@ -360,6 +364,8 @@ Item {
                 width: parent.width
                 height: parent.height
                 source: videoUrl
+                layer.enabled: videoMessageComponent.highlighted
+                layer.effect: PressEffect { source: singleImage }
                 onStopped: {
                     enableScreensaver();
                     messageVideo.visible = false;
@@ -424,20 +430,20 @@ Item {
                     Item {
                         height: parent.height
                         width: videoMessageComponent.fullscreen ? parent.width : ( parent.width / 2 )
-                        Image {
+                        IconButton {
                             id: pausedPlayButton
                             anchors.centerIn: parent
                             width: Theme.iconSizeLarge
                             height: Theme.iconSizeLarge
-                            asynchronous: true
-                            source: "image://theme/icon-l-play?white"
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    disableScreensaver();
-                                    messageVideo.play();
-                                    timeLeftTimer.start();
-                                }
+                            highlighted: videoMessageComponent.highlighted || down
+                            icon {
+                                asynchronous: true
+                                source: "image://theme/icon-l-play?white"
+                            }
+                            onClicked: {
+                                disableScreensaver();
+                                messageVideo.play();
+                                timeLeftTimer.start();
                             }
                         }
                     }
@@ -451,6 +457,7 @@ Item {
                             anchors.centerIn: parent
                             width: Theme.iconSizeLarge
                             height: Theme.iconSizeLarge
+                            highlighted: videoMessageComponent.highlighted || down
                             icon {
                                 asynchronous: true
                                 source: "../../images/icon-l-fullscreen.svg"
@@ -474,6 +481,8 @@ Item {
                     anchors.bottom: positionText.top
                     minimumValue: 0
                     maximumValue: messageVideo.duration ? messageVideo.duration : 0
+
+                    highlighted: videoMessageComponent.highlighted || down
                     stepSize: 1
                     value: messageVideo.position
                     enabled: messageVideo.seekable
@@ -489,7 +498,7 @@ Item {
                 Text {
                     id: positionText
                     visible: messageVideo.visible && messageVideo.duration === 0
-                    color: Theme.primaryColor
+                    color: videoMessageComponent.highlighted ? Theme.secondaryColor : Theme.primaryColor
                     font.pixelSize: videoMessageComponent.fullscreen ? Theme.fontSizeSmall : Theme.fontSizeTiny
                     anchors {
                         bottom: parent.bottom

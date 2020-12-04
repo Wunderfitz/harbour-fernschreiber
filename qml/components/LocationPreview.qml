@@ -27,6 +27,7 @@ Item {
     property ListItem messageListItem
     property MessageOverlayFlickable overlayFlickable
     property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
+    property bool highlighted
 
     property var locationData : ( rawMessage.content['@type'] === "messageLocation" ) ?  rawMessage.content.location : ( ( rawMessage.content['@type'] === "messageVenue" ) ? rawMessage.content.venue.location : "" )
 
@@ -80,6 +81,9 @@ Item {
         visible: status === Image.Ready
         opacity: status === Image.Ready ? 1 : 0
         Behavior on opacity { NumberAnimation {} }
+
+        layer.enabled: imagePreviewItem.highlighted
+        layer.effect: PressEffect { source: singleImage }
         Item {
             anchors.centerIn: parent
             width: markerImage.width

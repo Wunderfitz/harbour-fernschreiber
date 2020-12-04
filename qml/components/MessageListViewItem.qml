@@ -408,6 +408,7 @@ ListItem {
 
                             webPageData: myMessage.content.web_page
                             width: parent.width
+                            highlighted: messageListItem.highlighted
                         }
                     }
                 }
