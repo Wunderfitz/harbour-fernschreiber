@@ -38,6 +38,7 @@ Item {
     property bool onScreen: messageListItem ? messageListItem.page.status === PageStatus.Active : true;
     property string videoType : "video";
     property bool playRequested: false;
+    signal clicked();
 
     width: parent.width
     height: videoMessageComponent.isVideoNote ? width : Functions.getVideoHeight(width, videoData)
@@ -287,6 +288,21 @@ Item {
                 }
             }
 
+            Connections {
+                target: videoMessageComponent
+                onClicked: {
+                    if (messageVideo.playbackState === MediaPlayer.PlayingState) {
+                        enableScreensaver();
+                        messageVideo.pause();
+                        timeLeftItem.visible = true;
+                    } else {
+                        disableScreensaver();
+                        messageVideo.play();
+                        timeLeftTimer.start();
+                    }
+                }
+            }
+
             Video {
                 id: messageVideo
 
@@ -344,20 +360,6 @@ Item {
                 width: parent.width
                 height: parent.height
                 source: videoUrl
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        if (messageVideo.playbackState === MediaPlayer.PlayingState) {
-                            enableScreensaver();
-                            messageVideo.pause();
-                            timeLeftItem.visible = true;
-                        } else {
-                            disableScreensaver();
-                            messageVideo.play();
-                            timeLeftTimer.start();
-                        }
-                    }
-                }
                 onStopped: {
                     enableScreensaver();
                     messageVideo.visible = false;
