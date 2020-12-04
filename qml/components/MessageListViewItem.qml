@@ -47,6 +47,15 @@ ListItem {
     onClicked: {
         if(messageListItem.precalculatedValues.pageIsSelecting) {
             page.toggleMessageSelection(myMessage);
+        } else {
+            // Allow extra context to react to click
+            var extraContent = extraContentLoader.item
+            if (extraContent && ("clicked" in extraContent) && (typeof extraContent.clicked === "function") &&
+                mouseX >= extraContentLoader.x && mouseY >= extraContentLoader.y &&
+                mouseX < (extraContentLoader.x + extraContentLoader.width) &&
+                mouseY < (extraContentLoader.y + extraContentLoader.height)) {
+                extraContent.clicked()
+            }
         }
     }
 
