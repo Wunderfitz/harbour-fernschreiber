@@ -21,7 +21,6 @@ import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 
 Item {
-
     property ListItem messageListItem
     property MessageOverlayFlickable overlayFlickable
 
@@ -31,9 +30,13 @@ Item {
         animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
     readonly property bool isOwnSticker : messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
     property real aspectRatio: stickerData.width / stickerData.height
+    property bool highlighted
 
     implicitWidth: stickerData.width
     implicitHeight: stickerData.height
+
+    layer.enabled: highlighted
+    layer.effect: PressEffect { source: singleImage }
 
     TDLibFile {
         id: file

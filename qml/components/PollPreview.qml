@@ -46,6 +46,7 @@ Item {
     }
     property bool canAnswer: !hasAnswered && !pollData.is_closed
     property bool isQuiz: pollData.type['@type'] === "pollTypeQuiz"
+    property bool highlighted;
     width: parent.width
     height: pollColumn.height
     opacity: 0
@@ -84,7 +85,7 @@ Item {
             text: Emoji.emojify(pollData.question, Theme.fontSizeSmall)
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             textFormat: Text.StyledText
-            color: pollMessageComponent.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
+            color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.highlightColor : Theme.primaryColor
         }
 
         Label {
@@ -93,7 +94,7 @@ Item {
             visible: text !== ""
             text: pollData.is_closed ? qsTr("Final Result:") : (pollData.type.allow_multiple_answers ? qsTr("Multiple Answers are allowed.") : "")
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            color: pollMessageComponent.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
+            color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
         }
 
         Item {
@@ -110,6 +111,7 @@ Item {
                 automaticCheck: false
                 text: Emoji.emojify(modelData.text, Theme.fontSizeMedium)
                 checked: pollMessageComponent.chosenIndexes.indexOf(index) > -1
+                highlighted: pollMessageComponent.highlighted || down
                 onClicked: {
                     pollMessageComponent.handleChoose(index);
                 }
@@ -144,7 +146,7 @@ Item {
                     }
 
                     Icon {
-                        highlighted: pollMessageComponent.isOwnMessage
+                        highlighted: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted
                         property bool isRight: pollMessageComponent.isQuiz && pollData.type.correct_option_id === index
                         source: "image://theme/icon-s-accept"
                         visible: isRight
@@ -162,7 +164,7 @@ Item {
                         top: parent.top
                         right: parent.right
                     }
-                    color: pollMessageComponent.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
+                    color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.highlightColor : Theme.primaryColor
                 }
                 Item {
                     id: displayOptionStatistics
@@ -183,14 +185,14 @@ Item {
                             left: parent.horizontalCenter
                             leftMargin: Theme.paddingSmall
                         }
-                        color: pollMessageComponent.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                        color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
                     }
                     Rectangle {
                         id: optionVoterPercentageBar
                         height: Theme.paddingSmall
                         width: parent.width
 
-                        color: Theme.rgba(pollMessageComponent.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor, 0.3)
+                        color: Theme.rgba(pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor, 0.3)
                         radius: height/2
                         anchors {
                             left: parent.left
@@ -199,7 +201,7 @@ Item {
 
                         Rectangle {
                             height: parent.height
-                            color: pollMessageComponent.isOwnMessage ? Theme.highlightColor : Theme.primaryColor
+                            color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.highlightColor : Theme.primaryColor
                             radius: height/2
                             width: parent.width * modelData.vote_percentage * 0.01
                         }
@@ -228,7 +230,7 @@ Item {
                 width: contentWidth
                 height: contentHeight
                 horizontalAlignment: Text.AlignRight
-                color: pollMessageComponent.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
             }
 
             Row {
