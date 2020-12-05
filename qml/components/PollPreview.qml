@@ -26,27 +26,24 @@ import "../js/twemoji.js" as Emoji
 Item {
     id: pollMessageComponent
 
-
     property ListItem messageListItem
     property MessageOverlayFlickable overlayFlickable
-    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
-    property string chatId: rawMessage.chat_id
-
-    property bool isOwnMessage: messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
-
-    property string messageId: rawMessage.id
-    property bool canEdit: rawMessage.can_be_edited
-    property var pollData: rawMessage.content.poll
+    readonly property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
+    readonly property string chatId: rawMessage.chat_id
+    readonly property bool isOwnMessage: messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
+    readonly property string messageId: rawMessage.id
+    readonly property bool canEdit: rawMessage.can_be_edited
+    readonly property var pollData: rawMessage.content.poll
     property var chosenPollData:({})
     property var chosenIndexes: []
-    property bool hasAnswered: {
+    readonly property bool hasAnswered: {
         return pollData.options.filter(function(option){
             return option.is_chosen
         }).length > 0;
     }
-    property bool canAnswer: !hasAnswered && !pollData.is_closed
-    property bool isQuiz: pollData.type['@type'] === "pollTypeQuiz"
-    property bool highlighted;
+    readonly property bool canAnswer: !hasAnswered && !pollData.is_closed
+    readonly property bool isQuiz: pollData.type['@type'] === "pollTypeQuiz"
+    property bool highlighted
     width: parent.width
     height: pollColumn.height
     opacity: 0
@@ -78,6 +75,7 @@ Item {
         id: pollColumn
         width: parent.width
         spacing: Theme.paddingSmall
+
         Label {
             font.pixelSize: Theme.fontSizeSmall
             width: parent.width
@@ -99,7 +97,7 @@ Item {
 
         Item {
             visible: !pollMessageComponent.canAnswer
-            width: parent.width
+            width: 1
             height: Theme.paddingSmall
         }
 
@@ -117,88 +115,89 @@ Item {
                 }
             }
         }
+
         Component {
             id: resultDelegate
-            Item {
+            Row {
                 id: optionDelegate
-                width: pollMessageComponent.width
-                height: displayOptionLabel.height + displayOptionStatistics.height
+                height: Math.max(Theme.itemSizeExtraSmall, implicitHeight)
 
-                Rectangle {
-                    id: displayOptionChosenMarker
+                Item {
                     height: parent.height
                     width: Theme.horizontalPageMargin/2
-                    color: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
-                    visible: modelData.is_chosen
-                    x: -width
-                }
-                OpacityRampEffect {
-                    sourceItem: displayOptionChosenMarker
-                    direction: OpacityRamp.LeftToRight
-                }
-                Column {
-                    id: iconsColumn
-                    width: pollMessageComponent.isQuiz ?Theme.iconSizeSmall + Theme.paddingMedium : Theme.paddingMedium
+                    anchors.bottom: parent.bottom
 
-                    anchors {
-                        left: parent.left
-                        verticalCenter: parent.verticalCenter
+                    Rectangle {
+                        id: displayOptionChosenMarker
+                        anchors.fill: parent
+                        color: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
+                        visible: modelData.is_chosen
                     }
 
+                    OpacityRampEffect {
+                        sourceItem: displayOptionChosenMarker
+                        direction: OpacityRamp.LeftToRight
+                    }
+                }
+
+                Item {
+                    width: Theme.paddingMedium + (pollMessageComponent.isQuiz ? Theme.iconSizeSmall : 0)
+                    height: correctAnswerIcon.height
+                    anchors {
+                        bottom: parent.bottom
+                        bottomMargin: (votePercentageBar.height - height)/2
+                    }
                     Icon {
+                        id: correctAnswerIcon
+                        anchors.bottom: parent.bottom
                         highlighted: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted
-                        property bool isRight: pollMessageComponent.isQuiz && pollData.type.correct_option_id === index
+                        readonly property bool isRight: pollMessageComponent.isQuiz && pollData.type.correct_option_id === index
                         source: "image://theme/icon-s-accept"
                         visible: isRight
                     }
                 }
 
-                Label {
-                    id: displayOptionLabel
-                    text: Emoji.emojify(modelData.text, Theme.fontSizeMedium)
-                    textFormat: Text.StyledText
+                Column {
+                    width: list.width - x
+                    anchors.bottom: parent.bottom
 
-                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    anchors {
-                        left: iconsColumn.right
-                        top: parent.top
-                        right: parent.right
-                    }
-                    color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.highlightColor : Theme.primaryColor
-                }
-                Item {
-                    id: displayOptionStatistics
-                    height: optionVoterPercentage.height + optionVoterPercentageBar.height
-                    anchors {
-                        top: displayOptionLabel.bottom
-                        left: iconsColumn.right
-                        right: parent.right
-                    }
+                    Item {
+                        width: parent.width
+                        height: Math.max(voteTextLabel.height, votePercentageLabel.y + votePercentageLabel.height)
 
-                    Label {
-                        id: optionVoterPercentage
-                        font.pixelSize: Theme.fontSizeTiny
-                        text: qsTr("%Ln\%", "% of votes for option", modelData.vote_percentage)
-                        horizontalAlignment: Text.AlignRight
-                        anchors {
-                            right: parent.right
-                            left: parent.horizontalCenter
-                            leftMargin: Theme.paddingSmall
+                        Label {
+                            id: voteTextLabel
+                            property int lastLineWidth
+                            width: parent.width
+                            text: Emoji.emojify(modelData.text, Theme.fontSizeMedium)
+                            textFormat: Text.StyledText
+                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                            color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.highlightColor : Theme.primaryColor
+                            onTextChanged: lastLineWidth = 0
+                            onLineLaidOut: {
+                                if (line.isLast) {
+                                    lastLineWidth = line.x + line.implicitWidth
+                                }
+                            }
                         }
-                        color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
+
+                        Label {
+                            id: votePercentageLabel
+                            y: (voteTextLabel.lastLineWidth + Theme.paddingLarge) > x ? voteTextLabel.height : Math.max(0, voteTextLabel.height - height)
+                            font.pixelSize: Theme.fontSizeTiny
+                            text: qsTr("%Ln\%", "% of votes for option", modelData.vote_percentage)
+                            horizontalAlignment: Text.AlignRight
+                            anchors.right: parent.right
+                            color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                        }
                     }
+
                     Rectangle {
-                        id: optionVoterPercentageBar
+                        id: votePercentageBar
                         height: Theme.paddingSmall
                         width: parent.width
-
                         color: Theme.rgba(pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor, 0.3)
                         radius: height/2
-                        anchors {
-                            left: parent.left
-                            bottom: parent.bottom
-                        }
-
                         Rectangle {
                             height: parent.height
                             color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.highlightColor : Theme.primaryColor
@@ -210,32 +209,35 @@ Item {
             }
         }
 
-        Repeater {
+        ListView {
+            id: list
             model: pollData.options
+            x: -Theme.horizontalPageMargin/2
+            width: parent.width - x
+            height: contentHeight
+            interactive: false
             delegate: pollMessageComponent.canAnswer ? canAnswerDelegate : resultDelegate
         }
 
-        Row {
-            layoutDirection: Qt.RightToLeft
-            width: parent.width
-            spacing: Theme.paddingMedium
-            Behavior on height { NumberAnimation {}}
+        Item {
+            width: 1
+            height: Theme.paddingSmall
+        }
 
-
-            Label {
-                id: totalVoterCount
-                font.pixelSize: Theme.fontSizeTiny
-                anchors.verticalCenter: parent.verticalCenter
-                text: qsTr("%Ln vote(s) total", "number of total votes", pollData.total_voter_count)
-                width: contentWidth
-                height: contentHeight
-                horizontalAlignment: Text.AlignRight
-                color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
-            }
+        Item {
+            x: -Theme.horizontalPageMargin/2
+            width: parent.width - x
+            height: Math.max(voteButtons.height, totalVoterCount.height + Theme.paddingSmall)
 
             Row {
+                id: voteButtons
                 spacing: Theme.paddingSmall
                 width: parent.width - totalVoterCount.width - parent.spacing
+                anchors {
+                    left: parent.left
+                    bottom: parent.bottom
+                }
+
                 IconButton {
                     visible: !pollData.is_closed && pollMessageComponent.chosenIndexes.length > 0 && pollData.type.allow_multiple_answers  && !pollMessageComponent.hasAnswered
                     opacity: visible ? 1.0 : 0.0
@@ -245,7 +247,6 @@ Item {
                         pollMessageComponent.sendResponse()
                     }
                 }
-
 
                 IconButton {
                     visible: !pollMessageComponent.canAnswer && !pollData.is_anonymous && pollData.total_voter_count > 0
@@ -263,9 +264,25 @@ Item {
                     }
                 }
             }
-        }
 
+            Label {
+                id: totalVoterCount
+                font.pixelSize: Theme.fontSizeTiny
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                    left: voteButtons.right
+                    leftMargin: Theme.paddingMedium
+                }
+                text: qsTr("%Ln vote(s) total", "number of total votes", pollData.total_voter_count)
+                width: contentWidth
+                height: contentHeight
+                horizontalAlignment: Text.AlignRight
+                color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
+            }
+        }
     }
+
     Component {
         id: closePollMenuItemComponent
         MenuItem {
@@ -276,6 +293,7 @@ Item {
             }
         }
     }
+
     Component {
         id: resetAnswerMenuItemComponent
         MenuItem {
