@@ -28,23 +28,21 @@ Item {
 
     property ListItem messageListItem
     property MessageOverlayFlickable overlayFlickable
-    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
-    property string chatId: rawMessage.chat_id
-
-    property bool isOwnMessage: messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
-
-    property string messageId: rawMessage.id
-    property bool canEdit: rawMessage.can_be_edited
-    property var pollData: rawMessage.content.poll
+    readonly property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
+    readonly property string chatId: rawMessage.chat_id
+    readonly property bool isOwnMessage: messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
+    readonly property string messageId: rawMessage.id
+    readonly property bool canEdit: rawMessage.can_be_edited
+    readonly property var pollData: rawMessage.content.poll
     property var chosenPollData:({})
     property var chosenIndexes: []
-    property bool hasAnswered: {
+    readonly property bool hasAnswered: {
         return pollData.options.filter(function(option){
             return option.is_chosen
         }).length > 0;
     }
-    property bool canAnswer: !hasAnswered && !pollData.is_closed
-    property bool isQuiz: pollData.type['@type'] === "pollTypeQuiz"
+    readonly property bool canAnswer: !hasAnswered && !pollData.is_closed
+    readonly property bool isQuiz: pollData.type['@type'] === "pollTypeQuiz"
     property bool highlighted
     width: parent.width
     height: pollColumn.height
