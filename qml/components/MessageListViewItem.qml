@@ -20,7 +20,6 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
-import QtQml.Models 2.3
 import "../js/debug.js" as Debug
 
 ListItem {
@@ -40,7 +39,6 @@ ListItem {
                                                && typeof chatView.contentComponentNames[myMessage.content['@type']]  !== "undefined" ?
                                                    chatView.contentComponentNames[myMessage.content['@type']] : ""
 
-    readonly property ObjectModel additionalContextItems: ObjectModel {}
     highlighted: (down || isSelected) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
 
@@ -80,7 +78,13 @@ ListItem {
         sourceComponent: Component {
             ContextMenu {
                 Repeater {
-                    model: messageListItem.additionalContextItems
+                    model: (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ?
+                        extraContentLoader.item.extraContextMenuItems : 0
+                    delegate: MenuItem {
+                        visible: modelData.visible
+                        text: modelData.name
+                        onClicked: modelData.action()
+                    }
                 }
 
                 MenuItem {

@@ -19,6 +19,7 @@
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 
 import "../js/functions.js" as Functions
 import "../js/twemoji.js" as Emoji
@@ -46,8 +47,19 @@ Item {
     property bool highlighted
     width: parent.width
     height: pollColumn.height
-    opacity: 0
-    Behavior on opacity { FadeAnimation {} }
+    property list<NamedAction> extraContextMenuItems: [
+        NamedAction {
+            visible: !pollData.is_closed && pollMessageComponent.canEdit
+            name: qsTr("Close Poll")
+            action: function () { tdLibWrapper.stopPoll(pollMessageComponent.chatId, pollMessageComponent.messageId) }
+        },
+        NamedAction {
+            visible: !pollData.is_closed && !pollMessageComponent.isQuiz && pollMessageComponent.hasAnswered
+            name: qsTr("Reset Answer")
+            action: function () { pollMessageComponent.resetChosen() }
+        }
+    ]
+
     function handleChoose(index) {
         if(!pollData.type.allow_multiple_answers) {
             chosenIndexes = [index];
@@ -280,36 +292,6 @@ Item {
                 horizontalAlignment: Text.AlignRight
                 color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
             }
-        }
-    }
-
-    Component {
-        id: closePollMenuItemComponent
-        MenuItem {
-            visible: !pollData.is_closed && pollMessageComponent.canEdit
-            text: qsTr("Close Poll")
-            onClicked: {
-                tdLibWrapper.stopPoll(pollMessageComponent.chatId, pollMessageComponent.messageId);
-            }
-        }
-    }
-
-    Component {
-        id: resetAnswerMenuItemComponent
-        MenuItem {
-            visible: !pollData.is_closed && !pollMessageComponent.isQuiz && pollMessageComponent.hasAnswered
-            text: qsTr("Reset Answer")
-            onClicked: {
-                pollMessageComponent.resetChosen()
-            }
-        }
-    }
-
-    Component.onCompleted: {
-        opacity = 1;
-        if(messageListItem && messageListItem.additionalContextItems ) {
-            messageListItem.additionalContextItems.append(closePollMenuItemComponent.createObject());
-            messageListItem.additionalContextItems.append(resetAnswerMenuItemComponent.createObject());
         }
     }
 }
