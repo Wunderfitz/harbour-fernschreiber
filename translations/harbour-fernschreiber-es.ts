@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Este proyecto usa la librería twemoji de Tweeter. Derechos de autor 2018 Twitter, Inc. y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT (codificación) y CC-BY 4.0 (gráficos)!</translation>
+        <translation>Este proyecto usa la librería twemoji de Tweeter. Derechos de autor 2018 Twitter Inc, y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT (codificación) y CC-BY 4.0 (gráficos)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -77,7 +77,7 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation>Este proyecto usa la librería rlottie de Samsung Electronics Co. Y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT</translation>
+        <translation>Este proyecto usa la librería rlottie de Samsung Electronics Co, y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
@@ -949,7 +949,7 @@
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation>Sincronizar contactos con Telegram</translation>
+        <translation>Sincronizar con Telegram</translation>
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
@@ -1043,7 +1043,7 @@
     </message>
     <message>
         <source>You have to enter a question.</source>
-        <translation>Hacer una pregunta.</translation>
+        <translation>Una pregunta.</translation>
     </message>
     <message>
         <source>The question has to be shorter than 256 characters.</source>
@@ -1095,7 +1095,7 @@
     <message>
         <source>Poll Options</source>
         <comment>Section header</comment>
-        <translation>Opciones de encuesta</translation>
+        <translation>Opciones</translation>
     </message>
     <message>
         <source>Anonymous answers</source>
@@ -1253,7 +1253,7 @@
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation>Incluir abrir-con</translation>
+        <translation>Integrar la opción Abrir-con</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
@@ -1265,7 +1265,7 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation>Habilitar pantalla en notificaciones</translation>
+        <translation>Mostrar pantalla en notificaciones</translation>
     </message>
     <message>
         <source>Storage</source>
@@ -1273,7 +1273,7 @@
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation>Habilitar optimizador de almacenamiento</translation>
+        <translation>Optimizador de almacenamiento</translation>
     </message>
 </context>
 <context>
