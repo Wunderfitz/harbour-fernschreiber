@@ -1479,24 +1479,24 @@
         <translation>ei ole ollut koskaan paikalla</translation>
     </message>
     <message>
-        <source>offline, last online: last month</source>
-        <translation>poissa. Nähty viimeksi: viime kuussa</translation>
+        <source>last online: last month</source>
+        <translation>Nähty viimeksi: viime kuussa</translation>
     </message>
     <message>
-        <source>offline, last online: last week</source>
-        <translation>poissa. Nähty viimeksi: viime viikolla</translation>
+        <source>last online: last week</source>
+        <translation>Nähty viimeksi: viime viikolla</translation>
     </message>
     <message>
-        <source>offline, last online: %1</source>
-        <translation>poissa. Nähty viimeksi: %1</translation>
+        <source>last online: %1</source>
+        <translation>Nähty viimeksi: %1</translation>
     </message>
     <message>
         <source>online</source>
         <translation>paikalla</translation>
     </message>
     <message>
-        <source>offline, was recently online</source>
-        <translation>poissa, oli hetki sitten paikalla</translation>
+        <source>was recently online</source>
+        <translation>oli hetki sitten paikalla</translation>
     </message>
     <message>
         <source>Admin</source>

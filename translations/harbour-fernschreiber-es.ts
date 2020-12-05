@@ -1459,15 +1459,15 @@
         <translation>nunca en línea</translation>
     </message>
     <message>
-        <source>offline, last online: last month</source>
+        <source>last online: last month</source>
         <translation>hace 1 mes</translation>
     </message>
     <message>
-        <source>offline, last online: last week</source>
+        <source>last online: last week</source>
         <translation>hace 1 semana</translation>
     </message>
     <message>
-        <source>offline, last online: %1</source>
+        <source>last online: %1</source>
         <translation>%1</translation>
     </message>
     <message>
@@ -1475,7 +1475,7 @@
         <translation>en línea</translation>
     </message>
     <message>
-        <source>offline, was recently online</source>
+        <source>was recently online</source>
         <translation>hace instantes</translation>
     </message>
     <message>

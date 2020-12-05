@@ -1497,24 +1497,24 @@
         <translation>никогда не был(а) онлайн</translation>
     </message>
     <message>
-        <source>offline, last online: last month</source>
-        <translation>офлайн, был(а) онлайн: в прошлом месяце</translation>
+        <source>last online: last month</source>
+        <translation>был(а) онлайн: в прошлом месяце</translation>
     </message>
     <message>
-        <source>offline, last online: last week</source>
-        <translation>офлайн, был(а) онлайн: на прошлой неделе</translation>
+        <source>last online: last week</source>
+        <translation>был(а) онлайн: на прошлой неделе</translation>
     </message>
     <message>
-        <source>offline, last online: %1</source>
-        <translation>офлайн, был(а) онлайн: %1</translation>
+        <source>last online: %1</source>
+        <translation>был(а) онлайн: %1</translation>
     </message>
     <message>
         <source>online</source>
         <translation>онлайн</translation>
     </message>
     <message>
-        <source>offline, was recently online</source>
-        <translation>офлайн, недавно был(а) онлайн</translation>
+        <source>was recently online</source>
+        <translation>недавно был(а) онлайн</translation>
     </message>
     <message>
         <source>Admin</source>

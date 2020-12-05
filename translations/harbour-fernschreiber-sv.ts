@@ -1478,24 +1478,24 @@
         <translation>var aldrig inloggad</translation>
     </message>
     <message>
-        <source>offline, last online: last month</source>
-        <translation>utloggad, inloggad senast: Förra månaden</translation>
+        <source>last online: last month</source>
+        <translation>inloggad senast: Förra månaden</translation>
     </message>
     <message>
-        <source>offline, last online: last week</source>
-        <translation>utloggad, inloggad senast: Förra veckan</translation>
+        <source>last online: last week</source>
+        <translation>inloggad senast: Förra veckan</translation>
     </message>
     <message>
-        <source>offline, last online: %1</source>
-        <translation>utloggad, inloggad senast: %1</translation>
+        <source>last online: %1</source>
+        <translation>inloggad senast: %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation>utloggad</translation>
+        <translation>inloggad</translation>
     </message>
     <message>
-        <source>offline, was recently online</source>
-        <translation>utloggad, var nyligen inloggad</translation>
+        <source>was recently online</source>
+        <translation>var nyligen inloggad</translation>
     </message>
     <message>
         <source>Admin</source>

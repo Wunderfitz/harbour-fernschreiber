@@ -1459,24 +1459,24 @@
         <translation type="unfinished">soha nem volt online</translation>
     </message>
     <message>
-        <source>offline, last online: last month</source>
-        <translation type="unfinished">offline, utoljára online: múlt hónapban</translation>
+        <source>last online: last month</source>
+        <translation type="unfinished">utoljára online: múlt hónapban</translation>
     </message>
     <message>
-        <source>offline, last online: last week</source>
-        <translation type="unfinished">offline, utoljára online: múlt héten</translation>
+        <source>last online: last week</source>
+        <translation type="unfinished">utoljára online: múlt héten</translation>
     </message>
     <message>
-        <source>offline, last online: %1</source>
-        <translation type="unfinished">offline, utoljára online: %1</translation>
+        <source>last online: %1</source>
+        <translation type="unfinished">utoljára online: %1</translation>
     </message>
     <message>
         <source>online</source>
         <translation type="unfinished">online</translation>
     </message>
     <message>
-        <source>offline, was recently online</source>
-        <translation type="unfinished">offline, nemrégen volt online</translation>
+        <source>was recently online</source>
+        <translation type="unfinished">nemrégen volt online</translation>
     </message>
     <message>
         <source>Admin</source>

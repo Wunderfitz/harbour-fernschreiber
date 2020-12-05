@@ -1459,24 +1459,24 @@
         <translation>完全离线</translation>
     </message>
     <message>
-        <source>offline, last online: last month</source>
-        <translation>离线，上次在线时间：上月</translation>
+        <source>last online: last month</source>
+        <translation>上次在线时间：上月</translation>
     </message>
     <message>
-        <source>offline, last online: last week</source>
-        <translation>离线，上次在线时间：上周</translation>
+        <source>last online: last week</source>
+        <translation>上次在线时间：上周</translation>
     </message>
     <message>
-        <source>offline, last online: %1</source>
-        <translation>离线，上次在线时间： %1</translation>
+        <source>last online: %1</source>
+        <translation>上次在线时间： %1</translation>
     </message>
     <message>
         <source>online</source>
         <translation>在线</translation>
     </message>
     <message>
-        <source>offline, was recently online</source>
-        <translation>离线，最近在线</translation>
+        <source>was recently online</source>
+        <translation>最近在线</translation>
     </message>
     <message>
         <source>Admin</source>

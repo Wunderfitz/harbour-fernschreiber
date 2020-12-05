@@ -1497,24 +1497,24 @@
         <translation>nigdy nie był online</translation>
     </message>
     <message>
-        <source>offline, last online: last month</source>
-        <translation>offline, ostatnio online: w zeszłym miesiącu</translation>
+        <source>last online: last month</source>
+        <translation>ostatnio online: w zeszłym miesiącu</translation>
     </message>
     <message>
-        <source>offline, last online: last week</source>
-        <translation>offline, ostatnio online: w zeszłym tygodniu</translation>
+        <source>last online: last week</source>
+        <translation>ostatnio online: w zeszłym tygodniu</translation>
     </message>
     <message>
-        <source>offline, last online: %1</source>
-        <translation>offline, ostatnio online: %1</translation>
+        <source>last online: %1</source>
+        <translation>ostatnio online: %1</translation>
     </message>
     <message>
         <source>online</source>
         <translation>online</translation>
     </message>
     <message>
-        <source>offline, was recently online</source>
-        <translation>offline, był niedawno online</translation>
+        <source>was recently online</source>
+        <translation>był niedawno online</translation>
     </message>
     <message>
         <source>Admin</source>

@@ -139,15 +139,15 @@ function getChatPartnerStatusText(statusType, was_online) {
     case "userStatusEmpty":
         return qsTr("was never online");
     case "userStatusLastMonth":
-        return qsTr("offline, last online: last month");
+        return qsTr("last online: last month");
     case "userStatusLastWeek":
-        return qsTr("offline, last online: last week");
+        return qsTr("last online: last week");
     case "userStatusOffline":
-        return qsTr("offline, last online: %1").arg(getDateTimeElapsed(was_online));
+        return qsTr("last online: %1").arg(getDateTimeElapsed(was_online));
     case "userStatusOnline":
         return qsTr("online");
     case "userStatusRecently":
-        return qsTr("offline, was recently online");
+        return qsTr("was recently online");
     }
 }
 
