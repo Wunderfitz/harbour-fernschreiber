@@ -191,6 +191,11 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                text: "Debug"
+                visible: Debug.enabled
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/DebugPage.qml"))
+            }
+            MenuItem {
                 text: qsTr("About Fernschreiber")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"))
             }

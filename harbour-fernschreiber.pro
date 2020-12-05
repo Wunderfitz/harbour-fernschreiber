@@ -74,6 +74,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/ChatPage.qml \
     qml/pages/ChatSelectionPage.qml \
     qml/pages/CoverPage.qml \
+    qml/pages/DebugPage.qml \
     qml/pages/InitializationPage.qml \
     qml/pages/NewChatPage.qml \
     qml/pages/OverviewPage.qml \
