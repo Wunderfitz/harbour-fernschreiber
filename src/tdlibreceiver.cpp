@@ -26,6 +26,7 @@ namespace {
     const QString LIST("list");
     const QString CHAT_ID("chat_id");
     const QString USER_ID("user_id");
+    const QString OLD_MESSAGE_ID("old_message_id");
     const QString MESSAGE_ID("message_id");
     const QString MESSAGE_IDS("message_ids");
     const QString MESSAGE("message");
@@ -334,8 +335,8 @@ void TDLibReceiver::processMessages(const QVariantMap &receivedInformation)
 void TDLibReceiver::processUpdateNewMessage(const QVariantMap &receivedInformation)
 {
     const QVariantMap message = receivedInformation.value(MESSAGE).toMap();
-    const QString chatId = message.value(CHAT_ID).toString();
-    LOG("Received new message for chat " << chatId);
+    const qlonglong chatId = message.value(CHAT_ID).toLongLong();
+    LOG("Received new message for chat" << chatId);
     emit newMessageReceived(chatId, message);
 }
 
@@ -349,10 +350,10 @@ void TDLibReceiver::processMessage(const QVariantMap &receivedInformation)
 
 void TDLibReceiver::processMessageSendSucceeded(const QVariantMap &receivedInformation)
 {
-    const QString oldMessageId = receivedInformation.value("old_message_id").toString();
+    const qlonglong oldMessageId = receivedInformation.value(OLD_MESSAGE_ID).toLongLong();
     const QVariantMap message = receivedInformation.value(MESSAGE).toMap();
-    const QString messageId = message.value(ID).toString();
-    LOG("Message send succeeded " << messageId << oldMessageId);
+    const qlonglong messageId = message.value(ID).toLongLong();
+    LOG("Message send succeeded" << messageId << oldMessageId);
     emit messageSendSucceeded(messageId, oldMessageId, message);
 }
 
@@ -383,18 +384,24 @@ void TDLibReceiver::processUpdateChatNotificationSettings(const QVariantMap &rec
 
 void TDLibReceiver::processUpdateMessageContent(const QVariantMap &receivedInformation)
 {
-    const QString chatId = receivedInformation.value(CHAT_ID).toString();
-    const QString messageId = receivedInformation.value(MESSAGE_ID).toString();
-    LOG("Message content updated " << chatId << messageId);
+    const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
+    const qlonglong messageId = receivedInformation.value(MESSAGE_ID).toLongLong();
+    LOG("Message content updated" << chatId << messageId);
     emit messageContentUpdated(chatId, messageId, receivedInformation.value("new_content").toMap());
 }
 
 void TDLibReceiver::processUpdateDeleteMessages(const QVariantMap &receivedInformation)
 {
-    const QString chatId = receivedInformation.value(CHAT_ID).toString();
+    const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
     const QVariantList messageIds = receivedInformation.value(MESSAGE_IDS).toList();
-    LOG("Some messages were deleted " << chatId);
-    emit messagesDeleted(chatId, messageIds);
+    QList<qlonglong> ids;
+    const int n = messageIds.size();
+    ids.reserve(n);
+    for (int i = 0; i < n; i++) {
+        ids.append(messageIds.at(i).toLongLong());
+    }
+    LOG(n << "messages were deleted from chat" << chatId);
+    emit messagesDeleted(chatId, ids);
 }
 
 void TDLibReceiver::processChats(const QVariantMap &receivedInformation)

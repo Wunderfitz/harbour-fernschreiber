@@ -919,13 +919,17 @@ Page {
                             id: messageListViewItemComponent
                             MessageListViewItem {
                                 precalculatedValues: chatView.precalculatedValues
+                                chatId: chatModel.chatId
+                                myMessage: model.display
+                                messageId: model.message_id
+                                extraContentComponentName: chatView.contentComponentNames[model.content_type]
                             }
                         }
                         Component {
                             id: messageListViewItemSimpleComponent
                             MessageListViewItemSimple {}
                         }
-                        sourceComponent: chatView.simpleDelegateMessages.indexOf(display.content['@type']) > -1 ? messageListViewItemSimpleComponent : messageListViewItemComponent
+                        sourceComponent: chatView.simpleDelegateMessages.indexOf(model.content_type) > -1 ? messageListViewItemSimpleComponent : messageListViewItemComponent
                     }
                     VerticalScrollDecorator {}
 
