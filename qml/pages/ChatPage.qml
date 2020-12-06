@@ -57,15 +57,11 @@ Page {
                                     || (chatGroupInformation.status["@type"] === "chatMemberStatusCreator" && chatGroupInformation.status.is_member)
                                     )
     property var selectedMessages: []
+    readonly property bool isSelecting: selectedMessages.length > 0
     states: [
         State {
             name: "selectMessages"
-            when: selectedMessages.length > 0
-            PropertyChanges {
-                target: newMessageColumn
-                visible: false
-                opacity: 0
-            }
+            when: isSelecting
             PropertyChanges {
                 target: chatNameText
                 text: qsTr("Select Messages")
@@ -73,12 +69,6 @@ Page {
             PropertyChanges {
                 target: chatStatusText
                 text: qsTr("%Ln messages selected", "number of messages selected", chatPage.selectedMessages.length)
-            }
-            PropertyChanges {
-                target: selectedMessagesActions
-                height: Theme.itemSizeMedium
-                active: true
-                opacity: 1.0//selectedMessages.length > 0 ? 1.0 : 0.5
             }
             PropertyChanges {
                 target: newMessageTextField
@@ -107,7 +97,7 @@ Page {
     }
 
     function updateChatPartnerStatusText() {
-        if (chatPage.state === "selectMessages") {
+        if (chatPage.isSelecting) {
             return
         }
         var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
@@ -127,7 +117,7 @@ Page {
     }
 
     function updateGroupStatusText() {
-        if(chatPage.state === "selectMessages") {
+        if (chatPage.isSelecting) {
             return
         }
         if (chatOnlineMemberCount > 0) {
@@ -644,7 +634,7 @@ Page {
             height: headerRow.height
             width: parent.width
             onClicked: {
-                if(chatPage.state === "selectMessages") {
+                if (chatPage.isSelecting) {
                     chatPage.selectedMessages = [];
                 } else {
                     pageStack.navigateForward();
@@ -699,7 +689,6 @@ Page {
                     }
 
                     Image {
-                        id: chatSecretImage
                         source: "image://theme/icon-s-secure"
                         width: chatPage.isPortrait ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
                         height: width
@@ -825,7 +814,7 @@ Page {
                         readonly property int textColumnWidth: backgroundWidth - Theme.horizontalPageMargin
                         readonly property int messageInReplyToHeight: Theme.fontSizeExtraSmall * 2.571428571 + Theme.paddingSmall;
                         readonly property int webPagePreviewHeight: ( (textColumnWidth * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) )
-                        readonly property bool pageIsSelecting: chatPage.state === "selectMessages"
+                        readonly property bool pageIsSelecting: chatPage.isSelecting
 
                     }
 
@@ -1048,12 +1037,14 @@ Page {
                 id: newMessageColumn
                 spacing: Theme.paddingSmall
                 topPadding: Theme.paddingSmall
-                width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 anchors.horizontalCenter: parent.horizontalCenter
-                visible: chatPage.hasSendPrivilege("can_send_messages")
-                height: visible ? implicitHeight : 0
-                Behavior on opacity { FadeAnimation {} }
+                clip: true
+                visible: height > 0
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                height: isNeeded ? implicitHeight : 0
+                Behavior on height { SmoothedAnimation { duration: 200 } }
 
+                readonly property bool isNeeded: !chatPage.isSelecting && chatPage.hasSendPrivilege("can_send_messages")
                 property string replyToMessageId: "0";
                 property string editMessageId: "0";
 
@@ -1456,104 +1447,89 @@ Page {
                     }
                 }
             }
+        }
+    }
 
-            Loader {
-                id: selectedMessagesActions
-                asynchronous: true
-                active: false
-                height: 0
-                opacity: 0
-                width: parent.width - Theme.horizontalPageMargin
-                Behavior on opacity { FadeAnimation {} }
-                sourceComponent: Component {
-                    Item {
-                        clip: true
+    Loader {
+        id: selectedMessagesActions
+        asynchronous: true
+        anchors.bottom: parent.bottom
+        readonly property bool isNeeded: chatPage.isSelecting
+        active: height > 0
+        width: parent.width
+        height: isNeeded ? Theme.itemSizeMedium : 0
+        Behavior on height { SmoothedAnimation { duration: 200 } }
+        sourceComponent: Component {
+            Item {
+                clip: true
 
-                        IconButton {
-                            id: cancelSelectionButton
-                            anchors {
-                                left: parent.left
-                                leftMargin: Theme.horizontalPageMargin
-                                verticalCenter: parent.verticalCenter
-                            }
-                            icon.source: "image://theme/icon-m-cancel"
-                            onClicked: {
-                                chatPage.selectedMessages = [];
-                            }
+                IconButton {
+                    anchors {
+                        left: parent.left
+                        leftMargin: Theme.horizontalPageMargin
+                        verticalCenter: parent.verticalCenter
+                    }
+                    icon.source: "image://theme/icon-m-cancel"
+                    onClicked: {
+                        chatPage.selectedMessages = [];
+                    }
+                }
+
+                Row {
+                    spacing: Theme.paddingSmall
+                    anchors {
+                        right: parent.right
+                        rightMargin: Theme.horizontalPageMargin
+                        verticalCenter: parent.verticalCenter
+                    }
+
+                    IconButton {
+                        icon.source: "../../images/icon-m-copy.svg"
+                        icon.sourceSize: Qt.size(Theme.iconSizeMedium, Theme.iconSizeMedium)
+                        onClicked: {
+                            Clipboard.text = Functions.getMessagesArrayText(chatPage.selectedMessages);
+                            appNotification.show(qsTr("%Ln messages have been copied", "", selectedMessages.length));
+                            chatPage.selectedMessages = [];
                         }
+                    }
 
-                        IconButton {
-                            id: messagesCopyButton
-                            anchors {
-                                right: messagesForwardButton.left
-                                leftMargin: Theme.paddingSmall
-                                verticalCenter: parent.verticalCenter
-                            }
-                            icon.source: "../../images/icon-m-copy.svg"
-                            icon.sourceSize {
-                                width: Theme.iconSizeMedium
-                                height: Theme.iconSizeMedium
-                            }
-                            onClicked: {
-                                Clipboard.text = Functions.getMessagesArrayText(chatPage.selectedMessages);
-                                appNotification.show(qsTr("%Ln messages have been copied", "", selectedMessages.length));
-                                chatPage.selectedMessages = [];
-                            }
-                        }
-
-                        IconButton {
-                            id: messagesForwardButton
-
-                            anchors {
-                                right: messagesDeleteButton.left
-                                leftMargin: visible ? Theme.paddingSmall : 0
-                                verticalCenter: parent.verticalCenter
-                            }
-                            visible: selectedMessages.every(function(message){
-                                return message.can_be_forwarded && !chatPage.isSecretChat
+                    IconButton {
+                        visible: !chatPage.isSecretChat && selectedMessages.every(function(message){
+                            return message.can_be_forwarded
+                        })
+                        icon.sourceSize: Qt.size(Theme.iconSizeMedium, Theme.iconSizeMedium)
+                        icon.source: "image://theme/icon-m-forward"
+                        onClicked: {
+                            var ids = Functions.getMessagesArrayIds(chatPage.selectedMessages)
+                            var neededPermissions = Functions.getMessagesNeededForwardPermissions(chatPage.selectedMessages)
+                            var chatId = chatInformation.id
+                            pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
+                                myUserId: chatPage.myUserId,
+                                headerDescription: qsTr("Forward %Ln messages", "dialog header", ids.length),
+                                payload: {fromChatId: chatId, messageIds:ids, neededPermissions: neededPermissions},
+                                state: "forwardMessages"
                             })
-                            width: visible ? Theme.itemSizeMedium : 0
-                            icon.source: "image://theme/icon-m-forward"
-                            onClicked: {
-                                var ids = Functions.getMessagesArrayIds(chatPage.selectedMessages)
-                                var neededPermissions = Functions.getMessagesNeededForwardPermissions(chatPage.selectedMessages)
-                                var chatId = chatInformation.id
-                                pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
-                                    myUserId: chatPage.myUserId,
-                                    headerDescription: qsTr("Forward %Ln messages", "dialog header", ids.length),
-                                    payload: {fromChatId: chatId, messageIds:ids, neededPermissions: neededPermissions},
-                                    state: "forwardMessages"
-                                })
-                            }
-
                         }
-                        IconButton {
-                            id: messagesDeleteButton
-                            anchors {
-                                right: parent.right
-                                leftMargin: visible ? Theme.paddingSmall : 0
-                                verticalCenter: parent.verticalCenter
-                            }
 
-                            icon.source: "image://theme/icon-m-delete"
-                            visible: chatInformation.id === chatPage.myUserId || selectedMessages.every(function(message){
-                                return message.can_be_deleted_for_all_users
-                            })
-                            width: visible ? Theme.itemSizeMedium : 0
-                            onClicked: {
-                                var ids = Functions.getMessagesArrayIds(selectedMessages);
-                                var chatId = chatInformation.id
-                                var wrapper = tdLibWrapper;
-                                Remorse.popupAction(chatPage, qsTr("%Ln Messages deleted", "", ids.length), function() {
-                                    wrapper.deleteMessages(chatId, ids);
-                                });
-                                chatPage.selectedMessages = [];
-                            }
+                    }
+                    IconButton {
+                        icon.source: "image://theme/icon-m-delete"
+                        visible: chatInformation.id === chatPage.myUserId || selectedMessages.every(function(message){
+                            return message.can_be_deleted_for_all_users
+                        })
+                        icon.sourceSize: Qt.size(Theme.iconSizeMedium, Theme.iconSizeMedium)
+                        onClicked: {
+                            var ids = Functions.getMessagesArrayIds(selectedMessages);
+                            var chatId = chatInformation.id
+                            var wrapper = tdLibWrapper;
+                            Remorse.popupAction(chatPage, qsTr("%Ln Messages deleted", "", ids.length), function() {
+                                wrapper.deleteMessages(chatId, ids);
+                            });
+                            chatPage.selectedMessages = [];
                         }
                     }
                 }
             }
         }
     }
-
 }
