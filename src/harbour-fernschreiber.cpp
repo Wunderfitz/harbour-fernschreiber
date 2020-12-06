@@ -29,12 +29,14 @@
 #include <QQmlEngine>
 #include <QGuiApplication>
 #include <QLoggingCategory>
+
 #include "appsettings.h"
 #include "debuglogjs.h"
 #include "tdlibfile.h"
 #include "tdlibwrapper.h"
 #include "chatlistmodel.h"
 #include "chatmodel.h"
+#include "namedaction.h"
 #include "notificationmanager.h"
 #include "mceinterface.h"
 #include "dbusadaptor.h"
@@ -66,6 +68,7 @@ int main(int argc, char *argv[])
 
     const char *uri = "WerkWolf.Fernschreiber";
     qmlRegisterType<TDLibFile>(uri, 1, 0, "TDLibFile");
+    qmlRegisterType<NamedAction>(uri, 1, 0, "NamedAction");
     qmlRegisterSingletonType<DebugLogJS>(uri, 1, 0, "DebugLog", DebugLogJS::createSingleton);
 
     AppSettings *appSettings = new AppSettings(view.data());

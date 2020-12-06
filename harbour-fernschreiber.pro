@@ -31,6 +31,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/fernschreiberutils.cpp \
     src/knownusersmodel.cpp \
     src/mceinterface.cpp \
+    src/namedaction.cpp \
     src/notificationmanager.cpp \
     src/processlauncher.cpp \
     src/stickermanager.cpp \
@@ -159,6 +160,7 @@ HEADERS += \
     src/fernschreiberutils.h \
     src/knownusersmodel.h \
     src/mceinterface.h \
+    src/namedaction.h \
     src/notificationmanager.h \
     src/processlauncher.h \
     src/stickermanager.h \
