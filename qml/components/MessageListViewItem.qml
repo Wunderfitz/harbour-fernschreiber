@@ -25,19 +25,19 @@ import "../js/debug.js" as Debug
 ListItem {
     id: messageListItem
     contentHeight: messageBackground.height + Theme.paddingMedium
-    readonly property var myMessage: display
+    property var chatId
+    property var messageId
+    property var myMessage
     readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender_user_id)
     property QtObject precalculatedValues: ListView.view.precalculatedValues
     readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
     readonly property int textAlign: isOwnMessage ? Text.AlignRight : Text.AlignLeft
     readonly property Page page: precalculatedValues.page
     readonly property bool isSelected: messageListItem.precalculatedValues.pageIsSelecting && page.selectedMessages.some(function(existingMessage) {
-        return existingMessage.id === myMessage.id;
+        return existingMessage.id === messageId
     });
     readonly property bool isOwnMessage: page.myUserId === myMessage.sender_user_id
-    readonly property string extraContentComponentName: typeof myMessage.content !== "undefined"
-                                               && typeof chatView.contentComponentNames[myMessage.content['@type']]  !== "undefined" ?
-                                                   chatView.contentComponentNames[myMessage.content['@type']] : ""
+    property string extraContentComponentName
 
     highlighted: (down || isSelected) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
@@ -96,7 +96,7 @@ ListItem {
                 }
                 MenuItem {
                     onClicked: {
-                        newMessageColumn.editMessageId = myMessage.id;
+                        newMessageColumn.editMessageId = messageId;
                         newMessageTextField.text = Functions.getMessageText(myMessage, false, false, true);
                         newMessageTextField.focus = true;
                     }
@@ -117,7 +117,7 @@ ListItem {
                 }
                 MenuItem {
                     onClicked: {
-                        tdLibWrapper.pinMessage(page.chatInformation.id, myMessage.id);
+                        tdLibWrapper.pinMessage(page.chatInformation.id, messageId)
                     }
                     text: qsTr("Pin Message")
                     visible: canPinMessages()
@@ -125,7 +125,7 @@ ListItem {
                 MenuItem {
                     onClicked: {
                         var chatId = page.chatInformation.id;
-                        var messageId = myMessage.id;
+                        var messageId = messageListItem.messageId;
                         Remorse.itemAction(messageListItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId]);  })
                     }
                     text: qsTr("Delete Message")

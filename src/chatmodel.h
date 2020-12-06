@@ -26,15 +26,16 @@
 class ChatModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(qlonglong chatId READ getChatId NOTIFY chatIdChanged)
     Q_PROPERTY(QVariantMap smallPhoto READ smallPhoto NOTIFY smallPhotoChanged)
 
 public:
     ChatModel(TDLibWrapper *tdLibWrapper);
     ~ChatModel() override;
 
+    virtual QHash<int,QByteArray> roleNames() const override;
     virtual int rowCount(const QModelIndex&) const override;
     virtual QVariant data(const QModelIndex &index, int role) const override;
-    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
     Q_INVOKABLE void clear();
     Q_INVOKABLE void initialize(const QVariantMap &chatInformation);
@@ -55,38 +56,41 @@ signals:
     void lastReadSentMessageUpdated(int lastReadSentIndex);
     void notificationSettingsUpdated();
     void messageUpdated(int modelIndex);
-    void messagesDeleted();
     void smallPhotoChanged();
+    void chatIdChanged();
     void pinnedMessageChanged();
 
-public slots:
+private slots:
     void handleMessagesReceived(const QVariantList &messages, int totalCount);
-    void handleNewMessageReceived(const QString &chatId, const QVariantMap &message);
+    void handleNewMessageReceived(qlonglong chatId, const QVariantMap &message);
     void handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, int unreadCount);
     void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
-    void handleMessageSendSucceeded(const QString &messageId, const QString &oldMessageId, const QVariantMap &message);
+    void handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMessageId, const QVariantMap &message);
     void handleChatNotificationSettingsUpdated(const QString &chatId, const QVariantMap &chatNotificationSettings);
     void handleChatPhotoUpdated(qlonglong chatId, const QVariantMap &photo);
     void handleChatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
-    void handleMessageContentUpdated(const QString &chatId, const QString &messageId, const QVariantMap &newContent);
-    void handleMessagesDeleted(const QString &chatId, const QVariantList &messageIds);
+    void handleMessageContentUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &newContent);
+    void handleMessagesDeleted(qlonglong chatId, const QList<qlonglong> &messageIds);
+
+private:
+    class MessageData;
+    void removeRange(int firstDeleted, int lastDeleted);
+    void insertMessages(const QList<MessageData*> newMessages);
+    void appendMessages(const QList<MessageData*> newMessages);
+    void prependMessages(const QList<MessageData*> newMessages);
+    QVariantMap enhanceMessage(const QVariantMap &message);
+    int calculateLastKnownMessageId();
+    int calculateLastReadSentMessageId();
+    bool isMostRecentMessageLoaded();
 
 private:
     TDLibWrapper *tdLibWrapper;
-    QVariantList messages;
-    QVariantList messagesToBeAdded;
-    QVariantMap messageIndexMap;
+    QList<MessageData*> messages;
+    QHash<qlonglong,int> messageIndexMap;
     QVariantMap chatInformation;
     qlonglong chatId;
     bool inReload;
     bool inIncrementalUpdate;
-
-    void insertMessages();
-    QVariantMap enhanceMessage(const QVariantMap &message);
-    int calculateLastKnownMessageId();
-    int calculateLastReadSentMessageId();
-    void calculateMessageIndexMap();
-    bool isMostRecentMessageLoaded();
 };
 
 #endif // CHATMODEL_H
