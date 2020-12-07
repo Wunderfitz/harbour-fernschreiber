@@ -77,6 +77,10 @@ Row {
                 textFormat: Text.StyledText
                 truncationMode: TruncationMode.Fade
                 maximumLineCount: 1
+                linkColor: Theme.highlightColor
+                onLinkActivated: {
+                    Functions.handleLink(link);
+                }
             }
         }
 
