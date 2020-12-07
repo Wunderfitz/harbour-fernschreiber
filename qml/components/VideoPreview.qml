@@ -90,9 +90,9 @@ Item {
             videoMessageComponent.videoType = videoMessageComponent.isVideoNote ? "video" : videoData['@type'];
             videoFileId = videoData[videoType].id;
             if (typeof videoData.thumbnail !== "undefined") {
-                previewFileId = videoData.thumbnail.photo.id;
-                if (videoData.thumbnail.photo.local.is_downloading_completed) {
-                    placeholderImage.source = videoData.thumbnail.photo.local.path;
+                previewFileId = videoData.thumbnail.file.id;
+                if (videoData.thumbnail.file.local.is_downloading_completed) {
+                    placeholderImage.source = videoData.thumbnail.file.local.path;
                 } else {
                     tdLibWrapper.downloadFile(previewFileId);
                 }
