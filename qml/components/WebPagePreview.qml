@@ -110,6 +110,10 @@ Column {
         maximumLineCount: 3
         textFormat: Text.StyledText
         visible: (text !== "")
+        linkColor: Theme.highlightColor
+        onLinkActivated: {
+            Functions.handleLink(link);
+        }
     }
 
     Item {
