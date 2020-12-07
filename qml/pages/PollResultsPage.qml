@@ -33,7 +33,7 @@ Page {
 
     property var pollData: message.content.poll
 
-    property var userInformation:  tdLibWrapper.getUserInformation(message.sender_user_id)
+    property var userInformation:  tdLibWrapper.getUserInformation(message.sender.user_id)
 
     property bool isQuiz: pollData.type['@type'] === "pollTypeQuiz"
 

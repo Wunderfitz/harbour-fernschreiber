@@ -43,7 +43,8 @@ namespace {
     const QString MESSAGE("message");
     const QString FIRST_NAME("first_name");
     const QString LAST_NAME("last_name");
-    const QString SENDER_USER_ID("sender_user_id");
+    const QString SENDER("sender");
+    const QString USER_ID("user_id");
     const QString NOTIFICATIONS("notifications");
     const QString NOTIFICATION_GROUP_ID("notification_group_id");
     const QString ADDED_NOTIFICATIONS("added_notifications");
@@ -336,10 +337,17 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
         if (chatInformation && (chatInformation->type == TDLibWrapper::ChatTypeBasicGroup ||
            (chatInformation->type == TDLibWrapper::ChatTypeSupergroup && !chatInformation->isChannel))) {
             // Add author
-            const QVariantMap authorInformation = tdLibWrapper->getUserInformation(messageMap.value(SENDER_USER_ID).toString());
-            const QString firstName = authorInformation.value(FIRST_NAME).toString();
-            const QString lastName = authorInformation.value(LAST_NAME).toString();
-            const QString fullName = firstName + " " + lastName;
+            const QVariantMap senderInformation = messageMap.value(SENDER).toMap();
+            QString fullName;
+            if (senderInformation.value(_TYPE).toString() == "messageSenderChat") {
+                fullName = tdLibWrapper->getChat(senderInformation.value(CHAT_ID).toString()).value(TITLE).toString();
+            } else {
+                const QVariantMap authorInformation = tdLibWrapper->getUserInformation(senderInformation.value(USER_ID).toString());
+                const QString firstName = authorInformation.value(FIRST_NAME).toString();
+                const QString lastName = authorInformation.value(LAST_NAME).toString();
+                fullName = firstName + " " + lastName;
+            }
+
             notificationBody = notificationBody + fullName.trimmed() + ": ";
         }
         notificationBody += getNotificationText(messageMap.value(CONTENT).toMap());

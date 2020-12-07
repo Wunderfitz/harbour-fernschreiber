@@ -35,7 +35,8 @@ namespace {
     const QString CHAT_ID("chat_id");
     const QString CONTENT("content");
     const QString LAST_MESSAGE("last_message");
-    const QString SENDER_USER_ID("sender_user_id");
+    const QString SENDER("sender");
+    const QString USER_ID("user_id");
     const QString BASIC_GROUP_ID("basic_group_id");
     const QString SUPERGROUP_ID("supergroup_id");
     const QString UNREAD_COUNT("unread_count");
@@ -81,6 +82,8 @@ public:
     QVariant photoSmall() const;
     qlonglong lastReadInboxMessageId() const;
     qlonglong senderUserId() const;
+    qlonglong senderChatId() const;
+    bool senderIsChat() const;
     qlonglong senderMessageDate() const;
     QString senderMessageText() const;
     QString senderMessageStatus() const;
@@ -176,7 +179,17 @@ qlonglong ChatListModel::ChatData::lastReadInboxMessageId() const
 
 qlonglong ChatListModel::ChatData::senderUserId() const
 {
-    return lastMessage(SENDER_USER_ID).toLongLong();
+    return lastMessage(SENDER).toMap().value(USER_ID).toLongLong();
+}
+
+qlonglong ChatListModel::ChatData::senderChatId() const
+{
+    return lastMessage(SENDER).toMap().value(CHAT_ID).toLongLong();
+}
+
+bool ChatListModel::ChatData::senderIsChat() const
+{
+    return lastMessage(SENDER).toMap().value(_TYPE).toString() == "messageSenderChat";
 }
 
 qlonglong ChatListModel::ChatData::senderMessageDate() const

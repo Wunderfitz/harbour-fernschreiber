@@ -28,7 +28,7 @@ ListItem {
     property var chatId
     property var messageId
     property var myMessage
-    readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender_user_id)
+    readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender.user_id)
     property QtObject precalculatedValues: ListView.view.precalculatedValues
     readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
     readonly property int textAlign: isOwnMessage ? Text.AlignRight : Text.AlignLeft
@@ -36,7 +36,7 @@ ListItem {
     readonly property bool isSelected: messageListItem.precalculatedValues.pageIsSelecting && page.selectedMessages.some(function(existingMessage) {
         return existingMessage.id === messageId
     });
-    readonly property bool isOwnMessage: page.myUserId === myMessage.sender_user_id
+    readonly property bool isOwnMessage: page.myUserId === myMessage.sender.user_id
     property string extraContentComponentName
 
     highlighted: (down || isSelected) && !menuOpen
@@ -336,7 +336,7 @@ ListItem {
                                     forwardedThumbnail.photoData = (typeof otherChatInformation.photo !== "undefined") ? otherChatInformation.photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(otherChatInformation.title, Theme.fontSizeExtraSmall);
                                 } else if (myMessage.forward_info.origin["@type"] === "messageForwardOriginUser") {
-                                    var otherUserInformation = tdLibWrapper.getUserInformation(myMessage.forward_info.origin.sender_user_id);
+                                    var otherUserInformation = tdLibWrapper.getUserInformation(myMessage.forward_info.origin.sender.user_id);
                                     forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(Functions.getUserName(otherUserInformation), Theme.fontSizeExtraSmall);
                                 } else {
