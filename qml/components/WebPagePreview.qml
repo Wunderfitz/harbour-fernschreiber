@@ -103,7 +103,7 @@ Column {
         id: descriptionText
 
         width: parent.width
-        text: webPageData.description ? Emoji.emojify(webPageData.description, font.pixelSize) : ""
+        text: webPageData.description ? Emoji.emojify(Functions.enhanceMessageText(webPageData.description), font.pixelSize) : ""
         font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
         truncationMode: TruncationMode.Fade
         wrapMode: Text.Wrap
