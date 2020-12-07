@@ -336,7 +336,7 @@ ListItem {
                                     forwardedThumbnail.photoData = (typeof otherChatInformation.photo !== "undefined") ? otherChatInformation.photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(otherChatInformation.title, Theme.fontSizeExtraSmall);
                                 } else if (myMessage.forward_info.origin["@type"] === "messageForwardOriginUser") {
-                                    var otherUserInformation = tdLibWrapper.getUserInformation(myMessage.forward_info.origin.sender.user_id);
+                                    var otherUserInformation = tdLibWrapper.getUserInformation(myMessage.forward_info.origin.sender_user_id);
                                     forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(Functions.getUserName(otherUserInformation), Theme.fontSizeExtraSmall);
                                 } else {
