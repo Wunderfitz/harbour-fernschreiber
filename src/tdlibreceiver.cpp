@@ -146,7 +146,7 @@ void TDLibReceiver::setActive(bool active)
 void TDLibReceiver::receiverLoop()
 {
     LOG("Starting receiver loop");
-    const double WAIT_TIMEOUT = 5.0;
+    const double WAIT_TIMEOUT = 1.0;
     while (this->isActive) {
       const char *result = td_json_client_receive(this->tdLibClient, WAIT_TIMEOUT);
       if (result) {

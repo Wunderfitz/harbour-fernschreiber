@@ -1283,7 +1283,7 @@ void TDLibWrapper::setInitialParameters()
     initialParameters.insert("database_directory", QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib");
     initialParameters.insert("use_file_database", true);
     initialParameters.insert("use_chat_info_database", true);
-    initialParameters.insert("use_message_database", false);
+    initialParameters.insert("use_message_database", true);
     initialParameters.insert("use_secret_chats", true);
     initialParameters.insert("system_language_code", QLocale::system().name());
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
@@ -1311,7 +1311,7 @@ void TDLibWrapper::setLogVerbosityLevel()
     LOG("Setting log verbosity level to something less chatty");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setLogVerbosityLevel");
-    requestObject.insert("new_verbosity_level", 2);
+    requestObject.insert("new_verbosity_level", 5);
     this->sendRequest(requestObject);
 }
 
