@@ -89,7 +89,11 @@ Item {
 
             videoMessageComponent.videoType = videoMessageComponent.isVideoNote ? "video" : videoData['@type'];
             videoFileId = videoData[videoType].id;
-            if (typeof videoData.thumbnail !== "undefined") {
+            if (rawMessage.content['@type'] === "messageAnimation") {
+                playButton.visible = true;
+                fullscreenButton.visible = !videoMessageComponent.fullscreen;
+                handlePlay();
+            } else if (typeof videoData.thumbnail !== "undefined") {
                 previewFileId = videoData.thumbnail.file.id;
                 if (videoData.thumbnail.file.local.is_downloading_completed) {
                     placeholderImage.source = videoData.thumbnail.file.local.path;
