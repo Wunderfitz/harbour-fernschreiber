@@ -20,9 +20,13 @@
 #define DEBUG_MODULE AppSettings
 #include "debuglog.h"
 
+#include <QDBusInterface>
+#include <QDBusReply>
+
 namespace {
     const QString KEY_SEND_BY_ENTER("sendByEnter");
     const QString KEY_USE_OPEN_WITH("useOpenWith");
+    const QString KEY_STAY_IN_BACKGROUND("stayInBackground");
     const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
     const QString KEY_ANIMATE_STICKERS("animateStickers");
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
@@ -59,6 +63,20 @@ void AppSettings::setUseOpenWith(bool useOpenWith)
         LOG(KEY_USE_OPEN_WITH << useOpenWith);
         settings.setValue(KEY_USE_OPEN_WITH, useOpenWith);
         emit useOpenWithChanged();
+    }
+}
+
+bool AppSettings::getStayInBackground() const
+{
+    return settings.value(KEY_STAY_IN_BACKGROUND, false).toBool();
+}
+
+void AppSettings::setStayInBackground(bool stayInBackground)
+{
+    if (getStayInBackground() != stayInBackground) {
+        LOG(KEY_STAY_IN_BACKGROUND << stayInBackground);
+        settings.setValue(KEY_STAY_IN_BACKGROUND, stayInBackground);
+        emit stayInBackgroundChanged();
     }
 }
 
@@ -129,5 +147,22 @@ void AppSettings::setStorageOptimizer(bool enable)
         LOG(KEY_STORAGE_OPTIMIZER << enable);
         settings.setValue(KEY_STORAGE_OPTIMIZER, enable);
         emit storageOptimizerChanged();
+    }
+}
+
+bool AppSettings::isAppRunning()
+{
+    LOG("Checking via D-Bus if app is already running...");
+    QDBusInterface dBusInterface("de.ygriega.fernschreiber", "/de/ygriega/fernschreiber", "", QDBusConnection::sessionBus());
+    if (dBusInterface.isValid()) {
+        QDBusReply<bool> reply = dBusInterface.call("showUI");
+        if (reply.isValid()) {
+            return reply.value();
+        }
+        LOG("D-Bus call to show UI failed. App doesn't seem to be running (properly)!" << reply.error().message());
+        return false;
+    } else {
+        LOG("Fernschreiber D-Bus session interface is not existing. App doesn't seem to be running!");
+        return false;
     }
 }

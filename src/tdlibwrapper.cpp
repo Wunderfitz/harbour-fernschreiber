@@ -63,7 +63,6 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
         tdLibDatabaseDirectory.mkpath(tdLibDatabaseDirectoryPath);
     }
 
-    this->dbusInterface = new DBusInterface(this);
     if (this->appSettings->getUseOpenWith()) {
         this->initializeOpenWith();
     } else {
@@ -1041,11 +1040,6 @@ bool TDLibWrapper::getJoinChatRequested()
 void TDLibWrapper::registerJoinChat()
 {
     this->joinChatRequested = false;
-}
-
-DBusAdaptor *TDLibWrapper::getDBusAdaptor()
-{
-    return this->dbusInterface->getDBusAdaptor();
 }
 
 void TDLibWrapper::handleVersionDetected(const QString &version)

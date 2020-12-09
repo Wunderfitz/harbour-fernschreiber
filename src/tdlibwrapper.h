@@ -117,8 +117,6 @@ public:
     Q_INVOKABLE bool getJoinChatRequested();
     Q_INVOKABLE void registerJoinChat();
 
-    DBusAdaptor *getDBusAdaptor();
-
     // Direct TDLib functions
     Q_INVOKABLE void sendRequest(const QVariantMap &requestObject);
     Q_INVOKABLE void setAuthenticationPhoneNumber(const QString &phoneNumber);
@@ -278,7 +276,6 @@ private:
     AppSettings *appSettings;
     MceInterface *mceInterface;
     TDLibReceiver *tdLibReceiver;
-    DBusInterface *dbusInterface;
     QString version;
     TDLibWrapper::AuthorizationState authorizationState;
     QVariantMap authorizationStateData;

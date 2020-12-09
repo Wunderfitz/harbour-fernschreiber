@@ -39,6 +39,7 @@
 #include "namedaction.h"
 #include "notificationmanager.h"
 #include "mceinterface.h"
+#include "dbusinterface.h"
 #include "dbusadaptor.h"
 #include "processlauncher.h"
 #include "stickermanager.h"
@@ -75,6 +76,19 @@ int main(int argc, char *argv[])
     context->setContextProperty("appSettings", appSettings);
     qmlRegisterUncreatableType<AppSettings>(uri, 1, 0, "AppSettings", QString());
 
+//    if (appSettings->isAppRunning()) {
+//        return 0;
+//    }
+
+    if (appSettings->getStayInBackground()) {
+        app.data()->setQuitOnLastWindowClosed(false);
+    }
+
+    DBusInterface *dBusInterface = new DBusInterface(view.data());
+    DBusAdaptor *dBusAdaptor = dBusInterface->getDBusAdaptor();
+    dBusAdaptor->setAppView(view.data());
+    context->setContextProperty("dBusAdaptor", dBusAdaptor);
+
     MceInterface *mceInterface = new MceInterface(view.data());
     TDLibWrapper *tdLibWrapper = new TDLibWrapper(appSettings, mceInterface, view.data());
     context->setContextProperty("tdLibWrapper", tdLibWrapper);
@@ -82,9 +96,6 @@ int main(int argc, char *argv[])
 
     FernschreiberUtils *fernschreiberUtils = new FernschreiberUtils(view.data());
     context->setContextProperty("fernschreiberUtils", fernschreiberUtils);
-
-    DBusAdaptor *dBusAdaptor = tdLibWrapper->getDBusAdaptor();
-    context->setContextProperty("dBusAdaptor", dBusAdaptor);
 
     ChatListModel chatListModel(tdLibWrapper);
     context->setContextProperty("chatListModel", &chatListModel);

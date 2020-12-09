@@ -20,11 +20,13 @@
 
 #include <QObject>
 #include <QSettings>
+#include <QQuickView>
 
 class AppSettings : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool sendByEnter READ getSendByEnter WRITE setSendByEnter NOTIFY sendByEnterChanged)
     Q_PROPERTY(bool useOpenWith READ getUseOpenWith WRITE setUseOpenWith NOTIFY useOpenWithChanged)
+    Q_PROPERTY(bool stayInBackground READ getStayInBackground WRITE setStayInBackground NOTIFY stayInBackgroundChanged)
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
     Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
@@ -48,6 +50,9 @@ public:
     bool getUseOpenWith() const;
     void setUseOpenWith(bool useOpenWith);
 
+    bool getStayInBackground() const;
+    void setStayInBackground(bool stayInBackground);
+
     bool showStickersAsImages() const;
     void setShowStickersAsImages(bool showAsImages);
 
@@ -63,9 +68,12 @@ public:
     bool storageOptimizer() const;
     void setStorageOptimizer(bool enable);
 
+    bool isAppRunning();
+
 signals:
     void sendByEnterChanged();
     void useOpenWithChanged();
+    void stayInBackgroundChanged();
     void showStickersAsImagesChanged();
     void animateStickersChanged();
     void notificationTurnsDisplayOnChanged();

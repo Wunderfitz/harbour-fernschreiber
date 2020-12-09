@@ -62,6 +62,16 @@ Page {
                 }
             }
 
+            TextSwitch {
+                checked: appSettings.stayInBackground
+                text: qsTr("Stay in background")
+                description: qsTr("Fernschreiber will stay active in the background after the app was closed")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.stayInBackground = !checked
+                }
+            }
+
             ComboBox {
                 id: feedbackComboBox
                 label: qsTr("Notification feedback")

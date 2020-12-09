@@ -1295,6 +1295,14 @@
         <source>Enable storage optimizer</source>
         <translation>Käytä tallennustilan optimointia</translation>
     </message>
+    <message>
+        <source>Stay in background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fernschreiber will stay active in the background after the app was closed</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

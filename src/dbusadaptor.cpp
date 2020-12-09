@@ -26,6 +26,11 @@ DBusAdaptor::DBusAdaptor(QObject *parent): QDBusAbstractAdaptor(parent)
 {
 }
 
+void DBusAdaptor::setAppView(QQuickView *appView)
+{
+    this->appView = appView;
+}
+
 void DBusAdaptor::openMessage(const QString &chatId, const QString &messageId)
 {
     LOG("Open Message" << chatId << messageId);
@@ -38,4 +43,11 @@ void DBusAdaptor::openUrl(const QStringList &arguments)
     if (arguments.length() >= 1) {
         emit pleaseOpenUrl(arguments.first());
     }
+}
+
+bool DBusAdaptor::showUI()
+{
+    LOG("UI shall wake up!");
+    this->appView->showFullScreen();
+    return true;
 }
