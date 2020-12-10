@@ -17,25 +17,25 @@
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "dbusadaptor.h"
 
-#define DEBUG_MODULE DBusAdaptor
+#include "stayawakeadaptor.h"
+
+#define DEBUG_MODULE StayAwakeAdaptor
 #include "debuglog.h"
 
-DBusAdaptor::DBusAdaptor(QObject *parent): QDBusAbstractAdaptor(parent)
+StayAwakeAdaptor::StayAwakeAdaptor(QObject *parent): QDBusAbstractAdaptor(parent)
 {
+
 }
 
-void DBusAdaptor::openMessage(const QString &chatId, const QString &messageId)
+void StayAwakeAdaptor::setAppView(QQuickView *appView)
 {
-    LOG("Open Message" << chatId << messageId);
-    emit pleaseOpenMessage(chatId, messageId);
+    this->appView = appView;
 }
 
-void DBusAdaptor::openUrl(const QStringList &arguments)
+bool StayAwakeAdaptor::showUI()
 {
-    LOG("Open Url" << arguments);
-    if (arguments.length() >= 1) {
-        emit pleaseOpenUrl(arguments.first());
-    }
+    LOG("UI shall wake up!");
+    this->appView->showFullScreen();
+    return true;
 }

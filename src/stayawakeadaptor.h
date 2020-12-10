@@ -17,25 +17,31 @@
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "dbusadaptor.h"
 
-#define DEBUG_MODULE DBusAdaptor
-#include "debuglog.h"
+#ifndef STAYAWAKEADAPTOR_H
+#define STAYAWAKEADAPTOR_H
 
-DBusAdaptor::DBusAdaptor(QObject *parent): QDBusAbstractAdaptor(parent)
+
+#include <QDBusAbstractAdaptor>
+#include <QQuickView>
+
+class StayAwakeAdaptor : public QDBusAbstractAdaptor
 {
-}
 
-void DBusAdaptor::openMessage(const QString &chatId, const QString &messageId)
-{
-    LOG("Open Message" << chatId << messageId);
-    emit pleaseOpenMessage(chatId, messageId);
-}
+    Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "de.ygriega.stayawake")
 
-void DBusAdaptor::openUrl(const QStringList &arguments)
-{
-    LOG("Open Url" << arguments);
-    if (arguments.length() >= 1) {
-        emit pleaseOpenUrl(arguments.first());
-    }
-}
+public:
+    StayAwakeAdaptor(QObject *parent);
+
+    void setAppView(QQuickView* appView);
+
+public slots:
+    bool showUI();
+
+private:
+    QQuickView *appView;
+
+};
+
+#endif // STAYAWAKEADAPTOR_H

@@ -32,8 +32,6 @@ class DBusAdaptor : public QDBusAbstractAdaptor
 public:
     DBusAdaptor(QObject *parent);
 
-    void setAppView(QQuickView* appView);
-
 signals:
     void pleaseOpenMessage(const QString &chatId, const QString &messageId);
     void pleaseOpenUrl(const QString &url);
@@ -41,10 +39,6 @@ signals:
 public slots:
     void openMessage(const QString &chatId, const QString &messageId);
     void openUrl(const QStringList &arguments);
-    bool showUI();
-
-private:
-    QQuickView *appView;
 
 };
 

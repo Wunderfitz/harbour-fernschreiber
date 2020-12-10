@@ -22,6 +22,7 @@
 
 #include <QDBusInterface>
 #include <QDBusReply>
+#include <QGuiApplication>
 
 namespace {
     const QString KEY_SEND_BY_ENTER("sendByEnter");
@@ -76,6 +77,7 @@ void AppSettings::setStayInBackground(bool stayInBackground)
     if (getStayInBackground() != stayInBackground) {
         LOG(KEY_STAY_IN_BACKGROUND << stayInBackground);
         settings.setValue(KEY_STAY_IN_BACKGROUND, stayInBackground);
+        QGuiApplication::setQuitOnLastWindowClosed(!stayInBackground);
         emit stayInBackgroundChanged();
     }
 }
@@ -153,7 +155,7 @@ void AppSettings::setStorageOptimizer(bool enable)
 bool AppSettings::isAppRunning()
 {
     LOG("Checking via D-Bus if app is already running...");
-    QDBusInterface dBusInterface("de.ygriega.fernschreiber", "/de/ygriega/fernschreiber", "", QDBusConnection::sessionBus());
+    QDBusInterface dBusInterface("de.ygriega.stayawake", "/de/ygriega/stayawake", "", QDBusConnection::sessionBus());
     if (dBusInterface.isValid()) {
         QDBusReply<bool> reply = dBusInterface.call("showUI");
         if (reply.isValid()) {
