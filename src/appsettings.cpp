@@ -23,10 +23,16 @@
 #include <QDBusInterface>
 #include <QDBusReply>
 #include <QGuiApplication>
+#include <QDir>
+#include <QStandardPaths>
+#include <QFile>
+#include <QFileInfo>
+#include <QProcess>
 
 namespace {
     const QString KEY_SEND_BY_ENTER("sendByEnter");
     const QString KEY_USE_OPEN_WITH("useOpenWith");
+    const QString KEY_AUTO_RUN("autoRun");
     const QString KEY_STAY_IN_BACKGROUND("stayInBackground");
     const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
     const QString KEY_ANIMATE_STICKERS("animateStickers");
@@ -37,6 +43,7 @@ namespace {
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
 {
+    getAutoRun() ? initializeAutoRun() : disableAutoRun();
 }
 
 bool AppSettings::getSendByEnter() const
@@ -64,6 +71,21 @@ void AppSettings::setUseOpenWith(bool useOpenWith)
         LOG(KEY_USE_OPEN_WITH << useOpenWith);
         settings.setValue(KEY_USE_OPEN_WITH, useOpenWith);
         emit useOpenWithChanged();
+    }
+}
+
+bool AppSettings::getAutoRun() const
+{
+    return settings.value(KEY_AUTO_RUN, false).toBool();
+}
+
+void AppSettings::setAutoRun(bool autoRun)
+{
+    if (getAutoRun() != autoRun) {
+        LOG(KEY_AUTO_RUN << autoRun);
+        settings.setValue(KEY_AUTO_RUN, autoRun);
+        autoRun ? initializeAutoRun() : disableAutoRun();
+        emit autoRunChanged();
     }
 }
 
@@ -166,5 +188,66 @@ bool AppSettings::isAppRunning()
     } else {
         LOG("Fernschreiber D-Bus session interface is not existing. App doesn't seem to be running!");
         return false;
+    }
+}
+
+void AppSettings::initializeAutoRun()
+{
+    LOG("Initialize Auto-Run...");
+
+    QDir scriptsSystemDDir(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/systemd/scripts");
+    if (!scriptsSystemDDir.exists()) {
+        scriptsSystemDDir.mkpath(scriptsSystemDDir.path());
+    }
+    QFile autorunAppFile(scriptsSystemDDir.path() + "/autorun-fernschreiber");
+    if (!autorunAppFile.exists()) {
+        LOG("Creating autorun app file at " << autorunAppFile.fileName());
+        if (autorunAppFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream appFileOut(&autorunAppFile);
+            appFileOut.setCodec("UTF-8");
+            appFileOut << QString("#!/bin/sh -").toUtf8() << "\n";
+            appFileOut << QString("").toUtf8() << "\n";
+            appFileOut << QString("/usr/bin/invoker -n -s --type=silica-qt5 /usr/bin/harbour-fernschreiber").toUtf8() << "\n";
+            appFileOut.flush();
+            autorunAppFile.close();
+            QProcess::startDetached("chmod u+x " + QFileInfo(autorunAppFile).filePath());
+        }
+    }
+
+    QDir userSystemDDir(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/systemd/user");
+    if (!userSystemDDir.exists()) {
+        userSystemDDir.mkpath(userSystemDDir.path());
+    }
+    QFile autorunServiceFile(userSystemDDir.path() + "/autorun-fernschreiber.service");
+    if (!autorunServiceFile.exists()) {
+        LOG("Creating autorun service file at " << autorunServiceFile.fileName());
+        if (autorunServiceFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream serviceFileOut(&autorunServiceFile);
+            serviceFileOut.setCodec("UTF-8");
+            serviceFileOut << QString("[Unit]").toUtf8() << "\n";
+            serviceFileOut << QString("Description=Autorun Fernschreiber at startup").toUtf8() << "\n";
+            serviceFileOut << QString("Requires=lipstick.service").toUtf8() << "\n";
+            serviceFileOut << QString("After=lipstick.service").toUtf8() << "\n";
+            serviceFileOut << QString("").toUtf8() << "\n";
+            serviceFileOut << QString("[Service]").toUtf8() << "\n";
+            serviceFileOut << QString("Type=oneshot").toUtf8() << "\n";
+            serviceFileOut << QString("ExecStart=" + QFileInfo(autorunAppFile).filePath()).toUtf8() << "\n";
+            serviceFileOut << QString("").toUtf8() << "\n";
+            serviceFileOut << QString("[Install]").toUtf8() << "\n";
+            serviceFileOut << QString("WantedBy=post-user-session.target").toUtf8() << "\n";
+            serviceFileOut.flush();
+            autorunServiceFile.close();
+        }
+    }
+
+    QProcess::startDetached("systemctl --user enable " + QFileInfo(autorunServiceFile).filePath());
+}
+
+void AppSettings::disableAutoRun()
+{
+    LOG("Disabling Auto-Run...");
+    QFile autorunServiceFile(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/systemd/user/autorun-fernschreiber.service");
+    if (autorunServiceFile.exists()) {
+        QProcess::startDetached("systemctl --user disable " + QFileInfo(autorunServiceFile).filePath());
     }
 }

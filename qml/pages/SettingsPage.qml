@@ -63,6 +63,16 @@ Page {
             }
 
             TextSwitch {
+                checked: appSettings.autoRun
+                text: qsTr("Autorun at startup")
+                description: qsTr("Fernschreiber will automatically be run at startup")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.autoRun = !checked
+                }
+            }
+
+            TextSwitch {
                 checked: appSettings.stayInBackground
                 text: qsTr("Stay in background")
                 description: qsTr("Fernschreiber will stay active in the background after the app was closed")

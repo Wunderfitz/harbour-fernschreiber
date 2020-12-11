@@ -26,6 +26,7 @@ class AppSettings : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool sendByEnter READ getSendByEnter WRITE setSendByEnter NOTIFY sendByEnterChanged)
     Q_PROPERTY(bool useOpenWith READ getUseOpenWith WRITE setUseOpenWith NOTIFY useOpenWithChanged)
+    Q_PROPERTY(bool autoRun READ getAutoRun WRITE setAutoRun NOTIFY autoRunChanged)
     Q_PROPERTY(bool stayInBackground READ getStayInBackground WRITE setStayInBackground NOTIFY stayInBackgroundChanged)
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
@@ -50,6 +51,9 @@ public:
     bool getUseOpenWith() const;
     void setUseOpenWith(bool useOpenWith);
 
+    bool getAutoRun() const;
+    void setAutoRun(bool autoRun);
+
     bool getStayInBackground() const;
     void setStayInBackground(bool stayInBackground);
 
@@ -73,6 +77,7 @@ public:
 signals:
     void sendByEnterChanged();
     void useOpenWithChanged();
+    void autoRunChanged();
     void stayInBackgroundChanged();
     void showStickersAsImagesChanged();
     void animateStickersChanged();
@@ -82,6 +87,9 @@ signals:
 
 private:
     QSettings settings;
+
+    void initializeAutoRun();
+    void disableAutoRun();
 };
 
 #endif // APPSETTINGS_H
