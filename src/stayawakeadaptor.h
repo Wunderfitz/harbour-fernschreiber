@@ -35,6 +35,7 @@ public:
     StayAwakeAdaptor(QObject *parent);
 
     void setAppView(QQuickView* appView);
+    Q_INVOKABLE void sendToBackground();
 
 public slots:
     bool showUI();

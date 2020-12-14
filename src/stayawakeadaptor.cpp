@@ -33,6 +33,11 @@ void StayAwakeAdaptor::setAppView(QQuickView *appView)
     this->appView = appView;
 }
 
+void StayAwakeAdaptor::sendToBackground()
+{
+    LOG("Minimize appo! But how?");
+}
+
 bool StayAwakeAdaptor::showUI()
 {
     LOG("UI shall wake up!");

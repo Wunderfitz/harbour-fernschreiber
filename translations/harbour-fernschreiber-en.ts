@@ -1296,19 +1296,19 @@
     </message>
     <message>
         <source>Stay in background</source>
-        <translation type="unfinished"></translation>
+        <translation>Stay in background</translation>
     </message>
     <message>
         <source>Fernschreiber will stay active in the background after the app was closed</source>
-        <translation type="unfinished"></translation>
+        <translation>Fernschreiber will stay active in the background after the app was closed</translation>
     </message>
     <message>
         <source>Autorun at startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Autorun at startup</translation>
     </message>
     <message>
         <source>Fernschreiber will automatically be run at startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Fernschreiber will automatically be run at startup</translation>
     </message>
 </context>
 <context>

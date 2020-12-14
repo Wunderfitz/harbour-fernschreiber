@@ -1296,19 +1296,19 @@
     </message>
     <message>
         <source>Stay in background</source>
-        <translation type="unfinished"></translation>
+        <translation>Im Hintergrund bleiben</translation>
     </message>
     <message>
         <source>Fernschreiber will stay active in the background after the app was closed</source>
-        <translation type="unfinished"></translation>
+        <translation>Fernschreiber wird im Hintergrund aktiv bleiben nachdem die App geschlossen wurde</translation>
     </message>
     <message>
         <source>Autorun at startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatischer Start</translation>
     </message>
     <message>
         <source>Fernschreiber will automatically be run at startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Fernschreiber wird automatisch gestartet während das Gerät hochgefahren wird.</translation>
     </message>
 </context>
 <context>

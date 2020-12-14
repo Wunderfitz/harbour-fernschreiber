@@ -43,7 +43,6 @@ namespace {
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
 {
-    getAutoRun() ? initializeAutoRun() : disableAutoRun();
 }
 
 bool AppSettings::getSendByEnter() const
