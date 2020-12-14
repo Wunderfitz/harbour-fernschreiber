@@ -1311,7 +1311,7 @@ void TDLibWrapper::setLogVerbosityLevel()
     LOG("Setting log verbosity level to something less chatty");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setLogVerbosityLevel");
-    requestObject.insert("new_verbosity_level", 5);
+    requestObject.insert("new_verbosity_level", 2);
     this->sendRequest(requestObject);
 }
 
