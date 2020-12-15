@@ -58,6 +58,8 @@ Page {
                                     )
     property var selectedMessages: []
     readonly property bool isSelecting: selectedMessages.length > 0
+    readonly property bool canSendMessages: hasSendPrivilege("can_send_messages")
+
     states: [
         State {
             name: "selectMessages"
@@ -77,6 +79,7 @@ Page {
         }
 
     ]
+
     function toggleMessageSelection(message) {
         var selectionArray = selectedMessages;
         var foundIndex = -1
@@ -923,6 +926,16 @@ Page {
                                 myMessage: model.display
                                 messageId: model.message_id
                                 extraContentComponentName: chatView.contentComponentNames[model.content_type]
+                                canReplyToMessage: chatPage.canSendMessages
+                                onReplyToMessage: {
+                                    newMessageInReplyToRow.inReplyToMessage = myMessage
+                                    newMessageTextField.focus = true
+                                }
+                                onEditMessage: {
+                                    newMessageColumn.editMessageId = messageId
+                                    newMessageTextField.text = Functions.getMessageText(myMessage, false, false, true)
+                                    newMessageTextField.focus = true
+                                }
                             }
                         }
                         Component {
@@ -1048,7 +1061,7 @@ Page {
                 height: isNeeded ? implicitHeight : 0
                 Behavior on height { SmoothedAnimation { duration: 200 } }
 
-                readonly property bool isNeeded: !chatPage.isSelecting && chatPage.hasSendPrivilege("can_send_messages")
+                readonly property bool isNeeded: !chatPage.isSelecting && chatPage.canSendMessages
                 property string replyToMessageId: "0";
                 property string editMessageId: "0";
 

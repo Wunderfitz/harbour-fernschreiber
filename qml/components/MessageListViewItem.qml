@@ -28,6 +28,7 @@ ListItem {
     property var chatId
     property var messageId
     property var myMessage
+    property bool canReplyToMessage
     readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender.user_id)
     property QtObject precalculatedValues: ListView.view.precalculatedValues
     readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
@@ -41,6 +42,9 @@ ListItem {
 
     highlighted: (down || isSelected) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
+
+    signal replyToMessage()
+    signal editMessage()
 
     onClicked: {
         if(messageListItem.precalculatedValues.pageIsSelecting) {
@@ -88,20 +92,14 @@ ListItem {
                 }
 
                 MenuItem {
-                    onClicked: {
-                        newMessageInReplyToRow.inReplyToMessage = myMessage;
-                        newMessageTextField.focus = true;
-                    }
+                    visible: messageListItem.canReplyToMessage
+                    onClicked: messageListItem.replyToMessage()
                     text: qsTr("Reply to Message")
                 }
                 MenuItem {
-                    onClicked: {
-                        newMessageColumn.editMessageId = messageId;
-                        newMessageTextField.text = Functions.getMessageText(myMessage, false, false, true);
-                        newMessageTextField.focus = true;
-                    }
-                    text: qsTr("Edit Message")
                     visible: myMessage.can_be_edited
+                    onClicked: messageListItem.editMessage()
+                    text: qsTr("Edit Message")
                 }
                 MenuItem {
                     onClicked: {
