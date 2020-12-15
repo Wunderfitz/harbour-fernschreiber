@@ -44,6 +44,7 @@ You get the Telegram API ID and hash as soon as you've registered your own appli
 
 Moreover, you need to have a compiled version of [TDLib 1.7](https://github.com/tdlib/td) in the sub-directory `tdlib`. This sub-directory must contain another sub-directory that fits to the target device architecture (e.g. armv7hl, i486). Within this directory, there needs to be a folder called `lib` that contains at least `libtdjson.so`. For armv7hl the relative path would consequently be `tdlib/armv7hl/lib`.
 
+In case you encounter strange performance issues on startup (several seconds delay, app seems to do nothing), please be sure to [follow the instructions from the respective GitHub issue](https://github.com/tdlib/td/issues/1322), i.e. let TDLib build SQLite with `-DOMIT_MEMLOCK` and be sure to comment the two lines 22558 (`#ifndef OMIT_MEMLOCK`) and 22567 (`#endif`) in the file `sqlite/sqlite/sqlite3.c`.
 
 ## Debug
 Fernschreiber does only output a few TDLib messages by default. To get its own debug log messages, you can either run a debug build to see all of them or use the environment variable `QT_LOGGING_RULES` to specify/filter which messages you'd like to see.
