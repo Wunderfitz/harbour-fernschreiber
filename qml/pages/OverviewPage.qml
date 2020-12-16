@@ -65,6 +65,7 @@ Page {
         onTriggered: {
             overviewPage.chatListCreated = true;
             chatListModel.redrawModel();
+            chatListView.model = chatListProxyModel;
         }
     }
 
@@ -73,6 +74,16 @@ Page {
         interval: 0
         onTriggered: {
             pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+        }
+    }
+
+    Timer {
+        id: searchChatTimer
+        interval: 300
+        running: false
+        repeat: false
+        onTriggered: {
+            chatListProxyModel.setFilterWildcard("*" + chatSearchField.text + "*");
         }
     }
 
@@ -136,6 +147,14 @@ Page {
         default:
             // Nothing ;)
         }
+    }
+
+    function resetFocus() {
+        chatSearchField.focus = false;
+        overviewPage.focus = true;
+        chatSearchField.visible = false;
+        pageHeader.visible = true;
+        searchChatButton.visible = overviewPage.connectionState === TelegramAPI.ConnectionReady;
     }
 
     Connections {
@@ -217,7 +236,7 @@ Page {
 
             Row {
                 id: headerRow
-                width: parent.width
+                width: parent.width - Theme.horizontalPageMargin
 
                 GlassItem {
                     id: pageStatus
@@ -232,8 +251,50 @@ Page {
                 PageHeader {
                     id: pageHeader
                     title: qsTr("Fernschreiber")
-                    width: parent.width - pageStatus.width
+                    width: visible ? ( parent.width - pageStatus.width - searchChatButton.width ) : 0
+                    opacity: visible ? 1 : 0
+                    Behavior on opacity { NumberAnimation {} }
                 }
+
+                IconButton {
+                    id: searchChatButton
+                    width: visible ? height : 0
+                    opacity: visible ? 1 : 0
+                    Behavior on opacity { NumberAnimation {} }
+                    anchors.verticalCenter: parent.verticalCenter
+                    icon {
+                        source: "image://theme/icon-m-search?" + Theme.highlightColor
+                        asynchronous: true
+                    }
+                    visible: overviewPage.connectionState === TelegramAPI.ConnectionReady
+                    onClicked: {
+                        chatSearchField.focus = true;
+                        chatSearchField.visible = true;
+                        pageHeader.visible = false;
+                        searchChatButton.visible = false;
+                    }
+                }
+
+                SearchField {
+                    id: chatSearchField
+                    visible: false
+                    opacity: visible ? 1 : 0
+                    Behavior on opacity { NumberAnimation {} }
+                    width: visible ? ( parent.width - pageStatus.width ) : 0
+                    height: pageHeader.height
+                    placeholderText: qsTr("Search a chat...")
+                    active: searchHeaderItem.visible
+
+                    onTextChanged: {
+                        searchChatTimer.restart();
+                    }
+
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        resetFocus();
+                    }
+                }
+
             }
 
             Item {

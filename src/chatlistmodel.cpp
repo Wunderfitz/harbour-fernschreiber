@@ -54,23 +54,6 @@ namespace {
 class ChatListModel::ChatData
 {
 public:
-    enum Role {
-        RoleDisplay = Qt::DisplayRole,
-        RoleChatId,
-        RoleChatType,
-        RoleTitle,
-        RolePhotoSmall,
-        RoleUnreadCount,
-        RoleLastReadInboxMessageId,
-        RoleLastMessageSenderId,
-        RoleLastMessageDate,
-        RoleLastMessageText,
-        RoleLastMessageStatus,
-        RoleChatMemberStatus,
-        RoleSecretChatState,
-        RoleIsVerified,
-        RoleIsChannel
-    };
 
     ChatData(const QVariantMap &data, const QVariantMap &userInformation);
 
@@ -368,21 +351,22 @@ ChatListModel::~ChatListModel()
 QHash<int,QByteArray> ChatListModel::roleNames() const
 {
     QHash<int,QByteArray> roles;
-    roles.insert(ChatData::RoleDisplay, "display");
-    roles.insert(ChatData::RoleChatId, "chat_id");
-    roles.insert(ChatData::RoleChatType, "chat_type");
-    roles.insert(ChatData::RoleTitle, "title");
-    roles.insert(ChatData::RolePhotoSmall, "photo_small");
-    roles.insert(ChatData::RoleUnreadCount, "unread_count");
-    roles.insert(ChatData::RoleLastReadInboxMessageId, "last_read_inbox_message_id");
-    roles.insert(ChatData::RoleLastMessageSenderId, "last_message_sender_id");
-    roles.insert(ChatData::RoleLastMessageDate, "last_message_date");
-    roles.insert(ChatData::RoleLastMessageText, "last_message_text");
-    roles.insert(ChatData::RoleLastMessageStatus, "last_message_status");
-    roles.insert(ChatData::RoleChatMemberStatus, "chat_member_status");
-    roles.insert(ChatData::RoleSecretChatState, "secret_chat_state");
-    roles.insert(ChatData::RoleIsVerified, "is_verified");
-    roles.insert(ChatData::RoleIsChannel, "is_channel");
+    roles.insert(ChatListModel::RoleDisplay, "display");
+    roles.insert(ChatListModel::RoleChatId, "chat_id");
+    roles.insert(ChatListModel::RoleChatType, "chat_type");
+    roles.insert(ChatListModel::RoleTitle, "title");
+    roles.insert(ChatListModel::RolePhotoSmall, "photo_small");
+    roles.insert(ChatListModel::RoleUnreadCount, "unread_count");
+    roles.insert(ChatListModel::RoleLastReadInboxMessageId, "last_read_inbox_message_id");
+    roles.insert(ChatListModel::RoleLastMessageSenderId, "last_message_sender_id");
+    roles.insert(ChatListModel::RoleLastMessageDate, "last_message_date");
+    roles.insert(ChatListModel::RoleLastMessageText, "last_message_text");
+    roles.insert(ChatListModel::RoleLastMessageStatus, "last_message_status");
+    roles.insert(ChatListModel::RoleChatMemberStatus, "chat_member_status");
+    roles.insert(ChatListModel::RoleSecretChatState, "secret_chat_state");
+    roles.insert(ChatListModel::RoleIsVerified, "is_verified");
+    roles.insert(ChatListModel::RoleIsChannel, "is_channel");
+    roles.insert(ChatListModel::RoleFilter, "filter");
     return roles;
 }
 
@@ -396,22 +380,23 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
     const int row = index.row();
     if (row >= 0 && row < chatList.size()) {
         const ChatData *data = chatList.at(row);
-        switch ((ChatData::Role)role) {
-        case ChatData::RoleDisplay: return data->chatData;
-        case ChatData::RoleChatId: return data->chatId;
-        case ChatData::RoleChatType: return data->chatType;
-        case ChatData::RoleTitle: return data->title();
-        case ChatData::RolePhotoSmall: return data->photoSmall();
-        case ChatData::RoleUnreadCount: return data->unreadCount();
-        case ChatData::RoleLastReadInboxMessageId: return data->lastReadInboxMessageId();
-        case ChatData::RoleLastMessageSenderId: return data->senderUserId();
-        case ChatData::RoleLastMessageText: return data->senderMessageText();
-        case ChatData::RoleLastMessageDate: return data->senderMessageDate();
-        case ChatData::RoleLastMessageStatus: return data->senderMessageStatus();
-        case ChatData::RoleChatMemberStatus: return data->memberStatus;
-        case ChatData::RoleSecretChatState: return data->secretChatState;
-        case ChatData::RoleIsVerified: return data->verified;
-        case ChatData::RoleIsChannel: return data->isChannel();
+        switch ((ChatListModel::Role)role) {
+        case ChatListModel::RoleDisplay: return data->chatData;
+        case ChatListModel::RoleChatId: return data->chatId;
+        case ChatListModel::RoleChatType: return data->chatType;
+        case ChatListModel::RoleTitle: return data->title();
+        case ChatListModel::RolePhotoSmall: return data->photoSmall();
+        case ChatListModel::RoleUnreadCount: return data->unreadCount();
+        case ChatListModel::RoleLastReadInboxMessageId: return data->lastReadInboxMessageId();
+        case ChatListModel::RoleLastMessageSenderId: return data->senderUserId();
+        case ChatListModel::RoleLastMessageText: return data->senderMessageText();
+        case ChatListModel::RoleLastMessageDate: return data->senderMessageDate();
+        case ChatListModel::RoleLastMessageStatus: return data->senderMessageStatus();
+        case ChatListModel::RoleChatMemberStatus: return data->memberStatus;
+        case ChatListModel::RoleSecretChatState: return data->secretChatState;
+        case ChatListModel::RoleIsVerified: return data->verified;
+        case ChatListModel::RoleIsChannel: return data->isChannel();
+        case ChatListModel::RoleFilter: return QString(data->title() + " " + data->senderMessageText()).trimmed();
         }
     }
     return QVariant();
@@ -677,12 +662,12 @@ void ChatListModel::handleChatReadInboxUpdated(const QString &id, const QString 
             const int chatIndex = chatIndexMap.value(chatId);
             ChatData *chat = chatList.at(chatIndex);
             QVector<int> changedRoles;
-            changedRoles.append(ChatData::RoleDisplay);
+            changedRoles.append(ChatListModel::RoleDisplay);
             if (chat->updateUnreadCount(unreadCount)) {
-                changedRoles.append(ChatData::RoleUnreadCount);
+                changedRoles.append(ChatListModel::RoleUnreadCount);
             }
             if (chat->updateLastReadInboxMessageId(messageId)) {
-                changedRoles.append(ChatData::RoleLastReadInboxMessageId);
+                changedRoles.append(ChatListModel::RoleLastReadInboxMessageId);
             }
             const QModelIndex modelIndex(index(chatIndex));
             emit dataChanged(modelIndex, modelIndex, changedRoles);
@@ -726,7 +711,7 @@ void ChatListModel::handleChatPhotoUpdated(qlonglong chatId, const QVariantMap &
         ChatData *chat = chatList.at(chatIndex);
         chat->chatData.insert(PHOTO, photo);
         QVector<int> changedRoles;
-        changedRoles.append(ChatData::RolePhotoSmall);
+        changedRoles.append(ChatListModel::RolePhotoSmall);
         const QModelIndex modelIndex(index(chatIndex));
         emit dataChanged(modelIndex, modelIndex, changedRoles);
     } else {
@@ -815,7 +800,7 @@ void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString 
         ChatData *chat = chatList.at(chatIndex);
         chat->chatData.insert(TITLE, title);
         QVector<int> changedRoles;
-        changedRoles.append(ChatData::RoleTitle);
+        changedRoles.append(ChatListModel::RoleTitle);
         const QModelIndex modelIndex(index(chatIndex));
         emit dataChanged(modelIndex, modelIndex, changedRoles);
     } else {
@@ -831,6 +816,6 @@ void ChatListModel::handleRelativeTimeRefreshTimer()
 {
     LOG("Refreshing timestamps");
     QVector<int> roles;
-    roles.append(ChatData::RoleLastMessageDate);
+    roles.append(ChatListModel::RoleLastMessageDate);
     emit dataChanged(index(0), index(chatList.size() - 1), roles);
 }

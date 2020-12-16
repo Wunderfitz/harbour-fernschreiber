@@ -29,6 +29,26 @@ class ChatListModel : public QAbstractListModel
     Q_PROPERTY(bool showAllChats READ showAllChats WRITE setShowAllChats NOTIFY showAllChatsChanged)
 
 public:
+
+    enum Role {
+        RoleDisplay = Qt::DisplayRole,
+        RoleChatId,
+        RoleChatType,
+        RoleTitle,
+        RolePhotoSmall,
+        RoleUnreadCount,
+        RoleLastReadInboxMessageId,
+        RoleLastMessageSenderId,
+        RoleLastMessageDate,
+        RoleLastMessageText,
+        RoleLastMessageStatus,
+        RoleChatMemberStatus,
+        RoleSecretChatState,
+        RoleIsVerified,
+        RoleIsChannel,
+        RoleFilter
+    };
+
     ChatListModel(TDLibWrapper *tdLibWrapper);
     ~ChatListModel() override;
 

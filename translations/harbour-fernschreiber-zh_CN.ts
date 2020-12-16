@@ -1015,6 +1015,10 @@
         <source>New Chat</source>
         <translation>新对话</translation>
     </message>
+    <message>
+        <source>Search a chat...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

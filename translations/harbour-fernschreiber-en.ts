@@ -1026,6 +1026,10 @@
         <source>New Chat</source>
         <translation>New Chat</translation>
     </message>
+    <message>
+        <source>Search a chat...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>
