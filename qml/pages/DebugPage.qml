@@ -44,15 +44,22 @@ Page {
             }
 
             SectionHeader {
-                text: "Join chat by id"
+                text: "Chats"
+            }
+
+            TextSwitch {
+                checked: chatListModel.showAllChats
+                text: "Show all chats"
+                description: "Including the ones referenced by the chats you have joined."
+                automaticCheck: false
+                onClicked: chatListModel.showAllChats = !chatListModel.showAllChats
             }
 
             Row {
-                x: Theme.horizontalPageMargin
                 TextField {
                     id: chatId
                     anchors.bottom: parent.bottom
-                    width: column.width - joinButton.width - Theme.horizontalPageMargin - Theme.paddingLarge
+                    width: column.width - joinButton.width - Theme.horizontalPageMargin
                     placeholderText: "Chat id"
                     labelVisible: false
                     EnterKey.iconSource: "image://theme/icon-m-enter-accept"
@@ -61,7 +68,7 @@ Page {
                 }
                 Button {
                     id: joinButton
-                    text: "Join"
+                    text: "Join by id"
                     anchors.bottom: parent.bottom
                     enabled: chatId.text.length > 0
                     onClicked: tdLibWrapper.joinChat(chatId.text)
