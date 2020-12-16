@@ -120,7 +120,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateBasicGroupFullInfo", &TDLibReceiver::processUpdateBasicGroupFullInfo);
     handlers.insert("supergroupFullInfo", &TDLibReceiver::processSupergroupFullInfo);
     handlers.insert("updateSupergroupFullInfo", &TDLibReceiver::processUpdateSupergroupFullInfo);
-    handlers.insert("userProfilePhotos", &TDLibReceiver::processUserProfilePhotos);
+    handlers.insert("chatPhotos", &TDLibReceiver::processUserProfilePhotos);
     handlers.insert("updateChatPermissions", &TDLibReceiver::processUpdateChatPermissions);
     handlers.insert("updateChatPhoto", &TDLibReceiver::processUpdateChatPhoto);
     handlers.insert("updateChatTitle", &TDLibReceiver::processUpdateChatTitle);
@@ -146,7 +146,7 @@ void TDLibReceiver::setActive(bool active)
 void TDLibReceiver::receiverLoop()
 {
     LOG("Starting receiver loop");
-    const double WAIT_TIMEOUT = 1.0;
+    const double WAIT_TIMEOUT = 5.0;
     while (this->isActive) {
       const char *result = td_json_client_receive(this->tdLibClient, WAIT_TIMEOUT);
       if (result) {
