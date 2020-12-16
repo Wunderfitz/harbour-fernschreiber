@@ -18,6 +18,7 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 import "../components"
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
@@ -40,6 +41,38 @@ Page {
                 title: "Debug Page"
                 description: "here be dragons"
 
+            }
+
+            SectionHeader {
+                text: "Chats"
+            }
+
+            TextSwitch {
+                checked: chatListModel.showAllChats
+                text: "Show all chats"
+                description: "Including the ones referenced by the chats you have joined."
+                automaticCheck: false
+                onClicked: chatListModel.showAllChats = !chatListModel.showAllChats
+            }
+
+            Row {
+                TextField {
+                    id: chatId
+                    anchors.bottom: parent.bottom
+                    width: column.width - joinButton.width - Theme.horizontalPageMargin
+                    placeholderText: "Chat id"
+                    labelVisible: false
+                    EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+                    EnterKey.enabled: text.length > 0
+                    EnterKey.onClicked: tdLibWrapper.joinChat(text)
+                }
+                Button {
+                    id: joinButton
+                    text: "Join by id"
+                    anchors.bottom: parent.bottom
+                    enabled: chatId.text.length > 0
+                    onClicked: tdLibWrapper.joinChat(chatId.text)
+                }
             }
         }
 
