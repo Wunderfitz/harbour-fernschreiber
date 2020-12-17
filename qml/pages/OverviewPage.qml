@@ -65,7 +65,6 @@ Page {
         onTriggered: {
             overviewPage.chatListCreated = true;
             chatListModel.redrawModel();
-            chatListView.model = chatListProxyModel;
         }
     }
 
@@ -312,7 +311,7 @@ Page {
                     opacity: overviewPage.chatListCreated ? 1 : 0
                     Behavior on opacity { NumberAnimation {} }
 
-                    model: chatListModel
+                    model: chatSearchField.text !== "" ? chatListProxyModel : chatListModel
                     delegate: ChatListViewItem {
                         ownUserId: overviewPage.ownUserId
                         isVerified: is_verified
