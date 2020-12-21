@@ -493,7 +493,7 @@ void ChatListModel::addVisibleChat(ChatData *chat)
 
 void ChatListModel::updateChatVisibility(const TDLibWrapper::Group *group)
 {
-    LOG("Updating chat visibility" << group->groupId);
+    LOG("Updating chat visibility" << (group ? qPrintable(QString::number(group->groupId)) : ""));
     // See if any group has been removed from from view
     for (int i = 0; i < chatList.size(); i++) {
         ChatData *chat = chatList.at(i);
