@@ -16,8 +16,7 @@ var re = /(?:\ud83d\udc68\ud83c\udffb\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[
 
   // avoid using a string literal like '\u200D' here because minifiers expand it inline
   U200D = String.fromCharCode(0x200D),
-  basePath = Qt.resolvedUrl("./emoji/"),
-  ampersandRe = /\&(?!amp;)/g;
+  basePath = Qt.resolvedUrl("./emoji/");
 
 function toCodePoint(unicodeSurrogates) {
   var
@@ -41,15 +40,13 @@ function toCodePoint(unicodeSurrogates) {
 
 function emojify(str, emojiSize) {
   return String(str).replace(re, function (rawText) {
-    var ret = rawText,
-      iconId = toCodePoint(rawText.indexOf(U200D) < 0 ?
+    var iconId = toCodePoint(rawText.indexOf(U200D) < 0 ?
         rawText.replace(UFE0Fg, '') :
-        rawText
-      );
-    if (iconId) {
+        rawText);
+    return iconId ?
       // recycle the match string replacing the emoji
       // with its image counter part
-      ret = '<img '.concat(
+      '<img '.concat(
         'src="',
         basePath,
         iconId,
@@ -59,8 +56,7 @@ function emojify(str, emojiSize) {
         '" height="',
         Math.round(emojiSize * 6 / 5 ),
         '"/>'
-      );
+      ) : rawText;
     }
-    return ret.replace(ampersandRe, "&amp;");
-  });
+  );
 }
