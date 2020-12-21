@@ -153,7 +153,7 @@ Item {
         asynchronous: true
         visible: status === Image.Ready ? true : false
         layer.enabled: videoMessageComponent.highlighted
-        layer.effect: PressEffect { source: singleImage }
+        layer.effect: PressEffect { source: placeholderImage }
     }
 
     BackgroundImage {
@@ -161,7 +161,6 @@ Item {
     }
 
     Rectangle {
-        id: placeholderBackground
         color: "black"
         opacity: 0.3
         height: parent.height
@@ -241,7 +240,6 @@ Item {
     }
 
     Rectangle {
-        id: videoErrorShade
         width: parent.width
         height: parent.height
         color: "lightgrey"
