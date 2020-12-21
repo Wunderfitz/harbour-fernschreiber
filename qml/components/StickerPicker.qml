@@ -91,7 +91,7 @@ Item {
                     height: recentStickersGridView.cellHeight
 
                     Image {
-                        source: modelData.thumbnail.photo.local.path
+                        source: modelData.thumbnail.file.local.path
                         anchors.fill: parent
                         asynchronous: true
                         onStatusChanged: {
@@ -144,9 +144,9 @@ Item {
 
                             Image {
                                 id: singleStickerImage
-                                source: modelData.thumbnail.photo.local.is_downloading_completed ? modelData.thumbnail.photo.local.path : ""
+                                source: modelData.thumbnail.file.local.is_downloading_completed ? modelData.thumbnail.file.local.path : ""
                                 anchors.fill: parent
-                                visible: modelData.thumbnail.photo.local.is_downloading_completed
+                                visible: modelData.thumbnail.file.local.is_downloading_completed
                                 asynchronous: true
                                 onStatusChanged: {
                                     if (status === Image.Ready) {
@@ -160,7 +160,7 @@ Item {
                                 maximumLineCount: 1
                                 truncationMode: TruncationMode.Fade
                                 text: Emoji.emojify(modelData.emoji, font.pixelSize)
-                                visible: !modelData.thumbnail.photo.local.is_downloading_completed
+                                visible: !modelData.thumbnail.file.local.is_downloading_completed
                             }
 
                             MouseArea {

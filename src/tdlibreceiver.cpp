@@ -120,7 +120,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateBasicGroupFullInfo", &TDLibReceiver::processUpdateBasicGroupFullInfo);
     handlers.insert("supergroupFullInfo", &TDLibReceiver::processSupergroupFullInfo);
     handlers.insert("updateSupergroupFullInfo", &TDLibReceiver::processUpdateSupergroupFullInfo);
-    handlers.insert("userProfilePhotos", &TDLibReceiver::processUserProfilePhotos);
+    handlers.insert("chatPhotos", &TDLibReceiver::processUserProfilePhotos);
     handlers.insert("updateChatPermissions", &TDLibReceiver::processUpdateChatPermissions);
     handlers.insert("updateChatPhoto", &TDLibReceiver::processUpdateChatPhoto);
     handlers.insert("updateChatTitle", &TDLibReceiver::processUpdateChatTitle);

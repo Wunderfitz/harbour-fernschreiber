@@ -29,7 +29,7 @@ ListItem {
     property var messageId
     property var myMessage
     property bool canReplyToMessage
-    readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender_user_id)
+    readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender.user_id)
     property QtObject precalculatedValues: ListView.view.precalculatedValues
     readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
     readonly property int textAlign: isOwnMessage ? Text.AlignRight : Text.AlignLeft
@@ -37,7 +37,7 @@ ListItem {
     readonly property bool isSelected: messageListItem.precalculatedValues.pageIsSelecting && page.selectedMessages.some(function(existingMessage) {
         return existingMessage.id === messageId
     });
-    readonly property bool isOwnMessage: page.myUserId === myMessage.sender_user_id
+    readonly property bool isOwnMessage: page.myUserId === myMessage.sender.user_id
     property string extraContentComponentName
 
     highlighted: (down || isSelected) && !menuOpen

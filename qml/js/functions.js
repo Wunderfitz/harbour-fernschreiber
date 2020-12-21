@@ -401,7 +401,7 @@ function getMessagesArrayText(messages) {
     var lastSenderName = "";
     var lines = [];
     for(var i = 0; i < messages.length; i += 1) {
-        var senderName = getUserName(tdLibWrapper.getUserInformation(messages[i].sender_user_id));
+        var senderName = getUserName(tdLibWrapper.getUserInformation(messages[i].sender.user_id));
         if(senderName !== lastSenderName) {
             lines.push(senderName);
         }

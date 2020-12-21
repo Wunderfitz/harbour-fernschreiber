@@ -36,8 +36,8 @@ Row {
 
     onInReplyToMessageChanged: {
         if (inReplyToMessage) {
-            inReplyToUserText.text = (inReplyToRow.inReplyToMessage.sender_user_id !== inReplyToRow.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(inReplyToRow.inReplyToMessage.sender_user_id)), inReplyToUserText.font.pixelSize) : qsTr("You");
-            inReplyToMessageText.text = Emoji.emojify(Functions.getMessageText(inReplyToRow.inReplyToMessage, true, inReplyToRow.inReplyToMessage.sender_user_id === inReplyToRow.myUserId, false), inReplyToMessageText.font.pixelSize);
+            inReplyToUserText.text = (inReplyToRow.inReplyToMessage.sender.user_id !== inReplyToRow.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(inReplyToRow.inReplyToMessage.sender.user_id)), inReplyToUserText.font.pixelSize) : qsTr("You");
+            inReplyToMessageText.text = Emoji.emojify(Functions.getMessageText(inReplyToRow.inReplyToMessage, true, inReplyToRow.inReplyToMessage.sender.user_id === inReplyToRow.myUserId, false), inReplyToMessageText.font.pixelSize);
         }
     }
 
@@ -77,6 +77,10 @@ Row {
                 textFormat: Text.StyledText
                 truncationMode: TruncationMode.Fade
                 maximumLineCount: 1
+                linkColor: Theme.highlightColor
+                onLinkActivated: {
+                    Functions.handleLink(link);
+                }
             }
         }
 

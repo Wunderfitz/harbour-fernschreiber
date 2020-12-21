@@ -35,7 +35,8 @@ namespace {
     const QString UNREAD_COUNT("unread_count");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
-    const QString SENDER_USER_ID("sender_user_id");
+    const QString SENDER("sender");
+    const QString USER_ID("user_id");
     const QString PINNED_MESSAGE_ID("pinned_message_id");
     const QString _TYPE("@type");
 }
@@ -54,6 +55,8 @@ public:
     static bool lessThan(const MessageData *message1, const MessageData *message2);
     void setContent(const QVariantMap &content);
     int senderUserId() const;
+    qlonglong senderChatId() const;
+    bool senderIsChat() const;
 
 public:
     QVariantMap messageData;
@@ -70,7 +73,17 @@ ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
 
 int ChatModel::MessageData::senderUserId() const
 {
-    return messageData.value(SENDER_USER_ID).toInt();
+    return messageData.value(SENDER).toMap().value(USER_ID).toInt();
+}
+
+qlonglong ChatModel::MessageData::senderChatId() const
+{
+    return messageData.value(SENDER).toMap().value(CHAT_ID).toLongLong();
+}
+
+bool ChatModel::MessageData::senderIsChat() const
+{
+    return messageData.value(SENDER).toMap().value(_TYPE).toString() == "messageSenderChat";
 }
 
 void ChatModel::MessageData::setContent(const QVariantMap &content)
