@@ -57,6 +57,8 @@ ListItem {
                 mouseX < (extraContentLoader.x + extraContentLoader.width) &&
                 mouseY < (extraContentLoader.y + extraContentLoader.height)) {
                 extraContent.clicked()
+            } else if (webPagePreviewLoader.item) {
+                webPagePreviewLoader.item.clicked()
             }
         }
     }
@@ -397,17 +399,10 @@ ListItem {
                     active: false
                     asynchronous: true
                     width: parent.width
-                    height: typeof myMessage.content.web_page !== "undefined" ? precalculatedValues.webPagePreviewHeight : 0
+                    height: (status === Loader.Ready) ? item.implicitHeight : myMessage.content.web_page ? precalculatedValues.webPagePreviewHeight : 0
 
                     sourceComponent: Component {
-                        id: webPagePreviewComponent
                         WebPagePreview {
-                            id: webPagePreview
-
-                            onImplicitHeightChanged: {
-                                webPagePreviewLoader.height = webPagePreview.implicitHeight;
-                            }
-
                             webPageData: myMessage.content.web_page
                             width: parent.width
                             highlighted: messageListItem.highlighted
