@@ -19,100 +19,85 @@
 import QtQuick 2.6
 import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
-import "../components"
-import "../js/twemoji.js" as Emoji
+import WerkWolf.Fernschreiber 1.0
 import "../js/functions.js" as Functions
 
 Column {
-
     id: webPagePreviewColumn
 
     property var webPageData;
-    property var pictureFileInformation;
-    property bool hasImage: false;
     property bool largerFontSize: false;
     property bool highlighted
+    readonly property bool hasImage: picture.fileId !== 0
+    readonly property int fontSize: largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
 
     spacing: Theme.paddingSmall
 
     Component.onCompleted: {
-        updateWebPage();
-    }
-
-    function updateWebPage() {
         if (webPageData) {
-            if (typeof webPageData.photo !== "undefined") {
-                hasImage = true;
+            if (webPageData.photo) {
                 // Check first which size fits best...
+                var photo
                 for (var i = 0; i < webPageData.photo.sizes.length; i++) {
-                    pictureFileInformation = webPageData.photo.sizes[i].photo;
+                    photo = webPageData.photo.sizes[i].photo;
                     if (webPageData.photo.sizes[i].width >= webPagePreviewColumn.width) {
                         break;
                     }
                 }
-                if (pictureFileInformation.local.is_downloading_completed) {
-                    singleImage.source = pictureFileInformation.local.path;
-                } else {
-                    tdLibWrapper.downloadFile(pictureFileInformation.id);
+                if (photo) {
+                    picture.fileInformation = photo
                 }
             }
         }
     }
 
-    Connections {
-        target: tdLibWrapper
-        onFileUpdated: {
-            if (typeof pictureFileInformation !== "undefined" && fileId === pictureFileInformation.id) {
-                if (fileInformation.local.is_downloading_completed) {
-                    pictureFileInformation = fileInformation;
-                    singleImage.source = fileInformation.local.path;
-                }
-            }
-        }
+    function clicked() {
+        descriptionText.toggleMaxLineCount()
     }
 
-    Label {
+    TDLibFile {
+        id: picture
+        tdlib: tdLibWrapper
+        autoLoad: true
+    }
+
+    MultilineEmojiLabel {
         id: siteNameText
 
         width: parent.width
-        text: webPageData.site_name ? Emoji.emojify(webPageData.site_name, font.pixelSize) : ""
-        font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
+        rawText: webPageData.site_name ? webPageData.site_name : ""
+        font.pixelSize: webPagePreviewColumn.fontSize
         font.bold: true
         color: Theme.secondaryHighlightColor
-        truncationMode: TruncationMode.Fade
-        maximumLineCount: 1
-        textFormat: Text.StyledText
-        visible: (text !== "")
+        visible: (rawText !== "")
+        maxLineCount: 1
     }
 
-    Label {
+    MultilineEmojiLabel {
         id: titleText
 
         width: parent.width
-        text: webPageData.title ? Emoji.emojify(webPageData.title, font.pixelSize) : ""
-        font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
+        rawText: webPageData.title ? webPageData.title : ""
+        font.pixelSize: webPagePreviewColumn.fontSize
         font.bold: true
-        truncationMode: TruncationMode.Fade
-        wrapMode: Text.Wrap
-        maximumLineCount: 2
-        textFormat: Text.StyledText
-        visible: (text !== "")
+        visible: (rawText !== "")
+        maxLineCount: 2
     }
 
-    Label {
+    MultilineEmojiLabel {
         id: descriptionText
 
         width: parent.width
-        text: webPageData.description ? Emoji.emojify(Functions.enhanceMessageText(webPageData.description), font.pixelSize) : ""
-        font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
-        truncationMode: TruncationMode.Fade
-        wrapMode: Text.Wrap
-        maximumLineCount: 3
-        textFormat: Text.StyledText
-        visible: (text !== "")
-        linkColor: Theme.highlightColor
+        rawText: webPageData.description ? Functions.enhanceMessageText(webPageData.description) : ""
+        font.pixelSize: webPagePreviewColumn.fontSize
+        visible: (rawText !== "")
+        readonly property int defaultMaxLineCount: 3
+        maxLineCount: defaultMaxLineCount
         onLinkActivated: {
             Functions.handleLink(link);
+        }
+        function toggleMaxLineCount() {
+            maxLineCount = maxLineCount > 0 ? 0 : defaultMaxLineCount
         }
     }
 
@@ -133,15 +118,16 @@ Column {
             fillMode: Image.PreserveAspectCrop
             autoTransform: true
             asynchronous: true
-            visible: hasImage && status === Image.Ready
+            source: picture.isDownloadingCompleted ? picture.path : ""
+            visible: opacity > 0
             opacity: hasImage && status === Image.Ready ? 1 : 0
             layer.enabled: webPagePreviewColumn.highlighted
             layer.effect: PressEffect { source: singleImage }
-            Behavior on opacity { NumberAnimation {} }
+            Behavior on opacity { FadeAnimation {} }
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), { "photoData" : webPageData.photo, "pictureFileInformation" : pictureFileInformation });
+                    pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), { "photoData" : webPageData.photo, "pictureFileInformation" : picture.fileInformation });
                 }
             }
         }
@@ -154,17 +140,12 @@ Column {
     }
 
     Label {
-        id: noPreviewAvailableText
-
         width: parent.width
         text: qsTr("Preview not supported for this link...")
         font.pixelSize: webPagePreviewColumn.largerFontSize ? Theme.fontSizeExtraSmall : Theme.fontSizeTiny
         font.italic: true
         color: Theme.secondaryColor
         truncationMode: TruncationMode.Fade
-        wrapMode: Text.Wrap
-        maximumLineCount: 1
-        textFormat: Text.StyledText
         visible: !siteNameText.visible && !titleText.visible && !descriptionText.visible && !webPagePreviewImageItem.visible
     }
 
