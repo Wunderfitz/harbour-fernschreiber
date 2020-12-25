@@ -119,7 +119,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SIGNAL(chatTitleUpdated(QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
-    connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString)), this, SIGNAL(errorReceived(int, QString)));
+    connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString, QString)), this, SLOT(handleErrorReceived(int, QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(contactsImported(QVariantList, QVariantList)), this, SIGNAL(contactsImported(QVariantList, QVariantList)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
@@ -537,6 +537,7 @@ void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
     requestObject.insert(_TYPE, "getMessage");
     requestObject.insert("chat_id", chatId);
     requestObject.insert("message_id", messageId);
+    requestObject.insert(_EXTRA, "getMessage:" + messageId);
     this->sendRequest(requestObject);
 }
 
@@ -1270,6 +1271,14 @@ void TDLibWrapper::handleSecretChatUpdated(qlonglong secretChatId, const QVarian
 void TDLibWrapper::handleStorageOptimizerChanged()
 {
     setOptionBoolean("use_storage_optimizer", appSettings->storageOptimizer());
+}
+
+void TDLibWrapper::handleErrorReceived(const int code, const QString &message, const QString &extra)
+{
+    if (code == 404 && extra.startsWith("getMessage:")) {
+        emit messageNotFound(extra.mid(11).toLongLong());
+    }
+    emit errorReceived(code, message, extra);
 }
 
 void TDLibWrapper::setInitialParameters()

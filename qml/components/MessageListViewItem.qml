@@ -170,6 +170,11 @@ ListItem {
                 messageInReplyToLoader.inReplyToMessage = message;
             }
         }
+        onMessageNotFound: {
+            if (messageId === myMessage.reply_to_message_id) {
+                messageInReplyToLoader.active = false;
+            }
+        }
     }
 
     Component.onCompleted: {

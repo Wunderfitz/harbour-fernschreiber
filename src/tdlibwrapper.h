@@ -242,8 +242,9 @@ signals:
     void chatTitleUpdated(const QString &chatId, const QString &title);
     void chatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
-    void errorReceived(const int code, const QString &message);
+    void errorReceived(const int code, const QString &message, const QString &extra);
     void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
+    void messageNotFound(const qlonglong messageId);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -265,6 +266,7 @@ public slots:
     void handleSecretChatReceived(qlonglong secretChatId, const QVariantMap &secretChat);
     void handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void handleStorageOptimizerChanged();
+    void handleErrorReceived(const int code, const QString &message, const QString &extra);
 
 private:
     void setOption(const QString &name, const QString &type, const QVariant &value);

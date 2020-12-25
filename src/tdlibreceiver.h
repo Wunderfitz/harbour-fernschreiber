@@ -84,7 +84,7 @@ signals:
     void chatTitleUpdated(const QString &chatId, const QString &title);    
     void chatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
-    void errorReceived(const int code, const QString &message);
+    void errorReceived(const int code, const QString &message, const QString &extra);
     void secretChat(qlonglong secretChatId, const QVariantMap &secretChat);
     void secretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
