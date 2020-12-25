@@ -154,15 +154,6 @@ ChatInformationTabItemBase {
                 pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ), PageStackAction.Immediate);
                 pageStack.push(Qt.resolvedUrl("../../pages/ChatPage.qml"), { "chatInformation" : display });
             }
-            Connections {
-                target: chatListModel
-                onChatChanged: {
-                    if (changedChatId === chat_id) {
-                        // Force update of some list item elements (currently only last message text seems to create problems). dataChanged() doesn't seem to trigger them all :(
-                        secondaryText.text = last_message_text ? Emoji.emojify(Functions.enhanceHtmlEntities(last_message_text), Theme.fontSizeExtraSmall) : qsTr("Unknown")
-                    }
-                }
-            }
         }
     }
 

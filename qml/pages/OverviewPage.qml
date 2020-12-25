@@ -59,13 +59,13 @@ Page {
 
     Timer {
         id: chatListCreatedTimer
-        interval: 300
+        interval: 20
         running: false
         repeat: false
         onTriggered: {
             overviewPage.chatListCreated = true;
-            chatListModel.redrawModel();
             chatListView.scrollToTop();
+            updateSecondaryContentTimer.start();
         }
     }
 
@@ -74,6 +74,15 @@ Page {
         interval: 0
         onTriggered: {
             pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+        }
+    }
+    Timer {
+        id: updateSecondaryContentTimer
+        interval: 600
+        onTriggered: {
+            tdLibWrapper.getRecentStickers();
+            tdLibWrapper.getInstalledStickerSets();
+            tdLibWrapper.getContacts();
         }
     }
 
@@ -104,9 +113,6 @@ Page {
 
     function updateContent() {
         tdLibWrapper.getChats();
-        tdLibWrapper.getRecentStickers();
-        tdLibWrapper.getInstalledStickerSets();
-        tdLibWrapper.getContacts();
     }
 
     function initializePage() {
@@ -210,101 +216,72 @@ Page {
             }
         }
 
-        Column {
-            id: column
-            width: parent.width
-            height: parent.height
-            spacing: Theme.paddingMedium
+        PageHeader {
+            id: pageHeader
+            title: qsTr("Fernschreiber")
+            leftMargin: Theme.itemSizeMedium
 
-            Row {
-                id: headerRow
-                width: parent.width
+            GlassItem {
+                id: pageStatus
+                width: Theme.itemSizeMedium
+                height: Theme.itemSizeMedium
+                color: "red"
+                falloffRadius: 0.1
+                radius: 0.2
+                cache: false
+            }
+        }
 
-                GlassItem {
-                    id: pageStatus
-                    width: Theme.itemSizeMedium
-                    height: Theme.itemSizeMedium
-                    color: "red"
-                    falloffRadius: 0.1
-                    radius: 0.2
-                    cache: false
-                }
-
-                PageHeader {
-                    id: pageHeader
-                    title: qsTr("Fernschreiber")
-                    width: parent.width - pageStatus.width
+        SilicaListView {
+            id: chatListView
+            anchors {
+                top: pageHeader.bottom
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+            }
+            clip: true
+            opacity: overviewPage.chatListCreated ? 1 : 0
+            Behavior on opacity { FadeAnimation {} }
+            model: chatListModel
+            delegate: ChatListViewItem {
+                ownUserId: overviewPage.ownUserId
+                isVerified: is_verified
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), {
+                        chatInformation : display,
+                        chatPicture: photo_small
+                    })
                 }
             }
 
-            Item {
-                id: chatListItem
-                width: parent.width
-                height: parent.height - Theme.paddingMedium - headerRow.height
+            ViewPlaceholder {
+                enabled: chatListView.count === 0
+                text: qsTr("You don't have any chats yet.")
+            }
 
-                SilicaListView {
+            VerticalScrollDecorator {}
+        }
 
-                    id: chatListView
+        Column {
+            width: parent.width
+            spacing: Theme.paddingMedium
+            anchors.verticalCenter: chatListView.verticalCenter
 
-                    anchors.fill: parent
+            opacity: overviewPage.chatListCreated ? 0 : 1
+            Behavior on opacity { FadeAnimation {} }
+            visible: !overviewPage.chatListCreated
 
-                    clip: true
-                    opacity: overviewPage.chatListCreated ? 1 : 0
-                    Behavior on opacity { NumberAnimation {} }
+            InfoLabel {
+                id: loadingLabel
+                text: qsTr("Loading chat list...")
+            }
 
-                    model: chatListModel
-                    delegate: ChatListViewItem {
-                        ownUserId: overviewPage.ownUserId
-                        isVerified: is_verified
-
-                        onClicked: {
-                            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), {
-                                chatInformation : display,
-                                chatPicture: photo_small
-                            })
-                        }
-
-                        Connections {
-                            target: chatListModel
-                            onChatChanged: {
-                                if (overviewPage.chatListCreated && changedChatId === chat_id) {
-                                    // Force update of some list item elements (currently only last message text seems to create problems). dataChanged() doesn't seem to trigger them all :(
-                                    secondaryText.text = last_message_text ? Emoji.emojify(Functions.enhanceHtmlEntities(last_message_text), Theme.fontSizeExtraSmall) : qsTr("Unknown")
-                                }
-                            }
-                        }
-                    }
-
-                    ViewPlaceholder {
-                        enabled: chatListView.count === 0
-                        text: qsTr("You don't have any chats yet.")
-                    }
-
-                    VerticalScrollDecorator {}
-                }
-
-                Column {
-                    width: parent.width
-                    height: loadingLabel.height + loadingBusyIndicator.height + Theme.paddingMedium
-                    spacing: Theme.paddingMedium
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    opacity: overviewPage.chatListCreated ? 0 : 1
-                    Behavior on opacity { NumberAnimation {} }
-                    visible: !overviewPage.chatListCreated
-
-                    InfoLabel {
-                        id: loadingLabel
-                        text: qsTr("Loading chat list...")
-                    }
-
-                    BusyIndicator {
-                        id: loadingBusyIndicator
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        running: !overviewPage.chatListCreated
-                        size: BusyIndicatorSize.Large
-                    }
-                }
+            BusyIndicator {
+                id: loadingBusyIndicator
+                anchors.horizontalCenter: parent.horizontalCenter
+                running: !overviewPage.chatListCreated
+                size: BusyIndicatorSize.Large
             }
         }
     }
