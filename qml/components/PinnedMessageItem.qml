@@ -123,7 +123,7 @@ Item {
                     id: unpinMessageIconButton
                     icon.source: "image://theme/icon-m-remove"
                     onClicked: {
-                        Remorse.itemAction(pinnedMessageRow, qsTr("Message unpinned"), function() { tdLibWrapper.unpinMessage(chatPage.chatInformation.id);
+                        Remorse.itemAction(pinnedMessageRow, qsTr("Message unpinned"), function() { tdLibWrapper.unpinMessage(chatPage.chatInformation.id, pinnedMessage.id);
                                                                                                      pinnedMessageItem.requestCloseMessage(); });
 
                     }

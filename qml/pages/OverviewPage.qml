@@ -65,6 +65,7 @@ Page {
         onTriggered: {
             overviewPage.chatListCreated = true;
             chatListModel.redrawModel();
+            chatListView.scrollToTop();
         }
     }
 

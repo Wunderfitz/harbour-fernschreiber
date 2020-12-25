@@ -104,6 +104,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
     this->tdLibWrapper = tdLibWrapper;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SLOT(handleNewMessageReceived(qlonglong, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(receivedMessage(QString, QVariantMap)), this, SLOT(handleMessageReceived(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
     connect(this->tdLibWrapper, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SLOT(handleChatReadOutboxUpdated(QString, QString)));
     connect(this->tdLibWrapper, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageSendSucceeded(qlonglong, qlonglong, QVariantMap)));
@@ -323,6 +324,20 @@ void ChatModel::handleNewMessageReceived(qlonglong chatId, const QVariantMap &me
         } else {
             LOG("New message in this chat, but not relevant as less recent messages need to be loaded first!");
         }
+    }
+}
+
+void ChatModel::handleMessageReceived(const QString &messageId, const QVariantMap &message)
+{
+    const qlonglong messageIdLL = messageId.toLongLong();
+    if (messageIndexMap.contains(messageIdLL)) {
+        LOG("Received a message that we already know, let's update it!");
+        const int position = messageIndexMap.value(messageIdLL);
+        MessageData *messageData = messages.at(position);
+        messageData->messageData = message;
+        LOG("Message was updated at index" << position);
+        const QModelIndex messageIndex(index(position));
+        emit dataChanged(messageIndex, messageIndex);
     }
 }
 

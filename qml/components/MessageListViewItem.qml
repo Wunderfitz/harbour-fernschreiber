@@ -29,6 +29,7 @@ ListItem {
     property var messageId
     property var myMessage
     property bool canReplyToMessage
+    readonly property bool isAnonymous: myMessage.sender["@type"] === "messageSenderChat"
     readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender.user_id)
     property QtObject precalculatedValues: ListView.view.precalculatedValues
     readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
@@ -57,6 +58,8 @@ ListItem {
                 mouseX < (extraContentLoader.x + extraContentLoader.width) &&
                 mouseY < (extraContentLoader.y + extraContentLoader.height)) {
                 extraContent.clicked()
+            } else if (webPagePreviewLoader.item) {
+                webPagePreviewLoader.item.clicked()
             }
         }
     }
@@ -115,9 +118,14 @@ ListItem {
                 }
                 MenuItem {
                     onClicked: {
-                        tdLibWrapper.pinMessage(page.chatInformation.id, messageId)
+                        if (myMessage.is_pinned) {
+                            Remorse.popupAction(page, qsTr("Message unpinned"), function() { tdLibWrapper.unpinMessage(page.chatInformation.id, messageId);
+                                                                                             pinnedMessageItem.requestCloseMessage(); } );
+                        } else {
+                            tdLibWrapper.pinMessage(page.chatInformation.id, messageId);
+                        }
                     }
-                    text: qsTr("Pin Message")
+                    text: myMessage.is_pinned ? qsTr("Unpin Message") : qsTr("Pin Message")
                     visible: canPinMessages()
                 }
                 MenuItem {
@@ -165,6 +173,11 @@ ListItem {
         onReceivedMessage: {
             if (messageId === myMessage.reply_to_message_id.toString()) {
                 messageInReplyToLoader.inReplyToMessage = message;
+            }
+        }
+        onMessageNotFound: {
+            if (messageId === myMessage.reply_to_message_id) {
+                messageInReplyToLoader.active = false;
             }
         }
     }
@@ -216,14 +229,14 @@ ListItem {
             sourceComponent: Component {
                 ProfileThumbnail {
                     id: messagePictureThumbnail
-                    photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ({})
+                    photoData: messageListItem.isAnonymous ? ((typeof page.chatInformation.photo !== "undefined") ? page.chatInformation.photo.small : {}) : ((typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ({}))
                     replacementStringHint: userText.text
                     width: Theme.itemSizeSmall
                     height: Theme.itemSizeSmall
                     visible: precalculatedValues.showUserInfo
                     MouseArea {
                         anchors.fill: parent
-                        enabled: !messageListItem.precalculatedValues.pageIsSelecting
+                        enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous)
                         onClicked: {
                             tdLibWrapper.createPrivateChat(messageListItem.userInformation.id);
                         }
@@ -270,7 +283,7 @@ ListItem {
                     id: userText
 
                     width: parent.width
-                    text: messageListItem.isOwnMessage ? qsTr("You") : Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize)
+                    text: messageListItem.isOwnMessage ? qsTr("You") : Emoji.emojify(messageListItem.isAnonymous ? page.chatInformation.title : Functions.getUserName(messageListItem.userInformation), font.pixelSize)
                     font.pixelSize: Theme.fontSizeExtraSmall
                     font.weight: Font.ExtraBold
                     color: messageListItem.textColor
@@ -281,7 +294,7 @@ ListItem {
                     visible: precalculatedValues.showUserInfo
                     MouseArea {
                         anchors.fill: parent
-                        enabled: !messageListItem.precalculatedValues.pageIsSelecting
+                        enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous)
                         onClicked: {
                             tdLibWrapper.createPrivateChat(messageListItem.userInformation.id);
                         }
@@ -397,17 +410,10 @@ ListItem {
                     active: false
                     asynchronous: true
                     width: parent.width
-                    height: typeof myMessage.content.web_page !== "undefined" ? precalculatedValues.webPagePreviewHeight : 0
+                    height: (status === Loader.Ready) ? item.implicitHeight : myMessage.content.web_page ? precalculatedValues.webPagePreviewHeight : 0
 
                     sourceComponent: Component {
-                        id: webPagePreviewComponent
                         WebPagePreview {
-                            id: webPagePreview
-
-                            onImplicitHeightChanged: {
-                                webPagePreviewLoader.height = webPagePreview.implicitHeight;
-                            }
-
                             webPageData: myMessage.content.web_page
                             width: parent.width
                             highlighted: messageListItem.highlighted

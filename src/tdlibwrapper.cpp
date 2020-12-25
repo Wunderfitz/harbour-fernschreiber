@@ -39,6 +39,7 @@
 namespace {
     const QString STATUS("status");
     const QString ID("id");
+    const QString CHAT_ID("chat_id");
     const QString TYPE("type");
     const QString LAST_NAME("last_name");
     const QString FIRST_NAME("first_name");
@@ -89,7 +90,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SIGNAL(chatOnlineMemberCountUpdated(QString, int)));
     connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList, int)), this, SIGNAL(messagesReceived(QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SIGNAL(newMessageReceived(qlonglong, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(messageInformation(QString, QVariantMap)), this, SIGNAL(receivedMessage(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageInformation(QString, QVariantMap)), this, SLOT(handleMessageInformation(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SIGNAL(activeNotificationsUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(notificationGroupUpdated(QVariantMap)), this, SIGNAL(notificationGroupUpdated(QVariantMap)));
@@ -118,8 +119,9 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SIGNAL(chatTitleUpdated(QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)));
+    connect(this->tdLibReceiver, SIGNAL(messageIsPinnedUpdated(qlonglong, qlonglong, bool)), this, SLOT(handleMessageIsPinnedUpdated(qlonglong, qlonglong, bool)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
-    connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString)), this, SIGNAL(errorReceived(int, QString)));
+    connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString, QString)), this, SLOT(handleErrorReceived(int, QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(contactsImported(QVariantList, QVariantList)), this, SIGNAL(contactsImported(QVariantList, QVariantList)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
@@ -310,12 +312,14 @@ void TDLibWrapper::pinMessage(const QString &chatId, const QString &messageId, b
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::unpinMessage(const QString &chatId)
+void TDLibWrapper::unpinMessage(const QString &chatId, const QString &messageId)
 {
     LOG("Unpin message from chat" << chatId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "unpinChatMessage");
     requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_id", messageId);
+    requestObject.insert(_EXTRA, "unpinChatMessage:" + chatId);
     this->sendRequest(requestObject);
 }
 
@@ -537,6 +541,17 @@ void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
     requestObject.insert(_TYPE, "getMessage");
     requestObject.insert("chat_id", chatId);
     requestObject.insert("message_id", messageId);
+    requestObject.insert(_EXTRA, "getMessage:" + messageId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getChatPinnedMessage(const qlonglong &chatId)
+{
+    LOG("Retrieving pinned message" << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getChatPinnedMessage");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert(_EXTRA, "getChatPinnedMessage:" + QString::number(chatId));
     this->sendRequest(requestObject);
 }
 
@@ -1270,6 +1285,40 @@ void TDLibWrapper::handleSecretChatUpdated(qlonglong secretChatId, const QVarian
 void TDLibWrapper::handleStorageOptimizerChanged()
 {
     setOptionBoolean("use_storage_optimizer", appSettings->storageOptimizer());
+}
+
+void TDLibWrapper::handleErrorReceived(const int code, const QString &message, const QString &extra)
+{
+    if (code == 404 && extra.startsWith("getMessage:")) {
+        emit messageNotFound(extra.mid(11).toLongLong());
+    }
+    emit errorReceived(code, message, extra);
+}
+
+void TDLibWrapper::handleMessageInformation(const QString &messageId, const QVariantMap &receivedInformation)
+{
+    QString extraInformation = receivedInformation.value(_EXTRA).toString();
+    if (extraInformation.startsWith("getChatPinnedMessage")) {
+        emit chatPinnedMessageUpdated(receivedInformation.value(CHAT_ID).toLongLong(), messageId.toLongLong());
+        // Sometimes it seems that pinned messages aren't returned as pinned ones, weird!
+        // This is a workaround for now, let's see what comes out of https://github.com/tdlib/td/issues/1343
+        QVariantMap updatedInformation(receivedInformation);
+        updatedInformation.insert("is_pinned", true);
+        emit receivedMessage(messageId, updatedInformation);
+    } else {
+        emit receivedMessage(messageId, receivedInformation);
+    }
+
+}
+
+void TDLibWrapper::handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned)
+{
+    if (isPinned) {
+        emit chatPinnedMessageUpdated(chatId, messageId);
+    } else {
+        emit chatPinnedMessageUpdated(chatId, 0);
+        this->getChatPinnedMessage(chatId);
+    }
 }
 
 void TDLibWrapper::setInitialParameters()

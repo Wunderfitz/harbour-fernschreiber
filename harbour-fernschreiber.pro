@@ -51,6 +51,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/MessageListViewItem.qml \
     qml/components/MessageListViewItemSimple.qml \
     qml/components/MessageOverlayFlickable.qml \
+    qml/components/MultilineEmojiLabel.qml \
     qml/components/PinnedMessageItem.qml \
     qml/components/PollPreview.qml \
     qml/components/PressEffect.qml \

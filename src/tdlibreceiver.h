@@ -81,10 +81,11 @@ signals:
     void userProfilePhotos(const QString &extra, const QVariantList &photos, int totalPhotos);
     void chatPermissionsUpdated(const QString &chatId, const QVariantMap &chatPermissions);
     void chatPhotoUpdated(qlonglong chatId, const QVariantMap &photo);
-    void chatTitleUpdated(const QString &chatId, const QString &title);    
+    void chatTitleUpdated(const QString &chatId, const QString &title);
     void chatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
+    void messageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
-    void errorReceived(const int code, const QString &message);
+    void errorReceived(const int code, const QString &message, const QString &extra);
     void secretChat(qlonglong secretChatId, const QVariantMap &secretChat);
     void secretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
@@ -145,6 +146,7 @@ private:
     void processUpdateChatPhoto(const QVariantMap &receivedInformation);
     void processUpdateChatTitle(const QVariantMap &receivedInformation);
     void processUpdateChatPinnedMessage(const QVariantMap &receivedInformation);
+    void processUpdateMessageIsPinned(const QVariantMap &receivedInformation);
     void processUsers(const QVariantMap &receivedInformation);
     void processError(const QVariantMap &receivedInformation);
     void nop(const QVariantMap &receivedInformation);
