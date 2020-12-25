@@ -914,6 +914,14 @@
         <source>Pin Message</source>
         <translation>Закрепить сообщение</translation>
     </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation type="unfinished">Сообщение откреплено</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>

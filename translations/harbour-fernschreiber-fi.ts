@@ -905,6 +905,14 @@
         <source>Pin Message</source>
         <translation>Kiinnitä viesti</translation>
     </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation type="unfinished">Viestin kiinnitys poistettu</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>

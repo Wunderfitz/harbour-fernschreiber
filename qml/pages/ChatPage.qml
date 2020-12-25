@@ -170,10 +170,7 @@ Page {
             tdLibWrapper.getInstalledStickerSets();
             stickerManager.setNeedsReload(false);
         }
-        if (chatInformation.pinned_message_id.toString() !== "0") {
-            Debug.log("[ChatPage] Loading pinned message ", chatInformation.pinned_message_id);
-            tdLibWrapper.getMessage(chatInformation.id, chatInformation.pinned_message_id);
-        }
+        tdLibWrapper.getChatPinnedMessage(chatInformation.id);
     }
 
     function getMessageStatusText(message, listItemIndex, lastReadSentIndex, useElapsed) {
@@ -422,7 +419,7 @@ Page {
             Functions.handleErrorMessage(code, message);
         }
         onReceivedMessage: {
-            if (messageId === chatInformation.pinned_message_id.toString()) {
+            if (message.is_pinned) {
                 Debug.log("[ChatPage] Received pinned message");
                 pinnedMessageItem.pinnedMessage = message;
             }

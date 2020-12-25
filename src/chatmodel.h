@@ -63,6 +63,7 @@ signals:
 private slots:
     void handleMessagesReceived(const QVariantList &messages, int totalCount);
     void handleNewMessageReceived(qlonglong chatId, const QVariantMap &message);
+    void handleMessageReceived(const QString &messageId, const QVariantMap &message);
     void handleChatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, int unreadCount);
     void handleChatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMessageId, const QVariantMap &message);

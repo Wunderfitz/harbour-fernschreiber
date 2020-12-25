@@ -118,9 +118,14 @@ ListItem {
                 }
                 MenuItem {
                     onClicked: {
-                        tdLibWrapper.pinMessage(page.chatInformation.id, messageId)
+                        if (myMessage.is_pinned) {
+                            Remorse.popupAction(page, qsTr("Message unpinned"), function() { tdLibWrapper.unpinMessage(page.chatInformation.id, messageId);
+                                                                                             pinnedMessageItem.requestCloseMessage(); } );
+                        } else {
+                            tdLibWrapper.pinMessage(page.chatInformation.id, messageId);
+                        }
                     }
-                    text: qsTr("Pin Message")
+                    text: myMessage.is_pinned ? qsTr("Unpin Message") : qsTr("Pin Message")
                     visible: canPinMessages()
                 }
                 MenuItem {

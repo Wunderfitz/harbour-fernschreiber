@@ -904,6 +904,14 @@
         <source>Pin Message</source>
         <translation>Pin Message</translation>
     </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Message unpinned</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Unpin Message</translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>

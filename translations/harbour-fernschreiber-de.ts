@@ -904,6 +904,14 @@
         <source>Pin Message</source>
         <translation>Nachricht anheften</translation>
     </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Nachricht losgeheftet</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Nachricht losheften</translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
