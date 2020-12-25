@@ -93,6 +93,7 @@ Column {
         visible: (rawText !== "")
         readonly property int defaultMaxLineCount: 3
         maxLineCount: defaultMaxLineCount
+        linkColor: Theme.highlightColor
         onLinkActivated: {
             Functions.handleLink(link);
         }
