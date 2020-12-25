@@ -29,6 +29,7 @@ ListItem {
     property var messageId
     property var myMessage
     property bool canReplyToMessage
+    readonly property bool isAnonymous: myMessage.sender["@type"] === "messageSenderChat"
     readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender.user_id)
     property QtObject precalculatedValues: ListView.view.precalculatedValues
     readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
@@ -218,14 +219,14 @@ ListItem {
             sourceComponent: Component {
                 ProfileThumbnail {
                     id: messagePictureThumbnail
-                    photoData: (typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ({})
+                    photoData: messageListItem.isAnonymous ? ((typeof page.chatInformation.photo !== "undefined") ? page.chatInformation.photo.small : {}) : ((typeof messageListItem.userInformation.profile_photo !== "undefined") ? messageListItem.userInformation.profile_photo.small : ({}))
                     replacementStringHint: userText.text
                     width: Theme.itemSizeSmall
                     height: Theme.itemSizeSmall
                     visible: precalculatedValues.showUserInfo
                     MouseArea {
                         anchors.fill: parent
-                        enabled: !messageListItem.precalculatedValues.pageIsSelecting
+                        enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous)
                         onClicked: {
                             tdLibWrapper.createPrivateChat(messageListItem.userInformation.id);
                         }
@@ -272,7 +273,7 @@ ListItem {
                     id: userText
 
                     width: parent.width
-                    text: messageListItem.isOwnMessage ? qsTr("You") : Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize)
+                    text: messageListItem.isOwnMessage ? qsTr("You") : Emoji.emojify(messageListItem.isAnonymous ? page.chatInformation.title : Functions.getUserName(messageListItem.userInformation), font.pixelSize)
                     font.pixelSize: Theme.fontSizeExtraSmall
                     font.weight: Font.ExtraBold
                     color: messageListItem.textColor
@@ -283,7 +284,7 @@ ListItem {
                     visible: precalculatedValues.showUserInfo
                     MouseArea {
                         anchors.fill: parent
-                        enabled: !messageListItem.precalculatedValues.pageIsSelecting
+                        enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous)
                         onClicked: {
                             tdLibWrapper.createPrivateChat(messageListItem.userInformation.id);
                         }

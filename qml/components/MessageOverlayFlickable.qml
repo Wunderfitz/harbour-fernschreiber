@@ -33,6 +33,7 @@ Flickable {
     property bool showHeader: true
     readonly property var userInformation: tdLibWrapper.getUserInformation(overlayMessage.sender.user_id);
     readonly property bool isOwnMessage: tdLibWrapper.getUserInformation().id === overlayMessage.sender.user_id;
+    readonly property bool isAnonymous: overlayMessage.sender["@type"] === "messageSenderChat"
     readonly property string extraContentComponentName: (typeof overlayMessage.content !== "undefined" && typeof chatView.contentComponentNames[overlayMessage.content['@type']] !== "undefined" )
                                                         ? chatView.contentComponentNames[overlayMessage.content['@type']] : ""
     signal requestClose;
@@ -104,7 +105,7 @@ Flickable {
             spacing: Theme.paddingMedium
             ProfileThumbnail {
                 id: overlayMessagePictureThumbnail
-                photoData: (typeof messageOverlayFlickable.userInformation.profile_photo !== "undefined") ? messageOverlayFlickable.userInformation.profile_photo.small : ({})
+                photoData: messageOverlayFlickable.isAnonymous ? ((typeof chatPage.chatInformation.photo !== "undefined") ? chatPage.chatInformation.photo.small : {}) : ((typeof messageOverlayFlickable.userInformation.profile_photo !== "undefined") ? messageOverlayFlickable.userInformation.profile_photo.small : ({}))
                 replacementStringHint: overlayMessageUserText.text
                 width: Theme.itemSizeLarge
                 height: Theme.itemSizeLarge
@@ -114,7 +115,7 @@ Flickable {
 
                 width: parent.width - overlayMessagePictureThumbnail.width
                 anchors.verticalCenter: parent.verticalCenter
-                text: messageOverlayFlickable.isOwnMessage ? qsTr("You") : Emoji.emojify(Functions.getUserName(messageOverlayFlickable.userInformation), font.pixelSize)
+                text: messageOverlayFlickable.isOwnMessage ? qsTr("You") : Emoji.emojify(messageOverlayFlickable.isAnonymous ? chatPage.chatInformation.title : Functions.getUserName(messageOverlayFlickable.userInformation), font.pixelSize)
                 font.pixelSize: Theme.fontSizeExtraLarge
                 font.weight: Font.ExtraBold
                 maximumLineCount: 1
