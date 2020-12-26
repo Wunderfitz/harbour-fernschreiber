@@ -779,7 +779,6 @@ Page {
                         id: searchInChatField
                         visible: false
                         width: visible ? parent.width : 0
-                        height: parent.height
                         placeholderText: qsTr("Search in chat...")
                         active: searchInChatItem.visible
                         canHide: text === ""
