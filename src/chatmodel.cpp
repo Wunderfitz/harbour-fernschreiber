@@ -149,11 +149,13 @@ QVariant ChatModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void ChatModel::clear()
+void ChatModel::clear(bool contentOnly)
 {
     LOG("Clearing chat model");
     inReload = false;
     inIncrementalUpdate = false;
+    searchModeActive = false;
+    searchQuery.clear();
     if (!messages.isEmpty()) {
         beginResetModel();
         qDeleteAll(messages);
@@ -161,13 +163,16 @@ void ChatModel::clear()
         messageIndexMap.clear();
         endResetModel();
     }
-    if (!chatInformation.isEmpty()) {
-        chatInformation.clear();
-        emit smallPhotoChanged();
-    }
-    if (chatId) {
-        chatId = 0;
-        emit chatIdChanged();
+
+    if (!contentOnly) {
+        if (!chatInformation.isEmpty()) {
+            chatInformation.clear();
+            emit smallPhotoChanged();
+        }
+        if (chatId) {
+            chatId = 0;
+            emit chatIdChanged();
+        }
     }
 }
 
@@ -181,6 +186,7 @@ void ChatModel::initialize(const QVariantMap &chatInformation)
     this->chatId = chatId;
     this->messages.clear();
     this->messageIndexMap.clear();
+    this->searchQuery.clear();
     endResetModel();
     emit chatIdChanged();
     emit smallPhotoChanged();
@@ -190,15 +196,21 @@ void ChatModel::initialize(const QVariantMap &chatInformation)
 void ChatModel::triggerLoadMoreHistory()
 {
     if (!this->inIncrementalUpdate && !messages.isEmpty()) {
-        LOG("Trigger loading older history...");
-        this->inIncrementalUpdate = true;
-        this->tdLibWrapper->getChatHistory(chatId, messages.first()->messageId);
+        if (searchModeActive) {
+            LOG("Trigger loading older found messages...");
+            this->inIncrementalUpdate = true;
+            this->tdLibWrapper->searchChatMessages(chatId, searchQuery, messages.first()->messageId);
+        } else {
+            LOG("Trigger loading older history...");
+            this->inIncrementalUpdate = true;
+            this->tdLibWrapper->getChatHistory(chatId, messages.first()->messageId);
+        }
     }
 }
 
 void ChatModel::triggerLoadMoreFuture()
 {
-    if (!this->inIncrementalUpdate && !messages.isEmpty()) {
+    if (!this->inIncrementalUpdate && !messages.isEmpty() && !searchModeActive) {
         LOG("Trigger loading newer future...");
         this->inIncrementalUpdate = true;
         this->tdLibWrapper->getChatHistory(chatId, messages.last()->messageId, -49);
@@ -214,9 +226,8 @@ QVariantMap ChatModel::getMessage(int index)
 {
     if (index >= 0 && index < messages.size()) {
         return messages.at(index)->messageData;
-    } else {
-        return QVariantMap();
     }
+    return QVariantMap();
 }
 
 int ChatModel::getLastReadMessageIndex()
@@ -240,6 +251,20 @@ int ChatModel::getLastReadMessageIndex()
     }
 }
 
+void ChatModel::setSearchQuery(const QString newSearchQuery)
+{
+    if (this->searchQuery != newSearchQuery) {
+        this->clear(true);
+        this->searchQuery = newSearchQuery;
+        this->searchModeActive = !this->searchQuery.isEmpty();
+        if (this->searchModeActive) {
+            this->tdLibWrapper->searchChatMessages(this->chatId, this->searchQuery);
+        } else {
+            this->tdLibWrapper->getChatHistory(chatId, this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong());
+        }
+    }
+}
+
 QVariantMap ChatModel::smallPhoto() const
 {
     return chatInformation.value(PHOTO).toMap().value(SMALL).toMap();
@@ -253,6 +278,7 @@ qlonglong ChatModel::getChatId() const
 void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCount)
 {
     LOG("Receiving new messages :)" << messages.size());
+    LOG("Received while search mode is" << searchModeActive);
 
     if (messages.size() == 0) {
         LOG("No additional messages loaded, notifying chat UI...");
@@ -269,6 +295,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
         if (this->isMostRecentMessageLoaded() || this->inIncrementalUpdate) {
             QList<MessageData*> messagesToBeAdded;
             QListIterator<QVariant> messagesIterator(messages);
+
             while (messagesIterator.hasNext()) {
                 const QVariantMap messageData = messagesIterator.next().toMap();
                 const qlonglong messageId = messageData.value(ID).toLongLong();
@@ -288,7 +315,11 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
             if (!messagesToBeAdded.isEmpty() && (messagesToBeAdded.size() + messages.size()) < 10 && !inReload) {
                 LOG("Only a few messages received in first call, loading more...");
                 this->inReload = true;
-                this->tdLibWrapper->getChatHistory(chatId, messagesToBeAdded.first()->messageId, 0);
+                if (this->searchModeActive) {
+                    this->tdLibWrapper->searchChatMessages(chatId, searchQuery, messagesToBeAdded.first()->messageId);
+                } else {
+                    this->tdLibWrapper->getChatHistory(chatId, messagesToBeAdded.first()->messageId, 0);
+                }
             } else {
                 LOG("Messages loaded, notifying chat UI...");
                 this->inReload = false;

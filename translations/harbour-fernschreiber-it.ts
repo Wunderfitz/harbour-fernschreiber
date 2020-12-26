@@ -391,6 +391,14 @@
         <source>Close Chat</source>
         <translation>Chiudi chat</translation>
     </message>
+    <message>
+        <source>Search in Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search in chat...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1027,7 +1035,7 @@
         <translation>Nuova chat</translation>
     </message>
     <message>
-        <source>Search a chat...</source>
+        <source>Filter your chats...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -37,13 +37,14 @@ public:
     virtual int rowCount(const QModelIndex&) const override;
     virtual QVariant data(const QModelIndex &index, int role) const override;
 
-    Q_INVOKABLE void clear();
+    Q_INVOKABLE void clear(bool contentOnly = false);
     Q_INVOKABLE void initialize(const QVariantMap &chatInformation);
     Q_INVOKABLE void triggerLoadMoreHistory();
     Q_INVOKABLE void triggerLoadMoreFuture();
     Q_INVOKABLE QVariantMap getChatInformation();
     Q_INVOKABLE QVariantMap getMessage(int index);
     Q_INVOKABLE int getLastReadMessageIndex();
+    Q_INVOKABLE void setSearchQuery(const QString newSearchQuery);
 
     QVariantMap smallPhoto() const;
     qlonglong getChatId() const;
@@ -92,6 +93,8 @@ private:
     qlonglong chatId;
     bool inReload;
     bool inIncrementalUpdate;
+    bool searchModeActive;
+    QString searchQuery;
 };
 
 #endif // CHATMODEL_H

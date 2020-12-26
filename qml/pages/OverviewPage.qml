@@ -156,11 +156,13 @@ Page {
     }
 
     function resetFocus() {
+        if (chatSearchField.text === "") {
+            chatSearchField.visible = false;
+            pageHeader.visible = true;
+            searchChatButton.visible = overviewPage.connectionState === TelegramAPI.ConnectionReady;
+        }
         chatSearchField.focus = false;
         overviewPage.focus = true;
-        chatSearchField.visible = false;
-        pageHeader.visible = true;
-        searchChatButton.visible = overviewPage.connectionState === TelegramAPI.ConnectionReady;
     }
 
     Connections {
@@ -282,11 +284,16 @@ Page {
                 Behavior on opacity { FadeAnimation {} }
                 width: visible ? ( parent.width - pageStatus.width ) : 0
                 height: pageHeader.height
-                placeholderText: qsTr("Search a chat...")
+                placeholderText: qsTr("Filter your chats...")
                 active: searchHeaderItem.visible
+                canHide: text === ""
 
                 onTextChanged: {
                     searchChatTimer.restart();
+                }
+
+                onHideClicked: {
+                    resetFocus();
                 }
 
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"

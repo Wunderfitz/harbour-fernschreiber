@@ -332,6 +332,14 @@ Page {
         return false;
     }
 
+    function resetFocus() {
+        if (searchInChatField.text === "") {
+            chatOverviewItem.visible = true;
+        }
+        searchInChatField.focus = false;
+        chatPage.focus = true;
+    }
+
     Timer {
         id: forwardMessagesTimer
         interval: 200
@@ -345,6 +353,17 @@ Page {
                 var forwardedToSecretChat = chatInformation.type["@type"] === "chatTypeSecret";
                 tdLibWrapper.forwardMessages(chatInformation.id, fromChatId, messageIds, forwardedToSecretChat, false);
             }
+        }
+    }
+
+    Timer {
+        id: searchInChatTimer
+        interval: 300
+        running: false
+        repeat: false
+        onTriggered: {
+            Debug.log("Searching for '" + searchInChatField.text + "'");
+            chatModel.setSearchQuery(searchInChatField.text);
         }
     }
 
@@ -627,6 +646,17 @@ Page {
                 }
                 text: chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
             }
+
+            MenuItem {
+                id: searchInChatMenuItem
+                visible: !chatPage.isSecretChat
+                onClicked: {
+                    // This automatically shows the search field as well
+                    chatOverviewItem.visible = false;
+                    searchInChatField.focus = true;
+                }
+                text: qsTr("Search in Chat")
+            }
         }
 
         BackgroundItem {
@@ -700,6 +730,8 @@ Page {
 
                 Item {
                     id: chatOverviewItem
+                    opacity: visible ? 1 : 0
+                    Behavior on opacity { FadeAnimation {} }
                     width: parent.width - chatPictureThumbnail.width - Theme.paddingMedium
                     height: chatNameText.height + chatStatusText.height
                     anchors.bottom: parent.bottom
@@ -730,6 +762,40 @@ Page {
                         color: headerMouseArea.pressed ? Theme.secondaryHighlightColor : Theme.secondaryColor
                         truncationMode: TruncationMode.Fade
                         maximumLineCount: 1
+                    }
+                }
+
+                Item {
+                    id: searchInChatItem
+                    visible: !chatOverviewItem.visible
+                    opacity: visible ? 1 : 0
+                    Behavior on opacity { FadeAnimation {} }
+                    width: parent.width - chatPictureThumbnail.width - Theme.paddingMedium
+                    height: searchInChatField.height
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingMedium : Theme.paddingSmall
+
+                    SearchField {
+                        id: searchInChatField
+                        visible: false
+                        width: visible ? parent.width : 0
+                        height: parent.height
+                        placeholderText: qsTr("Search in chat...")
+                        active: searchInChatItem.visible
+                        canHide: text === ""
+
+                        onTextChanged: {
+                            searchInChatTimer.restart();
+                        }
+
+                        onHideClicked: {
+                            resetFocus();
+                        }
+
+                        EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                        EnterKey.onClicked: {
+                            resetFocus();
+                        }
                     }
                 }
             }
