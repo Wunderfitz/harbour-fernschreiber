@@ -123,13 +123,14 @@ Item {
         fillMode: Image.PreserveAspectCrop
         visible: status === Image.Ready ? true : false
         layer.enabled: audioMessageComponent.highlighted
-        layer.effect: PressEffect { source: singleImage }
+        layer.effect: PressEffect { source: placeholderImage }
     }
 
     BackgroundImage {
+        id: backgroundImage
         visible: placeholderImage.status !== Image.Ready
         layer.enabled: audioMessageComponent.highlighted
-        layer.effect: PressEffect { source: singleImage }
+        layer.effect: PressEffect { source: backgroundImage }
     }
 
     Rectangle {
@@ -139,6 +140,17 @@ Item {
         height: parent.height
         width: parent.width
         visible: playButton.visible
+    }
+    Label {
+        visible: !!(audioData.performer || audioData.title)
+        color: placeholderBackground.visible ? "white" : Theme.secondaryHighlightColor
+        wrapMode: Text.Wrap
+        anchors {
+            fill: placeholderBackground
+            margins: Theme.paddingSmall
+        }
+        text: audioData.performer + (audioData.performer && audioData.title ? " - " : "") + audioData.title
+        font.pixelSize: Theme.fontSizeTiny
     }
 
     Column {
@@ -366,7 +378,7 @@ Item {
                             anchors.centerIn: parent
                             width: Theme.iconSizeLarge
                             height: Theme.iconSizeLarge
-                            highlighted: videoMessageComponent.highlighted || down
+                            highlighted: audioMessageComponent.highlighted || down
                             icon {
                                 asynchronous: true
                                 source: "image://theme/icon-l-play?white"
@@ -390,7 +402,7 @@ Item {
                     value: messageAudio.position
                     enabled: messageAudio.seekable
                     visible: (messageAudio.duration > 0)
-                    highlighted: videoMessageComponent.highlighted || down
+                    highlighted: audioMessageComponent.highlighted || down
                     onReleased: {
                         messageAudio.seek(Math.floor(value));
                         messageAudio.play();

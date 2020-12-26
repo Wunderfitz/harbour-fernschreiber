@@ -305,6 +305,13 @@ function enhanceMessageText(formattedText, ignoreEntities) {
                     { offset: (entity.offset + entity.length), insertionString: "</u>", removeLength: 0 }
                 );
             break;
+            case "textEntityTypeBotCommand":
+                var command = messageText.substring(entity.offset, entity.offset + entity.length);
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<a href=\"botCommand://" + command + "\">", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</a>", removeLength: 0 }
+                );
+            break;
         }
     }
 
@@ -347,7 +354,9 @@ function handleLink(link) {
         } else if (link.indexOf("tg://resolve?domain=") === 0) {
             tdLibWrapper.searchPublicChat(link.substring(20));
         }
-    }  else {
+    } else if (link.indexOf("botCommand://") === 0) { // this gets returned to send on ChatPage
+        return link.substring(13);
+    } else {
         if (link.indexOf(tMePrefix) === 0) {
             if (link.indexOf("joinchat") !== -1) {
                 Debug.log("Joining Chat: ", link);

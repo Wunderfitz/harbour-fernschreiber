@@ -63,6 +63,7 @@ signals:
     void notificationUpdated(const QVariantMap updatedNotification);
     void chatNotificationSettingsUpdated(const QString &chatId, const QVariantMap updatedChatNotificationSettings);
     void messageContentUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &newContent);
+    void messageEditedUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &replyMarkup);
     void messagesDeleted(qlonglong chatId, const QList<qlonglong> &messageIds);
     void chats(const QVariantMap &chats);
     void chat(const QVariantMap &chats);
@@ -152,6 +153,7 @@ private:
     void nop(const QVariantMap &receivedInformation);
     void processSecretChat(const QVariantMap &receivedInformation);
     void processUpdateSecretChat(const QVariantMap &receivedInformation);
+    void processUpdateMessageEdited(const QVariantMap &receivedInformation);
     void processImportedContacts(const QVariantMap &receivedInformation);
 };
 

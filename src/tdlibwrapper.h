@@ -143,6 +143,7 @@ public:
     Q_INVOKABLE void sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, const bool &anonymous, const int &correctOption, const bool &multiple, const QString &replyToMessageId = "0");
     Q_INVOKABLE void forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, const bool sendCopy, const bool removeCaption);
     Q_INVOKABLE void getMessage(const QString &chatId, const QString &messageId);
+    Q_INVOKABLE void getCallbackQueryAnswer(const QString &chatId, const QString &messageId, const QVariantMap &payload);
     Q_INVOKABLE void getChatPinnedMessage(const qlonglong &chatId);
     Q_INVOKABLE void setOptionInteger(const QString &optionName, int optionValue);
     Q_INVOKABLE void setOptionBoolean(const QString &optionName, bool optionValue);
@@ -219,6 +220,7 @@ signals:
     void notificationUpdated(const QVariantMap updatedNotification);
     void chatNotificationSettingsUpdated(const QString &chatId, const QVariantMap chatNotificationSettings);
     void messageContentUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &newContent);
+    void messageEditedUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &replyMarkup);
     void messagesDeleted(qlonglong chatId, const QList<qlonglong> &messageIds);
     void chatsReceived(const QVariantMap &chats);
     void chatReceived(const QVariantMap &chat);
