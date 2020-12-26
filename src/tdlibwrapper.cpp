@@ -1300,15 +1300,8 @@ void TDLibWrapper::handleMessageInformation(const QString &messageId, const QVar
     QString extraInformation = receivedInformation.value(_EXTRA).toString();
     if (extraInformation.startsWith("getChatPinnedMessage")) {
         emit chatPinnedMessageUpdated(receivedInformation.value(CHAT_ID).toLongLong(), messageId.toLongLong());
-        // Sometimes it seems that pinned messages aren't returned as pinned ones, weird!
-        // This is a workaround for now, let's see what comes out of https://github.com/tdlib/td/issues/1343
-        QVariantMap updatedInformation(receivedInformation);
-        updatedInformation.insert("is_pinned", true);
-        emit receivedMessage(messageId, updatedInformation);
-    } else {
-        emit receivedMessage(messageId, receivedInformation);
     }
-
+    emit receivedMessage(messageId, receivedInformation);
 }
 
 void TDLibWrapper::handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned)
