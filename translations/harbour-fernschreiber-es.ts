@@ -189,10 +189,6 @@
         <translation>Cargando las charlas comunes…</translation>
     </message>
     <message>
-        <source>Unknown</source>
-        <translation>Desconocido</translation>
-    </message>
-    <message>
         <source>Loading group members…</source>
         <translation>Cargando miembros del grupo…</translation>
     </message>
@@ -1002,10 +998,6 @@
     <message>
         <source>Updating content...</source>
         <translation>Actualizando contenido...</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>desconocido</translation>
     </message>
     <message>
         <source>Loading chat list...</source>

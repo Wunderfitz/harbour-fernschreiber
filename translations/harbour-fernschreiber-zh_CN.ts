@@ -189,10 +189,6 @@
         <translation>正在加载共有对话…</translation>
     </message>
     <message>
-        <source>Unknown</source>
-        <translation>未知</translation>
-    </message>
-    <message>
         <source>Loading group members…</source>
         <translation>正在加载群组成员…</translation>
     </message>
@@ -1002,10 +998,6 @@
     <message>
         <source>Updating content...</source>
         <translation>正在更新内容…</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>未知</translation>
     </message>
     <message>
         <source>Loading chat list...</source>

@@ -59,7 +59,7 @@ Page {
 
     Timer {
         id: chatListCreatedTimer
-        interval: 20
+        interval: 100
         running: false
         repeat: false
         onTriggered: {

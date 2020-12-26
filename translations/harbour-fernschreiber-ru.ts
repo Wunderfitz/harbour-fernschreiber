@@ -195,10 +195,6 @@
         <translation>Загрузка общих чатов…</translation>
     </message>
     <message>
-        <source>Unknown</source>
-        <translation>нет информации</translation>
-    </message>
-    <message>
         <source>Loading group members…</source>
         <translation>Загрузка списка участников…</translation>
     </message>
@@ -1024,10 +1020,6 @@
     <message>
         <source>Updating content...</source>
         <translation>Обновление контента...</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Неизвестный</translation>
     </message>
     <message>
         <source>Loading chat list...</source>

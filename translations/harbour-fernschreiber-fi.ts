@@ -192,10 +192,6 @@
         <translation>Ladataan yhteisiä keskusteluja...</translation>
     </message>
     <message>
-        <source>Unknown</source>
-        <translation>Tuntematon</translation>
-    </message>
-    <message>
         <source>Loading group members…</source>
         <translation>Ladataan ryhmän jäseniä...</translation>
     </message>
@@ -1014,10 +1010,6 @@
     <message>
         <source>Updating content...</source>
         <translation>Päivitetään sisältöä...</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Tuntematon</translation>
     </message>
     <message>
         <source>Loading chat list...</source>
