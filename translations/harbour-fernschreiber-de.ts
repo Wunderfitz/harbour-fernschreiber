@@ -196,10 +196,6 @@
         <translation>Lade gemeinsame Chats…</translation>
     </message>
     <message>
-        <source>Unknown</source>
-        <translation>Unbekannt</translation>
-    </message>
-    <message>
         <source>Loading group members…</source>
         <translation>Lade Gruppenmitglieder…</translation>
     </message>
@@ -1013,10 +1009,6 @@
     <message>
         <source>Updating content...</source>
         <translation>Aktualisiere Inhalte...</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Unbekannt</translation>
     </message>
     <message>
         <source>Loading chat list...</source>

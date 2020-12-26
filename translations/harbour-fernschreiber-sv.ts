@@ -192,10 +192,6 @@
         <translation>Läser in gemensamma chattar...</translation>
     </message>
     <message>
-        <source>Unknown</source>
-        <translation>Okänd</translation>
-    </message>
-    <message>
         <source>Loading group members…</source>
         <translation>Läser in gruppmedlemmar...</translation>
     </message>
@@ -1013,10 +1009,6 @@
     <message>
         <source>Updating content...</source>
         <translation>Uppdaterar innehåll...</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Okänd</translation>
     </message>
     <message>
         <source>Loading chat list...</source>

@@ -191,10 +191,6 @@
         <translation>Tu</translation>
     </message>
     <message>
-        <source>Unknown</source>
-        <translation>Sconosciuto</translation>
-    </message>
-    <message>
         <source>You don&apos;t have any groups in common with this user.</source>
         <translation>Non hai nessun gruppo in comune con questo utente.</translation>
     </message>
@@ -997,10 +993,6 @@
     <message>
         <source>Fernschreiber</source>
         <translation>Fernschreiber</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Sconosciuto</translation>
     </message>
     <message>
         <source>Settings</source>

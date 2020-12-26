@@ -46,6 +46,20 @@ Moreover, you need to have a compiled version of [TDLib 1.7](https://github.com/
 
 In case you encounter strange performance issues on startup (several seconds delay, app seems to do nothing), please be sure to [follow the instructions from the respective GitHub issue](https://github.com/tdlib/td/issues/1322), i.e. let TDLib build SQLite with `-DOMIT_MEMLOCK` and be sure to comment the two lines 22558 (`#ifndef OMIT_MEMLOCK`) and 22567 (`#endif`) in the file `sqlite/sqlite/sqlite3.c`.
 
+Moreover, TDLib 1.7 has issues loading some pinned messages in case the message database is used (which is the case in Fernschreiber). [A small patch](https://github.com/tdlib/td/commit/30d912bd4b145afb8d494b307d37645ffa21ec29) is required to make TDLib work properly in all cases. See [the respective TDLib issue](https://github.com/tdlib/td/issues/1343) for more details.
+
+In case you want to use the same codebase which was used to compile the library that is shipped with Fernschreiber, please [check out the fork](https://github.com/Wunderfitz/td), be sure to use the branch `fernschreiber` and compile these sources using the following commands (be sure to have the Sailfish OS build engine running):
+
+- `alias sfdk=~/SailfishOS/bin/sfdk`
+- `sfdk config target=SailfishOS-3.3.0.16-armv7hl` (this compiles the sources on SFOS 3.3 and ARM - the target needs to be adjusted according to the running SDK engine and the platform)
+- `mkdir build`
+- `cd build`
+- `sfdk build-shell cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=../tdlib -DTD_ENABLE_LTO=ON ..` (in case of compilation issues, try removing the flag `-DTD_ENABLE_LTO=ON`)
+- `sfdk build-shell cmake --build . --target install`
+
+You'll find the compiled library in the directory `td/tdlib`.
+
+
 ## Debug
 Fernschreiber does only output a few TDLib messages by default. To get its own debug log messages, you can either run a debug build to see all of them or use the environment variable `QT_LOGGING_RULES` to specify/filter which messages you'd like to see.
 

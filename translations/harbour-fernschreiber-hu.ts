@@ -189,10 +189,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Unknown</source>
-        <translation type="unfinished">Ismeretlen</translation>
-    </message>
-    <message>
         <source>Loading group members…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1002,10 +998,6 @@
     <message>
         <source>Updating content...</source>
         <translation>Tartalom frissítése...</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Ismeretlen</translation>
     </message>
     <message>
         <source>Loading chat list...</source>

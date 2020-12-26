@@ -24,39 +24,57 @@ PhotoTextsListItem {
     isSecret: ( chat_type === TelegramAPI.ChatTypeSecret )
 
     openMenuOnPressAndHold: true//chat_id != overviewPage.ownUserId
-    menu: ContextMenu {
-        MenuItem {
-            visible: unread_count > 0
-            onClicked: {
-                tdLibWrapper.viewMessage(chat_id, display.last_message.id, true);
-            }
-            text: qsTr("Mark all messages as read")
-        }
 
-        MenuItem {
-            visible: chat_id != listItem.ownUserId
-            onClicked: {
-                var newNotificationSettings = display.notification_settings;
-                if (newNotificationSettings.mute_for > 0) {
-                    newNotificationSettings.mute_for = 0;
-                } else {
-                    newNotificationSettings.mute_for = 6666666;
-                }
-                newNotificationSettings.use_default_mute_for = false;
-                tdLibWrapper.setChatNotificationSettings(chat_id, newNotificationSettings);
-            }
-            text: display.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
-        }
+    onPressAndHold: {
+        contextMenuLoader.active = true;
+    }
 
-        MenuItem {
-            onClicked: {
-                if(pageStack.depth > 2) {
-                    pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ), PageStackAction.Immediate);
+    Loader {
+        id: contextMenuLoader
+        active: false
+        asynchronous: true
+        onStatusChanged: {
+            if(status === Loader.Ready) {
+                listItem.menu = item;
+                listItem.openMenu();
+            }
+        }
+        sourceComponent: Component {
+            ContextMenu {
+                MenuItem {
+                    visible: unread_count > 0
+                    onClicked: {
+                        tdLibWrapper.viewMessage(chat_id, display.last_message.id, true);
+                    }
+                    text: qsTr("Mark all messages as read")
                 }
 
-                pageStack.push(Qt.resolvedUrl("../pages/ChatInformationPage.qml"), { "chatInformation" : display});
+                MenuItem {
+                    visible: chat_id != listItem.ownUserId
+                    onClicked: {
+                        var newNotificationSettings = display.notification_settings;
+                        if (newNotificationSettings.mute_for > 0) {
+                            newNotificationSettings.mute_for = 0;
+                        } else {
+                            newNotificationSettings.mute_for = 6666666;
+                        }
+                        newNotificationSettings.use_default_mute_for = false;
+                        tdLibWrapper.setChatNotificationSettings(chat_id, newNotificationSettings);
+                    }
+                    text: display.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
+                }
+
+                MenuItem {
+                    onClicked: {
+                        if(pageStack.depth > 2) {
+                            pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ), PageStackAction.Immediate);
+                        }
+
+                        pageStack.push(Qt.resolvedUrl("../pages/ChatInformationPage.qml"), { "chatInformation" : display});
+                    }
+                    text: model.display.type['@type'] === "chatTypePrivate" ? qsTr("User Info") : qsTr("Group Info")
+                }
             }
-            text: model.display.type['@type'] === "chatTypePrivate" ? qsTr("User Info") : qsTr("Group Info")
         }
     }
 

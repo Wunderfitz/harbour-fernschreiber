@@ -59,13 +59,13 @@ Page {
 
     Timer {
         id: chatListCreatedTimer
-        interval: 300
+        interval: 100
         running: false
         repeat: false
         onTriggered: {
             overviewPage.chatListCreated = true;
-            chatListModel.redrawModel();
             chatListView.scrollToTop();
+            updateSecondaryContentTimer.start();
         }
     }
 
@@ -74,6 +74,15 @@ Page {
         interval: 0
         onTriggered: {
             pageStack.push(Qt.resolvedUrl("../pages/InitializationPage.qml"));
+        }
+    }
+    Timer {
+        id: updateSecondaryContentTimer
+        interval: 600
+        onTriggered: {
+            tdLibWrapper.getRecentStickers();
+            tdLibWrapper.getInstalledStickerSets();
+            tdLibWrapper.getContacts();
         }
     }
 
@@ -114,9 +123,6 @@ Page {
 
     function updateContent() {
         tdLibWrapper.getChats();
-        tdLibWrapper.getRecentStickers();
-        tdLibWrapper.getInstalledStickerSets();
-        tdLibWrapper.getContacts();
     }
 
     function initializePage() {
@@ -228,143 +234,119 @@ Page {
             }
         }
 
-        Column {
-            id: column
-            width: parent.width
-            height: parent.height
-            spacing: Theme.paddingMedium
+        Row {
+            id: headerRow
+            width: parent.width - Theme.horizontalPageMargin
 
-            Row {
-                id: headerRow
-                width: parent.width - Theme.horizontalPageMargin
-
-                GlassItem {
-                    id: pageStatus
-                    width: Theme.itemSizeMedium
-                    height: Theme.itemSizeMedium
-                    color: "red"
-                    falloffRadius: 0.1
-                    radius: 0.2
-                    cache: false
-                }
-
-                PageHeader {
-                    id: pageHeader
-                    title: qsTr("Fernschreiber")
-                    width: visible ? ( parent.width - pageStatus.width - searchChatButton.width ) : 0
-                    opacity: visible ? 1 : 0
-                    Behavior on opacity { NumberAnimation {} }
-                }
-
-                IconButton {
-                    id: searchChatButton
-                    width: visible ? height : 0
-                    opacity: visible ? 1 : 0
-                    Behavior on opacity { NumberAnimation {} }
-                    anchors.verticalCenter: parent.verticalCenter
-                    icon {
-                        source: "image://theme/icon-m-search?" + Theme.highlightColor
-                        asynchronous: true
-                    }
-                    visible: overviewPage.connectionState === TelegramAPI.ConnectionReady
-                    onClicked: {
-                        chatSearchField.focus = true;
-                        chatSearchField.visible = true;
-                        pageHeader.visible = false;
-                        searchChatButton.visible = false;
-                    }
-                }
-
-                SearchField {
-                    id: chatSearchField
-                    visible: false
-                    opacity: visible ? 1 : 0
-                    Behavior on opacity { NumberAnimation {} }
-                    width: visible ? ( parent.width - pageStatus.width ) : 0
-                    height: pageHeader.height
-                    placeholderText: qsTr("Search a chat...")
-                    active: searchHeaderItem.visible
-
-                    onTextChanged: {
-                        searchChatTimer.restart();
-                    }
-
-                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                    EnterKey.onClicked: {
-                        resetFocus();
-                    }
-                }
-
+            GlassItem {
+                id: pageStatus
+                width: Theme.itemSizeMedium
+                height: Theme.itemSizeMedium
+                color: "red"
+                falloffRadius: 0.1
+                radius: 0.2
+                cache: false
             }
 
-            Item {
-                id: chatListItem
-                width: parent.width
-                height: parent.height - Theme.paddingMedium - headerRow.height
+            PageHeader {
+                id: pageHeader
+                title: qsTr("Fernschreiber")
+                width: visible ? ( parent.width - pageStatus.width - searchChatButton.width ) : 0
+                opacity: visible ? 1 : 0
+                Behavior on opacity { FadeAnimation {} }
+            }
 
-                SilicaListView {
+            IconButton {
+                id: searchChatButton
+                width: visible ? height : 0
+                opacity: visible ? 1 : 0
+                Behavior on opacity { NumberAnimation {} }
+                anchors.verticalCenter: parent.verticalCenter
+                icon {
+                    source: "image://theme/icon-m-search?" + Theme.highlightColor
+                    asynchronous: true
+                }
+                visible: overviewPage.connectionState === TelegramAPI.ConnectionReady
+                onClicked: {
+                    chatSearchField.focus = true;
+                    chatSearchField.visible = true;
+                    pageHeader.visible = false;
+                    searchChatButton.visible = false;
+                }
+            }
 
-                    id: chatListView
+            SearchField {
+                id: chatSearchField
+                visible: false
+                opacity: visible ? 1 : 0
+                Behavior on opacity { FadeAnimation {} }
+                width: visible ? ( parent.width - pageStatus.width ) : 0
+                height: pageHeader.height
+                placeholderText: qsTr("Search a chat...")
+                active: searchHeaderItem.visible
 
-                    anchors.fill: parent
-
-                    clip: true
-                    opacity: overviewPage.chatListCreated ? 1 : 0
-                    Behavior on opacity { NumberAnimation {} }
-
-                    model: chatSearchField.text !== "" ? chatListProxyModel : chatListModel
-                    delegate: ChatListViewItem {
-                        ownUserId: overviewPage.ownUserId
-                        isVerified: is_verified
-
-                        onClicked: {
-                            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), {
-                                chatInformation : display,
-                                chatPicture: photo_small
-                            })
-                        }
-
-                        Connections {
-                            target: chatListModel
-                            onChatChanged: {
-                                if (overviewPage.chatListCreated && changedChatId === chat_id) {
-                                    // Force update of some list item elements (currently only last message text seems to create problems). dataChanged() doesn't seem to trigger them all :(
-                                    secondaryText.text = last_message_text ? Emoji.emojify(Functions.enhanceHtmlEntities(last_message_text), Theme.fontSizeExtraSmall) : qsTr("Unknown")
-                                }
-                            }
-                        }
-                    }
-
-                    ViewPlaceholder {
-                        enabled: chatListView.count === 0
-                        text: qsTr("You don't have any chats yet.")
-                    }
-
-                    VerticalScrollDecorator {}
+                onTextChanged: {
+                    searchChatTimer.restart();
                 }
 
-                Column {
-                    width: parent.width
-                    height: loadingLabel.height + loadingBusyIndicator.height + Theme.paddingMedium
-                    spacing: Theme.paddingMedium
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    opacity: overviewPage.chatListCreated ? 0 : 1
-                    Behavior on opacity { NumberAnimation {} }
-                    visible: !overviewPage.chatListCreated
-
-                    InfoLabel {
-                        id: loadingLabel
-                        text: qsTr("Loading chat list...")
-                    }
-
-                    BusyIndicator {
-                        id: loadingBusyIndicator
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        running: !overviewPage.chatListCreated
-                        size: BusyIndicatorSize.Large
-                    }
+                EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                EnterKey.onClicked: {
+                    resetFocus();
                 }
+            }
+
+        }
+
+        SilicaListView {
+            id: chatListView
+            anchors {
+                top: headerRow.bottom
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+            }
+            clip: true
+            opacity: overviewPage.chatListCreated ? 1 : 0
+            Behavior on opacity { FadeAnimation {} }
+            model: chatSearchField.text !== "" ? chatListProxyModel : chatListModel
+            delegate: ChatListViewItem {
+                ownUserId: overviewPage.ownUserId
+                isVerified: is_verified
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), {
+                        chatInformation : display,
+                        chatPicture: photo_small
+                    })
+                }
+            }
+
+            ViewPlaceholder {
+                enabled: chatListView.count === 0
+                text: qsTr("You don't have any chats yet.")
+            }
+
+            VerticalScrollDecorator {}
+        }
+
+        Column {
+            width: parent.width
+            spacing: Theme.paddingMedium
+            anchors.verticalCenter: chatListView.verticalCenter
+
+            opacity: overviewPage.chatListCreated ? 0 : 1
+            Behavior on opacity { FadeAnimation {} }
+            visible: !overviewPage.chatListCreated
+
+            InfoLabel {
+                id: loadingLabel
+                text: qsTr("Loading chat list...")
+            }
+
+            BusyIndicator {
+                id: loadingBusyIndicator
+                anchors.horizontalCenter: parent.horizontalCenter
+                running: !overviewPage.chatListCreated
+                size: BusyIndicatorSize.Large
             }
         }
     }
