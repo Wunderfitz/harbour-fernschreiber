@@ -1027,6 +1027,10 @@
         <source>Filter your chats...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Search Chats</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>
@@ -1211,6 +1215,49 @@
         <translation>
             <numerusform>%Ln 次投票，包括你</numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>SearchChatsPage</name>
+    <message>
+        <source>No chats found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Searching chats...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Private Chat</source>
+        <translation type="unfinished">个人对话</translation>
+    </message>
+    <message>
+        <source>Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 members</source>
+        <translation type="unfinished">%1 位成员</translation>
+    </message>
+    <message>
+        <source>%1 subscribers</source>
+        <translation type="unfinished">%1 位订阅者</translation>
+    </message>
+    <message>
+        <source>Search Chats</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search a chat...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your query to start searching (at least 5 characters needed)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

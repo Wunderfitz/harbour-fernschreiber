@@ -231,6 +231,10 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/SettingsPage.qml"))
             }
             MenuItem {
+                text: qsTr("Search Chats")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/SearchChatsPage.qml"))
+            }
+            MenuItem {
                 text: qsTr("New Chat")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/NewChatPage.qml"))
             }
@@ -285,7 +289,6 @@ Page {
                 width: visible ? ( parent.width - pageStatus.width ) : 0
                 height: pageHeader.height
                 placeholderText: qsTr("Filter your chats...")
-                active: searchHeaderItem.visible
                 canHide: text === ""
 
                 onTextChanged: {

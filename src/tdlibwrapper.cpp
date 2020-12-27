@@ -951,6 +951,16 @@ void TDLibWrapper::searchChatMessages(const qlonglong &chatId, const QString &qu
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::searchPublicChats(const QString &query)
+{
+    LOG("Searching public chats" << query);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "searchPublicChats");
+    requestObject.insert("query", query);
+    requestObject.insert(_EXTRA, "searchPublicChats");
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
