@@ -922,7 +922,7 @@ Page {
                                 chatId: chatModel.chatId
                                 myMessage: model.display
                                 messageId: model.message_id
-                                extraContentComponentName: chatView.contentComponentNames[model.content_type]
+                                extraContentComponentName: chatView.contentComponentNames[model.content_type] || ""
                                 canReplyToMessage: chatPage.canSendMessages
                                 onReplyToMessage: {
                                     newMessageInReplyToRow.inReplyToMessage = myMessage

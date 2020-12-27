@@ -398,7 +398,10 @@ ListItem {
                     wrapMode: Text.Wrap
                     textFormat: Text.StyledText
                     onLinkActivated: {
-                        Functions.handleLink(link);
+                        var chatCommand = Functions.handleLink(link);
+                        if(chatCommand) {
+                            tdLibWrapper.sendTextMessage(chatInformation.id, chatCommand);
+                        }
                     }
                     horizontalAlignment: messageListItem.textAlign
                     linkColor: Theme.highlightColor
@@ -433,6 +436,15 @@ ListItem {
                     when: extraContentLoader.item && ("highlighted" in extraContentLoader.item) && (typeof extraContentLoader.item.highlighted === "boolean")
                     property: "highlighted"
                     value: messageListItem.highlighted
+                }
+
+                Loader {
+                    id: replyMarkupLoader
+                    width: parent.width
+                    height: active ? (myMessage.reply_markup.rows.length * (Theme.itemSizeSmall + Theme.paddingSmall) - Theme.paddingSmall) : 0
+                    asynchronous: true
+                    active: !!myMessage.reply_markup && myMessage.reply_markup.rows
+                    source: Qt.resolvedUrl("ReplyMarkupButtons.qml")
                 }
 
                 Timer {

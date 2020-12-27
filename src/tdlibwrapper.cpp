@@ -123,6 +123,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString, QString)), this, SLOT(handleErrorReceived(int, QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(contactsImported(QVariantList, QVariantList)), this, SIGNAL(contactsImported(QVariantList, QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
@@ -542,6 +543,17 @@ void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
     requestObject.insert("chat_id", chatId);
     requestObject.insert("message_id", messageId);
     requestObject.insert(_EXTRA, "getMessage:" + messageId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getCallbackQueryAnswer(const QString &chatId, const QString &messageId, const QVariantMap &payload)
+{
+    LOG("Getting Callback Query Answer" << chatId << messageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getCallbackQueryAnswer");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_id", messageId);
+    requestObject.insert("payload", payload);
     this->sendRequest(requestObject);
 }
 

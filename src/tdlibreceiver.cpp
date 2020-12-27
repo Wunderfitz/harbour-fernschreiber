@@ -132,6 +132,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("secretChat", &TDLibReceiver::processSecretChat);
     handlers.insert("updateSecretChat", &TDLibReceiver::processUpdateSecretChat);
     handlers.insert("importedContacts", &TDLibReceiver::processImportedContacts);
+    handlers.insert("updateMessageEdited", &TDLibReceiver::processUpdateMessageEdited);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -553,6 +554,14 @@ void TDLibReceiver::processUpdateSecretChat(const QVariantMap &receivedInformati
     LOG("A secret chat was updated");
     QVariantMap updatedSecretChat = receivedInformation.value(SECRET_CHAT).toMap();
     emit secretChatUpdated(updatedSecretChat.value(ID).toLongLong(), updatedSecretChat);
+}
+
+void TDLibReceiver::processUpdateMessageEdited(const QVariantMap &receivedInformation)
+{
+    const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
+    const qlonglong messageId = receivedInformation.value(MESSAGE_ID).toLongLong();
+    LOG("Message was edited" << chatId << messageId);
+    emit messageEditedUpdated(chatId, messageId, receivedInformation.value("reply_markup").toMap());
 }
 
 void TDLibReceiver::processImportedContacts(const QVariantMap &receivedInformation)

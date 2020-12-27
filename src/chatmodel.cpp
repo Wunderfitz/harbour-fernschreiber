@@ -38,6 +38,7 @@ namespace {
     const QString SENDER("sender");
     const QString USER_ID("user_id");
     const QString PINNED_MESSAGE_ID("pinned_message_id");
+    const QString REPLY_MARKUP("reply_markup");
     const QString _TYPE("@type");
 }
 
@@ -54,6 +55,7 @@ public:
 
     static bool lessThan(const MessageData *message1, const MessageData *message2);
     void setContent(const QVariantMap &content);
+    void setReplyMarkup(const QVariantMap &replyMarkup);
     int senderUserId() const;
     qlonglong senderChatId() const;
     bool senderIsChat() const;
@@ -90,6 +92,10 @@ void ChatModel::MessageData::setContent(const QVariantMap &content)
 {
     messageData.insert(CONTENT, content);
 }
+void ChatModel::MessageData::setReplyMarkup(const QVariantMap &replyMarkup)
+{
+    messageData.insert(REPLY_MARKUP, replyMarkup);
+}
 
 bool ChatModel::MessageData::lessThan(const MessageData *message1, const MessageData *message2)
 {
@@ -112,6 +118,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
     connect(this->tdLibWrapper, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SLOT(handleChatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SLOT(handleChatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibWrapper, SIGNAL(messageContentUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageContentUpdated(qlonglong, qlonglong, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messagesDeleted(qlonglong, QList<qlonglong>)), this, SLOT(handleMessagesDeleted(qlonglong, QList<qlonglong>)));
 }
 
@@ -413,6 +420,22 @@ void ChatModel::handleMessageContentUpdated(qlonglong chatId, qlonglong messageI
         if (pos >= 0) {
             messages.at(pos)->setContent(newContent);
             LOG("Message was replaced at index" << pos);
+            const QModelIndex messageIndex(index(pos));
+            emit dataChanged(messageIndex, messageIndex);
+            emit messageUpdated(pos);
+        }
+    }
+}
+
+void ChatModel::handleMessageEditedUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &replyMarkup)
+{
+    LOG("Message edited updated" << chatId << messageId);
+    if (chatId == this->chatId && messageIndexMap.contains(messageId)) {
+        LOG("We know the message that was updated" << messageId);
+        const int pos = messageIndexMap.value(messageId, -1);
+        if (pos >= 0) {
+            messages.at(pos)->setReplyMarkup(replyMarkup);
+            LOG("Message was edited at index" << pos);
             const QModelIndex messageIndex(index(pos));
             emit dataChanged(messageIndex, messageIndex);
             emit messageUpdated(pos);
