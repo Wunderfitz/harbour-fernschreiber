@@ -52,6 +52,10 @@ Page {
             Debug.log(JSON.stringify(chats));
             chatsFound = chats;
         }
+        onErrorReceived: {
+            searchChatsPage.isLoading = false;
+            Functions.handleErrorMessage(code, message);
+        }
     }
 
     property bool isLoading: false;

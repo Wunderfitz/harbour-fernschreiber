@@ -64,9 +64,9 @@ Item {
             audioType = ( audioData['@type'] === "voiceNote" ) ? "voice" : "audio";
             audioFileId = audioData[audioType].id;
             if (typeof audioData.album_cover_thumbnail !== "undefined") {
-                previewFileId = audioData.album_cover_thumbnail.photo.id;
-                if (audioData.album_cover_thumbnail.photo.local.is_downloading_completed) {
-                    placeholderImage.source = audioData.album_cover_thumbnail.photo.local.path;
+                previewFileId = audioData.album_cover_thumbnail.file.id;
+                if (audioData.album_cover_thumbnail.file.local.is_downloading_completed) {
+                    placeholderImage.source = audioData.album_cover_thumbnail.file.local.path;
                 } else {
                     tdLibWrapper.downloadFile(previewFileId);
                 }
@@ -94,7 +94,7 @@ Item {
             if (typeof audioData === "object") {
                 if (fileInformation.local.is_downloading_completed) {
                     if (fileId === previewFileId) {
-                        audioData.thumbnail.photo = fileInformation;
+                        audioData.album_cover_thumbnail.file = fileInformation;
                         placeholderImage.source = fileInformation.local.path;
                     }
                     if (fileId === audioFileId) {

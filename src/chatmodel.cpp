@@ -480,27 +480,40 @@ void ChatModel::handleMessagesDeleted(qlonglong chatId, const QList<qlonglong> &
     if (chatId == this->chatId) {
         const int count = messageIds.size();
         LOG(count << "messages in this chat were deleted...");
-        int firstDeleted = -1, lastDeleted = -2;
-        for (int i = 0; i < count; i++) {
-            const int pos = messageIndexMap.value(messageIds.at(i), -1);
-            if (pos >= 0) {
-                if (pos == lastDeleted + 1) {
-                    lastDeleted = pos; // Extend the current range
+
+        int firstPosition = count, lastPosition = count;
+        for (int i = (count - 1); i > -1; i--) {
+            const int position = messageIndexMap.value(messageIds.at(i), -1);
+            if (position >= 0) {
+                // We found at least one message in our list that needs to be deleted
+                if (lastPosition == count) {
+                    lastPosition = position;
+                }
+                if (firstPosition == count) {
+                    firstPosition = position;
+                }
+                if (position < (firstPosition - 1)) {
+                    // Some gap in between, can remove previous range and reset positions
+                    removeRange(firstPosition, lastPosition);
+                    firstPosition = lastPosition = position;
                 } else {
-                    removeRange(firstDeleted, lastDeleted);
-                    firstDeleted = lastDeleted = pos; // Start new range
+                    // No gap in between, extend the range and continue loop
+                    firstPosition = position;
                 }
             }
         }
-        // Handle the last (and likely the only) range
-        removeRange(firstDeleted, lastDeleted);
+        // After all elements have been processed, there may be one last range to remove
+        // But only if we found at least one item to remove
+        if (firstPosition != count && lastPosition != count) {
+            removeRange(firstPosition, lastPosition);
+        }
     }
 }
 
 void ChatModel::removeRange(int firstDeleted, int lastDeleted)
 {
     if (firstDeleted >= 0 && firstDeleted <= lastDeleted) {
-        LOG("Removing range" << firstDeleted << "..." << lastDeleted);
+        LOG("Removing range" << firstDeleted << "..." << lastDeleted << "| current messages size" << messages.size());
         beginRemoveRows(QModelIndex(), firstDeleted, lastDeleted);
         for (int i = firstDeleted; i <= lastDeleted; i++) {
             MessageData *message = messages.at(i);
