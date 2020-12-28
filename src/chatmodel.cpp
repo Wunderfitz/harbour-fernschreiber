@@ -353,7 +353,7 @@ void ChatModel::handleNewMessageReceived(qlonglong chatId, const QVariantMap &me
 {
     const qlonglong messageId = message.value(ID).toLongLong();
     if (chatId == this->chatId && !messageIndexMap.contains(messageId)) {
-        if (this->isMostRecentMessageLoaded()) {
+        if (this->isMostRecentMessageLoaded() && !this->searchModeActive) {
             LOG("New message received for this chat");
             QList<MessageData*> messagesToBeAdded;
             messagesToBeAdded.append(new MessageData(message, messageId));

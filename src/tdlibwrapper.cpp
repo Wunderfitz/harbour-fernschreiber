@@ -939,14 +939,14 @@ void TDLibWrapper::importContacts(const QVariantList &contacts)
 
 void TDLibWrapper::searchChatMessages(const qlonglong &chatId, const QString &query, const qlonglong fromMessageId)
 {
-    LOG("Searching for messages" << chatId << query);
+    LOG("Searching for messages" << chatId << query << fromMessageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "searchChatMessages");
     requestObject.insert("chat_id", chatId);
     requestObject.insert("query", query);
     requestObject.insert("from_message_id", fromMessageId);
     requestObject.insert("offset", 0);
-    requestObject.insert("limit", 100);
+    requestObject.insert("limit", 50);
     requestObject.insert(_EXTRA, "searchChatMessages");
     this->sendRequest(requestObject);
 }

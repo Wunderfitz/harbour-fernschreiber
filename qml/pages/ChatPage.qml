@@ -480,7 +480,7 @@ Page {
             chatView.lastReadSentIndex = lastReadSentIndex;
             chatView.scrollToIndex(modelIndex);
             chatPage.loading = false;
-            if (modelIndex >= (chatView.count - 10)) {
+            if (chatOverviewItem.visible && modelIndex >= (chatView.count - 10)) {
                 chatView.inCooldown = true;
                 chatModel.triggerLoadMoreFuture();
             }
@@ -489,6 +489,8 @@ Page {
                 Debug.log("[ChatPage] Chat content quite small...");
                 viewMessageTimer.queueViewMessage(chatView.count - 1);
             }
+
+            chatViewCooldownTimer.restart();
         }
         onNewMessageReceived: {
             if (chatView.manuallyScrolledToBottom || message.sender.user_id === chatPage.myUserId) {
@@ -499,7 +501,7 @@ Page {
         onUnreadCountUpdated: {
             Debug.log("[ChatPage] Unread count updated, new count: ", unreadCount);
             chatInformation.unread_count = unreadCount;
-            chatUnreadMessagesCountBackground.visible = ( !chatPage.loading && unreadCount > 0 );
+            chatUnreadMessagesItem.visible = ( !chatPage.loading && chatInformation.unread_count > 0 && chatOverviewItem.visible );
             chatUnreadMessagesCount.text = unreadCount > 99 ? "99+" : unreadCount;
         }
         onLastReadSentMessageUpdated: {
@@ -509,7 +511,7 @@ Page {
         onMessagesIncrementalUpdate: {
             Debug.log("Incremental update received. View now has ", chatView.count, " messages, view is on index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
             chatView.lastReadSentIndex = lastReadSentIndex;
-            chatViewCooldownTimer.start();
+            chatViewCooldownTimer.restart();
         }
         onNotificationSettingsUpdated: {
             chatInformation = chatModel.getChatInformation();
@@ -649,7 +651,7 @@ Page {
 
             MenuItem {
                 id: searchInChatMenuItem
-                visible: !chatPage.isSecretChat
+                visible: !chatPage.isSecretChat && chatOverviewItem.visible
                 onClicked: {
                     // This automatically shows the search field as well
                     chatOverviewItem.visible = false;
@@ -773,7 +775,7 @@ Page {
                     width: parent.width - chatPictureThumbnail.width - Theme.paddingMedium
                     height: searchInChatField.height
                     anchors.bottom: parent.bottom
-                    anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingMedium : Theme.paddingSmall
+                    anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingSmall : 0
 
                     SearchField {
                         id: searchInChatField
@@ -885,7 +887,7 @@ Page {
 
                     function handleScrollPositionChanged() {
                         Debug.log("Current position: ", chatView.contentY);
-                        if (chatInformation.unread_count > 0) {
+                        if (chatOverviewItem.visible && chatInformation.unread_count > 0) {
                             var bottomIndex = chatView.indexAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin ));
                             if (bottomIndex > -1) {
                                 viewMessageTimer.queueViewMessage(bottomIndex)
@@ -905,12 +907,13 @@ Page {
                     }
 
                     onContentYChanged: {
+                        Debug.log("In Cooldown: " + chatView.inCooldown);
                         if (!chatPage.loading && !chatView.inCooldown) {
                             if (chatView.indexAt(chatView.contentX, chatView.contentY) < 10) {
                                 Debug.log("[ChatPage] Trying to get older history items...");
                                 chatView.inCooldown = true;
                                 chatModel.triggerLoadMoreHistory();
-                            } else if (chatView.indexAt(chatView.contentX, chatView.contentY) > ( count - 10)) {
+                            } else if (chatOverviewItem.visible && chatView.indexAt(chatView.contentX, chatView.contentY) > ( count - 10)) {
                                 Debug.log("[ChatPage] Trying to get newer history items...");
                                 chatView.inCooldown = true;
                                 chatModel.triggerLoadMoreFuture();
@@ -1046,12 +1049,13 @@ Page {
                     anchors.rightMargin: Theme.paddingMedium
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: Theme.paddingMedium
+                    visible: !chatPage.loading && chatInformation.unread_count > 0 && chatOverviewItem.visible
                     Rectangle {
                         id: chatUnreadMessagesCountBackground
                         color: Theme.highlightBackgroundColor
                         anchors.fill: parent
                         radius: width / 2
-                        visible: !chatPage.loading && chatInformation.unread_count > 0
+                        visible: chatUnreadMessagesItem.visible
                     }
 
                     Text {
@@ -1060,7 +1064,7 @@ Page {
                         font.bold: true
                         color: Theme.primaryColor
                         anchors.centerIn: chatUnreadMessagesCountBackground
-                        visible: chatUnreadMessagesCountBackground.visible
+                        visible: chatUnreadMessagesItem.visible
                         text: chatInformation.unread_count > 99 ? "99+" : chatInformation.unread_count
                     }
                     MouseArea {
