@@ -1015,6 +1015,14 @@
         <source>New Chat</source>
         <translation>Nueva charla</translation>
     </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished">Bajada de %1 exitosa.</translation>
+    </message>
+    <message>
+        <source>Download failed.</source>
+        <translation type="unfinished">Error al bajar</translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

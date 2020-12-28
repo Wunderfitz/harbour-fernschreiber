@@ -1037,6 +1037,14 @@
         <source>New Chat</source>
         <translation>Новый Чат</translation>
     </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished">Успешно скачано %1.</translation>
+    </message>
+    <message>
+        <source>Download failed.</source>
+        <translation type="unfinished">Ошибка скачивания.</translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

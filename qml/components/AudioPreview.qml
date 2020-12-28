@@ -163,7 +163,7 @@ Item {
             height: Theme.iconSizeLarge
             Item {
                 height: Theme.iconSizeLarge
-                width: parent.width
+                width: downloadItem.visible ? parent.width / 2 : parent.width
                 IconButton {
                     id: playButton
                     anchors.centerIn: parent
@@ -185,6 +185,35 @@ Item {
                     visible: running
                     anchors.centerIn: parent
                     size: BusyIndicatorSize.Large
+                }
+            }
+            Item {
+                id: downloadItem
+                width: parent.width / 2
+                height: Theme.iconSizeLarge
+                visible: audioData[audioType].local.is_downloading_completed
+                Rectangle {
+                    color: Theme.primaryColor
+                    opacity: Theme.opacityFaint
+                    width: Theme.iconSizeLarge * 0.9
+                    height: Theme.iconSizeLarge * 0.9
+                    anchors.centerIn: parent
+                    radius: width / 2
+                }
+
+                IconButton {
+                    id: downloadButton
+                    anchors.centerIn: parent
+                    width: Theme.iconSizeLarge
+                    height: Theme.iconSizeLarge
+                    icon {
+                        source: "image://theme/icon-m-cloud-download?white"
+                        asynchronous: true
+                    }
+                    highlighted: audioMessageComponent.highlighted || down
+                    onClicked: {
+                        tdLibWrapper.copyFileToDownloads(audioData[audioType].local.path);
+                    }
                 }
             }
         }
@@ -250,6 +279,7 @@ Item {
                 target: messageAudio
                 onPlaying: {
                     playButton.visible = false;
+                    downloadItem.visible = false;
                 }
             }
 
@@ -261,7 +291,6 @@ Item {
                         timeLeftItem.visible = true;
                     } else {
                         messageAudio.play();
-                        timeLeftTimer.start();
                     }
                 }
             }
@@ -272,7 +301,6 @@ Item {
                 Component.onCompleted: {
                     if (messageAudio.error === MediaPlayer.NoError) {
                         messageAudio.play();
-                        timeLeftTimer.start();
                     } else {
                         errorText.text = qsTr("Error loading audio! " + messageAudio.errorString)
                         errorTextOverlay.visible = true;
@@ -323,6 +351,7 @@ Item {
 
                 onStopped: {
                     playButton.visible = true;
+                    downloadItem.visible = true;
                     audioComponentLoader.active = false;
                 }
             }
@@ -334,15 +363,6 @@ Item {
                 visible: false
                 running: visible
                 size: BusyIndicatorSize.Medium
-            }
-
-            Timer {
-                id: timeLeftTimer
-                repeat: false
-                interval: 2000
-                onTriggered: {
-                    timeLeftItem.visible = false;
-                }
             }
 
             Item {
@@ -372,7 +392,7 @@ Item {
                     visible: audioComponentLoader.active && messageAudio.playbackState === MediaPlayer.PausedState
                     Item {
                         height: parent.height
-                        width: parent.width
+                        width: parent.width / 2
                         IconButton {
                             id: pausedPlayButton
                             anchors.centerIn: parent
@@ -385,7 +405,34 @@ Item {
                             }
                             onClicked: {
                                 messageAudio.play();
-                                timeLeftTimer.start();
+                            }
+                        }
+                    }
+                    Item {
+                        id: pausedDownloadItem
+                        width: parent.width / 2
+                        height: parent.height
+                        Rectangle {
+                            color: Theme.primaryColor
+                            opacity: Theme.opacityFaint
+                            width: Theme.iconSizeLarge * 0.9
+                            height: Theme.iconSizeLarge * 0.9
+                            anchors.centerIn: parent
+                            radius: width / 2
+                        }
+
+                        IconButton {
+                            id: pausedDownloadButton
+                            anchors.centerIn: parent
+                            width: Theme.iconSizeLarge
+                            height: Theme.iconSizeLarge
+                            icon {
+                                source: "image://theme/icon-m-cloud-download?white"
+                                asynchronous: true
+                            }
+                            highlighted: audioMessageComponent.highlighted || down
+                            onClicked: {
+                                tdLibWrapper.copyFileToDownloads(audioData[audioType].local.path);
                             }
                         }
                     }
@@ -406,7 +453,6 @@ Item {
                     onReleased: {
                         messageAudio.seek(Math.floor(value));
                         messageAudio.play();
-                        timeLeftTimer.start();
                     }
                     valueText: getTimeString(Math.round((messageAudio.duration - messageAudioSlider.value) / 1000))
                 }

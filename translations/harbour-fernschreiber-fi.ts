@@ -1027,6 +1027,14 @@
         <source>New Chat</source>
         <translation>Uusi keskustelu</translation>
     </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download failed.</source>
+        <translation type="unfinished">Lataus epäonnistui.</translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

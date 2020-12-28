@@ -77,7 +77,7 @@ Item {
         anchors.centerIn: parent
         text: qsTr("Download Document")
         visible: false
-        highlighted: videoMessageComponent.highlighted || down
+        highlighted: documentPreviewItem.highlighted || down
         onClicked: {
             downloadDocumentButton.visible = false;
             downloadingProgressBar.visible = true;
@@ -101,7 +101,7 @@ Item {
         anchors.centerIn: parent
         text: qsTr("Open Document")
         visible: false
-        highlighted: videoMessageComponent.highlighted || down
+        highlighted: documentPreviewItem.highlighted || down
         onClicked: {
             documentPreviewItem.openRequested = true;
             tdLibWrapper.openFileOnDevice(documentData.document.local.path);

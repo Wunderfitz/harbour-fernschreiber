@@ -1026,6 +1026,14 @@
         <source>New Chat</source>
         <translation>Ny chatt</translation>
     </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished">Nerladdning av %1 slutförd.</translation>
+    </message>
+    <message>
+        <source>Download failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>
