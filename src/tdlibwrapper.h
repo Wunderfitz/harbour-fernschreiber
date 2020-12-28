@@ -179,6 +179,7 @@ public:
     Q_INVOKABLE void getSecretChat(qlonglong secretChatId);
     Q_INVOKABLE void closeSecretChat(qlonglong secretChatId);
     Q_INVOKABLE void importContacts(const QVariantList &contacts);
+    Q_INVOKABLE void readAllChatMentions(qlonglong chatId);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);

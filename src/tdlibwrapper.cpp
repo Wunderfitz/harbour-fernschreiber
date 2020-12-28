@@ -937,6 +937,15 @@ void TDLibWrapper::importContacts(const QVariantList &contacts)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::readAllChatMentions(qlonglong chatId)
+{
+    LOG("Read all chat mentions" << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "readAllChatMentions");
+    requestObject.insert("chat_id", chatId);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
