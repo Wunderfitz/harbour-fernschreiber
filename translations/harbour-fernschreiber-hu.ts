@@ -1031,6 +1031,14 @@
         <source>Search Chats</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished">A %1 letöltése sikerült.</translation>
+    </message>
+    <message>
+        <source>Download failed.</source>
+        <translation type="unfinished">A letöltés nem sikerült.</translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

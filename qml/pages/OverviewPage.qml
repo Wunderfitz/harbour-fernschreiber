@@ -203,6 +203,13 @@ Page {
         onErrorReceived: {
             Functions.handleErrorMessage(code, message);
         }
+        onCopyToDownloadsSuccessful: {
+            appNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
+        }
+
+        onCopyToDownloadsError: {
+            appNotification.show(qsTr("Download failed."));
+        }
     }
 
     Component.onCompleted: {

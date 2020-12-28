@@ -1042,6 +1042,14 @@
         <source>Search Chats</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished">Download di %1 completato.</translation>
+    </message>
+    <message>
+        <source>Download failed.</source>
+        <translation type="unfinished">Download non riuscito.</translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

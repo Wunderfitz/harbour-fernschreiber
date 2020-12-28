@@ -1042,6 +1042,14 @@
         <source>Search Chats</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished">Nerladdning av %1 slutförd.</translation>
+    </message>
+    <message>
+        <source>Download failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

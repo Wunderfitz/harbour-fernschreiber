@@ -958,6 +958,14 @@ void TDLibWrapper::searchPublicChats(const QString &query)
     requestObject.insert(_TYPE, "searchPublicChats");
     requestObject.insert("query", query);
     requestObject.insert(_EXTRA, "searchPublicChats");
+}
+
+void TDLibWrapper::readAllChatMentions(qlonglong chatId)
+{
+    LOG("Read all chat mentions" << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "readAllChatMentions");
+    requestObject.insert("chat_id", chatId);
     this->sendRequest(requestObject);
 }
 

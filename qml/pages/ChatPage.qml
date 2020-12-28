@@ -583,6 +583,9 @@ Page {
                 }
                 lastQueuedIndex = -1
             }
+            if (chatInformation.unread_count === 0) {
+                tdLibWrapper.readAllChatMentions(chatInformation.id);
+            }
         }
     }
 
@@ -892,6 +895,8 @@ Page {
                             if (bottomIndex > -1) {
                                 viewMessageTimer.queueViewMessage(bottomIndex)
                             }
+                        } else {
+                            tdLibWrapper.readAllChatMentions(chatInformation.id);
                         }
                         manuallyScrolledToBottom = chatView.atYEnd
                     }
