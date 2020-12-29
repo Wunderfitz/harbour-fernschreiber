@@ -958,6 +958,7 @@ void TDLibWrapper::searchPublicChats(const QString &query)
     requestObject.insert(_TYPE, "searchPublicChats");
     requestObject.insert("query", query);
     requestObject.insert(_EXTRA, "searchPublicChats");
+    this->sendRequest(requestObject);
 }
 
 void TDLibWrapper::readAllChatMentions(qlonglong chatId)
