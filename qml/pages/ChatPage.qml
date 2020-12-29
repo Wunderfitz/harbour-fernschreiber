@@ -1002,7 +1002,7 @@ Page {
                                 }
                                 onEditMessage: {
                                     newMessageColumn.editMessageId = messageId
-                                    newMessageTextField.text = Functions.getMessageText(myMessage, false, false, true)
+                                    newMessageTextField.text = Functions.getMessageText(myMessage, false, chatPage.myUserId, true)
                                     newMessageTextField.focus = true
                                 }
                             }

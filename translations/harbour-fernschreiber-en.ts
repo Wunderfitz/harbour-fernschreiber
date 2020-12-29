@@ -773,6 +773,24 @@
         <source>sent an audio</source>
         <translation>sent an audio</translation>
     </message>
+    <message>
+        <source>has added %1 to the chat</source>
+        <translation>has added %1 to the chat</translation>
+    </message>
+    <message>
+        <source>has removed %1 from the chat</source>
+        <translation>has removed %1 from the chat</translation>
+    </message>
+    <message>
+        <source>have added %1 to the chat</source>
+        <comment>myself</comment>
+        <translation>have added %1 to the chat</translation>
+    </message>
+    <message>
+        <source>have removed %1 from the chat</source>
+        <comment>myself</comment>
+        <translation>have removed %1 from the chat</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -1044,11 +1062,11 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished">Download of %1 successful.</translation>
+        <translation>Download of %1 successful.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished">Download failed.</translation>
+        <translation>Download failed.</translation>
     </message>
 </context>
 <context>
@@ -1770,6 +1788,24 @@
     <message>
         <source>Pending acknowledgement</source>
         <translation>Pending acknowledgement</translation>
+    </message>
+    <message>
+        <source>has added %1 to the chat</source>
+        <translation type="unfinished">has added %1 to the chat</translation>
+    </message>
+    <message>
+        <source>has removed %1 from the chat</source>
+        <translation type="unfinished">has removed %1 from the chat</translation>
+    </message>
+    <message>
+        <source>have added %1 to the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">have added %1 to the chat</translation>
+    </message>
+    <message>
+        <source>have removed %1 from the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished">have removed %1 from the chat</translation>
     </message>
 </context>
 </TS>

@@ -763,6 +763,24 @@
         <source>sent an audio</source>
         <translation>发送音频</translation>
     </message>
+    <message>
+        <source>has added %1 to the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed %1 from the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have added %1 to the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed %1 from the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -900,11 +918,11 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">已取消置顶消息</translation>
+        <translation>已取消消息置顶</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>取消置顶</translation>
     </message>
 </context>
 <context>
@@ -1033,11 +1051,11 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished">已成功下载 %1 。</translation>
+        <translation>已成功下载 %1 。</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>下载失败。</translation>
     </message>
 </context>
 <context>
@@ -1751,6 +1769,24 @@
     <message>
         <source>Pending acknowledgement</source>
         <translation>等待确认</translation>
+    </message>
+    <message>
+        <source>has added %1 to the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed %1 from the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have added %1 to the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed %1 from the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

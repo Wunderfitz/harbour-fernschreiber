@@ -106,7 +106,7 @@ ListItem {
                 }
                 MenuItem {
                     onClicked: {
-                        Clipboard.text = Functions.getMessageText(myMessage, true, false, true);
+                        Clipboard.text = Functions.getMessageText(myMessage, true, userInformation.id, true);
                     }
                     text: qsTr("Copy Message to Clipboard")
                 }
@@ -163,7 +163,7 @@ ListItem {
             if (index === modelIndex) {
                 Debug.log("[ChatModel] This message was updated, index ", index, ", updating content...");
                 messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
-                messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, messageListItem.isOwnMessage. false), messageText.font.pixelSize);
+                messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, page.myUserId, false), messageText.font.pixelSize);
             }
         }
     }
@@ -392,7 +392,7 @@ ListItem {
                 Text {
                     id: messageText
                     width: parent.width
-                    text: Emoji.emojify(Functions.getMessageText(myMessage, false, messageListItem.isOwnMessage, false), font.pixelSize)
+                    text: Emoji.emojify(Functions.getMessageText(myMessage, false, page.myUserId, false), font.pixelSize)
                     font.pixelSize: Theme.fontSizeSmall
                     color: messageListItem.textColor
                     wrapMode: Text.Wrap

@@ -2,6 +2,7 @@
 #define FERNSCHREIBERUTILS_H
 
 #include <QObject>
+#include "tdlibwrapper.h"
 
 class FernschreiberUtils : public QObject
 {
@@ -9,7 +10,8 @@ class FernschreiberUtils : public QObject
 public:
     explicit FernschreiberUtils(QObject *parent = nullptr);
 
-    static QString getMessageShortText(const QVariantMap &messageContent, const bool &myself);
+    static QString getMessageShortText(TDLibWrapper *tdLibWrapper, const QVariantMap &messageContent, const bool isChannel, const qlonglong currentUserId, const QVariantMap &messageSender);
+    static QString getUserName(const QVariantMap &userInformation);
 
 signals:
 

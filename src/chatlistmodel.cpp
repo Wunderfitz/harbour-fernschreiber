@@ -55,7 +55,7 @@ class ChatListModel::ChatData
 {
 public:
 
-    ChatData(const QVariantMap &data, const QVariantMap &userInformation);
+    ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap &data);
 
     int compareTo(const ChatData *chat) const;
     bool setOrder(const QString &order);
@@ -77,6 +77,7 @@ public:
     QVector<int> updateLastMessage(const QVariantMap &message);
     QVector<int> updateGroup(const TDLibWrapper::Group *group);
     QVector<int> updateSecretChat(const QVariantMap &secretChatDetails);
+    TDLibWrapper *tdLibWrapper;
 
 public:
     QVariantMap chatData;
@@ -90,7 +91,8 @@ public:
     QVariantMap userInformation;
 };
 
-ChatListModel::ChatData::ChatData(const QVariantMap &data, const QVariantMap &userInfo) :
+ChatListModel::ChatData::ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap &data) :
+    tdLibWrapper(tdLibWrapper),
     chatData(data),
     chatId(data.value(ID).toLongLong()),
     order(data.value(ORDER).toLongLong()),
@@ -98,7 +100,7 @@ ChatListModel::ChatData::ChatData(const QVariantMap &data, const QVariantMap &us
     verified(false),
     memberStatus(TDLibWrapper::ChatMemberStatusUnknown),
     secretChatState(TDLibWrapper::SecretChatStateUnknown),
-    userInformation(userInfo)
+    userInformation(tdLibWrapper->getUserInformation())
 {
     const QVariantMap type(data.value(TYPE).toMap());
     switch (chatType = TDLibWrapper::chatTypeFromString(type.value(_TYPE).toString())) {
@@ -182,7 +184,7 @@ qlonglong ChatListModel::ChatData::senderMessageDate() const
 
 QString ChatListModel::ChatData::senderMessageText() const
 {
-    return FernschreiberUtils::getMessageShortText(lastMessage(CONTENT).toMap(), ( isChannel() ? false : this->userInformation.value(ID).toLongLong() == senderUserId() ) );
+    return FernschreiberUtils::getMessageShortText(tdLibWrapper, lastMessage(CONTENT).toMap(), isChannel(), this->userInformation.value(ID).toLongLong(), lastMessage(SENDER).toMap() );
 }
 
 QString ChatListModel::ChatData::senderMessageStatus() const
@@ -577,7 +579,7 @@ void ChatListModel::setShowAllChats(bool showAll)
 
 void ChatListModel::handleChatDiscovered(const QString &, const QVariantMap &chatToBeAdded)
 {
-    ChatData *chat = new ChatData(chatToBeAdded, tdLibWrapper->getUserInformation());
+    ChatData *chat = new ChatData(tdLibWrapper, chatToBeAdded);
 
     const TDLibWrapper::Group *group = tdLibWrapper->getGroup(chat->groupId);
     if (group) {

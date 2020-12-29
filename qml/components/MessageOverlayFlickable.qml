@@ -139,7 +139,7 @@ Flickable {
         Text {
             id: overlayMessageText
             width: parent.width
-            text: Emoji.emojify(Functions.getMessageText(overlayMessage, false, messageOverlayFlickable.isOwnMessage, false), font.pixelSize)
+            text: Emoji.emojify(Functions.getMessageText(overlayMessage, false, tdLibWrapper.getUserInformation().id, false), font.pixelSize)
             font.pixelSize: Theme.fontSizeMedium
             color: Theme.primaryColor
             wrapMode: Text.Wrap
