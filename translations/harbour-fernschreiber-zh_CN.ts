@@ -892,11 +892,11 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">已取消置顶消息</translation>
+        <translation>已取消消息置顶</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>取消置顶</translation>
     </message>
 </context>
 <context>
@@ -1017,11 +1017,11 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished">已成功下载 %1 。</translation>
+        <translation>已成功下载 %1 。</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>下载失败。</translation>
     </message>
 </context>
 <context>
