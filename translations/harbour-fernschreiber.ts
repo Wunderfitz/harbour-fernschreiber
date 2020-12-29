@@ -765,6 +765,24 @@
         <source>sent an audio</source>
         <translation type="unfinished">sent an audio</translation>
     </message>
+    <message>
+        <source>has added %1 to the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed %1 from the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have added %1 to the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed %1 from the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -1710,6 +1728,24 @@
     </message>
     <message>
         <source>Pending acknowledgement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has added %1 to the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed %1 from the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have added %1 to the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed %1 from the chat</source>
+        <comment>myself</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>

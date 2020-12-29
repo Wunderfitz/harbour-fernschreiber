@@ -755,6 +755,24 @@
         <source>sent an audio</source>
         <translation>发送音频</translation>
     </message>
+    <message>
+        <source>has added %1 to the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed %1 from the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have added %1 to the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed %1 from the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -1692,6 +1710,24 @@
     <message>
         <source>Pending acknowledgement</source>
         <translation>等待确认</translation>
+    </message>
+    <message>
+        <source>has added %1 to the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed %1 from the chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have added %1 to the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed %1 from the chat</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

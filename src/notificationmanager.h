@@ -50,7 +50,6 @@ public slots:
 private:
 
     void publishNotification(const NotificationGroup *notificationGroup, bool needFeedback);
-    QString getNotificationText(const QVariantMap &notificationContent);
     void controlLedNotification(bool enabled);
     void updateNotificationGroup(int groupId, qlonglong chatId, int totalCount,
         const QVariantList &addedNotifications,

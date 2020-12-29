@@ -8,11 +8,13 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
 
 }
 
-QString FernschreiberUtils::getMessageShortText(const QVariantMap &messageContent, const bool &myself)
+QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, const QVariantMap &messageContent, const bool isChannel, const qlonglong currentUserId, const QVariantMap &messageSender)
 {
     if (messageContent.isEmpty()) {
         return QString();
     }
+
+    const bool myself = !isChannel && (messageSender.value("@type").toString() == "messageSenderUser" && messageSender.value("user_id").toLongLong() == currentUserId);
 
     QString contentType = messageContent.value("@type").toString();
 
@@ -53,10 +55,26 @@ QString FernschreiberUtils::getMessageShortText(const QVariantMap &messageConten
         return myself ? tr("joined this chat", "myself") : tr("joined this chat");
     }
     if (contentType == "messageChatAddMembers") {
-        return myself ? tr("were added to this chat", "myself") : tr("was added to this chat");
+        if (messageSender.value("@type").toString() == "messageSenderUser" && messageSender.value("user_id").toLongLong() == messageContent.value("member_user_ids").toList().at(0).toLongLong()) {
+            return myself ? tr("were added to this chat", "myself") : tr("was added to this chat");
+        } else {
+            QVariantList memberUserIds = messageContent.value("member_user_ids").toList();
+            QString addedUserNames;
+            for (int i = 0; i < memberUserIds.size(); i++) {
+                if (i > 0) {
+                    addedUserNames += ", ";
+                }
+                addedUserNames += getUserName(tdLibWrapper->getUserInformation(memberUserIds.at(i).toString()));
+            }
+            return myself ? tr("have added %1 to the chat", "myself").arg(addedUserNames) : tr("has added %1 to the chat").arg(addedUserNames);
+        }
     }
     if (contentType == "messageChatDeleteMember") {
-        return myself ? tr("left this chat", "myself") : tr("left this chat");
+        if (messageSender.value("@type").toString() == "messageSenderUser" && messageSender.value("user_id").toLongLong() == messageContent.value("user_id").toLongLong()) {
+            return myself ? tr("left this chat", "myself") : tr("left this chat");
+        } else {
+            return myself ? tr("have removed %1 from the chat", "myself").arg(getUserName(tdLibWrapper->getUserInformation(messageContent.value("user_id").toString()))) : tr("has removed %1 from the chat").arg(getUserName(tdLibWrapper->getUserInformation(messageContent.value("user_id").toString())));
+        }
     }
     if (contentType == "messageChatChangeTitle") {
         return myself ? tr("changed the chat title", "myself") : tr("changed the chat title");
@@ -102,4 +120,11 @@ QString FernschreiberUtils::getMessageShortText(const QVariantMap &messageConten
     }
 
     return myself ? tr("sent an unsupported message: %1", "myself").arg(contentType.mid(7)) : tr("sent an unsupported message: %1").arg(contentType.mid(7));
+}
+
+QString FernschreiberUtils::getUserName(const QVariantMap &userInformation)
+{
+    const QString firstName = userInformation.value("first_name").toString();
+    const QString lastName = userInformation.value("last_name").toString();
+    return QString(firstName + " " + lastName).trimmed();
 }

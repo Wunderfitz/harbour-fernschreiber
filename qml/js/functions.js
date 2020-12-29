@@ -32,7 +32,10 @@ function getUserName(userInformation) {
     return ((userInformation.first_name || "") + " " + (userInformation.last_name || "")).trim();
 }
 
-function getMessageText(message, simple, myself, ignoreEntities) {
+function getMessageText(message, simple, currentUserId, ignoreEntities) {
+
+    var myself = ( message.sender['@type'] === "messageSenderUser" && message.sender.user_id.toString() === currentUserId.toString() );
+
     switch(message.content['@type']) {
     case 'messageText':
         if (simple) {
@@ -89,9 +92,24 @@ function getMessageText(message, simple, myself, ignoreEntities) {
     case 'messageChatJoinByLink':
         return myself ? qsTr("joined this chat", "myself") : qsTr("joined this chat");
     case 'messageChatAddMembers':
-        return myself ? qsTr("were added to this chat", "myself") : qsTr("was added to this chat");
+        if (message.sender['@type'] === "messageSenderUser" && message.sender.user_id === message.content.member_user_ids[0]) {
+            return myself ? qsTr("were added to this chat", "myself") : qsTr("was added to this chat");
+        } else {
+            var addedUserNames = "";
+            for (var i = 0; i < message.content.member_user_ids.length; i++) {
+                if (i > 0) {
+                    addedUserNames += ", ";
+                }
+                addedUserNames += getUserName(tdLibWrapper.getUserInformation(message.content.member_user_ids[i]));
+            }
+            return myself ? qsTr("have added %1 to the chat", "myself").arg(addedUserNames) : qsTr("has added %1 to the chat").arg(addedUserNames);
+        }
     case 'messageChatDeleteMember':
-        return myself ? qsTr("left this chat", "myself") : qsTr("left this chat");
+        if (message.sender['@type'] === "messageSenderUser" && message.sender.user_id === message.content.user_id) {
+            return myself ? qsTr("left this chat", "myself") : qsTr("left this chat");
+        } else {
+            return myself ? qsTr("have removed %1 from the chat", "myself").arg(getUserName(tdLibWrapper.getUserInformation(message.content.user_id))) : qsTr("has removed %1 from the chat").arg(getUserName(tdLibWrapper.getUserInformation(message.content.user_id)));
+        }
     case 'messageChatChangeTitle':
         return myself ? qsTr("changed the chat title to %1", "myself").arg(message.content.title) : qsTr("changed the chat title to %1").arg(message.content.title);
     case 'messagePoll':
@@ -415,7 +433,7 @@ function getMessagesArrayText(messages) {
             lines.push(senderName);
         }
         lastSenderName = senderName;
-        lines.push(getMessageText(messages[i], true, false));
+        lines.push(getMessageText(messages[i], true, tdLibWrapper.getUserInformation().id, false));
         lines.push("");
     }
     return lines.join("\n");

@@ -43,7 +43,7 @@ Item {
         color: Theme.highlightColor
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: Theme.fontSizeExtraSmall
-        text: "<a style=\"text-decoration: none; font-weight: bold; color:"+Theme.primaryColor+"\" href=\"userId://" + messageListItem.userInformation.id + "\">" + (!messageListItem.isOwnMessage ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")) + "</a> " + Emoji.emojify(Functions.getMessageText(messageListItem.myMessage, false, messageListItem.isOwnMessage, false), font.pixelSize)
+        text: "<a style=\"text-decoration: none; font-weight: bold; color:"+Theme.primaryColor+"\" href=\"userId://" + messageListItem.userInformation.id + "\">" + (!messageListItem.isOwnMessage ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")) + "</a> " + Emoji.emojify(Functions.getMessageText(messageListItem.myMessage, false, chatPage.myUserId, false), font.pixelSize)
         textFormat: Text.RichText
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         onLinkActivated: {

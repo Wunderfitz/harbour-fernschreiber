@@ -332,25 +332,22 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     }
 
     QString notificationBody;
+    const QVariantMap senderInformation = messageMap.value(SENDER).toMap();
     if (notificationGroup->totalCount == 1 && !messageMap.isEmpty()) {
         LOG("Group" << notificationGroup->notificationGroupId << "has 1 notification");
         if (chatInformation && (chatInformation->type == TDLibWrapper::ChatTypeBasicGroup ||
            (chatInformation->type == TDLibWrapper::ChatTypeSupergroup && !chatInformation->isChannel))) {
             // Add author
-            const QVariantMap senderInformation = messageMap.value(SENDER).toMap();
             QString fullName;
             if (senderInformation.value(_TYPE).toString() == "messageSenderChat") {
                 fullName = tdLibWrapper->getChat(senderInformation.value(CHAT_ID).toString()).value(TITLE).toString();
             } else {
-                const QVariantMap authorInformation = tdLibWrapper->getUserInformation(senderInformation.value(USER_ID).toString());
-                const QString firstName = authorInformation.value(FIRST_NAME).toString();
-                const QString lastName = authorInformation.value(LAST_NAME).toString();
-                fullName = firstName + " " + lastName;
+                fullName = FernschreiberUtils::getUserName(tdLibWrapper->getUserInformation(senderInformation.value(USER_ID).toString()));
             }
 
             notificationBody = notificationBody + fullName.trimmed() + ": ";
         }
-        notificationBody += getNotificationText(messageMap.value(CONTENT).toMap());
+        notificationBody += FernschreiberUtils::getMessageShortText(tdLibWrapper, messageMap.value(CONTENT).toMap(), (chatInformation ? chatInformation->isChannel : false), tdLibWrapper->getUserInformation().value(ID).toLongLong(), senderInformation );
         nemoNotification->setBody(notificationBody);
     } else {
         // Either we have more than one notification or we have no content to display
@@ -378,13 +375,6 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     }
 
     nemoNotification->publish();
-}
-
-QString NotificationManager::getNotificationText(const QVariantMap &notificationContent)
-{
-    LOG("Getting notification text from content" << notificationContent);
-
-    return FernschreiberUtils::getMessageShortText(notificationContent, false);
 }
 
 void NotificationManager::controlLedNotification(bool enabled)

@@ -765,6 +765,24 @@
         <source>sent an audio</source>
         <translation>hat eine Audiodatei gesendet</translation>
     </message>
+    <message>
+        <source>has added %1 to the chat</source>
+        <translation>hat %1 zum Chat hinzugefügt</translation>
+    </message>
+    <message>
+        <source>has removed %1 from the chat</source>
+        <translation>hat %1 vom Chat entfernt</translation>
+    </message>
+    <message>
+        <source>have added %1 to the chat</source>
+        <comment>myself</comment>
+        <translation>haben %1 zum Chat hinzugefügt</translation>
+    </message>
+    <message>
+        <source>have removed %1 from the chat</source>
+        <comment>myself</comment>
+        <translation>haben %1 vom Chat entfernt</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -1028,11 +1046,11 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished">Download von %1 erfolgreich.</translation>
+        <translation>Download von %1 erfolgreich.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished">Download fehlgeschlagen.</translation>
+        <translation>Download fehlgeschlagen.</translation>
     </message>
 </context>
 <context>
@@ -1711,6 +1729,24 @@
     <message>
         <source>Pending acknowledgement</source>
         <translation>Ausstehende Bestätigung</translation>
+    </message>
+    <message>
+        <source>has added %1 to the chat</source>
+        <translation>hat %1 zum Chat hinzugefügt</translation>
+    </message>
+    <message>
+        <source>has removed %1 from the chat</source>
+        <translation>hat %1 vom Chat entfernt</translation>
+    </message>
+    <message>
+        <source>have added %1 to the chat</source>
+        <comment>myself</comment>
+        <translation>haben %1 zum Chat hinzugefügt</translation>
+    </message>
+    <message>
+        <source>have removed %1 from the chat</source>
+        <comment>myself</comment>
+        <translation>haben %1 vom Chat entfernt</translation>
     </message>
 </context>
 </TS>
