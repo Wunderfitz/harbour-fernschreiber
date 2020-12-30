@@ -262,7 +262,7 @@ ListItem {
                 height: messageTextColumn.height + precalculatedValues.paddingMediumDouble
                 width: precalculatedValues.backgroundWidth
                 property bool isUnread: index > chatModel.getLastReadMessageIndex()
-                color: isUnread ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                color: Theme.colorScheme === Theme.LightOnDark ? (isUnread ? Theme.secondaryHighlightColor : Theme.secondaryColor) : (isUnread ? Theme.backgroundGlowColor : Theme.overlayBackgroundColor)
                 radius: parent.width / 50
                 opacity: isUnread ? 0.5 : 0.2
                 visible: appSettings.showStickersAsImages || myMessage.content['@type'] !== "messageSticker"

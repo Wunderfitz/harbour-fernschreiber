@@ -33,7 +33,7 @@ Item {
         anchors.centerIn: parent
         height: messageText.height + Theme.paddingMedium * 2
         width: Math.min(messageText.implicitWidth, messageText.contentWidth) + Theme.paddingMedium * 2
-        color: Theme.rgba(Theme.secondaryColor, 0.1)
+        color: Theme.colorScheme === Theme.LightOnDark ? Theme.rgba(Theme.secondaryColor, 0.1) : Theme.rgba(Theme.overlayBackgroundColor, 0.1)
         radius: parent.width / 50
     }
     Text {
