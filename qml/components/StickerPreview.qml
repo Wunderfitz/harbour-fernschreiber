@@ -35,9 +35,6 @@ Item {
     implicitWidth: stickerData.width
     implicitHeight: stickerData.height
 
-    layer.enabled: highlighted
-    layer.effect: PressEffect { source: singleImage }
-
     TDLibFile {
         id: file
         tdlib: tdLibWrapper
@@ -59,11 +56,14 @@ Item {
             active: animated
             sourceComponent: Component {
                 AnimatedImage {
+                    id: animatedSticker
                     anchors.fill: parent
                     source: file.path
                     asynchronous: true
                     paused: !Qt.application.active
                     cache: false
+                    layer.enabled: highlighted
+                    layer.effect: PressEffect { source: animatedSticker }
                 }
             }
         }
@@ -74,6 +74,7 @@ Item {
             active: !animated
             sourceComponent: Component {
                 Image {
+                    id: staticSticker
                     anchors.fill: parent
                     source: file.path
                     fillMode: Image.PreserveAspectFit
@@ -82,6 +83,8 @@ Item {
                     visible: opacity > 0
                     opacity: status === Image.Ready ? 1 : 0
                     Behavior on opacity { FadeAnimation {} }
+                    layer.enabled: highlighted
+                    layer.effect: PressEffect { source: staticSticker }
                 }
             }
         }
