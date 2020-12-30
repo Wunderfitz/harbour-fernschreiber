@@ -391,6 +391,14 @@
         <source>Close Chat</source>
         <translation>Stäng chatten</translation>
     </message>
+    <message>
+        <source>Search in Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search in chat...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1045,6 +1053,14 @@
         <translation>Ny chatt</translation>
     </message>
     <message>
+        <source>Filter your chats...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search Chats</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Download of %1 successful.</source>
         <translation type="unfinished">Nerladdning av %1 slutförd.</translation>
     </message>
@@ -1244,6 +1260,49 @@
         <source>Chosen by:</source>
         <comment>This answer has been chosen by the following users</comment>
         <translation>Valt av:</translation>
+    </message>
+</context>
+<context>
+    <name>SearchChatsPage</name>
+    <message>
+        <source>No chats found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Searching chats...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Private Chat</source>
+        <translation type="unfinished">Privat chatt</translation>
+    </message>
+    <message>
+        <source>Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 members</source>
+        <translation type="unfinished">%1 medlem</translation>
+    </message>
+    <message>
+        <source>%1 subscribers</source>
+        <translation type="unfinished">%1 prenumerant</translation>
+    </message>
+    <message>
+        <source>Search Chats</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search a chat...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your query to start searching (at least 5 characters needed)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

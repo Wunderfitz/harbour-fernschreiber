@@ -937,6 +937,30 @@ void TDLibWrapper::importContacts(const QVariantList &contacts)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::searchChatMessages(const qlonglong &chatId, const QString &query, const qlonglong fromMessageId)
+{
+    LOG("Searching for messages" << chatId << query << fromMessageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "searchChatMessages");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("query", query);
+    requestObject.insert("from_message_id", fromMessageId);
+    requestObject.insert("offset", 0);
+    requestObject.insert("limit", 50);
+    requestObject.insert(_EXTRA, "searchChatMessages");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::searchPublicChats(const QString &query)
+{
+    LOG("Searching public chats" << query);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "searchPublicChats");
+    requestObject.insert("query", query);
+    requestObject.insert(_EXTRA, "searchPublicChats");
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::readAllChatMentions(qlonglong chatId)
 {
     LOG("Read all chat mentions" << chatId);

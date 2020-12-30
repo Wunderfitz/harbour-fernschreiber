@@ -86,6 +86,16 @@ Page {
         }
     }
 
+    Timer {
+        id: searchChatTimer
+        interval: 300
+        running: false
+        repeat: false
+        onTriggered: {
+            chatListProxyModel.setFilterWildcard("*" + chatSearchField.text + "*");
+        }
+    }
+
     function setPageStatus() {
         switch (overviewPage.connectionState) {
         case TelegramAPI.WaitingForNetwork:
@@ -143,6 +153,16 @@ Page {
         default:
             // Nothing ;)
         }
+    }
+
+    function resetFocus() {
+        if (chatSearchField.text === "") {
+            chatSearchField.visible = false;
+            pageHeader.visible = true;
+            searchChatButton.visible = overviewPage.connectionState === TelegramAPI.ConnectionReady;
+        }
+        chatSearchField.focus = false;
+        overviewPage.focus = true;
     }
 
     Connections {
@@ -218,15 +238,18 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/SettingsPage.qml"))
             }
             MenuItem {
+                text: qsTr("Search Chats")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/SearchChatsPage.qml"))
+            }
+            MenuItem {
                 text: qsTr("New Chat")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/NewChatPage.qml"))
             }
         }
 
-        PageHeader {
-            id: pageHeader
-            title: qsTr("Fernschreiber")
-            leftMargin: Theme.itemSizeMedium
+        Row {
+            id: headerRow
+            width: parent.width - Theme.horizontalPageMargin
 
             GlassItem {
                 id: pageStatus
@@ -237,12 +260,64 @@ Page {
                 radius: 0.2
                 cache: false
             }
+
+            PageHeader {
+                id: pageHeader
+                title: qsTr("Fernschreiber")
+                width: visible ? ( parent.width - pageStatus.width - searchChatButton.width ) : 0
+                opacity: visible ? 1 : 0
+                Behavior on opacity { FadeAnimation {} }
+            }
+
+            IconButton {
+                id: searchChatButton
+                width: visible ? height : 0
+                opacity: visible ? 1 : 0
+                Behavior on opacity { NumberAnimation {} }
+                anchors.verticalCenter: parent.verticalCenter
+                icon {
+                    source: "image://theme/icon-m-search?" + Theme.highlightColor
+                    asynchronous: true
+                }
+                visible: overviewPage.connectionState === TelegramAPI.ConnectionReady
+                onClicked: {
+                    chatSearchField.focus = true;
+                    chatSearchField.visible = true;
+                    pageHeader.visible = false;
+                    searchChatButton.visible = false;
+                }
+            }
+
+            SearchField {
+                id: chatSearchField
+                visible: false
+                opacity: visible ? 1 : 0
+                Behavior on opacity { FadeAnimation {} }
+                width: visible ? ( parent.width - pageStatus.width ) : 0
+                height: pageHeader.height
+                placeholderText: qsTr("Filter your chats...")
+                canHide: text === ""
+
+                onTextChanged: {
+                    searchChatTimer.restart();
+                }
+
+                onHideClicked: {
+                    resetFocus();
+                }
+
+                EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                EnterKey.onClicked: {
+                    resetFocus();
+                }
+            }
+
         }
 
         SilicaListView {
             id: chatListView
             anchors {
-                top: pageHeader.bottom
+                top: headerRow.bottom
                 bottom: parent.bottom
                 left: parent.left
                 right: parent.right
@@ -250,7 +325,7 @@ Page {
             clip: true
             opacity: overviewPage.chatListCreated ? 1 : 0
             Behavior on opacity { FadeAnimation {} }
-            model: chatListModel
+            model: chatSearchField.text !== "" ? chatListProxyModel : chatListModel
             delegate: ChatListViewItem {
                 ownUserId: overviewPage.ownUserId
                 isVerified: is_verified

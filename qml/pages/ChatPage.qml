@@ -332,6 +332,14 @@ Page {
         return false;
     }
 
+    function resetFocus() {
+        if (searchInChatField.text === "") {
+            chatOverviewItem.visible = true;
+        }
+        searchInChatField.focus = false;
+        chatPage.focus = true;
+    }
+
     Timer {
         id: forwardMessagesTimer
         interval: 200
@@ -345,6 +353,17 @@ Page {
                 var forwardedToSecretChat = chatInformation.type["@type"] === "chatTypeSecret";
                 tdLibWrapper.forwardMessages(chatInformation.id, fromChatId, messageIds, forwardedToSecretChat, false);
             }
+        }
+    }
+
+    Timer {
+        id: searchInChatTimer
+        interval: 300
+        running: false
+        repeat: false
+        onTriggered: {
+            Debug.log("Searching for '" + searchInChatField.text + "'");
+            chatModel.setSearchQuery(searchInChatField.text);
         }
     }
 
@@ -461,7 +480,7 @@ Page {
             chatView.lastReadSentIndex = lastReadSentIndex;
             chatView.scrollToIndex(modelIndex);
             chatPage.loading = false;
-            if (modelIndex >= (chatView.count - 10)) {
+            if (chatOverviewItem.visible && modelIndex >= (chatView.count - 10)) {
                 chatView.inCooldown = true;
                 chatModel.triggerLoadMoreFuture();
             }
@@ -470,6 +489,8 @@ Page {
                 Debug.log("[ChatPage] Chat content quite small...");
                 viewMessageTimer.queueViewMessage(chatView.count - 1);
             }
+
+            chatViewCooldownTimer.restart();
         }
         onNewMessageReceived: {
             if (chatView.manuallyScrolledToBottom || message.sender.user_id === chatPage.myUserId) {
@@ -480,7 +501,7 @@ Page {
         onUnreadCountUpdated: {
             Debug.log("[ChatPage] Unread count updated, new count: ", unreadCount);
             chatInformation.unread_count = unreadCount;
-            chatUnreadMessagesCountBackground.visible = ( !chatPage.loading && unreadCount > 0 );
+            chatUnreadMessagesItem.visible = ( !chatPage.loading && chatInformation.unread_count > 0 && chatOverviewItem.visible );
             chatUnreadMessagesCount.text = unreadCount > 99 ? "99+" : unreadCount;
         }
         onLastReadSentMessageUpdated: {
@@ -490,7 +511,7 @@ Page {
         onMessagesIncrementalUpdate: {
             Debug.log("Incremental update received. View now has ", chatView.count, " messages, view is on index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
             chatView.lastReadSentIndex = lastReadSentIndex;
-            chatViewCooldownTimer.start();
+            chatViewCooldownTimer.restart();
         }
         onNotificationSettingsUpdated: {
             chatInformation = chatModel.getChatInformation();
@@ -630,6 +651,17 @@ Page {
                 }
                 text: chatInformation.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
             }
+
+            MenuItem {
+                id: searchInChatMenuItem
+                visible: !chatPage.isSecretChat && chatOverviewItem.visible
+                onClicked: {
+                    // This automatically shows the search field as well
+                    chatOverviewItem.visible = false;
+                    searchInChatField.focus = true;
+                }
+                text: qsTr("Search in Chat")
+            }
         }
 
         BackgroundItem {
@@ -703,6 +735,8 @@ Page {
 
                 Item {
                     id: chatOverviewItem
+                    opacity: visible ? 1 : 0
+                    Behavior on opacity { FadeAnimation {} }
                     width: parent.width - chatPictureThumbnail.width - Theme.paddingMedium
                     height: chatNameText.height + chatStatusText.height
                     anchors.bottom: parent.bottom
@@ -733,6 +767,39 @@ Page {
                         color: headerMouseArea.pressed ? Theme.secondaryHighlightColor : Theme.secondaryColor
                         truncationMode: TruncationMode.Fade
                         maximumLineCount: 1
+                    }
+                }
+
+                Item {
+                    id: searchInChatItem
+                    visible: !chatOverviewItem.visible
+                    opacity: visible ? 1 : 0
+                    Behavior on opacity { FadeAnimation {} }
+                    width: parent.width - chatPictureThumbnail.width - Theme.paddingMedium
+                    height: searchInChatField.height
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: chatPage.isPortrait ? Theme.paddingSmall : 0
+
+                    SearchField {
+                        id: searchInChatField
+                        visible: false
+                        width: visible ? parent.width : 0
+                        placeholderText: qsTr("Search in chat...")
+                        active: searchInChatItem.visible
+                        canHide: text === ""
+
+                        onTextChanged: {
+                            searchInChatTimer.restart();
+                        }
+
+                        onHideClicked: {
+                            resetFocus();
+                        }
+
+                        EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                        EnterKey.onClicked: {
+                            resetFocus();
+                        }
                     }
                 }
             }
@@ -823,7 +890,7 @@ Page {
 
                     function handleScrollPositionChanged() {
                         Debug.log("Current position: ", chatView.contentY);
-                        if (chatInformation.unread_count > 0) {
+                        if (chatOverviewItem.visible && chatInformation.unread_count > 0) {
                             var bottomIndex = chatView.indexAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin ));
                             if (bottomIndex > -1) {
                                 viewMessageTimer.queueViewMessage(bottomIndex)
@@ -850,7 +917,7 @@ Page {
                                 Debug.log("[ChatPage] Trying to get older history items...");
                                 chatView.inCooldown = true;
                                 chatModel.triggerLoadMoreHistory();
-                            } else if (chatView.indexAt(chatView.contentX, chatView.contentY) > ( count - 10)) {
+                            } else if (chatOverviewItem.visible && chatView.indexAt(chatView.contentX, chatView.contentY) > ( count - 10)) {
                                 Debug.log("[ChatPage] Trying to get newer history items...");
                                 chatView.inCooldown = true;
                                 chatModel.triggerLoadMoreFuture();
@@ -986,12 +1053,13 @@ Page {
                     anchors.rightMargin: Theme.paddingMedium
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: Theme.paddingMedium
+                    visible: !chatPage.loading && chatInformation.unread_count > 0 && chatOverviewItem.visible
                     Rectangle {
                         id: chatUnreadMessagesCountBackground
                         color: Theme.highlightBackgroundColor
                         anchors.fill: parent
                         radius: width / 2
-                        visible: !chatPage.loading && chatInformation.unread_count > 0
+                        visible: chatUnreadMessagesItem.visible
                     }
 
                     Text {
@@ -1000,7 +1068,7 @@ Page {
                         font.bold: true
                         color: Theme.primaryColor
                         anchors.centerIn: chatUnreadMessagesCountBackground
-                        visible: chatUnreadMessagesCountBackground.visible
+                        visible: chatUnreadMessagesItem.visible
                         text: chatInformation.unread_count > 99 ? "99+" : chatInformation.unread_count
                     }
                     MouseArea {

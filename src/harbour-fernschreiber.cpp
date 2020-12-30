@@ -88,6 +88,11 @@ int main(int argc, char *argv[])
 
     ChatListModel chatListModel(tdLibWrapper);
     context->setContextProperty("chatListModel", &chatListModel);
+    QSortFilterProxyModel chatListProxyModel(view.data());
+    chatListProxyModel.setSourceModel(&chatListModel);
+    chatListProxyModel.setFilterRole(ChatListModel::RoleFilter);
+    chatListProxyModel.setFilterCaseSensitivity(Qt::CaseInsensitive);
+    context->setContextProperty("chatListProxyModel", &chatListProxyModel);
 
     ChatModel chatModel(tdLibWrapper);
     context->setContextProperty("chatModel", &chatModel);

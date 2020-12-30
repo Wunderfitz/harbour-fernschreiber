@@ -381,6 +381,14 @@
         <source>Close Chat</source>
         <translation>Cerrar charla</translation>
     </message>
+    <message>
+        <source>Search in Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search in chat...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1034,6 +1042,14 @@
         <translation>Nueva charla</translation>
     </message>
     <message>
+        <source>Filter your chats...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search Chats</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Download of %1 successful.</source>
         <translation type="unfinished">Bajada de %1 exitosa.</translation>
     </message>
@@ -1225,6 +1241,49 @@
         <translation>
             <numerusform>%Ln votos incluyendo el suyo</numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>SearchChatsPage</name>
+    <message>
+        <source>No chats found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Searching chats...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Private Chat</source>
+        <translation type="unfinished">Privado</translation>
+    </message>
+    <message>
+        <source>Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 members</source>
+        <translation type="unfinished">%1 miembros</translation>
+    </message>
+    <message>
+        <source>%1 subscribers</source>
+        <translation type="unfinished">%1 suscriptores</translation>
+    </message>
+    <message>
+        <source>Search Chats</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search a chat...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your query to start searching (at least 5 characters needed)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

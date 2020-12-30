@@ -156,11 +156,13 @@ QVariant ChatModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void ChatModel::clear()
+void ChatModel::clear(bool contentOnly)
 {
     LOG("Clearing chat model");
     inReload = false;
     inIncrementalUpdate = false;
+    searchModeActive = false;
+    searchQuery.clear();
     if (!messages.isEmpty()) {
         beginResetModel();
         qDeleteAll(messages);
@@ -168,13 +170,16 @@ void ChatModel::clear()
         messageIndexMap.clear();
         endResetModel();
     }
-    if (!chatInformation.isEmpty()) {
-        chatInformation.clear();
-        emit smallPhotoChanged();
-    }
-    if (chatId) {
-        chatId = 0;
-        emit chatIdChanged();
+
+    if (!contentOnly) {
+        if (!chatInformation.isEmpty()) {
+            chatInformation.clear();
+            emit smallPhotoChanged();
+        }
+        if (chatId) {
+            chatId = 0;
+            emit chatIdChanged();
+        }
     }
 }
 
@@ -188,6 +193,7 @@ void ChatModel::initialize(const QVariantMap &chatInformation)
     this->chatId = chatId;
     this->messages.clear();
     this->messageIndexMap.clear();
+    this->searchQuery.clear();
     endResetModel();
     emit chatIdChanged();
     emit smallPhotoChanged();
@@ -197,15 +203,21 @@ void ChatModel::initialize(const QVariantMap &chatInformation)
 void ChatModel::triggerLoadMoreHistory()
 {
     if (!this->inIncrementalUpdate && !messages.isEmpty()) {
-        LOG("Trigger loading older history...");
-        this->inIncrementalUpdate = true;
-        this->tdLibWrapper->getChatHistory(chatId, messages.first()->messageId);
+        if (searchModeActive) {
+            LOG("Trigger loading older found messages...");
+            this->inIncrementalUpdate = true;
+            this->tdLibWrapper->searchChatMessages(chatId, searchQuery, messages.first()->messageId);
+        } else {
+            LOG("Trigger loading older history...");
+            this->inIncrementalUpdate = true;
+            this->tdLibWrapper->getChatHistory(chatId, messages.first()->messageId);
+        }
     }
 }
 
 void ChatModel::triggerLoadMoreFuture()
 {
-    if (!this->inIncrementalUpdate && !messages.isEmpty()) {
+    if (!this->inIncrementalUpdate && !messages.isEmpty() && !searchModeActive) {
         LOG("Trigger loading newer future...");
         this->inIncrementalUpdate = true;
         this->tdLibWrapper->getChatHistory(chatId, messages.last()->messageId, -49);
@@ -221,9 +233,8 @@ QVariantMap ChatModel::getMessage(int index)
 {
     if (index >= 0 && index < messages.size()) {
         return messages.at(index)->messageData;
-    } else {
-        return QVariantMap();
     }
+    return QVariantMap();
 }
 
 int ChatModel::getLastReadMessageIndex()
@@ -247,6 +258,20 @@ int ChatModel::getLastReadMessageIndex()
     }
 }
 
+void ChatModel::setSearchQuery(const QString newSearchQuery)
+{
+    if (this->searchQuery != newSearchQuery) {
+        this->clear(true);
+        this->searchQuery = newSearchQuery;
+        this->searchModeActive = !this->searchQuery.isEmpty();
+        if (this->searchModeActive) {
+            this->tdLibWrapper->searchChatMessages(this->chatId, this->searchQuery);
+        } else {
+            this->tdLibWrapper->getChatHistory(chatId, this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong());
+        }
+    }
+}
+
 QVariantMap ChatModel::smallPhoto() const
 {
     return chatInformation.value(PHOTO).toMap().value(SMALL).toMap();
@@ -260,6 +285,7 @@ qlonglong ChatModel::getChatId() const
 void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCount)
 {
     LOG("Receiving new messages :)" << messages.size());
+    LOG("Received while search mode is" << searchModeActive);
 
     if (messages.size() == 0) {
         LOG("No additional messages loaded, notifying chat UI...");
@@ -276,6 +302,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
         if (this->isMostRecentMessageLoaded() || this->inIncrementalUpdate) {
             QList<MessageData*> messagesToBeAdded;
             QListIterator<QVariant> messagesIterator(messages);
+
             while (messagesIterator.hasNext()) {
                 const QVariantMap messageData = messagesIterator.next().toMap();
                 const qlonglong messageId = messageData.value(ID).toLongLong();
@@ -295,7 +322,11 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
             if (!messagesToBeAdded.isEmpty() && (messagesToBeAdded.size() + messages.size()) < 10 && !inReload) {
                 LOG("Only a few messages received in first call, loading more...");
                 this->inReload = true;
-                this->tdLibWrapper->getChatHistory(chatId, messagesToBeAdded.first()->messageId, 0);
+                if (this->searchModeActive) {
+                    this->tdLibWrapper->searchChatMessages(chatId, searchQuery, messagesToBeAdded.first()->messageId);
+                } else {
+                    this->tdLibWrapper->getChatHistory(chatId, messagesToBeAdded.first()->messageId, 0);
+                }
             } else {
                 LOG("Messages loaded, notifying chat UI...");
                 this->inReload = false;
@@ -322,7 +353,7 @@ void ChatModel::handleNewMessageReceived(qlonglong chatId, const QVariantMap &me
 {
     const qlonglong messageId = message.value(ID).toLongLong();
     if (chatId == this->chatId && !messageIndexMap.contains(messageId)) {
-        if (this->isMostRecentMessageLoaded()) {
+        if (this->isMostRecentMessageLoaded() && !this->searchModeActive) {
             LOG("New message received for this chat");
             QList<MessageData*> messagesToBeAdded;
             messagesToBeAdded.append(new MessageData(message, messageId));
@@ -449,27 +480,40 @@ void ChatModel::handleMessagesDeleted(qlonglong chatId, const QList<qlonglong> &
     if (chatId == this->chatId) {
         const int count = messageIds.size();
         LOG(count << "messages in this chat were deleted...");
-        int firstDeleted = -1, lastDeleted = -2;
-        for (int i = 0; i < count; i++) {
-            const int pos = messageIndexMap.value(messageIds.at(i), -1);
-            if (pos >= 0) {
-                if (pos == lastDeleted + 1) {
-                    lastDeleted = pos; // Extend the current range
+
+        int firstPosition = count, lastPosition = count;
+        for (int i = (count - 1); i > -1; i--) {
+            const int position = messageIndexMap.value(messageIds.at(i), -1);
+            if (position >= 0) {
+                // We found at least one message in our list that needs to be deleted
+                if (lastPosition == count) {
+                    lastPosition = position;
+                }
+                if (firstPosition == count) {
+                    firstPosition = position;
+                }
+                if (position < (firstPosition - 1)) {
+                    // Some gap in between, can remove previous range and reset positions
+                    removeRange(firstPosition, lastPosition);
+                    firstPosition = lastPosition = position;
                 } else {
-                    removeRange(firstDeleted, lastDeleted);
-                    firstDeleted = lastDeleted = pos; // Start new range
+                    // No gap in between, extend the range and continue loop
+                    firstPosition = position;
                 }
             }
         }
-        // Handle the last (and likely the only) range
-        removeRange(firstDeleted, lastDeleted);
+        // After all elements have been processed, there may be one last range to remove
+        // But only if we found at least one item to remove
+        if (firstPosition != count && lastPosition != count) {
+            removeRange(firstPosition, lastPosition);
+        }
     }
 }
 
 void ChatModel::removeRange(int firstDeleted, int lastDeleted)
 {
     if (firstDeleted >= 0 && firstDeleted <= lastDeleted) {
-        LOG("Removing range" << firstDeleted << "..." << lastDeleted);
+        LOG("Removing range" << firstDeleted << "..." << lastDeleted << "| current messages size" << messages.size());
         beginRemoveRows(QModelIndex(), firstDeleted, lastDeleted);
         for (int i = firstDeleted; i <= lastDeleted; i++) {
             MessageData *message = messages.at(i);
