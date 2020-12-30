@@ -92,6 +92,11 @@ Page {
         running: false
         repeat: false
         onTriggered: {
+            if (chatSearchField.text === "") {
+                chatListView.model = chatListModel;
+            } else {
+                chatListView.model = chatListProxyModel;
+            }
             chatListProxyModel.setFilterWildcard("*" + chatSearchField.text + "*");
         }
     }
@@ -325,7 +330,7 @@ Page {
             clip: true
             opacity: overviewPage.chatListCreated ? 1 : 0
             Behavior on opacity { FadeAnimation {} }
-            model: chatSearchField.text !== "" ? chatListProxyModel : chatListModel
+            model: chatListModel
             delegate: ChatListViewItem {
                 ownUserId: overviewPage.ownUserId
                 isVerified: is_verified
