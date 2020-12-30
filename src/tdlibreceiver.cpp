@@ -43,6 +43,7 @@ namespace {
     const QString LAST_MESSAGE("last_message");
     const QString TOTAL_COUNT("total_count");
     const QString UNREAD_COUNT("unread_count");
+    const QString TEXT("text");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
     const QString SECRET_CHAT("secret_chat");
@@ -134,6 +135,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("importedContacts", &TDLibReceiver::processImportedContacts);
     handlers.insert("updateMessageEdited", &TDLibReceiver::processUpdateMessageEdited);
     handlers.insert("updateChatIsMarkedAsUnread", &TDLibReceiver::processUpdateChatIsMarkedAsUnread);
+    handlers.insert("updateChatDraftMessage", &TDLibReceiver::processUpdateChatDraftMessage);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -575,4 +577,10 @@ void TDLibReceiver::processUpdateChatIsMarkedAsUnread(const QVariantMap &receive
 {
     LOG("The unread state of a chat was updated");
     emit chatIsMarkedAsUnreadUpdated(receivedInformation.value(CHAT_ID).toLongLong(), receivedInformation.value("is_marked_as_unread").toBool());
+}
+
+void TDLibReceiver::processUpdateChatDraftMessage(const QVariantMap &receivedInformation)
+{
+    LOG("Draft message was updated");
+    emit chatDraftMessageUpdated(receivedInformation.value(CHAT_ID).toLongLong(), receivedInformation.value("draft_message").toMap(), findChatPositionOrder(receivedInformation.value(POSITIONS).toList()));
 }
