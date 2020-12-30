@@ -171,7 +171,7 @@ ListItem {
     Connections {
         target: tdLibWrapper
         onReceivedMessage: {
-            if (messageId === myMessage.reply_to_message_id.toString()) {
+            if (messageId === myMessage.reply_to_message_id) {
                 messageInReplyToLoader.inReplyToMessage = message;
             }
         }

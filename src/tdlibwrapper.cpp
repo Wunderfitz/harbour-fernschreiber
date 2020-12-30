@@ -40,6 +40,7 @@ namespace {
     const QString STATUS("status");
     const QString ID("id");
     const QString CHAT_ID("chat_id");
+    const QString MESSAGE_ID("message_id");
     const QString TYPE("type");
     const QString LAST_NAME("last_name");
     const QString FIRST_NAME("first_name");
@@ -90,7 +91,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SIGNAL(chatOnlineMemberCountUpdated(QString, int)));
     connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList, int)), this, SIGNAL(messagesReceived(QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SIGNAL(newMessageReceived(qlonglong, QVariantMap)));
-    connect(this->tdLibReceiver, SIGNAL(messageInformation(QString, QVariantMap)), this, SLOT(handleMessageInformation(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageInformation(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageInformation(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SIGNAL(activeNotificationsUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(notificationGroupUpdated(QVariantMap)), this, SIGNAL(notificationGroupUpdated(QVariantMap)));
@@ -211,9 +212,9 @@ void TDLibWrapper::registerUser(const QString &firstName, const QString &lastNam
 {
     LOG("Register User " << firstName << lastName);
     QVariantMap requestObject;
-    requestObject.insert("@type", "registerUser");
-    requestObject.insert("first_name", firstName);
-    requestObject.insert("last_name", lastName);
+    requestObject.insert(_TYPE, "registerUser");
+    requestObject.insert(FIRST_NAME, firstName);
+    requestObject.insert(LAST_NAME, lastName);
     this->sendRequest(requestObject);
 }
 
@@ -244,7 +245,7 @@ void TDLibWrapper::openChat(const QString &chatId)
     LOG("Opening chat " << chatId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "openChat");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     this->sendRequest(requestObject);
 }
 
@@ -253,7 +254,7 @@ void TDLibWrapper::closeChat(const QString &chatId)
     LOG("Closing chat " << chatId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "closeChat");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     this->sendRequest(requestObject);
 }
 
@@ -262,7 +263,7 @@ void TDLibWrapper::joinChat(const QString &chatId)
     LOG("Joining chat " << chatId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "joinChat");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     this->joinChatRequested = true;
     this->sendRequest(requestObject);
 }
@@ -272,16 +273,16 @@ void TDLibWrapper::leaveChat(const QString &chatId)
     LOG("Leaving chat " << chatId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "leaveChat");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getChatHistory(qlonglong chatId, const qlonglong &fromMessageId, int offset, int limit, bool onlyLocal)
+void TDLibWrapper::getChatHistory(qlonglong chatId, qlonglong fromMessageId, int offset, int limit, bool onlyLocal)
 {
     LOG("Retrieving chat history" << chatId << fromMessageId << offset << limit << onlyLocal);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getChatHistory");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("from_message_id", fromMessageId);
     requestObject.insert("offset", offset);
     requestObject.insert("limit", limit);
@@ -294,7 +295,7 @@ void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId, 
     LOG("Mark message as viewed" << chatId << messageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "viewMessages");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("force_read", force);
     QVariantList messageIds;
     messageIds.append(messageId);
@@ -307,8 +308,8 @@ void TDLibWrapper::pinMessage(const QString &chatId, const QString &messageId, b
     LOG("Pin message to chat" << chatId << messageId << disableNotification);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "pinChatMessage");
-    requestObject.insert("chat_id", chatId);
-    requestObject.insert("message_id", messageId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
     requestObject.insert("disable_notification", disableNotification);
     this->sendRequest(requestObject);
 }
@@ -318,8 +319,8 @@ void TDLibWrapper::unpinMessage(const QString &chatId, const QString &messageId)
     LOG("Unpin message from chat" << chatId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "unpinChatMessage");
-    requestObject.insert("chat_id", chatId);
-    requestObject.insert("message_id", messageId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
     requestObject.insert(_EXTRA, "unpinChatMessage:" + chatId);
     this->sendRequest(requestObject);
 }
@@ -341,7 +342,7 @@ void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message
     LOG("Sending text message" << chatId << message << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     if (replyToMessageId != "0") {
         requestObject.insert("reply_to_message_id", replyToMessageId);
     }
@@ -402,7 +403,7 @@ void TDLibWrapper::sendPhotoMessage(const QString &chatId, const QString &filePa
     LOG("Sending photo message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     if (replyToMessageId != "0") {
         requestObject.insert("reply_to_message_id", replyToMessageId);
     }
@@ -426,7 +427,7 @@ void TDLibWrapper::sendVideoMessage(const QString &chatId, const QString &filePa
     LOG("Sending video message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     if (replyToMessageId != "0") {
         requestObject.insert("reply_to_message_id", replyToMessageId);
     }
@@ -450,7 +451,7 @@ void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &fil
     LOG("Sending document message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     if (replyToMessageId != "0") {
         requestObject.insert("reply_to_message_id", replyToMessageId);
     }
@@ -474,7 +475,7 @@ void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &file
     LOG("Sending sticker message" << chatId << fileId << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     if (replyToMessageId != "0") {
         requestObject.insert("reply_to_message_id", replyToMessageId);
     }
@@ -491,12 +492,12 @@ void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &file
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, const bool &anonymous, const int &correctOption, const bool &multiple, const QString &replyToMessageId)
+void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &replyToMessageId)
 {
     LOG("Sending poll message" << chatId << question << replyToMessageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     if (replyToMessageId != "0") {
         requestObject.insert("reply_to_message_id", replyToMessageId);
     }
@@ -521,12 +522,12 @@ void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &questio
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, const bool sendCopy, const bool removeCaption)
+void TDLibWrapper::forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, bool sendCopy, bool removeCaption)
 {
     LOG("Forwarding messages" << chatId << fromChatId << messageIds);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "forwardMessages");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("from_chat_id", fromChatId);
     requestObject.insert("message_ids", messageIds);
     requestObject.insert("send_copy", sendCopy);
@@ -535,14 +536,14 @@ void TDLibWrapper::forwardMessages(const QString &chatId, const QString &fromCha
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getMessage(const QString &chatId, const QString &messageId)
+void TDLibWrapper::getMessage(qlonglong chatId, qlonglong messageId)
 {
     LOG("Retrieving message" << chatId << messageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getMessage");
-    requestObject.insert("chat_id", chatId);
-    requestObject.insert("message_id", messageId);
-    requestObject.insert(_EXTRA, "getMessage:" + messageId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    requestObject.insert(_EXTRA, QString("getMessage:%1:%2").arg(chatId).arg(messageId));
     this->sendRequest(requestObject);
 }
 
@@ -551,18 +552,18 @@ void TDLibWrapper::getCallbackQueryAnswer(const QString &chatId, const QString &
     LOG("Getting Callback Query Answer" << chatId << messageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getCallbackQueryAnswer");
-    requestObject.insert("chat_id", chatId);
-    requestObject.insert("message_id", messageId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
     requestObject.insert("payload", payload);
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getChatPinnedMessage(const qlonglong &chatId)
+void TDLibWrapper::getChatPinnedMessage(qlonglong chatId)
 {
     LOG("Retrieving pinned message" << chatId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getChatPinnedMessage");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert(_EXTRA, "getChatPinnedMessage:" + QString::number(chatId));
     this->sendRequest(requestObject);
 }
@@ -596,7 +597,7 @@ void TDLibWrapper::setChatNotificationSettings(const QString &chatId, const QVar
     LOG("Notification settings for chat " << chatId << notificationSettings);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setChatNotificationSettings");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("notification_settings", notificationSettings);
     this->sendRequest(requestObject);
 }
@@ -606,8 +607,8 @@ void TDLibWrapper::editMessageText(const QString &chatId, const QString &message
     LOG("Editing message text" << chatId << messageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "editMessageText");
-    requestObject.insert("chat_id", chatId);
-    requestObject.insert("message_id", messageId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageText");
     QVariantMap formattedText;
@@ -622,7 +623,7 @@ void TDLibWrapper::deleteMessages(const QString &chatId, const QVariantList mess
     LOG("Deleting some messages" << chatId << messageIds);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "deleteMessages");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("message_ids", messageIds);
     requestObject.insert("revoke", true);
     this->sendRequest(requestObject);
@@ -646,7 +647,7 @@ void TDLibWrapper::getMapThumbnailFile(const QString &chatId, double latitude, d
     requestObject.insert("width", boundsWidth);
     requestObject.insert("height", boundsHeight);
     requestObject.insert("scale", 1); // 1-3
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
 
     this->sendRequest(requestObject);
 }
@@ -782,7 +783,7 @@ void TDLibWrapper::setChatPermissions(const QString &chatId, const QVariantMap &
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setChatPermissions");
     requestObject.insert(_EXTRA, chatId);
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("permissions", chatPermissions);
     this->sendRequest(requestObject);
 }
@@ -793,7 +794,7 @@ void TDLibWrapper::setChatSlowModeDelay(const QString &chatId, int delay)
     LOG("Setting Chat Slow Mode Delay");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setChatSlowModeDelay");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("slow_mode_delay", delay);
     this->sendRequest(requestObject);
 }
@@ -803,7 +804,7 @@ void TDLibWrapper::setChatDescription(const QString &chatId, const QString &desc
     LOG("Setting Chat Description");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setChatDescription");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("description", description);
     this->sendRequest(requestObject);
 }
@@ -813,7 +814,7 @@ void TDLibWrapper::setChatTitle(const QString &chatId, const QString &title)
     LOG("Setting Chat Title");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setChatTitle");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("title", title);
     this->sendRequest(requestObject);
 }
@@ -837,35 +838,35 @@ void TDLibWrapper::toggleSupergroupIsAllHistoryAvailable(const QString &groupId,
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::setPollAnswer(const QString &chatId, const qlonglong &messageId, QVariantList optionIds)
+void TDLibWrapper::setPollAnswer(const QString &chatId, qlonglong messageId, QVariantList optionIds)
 {
     LOG("Setting Poll Answer");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setPollAnswer");
-    requestObject.insert("chat_id", chatId);
-    requestObject.insert("message_id", messageId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
     requestObject.insert("option_ids", optionIds);
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::stopPoll(const QString &chatId, const qlonglong &messageId)
+void TDLibWrapper::stopPoll(const QString &chatId, qlonglong messageId)
 {
     LOG("Stopping Poll");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "stopPoll");
-    requestObject.insert("chat_id", chatId);
-    requestObject.insert("message_id", messageId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getPollVoters(const QString &chatId, const qlonglong &messageId, const int &optionId, const int &limit, const int &offset, const QString &extra)
+void TDLibWrapper::getPollVoters(const QString &chatId, qlonglong messageId, int optionId, int limit, int offset, const QString &extra)
 {
     LOG("Retrieving Poll Voters");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getPollVoters");
     requestObject.insert(_EXTRA, extra);
-    requestObject.insert("chat_id", chatId);
-    requestObject.insert("message_id", messageId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
     requestObject.insert("option_id", optionId);
     requestObject.insert("offset", offset);
     requestObject.insert("limit", limit); //max 50
@@ -878,7 +879,7 @@ void TDLibWrapper::searchPublicChat(const QString &userName)
     this->activeChatSearchName = userName;
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "searchPublicChat");
-    requestObject.insert("username", userName);
+    requestObject.insert(USERNAME, userName);
     this->sendRequest(requestObject);
 }
 
@@ -937,12 +938,12 @@ void TDLibWrapper::importContacts(const QVariantList &contacts)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::searchChatMessages(const qlonglong &chatId, const QString &query, const qlonglong fromMessageId)
+void TDLibWrapper::searchChatMessages(qlonglong chatId, const QString &query, qlonglong fromMessageId)
 {
     LOG("Searching for messages" << chatId << query << fromMessageId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "searchChatMessages");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("query", query);
     requestObject.insert("from_message_id", fromMessageId);
     requestObject.insert("offset", 0);
@@ -966,7 +967,7 @@ void TDLibWrapper::readAllChatMentions(qlonglong chatId)
     LOG("Read all chat mentions" << chatId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "readAllChatMentions");
-    requestObject.insert("chat_id", chatId);
+    requestObject.insert(CHAT_ID, chatId);
     this->sendRequest(requestObject);
 }
 
@@ -1203,9 +1204,9 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
         LOG("Own user information updated :)");
         this->userInformation = userInformation;
     }
-    LOG("User information updated:" << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString());
+    LOG("User information updated:" << userInformation.value(USERNAME).toString() << userInformation.value(FIRST_NAME).toString() << userInformation.value(LAST_NAME).toString());
     this->allUsers.insert(updatedUserId, userInformation);
-    this->allUserNames.insert(userInformation.value("username").toString(), userInformation);
+    this->allUserNames.insert(userInformation.value(USERNAME).toString(), userInformation);
     emit userUpdated(updatedUserId, userInformation);
 }
 
@@ -1219,7 +1220,7 @@ void TDLibWrapper::handleUserStatusUpdated(const QString &userId, const QVariant
     QVariantMap updatedUserInformation = this->allUsers.value(userId).toMap();
     updatedUserInformation.insert("status", userStatusInformation);
     this->allUsers.insert(userId, updatedUserInformation);
-    this->allUserNames.insert(userInformation.value("username").toString(), userInformation);
+    this->allUserNames.insert(userInformation.value(USERNAME).toString(), userInformation);
     emit userUpdated(userId, updatedUserInformation);
 }
 
@@ -1273,7 +1274,7 @@ void TDLibWrapper::handleUnreadChatCountUpdated(const QVariantMap &chatCountInfo
 void TDLibWrapper::handleBasicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation)
 {
     emit basicGroupUpdated(updateGroup(groupId, groupInformation, &basicGroups)->groupId);
-    if (!this->activeChatSearchName.isEmpty() && this->activeChatSearchName == groupInformation.value("username").toString()) {
+    if (!this->activeChatSearchName.isEmpty() && this->activeChatSearchName == groupInformation.value(USERNAME).toString()) {
         LOG("Found basic group for active search" << this->activeChatSearchName);
         this->activeChatSearchName.clear();
         this->createBasicGroupChat(groupInformation.value(ID).toString());
@@ -1283,7 +1284,7 @@ void TDLibWrapper::handleBasicGroupUpdated(qlonglong groupId, const QVariantMap 
 void TDLibWrapper::handleSuperGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation)
 {
     emit superGroupUpdated(updateGroup(groupId, groupInformation, &superGroups)->groupId);
-    if (!this->activeChatSearchName.isEmpty() && this->activeChatSearchName == groupInformation.value("username").toString()) {
+    if (!this->activeChatSearchName.isEmpty() && this->activeChatSearchName == groupInformation.value(USERNAME).toString()) {
         LOG("Found supergroup for active search" << this->activeChatSearchName);
         this->activeChatSearchName.clear();
         this->createSupergroupChat(groupInformation.value(ID).toString());
@@ -1332,21 +1333,24 @@ void TDLibWrapper::handleStorageOptimizerChanged()
     setOptionBoolean("use_storage_optimizer", appSettings->storageOptimizer());
 }
 
-void TDLibWrapper::handleErrorReceived(const int code, const QString &message, const QString &extra)
+void TDLibWrapper::handleErrorReceived(int code, const QString &message, const QString &extra)
 {
-    if (code == 404 && extra.startsWith("getMessage:")) {
-        emit messageNotFound(extra.mid(11).toLongLong());
+    if (!extra.isEmpty()) {
+        QStringList parts(extra.split(':'));
+        if (parts.size() == 3 && parts.at(0) == QStringLiteral("getMessage")) {
+            emit messageNotFound(parts.at(1).toLongLong(), parts.at(2).toLongLong());
+        }
     }
     emit errorReceived(code, message, extra);
 }
 
-void TDLibWrapper::handleMessageInformation(const QString &messageId, const QVariantMap &receivedInformation)
+void TDLibWrapper::handleMessageInformation(qlonglong chatId, qlonglong messageId, const QVariantMap &receivedInformation)
 {
     QString extraInformation = receivedInformation.value(_EXTRA).toString();
-    if (extraInformation.startsWith("getChatPinnedMessage")) {
-        emit chatPinnedMessageUpdated(receivedInformation.value(CHAT_ID).toLongLong(), messageId.toLongLong());
+    if (extraInformation.startsWith("getChatPinnedMessage:")) {
+        emit chatPinnedMessageUpdated(chatId, messageId);
     }
-    emit receivedMessage(messageId, receivedInformation);
+    emit receivedMessage(chatId, messageId, receivedInformation);
 }
 
 void TDLibWrapper::handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned)

@@ -131,7 +131,7 @@ public:
     Q_INVOKABLE void closeChat(const QString &chatId);
     Q_INVOKABLE void joinChat(const QString &chatId);
     Q_INVOKABLE void leaveChat(const QString &chatId);
-    Q_INVOKABLE void getChatHistory(qlonglong chatId, const qlonglong &fromMessageId = 0, int offset = -1, int limit = 50, bool onlyLocal = false);
+    Q_INVOKABLE void getChatHistory(qlonglong chatId, qlonglong fromMessageId = 0, int offset = -1, int limit = 50, bool onlyLocal = false);
     Q_INVOKABLE void viewMessage(const QString &chatId, const QString &messageId, bool force);
     Q_INVOKABLE void pinMessage(const QString &chatId, const QString &messageId, bool disableNotification = false);
     Q_INVOKABLE void unpinMessage(const QString &chatId, const QString &messageId);
@@ -140,11 +140,11 @@ public:
     Q_INVOKABLE void sendVideoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendDocumentMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendStickerMessage(const QString &chatId, const QString &fileId, const QString &replyToMessageId = "0");
-    Q_INVOKABLE void sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, const bool &anonymous, const int &correctOption, const bool &multiple, const QString &replyToMessageId = "0");
-    Q_INVOKABLE void forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, const bool sendCopy, const bool removeCaption);
-    Q_INVOKABLE void getMessage(const QString &chatId, const QString &messageId);
+    Q_INVOKABLE void sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &replyToMessageId = "0");
+    Q_INVOKABLE void forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, bool sendCopy, bool removeCaption);
+    Q_INVOKABLE void getMessage(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void getCallbackQueryAnswer(const QString &chatId, const QString &messageId, const QVariantMap &payload);
-    Q_INVOKABLE void getChatPinnedMessage(const qlonglong &chatId);
+    Q_INVOKABLE void getChatPinnedMessage(qlonglong chatId);
     Q_INVOKABLE void setOptionInteger(const QString &optionName, int optionValue);
     Q_INVOKABLE void setOptionBoolean(const QString &optionName, bool optionValue);
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);
@@ -169,9 +169,9 @@ public:
     Q_INVOKABLE void setChatTitle(const QString &chatId, const QString &title);
     Q_INVOKABLE void setBio(const QString &bio);
     Q_INVOKABLE void toggleSupergroupIsAllHistoryAvailable(const QString &groupId, bool isAllHistoryAvailable);
-    Q_INVOKABLE void setPollAnswer(const QString &chatId, const qlonglong &messageId, QVariantList optionIds);
-    Q_INVOKABLE void stopPoll(const QString &chatId, const qlonglong &messageId);
-    Q_INVOKABLE void getPollVoters(const QString &chatId, const qlonglong &messageId, const int &optionId, const int &limit, const int &offset, const QString &extra);
+    Q_INVOKABLE void setPollAnswer(const QString &chatId, qlonglong messageId, QVariantList optionIds);
+    Q_INVOKABLE void stopPoll(const QString &chatId, qlonglong messageId);
+    Q_INVOKABLE void getPollVoters(const QString &chatId, qlonglong messageId, int optionId, int limit, int offset, const QString &extra);
     Q_INVOKABLE void searchPublicChat(const QString &userName);
     Q_INVOKABLE void joinChatByInviteLink(const QString &inviteLink);
     Q_INVOKABLE void getDeepLinkInfo(const QString &link);
@@ -179,7 +179,7 @@ public:
     Q_INVOKABLE void getSecretChat(qlonglong secretChatId);
     Q_INVOKABLE void closeSecretChat(qlonglong secretChatId);
     Q_INVOKABLE void importContacts(const QVariantList &contacts);
-    Q_INVOKABLE void searchChatMessages(const qlonglong &chatId, const QString &query, const qlonglong fromMessageId = 0);
+    Q_INVOKABLE void searchChatMessages(qlonglong chatId, const QString &query, qlonglong fromMessageId = 0);
     Q_INVOKABLE void searchPublicChats(const QString &query);
     Q_INVOKABLE void readAllChatMentions(qlonglong chatId);
 
@@ -216,7 +216,7 @@ signals:
     void newMessageReceived(qlonglong chatId, const QVariantMap &message);
     void copyToDownloadsSuccessful(const QString &fileName, const QString &filePath);
     void copyToDownloadsError(const QString &fileName, const QString &filePath);
-    void receivedMessage(const QString &messageId, const QVariantMap &message);
+    void receivedMessage(qlonglong chatId, qlonglong messageId, const QVariantMap &message);
     void messageSendSucceeded(qlonglong messageId, qlonglong oldMessageId, const QVariantMap &message);
     void activeNotificationsUpdated(const QVariantList notificationGroups);
     void notificationGroupUpdated(const QVariantMap notificationGroupUpdate);
@@ -248,9 +248,9 @@ signals:
     void chatTitleUpdated(const QString &chatId, const QString &title);
     void chatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
-    void errorReceived(const int code, const QString &message, const QString &extra);
+    void errorReceived(int code, const QString &message, const QString &extra);
     void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
-    void messageNotFound(const qlonglong messageId);
+    void messageNotFound(qlonglong chatId, qlonglong messageId);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -272,8 +272,8 @@ public slots:
     void handleSecretChatReceived(qlonglong secretChatId, const QVariantMap &secretChat);
     void handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void handleStorageOptimizerChanged();
-    void handleErrorReceived(const int code, const QString &message, const QString &extra);
-    void handleMessageInformation(const QString &messageId, const QVariantMap &receivedInformation);
+    void handleErrorReceived(int code, const QString &message, const QString &extra);
+    void handleMessageInformation(qlonglong chatId, qlonglong messageId, const QVariantMap &receivedInformation);
     void handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned);
 
 private:
