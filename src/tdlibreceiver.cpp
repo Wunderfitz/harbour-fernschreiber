@@ -344,10 +344,10 @@ void TDLibReceiver::processUpdateNewMessage(const QVariantMap &receivedInformati
 
 void TDLibReceiver::processMessage(const QVariantMap &receivedInformation)
 {
-    const QString chatId = receivedInformation.value(CHAT_ID).toString();
-    const QString messageId = receivedInformation.value(ID).toString();
+    const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
+    const qlonglong messageId = receivedInformation.value(ID).toLongLong();
     LOG("Received message " << chatId << messageId);
-    emit messageInformation(messageId, receivedInformation);
+    emit messageInformation(chatId, messageId, receivedInformation);
 }
 
 void TDLibReceiver::processMessageSendSucceeded(const QVariantMap &receivedInformation)

@@ -56,7 +56,7 @@ signals:
     void chatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount);
     void messagesReceived(const QVariantList &messages, int totalCount);
     void newMessageReceived(qlonglong chatId, const QVariantMap &message);
-    void messageInformation(const QString &messageId, const QVariantMap &message);
+    void messageInformation(qlonglong chatId, qlonglong messageId, const QVariantMap &message);
     void messageSendSucceeded(qlonglong messageId, qlonglong oldMessageId, const QVariantMap &message);
     void activeNotificationsUpdated(const QVariantList notificationGroups);
     void notificationGroupUpdated(const QVariantMap notificationGroupUpdate);
