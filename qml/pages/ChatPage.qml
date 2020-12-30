@@ -1479,7 +1479,7 @@ Page {
 
                     TextArea {
                         id: newMessageTextField
-                        width: parent.width - attachmentIconButton.width - (appSettings.sendByEnter ? 0: newMessageSendButton.width)
+                        width: parent.width - attachmentIconButton.width - (newMessageSendButton.visible ? newMessageSendButton.width : 0)
                         height: Math.min(chatContainer.height / 3, implicitHeight)
                         anchors.verticalCenter: parent.verticalCenter
                         font.pixelSize: Theme.fontSizeSmall
@@ -1525,7 +1525,7 @@ Page {
                         icon.source: "image://theme/icon-m-chat"
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
-                        visible: !appSettings.sendByEnter
+                        visible: !appSettings.sendByEnter || attachmentPreviewRow.visible
                         enabled: false
                         onClicked: {
                             sendMessage();
