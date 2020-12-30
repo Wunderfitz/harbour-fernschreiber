@@ -46,6 +46,7 @@ public:
         RoleSecretChatState,
         RoleIsVerified,
         RoleIsChannel,
+        RoleIsMarkedAsUnread,
         RoleFilter
     };
 
@@ -76,6 +77,7 @@ private slots:
     void handleGroupUpdated(qlonglong groupId);
     void handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void handleChatTitleUpdated(const QString &chatId, const QString &title);
+    void handleChatIsMarkedAsUnreadUpdated(qlonglong chatId, bool chatIsMarkedAsUnread);
     void handleRelativeTimeRefreshTimer();
 
 signals:

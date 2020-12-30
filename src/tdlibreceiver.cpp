@@ -133,6 +133,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateSecretChat", &TDLibReceiver::processUpdateSecretChat);
     handlers.insert("importedContacts", &TDLibReceiver::processImportedContacts);
     handlers.insert("updateMessageEdited", &TDLibReceiver::processUpdateMessageEdited);
+    handlers.insert("updateChatIsMarkedAsUnread", &TDLibReceiver::processUpdateChatIsMarkedAsUnread);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -568,4 +569,10 @@ void TDLibReceiver::processImportedContacts(const QVariantMap &receivedInformati
 {
     LOG("Contacts were imported");
     emit contactsImported(receivedInformation.value("importer_count").toList(), receivedInformation.value("user_ids").toList());
+}
+
+void TDLibReceiver::processUpdateChatIsMarkedAsUnread(const QVariantMap &receivedInformation)
+{
+    LOG("The unread state of a chat was updated");
+    emit chatIsMarkedAsUnreadUpdated(receivedInformation.value(CHAT_ID).toLongLong(), receivedInformation.value("is_marked_as_unread").toBool());
 }

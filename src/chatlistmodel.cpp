@@ -46,6 +46,7 @@ namespace {
     const QString SENDING_STATE("sending_state");
     const QString IS_CHANNEL("is_channel");
     const QString IS_VERIFIED("is_verified");
+    const QString IS_MARKED_AS_UNREAD("is_marked_as_unread");
     const QString PINNED_MESSAGE_ID("pinned_message_id");
     const QString _TYPE("@type");
     const QString SECRET_CHAT_ID("secret_chat_id");
@@ -72,6 +73,7 @@ public:
     QString senderMessageStatus() const;
     bool isChannel() const;
     bool isHidden() const;
+    bool isMarkedAsUnread() const;
     bool updateUnreadCount(int unreadCount);
     bool updateLastReadInboxMessageId(qlonglong messageId);
     QVector<int> updateLastMessage(const QVariantMap &message);
@@ -244,6 +246,11 @@ bool ChatListModel::ChatData::isHidden() const
     return false;
 }
 
+bool ChatListModel::ChatData::isMarkedAsUnread() const
+{
+    return chatData.value(IS_MARKED_AS_UNREAD).toBool();
+}
+
 bool ChatListModel::ChatData::updateUnreadCount(int count)
 {
     const int prevUnreadCount(unreadCount());
@@ -335,6 +342,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper) : showHiddenChats(false
     connect(tdLibWrapper, SIGNAL(secretChatUpdated(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(secretChatReceived(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
+    connect(tdLibWrapper, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)), this, SLOT(handleChatIsMarkedAsUnreadUpdated(qlonglong, bool)));
 
     // Don't start the timer until we have at least one chat
     relativeTimeRefreshTimer = new QTimer(this);
@@ -368,6 +376,7 @@ QHash<int,QByteArray> ChatListModel::roleNames() const
     roles.insert(ChatListModel::RoleSecretChatState, "secret_chat_state");
     roles.insert(ChatListModel::RoleIsVerified, "is_verified");
     roles.insert(ChatListModel::RoleIsChannel, "is_channel");
+    roles.insert(ChatListModel::RoleIsMarkedAsUnread, "is_marked_as_unread");
     roles.insert(ChatListModel::RoleFilter, "filter");
     return roles;
 }
@@ -398,6 +407,7 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RoleSecretChatState: return data->secretChatState;
         case ChatListModel::RoleIsVerified: return data->verified;
         case ChatListModel::RoleIsChannel: return data->isChannel();
+        case ChatListModel::RoleIsMarkedAsUnread: return data->isMarkedAsUnread();
         case ChatListModel::RoleFilter: return QString(data->title() + " " + data->senderMessageText()).trimmed();
         }
     }
@@ -810,6 +820,26 @@ void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString 
         if (chat) {
             LOG("Updating title for hidden chat" << chatId);
             chat->chatData.insert(TITLE, title);
+        }
+    }
+}
+
+void ChatListModel::handleChatIsMarkedAsUnreadUpdated(qlonglong chatId, bool chatIsMarkedAsUnread)
+{
+    if (chatIndexMap.contains(chatId)) {
+        LOG("Updating chat is marked as unread for" << chatId << chatIsMarkedAsUnread);
+        const int chatIndex = chatIndexMap.value(chatId);
+        ChatData *chat = chatList.at(chatIndex);
+        chat->chatData.insert(IS_MARKED_AS_UNREAD, chatIsMarkedAsUnread);
+        QVector<int> changedRoles;
+        changedRoles.append(ChatListModel::RoleIsMarkedAsUnread);
+        const QModelIndex modelIndex(index(chatIndex));
+        emit dataChanged(modelIndex, modelIndex, changedRoles);
+    } else {
+        ChatData *chat = hiddenChats.value(chatId);
+        if (chat) {
+            LOG("Updating chat is marked as unread for hidden chat" << chatId);
+            chat->chatData.insert(IS_MARKED_AS_UNREAD, chatIsMarkedAsUnread);
         }
     }
 }

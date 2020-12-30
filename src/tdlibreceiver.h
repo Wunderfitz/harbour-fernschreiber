@@ -90,6 +90,7 @@ signals:
     void secretChat(qlonglong secretChatId, const QVariantMap &secretChat);
     void secretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
+    void chatIsMarkedAsUnreadUpdated(qlonglong chatId, bool chatIsMarkedAsUnread);
 
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
@@ -155,6 +156,7 @@ private:
     void processUpdateSecretChat(const QVariantMap &receivedInformation);
     void processUpdateMessageEdited(const QVariantMap &receivedInformation);
     void processImportedContacts(const QVariantMap &receivedInformation);
+    void processUpdateChatIsMarkedAsUnread(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

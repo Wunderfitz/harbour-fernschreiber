@@ -267,6 +267,14 @@
         <source>No message in this chat.</source>
         <translation>Brak wiadomości na tym czacie.</translation>
     </message>
+    <message>
+        <source>Mark chat as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark chat as read</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatPage</name>

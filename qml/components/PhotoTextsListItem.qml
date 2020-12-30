@@ -13,6 +13,7 @@ ListItem {
     property int unreadCount: 0
     property bool isSecret: false
     property bool isVerified: false
+    property bool isMarkedAsUnread: false
     property alias pictureThumbnail: pictureThumbnail
 
     contentHeight: mainRow.height + separator.height + 2 * Theme.paddingMedium
@@ -75,7 +76,7 @@ ListItem {
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
                         radius: parent.width / 2
-                        visible: chatListViewItem.unreadCount > 0
+                        visible: chatListViewItem.unreadCount > 0 || chatListViewItem.isMarkedAsUnread
                     }
 
                     Text {
@@ -84,7 +85,7 @@ ListItem {
                         font.bold: true
                         color: Theme.primaryColor
                         anchors.centerIn: chatUnreadMessagesCountBackground
-                        visible: chatUnreadMessagesCountBackground.visible
+                        visible: chatListViewItem.unreadCount > 0
                         text: chatListViewItem.unreadCount > 99 ? "99+" : chatListViewItem.unreadCount
                     }
                 }

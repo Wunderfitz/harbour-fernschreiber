@@ -171,6 +171,7 @@ Page {
             stickerManager.setNeedsReload(false);
         }
         tdLibWrapper.getChatPinnedMessage(chatInformation.id);
+        tdLibWrapper.toggleChatIsMarkedAsUnread(chatInformation.id, false);
     }
 
     function getMessageStatusText(message, listItemIndex, lastReadSentIndex, useElapsed) {

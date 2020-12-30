@@ -264,6 +264,14 @@
         <source>No message in this chat.</source>
         <translation>Nessun messaggio.</translation>
     </message>
+    <message>
+        <source>Mark chat as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark chat as read</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatPage</name>

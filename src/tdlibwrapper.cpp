@@ -125,6 +125,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString, QString)), this, SLOT(handleErrorReceived(int, QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(contactsImported(QVariantList, QVariantList)), this, SIGNAL(contactsImported(QVariantList, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)), this, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
@@ -968,6 +969,16 @@ void TDLibWrapper::readAllChatMentions(qlonglong chatId)
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "readAllChatMentions");
     requestObject.insert(CHAT_ID, chatId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::toggleChatIsMarkedAsUnread(qlonglong chatId, bool isMarkedAsUnread)
+{
+    LOG("Toggle chat is marked as unread" << chatId << isMarkedAsUnread);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "toggleChatIsMarkedAsUnread");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("is_marked_as_unread", isMarkedAsUnread);
     this->sendRequest(requestObject);
 }
 

@@ -22,6 +22,7 @@ PhotoTextsListItem {
     tertiaryText.text: ( last_message_date ? ( last_message_date.length === 0 ? "" : Functions.getDateTimeElapsed(last_message_date) + Emoji.emojify(last_message_status, tertiaryText.font.pixelSize) ) : "" )
     unreadCount: unread_count
     isSecret: ( chat_type === TelegramAPI.ChatTypeSecret )
+    isMarkedAsUnread: is_marked_as_unread
 
     openMenuOnPressAndHold: true//chat_id != overviewPage.ownUserId
 
@@ -45,8 +46,25 @@ PhotoTextsListItem {
                     visible: unread_count > 0
                     onClicked: {
                         tdLibWrapper.viewMessage(chat_id, display.last_message.id, true);
+                        tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, false);
                     }
                     text: qsTr("Mark all messages as read")
+                }
+
+                MenuItem {
+                    visible: unread_count === 0 && !is_marked_as_unread
+                    onClicked: {
+                        tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, true);
+                    }
+                    text: qsTr("Mark chat as unread")
+                }
+
+                MenuItem {
+                    visible: unread_count === 0 && is_marked_as_unread
+                    onClicked: {
+                        tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, false);
+                    }
+                    text: qsTr("Mark chat as read")
                 }
 
                 MenuItem {
