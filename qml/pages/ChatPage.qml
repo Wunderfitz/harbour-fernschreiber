@@ -373,6 +373,7 @@ Page {
     }
 
     Component.onDestruction: {
+        tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text);
         tdLibWrapper.closeChat(chatInformation.id);
     }
 
@@ -387,6 +388,15 @@ Page {
 
                 pageStack.pushAttached(Qt.resolvedUrl("ChatInformationPage.qml"), { "chatInformation" : chatInformation, "privateChatUserInformation": chatPartnerInformation, "groupInformation": chatGroupInformation, "chatOnlineMemberCount": chatOnlineMemberCount});
                 chatPage.isInitialized = true;
+
+                if(chatInformation.draft_message) {
+                    if(chatInformation.draft_message && chatInformation.draft_message.input_message_text) {
+                        newMessageTextField.text = chatInformation.draft_message.input_message_text.text.text;
+                        if(chatInformation.draft_message.reply_to_message_id) {
+                            tdLibWrapper.getMessage(chatInformation.id, chatInformation.draft_message.reply_to_message_id);
+                        }
+                    }
+                }
             }
             break;
         case PageStatus.Inactive:
@@ -442,6 +452,9 @@ Page {
             if (message.is_pinned) {
                 Debug.log("[ChatPage] Received pinned message");
                 pinnedMessageItem.pinnedMessage = message;
+            }
+            if (messageId === chatInformation.draft_message.reply_to_message_id) {
+                newMessageInReplyToRow.inReplyToMessage = message;
             }
         }
         onSecretChatReceived: {

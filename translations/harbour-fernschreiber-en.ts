@@ -272,6 +272,10 @@
         <source>Mark chat as read</source>
         <translation>Mark chat as read</translation>
     </message>
+    <message>
+        <source>Draft</source>
+        <translation>Draft</translation>
+    </message>
 </context>
 <context>
     <name>ChatPage</name>

@@ -47,7 +47,9 @@ public:
         RoleIsVerified,
         RoleIsChannel,
         RoleIsMarkedAsUnread,
-        RoleFilter
+        RoleFilter,
+        RoleDraftMessageText,
+        RoleDraftMessageDate
     };
 
     ChatListModel(TDLibWrapper *tdLibWrapper);
@@ -78,6 +80,7 @@ private slots:
     void handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void handleChatTitleUpdated(const QString &chatId, const QString &title);
     void handleChatIsMarkedAsUnreadUpdated(qlonglong chatId, bool chatIsMarkedAsUnread);
+    void handleChatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order);
     void handleRelativeTimeRefreshTimer();
 
 signals:

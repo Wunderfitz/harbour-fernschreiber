@@ -35,6 +35,7 @@ namespace {
     const QString CHAT_ID("chat_id");
     const QString CONTENT("content");
     const QString LAST_MESSAGE("last_message");
+    const QString DRAFT_MESSAGE("draft_message");
     const QString SENDER("sender");
     const QString USER_ID("user_id");
     const QString BASIC_GROUP_ID("basic_group_id");
@@ -71,6 +72,8 @@ public:
     qlonglong senderMessageDate() const;
     QString senderMessageText() const;
     QString senderMessageStatus() const;
+    qlonglong draftMessageDate() const;
+    QString draftMessageText() const;
     bool isChannel() const;
     bool isHidden() const;
     bool isMarkedAsUnread() const;
@@ -189,6 +192,7 @@ QString ChatListModel::ChatData::senderMessageText() const
     return FernschreiberUtils::getMessageShortText(tdLibWrapper, lastMessage(CONTENT).toMap(), isChannel(), this->userInformation.value(ID).toLongLong(), lastMessage(SENDER).toMap() );
 }
 
+
 QString ChatListModel::ChatData::senderMessageStatus() const
 {
     if (isChannel() || this->userInformation.value(ID).toLongLong() != senderUserId() || this->userInformation.value(ID).toLongLong() == chatId) {
@@ -209,6 +213,23 @@ QString ChatListModel::ChatData::senderMessageStatus() const
             return "&nbsp;&nbsp;☑️";
         }
     }
+}
+qlonglong ChatListModel::ChatData::draftMessageDate() const
+{
+    QVariantMap draft = chatData.value(DRAFT_MESSAGE).toMap();
+    if(draft.isEmpty()) {
+        return qlonglong(0);
+    }
+    return draft.value(DATE).toLongLong();
+}
+
+QString ChatListModel::ChatData::draftMessageText() const
+{
+    QVariantMap draft = chatData.value(DRAFT_MESSAGE).toMap();
+    if(draft.isEmpty()) {
+        return QString();
+    }
+    return draft.value("input_message_text").toMap().value(TEXT).toMap().value(TEXT).toString();
 }
 
 bool ChatListModel::ChatData::isChannel() const
@@ -343,6 +364,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper) : showHiddenChats(false
     connect(tdLibWrapper, SIGNAL(secretChatReceived(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
     connect(tdLibWrapper, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)), this, SLOT(handleChatIsMarkedAsUnreadUpdated(qlonglong, bool)));
+    connect(tdLibWrapper, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)), this, SLOT(handleChatDraftMessageUpdated(qlonglong, QVariantMap, QString)));
 
     // Don't start the timer until we have at least one chat
     relativeTimeRefreshTimer = new QTimer(this);
@@ -378,6 +400,8 @@ QHash<int,QByteArray> ChatListModel::roleNames() const
     roles.insert(ChatListModel::RoleIsChannel, "is_channel");
     roles.insert(ChatListModel::RoleIsMarkedAsUnread, "is_marked_as_unread");
     roles.insert(ChatListModel::RoleFilter, "filter");
+    roles.insert(ChatListModel::RoleDraftMessageDate, "draft_message_date");
+    roles.insert(ChatListModel::RoleDraftMessageText, "draft_message_text");
     return roles;
 }
 
@@ -409,6 +433,8 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RoleIsChannel: return data->isChannel();
         case ChatListModel::RoleIsMarkedAsUnread: return data->isMarkedAsUnread();
         case ChatListModel::RoleFilter: return QString(data->title() + " " + data->senderMessageText()).trimmed();
+        case ChatListModel::RoleDraftMessageText: return data->draftMessageText();
+        case ChatListModel::RoleDraftMessageDate: return data->draftMessageDate();
         }
     }
     return QVariant();
@@ -840,6 +866,25 @@ void ChatListModel::handleChatIsMarkedAsUnreadUpdated(qlonglong chatId, bool cha
         if (chat) {
             LOG("Updating chat is marked as unread for hidden chat" << chatId);
             chat->chatData.insert(IS_MARKED_AS_UNREAD, chatIsMarkedAsUnread);
+        }
+    }
+}
+
+void ChatListModel::handleChatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order)
+{
+    LOG("Updating draft message for" << chatId);
+    if (chatIndexMap.contains(chatId)) {
+        const int chatIndex = chatIndexMap.value(chatId);
+        ChatData *chat = chatList.at(chatIndex);
+        chat->chatData.insert(DRAFT_MESSAGE, draftMessage);
+
+        QVector<int> changedRoles;
+        changedRoles.append(ChatListModel::RoleDraftMessageDate);
+        changedRoles.append(ChatListModel::RoleDraftMessageText);
+        const QModelIndex modelIndex(index(chatIndex));
+        emit dataChanged(modelIndex, modelIndex, changedRoles);
+        if (chat->setOrder(order)) {
+            updateChatOrder(chatIndex);
         }
     }
 }

@@ -272,6 +272,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Draft</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Mark chat as read</source>
         <translation type="unfinished"></translation>
     </message>

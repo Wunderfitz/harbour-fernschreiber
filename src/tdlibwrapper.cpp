@@ -45,6 +45,7 @@ namespace {
     const QString LAST_NAME("last_name");
     const QString FIRST_NAME("first_name");
     const QString USERNAME("username");
+    const QString THREAD_ID("thread_id");
     const QString VALUE("value");
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
@@ -126,6 +127,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(contactsImported(QVariantList, QVariantList)), this, SIGNAL(contactsImported(QVariantList, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)), this, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)));
+    connect(this->tdLibReceiver, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)), this, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)));
 
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 
@@ -979,6 +981,30 @@ void TDLibWrapper::toggleChatIsMarkedAsUnread(qlonglong chatId, bool isMarkedAsU
     requestObject.insert(_TYPE, "toggleChatIsMarkedAsUnread");
     requestObject.insert(CHAT_ID, chatId);
     requestObject.insert("is_marked_as_unread", isMarkedAsUnread);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setChatDraftMessage(qlonglong chatId, qlonglong threadId, qlonglong replyToMessageId, const QString &draft)
+{
+    LOG("Set Draft Message" << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setChatDraftMessage");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(THREAD_ID, threadId);
+    QVariantMap draftMessage;
+    QVariantMap inputMessageContent;
+    QVariantMap formattedText;
+
+    formattedText.insert("text", draft);
+    formattedText.insert("clear_draft", draft.isEmpty());
+    formattedText.insert(_TYPE, "formattedText");
+    inputMessageContent.insert(_TYPE, "inputMessageText");
+    inputMessageContent.insert("text", formattedText);
+    draftMessage.insert(_TYPE, "draftMessage");
+    draftMessage.insert("reply_to_message_id", replyToMessageId);
+    draftMessage.insert("input_message_text", inputMessageContent);
+
+    requestObject.insert("draft_message", draftMessage);
     this->sendRequest(requestObject);
 }
 

@@ -183,6 +183,7 @@ public:
     Q_INVOKABLE void searchPublicChats(const QString &query);
     Q_INVOKABLE void readAllChatMentions(qlonglong chatId);
     Q_INVOKABLE void toggleChatIsMarkedAsUnread(qlonglong chatId, bool isMarkedAsUnread);
+    Q_INVOKABLE void setChatDraftMessage(qlonglong chatId, qlonglong threadId, qlonglong replyToMessageId, const QString &draft);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -253,6 +254,7 @@ signals:
     void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
     void messageNotFound(qlonglong chatId, qlonglong messageId);
     void chatIsMarkedAsUnreadUpdated(qlonglong chatId, bool chatIsMarkedAsUnread);
+    void chatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order);
 
 public slots:
     void handleVersionDetected(const QString &version);
