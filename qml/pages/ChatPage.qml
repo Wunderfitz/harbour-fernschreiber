@@ -373,7 +373,9 @@ Page {
     }
 
     Component.onDestruction: {
-        tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text);
+        if (chatPage.canSendMessages) {
+            tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text);
+        }
         tdLibWrapper.closeChat(chatInformation.id);
     }
 
