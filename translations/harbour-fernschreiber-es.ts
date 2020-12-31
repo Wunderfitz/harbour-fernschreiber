@@ -263,15 +263,15 @@
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Marcar como no leído</translation>
     </message>
     <message>
         <source>Draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrador</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Marcar como leído</translation>
     </message>
 </context>
 <context>
@@ -395,11 +395,11 @@
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar en charla</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar</translation>
     </message>
 </context>
 <context>
@@ -777,21 +777,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha añadido %1 a charla</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha quitado %1 de charla</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ha añadido %1 a la charla</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ha quitado %1 de charla</translation>
     </message>
 </context>
 <context>
@@ -828,7 +828,7 @@
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Marcar número de teléfono para continuar.</translation>
+        <translation>Marcar el número de teléfono para continuar.</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -876,7 +876,7 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation>Usar el formato internacional %1</translation>
+        <translation>Usa el formato internacional %1</translation>
     </message>
     <message>
         <source>About Fernschreiber</source>
@@ -902,7 +902,7 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation>Copiar mensaje</translation>
+        <translation>Copiar</translation>
     </message>
     <message>
         <source>Message deleted</source>
@@ -922,7 +922,7 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation>Seleccionar mensaje</translation>
+        <translation>Seleccionar</translation>
     </message>
     <message>
         <source>Pin Message</source>
@@ -930,11 +930,11 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Desanclar mensaje</translation>
+        <translation>Mensaje desanclado</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Desanclar mensaje</translation>
     </message>
 </context>
 <context>
@@ -1055,19 +1055,19 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar las charlas...</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar charlas</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished">Bajada de %1 exitosa.</translation>
+        <translation>Bajada de %1 exitosa.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished">Error al bajar</translation>
+        <translation>Error al bajar</translation>
     </message>
 </context>
 <context>
@@ -1082,7 +1082,7 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation>Desanclar mensaje</translation>
+        <translation>Mensaje desanclado</translation>
     </message>
 </context>
 <context>
@@ -1259,43 +1259,43 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>No se han encontrado charlas.</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscando charlas...</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished">Privado</translation>
+        <translation>Privado</translation>
     </message>
     <message>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupo</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Canal</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished">%1 miembros</translation>
+        <translation>%1 miembros</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 suscriptores</translation>
+        <translation>%1 suscriptores</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar charlas</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar una charla...</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Introducir la consulta para iniciar la búsqueda (se necesitan al menos 5 caracteres)</translation>
     </message>
 </context>
 <context>
@@ -1784,21 +1784,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha añadido %1 a la charla</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha quitado %1 de la charla</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ha añadido %1 a la charla</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ha añadido %1  de la charla</translation>
     </message>
 </context>
 </TS>
