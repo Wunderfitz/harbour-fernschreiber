@@ -58,6 +58,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/ReplyMarkupButtons.qml \
     qml/components/StickerPicker.qml \
     qml/components/PhotoTextsListItem.qml \
+    qml/components/VoiceNoteOverlay.qml \
     qml/components/WebPagePreview.qml \
     qml/components/chatInformationPage/ChatInformationEditArea.qml \
     qml/components/chatInformationPage/ChatInformationPageContent.qml \

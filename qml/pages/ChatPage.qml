@@ -621,7 +621,7 @@ Page {
         contentWidth: width
 
         PullDownMenu {
-            visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !messageOverlayLoader.active
+            visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !voiceNoteOverlayLoader.active && !messageOverlayLoader.active
             MenuItem {
                 id: closeSecretChatMenuItem
                 visible: chatPage.isSecretChat && chatPage.secretChatDetails.state["@type"] !== "secretChatStateClosed"
@@ -874,7 +874,7 @@ Page {
                     id: chatView
 
                     visible: !blurred
-                    property bool blurred: messageOverlayLoader.item
+                    property bool blurred: messageOverlayLoader.item || stickerPickerLoader.item || voiceNoteOverlayLoader.item
 
                     anchors.fill: parent
                     opacity: chatPage.loading ? 0 : 1
@@ -1132,6 +1132,15 @@ Page {
                     }
                 }
 
+                Loader {
+                    id: voiceNoteOverlayLoader
+                    active: false
+                    asynchronous: true
+                    width: parent.width
+                    height: active ? parent.height : 0
+                    source: "../components/VoiceNoteOverlay.qml"
+                }
+
             }
 
             Column {
@@ -1218,6 +1227,19 @@ Page {
                     }
                     IconButton {
                         visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                        icon.source: "image://theme/icon-m-mic"
+                        icon.sourceSize {
+                            width: Theme.iconSizeMedium
+                            height: Theme.iconSizeMedium
+                        }
+                        highlighted: down || voiceNoteOverlayLoader.active
+                        onClicked: {
+                            voiceNoteOverlayLoader.active = !voiceNoteOverlayLoader.active;
+                            stickerPickerLoader.active = false;
+                        }
+                    }
+                    IconButton {
+                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
                         icon.source: "image://theme/icon-m-document"
                         onClicked: {
                             var picker = pageStack.push("Sailfish.Pickers.FilePickerPage", {
@@ -1243,6 +1265,7 @@ Page {
                         highlighted: down || stickerPickerLoader.active
                         onClicked: {
                             stickerPickerLoader.active = !stickerPickerLoader.active;
+                            voiceNoteOverlayLoader.active = false;
                         }
                     }
                     IconButton {
@@ -1528,6 +1551,7 @@ Page {
                             if (attachmentOptionsRow.isNeeded) {
                                 attachmentOptionsRow.isNeeded = false;
                                 stickerPickerLoader.active = false;
+                                voiceNoteOverlayLoader.active = false;
                             } else {
                                 attachmentOptionsRow.isNeeded = true;
                             }

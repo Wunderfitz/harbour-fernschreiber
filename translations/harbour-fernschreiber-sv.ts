@@ -1419,6 +1419,13 @@
     </message>
 </context>
 <context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
