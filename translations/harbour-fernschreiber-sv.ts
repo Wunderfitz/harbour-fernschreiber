@@ -266,7 +266,7 @@
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera chatten som oläst</translation>
     </message>
     <message>
         <source>Draft</source>
@@ -274,7 +274,7 @@
     </message>
     <message>
         <source>Mark chat as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera chatten som läst</translation>
     </message>
 </context>
 <context>
@@ -405,11 +405,11 @@
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök i chatten</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök i chatten...</translation>
     </message>
 </context>
 <context>
@@ -787,21 +787,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>har lagt till %1 i chatten</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>har tagit bort %1 från chatten</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>har lagt till %1 i chatten</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>har tagit bort %1 från chatten</translation>
     </message>
 </context>
 <context>
@@ -940,11 +940,11 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Meddelandet lösgjort</translation>
+        <translation>Meddelandet lösgjort</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Lösgör meddelandet</translation>
     </message>
 </context>
 <context>
@@ -1066,19 +1066,19 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrera dina chattar...</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök chattar</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished">Nerladdning av %1 slutförd.</translation>
+        <translation>Nerladdning av %1 slutförd.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nerladdning misslyckades.</translation>
     </message>
 </context>
 <context>
@@ -1278,43 +1278,43 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga chattar hittades.</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Söker chattar...</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished">Privat chatt</translation>
+        <translation>Privat chatt</translation>
     </message>
     <message>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupp</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished">%1 medlem</translation>
+        <translation>%1 medlemmar</translation>
     </message>
     <message>
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 prenumerant</translation>
+        <translation>%1 prenumeranter</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök chattar</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök en chatt...</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange din söksträng för att starta sökning (minst 5 tecken behövs)</translation>
     </message>
 </context>
 <context>
@@ -1803,21 +1803,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>har lagt till %1 i chatten</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>har tagit bort %1 från chatten</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>har lagt till %1 i chatten</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>har tagit bort %1 från chatten</translation>
     </message>
 </context>
 </TS>
