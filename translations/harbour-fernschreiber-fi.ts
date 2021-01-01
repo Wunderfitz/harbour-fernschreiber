@@ -1297,13 +1297,19 @@
         <source>Channel</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 jäsen</translation>
+        <translation type="unfinished">
+            <numerusform>%1 jäsen</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 tilaaja</translation>
+        <translation type="unfinished">
+            <numerusform>%1 tilaaja</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>
@@ -1391,6 +1397,14 @@
     <message>
         <source>Enable storage optimizer</source>
         <translation>Käytä tallennustilan optimointia</translation>
+    </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

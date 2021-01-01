@@ -1296,13 +1296,19 @@
         <source>Channel</source>
         <translation>Kanal</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 Mitglied</translation>
+        <translation>
+            <numerusform>%1 Mitglied</numerusform>
+            <numerusform>%1 Mitglieder</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 Abonnent</translation>
+        <translation>
+            <numerusform>%1 Abonnent</numerusform>
+            <numerusform>%1 Abonnenten</numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>
@@ -1390,6 +1396,14 @@
     <message>
         <source>Enable storage optimizer</source>
         <translation>Speicheroptimierer einschalten</translation>
+    </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation>Texteingabe nach Senden fokussieren</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Fokussiert die Texteingabe nach Senden einer Nachricht</translation>
     </message>
 </context>
 <context>

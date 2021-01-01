@@ -243,6 +243,10 @@ Page {
             } else {
                 tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
             }
+
+            if(appSettings.focusTextAreaAfterSend) {
+                lostFocusTimer.start();
+            }
         }
         controlSendButton();
         newMessageInReplyToRow.inReplyToMessage = null;
@@ -373,7 +377,9 @@ Page {
     }
 
     Component.onDestruction: {
-        tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text);
+        if (chatPage.canSendMessages) {
+            tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text);
+        }
         tdLibWrapper.closeChat(chatInformation.id);
     }
 
@@ -1528,7 +1534,9 @@ Page {
                             if (appSettings.sendByEnter) {
                                 sendMessage();
                                 newMessageTextField.text = "";
-                                newMessageTextField.focus = false;
+                                if(!appSettings.focusTextAreaAfterSend) {
+                                    newMessageTextField.focus = false;
+                                }
                             }
                         }
 
@@ -1568,7 +1576,9 @@ Page {
                         onClicked: {
                             sendMessage();
                             newMessageTextField.text = "";
-                            newMessageTextField.focus = false;
+                            if(!appSettings.focusTextAreaAfterSend) {
+                                newMessageTextField.focus = false;
+                            }
                         }
                     }
                 }
