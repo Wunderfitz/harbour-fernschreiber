@@ -33,15 +33,14 @@ ListItem {
             height: contentColumn.height
             spacing: Theme.paddingMedium
 
-            Column {
-                id: pictureColumn
+            ShaderEffectSource {
+                id: pictureItem
                 width: contentColumn.height - Theme.paddingSmall
                 height: contentColumn.height - Theme.paddingSmall
                 anchors.verticalCenter: parent.verticalCenter
-
-                Item {
-                    width: parent.width
-                    height: parent.width
+                sourceItem:  Item {
+                    width: pictureItem.width
+                    height: pictureItem.width
 
                     ProfileThumbnail {
                         id: pictureThumbnail
@@ -93,7 +92,7 @@ ListItem {
 
             Column {
                 id: contentColumn
-                width: mainColumn.width - pictureColumn.width - mainRow.spacing
+                width: mainColumn.width - pictureItem.width - mainRow.spacing
                 spacing: Theme.paddingSmall
 
                 Row {
