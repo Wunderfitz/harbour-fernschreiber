@@ -24,6 +24,7 @@
 class AppSettings : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool sendByEnter READ getSendByEnter WRITE setSendByEnter NOTIFY sendByEnterChanged)
+    Q_PROPERTY(bool focusTextAreaAfterSend READ getFocusTextAreaAfterSend WRITE setFocusTextAreaAfterSend NOTIFY focusTextAreaAfterSendChanged)
     Q_PROPERTY(bool useOpenWith READ getUseOpenWith WRITE setUseOpenWith NOTIFY useOpenWithChanged)
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
@@ -45,6 +46,9 @@ public:
     bool getSendByEnter() const;
     void setSendByEnter(bool sendByEnter);
 
+    bool getFocusTextAreaAfterSend() const;
+    void setFocusTextAreaAfterSend(bool focusTextAreaAfterSend);
+
     bool getUseOpenWith() const;
     void setUseOpenWith(bool useOpenWith);
 
@@ -65,6 +69,7 @@ public:
 
 signals:
     void sendByEnterChanged();
+    void focusTextAreaAfterSendChanged();
     void useOpenWithChanged();
     void showStickersAsImagesChanged();
     void animateStickersChanged();

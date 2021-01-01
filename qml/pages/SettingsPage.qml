@@ -53,6 +53,16 @@ Page {
             }
 
             TextSwitch {
+                checked: appSettings.focusTextAreaAfterSend
+                text: qsTr("Focus text input area after send")
+                description: qsTr("Focus the text input area after sending a message")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.focusTextAreaAfterSend = !checked
+                }
+            }
+
+            TextSwitch {
                 checked: appSettings.useOpenWith
                 text: qsTr("Open-with menu integration")
                 description: qsTr("Integrate Fernschreiber into open-with menu of Sailfish OS")
