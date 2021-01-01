@@ -1391,6 +1391,14 @@
         <source>Enable storage optimizer</source>
         <translation>Enable storage optimizer</translation>
     </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation>Focus text input area after send</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Focus the text input area after sending a message</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1803,21 +1811,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished">has added %1 to the chat</translation>
+        <translation>has added %1 to the chat</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished">has removed %1 from the chat</translation>
+        <translation>has removed %1 from the chat</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">have added %1 to the chat</translation>
+        <translation>have added %1 to the chat</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">have removed %1 from the chat</translation>
+        <translation>have removed %1 from the chat</translation>
     </message>
 </context>
 </TS>

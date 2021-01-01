@@ -1391,6 +1391,14 @@
         <source>Enable storage optimizer</source>
         <translation>Abilita ottimizzazione memoria</translation>
     </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
