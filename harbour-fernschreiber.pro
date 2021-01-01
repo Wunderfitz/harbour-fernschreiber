@@ -16,7 +16,7 @@ CONFIG += sailfishapp sailfishapp_i18n
 
 PKGCONFIG += nemonotifications-qt5 zlib
 
-QT += core dbus sql
+QT += core dbus sql multimedia
 
 DEFINES += QT_STATICPLUGIN
 

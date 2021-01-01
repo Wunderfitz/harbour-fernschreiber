@@ -1,10 +1,57 @@
-#include "fernschreiberutils.h"
+/*
+    Copyright (C) 2020-21 Sebastian J. Wolf and other contributors
 
+    This file is part of Fernschreiber.
+
+    Fernschreiber is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Fernschreiber is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#include "fernschreiberutils.h"
 #include <QMap>
 #include <QVariant>
+#include <QAudioEncoderSettings>
+#include <QStandardPaths>
+#include <QDir>
+#include <QFile>
+#include <QUrl>
+
+#define DEBUG_MODULE FernschreiberUtils
+#include "debuglog.h"
 
 FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
 {
+    LOG("Initializing audio recorder...");
+
+    QString temporaryDirectoryPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) +  + "/harbour-fernschreiber";
+    QDir temporaryDirectory(temporaryDirectoryPath);
+    if (!temporaryDirectory.exists()) {
+        temporaryDirectory.mkpath(temporaryDirectoryPath);
+    }
+
+    QAudioEncoderSettings encoderSettings;
+    encoderSettings.setCodec("audio/vorbis");
+    encoderSettings.setChannelCount(1);
+    encoderSettings.setQuality(QMultimedia::LowQuality);
+    this->audioRecorder.setEncodingSettings(encoderSettings);
+    this->audioRecorder.setContainerFormat("ogg");
+    this->audioRecorder.setOutputLocation(QUrl::fromLocalFile(temporaryDirectoryPath + "/voicenote.ogg"));
+
+    QMediaRecorder::Status audioRecorderStatus = this->audioRecorder.status();
+    this->handleAudioRecorderStatusChanged(audioRecorderStatus);
+
+    connect(&audioRecorder, SIGNAL(durationChanged(qlonglong)), this, SIGNAL(voiceNoteDurationChanged(qlonglong)));
+    connect(&audioRecorder, SIGNAL(statusChanged(QMediaRecorder::Status)), this, SLOT(handleAudioRecorderStatusChanged(QMediaRecorder::Status)));
 
 }
 
@@ -127,4 +174,59 @@ QString FernschreiberUtils::getUserName(const QVariantMap &userInformation)
     const QString firstName = userInformation.value("first_name").toString();
     const QString lastName = userInformation.value("last_name").toString();
     return QString(firstName + " " + lastName).trimmed();
+}
+
+void FernschreiberUtils::startRecordingVoiceNote()
+{
+    LOG("Start recording voice note...");
+    QString voiceNotePath = this->voiceNotePath();
+    LOG("Using temporary file at " << voiceNotePath);
+    if (QFile::exists(voiceNotePath)) {
+        LOG("Removing old temporary file...");
+        QFile::remove(voiceNotePath);
+    }
+    this->audioRecorder.setVolume(1);
+    this->audioRecorder.record();
+}
+
+void FernschreiberUtils::stopRecordingVoiceNote()
+{
+    LOG("Stop recording voice note...");
+    this->audioRecorder.stop();
+}
+
+QString FernschreiberUtils::voiceNotePath()
+{
+    return this->audioRecorder.outputLocation().toLocalFile();
+}
+
+FernschreiberUtils::VoiceNoteRecordingState FernschreiberUtils::getVoiceNoteRecordingState()
+{
+    return this->voiceNoteRecordingState;
+}
+
+void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status status)
+{
+    LOG("Audio recorder status changed:" << status);
+    switch (status) {
+    case QMediaRecorder::UnavailableStatus:
+    case QMediaRecorder::UnloadedStatus:
+    case QMediaRecorder::LoadingStatus:
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Unavailable;
+        break;
+    case QMediaRecorder::LoadedStatus:
+    case QMediaRecorder::PausedStatus:
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Stopped;
+        break;
+    case QMediaRecorder::StartingStatus:
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Starting;
+        break;
+    case QMediaRecorder::FinalizingStatus:
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Stopping;
+        break;
+    case QMediaRecorder::RecordingStatus:
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Recording;
+        break;
+    }
+    emit voiceNoteRecordingStateChanged(this->voiceNoteRecordingState);
 }

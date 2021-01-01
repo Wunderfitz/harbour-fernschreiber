@@ -1459,6 +1459,30 @@
         <source>Record a Voice Note</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WebPagePreview</name>

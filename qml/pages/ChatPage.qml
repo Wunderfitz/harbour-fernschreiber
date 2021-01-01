@@ -1145,6 +1145,11 @@ Page {
                     width: parent.width
                     height: active ? parent.height : 0
                     source: "../components/VoiceNoteOverlay.qml"
+                    onActiveChanged: {
+                        if (!active) {
+                            fernschreiberUtils.stopRecordingVoiceNote();
+                        }
+                    }
                 }
 
             }
