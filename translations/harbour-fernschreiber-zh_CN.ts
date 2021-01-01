@@ -1277,13 +1277,17 @@
         <source>Channel</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 位成员</translation>
+        <translation type="unfinished">
+            <numerusform>%1 位成员</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 位订阅者</translation>
+        <translation type="unfinished">
+            <numerusform>%1 位订阅者</numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>

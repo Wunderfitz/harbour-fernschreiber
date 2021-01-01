@@ -1315,13 +1315,21 @@
         <source>Channel</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 członek</translation>
+        <translation type="unfinished">
+            <numerusform>%1 członek</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 subskrybent</translation>
+        <translation type="unfinished">
+            <numerusform>%1 subskrybent</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>

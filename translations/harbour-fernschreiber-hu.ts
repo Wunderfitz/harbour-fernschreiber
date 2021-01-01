@@ -1277,13 +1277,17 @@
         <source>Channel</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 tag</translation>
+        <translation type="unfinished">
+            <numerusform>%1 tag</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 feliratkozott</translation>
+        <translation type="unfinished">
+            <numerusform>%1 feliratkozott</numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>

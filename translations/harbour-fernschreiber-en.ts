@@ -1296,13 +1296,19 @@
         <source>Channel</source>
         <translation>Channel</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 member</translation>
+        <translation>
+            <numerusform>%1 member</numerusform>
+            <numerusform>%1 members</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 subscriber</translation>
+        <translation>
+            <numerusform>%1 subscriber</numerusform>
+            <numerusform>%1 subscribers</numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>
