@@ -482,7 +482,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: positionText.top
                     minimumValue: 0
-                    maximumValue: messageVideo.duration ? messageVideo.duration : 0
+                    maximumValue: messageVideo.duration ? messageVideo.duration : 0.1
 
                     highlighted: videoMessageComponent.highlighted || down
                     stepSize: 1
