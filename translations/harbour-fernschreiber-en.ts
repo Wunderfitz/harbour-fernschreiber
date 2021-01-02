@@ -1436,31 +1436,39 @@
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Record a Voice Note</translation>
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Press the button to start recording</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Unavailable</translation>
     </message>
     <message>
         <source>Starting</source>
-        <translation type="unfinished"></translation>
+        <translation>Starting</translation>
     </message>
     <message>
         <source>Recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Recording</translation>
     </message>
     <message>
         <source>Stopping</source>
-        <translation type="unfinished"></translation>
+        <translation>Stopping</translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation>Use recording</translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation>Voice Note (%1)</translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation>Ready</translation>
     </message>
 </context>
 <context>

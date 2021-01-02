@@ -55,6 +55,11 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
 
 }
 
+FernschreiberUtils::~FernschreiberUtils()
+{
+    this->cleanUp();
+}
+
 QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, const QVariantMap &messageContent, const bool isChannel, const qlonglong currentUserId, const QVariantMap &messageSender)
 {
     if (messageContent.isEmpty()) {
@@ -179,12 +184,7 @@ QString FernschreiberUtils::getUserName(const QVariantMap &userInformation)
 void FernschreiberUtils::startRecordingVoiceNote()
 {
     LOG("Start recording voice note...");
-    QString voiceNotePath = this->voiceNotePath();
-    LOG("Using temporary file at " << voiceNotePath);
-    if (QFile::exists(voiceNotePath)) {
-        LOG("Removing old temporary file...");
-        QFile::remove(voiceNotePath);
-    }
+    this->cleanUp();
     this->audioRecorder.setVolume(1);
     this->audioRecorder.record();
 }
@@ -216,7 +216,7 @@ void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status
         break;
     case QMediaRecorder::LoadedStatus:
     case QMediaRecorder::PausedStatus:
-        this->voiceNoteRecordingState = VoiceNoteRecordingState::Stopped;
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Ready;
         break;
     case QMediaRecorder::StartingStatus:
         this->voiceNoteRecordingState = VoiceNoteRecordingState::Starting;
@@ -229,4 +229,13 @@ void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status
         break;
     }
     emit voiceNoteRecordingStateChanged(this->voiceNoteRecordingState);
+}
+
+void FernschreiberUtils::cleanUp()
+{
+    QString voiceNotePath = this->voiceNotePath();
+    if (QFile::exists(voiceNotePath)) {
+        LOG("Removing old temporary file...");
+        QFile::remove(voiceNotePath);
+    }
 }

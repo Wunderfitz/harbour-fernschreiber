@@ -29,10 +29,11 @@ class FernschreiberUtils : public QObject
     Q_OBJECT
 public:
     explicit FernschreiberUtils(QObject *parent = nullptr);
+    ~FernschreiberUtils();
 
     enum VoiceNoteRecordingState {
         Unavailable,
-        Stopped,
+        Ready,
         Starting,
         Recording,
         Stopping
@@ -57,6 +58,8 @@ private slots:
 private:
     QAudioRecorder audioRecorder;
     VoiceNoteRecordingState voiceNoteRecordingState;
+
+    void cleanUp();
 
 };
 

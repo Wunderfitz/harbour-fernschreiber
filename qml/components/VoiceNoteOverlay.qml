@@ -29,14 +29,15 @@ Item {
 
     property int recordingState: fernschreiberUtils.getVoiceNoteRecordingState();
     property int recordingDuration: 0;
+    property bool recordingDone: false;
 
     function handleRecordingState() {
         switch (recordingState) {
         case FernschreiberUtilities.Unavailable:
             recordingStateLabel.text = qsTr("Unavailable");
             break;
-        case FernschreiberUtilities.Stopped:
-            recordingStateLabel.text = qsTr("Stopped");
+        case FernschreiberUtilities.Ready:
+            recordingStateLabel.text = qsTr("Ready");
             break;
         case FernschreiberUtilities.Starting:
             recordingStateLabel.text = qsTr("Starting");
@@ -167,6 +168,7 @@ Item {
                         onClicked: {
                             recordButton.visible = true;
                             fernschreiberUtils.stopRecordingVoiceNote();
+                            recordingDone = true;
                         }
                     }
                 }
@@ -191,6 +193,22 @@ Item {
                 font.pixelSize: Theme.fontSizeMedium
                 anchors {
                     horizontalCenter: parent.horizontalCenter
+                }
+            }
+
+            Button {
+                visible: recordingDone
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                text: qsTr("Use recording")
+                onClicked: {
+                    attachmentOptionsRow.isNeeded = false;
+                    attachmentPreviewRow.isVoiceNote = true;
+                    attachmentPreviewRow.attachmentDescription = qsTr("Voice Note (%1)").arg(recordingDurationLabel.text);
+                    attachmentPreviewRow.visible = true;
+                    controlSendButton();
+                    voiceNoteOverlayLoader.active = false;
                 }
             }
 

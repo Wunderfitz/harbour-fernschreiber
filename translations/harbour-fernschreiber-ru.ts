@@ -1468,10 +1468,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Stopped</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Starting</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1481,6 +1477,18 @@
     </message>
     <message>
         <source>Stopping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ready</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

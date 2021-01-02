@@ -473,6 +473,30 @@ void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &fil
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::sendVoiceNoteMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
+{
+    LOG("Sending voice note message" << chatId << filePath << message << replyToMessageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "sendMessage");
+    requestObject.insert(CHAT_ID, chatId);
+    if (replyToMessageId != "0") {
+        requestObject.insert("reply_to_message_id", replyToMessageId);
+    }
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessageVoiceNote");
+    QVariantMap formattedText;
+    formattedText.insert("text", message);
+    formattedText.insert(_TYPE, "formattedText");
+    inputMessageContent.insert("caption", formattedText);
+    QVariantMap documentInputFile;
+    documentInputFile.insert(_TYPE, "inputFileLocal");
+    documentInputFile.insert("path", filePath);
+    inputMessageContent.insert("voice_note", documentInputFile);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &fileId, const QString &replyToMessageId)
 {
     LOG("Sending sticker message" << chatId << fileId << replyToMessageId);

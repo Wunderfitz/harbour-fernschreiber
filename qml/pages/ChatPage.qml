@@ -211,14 +211,17 @@ Page {
         attachmentPreviewRow.isPicture = false;
         attachmentPreviewRow.isVideo = false;
         attachmentPreviewRow.isDocument = false;
+        attachmentPreviewRow.isVoiceNote = false;
         attachmentPreviewRow.fileProperties = {};
+        attachmentPreviewRow.attachmentDescription = "";
     }
 
     function controlSendButton() {
         if (newMessageTextField.text.length !== 0
                 || attachmentPreviewRow.isPicture
                 || attachmentPreviewRow.isDocument
-                || attachmentPreviewRow.isVideo) {
+                || attachmentPreviewRow.isVideo
+                || attachmentPreviewRow.isVoiceNote) {
             newMessageSendButton.enabled = true;
         } else {
             newMessageSendButton.enabled = false;
@@ -238,6 +241,9 @@ Page {
                 }
                 if (attachmentPreviewRow.isDocument) {
                     tdLibWrapper.sendDocumentMessage(chatInformation.id, attachmentPreviewRow.fileProperties.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                }
+                if (attachmentPreviewRow.isVoiceNote) {
+                    tdLibWrapper.sendVoiceNoteMessage(chatInformation.id, fernschreiberUtils.voiceNotePath(), newMessageTextField.text, newMessageColumn.replyToMessageId);
                 }
                 clearAttachmentPreviewRow();
             } else {
@@ -1300,7 +1306,9 @@ Page {
                     property bool isPicture: false;
                     property bool isVideo: false;
                     property bool isDocument: false;
+                    property bool isVoiceNote: false;
                     property var fileProperties:({});
+                    property string attachmentDescription: "";
 
                     IconButton {
                         id: removeAttachmentsIconButton
@@ -1327,13 +1335,13 @@ Page {
                     Label {
                         id: attachmentPreviewText
                         font.pixelSize: Theme.fontSizeSmall
-                        text: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.fileName || "" : "";
+                        text: attachmentPreviewRow.isVoiceNote ? attachmentPreviewRow.attachmentDescription : ( typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.fileName || "" : "" );
                         anchors.verticalCenter: parent.verticalCenter
 
                         maximumLineCount: 1
                         truncationMode: TruncationMode.Fade
                         color: Theme.secondaryColor
-                        visible: attachmentPreviewRow.isDocument
+                        visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote
                     }
                 }
 
