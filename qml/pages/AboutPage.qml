@@ -176,7 +176,7 @@ Page {
                         }
 
                         ProfileThumbnail {
-                            photoData: aboutPage.userInformation.profile_photo.small
+                            photoData: ((typeof aboutPage.userInformation.profile_photo !== "undefined") ? aboutPage.userInformation.profile_photo.small : {})
                             width: Theme.itemSizeExtraLarge
                             height: Theme.itemSizeExtraLarge
                             replacementStringHint: aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name
