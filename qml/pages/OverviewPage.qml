@@ -70,7 +70,7 @@ Page {
             Debug.log("Remaining interaction hints: " + remainingInteractionHints);
             if (remainingInteractionHints > 0) {
                 interactionHintTimer.start();
-                titleInteractionHint.visible = true;
+                titleInteractionHint.opacity = 1.0;
                 appSettings.remainingInteractionHints = remainingInteractionHints - 1;
             }
         }
@@ -169,8 +169,8 @@ Page {
 
     function resetFocus() {
         if (chatSearchField.text === "") {
-            chatSearchField.visible = false;
-            pageHeader.visible = true;
+            chatSearchField.opacity = 0.0;
+            pageHeader.opacity = 1.0;
         }
         chatSearchField.focus = false;
         overviewPage.focus = true;
@@ -258,68 +258,62 @@ Page {
             }
         }
 
-        Row {
-            id: headerRow
-            width: parent.width
+        PageHeader {
+            id: pageHeader
+            title: qsTr("Fernschreiber")
+            leftMargin: Theme.itemSizeMedium
+            visible: opacity > 0
+            Behavior on opacity { FadeAnimation {} }
 
-            PageHeader {
-                id: pageHeader
-                title: qsTr("Fernschreiber")
-                leftMargin: Theme.itemSizeMedium
-                opacity: visible ? 1 : 0
-                Behavior on opacity { FadeAnimation {} }
-
-                GlassItem {
-                    id: pageStatus
-                    width: Theme.itemSizeMedium
-                    height: Theme.itemSizeMedium
-                    color: "red"
-                    falloffRadius: 0.1
-                    radius: 0.2
-                    cache: false
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        chatSearchField.focus = true;
-                        chatSearchField.visible = true;
-                        pageHeader.visible = false;
-                    }
-                }
-
+            GlassItem {
+                id: pageStatus
+                width: Theme.itemSizeMedium
+                height: Theme.itemSizeMedium
+                color: "red"
+                falloffRadius: 0.1
+                radius: 0.2
+                cache: false
             }
 
-            SearchField {
-                id: chatSearchField
-                visible: false
-                opacity: visible ? 1 : 0
-                Behavior on opacity { FadeAnimation {} }
-                width: parent.width
-                height: pageHeader.height
-                placeholderText: qsTr("Filter your chats...")
-                canHide: text === ""
-
-                onTextChanged: {
-                    searchChatTimer.restart();
-                }
-
-                onHideClicked: {
-                    resetFocus();
-                }
-
-                EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                EnterKey.onClicked: {
-                    resetFocus();
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    chatSearchField.focus = true;
+                    chatSearchField.opacity = 1.0;
+                    pageHeader.opacity = 0.0;
                 }
             }
 
         }
 
+        SearchField {
+            id: chatSearchField
+            visible: opacity > 0
+            opacity: 0
+            Behavior on opacity { FadeAnimation {} }
+            width: parent.width
+            height: pageHeader.height
+            placeholderText: qsTr("Filter your chats...")
+            canHide: text === ""
+
+            onTextChanged: {
+                searchChatTimer.restart();
+            }
+
+            onHideClicked: {
+                resetFocus();
+            }
+
+            EnterKey.iconSource: "image://theme/icon-m-enter-close"
+            EnterKey.onClicked: {
+                resetFocus();
+            }
+        }
+
         SilicaListView {
             id: chatListView
             anchors {
-                top: headerRow.bottom
+                top: pageHeader.bottom
                 bottom: parent.bottom
                 left: parent.left
                 right: parent.right
@@ -375,16 +369,18 @@ Page {
         running: false
         interval: 4000
         onTriggered: {
-            titleInteractionHint.visible = false;
+            titleInteractionHint.opacity = 0.0;
         }
     }
 
     InteractionHintLabel {
         id: titleInteractionHint
         text: qsTr("Tap on the title bar to filter your chats")
-        visible: false
+        visible: opacity > 0
+        invert: true
+        anchors.fill: parent
         Behavior on opacity { FadeAnimation {} }
-        opacity: visible ? 1 : 0
+        opacity: 0
     }
 
 }
