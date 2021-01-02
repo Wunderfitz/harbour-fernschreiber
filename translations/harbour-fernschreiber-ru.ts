@@ -1091,6 +1091,10 @@
         <source>Download failed.</source>
         <translation type="unfinished">Ошибка скачивания.</translation>
     </message>
+    <message>
+        <source>Tap on the title bar to filter your chats</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

@@ -66,6 +66,13 @@ Page {
             overviewPage.chatListCreated = true;
             chatListView.scrollToTop();
             updateSecondaryContentTimer.start();
+            var remainingInteractionHints = appSettings.remainingInteractionHints;
+            Debug.log("Remaining interaction hints: " + remainingInteractionHints);
+            if (remainingInteractionHints > 0) {
+                interactionHintTimer.start();
+                titleInteractionHint.visible = true;
+                appSettings.remainingInteractionHints = remainingInteractionHints - 1;
+            }
         }
     }
 
@@ -164,7 +171,6 @@ Page {
         if (chatSearchField.text === "") {
             chatSearchField.visible = false;
             pageHeader.visible = true;
-            searchChatButton.visible = overviewPage.connectionState === TelegramAPI.ConnectionReady;
         }
         chatSearchField.focus = false;
         overviewPage.focus = true;
@@ -254,43 +260,34 @@ Page {
 
         Row {
             id: headerRow
-            width: parent.width - Theme.horizontalPageMargin
-
-            GlassItem {
-                id: pageStatus
-                width: Theme.itemSizeMedium
-                height: Theme.itemSizeMedium
-                color: "red"
-                falloffRadius: 0.1
-                radius: 0.2
-                cache: false
-            }
+            width: parent.width
 
             PageHeader {
                 id: pageHeader
                 title: qsTr("Fernschreiber")
-                width: visible ? ( parent.width - pageStatus.width - searchChatButton.width ) : 0
+                leftMargin: Theme.itemSizeMedium
                 opacity: visible ? 1 : 0
                 Behavior on opacity { FadeAnimation {} }
-            }
 
-            IconButton {
-                id: searchChatButton
-                width: visible ? height : 0
-                opacity: visible ? 1 : 0
-                Behavior on opacity { NumberAnimation {} }
-                anchors.verticalCenter: parent.verticalCenter
-                icon {
-                    source: "image://theme/icon-m-search?" + Theme.highlightColor
-                    asynchronous: true
+                GlassItem {
+                    id: pageStatus
+                    width: Theme.itemSizeMedium
+                    height: Theme.itemSizeMedium
+                    color: "red"
+                    falloffRadius: 0.1
+                    radius: 0.2
+                    cache: false
                 }
-                visible: overviewPage.connectionState === TelegramAPI.ConnectionReady
-                onClicked: {
-                    chatSearchField.focus = true;
-                    chatSearchField.visible = true;
-                    pageHeader.visible = false;
-                    searchChatButton.visible = false;
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        chatSearchField.focus = true;
+                        chatSearchField.visible = true;
+                        pageHeader.visible = false;
+                    }
                 }
+
             }
 
             SearchField {
@@ -298,7 +295,7 @@ Page {
                 visible: false
                 opacity: visible ? 1 : 0
                 Behavior on opacity { FadeAnimation {} }
-                width: visible ? ( parent.width - pageStatus.width ) : 0
+                width: parent.width
                 height: pageHeader.height
                 placeholderText: qsTr("Filter your chats...")
                 canHide: text === ""
@@ -372,4 +369,22 @@ Page {
             }
         }
     }
+
+    Timer {
+        id: interactionHintTimer
+        running: false
+        interval: 4000
+        onTriggered: {
+            titleInteractionHint.visible = false;
+        }
+    }
+
+    InteractionHintLabel {
+        id: titleInteractionHint
+        text: qsTr("Tap on the title bar to filter your chats")
+        visible: false
+        Behavior on opacity { FadeAnimation {} }
+        opacity: visible ? 1 : 0
+    }
+
 }
