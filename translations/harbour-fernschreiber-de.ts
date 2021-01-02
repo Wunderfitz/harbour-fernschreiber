@@ -1084,6 +1084,14 @@
         <source>Tap on the title bar to filter your chats</source>
         <translation>Tippen Sie auf die Titelleiste, um Ihre Chats zu filtern</translation>
     </message>
+    <message>
+        <source>No matching chats found.</source>
+        <translation>Keine passenden Chats gefunden.</translation>
+    </message>
+    <message>
+        <source>You can search public chats or create a new chat via the pull-down menu.</source>
+        <translation>Sie können über das Pull-Down-Menü öffentliche Chats finden oder einen Neuen erstellen.</translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

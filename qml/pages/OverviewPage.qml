@@ -335,7 +335,8 @@ Page {
 
             ViewPlaceholder {
                 enabled: chatListView.count === 0
-                text: qsTr("You don't have any chats yet.")
+                text: chatSearchField.text === "" ? qsTr("You don't have any chats yet.") : qsTr("No matching chats found.")
+                hintText: qsTr("You can search public chats or create a new chat via the pull-down menu.")
             }
 
             VerticalScrollDecorator {}
