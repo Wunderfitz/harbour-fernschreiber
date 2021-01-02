@@ -1202,10 +1202,6 @@ Page {
 
                     property bool isNeeded: false
 
-                    onIsNeededChanged: {
-                        console.log("HÖHE: " + attachmentOptionsRow.height);
-                    }
-
                     width: parent.width
                     height: isNeeded ? attachmentOptionsRow.height : 0
                     Behavior on height { SmoothedAnimation { duration:  200 } }
