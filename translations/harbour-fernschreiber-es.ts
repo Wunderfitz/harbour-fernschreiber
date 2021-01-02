@@ -1279,13 +1279,13 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 miembros</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 suscriptores</numerusform>
         </translation>
     </message>
@@ -1378,11 +1378,11 @@
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation type="unfinished"></translation>
+        <translation>Enfocar el área de entrada de texto después de enviar</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation type="unfinished"></translation>
+        <translation>Enfocar el área de entrada de texto después de enviar un mensaje</translation>
     </message>
 </context>
 <context>
