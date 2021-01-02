@@ -465,7 +465,7 @@ Page {
                 Debug.log("[ChatPage] Received pinned message");
                 pinnedMessageItem.pinnedMessage = message;
             }
-            if (messageId === chatInformation.draft_message.reply_to_message_id) {
+            if (chatInformation.draft_message && messageId === chatInformation.draft_message.reply_to_message_id) {
                 newMessageInReplyToRow.inReplyToMessage = message;
             }
         }
