@@ -1080,6 +1080,10 @@
         <source>Download failed.</source>
         <translation>Download failed.</translation>
     </message>
+    <message>
+        <source>Tap on the title bar to filter your chats</source>
+        <translation>Tap on the title bar to filter your chats</translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

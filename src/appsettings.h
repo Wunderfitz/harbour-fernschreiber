@@ -31,6 +31,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
+    Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
 
 public:
     enum NotificationFeedback {
@@ -67,6 +68,9 @@ public:
     bool storageOptimizer() const;
     void setStorageOptimizer(bool enable);
 
+    int remainingInteractionHints() const;
+    void setRemainingInteractionHints(int remainingHints);
+
 signals:
     void sendByEnterChanged();
     void focusTextAreaAfterSendChanged();
@@ -76,6 +80,7 @@ signals:
     void notificationTurnsDisplayOnChanged();
     void notificationFeedbackChanged();
     void storageOptimizerChanged();
+    void remainingInteractionHintsChanged();
 
 private:
     QSettings settings;

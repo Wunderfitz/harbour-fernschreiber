@@ -29,6 +29,7 @@ namespace {
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
     const QString KEY_STORAGE_OPTIMIZER("storageOptimizer");
+    const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
@@ -144,5 +145,19 @@ void AppSettings::setStorageOptimizer(bool enable)
         LOG(KEY_STORAGE_OPTIMIZER << enable);
         settings.setValue(KEY_STORAGE_OPTIMIZER, enable);
         emit storageOptimizerChanged();
+    }
+}
+
+int AppSettings::remainingInteractionHints() const
+{
+    return settings.value(KEY_REMAINING_INTERACTION_HINTS, 3).toInt();
+}
+
+void AppSettings::setRemainingInteractionHints(int remainingHints)
+{
+    if (remainingInteractionHints() != remainingHints) {
+        LOG(KEY_REMAINING_INTERACTION_HINTS << remainingHints);
+        settings.setValue(KEY_REMAINING_INTERACTION_HINTS, remainingHints);
+        emit remainingInteractionHintsChanged();
     }
 }
