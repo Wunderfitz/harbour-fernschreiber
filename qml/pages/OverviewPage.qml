@@ -260,7 +260,7 @@ Page {
 
         PageHeader {
             id: pageHeader
-            title: qsTr("Fernschreiber")
+            title: Fernschreiber
             leftMargin: Theme.itemSizeMedium
             visible: opacity > 0
             Behavior on opacity { FadeAnimation {} }
