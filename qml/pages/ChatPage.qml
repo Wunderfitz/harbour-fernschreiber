@@ -1120,7 +1120,7 @@ Page {
                         Debug.log("Sticker picked: " + stickerId);
                         tdLibWrapper.sendStickerMessage(chatInformation.id, stickerId);
                         stickerPickerLoader.active = false;
-                        attachmentOptionsRow.isNeeded = false;
+                        attachmentOptionsFlickable.isNeeded = false;
                     }
                 }
 
@@ -1197,103 +1197,122 @@ Page {
                     visible: false
                 }
 
-                Row {
-                    id: attachmentOptionsRow
+                Flickable {
+                    id: attachmentOptionsFlickable
+
                     property bool isNeeded: false
-                    visible: height > 0
-                    height: isNeeded ? implicitHeight : 0
-                    anchors.right: parent.right
+
+                    onIsNeededChanged: {
+                        console.log("HÖHE: " + attachmentOptionsRow.height);
+                    }
+
                     width: parent.width
-                    layoutDirection: Qt.RightToLeft
-                    spacing: Theme.paddingMedium
-                    clip: true
+                    height: isNeeded ? attachmentOptionsRow.height : 0
                     Behavior on height { SmoothedAnimation { duration:  200 } }
-                    IconButton {
-                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
-                        icon.source: "image://theme/icon-m-image"
-                        onClicked: {
-                            var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage", {
-                                allowedOrientations: chatPage.allowedOrientations
-                            })
-                            picker.selectedContentPropertiesChanged.connect(function(){
-                                attachmentOptionsRow.isNeeded = false;
-                                Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
-                                attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
-                                attachmentPreviewRow.isPicture = true;
-                                attachmentPreviewRow.visible = true;
-                                controlSendButton();
-                            })
+                    visible: height > 0
+                    contentHeight: attachmentOptionsRow.height
+                    contentWidth: Math.max(parent.width, attachmentOptionsRow.width)
+                    clip: true
+
+                    Row {
+                        id: attachmentOptionsRow
+
+                        height: attachImageIconButton.height
+
+                        anchors.right: parent.right
+                        layoutDirection: Qt.RightToLeft
+                        spacing: Theme.paddingMedium
+
+                        IconButton {
+                            id: attachImageIconButton
+                            visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                            icon.source: "image://theme/icon-m-image"
+                            onClicked: {
+                                var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage", {
+                                    allowedOrientations: chatPage.allowedOrientations
+                                })
+                                picker.selectedContentPropertiesChanged.connect(function(){
+                                    attachmentOptionsFlickable.isNeeded = false;
+                                    Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
+                                    attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                    attachmentPreviewRow.isPicture = true;
+                                    attachmentPreviewRow.visible = true;
+                                    controlSendButton();
+                                })
+                            }
+                        }
+                        IconButton {
+                            visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                            icon.source: "image://theme/icon-m-video"
+                            onClicked: {
+                                var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage", {
+                                    allowedOrientations: chatPage.allowedOrientations
+                                })
+                                picker.selectedContentPropertiesChanged.connect(function(){
+                                    attachmentOptionsFlickable.isNeeded = false;
+                                    Debug.log("Selected video: ", picker.selectedContentProperties.filePath );
+                                    attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                    attachmentPreviewRow.isVideo = true;
+                                    attachmentPreviewRow.visible = true;
+                                    controlSendButton();
+                                })
+                            }
+                        }
+                        IconButton {
+                            visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                            icon.source: "image://theme/icon-m-mic"
+                            icon.sourceSize {
+                                width: Theme.iconSizeMedium
+                                height: Theme.iconSizeMedium
+                            }
+                            highlighted: down || voiceNoteOverlayLoader.active
+                            onClicked: {
+                                voiceNoteOverlayLoader.active = !voiceNoteOverlayLoader.active;
+                                stickerPickerLoader.active = false;
+                            }
+                        }
+                        IconButton {
+                            visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                            icon.source: "image://theme/icon-m-document"
+                            onClicked: {
+                                var picker = pageStack.push("Sailfish.Pickers.FilePickerPage", {
+                                    allowedOrientations: chatPage.allowedOrientations
+                                })
+                                picker.selectedContentPropertiesChanged.connect(function(){
+                                    attachmentOptionsFlickable.isNeeded = false;
+                                    Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
+                                    attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                    attachmentPreviewRow.isDocument = true;
+                                    attachmentPreviewRow.visible = true;
+                                    controlSendButton();
+                                })
+                            }
+                        }
+                        IconButton {
+                            visible: chatPage.hasSendPrivilege("can_send_other_messages")
+                            icon.source: "../../images/icon-m-sticker.svg"
+                            icon.sourceSize {
+                                width: Theme.iconSizeMedium
+                                height: Theme.iconSizeMedium
+                            }
+                            highlighted: down || stickerPickerLoader.active
+                            onClicked: {
+                                stickerPickerLoader.active = !stickerPickerLoader.active;
+                                voiceNoteOverlayLoader.active = false;
+                            }
+                        }
+                        IconButton {
+                            visible: !(chatPage.isPrivateChat || chatPage.isSecretChat) && chatPage.hasSendPrivilege("can_send_polls")
+                            icon.source: "image://theme/icon-m-question"
+                            onClicked: {
+                                pageStack.push(Qt.resolvedUrl("../pages/PollCreationPage.qml"), { "chatId" : chatInformation.id, groupName: chatInformation.title});
+                                attachmentOptionsFlickable.isNeeded = false;
+                            }
                         }
                     }
-                    IconButton {
-                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
-                        icon.source: "image://theme/icon-m-video"
-                        onClicked: {
-                            var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage", {
-                                allowedOrientations: chatPage.allowedOrientations
-                            })
-                            picker.selectedContentPropertiesChanged.connect(function(){
-                                attachmentOptionsRow.isNeeded = false;
-                                Debug.log("Selected video: ", picker.selectedContentProperties.filePath );
-                                attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
-                                attachmentPreviewRow.isVideo = true;
-                                attachmentPreviewRow.visible = true;
-                                controlSendButton();
-                            })
-                        }
-                    }
-                    IconButton {
-                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
-                        icon.source: "image://theme/icon-m-mic"
-                        icon.sourceSize {
-                            width: Theme.iconSizeMedium
-                            height: Theme.iconSizeMedium
-                        }
-                        highlighted: down || voiceNoteOverlayLoader.active
-                        onClicked: {
-                            voiceNoteOverlayLoader.active = !voiceNoteOverlayLoader.active;
-                            stickerPickerLoader.active = false;
-                        }
-                    }
-                    IconButton {
-                        visible: chatPage.hasSendPrivilege("can_send_media_messages")
-                        icon.source: "image://theme/icon-m-document"
-                        onClicked: {
-                            var picker = pageStack.push("Sailfish.Pickers.FilePickerPage", {
-                                allowedOrientations: chatPage.allowedOrientations
-                            })
-                            picker.selectedContentPropertiesChanged.connect(function(){
-                                attachmentOptionsRow.isNeeded = false;
-                                Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
-                                attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
-                                attachmentPreviewRow.isDocument = true;
-                                attachmentPreviewRow.visible = true;
-                                controlSendButton();
-                            })
-                        }
-                    }
-                    IconButton {
-                        visible: chatPage.hasSendPrivilege("can_send_other_messages")
-                        icon.source: "../../images/icon-m-sticker.svg"
-                        icon.sourceSize {
-                            width: Theme.iconSizeMedium
-                            height: Theme.iconSizeMedium
-                        }
-                        highlighted: down || stickerPickerLoader.active
-                        onClicked: {
-                            stickerPickerLoader.active = !stickerPickerLoader.active;
-                            voiceNoteOverlayLoader.active = false;
-                        }
-                    }
-                    IconButton {
-                        visible: !(chatPage.isPrivateChat || chatPage.isSecretChat) && chatPage.hasSendPrivilege("can_send_polls")
-                        icon.source: "image://theme/icon-m-question"
-                        onClicked: {
-                            pageStack.push(Qt.resolvedUrl("../pages/PollCreationPage.qml"), { "chatId" : chatInformation.id, groupName: chatInformation.title});
-                            attachmentOptionsRow.isNeeded = false;
-                        }
-                    }
+
                 }
+
 
                 Row {
                     id: attachmentPreviewRow
@@ -1564,17 +1583,17 @@ Page {
 
                     IconButton {
                         id: attachmentIconButton
-                        icon.source: "image://theme/icon-m-attach?" +  (attachmentOptionsRow.isNeeded ? Theme.highlightColor : Theme.primaryColor)
+                        icon.source: "image://theme/icon-m-attach?" +  (attachmentOptionsFlickable.isNeeded ? Theme.highlightColor : Theme.primaryColor)
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
                         enabled: !attachmentPreviewRow.visible
                         onClicked: {
-                            if (attachmentOptionsRow.isNeeded) {
-                                attachmentOptionsRow.isNeeded = false;
+                            if (attachmentOptionsFlickable.isNeeded) {
+                                attachmentOptionsFlickable.isNeeded = false;
                                 stickerPickerLoader.active = false;
                                 voiceNoteOverlayLoader.active = false;
                             } else {
-                                attachmentOptionsRow.isNeeded = true;
+                                attachmentOptionsFlickable.isNeeded = true;
                             }
                         }
                     }
