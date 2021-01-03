@@ -1174,7 +1174,6 @@ Page {
                 spacing: Theme.paddingSmall
                 topPadding: Theme.paddingSmall
                 anchors.horizontalCenter: parent.horizontalCenter
-                clip: true
                 visible: height > 0
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 height: isNeeded ? implicitHeight : 0
@@ -1210,13 +1209,23 @@ Page {
                     id: attachmentOptionsFlickable
 
                     property bool isNeeded: false
-                    width: parent.width
+                    width: chatPage.width
+                    x: -Theme.horizontalPageMargin
                     height: isNeeded ? attachmentOptionsRow.height : 0
                     Behavior on height { SmoothedAnimation { duration:  200 } }
                     visible: height > 0
                     contentHeight: attachmentOptionsRow.height
-                    contentWidth: Math.max(parent.width, attachmentOptionsRow.width)
-                    clip: true
+                    contentWidth: Math.max(width, attachmentOptionsRow.width)
+                    property bool fadeRight: (attachmentOptionsRow.width-contentX) > width
+                    property bool fadeLeft: !fadeRight && contentX > 0
+                    layer.enabled: fadeRight || fadeLeft
+                    layer.effect: OpacityRampEffectBase {
+                        direction: attachmentOptionsFlickable.fadeRight ? OpacityRamp.LeftToRight : OpacityRamp.RightToLeft
+                        source: attachmentOptionsFlickable
+                        slope: 1 + 6 * (chatPage.width) / Screen.width
+                        offset: 1 - 1 / slope
+                    }
+
 
                     Row {
                         id: attachmentOptionsRow
@@ -1226,6 +1235,8 @@ Page {
                         anchors.right: parent.right
                         layoutDirection: Qt.RightToLeft
                         spacing: Theme.paddingMedium
+                        leftPadding: Theme.horizontalPageMargin
+                        rightPadding: Theme.horizontalPageMargin
 
                         IconButton {
                             id: attachImageIconButton
