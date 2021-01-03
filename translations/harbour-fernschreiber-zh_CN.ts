@@ -263,15 +263,15 @@
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>标记此对话为未读</translation>
     </message>
     <message>
         <source>Draft</source>
-        <translation type="unfinished"></translation>
+        <translation>草稿</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
-        <translation type="unfinished"></translation>
+        <translation>标记为已读</translation>
     </message>
 </context>
 <context>
@@ -395,11 +395,11 @@
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>对话内搜索</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在搜索对话内容…</translation>
     </message>
 </context>
 <context>
@@ -777,21 +777,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>已加入 %1 到此对话</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>已从此对话移除 %1</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>已加入 %1 到此对话</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>已从此对话移除 %1</translation>
     </message>
 </context>
 <context>
@@ -1055,11 +1055,11 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>筛选你的对话…</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索对话</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
@@ -1071,15 +1071,15 @@
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation type="unfinished"></translation>
+        <translation>点击顶部状态栏即可筛选你的对话</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到匹配的对话。</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>你可以搜索公共对话或通过下拉菜单创建新对话。</translation>
     </message>
 </context>
 <context>
@@ -1271,47 +1271,47 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到对话。</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在搜索对话…</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished">个人对话</translation>
+        <translation>个人对话</translation>
     </message>
     <message>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>群组</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>频道</translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 位成员</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 位订阅者</numerusform>
         </translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索对话</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索对话…</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation type="unfinished"></translation>
+        <translation>输入你要搜索的内容（至少需要输入5个字符）</translation>
     </message>
 </context>
 <context>
@@ -1390,11 +1390,11 @@
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation type="unfinished"></translation>
+        <translation>发送后聚焦文本输入区域</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation type="unfinished"></translation>
+        <translation>发送消息后聚焦文本输入区域</translation>
     </message>
 </context>
 <context>
@@ -1800,7 +1800,7 @@
     </message>
     <message>
         <source>Closed!</source>
-        <translation>已关闭!</translation>
+        <translation>已关闭！</translation>
     </message>
     <message>
         <source>Pending acknowledgement</source>
@@ -1808,21 +1808,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>已加入 %1 到此对话</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>已从此对话移除 %1</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>已加入 %1 到此对话</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>已从此对话移除 %1</translation>
     </message>
 </context>
 </TS>
