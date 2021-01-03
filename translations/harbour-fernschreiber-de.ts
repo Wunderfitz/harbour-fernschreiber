@@ -411,6 +411,14 @@
         <source>Search in chat...</source>
         <translation>Im Chat suchen...</translation>
     </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation>Standort: Erlange Position...</translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation>Standort (%1/%2)</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

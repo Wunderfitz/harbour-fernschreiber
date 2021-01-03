@@ -497,6 +497,32 @@ void TDLibWrapper::sendVoiceNoteMessage(const QString &chatId, const QString &fi
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::sendLocationMessage(const QString &chatId, double latitude, double longitude, double horizontalAccuracy, const QString &replyToMessageId)
+{
+    LOG("Sending location message" << chatId << latitude << longitude << horizontalAccuracy << replyToMessageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "sendMessage");
+    requestObject.insert(CHAT_ID, chatId);
+    if (replyToMessageId != "0") {
+        requestObject.insert("reply_to_message_id", replyToMessageId);
+    }
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessageLocation");
+    QVariantMap location;
+    location.insert("latitude", latitude);
+    location.insert("longitude", longitude);
+    location.insert("horizontal_accuracy", horizontalAccuracy);
+    location.insert(_TYPE, "location");
+    inputMessageContent.insert("location", location);
+
+    inputMessageContent.insert("live_period", 0);
+    inputMessageContent.insert("heading", 0);
+    inputMessageContent.insert("proximity_alert_radius", 0);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &fileId, const QString &replyToMessageId)
 {
     LOG("Sending sticker message" << chatId << fileId << replyToMessageId);

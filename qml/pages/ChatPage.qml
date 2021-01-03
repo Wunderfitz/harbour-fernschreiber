@@ -212,8 +212,11 @@ Page {
         attachmentPreviewRow.isVideo = false;
         attachmentPreviewRow.isDocument = false;
         attachmentPreviewRow.isVoiceNote = false;
+        attachmentPreviewRow.isLocation = false;
         attachmentPreviewRow.fileProperties = {};
+        attachmentPreviewRow.locationData = {};
         attachmentPreviewRow.attachmentDescription = "";
+        fernschreiberUtils.stopGeoLocationUpdates();
     }
 
     function controlSendButton() {
@@ -221,7 +224,8 @@ Page {
                 || attachmentPreviewRow.isPicture
                 || attachmentPreviewRow.isDocument
                 || attachmentPreviewRow.isVideo
-                || attachmentPreviewRow.isVoiceNote) {
+                || attachmentPreviewRow.isVoiceNote
+                || attachmentPreviewRow.isLocation) {
             newMessageSendButton.enabled = true;
         } else {
             newMessageSendButton.enabled = false;
@@ -245,6 +249,9 @@ Page {
                 if (attachmentPreviewRow.isVoiceNote) {
                     tdLibWrapper.sendVoiceNoteMessage(chatInformation.id, fernschreiberUtils.voiceNotePath(), newMessageTextField.text, newMessageColumn.replyToMessageId);
                 }
+                if (attachmentPreviewRow.isLocation) {
+                    tdLibWrapper.sendLocationMessage(chatInformation.id, attachmentPreviewRow.locationData.latitude, attachmentPreviewRow.locationData.longitude, attachmentPreviewRow.locationData.horizontalAccuracy, newMessageColumn.replyToMessageId);
+                }
                 clearAttachmentPreviewRow();
             } else {
                 tdLibWrapper.sendTextMessage(chatInformation.id, newMessageTextField.text, newMessageColumn.replyToMessageId);
@@ -257,6 +264,7 @@ Page {
         controlSendButton();
         newMessageInReplyToRow.inReplyToMessage = null;
         newMessageColumn.editMessageId = "0";
+        fernschreiberUtils.stopGeoLocationUpdates();
     }
 
     function getWordBoundaries(text, cursorPosition) {
@@ -386,6 +394,7 @@ Page {
         if (chatPage.canSendMessages) {
             tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text);
         }
+        fernschreiberUtils.stopGeoLocationUpdates();
         tdLibWrapper.closeChat(chatInformation.id);
     }
 
@@ -1201,7 +1210,6 @@ Page {
                     id: attachmentOptionsFlickable
 
                     property bool isNeeded: false
-
                     width: parent.width
                     height: isNeeded ? attachmentOptionsRow.height : 0
                     Behavior on height { SmoothedAnimation { duration:  200 } }
@@ -1305,6 +1313,22 @@ Page {
                                 attachmentOptionsFlickable.isNeeded = false;
                             }
                         }
+                        IconButton {
+                            visible: fernschreiberUtils.supportsGeoLocation() && newMessageTextField.text === ""
+                            icon.source: "image://theme/icon-m-location"
+                            icon.sourceSize {
+                                width: Theme.iconSizeMedium
+                                height: Theme.iconSizeMedium
+                            }
+                            onClicked: {
+                                fernschreiberUtils.startGeoLocationUpdates();
+                                attachmentOptionsFlickable.isNeeded = false;
+                                attachmentPreviewRow.isLocation = true;
+                                attachmentPreviewRow.attachmentDescription = qsTr("Location: Obtaining position...");
+                                attachmentPreviewRow.visible = true;
+                                controlSendButton();
+                            }
+                        }
                     }
 
                 }
@@ -1322,8 +1346,20 @@ Page {
                     property bool isVideo: false;
                     property bool isDocument: false;
                     property bool isVoiceNote: false;
+                    property bool isLocation: false;
+                    property var locationData: ({});
                     property var fileProperties:({});
                     property string attachmentDescription: "";
+
+                    Connections {
+                        target: fernschreiberUtils
+                        onNewPositionInformation: {
+                            attachmentPreviewRow.locationData = positionInformation;
+                            if (attachmentPreviewRow.isLocation) {
+                                attachmentPreviewRow.attachmentDescription = qsTr("Location (%1/%2)").arg(attachmentPreviewRow.locationData.latitude).arg(attachmentPreviewRow.locationData.longitude);
+                            }
+                        }
+                    }
 
                     IconButton {
                         id: removeAttachmentsIconButton
@@ -1350,13 +1386,13 @@ Page {
                     Label {
                         id: attachmentPreviewText
                         font.pixelSize: Theme.fontSizeSmall
-                        text: attachmentPreviewRow.isVoiceNote ? attachmentPreviewRow.attachmentDescription : ( typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.fileName || "" : "" );
+                        text: ( attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation ) ? attachmentPreviewRow.attachmentDescription : ( typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.fileName || "" : "" );
                         anchors.verticalCenter: parent.verticalCenter
 
                         maximumLineCount: 1
                         truncationMode: TruncationMode.Fade
                         color: Theme.secondaryColor
-                        visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote
+                        visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation
                     }
                 }
 
@@ -1558,6 +1594,7 @@ Page {
                         labelVisible: false
                         textLeftMargin: 0
                         textTopMargin: 0
+                        enabled: !attachmentPreviewRow.isLocation
                         EnterKey.onClicked: {
                             if (appSettings.sendByEnter) {
                                 sendMessage();

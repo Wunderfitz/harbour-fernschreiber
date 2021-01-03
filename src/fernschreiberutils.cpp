@@ -25,6 +25,8 @@
 #include <QDir>
 #include <QFile>
 #include <QUrl>
+#include <QGeoCoordinate>
+#include <QGeoLocation>
 
 #define DEBUG_MODULE FernschreiberUtils
 #include "debuglog.h"
@@ -53,6 +55,14 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
     connect(&audioRecorder, SIGNAL(durationChanged(qlonglong)), this, SIGNAL(voiceNoteDurationChanged(qlonglong)));
     connect(&audioRecorder, SIGNAL(statusChanged(QMediaRecorder::Status)), this, SLOT(handleAudioRecorderStatusChanged(QMediaRecorder::Status)));
 
+    this->geoPositionInfoSource = QGeoPositionInfoSource::createDefaultSource(this);
+    if (this->geoPositionInfoSource) {
+        LOG("Geolocation successfully initialized...");
+        this->geoPositionInfoSource->setUpdateInterval(5000);
+        connect(geoPositionInfoSource, SIGNAL(positionUpdated(QGeoPositionInfo)), this, SLOT(handleGeoPositionUpdated(QGeoPositionInfo)));
+    } else {
+        LOG("Unable to initialize geolocation!");
+    }
 }
 
 FernschreiberUtils::~FernschreiberUtils()
@@ -205,6 +215,25 @@ FernschreiberUtils::VoiceNoteRecordingState FernschreiberUtils::getVoiceNoteReco
     return this->voiceNoteRecordingState;
 }
 
+void FernschreiberUtils::startGeoLocationUpdates()
+{
+    if (this->geoPositionInfoSource) {
+        this->geoPositionInfoSource->startUpdates();
+    }
+}
+
+void FernschreiberUtils::stopGeoLocationUpdates()
+{
+    if (this->geoPositionInfoSource) {
+        this->geoPositionInfoSource->stopUpdates();
+    }
+}
+
+bool FernschreiberUtils::supportsGeoLocation()
+{
+    return this->geoPositionInfoSource;
+}
+
 void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status status)
 {
     LOG("Audio recorder status changed:" << status);
@@ -231,8 +260,33 @@ void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status
     emit voiceNoteRecordingStateChanged(this->voiceNoteRecordingState);
 }
 
+void FernschreiberUtils::handleGeoPositionUpdated(const QGeoPositionInfo &info)
+{
+    LOG("Geo position was updated");
+    QVariantMap positionInformation;
+    if (info.hasAttribute(QGeoPositionInfo::HorizontalAccuracy)) {
+        positionInformation.insert("horizontalAccuracy", info.attribute(QGeoPositionInfo::HorizontalAccuracy));
+    } else {
+        positionInformation.insert("horizontalAccuracy", 0);
+    }
+    if (info.hasAttribute(QGeoPositionInfo::VerticalAccuracy)) {
+        positionInformation.insert("verticalAccuracy", info.attribute(QGeoPositionInfo::VerticalAccuracy));
+    } else {
+        positionInformation.insert("verticalAccuracy", 0);
+    }
+    QGeoCoordinate geoCoordinate = info.coordinate();
+    positionInformation.insert("latitude", geoCoordinate.latitude());
+    positionInformation.insert("longitude", geoCoordinate.longitude());
+
+
+    emit newPositionInformation(positionInformation);
+}
+
 void FernschreiberUtils::cleanUp()
 {
+    if (this->geoPositionInfoSource) {
+        this->geoPositionInfoSource->stopUpdates();
+    }
     QString voiceNotePath = this->voiceNotePath();
     if (QFile::exists(voiceNotePath)) {
         LOG("Removing old temporary file...");

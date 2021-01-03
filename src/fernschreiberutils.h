@@ -22,6 +22,8 @@
 
 #include <QObject>
 #include <QAudioRecorder>
+#include <QGeoPositionInfo>
+#include <QGeoPositionInfoSource>
 #include "tdlibwrapper.h"
 
 class FernschreiberUtils : public QObject
@@ -47,17 +49,24 @@ public:
     Q_INVOKABLE void stopRecordingVoiceNote();
     Q_INVOKABLE QString voiceNotePath();
     Q_INVOKABLE VoiceNoteRecordingState getVoiceNoteRecordingState();
+    Q_INVOKABLE void startGeoLocationUpdates();
+    Q_INVOKABLE void stopGeoLocationUpdates();
+    Q_INVOKABLE bool supportsGeoLocation();
 
 signals:
     void voiceNoteDurationChanged(qlonglong duration);
     void voiceNoteRecordingStateChanged(VoiceNoteRecordingState state);
+    void newPositionInformation(const QVariantMap &positionInformation);
 
 private slots:
     void handleAudioRecorderStatusChanged(QMediaRecorder::Status status);
+    void handleGeoPositionUpdated(const QGeoPositionInfo &info);
 
 private:
     QAudioRecorder audioRecorder;
     VoiceNoteRecordingState voiceNoteRecordingState;
+
+    QGeoPositionInfoSource *geoPositionInfoSource;
 
     void cleanUp();
 
