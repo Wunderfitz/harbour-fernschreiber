@@ -267,7 +267,7 @@
     </message>
     <message>
         <source>Draft</source>
-        <translation></translation>
+        <translation>草稿</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
