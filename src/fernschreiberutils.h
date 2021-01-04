@@ -69,6 +69,7 @@ private:
     QGeoPositionInfoSource *geoPositionInfoSource;
 
     void cleanUp();
+    QString getTemporaryDirectoryPath();
 
 };
 

@@ -151,6 +151,9 @@ Item {
                         anchors.fill: parent
                         onClicked: {
                             recordButton.visible = false;
+                            recordingDone = false;
+                            recordingDuration = 0;
+                            handleRecordingDuration();
                             fernschreiberUtils.startRecordingVoiceNote();
                         }
                     }

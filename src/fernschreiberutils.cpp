@@ -23,8 +23,10 @@
 #include <QAudioEncoderSettings>
 #include <QStandardPaths>
 #include <QDir>
+#include <QDirIterator>
 #include <QFile>
 #include <QUrl>
+#include <QDateTime>
 #include <QGeoCoordinate>
 #include <QGeoLocation>
 
@@ -35,7 +37,7 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
 {
     LOG("Initializing audio recorder...");
 
-    QString temporaryDirectoryPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) +  + "/harbour-fernschreiber";
+    QString temporaryDirectoryPath = this->getTemporaryDirectoryPath();
     QDir temporaryDirectory(temporaryDirectoryPath);
     if (!temporaryDirectory.exists()) {
         temporaryDirectory.mkpath(temporaryDirectoryPath);
@@ -47,7 +49,6 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
     encoderSettings.setQuality(QMultimedia::LowQuality);
     this->audioRecorder.setEncodingSettings(encoderSettings);
     this->audioRecorder.setContainerFormat("ogg");
-    this->audioRecorder.setOutputLocation(QUrl::fromLocalFile(temporaryDirectoryPath + "/voicenote.ogg"));
 
     QMediaRecorder::Status audioRecorderStatus = this->audioRecorder.status();
     this->handleAudioRecorderStatusChanged(audioRecorderStatus);
@@ -194,7 +195,8 @@ QString FernschreiberUtils::getUserName(const QVariantMap &userInformation)
 void FernschreiberUtils::startRecordingVoiceNote()
 {
     LOG("Start recording voice note...");
-    this->cleanUp();
+    QDateTime thisIsNow = QDateTime::currentDateTime();
+    this->audioRecorder.setOutputLocation(QUrl::fromLocalFile(this->getTemporaryDirectoryPath() + "/voicenote-" + thisIsNow.toString("yyyy-MM-dd-HH-mm-ss") + ".ogg"));
     this->audioRecorder.setVolume(1);
     this->audioRecorder.record();
 }
@@ -287,9 +289,19 @@ void FernschreiberUtils::cleanUp()
     if (this->geoPositionInfoSource) {
         this->geoPositionInfoSource->stopUpdates();
     }
-    QString voiceNotePath = this->voiceNotePath();
-    if (QFile::exists(voiceNotePath)) {
-        LOG("Removing old temporary file...");
-        QFile::remove(voiceNotePath);
+    QString temporaryDirectoryPath = this->getTemporaryDirectoryPath();
+    QDirIterator temporaryDirectoryIterator(temporaryDirectoryPath, QDir::Files | QDir::NoDotAndDotDot | QDir::NoSymLinks, QDirIterator::Subdirectories);
+    while (temporaryDirectoryIterator.hasNext()) {
+        QString nextFilePath = temporaryDirectoryIterator.next();
+        if (QFile::remove(nextFilePath)) {
+            LOG("Temporary file removed " << nextFilePath);
+        } else {
+            LOG("Error removing temporary file " << nextFilePath);
+        }
     }
+}
+
+QString FernschreiberUtils::getTemporaryDirectoryPath()
+{
+    return QStandardPaths::writableLocation(QStandardPaths::TempLocation) +  + "/harbour-fernschreiber";
 }
