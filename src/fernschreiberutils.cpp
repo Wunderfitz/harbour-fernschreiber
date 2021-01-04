@@ -1,11 +1,74 @@
-#include "fernschreiberutils.h"
+/*
+    Copyright (C) 2020-21 Sebastian J. Wolf and other contributors
 
+    This file is part of Fernschreiber.
+
+    Fernschreiber is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Fernschreiber is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#include "fernschreiberutils.h"
 #include <QMap>
 #include <QVariant>
+#include <QAudioEncoderSettings>
+#include <QStandardPaths>
+#include <QDir>
+#include <QDirIterator>
+#include <QFile>
+#include <QUrl>
+#include <QDateTime>
+#include <QGeoCoordinate>
+#include <QGeoLocation>
+
+#define DEBUG_MODULE FernschreiberUtils
+#include "debuglog.h"
 
 FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
 {
+    LOG("Initializing audio recorder...");
 
+    QString temporaryDirectoryPath = this->getTemporaryDirectoryPath();
+    QDir temporaryDirectory(temporaryDirectoryPath);
+    if (!temporaryDirectory.exists()) {
+        temporaryDirectory.mkpath(temporaryDirectoryPath);
+    }
+
+    QAudioEncoderSettings encoderSettings;
+    encoderSettings.setCodec("audio/vorbis");
+    encoderSettings.setChannelCount(1);
+    encoderSettings.setQuality(QMultimedia::LowQuality);
+    this->audioRecorder.setEncodingSettings(encoderSettings);
+    this->audioRecorder.setContainerFormat("ogg");
+
+    QMediaRecorder::Status audioRecorderStatus = this->audioRecorder.status();
+    this->handleAudioRecorderStatusChanged(audioRecorderStatus);
+
+    connect(&audioRecorder, SIGNAL(durationChanged(qlonglong)), this, SIGNAL(voiceNoteDurationChanged(qlonglong)));
+    connect(&audioRecorder, SIGNAL(statusChanged(QMediaRecorder::Status)), this, SLOT(handleAudioRecorderStatusChanged(QMediaRecorder::Status)));
+
+    this->geoPositionInfoSource = QGeoPositionInfoSource::createDefaultSource(this);
+    if (this->geoPositionInfoSource) {
+        LOG("Geolocation successfully initialized...");
+        this->geoPositionInfoSource->setUpdateInterval(5000);
+        connect(geoPositionInfoSource, SIGNAL(positionUpdated(QGeoPositionInfo)), this, SLOT(handleGeoPositionUpdated(QGeoPositionInfo)));
+    } else {
+        LOG("Unable to initialize geolocation!");
+    }
+}
+
+FernschreiberUtils::~FernschreiberUtils()
+{
+    this->cleanUp();
 }
 
 QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, const QVariantMap &messageContent, const bool isChannel, const qlonglong currentUserId, const QVariantMap &messageSender)
@@ -127,4 +190,118 @@ QString FernschreiberUtils::getUserName(const QVariantMap &userInformation)
     const QString firstName = userInformation.value("first_name").toString();
     const QString lastName = userInformation.value("last_name").toString();
     return QString(firstName + " " + lastName).trimmed();
+}
+
+void FernschreiberUtils::startRecordingVoiceNote()
+{
+    LOG("Start recording voice note...");
+    QDateTime thisIsNow = QDateTime::currentDateTime();
+    this->audioRecorder.setOutputLocation(QUrl::fromLocalFile(this->getTemporaryDirectoryPath() + "/voicenote-" + thisIsNow.toString("yyyy-MM-dd-HH-mm-ss") + ".ogg"));
+    this->audioRecorder.setVolume(1);
+    this->audioRecorder.record();
+}
+
+void FernschreiberUtils::stopRecordingVoiceNote()
+{
+    LOG("Stop recording voice note...");
+    this->audioRecorder.stop();
+}
+
+QString FernschreiberUtils::voiceNotePath()
+{
+    return this->audioRecorder.outputLocation().toLocalFile();
+}
+
+FernschreiberUtils::VoiceNoteRecordingState FernschreiberUtils::getVoiceNoteRecordingState()
+{
+    return this->voiceNoteRecordingState;
+}
+
+void FernschreiberUtils::startGeoLocationUpdates()
+{
+    if (this->geoPositionInfoSource) {
+        this->geoPositionInfoSource->startUpdates();
+    }
+}
+
+void FernschreiberUtils::stopGeoLocationUpdates()
+{
+    if (this->geoPositionInfoSource) {
+        this->geoPositionInfoSource->stopUpdates();
+    }
+}
+
+bool FernschreiberUtils::supportsGeoLocation()
+{
+    return this->geoPositionInfoSource;
+}
+
+void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status status)
+{
+    LOG("Audio recorder status changed:" << status);
+    switch (status) {
+    case QMediaRecorder::UnavailableStatus:
+    case QMediaRecorder::UnloadedStatus:
+    case QMediaRecorder::LoadingStatus:
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Unavailable;
+        break;
+    case QMediaRecorder::LoadedStatus:
+    case QMediaRecorder::PausedStatus:
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Ready;
+        break;
+    case QMediaRecorder::StartingStatus:
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Starting;
+        break;
+    case QMediaRecorder::FinalizingStatus:
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Stopping;
+        break;
+    case QMediaRecorder::RecordingStatus:
+        this->voiceNoteRecordingState = VoiceNoteRecordingState::Recording;
+        break;
+    }
+    emit voiceNoteRecordingStateChanged(this->voiceNoteRecordingState);
+}
+
+void FernschreiberUtils::handleGeoPositionUpdated(const QGeoPositionInfo &info)
+{
+    LOG("Geo position was updated");
+    QVariantMap positionInformation;
+    if (info.hasAttribute(QGeoPositionInfo::HorizontalAccuracy)) {
+        positionInformation.insert("horizontalAccuracy", info.attribute(QGeoPositionInfo::HorizontalAccuracy));
+    } else {
+        positionInformation.insert("horizontalAccuracy", 0);
+    }
+    if (info.hasAttribute(QGeoPositionInfo::VerticalAccuracy)) {
+        positionInformation.insert("verticalAccuracy", info.attribute(QGeoPositionInfo::VerticalAccuracy));
+    } else {
+        positionInformation.insert("verticalAccuracy", 0);
+    }
+    QGeoCoordinate geoCoordinate = info.coordinate();
+    positionInformation.insert("latitude", geoCoordinate.latitude());
+    positionInformation.insert("longitude", geoCoordinate.longitude());
+
+
+    emit newPositionInformation(positionInformation);
+}
+
+void FernschreiberUtils::cleanUp()
+{
+    if (this->geoPositionInfoSource) {
+        this->geoPositionInfoSource->stopUpdates();
+    }
+    QString temporaryDirectoryPath = this->getTemporaryDirectoryPath();
+    QDirIterator temporaryDirectoryIterator(temporaryDirectoryPath, QDir::Files | QDir::NoDotAndDotDot | QDir::NoSymLinks, QDirIterator::Subdirectories);
+    while (temporaryDirectoryIterator.hasNext()) {
+        QString nextFilePath = temporaryDirectoryIterator.next();
+        if (QFile::remove(nextFilePath)) {
+            LOG("Temporary file removed " << nextFilePath);
+        } else {
+            LOG("Error removing temporary file " << nextFilePath);
+        }
+    }
+}
+
+QString FernschreiberUtils::getTemporaryDirectoryPath()
+{
+    return QStandardPaths::writableLocation(QStandardPaths::TempLocation) +  + "/harbour-fernschreiber";
 }

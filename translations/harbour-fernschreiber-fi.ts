@@ -411,6 +411,14 @@
         <source>Search in chat...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1443,6 +1451,45 @@
     <message>
         <source>Download failed.</source>
         <translation>Lataus epäonnistui.</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

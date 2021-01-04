@@ -411,6 +411,14 @@
         <source>Search in chat...</source>
         <translation>Search in chat...</translation>
     </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation>Location: Obtaining position...</translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation>Location (%1/%2)</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1442,6 +1450,45 @@
     <message>
         <source>Download failed.</source>
         <translation>Download failed.</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation>Record a Voice Note</translation>
+    </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation>Press the button to start recording</translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation>Unavailable</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation>Starting</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation>Recording</translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation>Stopping</translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation>Use recording</translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation>Voice Note (%1)</translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation>Ready</translation>
     </message>
 </context>
 <context>

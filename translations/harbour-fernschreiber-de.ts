@@ -411,6 +411,14 @@
         <source>Search in chat...</source>
         <translation>Im Chat suchen...</translation>
     </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation>Standort: Erlange Position...</translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation>Standort (%1/%2)</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1442,6 +1450,45 @@
     <message>
         <source>Download failed.</source>
         <translation>Download fehlgeschlagen.</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation>Eine Sprachnachricht aufzeichnen</translation>
+    </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation>Drücken Sie den Knopf, um die Aufzeichnung zu starten</translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation>Nicht verfügbar</translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation>Bereit</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation>Startet</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation>Zeichnet auf</translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation>Stoppt</translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation>Aufzeichnung verwenden</translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation>Sprachnachricht (%1)</translation>
     </message>
 </context>
 <context>
