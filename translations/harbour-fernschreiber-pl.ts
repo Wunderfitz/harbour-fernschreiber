@@ -269,15 +269,15 @@
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznacz czat jako nieprzeczytany</translation>
     </message>
     <message>
         <source>Draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopia robocza</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznacz czat jako przeczytany</translation>
     </message>
 </context>
 <context>
@@ -415,11 +415,11 @@
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyszukaj w czacie</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyszukaj w czacie</translation>
     </message>
 </context>
 <context>
@@ -797,21 +797,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>dodał %1 do czatu</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>usunął %1 z czatu</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>dodsałem %1 do czatu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>usunąłem %1 z czatu</translation>
     </message>
 </context>
 <context>
@@ -950,11 +950,11 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Wiadomość opięta</translation>
+        <translation>Wiadomość odpięta</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Odepnij wiadomość</translation>
     </message>
 </context>
 <context>
@@ -1077,27 +1077,27 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtruj swoje czaty...</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyszukaj czaty</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pobieranie %1 zakończone sukcesem</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieudane pobranie</translation>
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Dotknij paska tytułowego, aby filtrować swoje czaty</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Brak pasujących czatów</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
@@ -1309,51 +1309,51 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Brak pasujących czatów</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyszukiwanie czatów...</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished">Prywatny czat</translation>
+        <translation>Prywatny czat</translation>
     </message>
     <message>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupa</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanał</translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 członek</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 członków</numerusform>
+            <numerusform>%1 członków</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 subskrybent</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 subskrybentów</numerusform>
+            <numerusform>%1 subskrybentów</numerusform>
         </translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyszukaj czaty</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyszukaj czat...</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź zapytanie aby zacząć wyszukiwanie (minimum 5 znaków)</translation>
     </message>
 </context>
 <context>
@@ -1850,21 +1850,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>dodał %1 do czatu</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>usunął %1 z czatu</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>dodałem %1 do czatu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>usunąłem %1 z czatu</translation>
     </message>
 </context>
 </TS>
