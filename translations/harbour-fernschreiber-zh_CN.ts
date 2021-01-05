@@ -403,11 +403,11 @@
     </message>
     <message>
         <source>Location: Obtaining position...</source>
-        <translation type="unfinished"></translation>
+        <translation>位置:正在获取位置…</translation>
     </message>
     <message>
         <source>Location (%1/%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>位置 (%1/%2)</translation>
     </message>
 </context>
 <context>
@@ -574,7 +574,7 @@
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>发送语言消息</translation>
+        <translation>发送语音消息</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -1435,39 +1435,39 @@
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>录制语音消息</translation>
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation type="unfinished"></translation>
+        <translation>按下按钮即可开始录音</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>不可用</translation>
     </message>
     <message>
         <source>Starting</source>
-        <translation type="unfinished"></translation>
+        <translation>正在启动</translation>
     </message>
     <message>
         <source>Recording</source>
-        <translation type="unfinished"></translation>
+        <translation>正在录音</translation>
     </message>
     <message>
         <source>Stopping</source>
-        <translation type="unfinished"></translation>
+        <translation>停止中</translation>
     </message>
     <message>
         <source>Use recording</source>
-        <translation type="unfinished"></translation>
+        <translation>使用录音</translation>
     </message>
     <message>
         <source>Voice Note (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>语音消息 (%1)</translation>
     </message>
     <message>
         <source>Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>就绪</translation>
     </message>
 </context>
 <context>
