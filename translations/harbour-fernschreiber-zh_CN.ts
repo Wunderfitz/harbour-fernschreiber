@@ -574,7 +574,7 @@
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>发送语言消息</translation>
+        <translation>发送语音消息</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -1463,7 +1463,7 @@
     </message>
     <message>
         <source>Voice Note (%1)</source>
-        <translation>语言消息 (%1)</translation>
+        <translation>语音消息 (%1)</translation>
     </message>
     <message>
         <source>Ready</source>
