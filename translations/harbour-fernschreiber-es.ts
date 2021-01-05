@@ -403,11 +403,11 @@
     </message>
     <message>
         <source>Location: Obtaining position...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ubicación: Recibiendo posición ...</translation>
     </message>
     <message>
         <source>Location (%1/%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ubicación (%1/%2)</translation>
     </message>
 </context>
 <context>
@@ -1079,15 +1079,15 @@
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Tocar la barra de título para filtrar las charlas</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>No hay coincidencias.</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Puede buscar charlas públicas o crear un nueva charla a través de la polea de opciones.</translation>
     </message>
 </context>
 <context>
@@ -1435,39 +1435,39 @@
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Grabar una nota de voz</translation>
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Presionar el botón para iniciar a grabar</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>No diponible</translation>
     </message>
     <message>
         <source>Starting</source>
-        <translation type="unfinished"></translation>
+        <translation>Iniciando</translation>
     </message>
     <message>
         <source>Recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Grabando</translation>
     </message>
     <message>
         <source>Stopping</source>
-        <translation type="unfinished"></translation>
+        <translation>Deteniendo</translation>
     </message>
     <message>
         <source>Use recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Usar grabación</translation>
     </message>
     <message>
         <source>Voice Note (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nota de voz (%1)</translation>
     </message>
     <message>
         <source>Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>Listo</translation>
     </message>
 </context>
 <context>
