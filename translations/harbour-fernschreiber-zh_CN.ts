@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>该项目使用 Telegram 数据库（TDLib）。感谢使它在 Boost 软件许可证1.0下可用！</translation>
+        <translation>该项目使用 Telegram 数据库()TDLib）。感谢使它在 Boost 软件许可证1.0下可用！</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>该项目使用 twemoji 2018 Twitter, Inc. 版权所有。感谢使它在 MIT 许可证（编码）及 CC-BY 4.0（图像）许可证下可用。</translation>
+        <translation>该项目使用 twemoji 2018 Twitter, Inc. 版权所有。感谢使它在 MIT 许可证()编码）及 CC-BY 4.0()图像）许可证下可用。</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -77,7 +77,7 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation>该项目使用 rlottie 版权所有 2020 三星电子有限责任公司。感谢使它在 MIT 许可证下可用。</translation>
+        <translation>该项目使用 rlottie 版权所有 2020 三星电子有限责任公司。感谢使它在 MIT 许可证下可用</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
@@ -96,31 +96,7 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationPageContent</name>
-    <message numerus="yes">
-        <source>%1 subscribers</source>
-        <translation>
-            <numerusform>%1 位订阅者</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%1 members</source>
-        <translation>
-            <numerusform>%1 位成员</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Leave Chat</source>
-        <translation>离开对话</translation>
-    </message>
-    <message>
-        <source>Join Chat</source>
-        <translation>加入对话</translation>
-    </message>
-    <message>
-        <source>Leaving chat</source>
-        <translation>正在离开对话</translation>
-    </message>
+    <name>ChatInformationPage</name>
     <message>
         <source>Unmute Chat</source>
         <translation>取消对话静音</translation>
@@ -134,17 +110,24 @@
         <translation>未知</translation>
     </message>
     <message>
-        <source>Chat Title</source>
-        <comment>group title header</comment>
-        <translation>对话标题</translation>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation>邀请链接已复制到剪切板</translation>
     </message>
     <message>
-        <source>Enter 1-128 characters</source>
-        <translation>输入 1-128 个字符</translation>
+        <source>%1 members, %2 online</source>
+        <translation>%1 位成员, %2 位在线</translation>
     </message>
     <message>
-        <source>There is no information text available, yet.</source>
-        <translation>暂无信息</translation>
+        <source>%1 subscribers</source>
+        <translation>%1 位订阅者</translation>
+    </message>
+    <message>
+        <source>%1 members</source>
+        <translation>%1 位成员</translation>
+    </message>
+    <message>
+        <source>Leaving chat</source>
+        <translation>正在离开对话</translation>
     </message>
     <message>
         <source>Info</source>
@@ -162,23 +145,25 @@
         <translation>邀请链接</translation>
     </message>
     <message>
-        <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>邀请链接已复制到剪切板</translation>
+        <source>There is no information text available, yet.</source>
+        <translation>暂无信息</translation>
     </message>
     <message>
-        <source>%1, %2</source>
-        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation>%1, %2</translation>
-    </message>
-    <message numerus="yes">
-        <source>%1 online</source>
-        <translation>
-            <numerusform>%1 位在线</numerusform>
-        </translation>
+        <source>Chat Title</source>
+        <comment>group title header</comment>
+        <translation>对话标题</translation>
     </message>
     <message>
-        <source>New Secret Chat</source>
-        <translation>新加密对话</translation>
+        <source>Enter 1-128 characters</source>
+        <translation>输入 1-128 个字符</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation>离开对话</translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation>加入对话</translation>
     </message>
 </context>
 <context>
@@ -187,6 +172,20 @@
         <source>Loading common chats…</source>
         <comment>chats you have in common with a user</comment>
         <translation>正在加载共有对话…</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>未知</translation>
+    </message>
+    <message>
+        <source>Groups</source>
+        <comment>Button: groups in common (short)</comment>
+        <translation>群组</translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <comment>Button: Group Members</comment>
+        <translation>成员</translation>
     </message>
     <message>
         <source>Loading group members…</source>
@@ -210,17 +209,7 @@
     </message>
 </context>
 <context>
-    <name>ChatInformationTabView</name>
-    <message>
-        <source>Groups</source>
-        <comment>Button: groups in common (short)</comment>
-        <translation>群组</translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <comment>Button: Group Members</comment>
-        <translation>成员</translation>
-    </message>
+    <name>ChatInformationTabItemSettings</name>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
@@ -257,22 +246,6 @@
         <source>Mark all messages as read</source>
         <translation>标记全部消息为已读</translation>
     </message>
-    <message>
-        <source>No message in this chat.</source>
-        <translation>该对话没有消息…</translation>
-    </message>
-    <message>
-        <source>Mark chat as unread</source>
-        <translation>标记此对话为未读</translation>
-    </message>
-    <message>
-        <source>Draft</source>
-        <translation>草稿</translation>
-    </message>
-    <message>
-        <source>Mark chat as read</source>
-        <translation>标记为已读</translation>
-    </message>
 </context>
 <context>
     <name>ChatPage</name>
@@ -284,17 +257,17 @@
         <source>Your message</source>
         <translation>你的消息</translation>
     </message>
-    <message numerus="yes">
-        <source>%1 members</source>
-        <translation>
-            <numerusform>%1 位成员</numerusform>
-        </translation>
+    <message>
+        <source>%1 members, %2 online</source>
+        <translation>%1 位成员, %2 位在线</translation>
     </message>
-    <message numerus="yes">
+    <message>
+        <source>%1 members</source>
+        <translation>%1 位成员</translation>
+    </message>
+    <message>
         <source>%1 subscribers</source>
-        <translation>
-            <numerusform>%1 位订阅者</numerusform>
-        </translation>
+        <translation>%1 位订阅者</translation>
     </message>
     <message>
         <source>Loading messages...</source>
@@ -340,93 +313,12 @@
         <source>You joined the chat %1</source>
         <translation>你已加入对话 %1</translation>
     </message>
-    <message>
-        <source>Select Messages</source>
-        <translation>选择消息</translation>
-    </message>
-    <message numerus="yes">
-        <source>%Ln Messages deleted</source>
-        <translation>
-            <numerusform>已删除 %Ln 则消息</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%Ln messages have been copied</source>
-        <translation>
-            <numerusform>已复制 %Ln 则消息</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>Forward %Ln messages</source>
-        <comment>dialog header</comment>
-        <translation>
-            <numerusform>转发 %Ln 则消息</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%Ln messages selected</source>
-        <comment>number of messages selected</comment>
-        <translation>
-            <numerusform>已选择 %Ln 则消息</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>%1, %2</source>
-        <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation>%1, %2</translation>
-    </message>
-    <message numerus="yes">
-        <source>%1 online</source>
-        <translation>
-            <numerusform>%1 位在线</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>加密对话未就绪，你的聊天对象必须先上线。</translation>
-    </message>
-    <message>
-        <source>Closing chat</source>
-        <translation>正在关闭对话</translation>
-    </message>
-    <message>
-        <source>Close Chat</source>
-        <translation>关闭对话</translation>
-    </message>
-    <message>
-        <source>Search in Chat</source>
-        <translation>对话内搜索</translation>
-    </message>
-    <message>
-        <source>Search in chat...</source>
-        <translation>正在搜索对话内容…</translation>
-    </message>
-    <message>
-        <source>Location: Obtaining position...</source>
-        <translation>位置:正在获取位置…</translation>
-    </message>
-    <message>
-        <source>Location (%1/%2)</source>
-        <translation>位置 (%1/%2)</translation>
-    </message>
-</context>
-<context>
-    <name>ChatSelectionPage</name>
-    <message>
-        <source>Select Chat</source>
-        <translation>选择对话</translation>
-    </message>
-    <message>
-        <source>You don&apos;t have any chats yet.</source>
-        <translation>你还没有任何对话。</translation>
-    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation>未读
-消息</translation>
+        <translation>未读消息</translation>
     </message>
     <message>
         <source>unread messages</source>
@@ -575,7 +467,7 @@
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>发送语音消息</translation>
+        <translation>发送语言消息</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -775,39 +667,12 @@
         <source>sent a self-destructing photo that is expired</source>
         <translation>发送过期即自毁视频</translation>
     </message>
-    <message>
-        <source>sent an audio</source>
-        <comment>myself</comment>
-        <translation>发送音频</translation>
-    </message>
-    <message>
-        <source>sent an audio</source>
-        <translation>发送音频</translation>
-    </message>
-    <message>
-        <source>has added %1 to the chat</source>
-        <translation>已加入 %1 到此对话</translation>
-    </message>
-    <message>
-        <source>has removed %1 from the chat</source>
-        <translation>已从此对话移除 %1</translation>
-    </message>
-    <message>
-        <source>have added %1 to the chat</source>
-        <comment>myself</comment>
-        <translation>已加入 %1 到此对话</translation>
-    </message>
-    <message>
-        <source>have removed %1 from the chat</source>
-        <comment>myself</comment>
-        <translation>已从此对话移除 %1</translation>
-    </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
-        <translation>下载图片</translation>
+        <translation>已下载图片</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
@@ -887,10 +752,6 @@
         <source>Use the international format, e.g. %1</source>
         <translation>请使用国际区号格式，例如 %1</translation>
     </message>
-    <message>
-        <source>About Fernschreiber</source>
-        <translation>关于 Fernschreiber</translation>
-    </message>
 </context>
 <context>
     <name>LocationPreview</name>
@@ -929,22 +790,6 @@
         <source>Forwarded Message</source>
         <translation>转发消息</translation>
     </message>
-    <message>
-        <source>Select Message</source>
-        <translation>选择消息</translation>
-    </message>
-    <message>
-        <source>Pin Message</source>
-        <translation>置顶消息</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>已取消消息置顶</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>取消置顶</translation>
-    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
@@ -954,70 +799,10 @@
     </message>
 </context>
 <context>
-    <name>MessageOverlayFlickable</name>
-    <message>
-        <source>You</source>
-        <translation>你</translation>
-    </message>
-    <message>
-        <source>This message was forwarded. Original author: %1</source>
-        <translation>此消息为转发消息，原作者: %1</translation>
-    </message>
-</context>
-<context>
-    <name>NewChatPage</name>
-    <message>
-        <source>Your Contacts</source>
-        <translation>你的联系人</translation>
-    </message>
-    <message>
-        <source>You don&apos;t have any contacts.</source>
-        <translation>你还没有任何联系人。</translation>
-    </message>
-    <message>
-        <source>Private Chat</source>
-        <translation>个人对话</translation>
-    </message>
-    <message>
-        <source>Secret Chat</source>
-        <translation>加密对话</translation>
-    </message>
-    <message>
-        <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation>端对端加密，仅能通过此设备访问。</translation>
-    </message>
-    <message>
-        <source>Loading contacts...</source>
-        <translation>正在加载联系人…</translation>
-    </message>
-    <message>
-        <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation>传输加密，使用 Telegram 云，可以在设备之间共享</translation>
-    </message>
-    <message>
-        <source>Search a contact...</source>
-        <translation>搜索联系人…</translation>
-    </message>
-    <message>
-        <source>Synchronize Contacts with Telegram</source>
-        <translation>同步 Telegram 联系人</translation>
-    </message>
-    <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>无法同步你的云端 Telegram 联系人。</translation>
-    </message>
-    <message>
-        <source>Contacts successfully synchronized with Telegram.</source>
-        <translation>已成功同步 Telegram 联系人。</translation>
-    </message>
-</context>
-<context>
     <name>NotificationManager</name>
-    <message numerus="yes">
-        <source>%Ln unread messages</source>
-        <translation>
-            <numerusform>%Ln 则消息</numerusform>
-        </translation>
+    <message>
+        <source>%1 unread messages</source>
+        <translation>%1 则未读消息</translation>
     </message>
 </context>
 <context>
@@ -1047,6 +832,10 @@
         <translation>正在更新内容…</translation>
     </message>
     <message>
+        <source>Unknown</source>
+        <translation>未知</translation>
+    </message>
+    <message>
         <source>Loading chat list...</source>
         <translation>正在加载对话列表…</translation>
     </message>
@@ -1059,51 +848,8 @@
         <translation>你还没有任何对话。</translation>
     </message>
     <message>
-        <source>New Chat</source>
-        <translation>新对话</translation>
-    </message>
-    <message>
-        <source>Filter your chats...</source>
-        <translation>筛选你的对话…</translation>
-    </message>
-    <message>
-        <source>Search Chats</source>
-        <translation>搜索对话</translation>
-    </message>
-    <message>
-        <source>Download of %1 successful.</source>
-        <translation>已成功下载 %1 。</translation>
-    </message>
-    <message>
-        <source>Download failed.</source>
-        <translation>下载失败。</translation>
-    </message>
-    <message>
-        <source>Tap on the title bar to filter your chats</source>
-        <translation>点击顶部状态栏即可筛选你的对话</translation>
-    </message>
-    <message>
-        <source>No matching chats found.</source>
-        <translation>没有找到匹配的对话。</translation>
-    </message>
-    <message>
-        <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation>你可以搜索公共对话或通过下拉菜单创建新对话。</translation>
-    </message>
-</context>
-<context>
-    <name>PinnedMessageItem</name>
-    <message>
-        <source>You</source>
-        <translation>你</translation>
-    </message>
-    <message>
-        <source>Pinned Message</source>
-        <translation>已置顶消息</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>已取消置顶消息</translation>
+        <source>You are already a member of this chat.</source>
+        <translation>你已是此对话的成员。</translation>
     </message>
 </context>
 <context>
@@ -1143,9 +889,9 @@
         <translation>在此输入你的问题</translation>
     </message>
     <message numerus="yes">
-        <source>Question (%Ln characters left)</source>
+        <source>Question (%n1 characters left)</source>
         <translation>
-            <numerusform>问题(剩余 %Ln 个字符)</numerusform>
+            <numerusform>问题(剩余 %n1 个字符)</numerusform>
         </translation>
     </message>
     <message>
@@ -1158,9 +904,9 @@
         <translation>在此输入回答</translation>
     </message>
     <message numerus="yes">
-        <source>Answer (%Ln characters left)</source>
+        <source>Answer (%n1 characters left)</source>
         <translation>
-            <numerusform>回答(剩余 %Ln 个字符)</numerusform>
+            <numerusform>回答(剩余 %n1 个字符)</numerusform>
         </translation>
     </message>
     <message>
@@ -1191,12 +937,10 @@
 </context>
 <context>
     <name>PollPreview</name>
-    <message numerus="yes">
-        <source>%Ln%</source>
+    <message>
+        <source>%L1%</source>
         <comment>% of votes for option</comment>
-        <translation>
-            <numerusform>%Ln%</numerusform>
-        </translation>
+        <translation>%L1%</translation>
     </message>
     <message>
         <source>Final Result:</source>
@@ -1207,10 +951,10 @@
         <translation>允许多个回答。</translation>
     </message>
     <message numerus="yes">
-        <source>%Ln vote(s) total</source>
+        <source>%L1 vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>总计 %Ln 次回答</numerusform>
+            <numerusform>总计 %L1 次回答</numerusform>
         </translation>
     </message>
     <message>
@@ -1233,10 +977,10 @@
         <translation>投票结果</translation>
     </message>
     <message numerus="yes">
-        <source>%Ln vote(s) total</source>
+        <source>%L1 vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>总计 %Ln 次投票</numerusform>
+            <numerusform>总计 %L1 次投票</numerusform>
         </translation>
     </message>
     <message>
@@ -1250,18 +994,16 @@
         <translation>结果</translation>
     </message>
     <message numerus="yes">
-        <source>%Ln vote(s)</source>
+        <source>%L1 vote(s)</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%Ln 次投票</numerusform>
+            <numerusform>%L1 次投票</numerusform>
         </translation>
     </message>
-    <message numerus="yes">
-        <source>%Ln%</source>
+    <message>
+        <source>%L1%</source>
         <comment>% of votes for option</comment>
-        <translation>
-            <numerusform>%Ln%</numerusform>
-        </translation>
+        <translation>%L1%</translation>
     </message>
     <message>
         <source>Chosen by:</source>
@@ -1269,58 +1011,11 @@
         <translation>选择此项的人:</translation>
     </message>
     <message numerus="yes">
-        <source>%Ln vote(s) including yours</source>
+        <source>%L1 vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%Ln 次投票，包括你</numerusform>
+            <numerusform>%L1 次投票，包括你</numerusform>
         </translation>
-    </message>
-</context>
-<context>
-    <name>SearchChatsPage</name>
-    <message>
-        <source>No chats found.</source>
-        <translation>没有找到对话。</translation>
-    </message>
-    <message>
-        <source>Searching chats...</source>
-        <translation>正在搜索对话…</translation>
-    </message>
-    <message>
-        <source>Private Chat</source>
-        <translation>个人对话</translation>
-    </message>
-    <message>
-        <source>Group</source>
-        <translation>群组</translation>
-    </message>
-    <message>
-        <source>Channel</source>
-        <translation>频道</translation>
-    </message>
-    <message numerus="yes">
-        <source>%1 members</source>
-        <translation>
-            <numerusform>%1 位成员</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%1 subscribers</source>
-        <translation>
-            <numerusform>%1 位订阅者</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Search Chats</source>
-        <translation>搜索对话</translation>
-    </message>
-    <message>
-        <source>Search a chat...</source>
-        <translation>搜索对话…</translation>
-    </message>
-    <message>
-        <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation>输入你要搜索的内容（至少需要输入5个字符）</translation>
     </message>
 </context>
 <context>
@@ -1371,7 +1066,7 @@
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>使用非图像反馈方式通知消息（例如声音及振动）</translation>
+        <translation>使用非图像反馈方式通知消息()例如声音及振动）</translation>
     </message>
     <message>
         <source>Open-with menu integration</source>
@@ -1384,26 +1079,6 @@
     <message>
         <source>Animate stickers</source>
         <translation>动态表情贴图</translation>
-    </message>
-    <message>
-        <source>Notification turns on the display</source>
-        <translation>收到通知时点亮屏幕</translation>
-    </message>
-    <message>
-        <source>Storage</source>
-        <translation>储存</translation>
-    </message>
-    <message>
-        <source>Enable storage optimizer</source>
-        <translation>启用储存加速器</translation>
-    </message>
-    <message>
-        <source>Focus text input area after send</source>
-        <translation>发送后聚焦文本输入区域</translation>
-    </message>
-    <message>
-        <source>Focus the text input area after sending a message</source>
-        <translation>发送消息后聚焦文本输入区域</translation>
     </message>
 </context>
 <context>
@@ -1433,52 +1108,6 @@
     </message>
 </context>
 <context>
-    <name>VoiceNoteOverlay</name>
-    <message>
-        <source>Record a Voice Note</source>
-        <translation>录制语音消息</translation>
-    </message>
-    <message>
-        <source>Press the button to start recording</source>
-        <translation>按下按钮即可开始录音</translation>
-    </message>
-    <message>
-        <source>Unavailable</source>
-        <translation>不可用</translation>
-    </message>
-    <message>
-        <source>Starting</source>
-        <translation>正在启动</translation>
-    </message>
-    <message>
-        <source>Recording</source>
-        <translation>正在录音</translation>
-    </message>
-    <message>
-        <source>Stopping</source>
-        <translation>正在停止</translation>
-    </message>
-    <message>
-        <source>Use recording</source>
-        <translation>使用录音</translation>
-    </message>
-    <message>
-        <source>Voice Note (%1)</source>
-        <translation>语音消息 (%1)</translation>
-    </message>
-    <message>
-        <source>Ready</source>
-        <translation>就绪</translation>
-    </message>
-</context>
-<context>
-    <name>WebPagePreview</name>
-    <message>
-        <source>Preview not supported for this link...</source>
-        <translation>不支持预览此链接…</translation>
-    </message>
-</context>
-<context>
     <name>functions</name>
     <message>
         <source>Video: %1</source>
@@ -1494,7 +1123,7 @@
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation>表情贴图: %1</translation>
+        <translation>贴图: %1</translation>
     </message>
     <message>
         <source>Audio: %1</source>
@@ -1628,24 +1257,24 @@
         <translation>完全离线</translation>
     </message>
     <message>
-        <source>last online: last month</source>
-        <translation>上次在线时间：上月</translation>
+        <source>offline, last online: last month</source>
+        <translation>离线，上次在线时间:上月</translation>
     </message>
     <message>
-        <source>last online: last week</source>
-        <translation>上次在线时间：上周</translation>
+        <source>offline, last online: last week</source>
+        <translation>离线，上次在线时间:上周</translation>
     </message>
     <message>
-        <source>last online: %1</source>
-        <translation>上次在线时间： %1</translation>
+        <source>offline, last online: %1</source>
+        <translation>离线，上次在线时间: %1</translation>
     </message>
     <message>
         <source>online</source>
         <translation>在线</translation>
     </message>
     <message>
-        <source>was recently online</source>
-        <translation>最近在线</translation>
+        <source>offline, was recently online</source>
+        <translation>离线，最近在线</translation>
     </message>
     <message>
         <source>Admin</source>
@@ -1758,12 +1387,12 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>修改加密对话保留时长设置</translation>
+        <translation>修改私密对话保留时长设置</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>修改加密对话保留时长设置</translation>
+        <translation>修改私密对话保留时长设置</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
@@ -1800,7 +1429,7 @@
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation>发送不受支持的消息: %1</translation>
+        <translation>发送不受支持的消息: %1</</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
@@ -1832,45 +1461,6 @@
     <message>
         <source>Unable to find user %1</source>
         <translation>无法找到用户 %1</translation>
-    </message>
-    <message>
-        <source>sent a video note</source>
-        <comment>myself</comment>
-        <translation>发送视频消息</translation>
-    </message>
-    <message>
-        <source>sent a video note</source>
-        <translation>发送视频消息</translation>
-    </message>
-    <message>
-        <source>You are already a member of this chat.</source>
-        <translation>你已是此对话成员。</translation>
-    </message>
-    <message>
-        <source>Closed!</source>
-        <translation>已关闭！</translation>
-    </message>
-    <message>
-        <source>Pending acknowledgement</source>
-        <translation>等待确认</translation>
-    </message>
-    <message>
-        <source>has added %1 to the chat</source>
-        <translation>已加入 %1 到此对话</translation>
-    </message>
-    <message>
-        <source>has removed %1 from the chat</source>
-        <translation>已从此对话移除 %1</translation>
-    </message>
-    <message>
-        <source>have added %1 to the chat</source>
-        <comment>myself</comment>
-        <translation>已加入 %1 到此对话</translation>
-    </message>
-    <message>
-        <source>have removed %1 from the chat</source>
-        <comment>myself</comment>
-        <translation>已从此对话移除 %1</translation>
     </message>
 </context>
 </TS>
