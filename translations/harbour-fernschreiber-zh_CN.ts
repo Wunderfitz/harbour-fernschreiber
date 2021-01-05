@@ -425,7 +425,8 @@
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation>未读消息</translation>
+        <translation>未读
+消息</translation>
     </message>
     <message>
         <source>unread messages</source>
@@ -1455,7 +1456,7 @@
     </message>
     <message>
         <source>Stopping</source>
-        <translation>停止中</translation>
+        <translation>正在停止</translation>
     </message>
     <message>
         <source>Use recording</source>
