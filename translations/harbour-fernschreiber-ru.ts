@@ -1440,11 +1440,11 @@
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Приоритет фокусировки при разговоре в чате</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сфокусироваться на поле ввода текста после отправки сообщения</translation>
     </message>
 </context>
 <context>
@@ -1477,39 +1477,39 @@
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Голосовое сообщение</translation>
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Коснитесь кнопки для записи</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Недоступно</translation>
     </message>
     <message>
         <source>Starting</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Пуск</translation>
     </message>
     <message>
         <source>Recording</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Запись</translation>
     </message>
     <message>
         <source>Stopping</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Стоп</translation>
     </message>
     <message>
         <source>Use recording</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Использовать запись</translation>
     </message>
     <message>
         <source>Voice Note (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Аудиозаметка (%1)</translation>
     </message>
     <message>
         <source>Ready</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Готов</translation>
     </message>
 </context>
 <context>
