@@ -12,7 +12,7 @@ Name:       harbour-fernschreiber
 
 Summary:    Fernschreiber is a Telegram client for Sailfish OS
 Version:    0.6
-Release:    4
+Release:    66
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://werkwolf.eu/
