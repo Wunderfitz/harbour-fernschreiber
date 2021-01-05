@@ -269,15 +269,15 @@
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Отметить чат как непрочитанный</translation>
     </message>
     <message>
         <source>Draft</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Черновик</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Отметить чат как прочитанный</translation>
     </message>
 </context>
 <context>
