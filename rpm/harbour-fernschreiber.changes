@@ -12,7 +12,7 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Tue Jan 5 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.6
+* Tue Jan 5 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.6
 - Filter chat list (tap on title bar to open search field) - thanks to the entire dev team for the great discussion and contributions to the layout :)
 - Search for public chats (see pulley menu on overview page)
 - Search for chat messages (see pulley menu on chat page)
