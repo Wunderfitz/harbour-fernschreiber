@@ -415,11 +415,11 @@
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Найти в Чате</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Поиск...</translation>
     </message>
     <message>
         <source>Location: Obtaining position...</source>
@@ -1085,11 +1085,11 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выбрать чат...</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Найти Чаты</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
@@ -1101,7 +1101,7 @@
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Коснитесь строки заголовка, чтобы отфильтровать ваши чаты</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
@@ -1109,7 +1109,7 @@
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вы можете искать публичные чаты или создать новый чат с помощью выпадающего меню</translation>
     </message>
 </context>
 <context>
@@ -1317,11 +1317,11 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Чаты не найдены</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Идёт поиск чатов...</translation>
     </message>
     <message>
         <source>Private Chat</source>
@@ -1329,11 +1329,11 @@
     </message>
     <message>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Группа</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Канал</translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
@@ -1353,15 +1353,15 @@
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Найти Чаты</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Поиск...</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Введите не менее 5 символов, чтобы начать поиск</translation>
     </message>
 </context>
 <context>
