@@ -270,7 +270,7 @@
     </message>
     <message>
         <source>Draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Utkast</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
@@ -413,11 +413,11 @@
     </message>
     <message>
         <source>Location: Obtaining position...</source>
-        <translation type="unfinished"></translation>
+        <translation>Plats: Hämtar position...</translation>
     </message>
     <message>
         <source>Location (%1/%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Plats (%1/%2)</translation>
     </message>
 </context>
 <context>
@@ -1090,15 +1090,15 @@
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Tryck på titelfältet för att filtrera dina chattar</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen passande chatt hittades.</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du kan söka efter allmänna chattar eller skapa en ny chatt via toppmenyn.</translation>
     </message>
 </context>
 <context>
@@ -1318,16 +1318,16 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 medlem</numerusform>
             <numerusform>%1 medlemmar</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 prenumerant</numerusform>
             <numerusform>%1 prenumeranter</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -1419,11 +1419,11 @@
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation type="unfinished"></translation>
+        <translation>Fokusera textinmatningsfältet efter sändning</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation type="unfinished"></translation>
+        <translation>Fokusera textinmatningsfältet efter att ett meddelande skickats</translation>
     </message>
 </context>
 <context>
@@ -1456,39 +1456,39 @@
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Spela in ett röstmeddelande</translation>
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Tryck på knappen för att starta inspelning</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Ej tillgänglig</translation>
     </message>
     <message>
         <source>Starting</source>
-        <translation type="unfinished"></translation>
+        <translation>Startar</translation>
     </message>
     <message>
         <source>Recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Spelar in</translation>
     </message>
     <message>
         <source>Stopping</source>
-        <translation type="unfinished"></translation>
+        <translation>Stoppar</translation>
     </message>
     <message>
         <source>Use recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd inspelning</translation>
     </message>
     <message>
         <source>Voice Note (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Röstmeddelande (%1)</translation>
     </message>
     <message>
         <source>Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>Klar</translation>
     </message>
 </context>
 <context>
