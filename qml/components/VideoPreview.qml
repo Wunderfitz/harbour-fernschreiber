@@ -27,7 +27,7 @@ Item {
 
     property ListItem messageListItem
     property MessageOverlayFlickable overlayFlickable
-    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
+    property var rawMessage: messageListItem ? messageListItem.myMessage : ( overlayFlickable ? overlayFlickable.overlayMessage : undefined )
 
     property var videoData:  ( rawMessage.content['@type'] === "messageVideo" ) ?  rawMessage.content.video : ( ( rawMessage.content['@type'] === "messageAnimation" ) ? rawMessage.content.animation : rawMessage.content.video_note )
     property string videoUrl;
@@ -89,7 +89,7 @@ Item {
 
             videoMessageComponent.videoType = videoMessageComponent.isVideoNote ? "video" : videoData['@type'];
             videoFileId = videoData[videoType].id;
-            if (rawMessage.content['@type'] === "messageAnimation") {
+            if (typeof rawMessage !== "undefined" && rawMessage.content['@type'] === "messageAnimation") {
                 playButton.visible = true;
                 fullscreenButton.visible = !videoMessageComponent.fullscreen;
                 handlePlay();
@@ -294,21 +294,6 @@ Item {
                 }
             }
 
-            Connections {
-                target: videoMessageComponent
-                onClicked: {
-                    if (messageVideo.playbackState === MediaPlayer.PlayingState) {
-                        enableScreensaver();
-                        messageVideo.pause();
-                        timeLeftItem.visible = true;
-                    } else {
-                        disableScreensaver();
-                        messageVideo.play();
-                        timeLeftTimer.start();
-                    }
-                }
-            }
-
             Video {
                 id: messageVideo
 
@@ -367,7 +352,7 @@ Item {
                 height: parent.height
                 source: videoUrl
                 layer.enabled: videoMessageComponent.highlighted
-                layer.effect: PressEffect { source: singleImage }
+                layer.effect: PressEffect { source: messageVideo }
                 onStopped: {
                     enableScreensaver();
                     messageVideo.visible = false;
@@ -375,6 +360,21 @@ Item {
                     playButton.visible = true;
                     videoComponentLoader.active = false;
                     fullscreenItem.visible = !videoMessageComponent.fullscreen;
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        if (messageVideo.playbackState === MediaPlayer.PlayingState) {
+                            enableScreensaver();
+                            messageVideo.pause();
+                            timeLeftItem.visible = true;
+                        } else {
+                            disableScreensaver();
+                            messageVideo.play();
+                            timeLeftTimer.start();
+                        }
+                    }
                 }
             }
 
@@ -513,7 +513,6 @@ Item {
             }
 
         }
-
 
     }
 
