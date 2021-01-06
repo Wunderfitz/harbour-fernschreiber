@@ -289,11 +289,19 @@ void TDLibReceiver::processUpdateChatPosition(const QVariantMap &receivedInforma
 {
     const QString chat_id(receivedInformation.value(CHAT_ID).toString());
     QVariantMap positionMap = receivedInformation.value(POSITION).toMap();
+
+    QString updateForChatList = positionMap.value(LIST).toMap().value(TYPE).toString();
     const QString order(positionMap.value(ORDER).toString());
     bool is_pinned = positionMap.value(IS_PINNED).toBool();
-    LOG("Chat position updated for ID" << chat_id << "new order" << order << "is pinned" << is_pinned);
-    emit chatOrderUpdated(chat_id, order);
-    emit chatPinnedUpdated(chat_id.toLongLong(), is_pinned);
+
+    // We are only processing main chat list updates at the moment...
+    if (updateForChatList == "chatListMain") {
+        LOG("Chat position updated for ID" << chat_id << "new order" << order << "is pinned" << is_pinned);
+        emit chatOrderUpdated(chat_id, order);
+        emit chatPinnedUpdated(chat_id.toLongLong(), is_pinned);
+    } else {
+        LOG("Received chat position update for uninteresting list" << updateForChatList << "ID" << chat_id << "new order" << order << "is pinned" << is_pinned);
+    }
 }
 
 void TDLibReceiver::processUpdateChatReadInbox(const QVariantMap &receivedInformation)
