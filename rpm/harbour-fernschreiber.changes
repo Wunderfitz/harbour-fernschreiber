@@ -12,6 +12,14 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Wed Jan 6 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.6.1
+- Show indicator for pinned chats
+- Use highlightBackgroundColor and align size for all chat attributes (unread messages, secret chat, pinned chat)
+- Fix: Chat list order of sequence was wrong in some circumstances
+- Fix: Make video (fullscreen) page work again
+- Fix: Add build requirements for Qt Multimedia and Qt Positioning
+- Updated translations for Finnish and Swedish - thanks to jorm1s and eson57
+
 * Tue Jan 5 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.6
 - Filter chat list (tap on title bar to open search field) - thanks to the entire dev team for the great discussion and contributions to the layout :)
 - Search for public chats (see pulley menu on overview page)
