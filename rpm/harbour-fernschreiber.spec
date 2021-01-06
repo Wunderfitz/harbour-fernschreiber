@@ -25,6 +25,8 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Positioning)
 BuildRequires:  pkgconfig(nemonotifications-qt5)
 BuildRequires:  pkgconfig(ngf-qt5)
 BuildRequires:  desktop-file-utils
