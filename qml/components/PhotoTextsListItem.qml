@@ -61,7 +61,7 @@ ListItem {
                     }
 
                     Image {
-                        source: "image://theme/icon-s-favorite"
+                        source: "../../images/icon-s-pin.svg"
                         height: Theme.fontSizeMedium
                         width: Theme.fontSizeMedium
                         anchors.centerIn: chatPinnedBackground
