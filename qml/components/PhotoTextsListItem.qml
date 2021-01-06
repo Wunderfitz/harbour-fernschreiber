@@ -52,7 +52,7 @@ ListItem {
 
                     Rectangle {
                         id: chatPinnedBackground
-                        color: Theme.overlayBackgroundColor
+                        color: Theme.highlightBackgroundColor
                         width: Theme.fontSizeExtraLarge
                         height: Theme.fontSizeExtraLarge
                         anchors.top: parent.top
@@ -70,7 +70,7 @@ ListItem {
 
                     Rectangle {
                         id: chatSecretBackground
-                        color: Theme.overlayBackgroundColor
+                        color: Theme.highlightBackgroundColor
                         width: Theme.fontSizeExtraLarge
                         height: Theme.fontSizeExtraLarge
                         anchors.bottom: parent.bottom

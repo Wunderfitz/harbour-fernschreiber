@@ -749,7 +749,7 @@ Page {
 
                     Rectangle {
                         id: chatSecretBackground
-                        color: Theme.overlayBackgroundColor
+                        color: Theme.highlightBackgroundColor
                         width: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
                         height: width
                         anchors.left: parent.left
