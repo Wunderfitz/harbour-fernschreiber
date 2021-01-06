@@ -53,8 +53,8 @@ ListItem {
                     Rectangle {
                         id: chatPinnedBackground
                         color: Theme.highlightBackgroundColor
-                        width: Theme.fontSizeExtraLarge
-                        height: Theme.fontSizeExtraLarge
+                        width: Theme.fontSizeLarge
+                        height: Theme.fontSizeLarge
                         anchors.top: parent.top
                         radius: parent.width / 2
                         visible: chatListViewItem.isPinned
@@ -62,8 +62,8 @@ ListItem {
 
                     Image {
                         source: "../../images/icon-s-pin.svg"
-                        height: Theme.fontSizeMedium
-                        width: Theme.fontSizeMedium
+                        height: Theme.fontSizeSmall
+                        width: Theme.fontSizeSmall
                         anchors.centerIn: chatPinnedBackground
                         visible: chatListViewItem.isPinned
                     }
@@ -71,8 +71,8 @@ ListItem {
                     Rectangle {
                         id: chatSecretBackground
                         color: Theme.highlightBackgroundColor
-                        width: Theme.fontSizeExtraLarge
-                        height: Theme.fontSizeExtraLarge
+                        width: Theme.fontSizeLarge
+                        height: Theme.fontSizeLarge
                         anchors.bottom: parent.bottom
                         radius: parent.width / 2
                         visible: chatListViewItem.isSecret
@@ -80,8 +80,8 @@ ListItem {
 
                     Image {
                         source: "image://theme/icon-s-secure"
-                        height: Theme.fontSizeMedium
-                        width: Theme.fontSizeMedium
+                        height: Theme.fontSizeSmall
+                        width: Theme.fontSizeSmall
                         anchors.centerIn: chatSecretBackground
                         visible: chatListViewItem.isSecret
                     }
