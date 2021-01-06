@@ -38,6 +38,7 @@ namespace {
     const QString POSITIONS("positions");
     const QString PHOTO("photo");
     const QString ORDER("order");
+    const QString IS_PINNED("is_pinned");
     const QString BASIC_GROUP("basic_group");
     const QString SUPERGROUP("supergroup");
     const QString LAST_MESSAGE("last_message");
@@ -287,9 +288,12 @@ void TDLibReceiver::processUpdateChatOrder(const QVariantMap &receivedInformatio
 void TDLibReceiver::processUpdateChatPosition(const QVariantMap &receivedInformation)
 {
     const QString chat_id(receivedInformation.value(CHAT_ID).toString());
-    const QString order(receivedInformation.value(POSITION).toMap().value(ORDER).toString());
-    LOG("Chat position updated for ID" << chat_id << "new order" << order);
+    QVariantMap positionMap = receivedInformation.value(POSITION).toMap();
+    const QString order(positionMap.value(ORDER).toString());
+    bool is_pinned = positionMap.value(IS_PINNED).toBool();
+    LOG("Chat position updated for ID" << chat_id << "new order" << order << "is pinned" << is_pinned);
     emit chatOrderUpdated(chat_id, order);
+    emit chatPinnedUpdated(chat_id.toLongLong(), is_pinned);
 }
 
 void TDLibReceiver::processUpdateChatReadInbox(const QVariantMap &receivedInformation)

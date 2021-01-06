@@ -48,6 +48,7 @@ namespace {
     const QString IS_CHANNEL("is_channel");
     const QString IS_VERIFIED("is_verified");
     const QString IS_MARKED_AS_UNREAD("is_marked_as_unread");
+    const QString IS_PINNED("is_pinned");
     const QString PINNED_MESSAGE_ID("pinned_message_id");
     const QString _TYPE("@type");
     const QString SECRET_CHAT_ID("secret_chat_id");
@@ -77,6 +78,7 @@ public:
     bool isChannel() const;
     bool isHidden() const;
     bool isMarkedAsUnread() const;
+    bool isPinned() const;
     bool updateUnreadCount(int unreadCount);
     bool updateLastReadInboxMessageId(qlonglong messageId);
     QVector<int> updateLastMessage(const QVariantMap &message);
@@ -272,6 +274,11 @@ bool ChatListModel::ChatData::isMarkedAsUnread() const
     return chatData.value(IS_MARKED_AS_UNREAD).toBool();
 }
 
+bool ChatListModel::ChatData::isPinned() const
+{
+    return chatData.value(IS_PINNED).toBool();
+}
+
 bool ChatListModel::ChatData::updateUnreadCount(int count)
 {
     const int prevUnreadCount(unreadCount());
@@ -364,6 +371,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper) : showHiddenChats(false
     connect(tdLibWrapper, SIGNAL(secretChatReceived(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
     connect(tdLibWrapper, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)), this, SLOT(handleChatIsMarkedAsUnreadUpdated(qlonglong, bool)));
+    connect(tdLibWrapper, SIGNAL(chatPinnedUpdated(qlonglong, bool)), this, SLOT(handleChatPinnedUpdated(qlonglong, bool)));
     connect(tdLibWrapper, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)), this, SLOT(handleChatDraftMessageUpdated(qlonglong, QVariantMap, QString)));
 
     // Don't start the timer until we have at least one chat
@@ -399,6 +407,7 @@ QHash<int,QByteArray> ChatListModel::roleNames() const
     roles.insert(ChatListModel::RoleIsVerified, "is_verified");
     roles.insert(ChatListModel::RoleIsChannel, "is_channel");
     roles.insert(ChatListModel::RoleIsMarkedAsUnread, "is_marked_as_unread");
+    roles.insert(ChatListModel::RoleIsPinned, "is_pinned");
     roles.insert(ChatListModel::RoleFilter, "filter");
     roles.insert(ChatListModel::RoleDraftMessageDate, "draft_message_date");
     roles.insert(ChatListModel::RoleDraftMessageText, "draft_message_text");
@@ -432,6 +441,7 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RoleIsVerified: return data->verified;
         case ChatListModel::RoleIsChannel: return data->isChannel();
         case ChatListModel::RoleIsMarkedAsUnread: return data->isMarkedAsUnread();
+        case ChatListModel::RoleIsPinned: return data->isPinned();
         case ChatListModel::RoleFilter: return QString(data->title() + " " + data->senderMessageText()).trimmed();
         case ChatListModel::RoleDraftMessageText: return data->draftMessageText();
         case ChatListModel::RoleDraftMessageDate: return data->draftMessageDate();
@@ -846,6 +856,26 @@ void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString 
         if (chat) {
             LOG("Updating title for hidden chat" << chatId);
             chat->chatData.insert(TITLE, title);
+        }
+    }
+}
+
+void ChatListModel::handleChatPinnedUpdated(qlonglong chatId, bool chatIsPinned)
+{
+    if (chatIndexMap.contains(chatId)) {
+        LOG("Updating chat is pinned for" << chatId << chatIsPinned);
+        const int chatIndex = chatIndexMap.value(chatId);
+        ChatData *chat = chatList.at(chatIndex);
+        chat->chatData.insert(IS_PINNED, chatIsPinned);
+        QVector<int> changedRoles;
+        changedRoles.append(ChatListModel::RoleIsPinned);
+        const QModelIndex modelIndex(index(chatIndex));
+        emit dataChanged(modelIndex, modelIndex, changedRoles);
+    } else {
+        ChatData *chat = hiddenChats.value(chatId);
+        if (chat) {
+            LOG("Updating chat is pinned for hidden chat" << chatId);
+            chat->chatData.insert(IS_PINNED, chatIsPinned);
         }
     }
 }

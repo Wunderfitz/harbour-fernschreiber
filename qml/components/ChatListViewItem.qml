@@ -25,6 +25,7 @@ PhotoTextsListItem {
     unreadCount: unread_count
     isSecret: ( chat_type === TelegramAPI.ChatTypeSecret )
     isMarkedAsUnread: is_marked_as_unread
+    isPinned: is_pinned
 
     openMenuOnPressAndHold: true//chat_id != overviewPage.ownUserId
 

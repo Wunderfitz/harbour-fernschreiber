@@ -14,6 +14,7 @@ ListItem {
     property bool isSecret: false
     property bool isVerified: false
     property bool isMarkedAsUnread: false
+    property bool isPinned: false
     property alias pictureThumbnail: pictureThumbnail
 
     contentHeight: mainRow.height + separator.height + 2 * Theme.paddingMedium
@@ -47,6 +48,24 @@ ListItem {
                         replacementStringHint: primaryText.text
                         width: parent.width
                         height: parent.width
+                    }
+
+                    Rectangle {
+                        id: chatPinnedBackground
+                        color: Theme.overlayBackgroundColor
+                        width: Theme.fontSizeExtraLarge
+                        height: Theme.fontSizeExtraLarge
+                        anchors.top: parent.top
+                        radius: parent.width / 2
+                        visible: chatListViewItem.isPinned
+                    }
+
+                    Image {
+                        source: "image://theme/icon-s-favorite"
+                        height: Theme.fontSizeMedium
+                        width: Theme.fontSizeMedium
+                        anchors.centerIn: chatPinnedBackground
+                        visible: chatListViewItem.isPinned
                     }
 
                     Rectangle {

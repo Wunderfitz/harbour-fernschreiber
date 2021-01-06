@@ -47,6 +47,7 @@ public:
         RoleIsVerified,
         RoleIsChannel,
         RoleIsMarkedAsUnread,
+        RoleIsPinned,
         RoleFilter,
         RoleDraftMessageText,
         RoleDraftMessageDate
@@ -79,6 +80,7 @@ private slots:
     void handleGroupUpdated(qlonglong groupId);
     void handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void handleChatTitleUpdated(const QString &chatId, const QString &title);
+    void handleChatPinnedUpdated(qlonglong chatId, bool chatIsPinned);
     void handleChatIsMarkedAsUnreadUpdated(qlonglong chatId, bool chatIsMarkedAsUnread);
     void handleChatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order);
     void handleRelativeTimeRefreshTimer();
