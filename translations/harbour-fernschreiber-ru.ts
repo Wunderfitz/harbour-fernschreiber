@@ -423,11 +423,11 @@
     </message>
     <message>
         <source>Location: Obtaining position...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Определение координат...</translation>
     </message>
     <message>
         <source>Location (%1/%2)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Местоположение (%1/%2)</translation>
     </message>
 </context>
 <context>
@@ -445,11 +445,11 @@
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation>непрочитанное сообщение</translation>
+        <translation>сообщение</translation>
     </message>
     <message>
         <source>unread messages</source>
-        <translation>непрочитанных сообщений</translation>
+        <translation>сообщений</translation>
     </message>
     <message>
         <source>in</source>
@@ -469,7 +469,7 @@
     </message>
     <message>
         <source>Connected</source>
-        <translation>Подключен</translation>
+        <translation>В сети</translation>
     </message>
     <message>
         <source>Updating content...</source>
@@ -477,11 +477,11 @@
     </message>
     <message>
         <source>chat</source>
-        <translation>чат</translation>
+        <translation>чате</translation>
     </message>
     <message>
         <source>chats</source>
-        <translation>чаты</translation>
+        <translation>чатах</translation>
     </message>
 </context>
 <context>
@@ -805,21 +805,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 добавлен в чат</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 удалён из чата</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 добавлены в чат</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 удалены из чата</translation>
     </message>
 </context>
 <context>
@@ -962,7 +962,7 @@
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открепить сообщение</translation>
     </message>
 </context>
 <context>
@@ -1105,7 +1105,7 @@
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Совпадающих чатов не найдено.</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
@@ -1897,21 +1897,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 добавлен в чат</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 удалён из чата</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 добавлены в чат</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 удалены из чата</translation>
     </message>
 </context>
 </TS>
