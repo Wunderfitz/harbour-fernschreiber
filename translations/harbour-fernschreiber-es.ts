@@ -1311,15 +1311,15 @@
     </message>
     <message>
         <source>Search Chats</source>
-        <translation>Buscar charlas</translation>
+        <translation>Buscar charla</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation>Buscar una charla...</translation>
+        <translation>A b c</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation>Introducir la consulta para iniciar la búsqueda (se necesitan al menos 5 caracteres)</translation>
+        <translation>Para iniciar la búsqueda se necesitan al menos 5 caracteres</translation>
     </message>
 </context>
 <context>
@@ -1354,15 +1354,15 @@
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation>Notificaciones</translation>
+        <translation>Notificar en </translation>
     </message>
     <message>
         <source>All events</source>
-        <translation>Todos los eventos</translation>
+        <translation>Eventos</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation>Sólo nuevos eventos</translation>
+        <translation>Nuevos eventos</translation>
     </message>
     <message>
         <source>None</source>
@@ -1398,11 +1398,11 @@
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation>Enfocar el área de entrada de texto después de enviar</translation>
+        <translation>Enfocar área de entrada de texto</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation>Enfocar el área de entrada de texto después de enviar un mensaje</translation>
+        <translation>Enfoca el área de entrada de texto después de enviar un mensaje</translation>
     </message>
 </context>
 <context>
@@ -1435,7 +1435,7 @@
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
-        <translation>Grabar una nota de voz</translation>
+        <translation>Nota de voz</translation>
     </message>
     <message>
         <source>Press the button to start recording</source>
