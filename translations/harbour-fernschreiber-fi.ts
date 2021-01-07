@@ -124,14 +124,6 @@
         <translation>Poistutaan keskustelusta</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Vaimenna keskustelu</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Tuntematon</translation>
     </message>
@@ -182,6 +174,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Uusi salattu keskustelu</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Poista keskustelun vaimennus</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Vaimenna keskustelu</translation>
     </message>
 </context>
 <context>
@@ -241,14 +241,6 @@
         <translation>Sinä</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Vaimenna keskustelu</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Käyttäjän tiedot</translation>
     </message>
@@ -275,6 +267,22 @@
     <message>
         <source>Mark chat as read</source>
         <translation>Merkitse keskustelu luetuksi</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Poista keskustelun vaimennus</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Vaimenna keskustelu</translation>
     </message>
 </context>
 <context>

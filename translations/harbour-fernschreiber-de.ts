@@ -124,14 +124,6 @@
         <translation>Verlasse Chat</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Stummschaltung des Chats aufheben</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Chat stummschalten</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Unbekannt</translation>
     </message>
@@ -182,6 +174,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Neuer geheimer Chat</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Stummschaltung des Chats aufheben</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Chat stummschalten</translation>
     </message>
 </context>
 <context>
@@ -241,14 +241,6 @@
         <translation>Sie</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Stummschaltung des Chats aufheben</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Chat stummschalten</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Benutzerinfos</translation>
     </message>
@@ -275,6 +267,22 @@
     <message>
         <source>Draft</source>
         <translation>Entwurf</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation>Chat losheften</translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation>Chat anheften</translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Stummschaltung des Chats aufheben</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Chat stummschalten</translation>
     </message>
 </context>
 <context>

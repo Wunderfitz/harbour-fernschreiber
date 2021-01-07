@@ -124,14 +124,6 @@
         <translation>Lascia chat</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Riattiva suoni chat</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Silenzia chat</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Sconosciuto</translation>
     </message>
@@ -182,6 +174,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Nuova chat segreta</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Riattiva suoni chat</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Silenzia chat</translation>
     </message>
 </context>
 <context>
@@ -241,14 +241,6 @@
         <translation>Tu</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Riattiva suoni chat</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Silenzia chat</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Info utente</translation>
     </message>
@@ -275,6 +267,22 @@
     <message>
         <source>Mark chat as read</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Riattiva suoni chat</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Silenzia chat</translation>
     </message>
 </context>
 <context>

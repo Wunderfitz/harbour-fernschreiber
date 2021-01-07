@@ -98,14 +98,6 @@
 <context>
     <name>ChatInformationPageContent</name>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Wyłącz wyciszenie czatu</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Wycisz czat</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Nieznany</translation>
     </message>
@@ -186,6 +178,14 @@
         <source>New Secret Chat</source>
         <translation>Nowy tajny czat</translation>
     </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Wyłącz wyciszenie czatu</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Wycisz czat</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -244,14 +244,6 @@
         <translation>Ty</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Wyłącz wyciszenie czatu</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Wycisz czat</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Informacje o użytkowniku</translation>
     </message>
@@ -278,6 +270,22 @@
     <message>
         <source>Mark chat as read</source>
         <translation>Oznacz czat jako przeczytany</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Wyłącz wyciszenie czatu</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Wycisz czat</translation>
     </message>
 </context>
 <context>

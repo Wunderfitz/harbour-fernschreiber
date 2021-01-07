@@ -55,19 +55,18 @@ PhotoTextsListItem {
                 }
 
                 MenuItem {
-                    visible: unread_count === 0 && !is_marked_as_unread
+                    visible: unread_count === 0
                     onClicked: {
-                        tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, true);
+                        tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, !is_marked_as_unread);
                     }
-                    text: qsTr("Mark chat as unread")
+                    text: is_marked_as_unread ? qsTr("Mark chat as read") : qsTr("Mark chat as unread")
                 }
 
                 MenuItem {
-                    visible: unread_count === 0 && is_marked_as_unread
                     onClicked: {
-                        tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, false);
+                        tdLibWrapper.toggleChatIsPinned(chat_id, !is_pinned);
                     }
-                    text: qsTr("Mark chat as read")
+                    text: is_pinned ? qsTr("Unpin chat") : qsTr("Pin chat")
                 }
 
                 MenuItem {
@@ -82,7 +81,7 @@ PhotoTextsListItem {
                         newNotificationSettings.use_default_mute_for = false;
                         tdLibWrapper.setChatNotificationSettings(chat_id, newNotificationSettings);
                     }
-                    text: display.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
+                    text: display.notification_settings.mute_for > 0 ? qsTr("Unmute chat") : qsTr("Mute chat")
                 }
 
                 MenuItem {

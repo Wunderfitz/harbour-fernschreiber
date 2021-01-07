@@ -185,6 +185,7 @@ public:
     Q_INVOKABLE void searchPublicChats(const QString &query);
     Q_INVOKABLE void readAllChatMentions(qlonglong chatId);
     Q_INVOKABLE void toggleChatIsMarkedAsUnread(qlonglong chatId, bool isMarkedAsUnread);
+    Q_INVOKABLE void toggleChatIsPinned(qlonglong chatId, bool isPinned);
     Q_INVOKABLE void setChatDraftMessage(qlonglong chatId, qlonglong threadId, qlonglong replyToMessageId, const QString &draft);
 
     // Others (candidates for extraction ;))

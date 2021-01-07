@@ -124,14 +124,6 @@
         <translation>Leaving chat</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Unmute Chat</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Mute Chat</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Unknown</translation>
     </message>
@@ -182,6 +174,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>New Secret Chat</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">Unmute Chat</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation type="unfinished">Mute Chat</translation>
     </message>
 </context>
 <context>
@@ -241,14 +241,6 @@
         <translation>You</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Unmute Chat</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Mute Chat</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>User Info</translation>
     </message>
@@ -275,6 +267,22 @@
     <message>
         <source>Draft</source>
         <translation>Draft</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation>Unpin chat</translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation>Pin chat</translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Unmute chat</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Mute chat</translation>
     </message>
 </context>
 <context>

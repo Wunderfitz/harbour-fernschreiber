@@ -122,14 +122,6 @@
         <translation>Saliendo de la charla</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Notificar</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>No notificar</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Desconocido</translation>
     </message>
@@ -179,6 +171,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Charla secreta</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Notificar</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>No notificar</translation>
     </message>
 </context>
 <context>
@@ -238,14 +238,6 @@
         <translation>Usted</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Notificar</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>No notificar</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Usuario</translation>
     </message>
@@ -272,6 +264,22 @@
     <message>
         <source>Mark chat as read</source>
         <translation>Marcar como leído</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Notificar</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>No notificar</translation>
     </message>
 </context>
 <context>

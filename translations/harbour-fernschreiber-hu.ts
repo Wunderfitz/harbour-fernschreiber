@@ -122,14 +122,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation type="unfinished">Csevegés némítás feloldása</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation type="unfinished">Csevegés némítása</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation type="unfinished">Ismeretlen</translation>
     </message>
@@ -179,6 +171,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Csevegés némítás feloldása</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Csevegés némítása</translation>
     </message>
 </context>
 <context>
@@ -238,14 +238,6 @@
         <translation type="unfinished">Te</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation type="unfinished">Csevegés némítás feloldása</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation type="unfinished">Csevegés némítása</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -272,6 +264,22 @@
     <message>
         <source>Mark chat as read</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Csevegés némítás feloldása</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Csevegés némítása</translation>
     </message>
 </context>
 <context>

@@ -47,8 +47,10 @@ namespace {
     const QString USERNAME("username");
     const QString THREAD_ID("thread_id");
     const QString VALUE("value");
+    const QString CHAT_LIST_TYPE("chat_list_type");
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
+    const QString CHAT_LIST_MAIN("chatListMain");
 }
 
 TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent) : QObject(parent), joinChatRequested(false)
@@ -1035,6 +1037,20 @@ void TDLibWrapper::toggleChatIsMarkedAsUnread(qlonglong chatId, bool isMarkedAsU
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::toggleChatIsPinned(qlonglong chatId, bool isPinned)
+{
+    LOG("Toggle chat is pinned" << chatId << isPinned);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "toggleChatIsPinned");
+    QVariantMap chatListMap;
+    chatListMap.insert(_TYPE, CHAT_LIST_MAIN);
+    requestObject.insert("chat_list", chatListMap);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("is_pinned", isPinned);
+    requestObject.insert("is_marked_as_unread", isPinned);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::setChatDraftMessage(qlonglong chatId, qlonglong threadId, qlonglong replyToMessageId, const QString &draft)
 {
     LOG("Set Draft Message" << chatId);
@@ -1345,7 +1361,7 @@ void TDLibWrapper::handleChatReceived(const QVariantMap &chatInformation)
 
 void TDLibWrapper::handleUnreadMessageCountUpdated(const QVariantMap &messageCountInformation)
 {
-    if (messageCountInformation.value("chat_list_type").toString() == "chatListMain") {
+    if (messageCountInformation.value(CHAT_LIST_TYPE).toString() == CHAT_LIST_MAIN) {
         this->unreadMessageInformation = messageCountInformation;
         emit unreadMessageCountUpdated(messageCountInformation);
     }
@@ -1353,7 +1369,7 @@ void TDLibWrapper::handleUnreadMessageCountUpdated(const QVariantMap &messageCou
 
 void TDLibWrapper::handleUnreadChatCountUpdated(const QVariantMap &chatCountInformation)
 {
-    if (chatCountInformation.value("chat_list_type").toString() == "chatListMain") {
+    if (chatCountInformation.value(CHAT_LIST_TYPE).toString() == CHAT_LIST_MAIN) {
         this->unreadChatInformation = chatCountInformation;
         emit unreadChatCountUpdated(chatCountInformation);
     }

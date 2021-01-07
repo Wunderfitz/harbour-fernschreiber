@@ -122,14 +122,6 @@
         <translation>正在离开对话</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>取消对话静音</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>静音对话</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
@@ -179,6 +171,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>新加密对话</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>取消对话静音</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>静音对话</translation>
     </message>
 </context>
 <context>
@@ -238,14 +238,6 @@
         <translation>你</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>取消对话静音</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>静音对话</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>用户信息</translation>
     </message>
@@ -272,6 +264,22 @@
     <message>
         <source>Mark chat as read</source>
         <translation>标记为已读</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>取消对话静音</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>静音对话</translation>
     </message>
 </context>
 <context>

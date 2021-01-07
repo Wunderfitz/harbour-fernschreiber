@@ -124,14 +124,6 @@
         <translation>Lämnar chatten</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Slå på chatten</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Stäng av chatten</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Okänd</translation>
     </message>
@@ -182,6 +174,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Ny hemlig chatt</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Slå på chatten</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Stäng av chatten</translation>
     </message>
 </context>
 <context>
@@ -241,14 +241,6 @@
         <translation>Du</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Slå på chatten</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Stäng av chatten</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Användarinfo</translation>
     </message>
@@ -275,6 +267,22 @@
     <message>
         <source>Mark chat as read</source>
         <translation>Markera chatten som läst</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Slå på chatten</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Stäng av chatten</translation>
     </message>
 </context>
 <context>

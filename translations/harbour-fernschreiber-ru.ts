@@ -126,14 +126,6 @@
         <translation>Выход из чата</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Включить уведомления</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Выключить уведомления</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Неизвестный</translation>
     </message>
@@ -185,6 +177,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Новый секретный чат</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Включить уведомления</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Выключить уведомления</translation>
     </message>
 </context>
 <context>
@@ -244,14 +244,6 @@
         <translation>Вы</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Включить уведомления</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Выключить уведомления</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Информация о пользователе</translation>
     </message>
@@ -278,6 +270,22 @@
     <message>
         <source>Mark chat as read</source>
         <translation>Отметить чат как прочитанный</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Включить уведомления</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Выключить уведомления</translation>
     </message>
 </context>
 <context>
