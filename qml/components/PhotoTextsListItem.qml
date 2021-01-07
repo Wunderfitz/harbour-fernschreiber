@@ -64,6 +64,7 @@ ListItem {
                         source: "../../images/icon-s-pin.svg"
                         height: Theme.fontSizeSmall
                         width: Theme.fontSizeSmall
+                        sourceSize: Qt.size(Theme.iconSizeSmall, Theme.iconSizeSmall)
                         anchors.centerIn: chatPinnedBackground
                         visible: chatListViewItem.isPinned
                     }
