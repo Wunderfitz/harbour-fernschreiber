@@ -1029,6 +1029,7 @@ Page {
                                 chatId: chatModel.chatId
                                 myMessage: model.display
                                 messageId: model.message_id
+                                messageIndex: model.index
                                 extraContentComponentName: chatView.contentComponentNames[model.content_type] || ""
                                 canReplyToMessage: chatPage.canSendMessages
                                 onReplyToMessage: {
