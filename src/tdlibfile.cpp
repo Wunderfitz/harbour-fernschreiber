@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Slava Monich at al.
+    Copyright (C) 2020-2021 Slava Monich at al.
 
     This file is part of Fernschreiber.
 
@@ -107,6 +107,7 @@ void TDLibFile::init()
     queuedSignals = 0;
     firstQueuedSignal = SignalCount;
     autoLoad = false;
+    downloadHoldOffTimer = 0;
     id = 0;
     expected_size = 0;
     size = 0;
@@ -174,7 +175,7 @@ void TDLibFile::updateTDLibWrapper(TDLibWrapper* tdlib)
         if (tdlib) {
             connect(tdlib, SIGNAL(fileUpdated(int,QVariantMap)), SLOT(handleFileUpdated(int,QVariantMap)));
             if (autoLoad) {
-                load();
+                downloadFile();
             }
         }
         queueSignal(SignalTdLibChanged);
@@ -187,7 +188,7 @@ void TDLibFile::setAutoLoad(bool enableAutoLoad)
         autoLoad = enableAutoLoad;
         queueSignal(SignalAutoLoadChanged);
         if (autoLoad) {
-            load();
+            downloadFile();
         }
         emitQueuedSignals();
     }
@@ -195,7 +196,19 @@ void TDLibFile::setAutoLoad(bool enableAutoLoad)
 
 bool TDLibFile::load()
 {
-    if (id && tdLibWrapper && !is_downloading_active && !is_downloading_completed && can_be_downloaded) {
+    // Manual load ignores hold-off timer
+    if (downloadHoldOffTimer) {
+        killTimer(downloadHoldOffTimer);
+        downloadHoldOffTimer = 0;
+    }
+    return downloadFile();
+}
+
+bool TDLibFile::downloadFile()
+{
+    if (id && tdLibWrapper && !downloadHoldOffTimer &&
+        !is_downloading_active && !is_downloading_completed && can_be_downloaded) {
+        downloadHoldOffTimer = startTimer(DownloadHoldOffMs);
         tdLibWrapper->downloadFile(id);
         return true;
     }
@@ -205,10 +218,24 @@ bool TDLibFile::load()
 void TDLibFile::setFileInfo(const QVariantMap &fileInfo)
 {
     updateFileInfo(fileInfo);
+    if (is_downloading_completed && downloadHoldOffTimer) {
+        // Don't need this timer anymore
+        killTimer(downloadHoldOffTimer);
+        downloadHoldOffTimer = 0;
+    }
     if (autoLoad) {
-        load();
+        downloadFile();
     }
     emitQueuedSignals();
+}
+
+void TDLibFile::timerEvent(QTimerEvent *)
+{
+    killTimer(downloadHoldOffTimer);
+    downloadHoldOffTimer = 0;
+    if (autoLoad) {
+        downloadFile();
+    }
 }
 
 void TDLibFile::handleFileUpdated(int fileId, const QVariantMap &fileInfo)
@@ -256,6 +283,7 @@ void TDLibFile::updateFileInfo(const QVariantMap &file)
         bool b, fileChanged = false;
         int i = file.value(ID).toInt();
         if (id != i) {
+            LOG("File id has changed" << id << "=>" << i);
             id = i;
             fileChanged = true;
             queueSignal(SignalIdChanged);
