@@ -27,6 +27,7 @@ ListItem {
     contentHeight: messageBackground.height + Theme.paddingMedium
     property var chatId
     property var messageId
+    property int messageIndex
     property var myMessage
     property bool canReplyToMessage
     readonly property bool isAnonymous: myMessage.sender["@type"] === "messageSenderChat"
@@ -159,13 +160,6 @@ ListItem {
             Debug.log("[ChatModel] Messages in this chat were read, new last read: ", lastReadSentIndex, ", updating description for index ", index, ", status: ", (index <= lastReadSentIndex));
             messageDateText.text = getMessageStatusText(myMessage, index, lastReadSentIndex, messageDateText.useElapsed);
         }
-        onMessageUpdated: {
-            if (index === modelIndex) {
-                Debug.log("[ChatModel] This message was updated, index ", index, ", updating content...");
-                messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
-                messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, page.myUserId, false), messageText.font.pixelSize);
-            }
-        }
     }
 
     Connections {
@@ -187,6 +181,15 @@ ListItem {
 
         if (myMessage.reply_to_message_id !== 0) {
             tdLibWrapper.getMessage(page.chatInformation.id, myMessage.reply_to_message_id);
+        }
+    }
+
+    onMyMessageChanged: {
+        Debug.log("[ChatModel] This message was updated, index", messageIndex, ", updating content...")
+        messageDateText.text = getMessageStatusText(myMessage, messageIndex, chatView.lastReadSentIndex, messageDateText.useElapsed)
+        messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, page.myUserId, false), messageText.font.pixelSize)
+        if (webPagePreviewLoader.item) {
+            webPagePreviewLoader.item.webPageData = myMessage.content.web_page
         }
     }
 
