@@ -258,23 +258,23 @@
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Segna chat come non letta</translation>
     </message>
     <message>
         <source>Draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Bozza</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Segna chat come letta</translation>
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Togli chat in evidenza</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Metti chat in evidenza</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -413,19 +413,19 @@
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca nella chat</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca nella chat...</translation>
     </message>
     <message>
         <source>Location: Obtaining position...</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione: ottengo posizione...</translation>
     </message>
     <message>
         <source>Location (%1/%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione(%1/%2)</translation>
     </message>
 </context>
 <context>
@@ -803,21 +803,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha aggiunto %1 alla chat</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha rimosso %1 dalla chat</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>hai aggiunto %1 alla chat</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>hai rimosso %1 dalla chat</translation>
     </message>
 </context>
 <context>
@@ -956,11 +956,11 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Messaggio non più in evidenza</translation>
+        <translation>Messaggio non più in evidenza</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Togli messaggio in evidenza</translation>
     </message>
 </context>
 <context>
@@ -1082,31 +1082,31 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtra le chat...</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricerca chat</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished">Download di %1 completato.</translation>
+        <translation>Download di %1 completato.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished">Download non riuscito.</translation>
+        <translation>Download non riuscito.</translation>
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Clicca sulla barra del titolo per filtrare le tue chat</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuna chat corrispondente.</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Puoi creare una nuova chat o cercare chat pubbliche dal menu a trascinamento.</translation>
     </message>
 </context>
 <context>
@@ -1306,49 +1306,49 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuna chat trovata.</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricerca chat...</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished">Chat privata</translation>
+        <translation>Chat privata</translation>
     </message>
     <message>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppo</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Canale</translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 membro</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 membri</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 abbonato</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 abbonati</numerusform>
         </translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca chat</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca chat...</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Scrivi il testo che vuoi cercare (almeno 5 caratteri)</translation>
     </message>
 </context>
 <context>
@@ -1427,11 +1427,11 @@
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation type="unfinished"></translation>
+        <translation>Tastiera in primo piano dopo invio</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation type="unfinished"></translation>
+        <translation>Mantieni la tastiera in primo piano dopo aver inviato un messaggio</translation>
     </message>
 </context>
 <context>
@@ -1464,39 +1464,39 @@
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Registra una nota vocale</translation>
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Premi il pulsante per iniziare la registrazione</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Non disponibile</translation>
     </message>
     <message>
         <source>Starting</source>
-        <translation type="unfinished"></translation>
+        <translation>Inizia</translation>
     </message>
     <message>
         <source>Recording</source>
-        <translation type="unfinished"></translation>
+        <translation>In registrazione</translation>
     </message>
     <message>
         <source>Stopping</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Use recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa registrazione</translation>
     </message>
     <message>
         <source>Voice Note (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nota vocale (%1)</translation>
     </message>
     <message>
         <source>Ready</source>
-        <translation type="unfinished"></translation>
+        <translation>Pronto</translation>
     </message>
 </context>
 <context>
@@ -1884,21 +1884,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha aggiunto %1 alla chat</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha rimosso %1 dalla chat</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>hai aggiunto %1 alla chat</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>hai rimosso %1 dalla chat</translation>
     </message>
 </context>
 </TS>
