@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Slava Monich at al.
+    Copyright (C) 2020-2021 Slava Monich at al.
 
     This file is part of Fernschreiber.
 
@@ -44,6 +44,8 @@ class TDLibFile : public QObject
     Q_PROPERTY(qlonglong uploadedSize READ getUploadedSize NOTIFY uploadedSizeChanged)
     Q_PROPERTY(bool isUploadingActive READ isUploadingActive NOTIFY uploadingActiveChanged)
     Q_PROPERTY(bool isUploadingCompleted READ isUploadingCompleted NOTIFY uploadingCompletedChanged)
+
+    enum { DownloadHoldOffMs = 1000 };
 
 public:
     TDLibFile();
@@ -102,10 +104,14 @@ signals:
 private slots:
     void handleFileUpdated(int fileId, const QVariantMap &fileInfo);
 
+protected:
+    void timerEvent(QTimerEvent *event) Q_DECL_OVERRIDE;
+
 private:
     void init();
     void updateTDLibWrapper(TDLibWrapper* tdlib);
     void updateFileInfo(const QVariantMap &fileInfo);
+    bool downloadFile();
     void queueSignal(uint signal);
     void emitQueuedSignals();
 
@@ -114,6 +120,7 @@ private:
     uint queuedSignals;
     uint firstQueuedSignal;
     bool autoLoad;
+    int downloadHoldOffTimer;
     // file
     QVariantMap infoMap;
     int id;
