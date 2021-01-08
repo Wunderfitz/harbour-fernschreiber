@@ -105,7 +105,8 @@ bool ChatModel::MessageData::lessThan(const MessageData *message1, const Message
 ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
     chatId(0),
     inReload(false),
-    inIncrementalUpdate(false)
+    inIncrementalUpdate(false),
+    searchModeActive(false)
 {
     this->tdLibWrapper = tdLibWrapper;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
