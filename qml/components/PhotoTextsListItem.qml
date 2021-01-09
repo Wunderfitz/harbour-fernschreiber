@@ -15,6 +15,7 @@ ListItem {
     property bool isVerified: false
     property bool isMarkedAsUnread: false
     property bool isPinned: false
+    property bool isMuted: false
     property alias pictureThumbnail: pictureThumbnail
 
     contentHeight: mainRow.height + separator.height + 2 * Theme.paddingMedium
@@ -125,15 +126,26 @@ ListItem {
                         font.pixelSize: Theme.fontSizeMedium
                         truncationMode: TruncationMode.Fade
                         anchors.verticalCenter: parent.verticalCenter
-                        width: Math.min(contentColumn.width - (verifiedImage.visible ? (verifiedImage.width + primaryTextRow.spacing) :  0), implicitWidth)
+                        width: Math.min(contentColumn.width - (verifiedImage.visible ? (verifiedImage.width + primaryTextRow.spacing) :  0) - (mutedImage.visible ? (mutedImage.width + primaryTextRow.spacing) :  0), implicitWidth)
                     }
 
                     Image {
                         id: verifiedImage
                         anchors.verticalCenter: parent.verticalCenter
                         source: chatListViewItem.isVerified ? "../../images/icon-verified.svg" : ""
-                        sourceSize.width: Theme.iconSizeExtraSmall
-                        width: Theme.iconSizeExtraSmall
+                        sourceSize: Qt.size(Theme.iconSizeExtraSmall, Theme.iconSizeExtraSmall)
+                        width: Theme.iconSizeSmall
+                        height: Theme.iconSizeSmall
+                        visible: status === Image.Ready
+                    }
+
+                    Image {
+                        id: mutedImage
+                        anchors.verticalCenter: parent.verticalCenter
+                        source: chatListViewItem.isMuted ? "../js/emoji/1f507.svg" : ""
+                        sourceSize: Qt.size(Theme.iconSizeExtraSmall, Theme.iconSizeExtraSmall)
+                        width: Theme.iconSizeSmall
+                        height: Theme.iconSizeSmall
                         visible: status === Image.Ready
                     }
                 }

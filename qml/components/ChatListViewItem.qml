@@ -15,7 +15,7 @@ PhotoTextsListItem {
     property string previewText: showDraft ? draft_message_text : last_message_text
 
     // chat title
-    primaryText.text: title ? Emoji.emojify(title + ( display.notification_settings.mute_for > 0 ? " 🔇" : "" ), Theme.fontSizeMedium) : qsTr("Unknown")
+    primaryText.text: title ? Emoji.emojify(title, Theme.fontSizeMedium) : qsTr("Unknown")
     // last user
     prologSecondaryText.text: showDraft ? "<i>"+qsTr("Draft")+"</i>" : (is_channel ? "" : ( last_message_sender_id ? ( last_message_sender_id !== ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(last_message_sender_id)), primaryText.font.pixelSize) : qsTr("You") ) : "" ))
     // last message
@@ -26,6 +26,7 @@ PhotoTextsListItem {
     isSecret: ( chat_type === TelegramAPI.ChatTypeSecret )
     isMarkedAsUnread: is_marked_as_unread
     isPinned: is_pinned
+    isMuted: display.notification_settings.mute_for > 0
 
     openMenuOnPressAndHold: true//chat_id != overviewPage.ownUserId
 
