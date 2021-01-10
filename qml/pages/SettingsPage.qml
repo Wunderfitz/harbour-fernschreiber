@@ -172,6 +172,16 @@ Page {
                 }
             }
 
+            TextSwitch {
+                checked: appSettings.onlineOnlyMode
+                text: qsTr("Enable online-only mode")
+                description: qsTr("Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.onlineOnlyMode = !checked
+                }
+            }
+
             Item {
                 width: 1
                 height: Theme.paddingLarge // Some space at the bottom

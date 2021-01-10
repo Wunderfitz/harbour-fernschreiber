@@ -1476,9 +1476,10 @@ void TDLibWrapper::setInitialParameters()
     initialParameters.insert("api_id", TDLIB_API_ID);
     initialParameters.insert("api_hash", TDLIB_API_HASH);
     initialParameters.insert("database_directory", QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib");
-    initialParameters.insert("use_file_database", true);
-    initialParameters.insert("use_chat_info_database", true);
-    initialParameters.insert("use_message_database", true);
+    bool onlineOnlyMode = this->appSettings->onlineOnlyMode();
+    initialParameters.insert("use_file_database", !onlineOnlyMode);
+    initialParameters.insert("use_chat_info_database", !onlineOnlyMode);
+    initialParameters.insert("use_message_database", !onlineOnlyMode);
     initialParameters.insert("use_secret_chats", true);
     initialParameters.insert("system_language_code", QLocale::system().name());
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);

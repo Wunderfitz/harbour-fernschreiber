@@ -177,11 +177,11 @@
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation type="unfinished">Unmute Chat</translation>
+        <translation>Unmute Chat</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation type="unfinished">Mute Chat</translation>
+        <translation>Mute Chat</translation>
     </message>
 </context>
 <context>
@@ -1432,6 +1432,14 @@
     <message>
         <source>Focus the text input area after sending a message</source>
         <translation>Focus the text input area after sending a message</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>Enable online-only mode</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</translation>
     </message>
 </context>
 <context>

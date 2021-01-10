@@ -87,6 +87,7 @@ Page {
         id: updateSecondaryContentTimer
         interval: 600
         onTriggered: {
+            chatListModel.calculateUnreadState();
             tdLibWrapper.getRecentStickers();
             tdLibWrapper.getInstalledStickerSets();
             tdLibWrapper.getContacts();
@@ -192,11 +193,15 @@ Page {
         onChatLastMessageUpdated: {
             if (!overviewPage.chatListCreated) {
                 chatListCreatedTimer.restart();
+            } else {
+                chatListModel.calculateUnreadState();
             }
         }
         onChatOrderUpdated: {
             if (!overviewPage.chatListCreated) {
                 chatListCreatedTimer.restart();
+            } else {
+                chatListModel.calculateUnreadState();
             }
         }
         onChatsReceived: {

@@ -1433,6 +1433,14 @@
         <source>Focus the text input area after sending a message</source>
         <translation>Fokussiert die Texteingabe nach Senden einer Nachricht</translation>
     </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>Nur-Online-Modus einschalten</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Schaltet das Offline-Caching aus. Bestimmte Features können in diesem Modus eingeschränkt sein oder fehlen. Änderungen erfordern einen Neustart von Fernschreiber, um in Kraft zu treten.</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

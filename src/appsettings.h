@@ -32,6 +32,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
     Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
+    Q_PROPERTY(bool onlineOnlyMode READ onlineOnlyMode WRITE setOnlineOnlyMode NOTIFY onlineOnlyModeChanged)
 
 public:
     enum NotificationFeedback {
@@ -71,6 +72,9 @@ public:
     int remainingInteractionHints() const;
     void setRemainingInteractionHints(int remainingHints);
 
+    bool onlineOnlyMode() const;
+    void setOnlineOnlyMode(bool enable);
+
 signals:
     void sendByEnterChanged();
     void focusTextAreaAfterSendChanged();
@@ -81,6 +85,7 @@ signals:
     void notificationFeedbackChanged();
     void storageOptimizerChanged();
     void remainingInteractionHintsChanged();
+    void onlineOnlyModeChanged();
 
 private:
     QSettings settings;

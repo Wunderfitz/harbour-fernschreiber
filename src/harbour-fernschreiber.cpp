@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
     DBusAdaptor *dBusAdaptor = tdLibWrapper->getDBusAdaptor();
     context->setContextProperty("dBusAdaptor", dBusAdaptor);
 
-    ChatListModel chatListModel(tdLibWrapper);
+    ChatListModel chatListModel(tdLibWrapper, appSettings);
     context->setContextProperty("chatListModel", &chatListModel);
     QSortFilterProxyModel chatListProxyModel(view.data());
     chatListProxyModel.setSourceModel(&chatListModel);

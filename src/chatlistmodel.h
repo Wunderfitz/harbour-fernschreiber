@@ -22,6 +22,7 @@
 
 #include <QAbstractListModel>
 #include "tdlibwrapper.h"
+#include "appsettings.h"
 
 class ChatListModel : public QAbstractListModel
 {
@@ -53,7 +54,7 @@ public:
         RoleDraftMessageDate
     };
 
-    ChatListModel(TDLibWrapper *tdLibWrapper);
+    ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSettings);
     ~ChatListModel() override;
 
     virtual QHash<int,QByteArray> roleNames() const override;
@@ -63,6 +64,7 @@ public:
     Q_INVOKABLE void redrawModel();
     Q_INVOKABLE QVariantMap get(int row);
     Q_INVOKABLE QVariantMap getById(qlonglong chatId);
+    Q_INVOKABLE void calculateUnreadState();
 
     bool showAllChats() const;
     void setShowAllChats(bool showAll);
@@ -89,6 +91,7 @@ signals:
     void showAllChatsChanged();
     void chatChanged(const qlonglong &changedChatId);
     void chatJoined(const qlonglong &chatId, const QString &chatTitle);
+    void unreadStateChanged(int unreadMessagesCount, int unreadChatsCount);
 
 private:
     class ChatData;
@@ -99,6 +102,7 @@ private:
 
 private:
     TDLibWrapper *tdLibWrapper;
+    AppSettings *appSettings;
     QTimer *relativeTimeRefreshTimer;
     QList<ChatData*> chatList;
     QHash<qlonglong,int> chatIndexMap;

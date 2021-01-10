@@ -19,6 +19,7 @@
 
 #include "chatlistmodel.h"
 #include "fernschreiberutils.h"
+#include <QListIterator>
 
 #define DEBUG_MODULE ChatListModel
 #include "debuglog.h"
@@ -353,9 +354,10 @@ QVector<int> ChatListModel::ChatData::updateSecretChat(const QVariantMap &secret
     return changedRoles;
 }
 
-ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper) : showHiddenChats(false)
+ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSettings) : showHiddenChats(false)
 {
     this->tdLibWrapper = tdLibWrapper;
+    this->appSettings = appSettings;
     connect(tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
@@ -517,6 +519,26 @@ int ChatListModel::updateChatOrder(int chatIndex)
     }
 
     return newIndex;
+}
+
+void ChatListModel::calculateUnreadState()
+{
+    if (this->appSettings->onlineOnlyMode()) {
+        LOG("Online-only mode: Calculating unread state on my own...");
+        int unreadMessages = 0;
+        int unreadChats = 0;
+        QListIterator<ChatData*> chatIterator(this->chatList);
+        while (chatIterator.hasNext()) {
+            ChatData *currentChat = chatIterator.next();
+            int unreadCount = currentChat->unreadCount();
+            if (unreadCount > 0) {
+                unreadChats++;
+                unreadMessages += unreadCount;
+            }
+        }
+        LOG("Online-only mode: New unread state:" << unreadMessages << unreadChats);
+        emit unreadStateChanged(unreadMessages, unreadChats);
+    }
 }
 
 void ChatListModel::addVisibleChat(ChatData *chat)
@@ -719,6 +741,7 @@ void ChatListModel::handleChatReadInboxUpdated(const QString &id, const QString 
             }
             const QModelIndex modelIndex(index(chatIndex));
             emit dataChanged(modelIndex, modelIndex, changedRoles);
+            this->calculateUnreadState();
         } else {
             ChatData *chat = hiddenChats.value(chatId);
             if (chat) {

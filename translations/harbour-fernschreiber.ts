@@ -1433,6 +1433,14 @@
         <source>Focus the text input area after sending a message</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

@@ -30,6 +30,7 @@ namespace {
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
     const QString KEY_STORAGE_OPTIMIZER("storageOptimizer");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
+    const QString KEY_ONLINE_ONLY_MODE("onlineOnlyMode");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
@@ -159,5 +160,19 @@ void AppSettings::setRemainingInteractionHints(int remainingHints)
         LOG(KEY_REMAINING_INTERACTION_HINTS << remainingHints);
         settings.setValue(KEY_REMAINING_INTERACTION_HINTS, remainingHints);
         emit remainingInteractionHintsChanged();
+    }
+}
+
+bool AppSettings::onlineOnlyMode() const
+{
+    return settings.value(KEY_ONLINE_ONLY_MODE, false).toBool();
+}
+
+void AppSettings::setOnlineOnlyMode(bool enable)
+{
+    if (onlineOnlyMode() != enable) {
+        LOG(KEY_ONLINE_ONLY_MODE << enable);
+        settings.setValue(KEY_ONLINE_ONLY_MODE, enable);
+        emit onlineOnlyModeChanged();
     }
 }
