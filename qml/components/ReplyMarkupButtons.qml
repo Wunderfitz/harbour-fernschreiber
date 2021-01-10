@@ -23,6 +23,7 @@ import "../js/functions.js" as Functions
 import "../js/debug.js" as Debug
 
 Column {
+    id: replyMarkupButtons
     width: parent.width
     height: childrenRect.height
     spacing: Theme.paddingSmall
@@ -36,7 +37,7 @@ Column {
             Repeater {
                 id: buttonsRepeater
                 model: modelData
-                property int itemWidth:precalculatedValues.textColumnWidth / count
+                property int itemWidth: replyMarkupButtons.width / count
                 delegate: MouseArea {
                     /*
                     Unimplemented callback types:
@@ -48,15 +49,35 @@ Column {
                     */
                     property var callbacks: ({
                         inlineKeyboardButtonTypeCallback: function(){
-                            tdLibWrapper.getCallbackQueryAnswer(messageListItem.chatId, messageListItem.messageId, {data: modelData.type.data, "@type": "callbackQueryPayloadData"})
+                            tdLibWrapper.getCallbackQueryAnswer(myMessage.chat_id, myMessage.id, {data: modelData.type.data, "@type": "callbackQueryPayloadData"})
                         },
+
+                         inlineKeyboardButtonTypeCallbackGame: function(){
+                             tdLibWrapper.getCallbackQueryAnswer(myMessage.chat_id, myMessage.id, {game_short_name: myMessage.content.game.short_name, "@type": "callbackQueryPayloadGame"})
+                         },
                         inlineKeyboardButtonTypeUrl: function() {
                             Functions.handleLink(modelData.type.url);
+                        },
+                        inlineKeyboardButtonTypeSwitchInline: function() {
+                            if(modelData.type.in_current_chat) {
+                                chatPage.setMessageText("@" + userInformation.username + " "+(modelData.type.query || ""))
+                            } else {
+
+                                pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
+                                    myUserId: chatPage.myUserId,
+                                    payload: { neededPermissions: ["can_send_other_messages"], text:"@" + userInformation.username + " "+(modelData.type.query || "")},
+                                    state: "fillTextArea"
+                                })
+                            }
+                        },
+
+                        keyboardButtonTypeText: function() {
+                            chatPage.setMessageText(modelData.text, true);
                         }
                     })
                     enabled: !!callbacks[modelData.type["@type"]]
                     height: Theme.itemSizeSmall
-                    width: (precalculatedValues.textColumnWidth + Theme.paddingSmall) / buttonsRepeater.count - (Theme.paddingSmall)
+                    width: (replyMarkupButtons.width + Theme.paddingSmall) / buttonsRepeater.count - (Theme.paddingSmall)
                     onClicked: {
                         callbacks[modelData.type["@type"]]();
                     }
@@ -71,17 +92,18 @@ Column {
                             width: Math.min(parent.width - Theme.paddingSmall*2, contentWidth)
                             truncationMode: TruncationMode.Fade
                             text: Emoji.emojify(modelData.text, Theme.fontSizeSmall)
-                            color: parent.pressed ? Theme.highlightColor : Theme.primaryColor
+                            color: parent.parent.pressed ? Theme.highlightColor : Theme.primaryColor
                             anchors.centerIn: parent
                             font.pixelSize: Theme.fontSizeSmall
                         }
                         Icon {
                             property var sources: ({
                                                    inlineKeyboardButtonTypeUrl: "../../images/icon-s-link.svg",
-                                                   inlineKeyboardButtonTypeSwitchInline: "image://theme/icon-s-repost",
+                                                   inlineKeyboardButtonTypeSwitchInline: !modelData.type.in_current_chat ? "image://theme/icon-s-repost" : "image://theme/icon-s-edit",
                                                    inlineKeyboardButtonTypeCallbackWithPassword: "image://theme/icon-s-asterisk"
                                                    })
                             visible: !!sources[modelData.type["@type"]]
+                            opacity: 0.6
                             source: sources[modelData.type["@type"]] || ""
                             sourceSize: Qt.size(Theme.iconSizeSmall, Theme.iconSizeSmall)
                             highlighted: parent.pressed

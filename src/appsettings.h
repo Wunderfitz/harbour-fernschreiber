@@ -31,6 +31,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
+    Q_PROPERTY(bool allowInlineBotLocationAccess READ allowInlineBotLocationAccess WRITE setAllowInlineBotLocationAccess NOTIFY allowInlineBotLocationAccessChanged)
     Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
     Q_PROPERTY(bool onlineOnlyMode READ onlineOnlyMode WRITE setOnlineOnlyMode NOTIFY onlineOnlyModeChanged)
 
@@ -69,6 +70,9 @@ public:
     bool storageOptimizer() const;
     void setStorageOptimizer(bool enable);
 
+    bool allowInlineBotLocationAccess() const;
+    void setAllowInlineBotLocationAccess(bool enable);
+
     int remainingInteractionHints() const;
     void setRemainingInteractionHints(int remainingHints);
 
@@ -84,6 +88,7 @@ signals:
     void notificationTurnsDisplayOnChanged();
     void notificationFeedbackChanged();
     void storageOptimizerChanged();
+    void allowInlineBotLocationAccessChanged();
     void remainingInteractionHintsChanged();
     void onlineOnlyModeChanged();
 

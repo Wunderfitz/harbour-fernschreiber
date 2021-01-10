@@ -145,6 +145,10 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         return myself ? qsTr("sent a self-destructing video that is expired", "myself") : qsTr("sent a self-destructing video that is expired");
     case 'messageScreenshotTaken':
         return myself ? qsTr("created a screenshot in this chat", "myself") : qsTr("created a screenshot in this chat");
+    case 'messageGame':
+        return simple ? (myself ? qsTr("sent a game", "myself") : qsTr("sent a game")) : "";
+    case 'messageGameScore':
+        return myself ? qsTr("scored %Ln points", "myself", message.content.score) : qsTr("scored %Ln points", "myself", message.content.score);
     case 'messageUnsupported':
         return myself ? qsTr("sent an unsupported message", "myself") : qsTr("sent an unsupported message");
     default:
@@ -361,16 +365,16 @@ function handleLink(link) {
         if (typeof userInformation.id === "undefined") {
             appNotification.show(qsTr("Unable to find user %1").arg(userName));
         } else {
-            tdLibWrapper.createPrivateChat(userInformation.id);
+            tdLibWrapper.createPrivateChat(userInformation.id, "openDirectly");
         }
     } else if (link.indexOf("userId://") === 0) {
-        tdLibWrapper.createPrivateChat(link.substring(9));
+        tdLibWrapper.createPrivateChat(link.substring(9), "openDirectly");
     } else if (link.indexOf("tg://") === 0) {
         Debug.log("Special TG link: ", link);
         if (link.indexOf("tg://join?invite=") === 0) {
             tdLibWrapper.joinChatByInviteLink(tMePrefix + "joinchat/" + link.substring(17));
         } else if (link.indexOf("tg://resolve?domain=") === 0) {
-            tdLibWrapper.searchPublicChat(link.substring(20));
+            tdLibWrapper.searchPublicChat(link.substring(20), true);
         }
     } else if (link.indexOf("botCommand://") === 0) { // this gets returned to send on ChatPage
         return link.substring(13);
@@ -383,7 +387,7 @@ function handleLink(link) {
                 // Fail with nice error message if it doesn't work
             } else {
                 Debug.log("Search public chat: ", link.substring(tMePrefix.length));
-                tdLibWrapper.searchPublicChat(link.substring(tMePrefix.length));
+                tdLibWrapper.searchPublicChat(link.substring(tMePrefix.length), true);
                 // Check responses for updateBasicGroup or updateSupergroup
                 // Fire createBasicGroupChat or createSupergroupChat
                 // Do the necessary stuff to open the chat

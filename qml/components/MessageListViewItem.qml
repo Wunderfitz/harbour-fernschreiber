@@ -241,7 +241,7 @@ ListItem {
                         anchors.fill: parent
                         enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous)
                         onClicked: {
-                            tdLibWrapper.createPrivateChat(messageListItem.userInformation.id);
+                            tdLibWrapper.createPrivateChat(messageListItem.userInformation.id, "openDirectly");
                         }
                     }
                 }
@@ -299,9 +299,13 @@ ListItem {
                         anchors.fill: parent
                         enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous)
                         onClicked: {
-                            tdLibWrapper.createPrivateChat(messageListItem.userInformation.id);
+                            tdLibWrapper.createPrivateChat(messageListItem.userInformation.id, "openDirectly");
                         }
                     }
+                }
+
+                MessageViaLabel {
+                    message: myMessage
                 }
 
                 Loader {

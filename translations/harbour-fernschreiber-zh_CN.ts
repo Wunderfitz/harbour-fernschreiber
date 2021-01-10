@@ -814,6 +814,28 @@
         <comment>myself</comment>
         <translation>已从此对话移除 %1</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -964,6 +986,19 @@
         <source>You</source>
         <translation>你</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
@@ -974,6 +1009,14 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>此消息为转发消息，原作者: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessageViaLabel</name>
+    <message>
+        <source>via %1</source>
+        <comment>message posted via bot user</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1423,6 +1466,18 @@
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Privacy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow sending Location to inline bots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1891,6 +1946,22 @@
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
         <translation>已从此对话移除 %1</translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
