@@ -9,6 +9,7 @@ PhotoTextsListItem {
     id: listItem
     pictureThumbnail {
         photoData: photo_small || ({})
+        highlighted: listItem.highlighted && !listItem.menuOpen
     }
     property int ownUserId
     property bool showDraft: !!draft_message_text && draft_message_date > last_message_date
