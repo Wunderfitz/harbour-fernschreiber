@@ -492,6 +492,10 @@
         <source>Open Document</source>
         <translation>Open Document</translation>
     </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation>Copy Document to Downloads</translation>
+    </message>
 </context>
 <context>
     <name>EditGroupChatPermissionsColumn</name>
