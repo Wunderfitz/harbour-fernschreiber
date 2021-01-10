@@ -267,11 +267,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Desanclar charla</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Anclar charla</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -484,7 +484,7 @@
     </message>
     <message>
         <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiar documento a Downloads</translation>
     </message>
 </context>
 <context>
@@ -896,7 +896,7 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation>Usa el formato internacional %1</translation>
+        <translation>%1</translation>
     </message>
     <message>
         <source>About Fernschreiber</source>
@@ -1418,11 +1418,11 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modo solo en línea</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deshabilita el almacenamiento en caché sin conexión. Algunas funciones pueden estar limitadas o ausentes en este modo. Se requiere reiniciar Fernschreiber para su efecto.</translation>
     </message>
 </context>
 <context>
@@ -1635,7 +1635,7 @@
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>me añadí a esta charla</translation>
+        <translation>se agregó a esta charla</translation>
     </message>
     <message>
         <source>left this chat</source>
