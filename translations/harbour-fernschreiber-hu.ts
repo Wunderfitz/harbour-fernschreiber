@@ -83,6 +83,14 @@
         <source>Open rlottie on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -1026,10 +1034,6 @@
         <translation>Hálózatra várakozás...</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation>Csatlakozás a hálózathoz...</translation>
-    </message>
-    <message>
         <source>Connecting to proxy...</source>
         <translation>Csatlakozás a proxy-hoz...</translation>
     </message>
@@ -1068,6 +1072,14 @@
     <message>
         <source>Download failed.</source>
         <translation type="unfinished">A letöltés nem sikerült.</translation>
+    </message>
+    <message>
+        <source>Connecting to network...</source>
+        <translation type="unfinished">Csatlakozás a hálózathoz...</translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

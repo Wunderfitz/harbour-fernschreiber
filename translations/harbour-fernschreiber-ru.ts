@@ -83,6 +83,14 @@
         <source>Open rlottie on GitHub</source>
         <translation>Открыть rlottie на GitHub</translation>
     </message>
+    <message>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -1048,10 +1056,6 @@
         <translation>Ожидание сети...</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation>Подключение к сети...</translation>
-    </message>
-    <message>
         <source>Connecting to proxy...</source>
         <translation>Подключение к прокси...</translation>
     </message>
@@ -1090,6 +1094,14 @@
     <message>
         <source>Download failed.</source>
         <translation type="unfinished">Ошибка скачивания.</translation>
+    </message>
+    <message>
+        <source>Connecting to network...</source>
+        <translation type="unfinished">Подключение к сети...</translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

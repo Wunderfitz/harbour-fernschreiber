@@ -31,13 +31,14 @@ Page {
 
     property bool initializationCompleted: false;
     property bool loading: true;
+    property bool logoutLoading: false;
     property int authorizationState: TelegramAPI.Closed
     property int connectionState: TelegramAPI.WaitingForNetwork
     property int ownUserId;
     property bool chatListCreated: false;
 
     onStatusChanged: {
-        if (status === PageStatus.Active && initializationCompleted && !chatListCreated) {
+        if (status === PageStatus.Active && initializationCompleted && !chatListCreated && !logoutLoading) {
             updateContent();
         }
     }
@@ -143,7 +144,9 @@ Page {
         case TelegramAPI.WaitCode:
         case TelegramAPI.WaitPassword:
         case TelegramAPI.WaitRegistration:
+        case TelegramAPI.AuthorizationStateClosed:
             overviewPage.loading = false;
+            overviewPage.logoutLoading = false;
             if(isOnInitialization) { // pageStack isn't ready on Component.onCompleted
                 openInitializationPageTimer.start()
             } else {
@@ -154,6 +157,19 @@ Page {
             overviewPage.loading = false;
             overviewPage.initializationCompleted = true;
             overviewPage.updateContent();
+            break;
+        case TelegramAPI.AuthorizationStateLoggingOut:
+            if (logoutLoading) {
+                Debug.log("Resources cleared already");
+                return;
+            }
+            Debug.log("Logging out")
+            overviewPage.initializationCompleted = false;
+            overviewPage.loading = false;
+            chatListCreatedTimer.stop();
+            updateSecondaryContentTimer.stop();
+            overviewPage.logoutLoading = true;
+            chatListModel.reset();
             break;
         default:
             // Nothing ;)
@@ -236,7 +252,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("About Fernschreiber")
-                onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"), {isLoggedIn : (overviewPage.authorizationState == TelegramAPI.AuthorizationReady)})
             }
             MenuItem {
                 text: qsTr("Settings")
@@ -328,7 +344,7 @@ Page {
                 right: parent.right
             }
             clip: true
-            opacity: overviewPage.chatListCreated ? 1 : 0
+            opacity: (overviewPage.chatListCreated && !overviewPage.logoutLoading) ? 1 : 0
             Behavior on opacity { FadeAnimation {} }
             model: chatListModel
             delegate: ChatListViewItem {
@@ -357,7 +373,7 @@ Page {
 
             opacity: overviewPage.chatListCreated ? 0 : 1
             Behavior on opacity { FadeAnimation {} }
-            visible: !overviewPage.chatListCreated
+            visible: !overviewPage.chatListCreated && !overviewPage.logoutLoading
 
             InfoLabel {
                 id: loadingLabel
@@ -369,6 +385,21 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 running: !overviewPage.chatListCreated
                 size: BusyIndicatorSize.Large
+            }
+        }
+
+        Column {
+            width: parent.width
+            spacing: Theme.paddingMedium
+            anchors.verticalCenter: chatListView.verticalCenter
+
+            opacity: overviewPage.logoutLoading ? 1 : 0
+            Behavior on opacity { FadeAnimation {} }
+            visible: overviewPage.logoutLoading
+
+            BusyLabel {
+                    text: qsTr("Logging out")
+                    running: true
             }
         }
     }

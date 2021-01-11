@@ -62,6 +62,8 @@ public:
     Q_INVOKABLE void redrawModel();
     Q_INVOKABLE QVariantMap get(int row);
     Q_INVOKABLE QVariantMap getById(qlonglong chatId);
+    Q_INVOKABLE void reset();
+
 
     bool showAllChats() const;
     void setShowAllChats(bool showAll);

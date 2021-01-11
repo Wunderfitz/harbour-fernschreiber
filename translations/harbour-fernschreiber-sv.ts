@@ -83,6 +83,14 @@
         <source>Open rlottie on GitHub</source>
         <translation>Öppna rlottie på GitHub</translation>
     </message>
+    <message>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -1037,10 +1045,6 @@
         <translation>Väntar på nätverk...</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation>Ansluter till nätverket...</translation>
-    </message>
-    <message>
         <source>Connecting to proxy...</source>
         <translation>Ansluter till proxy...</translation>
     </message>
@@ -1079,6 +1083,14 @@
     <message>
         <source>Download failed.</source>
         <translation>Nerladdning misslyckades.</translation>
+    </message>
+    <message>
+        <source>Connecting to network...</source>
+        <translation type="unfinished">Ansluter till nätverket...</translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

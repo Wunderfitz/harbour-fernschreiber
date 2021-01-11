@@ -83,6 +83,14 @@
         <source>Open rlottie on GitHub</source>
         <translation>Avaa rlottie GitHubissa</translation>
     </message>
+    <message>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -1038,10 +1046,6 @@
         <translation>Odotetaan verkkoa...</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation>Yhdistetään verkkoon...</translation>
-    </message>
-    <message>
         <source>Connecting to proxy...</source>
         <translation>Yhdistetään välityspalvelimeen...</translation>
     </message>
@@ -1080,6 +1084,14 @@
     <message>
         <source>Download failed.</source>
         <translation type="unfinished">Lataus epäonnistui.</translation>
+    </message>
+    <message>
+        <source>Connecting to network...</source>
+        <translation type="unfinished">Yhdistetään verkkoon...</translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

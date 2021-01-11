@@ -83,6 +83,14 @@
         <source>Open rlottie on GitHub</source>
         <translation>在 Github 打开 rlottie</translation>
     </message>
+    <message>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -1026,10 +1034,6 @@
         <translation>等候网络连接…</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation>正在连接到网络…</translation>
-    </message>
-    <message>
         <source>Connecting to proxy...</source>
         <translation>正在连接到代理…</translation>
     </message>
@@ -1068,6 +1072,14 @@
     <message>
         <source>Download failed.</source>
         <translation>下载失败。</translation>
+    </message>
+    <message>
+        <source>Connecting to network...</source>
+        <translation type="unfinished">正在连接到网络…</translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

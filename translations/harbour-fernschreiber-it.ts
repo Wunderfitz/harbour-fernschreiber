@@ -83,6 +83,14 @@
         <source>Open rlottie on GitHub</source>
         <translation>Apri rlottie su GitHub</translation>
     </message>
+    <message>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -1045,10 +1053,6 @@
         <translation>Attendo la rete...</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation>Connetto alla rete...</translation>
-    </message>
-    <message>
         <source>Connecting to proxy...</source>
         <translation>Connetto al proxy...</translation>
     </message>
@@ -1079,6 +1083,14 @@
     <message>
         <source>Download failed.</source>
         <translation type="unfinished">Download non riuscito.</translation>
+    </message>
+    <message>
+        <source>Connecting to network...</source>
+        <translation type="unfinished">Connetto alla rete...</translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

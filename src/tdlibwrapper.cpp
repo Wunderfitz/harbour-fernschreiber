@@ -58,7 +58,9 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     this->mceInterface = mceInterface;
     this->tdLibClient = td_json_client_create();
     this->authorizationState = AuthorizationState::Closed;
-    this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
+    this->isLoggingOut = false;
+
+    initializeTDLibReciever();
 
     QString tdLibDatabaseDirectoryPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib";
     QDir tdLibDatabaseDirectory(tdLibDatabaseDirectoryPath);
@@ -73,6 +75,29 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
         this->removeOpenWith();
     }
 
+    connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
+
+    connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
+    connect(this->appSettings, SIGNAL(storageOptimizerChanged()), this, SLOT(handleStorageOptimizerChanged()));
+
+    this->setLogVerbosityLevel();
+    this->setOptionInteger("notification_group_count_max", 5);
+}
+
+TDLibWrapper::~TDLibWrapper()
+{
+    LOG("Destroying TD Lib...");
+    this->tdLibReceiver->setActive(false);
+    while (this->tdLibReceiver->isRunning()) {
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
+    }
+    qDeleteAll(basicGroups.values());
+    qDeleteAll(superGroups.values());
+    td_json_client_destroy(this->tdLibClient);
+}
+
+void TDLibWrapper::initializeTDLibReciever() {
+    this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
     connect(this->tdLibReceiver, SIGNAL(versionDetected(QString)), this, SLOT(handleVersionDetected(QString)));
     connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString, QVariantMap)), this, SLOT(handleAuthorizationStateChanged(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(optionUpdated(QString, QVariant)), this, SLOT(handleOptionUpdated(QString, QVariant)));
@@ -128,32 +153,15 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)), this, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)));
     connect(this->tdLibReceiver, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)), this, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)));
-
-    connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
-
-    connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
-    connect(this->appSettings, SIGNAL(storageOptimizerChanged()), this, SLOT(handleStorageOptimizerChanged()));
-
     this->tdLibReceiver->start();
-
-    this->setLogVerbosityLevel();
-    this->setOptionInteger("notification_group_count_max", 5);
-}
-
-TDLibWrapper::~TDLibWrapper()
-{
-    LOG("Destroying TD Lib...");
-    this->tdLibReceiver->setActive(false);
-    while (this->tdLibReceiver->isRunning()) {
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
-    }
-    qDeleteAll(basicGroups.values());
-    qDeleteAll(superGroups.values());
-    td_json_client_destroy(this->tdLibClient);
 }
 
 void TDLibWrapper::sendRequest(const QVariantMap &requestObject)
 {
+    if (this->isLoggingOut) {
+        LOG("Sending request to TD Lib skipped as logging out is in progress, object type name:" << requestObject.value(_TYPE).toString());
+        return;
+    }
     LOG("Sending request to TD Lib, object type name:" << requestObject.value(_TYPE).toString());
     QJsonDocument requestDocument = QJsonDocument::fromVariant(requestObject);
     VERBOSE(requestDocument.toJson().constData());
@@ -219,6 +227,16 @@ void TDLibWrapper::registerUser(const QString &firstName, const QString &lastNam
     requestObject.insert(FIRST_NAME, firstName);
     requestObject.insert(LAST_NAME, lastName);
     this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::logout()
+{
+    LOG("Logging out");
+    QVariantMap requestObject;
+    requestObject.insert("@type", "logOut");
+    this->sendRequest(requestObject);
+    this->isLoggingOut = true;
+
 }
 
 void TDLibWrapper::getChats()
@@ -1198,6 +1216,28 @@ void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationS
     if (authorizationState == "authorizationStateWaitTdlibParameters") {
         this->setInitialParameters();
         this->authorizationState = AuthorizationState::WaitTdlibParameters;
+    }
+    if (authorizationState == "authorizationStateLoggingOut") {
+        this->authorizationState = AuthorizationState::AuthorizationStateLoggingOut;
+    }
+    if (authorizationState == "authorizationStateClosed") {
+        this->authorizationState = AuthorizationState::AuthorizationStateClosed;
+        LOG("Reloading TD Lib...");
+        this->basicGroups.clear();
+        this->superGroups.clear();
+        this->allUsers.clear();
+        this->allUserNames.clear();
+        this->tdLibReceiver->setActive(false);
+        while (this->tdLibReceiver->isRunning()) {
+            QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
+        }
+        td_json_client_destroy(this->tdLibClient);
+        this->tdLibReceiver->terminate();
+        QDir appPath(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.local/share/harbour-fernschreiber");
+        appPath.removeRecursively();
+        this->tdLibClient = td_json_client_create();
+        initializeTDLibReciever();
+        this->isLoggingOut = false;
     }
     this->authorizationStateData = authorizationStateData;
     emit authorizationStateChanged(this->authorizationState, this->authorizationStateData);
