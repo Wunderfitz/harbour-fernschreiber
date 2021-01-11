@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Открыть Telegram Database Library на GitHub</translation>
+        <translation>Открыть TDLib на GitHub</translation>
     </message>
     <message>
         <source>About Telegram</source>
@@ -273,11 +273,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открепить чат</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Закрепить чат</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -504,7 +504,7 @@
     </message>
     <message>
         <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сохранить в Загрузках</translation>
     </message>
 </context>
 <context>
@@ -920,7 +920,7 @@
     </message>
     <message>
         <source>About Fernschreiber</source>
-        <translation>О Фэрншрайбе</translation>
+        <translation>О программе</translation>
     </message>
 </context>
 <context>
@@ -1057,7 +1057,7 @@
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>О программе «Fernschreiber»</translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
@@ -1460,11 +1460,11 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Включить режим "только в онлайне"</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">При нём не будет использоваться автономное кэширование и некоторые функции могут быть ограничены или отсутствовать. Изменения вступят в силу после перезапуска Fernschreiber.</translation>
     </message>
 </context>
 <context>
