@@ -1302,7 +1302,7 @@ Page {
                     property bool isNeeded: false
                     width: chatPage.width
                     x: -Theme.horizontalPageMargin
-                    height: isNeeded && !inlineQuery.active ? attachmentOptionsRow.height : 0
+                    height: isNeeded && !inlineQuery.userNameIsValid ? attachmentOptionsRow.height : 0
                     Behavior on height { SmoothedAnimation { duration: 200 } }
                     visible: height > 0
                     contentHeight: attachmentOptionsRow.height
@@ -1434,7 +1434,7 @@ Page {
 
                 Row {
                     id: attachmentPreviewRow
-                    visible: (!!locationData || !!fileProperties) && !inlineQuery.active
+                    visible: (!!locationData || !!fileProperties) && !inlineQuery.userNameIsValid
                     spacing: Theme.paddingMedium
                     width: parent.width
                     layoutDirection: Qt.RightToLeft
@@ -1705,7 +1705,7 @@ Page {
                             }
                         }
 
-                        EnterKey.enabled: !inlineQuery.active && (!appSettings.sendByEnter || text.length)
+                        EnterKey.enabled: !inlineQuery.userNameIsValid && (!appSettings.sendByEnter || text.length)
                         EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-chat" : "image://theme/icon-m-enter"
 
                         onTextChanged: {
@@ -1720,7 +1720,7 @@ Page {
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
                         enabled: !attachmentPreviewRow.visible
-                        visible: !inlineQuery.active
+                        visible: !inlineQuery.userNameIsValid
                         onClicked: {
                             if (attachmentOptionsFlickable.isNeeded) {
                                 attachmentOptionsFlickable.isNeeded = false;
@@ -1737,7 +1737,7 @@ Page {
                         icon.source: "image://theme/icon-m-chat"
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
-                        visible: !inlineQuery.active && (!appSettings.sendByEnter || attachmentPreviewRow.visible)
+                        visible: !inlineQuery.userNameIsValid && (!appSettings.sendByEnter || attachmentPreviewRow.visible)
                         enabled: false
                         onClicked: {
                             sendMessage();
@@ -1751,7 +1751,7 @@ Page {
                     Item {
                         width: cancelInlineQueryButton.width
                         height: cancelInlineQueryButton.height
-                        visible: inlineQuery.active
+                        visible: inlineQuery.userNameIsValid
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
 
