@@ -444,8 +444,10 @@ function getMessagesArrayText(messages) {
 }
 
 function handleErrorMessage(code, message) {
-    if (code === 404) {
-        // Silently ignore 404 Not Found messages (occur sometimes, without clear context...)
+    if (code === 404 || (code === 400 && message === "USERNAME_INVALID")) {
+        // Silently ignore
+        // - 404 Not Found messages (occur sometimes, without clear context...)
+        // - searchPublicChat messages for "invalid" inline queries
         return;
     }
     if (message === "USER_ALREADY_PARTICIPANT") {

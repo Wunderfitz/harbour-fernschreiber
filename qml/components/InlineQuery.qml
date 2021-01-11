@@ -27,14 +27,15 @@ Loader {
     active: userName.length > 1
     asynchronous: true
     anchors.fill: parent
-    property bool hasOverlay: active && status === Loader.Ready && item.overlay && item.overlay.status === Loader.Ready
-    property bool hasButton: active && status === Loader.Ready && item.button && item.button.status === Loader.Ready
+    property bool hasOverlay: active && userNameIsValid && status === Loader.Ready && item.overlay && item.overlay.status === Loader.Ready
+    property bool hasButton: active && userNameIsValid && status === Loader.Ready && item.button && item.button.status === Loader.Ready
 
     property int buttonPadding: hasButton ? item.button.height + Theme.paddingSmall : 0
     Behavior on buttonPadding { NumberAnimation { duration: 200} }
 
     property string chatId
     property string userName
+    property bool userNameIsValid: userName !== "" && inlineBotInformation && userName === inlineBotInformation.username
     property string query
     property int currentOffset: 0
     property string responseExtra: chatId+"|"+userName+"|"+query+"|"+currentOffset
@@ -49,7 +50,7 @@ Loader {
     onStatusChanged: {
         inlineBotInformation = null;
         if(status === Loader.Ready && userName !== "") {
-            isLoading = true;
+            isLoading = true; inlineQueryLoader.chatId
             tdLibWrapper.searchPublicChat(userName, false);
         }
     }
@@ -87,12 +88,7 @@ Loader {
         inlineQueryLoader.currentOffset = offset || 0
     }
     function request() {
-
-        if(userName.length === 0) {
-            return;
-        }
-
-        if(!inlineBotInformation) {
+        if(!inlineBotInformation || !userNameIsValid) {
             queued = true;
         } else {
             queued = false;
@@ -202,7 +198,7 @@ Loader {
                 useDelegateSize = sizeKey;
             }
             function loadMore() {
-                if(nextOffset) {
+                if(nextOffset && inlineQueryLoader.userNameIsValid) {
                     inlineQueryLoader.currentOffset = nextOffset;
                     inlineQueryLoader.request();
                 }
