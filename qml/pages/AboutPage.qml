@@ -59,7 +59,7 @@ Page {
             }
 
             Label {
-                text: "Fernschreiber 0.6"
+                text: "Fernschreiber 0.7"
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraLarge
                 anchors {
@@ -178,7 +178,7 @@ Page {
                         }
 
                         ProfileThumbnail {
-                            photoData: aboutPage.userInformation.profile_photo.small
+                            photoData: ((typeof aboutPage.userInformation.profile_photo !== "undefined") ? aboutPage.userInformation.profile_photo.small : {})
                             width: Theme.itemSizeExtraLarge
                             height: Theme.itemSizeExtraLarge
                             replacementStringHint: aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name

@@ -12,6 +12,38 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Wed Jan 6 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.6.1
+- Show indicator for pinned chats
+- Use highlightBackgroundColor and align size for all chat attributes (unread messages, secret chat, pinned chat)
+- Fix: Chat list order of sequence was wrong in some circumstances
+- Fix: Make video (fullscreen) page work again
+- Fix: Add build requirements for Qt Multimedia and Qt Positioning
+- Updated translations for Finnish and Swedish - thanks to jorm1s and eson57
+
+* Tue Jan 5 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.6
+- Filter chat list (tap on title bar to open search field) - thanks to the entire dev team for the great discussion and contributions to the layout :)
+- Search for public chats (see pulley menu on overview page)
+- Search for chat messages (see pulley menu on chat page)
+- Support sending voice notes
+- Support sending locations
+- Add message draft support - thanks to jgibbon
+- Basic bot messages support (reply markup) - thanks to jgibbon
+- Add 'Mark chat as read/unread' option
+- Add download option to audio messages (voice notes, music...)
+- Introduce proper text if other people added/removed a person from a chat
+- Tweaks to poll layout - thanks to monich
+- New option to keep message input focused after message was sent - thanks to jgibbon
+- Send message button now removed if Send-message-by-enter option is enabled (and no attachment is set) - thanks to santhoshmanikandan
+- Performance and code optimizations (architecture, startup, JS components) - thanks to monich and jgibbon
+- Improve readability in light ambiences
+- Upgrade to TDLib 1.7
+- Fix: Only show reply to option for messages that can be replied to - thanks to monich
+- Fix: Emoji positioning in multi-line texts - thanks to monich
+- Fix: Left-over @-mention notifications when all messages in chat are read
+- Fix: Occasional crashes on opening poll context menu - thanks to monich
+- Fix: Don't display in-reply-to section if message wasn't found
+- Several translations updated - thanks to all contributors
+
 * Fri Dec 4 2020 Sebastian J. Wolf <sebastian@ygriega.de> 0.5.1
 - Add verification badge to verified chats - thanks to monich
 - Improve preview of wide images - thanks to monich

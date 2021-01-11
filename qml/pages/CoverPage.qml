@@ -67,7 +67,7 @@ CoverBackground {
         coverPage.authenticated = (tdLibWrapper.getAuthorizationState() === TelegramAPI.AuthorizationReady);
         coverPage.connectionState = tdLibWrapper.getConnectionState();
         coverPage.unreadMessages = tdLibWrapper.getUnreadMessageInformation().unread_count || 0;
-        coverPage.unreadChats = tdLibWrapper.getUnreadChatInformation().unread_count;
+        coverPage.unreadChats = tdLibWrapper.getUnreadChatInformation().unread_count || 0;
         setUnreadInfoText();
     }
 
@@ -87,6 +87,15 @@ CoverBackground {
         }
         onConnectionStateChanged: {
             coverPage.connectionState = connectionState;
+            setUnreadInfoText();
+        }
+    }
+
+    Connections {
+        target: chatListModel
+        onUnreadStateChanged: {
+            coverPage.unreadMessages = unreadMessagesCount;
+            coverPage.unreadChats = unreadChatsCount;
             setUnreadInfoText();
         }
     }

@@ -47,8 +47,10 @@ namespace {
     const QString USERNAME("username");
     const QString THREAD_ID("thread_id");
     const QString VALUE("value");
+    const QString CHAT_LIST_TYPE("chat_list_type");
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
+    const QString CHAT_LIST_MAIN("chatListMain");
 }
 
 TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent) : QObject(parent), joinChatRequested(false)
@@ -145,6 +147,7 @@ void TDLibWrapper::initializeTDLibReciever() {
     connect(this->tdLibReceiver, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)), this, SIGNAL(chatPermissionsUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatTitleUpdated(QString, QString)), this, SIGNAL(chatTitleUpdated(QString, QString)));
+    connect(this->tdLibReceiver, SIGNAL(chatPinnedUpdated(qlonglong, bool)), this, SIGNAL(chatPinnedUpdated(qlonglong, bool)));
     connect(this->tdLibReceiver, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibReceiver, SIGNAL(messageIsPinnedUpdated(qlonglong, qlonglong, bool)), this, SLOT(handleMessageIsPinnedUpdated(qlonglong, qlonglong, bool)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
@@ -486,6 +489,56 @@ void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &fil
     documentInputFile.insert(_TYPE, "inputFileLocal");
     documentInputFile.insert("path", filePath);
     inputMessageContent.insert("document", documentInputFile);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::sendVoiceNoteMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
+{
+    LOG("Sending voice note message" << chatId << filePath << message << replyToMessageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "sendMessage");
+    requestObject.insert(CHAT_ID, chatId);
+    if (replyToMessageId != "0") {
+        requestObject.insert("reply_to_message_id", replyToMessageId);
+    }
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessageVoiceNote");
+    QVariantMap formattedText;
+    formattedText.insert("text", message);
+    formattedText.insert(_TYPE, "formattedText");
+    inputMessageContent.insert("caption", formattedText);
+    QVariantMap documentInputFile;
+    documentInputFile.insert(_TYPE, "inputFileLocal");
+    documentInputFile.insert("path", filePath);
+    inputMessageContent.insert("voice_note", documentInputFile);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::sendLocationMessage(const QString &chatId, double latitude, double longitude, double horizontalAccuracy, const QString &replyToMessageId)
+{
+    LOG("Sending location message" << chatId << latitude << longitude << horizontalAccuracy << replyToMessageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "sendMessage");
+    requestObject.insert(CHAT_ID, chatId);
+    if (replyToMessageId != "0") {
+        requestObject.insert("reply_to_message_id", replyToMessageId);
+    }
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessageLocation");
+    QVariantMap location;
+    location.insert("latitude", latitude);
+    location.insert("longitude", longitude);
+    location.insert("horizontal_accuracy", horizontalAccuracy);
+    location.insert(_TYPE, "location");
+    inputMessageContent.insert("location", location);
+
+    inputMessageContent.insert("live_period", 0);
+    inputMessageContent.insert("heading", 0);
+    inputMessageContent.insert("proximity_alert_radius", 0);
 
     requestObject.insert("input_message_content", inputMessageContent);
     this->sendRequest(requestObject);
@@ -1002,6 +1055,20 @@ void TDLibWrapper::toggleChatIsMarkedAsUnread(qlonglong chatId, bool isMarkedAsU
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::toggleChatIsPinned(qlonglong chatId, bool isPinned)
+{
+    LOG("Toggle chat is pinned" << chatId << isPinned);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "toggleChatIsPinned");
+    QVariantMap chatListMap;
+    chatListMap.insert(_TYPE, CHAT_LIST_MAIN);
+    requestObject.insert("chat_list", chatListMap);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("is_pinned", isPinned);
+    requestObject.insert("is_marked_as_unread", isPinned);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::setChatDraftMessage(qlonglong chatId, qlonglong threadId, qlonglong replyToMessageId, const QString &draft)
 {
     LOG("Set Draft Message" << chatId);
@@ -1334,7 +1401,7 @@ void TDLibWrapper::handleChatReceived(const QVariantMap &chatInformation)
 
 void TDLibWrapper::handleUnreadMessageCountUpdated(const QVariantMap &messageCountInformation)
 {
-    if (messageCountInformation.value("chat_list_type").toString() == "chatListMain") {
+    if (messageCountInformation.value(CHAT_LIST_TYPE).toString() == CHAT_LIST_MAIN) {
         this->unreadMessageInformation = messageCountInformation;
         emit unreadMessageCountUpdated(messageCountInformation);
     }
@@ -1342,7 +1409,7 @@ void TDLibWrapper::handleUnreadMessageCountUpdated(const QVariantMap &messageCou
 
 void TDLibWrapper::handleUnreadChatCountUpdated(const QVariantMap &chatCountInformation)
 {
-    if (chatCountInformation.value("chat_list_type").toString() == "chatListMain") {
+    if (chatCountInformation.value(CHAT_LIST_TYPE).toString() == CHAT_LIST_MAIN) {
         this->unreadChatInformation = chatCountInformation;
         emit unreadChatCountUpdated(chatCountInformation);
     }
@@ -1449,15 +1516,16 @@ void TDLibWrapper::setInitialParameters()
     initialParameters.insert("api_id", TDLIB_API_ID);
     initialParameters.insert("api_hash", TDLIB_API_HASH);
     initialParameters.insert("database_directory", QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib");
-    initialParameters.insert("use_file_database", true);
-    initialParameters.insert("use_chat_info_database", true);
-    initialParameters.insert("use_message_database", true);
+    bool onlineOnlyMode = this->appSettings->onlineOnlyMode();
+    initialParameters.insert("use_file_database", !onlineOnlyMode);
+    initialParameters.insert("use_chat_info_database", !onlineOnlyMode);
+    initialParameters.insert("use_message_database", !onlineOnlyMode);
     initialParameters.insert("use_secret_chats", true);
     initialParameters.insert("system_language_code", QLocale::system().name());
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
     initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     initialParameters.insert("system_version", QSysInfo::prettyProductName());
-    initialParameters.insert("application_version", "0.6");
+    initialParameters.insert("application_version", "0.7");
     initialParameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
     // initialParameters.insert("use_test_dc", true);
     requestObject.insert("parameters", initialParameters);

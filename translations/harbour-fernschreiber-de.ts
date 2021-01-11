@@ -132,14 +132,6 @@
         <translation>Verlasse Chat</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Stummschaltung des Chats aufheben</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Chat stummschalten</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Unbekannt</translation>
     </message>
@@ -190,6 +182,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Neuer geheimer Chat</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Stummschaltung des Chats aufheben</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Chat stummschalten</translation>
     </message>
 </context>
 <context>
@@ -249,14 +249,6 @@
         <translation>Sie</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Stummschaltung des Chats aufheben</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Chat stummschalten</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Benutzerinfos</translation>
     </message>
@@ -283,6 +275,22 @@
     <message>
         <source>Draft</source>
         <translation>Entwurf</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation>Chat losheften</translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation>Chat anheften</translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Stummschaltung des Chats aufheben</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Chat stummschalten</translation>
     </message>
 </context>
 <context>
@@ -419,6 +427,14 @@
         <source>Search in chat...</source>
         <translation>Im Chat suchen...</translation>
     </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation>Standort: Erlange Position...</translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation>Standort (%1/%2)</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -483,6 +499,10 @@
     <message>
         <source>Open Document</source>
         <translation>Dokument öffnen</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation>Dokument zu Downloads kopieren</translation>
     </message>
 </context>
 <context>
@@ -1085,8 +1105,16 @@
         <translation>Download fehlgeschlagen.</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation type="unfinished">Verbinde zum Netzwerk...</translation>
+        <source>Tap on the title bar to filter your chats</source>
+        <translation>Tippen Sie auf die Titelleiste, um Ihre Chats zu filtern</translation>
+    </message>
+    <message>
+        <source>No matching chats found.</source>
+        <translation>Keine passenden Chats gefunden.</translation>
+    </message>
+    <message>
+        <source>You can search public chats or create a new chat via the pull-down menu.</source>
+        <translation>Sie können über das Pull-Down-Menü öffentliche Chats finden oder einen Neuen erstellen.</translation>
     </message>
     <message>
         <source>Logging out</source>
@@ -1308,13 +1336,19 @@
         <source>Channel</source>
         <translation>Kanal</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 Mitglied</translation>
+        <translation>
+            <numerusform>%1 Mitglied</numerusform>
+            <numerusform>%1 Mitglieder</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 Abonnent</translation>
+        <translation>
+            <numerusform>%1 Abonnent</numerusform>
+            <numerusform>%1 Abonnenten</numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>
@@ -1403,6 +1437,22 @@
         <source>Enable storage optimizer</source>
         <translation>Speicheroptimierer einschalten</translation>
     </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation>Texteingabe nach Senden fokussieren</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Fokussiert die Texteingabe nach Senden einer Nachricht</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>Nur-Online-Modus einschalten</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Schaltet das Offline-Caching aus. Bestimmte Features können in diesem Modus eingeschränkt sein oder fehlen. Änderungen erfordern einen Neustart von Fernschreiber, um in Kraft zu treten.</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1428,6 +1478,45 @@
     <message>
         <source>Download failed.</source>
         <translation>Download fehlgeschlagen.</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation>Eine Sprachnachricht aufzeichnen</translation>
+    </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation>Drücken Sie den Knopf, um die Aufzeichnung zu starten</translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation>Nicht verfügbar</translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation>Bereit</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation>Startet</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation>Zeichnet auf</translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation>Stoppt</translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation>Aufzeichnung verwenden</translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation>Sprachnachricht (%1)</translation>
     </message>
 </context>
 <context>

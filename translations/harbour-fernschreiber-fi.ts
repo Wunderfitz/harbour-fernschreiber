@@ -132,14 +132,6 @@
         <translation>Poistutaan keskustelusta</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Vaimenna keskustelu</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Tuntematon</translation>
     </message>
@@ -190,6 +182,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Uusi salattu keskustelu</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Poista keskustelun vaimennus</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Vaimenna keskustelu</translation>
     </message>
 </context>
 <context>
@@ -249,14 +249,6 @@
         <translation>Sinä</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Vaimenna keskustelu</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Käyttäjän tiedot</translation>
     </message>
@@ -274,15 +266,31 @@
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Merkitse keskustelu lukemattomaksi</translation>
     </message>
     <message>
         <source>Draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Luonnos</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
+        <translation>Merkitse keskustelu luetuksi</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Poista keskustelun vaimennus</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Vaimenna keskustelu</translation>
     </message>
 </context>
 <context>
@@ -413,11 +421,19 @@
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi keskustelusta</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi keskustelusta...</translation>
+    </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation>Sijainti: Paikannetaan...</translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation>Sijainti (%1/%2)</translation>
     </message>
 </context>
 <context>
@@ -484,6 +500,10 @@
     <message>
         <source>Open Document</source>
         <translation>Avaa dokumentti</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -796,21 +816,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>lisäsi käyttäjän %1 keskusteluun</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>posit käyttäjän %1 keskustelusta</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lisäsit käyttäjän %1 keskusteluun</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>poistit käyttäjän %1 keskustelusta</translation>
     </message>
 </context>
 <context>
@@ -949,11 +969,11 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Viestin kiinnitys poistettu</translation>
+        <translation>Viestin kiinnitys poistettu</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista viestin kiinnitys</translation>
     </message>
 </context>
 <context>
@@ -1071,19 +1091,31 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Suodata keskustelujasi...</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi keskusteluista</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedoston %1 lataus onnistui.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished">Lataus epäonnistui.</translation>
+        <translation>Lataus epäonnistui.</translation>
+    </message>
+    <message>
+        <source>Tap on the title bar to filter your chats</source>
+        <translation>Kosketa otsikkopalkkia suodattaaksesi keskusteluja</translation>
+    </message>
+    <message>
+        <source>No matching chats found.</source>
+        <translation>Hakua vastaavia keskusteluja ei löytynyt,</translation>
+    </message>
+    <message>
+        <source>You can search public chats or create a new chat via the pull-down menu.</source>
+        <translation>Voit etsiä julkisia keskusteluja tai luoda uuden keskustelun alasvetovalikosta.</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
@@ -1291,43 +1323,49 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keskusteluja ei löytynyt</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsitään keskusteluja...</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished">Yksityinen keskustelu</translation>
+        <translation>Yksityinen keskustelu</translation>
     </message>
     <message>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmä</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanava</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 jäsen</translation>
+        <translation>
+            <numerusform>%1 jäsen</numerusform>
+            <numerusform>%1 jäsentä</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 tilaaja</translation>
+        <translation>
+            <numerusform>%1 tilaaja</numerusform>
+            <numerusform>%1 tilaajaa</numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi keskusteluja</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi keskustelua...</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Syötä hakusanasi etsiäksesi (vähintään 5 merkkiä tarvitaan)</translation>
     </message>
 </context>
 <context>
@@ -1404,6 +1442,22 @@
         <source>Enable storage optimizer</source>
         <translation>Käytä tallennustilan optimointia</translation>
     </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation>Kohdista tekstinsyöttökenttä lähetyksen jälkeen</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Kohdista tekstinsyöttökenttä viestin lähetyksen jälkeen</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1429,6 +1483,45 @@
     <message>
         <source>Download failed.</source>
         <translation>Lataus epäonnistui.</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation>Nauhoita ääniviesti</translation>
+    </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation>Paina nappia aloittaaksesi nauhoituksen</translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation>Ei saatavilla</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation>Aloitetaan</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation>Nauhoitetaan</translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation>Lopetetaan</translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation>Käytä nauhoitusta</translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation>Ääniviesti (%1)</translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation>Valmis</translation>
     </message>
 </context>
 <context>
@@ -1816,21 +1909,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>lisäsi käyttäjä %1 keskusteluun</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>posit käyttäjän %1 keskustelusta</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lisäsit käyttäjän %1 keskusteluun</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>poistit käyttäjän %1 keskustelusta</translation>
     </message>
 </context>
 </TS>

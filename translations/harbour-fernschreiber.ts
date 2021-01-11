@@ -132,14 +132,6 @@
         <translation>Leaving chat</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Unmute Chat</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Mute Chat</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Unknown</translation>
     </message>
@@ -190,6 +182,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation type="unfinished">Unmute Chat</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation type="unfinished">Mute Chat</translation>
     </message>
 </context>
 <context>
@@ -249,14 +249,6 @@
         <translation>You</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Unmute Chat</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Mute Chat</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>User Info</translation>
     </message>
@@ -283,6 +275,22 @@
     <message>
         <source>Draft</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation type="unfinished">Unmute chat</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation type="unfinished">Mute chat</translation>
     </message>
 </context>
 <context>
@@ -419,6 +427,14 @@
         <source>Search in chat...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -483,6 +499,10 @@
     <message>
         <source>Open Document</source>
         <translation>Open Document</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1085,8 +1105,16 @@
         <translation type="unfinished">Download failed.</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation type="unfinished">Connecting to network...</translation>
+        <source>Tap on the title bar to filter your chats</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No matching chats found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can search public chats or create a new chat via the pull-down menu.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Logging out</source>
@@ -1308,13 +1336,19 @@
         <source>Channel</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 member</translation>
+        <translation type="unfinished">
+            <numerusform>%1 member</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 subscriber</translation>
+        <translation type="unfinished">
+            <numerusform>%1 subscriber</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>
@@ -1403,6 +1437,22 @@
         <source>Enable storage optimizer</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1428,6 +1478,45 @@
     <message>
         <source>Download failed.</source>
         <translation>Download failed.</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

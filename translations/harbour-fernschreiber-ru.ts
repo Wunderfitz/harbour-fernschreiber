@@ -123,59 +123,51 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation type="unfinished">Выйти из чата</translation>
+        <translation>Выйти из чата</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation type="unfinished">Зайти в чат</translation>
+        <translation>Зайти в чат</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation type="unfinished">Выход из чата</translation>
-    </message>
-    <message>
-        <source>Unmute Chat</source>
-        <translation type="unfinished">Включить уведомления</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation type="unfinished">Выключить уведомления</translation>
+        <translation>Выход из чата</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Неизвестный</translation>
+        <translation>Неизвестный</translation>
     </message>
     <message>
         <source>Chat Title</source>
         <comment>group title header</comment>
-        <translation type="unfinished">Заголовок чата</translation>
+        <translation>Заголовок чата</translation>
     </message>
     <message>
         <source>Enter 1-128 characters</source>
-        <translation type="unfinished">Введите 1-128 символов</translation>
+        <translation>Введите 1-128 символов</translation>
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation type="unfinished">Информация отсутствует</translation>
+        <translation>Информация отсутствует</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation type="unfinished">Информация</translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation type="unfinished">Номер телефона</translation>
+        <translation>Номер телефона</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation type="unfinished">Ссылка для приглашения</translation>
+        <translation>Ссылка для приглашения</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation type="unfinished">Ссылка для приглашения скопирована в буффер обмена</translation>
+        <translation>Ссылка для приглашения скопирована в буффер обмена</translation>
     </message>
     <message>
         <source>%1, %2</source>
@@ -193,6 +185,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Новый секретный чат</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Включить уведомления</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Выключить уведомления</translation>
     </message>
 </context>
 <context>
@@ -228,17 +228,17 @@
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation type="unfinished">Группы</translation>
+        <translation>Группы</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation type="unfinished">Участники группы</translation>
+        <translation>Участники группы</translation>
     </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
@@ -250,14 +250,6 @@
     <message>
         <source>You</source>
         <translation>Вы</translation>
-    </message>
-    <message>
-        <source>Unmute Chat</source>
-        <translation>Включить уведомления</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Выключить уведомления</translation>
     </message>
     <message>
         <source>User Info</source>
@@ -277,15 +269,31 @@
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Отметить чат как непрочитанный</translation>
     </message>
     <message>
         <source>Draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Черновик</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
+        <translation>Отметить чат как прочитанный</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Включить уведомления</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Выключить уведомления</translation>
     </message>
 </context>
 <context>
@@ -423,11 +431,19 @@
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Найти в Чате</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Поиск...</translation>
+    </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation type="unfinished">Определение координат...</translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation type="unfinished">Местоположение (%1/%2)</translation>
     </message>
 </context>
 <context>
@@ -438,18 +454,18 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation type="unfinished">Тут пока ничего нет</translation>
+        <translation>Тут пока ничего нет</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation>непрочитанное сообщение</translation>
+        <translation>сообщение</translation>
     </message>
     <message>
         <source>unread messages</source>
-        <translation>непрочитанных сообщений</translation>
+        <translation>сообщений</translation>
     </message>
     <message>
         <source>in</source>
@@ -469,7 +485,7 @@
     </message>
     <message>
         <source>Connected</source>
-        <translation>Подключен</translation>
+        <translation>В сети</translation>
     </message>
     <message>
         <source>Updating content...</source>
@@ -477,11 +493,11 @@
     </message>
     <message>
         <source>chat</source>
-        <translation>чат</translation>
+        <translation>чате</translation>
     </message>
     <message>
         <source>chats</source>
-        <translation>чаты</translation>
+        <translation>чатах</translation>
     </message>
 </context>
 <context>
@@ -493,6 +509,10 @@
     <message>
         <source>Open Document</source>
         <translation>Открыть документ</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -805,21 +825,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 добавлен в чат</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 удалён из чата</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 добавлены в чат</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 удалены из чата</translation>
     </message>
 </context>
 <context>
@@ -958,11 +978,11 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Сообщение откреплено</translation>
+        <translation>Сообщение откреплено</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открепить сообщение</translation>
     </message>
 </context>
 <context>
@@ -991,7 +1011,7 @@
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation type="unfinished">У вас нет никаких контактов.</translation>
+        <translation>У вас нет никаких контактов.</translation>
     </message>
     <message>
         <source>Private Chat</source>
@@ -1081,19 +1101,31 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбрать чат...</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Найти Чаты</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished">Успешно скачано %1.</translation>
+        <translation>Успешно скачано %1.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished">Ошибка скачивания.</translation>
+        <translation>Ошибка скачивания.</translation>
+    </message>
+    <message>
+        <source>Tap on the title bar to filter your chats</source>
+        <translation>Коснитесь строки заголовка, чтобы отфильтровать ваши чаты</translation>
+    </message>
+    <message>
+        <source>No matching chats found.</source>
+        <translation type="unfinished">Совпадающих чатов не найдено.</translation>
+    </message>
+    <message>
+        <source>You can search public chats or create a new chat via the pull-down menu.</source>
+        <translation>Вы можете искать публичные чаты или создать новый чат с помощью выпадающего меню</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
@@ -1309,43 +1341,51 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Чаты не найдены</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Идёт поиск чатов...</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished">Приватный Чат</translation>
+        <translation>Приватный Чат</translation>
     </message>
     <message>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Группа</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Канал</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 участников</translation>
+        <translation type="unfinished">
+            <numerusform>%1 участников</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 подписчиков</translation>
+        <translation type="unfinished">
+            <numerusform>%1 подписчиков</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Найти Чаты</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Поиск...</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите не менее 5 символов, чтобы начать поиск</translation>
     </message>
 </context>
 <context>
@@ -1422,6 +1462,22 @@
         <source>Enable storage optimizer</source>
         <translation>Включить оптимизацию хранилища</translation>
     </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation>Приоритет фокусировки при разговоре в чате</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Сфокусироваться на поле ввода текста после отправки сообщения</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1447,6 +1503,45 @@
     <message>
         <source>Download failed.</source>
         <translation>Ошибка скачивания.</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation>Голосовое сообщение</translation>
+    </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation>Коснитесь кнопки для записи</translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation>Недоступно</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation>Пуск</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation>Запись</translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation>Стоп</translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation>Использовать запись</translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation>Аудиозаметка (%1)</translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation>Готов</translation>
     </message>
 </context>
 <context>
@@ -1834,21 +1929,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 добавлен в чат</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 удалён из чата</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 добавлены в чат</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 удалены из чата</translation>
     </message>
 </context>
 </TS>

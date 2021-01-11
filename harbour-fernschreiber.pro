@@ -16,7 +16,7 @@ CONFIG += sailfishapp sailfishapp_i18n
 
 PKGCONFIG += nemonotifications-qt5 zlib
 
-QT += core dbus sql
+QT += core dbus sql multimedia positioning
 
 DEFINES += QT_STATICPLUGIN
 
@@ -58,6 +58,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/ReplyMarkupButtons.qml \
     qml/components/StickerPicker.qml \
     qml/components/PhotoTextsListItem.qml \
+    qml/components/VoiceNoteOverlay.qml \
     qml/components/WebPagePreview.qml \
     qml/components/chatInformationPage/ChatInformationEditArea.qml \
     qml/components/chatInformationPage/ChatInformationPageContent.qml \

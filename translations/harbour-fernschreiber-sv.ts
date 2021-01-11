@@ -132,14 +132,6 @@
         <translation>Lämnar chatten</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Slå på chatten</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Stäng av chatten</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Okänd</translation>
     </message>
@@ -190,6 +182,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Ny hemlig chatt</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Slå på chatten</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Stäng av chatten</translation>
     </message>
 </context>
 <context>
@@ -249,14 +249,6 @@
         <translation>Du</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Slå på chatten</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Stäng av chatten</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Användarinfo</translation>
     </message>
@@ -278,11 +270,27 @@
     </message>
     <message>
         <source>Draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Utkast</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
         <translation>Markera chatten som läst</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Slå på chatten</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Stäng av chatten</translation>
     </message>
 </context>
 <context>
@@ -419,6 +427,14 @@
         <source>Search in chat...</source>
         <translation>Sök i chatten...</translation>
     </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation>Plats: Hämtar position...</translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation>Plats (%1/%2)</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -483,6 +499,10 @@
     <message>
         <source>Open Document</source>
         <translation>Öppna dokument</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1085,8 +1105,16 @@
         <translation>Nerladdning misslyckades.</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation type="unfinished">Ansluter till nätverket...</translation>
+        <source>Tap on the title bar to filter your chats</source>
+        <translation>Tryck på titelfältet för att filtrera dina chattar</translation>
+    </message>
+    <message>
+        <source>No matching chats found.</source>
+        <translation>Ingen passande chatt hittades.</translation>
+    </message>
+    <message>
+        <source>You can search public chats or create a new chat via the pull-down menu.</source>
+        <translation>Du kan söka efter allmänna chattar eller skapa en ny chatt via toppmenyn.</translation>
     </message>
     <message>
         <source>Logging out</source>
@@ -1308,13 +1336,19 @@
         <source>Channel</source>
         <translation>Kanal</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation>%1 medlemmar</translation>
+        <translation>
+            <numerusform>%1 medlem</numerusform>
+            <numerusform>%1 medlemmar</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation>%1 prenumeranter</translation>
+        <translation>
+            <numerusform>%1 prenumerant</numerusform>
+            <numerusform>%1 prenumeranter</numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>
@@ -1403,6 +1437,22 @@
         <source>Enable storage optimizer</source>
         <translation>Aktivera lagringsoptimering</translation>
     </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation>Fokusera textinmatningsfältet efter sändning</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Fokusera textinmatningsfältet efter att ett meddelande skickats</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1428,6 +1478,45 @@
     <message>
         <source>Download failed.</source>
         <translation>Nerladdning misslyckades.</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation>Spela in ett röstmeddelande</translation>
+    </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation>Tryck på knappen för att starta inspelning</translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation>Ej tillgänglig</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation>Startar</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation>Spelar in</translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation>Stoppar</translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation>Använd inspelning</translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation>Röstmeddelande (%1)</translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation>Klar</translation>
     </message>
 </context>
 <context>

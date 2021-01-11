@@ -132,14 +132,6 @@
         <translation>Leaving chat</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Unmute Chat</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Mute Chat</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Unknown</translation>
     </message>
@@ -190,6 +182,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>New Secret Chat</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Unmute Chat</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>Mute Chat</translation>
     </message>
 </context>
 <context>
@@ -249,14 +249,6 @@
         <translation>You</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Unmute Chat</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>Mute Chat</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>User Info</translation>
     </message>
@@ -283,6 +275,22 @@
     <message>
         <source>Draft</source>
         <translation>Draft</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
+        <translation>Unpin chat</translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation>Pin chat</translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Unmute chat</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>Mute chat</translation>
     </message>
 </context>
 <context>
@@ -419,6 +427,14 @@
         <source>Search in chat...</source>
         <translation>Search in chat...</translation>
     </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation>Location: Obtaining position...</translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation>Location (%1/%2)</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -483,6 +499,10 @@
     <message>
         <source>Open Document</source>
         <translation>Open Document</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation>Copy Document to Downloads</translation>
     </message>
 </context>
 <context>
@@ -1085,12 +1105,20 @@
         <translation>Download failed.</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation type="unfinished">Connecting to network...</translation>
+        <source>Tap on the title bar to filter your chats</source>
+        <translation>Tap on the title bar to filter your chats</translation>
+    </message>
+    <message>
+        <source>No matching chats found.</source>
+        <translation>No matching chats found.</translation>
+    </message>
+    <message>
+        <source>You can search public chats or create a new chat via the pull-down menu.</source>
+        <translation>You can search public chats or create a new chat via the pull-down menu.</translation>
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation >Logging out</translation>
     </message>
 </context>
 <context>
@@ -1308,13 +1336,19 @@
         <source>Channel</source>
         <translation>Channel</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 member</translation>
+        <translation>
+            <numerusform>%1 member</numerusform>
+            <numerusform>%1 members</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 subscriber</translation>
+        <translation>
+            <numerusform>%1 subscriber</numerusform>
+            <numerusform>%1 subscribers</numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>
@@ -1403,6 +1437,22 @@
         <source>Enable storage optimizer</source>
         <translation>Enable storage optimizer</translation>
     </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation>Focus text input area after send</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Focus the text input area after sending a message</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>Enable online-only mode</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1428,6 +1478,45 @@
     <message>
         <source>Download failed.</source>
         <translation>Download failed.</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation>Record a Voice Note</translation>
+    </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation>Press the button to start recording</translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation>Unavailable</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation>Starting</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation>Recording</translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation>Stopping</translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation>Use recording</translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation>Voice Note (%1)</translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation>Ready</translation>
     </message>
 </context>
 <context>
@@ -1815,21 +1904,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished">has added %1 to the chat</translation>
+        <translation>has added %1 to the chat</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished">has removed %1 from the chat</translation>
+        <translation>has removed %1 from the chat</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">have added %1 to the chat</translation>
+        <translation>have added %1 to the chat</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">have removed %1 from the chat</translation>
+        <translation>have removed %1 from the chat</translation>
     </message>
 </context>
 </TS>

@@ -33,7 +33,11 @@ Column {
 
     spacing: Theme.paddingSmall
 
-    Component.onCompleted: {
+    Component.onCompleted: updatePhoto()
+
+    onWebPageDataChanged: updatePhoto()
+
+    function updatePhoto() {
         if (webPageData) {
             if (webPageData.photo) {
                 // Check first which size fits best...
@@ -134,9 +138,10 @@ Column {
         }
 
         BackgroundImage {
+            id: backgroundImage
             visible: hasImage && singleImage.status !== Image.Ready
             layer.enabled: webPagePreviewColumn.highlighted
-            layer.effect: PressEffect { source: singleImage }
+            layer.effect: PressEffect { source: backgroundImage }
         }
     }
 

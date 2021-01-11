@@ -444,7 +444,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: positionText.top
                     minimumValue: 0
-                    maximumValue: messageAudio.duration ? messageAudio.duration : 0
+                    maximumValue: messageAudio.duration ? messageAudio.duration : 0.1
                     stepSize: 1
                     value: messageAudio.position
                     enabled: messageAudio.seekable

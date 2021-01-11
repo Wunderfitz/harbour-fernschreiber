@@ -22,6 +22,7 @@
 
 #include <QAbstractListModel>
 #include "tdlibwrapper.h"
+#include "appsettings.h"
 
 class ChatListModel : public QAbstractListModel
 {
@@ -47,12 +48,13 @@ public:
         RoleIsVerified,
         RoleIsChannel,
         RoleIsMarkedAsUnread,
+        RoleIsPinned,
         RoleFilter,
         RoleDraftMessageText,
         RoleDraftMessageDate
     };
 
-    ChatListModel(TDLibWrapper *tdLibWrapper);
+    ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSettings);
     ~ChatListModel() override;
 
     virtual QHash<int,QByteArray> roleNames() const override;
@@ -64,6 +66,7 @@ public:
     Q_INVOKABLE QVariantMap getById(qlonglong chatId);
     Q_INVOKABLE void reset();
 
+    Q_INVOKABLE void calculateUnreadState();
 
     bool showAllChats() const;
     void setShowAllChats(bool showAll);
@@ -81,6 +84,7 @@ private slots:
     void handleGroupUpdated(qlonglong groupId);
     void handleSecretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
     void handleChatTitleUpdated(const QString &chatId, const QString &title);
+    void handleChatPinnedUpdated(qlonglong chatId, bool chatIsPinned);
     void handleChatIsMarkedAsUnreadUpdated(qlonglong chatId, bool chatIsMarkedAsUnread);
     void handleChatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order);
     void handleRelativeTimeRefreshTimer();
@@ -89,6 +93,7 @@ signals:
     void showAllChatsChanged();
     void chatChanged(const qlonglong &changedChatId);
     void chatJoined(const qlonglong &chatId, const QString &chatTitle);
+    void unreadStateChanged(int unreadMessagesCount, int unreadChatsCount);
 
 private:
     class ChatData;
@@ -99,6 +104,7 @@ private:
 
 private:
     TDLibWrapper *tdLibWrapper;
+    AppSettings *appSettings;
     QTimer *relativeTimeRefreshTimer;
     QList<ChatData*> chatList;
     QHash<qlonglong,int> chatIndexMap;

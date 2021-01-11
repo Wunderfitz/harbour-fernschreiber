@@ -82,11 +82,12 @@ int main(int argc, char *argv[])
 
     FernschreiberUtils *fernschreiberUtils = new FernschreiberUtils(view.data());
     context->setContextProperty("fernschreiberUtils", fernschreiberUtils);
+    qmlRegisterUncreatableType<FernschreiberUtils>(uri, 1, 0, "FernschreiberUtilities", QString());
 
     DBusAdaptor *dBusAdaptor = tdLibWrapper->getDBusAdaptor();
     context->setContextProperty("dBusAdaptor", dBusAdaptor);
 
-    ChatListModel chatListModel(tdLibWrapper);
+    ChatListModel chatListModel(tdLibWrapper, appSettings);
     context->setContextProperty("chatListModel", &chatListModel);
     QSortFilterProxyModel chatListProxyModel(view.data());
     chatListProxyModel.setSourceModel(&chatListModel);

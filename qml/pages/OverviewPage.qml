@@ -67,6 +67,13 @@ Page {
             overviewPage.chatListCreated = true;
             chatListView.scrollToTop();
             updateSecondaryContentTimer.start();
+            var remainingInteractionHints = appSettings.remainingInteractionHints;
+            Debug.log("Remaining interaction hints: " + remainingInteractionHints);
+            if (remainingInteractionHints > 0) {
+                interactionHintTimer.start();
+                titleInteractionHint.opacity = 1.0;
+                appSettings.remainingInteractionHints = remainingInteractionHints - 1;
+            }
         }
     }
 
@@ -81,6 +88,7 @@ Page {
         id: updateSecondaryContentTimer
         interval: 600
         onTriggered: {
+            chatListModel.calculateUnreadState();
             tdLibWrapper.getRecentStickers();
             tdLibWrapper.getInstalledStickerSets();
             tdLibWrapper.getContacts();
@@ -178,9 +186,8 @@ Page {
 
     function resetFocus() {
         if (chatSearchField.text === "") {
-            chatSearchField.visible = false;
-            pageHeader.visible = true;
-            searchChatButton.visible = overviewPage.connectionState === TelegramAPI.ConnectionReady;
+            chatSearchField.opacity = 0.0;
+            pageHeader.opacity = 1.0;
         }
         chatSearchField.focus = false;
         overviewPage.focus = true;
@@ -202,11 +209,15 @@ Page {
         onChatLastMessageUpdated: {
             if (!overviewPage.chatListCreated) {
                 chatListCreatedTimer.restart();
+            } else {
+                chatListModel.calculateUnreadState();
             }
         }
         onChatOrderUpdated: {
             if (!overviewPage.chatListCreated) {
                 chatListCreatedTimer.restart();
+            } else {
+                chatListModel.calculateUnreadState();
             }
         }
         onChatsReceived: {
@@ -268,9 +279,12 @@ Page {
             }
         }
 
-        Row {
-            id: headerRow
-            width: parent.width - Theme.horizontalPageMargin
+        PageHeader {
+            id: pageHeader
+            title: qsTr("Fernschreiber")
+            leftMargin: Theme.itemSizeMedium
+            visible: opacity > 0
+            Behavior on opacity { FadeAnimation {} }
 
             GlassItem {
                 id: pageStatus
@@ -282,63 +296,45 @@ Page {
                 cache: false
             }
 
-            PageHeader {
-                id: pageHeader
-                title: qsTr("Fernschreiber")
-                width: visible ? ( parent.width - pageStatus.width - searchChatButton.width ) : 0
-                opacity: visible ? 1 : 0
-                Behavior on opacity { FadeAnimation {} }
-            }
-
-            IconButton {
-                id: searchChatButton
-                width: visible ? height : 0
-                opacity: visible ? 1 : 0
-                Behavior on opacity { NumberAnimation {} }
-                anchors.verticalCenter: parent.verticalCenter
-                icon {
-                    source: "image://theme/icon-m-search?" + Theme.highlightColor
-                    asynchronous: true
-                }
-                visible: overviewPage.connectionState === TelegramAPI.ConnectionReady
+            MouseArea {
+                anchors.fill: parent
                 onClicked: {
                     chatSearchField.focus = true;
-                    chatSearchField.visible = true;
-                    pageHeader.visible = false;
-                    searchChatButton.visible = false;
-                }
-            }
-
-            SearchField {
-                id: chatSearchField
-                visible: false
-                opacity: visible ? 1 : 0
-                Behavior on opacity { FadeAnimation {} }
-                width: visible ? ( parent.width - pageStatus.width ) : 0
-                height: pageHeader.height
-                placeholderText: qsTr("Filter your chats...")
-                canHide: text === ""
-
-                onTextChanged: {
-                    searchChatTimer.restart();
-                }
-
-                onHideClicked: {
-                    resetFocus();
-                }
-
-                EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                EnterKey.onClicked: {
-                    resetFocus();
+                    chatSearchField.opacity = 1.0;
+                    pageHeader.opacity = 0.0;
                 }
             }
 
         }
 
+        SearchField {
+            id: chatSearchField
+            visible: opacity > 0
+            opacity: 0
+            Behavior on opacity { FadeAnimation {} }
+            width: parent.width
+            height: pageHeader.height
+            placeholderText: qsTr("Filter your chats...")
+            canHide: text === ""
+
+            onTextChanged: {
+                searchChatTimer.restart();
+            }
+
+            onHideClicked: {
+                resetFocus();
+            }
+
+            EnterKey.iconSource: "image://theme/icon-m-enter-close"
+            EnterKey.onClicked: {
+                resetFocus();
+            }
+        }
+
         SilicaListView {
             id: chatListView
             anchors {
-                top: headerRow.bottom
+                top: pageHeader.bottom
                 bottom: parent.bottom
                 left: parent.left
                 right: parent.right
@@ -360,7 +356,8 @@ Page {
 
             ViewPlaceholder {
                 enabled: chatListView.count === 0
-                text: qsTr("You don't have any chats yet.")
+                text: chatSearchField.text === "" ? qsTr("You don't have any chats yet.") : qsTr("No matching chats found.")
+                hintText: qsTr("You can search public chats or create a new chat via the pull-down menu.")
             }
 
             VerticalScrollDecorator {}
@@ -403,4 +400,24 @@ Page {
             }
         }
     }
+
+    Timer {
+        id: interactionHintTimer
+        running: false
+        interval: 4000
+        onTriggered: {
+            titleInteractionHint.opacity = 0.0;
+        }
+    }
+
+    InteractionHintLabel {
+        id: titleInteractionHint
+        text: qsTr("Tap on the title bar to filter your chats")
+        visible: opacity > 0
+        invert: true
+        anchors.fill: parent
+        Behavior on opacity { FadeAnimation {} }
+        opacity: 0
+    }
+
 }

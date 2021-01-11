@@ -24,12 +24,15 @@
 class AppSettings : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool sendByEnter READ getSendByEnter WRITE setSendByEnter NOTIFY sendByEnterChanged)
+    Q_PROPERTY(bool focusTextAreaAfterSend READ getFocusTextAreaAfterSend WRITE setFocusTextAreaAfterSend NOTIFY focusTextAreaAfterSendChanged)
     Q_PROPERTY(bool useOpenWith READ getUseOpenWith WRITE setUseOpenWith NOTIFY useOpenWithChanged)
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
     Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
+    Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
+    Q_PROPERTY(bool onlineOnlyMode READ onlineOnlyMode WRITE setOnlineOnlyMode NOTIFY onlineOnlyModeChanged)
 
 public:
     enum NotificationFeedback {
@@ -44,6 +47,9 @@ public:
 
     bool getSendByEnter() const;
     void setSendByEnter(bool sendByEnter);
+
+    bool getFocusTextAreaAfterSend() const;
+    void setFocusTextAreaAfterSend(bool focusTextAreaAfterSend);
 
     bool getUseOpenWith() const;
     void setUseOpenWith(bool useOpenWith);
@@ -63,14 +69,23 @@ public:
     bool storageOptimizer() const;
     void setStorageOptimizer(bool enable);
 
+    int remainingInteractionHints() const;
+    void setRemainingInteractionHints(int remainingHints);
+
+    bool onlineOnlyMode() const;
+    void setOnlineOnlyMode(bool enable);
+
 signals:
     void sendByEnterChanged();
+    void focusTextAreaAfterSendChanged();
     void useOpenWithChanged();
     void showStickersAsImagesChanged();
     void animateStickersChanged();
     void notificationTurnsDisplayOnChanged();
     void notificationFeedbackChanged();
     void storageOptimizerChanged();
+    void remainingInteractionHintsChanged();
+    void onlineOnlyModeChanged();
 
 private:
     QSettings settings;

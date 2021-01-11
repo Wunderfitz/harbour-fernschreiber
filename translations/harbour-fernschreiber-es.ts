@@ -130,14 +130,6 @@
         <translation>Saliendo de la charla</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Notificar</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>No notificar</translation>
-    </message>
-    <message>
         <source>Unknown</source>
         <translation>Desconocido</translation>
     </message>
@@ -187,6 +179,14 @@
     <message>
         <source>New Secret Chat</source>
         <translation>Charla secreta</translation>
+    </message>
+    <message>
+        <source>Unmute Chat</source>
+        <translation>Notificar</translation>
+    </message>
+    <message>
+        <source>Mute Chat</source>
+        <translation>No notificar</translation>
     </message>
 </context>
 <context>
@@ -246,14 +246,6 @@
         <translation>Usted</translation>
     </message>
     <message>
-        <source>Unmute Chat</source>
-        <translation>Notificar</translation>
-    </message>
-    <message>
-        <source>Mute Chat</source>
-        <translation>No notificar</translation>
-    </message>
-    <message>
         <source>User Info</source>
         <translation>Usuario</translation>
     </message>
@@ -271,15 +263,31 @@
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Marcar como no leído</translation>
     </message>
     <message>
         <source>Draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrador</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
+        <translation>Marcar como leído</translation>
+    </message>
+    <message>
+        <source>Unpin chat</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute chat</source>
+        <translation>Notificar</translation>
+    </message>
+    <message>
+        <source>Mute chat</source>
+        <translation>No notificar</translation>
     </message>
 </context>
 <context>
@@ -403,11 +411,19 @@
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar en charla</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar</translation>
+    </message>
+    <message>
+        <source>Location: Obtaining position...</source>
+        <translation>Ubicación: Recibiendo posición ...</translation>
+    </message>
+    <message>
+        <source>Location (%1/%2)</source>
+        <translation>Ubicación (%1/%2)</translation>
     </message>
 </context>
 <context>
@@ -473,6 +489,10 @@
     <message>
         <source>Open Document</source>
         <translation>Abrir Documento</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -785,21 +805,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha añadido %1 a charla</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha quitado %1 de charla</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ha añadido %1 a la charla</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ha quitado %1 de charla</translation>
     </message>
 </context>
 <context>
@@ -836,7 +856,7 @@
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Marcar número de teléfono para continuar.</translation>
+        <translation>Marcar el número de teléfono para continuar.</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -884,7 +904,7 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation>Usar el formato internacional %1</translation>
+        <translation>Usa el formato internacional %1</translation>
     </message>
     <message>
         <source>About Fernschreiber</source>
@@ -910,7 +930,7 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation>Copiar mensaje</translation>
+        <translation>Copiar</translation>
     </message>
     <message>
         <source>Message deleted</source>
@@ -930,7 +950,7 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation>Seleccionar mensaje</translation>
+        <translation>Seleccionar</translation>
     </message>
     <message>
         <source>Pin Message</source>
@@ -938,11 +958,11 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Desanclar mensaje</translation>
+        <translation>Mensaje desanclado</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Desanclar mensaje</translation>
     </message>
 </context>
 <context>
@@ -1059,19 +1079,31 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar las charlas...</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar charlas</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished">Bajada de %1 exitosa.</translation>
+        <translation>Bajada de %1 exitosa.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation type="unfinished">Error al bajar</translation>
+        <translation>Error al bajar</translation>
+    </message>
+    <message>
+        <source>Tap on the title bar to filter your chats</source>
+        <translation>Tocar la barra de título para filtrar las charlas</translation>
+    </message>
+    <message>
+        <source>No matching chats found.</source>
+        <translation>No hay coincidencias.</translation>
+    </message>
+    <message>
+        <source>You can search public chats or create a new chat via the pull-down menu.</source>
+        <translation>Puede buscar charlas públicas o crear un nueva charla a través de la polea de opciones.</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
@@ -1094,7 +1126,7 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation>Desanclar mensaje</translation>
+        <translation>Mensaje desanclado</translation>
     </message>
 </context>
 <context>
@@ -1271,43 +1303,47 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation type="unfinished"></translation>
+        <translation>No se han encontrado charlas.</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscando charlas...</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation type="unfinished">Privado</translation>
+        <translation>Privado</translation>
     </message>
     <message>
         <source>Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupo</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Canal</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">%1 miembros</translation>
+        <translation>
+            <numerusform>%1 miembros</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">%1 suscriptores</translation>
+        <translation>
+            <numerusform>%1 suscriptores</numerusform>
+        </translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar charla</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation type="unfinished"></translation>
+        <translation>A b c</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Para iniciar la búsqueda se necesitan al menos 5 caracteres</translation>
     </message>
 </context>
 <context>
@@ -1342,15 +1378,15 @@
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation>Notificaciones</translation>
+        <translation>Notificar en </translation>
     </message>
     <message>
         <source>All events</source>
-        <translation>Todos los eventos</translation>
+        <translation>Eventos</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation>Sólo nuevos eventos</translation>
+        <translation>Nuevos eventos</translation>
     </message>
     <message>
         <source>None</source>
@@ -1384,6 +1420,22 @@
         <source>Enable storage optimizer</source>
         <translation>Optimizador de almacenamiento</translation>
     </message>
+    <message>
+        <source>Focus text input area after send</source>
+        <translation>Enfocar área de entrada de texto</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Enfoca el área de entrada de texto después de enviar un mensaje</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1409,6 +1461,45 @@
     <message>
         <source>Download failed.</source>
         <translation>Error al bajar</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceNoteOverlay</name>
+    <message>
+        <source>Record a Voice Note</source>
+        <translation>Nota de voz</translation>
+    </message>
+    <message>
+        <source>Press the button to start recording</source>
+        <translation>Presionar el botón para iniciar a grabar</translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation>No diponible</translation>
+    </message>
+    <message>
+        <source>Starting</source>
+        <translation>Iniciando</translation>
+    </message>
+    <message>
+        <source>Recording</source>
+        <translation>Grabando</translation>
+    </message>
+    <message>
+        <source>Stopping</source>
+        <translation>Deteniendo</translation>
+    </message>
+    <message>
+        <source>Use recording</source>
+        <translation>Usar grabación</translation>
+    </message>
+    <message>
+        <source>Voice Note (%1)</source>
+        <translation>Nota de voz (%1)</translation>
+    </message>
+    <message>
+        <source>Ready</source>
+        <translation>Listo</translation>
     </message>
 </context>
 <context>
@@ -1796,21 +1887,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha añadido %1 a la charla</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished"></translation>
+        <translation>ha quitado %1 de la charla</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ha añadido %1 a la charla</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>ha añadido %1  de la charla</translation>
     </message>
 </context>
 </TS>

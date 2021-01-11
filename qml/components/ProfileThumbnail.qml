@@ -22,7 +22,6 @@ import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 
 Item {
-
     id: profileThumbnail
 
     property alias photoData: file.fileInformation
@@ -30,6 +29,10 @@ Item {
     property int radius: width / 2
     property int imageStatus: -1
     property bool optimizeImageSize: true
+    property bool highlighted
+
+    layer.enabled: highlighted
+    layer.effect: PressEffect { source: profileThumbnail }
 
     function getReplacementString() {
         if (replacementStringHint.length > 2) {

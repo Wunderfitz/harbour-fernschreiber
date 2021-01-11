@@ -41,9 +41,9 @@ Item {
         if (documentData) {
             if (documentData.document.local.is_downloading_completed) {
                 downloadDocumentButton.visible = false;
-                openDocumentButton.visible = true;
+                openDocumentArea.visible = true;
             } else {
-                openDocumentButton.visible = false;
+                openDocumentArea.visible = false;
                 downloadDocumentButton.visible = true;
             }
         }
@@ -57,7 +57,7 @@ Item {
                     downloadingProgressBar.visible = false;
                     documentData.document = fileInformation;
                     downloadDocumentButton.visible = false;
-                    openDocumentButton.visible = true;
+                    openDocumentArea.visible = true;
                     if (documentPreviewItem.openRequested) {
                         documentPreviewItem.openRequested = false;
                         tdLibWrapper.openFileOnDevice(documentData.document.local.path);
@@ -95,17 +95,40 @@ Item {
         anchors.centerIn: parent
     }
 
-    Button {
-        id: openDocumentButton
-        preferredWidth: Theme.buttonWidthMedium
-        anchors.centerIn: parent
-        text: qsTr("Open Document")
+    Column {
+        id: openDocumentArea
         visible: false
-        highlighted: documentPreviewItem.highlighted || down
-        onClicked: {
-            documentPreviewItem.openRequested = true;
-            tdLibWrapper.openFileOnDevice(documentData.document.local.path);
+        spacing: Theme.paddingMedium
+        width: parent.width
+
+        onVisibleChanged: {
+            visible ? (documentPreviewItem.height = openDocumentArea.height) : (documentPreviewItem.height = Theme.itemSizeLarge);
+        }
+
+        Button {
+            id: openDocumentButton
+            preferredWidth: Theme.buttonWidthMedium
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: qsTr("Open Document")
+            highlighted: documentPreviewItem.highlighted || down
+            onClicked: {
+                documentPreviewItem.openRequested = true;
+                tdLibWrapper.openFileOnDevice(documentData.document.local.path);
+            }
+        }
+
+        Button {
+            id: copyDocumentButton
+            preferredWidth: Theme.buttonWidthMedium
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: qsTr("Copy Document to Downloads")
+            highlighted: documentPreviewItem.highlighted || down
+            onClicked: {
+                tdLibWrapper.copyFileToDownloads(documentData.document.local.path);
+            }
         }
     }
+
+
 
 }

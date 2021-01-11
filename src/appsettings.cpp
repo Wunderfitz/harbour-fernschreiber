@@ -22,12 +22,15 @@
 
 namespace {
     const QString KEY_SEND_BY_ENTER("sendByEnter");
+    const QString KEY_FOCUS_TEXTAREA_AFTER_SEND("focusTextAreaAfterSend");
     const QString KEY_USE_OPEN_WITH("useOpenWith");
     const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
     const QString KEY_ANIMATE_STICKERS("animateStickers");
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
     const QString KEY_STORAGE_OPTIMIZER("storageOptimizer");
+    const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
+    const QString KEY_ONLINE_ONLY_MODE("onlineOnlyMode");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
@@ -45,6 +48,20 @@ void AppSettings::setSendByEnter(bool sendByEnter)
         LOG(KEY_SEND_BY_ENTER << sendByEnter);
         settings.setValue(KEY_SEND_BY_ENTER, sendByEnter);
         emit sendByEnterChanged();
+    }
+}
+
+bool AppSettings::getFocusTextAreaAfterSend() const
+{
+    return settings.value(KEY_FOCUS_TEXTAREA_AFTER_SEND, false).toBool();
+}
+
+void AppSettings::setFocusTextAreaAfterSend(bool focusTextAreaAfterSend)
+{
+    if (getFocusTextAreaAfterSend() != focusTextAreaAfterSend) {
+        LOG(KEY_FOCUS_TEXTAREA_AFTER_SEND << focusTextAreaAfterSend);
+        settings.setValue(KEY_FOCUS_TEXTAREA_AFTER_SEND, focusTextAreaAfterSend);
+        emit focusTextAreaAfterSendChanged();
     }
 }
 
@@ -129,5 +146,33 @@ void AppSettings::setStorageOptimizer(bool enable)
         LOG(KEY_STORAGE_OPTIMIZER << enable);
         settings.setValue(KEY_STORAGE_OPTIMIZER, enable);
         emit storageOptimizerChanged();
+    }
+}
+
+int AppSettings::remainingInteractionHints() const
+{
+    return settings.value(KEY_REMAINING_INTERACTION_HINTS, 3).toInt();
+}
+
+void AppSettings::setRemainingInteractionHints(int remainingHints)
+{
+    if (remainingInteractionHints() != remainingHints) {
+        LOG(KEY_REMAINING_INTERACTION_HINTS << remainingHints);
+        settings.setValue(KEY_REMAINING_INTERACTION_HINTS, remainingHints);
+        emit remainingInteractionHintsChanged();
+    }
+}
+
+bool AppSettings::onlineOnlyMode() const
+{
+    return settings.value(KEY_ONLINE_ONLY_MODE, false).toBool();
+}
+
+void AppSettings::setOnlineOnlyMode(bool enable)
+{
+    if (onlineOnlyMode() != enable) {
+        LOG(KEY_ONLINE_ONLY_MODE << enable);
+        settings.setValue(KEY_ONLINE_ONLY_MODE, enable);
+        emit onlineOnlyModeChanged();
     }
 }

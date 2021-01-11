@@ -9,13 +9,14 @@ PhotoTextsListItem {
     id: listItem
     pictureThumbnail {
         photoData: photo_small || ({})
+        highlighted: listItem.highlighted && !listItem.menuOpen
     }
     property int ownUserId
     property bool showDraft: !!draft_message_text && draft_message_date > last_message_date
     property string previewText: showDraft ? draft_message_text : last_message_text
 
     // chat title
-    primaryText.text: title ? Emoji.emojify(title + ( display.notification_settings.mute_for > 0 ? " 🔇" : "" ), Theme.fontSizeMedium) : qsTr("Unknown")
+    primaryText.text: title ? Emoji.emojify(title, Theme.fontSizeMedium) : qsTr("Unknown")
     // last user
     prologSecondaryText.text: showDraft ? "<i>"+qsTr("Draft")+"</i>" : (is_channel ? "" : ( last_message_sender_id ? ( last_message_sender_id !== ownUserId ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(last_message_sender_id)), primaryText.font.pixelSize) : qsTr("You") ) : "" ))
     // last message
@@ -25,6 +26,8 @@ PhotoTextsListItem {
     unreadCount: unread_count
     isSecret: ( chat_type === TelegramAPI.ChatTypeSecret )
     isMarkedAsUnread: is_marked_as_unread
+    isPinned: is_pinned
+    isMuted: display.notification_settings.mute_for > 0
 
     openMenuOnPressAndHold: true//chat_id != overviewPage.ownUserId
 
@@ -54,19 +57,18 @@ PhotoTextsListItem {
                 }
 
                 MenuItem {
-                    visible: unread_count === 0 && !is_marked_as_unread
+                    visible: unread_count === 0
                     onClicked: {
-                        tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, true);
+                        tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, !is_marked_as_unread);
                     }
-                    text: qsTr("Mark chat as unread")
+                    text: is_marked_as_unread ? qsTr("Mark chat as read") : qsTr("Mark chat as unread")
                 }
 
                 MenuItem {
-                    visible: unread_count === 0 && is_marked_as_unread
                     onClicked: {
-                        tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, false);
+                        tdLibWrapper.toggleChatIsPinned(chat_id, !is_pinned);
                     }
-                    text: qsTr("Mark chat as read")
+                    text: is_pinned ? qsTr("Unpin chat") : qsTr("Pin chat")
                 }
 
                 MenuItem {
@@ -81,7 +83,7 @@ PhotoTextsListItem {
                         newNotificationSettings.use_default_mute_for = false;
                         tdLibWrapper.setChatNotificationSettings(chat_id, newNotificationSettings);
                     }
-                    text: display.notification_settings.mute_for > 0 ? qsTr("Unmute Chat") : qsTr("Mute Chat")
+                    text: display.notification_settings.mute_for > 0 ? qsTr("Unmute chat") : qsTr("Mute chat")
                 }
 
                 MenuItem {

@@ -53,6 +53,16 @@ Page {
             }
 
             TextSwitch {
+                checked: appSettings.focusTextAreaAfterSend
+                text: qsTr("Focus text input area after send")
+                description: qsTr("Focus the text input area after sending a message")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.focusTextAreaAfterSend = !checked
+                }
+            }
+
+            TextSwitch {
                 checked: appSettings.useOpenWith
                 text: qsTr("Open-with menu integration")
                 description: qsTr("Integrate Fernschreiber into open-with menu of Sailfish OS")
@@ -159,6 +169,16 @@ Page {
                 automaticCheck: false
                 onClicked: {
                     appSettings.storageOptimizer = !checked
+                }
+            }
+
+            TextSwitch {
+                checked: appSettings.onlineOnlyMode
+                text: qsTr("Enable online-only mode")
+                description: qsTr("Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.onlineOnlyMode = !checked
                 }
             }
 

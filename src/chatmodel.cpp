@@ -54,8 +54,10 @@ public:
     MessageData(const QVariantMap &data, qlonglong msgid);
 
     static bool lessThan(const MessageData *message1, const MessageData *message2);
-    void setContent(const QVariantMap &content);
-    void setReplyMarkup(const QVariantMap &replyMarkup);
+    QVector<int> diff(const MessageData *message) const;
+    QVector<int> setMessageData(const QVariantMap &data);
+    QVector<int> setContent(const QVariantMap &content);
+    QVector<int> setReplyMarkup(const QVariantMap &replyMarkup);
     int senderUserId() const;
     qlonglong senderChatId() const;
     bool senderIsChat() const;
@@ -63,7 +65,7 @@ public:
 public:
     QVariantMap messageData;
     const qlonglong messageId;
-    const QString messageContentType;
+    QString messageContentType;
 };
 
 ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
@@ -88,13 +90,48 @@ bool ChatModel::MessageData::senderIsChat() const
     return messageData.value(SENDER).toMap().value(_TYPE).toString() == "messageSenderChat";
 }
 
-void ChatModel::MessageData::setContent(const QVariantMap &content)
+QVector<int> ChatModel::MessageData::diff(const MessageData *message) const
 {
-    messageData.insert(CONTENT, content);
+    QVector<int> roles;
+    if (message != this) {
+        roles.append(RoleDisplay);
+        if (message->messageId != messageId) {
+            roles.append(RoleMessageId);
+        }
+        if (message->messageContentType != messageContentType) {
+            roles.append(RoleMessageContentType);
+        }
+    }
+    return roles;
 }
-void ChatModel::MessageData::setReplyMarkup(const QVariantMap &replyMarkup)
+
+QVector<int> ChatModel::MessageData::setMessageData(const QVariantMap &data)
+{
+    messageData = data;
+    QVector<int> changedRoles;
+    changedRoles.append(RoleDisplay);
+    return changedRoles;
+}
+
+QVector<int> ChatModel::MessageData::setContent(const QVariantMap &content)
+{
+    const QString oldContentType(messageContentType);
+    messageData.insert(CONTENT, content);
+    messageContentType = content.value(_TYPE).toString();
+    QVector<int> changedRoles;
+    if (oldContentType != messageContentType) {
+        changedRoles.append(RoleMessageContentType);
+    }
+    changedRoles.append(RoleDisplay);
+    return changedRoles;
+}
+
+QVector<int> ChatModel::MessageData::setReplyMarkup(const QVariantMap &replyMarkup)
 {
     messageData.insert(REPLY_MARKUP, replyMarkup);
+    QVector<int> changedRoles;
+    changedRoles.append(RoleDisplay);
+    return changedRoles;
 }
 
 bool ChatModel::MessageData::lessThan(const MessageData *message1, const MessageData *message2)
@@ -105,7 +142,8 @@ bool ChatModel::MessageData::lessThan(const MessageData *message1, const Message
 ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
     chatId(0),
     inReload(false),
-    inIncrementalUpdate(false)
+    inIncrementalUpdate(false),
+    searchModeActive(false)
 {
     this->tdLibWrapper = tdLibWrapper;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
@@ -370,11 +408,10 @@ void ChatModel::handleMessageReceived(qlonglong chatId, qlonglong messageId, con
     if (chatId == this->chatId && messageIndexMap.contains(messageId)) {
         LOG("Received a message that we already know, let's update it!");
         const int position = messageIndexMap.value(messageId);
-        MessageData *messageData = messages.at(position);
-        messageData->messageData = message;
+        const QVector<int> changedRoles(messages.at(position)->setMessageData(message));
         LOG("Message was updated at index" << position);
         const QModelIndex messageIndex(index(position));
-        emit dataChanged(messageIndex, messageIndex);
+        emit dataChanged(messageIndex, messageIndex, changedRoles);
     }
 }
 
@@ -405,11 +442,14 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
     if (this->messageIndexMap.contains(oldMessageId)) {
         LOG("Message was successfully sent" << oldMessageId);
         const int pos = messageIndexMap.take(oldMessageId);
-        delete messages.at(pos);
-        messages.replace(pos, new MessageData(message, messageId));
+        MessageData* oldMessage = messages.at(pos);
+        MessageData* newMessage = new MessageData(message, messageId);
+        messages.replace(pos, newMessage);
+        const QVector<int> changedRoles(newMessage->diff(oldMessage));
+        delete oldMessage;
         LOG("Message was replaced at index" << pos);
         const QModelIndex messageIndex(index(pos));
-        emit dataChanged(messageIndex, messageIndex);
+        emit dataChanged(messageIndex, messageIndex, changedRoles);
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
     }
 }
@@ -448,10 +488,10 @@ void ChatModel::handleMessageContentUpdated(qlonglong chatId, qlonglong messageI
         LOG("We know the message that was updated" << messageId);
         const int pos = messageIndexMap.value(messageId, -1);
         if (pos >= 0) {
-            messages.at(pos)->setContent(newContent);
-            LOG("Message was replaced at index" << pos);
+            const QVector<int> changedRoles(messages.at(pos)->setContent(newContent));
+            LOG("Message was updated at index" << pos);
             const QModelIndex messageIndex(index(pos));
-            emit dataChanged(messageIndex, messageIndex);
+            emit dataChanged(messageIndex, messageIndex, changedRoles);
             emit messageUpdated(pos);
         }
     }
@@ -464,10 +504,10 @@ void ChatModel::handleMessageEditedUpdated(qlonglong chatId, qlonglong messageId
         LOG("We know the message that was updated" << messageId);
         const int pos = messageIndexMap.value(messageId, -1);
         if (pos >= 0) {
-            messages.at(pos)->setReplyMarkup(replyMarkup);
+            const QVector<int> changedRoles(messages.at(pos)->setReplyMarkup(replyMarkup));
             LOG("Message was edited at index" << pos);
             const QModelIndex messageIndex(index(pos));
-            emit dataChanged(messageIndex, messageIndex);
+            emit dataChanged(messageIndex, messageIndex, changedRoles);
             emit messageUpdated(pos);
         }
     }

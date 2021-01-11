@@ -14,6 +14,8 @@ ListItem {
     property bool isSecret: false
     property bool isVerified: false
     property bool isMarkedAsUnread: false
+    property bool isPinned: false
+    property bool isMuted: false
     property alias pictureThumbnail: pictureThumbnail
 
     contentHeight: mainRow.height + separator.height + 2 * Theme.paddingMedium
@@ -33,15 +35,14 @@ ListItem {
             height: contentColumn.height
             spacing: Theme.paddingMedium
 
-            Column {
-                id: pictureColumn
+            ShaderEffectSource {
+                id: pictureItem
                 width: contentColumn.height - Theme.paddingSmall
                 height: contentColumn.height - Theme.paddingSmall
                 anchors.verticalCenter: parent.verticalCenter
-
-                Item {
-                    width: parent.width
-                    height: parent.width
+                sourceItem:  Item {
+                    width: pictureItem.width
+                    height: pictureItem.width
 
                     ProfileThumbnail {
                         id: pictureThumbnail
@@ -51,10 +52,29 @@ ListItem {
                     }
 
                     Rectangle {
+                        id: chatPinnedBackground
+                        color: Theme.highlightBackgroundColor
+                        width: Theme.fontSizeLarge
+                        height: Theme.fontSizeLarge
+                        anchors.top: parent.top
+                        radius: parent.width / 2
+                        visible: chatListViewItem.isPinned
+                    }
+
+                    Image {
+                        source: "../../images/icon-s-pin.svg"
+                        height: Theme.fontSizeSmall
+                        width: Theme.fontSizeSmall
+                        sourceSize: Qt.size(Theme.iconSizeSmall, Theme.iconSizeSmall)
+                        anchors.centerIn: chatPinnedBackground
+                        visible: chatListViewItem.isPinned
+                    }
+
+                    Rectangle {
                         id: chatSecretBackground
-                        color: Theme.overlayBackgroundColor
-                        width: Theme.fontSizeExtraLarge
-                        height: Theme.fontSizeExtraLarge
+                        color: Theme.highlightBackgroundColor
+                        width: Theme.fontSizeLarge
+                        height: Theme.fontSizeLarge
                         anchors.bottom: parent.bottom
                         radius: parent.width / 2
                         visible: chatListViewItem.isSecret
@@ -62,8 +82,8 @@ ListItem {
 
                     Image {
                         source: "image://theme/icon-s-secure"
-                        height: Theme.fontSizeMedium
-                        width: Theme.fontSizeMedium
+                        height: Theme.fontSizeSmall
+                        width: Theme.fontSizeSmall
                         anchors.centerIn: chatSecretBackground
                         visible: chatListViewItem.isSecret
                     }
@@ -93,7 +113,7 @@ ListItem {
 
             Column {
                 id: contentColumn
-                width: mainColumn.width - pictureColumn.width - mainRow.spacing
+                width: mainColumn.width - pictureItem.width - mainRow.spacing
                 spacing: Theme.paddingSmall
 
                 Row {
@@ -106,15 +126,26 @@ ListItem {
                         font.pixelSize: Theme.fontSizeMedium
                         truncationMode: TruncationMode.Fade
                         anchors.verticalCenter: parent.verticalCenter
-                        width: Math.min(contentColumn.width - (verifiedImage.visible ? (verifiedImage.width + primaryTextRow.spacing) :  0), implicitWidth)
+                        width: Math.min(contentColumn.width - (verifiedImage.visible ? (verifiedImage.width + primaryTextRow.spacing) :  0) - (mutedImage.visible ? (mutedImage.width + primaryTextRow.spacing) :  0), implicitWidth)
                     }
 
                     Image {
                         id: verifiedImage
                         anchors.verticalCenter: parent.verticalCenter
                         source: chatListViewItem.isVerified ? "../../images/icon-verified.svg" : ""
-                        sourceSize.width: Theme.iconSizeExtraSmall
-                        width: Theme.iconSizeExtraSmall
+                        sourceSize: Qt.size(Theme.iconSizeExtraSmall, Theme.iconSizeExtraSmall)
+                        width: Theme.iconSizeSmall
+                        height: Theme.iconSizeSmall
+                        visible: status === Image.Ready
+                    }
+
+                    Image {
+                        id: mutedImage
+                        anchors.verticalCenter: parent.verticalCenter
+                        source: chatListViewItem.isMuted ? "../js/emoji/1f507.svg" : ""
+                        sourceSize: Qt.size(Theme.iconSizeExtraSmall, Theme.iconSizeExtraSmall)
+                        width: Theme.iconSizeSmall
+                        height: Theme.iconSizeSmall
                         visible: status === Image.Ready
                     }
                 }
