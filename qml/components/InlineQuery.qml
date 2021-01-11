@@ -33,7 +33,7 @@ Loader {
     property int buttonPadding: hasButton ? item.button.height + Theme.paddingSmall : 0
     Behavior on buttonPadding { NumberAnimation { duration: 200} }
 
-    property int chatId
+    property string chatId
     property string userName
     property string query
     property int currentOffset: 0
@@ -87,6 +87,7 @@ Loader {
         inlineQueryLoader.currentOffset = offset || 0
     }
     function request() {
+
         if(userName.length === 0) {
             return;
         }
