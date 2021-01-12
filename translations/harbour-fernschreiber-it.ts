@@ -1069,12 +1069,12 @@
         <translation>Non hai nessuna chat.</translation>
     </message>
     <message>
-        <source>Connecting to network...</source>
-        <translation>Connetto alla rete...</translation>
-    </message>
-    <message>
         <source>Waiting for network...</source>
         <translation>Attendo la rete...</translation>
+    </message>
+    <message>
+        <source>Connecting to network...</source>
+        <translation>Connetto alla rete...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
