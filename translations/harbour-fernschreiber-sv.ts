@@ -1065,6 +1065,10 @@
         <translation>Väntar på nätverk...</translation>
     </message>
     <message>
+        <source>Connecting to network...</source>
+        <translation>Ansluter till nätverket...</translation>
+    </message>
+    <message>
         <source>Connecting to proxy...</source>
         <translation>Ansluter till proxy...</translation>
     </message>

@@ -1065,6 +1065,10 @@
         <translation>Waiting for network...</translation>
     </message>
     <message>
+        <source>Connecting to network...</source>
+        <translation>Connecting to network...</translation>
+    </message>
+    <message>
         <source>Connecting to proxy...</source>
         <translation>Connecting to proxy...</translation>
     </message>
@@ -1118,7 +1122,7 @@
     </message>
     <message>
         <source>Logging out</source>
-        <translation >Logging out</translation>
+        <translation>Logging out</translation>
     </message>
 </context>
 <context>

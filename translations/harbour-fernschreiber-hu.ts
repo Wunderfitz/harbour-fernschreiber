@@ -1054,6 +1054,10 @@
         <translation>Hálózatra várakozás...</translation>
     </message>
     <message>
+        <source>Connecting to network...</source>
+        <translation>Csatlakozás a hálózathoz...</translation>
+    </message>
+    <message>
         <source>Connecting to proxy...</source>
         <translation>Csatlakozás a proxy-hoz...</translation>
     </message>

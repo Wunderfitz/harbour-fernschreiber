@@ -1054,6 +1054,10 @@
         <translation>Esperando conexión...</translation>
     </message>
     <message>
+        <source>Connecting to network...</source>
+        <translation>Conectando al servidor...</translation>
+    </message>
+    <message>
         <source>Connecting to proxy...</source>
         <translation>Conectando a proxy...</translation>
     </message>
@@ -1104,10 +1108,6 @@
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
         <translation>Puede buscar charlas públicas o crear un nueva charla a través de la polea de opciones.</translation>
-    </message>
-    <message>
-        <source>Connecting to network...</source>
-        <translation type="unfinished">Conectando al servidor...</translation>
     </message>
     <message>
         <source>Logging out</source>

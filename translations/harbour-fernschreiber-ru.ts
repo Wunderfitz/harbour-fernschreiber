@@ -1076,6 +1076,10 @@
         <translation>Ожидание сети...</translation>
     </message>
     <message>
+        <source>Connecting to network...</source>
+        <translation>Подключение к сети...</translation>
+    </message>
+    <message>
         <source>Connecting to proxy...</source>
         <translation>Подключение к прокси...</translation>
     </message>
@@ -1126,10 +1130,6 @@
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
         <translation>Вы можете искать публичные чаты или создать новый чат с помощью выпадающего меню</translation>
-    </message>
-    <message>
-        <source>Connecting to network...</source>
-        <translation type="unfinished">Подключение к сети...</translation>
     </message>
     <message>
         <source>Logging out</source>

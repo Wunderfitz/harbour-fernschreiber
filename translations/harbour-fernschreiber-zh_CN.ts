@@ -1055,6 +1055,10 @@
         <translation>等候网络连接…</translation>
     </message>
     <message>
+        <source>Connecting to network...</source>
+        <translation>正在连接到网络…</translation>
+    </message>
+    <message>
         <source>Connecting to proxy...</source>
         <translation>正在连接到代理…</translation>
     </message>

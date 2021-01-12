@@ -1065,6 +1065,10 @@
         <translation>Warte auf Netzwerk...</translation>
     </message>
     <message>
+        <source>Connecting to network...</source>
+        <translation>Verbinde zum Netzwerk...</translation>
+    </message>
+    <message>
         <source>Connecting to proxy...</source>
         <translation>Verbinde zum Proxy...</translation>
     </message>

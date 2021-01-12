@@ -1066,6 +1066,10 @@
         <translation>Odotetaan verkkoa...</translation>
     </message>
     <message>
+        <source>Connecting to network...</source>
+        <translation>Yhdistetään verkkoon...</translation>
+    </message>
+    <message>
         <source>Connecting to proxy...</source>
         <translation>Yhdistetään välityspalvelimeen...</translation>
     </message>
@@ -1116,10 +1120,6 @@
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
         <translation>Voit etsiä julkisia keskusteluja tai luoda uuden keskustelun alasvetovalikosta.</translation>
-    </message>
-    <message>
-        <source>Connecting to network...</source>
-        <translation type="unfinished">Yhdistetään verkkoon...</translation>
     </message>
     <message>
         <source>Logging out</source>

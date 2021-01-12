@@ -1069,6 +1069,10 @@
         <translation>Non hai nessuna chat.</translation>
     </message>
     <message>
+        <source>Connecting to network...</source>
+        <translation>Connetto alla rete...</translation>
+    </message>
+    <message>
         <source>Waiting for network...</source>
         <translation>Attendo la rete...</translation>
     </message>
@@ -1115,10 +1119,6 @@
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
         <translation>Puoi creare una nuova chat o cercare chat pubbliche dal menu a trascinamento.</translation>
-    </message>
-    <message>
-        <source>Connecting to network...</source>
-        <translation type="unfinished">Connetto alla rete...</translation>
     </message>
     <message>
         <source>Logging out</source>

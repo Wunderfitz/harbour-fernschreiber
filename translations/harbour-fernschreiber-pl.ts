@@ -1076,6 +1076,10 @@
         <translation>Czekanie na sieć</translation>
     </message>
     <message>
+        <source>Connecting to network...</source>
+        <translation>Łączenie z siecią...</translation>
+    </message>
+    <message>
         <source>Connecting to proxy...</source>
         <translation>Łączenie z proxy</translation>
     </message>
@@ -1126,10 +1130,6 @@
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
         <translation>Możesz przeszukiwać czaty publiczne lub utworzyć nowy czat za pomocą menu rozwijanego z góry.</translation>
-    </message>
-    <message>
-        <source>Connecting to network...</source>
-        <translation type="unfinished">Łączenie z siecią...</translation>
     </message>
     <message>
         <source>Logging out</source>
