@@ -26,7 +26,12 @@ Loader {
     id: inlineQueryLoader
     active: userName.length > 1
     asynchronous: true
-    anchors.fill: parent
+    anchors {
+        left: parent.left
+        right: parent.right
+        top: parent.top
+        bottom: active ? parent.bottom : parent.top
+    }
     property bool hasOverlay: active && userNameIsValid && status === Loader.Ready && item.overlay && item.overlay.status === Loader.Ready
     property bool hasButton: active && userNameIsValid && status === Loader.Ready && item.button && item.button.status === Loader.Ready
 
@@ -43,6 +48,7 @@ Loader {
     property bool queued: false
     property TextArea textField
     property bool isLoading
+    property var inlineBotInformation: null
     onIsLoadingChanged: {
         requestTimeout.start();
     }
@@ -70,8 +76,6 @@ Loader {
             requestTimer.start();
         }
     }
-    property var inlineBotInformation: null
-
 
     function handleQuery(name, query, offset) {
         if(!name) {
@@ -87,6 +91,7 @@ Loader {
         }
         inlineQueryLoader.currentOffset = offset || 0
     }
+
     function request() {
         if(!inlineBotInformation || !userNameIsValid) {
             queued = true;
@@ -94,18 +99,17 @@ Loader {
             queued = false;
             var location = null;
             if(inlineBotInformation.type.need_location && fernschreiberUtils.supportsGeoLocation()) {
-                // TODO add location
                 fernschreiberUtils.startGeoLocationUpdates();
                 if(!attachmentPreviewRow.locationData.latitude) {
                     queued = true;
                     return;
                 }
-
             }
             tdLibWrapper.getInlineQueryResults(inlineBotInformation.id, chatId, location, query, inlineQueryLoader.currentOffset, inlineQueryLoader.responseExtra);
             isLoading = true;
         }
     }
+
     Timer {
         id: requestTimeout
         interval: 5000
@@ -162,7 +166,6 @@ Loader {
             property ListModel resultModel: ListModel {
                 dynamicRoles: true
             }
-
             property string inlineQueryPlaceholder: inlineBotInformation ? inlineBotInformation.type.inline_query_placeholder : ""
             property bool showInlineQueryPlaceholder: !!inlineQueryPlaceholder && query === ""
             property string useDelegateSize: "default"
@@ -197,6 +200,7 @@ Loader {
                 }
                 useDelegateSize = sizeKey;
             }
+
             function loadMore() {
                 if(nextOffset && inlineQueryLoader.userNameIsValid) {
                     inlineQueryLoader.currentOffset = nextOffset;
@@ -247,16 +251,6 @@ Loader {
                 active: inlineQueryComponent.switchPmText.length > 0
                 opacity: status === Loader.Ready ? 1.0 : 0.0
                 Behavior on opacity { FadeAnimation {} }
-//                onActiveChanged: {
-//                    inlineQueryLoader.buttonPadding = active ? height + Theme.paddingSmall : 0
-//                    if(active) {
-//                        newMessageColumn.topPadding = Theme.itemSizeExtraSmall + Theme.paddingSmall
-//                    } else {
-
-//                        newMessageColumn.topPadding = heme.paddingSmall
-//                    }
-//                }
-
                 height: Theme.itemSizeSmall
                 anchors {
                     top: parent.bottom
@@ -266,39 +260,34 @@ Loader {
                     right: parent.right
                     rightMargin: Theme.horizontalPageMargin
                 }
-
                 sourceComponent: Component {
-
-                        MouseArea {
-                            id: customButton
-                            onClicked: {
-                                Debug.log("now we should switch to pm somehow ;) ooooor: ")
-                                tdLibWrapper.createPrivateChat(inlineQueryLoader.inlineBotInformation.id, "openAndSendStartToBot:"+(inlineQueryComponent.switchPmParameter.length > 0 ? " "+inlineQueryComponent.switchPmParameter:""));
-                            }
-                            Rectangle {
-                                anchors.fill: parent
-                                radius: Theme.paddingSmall
-                                color: parent.pressed ? Theme.highlightBackgroundColor : Theme.rgba(Theme.DarkOnLight ? Qt.lighter(Theme.primaryColor) : Qt.darker(Theme.primaryColor), Theme.opacityFaint)
-                                Label {
-                                    anchors {
-                                        fill: parent
-                                        leftMargin: Theme.paddingLarge
-                                        rightMargin: Theme.paddingLarge
-                                    }
-                                    horizontalAlignment: Text.AlignHCenter
-                                    verticalAlignment: Text.AlignVCenter
-
-                                    fontSizeMode: Text.Fit;
-                                    minimumPixelSize: Theme.fontSizeTiny;
-                                    font.pixelSize: Theme.fontSizeSmall
-
-                                    color: customButton.pressed ? Theme.highlightColor : Theme.primaryColor
-                                    text: Emoji.emojify(inlineQueryComponent.switchPmText, font.pixelSize)// + "we are gonna make this a bit longer"
+                    MouseArea {
+                        id: customButton
+                        onClicked: {
+                            tdLibWrapper.createPrivateChat(inlineQueryLoader.inlineBotInformation.id, "openAndSendStartToBot:"+(inlineQueryComponent.switchPmParameter.length > 0 ? " "+inlineQueryComponent.switchPmParameter:""));
+                        }
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: Theme.paddingSmall
+                            color: parent.pressed ? Theme.highlightBackgroundColor : Theme.rgba(Theme.DarkOnLight ? Qt.lighter(Theme.primaryColor) : Qt.darker(Theme.primaryColor), Theme.opacityFaint)
+                            Label {
+                                anchors {
+                                    fill: parent
+                                    leftMargin: Theme.paddingLarge
+                                    rightMargin: Theme.paddingLarge
                                 }
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+
+                                fontSizeMode: Text.Fit;
+                                minimumPixelSize: Theme.fontSizeTiny;
+                                font.pixelSize: Theme.fontSizeSmall
+
+                                color: customButton.pressed ? Theme.highlightColor : Theme.primaryColor
+                                text: Emoji.emojify(inlineQueryComponent.switchPmText, font.pixelSize)// + "we are gonna make this a bit longer"
                             }
                         }
-
-
+                    }
                 }
             }
 
@@ -331,12 +320,6 @@ Loader {
                             color: Theme.overlayBackgroundColor
                             opacity: 0.7
                             anchors.fill: parent
-//                            MouseArea {
-//                                anchors.fill: parent
-//                                onClicked: {
-//                                    //                                    handleQuery();
-//                                }
-//                            }
                         }
                         Timer {
                             id: autoLoadMoreTimer
@@ -347,7 +330,6 @@ Loader {
                                 }
                             }
                         }
-
                         SilicaGridView {
                             id: resultView
                             anchors.fill: parent
@@ -359,14 +341,9 @@ Loader {
                             model: inlineQueryComponent.resultModel
                             delegate: Loader {
                                 id: queryResultDelegate
-//                                asynchronous: true
                                 height: resultView.cellHeight
                                 width: resultView.cellWidth
-                                // TODO: if all are the same, use global?
                                 source: "inlineQueryResults/" + (resultsOverlay.supportedResultTypes.indexOf(model["@type"]) > -1 ? (model["@type"].charAt(0).toUpperCase() + model["@type"].substring(1)) : "InlineQueryResultDefaultBase") +".qml"
-//                                Component.onCompleted: {
-//                                    Debug.log("delegate", source)
-//                                }
                             }
                             footer: Component {
                                 Item {
@@ -379,13 +356,11 @@ Loader {
 
                             onContentYChanged: {
                                 if(!inlineQueryLoader.isLoading && inlineQueryComponent.nextOffset && contentHeight - contentY - height < Theme.itemSizeHuge) {
-
                                     inlineQueryComponent.loadMore();
-
                                 }
                             }
-                            ScrollDecorator { flickable: resultView }
 
+                            ScrollDecorator { flickable: resultView }
                         }
                     }
                 }
@@ -396,10 +371,6 @@ Loader {
             Loader {
                 asynchronous: true
                 active: inlineQueryComponent.showInlineQueryPlaceholder
-//                onActiveChanged: {
-//                    Debug.log("inline: placeholder active changed", active)
-//                }
-
                 sourceComponent: Component {
                     Label {
                         text: Emoji.emojify(inlineQueryComponent.inlineQueryPlaceholder, font.pixelSize);
