@@ -267,11 +267,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>取消置顶对话</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>置顶对话</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -433,8 +433,7 @@
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation>未读
-消息</translation>
+        <translation>未读消息</translation>
     </message>
     <message>
         <source>unread messages</source>
@@ -485,7 +484,7 @@
     </message>
     <message>
         <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>复制文档到下载</translation>
     </message>
 </context>
 <context>
@@ -1450,7 +1449,7 @@
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation>启用储存加速器</translation>
+        <translation>开启储存加速器</translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
@@ -1462,11 +1461,11 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>开启仅在线模式</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation></translation>
+        <translation>禁用离线缓存。某些特定功能会在此模式中受限或消失。切换模式需要重启 fernschreiber 才能生效。</translation>
     </message>
     <message>
         <source>Privacy</source>
