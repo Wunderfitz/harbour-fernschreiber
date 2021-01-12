@@ -433,8 +433,7 @@
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation>未读
-消息</translation>
+        <translation>未读消息</translation>
     </message>
     <message>
         <source>unread messages</source>
