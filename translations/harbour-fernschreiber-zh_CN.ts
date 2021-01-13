@@ -407,7 +407,7 @@
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation>正在搜索对话内容…</translation>
+        <translation>搜索对话内容…</translation>
     </message>
     <message>
         <source>Location: Obtaining position...</source>
