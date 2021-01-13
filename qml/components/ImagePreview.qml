@@ -26,7 +26,6 @@ Item {
     property ListItem messageListItem
     property MessageOverlayFlickable overlayFlickable
     property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
-    property var photoData: rawMessage.content.photo
     readonly property int defaultHeight: Math.round(width * 2 / 3)
     property bool highlighted
 
@@ -35,15 +34,19 @@ Item {
 
     function clicked() {
         pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {
-            "photoData" : imagePreviewItem.photoData,
-            "pictureFileInformation" : imageFile.fileInformation
+            "photoData" : imagePreviewItem.rawMessage.content.photo
         })
     }
 
-    Component.onCompleted: {
-        if (photoData) {
+    Component.onCompleted: updateImage()
+
+    onRawMessageChanged: updateImage()
+
+    function updateImage() {
+        if (rawMessage.content.photo) {
             // Check first which size fits best...
             var photo
+            var photoData = rawMessage.content.photo
             for (var i = 0; i < photoData.sizes.length; i++) {
                 photo = photoData.sizes[i].photo
                 if (photoData.sizes[i].width >= imagePreviewItem.width) {
