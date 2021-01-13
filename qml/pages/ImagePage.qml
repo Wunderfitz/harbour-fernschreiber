@@ -18,6 +18,7 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 import "../components"
 import "../js/functions.js" as Functions
 import "../js/debug.js" as Debug
@@ -28,9 +29,7 @@ Page {
     backNavigation: !imageOnly
 
     property var photoData;
-    property var pictureFileInformation;
 
-    property string imageUrl;
     property int imageWidth;
     property int imageHeight;
 
@@ -47,40 +46,31 @@ Page {
     property bool imageOnly
 
     Component.onCompleted: {
-        updatePicture();
-    }
-
-    function updatePicture() {
-        if (typeof photoData === "object") {
+        if (photoData) {
             // Check first which size fits best...
+            var photo
             for (var i = 0; i < photoData.sizes.length; i++) {
                 imagePage.imageWidth = photoData.sizes[i].width;
                 imagePage.imageHeight = photoData.sizes[i].height;
-                imagePage.pictureFileInformation = photoData.sizes[i].photo;
+                photo = photoData.sizes[i].photo
                 if (photoData.sizes[i].width >= imagePage.width) {
                     break;
                 }
             }
-
-            if (imagePage.pictureFileInformation.local.is_downloading_completed) {
-                imagePage.imageUrl = imagePage.pictureFileInformation.local.path;
-            } else {
-                tdLibWrapper.downloadFile(imagePage.pictureFileInformation.id);
+            if (photo) {
+                imageFile.fileInformation = photo
             }
         }
     }
 
+    TDLibFile {
+        id: imageFile
+        tdlib: tdLibWrapper
+        autoLoad: true
+    }
+
     Connections {
         target: tdLibWrapper
-        onFileUpdated: {
-            if (fileId === imagePage.pictureFileInformation.id) {
-                Debug.log("File updated, completed? ", fileInformation.local.is_downloading_completed);
-                if (fileInformation.local.is_downloading_completed) {
-                    imagePage.pictureFileInformation = fileInformation;
-                    imagePage.imageUrl = fileInformation.local.path;
-                }
-            }
-        }
         onCopyToDownloadsSuccessful: {
             appNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
         }
@@ -96,11 +86,11 @@ Page {
         interactive: !imageOnly
 
         PullDownMenu {
-            visible: !imageOnly && imageUrl
+            visible: !imageOnly && imageFile.isDownloadingCompleted && imageFile.path
             MenuItem {
                 text: qsTr("Download Picture")
                 onClicked: {
-                    tdLibWrapper.copyFileToDownloads(imagePage.imageUrl);
+                    tdLibWrapper.copyFileToDownloads(imageFile.path);
                 }
             }
         }
@@ -134,7 +124,7 @@ Page {
 
                 Image {
                     id: singleImage
-                    source: imageUrl
+                    source: imageFile.isDownloadingCompleted ? imageFile.path : ""
                     width: imagePage.imageWidth * imagePage.sizingFactor
                     height: imagePage.imageHeight * imagePage.sizingFactor
                     anchors.centerIn: parent
