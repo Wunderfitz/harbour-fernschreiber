@@ -75,8 +75,7 @@ Column {
         source: thumbnailFile.isDownloadingCompleted ? thumbnailFile.path : ""
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
-        width: visible ? parent.width : 0
-//        height: width
+        visible: opacity > 0
         opacity: status === Image.Ready ? 1.0 : 0.0
 
         Behavior on opacity { FadeAnimation {} }
