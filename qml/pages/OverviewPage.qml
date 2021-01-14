@@ -162,6 +162,7 @@ Page {
             }
             break;
         case TelegramAPI.AuthorizationReady:
+            loadingBusyIndicator.text = qsTr("Loading chat list...");
             overviewPage.loading = false;
             overviewPage.initializationCompleted = true;
             overviewPage.updateContent();
@@ -176,6 +177,7 @@ Page {
             overviewPage.loading = false;
             chatListCreatedTimer.stop();
             updateSecondaryContentTimer.stop();
+            loadingBusyIndicator.text = qsTr("Logging out")
             overviewPage.logoutLoading = true;
             chatListModel.reset();
             break;
@@ -368,34 +370,12 @@ Page {
             spacing: Theme.paddingMedium
             anchors.verticalCenter: chatListView.verticalCenter
 
-            opacity: overviewPage.chatListCreated ? 0 : 1
+            opacity: overviewPage.chatListCreated && !overviewPage.logoutLoading ? 0 : 1
             Behavior on opacity { FadeAnimation {} }
-            visible: !overviewPage.chatListCreated && !overviewPage.logoutLoading
-
-            InfoLabel {
-                id: loadingLabel
-                text: qsTr("Loading chat list...")
-            }
-
-            BusyIndicator {
-                id: loadingBusyIndicator
-                anchors.horizontalCenter: parent.horizontalCenter
-                running: !overviewPage.chatListCreated
-                size: BusyIndicatorSize.Large
-            }
-        }
-
-        Column {
-            width: parent.width
-            spacing: Theme.paddingMedium
-            anchors.verticalCenter: chatListView.verticalCenter
-
-            opacity: overviewPage.logoutLoading ? 1 : 0
-            Behavior on opacity { FadeAnimation {} }
-            visible: overviewPage.logoutLoading
+            visible: !overviewPage.chatListCreated || overviewPage.logoutLoading
 
             BusyLabel {
-                    text: qsTr("Logging out")
+                    id: loadingBusyIndicator
                     running: true
             }
         }

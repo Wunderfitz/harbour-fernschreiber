@@ -1300,7 +1300,7 @@ void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationS
         }
         td_json_client_destroy(this->tdLibClient);
         this->tdLibReceiver->terminate();
-        QDir appPath(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.local/share/harbour-fernschreiber");
+        QDir appPath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
         appPath.removeRecursively();
         this->tdLibClient = td_json_client_create();
         initializeTDLibReciever();
