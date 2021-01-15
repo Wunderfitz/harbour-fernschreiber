@@ -85,11 +85,11 @@
     </message>
     <message>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Abmelden</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Abgemeldet</translation>
     </message>
 </context>
 <context>
@@ -841,7 +841,7 @@
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>hat %Ln Punkt erziehlt</numerusform>
             <numerusform>hat %Ln Punkte erziehlt</numerusform>
         </translation>
@@ -1008,14 +1008,14 @@
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>haben %Ln Punkt bei %2 erziehlt</numerusform>
             <numerusform>haben %Ln Punkte bei %2 erziehlt</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>hat %Ln Punkt bei %2 erziehlt</numerusform>
             <numerusform>hat %Ln Punkte bei %2 erziehlt</numerusform>
         </translation>
@@ -1037,7 +1037,7 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation type="unfinished">via %1</translation>
+        <translation>via %1</translation>
     </message>
 </context>
 <context>
@@ -1169,7 +1169,7 @@
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation>Abmelden</translation>
     </message>
 </context>
 <context>

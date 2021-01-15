@@ -1523,7 +1523,7 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished">Включить режим "только в онлайне"</translation>
+        <translation type="unfinished">Включить режим &quot;только в онлайне&quot;</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>

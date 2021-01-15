@@ -163,6 +163,8 @@ Page {
                 sourceComponent: Component {
                     Column {
 
+                        spacing: Theme.paddingSmall
+
                         Text {
                             x: Theme.horizontalPageMargin
                             width: parent.width  - ( 2 * Theme.horizontalPageMargin )

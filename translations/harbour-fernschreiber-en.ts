@@ -85,11 +85,11 @@
     </message>
     <message>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Log Out</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Logged out</translation>
     </message>
 </context>
 <context>
@@ -1037,7 +1037,7 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation type="unfinished">via %1</translation>
+        <translation>via %1</translation>
     </message>
 </context>
 <context>
