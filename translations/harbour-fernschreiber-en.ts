@@ -823,6 +823,30 @@
         <comment>myself</comment>
         <translation>have removed %1 from the chat</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation>
+            <numerusform>scored %Ln point</numerusform>
+            <numerusform>scored %Ln points</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <translation>
+            <numerusform>scored %Ln point</numerusform>
+            <numerusform>scored %Ln points</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation>sent a game</translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation>sent a game</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -973,6 +997,21 @@
         <source>You</source>
         <translation>You</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <comment>myself</comment>
+        <translation>
+            <numerusform>scored %Ln point in %2</numerusform>
+            <numerusform>scored %Ln points in %2</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <translation>
+            <numerusform>scored %Ln point in %2</numerusform>
+            <numerusform>scored %Ln points in %2</numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
@@ -983,6 +1022,14 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>This message was forwarded. Original author: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessageViaLabel</name>
+    <message>
+        <source>via %1</source>
+        <comment>message posted via bot user</comment>
+        <translation type="unfinished">via %1</translation>
     </message>
 </context>
 <context>
@@ -1444,6 +1491,18 @@
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
         <translation>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</translation>
+    </message>
+    <message>
+        <source>Privacy</source>
+        <translation>Privacy</translation>
+    </message>
+    <message>
+        <source>Allow sending Location to inline bots</source>
+        <translation>Allow sending Location to inline bots</translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
+        <translation>Some inline bots request location data when using them</translation>
     </message>
 </context>
 <context>
@@ -1911,6 +1970,23 @@
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
         <translation>have removed %1 from the chat</translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation>
+            <numerusform>scored %Ln point</numerusform>
+            <numerusform>scored %Ln points</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation>sent a game</translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation>sent a game</translation>
     </message>
 </context>
 </TS>

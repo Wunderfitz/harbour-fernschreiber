@@ -137,6 +137,8 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateMessageEdited", &TDLibReceiver::processUpdateMessageEdited);
     handlers.insert("updateChatIsMarkedAsUnread", &TDLibReceiver::processUpdateChatIsMarkedAsUnread);
     handlers.insert("updateChatDraftMessage", &TDLibReceiver::processUpdateChatDraftMessage);
+    handlers.insert("inlineQueryResults", &TDLibReceiver::processInlineQueryResults);
+    handlers.insert("callbackQueryAnswer", &TDLibReceiver::processCallbackQueryAnswer);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -595,4 +597,17 @@ void TDLibReceiver::processUpdateChatDraftMessage(const QVariantMap &receivedInf
 {
     LOG("Draft message was updated");
     emit chatDraftMessageUpdated(receivedInformation.value(CHAT_ID).toLongLong(), receivedInformation.value("draft_message").toMap(), findChatPositionOrder(receivedInformation.value(POSITIONS).toList()));
+}
+
+void TDLibReceiver::processInlineQueryResults(const QVariantMap &receivedInformation)
+{
+    LOG("Inline Query results");
+    emit inlineQueryResults(receivedInformation.value("inline_query_id").toString(), receivedInformation.value("next_offset").toString(), receivedInformation.value("results").toList(), receivedInformation.value("switch_pm_text").toString(), receivedInformation.value("switch_pm_parameter").toString(), receivedInformation.value(EXTRA).toString());
+}
+
+void TDLibReceiver::processCallbackQueryAnswer(const QVariantMap &receivedInformation)
+{
+
+    LOG("Callback Query answer");
+    emit callbackQueryAnswer(receivedInformation.value(TEXT).toString(), receivedInformation.value("alert").toBool(), receivedInformation.value("url").toString());
 }

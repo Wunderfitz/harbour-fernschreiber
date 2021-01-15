@@ -35,6 +35,7 @@ Item {
     property var pictureFileInformation;
     width: parent.width
     height: width / 2
+    property string fileExtra
 
     Component.onCompleted: {
         updatePicture();
@@ -47,14 +48,18 @@ Item {
     function updatePicture() {
         imagePreviewItem.pictureFileInformation = null;
         if (locationData) {
-            tdLibWrapper.getMapThumbnailFile(chatId, locationData.latitude, locationData.longitude, Math.round(imagePreviewItem.width), Math.round(imagePreviewItem.height));
+            fileExtra = "location:" + locationData.latitude + ":" + locationData.longitude + ":" + Math.round(imagePreviewItem.width) + ":" + Math.round(imagePreviewItem.height);
+            tdLibWrapper.getMapThumbnailFile(chatId, locationData.latitude, locationData.longitude, Math.round(imagePreviewItem.width), Math.round(imagePreviewItem.height), fileExtra);
         }
     }
 
     Connections {
         target: tdLibWrapper
         onFileUpdated: {
-            // we do not have a way of knowing if this is the correct file, so we have to guess the first new one should be right.
+            if(fileInformation["@extra"] !== imagePreviewItem.fileExtra) {
+                return;
+            }
+
             if(!imagePreviewItem.pictureFileInformation) {
                 imagePreviewItem.pictureFileInformation = fileInformation;
                 tdLibWrapper.downloadFile(imagePreviewItem.pictureFileInformation.id);

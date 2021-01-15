@@ -92,7 +92,7 @@ ChatInformationTabItemBase {
             }
 
             onClicked: {
-                tdLibWrapper.createPrivateChat(user_id);
+                tdLibWrapper.createPrivateChat(user_id, "openDirectly");
             }
         }
         footer: Component {
