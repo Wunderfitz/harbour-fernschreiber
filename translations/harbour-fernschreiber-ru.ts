@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Этот продукт использует Telegram API, но не одобрен или сертифицирован Telegram.</translation>
+        <translation>Этот продукт использует Telegram API, но не одобрен или сертифицирован Telegram FZ-LLC</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
@@ -1082,7 +1082,7 @@
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation>Сихронизация контактов с Телеграм</translation>
+        <translation>Синхронизировать с Телеграм</translation>
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
@@ -1592,7 +1592,7 @@
     </message>
     <message>
         <source>Ready</source>
-        <translation>Готов</translation>
+        <translation>Ожидание</translation>
     </message>
 </context>
 <context>
