@@ -21,15 +21,13 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 
-import "../js/functions.js" as Functions
-import "../js/twemoji.js" as Emoji
+import "../../js/functions.js" as Functions
+import "../../js/twemoji.js" as Emoji
 
-Item {
+MessageContentBase {
     id: pollMessageComponent
+    height: pollColumn.height
 
-    property ListItem messageListItem
-    property MessageOverlayFlickable overlayFlickable
-    readonly property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
     readonly property string chatId: rawMessage.chat_id
     readonly property bool isOwnMessage: messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
     readonly property string messageId: rawMessage.id
@@ -44,9 +42,6 @@ Item {
     }
     readonly property bool canAnswer: !hasAnswered && !pollData.is_closed
     readonly property bool isQuiz: pollData.type['@type'] === "pollTypeQuiz"
-    property bool highlighted
-    width: parent.width
-    height: pollColumn.height
     property list<NamedAction> extraContextMenuItems: [
         NamedAction {
             visible: !pollData.is_closed && pollMessageComponent.canEdit

@@ -19,16 +19,13 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import QtMultimedia 5.6
-import "../js/functions.js" as Functions
-import "../js/debug.js" as Debug
+import "../"
+import "../../js/functions.js" as Functions
+import "../../js/debug.js" as Debug
 
 
-Item {
+MessageContentBase {
     id: audioMessageComponent
-
-    property ListItem messageListItem
-    property MessageOverlayFlickable overlayFlickable
-    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
 
     property var audioData: ( rawMessage.content['@type'] === "messageVoiceNote" ) ?  rawMessage.content.voice_note : ( ( rawMessage.content['@type'] === "messageAudio" ) ? rawMessage.content.audio : "");
     property string audioUrl;
@@ -36,10 +33,7 @@ Item {
     property int audioFileId;
     property bool onScreen: messageListItem ? messageListItem.page.status === PageStatus.Active : true
     property string audioType : "voiceNote";
-    property bool highlighted;
-    signal clicked();
 
-    width: parent.width
     height: width / 2
 
     function getTimeString(rawSeconds) {
