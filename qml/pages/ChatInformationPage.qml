@@ -38,6 +38,7 @@ Page {
     property bool isBasicGroup: false
     property bool isSuperGroup: false
     property bool isChannel: false
+    readonly property bool canGetMembers: ("can_get_members" in groupFullInformation) && groupFullInformation.can_get_members
 
     property string chatPartnerGroupId
 
@@ -68,8 +69,6 @@ Page {
             break;
         }
     }
-
-
 
     Loader {
         id: mainContentLoader

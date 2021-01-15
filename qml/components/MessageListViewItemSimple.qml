@@ -20,6 +20,7 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
+import "../js/debug.js" as Debug
 
 Item {
     id: messageListItem
@@ -27,6 +28,7 @@ Item {
     property bool senderIsUser: myMessage.sender["@type"] === "messageSenderUser"
     property var userInformation: senderIsUser ? tdLibWrapper.getUserInformation(myMessage.sender.user_id) : null
     property bool isOwnMessage: senderIsUser && chatPage.myUserId === myMessage.sender.user_id
+    property var linkedMessage
     height: backgroundRectangle.height + Theme.paddingMedium
 
     Rectangle {
@@ -44,14 +46,43 @@ Item {
         color: Theme.highlightColor
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: Theme.fontSizeExtraSmall
+        property string messageContentText: Functions.getMessageText(messageListItem.myMessage, false, chatPage.myUserId, false)
         text: (messageListItem.senderIsUser
                ? "<a style=\"text-decoration: none; font-weight: bold; color:"+Theme.primaryColor+"\" href=\"userId://" + messageListItem.userInformation.id + "\">" + (!messageListItem.isOwnMessage ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")) + "</a> "
                :  "<a style=\"text-decoration: none; font-weight: bold; color:"+Theme.secondaryHighlightColor+"\">" +  Emoji.emojify(chatPage.chatInformation.title || "") + "</a> ")
-            + Emoji.emojify(Functions.getMessageText(messageListItem.myMessage, false, chatPage.myUserId, false), font.pixelSize)
+            + Emoji.emojify(messageContentText, font.pixelSize)
         textFormat: Text.RichText
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         onLinkActivated: {
-            Functions.handleLink(link);
+            if(link === "linkedmessage" && linkedMessage) {
+                messageOverlayLoader.overlayMessage = linkedMessage;
+                messageOverlayLoader.active = true;
+            } else {
+                Functions.handleLink(link);
+            }
+
+        }
+    }
+    Loader {
+        id: gameScoreInfoLoader
+        active: myMessage.content["@type"] === "messageGameScore"
+        asynchronous: true
+        sourceComponent: Component {
+            Connections {
+                target: tdLibWrapper
+                onReceivedMessage: {
+                    if(chatId === chatPage.chatInformation.id && messageId === myMessage.content.game_message_id) {
+                        messageListItem.linkedMessage = message;
+                        messageText.messageContentText = messageListItem.isOwnMessage ?
+                                    qsTr("scored %Ln points in %2", "myself", myMessage.content.score).arg("<a href=\"linkedmessage\" style=\"text-decoration: none; color:"+Theme.primaryColor+"\">"+message.content.game.title+"</a>") :
+
+                                    qsTr("scored %Ln points in %2", "", myMessage.content.score).arg("<a href=\"linkedmessage\" style=\"text-decoration: none; color:"+Theme.primaryColor+"\" >"+message.content.game.title+"</a>");
+                    }
+                }
+                Component.onCompleted: {
+                    tdLibWrapper.getMessage(chatPage.chatInformation.id, myMessage.content.game_message_id);
+                }
+            }
         }
     }
 }

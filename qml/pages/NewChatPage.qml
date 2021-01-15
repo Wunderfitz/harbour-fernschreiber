@@ -220,7 +220,7 @@ Page {
                                                 icon.source: "image://theme/icon-m-chat"
                                                 anchors.verticalCenter: parent.verticalCenter
                                                 onClicked: {
-                                                    tdLibWrapper.createPrivateChat(display.id);
+                                                    tdLibWrapper.createPrivateChat(display.id, "openDirectly");
                                                 }
                                             }
 
@@ -257,7 +257,7 @@ Page {
                                         MouseArea {
                                             anchors.fill: parent
                                             onClicked: {
-                                                tdLibWrapper.createPrivateChat(display.id);
+                                                tdLibWrapper.createPrivateChat(display.id, "openDirectly");
                                             }
                                             onPressed: {
                                                 privateChatHighlightBackground.visible = true;
@@ -295,7 +295,7 @@ Page {
                                                 icon.source: "image://theme/icon-m-device-lock"
                                                 anchors.verticalCenter: parent.verticalCenter
                                                 onClicked: {
-                                                    tdLibWrapper.createNewSecretChat(display.id);
+                                                    tdLibWrapper.createNewSecretChat(display.id, "openDirectly");
                                                 }
                                             }
 
@@ -331,7 +331,7 @@ Page {
                                         MouseArea {
                                             anchors.fill: parent
                                             onClicked: {
-                                                tdLibWrapper.createNewSecretChat(display.id);
+                                                tdLibWrapper.createNewSecretChat(display.id, "openDirectly");
                                             }
                                             onPressed: {
                                                 secretChatHighlightBackground.visible = true;

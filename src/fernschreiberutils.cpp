@@ -178,6 +178,13 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     if (contentType == "messageScreenshotTaken") {
         return myself ? tr("created a screenshot in this chat", "myself") : tr("created a screenshot in this chat");
     }
+    if (contentType == "messageGameScore") {
+        qint32 score = messageContent.value("score").toInt();
+        return myself ? tr("scored %Ln points", "myself", score) : tr("scored %Ln points", "", score);
+    }
+    if (contentType == "messageGame") {
+        return myself ? tr("sent a game", "myself") : tr("sent a game");
+    }
     if (contentType == "messageUnsupported") {
         return myself ? tr("sent an unsupported message", "myself") : tr("sent an unsupported message");
     }

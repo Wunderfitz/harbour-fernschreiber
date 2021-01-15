@@ -25,6 +25,7 @@ Page {
     id: aboutPage
     allowedOrientations: Orientation.All
 
+    property bool isLoggedIn : false
     property var userInformation : tdLibWrapper.getUserInformation();
 
     SilicaFlickable {
@@ -156,7 +157,8 @@ Page {
             }
 
             Loader {
-                active: !!aboutPage.userInformation.phone_number
+                id: userInformationLoader
+                active: isLoggedIn
                 width: parent.width
                 sourceComponent: Component {
                     Column {
@@ -194,6 +196,33 @@ Page {
                             wrapMode: Text.Wrap
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
+                            }
+                        }
+                        BackgroundItem {
+                            width: parent.width
+
+                            BackgroundItem {
+                                id: logOutItem
+                                width: parent.width
+                                function showRemorseItem() {
+                                    remorse.execute(logOutItem, qsTr("Logged out"), function() {
+                                        tdLibWrapper.logout();
+                                        pageStack.pop();
+                                    });
+                                }
+                                RemorseItem {
+                                    id: remorse
+                                }
+                                Button {
+                                   id: logOutButton
+                                    text: qsTr("Log Out")
+                                    anchors {
+                                        horizontalCenter: parent.horizontalCenter
+                                    }
+                                    onClicked: {
+                                        logOutItem.showRemorseItem();
+                                    }
+                                }
                             }
                         }
                     }

@@ -83,6 +83,14 @@
         <source>Open rlottie on GitHub</source>
         <translation>在 Github 打开 rlottie</translation>
     </message>
+    <message>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -813,6 +821,28 @@
         <comment>myself</comment>
         <translation>已从此对话移除 %1</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -963,6 +993,19 @@
         <source>You</source>
         <translation>你</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
@@ -973,6 +1016,14 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>此消息为转发消息，原作者: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessageViaLabel</name>
+    <message>
+        <source>via %1</source>
+        <comment>message posted via bot user</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1100,6 +1151,10 @@
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
         <translation>你可以搜索公共对话或通过下拉菜单创建新对话。</translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1423,6 +1478,18 @@
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
         <translation>禁用离线缓存。某些特定功能会在此模式中受限或消失。切换模式需要重启 fernschreiber 才能生效。</translation>
+    </message>
+    <message>
+        <source>Privacy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow sending Location to inline bots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1890,6 +1957,22 @@
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
         <translation>已从此对话移除 %1</translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

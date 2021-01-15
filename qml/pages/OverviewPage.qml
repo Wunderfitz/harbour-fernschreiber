@@ -31,13 +31,14 @@ Page {
 
     property bool initializationCompleted: false;
     property bool loading: true;
+    property bool logoutLoading: false;
     property int authorizationState: TelegramAPI.Closed
     property int connectionState: TelegramAPI.WaitingForNetwork
     property int ownUserId;
     property bool chatListCreated: false;
 
     onStatusChanged: {
-        if (status === PageStatus.Active && initializationCompleted && !chatListCreated) {
+        if (status === PageStatus.Active && initializationCompleted && !chatListCreated && !logoutLoading) {
             updateContent();
         }
     }
@@ -151,7 +152,9 @@ Page {
         case TelegramAPI.WaitCode:
         case TelegramAPI.WaitPassword:
         case TelegramAPI.WaitRegistration:
+        case TelegramAPI.AuthorizationStateClosed:
             overviewPage.loading = false;
+            overviewPage.logoutLoading = false;
             if(isOnInitialization) { // pageStack isn't ready on Component.onCompleted
                 openInitializationPageTimer.start()
             } else {
@@ -159,9 +162,24 @@ Page {
             }
             break;
         case TelegramAPI.AuthorizationReady:
+            loadingBusyIndicator.text = qsTr("Loading chat list...");
             overviewPage.loading = false;
             overviewPage.initializationCompleted = true;
             overviewPage.updateContent();
+            break;
+        case TelegramAPI.AuthorizationStateLoggingOut:
+            if (logoutLoading) {
+                Debug.log("Resources cleared already");
+                return;
+            }
+            Debug.log("Logging out")
+            overviewPage.initializationCompleted = false;
+            overviewPage.loading = false;
+            chatListCreatedTimer.stop();
+            updateSecondaryContentTimer.stop();
+            loadingBusyIndicator.text = qsTr("Logging out")
+            overviewPage.logoutLoading = true;
+            chatListModel.reset();
             break;
         default:
             // Nothing ;)
@@ -210,10 +228,17 @@ Page {
             }
         }
         onChatReceived: {
-            if(chat["@extra"] === "openDirectly") {
+            var openAndSendStartToBot = chat["@extra"].indexOf("openAndSendStartToBot:") === 0
+            if(chat["@extra"] === "openDirectly" || openAndSendStartToBot && chat.type["@type"] === "chatTypePrivate") {
                 pageStack.pop(overviewPage, PageStackAction.Immediate)
                 // if we get a new chat (no messages?), we can not use the provided data
-                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chat.id) });
+                var chatinfo = tdLibWrapper.getChat(chat.id);
+                var options = { "chatInformation" : chatinfo }
+                if(openAndSendStartToBot) {
+                    options.doSendBotStartMessage = true;
+                    options.sendBotStartMessageParameter = chat["@extra"].substring(22);
+                }
+                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), options);
             }
         }
         onErrorReceived: {
@@ -247,7 +272,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("About Fernschreiber")
-                onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"), {isLoggedIn : (overviewPage.authorizationState == TelegramAPI.AuthorizationReady)})
             }
             MenuItem {
                 text: qsTr("Settings")
@@ -324,7 +349,7 @@ Page {
                 right: parent.right
             }
             clip: true
-            opacity: overviewPage.chatListCreated ? 1 : 0
+            opacity: (overviewPage.chatListCreated && !overviewPage.logoutLoading) ? 1 : 0
             Behavior on opacity { FadeAnimation {} }
             model: chatListModel
             delegate: ChatListViewItem {
@@ -352,20 +377,13 @@ Page {
             spacing: Theme.paddingMedium
             anchors.verticalCenter: chatListView.verticalCenter
 
-            opacity: overviewPage.chatListCreated ? 0 : 1
+            opacity: overviewPage.chatListCreated && !overviewPage.logoutLoading ? 0 : 1
             Behavior on opacity { FadeAnimation {} }
-            visible: !overviewPage.chatListCreated
+            visible: !overviewPage.chatListCreated || overviewPage.logoutLoading
 
-            InfoLabel {
-                id: loadingLabel
-                text: qsTr("Loading chat list...")
-            }
-
-            BusyIndicator {
-                id: loadingBusyIndicator
-                anchors.horizontalCenter: parent.horizontalCenter
-                running: !overviewPage.chatListCreated
-                size: BusyIndicatorSize.Large
+            BusyLabel {
+                    id: loadingBusyIndicator
+                    running: true
             }
         }
     }

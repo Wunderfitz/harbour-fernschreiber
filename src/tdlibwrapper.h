@@ -46,7 +46,9 @@ public:
         WaitPassword,
         WaitPhoneNumber,
         WaitRegistration,
-        WaitTdlibParameters
+        WaitTdlibParameters,
+        AuthorizationStateClosed,
+        AuthorizationStateLoggingOut
     };
     Q_ENUM(AuthorizationState)
 
@@ -125,6 +127,7 @@ public:
     Q_INVOKABLE void setAuthenticationCode(const QString &authenticationCode);
     Q_INVOKABLE void setAuthenticationPassword(const QString &authenticationPassword);
     Q_INVOKABLE void registerUser(const QString &firstName, const QString &lastName);
+    Q_INVOKABLE void logout();
     Q_INVOKABLE void getChats();
     Q_INVOKABLE void downloadFile(int fileId);
     Q_INVOKABLE void openChat(const QString &chatId);
@@ -152,17 +155,17 @@ public:
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);
     Q_INVOKABLE void editMessageText(const QString &chatId, const QString &messageId, const QString &message);
     Q_INVOKABLE void deleteMessages(const QString &chatId, const QVariantList messageIds);
-    Q_INVOKABLE void getMapThumbnailFile(const QString &chatId, double latitude, double longitude, int width, int height);
+    Q_INVOKABLE void getMapThumbnailFile(const QString &chatId, double latitude, double longitude, int width, int height, const QString &extra);
     Q_INVOKABLE void getRecentStickers();
     Q_INVOKABLE void getInstalledStickerSets();
     Q_INVOKABLE void getStickerSet(const QString &setId);
     Q_INVOKABLE void getSupergroupMembers(const QString &groupId, int limit, int offset);
     Q_INVOKABLE void getGroupFullInfo(const QString &groupId, bool isSuperGroup);
     Q_INVOKABLE void getUserFullInfo(const QString &userId);
-    Q_INVOKABLE void createPrivateChat(const QString &userId);
-    Q_INVOKABLE void createNewSecretChat(const QString &userId);
-    Q_INVOKABLE void createSupergroupChat(const QString &supergroupId);
-    Q_INVOKABLE void createBasicGroupChat(const QString &basicGroupId);
+    Q_INVOKABLE void createPrivateChat(const QString &userId, const QString &extra);
+    Q_INVOKABLE void createNewSecretChat(const QString &userId, const QString &extra);
+    Q_INVOKABLE void createSupergroupChat(const QString &supergroupId, const QString &extra);
+    Q_INVOKABLE void createBasicGroupChat(const QString &basicGroupId, const QString &extra);
     Q_INVOKABLE void getGroupsInCommon(const QString &userId, int limit, int offset);
     Q_INVOKABLE void getUserProfilePhotos(const QString &userId, int limit, int offset);
     Q_INVOKABLE void setChatPermissions(const QString &chatId, const QVariantMap &chatPermissions);
@@ -174,7 +177,7 @@ public:
     Q_INVOKABLE void setPollAnswer(const QString &chatId, qlonglong messageId, QVariantList optionIds);
     Q_INVOKABLE void stopPoll(const QString &chatId, qlonglong messageId);
     Q_INVOKABLE void getPollVoters(const QString &chatId, qlonglong messageId, int optionId, int limit, int offset, const QString &extra);
-    Q_INVOKABLE void searchPublicChat(const QString &userName);
+    Q_INVOKABLE void searchPublicChat(const QString &userName, bool doOpenOnFound);
     Q_INVOKABLE void joinChatByInviteLink(const QString &inviteLink);
     Q_INVOKABLE void getDeepLinkInfo(const QString &link);
     Q_INVOKABLE void getContacts();
@@ -187,6 +190,9 @@ public:
     Q_INVOKABLE void toggleChatIsMarkedAsUnread(qlonglong chatId, bool isMarkedAsUnread);
     Q_INVOKABLE void toggleChatIsPinned(qlonglong chatId, bool isPinned);
     Q_INVOKABLE void setChatDraftMessage(qlonglong chatId, qlonglong threadId, qlonglong replyToMessageId, const QString &draft);
+    Q_INVOKABLE void getInlineQueryResults(qlonglong botUserId, qlonglong chatId, const QVariantMap &userLocation, const QString &query, const QString &offset, const QString &extra);
+    Q_INVOKABLE void sendInlineQueryResultMessage(qlonglong chatId, qlonglong threadId, qlonglong replyToMessageId, const QString &queryId, const QString &resultId);
+    Q_INVOKABLE void sendBotStartMessage(qlonglong botUserId, qlonglong chatId, const QString &parameter, const QString &extra);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -259,6 +265,8 @@ signals:
     void messageNotFound(qlonglong chatId, qlonglong messageId);
     void chatIsMarkedAsUnreadUpdated(qlonglong chatId, bool chatIsMarkedAsUnread);
     void chatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order);
+    void inlineQueryResults(const QString &inlineQueryId, const QString &nextOffset, const QVariantList &results, const QString &switchPmText, const QString &switchPmParameter, const QString &extra);
+    void callbackQueryAnswer(const QString &text, bool alert, const QString &url);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -290,6 +298,7 @@ private:
     void setEncryptionKey();
     void setLogVerbosityLevel();
     const Group *updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups);
+    void initializeTDLibReciever();
 
 private:
     void *tdLibClient;
@@ -315,6 +324,7 @@ private:
 
     QString activeChatSearchName;
     bool joinChatRequested;
+    bool isLoggingOut;
 
 };
 

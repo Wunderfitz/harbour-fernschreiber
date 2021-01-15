@@ -60,7 +60,9 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     this->mceInterface = mceInterface;
     this->tdLibClient = td_json_client_create();
     this->authorizationState = AuthorizationState::Closed;
-    this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
+    this->isLoggingOut = false;
+
+    initializeTDLibReciever();
 
     QString tdLibDatabaseDirectoryPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib";
     QDir tdLibDatabaseDirectory(tdLibDatabaseDirectoryPath);
@@ -75,6 +77,29 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
         this->removeOpenWith();
     }
 
+    connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
+
+    connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
+    connect(this->appSettings, SIGNAL(storageOptimizerChanged()), this, SLOT(handleStorageOptimizerChanged()));
+
+    this->setLogVerbosityLevel();
+    this->setOptionInteger("notification_group_count_max", 5);
+}
+
+TDLibWrapper::~TDLibWrapper()
+{
+    LOG("Destroying TD Lib...");
+    this->tdLibReceiver->setActive(false);
+    while (this->tdLibReceiver->isRunning()) {
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
+    }
+    qDeleteAll(basicGroups.values());
+    qDeleteAll(superGroups.values());
+    td_json_client_destroy(this->tdLibClient);
+}
+
+void TDLibWrapper::initializeTDLibReciever() {
+    this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
     connect(this->tdLibReceiver, SIGNAL(versionDetected(QString)), this, SLOT(handleVersionDetected(QString)));
     connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString, QVariantMap)), this, SLOT(handleAuthorizationStateChanged(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(optionUpdated(QString, QVariant)), this, SLOT(handleOptionUpdated(QString, QVariant)));
@@ -131,32 +156,18 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     connect(this->tdLibReceiver, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)), this, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)));
     connect(this->tdLibReceiver, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)), this, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)));
-
-    connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
-
-    connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
-    connect(this->appSettings, SIGNAL(storageOptimizerChanged()), this, SLOT(handleStorageOptimizerChanged()));
+    connect(this->tdLibReceiver, SIGNAL(inlineQueryResults(QString, QString, QVariantList, QString, QString, QString)), this, SIGNAL(inlineQueryResults(QString, QString, QVariantList, QString, QString, QString)));
+    connect(this->tdLibReceiver, SIGNAL(callbackQueryAnswer(QString, bool, QString)), this, SIGNAL(callbackQueryAnswer(QString, bool, QString)));
 
     this->tdLibReceiver->start();
-
-    this->setLogVerbosityLevel();
-    this->setOptionInteger("notification_group_count_max", 5);
-}
-
-TDLibWrapper::~TDLibWrapper()
-{
-    LOG("Destroying TD Lib...");
-    this->tdLibReceiver->setActive(false);
-    while (this->tdLibReceiver->isRunning()) {
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
-    }
-    qDeleteAll(basicGroups.values());
-    qDeleteAll(superGroups.values());
-    td_json_client_destroy(this->tdLibClient);
 }
 
 void TDLibWrapper::sendRequest(const QVariantMap &requestObject)
 {
+    if (this->isLoggingOut) {
+        LOG("Sending request to TD Lib skipped as logging out is in progress, object type name:" << requestObject.value(_TYPE).toString());
+        return;
+    }
     LOG("Sending request to TD Lib, object type name:" << requestObject.value(_TYPE).toString());
     QJsonDocument requestDocument = QJsonDocument::fromVariant(requestObject);
     VERBOSE(requestDocument.toJson().constData());
@@ -222,6 +233,16 @@ void TDLibWrapper::registerUser(const QString &firstName, const QString &lastNam
     requestObject.insert(FIRST_NAME, firstName);
     requestObject.insert(LAST_NAME, lastName);
     this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::logout()
+{
+    LOG("Logging out");
+    QVariantMap requestObject;
+    requestObject.insert("@type", "logOut");
+    this->sendRequest(requestObject);
+    this->isLoggingOut = true;
+
 }
 
 void TDLibWrapper::getChats()
@@ -685,13 +706,12 @@ void TDLibWrapper::deleteMessages(const QString &chatId, const QVariantList mess
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getMapThumbnailFile(const QString &chatId, double latitude, double longitude, int width, int height)
+void TDLibWrapper::getMapThumbnailFile(const QString &chatId, double latitude, double longitude, int width, int height, const QString &extra)
 {
     LOG("Getting Map Thumbnail File" << chatId);
     QVariantMap location;
     location.insert("latitude", latitude);
     location.insert("longitude", longitude);
-
     // ensure dimensions are in bounds (16 - 1024)
     int boundsWidth = std::min(std::max(width, 16), 1024);
     int boundsHeight = std::min(std::max(height, 16), 1024);
@@ -704,6 +724,7 @@ void TDLibWrapper::getMapThumbnailFile(const QString &chatId, double latitude, d
     requestObject.insert("height", boundsHeight);
     requestObject.insert("scale", 1); // 1-3
     requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(_EXTRA, extra);
 
     this->sendRequest(requestObject);
 }
@@ -769,43 +790,43 @@ void TDLibWrapper::getUserFullInfo(const QString &userId)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::createPrivateChat(const QString &userId)
+void TDLibWrapper::createPrivateChat(const QString &userId, const QString &extra)
 {
     LOG("Creating Private Chat");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "createPrivateChat");
     requestObject.insert("user_id", userId);
-    requestObject.insert(_EXTRA, "openDirectly"); //gets matched in qml
+    requestObject.insert(_EXTRA, extra); //"openDirectly"/"openAndSendStartToBot:[optional parameter]" gets matched in qml
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::createNewSecretChat(const QString &userId)
+void TDLibWrapper::createNewSecretChat(const QString &userId, const QString &extra)
 {
     LOG("Creating new secret chat");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "createNewSecretChat");
     requestObject.insert("user_id", userId);
-    requestObject.insert(_EXTRA, "openDirectly"); //gets matched in qml
+    requestObject.insert(_EXTRA, extra); //"openDirectly" gets matched in qml
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::createSupergroupChat(const QString &supergroupId)
+void TDLibWrapper::createSupergroupChat(const QString &supergroupId, const QString &extra)
 {
     LOG("Creating Supergroup Chat");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "createSupergroupChat");
     requestObject.insert("supergroup_id", supergroupId);
-    requestObject.insert(_EXTRA, "openDirectly"); //gets matched in qml
+    requestObject.insert(_EXTRA, extra); //"openDirectly" gets matched in qml
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::createBasicGroupChat(const QString &basicGroupId)
+void TDLibWrapper::createBasicGroupChat(const QString &basicGroupId, const QString &extra)
 {
     LOG("Creating Basic Group Chat");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "createBasicGroupChat");
     requestObject.insert("basic_group_id", basicGroupId);
-    requestObject.insert(_EXTRA, "openDirectly"); //gets matched in qml
+    requestObject.insert(_EXTRA, extra); //"openDirectly"/"openAndSend:*" gets matched in qml
     this->sendRequest(requestObject);
 }
 
@@ -929,12 +950,15 @@ void TDLibWrapper::getPollVoters(const QString &chatId, qlonglong messageId, int
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::searchPublicChat(const QString &userName)
+void TDLibWrapper::searchPublicChat(const QString &userName, bool doOpenOnFound)
 {
     LOG("Search public chat" << userName);
-    this->activeChatSearchName = userName;
+    if(doOpenOnFound) {
+        this->activeChatSearchName = userName;
+    }
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "searchPublicChat");
+    requestObject.insert(_EXTRA, "searchPublicChat:"+userName);
     requestObject.insert(USERNAME, userName);
     this->sendRequest(requestObject);
 }
@@ -1072,6 +1096,53 @@ void TDLibWrapper::setChatDraftMessage(qlonglong chatId, qlonglong threadId, qlo
     draftMessage.insert("input_message_text", inputMessageContent);
 
     requestObject.insert("draft_message", draftMessage);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getInlineQueryResults(qlonglong botUserId, qlonglong chatId, const QVariantMap &userLocation, const QString &query, const QString &offset, const QString &extra)
+{
+
+    LOG("Get Inline Query Results" << chatId << query);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getInlineQueryResults");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("bot_user_id", botUserId);
+    if(!userLocation.isEmpty()) {
+        requestObject.insert("user_location", userLocation);
+    }
+    requestObject.insert("query", query);
+    requestObject.insert("offset", offset);
+    requestObject.insert(_EXTRA, extra);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::sendInlineQueryResultMessage(qlonglong chatId, qlonglong threadId, qlonglong replyToMessageId, const QString &queryId, const QString &resultId)
+{
+
+    LOG("Send Inline Query Result Message" << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "sendInlineQueryResultMessage");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("message_thread_id", threadId);
+    requestObject.insert("reply_to_message_id", replyToMessageId);
+    requestObject.insert("query_id", queryId);
+    requestObject.insert("result_id", resultId);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::sendBotStartMessage(qlonglong botUserId, qlonglong chatId, const QString &parameter, const QString &extra)
+{
+
+    LOG("Send Bot Start Message" << botUserId << chatId << parameter << extra);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "sendBotStartMessage");
+    requestObject.insert("bot_user_id", botUserId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("parameter", parameter);
+    requestObject.insert(_EXTRA, extra);
+
     this->sendRequest(requestObject);
 }
 
@@ -1266,6 +1337,28 @@ void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationS
         this->setInitialParameters();
         this->authorizationState = AuthorizationState::WaitTdlibParameters;
     }
+    if (authorizationState == "authorizationStateLoggingOut") {
+        this->authorizationState = AuthorizationState::AuthorizationStateLoggingOut;
+    }
+    if (authorizationState == "authorizationStateClosed") {
+        this->authorizationState = AuthorizationState::AuthorizationStateClosed;
+        LOG("Reloading TD Lib...");
+        this->basicGroups.clear();
+        this->superGroups.clear();
+        this->allUsers.clear();
+        this->allUserNames.clear();
+        this->tdLibReceiver->setActive(false);
+        while (this->tdLibReceiver->isRunning()) {
+            QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
+        }
+        td_json_client_destroy(this->tdLibClient);
+        this->tdLibReceiver->terminate();
+        QDir appPath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+        appPath.removeRecursively();
+        this->tdLibClient = td_json_client_create();
+        initializeTDLibReciever();
+        this->isLoggingOut = false;
+    }
     this->authorizationStateData = authorizationStateData;
     emit authorizationStateChanged(this->authorizationState, this->authorizationStateData);
 
@@ -1349,12 +1442,12 @@ void TDLibWrapper::handleChatReceived(const QVariantMap &chatInformation)
         if (receivedChatType == ChatTypeBasicGroup) {
             LOG("Found basic group for active search" << this->activeChatSearchName);
             this->activeChatSearchName.clear();
-            this->createBasicGroupChat(chatType.value("basic_group_id").toString());
+            this->createBasicGroupChat(chatType.value("basic_group_id").toString(), "openDirectly");
         }
         if (receivedChatType == ChatTypeSupergroup) {
             LOG("Found supergroup for active search" << this->activeChatSearchName);
             this->activeChatSearchName.clear();
-            this->createSupergroupChat(chatType.value("supergroup_id").toString());
+            this->createSupergroupChat(chatType.value("supergroup_id").toString(), "openDirectly");
         }
     }
 }
@@ -1381,7 +1474,7 @@ void TDLibWrapper::handleBasicGroupUpdated(qlonglong groupId, const QVariantMap 
     if (!this->activeChatSearchName.isEmpty() && this->activeChatSearchName == groupInformation.value(USERNAME).toString()) {
         LOG("Found basic group for active search" << this->activeChatSearchName);
         this->activeChatSearchName.clear();
-        this->createBasicGroupChat(groupInformation.value(ID).toString());
+        this->createBasicGroupChat(groupInformation.value(ID).toString(), "openDirectly");
     }
 }
 
@@ -1391,7 +1484,7 @@ void TDLibWrapper::handleSuperGroupUpdated(qlonglong groupId, const QVariantMap 
     if (!this->activeChatSearchName.isEmpty() && this->activeChatSearchName == groupInformation.value(USERNAME).toString()) {
         LOG("Found supergroup for active search" << this->activeChatSearchName);
         this->activeChatSearchName.clear();
-        this->createSupergroupChat(groupInformation.value(ID).toString());
+        this->createSupergroupChat(groupInformation.value(ID).toString(), "openDirectly");
     }
 }
 

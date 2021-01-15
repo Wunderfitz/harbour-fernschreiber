@@ -18,9 +18,9 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import "../components"
 import "../js/functions.js" as Functions
 import "../js/twemoji.js" as Emoji
+import "../js/debug.js" as Debug
 
 Flickable {
     id: messageOverlayFlickable
@@ -124,6 +124,10 @@ Flickable {
             }
         }
 
+        MessageViaLabel {
+            message: overlayMessage
+        }
+
         Text {
             id: overlayForwardedInfoText
             width: parent.width
@@ -177,6 +181,16 @@ Flickable {
             id: overlayExtraContentLoader
             width: parent.width
             asynchronous: true
+        }
+
+        Loader {
+            id: replyMarkupLoader
+            property var myMessage: overlayMessage
+            width: parent.width
+            height: active ? (overlayMessage.reply_markup.rows.length * (Theme.itemSizeSmall + Theme.paddingSmall) - Theme.paddingSmall) : 0
+            asynchronous: true
+            active: !!overlayMessage.reply_markup && myMessage.reply_markup.rows
+            source: Qt.resolvedUrl("ReplyMarkupButtons.qml")
         }
 
         Timer {
