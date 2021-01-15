@@ -18,6 +18,7 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import "./messageContent"
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
 import "../js/debug.js" as Debug
@@ -40,7 +41,7 @@ ListItem {
         return existingMessage.id === messageId
     });
     readonly property bool isOwnMessage: page.myUserId === myMessage.sender.user_id
-    property string extraContentComponentName
+    property bool hasContentComponent
 
     highlighted: (down || isSelected) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
@@ -199,17 +200,16 @@ ListItem {
         repeat: false
         running: false
         onTriggered: {
-            if (typeof myMessage.content !== "undefined") {
-                if (messageListItem.extraContentComponentName !== "") {
-                    extraContentLoader.setSource(
-                                "../components/" +messageListItem.extraContentComponentName +".qml",
-                                {
-                                    messageListItem: messageListItem
-                                })
-                } else {
-                    if (typeof myMessage.content.web_page !== "undefined") { // only in messageText
-                        webPagePreviewLoader.active = true;
-                    }
+            if (messageListItem.hasContentComponent) {
+                var type = myMessage.content["@type"];
+                extraContentLoader.setSource(
+                            "../components/messageContent/" + type.charAt(0).toUpperCase() + type.substring(1) + ".qml",
+                            {
+                                messageListItem: messageListItem
+                            })
+            } else {
+                if (typeof myMessage.content.web_page !== "undefined") { // only in messageText
+                    webPagePreviewLoader.active = true;
                 }
             }
         }
@@ -435,7 +435,7 @@ ListItem {
                     id: extraContentLoader
                     width: parent.width
                     asynchronous: true
-                    height: item ? item.height : (messageListItem.extraContentComponentName !== "" ? chatView.getContentComponentHeight(messageListItem.extraContentComponentName, myMessage.content, width) : 0)
+                    height: item ? item.height : (messageListItem.hasContentComponent ? chatView.getContentComponentHeight(model.content_type, myMessage.content, width) : 0)
                 }
 
                 Binding {
