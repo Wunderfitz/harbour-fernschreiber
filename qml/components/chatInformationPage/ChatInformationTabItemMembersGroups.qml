@@ -92,7 +92,7 @@ ChatInformationTabItemBase {
             }
 
             onClicked: {
-                tdLibWrapper.createPrivateChat(user_id);
+                tdLibWrapper.createPrivateChat(user_id, "openDirectly");
             }
         }
         footer: Component {
@@ -162,7 +162,7 @@ ChatInformationTabItemBase {
         interval: 600
         property int fetchLimit: 50
         onTriggered: {
-            if(chatInformationPage.isSuperGroup && !chatInformationPage.isChannel && (chatInformationPage.groupInformation.member_count > membersView.count)) { //
+            if(chatInformationPage.isSuperGroup && (!chatInformationPage.isChannel || chatInformationPage.canGetMembers) && (chatInformationPage.groupInformation.member_count > membersView.count)) {
                 tabBase.loading = true
                 tdLibWrapper.getSupergroupMembers(chatInformationPage.chatPartnerGroupId, fetchLimit, pageContent.membersList.count);
                 fetchLimit = 200

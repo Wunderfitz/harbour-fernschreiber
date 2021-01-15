@@ -275,11 +275,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Desanclar charla</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Anclar charla</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -492,7 +492,7 @@
     </message>
     <message>
         <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiar documento a Downloads</translation>
     </message>
 </context>
 <context>
@@ -821,6 +821,28 @@
         <comment>myself</comment>
         <translation>ha quitado %1 de charla</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -904,7 +926,7 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation>Usa el formato internacional %1</translation>
+        <translation>%1</translation>
     </message>
     <message>
         <source>About Fernschreiber</source>
@@ -971,6 +993,19 @@
         <source>You</source>
         <translation>Usted</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
@@ -981,6 +1016,14 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>Este mensaje fue reenviado. Autor original: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessageViaLabel</name>
+    <message>
+        <source>via %1</source>
+        <comment>message posted via bot user</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1430,10 +1473,22 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modo solo en línea</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Deshabilita el almacenamiento en caché sin conexión. Algunas funciones pueden estar limitadas o ausentes en este modo. Se requiere reiniciar Fernschreiber para su efecto.</translation>
+    </message>
+    <message>
+        <source>Privacy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow sending Location to inline bots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1647,7 +1702,7 @@
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>me añadí a esta charla</translation>
+        <translation>se agregó a esta charla</translation>
     </message>
     <message>
         <source>left this chat</source>
@@ -1902,6 +1957,22 @@
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
         <translation>ha añadido %1  de la charla</translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

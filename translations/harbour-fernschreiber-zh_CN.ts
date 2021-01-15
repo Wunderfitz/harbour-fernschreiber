@@ -275,11 +275,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>取消置顶对话</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>置顶对话</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -415,7 +415,7 @@
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation>正在搜索对话内容…</translation>
+        <translation>搜索对话内容…</translation>
     </message>
     <message>
         <source>Location: Obtaining position...</source>
@@ -441,8 +441,7 @@
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation>未读
-消息</translation>
+        <translation>未读消息</translation>
     </message>
     <message>
         <source>unread messages</source>
@@ -493,7 +492,7 @@
     </message>
     <message>
         <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>复制文档到下载</translation>
     </message>
 </context>
 <context>
@@ -822,6 +821,28 @@
         <comment>myself</comment>
         <translation>已从此对话移除 %1</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -972,6 +993,19 @@
         <source>You</source>
         <translation>你</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
@@ -982,6 +1016,14 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>此消息为转发消息，原作者: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessageViaLabel</name>
+    <message>
+        <source>via %1</source>
+        <comment>message posted via bot user</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1419,7 +1461,7 @@
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation>启用储存加速器</translation>
+        <translation>开启储存加速器</translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
@@ -1431,10 +1473,22 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>开启仅在线模式</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>禁用离线缓存。某些特定功能会在此模式中受限或消失。切换模式需要重启 fernschreiber 才能生效。</translation>
+    </message>
+    <message>
+        <source>Privacy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow sending Location to inline bots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1903,6 +1957,22 @@
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
         <translation>已从此对话移除 %1</translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -29,6 +29,7 @@ namespace {
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
     const QString KEY_STORAGE_OPTIMIZER("storageOptimizer");
+    const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
     const QString KEY_ONLINE_ONLY_MODE("onlineOnlyMode");
 }
@@ -146,6 +147,21 @@ void AppSettings::setStorageOptimizer(bool enable)
         LOG(KEY_STORAGE_OPTIMIZER << enable);
         settings.setValue(KEY_STORAGE_OPTIMIZER, enable);
         emit storageOptimizerChanged();
+    }
+}
+
+bool AppSettings::allowInlineBotLocationAccess() const
+{
+    return settings.value(KEY_INLINEBOT_LOCATION_ACCESS, false).toBool();
+}
+
+void AppSettings::setAllowInlineBotLocationAccess(bool enable)
+{
+
+    if (allowInlineBotLocationAccess() != enable) {
+        LOG(KEY_INLINEBOT_LOCATION_ACCESS << enable);
+        settings.setValue(KEY_INLINEBOT_LOCATION_ACCESS, enable);
+        emit allowInlineBotLocationAccessChanged();
     }
 }
 

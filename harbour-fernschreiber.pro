@@ -45,12 +45,15 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/BackgroundImage.qml \
     qml/components/ChatListViewItem.qml \
     qml/components/DocumentPreview.qml \
+    qml/components/GamePreview.qml \
     qml/components/ImagePreview.qml \
     qml/components/InReplyToRow.qml \
+    qml/components/InlineQuery.qml \
     qml/components/LocationPreview.qml \
     qml/components/MessageListViewItem.qml \
     qml/components/MessageListViewItemSimple.qml \
     qml/components/MessageOverlayFlickable.qml \
+    qml/components/MessageViaLabel.qml \
     qml/components/MultilineEmojiLabel.qml \
     qml/components/PinnedMessageItem.qml \
     qml/components/PollPreview.qml \
@@ -72,6 +75,20 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/chatInformationPage/ChatInformationTextItem.qml \
     qml/components/chatInformationPage/EditGroupChatPermissionsColumn.qml \
     qml/components/chatInformationPage/EditSuperGroupSlowModeColumn.qml \
+    qml/components/inlineQueryResults/InlineQueryResult.qml \
+    qml/components/inlineQueryResults/InlineQueryResultAnimation.qml \
+    qml/components/inlineQueryResults/InlineQueryResultArticle.qml \
+    qml/components/inlineQueryResults/InlineQueryResultAudio.qml \
+    qml/components/inlineQueryResults/InlineQueryResultContact.qml \
+    qml/components/inlineQueryResults/InlineQueryResultDefaultBase.qml \
+    qml/components/inlineQueryResults/InlineQueryResultDocument.qml \
+    qml/components/inlineQueryResults/InlineQueryResultGame.qml \
+    qml/components/inlineQueryResults/InlineQueryResultLocation.qml \
+    qml/components/inlineQueryResults/InlineQueryResultPhoto.qml \
+    qml/components/inlineQueryResults/InlineQueryResultSticker.qml \
+    qml/components/inlineQueryResults/InlineQueryResultVenue.qml \
+    qml/components/inlineQueryResults/InlineQueryResultVideo.qml \
+    qml/components/inlineQueryResults/InlineQueryResultVoiceNote.qml \
     qml/js/debug.js \
     qml/js/functions.js \
     qml/pages/ChatInformationPage.qml \

@@ -45,6 +45,7 @@ Page {
     property bool isSuperGroup: false;
     property bool isChannel: false;
     property var chatPartnerInformation;
+    property var botInformation;
     property var chatGroupInformation;
     property int chatOnlineMemberCount: 0;
     property var emojiProposals;
@@ -59,6 +60,8 @@ Page {
     property var selectedMessages: []
     readonly property bool isSelecting: selectedMessages.length > 0
     readonly property bool canSendMessages: hasSendPrivilege("can_send_messages")
+    property bool doSendBotStartMessage
+    property string sendBotStartMessageParameter
 
     states: [
         State {
@@ -154,6 +157,9 @@ Page {
             if (isSecretChat) {
                 tdLibWrapper.getSecretChat(chatInformation.type.secret_chat_id);
             }
+            if(chatPartnerInformation.type["@type"] === "userTypeBot") {
+                tdLibWrapper.getUserFullInfo(chatPartnerInformation.id)
+            }
         }
         else if (isBasicGroup) {
             chatGroupInformation = tdLibWrapper.getBasicGroup(chatInformation.type.basic_group_id);
@@ -172,6 +178,7 @@ Page {
         }
         tdLibWrapper.getChatPinnedMessage(chatInformation.id);
         tdLibWrapper.toggleChatIsMarkedAsUnread(chatInformation.id, false);
+
     }
 
     function getMessageStatusText(message, listItemIndex, lastReadSentIndex, useElapsed) {
@@ -207,14 +214,13 @@ Page {
     }
 
     function clearAttachmentPreviewRow() {
-        attachmentPreviewRow.visible = false;
         attachmentPreviewRow.isPicture = false;
         attachmentPreviewRow.isVideo = false;
         attachmentPreviewRow.isDocument = false;
         attachmentPreviewRow.isVoiceNote = false;
         attachmentPreviewRow.isLocation = false;
-        attachmentPreviewRow.fileProperties = {};
-        attachmentPreviewRow.locationData = {};
+        attachmentPreviewRow.fileProperties = null;
+        attachmentPreviewRow.locationData = null;
         attachmentPreviewRow.attachmentDescription = "";
         fernschreiberUtils.stopGeoLocationUpdates();
     }
@@ -286,6 +292,10 @@ Page {
     }
 
     function handleMessageTextReplacement(text, cursorPosition) {
+        if(!newMessageTextField.focus) {
+            return;
+        }
+
         var wordBoundaries = getWordBoundaries(text, cursorPosition);
 
         var currentWord = text.substring(wordBoundaries.beginIndex, wordBoundaries.endIndex);
@@ -300,6 +310,7 @@ Page {
         } else {
             knownUsersRepeater.model = undefined;
         }
+
     }
 
     function replaceMessageText(text, cursorPosition, newText) {
@@ -310,6 +321,19 @@ Page {
         newMessageTextField.cursorPosition = newIndex;
         lostFocusTimer.start();
     }
+
+    function setMessageText(text, doSend) {
+        if(doSend) {
+            tdLibWrapper.sendTextMessage(chatInformation.id, text, "0");
+        }
+        else {
+            newMessageTextField.text = text
+            newMessageTextField.cursorPosition = text.length
+            lostFocusTimer.start();
+        }
+
+    }
+
     function forwardMessages(fromChatId, messageIds) {
         forwardMessagesTimer.fromChatId = fromChatId;
         forwardMessagesTimer.messageIds = messageIds;
@@ -402,6 +426,17 @@ Page {
         switch(status) {
         case PageStatus.Activating:
             tdLibWrapper.openChat(chatInformation.id);
+            if(!chatPage.isInitialized) {
+                if(chatInformation.draft_message) {
+                    if(chatInformation.draft_message && chatInformation.draft_message.input_message_text) {
+                        newMessageTextField.text = chatInformation.draft_message.input_message_text.text.text;
+                        if(chatInformation.draft_message.reply_to_message_id) {
+                            tdLibWrapper.getMessage(chatInformation.id, chatInformation.draft_message.reply_to_message_id);
+                        }
+                    }
+                }
+            }
+
             break;
         case PageStatus.Active:
             if (!chatPage.isInitialized) {
@@ -410,13 +445,8 @@ Page {
                 pageStack.pushAttached(Qt.resolvedUrl("ChatInformationPage.qml"), { "chatInformation" : chatInformation, "privateChatUserInformation": chatPartnerInformation, "groupInformation": chatGroupInformation, "chatOnlineMemberCount": chatOnlineMemberCount});
                 chatPage.isInitialized = true;
 
-                if(chatInformation.draft_message) {
-                    if(chatInformation.draft_message && chatInformation.draft_message.input_message_text) {
-                        newMessageTextField.text = chatInformation.draft_message.input_message_text.text.text;
-                        if(chatInformation.draft_message.reply_to_message_id) {
-                            tdLibWrapper.getMessage(chatInformation.id, chatInformation.draft_message.reply_to_message_id);
-                        }
-                    }
+                if(doSendBotStartMessage) {
+                    tdLibWrapper.sendBotStartMessage(chatInformation.id, chatInformation.id, sendBotStartMessageParameter, "")
                 }
             }
             break;
@@ -492,6 +522,25 @@ Page {
                 chatPage.secretChatDetails = secretChat;
                 updateChatPartnerStatusText();
                 chatPage.isSecretChatReady = chatPage.secretChatDetails.state["@type"] === "secretChatStateReady";
+            }
+        }
+        onCallbackQueryAnswer: {
+            if(text.length > 0) { // ignore bool "alert", just show as notification:
+                appNotification.show(Emoji.emojify(text, Theme.fontSizeSmall));
+            }
+            if(url.length > 0) {
+                Functions.handleLink(url);
+            }
+        }
+        onUserFullInfoReceived: {
+            if(userFullInfo["@extra"] === chatPartnerInformation.id.toString()) {
+                chatPage.botInformation = userFullInfo;
+            }
+        }
+        onUserFullInfoUpdated: {
+
+            if(userId === chatPartnerInformation.id) {
+                chatPage.botInformation = userFullInfo;
             }
         }
     }
@@ -895,7 +944,7 @@ Page {
                     id: chatView
 
                     visible: !blurred
-                    property bool blurred: messageOverlayLoader.item || stickerPickerLoader.item || voiceNoteOverlayLoader.item
+                    property bool blurred: messageOverlayLoader.item || stickerPickerLoader.item || voiceNoteOverlayLoader.item || inlineQuery.hasOverlay
 
                     anchors.fill: parent
                     opacity: chatPage.loading ? 0 : 1
@@ -975,6 +1024,38 @@ Page {
                     }
 
                     model: chatModel
+                    header: Component {
+                        Loader {
+                            active: !!chatPage.botInformation
+                                    && !!chatPage.botInformation.bot_info && chatPage.botInformation.bot_info.description.length > 0
+                            asynchronous: true
+                            width: chatView.width
+                            sourceComponent: Component {
+                                Label {
+                                    id: botInfoLabel
+                                    topPadding: Theme.paddingLarge
+                                    bottomPadding: Theme.paddingLarge
+                                    leftPadding: Theme.horizontalPageMargin
+                                    rightPadding: Theme.horizontalPageMargin
+                                    text: Emoji.emojify(chatPage.botInformation.bot_info.description, font.pixelSize)
+                                    font.pixelSize: Theme.fontSizeSmall
+                                    color: Theme.highlightColor
+                                    wrapMode: Text.Wrap
+                                    textFormat: Text.StyledText
+                                    horizontalAlignment: Text.AlignHCenter
+                                    onLinkActivated: {
+                                        var chatCommand = Functions.handleLink(link);
+                                        if(chatCommand) {
+                                            tdLibWrapper.sendTextMessage(chatInformation.id, chatCommand);
+                                        }
+                                    }
+                                    linkColor: Theme.primaryColor
+                                    visible: (text !== "")
+                                }
+                            }
+                        }
+                    }
+
                     readonly property var contentComponentNames: ({
                                                               messageSticker: "StickerPreview",
                                                               messagePhoto: "ImagePreview",
@@ -986,7 +1067,8 @@ Page {
                                                               messageDocument: "DocumentPreview",
                                                               messageLocation: "LocationPreview",
                                                               messageVenue: "LocationPreview",
-                                                              messagePoll: "PollPreview"
+                                                              messagePoll: "PollPreview",
+                                                              messageGame: "GamePreview"
                                                           })
                     function getContentComponentHeight(componentName, content, parentWidth) {
                         switch(componentName) {
@@ -1002,6 +1084,8 @@ Page {
                             return Theme.itemSizeSmall;
                         case "PollPreview":
                             return Theme.itemSizeSmall * (4 + content.poll.options);
+                        case "GamePreview":
+                            return parentWidth * 0.66666666 + Theme.itemSizeLarge; // 2 / 3;
                         }
                     }
 
@@ -1014,6 +1098,7 @@ Page {
                                                                    "messageChatJoinByLink",
                                                                    "messageChatSetTtl",
                                                                    "messageChatUpgradeFrom",
+                                                                   "messageGameScore",
                                                                    "messageChatUpgradeTo",
                                                                    "messageCustomServiceAction",
                                                                    "messagePinMessage",
@@ -1168,12 +1253,17 @@ Page {
                     }
                 }
 
+                InlineQuery {
+                    id: inlineQuery
+                    textField: newMessageTextField
+                    chatId: chatInformation.id
+                }
             }
 
             Column {
                 id: newMessageColumn
                 spacing: Theme.paddingSmall
-                topPadding: Theme.paddingSmall
+                topPadding: Theme.paddingSmall + inlineQuery.buttonPadding
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: height > 0
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
@@ -1212,8 +1302,8 @@ Page {
                     property bool isNeeded: false
                     width: chatPage.width
                     x: -Theme.horizontalPageMargin
-                    height: isNeeded ? attachmentOptionsRow.height : 0
-                    Behavior on height { SmoothedAnimation { duration:  200 } }
+                    height: isNeeded && !inlineQuery.userNameIsValid ? attachmentOptionsRow.height : 0
+                    Behavior on height { SmoothedAnimation { duration: 200 } }
                     visible: height > 0
                     contentHeight: attachmentOptionsRow.height
                     contentWidth: Math.max(width, attachmentOptionsRow.width)
@@ -1252,7 +1342,6 @@ Page {
                                     Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
                                     attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
                                     attachmentPreviewRow.isPicture = true;
-                                    attachmentPreviewRow.visible = true;
                                     controlSendButton();
                                 })
                             }
@@ -1269,7 +1358,6 @@ Page {
                                     Debug.log("Selected video: ", picker.selectedContentProperties.filePath );
                                     attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
                                     attachmentPreviewRow.isVideo = true;
-                                    attachmentPreviewRow.visible = true;
                                     controlSendButton();
                                 })
                             }
@@ -1299,7 +1387,6 @@ Page {
                                     Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
                                     attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
                                     attachmentPreviewRow.isDocument = true;
-                                    attachmentPreviewRow.visible = true;
                                     controlSendButton();
                                 })
                             }
@@ -1337,7 +1424,6 @@ Page {
                                 attachmentOptionsFlickable.isNeeded = false;
                                 attachmentPreviewRow.isLocation = true;
                                 attachmentPreviewRow.attachmentDescription = qsTr("Location: Obtaining position...");
-                                attachmentPreviewRow.visible = true;
                                 controlSendButton();
                             }
                         }
@@ -1348,7 +1434,7 @@ Page {
 
                 Row {
                     id: attachmentPreviewRow
-                    visible: false
+                    visible: (!!locationData || !!fileProperties) && !inlineQuery.userNameIsValid
                     spacing: Theme.paddingMedium
                     width: parent.width
                     layoutDirection: Qt.RightToLeft
@@ -1359,8 +1445,8 @@ Page {
                     property bool isDocument: false;
                     property bool isVoiceNote: false;
                     property bool isLocation: false;
-                    property var locationData: ({});
-                    property var fileProperties:({});
+                    property var locationData: null;
+                    property var fileProperties: null;
                     property string attachmentDescription: "";
 
                     Connections {
@@ -1390,15 +1476,15 @@ Page {
                         sourceSize.height: height
 
                         fillMode: Thumbnail.PreserveAspectCrop
-                        mimeType: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.mimeType || "" : ""
-                        source: typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.url || "" : ""
+                        mimeType: !!attachmentPreviewRow.fileProperties ? attachmentPreviewRow.fileProperties.mimeType || "" : ""
+                        source: !!attachmentPreviewRow.fileProperties ? attachmentPreviewRow.fileProperties.url || "" : ""
                         visible: attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo
                     }
 
                     Label {
                         id: attachmentPreviewText
                         font.pixelSize: Theme.fontSizeSmall
-                        text: ( attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation ) ? attachmentPreviewRow.attachmentDescription : ( typeof attachmentPreviewRow.fileProperties !== "undefined" ? attachmentPreviewRow.fileProperties.fileName || "" : "" );
+                        text: ( attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation ) ? attachmentPreviewRow.attachmentDescription : ( !!attachmentPreviewRow.fileProperties ? attachmentPreviewRow.fileProperties.fileName || "" : "" );
                         anchors.verticalCenter: parent.verticalCenter
 
                         maximumLineCount: 1
@@ -1491,9 +1577,11 @@ Page {
                     id: atMentionColumn
                     width: parent.width
                     anchors.horizontalCenter: parent.horizontalCenter
-                    visible: knownUsersRepeater.count > 0 ? true : false
+                    visible: opacity > 0
                     opacity: knownUsersRepeater.count > 0 ? 1 : 0
                     Behavior on opacity { NumberAnimation {} }
+                    height: knownUsersRepeater.count > 0 ? childrenRect.height : 0
+                    Behavior on height { SmoothedAnimation { duration: 200 } }
                     spacing: Theme.paddingMedium
 
                     Flickable {
@@ -1598,7 +1686,7 @@ Page {
 
                     TextArea {
                         id: newMessageTextField
-                        width: parent.width - attachmentIconButton.width - (newMessageSendButton.visible ? newMessageSendButton.width : 0)
+                        width: parent.width - (attachmentIconButton.visible ? attachmentIconButton.width : 0) - (newMessageSendButton.visible ? newMessageSendButton.width : 0) - (cancelInlineQueryButton.visible ? cancelInlineQueryButton.width : 0)
                         height: Math.min(chatContainer.height / 3, implicitHeight)
                         anchors.verticalCenter: parent.verticalCenter
                         font.pixelSize: Theme.fontSizeSmall
@@ -1617,7 +1705,7 @@ Page {
                             }
                         }
 
-                        EnterKey.enabled: !appSettings.sendByEnter || text.length
+                        EnterKey.enabled: !inlineQuery.userNameIsValid && (!appSettings.sendByEnter || text.length)
                         EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-chat" : "image://theme/icon-m-enter"
 
                         onTextChanged: {
@@ -1632,6 +1720,7 @@ Page {
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
                         enabled: !attachmentPreviewRow.visible
+                        visible: !inlineQuery.userNameIsValid
                         onClicked: {
                             if (attachmentOptionsFlickable.isNeeded) {
                                 attachmentOptionsFlickable.isNeeded = false;
@@ -1648,7 +1737,7 @@ Page {
                         icon.source: "image://theme/icon-m-chat"
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
-                        visible: !appSettings.sendByEnter || attachmentPreviewRow.visible
+                        visible: !inlineQuery.userNameIsValid && (!appSettings.sendByEnter || attachmentPreviewRow.visible)
                         enabled: false
                         onClicked: {
                             sendMessage();
@@ -1658,6 +1747,42 @@ Page {
                             }
                         }
                     }
+
+                    Item {
+                        width: cancelInlineQueryButton.width
+                        height: cancelInlineQueryButton.height
+                        visible: inlineQuery.userNameIsValid
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: Theme.paddingSmall
+
+                        IconButton {
+                            id: cancelInlineQueryButton
+                            icon.source: "image://theme/icon-m-cancel"
+                            visible: parent.visible
+                            opacity: inlineQuery.isLoading ? 0.2 : 1
+                            Behavior on opacity { FadeAnimation {} }
+                            onClicked: {
+                                if(inlineQuery.query !== "") {
+                                    newMessageTextField.text = "@" + inlineQuery.userName + " "
+                                    newMessageTextField.cursorPosition = newMessageTextField.text.length
+                                    lostFocusTimer.start();
+                                } else {
+                                    newMessageTextField.text = ""
+                                }
+                            }
+                            onPressAndHold: {
+                                newMessageTextField.text = ""
+                            }
+                        }
+
+                        BusyIndicator {
+                            size: BusyIndicatorSize.Small
+                            anchors.centerIn: parent
+                            running: inlineQuery.isLoading
+                        }
+                    }
+
+
                 }
             }
         }

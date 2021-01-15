@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Открыть Telegram Database Library на GitHub</translation>
+        <translation>Открыть TDLib на GitHub</translation>
     </message>
     <message>
         <source>About Telegram</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Этот продукт использует Telegram API, но не одобрен или сертифицирован Telegram.</translation>
+        <translation>Этот продукт использует Telegram API, но не одобрен или сертифицирован Telegram FZ-LLC</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
@@ -281,11 +281,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открепить чат</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Закрепить чат</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -512,7 +512,7 @@
     </message>
     <message>
         <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сохранить в Загрузках</translation>
     </message>
 </context>
 <context>
@@ -841,6 +841,32 @@
         <comment>myself</comment>
         <translation type="unfinished">%1 удалены из чата</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -928,7 +954,7 @@
     </message>
     <message>
         <source>About Fernschreiber</source>
-        <translation>О Фэрншрайбе</translation>
+        <translation>О программе</translation>
     </message>
 </context>
 <context>
@@ -991,6 +1017,23 @@
         <source>You</source>
         <translation>Вы</translation>
     </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points in %2</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
@@ -1001,6 +1044,14 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>Это сообщение было переадресовано. Первоначальный автор: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessageViaLabel</name>
+    <message>
+        <source>via %1</source>
+        <comment>message posted via bot user</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1039,7 +1090,7 @@
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation>Сихронизация контактов с Телеграм</translation>
+        <translation>Синхронизировать с Телеграм</translation>
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
@@ -1065,7 +1116,7 @@
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>О программе «Fernschreiber»</translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
@@ -1472,10 +1523,22 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Включить режим "только в онлайне"</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation type="unfinished">При нём не будет использоваться автономное кэширование и некоторые функции могут быть ограничены или отсутствовать. Изменения вступят в силу после перезапуска Fernschreiber.</translation>
+    </message>
+    <message>
+        <source>Privacy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow sending Location to inline bots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1541,7 +1604,7 @@
     </message>
     <message>
         <source>Ready</source>
-        <translation>Готов</translation>
+        <translation>Ожидание</translation>
     </message>
 </context>
 <context>
@@ -1944,6 +2007,24 @@
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
         <translation type="unfinished">%1 удалены из чата</translation>
+    </message>
+    <message numerus="yes">
+        <source>scored %Ln points</source>
+        <comment>myself</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent a game</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

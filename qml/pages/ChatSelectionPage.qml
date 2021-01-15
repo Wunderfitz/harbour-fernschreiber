@@ -43,6 +43,9 @@ Dialog {
         case "forwardMessages":
             acceptDestinationInstance.forwardMessages(payload.fromChatId, payload.messageIds)
             break;
+        case "fillTextArea": // ReplyMarkupButtons: inlineKeyboardButtonTypeSwitchInline
+            acceptDestinationInstance.setMessageText(payload.text)
+            break;
         // future uses of chat selection can be processed here
         }
     }
@@ -75,7 +78,7 @@ Dialog {
                     QtObject {
                         property bool visible: false
                         Component.onCompleted: {
-                            if(chatSelectionPage.state === "forwardMessages") {
+                            if(chatSelectionPage.state === "forwardMessages" || chatSelectionPage.state === "fillTextArea" ) {
                                 var chatType = display.type['@type']
                                 var chatGroupInformation
                                 if(chatType === "chatTypePrivate" || chatType === "chatTypeSecret") {
@@ -126,6 +129,7 @@ Dialog {
                 var chat = tdLibWrapper.getChat(display.id);
                 switch(chatSelectionPage.state) {
                 case "forwardMessages":
+                case "fillTextArea":
                     chatSelectionPage.acceptDestinationProperties = { "chatInformation" :  chat};
                     chatSelectionPage.acceptDestination = Qt.resolvedUrl("../pages/ChatPage.qml");
                     break;

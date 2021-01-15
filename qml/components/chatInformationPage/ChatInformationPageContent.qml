@@ -232,7 +232,7 @@ SilicaFlickable {
         MenuItem {
             visible: chatInformationPage.isPrivateChat
             onClicked: {
-                tdLibWrapper.createNewSecretChat(chatInformationPage.chatPartnerGroupId);
+                tdLibWrapper.createNewSecretChat(chatInformationPage.chatPartnerGroupId, "openDirectly");
             }
             text: qsTr("New Secret Chat")
         }
