@@ -19,8 +19,9 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import QtMultimedia 5.6
-import "../js/functions.js" as Functions
-import "../js/debug.js" as Debug
+import "../"
+import "../../js/functions.js" as Functions
+import "../../js/debug.js" as Debug
 
 MessageContentBase {
     id: videoMessageComponent
@@ -208,7 +209,7 @@ MessageContentBase {
                     height: Theme.iconSizeLarge
                     icon {
                         asynchronous: true
-                        source: "../../images/icon-l-fullscreen.svg"
+                        source: "../../../images/icon-l-fullscreen.svg"
                         sourceSize {
                             width: Theme.iconSizeLarge
                             height: Theme.iconSizeLarge
@@ -217,7 +218,7 @@ MessageContentBase {
                     highlighted: videoMessageComponent.highlighted || down
                     visible: ( placeholderImage.status === Image.Ready && !videoMessageComponent.fullscreen ) ? true : false
                     onClicked: {
-                        pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
+                        pageStack.push(Qt.resolvedUrl("../../pages/VideoPage.qml"), {"videoData": videoData});
                     }
                 }
             }
@@ -455,7 +456,7 @@ MessageContentBase {
                             highlighted: videoMessageComponent.highlighted || down
                             icon {
                                 asynchronous: true
-                                source: "../../images/icon-l-fullscreen.svg"
+                                source: "../../../images/icon-l-fullscreen.svg"
                                 sourceSize {
                                     width: Theme.iconSizeLarge
                                     height: Theme.iconSizeLarge
@@ -463,7 +464,7 @@ MessageContentBase {
                             }
                             visible: ( videoComponentLoader.active && messageVideo.playbackState === MediaPlayer.PausedState ) ? true : false
                             onClicked: {
-                                pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
+                                pageStack.push(Qt.resolvedUrl("../../pages/VideoPage.qml"), {"videoData": videoData});
                             }
                         }
                     }

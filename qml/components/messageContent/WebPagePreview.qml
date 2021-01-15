@@ -133,7 +133,7 @@ Column {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), { "photoData" : webPageData.photo, "pictureFileInformation" : picture.fileInformation });
+                    pageStack.push(Qt.resolvedUrl("../../pages/ImagePage.qml"), { "photoData" : webPageData.photo, "pictureFileInformation" : picture.fileInformation });
                 }
             }
         }

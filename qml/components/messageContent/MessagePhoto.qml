@@ -29,7 +29,7 @@ MessageContentBase {
     height: singleImage.visible ? Math.min(defaultHeight, singleImage.bestHeight + Theme.paddingSmall) : defaultHeight
 
     onClicked: {
-        pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {
+        pageStack.push(Qt.resolvedUrl("../../pages/ImagePage.qml"), {
             "photoData" : imagePreviewItem.rawMessage.content.photo
         })
     }
