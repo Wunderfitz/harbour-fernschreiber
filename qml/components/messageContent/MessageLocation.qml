@@ -51,17 +51,16 @@ MessageContentBase {
     Connections {
         target: tdLibWrapper
         onFileUpdated: {
-            if(fileInformation["@extra"] !== imagePreviewItem.fileExtra) {
+            if(fileInformation["@extra"] !== imagePreviewItem.fileExtra && (!imagePreviewItem.pictureFileInformation || imagePreviewItem.pictureFileInformation.id !== fileInformation.id)) {
                 return;
             }
-
-            if(!imagePreviewItem.pictureFileInformation) {
-                imagePreviewItem.pictureFileInformation = fileInformation;
-                tdLibWrapper.downloadFile(imagePreviewItem.pictureFileInformation.id);
-            } else if(imagePreviewItem.pictureFileInformation && fileInformation.id === imagePreviewItem.pictureFileInformation.id) {
-                imagePreviewItem.pictureFileInformation = fileInformation;
+            if(fileInformation.local.is_downloading_completed) {
                 singleImage.source = fileInformation.local.path;
+            } else if(fileInformation.local.can_be_downloaded && !fileInformation.local.is_downloading_active) {
+                tdLibWrapper.downloadFile(fileInformation.id);
             }
+
+            imagePreviewItem.pictureFileInformation = fileInformation;
         }
     }
 
