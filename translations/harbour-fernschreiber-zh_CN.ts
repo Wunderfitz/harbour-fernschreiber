@@ -481,21 +481,6 @@
     </message>
 </context>
 <context>
-    <name>DocumentPreview</name>
-    <message>
-        <source>Download Document</source>
-        <translation>下载文档</translation>
-    </message>
-    <message>
-        <source>Open Document</source>
-        <translation>打开文档</translation>
-    </message>
-    <message>
-        <source>Copy Document to Downloads</source>
-        <translation>复制文档到下载</translation>
-    </message>
-</context>
-<context>
     <name>EditGroupChatPermissionsColumn</name>
     <message>
         <source>Group Member Permissions</source>
@@ -934,10 +919,18 @@
     </message>
 </context>
 <context>
-    <name>LocationPreview</name>
+    <name>MessageDocument</name>
     <message>
-        <source>Install Pure Maps to inspect this location.</source>
-        <translation>请安装 Pure Maps 以插入位置</translation>
+        <source>Download Document</source>
+        <translation type="unfinished">下载文档</translation>
+    </message>
+    <message>
+        <source>Open Document</source>
+        <translation type="unfinished">打开文档</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished">复制文档到下载</translation>
     </message>
 </context>
 <context>
@@ -1008,6 +1001,13 @@
     </message>
 </context>
 <context>
+    <name>MessageLocation</name>
+    <message>
+        <source>Install Pure Maps to inspect this location.</source>
+        <translation type="unfinished">请安装 Pure Maps 以插入位置</translation>
+    </message>
+</context>
+<context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
@@ -1016,6 +1016,39 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>此消息为转发消息，原作者: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePoll</name>
+    <message>
+        <source>Close Poll</source>
+        <translation type="unfinished">关闭投票</translation>
+    </message>
+    <message>
+        <source>Reset Answer</source>
+        <translation type="unfinished">重设回答</translation>
+    </message>
+    <message>
+        <source>Final Result:</source>
+        <translation type="unfinished">最终结果:</translation>
+    </message>
+    <message>
+        <source>Multiple Answers are allowed.</source>
+        <translation type="unfinished">允许多个回答。</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln%</source>
+        <comment>% of votes for option</comment>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln vote(s) total</source>
+        <comment>number of total votes</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1253,39 +1286,6 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Quiz 拥有一个正确选项，参与者无法撤销回答。</translation>
-    </message>
-</context>
-<context>
-    <name>PollPreview</name>
-    <message numerus="yes">
-        <source>%Ln%</source>
-        <comment>% of votes for option</comment>
-        <translation>
-            <numerusform>%Ln%</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Final Result:</source>
-        <translation>最终结果:</translation>
-    </message>
-    <message>
-        <source>Multiple Answers are allowed.</source>
-        <translation>允许多个回答。</translation>
-    </message>
-    <message numerus="yes">
-        <source>%Ln vote(s) total</source>
-        <comment>number of total votes</comment>
-        <translation>
-            <numerusform>总计 %Ln 次回答</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Close Poll</source>
-        <translation>关闭投票</translation>
-    </message>
-    <message>
-        <source>Reset Answer</source>
-        <translation>重设回答</translation>
     </message>
 </context>
 <context>

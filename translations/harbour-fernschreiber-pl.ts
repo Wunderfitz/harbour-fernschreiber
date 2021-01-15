@@ -501,21 +501,6 @@
     </message>
 </context>
 <context>
-    <name>DocumentPreview</name>
-    <message>
-        <source>Download Document</source>
-        <translation>Pobierz dokument</translation>
-    </message>
-    <message>
-        <source>Open Document</source>
-        <translation>Otwórz dokument</translation>
-    </message>
-    <message>
-        <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>EditGroupChatPermissionsColumn</name>
     <message>
         <source>Group Member Permissions</source>
@@ -958,10 +943,18 @@
     </message>
 </context>
 <context>
-    <name>LocationPreview</name>
+    <name>MessageDocument</name>
     <message>
-        <source>Install Pure Maps to inspect this location.</source>
-        <translation>Zainstaluj Pure Maps, aby sprawdzić tę lokalizację.</translation>
+        <source>Download Document</source>
+        <translation type="unfinished">Pobierz dokument</translation>
+    </message>
+    <message>
+        <source>Open Document</source>
+        <translation type="unfinished">Otwórz dokument</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1036,6 +1029,13 @@
     </message>
 </context>
 <context>
+    <name>MessageLocation</name>
+    <message>
+        <source>Install Pure Maps to inspect this location.</source>
+        <translation type="unfinished">Zainstaluj Pure Maps, aby sprawdzić tę lokalizację.</translation>
+    </message>
+</context>
+<context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
@@ -1044,6 +1044,43 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>Ta wiadomość została przekazana. Oryginalny autor: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePoll</name>
+    <message>
+        <source>Close Poll</source>
+        <translation type="unfinished">Zamknij ankietę</translation>
+    </message>
+    <message>
+        <source>Reset Answer</source>
+        <translation type="unfinished">Resetuj odpowiedź</translation>
+    </message>
+    <message>
+        <source>Final Result:</source>
+        <translation type="unfinished">Ostateczny wynik:</translation>
+    </message>
+    <message>
+        <source>Multiple Answers are allowed.</source>
+        <translation type="unfinished">Dozwolonych jest wiele odpowiedzi.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln%</source>
+        <comment>% of votes for option</comment>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln vote(s) total</source>
+        <comment>number of total votes</comment>
+        <translation type="unfinished">
+            <numerusform>%Ln odpowiedź</numerusform>
+            <numerusform>%Ln odpowiedzi</numerusform>
+            <numerusform>%Ln odpowiedzi</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1287,43 +1324,6 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Quizy mają jedną poprawną odpowiedź. Uczestnicy nie mogą odwołać swoich odpowiedzi.</translation>
-    </message>
-</context>
-<context>
-    <name>PollPreview</name>
-    <message numerus="yes">
-        <source>%Ln%</source>
-        <comment>% of votes for option</comment>
-        <translation>
-            <numerusform>%Ln%</numerusform>
-            <numerusform>%Ln%</numerusform>
-            <numerusform>%Ln%</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Final Result:</source>
-        <translation>Ostateczny wynik:</translation>
-    </message>
-    <message>
-        <source>Multiple Answers are allowed.</source>
-        <translation>Dozwolonych jest wiele odpowiedzi.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%Ln vote(s) total</source>
-        <comment>number of total votes</comment>
-        <translation>
-            <numerusform>%Ln odpowiedź</numerusform>
-            <numerusform>%Ln odpowiedzi</numerusform>
-            <numerusform>%Ln odpowiedzi</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Close Poll</source>
-        <translation>Zamknij ankietę</translation>
-    </message>
-    <message>
-        <source>Reset Answer</source>
-        <translation>Resetuj odpowiedź</translation>
     </message>
 </context>
 <context>

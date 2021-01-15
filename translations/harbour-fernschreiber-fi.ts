@@ -492,21 +492,6 @@
     </message>
 </context>
 <context>
-    <name>DocumentPreview</name>
-    <message>
-        <source>Download Document</source>
-        <translation>Lataa dokumentti</translation>
-    </message>
-    <message>
-        <source>Open Document</source>
-        <translation>Avaa dokumentti</translation>
-    </message>
-    <message>
-        <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>EditGroupChatPermissionsColumn</name>
     <message>
         <source>Group Member Permissions</source>
@@ -947,10 +932,18 @@
     </message>
 </context>
 <context>
-    <name>LocationPreview</name>
+    <name>MessageDocument</name>
     <message>
-        <source>Install Pure Maps to inspect this location.</source>
-        <translation>Asenna Pure Maps tarkastellaksesi sijaintia.</translation>
+        <source>Download Document</source>
+        <translation>Lataa dokumentti</translation>
+    </message>
+    <message>
+        <source>Open Document</source>
+        <translation>Avaa dokumentti</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1023,6 +1016,13 @@
     </message>
 </context>
 <context>
+    <name>MessageLocation</name>
+    <message>
+        <source>Install Pure Maps to inspect this location.</source>
+        <translation>Asenna Pure Maps tarkastellaksesi sijaintia.</translation>
+    </message>
+</context>
+<context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
@@ -1031,6 +1031,41 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>Välitetty viesti. Alkuperäinen lähettäjä: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePoll</name>
+    <message>
+        <source>Close Poll</source>
+        <translation>Sulje kysely</translation>
+    </message>
+    <message>
+        <source>Reset Answer</source>
+        <translation>Tyhjennä vastaus</translation>
+    </message>
+    <message>
+        <source>Final Result:</source>
+        <translation>Lopullinen tulos:</translation>
+    </message>
+    <message>
+        <source>Multiple Answers are allowed.</source>
+        <translation>Useampi vastaus sallittu.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln%</source>
+        <comment>% of votes for option</comment>
+        <translation>
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln vote(s) total</source>
+        <comment>number of total votes</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1271,41 +1306,6 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Visoilla on yksi oikea vastaus. Osallistujat eivät voi kumota vastaustaan.</translation>
-    </message>
-</context>
-<context>
-    <name>PollPreview</name>
-    <message numerus="yes">
-        <source>%Ln%</source>
-        <comment>% of votes for option</comment>
-        <translation>
-            <numerusform>%Ln%</numerusform>
-            <numerusform>%Ln%</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Final Result:</source>
-        <translation>Lopullinen tulos:</translation>
-    </message>
-    <message>
-        <source>Multiple Answers are allowed.</source>
-        <translation>Useampi vastaus sallittu.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%Ln vote(s) total</source>
-        <comment>number of total votes</comment>
-        <translation>
-            <numerusform>yhteensä %Ln ääni</numerusform>
-            <numerusform>yhteensä %Ln ääntä</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Close Poll</source>
-        <translation>Sulje kysely</translation>
-    </message>
-    <message>
-        <source>Reset Answer</source>
-        <translation>Tyhjennä vastaus</translation>
     </message>
 </context>
 <context>

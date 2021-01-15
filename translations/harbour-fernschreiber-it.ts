@@ -491,21 +491,6 @@
     </message>
 </context>
 <context>
-    <name>DocumentPreview</name>
-    <message>
-        <source>Download Document</source>
-        <translation>Scarica documento</translation>
-    </message>
-    <message>
-        <source>Open Document</source>
-        <translation>Apri documento</translation>
-    </message>
-    <message>
-        <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>EditGroupChatPermissionsColumn</name>
     <message>
         <source>Group Member Permissions</source>
@@ -946,10 +931,18 @@
     </message>
 </context>
 <context>
-    <name>LocationPreview</name>
+    <name>MessageDocument</name>
     <message>
-        <source>Install Pure Maps to inspect this location.</source>
-        <translation>Installa Pure Maps per conoscere questo luogo.</translation>
+        <source>Download Document</source>
+        <translation type="unfinished">Scarica documento</translation>
+    </message>
+    <message>
+        <source>Open Document</source>
+        <translation type="unfinished">Apri documento</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1022,6 +1015,13 @@
     </message>
 </context>
 <context>
+    <name>MessageLocation</name>
+    <message>
+        <source>Install Pure Maps to inspect this location.</source>
+        <translation type="unfinished">Installa Pure Maps per conoscere questo luogo.</translation>
+    </message>
+</context>
+<context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
@@ -1030,6 +1030,41 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>Questo è un messaggio inoltrato. Autore originale: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePoll</name>
+    <message>
+        <source>Close Poll</source>
+        <translation type="unfinished">Termina sondaggio</translation>
+    </message>
+    <message>
+        <source>Reset Answer</source>
+        <translation type="unfinished">Annulla risposta</translation>
+    </message>
+    <message>
+        <source>Final Result:</source>
+        <translation type="unfinished">Risultato:</translation>
+    </message>
+    <message>
+        <source>Multiple Answers are allowed.</source>
+        <translation type="unfinished">Risposte multiple consentite.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln%</source>
+        <comment>% of votes for option</comment>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln vote(s) total</source>
+        <comment>number of total votes</comment>
+        <translation type="unfinished">
+            <numerusform>%Ln voto in totale</numerusform>
+            <numerusform>%Ln voti in totale</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1270,41 +1305,6 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>I quiz hanno una sola risposta corretta. I partecipanti non possono revocare le risposte.</translation>
-    </message>
-</context>
-<context>
-    <name>PollPreview</name>
-    <message numerus="yes">
-        <source>%Ln%</source>
-        <comment>% of votes for option</comment>
-        <translation>
-            <numerusform>%Ln%</numerusform>
-            <numerusform>%Ln%</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Final Result:</source>
-        <translation>Risultato:</translation>
-    </message>
-    <message>
-        <source>Multiple Answers are allowed.</source>
-        <translation>Risposte multiple consentite.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%Ln vote(s) total</source>
-        <comment>number of total votes</comment>
-        <translation>
-            <numerusform>%Ln voto in totale</numerusform>
-            <numerusform>%Ln voti in totale</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Close Poll</source>
-        <translation>Termina sondaggio</translation>
-    </message>
-    <message>
-        <source>Reset Answer</source>
-        <translation>Annulla risposta</translation>
     </message>
 </context>
 <context>

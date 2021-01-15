@@ -501,21 +501,6 @@
     </message>
 </context>
 <context>
-    <name>DocumentPreview</name>
-    <message>
-        <source>Download Document</source>
-        <translation>Скачать документ</translation>
-    </message>
-    <message>
-        <source>Open Document</source>
-        <translation>Открыть документ</translation>
-    </message>
-    <message>
-        <source>Copy Document to Downloads</source>
-        <translation type="unfinished">Сохранить в Загрузках</translation>
-    </message>
-</context>
-<context>
     <name>EditGroupChatPermissionsColumn</name>
     <message>
         <source>Group Member Permissions</source>
@@ -958,10 +943,18 @@
     </message>
 </context>
 <context>
-    <name>LocationPreview</name>
+    <name>MessageDocument</name>
     <message>
-        <source>Install Pure Maps to inspect this location.</source>
-        <translation>Для просмотра карты, установите Pure Maps.</translation>
+        <source>Download Document</source>
+        <translation type="unfinished">Скачать документ</translation>
+    </message>
+    <message>
+        <source>Open Document</source>
+        <translation type="unfinished">Открыть документ</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished">Сохранить в Загрузках</translation>
     </message>
 </context>
 <context>
@@ -1036,6 +1029,13 @@
     </message>
 </context>
 <context>
+    <name>MessageLocation</name>
+    <message>
+        <source>Install Pure Maps to inspect this location.</source>
+        <translation type="unfinished">Для просмотра карты, установите Pure Maps.</translation>
+    </message>
+</context>
+<context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
@@ -1044,6 +1044,43 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>Это сообщение было переадресовано. Первоначальный автор: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePoll</name>
+    <message>
+        <source>Close Poll</source>
+        <translation type="unfinished">Прекратить Опрос</translation>
+    </message>
+    <message>
+        <source>Reset Answer</source>
+        <translation type="unfinished">Обнулить Ответ</translation>
+    </message>
+    <message>
+        <source>Final Result:</source>
+        <translation type="unfinished">Окончательный Результат</translation>
+    </message>
+    <message>
+        <source>Multiple Answers are allowed.</source>
+        <translation type="unfinished">Разрешено несколько вариантов ответов.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln%</source>
+        <comment>% of votes for option</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln vote(s) total</source>
+        <comment>number of total votes</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1287,43 +1324,6 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Тесты имеют один правильный ответ. Участники не могут отозвать свои ответы.</translation>
-    </message>
-</context>
-<context>
-    <name>PollPreview</name>
-    <message numerus="yes">
-        <source>%Ln%</source>
-        <comment>% of votes for option</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Final Result:</source>
-        <translation>Окончательный Результат</translation>
-    </message>
-    <message>
-        <source>Multiple Answers are allowed.</source>
-        <translation>Разрешено несколько вариантов ответов.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%Ln vote(s) total</source>
-        <comment>number of total votes</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Close Poll</source>
-        <translation>Прекратить Опрос</translation>
-    </message>
-    <message>
-        <source>Reset Answer</source>
-        <translation>Обнулить Ответ</translation>
     </message>
 </context>
 <context>

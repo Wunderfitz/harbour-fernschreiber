@@ -491,21 +491,6 @@
     </message>
 </context>
 <context>
-    <name>DocumentPreview</name>
-    <message>
-        <source>Download Document</source>
-        <translation>Ladda ner dokument</translation>
-    </message>
-    <message>
-        <source>Open Document</source>
-        <translation>Öppna dokument</translation>
-    </message>
-    <message>
-        <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>EditGroupChatPermissionsColumn</name>
     <message>
         <source>Group Member Permissions</source>
@@ -946,10 +931,18 @@
     </message>
 </context>
 <context>
-    <name>LocationPreview</name>
+    <name>MessageDocument</name>
     <message>
-        <source>Install Pure Maps to inspect this location.</source>
-        <translation>Installera Pure Maps för att inspektera den här platsen.</translation>
+        <source>Download Document</source>
+        <translation type="unfinished">Ladda ner dokument</translation>
+    </message>
+    <message>
+        <source>Open Document</source>
+        <translation type="unfinished">Öppna dokument</translation>
+    </message>
+    <message>
+        <source>Copy Document to Downloads</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1022,6 +1015,13 @@
     </message>
 </context>
 <context>
+    <name>MessageLocation</name>
+    <message>
+        <source>Install Pure Maps to inspect this location.</source>
+        <translation type="unfinished">Installera Pure Maps för att inspektera den här platsen.</translation>
+    </message>
+</context>
+<context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
@@ -1030,6 +1030,41 @@
     <message>
         <source>This message was forwarded. Original author: %1</source>
         <translation>Detta meddelande är vidarebefordrat. Ursprunglig avsändare: %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePoll</name>
+    <message>
+        <source>Close Poll</source>
+        <translation type="unfinished">Stäng omröstningen</translation>
+    </message>
+    <message>
+        <source>Reset Answer</source>
+        <translation type="unfinished">Återställ svar</translation>
+    </message>
+    <message>
+        <source>Final Result:</source>
+        <translation type="unfinished">Slutresultat:</translation>
+    </message>
+    <message>
+        <source>Multiple Answers are allowed.</source>
+        <translation type="unfinished">Flera svarsalternativ tillåtna.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln%</source>
+        <comment>% of votes for option</comment>
+        <translation type="unfinished">
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln vote(s) total</source>
+        <comment>number of total votes</comment>
+        <translation type="unfinished">
+            <numerusform>%Ln röst sammanlagt</numerusform>
+            <numerusform>%Ln röster sammanlagt</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1270,41 +1305,6 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Frågor har ett (1) korrekt svar. Deltagarna kan inte återkalla sina svar.</translation>
-    </message>
-</context>
-<context>
-    <name>PollPreview</name>
-    <message>
-        <source>Final Result:</source>
-        <translation>Slutresultat:</translation>
-    </message>
-    <message>
-        <source>Multiple Answers are allowed.</source>
-        <translation>Flera svarsalternativ tillåtna.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%Ln%</source>
-        <comment>% of votes for option</comment>
-        <translation>
-            <numerusform>%Ln%</numerusform>
-            <numerusform>%Ln%</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%Ln vote(s) total</source>
-        <comment>number of total votes</comment>
-        <translation>
-            <numerusform>%Ln röst sammanlagt</numerusform>
-            <numerusform>%Ln röster sammanlagt</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Close Poll</source>
-        <translation>Stäng omröstningen</translation>
-    </message>
-    <message>
-        <source>Reset Answer</source>
-        <translation>Återställ svar</translation>
     </message>
 </context>
 <context>
