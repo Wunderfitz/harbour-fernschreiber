@@ -77,6 +77,7 @@ MessageContentBase {
             asynchronous: true
             visible: opacity > 0
             opacity: status === Image.Ready ? 1.0 : 0.0
+            width: parent.width
 
             Behavior on opacity { FadeAnimation {} }
             layer.enabled: messageContent.highlighted
