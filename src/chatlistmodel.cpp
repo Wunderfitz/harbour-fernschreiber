@@ -390,6 +390,12 @@ ChatListModel::~ChatListModel()
     qDeleteAll(hiddenChats.values());
 }
 
+void ChatListModel::reset()
+{
+    chatList.clear();
+    hiddenChats.clear();
+}
+
 QHash<int,QByteArray> ChatListModel::roleNames() const
 {
     QHash<int,QByteArray> roles;

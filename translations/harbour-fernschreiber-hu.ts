@@ -83,6 +83,14 @@
         <source>Open rlottie on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -1142,6 +1150,10 @@
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logging out</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

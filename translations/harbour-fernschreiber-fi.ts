@@ -83,6 +83,14 @@
         <source>Open rlottie on GitHub</source>
         <translation>Avaa rlottie GitHubissa</translation>
     </message>
+    <message>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -1159,6 +1167,10 @@
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
         <translation>Voit etsiä julkisia keskusteluja tai luoda uuden keskustelun alasvetovalikosta.</translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

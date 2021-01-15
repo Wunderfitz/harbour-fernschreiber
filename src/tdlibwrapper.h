@@ -46,7 +46,9 @@ public:
         WaitPassword,
         WaitPhoneNumber,
         WaitRegistration,
-        WaitTdlibParameters
+        WaitTdlibParameters,
+        AuthorizationStateClosed,
+        AuthorizationStateLoggingOut
     };
     Q_ENUM(AuthorizationState)
 
@@ -125,6 +127,7 @@ public:
     Q_INVOKABLE void setAuthenticationCode(const QString &authenticationCode);
     Q_INVOKABLE void setAuthenticationPassword(const QString &authenticationPassword);
     Q_INVOKABLE void registerUser(const QString &firstName, const QString &lastName);
+    Q_INVOKABLE void logout();
     Q_INVOKABLE void getChats();
     Q_INVOKABLE void downloadFile(int fileId);
     Q_INVOKABLE void openChat(const QString &chatId);
@@ -295,6 +298,7 @@ private:
     void setEncryptionKey();
     void setLogVerbosityLevel();
     const Group *updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups);
+    void initializeTDLibReciever();
 
 private:
     void *tdLibClient;
@@ -320,6 +324,7 @@ private:
 
     QString activeChatSearchName;
     bool joinChatRequested;
+    bool isLoggingOut;
 
 };
 
