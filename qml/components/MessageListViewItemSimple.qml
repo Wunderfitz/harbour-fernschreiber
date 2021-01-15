@@ -25,8 +25,9 @@ import "../js/debug.js" as Debug
 Item {
     id: messageListItem
     property var myMessage: display
-    property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender.user_id)
-    property bool isOwnMessage: chatPage.myUserId === myMessage.sender.user_id
+    property bool senderIsUser: myMessage.sender["@type"] === "messageSenderUser"
+    property var userInformation: senderIsUser ? tdLibWrapper.getUserInformation(myMessage.sender.user_id) : null
+    property bool isOwnMessage: senderIsUser && chatPage.myUserId === myMessage.sender.user_id
     property var linkedMessage
     height: backgroundRectangle.height + Theme.paddingMedium
 
@@ -46,7 +47,10 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: Theme.fontSizeExtraSmall
         property string messageContentText: Functions.getMessageText(messageListItem.myMessage, false, chatPage.myUserId, false)
-        text: "<a style=\"text-decoration: none; font-weight: bold; color:"+Theme.primaryColor+"\" href=\"userId://" + messageListItem.userInformation.id + "\">" + (!messageListItem.isOwnMessage ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")) + "</a> " + Emoji.emojify(messageContentText, font.pixelSize)
+        text: (messageListItem.senderIsUser
+               ? "<a style=\"text-decoration: none; font-weight: bold; color:"+Theme.primaryColor+"\" href=\"userId://" + messageListItem.userInformation.id + "\">" + (!messageListItem.isOwnMessage ? Emoji.emojify(Functions.getUserName(messageListItem.userInformation), font.pixelSize) : qsTr("You")) + "</a> "
+               :  "<a style=\"text-decoration: none; font-weight: bold; color:"+Theme.secondaryHighlightColor+"\">" +  Emoji.emojify(chatPage.chatInformation.title || "") + "</a> ")
+            + Emoji.emojify(messageContentText, font.pixelSize)
         textFormat: Text.RichText
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         onLinkActivated: {
