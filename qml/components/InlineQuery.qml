@@ -40,7 +40,7 @@ Loader {
 
     property string chatId
     property string userName
-    property bool userNameIsValid: userName !== "" && inlineBotInformation && userName === inlineBotInformation.username
+    property bool userNameIsValid: userName !== "" && inlineBotInformation && userName.toLowerCase() === inlineBotInformation.username.toLowerCase()
     property string query
     property int currentOffset: 0
     property string responseExtra: chatId+"|"+userName+"|"+query+"|"+currentOffset
