@@ -72,7 +72,7 @@ ChatInformationTabItemBase {
         }
         delegate: PhotoTextsListItem {
             pictureThumbnail {
-                photoData: (typeof user.profile_photo !== "undefined") ? user.profile_photo.small : ""
+                photoData: user.profile_photo ? user.profile_photo.small : null
             }
             width: parent.width
 
