@@ -1023,7 +1023,7 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation>通过 %1</translation>
+        <translation>通过机器用户 %1</translation>
     </message>
 </context>
 <context>
