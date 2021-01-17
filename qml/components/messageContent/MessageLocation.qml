@@ -29,7 +29,7 @@ MessageContentBase {
 
     property string chatId: rawMessage.chat_id
     property var pictureFileInformation;
-    height: width / 2
+    height: width * 0.66666666;
     property string fileExtra
 
     Component.onCompleted: {

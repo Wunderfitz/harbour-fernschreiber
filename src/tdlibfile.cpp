@@ -194,6 +194,16 @@ void TDLibFile::setAutoLoad(bool enableAutoLoad)
     }
 }
 
+bool TDLibFile::cancel()
+{
+    if (id && tdLibWrapper && is_downloading_active) {
+        tdLibWrapper->cancelDownloadFile(id);
+        tdLibWrapper->deleteFile(id);
+        return true;
+    }
+    return false;
+}
+
 bool TDLibFile::load()
 {
     // Manual load ignores hold-off timer

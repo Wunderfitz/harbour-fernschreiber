@@ -1146,6 +1146,37 @@ void TDLibWrapper::sendBotStartMessage(qlonglong botUserId, qlonglong chatId, co
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::cancelDownloadFile(int fileId)
+{
+    LOG("Cancel Download File" << fileId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "cancelDownloadFile");
+    requestObject.insert("file_id", fileId);
+    requestObject.insert("only_if_pending", false);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::cancelUploadFile(int fileId)
+{
+    LOG("Cancel Upload File" << fileId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "cancelUploadFile");
+    requestObject.insert("file_id", fileId);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::deleteFile(int fileId)
+{
+    LOG("Delete cached File" << fileId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "deleteFile");
+    requestObject.insert("file_id", fileId);
+
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);

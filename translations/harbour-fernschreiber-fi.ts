@@ -932,21 +932,6 @@
     </message>
 </context>
 <context>
-    <name>MessageDocument</name>
-    <message>
-        <source>Download Document</source>
-        <translation>Lataa dokumentti</translation>
-    </message>
-    <message>
-        <source>Open Document</source>
-        <translation>Avaa dokumentti</translation>
-    </message>
-    <message>
-        <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
@@ -1063,8 +1048,8 @@
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>yhteensä %Ln ääni </numerusform>
+            <numerusform>yhteensä %Ln ääntä</numerusform>
         </translation>
     </message>
 </context>
@@ -1073,6 +1058,13 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageVoiceNote</name>
+    <message>
+        <source>Voice Note</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

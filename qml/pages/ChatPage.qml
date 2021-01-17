@@ -1062,9 +1062,8 @@ Page {
                             return Functions.getVideoHeight(parentWidth, content.video);
                         case "messageAudio":
                         case "messageVoiceNote":
-                            return Theme.itemSizeLarge;
                         case "messageDocument":
-                            return Theme.itemSizeSmall;
+                            return Theme.itemSizeLarge;
                         case "messageGame":
                             return parentWidth * 0.66666666 + Theme.itemSizeLarge; // 2 / 3;
                         case "messageLocation":

@@ -78,6 +78,7 @@ public:
     bool isUploadingActive() const;
     bool isUploadingCompleted() const;
 
+    Q_INVOKABLE bool cancel();
     Q_INVOKABLE bool load();
 
 signals:

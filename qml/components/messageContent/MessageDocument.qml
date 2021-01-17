@@ -18,108 +18,65 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import "../../js/twemoji.js" as Emoji
 
-MessageContentBase {
+MessageContentFileInfoBase {
+    id: contentItem
+    fileInformation: rawMessage.content.document.document
 
-    id: documentPreviewItem
-    height: Theme.itemSizeLarge
+    primaryText: Emoji.emojify(rawMessage.content.document.file_name || "", primaryLabel.font.pixelSize)
+    secondaryText: Emoji.emojify(Functions.enhanceMessageText(rawMessage.content.caption) || "", secondaryLabel.font.pixelSize)
 
-    property var documentData: rawMessage.content.document
-    property bool openRequested: false;
+    minithumbnail: rawMessage.content.document.minithumbnail
+    thumbnail: rawMessage.content.document.thumbnail
 
-    Component.onCompleted: {
-        updateDocument();
-    }
-
-    function updateDocument() {
-        if (documentData) {
-            if (documentData.document.local.is_downloading_completed) {
-                downloadDocumentButton.visible = false;
-                openDocumentArea.visible = true;
-            } else {
-                openDocumentArea.visible = false;
-                downloadDocumentButton.visible = true;
-            }
-        }
-    }
-
-    Connections {
-        target: tdLibWrapper
-        onFileUpdated: {
-            if (documentData) {
-                if (!fileInformation.remote.is_uploading_active && fileId === documentData.document.id && fileInformation.local.is_downloading_completed) {
-                    downloadingProgressBar.visible = false;
-                    documentData.document = fileInformation;
-                    downloadDocumentButton.visible = false;
-                    openDocumentArea.visible = true;
-                    if (documentPreviewItem.openRequested) {
-                        documentPreviewItem.openRequested = false;
-                        tdLibWrapper.openFileOnDevice(documentData.document.local.path);
-                    }
-                }
-                if (fileId === documentData.document.id) {
-                    downloadingProgressBar.maximumValue = fileInformation.size;
-                    downloadingProgressBar.value = fileInformation.local.downloaded_size;
-                }
-            }
-        }
-    }
-
-    Button {
-        id: downloadDocumentButton
-        preferredWidth: Theme.buttonWidthMedium
-        anchors.centerIn: parent
-        text: qsTr("Download Document")
-        visible: false
-        highlighted: documentPreviewItem.highlighted || down
+    leftButton {
+        icon.source: Theme.iconForMimeType(rawMessage.content.document.mime_type)
         onClicked: {
-            downloadDocumentButton.visible = false;
-            downloadingProgressBar.visible = true;
-            tdLibWrapper.downloadFile(documentData.document.id);
+            if(file.isDownloadingCompleted) {
+                // in this case, the MouseArea should take over
+                tdLibWrapper.openFileOnDevice(file.path);
+            } else if(!file.isDownloadingActive) {
+                file.load();
+            } else {
+                file.cancel()
+            }
         }
     }
 
-    ProgressBar {
-        id: downloadingProgressBar
-        minimumValue: 0
-        maximumValue: 100
-        value: 0
-        visible: false
-        width: parent.width
-        anchors.centerIn: parent
-    }
-
-    Column {
-        id: openDocumentArea
-        visible: false
-        spacing: Theme.paddingMedium
-        width: parent.width
-
-        onVisibleChanged: {
-            visible ? (documentPreviewItem.height = openDocumentArea.height) : (documentPreviewItem.height = Theme.itemSizeLarge);
-        }
-
-        Button {
-            id: openDocumentButton
-            preferredWidth: Theme.buttonWidthMedium
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: qsTr("Open Document")
-            highlighted: documentPreviewItem.highlighted || down
-            onClicked: {
-                documentPreviewItem.openRequested = true;
-                tdLibWrapper.openFileOnDevice(documentData.document.local.path);
+    states: [
+        State {
+            when: file.isDownloadingCompleted
+            PropertyChanges { target: openMouseArea; enabled: true }
+            PropertyChanges {
+                target: primaryLabel
+                color: (contentItem.highlighted || openMouseArea.pressed) ? Theme.highlightColor : Theme.primaryColor
+            }
+            PropertyChanges {
+                target: secondaryLabel
+                color: (contentItem.highlighted || openMouseArea.pressed) ? Theme.secondaryHighlightColor : Theme.secondaryColor
+            }
+            PropertyChanges {
+                target: tertiaryLabel
+                color: (contentItem.highlighted || openMouseArea.pressed) ? Theme.secondaryHighlightColor : Theme.secondaryColor
+            }
+            PropertyChanges {
+                target: leftButton
+                highlighted: contentItem.highlighted || openMouseArea.pressed
             }
         }
 
-        Button {
-            id: copyDocumentButton
-            preferredWidth: Theme.buttonWidthMedium
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: qsTr("Copy Document to Downloads")
-            highlighted: documentPreviewItem.highlighted || down
-            onClicked: {
-                tdLibWrapper.copyFileToDownloads(documentData.document.local.path);
-            }
+    ]
+    MouseArea {
+        id: openMouseArea
+        enabled: file.isDownloadingCompleted
+        visible: enabled
+        anchors {
+            fill: primaryItem
+            rightMargin: copyButton.width
+        }
+        onClicked: {
+            tdLibWrapper.openFileOnDevice(file.path);
         }
     }
 }

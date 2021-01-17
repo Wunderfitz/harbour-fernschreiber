@@ -919,21 +919,6 @@
     </message>
 </context>
 <context>
-    <name>MessageDocument</name>
-    <message>
-        <source>Download Document</source>
-        <translation type="unfinished">下载文档</translation>
-    </message>
-    <message>
-        <source>Open Document</source>
-        <translation type="unfinished">打开文档</translation>
-    </message>
-    <message>
-        <source>Copy Document to Downloads</source>
-        <translation type="unfinished">复制文档到下载</translation>
-    </message>
-</context>
-<context>
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
@@ -1047,7 +1032,7 @@
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
+            <numerusform>总计 %Ln 次投票</numerusform>
         </translation>
     </message>
 </context>
@@ -1056,6 +1041,13 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageVoiceNote</name>
+    <message>
+        <source>Voice Note</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
