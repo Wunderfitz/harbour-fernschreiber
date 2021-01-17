@@ -51,10 +51,10 @@ function emojify(str, emojiSize) {
         basePath,
         iconId,
         '.svg',
-        '" align="bottom" width="',
-        Math.round(emojiSize * 6 / 5 ),
+        '" align="middle" width="',
+        Math.round(emojiSize * 1.15 ),
         '" height="',
-        Math.round(emojiSize * 6 / 5 ),
+        Math.round(emojiSize * 1.15 ),
         '"/>'
       ) : rawText;
     }
