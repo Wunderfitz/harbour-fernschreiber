@@ -19,19 +19,13 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 
-Item {
+MessageContentBase {
 
     id: documentPreviewItem
-    width: parent.width
     height: Theme.itemSizeLarge
-
-    property ListItem messageListItem
-    property MessageOverlayFlickable overlayFlickable
-    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
 
     property var documentData: rawMessage.content.document
     property bool openRequested: false;
-    property bool highlighted;
 
     Component.onCompleted: {
         updateDocument();
@@ -128,7 +122,4 @@ Item {
             }
         }
     }
-
-
-
 }

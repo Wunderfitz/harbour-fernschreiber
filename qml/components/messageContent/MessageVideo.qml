@@ -19,15 +19,12 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import QtMultimedia 5.6
-import "../js/functions.js" as Functions
-import "../js/debug.js" as Debug
+import "../"
+import "../../js/functions.js" as Functions
+import "../../js/debug.js" as Debug
 
-Item {
+MessageContentBase {
     id: videoMessageComponent
-
-    property ListItem messageListItem
-    property MessageOverlayFlickable overlayFlickable
-    property var rawMessage: messageListItem ? messageListItem.myMessage : ( overlayFlickable ? overlayFlickable.overlayMessage : undefined )
 
     property var videoData:  ( rawMessage.content['@type'] === "messageVideo" ) ?  rawMessage.content.video : ( ( rawMessage.content['@type'] === "messageAnimation" ) ? rawMessage.content.animation : rawMessage.content.video_note )
     property string videoUrl;
@@ -38,10 +35,7 @@ Item {
     property bool onScreen: messageListItem ? messageListItem.page.status === PageStatus.Active : true;
     property string videoType : "video";
     property bool playRequested: false;
-    property bool highlighted;
-    signal clicked();
 
-    width: parent.width
     height: videoMessageComponent.isVideoNote ? width : Functions.getVideoHeight(width, videoData)
 
     Timer {
@@ -215,7 +209,7 @@ Item {
                     height: Theme.iconSizeLarge
                     icon {
                         asynchronous: true
-                        source: "../../images/icon-l-fullscreen.svg"
+                        source: "../../../images/icon-l-fullscreen.svg"
                         sourceSize {
                             width: Theme.iconSizeLarge
                             height: Theme.iconSizeLarge
@@ -224,7 +218,7 @@ Item {
                     highlighted: videoMessageComponent.highlighted || down
                     visible: ( placeholderImage.status === Image.Ready && !videoMessageComponent.fullscreen ) ? true : false
                     onClicked: {
-                        pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
+                        pageStack.push(Qt.resolvedUrl("../../pages/VideoPage.qml"), {"videoData": videoData});
                     }
                 }
             }
@@ -462,7 +456,7 @@ Item {
                             highlighted: videoMessageComponent.highlighted || down
                             icon {
                                 asynchronous: true
-                                source: "../../images/icon-l-fullscreen.svg"
+                                source: "../../../images/icon-l-fullscreen.svg"
                                 sourceSize {
                                     width: Theme.iconSizeLarge
                                     height: Theme.iconSizeLarge
@@ -470,7 +464,7 @@ Item {
                             }
                             visible: ( videoComponentLoader.active && messageVideo.playbackState === MediaPlayer.PausedState ) ? true : false
                             onClicked: {
-                                pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"videoData": videoData});
+                                pageStack.push(Qt.resolvedUrl("../../pages/VideoPage.qml"), {"videoData": videoData});
                             }
                         }
                     }

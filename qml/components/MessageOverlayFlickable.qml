@@ -18,6 +18,7 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import "./messageContent"
 import "../js/functions.js" as Functions
 import "../js/twemoji.js" as Emoji
 import "../js/debug.js" as Debug
@@ -34,8 +35,7 @@ Flickable {
     readonly property var userInformation: tdLibWrapper.getUserInformation(overlayMessage.sender.user_id);
     readonly property bool isOwnMessage: tdLibWrapper.getUserInformation().id === overlayMessage.sender.user_id;
     readonly property bool isAnonymous: overlayMessage.sender["@type"] === "messageSenderChat"
-    readonly property string extraContentComponentName: (typeof overlayMessage.content !== "undefined" && typeof chatView.contentComponentNames[overlayMessage.content['@type']] !== "undefined" )
-                                                        ? chatView.contentComponentNames[overlayMessage.content['@type']] : ""
+    property bool hasContentComponent: overlayMessage.content && chatView.delegateMessagesContent.indexOf(overlayMessage.content['@type']) > -1
     signal requestClose;
 
     function getOriginalAuthor(forwardInformation, fontSize) {
@@ -61,18 +61,15 @@ Flickable {
         repeat: false
         running: false
         onTriggered: {
-            if (typeof overlayMessage.content !== "undefined") {
-                if (messageOverlayFlickable.extraContentComponentName !== "") {
-                    overlayExtraContentLoader.setSource(
-                                "../components/" + messageOverlayFlickable.extraContentComponentName + ".qml",
-                                {
-                                    overlayFlickable: messageOverlayFlickable
-                                })
-                } else {
-                    if (typeof overlayMessage.content.web_page !== "undefined") {
-                        overlayWebPagePreviewLoader.active = true;
-                    }
-                }
+            if (messageOverlayFlickable.hasContentComponent) {
+                var type = overlayMessage.content["@type"];
+                overlayExtraContentLoader.setSource(
+                            "../components/messageContent/" + type.charAt(0).toUpperCase() + type.substring(1) + ".qml",
+                            {
+                                overlayFlickable: messageOverlayFlickable
+                            })
+            } else if(overlayMessage.content && overlayMessage.content.web_page) {
+                overlayWebPagePreviewLoader.active = true;
             }
         }
     }

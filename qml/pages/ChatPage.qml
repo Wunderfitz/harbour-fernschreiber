@@ -1056,38 +1056,52 @@ Page {
                         }
                     }
 
-                    readonly property var contentComponentNames: ({
-                                                              messageSticker: "StickerPreview",
-                                                              messagePhoto: "ImagePreview",
-                                                              messageVideo: "VideoPreview",
-                                                              messageVideoNote: "VideoPreview",
-                                                              messageAnimation: "VideoPreview",
-                                                              messageAudio: "AudioPreview",
-                                                              messageVoiceNote: "AudioPreview",
-                                                              messageDocument: "DocumentPreview",
-                                                              messageLocation: "LocationPreview",
-                                                              messageVenue: "LocationPreview",
-                                                              messagePoll: "PollPreview",
-                                                              messageGame: "GamePreview"
-                                                          })
-                    function getContentComponentHeight(componentName, content, parentWidth) {
-                        switch(componentName) {
-                        case "StickerPreview": return content.sticker.height;
-                        case "ImagePreview":
-                        case "LocationPreview":
-                            return parentWidth * 0.66666666; // 2 / 3;
-                        case "VideoPreview":
-                            return ( content['@type'] === "messageVideoNote" ) ? parentWidth : ( Functions.getVideoHeight(parentWidth, ( content['@type'] === "messageVideo" ) ? content.video : content.animation) );
-                        case "AudioPreview":
-                            return parentWidth / 2;
-                        case "DocumentPreview":
+                    function getContentComponentHeight(contentType, content, parentWidth) {
+                        switch(contentType) {
+                        case "messageAnimation":
+                            return Functions.getVideoHeight(parentWidth, content.video);
+                        case "messageAudio":
+                        case "messageVoiceNote":
+                            return Theme.itemSizeLarge;
+                        case "messageDocument":
                             return Theme.itemSizeSmall;
-                        case "PollPreview":
-                            return Theme.itemSizeSmall * (4 + content.poll.options);
-                        case "GamePreview":
+                        case "messageGame":
                             return parentWidth * 0.66666666 + Theme.itemSizeLarge; // 2 / 3;
+                        case "messageLocation":
+                        case "messagePhoto":
+                        case "messageVenue":
+                            return parentWidth * 0.66666666; // 2 / 3;
+                        case "messagePoll":
+                            return Theme.itemSizeSmall * (4 + content.poll.options);
+                        case "messageSticker":
+                            return content.sticker.height;
+                        case "messageVideo":
+                            return Functions.getVideoHeight(parentWidth, content.video);
+                        case "messageVideoNote":
+                            return parentWidth
                         }
                     }
+
+                    readonly property var delegateMessagesContent: [
+                        "messageAnimation",
+                        "messageAudio",
+                        // "messageContact",
+                        // "messageDice"
+                        "messageDocument",
+                        "messageGame",
+                        // "messageInvoice",
+                        "messageLocation",
+                        // "messagePassportDataSent",
+                        // "messagePaymentSuccessful",
+                        "messagePhoto",
+                        "messagePoll",
+                        // "messageProximityAlertTriggered",
+                        "messageSticker",
+                        "messageVenue",
+                        "messageVideo",
+                        "messageVideoNote",
+                        "messageVoiceNote"
+                    ]
 
                     readonly property var simpleDelegateMessages: ["messageBasicGroupChatCreate",
                                                                    "messageChatAddMembers",
@@ -1098,6 +1112,7 @@ Page {
                                                                    "messageChatJoinByLink",
                                                                    "messageChatSetTtl",
                                                                    "messageChatUpgradeFrom",
+                                                                   // "messageContactRegistered","messageExpiredPhoto", "messageExpiredVideo","messageWebsiteConnected"
                                                                    "messageGameScore",
                                                                    "messageChatUpgradeTo",
                                                                    "messageCustomServiceAction",
@@ -1115,7 +1130,7 @@ Page {
                                 myMessage: model.display
                                 messageId: model.message_id
                                 messageIndex: model.index
-                                extraContentComponentName: chatView.contentComponentNames[model.content_type] || ""
+                                hasContentComponent: !!myMessage.content && chatView.delegateMessagesContent.indexOf(model.content_type) > -1
                                 canReplyToMessage: chatPage.canSendMessages
                                 onReplyToMessage: {
                                     newMessageInReplyToRow.inReplyToMessage = myMessage

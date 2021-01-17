@@ -19,28 +19,23 @@
 import QtQuick 2.6
 import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
+import "../"
 
-Item {
+MessageContentBase {
 
     id: imagePreviewItem
-
-    property ListItem messageListItem
-    property MessageOverlayFlickable overlayFlickable
-    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
-    property bool highlighted
 
     property var locationData : ( rawMessage.content['@type'] === "messageLocation" ) ?  rawMessage.content.location : ( ( rawMessage.content['@type'] === "messageVenue" ) ? rawMessage.content.venue.location : "" )
 
     property string chatId: rawMessage.chat_id
     property var pictureFileInformation;
-    width: parent.width
     height: width / 2
     property string fileExtra
 
     Component.onCompleted: {
         updatePicture();
     }
-    function clicked(){
+    onClicked: {
         if(!processLauncher.launchProgram('harbour-pure-maps', ["geo:"+locationData.latitude+","+locationData.longitude])) {
             imageNotification.show(qsTr("Install Pure Maps to inspect this location."));
         }
@@ -56,17 +51,16 @@ Item {
     Connections {
         target: tdLibWrapper
         onFileUpdated: {
-            if(fileInformation["@extra"] !== imagePreviewItem.fileExtra) {
+            if(fileInformation["@extra"] !== imagePreviewItem.fileExtra && (!imagePreviewItem.pictureFileInformation || imagePreviewItem.pictureFileInformation.id !== fileInformation.id)) {
                 return;
             }
-
-            if(!imagePreviewItem.pictureFileInformation) {
-                imagePreviewItem.pictureFileInformation = fileInformation;
-                tdLibWrapper.downloadFile(imagePreviewItem.pictureFileInformation.id);
-            } else if(imagePreviewItem.pictureFileInformation && fileInformation.id === imagePreviewItem.pictureFileInformation.id) {
-                imagePreviewItem.pictureFileInformation = fileInformation;
+            if(fileInformation.local.is_downloading_completed) {
                 singleImage.source = fileInformation.local.path;
+            } else if(fileInformation.local.can_be_downloaded && !fileInformation.local.is_downloading_active) {
+                tdLibWrapper.downloadFile(fileInformation.id);
             }
+
+            imagePreviewItem.pictureFileInformation = fileInformation;
         }
     }
 

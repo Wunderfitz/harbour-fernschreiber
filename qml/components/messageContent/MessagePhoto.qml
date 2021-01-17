@@ -19,21 +19,17 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
+import "../"
 
-Item {
+MessageContentBase {
     id: imagePreviewItem
 
-    property ListItem messageListItem
-    property MessageOverlayFlickable overlayFlickable
-    property var rawMessage: messageListItem ? messageListItem.myMessage : overlayFlickable.overlayMessage
     readonly property int defaultHeight: Math.round(width * 2 / 3)
-    property bool highlighted
 
-    width: parent.width
     height: singleImage.visible ? Math.min(defaultHeight, singleImage.bestHeight + Theme.paddingSmall) : defaultHeight
 
-    function clicked() {
-        pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {
+    onClicked: {
+        pageStack.push(Qt.resolvedUrl("../../pages/ImagePage.qml"), {
             "photoData" : imagePreviewItem.rawMessage.content.photo
         })
     }

@@ -62,7 +62,6 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/StickerPicker.qml \
     qml/components/PhotoTextsListItem.qml \
     qml/components/VoiceNoteOverlay.qml \
-    qml/components/WebPagePreview.qml \
     qml/components/chatInformationPage/ChatInformationEditArea.qml \
     qml/components/chatInformationPage/ChatInformationPageContent.qml \
     qml/components/chatInformationPage/ChatInformationProfilePicture.qml \
@@ -89,6 +88,20 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/inlineQueryResults/InlineQueryResultVenue.qml \
     qml/components/inlineQueryResults/InlineQueryResultVideo.qml \
     qml/components/inlineQueryResults/InlineQueryResultVoiceNote.qml \
+    qml/components/messageContent/MessageAnimation.qml \
+    qml/components/messageContent/MessageAudio.qml \
+    qml/components/messageContent/MessageContentBase.qml \
+    qml/components/messageContent/MessageDocument.qml \
+    qml/components/messageContent/MessageGame.qml \
+    qml/components/messageContent/MessageLocation.qml \
+    qml/components/messageContent/MessagePhoto.qml \
+    qml/components/messageContent/MessagePoll.qml \
+    qml/components/messageContent/MessageSticker.qml \
+    qml/components/messageContent/MessageVenue.qml \
+    qml/components/messageContent/MessageVideoNote.qml \
+    qml/components/messageContent/MessageVideo.qml \
+    qml/components/messageContent/MessageVoiceNote.qml \
+    qml/components/messageContent/WebPagePreview.qml \
     qml/js/debug.js \
     qml/js/functions.js \
     qml/pages/ChatInformationPage.qml \

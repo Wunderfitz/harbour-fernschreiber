@@ -19,18 +19,15 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
+import "../"
 
-Item {
-    property ListItem messageListItem
-    property MessageOverlayFlickable overlayFlickable
-
+MessageContentBase {
     readonly property var stickerData: messageListItem ? messageListItem.myMessage.content.sticker : overlayFlickable.overlayMessage.content.sticker;
     readonly property bool animated: stickerData.is_animated && appSettings.animateStickers
     readonly property bool stickerVisible: staticStickerLoader.item ? staticStickerLoader.item.visible :
         animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
     readonly property bool isOwnSticker : messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
     property real aspectRatio: stickerData.width / stickerData.height
-    property bool highlighted
 
     implicitWidth: stickerData.width
     implicitHeight: stickerData.height

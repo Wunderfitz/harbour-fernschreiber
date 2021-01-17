@@ -20,7 +20,8 @@ import QtQuick 2.6
 import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
-import "../js/functions.js" as Functions
+import "../"
+import "../../js/functions.js" as Functions
 
 Column {
     id: webPagePreviewColumn
@@ -132,7 +133,7 @@ Column {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), { "photoData" : webPageData.photo, "pictureFileInformation" : picture.fileInformation });
+                    pageStack.push(Qt.resolvedUrl("../../pages/ImagePage.qml"), { "photoData" : webPageData.photo, "pictureFileInformation" : picture.fileInformation });
                 }
             }
         }
