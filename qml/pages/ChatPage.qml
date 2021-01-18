@@ -963,7 +963,7 @@ Page {
                         readonly property int paddingMediumDouble: 2 * Theme.paddingMedium
                         readonly property int entryWidth: chatView.width - pageMarginDouble
                         readonly property int textItemWidth: entryWidth - profileThumbnailDimensions - Theme.paddingSmall
-                        readonly property int backgroundWidth: textItemWidth - pageMarginDouble
+                        readonly property int backgroundWidth: page.isChannel ? textItemWidth : textItemWidth - pageMarginDouble
                         readonly property int backgroundRadius: textItemWidth/50
                         readonly property int textColumnWidth: backgroundWidth - Theme.horizontalPageMargin
                         readonly property int messageInReplyToHeight: Theme.fontSizeExtraSmall * 2.571428571 + Theme.paddingSmall;
