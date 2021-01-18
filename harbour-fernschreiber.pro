@@ -47,6 +47,8 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/DocumentPreview.qml \
     qml/components/GamePreview.qml \
     qml/components/ImagePreview.qml \
+    qml/components/InformationEditArea.qml \
+    qml/components/InformationTextItem.qml \
     qml/components/InReplyToRow.qml \
     qml/components/InlineQuery.qml \
     qml/components/LocationPreview.qml \
@@ -64,7 +66,6 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/TDLibImage.qml \
     qml/components/TDLibThumbnail.qml \
     qml/components/VoiceNoteOverlay.qml \
-    qml/components/chatInformationPage/ChatInformationEditArea.qml \
     qml/components/chatInformationPage/ChatInformationPageContent.qml \
     qml/components/chatInformationPage/ChatInformationProfilePicture.qml \
     qml/components/chatInformationPage/ChatInformationProfilePictureList.qml \
@@ -73,7 +74,6 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/chatInformationPage/ChatInformationTabItemMembersGroups.qml \
     qml/components/chatInformationPage/ChatInformationTabItemSettings.qml \
     qml/components/chatInformationPage/ChatInformationTabView.qml \
-    qml/components/chatInformationPage/ChatInformationTextItem.qml \
     qml/components/chatInformationPage/EditGroupChatPermissionsColumn.qml \
     qml/components/chatInformationPage/EditSuperGroupSlowModeColumn.qml \
     qml/components/inlineQueryResults/InlineQueryResult.qml \

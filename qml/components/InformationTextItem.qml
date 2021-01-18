@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf and other contributors
+    Copyright (C) 2020-21 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -16,11 +16,12 @@
     You should have received a copy of the GNU General Public License
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
+
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 
-import "../../js/twemoji.js" as Emoji
-import "../../js/functions.js" as Functions
+import "../js/twemoji.js" as Emoji
+import "../js/functions.js" as Functions
 
 Column {
     id: textItem

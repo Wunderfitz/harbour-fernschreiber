@@ -196,6 +196,7 @@ public:
     Q_INVOKABLE void cancelDownloadFile(int fileId);
     Q_INVOKABLE void cancelUploadFile(int fileId);
     Q_INVOKABLE void deleteFile(int fileId);
+    Q_INVOKABLE void setName(const QString &firstName, const QString &lastName);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -224,6 +225,7 @@ signals:
     void chatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, int unreadCount);
     void chatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void userUpdated(const QString &userId, const QVariantMap &userInformation);
+    void ownUserUpdated(const QVariantMap &userInformation);
     void basicGroupUpdated(qlonglong groupId);
     void superGroupUpdated(qlonglong groupId);
     void chatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount);

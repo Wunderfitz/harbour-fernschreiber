@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf and other contributors
+    Copyright (C) 2020-21 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -16,6 +16,7 @@
     You should have received a copy of the GNU General Public License
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
+
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 
@@ -27,6 +28,7 @@ Column {
     property string emptyPlaceholderText
     property string text
     property bool multiLine
+    property bool headerLeftAligned
 
     property bool isEditing
     property Item editItem: multiLine ? editAreaTextArea : editAreaTextField
@@ -41,6 +43,7 @@ Column {
         id: editAreaHeader
         height: parent.visible && text !== "" ? Theme.itemSizeExtraSmall : 0
         x: 0
+        horizontalAlignment: headerLeftAligned ? Text.AlignLeft : Text.AlignRight
     }
     Row {
         id: editAreaTextRow
@@ -50,25 +53,30 @@ Column {
             id: editAreaTextArea
             visible: editAreaColumn.isEditing && editAreaColumn.multiLine
             width: parent.width - editAreaButton.width
+            textLeftMargin: 0
             anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: Theme.fontSizeSmall
         }
         TextField {
             id: editAreaTextField
             visible: editAreaColumn.isEditing && !editAreaColumn.multiLine
             width: parent.width - editAreaButton.width
             anchors.verticalCenter: parent.verticalCenter
+            textLeftMargin: 0
             EnterKey.onClicked: {
                 editAreaColumn.isEditing = false;
                 editAreaColumn.saveButtonClicked(editAreaColumn.editItem.text);
             }
             EnterKey.iconSource: editAreaButton.icon.source
+            font.pixelSize: Theme.fontSizeSmall
         }
-        ChatInformationTextItem {
+        InformationTextItem {
             id: editAreaTextItem
             visible: !editAreaColumn.isEditing
             anchors.verticalCenter: parent.verticalCenter
             text: editAreaColumn.text || editAreaColumn.emptyPlaceholderText
             width: parent.width - editAreaButton.width
+            height: !editAreaColumn.multiLine ? implicitHeight : editAreaTextField.height
         }
         IconButton {
             id: editAreaButton

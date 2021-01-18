@@ -1508,6 +1508,28 @@
         <source>Some inline bots request location data when using them</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>User Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation type="unfinished">Ange 1-128 tecken {1-64 ?}</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation type="unfinished">Ange 1-128 tecken {0-64 ?}</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

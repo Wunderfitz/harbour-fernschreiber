@@ -350,7 +350,7 @@ SilicaFlickable {
                 height: imageContainer.hasImage ? imageContainer.maxDimension : 0
             }
 
-            ChatInformationEditArea {
+            InformationEditArea {
                 visible: canEdit
                 canEdit: !(chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && chatInformationPage.groupInformation.status && (chatInformationPage.groupInformation.status.can_change_info  || chatInformationPage.groupInformation.status["@type"] === "chatMemberStatusCreator")
                 headerText: qsTr("Chat Title", "group title header")
@@ -376,7 +376,7 @@ SilicaFlickable {
                     }
                 }
             }
-            ChatInformationEditArea {
+            InformationEditArea {
                 canEdit: ((chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && chatInformationPage.privateChatUserInformation.id === chatInformationPage.myUserId) || ((chatInformationPage.isBasicGroup || chatInformationPage.isSuperGroup) && chatInformationPage.groupInformation && (chatInformationPage.groupInformation.status.can_change_info || chatInformationPage.groupInformation.status["@type"] === "chatMemberStatusCreator"))
                 emptyPlaceholderText: qsTr("There is no information text available, yet.")
                 headerText: qsTr("Info", "group or user infotext header")
@@ -391,7 +391,7 @@ SilicaFlickable {
                 }
             }
 
-            ChatInformationTextItem {
+            InformationTextItem {
                 headerText: qsTr("Phone Number", "user phone number header")
                 text: ((chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && chatInformationPage.privateChatUserInformation.phone_number ? "+"+chatInformationPage.privateChatUserInformation.phone_number : "") || ""
                 isLinkedLabel: true
@@ -408,7 +408,7 @@ SilicaFlickable {
             Row {
                 width: parent.width
                 visible: !!inviteLinkItem.text
-                ChatInformationTextItem {
+                InformationTextItem {
                     id: inviteLinkItem
                     text: !(chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) ? chatInformationPage.groupFullInformation.invite_link : ""
                     width: parent.width - inviteLinkButton.width

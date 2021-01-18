@@ -38,18 +38,18 @@ ChatInformationTabItemBase {
             width: tabBase.width - Theme.horizontalPageMargin * 2
             x: Theme.horizontalPageMargin
 
-            ChatInformationTextItem {
+            InformationTextItem {
                 headerText: "chatInformation"
                 text:chatInformationPage.chatInformation ?  JSON.stringify(chatInformationPage.chatInformation, null, 2) : ""
                 isLinkedLabel: true
             }
-            ChatInformationTextItem {
+            InformationTextItem {
                 headerText: "groupInformation"
                 text: chatInformationPage.groupInformation ? JSON.stringify(chatInformationPage.groupInformation, null, 2) : ""
                 isLinkedLabel: true
             }
 
-            ChatInformationTextItem {
+            InformationTextItem {
                 headerText: "groupFullInformation"
                 text: chatInformationPage.groupFullInformation ? JSON.stringify(chatInformationPage.groupFullInformation, null, 2) : ""
                 isLinkedLabel: true

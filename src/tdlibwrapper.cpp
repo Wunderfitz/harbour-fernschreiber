@@ -1177,6 +1177,17 @@ void TDLibWrapper::deleteFile(int fileId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::setName(const QString &firstName, const QString &lastName)
+{
+    LOG("Set name of current user" << firstName << lastName);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setName");
+    requestObject.insert("first_name", firstName);
+    requestObject.insert("last_name", lastName);
+
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
@@ -1431,6 +1442,7 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
     if (updatedUserId == this->options.value("my_id").toString()) {
         LOG("Own user information updated :)");
         this->userInformation = userInformation;
+        emit ownUserUpdated(userInformation);
     }
     LOG("User information updated:" << userInformation.value(USERNAME).toString() << userInformation.value(FIRST_NAME).toString() << userInformation.value(LAST_NAME).toString());
     this->allUsers.insert(updatedUserId, userInformation);

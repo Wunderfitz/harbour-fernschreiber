@@ -19,6 +19,7 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
+import "../components"
 import "../js/functions.js" as Functions
 
 Page {
@@ -26,6 +27,14 @@ Page {
     allowedOrientations: Orientation.All
 
     readonly property bool landscapeLayout: (width > height && Screen.sizeCategory > Screen.Small) || Screen.sizeCategory > Screen.Medium
+
+    Connections {
+        target: tdLibWrapper
+        onOwnUserUpdated: {
+            firstNameEditArea.text = userInformation.first_name;
+            lastNameEditArea.text = userInformation.last_name;
+        }
+    }
 
     SilicaFlickable {
         id: settingsContainer
@@ -38,6 +47,72 @@ Page {
 
             PageHeader {
                 title: qsTr("Settings")
+            }
+
+            SectionHeader {
+                text: qsTr("User Profile")
+            }
+
+            InformationEditArea {
+                id: firstNameEditArea
+                visible: true
+                canEdit: true
+                headerText: qsTr("First Name", "first name of the logged-in profile - header")
+                text: tdLibWrapper.getUserInformation().first_name
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                headerLeftAligned: true
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                onSaveButtonClicked: {
+                    if(!editItem.errorHighlight) {
+                        tdLibWrapper.setName(textValue, lastNameEditArea.text);
+                    } else {
+                        isEditing = true;
+                    }
+                }
+
+                onTextEdited: {
+                    if(textValue.length > 0 && textValue.length < 65) {
+                        editItem.errorHighlight = false;
+                        editItem.label = "";
+                        editItem.placeholderText = "";
+                    } else {
+                        editItem.label = qsTr("Enter 1-64 characters");
+                        editItem.placeholderText = editItem.label;
+                        editItem.errorHighlight = true;
+                    }
+                }
+            }
+
+            InformationEditArea {
+                id: lastNameEditArea
+                visible: true
+                canEdit: true
+                headerText: qsTr("Last Name", "last name of the logged-in profile - header")
+                text: tdLibWrapper.getUserInformation().last_name
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                headerLeftAligned: true
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                onSaveButtonClicked: {
+                    if(!editItem.errorHighlight) {
+                        tdLibWrapper.setName(firstNameEditArea.text, textValue);
+                    } else {
+                        isEditing = true;
+                    }
+                }
+
+                onTextEdited: {
+                    if(textValue.length >= 0 && textValue.length < 65) {
+                        editItem.errorHighlight = false;
+                        editItem.label = "";
+                        editItem.placeholderText = "";
+                    } else {
+                        editItem.label = qsTr("Enter 0-64 characters");
+                        editItem.placeholderText = editItem.label;
+                        editItem.errorHighlight = true;
+                    }
+                }
             }
 
             SectionHeader {
