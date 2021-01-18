@@ -25,6 +25,8 @@ Page {
     id: settingsPage
     allowedOrientations: Orientation.All
 
+    readonly property bool landscapeLayout: (width > height && Screen.sizeCategory > Screen.Small) || Screen.sizeCategory > Screen.Medium
+
     SilicaFlickable {
         id: settingsContainer
         contentHeight: column.height
@@ -42,33 +44,57 @@ Page {
                 text: qsTr("Behavior")
             }
 
-            TextSwitch {
-                checked: appSettings.sendByEnter
-                text: qsTr("Send message by enter")
-                description: qsTr("Send your message by pressing the enter key")
-                automaticCheck: false
-                onClicked: {
-                    appSettings.sendByEnter = !checked
-                }
-            }
+            Grid {
+                width: parent.width
+                columns: landscapeLayout ? 2 : 1
 
-            TextSwitch {
-                checked: appSettings.focusTextAreaAfterSend
-                text: qsTr("Focus text input area after send")
-                description: qsTr("Focus the text input area after sending a message")
-                automaticCheck: false
-                onClicked: {
-                    appSettings.focusTextAreaAfterSend = !checked
-                }
-            }
+                readonly property real columnWidth: width/columns
 
-            TextSwitch {
-                checked: appSettings.useOpenWith
-                text: qsTr("Open-with menu integration")
-                description: qsTr("Integrate Fernschreiber into open-with menu of Sailfish OS")
-                automaticCheck: false
-                onClicked: {
-                    appSettings.useOpenWith = !checked
+                TextSwitch {
+                    width: parent.columnWidth
+                    checked: appSettings.sendByEnter
+                    text: qsTr("Send message by enter")
+                    description: qsTr("Send your message by pressing the enter key")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.sendByEnter = !checked
+                    }
+                }
+
+                TextSwitch {
+                    width: parent.columnWidth
+                    checked: appSettings.focusTextAreaAfterSend
+                    text: qsTr("Focus text input area after send")
+                    description: qsTr("Focus the text input area after sending a message")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.focusTextAreaAfterSend = !checked
+                    }
+                }
+
+                TextSwitch {
+                    width: parent.columnWidth
+                    checked: appSettings.useOpenWith
+                    text: qsTr("Open-with menu integration")
+                    description: qsTr("Integrate Fernschreiber into open-with menu of Sailfish OS")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.useOpenWith = !checked
+                    }
+                }
+
+                TextSwitch {
+                    width: parent.columnWidth
+                    checked: appSettings.notificationTurnsDisplayOn && enabled
+                    text: qsTr("Notification turns on the display")
+                    height: appSettings.notificationFeedback === AppSettings.NotificationFeedbackNone ? 0 : implicitHeight
+                    clip: height < implicitHeight
+                    visible: height > 0
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.notificationTurnsDisplayOn = !checked
+                    }
+                    Behavior on height { SmoothedAnimation { duration: 200 } }
                 }
             }
 
@@ -123,39 +149,35 @@ Page {
                 }
             }
 
-            TextSwitch {
-                checked: appSettings.notificationTurnsDisplayOn && enabled
-                text: qsTr("Notification turns on the display")
-                height: appSettings.notificationFeedback === AppSettings.NotificationFeedbackNone ? 0 : implicitHeight
-                clip: height < implicitHeight
-                visible: height > 0
-                automaticCheck: false
-                onClicked: {
-                    appSettings.notificationTurnsDisplayOn = !checked
-                }
-                Behavior on height { SmoothedAnimation { duration: 200 } }
-            }
-
             SectionHeader {
                 text: qsTr("Appearance")
             }
 
-            TextSwitch {
-                checked: appSettings.animateStickers
-                text: qsTr("Animate stickers")
-                automaticCheck: false
-                onClicked: {
-                    appSettings.animateStickers = !checked
-                }
-            }
+            Grid {
+                width: parent.width
+                columns: landscapeLayout ? 2 : 1
 
-            TextSwitch {
-                checked: appSettings.showStickersAsImages
-                text: qsTr("Show stickers as images")
-                description: qsTr("Show background for stickers and align them centrally like images")
-                automaticCheck: false
-                onClicked: {
-                    appSettings.showStickersAsImages = !checked
+                readonly property real columnWidth: width/columns
+
+                TextSwitch {
+                    width: parent.columnWidth
+                    checked: appSettings.showStickersAsImages
+                    text: qsTr("Show stickers as images")
+                    description: qsTr("Show background for stickers and align them centrally like images")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.showStickersAsImages = !checked
+                    }
+                }
+
+                TextSwitch {
+                    width: parent.columnWidth
+                    checked: appSettings.animateStickers
+                    text: qsTr("Animate stickers")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.animateStickers = !checked
+                    }
                 }
             }
 
@@ -177,22 +199,31 @@ Page {
                 text: qsTr("Storage")
             }
 
-            TextSwitch {
-                checked: appSettings.storageOptimizer
-                text: qsTr("Enable storage optimizer")
-                automaticCheck: false
-                onClicked: {
-                    appSettings.storageOptimizer = !checked
-                }
-            }
+            Grid {
+                width: parent.width
+                columns: landscapeLayout ? 2 : 1
 
-            TextSwitch {
-                checked: appSettings.onlineOnlyMode
-                text: qsTr("Enable online-only mode")
-                description: qsTr("Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.")
-                automaticCheck: false
-                onClicked: {
-                    appSettings.onlineOnlyMode = !checked
+                readonly property real columnWidth: width/columns
+
+                TextSwitch {
+                    width: parent.columnWidth
+                    checked: appSettings.onlineOnlyMode
+                    text: qsTr("Enable online-only mode")
+                    description: qsTr("Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.onlineOnlyMode = !checked
+                    }
+                }
+
+                TextSwitch {
+                    width: parent.columnWidth
+                    checked: appSettings.storageOptimizer
+                    text: qsTr("Enable storage optimizer")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.storageOptimizer = !checked
+                    }
                 }
             }
 
