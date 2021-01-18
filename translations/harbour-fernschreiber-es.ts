@@ -931,21 +931,6 @@
     </message>
 </context>
 <context>
-    <name>MessageDocument</name>
-    <message>
-        <source>Download Document</source>
-        <translation>Bajar Documento</translation>
-    </message>
-    <message>
-        <source>Open Document</source>
-        <translation>Abrir Documento</translation>
-    </message>
-    <message>
-        <source>Copy Document to Downloads</source>
-        <translation>Copiar documento a Downloads</translation>
-    </message>
-</context>
-<context>
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
@@ -1062,7 +1047,7 @@
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
+            <numerusform>%Ln total de votos</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -1072,6 +1057,13 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageVoiceNote</name>
+    <message>
+        <source>Voice Note</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

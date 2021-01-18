@@ -79,7 +79,7 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         }
     case 'messageDocument':
         if (message.content.document.file_name !== "") {
-            return simple ? qsTr("Document: %1").arg(message.content.document.file_name) : (message.content.document.file_name + ( message.content.caption.text !== "" ? ("<br />" + enhanceMessageText(message.content.caption, ignoreEntities) ) : "")).trim();
+            return simple ? qsTr("Document: %1").arg(message.content.document.file_name) : (message.content.caption.text !== "" ? enhanceMessageText(message.content.caption, ignoreEntities) : "").trim();
         } else {
             return simple ? (myself ? qsTr("sent a document", "myself") : qsTr("sent a document")) : "";
         }

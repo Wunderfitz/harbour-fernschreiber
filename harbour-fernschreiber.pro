@@ -61,6 +61,8 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/ReplyMarkupButtons.qml \
     qml/components/StickerPicker.qml \
     qml/components/PhotoTextsListItem.qml \
+    qml/components/TDLibImage.qml \
+    qml/components/TDLibThumbnail.qml \
     qml/components/VoiceNoteOverlay.qml \
     qml/components/chatInformationPage/ChatInformationEditArea.qml \
     qml/components/chatInformationPage/ChatInformationPageContent.qml \
@@ -91,6 +93,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/messageContent/MessageAnimation.qml \
     qml/components/messageContent/MessageAudio.qml \
     qml/components/messageContent/MessageContentBase.qml \
+    qml/components/messageContent/MessageContentFileInfoBase.qml \
     qml/components/messageContent/MessageDocument.qml \
     qml/components/messageContent/MessageGame.qml \
     qml/components/messageContent/MessageLocation.qml \

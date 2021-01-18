@@ -18,4 +18,11 @@
 */
 import QtQuick 2.6
 
-MessageAudio {}
+MessageAudio {
+    fileInformation: rawMessage.content.voice_note.voice
+    primaryText: qsTr("Voice Note")
+    secondaryText: ""
+    duration: rawMessage.content.voice_note.duration
+    thumbnail: null
+    minithumbnail: null
+}

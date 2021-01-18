@@ -931,21 +931,6 @@
     </message>
 </context>
 <context>
-    <name>MessageDocument</name>
-    <message>
-        <source>Download Document</source>
-        <translation type="unfinished">Scarica documento</translation>
-    </message>
-    <message>
-        <source>Open Document</source>
-        <translation type="unfinished">Apri documento</translation>
-    </message>
-    <message>
-        <source>Copy Document to Downloads</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
@@ -1072,6 +1057,13 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageVoiceNote</name>
+    <message>
+        <source>Voice Note</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
