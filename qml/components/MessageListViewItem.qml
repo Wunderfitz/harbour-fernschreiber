@@ -475,6 +475,7 @@ ListItem {
                     color: messageListItem.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
                     horizontalAlignment: messageListItem.textAlign
                     text: getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed)
+                    rightPadding: interactionLoader.active ? interactionLoader.width : 0
                     MouseArea {
                         anchors.fill: parent
                         enabled: !messageListItem.precalculatedValues.pageIsSelecting
@@ -482,6 +483,34 @@ ListItem {
                             messageDateText.useElapsed = !messageDateText.useElapsed;
                             messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
                         }
+                    }
+
+                    Loader {
+                        id: interactionLoader
+                        height: parent.height
+                        anchors.right: parent.right
+                        asynchronous: true
+                        active: chatPage.isChannel && myMessage.interaction_info && myMessage.interaction_info.view_count
+                        sourceComponent: Component {
+                            Label {
+                                text: Functions.getShortenedCount(myMessage.interaction_info.view_count)
+                                leftPadding: Theme.iconSizeSmall
+                                font.pixelSize: Theme.fontSizeTiny
+                                color: Theme.secondaryColor
+                                Icon {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: Theme.iconSizeExtraSmall
+                                    height: Theme.iconSizeExtraSmall
+                                    opacity: 0.6
+                                    source: "../../images/icon-s-eye.svg"
+                                    sourceSize {
+                                        width: Theme.iconSizeExtraSmall
+                                        height: Theme.iconSizeExtraSmall
+                                    }
+                                }
+                            }
+                        }
+
                     }
                 }
 
