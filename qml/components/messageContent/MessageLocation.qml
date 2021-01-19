@@ -61,6 +61,7 @@ MessageContentBase {
         id: image
         anchors.fill: parent
         cache: false
+        highlighted: contentItem.highlighted
         Item {
             anchors.centerIn: parent
             width: markerImage.width
