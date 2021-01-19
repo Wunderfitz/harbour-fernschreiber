@@ -1188,6 +1188,68 @@ void TDLibWrapper::setName(const QString &firstName, const QString &lastName)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::setUsername(const QString &userName)
+{
+    LOG("Set username of current user" << userName);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setUsername");
+    requestObject.insert("username", userName);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setUserPrivacySettingRule(TDLibWrapper::UserPrivacySetting setting, TDLibWrapper::UserPrivacySettingRule rule)
+{
+    LOG("Set user privecy setting rule of current user" << setting << rule);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setUserPrivacySettingRules");
+
+    QVariantMap settingMap;
+    switch (setting) {
+    case SettingShowStatus:
+        settingMap.insert(_TYPE, "userPrivacySettingShowStatus");
+        break;
+    case SettingShowPhoneNumber:
+        settingMap.insert(_TYPE, "userPrivacySettingShowPhoneNumber");
+        break;
+    case SettingAllowChatInvites:
+        settingMap.insert(_TYPE, "userPrivacySettingAllowChatInvites");
+        break;
+    case SettingShowProfilePhoto:
+        settingMap.insert(_TYPE, "userPrivacySettingShowProfilePhoto");
+        break;
+    case SettingAllowFindingByPhoneNumber:
+        settingMap.insert(_TYPE, "userPrivacySettingAllowFindingByPhoneNumber");
+        break;
+    case SettingShowLinkInForwardedMessages:
+        settingMap.insert(_TYPE, "userPrivacySettingShowLinkInForwardedMessages");
+        break;
+    }
+    requestObject.insert("setting", settingMap);
+
+
+    QVariantMap ruleMap;
+    switch (rule) {
+    case RuleAllowAll:
+        ruleMap.insert(_TYPE, "userPrivacySettingRuleAllowAll");
+        break;
+    case RuleAllowContacts:
+        ruleMap.insert(_TYPE, "userPrivacySettingRuleAllowContacts");
+        break;
+    case RuleRestrictAll:
+        ruleMap.insert(_TYPE, "userPrivacySettingRuleRestrictAll");
+        break;
+    case RuleRestrictContacts:
+        ruleMap.insert(_TYPE, "userPrivacySettingRuleRestrictContacts");
+        break;
+    }
+    QVariantList ruleMaps;
+    ruleMaps.append(ruleMap);
+    requestObject.insert("rules", ruleMaps);
+
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);

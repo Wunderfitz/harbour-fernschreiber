@@ -89,6 +89,24 @@ public:
     };
     Q_ENUM(SecretChatState)
 
+    enum UserPrivacySetting {
+        SettingAllowChatInvites,
+        SettingAllowFindingByPhoneNumber,
+        SettingShowLinkInForwardedMessages,
+        SettingShowPhoneNumber,
+        SettingShowProfilePhoto,
+        SettingShowStatus
+    };
+    Q_ENUM(UserPrivacySetting)
+
+    enum UserPrivacySettingRule {
+        RuleAllowAll,
+        RuleAllowContacts,
+        RuleRestrictAll,
+        RuleRestrictContacts
+    };
+    Q_ENUM(UserPrivacySettingRule)
+
     class Group {
     public:
         Group(qlonglong id) : groupId(id) { }
@@ -197,6 +215,8 @@ public:
     Q_INVOKABLE void cancelUploadFile(int fileId);
     Q_INVOKABLE void deleteFile(int fileId);
     Q_INVOKABLE void setName(const QString &firstName, const QString &lastName);
+    Q_INVOKABLE void setUsername(const QString &userName);
+    Q_INVOKABLE void setUserPrivacySettingRule(UserPrivacySetting setting, UserPrivacySettingRule rule);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);

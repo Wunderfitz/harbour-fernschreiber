@@ -33,6 +33,7 @@ Page {
         onOwnUserUpdated: {
             firstNameEditArea.text = userInformation.first_name;
             lastNameEditArea.text = userInformation.last_name;
+            userNameEditArea.text = userInformation.username;
         }
     }
 
@@ -53,66 +54,88 @@ Page {
                 text: qsTr("User Profile")
             }
 
-            InformationEditArea {
-                id: firstNameEditArea
-                visible: true
-                canEdit: true
-                headerText: qsTr("First Name", "first name of the logged-in profile - header")
-                text: tdLibWrapper.getUserInformation().first_name
+            Grid {
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                headerLeftAligned: true
+                columns: landscapeLayout ? 2 : 1
+                columnSpacing: Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                onSaveButtonClicked: {
-                    if(!editItem.errorHighlight) {
-                        tdLibWrapper.setName(textValue, lastNameEditArea.text);
-                    } else {
-                        isEditing = true;
+                readonly property real columnWidth: width/columns
+
+                InformationEditArea {
+                    id: firstNameEditArea
+                    visible: true
+                    canEdit: true
+                    headerText: qsTr("First Name", "first name of the logged-in profile - header")
+                    text: tdLibWrapper.getUserInformation().first_name
+                    width: parent.columnWidth
+                    headerLeftAligned: true
+
+                    onSaveButtonClicked: {
+                        if(!editItem.errorHighlight) {
+                            tdLibWrapper.setName(textValue, lastNameEditArea.text);
+                        } else {
+                            isEditing = true;
+                        }
+                    }
+
+                    onTextEdited: {
+                        if(textValue.length > 0 && textValue.length < 65) {
+                            editItem.errorHighlight = false;
+                            editItem.label = "";
+                            editItem.placeholderText = "";
+                        } else {
+                            editItem.label = qsTr("Enter 1-64 characters");
+                            editItem.placeholderText = editItem.label;
+                            editItem.errorHighlight = true;
+                        }
                     }
                 }
 
-                onTextEdited: {
-                    if(textValue.length > 0 && textValue.length < 65) {
-                        editItem.errorHighlight = false;
-                        editItem.label = "";
-                        editItem.placeholderText = "";
-                    } else {
-                        editItem.label = qsTr("Enter 1-64 characters");
-                        editItem.placeholderText = editItem.label;
-                        editItem.errorHighlight = true;
+                InformationEditArea {
+                    id: lastNameEditArea
+                    visible: true
+                    canEdit: true
+                    headerText: qsTr("Last Name", "last name of the logged-in profile - header")
+                    text: tdLibWrapper.getUserInformation().last_name
+                    width: parent.columnWidth
+                    headerLeftAligned: true
+
+                    onSaveButtonClicked: {
+                        if(!editItem.errorHighlight) {
+                            tdLibWrapper.setName(firstNameEditArea.text, textValue);
+                        } else {
+                            isEditing = true;
+                        }
+                    }
+
+                    onTextEdited: {
+                        if(textValue.length >= 0 && textValue.length < 65) {
+                            editItem.errorHighlight = false;
+                            editItem.label = "";
+                            editItem.placeholderText = "";
+                        } else {
+                            editItem.label = qsTr("Enter 0-64 characters");
+                            editItem.placeholderText = editItem.label;
+                            editItem.errorHighlight = true;
+                        }
                     }
                 }
-            }
 
-            InformationEditArea {
-                id: lastNameEditArea
-                visible: true
-                canEdit: true
-                headerText: qsTr("Last Name", "last name of the logged-in profile - header")
-                text: tdLibWrapper.getUserInformation().last_name
-                width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                headerLeftAligned: true
-                anchors.horizontalCenter: parent.horizontalCenter
+                InformationEditArea {
+                    id: userNameEditArea
+                    visible: true
+                    canEdit: true
+                    headerText: qsTr("Username", "user name of the logged-in profile - header")
+                    text: tdLibWrapper.getUserInformation().username
+                    width: parent.columnWidth
+                    headerLeftAligned: true
 
-                onSaveButtonClicked: {
-                    if(!editItem.errorHighlight) {
-                        tdLibWrapper.setName(firstNameEditArea.text, textValue);
-                    } else {
-                        isEditing = true;
+                    onSaveButtonClicked: {
+                        tdLibWrapper.setUsername(textValue);
                     }
                 }
 
-                onTextEdited: {
-                    if(textValue.length >= 0 && textValue.length < 65) {
-                        editItem.errorHighlight = false;
-                        editItem.label = "";
-                        editItem.placeholderText = "";
-                    } else {
-                        editItem.label = qsTr("Enter 0-64 characters");
-                        editItem.placeholderText = editItem.label;
-                        editItem.errorHighlight = true;
-                    }
-                }
             }
 
             SectionHeader {

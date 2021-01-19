@@ -1530,6 +1530,11 @@
         <source>Enter 0-64 characters</source>
         <translation type="unfinished">Enter 1-128 characters {0-64 ?}</translation>
     </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
