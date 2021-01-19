@@ -19,6 +19,7 @@
 import QtQuick 2.6
 import WerkWolf.Fernschreiber 1.0
 import Sailfish.Silica 1.0
+import QtGraphicalEffects 1.0
 
 Item {
     id: tdLibPhoto
@@ -31,6 +32,7 @@ Item {
     onPhotoChanged: setImageFile()
 
     function setImageFile() {
+        console.log("TDLibPhoto minithumb?", !!tdLibPhoto.photo.minithumbnail, minithumbnailLoader.active)
         if (photo) {
             var photoSize;
             for (var i = 0; i < photo.sizes.length; i++) {
@@ -45,25 +47,15 @@ Item {
         }
     }
 
-    Loader {
-        anchors.fill: parent
-        active: !!tdLibPhoto.photo.minithumbnail
-        asynchronous: true
-        sourceComponent: Component {
-            Image {
-                id: minithumbnail
-                source: "data:image/jpg;base64,"+tdLibPhoto.photo.minithumbnail.data
-                asynchronous: true
-                fillMode: tdLibImage.fillMode
-                smooth: false
-                cache: false
+    TDLibMinithumbnail {
+        id: minithumbnailLoader
+        active: !!minithumbnail && tdLibImage.opacity < 1.0
+        minithumbnail: tdLibPhoto.photo.minithumbnail
+        highlighted: parent.highlighted
+    }
 
-                layer {
-                    enabled: tdLibPhoto.highlighted
-                    effect: PressEffect { source: minithumbnail }
-                }
-            }
-        }
+    BackgroundImage {
+        visible: tdLibImage.opacity < 1.0
     }
 
     TDLibImage {
