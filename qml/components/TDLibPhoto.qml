@@ -32,7 +32,6 @@ Item {
     onPhotoChanged: setImageFile()
 
     function setImageFile() {
-        console.log("TDLibPhoto minithumb?", !!tdLibPhoto.photo.minithumbnail, minithumbnailLoader.active)
         if (photo) {
             var photoSize;
             for (var i = 0; i < photo.sizes.length; i++) {
