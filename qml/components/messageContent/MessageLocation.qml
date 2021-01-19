@@ -22,72 +22,50 @@ import Sailfish.Silica 1.0
 import "../"
 
 MessageContentBase {
-
-    id: imagePreviewItem
-
-    property var locationData : ( rawMessage.content['@type'] === "messageLocation" ) ?  rawMessage.content.location : ( ( rawMessage.content['@type'] === "messageVenue" ) ? rawMessage.content.venue.location : "" )
-
-    property string chatId: rawMessage.chat_id
-    property var pictureFileInformation;
+    id: contentItem
     height: width * 0.66666666;
-    property string fileExtra
 
-    Component.onCompleted: {
-        updatePicture();
-    }
+    property var locationData : rawMessage.content.location
+    property string fileExtra;
+
     onClicked: {
         if(!processLauncher.launchProgram('harbour-pure-maps', ["geo:"+locationData.latitude+","+locationData.longitude])) {
             imageNotification.show(qsTr("Install Pure Maps to inspect this location."));
         }
     }
+    onLocationDataChanged: updatePicture()
+    onWidthChanged: updatePicture()
+
     function updatePicture() {
-        imagePreviewItem.pictureFileInformation = null;
         if (locationData) {
-            fileExtra = "location:" + locationData.latitude + ":" + locationData.longitude + ":" + Math.round(imagePreviewItem.width) + ":" + Math.round(imagePreviewItem.height);
-            tdLibWrapper.getMapThumbnailFile(chatId, locationData.latitude, locationData.longitude, Math.round(imagePreviewItem.width), Math.round(imagePreviewItem.height), fileExtra);
+            fileExtra = "location:" + locationData.latitude + ":" + locationData.longitude + ":" + Math.round(contentItem.width) + ":" + Math.round(contentItem.height);
+            tdLibWrapper.getMapThumbnailFile(rawMessage.chat_id, locationData.latitude, locationData.longitude, Math.round(contentItem.width), Math.round(contentItem.height), fileExtra);
         }
     }
 
     Connections {
         target: tdLibWrapper
         onFileUpdated: {
-            if(fileInformation["@extra"] !== imagePreviewItem.fileExtra && (!imagePreviewItem.pictureFileInformation || imagePreviewItem.pictureFileInformation.id !== fileInformation.id)) {
-                return;
+            if(fileInformation["@extra"] === contentItem.fileExtra) {
+                if(fileInformation.id !== image.file.fileId) {
+                    image.fileInformation = fileInformation
+                }
             }
-            if(fileInformation.local.is_downloading_completed) {
-                singleImage.source = fileInformation.local.path;
-            } else if(fileInformation.local.can_be_downloaded && !fileInformation.local.is_downloading_active) {
-                tdLibWrapper.downloadFile(fileInformation.id);
-            }
-
-            imagePreviewItem.pictureFileInformation = fileInformation;
         }
     }
 
     AppNotification {
         id: imageNotification
     }
-
-    Image {
-        id: singleImage
-        width: parent.width - Theme.paddingSmall
-        height: parent.height - Theme.paddingSmall
-        anchors.centerIn: parent
-
-        fillMode: Image.PreserveAspectCrop
-        autoTransform: true
-        asynchronous: true
-        visible: status === Image.Ready
-        opacity: status === Image.Ready ? 1 : 0
-        Behavior on opacity { NumberAnimation {} }
-
-        layer.enabled: imagePreviewItem.highlighted
-        layer.effect: PressEffect { source: singleImage }
+    TDLibImage {
+        id: image
+        anchors.fill: parent
+        cache: false
         Item {
             anchors.centerIn: parent
             width: markerImage.width
             height: markerImage.height * 1.75 // 0.875 (vertical pin point) * 2
-            Image {
+            Icon {
                 id: markerImage
                 source: 'image://theme/icon-m-location'
             }
@@ -105,7 +83,10 @@ MessageContentBase {
     }
 
     BackgroundImage {
-        visible: singleImage.status !== Image.Ready
+        visible: image.status !== Image.Ready
     }
 
+    Component.onCompleted: {
+        updatePicture();
+    }
 }
