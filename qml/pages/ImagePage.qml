@@ -47,18 +47,16 @@ Page {
 
     Component.onCompleted: {
         if (photoData) {
-            // Check first which size fits best...
-            var photo
+            var biggestIndex = -1
             for (var i = 0; i < photoData.sizes.length; i++) {
-                imagePage.imageWidth = photoData.sizes[i].width;
-                imagePage.imageHeight = photoData.sizes[i].height;
-                photo = photoData.sizes[i].photo
-                if (photoData.sizes[i].width >= imagePage.width) {
-                    break;
+                if (biggestIndex === -1 || photoData.sizes[i].width > photoData.sizes[biggestIndex].width) {
+                    biggestIndex = i;
                 }
             }
-            if (photo) {
-                imageFile.fileInformation = photo
+            if (biggestIndex > -1) {
+                imagePage.imageWidth = photoData.sizes[biggestIndex].width;
+                imagePage.imageHeight = photoData.sizes[biggestIndex].height;
+                singleImage.fileInformation = photoData.sizes[biggestIndex].photo
             }
         }
     }
@@ -122,9 +120,8 @@ Page {
                     imageFlickable.returnToBounds()
                 }
 
-                Image {
+                TDLibImage {
                     id: singleImage
-                    source: imageFile.isDownloadingCompleted ? imageFile.path : ""
                     width: imagePage.imageWidth * imagePage.sizingFactor
                     height: imagePage.imageHeight * imagePage.sizingFactor
                     anchors.centerIn: parent
