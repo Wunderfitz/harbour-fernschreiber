@@ -61,12 +61,6 @@ Page {
         }
     }
 
-    TDLibFile {
-        id: imageFile
-        tdlib: tdLibWrapper
-        autoLoad: true
-    }
-
     Connections {
         target: tdLibWrapper
         onCopyToDownloadsSuccessful: {
@@ -84,11 +78,11 @@ Page {
         interactive: !imageOnly
 
         PullDownMenu {
-            visible: !imageOnly && imageFile.isDownloadingCompleted && imageFile.path
+            visible: !imageOnly && singleImage.file.isDownloadingCompleted
             MenuItem {
                 text: qsTr("Download Picture")
                 onClicked: {
-                    tdLibWrapper.copyFileToDownloads(imageFile.path);
+                    tdLibWrapper.copyFileToDownloads(singleImage.file.path);
                 }
             }
         }
