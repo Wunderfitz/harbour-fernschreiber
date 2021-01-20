@@ -357,7 +357,7 @@ Page {
                 isVerified: is_verified
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), {
-                        chatInformation : display,
+                        chatInformation : chatListModel.getById(chat_id),
                         chatPicture: photo_small
                     })
                 }

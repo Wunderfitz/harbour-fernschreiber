@@ -32,13 +32,13 @@ class ChatListModel : public QAbstractListModel
 public:
 
     enum Role {
-        RoleDisplay = Qt::DisplayRole,
         RoleChatId,
         RoleChatType,
         RoleTitle,
         RolePhotoSmall,
         RoleUnreadCount,
         RoleLastReadInboxMessageId,
+        RoleLastMessageId,
         RoleLastMessageSenderId,
         RoleLastMessageDate,
         RoleLastMessageText,
@@ -48,6 +48,7 @@ public:
         RoleIsVerified,
         RoleIsChannel,
         RoleIsMarkedAsUnread,
+        RoleNotificationSettings,
         RoleIsPinned,
         RoleFilter,
         RoleDraftMessageText,

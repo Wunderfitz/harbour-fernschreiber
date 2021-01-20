@@ -27,7 +27,7 @@ PhotoTextsListItem {
     isSecret: ( chat_type === TelegramAPI.ChatTypeSecret )
     isMarkedAsUnread: is_marked_as_unread
     isPinned: is_pinned
-    isMuted: display.notification_settings.mute_for > 0
+    isMuted: notification_settings.mute_for > 0
 
     openMenuOnPressAndHold: true//chat_id != overviewPage.ownUserId
 
@@ -50,7 +50,7 @@ PhotoTextsListItem {
                 MenuItem {
                     visible: unread_count > 0
                     onClicked: {
-                        tdLibWrapper.viewMessage(chat_id, display.last_message.id, true);
+                        tdLibWrapper.viewMessage(chat_id, last_message_id, true);
                         tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, false);
                     }
                     text: qsTr("Mark all messages as read")
@@ -74,7 +74,7 @@ PhotoTextsListItem {
                 MenuItem {
                     visible: chat_id != listItem.ownUserId
                     onClicked: {
-                        var newNotificationSettings = display.notification_settings;
+                        var newNotificationSettings = notification_settings;
                         if (newNotificationSettings.mute_for > 0) {
                             newNotificationSettings.mute_for = 0;
                         } else {
@@ -83,7 +83,7 @@ PhotoTextsListItem {
                         newNotificationSettings.use_default_mute_for = false;
                         tdLibWrapper.setChatNotificationSettings(chat_id, newNotificationSettings);
                     }
-                    text: display.notification_settings.mute_for > 0 ? qsTr("Unmute chat") : qsTr("Mute chat")
+                    text: notification_settings.mute_for > 0 ? qsTr("Unmute chat") : qsTr("Mute chat")
                 }
 
                 MenuItem {
@@ -92,9 +92,9 @@ PhotoTextsListItem {
                             pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ), PageStackAction.Immediate);
                         }
 
-                        pageStack.push(Qt.resolvedUrl("../pages/ChatInformationPage.qml"), { "chatInformation" : display});
+                        pageStack.push(Qt.resolvedUrl("../pages/ChatInformationPage.qml"), { "chatInformation" : chatListModel.getById(chat_id)});
                     }
-                    text: model.display.type['@type'] === "chatTypePrivate" ? qsTr("User Info") : qsTr("Group Info")
+                    text: ( chat_type === TelegramAPI.ChatTypePrivate || isSecret ) ? qsTr("User Info") : qsTr("Group Info")
                 }
             }
         }
