@@ -21,9 +21,23 @@ import Sailfish.Silica 1.0
 import "../"
 
 MessageContentBase {
+
+    function calculateBiggest() {
+        var candidateBiggest = rawMessage.content.photo.sizes[rawMessage.content.photo.sizes.length - 1];
+        if (candidateBiggest.width === 0 && rawMessage.content.photo.sizes.length > 1) {
+           for (var i = (rawMessage.content.photo.sizes.length - 2); i >= 0; i--) {
+               candidateBiggest = rawMessage.content.photo.sizes[i];
+               if (candidateBiggest.width > 0) {
+                   break;
+               }
+           }
+        }
+        return candidateBiggest;
+    }
+
     height: Math.max(Theme.itemSizeExtraSmall, Math.min(defaultHeight, width / (biggest.width/biggest.height)))
     readonly property int defaultHeight: Math.round(width * 0.66666666)
-    readonly property var biggest: rawMessage.content.photo.sizes[rawMessage.content.photo.sizes.length - 1];
+    readonly property var biggest: calculateBiggest();
 
     onClicked: {
         pageStack.push(Qt.resolvedUrl("../../pages/ImagePage.qml"), {
