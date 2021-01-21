@@ -62,6 +62,8 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/StickerPicker.qml \
     qml/components/PhotoTextsListItem.qml \
     qml/components/TDLibImage.qml \
+    qml/components/TDLibMinithumbnail.qml \
+    qml/components/TDLibPhoto.qml \
     qml/components/TDLibThumbnail.qml \
     qml/components/VoiceNoteOverlay.qml \
     qml/components/chatInformationPage/ChatInformationEditArea.qml \
