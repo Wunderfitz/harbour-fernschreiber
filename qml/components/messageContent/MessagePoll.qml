@@ -230,6 +230,24 @@ MessageContentBase {
             width: 1
             height: Theme.paddingSmall
         }
+        Label {
+            width: parent.width
+            wrapMode: Text.Wrap
+            visible: isQuiz && text.length > 0
+            text: Emoji.emojify(Functions.enhanceMessageText(pollData.type.explanation) || "", font.pixelSize)
+            textFormat: Text.StyledText
+            color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.highlightColor : Theme.primaryColor
+            font.pixelSize: Theme.fontSizeExtraSmall
+            leftPadding: Theme.iconSizeSmall
+            bottomPadding: Theme.paddingSmall
+            Icon {
+                source: "image://theme/icon-s-high-importance"
+                asynchronous: true
+                width: Theme.iconSizeExtraSmall
+                height: Theme.iconSizeExtraSmall
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
 
         Item {
             x: -Theme.horizontalPageMargin/2
