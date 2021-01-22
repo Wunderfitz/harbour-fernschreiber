@@ -1059,7 +1059,7 @@ Page {
                     function getContentComponentHeight(contentType, content, parentWidth) {
                         switch(contentType) {
                         case "messageAnimation":
-                            return Functions.getVideoHeight(parentWidth, content.video);
+                            return Functions.getVideoHeight(parentWidth, content.animation);
                         case "messageAudio":
                         case "messageVoiceNote":
                         case "messageDocument":
@@ -1067,9 +1067,12 @@ Page {
                         case "messageGame":
                             return parentWidth * 0.66666666 + Theme.itemSizeLarge; // 2 / 3;
                         case "messageLocation":
-                        case "messagePhoto":
                         case "messageVenue":
                             return parentWidth * 0.66666666; // 2 / 3;
+                        case "messagePhoto":
+                            var biggest = content.photo.sizes[content.photo.sizes.length - 1];
+                            var aspectRatio = biggest.width/biggest.height;
+                            return Math.max(Theme.itemSizeExtraSmall, Math.min(parentWidth * 0.66666666, parentWidth / aspectRatio));
                         case "messagePoll":
                             return Theme.itemSizeSmall * (4 + content.poll.options);
                         case "messageSticker":

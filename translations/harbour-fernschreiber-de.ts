@@ -840,6 +840,15 @@
         <source>sent a game</source>
         <translation>hat ein Spiel gesendet</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>haben eine Videonachricht geschickt</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>hat eine Videonachricht geschickt</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -1064,7 +1073,7 @@
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprachnotiz</translation>
     </message>
 </context>
 <context>
@@ -1297,6 +1306,18 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Quizze haben eine korrekte Antwort. Teilnehmer können ihre Antwort nicht zurückziehen.</translation>
+    </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation>Geben Sie eine optionale Erklärung ein</translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation>Wird bei Auswahl einer falschen Antwort gezeigt.</translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation>Eine Erklärung kann bis zu 200 Zeichen lang sein.</translation>
     </message>
 </context>
 <context>
@@ -1966,7 +1987,7 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>haben eine Videonachricht geschicht</translation>
+        <translation>haben eine Videonachricht geschickt</translation>
     </message>
     <message>
         <source>sent a video note</source>

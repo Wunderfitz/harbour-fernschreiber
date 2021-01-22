@@ -50,7 +50,7 @@ Item {
             - video
             - videoNote
     */
-    property var minithumbnail
+    property alias minithumbnail: minithumbnailLoader.minithumbnail
     property bool useBackgroundImage: true
     property bool highlighted
 
@@ -65,29 +65,12 @@ Item {
         effect: PressEffect { source: tdlibThumbnail }
     }
 
-    Loader {
-        id: backgroundLoader
-        anchors.fill: parent
-        active: !parent.hasVisibleThumbnail
-        asynchronous: true
-        sourceComponent: !!parent.minithumbnail ? miniThumbnailComponent : parent.useBackgroundImage ? backgroundImageComponent : ""
-        Component {
-            id: backgroundImageComponent
-            BackgroundImage {}
-        }
-        Component {
-            id: miniThumbnailComponent
-            Image {
-                clip: true
-                asynchronous: true
-                fillMode: Image.PreserveAspectCrop
-                opacity: status === Image.Ready ? 1.0 : 0.0
-                smooth: false
-                source: "data:image/jpg;base64," + tdlibThumbnail.miniThumbnail.data
-                visible: opacity > 0
-                Behavior on opacity { FadeAnimation {} }
-            }
-        }
+    TDLibMinithumbnail {
+        id: minithumbnailLoader
+        active: !!minithumbnail && thumbnailImage.opacity < 1.0
+    }
+    BackgroundImage {
+        visible: tdlibThumbnail.useBackgroundImage && thumbnailImage.opacity < 1.0
     }
 
     // image thumbnail

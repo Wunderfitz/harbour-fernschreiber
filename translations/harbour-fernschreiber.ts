@@ -840,6 +840,15 @@
         <source>sent a game</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation type="unfinished">sent a video note</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation type="unfinished">sent a video note</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -1297,6 +1306,18 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</translation>
+    </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -840,6 +840,15 @@
         <source>sent a game</source>
         <translation>sent a game</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>sent a video note</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>sent a video note</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -1064,7 +1073,7 @@
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Voice Note</translation>
     </message>
 </context>
 <context>
@@ -1297,6 +1306,18 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</translation>
+    </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation>Enter an optional explanation</translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation>Shown when the user selects a wrong answer.</translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation>An explanation can be up to 200 characters long.</translation>
     </message>
 </context>
 <context>

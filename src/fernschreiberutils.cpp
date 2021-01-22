@@ -93,6 +93,9 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     if (contentType == "messageVideo") {
         return myself ? tr("sent a video", "myself") : tr("sent a video");
     }
+    if (contentType == "messageVideoNote") {
+        return myself ? tr("sent a video note", "myself") : tr("sent a video note");
+    }
     if (contentType == "messageAnimation") {
         return myself ? tr("sent an animation", "myself") : tr("sent an animation");
     }

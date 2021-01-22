@@ -17,52 +17,13 @@
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
 import QtQuick 2.6
-import Sailfish.Silica 1.0
-import QtMultimedia 5.6
-import WerkWolf.Fernschreiber 1.0
 import "../"
 
 InlineQueryResult {
     id: queryResultItem
 
-
-    TDLibFile {
-        id: file
-        tdlib: tdLibWrapper
-        autoLoad: true
-    }
-
-    Loader {
-        asynchronous: true
-        active: file.isDownloadingCompleted
+    TDLibPhoto {
         anchors.fill: parent
-        opacity: item && item.status === Image.Ready ? 1.0 : 0.0
-        Behavior on opacity { FadeAnimation {} }
-        sourceComponent: Component {
-            Image {
-                id: image
-                source: file.path
-                asynchronous: true
-                clip: true
-                fillMode: Image.PreserveAspectCrop
-                layer.enabled: queryResultItem.pressed
-                layer.effect: PressEffect { source: image }
-            }
-        }
-    }
-    Component.onCompleted: {
-        if (model.photo) {
-            // Check first which size fits best...
-            var photo
-            for (var i = 0; i < model.photo.sizes.length; i++) {
-                photo = model.photo.sizes[i].photo
-                if (model.photo.sizes[i].width >= queryResultItem.width) {
-                    break
-                }
-            }
-            if (photo) {
-                file.fileInformation = photo
-            }
-        }
+        photo: model.photo
     }
 }
