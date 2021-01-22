@@ -39,6 +39,7 @@ Dialog {
     property alias quiz: quizSwitch.checked
     property alias multiple: multipleSwitch.checked
     property string replyToMessageId: "0"
+    property alias quizExplanation: quizExplanationTextArea.text
     // poll request data end
 
     canAccept: validationErrors.length === 0
@@ -80,6 +81,9 @@ Dialog {
         }
         if(quiz && (correctOption < 0 || correctOption > options.count - 1)) {
             errors.push(qsTr("To send a quiz, you have to specify the right answer."));
+        }
+        if(quiz && quizExplanationTextArea.hasError) {
+            errors.push(qsTr("An explanation can be up to 200 characters long."));
         }
         if(errors.length === 0) {
             validationErrorsVisible = false;
@@ -333,6 +337,25 @@ Dialog {
                 }
                 description: qsTr("Quizzes have one correct answer. Participants can't revoke their responses.")
             }
+            TextArea {
+                id: quizExplanationTextArea
+                width: parent.width
+                opacity: pollCreationPage.quiz ? 1.0 : 0.0
+                Behavior on opacity { FadeAnimation {} }
+                height: pollCreationPage.quiz ? implicitHeight : 0
+                Behavior on height { NumberAnimation { duration: quizExplanationTextArea.focus ? 0 : 200 } }
+                visible: opacity > 0
+
+                placeholderText: qsTr("Enter an optional explanation")
+                property int charactersLeft: 200 - text.length
+                property bool hasError: charactersLeft < 0
+                color: hasError ? Theme.errorColor : Theme.highlightColor
+                label: qsTr("Shown when the user selects a wrong answer.")
+                wrapMode: TextEdit.Wrap
+                onFocusChanged: {
+                    validate();
+                }
+            }
         }
     }
 
@@ -342,7 +365,7 @@ Dialog {
             optionsArr.push(options.get(i).text);
         }
 
-        tdLibWrapper.sendPollMessage(chatId, pollQuestion, optionsArr, anonymous, quiz ? correctOption : -1, multiple, "0");
+        tdLibWrapper.sendPollMessage(chatId, pollQuestion, optionsArr, anonymous, quiz ? correctOption : -1, multiple, quizExplanation, "0");
 
     }
 
