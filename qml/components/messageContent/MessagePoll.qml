@@ -259,7 +259,7 @@ MessageContentBase {
                     visible: !pollMessageComponent.canAnswer && !pollData.is_anonymous && pollData.total_voter_count > 0
                     icon.source: "image://theme/icon-m-media-artists"
                     onClicked: {
-                        pageStack.push(Qt.resolvedUrl("../../pages/PollResultsPage.qml"), { chatId:chatId, message:pollMessageComponent.message});
+                        pageStack.push(Qt.resolvedUrl("../../pages/PollResultsPage.qml"), { chatId:chatId, message:pollMessageComponent.rawMessage});
                     }
                     Icon {
                         opacity: 0.8
