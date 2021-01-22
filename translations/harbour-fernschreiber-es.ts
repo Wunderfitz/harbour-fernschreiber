@@ -840,6 +840,15 @@
         <source>sent a game</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation type="unfinished">envió una nota de video</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation type="unfinished">envió una nota de video</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>

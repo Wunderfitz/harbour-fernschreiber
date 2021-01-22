@@ -840,6 +840,15 @@
         <source>sent a game</source>
         <translation>hat ein Spiel gesendet</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>haben eine Videonachricht geschickt</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>hat eine Videonachricht geschickt</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -1951,7 +1960,7 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>haben eine Videonachricht geschicht</translation>
+        <translation>haben eine Videonachricht geschickt</translation>
     </message>
     <message>
         <source>sent a video note</source>

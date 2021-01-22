@@ -828,6 +828,15 @@
         <source>sent a game</source>
         <translation>发送游戏</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation type="unfinished">发送视频消息</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation type="unfinished">发送视频消息</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>

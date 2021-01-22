@@ -840,6 +840,15 @@
         <source>sent a game</source>
         <translation>sent a game</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>sent a video note</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>sent a video note</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
