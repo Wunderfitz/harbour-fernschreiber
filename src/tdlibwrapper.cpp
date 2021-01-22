@@ -569,7 +569,7 @@ void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &file
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &replyToMessageId)
+void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &explanation, const QString &replyToMessageId)
 {
     LOG("Sending poll message" << chatId << question << replyToMessageId);
     QVariantMap requestObject;
@@ -585,6 +585,11 @@ void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &questio
     if(correctOption > -1) {
         pollType.insert(_TYPE, "pollTypeQuiz");
         pollType.insert("correct_option_id", correctOption);
+        if(!explanation.isEmpty()) {
+            QVariantMap formattedExplanation;
+            formattedExplanation.insert("text", explanation);
+            pollType.insert("explanation", formattedExplanation);
+        }
     } else {
         pollType.insert(_TYPE, "pollTypeRegular");
         pollType.insert("allow_multiple_answers", multiple);

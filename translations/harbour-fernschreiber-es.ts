@@ -1298,6 +1298,18 @@
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Los interrogatorios tienen una respuesta correcta. Los participantes no pueden revocar sus respuestas.</translation>
     </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PollResultsPage</name>
