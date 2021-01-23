@@ -134,7 +134,7 @@ NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings
     connect(this->tdLibWrapper, SIGNAL(activeNotificationsUpdated(QVariantList)), this, SLOT(handleUpdateActiveNotifications(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(notificationGroupUpdated(QVariantMap)), this, SLOT(handleUpdateNotificationGroup(QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(notificationUpdated(QVariantMap)), this, SLOT(handleUpdateNotification(QVariantMap)));
-    connect(this->tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(newChatDiscovered(qlonglong, QVariantMap)), this, SLOT(handleChatDiscovered(qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
 
     this->controlLedNotification(false);
@@ -277,17 +277,16 @@ void NotificationManager::handleUpdateNotification(const QVariantMap &updatedNot
     LOG("Received notification update, group ID:" << updatedNotification.value(NOTIFICATION_GROUP_ID).toInt());
 }
 
-void NotificationManager::handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation)
+void NotificationManager::handleChatDiscovered(qlonglong chatId, const QVariantMap &chatInformation)
 {
-    const qlonglong id = chatId.toLongLong();
-    ChatInfo *chat = chatMap.value(id);
+    ChatInfo *chat = chatMap.value(chatId);
     if (chat) {
         chat->setChatInfo(chatInformation);
-        LOG("Updated chat information" << id << chat->title);
+        LOG("Updated chat information" << chatId << chat->title);
     } else {
         chat = new ChatInfo(chatInformation);
-        chatMap.insert(id, chat);
-        LOG("New chat" << id << chat->title);
+        chatMap.insert(chatId, chat);
+        LOG("New chat" << chatId << chat->title);
     }
 }
 
@@ -342,8 +341,9 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
            (chatInformation->type == TDLibWrapper::ChatTypeSupergroup && !chatInformation->isChannel))) {
             // Add author
             QString fullName;
+            qlonglong chatId(senderInformation.value(CHAT_ID).toLongLong());
             if (senderInformation.value(_TYPE).toString() == "messageSenderChat") {
-                fullName = tdLibWrapper->getChat(senderInformation.value(CHAT_ID).toString()).value(TITLE).toString();
+                fullName = tdLibWrapper->getChat(chatId).value(TITLE).toString();
             } else {
                 fullName = FernschreiberUtils::getUserName(tdLibWrapper->getUserInformation(senderInformation.value(USER_ID).toString()));
             }

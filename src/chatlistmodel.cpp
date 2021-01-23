@@ -63,11 +63,6 @@ public:
 
     int compareTo(const ChatData *chat) const;
     bool setOrder(const QString &order);
-    const QVariant lastMessage(const QString &key) const;
-    QString title() const;
-    int unreadCount() const;
-    QVariant photoSmall() const;
-    qlonglong lastReadInboxMessageId() const;
     qlonglong senderUserId() const;
     qlonglong senderChatId() const;
     bool senderIsChat() const;
@@ -75,13 +70,7 @@ public:
     QString senderMessageText() const;
     qlonglong senderMessageId() const;
     QString senderMessageStatus() const;
-    qlonglong draftMessageDate() const;
-    QString draftMessageText() const;
-    QVariantMap notificationSettings() const;
-    bool isChannel() const;
     bool isHidden() const;
-    bool isMarkedAsUnread() const;
-    bool isPinned() const;
     bool updateUnreadCount(int unreadCount);
     bool updateLastReadInboxMessageId(qlonglong messageId);
     QVector<int> updateLastMessage(const QVariantMap &message);
@@ -99,6 +88,18 @@ public:
     TDLibWrapper::ChatMemberStatus memberStatus;
     TDLibWrapper::SecretChatState secretChatState;
     QVariantMap userInformation;
+    int unreadCount;
+    qlonglong lastReadInboxMessageId;
+    QVariantMap lastMessage;
+    qlonglong lastReadOutboxMessageId;
+    QVariant photoSmall;
+    QVariantMap notificationSettings;
+    QString title;
+    bool isPinned;
+    bool isMarkedAsUnread;
+    qlonglong draftMessageDate;
+    QString draftMessageText;
+    bool isChannel;
 };
 
 ChatListModel::ChatData::ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap &data) :
@@ -110,7 +111,17 @@ ChatListModel::ChatData::ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap 
     verified(false),
     memberStatus(TDLibWrapper::ChatMemberStatusUnknown),
     secretChatState(TDLibWrapper::SecretChatStateUnknown),
-    userInformation(tdLibWrapper->getUserInformation())
+    userInformation(tdLibWrapper->getUserInformation()),
+    unreadCount(data.value(UNREAD_COUNT).toInt()),
+    lastReadInboxMessageId(data.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong()),
+    lastMessage(data.value(LAST_MESSAGE).toMap()),
+    lastReadOutboxMessageId(data.value(LAST_READ_OUTBOX_MESSAGE_ID).toLongLong()),
+    photoSmall(data.value(PHOTO).toMap().value(SMALL)),
+    notificationSettings(data.value(NOTIFICATION_SETTINGS).toMap()),
+    title(data.value(TITLE).toString()),
+    isPinned(data.value(IS_PINNED).toBool()),
+    isMarkedAsUnread(data.value(IS_MARKED_AS_UNREAD).toBool()),
+    isChannel(data.value(TYPE).toMap().value(IS_CHANNEL).toBool())
 {
     const QVariantMap type(data.value(TYPE).toMap());
     switch (chatType = TDLibWrapper::chatTypeFromString(type.value(_TYPE).toString())) {
@@ -124,6 +135,14 @@ ChatListModel::ChatData::ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap 
     case TDLibWrapper::ChatTypePrivate:
     case TDLibWrapper::ChatTypeSecret:
         break;
+    }
+    QVariantMap draft = data.value(DRAFT_MESSAGE).toMap();
+    if(draft.isEmpty()) {
+        draftMessageDate = qlonglong(0);
+        draftMessageText = QString();
+    } else {
+        draftMessageDate = draft.value(DATE).toLongLong();
+        draftMessageText = draft.value("input_message_text").toMap().value(TEXT).toMap().value(TEXT).toString();
     }
 }
 
@@ -140,81 +159,55 @@ int ChatListModel::ChatData::compareTo(const ChatData *other) const
 bool ChatListModel::ChatData::setOrder(const QString &newOrder)
 {
     if (!newOrder.isEmpty()) {
-        chatData.insert(ORDER, newOrder);
         order = newOrder.toLongLong();
+        tdLibWrapper->getChat(chatId).insert(ORDER, newOrder);
         return true;
     }
     return false;
 }
 
-inline const QVariant ChatListModel::ChatData::lastMessage(const QString &key) const
-{
-    return chatData.value(LAST_MESSAGE).toMap().value(key);
-}
-
-QString ChatListModel::ChatData::title() const
-{
-    return chatData.value(TITLE).toString();
-}
-
-int ChatListModel::ChatData::unreadCount() const
-{
-    return chatData.value(UNREAD_COUNT).toInt();
-}
-
-QVariant ChatListModel::ChatData::photoSmall() const
-{
-    return chatData.value(PHOTO).toMap().value(SMALL);
-}
-
-qlonglong ChatListModel::ChatData::lastReadInboxMessageId() const
-{
-    return chatData.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong();
-}
-
 qlonglong ChatListModel::ChatData::senderUserId() const
 {
-    return lastMessage(SENDER).toMap().value(USER_ID).toLongLong();
+    return lastMessage.value(SENDER).toMap().value(USER_ID).toLongLong();
 }
 
 qlonglong ChatListModel::ChatData::senderChatId() const
 {
-    return lastMessage(SENDER).toMap().value(CHAT_ID).toLongLong();
+    return lastMessage.value(SENDER).toMap().value(CHAT_ID).toLongLong();
 }
 
 bool ChatListModel::ChatData::senderIsChat() const
 {
-    return lastMessage(SENDER).toMap().value(_TYPE).toString() == "messageSenderChat";
+    return lastMessage.value(SENDER).toMap().value(_TYPE).toString() == "messageSenderChat";
 }
 
 qlonglong ChatListModel::ChatData::senderMessageDate() const
 {
-    return lastMessage(DATE).toLongLong();
+    return lastMessage.value(DATE).toLongLong();
 }
 
 QString ChatListModel::ChatData::senderMessageText() const
 {
-    return FernschreiberUtils::getMessageShortText(tdLibWrapper, lastMessage(CONTENT).toMap(), isChannel(), this->userInformation.value(ID).toLongLong(), lastMessage(SENDER).toMap() );
+    return FernschreiberUtils::getMessageShortText(tdLibWrapper, lastMessage.value(CONTENT).toMap(), isChannel, this->userInformation.value(ID).toLongLong(), lastMessage.value(SENDER).toMap() );
 }
 
 qlonglong ChatListModel::ChatData::senderMessageId() const
 {
-    return lastMessage(ID).toLongLong();
+    return lastMessage.value(ID).toLongLong();
 }
 
 
 QString ChatListModel::ChatData::senderMessageStatus() const
 {
-    if (isChannel() || this->userInformation.value(ID).toLongLong() != senderUserId() || this->userInformation.value(ID).toLongLong() == chatId) {
+    if (isChannel || this->userInformation.value(ID).toLongLong() != senderUserId() || this->userInformation.value(ID).toLongLong() == chatId) {
         return "";
     }
-    if (lastMessage(ID) == chatData.value(LAST_READ_OUTBOX_MESSAGE_ID)) {
+    if (lastMessage.value(ID).toLongLong() == lastReadOutboxMessageId) {
         return "&nbsp;&nbsp;✅";
     } else {
-        QVariantMap lastMessage = chatData.value(LAST_MESSAGE).toMap();
         if (lastMessage.contains(SENDING_STATE)) {
-            QVariantMap sendingState = lastMessage.value(SENDING_STATE).toMap();
-            if (sendingState.value(_TYPE).toString() == "messageSendingStatePending") {
+            QString sendingState = lastMessage.value(SENDING_STATE).toMap().value(_TYPE).toString();
+            if (sendingState == "messageSendingStatePending") {
                 return "&nbsp;&nbsp;🕙";
             } else {
                 return "&nbsp;&nbsp;❌";
@@ -223,28 +216,6 @@ QString ChatListModel::ChatData::senderMessageStatus() const
             return "&nbsp;&nbsp;☑️";
         }
     }
-}
-qlonglong ChatListModel::ChatData::draftMessageDate() const
-{
-    QVariantMap draft = chatData.value(DRAFT_MESSAGE).toMap();
-    if(draft.isEmpty()) {
-        return qlonglong(0);
-    }
-    return draft.value(DATE).toLongLong();
-}
-
-QString ChatListModel::ChatData::draftMessageText() const
-{
-    QVariantMap draft = chatData.value(DRAFT_MESSAGE).toMap();
-    if(draft.isEmpty()) {
-        return QString();
-    }
-    return draft.value("input_message_text").toMap().value(TEXT).toMap().value(TEXT).toString();
-}
-
-bool ChatListModel::ChatData::isChannel() const
-{
-    return chatData.value(TYPE).toMap().value(IS_CHANNEL).toBool();
 }
 
 bool ChatListModel::ChatData::isHidden() const
@@ -277,33 +248,20 @@ bool ChatListModel::ChatData::isHidden() const
     return false;
 }
 
-bool ChatListModel::ChatData::isMarkedAsUnread() const
-{
-    return chatData.value(IS_MARKED_AS_UNREAD).toBool();
-}
-
-bool ChatListModel::ChatData::isPinned() const
-{
-    return chatData.value(IS_PINNED).toBool();
-}
-
-QVariantMap ChatListModel::ChatData::notificationSettings() const
-{
-    return chatData.value(NOTIFICATION_SETTINGS).toMap();
-}
-
 bool ChatListModel::ChatData::updateUnreadCount(int count)
 {
-    const int prevUnreadCount(unreadCount());
-    chatData.insert(UNREAD_COUNT, count);
-    return prevUnreadCount != unreadCount();
+    const int prevUnreadCount(unreadCount);
+    unreadCount = count;
+    tdLibWrapper->getChat(chatId).insert(UNREAD_COUNT, count);
+    return prevUnreadCount != unreadCount;
 }
 
 bool ChatListModel::ChatData::updateLastReadInboxMessageId(qlonglong messageId)
 {
-    const qlonglong prevLastReadInboxMessageId(lastReadInboxMessageId());
-    chatData.insert(LAST_READ_INBOX_MESSAGE_ID, messageId);
-    return prevLastReadInboxMessageId != lastReadInboxMessageId();
+    const qlonglong prevLastReadInboxMessageId(lastReadInboxMessageId);
+    lastReadInboxMessageId = messageId;
+    tdLibWrapper->getChat(chatId).insert(LAST_READ_INBOX_MESSAGE_ID, messageId);
+    return prevLastReadInboxMessageId != messageId;
 }
 
 QVector<int> ChatListModel::ChatData::updateLastMessage(const QVariantMap &message)
@@ -314,8 +272,8 @@ QVector<int> ChatListModel::ChatData::updateLastMessage(const QVariantMap &messa
     const QString prevSenderMessageText(senderMessageText());
     const QString prevSenderMessageStatus(senderMessageStatus());
 
-
-    chatData.insert(LAST_MESSAGE, message);
+    lastMessage = message;
+    tdLibWrapper->getChat(chatId).insert(LAST_MESSAGE, lastMessage);
 
     QVector<int> changedRoles;
     if (prevSenderUserId != senderUserId()) {
@@ -373,7 +331,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSetting
 {
     this->tdLibWrapper = tdLibWrapper;
     this->appSettings = appSettings;
-    connect(tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
+    connect(tdLibWrapper, SIGNAL(newChatDiscovered(qlonglong, QVariantMap)), this, SLOT(handleChatDiscovered(qlonglong, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(chatLastMessageUpdated(QString, QString, QVariantMap)), this, SLOT(handleChatLastMessageUpdated(QString, QString, QVariantMap)));
     connect(tdLibWrapper, SIGNAL(chatOrderUpdated(QString, QString)), this, SLOT(handleChatOrderUpdated(QString, QString)));
     connect(tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
@@ -451,10 +409,10 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         switch ((ChatListModel::Role)role) {
         case ChatListModel::RoleChatId: return data->chatId;
         case ChatListModel::RoleChatType: return data->chatType;
-        case ChatListModel::RoleTitle: return data->title();
-        case ChatListModel::RolePhotoSmall: return data->photoSmall();
-        case ChatListModel::RoleUnreadCount: return data->unreadCount();
-        case ChatListModel::RoleLastReadInboxMessageId: return data->lastReadInboxMessageId();
+        case ChatListModel::RoleTitle: return data->title;
+        case ChatListModel::RolePhotoSmall: return data->photoSmall;
+        case ChatListModel::RoleUnreadCount: return data->unreadCount;
+        case ChatListModel::RoleLastReadInboxMessageId: return data->lastReadInboxMessageId;
         case ChatListModel::RoleLastMessageSenderId: return data->senderUserId();
         case ChatListModel::RoleLastMessageId: return data->senderMessageId();
         case ChatListModel::RoleLastMessageText: return data->senderMessageText();
@@ -463,13 +421,13 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RoleChatMemberStatus: return data->memberStatus;
         case ChatListModel::RoleSecretChatState: return data->secretChatState;
         case ChatListModel::RoleIsVerified: return data->verified;
-        case ChatListModel::RoleIsChannel: return data->isChannel();
-        case ChatListModel::RoleIsMarkedAsUnread: return data->isMarkedAsUnread();
-        case ChatListModel::RoleNotificationSettings: return data->notificationSettings();
-        case ChatListModel::RoleIsPinned: return data->isPinned();
-        case ChatListModel::RoleFilter: return QString(data->title() + " " + data->senderMessageText()).trimmed();
-        case ChatListModel::RoleDraftMessageText: return data->draftMessageText();
-        case ChatListModel::RoleDraftMessageDate: return data->draftMessageDate();
+        case ChatListModel::RoleIsChannel: return data->isChannel;
+        case ChatListModel::RoleIsMarkedAsUnread: return data->isMarkedAsUnread;
+        case ChatListModel::RoleNotificationSettings: return data->notificationSettings;
+        case ChatListModel::RoleIsPinned: return data->isPinned;
+        case ChatListModel::RoleFilter: return QString(data->title + " " + data->senderMessageText()).trimmed();
+        case ChatListModel::RoleDraftMessageText: return data->draftMessageText;
+        case ChatListModel::RoleDraftMessageDate: return data->draftMessageDate;
         }
     }
     return QVariant();
@@ -545,7 +503,7 @@ void ChatListModel::calculateUnreadState()
         QListIterator<ChatData*> chatIterator(this->chatList);
         while (chatIterator.hasNext()) {
             ChatData *currentChat = chatIterator.next();
-            int unreadCount = currentChat->unreadCount();
+            int unreadCount = currentChat->unreadCount;
             if (unreadCount > 0) {
                 unreadChats++;
                 unreadMessages += unreadCount;
@@ -572,7 +530,7 @@ void ChatListModel::addVisibleChat(ChatData *chat)
     endInsertRows();
     if (this->tdLibWrapper->getJoinChatRequested()) {
         this->tdLibWrapper->registerJoinChat();
-        emit chatJoined(chat->chatId, chat->chatData.value("title").toString());
+        emit chatJoined(chat->chatId, chat->title);
     }
 }
 
@@ -660,7 +618,7 @@ void ChatListModel::setShowAllChats(bool showAll)
     }
 }
 
-void ChatListModel::handleChatDiscovered(const QString &, const QVariantMap &chatToBeAdded)
+void ChatListModel::handleChatDiscovered(qlonglong &, const QVariantMap &chatToBeAdded)
 {
     ChatData *chat = new ChatData(tdLibWrapper, chatToBeAdded);
 
@@ -692,7 +650,7 @@ void ChatListModel::handleChatDiscovered(const QString &, const QVariantMap &cha
 void ChatListModel::handleChatLastMessageUpdated(const QString &id, const QString &order, const QVariantMap &lastMessage)
 {
     bool ok;
-    const qlonglong chatId = id.toLongLong(&ok);
+    qlonglong chatId = id.toLongLong(&ok);
     if (ok) {
         if (chatIndexMap.contains(chatId)) {
             int chatIndex = chatIndexMap.value(chatId);
@@ -709,7 +667,8 @@ void ChatListModel::handleChatLastMessageUpdated(const QString &id, const QStrin
             if (chat) {
                 LOG("Updating last message for hidden chat" << chatId << "new order" << order);
                 chat->setOrder(order);
-                chat->chatData.insert(LAST_MESSAGE, lastMessage);
+                chat->lastMessage = lastMessage;
+                tdLibWrapper->getChat(chatId).insert(LAST_MESSAGE, lastMessage);
             }
         }
     }
@@ -770,19 +729,20 @@ void ChatListModel::handleChatReadInboxUpdated(const QString &id, const QString 
 void ChatListModel::handleChatReadOutboxUpdated(const QString &id, const QString &lastReadOutboxMessageId)
 {
     bool ok;
-    const qlonglong chatId = id.toLongLong(&ok);
+    qlonglong chatId = id.toLongLong(&ok);
+    tdLibWrapper->getChat(chatId).insert(LAST_READ_OUTBOX_MESSAGE_ID, lastReadOutboxMessageId);
     if (ok) {
         if (chatIndexMap.contains(chatId)) {
             LOG("Updating last read message for" << chatId << "last ID" << lastReadOutboxMessageId);
             const int chatIndex = chatIndexMap.value(chatId);
             ChatData *chat = chatList.at(chatIndex);
-            chat->chatData.insert(LAST_READ_OUTBOX_MESSAGE_ID, lastReadOutboxMessageId);
+            chat->lastReadOutboxMessageId = lastReadOutboxMessageId.toLongLong();
             const QModelIndex modelIndex(index(chatIndex));
             emit dataChanged(modelIndex, modelIndex);
         } else {
             ChatData *chat = hiddenChats.value(chatId);
             if (chat) {
-                chat->chatData.insert(LAST_READ_OUTBOX_MESSAGE_ID, lastReadOutboxMessageId);
+                chat->lastReadOutboxMessageId = lastReadOutboxMessageId.toLongLong();
             }
         }
     }
@@ -790,11 +750,12 @@ void ChatListModel::handleChatReadOutboxUpdated(const QString &id, const QString
 
 void ChatListModel::handleChatPhotoUpdated(qlonglong chatId, const QVariantMap &photo)
 {
+    tdLibWrapper->getChat(chatId).insert(PHOTO, photo);
     if (chatIndexMap.contains(chatId)) {
         LOG("Updating chat photo for" << chatId);
         const int chatIndex = chatIndexMap.value(chatId);
         ChatData *chat = chatList.at(chatIndex);
-        chat->chatData.insert(PHOTO, photo);
+        chat->photoSmall = photo.value(SMALL);
         QVector<int> changedRoles;
         changedRoles.append(ChatListModel::RolePhotoSmall);
         const QModelIndex modelIndex(index(chatIndex));
@@ -803,7 +764,7 @@ void ChatListModel::handleChatPhotoUpdated(qlonglong chatId, const QVariantMap &
         ChatData *chat = hiddenChats.value(chatId);
         if (chat) {
             LOG("Updating photo for hidden chat" << chatId);
-            chat->chatData.insert(PHOTO, photo);
+            chat->photoSmall = photo.value(SMALL);
         }
     }
 }
@@ -827,7 +788,7 @@ void ChatListModel::handleChatPinnedMessageUpdated(qlonglong chatId, qlonglong p
 void ChatListModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMessageId, const QVariantMap &message)
 {
     bool ok;
-    const qlonglong chatId(message.value(CHAT_ID).toLongLong(&ok));
+    qlonglong chatId(message.value(CHAT_ID).toLongLong(&ok));
     if (ok) {
         if (chatIndexMap.contains(chatId)) {
             const int chatIndex = chatIndexMap.value(chatId);
@@ -838,7 +799,8 @@ void ChatListModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong ol
             ChatData *chat = hiddenChats.value(chatId);
             if (chat) {
                 LOG("Updating last message for hidden chat" << chatId << ", as message was sent, old ID:" << oldMessageId << ", new ID:" << messageId);
-                chat->chatData.insert(LAST_MESSAGE, message);
+                chat->lastMessage = message;
+                tdLibWrapper->getChat(chatId).insert(LAST_MESSAGE, message);
             }
         }
     }
@@ -847,13 +809,14 @@ void ChatListModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong ol
 void ChatListModel::handleChatNotificationSettingsUpdated(const QString &id, const QVariantMap &chatNotificationSettings)
 {
     bool ok;
-    const qlonglong chatId = id.toLongLong(&ok);
+    qlonglong chatId = id.toLongLong(&ok);
+    tdLibWrapper->getChat(chatId).insert(NOTIFICATION_SETTINGS, chatNotificationSettings);
     if (ok) {
         if (chatIndexMap.contains(chatId)) {
             const int chatIndex = chatIndexMap.value(chatId);
             LOG("Updating notification settings for chat" << chatId << "at index" << chatIndex);
             ChatData *chat = chatList.at(chatIndex);
-            chat->chatData.insert(NOTIFICATION_SETTINGS, chatNotificationSettings);
+            chat->notificationSettings = chatNotificationSettings;
             QVector<int> changedRoles;
             changedRoles.append(ChatListModel::RoleNotificationSettings);
             const QModelIndex modelIndex(index(chatIndex));
@@ -861,7 +824,7 @@ void ChatListModel::handleChatNotificationSettingsUpdated(const QString &id, con
         } else {
             ChatData *chat = hiddenChats.value(chatId);
             if (chat) {
-                chat->chatData.insert(NOTIFICATION_SETTINGS, chatNotificationSettings);
+                chat->notificationSettings = chatNotificationSettings;
             }
         }
     }
@@ -881,11 +844,12 @@ void ChatListModel::handleSecretChatUpdated(qlonglong secretChatId, const QVaria
 void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString &title)
 {
     qlonglong chatIdLongLong = chatId.toLongLong();
+    tdLibWrapper->getChat(chatIdLongLong).insert(TITLE, title);
     if (chatIndexMap.contains(chatIdLongLong)) {
         LOG("Updating title for" << chatId);
         const int chatIndex = chatIndexMap.value(chatIdLongLong);
         ChatData *chat = chatList.at(chatIndex);
-        chat->chatData.insert(TITLE, title);
+        chat->title = title;
         QVector<int> changedRoles;
         changedRoles.append(ChatListModel::RoleTitle);
         const QModelIndex modelIndex(index(chatIndex));
@@ -894,18 +858,19 @@ void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString 
         ChatData *chat = hiddenChats.value(chatId.toLongLong());
         if (chat) {
             LOG("Updating title for hidden chat" << chatId);
-            chat->chatData.insert(TITLE, title);
+            chat->title = title;
         }
     }
 }
 
 void ChatListModel::handleChatPinnedUpdated(qlonglong chatId, bool chatIsPinned)
 {
+    tdLibWrapper->getChat(chatId).insert(IS_PINNED, chatIsPinned);
     if (chatIndexMap.contains(chatId)) {
         LOG("Updating chat is pinned for" << chatId << chatIsPinned);
         const int chatIndex = chatIndexMap.value(chatId);
         ChatData *chat = chatList.at(chatIndex);
-        chat->chatData.insert(IS_PINNED, chatIsPinned);
+        chat->isPinned = chatIsPinned;
         QVector<int> changedRoles;
         changedRoles.append(ChatListModel::RoleIsPinned);
         const QModelIndex modelIndex(index(chatIndex));
@@ -914,18 +879,19 @@ void ChatListModel::handleChatPinnedUpdated(qlonglong chatId, bool chatIsPinned)
         ChatData *chat = hiddenChats.value(chatId);
         if (chat) {
             LOG("Updating chat is pinned for hidden chat" << chatId);
-            chat->chatData.insert(IS_PINNED, chatIsPinned);
+            chat->isPinned = chatIsPinned;
         }
     }
 }
 
 void ChatListModel::handleChatIsMarkedAsUnreadUpdated(qlonglong chatId, bool chatIsMarkedAsUnread)
 {
+    tdLibWrapper->getChat(chatId).insert(IS_MARKED_AS_UNREAD, chatIsMarkedAsUnread);
     if (chatIndexMap.contains(chatId)) {
         LOG("Updating chat is marked as unread for" << chatId << chatIsMarkedAsUnread);
         const int chatIndex = chatIndexMap.value(chatId);
         ChatData *chat = chatList.at(chatIndex);
-        chat->chatData.insert(IS_MARKED_AS_UNREAD, chatIsMarkedAsUnread);
+        chat->isMarkedAsUnread = chatIsMarkedAsUnread;
         QVector<int> changedRoles;
         changedRoles.append(ChatListModel::RoleIsMarkedAsUnread);
         const QModelIndex modelIndex(index(chatIndex));
@@ -934,18 +900,21 @@ void ChatListModel::handleChatIsMarkedAsUnreadUpdated(qlonglong chatId, bool cha
         ChatData *chat = hiddenChats.value(chatId);
         if (chat) {
             LOG("Updating chat is marked as unread for hidden chat" << chatId);
-            chat->chatData.insert(IS_MARKED_AS_UNREAD, chatIsMarkedAsUnread);
+            chat->isMarkedAsUnread = chatIsMarkedAsUnread;
         }
     }
 }
 
 void ChatListModel::handleChatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order)
 {
+    tdLibWrapper->getChat(chatId).insert(DRAFT_MESSAGE, draftMessage);
     LOG("Updating draft message for" << chatId);
     if (chatIndexMap.contains(chatId)) {
         const int chatIndex = chatIndexMap.value(chatId);
         ChatData *chat = chatList.at(chatIndex);
-        chat->chatData.insert(DRAFT_MESSAGE, draftMessage);
+
+        chat->draftMessageDate = draftMessage.value(DATE).toLongLong();
+        chat->draftMessageText = draftMessage.value("input_message_text").toMap().value(TEXT).toMap().value(TEXT).toString();
 
         QVector<int> changedRoles;
         changedRoles.append(ChatListModel::RoleDraftMessageDate);

@@ -44,7 +44,7 @@ public slots:
     void handleUpdateActiveNotifications(const QVariantList &notificationGroups);
     void handleUpdateNotificationGroup(const QVariantMap &notificationGroupUpdate);
     void handleUpdateNotification(const QVariantMap &updatedNotification);
-    void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
+    void handleChatDiscovered(qlonglong chatId, const QVariantMap &chatInformation);
     void handleChatTitleUpdated(const QString &chatId, const QString &title);
 
 private:

@@ -1247,7 +1247,7 @@ QVariantMap TDLibWrapper::getSuperGroup(qlonglong groupId) const
     }
 }
 
-QVariantMap TDLibWrapper::getChat(const QString &chatId)
+QVariantMap TDLibWrapper::getChat(qlonglong &chatId)
 {
     LOG("Returning chat information for ID" << chatId);
     return this->chats.value(chatId).toMap();
@@ -1464,7 +1464,7 @@ void TDLibWrapper::handleFileUpdated(const QVariantMap &fileInformation)
 
 void TDLibWrapper::handleNewChatDiscovered(const QVariantMap &chatInformation)
 {
-    QString chatId = chatInformation.value("id").toString();
+    qlonglong chatId = chatInformation.value("id").toLongLong();
     this->chats.insert(chatId, chatInformation);
     emit newChatDiscovered(chatId, chatInformation);
 }
