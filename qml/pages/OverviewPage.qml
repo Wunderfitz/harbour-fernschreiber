@@ -49,7 +49,7 @@ Page {
             Debug.log("[OverviewPage] Opening chat from external call...")
             if (chatListCreated) {
                 pageStack.pop(overviewPage, PageStackAction.Immediate)
-                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : chatListModel.getById(chatId) }, PageStackAction.Immediate)
+                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chatId) }, PageStackAction.Immediate)
             }
         }
         onPleaseOpenUrl: {
@@ -357,7 +357,7 @@ Page {
                 isVerified: is_verified
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), {
-                        chatInformation : chatListModel.getById(chat_id),
+                        chatInformation : tdLibWrapper.getChat(chat_id),
                         chatPicture: photo_small
                     })
                 }

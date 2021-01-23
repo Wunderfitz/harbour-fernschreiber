@@ -92,7 +92,7 @@ PhotoTextsListItem {
                             pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ), PageStackAction.Immediate);
                         }
 
-                        pageStack.push(Qt.resolvedUrl("../pages/ChatInformationPage.qml"), { "chatInformation" : chatListModel.getById(chat_id)});
+                        pageStack.push(Qt.resolvedUrl("../pages/ChatInformationPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chat_id)});
                     }
                     text: ( chat_type === TelegramAPI.ChatTypePrivate || isSecret ) ? qsTr("User Info") : qsTr("Group Info")
                 }

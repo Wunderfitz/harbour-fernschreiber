@@ -496,14 +496,6 @@ QVariantMap ChatListModel::get(int row)
     return res;
 }
 
-QVariantMap ChatListModel::getById(qlonglong chatId)
-{
-    if (chatIndexMap.contains(chatId)) {
-        return chatList.value(chatIndexMap.value(chatId))->chatData;
-    }
-    return QVariantMap();
-}
-
 int ChatListModel::updateChatOrder(int chatIndex)
 {
     ChatData *chat = chatList.at(chatIndex);
