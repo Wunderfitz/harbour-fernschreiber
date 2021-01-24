@@ -647,7 +647,7 @@ void ChatListModel::handleChatDiscovered(qlonglong, const QVariantMap &chatToBeA
 void ChatListModel::handleChatLastMessageUpdated(const QString &id, const QString &order, const QVariantMap &lastMessage)
 {
     bool ok;
-    qlonglong chatId = id.toLongLong(&ok);
+    const qlonglong chatId = id.toLongLong(&ok);
     if (ok) {
         if (chatIndexMap.contains(chatId)) {
             int chatIndex = chatIndexMap.value(chatId);
@@ -726,7 +726,7 @@ void ChatListModel::handleChatReadInboxUpdated(const QString &id, const QString 
 void ChatListModel::handleChatReadOutboxUpdated(const QString &id, const QString &lastReadOutboxMessageId)
 {
     bool ok;
-    qlonglong chatId = id.toLongLong(&ok);
+    const qlonglong chatId = id.toLongLong(&ok);
     tdLibWrapper->updateCachedChatProperty(chatId, LAST_READ_OUTBOX_MESSAGE_ID, lastReadOutboxMessageId);
     if (ok) {
         if (chatIndexMap.contains(chatId)) {
@@ -769,7 +769,7 @@ void ChatListModel::handleChatPhotoUpdated(qlonglong chatId, const QVariantMap &
 void ChatListModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMessageId, const QVariantMap &message)
 {
     bool ok;
-    qlonglong chatId(message.value(CHAT_ID).toLongLong(&ok));
+    const qlonglong chatId(message.value(CHAT_ID).toLongLong(&ok));
     if (ok) {
         if (chatIndexMap.contains(chatId)) {
             const int chatIndex = chatIndexMap.value(chatId);
@@ -790,7 +790,7 @@ void ChatListModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong ol
 void ChatListModel::handleChatNotificationSettingsUpdated(const QString &id, const QVariantMap &chatNotificationSettings)
 {
     bool ok;
-    qlonglong chatId = id.toLongLong(&ok);
+    const qlonglong chatId = id.toLongLong(&ok);
     tdLibWrapper->updateCachedChatProperty(chatId, NOTIFICATION_SETTINGS, chatNotificationSettings);
     if (ok) {
         if (chatIndexMap.contains(chatId)) {
@@ -824,7 +824,7 @@ void ChatListModel::handleSecretChatUpdated(qlonglong secretChatId, const QVaria
 
 void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString &title)
 {
-    qlonglong chatIdLongLong = chatId.toLongLong();
+    const qlonglong chatIdLongLong = chatId.toLongLong();
     tdLibWrapper->updateCachedChatProperty(chatIdLongLong, TITLE, title);
     if (chatIndexMap.contains(chatIdLongLong)) {
         LOG("Updating title for" << chatId);
