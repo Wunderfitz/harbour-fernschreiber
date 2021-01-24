@@ -1247,7 +1247,12 @@ QVariantMap TDLibWrapper::getSuperGroup(qlonglong groupId) const
     }
 }
 
-QVariantMap TDLibWrapper::getChat(qlonglong &chatId)
+QVariantMap TDLibWrapper::getChat(const QString &chatId)
+{
+    return this->getChat(chatId.toLongLong());
+}
+
+QVariantMap TDLibWrapper::getChat(qlonglong chatId)
 {
     LOG("Returning chat information for ID" << chatId);
     return this->chats.value(chatId).toMap();
@@ -1581,16 +1586,25 @@ void TDLibWrapper::handleMessageInformation(qlonglong chatId, qlonglong messageI
 {
     QString extraInformation = receivedInformation.value(_EXTRA).toString();
     if (extraInformation.startsWith("getChatPinnedMessage:")) {
+        this->getChat(chatId).insert("pinned_message_id", messageId);
         emit chatPinnedMessageUpdated(chatId, messageId);
     }
     emit receivedMessage(chatId, messageId, receivedInformation);
 }
 
+void TDLibWrapper::handleChatPinnedMessageUpdated(qlonglong chatId, qlonglong messageId)
+{
+    this->getChat(chatId).insert("pinned_message_id", messageId);
+    emit chatPinnedMessageUpdated(chatId, messageId);
+}
+
 void TDLibWrapper::handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned)
 {
     if (isPinned) {
+        this->getChat(chatId).insert("pinned_message_id", messageId);
         emit chatPinnedMessageUpdated(chatId, messageId);
     } else {
+        this->getChat(chatId).insert("pinned_message_id", 0);
         emit chatPinnedMessageUpdated(chatId, 0);
         this->getChatPinnedMessage(chatId);
     }

@@ -110,7 +110,7 @@ public:
     Q_INVOKABLE QVariantMap getUnreadChatInformation();
     Q_INVOKABLE QVariantMap getBasicGroup(qlonglong groupId) const;
     Q_INVOKABLE QVariantMap getSuperGroup(qlonglong groupId) const;
-    Q_INVOKABLE QVariantMap getChat(qlonglong &chatId);
+    Q_INVOKABLE QVariantMap getChat(const QString &chatId);
     Q_INVOKABLE QVariantMap getSecretChatFromCache(qlonglong secretChatId);
     Q_INVOKABLE QString getOptionString(const QString &optionName);
     Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
@@ -203,11 +203,11 @@ public:
     Q_INVOKABLE void removeOpenWith();
 
 public:
-    QMap<qlonglong, QVariant> chats;
     const Group* getGroup(qlonglong groupId) const;
     static ChatType chatTypeFromString(const QString &type);
     static ChatMemberStatus chatMemberStatusFromString(const QString &status);
     static SecretChatState secretChatStateFromString(const QString &state);
+    QVariantMap getChat(qlonglong chatId);
 
 signals:
     void versionDetected(const QString &version);
@@ -294,6 +294,7 @@ public slots:
     void handleStorageOptimizerChanged();
     void handleErrorReceived(int code, const QString &message, const QString &extra);
     void handleMessageInformation(qlonglong chatId, qlonglong messageId, const QVariantMap &receivedInformation);
+    void handleChatPinnedMessageUpdated(qlonglong chatId, qlonglong messageId);
     void handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned);
 
 private:
@@ -318,6 +319,7 @@ private:
     QVariantMap userInformation;
     QVariantMap allUsers;
     QVariantMap allUserNames;
+    QMap<qlonglong, QVariant> chats;
     QMap<qlonglong, QVariantMap> secretChats;
     QVariantMap unreadMessageInformation;
     QVariantMap unreadChatInformation;
