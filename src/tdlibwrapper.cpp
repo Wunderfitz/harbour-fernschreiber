@@ -1182,6 +1182,15 @@ void TDLibWrapper::deleteFile(int fileId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::updateCachedChatProperty(qlonglong chatId, const QString &key, const QVariant &value)
+{
+    QVariantMap chatInformation = this->getChat(chatId);
+    if(!chatInformation.isEmpty()) {
+        chatInformation.insert(key, value);
+        this->chats.insert(chatId, chatInformation);
+    }
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);

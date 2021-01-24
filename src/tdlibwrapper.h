@@ -198,6 +198,7 @@ public:
     Q_INVOKABLE void deleteFile(int fileId);
 
     // Others (candidates for extraction ;))
+    Q_INVOKABLE void updateCachedChatProperty(qlonglong chatId, const QString &key, const QVariant &value);
     Q_INVOKABLE void searchEmoji(const QString &queryString);
     Q_INVOKABLE void initializeOpenWith();
     Q_INVOKABLE void removeOpenWith();

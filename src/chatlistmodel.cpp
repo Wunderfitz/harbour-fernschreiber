@@ -158,7 +158,7 @@ bool ChatListModel::ChatData::setOrder(const QString &newOrder)
 {
     if (!newOrder.isEmpty()) {
         order = newOrder.toLongLong();
-        tdLibWrapper->getChat(chatId).insert(ORDER, newOrder);
+        tdLibWrapper->updateCachedChatProperty(chatId, ORDER, newOrder);
         return true;
     }
     return false;
@@ -250,7 +250,7 @@ bool ChatListModel::ChatData::updateUnreadCount(int count)
 {
     const int prevUnreadCount(unreadCount);
     unreadCount = count;
-    tdLibWrapper->getChat(chatId).insert(UNREAD_COUNT, count);
+    tdLibWrapper->updateCachedChatProperty(chatId, UNREAD_COUNT, count);
     return prevUnreadCount != unreadCount;
 }
 
@@ -258,7 +258,7 @@ bool ChatListModel::ChatData::updateLastReadInboxMessageId(qlonglong messageId)
 {
     const qlonglong prevLastReadInboxMessageId(lastReadInboxMessageId);
     lastReadInboxMessageId = messageId;
-    tdLibWrapper->getChat(chatId).insert(LAST_READ_INBOX_MESSAGE_ID, messageId);
+    tdLibWrapper->updateCachedChatProperty(chatId, LAST_READ_INBOX_MESSAGE_ID, messageId);
     return prevLastReadInboxMessageId != messageId;
 }
 
@@ -271,7 +271,7 @@ QVector<int> ChatListModel::ChatData::updateLastMessage(const QVariantMap &messa
     const QString prevSenderMessageStatus(senderMessageStatus());
 
     lastMessage = message;
-    tdLibWrapper->getChat(chatId).insert(LAST_MESSAGE, lastMessage);
+    tdLibWrapper->updateCachedChatProperty(chatId, LAST_MESSAGE, lastMessage);
 
     QVector<int> changedRoles;
     if (prevSenderUserId != senderUserId()) {
@@ -665,7 +665,7 @@ void ChatListModel::handleChatLastMessageUpdated(const QString &id, const QStrin
                 LOG("Updating last message for hidden chat" << chatId << "new order" << order);
                 chat->setOrder(order);
                 chat->lastMessage = lastMessage;
-                tdLibWrapper->getChat(chatId).insert(LAST_MESSAGE, lastMessage);
+                tdLibWrapper->updateCachedChatProperty(chatId, LAST_MESSAGE, lastMessage);
             }
         }
     }
@@ -727,7 +727,7 @@ void ChatListModel::handleChatReadOutboxUpdated(const QString &id, const QString
 {
     bool ok;
     qlonglong chatId = id.toLongLong(&ok);
-    tdLibWrapper->getChat(chatId).insert(LAST_READ_OUTBOX_MESSAGE_ID, lastReadOutboxMessageId);
+    tdLibWrapper->updateCachedChatProperty(chatId, LAST_READ_OUTBOX_MESSAGE_ID, lastReadOutboxMessageId);
     if (ok) {
         if (chatIndexMap.contains(chatId)) {
             LOG("Updating last read message for" << chatId << "last ID" << lastReadOutboxMessageId);
@@ -747,7 +747,7 @@ void ChatListModel::handleChatReadOutboxUpdated(const QString &id, const QString
 
 void ChatListModel::handleChatPhotoUpdated(qlonglong chatId, const QVariantMap &photo)
 {
-    tdLibWrapper->getChat(chatId).insert(PHOTO, photo);
+    tdLibWrapper->updateCachedChatProperty(chatId, PHOTO, photo);
     if (chatIndexMap.contains(chatId)) {
         LOG("Updating chat photo for" << chatId);
         const int chatIndex = chatIndexMap.value(chatId);
@@ -781,7 +781,7 @@ void ChatListModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong ol
             if (chat) {
                 LOG("Updating last message for hidden chat" << chatId << ", as message was sent, old ID:" << oldMessageId << ", new ID:" << messageId);
                 chat->lastMessage = message;
-                tdLibWrapper->getChat(chatId).insert(LAST_MESSAGE, message);
+                tdLibWrapper->updateCachedChatProperty(chatId, LAST_MESSAGE, message);
             }
         }
     }
@@ -791,7 +791,7 @@ void ChatListModel::handleChatNotificationSettingsUpdated(const QString &id, con
 {
     bool ok;
     qlonglong chatId = id.toLongLong(&ok);
-    tdLibWrapper->getChat(chatId).insert(NOTIFICATION_SETTINGS, chatNotificationSettings);
+    tdLibWrapper->updateCachedChatProperty(chatId, NOTIFICATION_SETTINGS, chatNotificationSettings);
     if (ok) {
         if (chatIndexMap.contains(chatId)) {
             const int chatIndex = chatIndexMap.value(chatId);
@@ -825,7 +825,7 @@ void ChatListModel::handleSecretChatUpdated(qlonglong secretChatId, const QVaria
 void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString &title)
 {
     qlonglong chatIdLongLong = chatId.toLongLong();
-    tdLibWrapper->getChat(chatIdLongLong).insert(TITLE, title);
+    tdLibWrapper->updateCachedChatProperty(chatIdLongLong, TITLE, title);
     if (chatIndexMap.contains(chatIdLongLong)) {
         LOG("Updating title for" << chatId);
         const int chatIndex = chatIndexMap.value(chatIdLongLong);
@@ -846,7 +846,7 @@ void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString 
 
 void ChatListModel::handleChatPinnedUpdated(qlonglong chatId, bool chatIsPinned)
 {
-    tdLibWrapper->getChat(chatId).insert(IS_PINNED, chatIsPinned);
+    tdLibWrapper->updateCachedChatProperty(chatId, IS_PINNED, chatIsPinned);
     if (chatIndexMap.contains(chatId)) {
         LOG("Updating chat is pinned for" << chatId << chatIsPinned);
         const int chatIndex = chatIndexMap.value(chatId);
@@ -867,7 +867,7 @@ void ChatListModel::handleChatPinnedUpdated(qlonglong chatId, bool chatIsPinned)
 
 void ChatListModel::handleChatIsMarkedAsUnreadUpdated(qlonglong chatId, bool chatIsMarkedAsUnread)
 {
-    tdLibWrapper->getChat(chatId).insert(IS_MARKED_AS_UNREAD, chatIsMarkedAsUnread);
+    tdLibWrapper->updateCachedChatProperty(chatId, IS_MARKED_AS_UNREAD, chatIsMarkedAsUnread);
     if (chatIndexMap.contains(chatId)) {
         LOG("Updating chat is marked as unread for" << chatId << chatIsMarkedAsUnread);
         const int chatIndex = chatIndexMap.value(chatId);
@@ -888,7 +888,7 @@ void ChatListModel::handleChatIsMarkedAsUnreadUpdated(qlonglong chatId, bool cha
 
 void ChatListModel::handleChatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order)
 {
-    tdLibWrapper->getChat(chatId).insert(DRAFT_MESSAGE, draftMessage);
+    tdLibWrapper->updateCachedChatProperty(chatId, DRAFT_MESSAGE, draftMessage);
     LOG("Updating draft message for" << chatId);
     if (chatIndexMap.contains(chatId)) {
         const int chatIndex = chatIndexMap.value(chatId);
