@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 import "../components"
 import "../js/functions.js" as Functions
+import "../js/debug.js" as Debug
 
 Page {
     id: settingsPage
@@ -133,6 +134,229 @@ Page {
 
                     onSaveButtonClicked: {
                         tdLibWrapper.setUsername(textValue);
+                    }
+                }
+
+            }
+
+            Grid {
+                width: parent.width
+                columns: landscapeLayout ? 2 : 1
+                columnSpacing: Theme.horizontalPageMargin
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                readonly property real columnWidth: width/columns
+
+                Connections {
+                    target: tdLibWrapper
+                    onUserPrivacySettingUpdated: {
+                        Debug.log("Received updated privacy setting: " + setting + ":" + rule);
+                        switch (setting) {
+                        case TelegramAPI.SettingAllowChatInvites:
+                            allowChatInvitesComboBox.currentIndex = rule;
+                            break;
+                        case TelegramAPI.SettingAllowFindingByPhoneNumber:
+                            allowFindingByPhoneNumberComboBox.currentIndex = rule;
+                            break;
+                        case TelegramAPI.SettingShowLinkInForwardedMessages:
+                            showLinkInForwardedMessagesComboBox.currentIndex = rule;
+                            break;
+                        case TelegramAPI.SettingShowPhoneNumber:
+                            showPhoneNumberComboBox.currentIndex = rule;
+                            break;
+                        case TelegramAPI.SettingShowProfilePhoto:
+                            showProfilePhotoComboBox.currentIndex = rule;
+                            break;
+                        case TelegramAPI.SettingShowStatus:
+                            showStatusComboBox.currentIndex = rule;
+                            break;
+                        }
+                    }
+                }
+
+                ComboBox {
+                    id: allowChatInvitesComboBox
+                    width: parent.columnWidth
+                    label: qsTr("Allow chat invites")
+                    description: qsTr("Privacy setting for managing whether you can be invited to chats.")
+                    menu: ContextMenu {
+
+                        MenuItem {
+                            text: qsTr("Yes")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingAllowChatInvites, TelegramAPI.RuleAllowAll);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Your contacts only")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingAllowChatInvites, TelegramAPI.RuleAllowContacts);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("No")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingAllowChatInvites, TelegramAPI.RuleRestrictAll);
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingAllowChatInvites);
+                    }
+                }
+
+                ComboBox {
+                    id: allowFindingByPhoneNumberComboBox
+                    width: parent.columnWidth
+                    label: qsTr("Allow finding by phone number")
+                    description: qsTr("Privacy setting for managing whether you can be found by your phone number.")
+                    menu: ContextMenu {
+
+                        MenuItem {
+                            text: qsTr("Yes")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingAllowFindingByPhoneNumber, TelegramAPI.RuleAllowAll);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Your contacts only")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingAllowFindingByPhoneNumber, TelegramAPI.RuleAllowContacts);
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingAllowFindingByPhoneNumber);
+                    }
+                }
+
+                ComboBox {
+                    id: showLinkInForwardedMessagesComboBox
+                    width: parent.columnWidth
+                    label: qsTr("Show link in forwarded messages")
+                    description: qsTr("Privacy setting for managing whether a link to your account is included in forwarded messages.")
+                    menu: ContextMenu {
+
+                        MenuItem {
+                            text: qsTr("Yes")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowLinkInForwardedMessages, TelegramAPI.RuleAllowAll);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Your contacts only")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowLinkInForwardedMessages, TelegramAPI.RuleAllowContacts);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("No")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowLinkInForwardedMessages, TelegramAPI.RuleRestrictAll);
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingShowLinkInForwardedMessages);
+                    }
+                }
+
+                ComboBox {
+                    id: showPhoneNumberComboBox
+                    width: parent.columnWidth
+                    label: qsTr("Show phone number")
+                    description: qsTr("Privacy setting for managing whether your phone number is visible.")
+                    menu: ContextMenu {
+
+                        MenuItem {
+                            text: qsTr("Yes")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowPhoneNumber, TelegramAPI.RuleAllowAll);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Your contacts only")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowPhoneNumber, TelegramAPI.RuleAllowContacts);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("No")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowPhoneNumber, TelegramAPI.RuleRestrictAll);
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingShowPhoneNumber);
+                    }
+                }
+
+                ComboBox {
+                    id: showProfilePhotoComboBox
+                    width: parent.columnWidth
+                    label: qsTr("Show profile photo")
+                    description: qsTr("Privacy setting for managing whether your profile photo is visible.")
+                    menu: ContextMenu {
+
+                        MenuItem {
+                            text: qsTr("Yes")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowProfilePhoto, TelegramAPI.RuleAllowAll);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Your contacts only")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowProfilePhoto, TelegramAPI.RuleAllowContacts);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("No")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowProfilePhoto, TelegramAPI.RuleRestrictAll);
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingShowProfilePhoto);
+                    }
+                }
+
+                ComboBox {
+                    id: showStatusComboBox
+                    width: parent.columnWidth
+                    label: qsTr("Show status")
+                    description: qsTr("Privacy setting for managing whether your online status is visible.")
+                    menu: ContextMenu {
+
+                        MenuItem {
+                            text: qsTr("Yes")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowStatus, TelegramAPI.RuleAllowAll);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Your contacts only")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowStatus, TelegramAPI.RuleAllowContacts);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("No")
+                            onClicked: {
+                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowStatus, TelegramAPI.RuleRestrictAll);
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingShowStatus);
                     }
                 }
 

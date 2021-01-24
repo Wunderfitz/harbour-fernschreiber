@@ -95,15 +95,15 @@ public:
         SettingShowLinkInForwardedMessages,
         SettingShowPhoneNumber,
         SettingShowProfilePhoto,
-        SettingShowStatus
+        SettingShowStatus,
+        SettingUnknown
     };
     Q_ENUM(UserPrivacySetting)
 
     enum UserPrivacySettingRule {
         RuleAllowAll,
         RuleAllowContacts,
-        RuleRestrictAll,
-        RuleRestrictContacts
+        RuleRestrictAll
     };
     Q_ENUM(UserPrivacySettingRule)
 
@@ -124,6 +124,7 @@ public:
     Q_INVOKABLE QVariantMap getUserInformation(const QString &userId);
     Q_INVOKABLE bool hasUserInformation(const QString &userId);
     Q_INVOKABLE QVariantMap getUserInformationByName(const QString &userName);
+    Q_INVOKABLE UserPrivacySettingRule getUserPrivacySettingRule(UserPrivacySetting userPrivacySetting);
     Q_INVOKABLE QVariantMap getUnreadMessageInformation();
     Q_INVOKABLE QVariantMap getUnreadChatInformation();
     Q_INVOKABLE QVariantMap getBasicGroup(qlonglong groupId) const;
@@ -217,6 +218,7 @@ public:
     Q_INVOKABLE void setName(const QString &firstName, const QString &lastName);
     Q_INVOKABLE void setUsername(const QString &userName);
     Q_INVOKABLE void setUserPrivacySettingRule(UserPrivacySetting setting, UserPrivacySettingRule rule);
+    Q_INVOKABLE void getUserPrivacySettingRules(UserPrivacySetting setting);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -292,6 +294,7 @@ signals:
     void chatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order);
     void inlineQueryResults(const QString &inlineQueryId, const QString &nextOffset, const QVariantList &results, const QString &switchPmText, const QString &switchPmParameter, const QString &extra);
     void callbackQueryAnswer(const QString &text, bool alert, const QString &url);
+    void userPrivacySettingUpdated(UserPrivacySetting setting, UserPrivacySettingRule rule);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -316,6 +319,8 @@ public slots:
     void handleErrorReceived(int code, const QString &message, const QString &extra);
     void handleMessageInformation(qlonglong chatId, qlonglong messageId, const QVariantMap &receivedInformation);
     void handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned);
+    void handleUserPrivacySettingRules(const QVariantMap &rules);
+    void handleUpdatedUserPrivacySettingRules(const QVariantMap &updatedRules);
 
 private:
     void setOption(const QString &name, const QString &type, const QVariant &value);
@@ -337,6 +342,7 @@ private:
     TDLibWrapper::ConnectionState connectionState;
     QVariantMap options;
     QVariantMap userInformation;
+    QMap<UserPrivacySetting, UserPrivacySettingRule> userPrivacySettingRules;
     QVariantMap allUsers;
     QVariantMap allUserNames;
     QVariantMap chats;

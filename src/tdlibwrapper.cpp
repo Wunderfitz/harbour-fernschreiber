@@ -158,6 +158,8 @@ void TDLibWrapper::initializeTDLibReciever() {
     connect(this->tdLibReceiver, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)), this, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)));
     connect(this->tdLibReceiver, SIGNAL(inlineQueryResults(QString, QString, QVariantList, QString, QString, QString)), this, SIGNAL(inlineQueryResults(QString, QString, QVariantList, QString, QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(callbackQueryAnswer(QString, bool, QString)), this, SIGNAL(callbackQueryAnswer(QString, bool, QString)));
+    connect(this->tdLibReceiver, SIGNAL(userPrivacySettingRules(QVariantMap)), this, SLOT(handleUserPrivacySettingRules(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(userPrivacySettingRulesUpdated(QVariantMap)), this, SLOT(handleUpdatedUserPrivacySettingRules(QVariantMap)));
 
     this->tdLibReceiver->start();
 }
@@ -1205,7 +1207,7 @@ void TDLibWrapper::setUsername(const QString &userName)
 
 void TDLibWrapper::setUserPrivacySettingRule(TDLibWrapper::UserPrivacySetting setting, TDLibWrapper::UserPrivacySettingRule rule)
 {
-    LOG("Set user privecy setting rule of current user" << setting << rule);
+    LOG("Set user privacy setting rule of current user" << setting << rule);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setUserPrivacySettingRules");
 
@@ -1229,6 +1231,8 @@ void TDLibWrapper::setUserPrivacySettingRule(TDLibWrapper::UserPrivacySetting se
     case SettingShowLinkInForwardedMessages:
         settingMap.insert(_TYPE, "userPrivacySettingShowLinkInForwardedMessages");
         break;
+    case SettingUnknown:
+        return;
     }
     requestObject.insert("setting", settingMap);
 
@@ -1244,13 +1248,48 @@ void TDLibWrapper::setUserPrivacySettingRule(TDLibWrapper::UserPrivacySetting se
     case RuleRestrictAll:
         ruleMap.insert(_TYPE, "userPrivacySettingRuleRestrictAll");
         break;
-    case RuleRestrictContacts:
-        ruleMap.insert(_TYPE, "userPrivacySettingRuleRestrictContacts");
-        break;
     }
     QVariantList ruleMaps;
     ruleMaps.append(ruleMap);
-    requestObject.insert("rules", ruleMaps);
+    QVariantMap encapsulatedRules;
+    encapsulatedRules.insert(_TYPE, "userPrivacySettingRules");
+    encapsulatedRules.insert("rules", ruleMaps);
+    requestObject.insert("rules", encapsulatedRules);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getUserPrivacySettingRules(TDLibWrapper::UserPrivacySetting setting)
+{
+    LOG("Getting user privacy setting rules of current user" << setting);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getUserPrivacySettingRules");
+    requestObject.insert(_EXTRA, setting);
+
+    QVariantMap settingMap;
+    switch (setting) {
+    case SettingShowStatus:
+        settingMap.insert(_TYPE, "userPrivacySettingShowStatus");
+        break;
+    case SettingShowPhoneNumber:
+        settingMap.insert(_TYPE, "userPrivacySettingShowPhoneNumber");
+        break;
+    case SettingAllowChatInvites:
+        settingMap.insert(_TYPE, "userPrivacySettingAllowChatInvites");
+        break;
+    case SettingShowProfilePhoto:
+        settingMap.insert(_TYPE, "userPrivacySettingShowProfilePhoto");
+        break;
+    case SettingAllowFindingByPhoneNumber:
+        settingMap.insert(_TYPE, "userPrivacySettingAllowFindingByPhoneNumber");
+        break;
+    case SettingShowLinkInForwardedMessages:
+        settingMap.insert(_TYPE, "userPrivacySettingShowLinkInForwardedMessages");
+        break;
+    case SettingUnknown:
+        return;
+    }
+    requestObject.insert("setting", settingMap);
 
     this->sendRequest(requestObject);
 }
@@ -1284,6 +1323,11 @@ bool TDLibWrapper::hasUserInformation(const QString &userId)
 QVariantMap TDLibWrapper::getUserInformationByName(const QString &userName)
 {
     return this->allUserNames.value(userName).toMap();
+}
+
+TDLibWrapper::UserPrivacySettingRule TDLibWrapper::getUserPrivacySettingRule(TDLibWrapper::UserPrivacySetting userPrivacySetting)
+{
+    return this->userPrivacySettingRules.value(userPrivacySetting, UserPrivacySettingRule::RuleAllowAll);
 }
 
 QVariantMap TDLibWrapper::getUnreadMessageInformation()
@@ -1667,6 +1711,54 @@ void TDLibWrapper::handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong mess
     } else {
         emit chatPinnedMessageUpdated(chatId, 0);
         this->getChatPinnedMessage(chatId);
+    }
+}
+
+void TDLibWrapper::handleUserPrivacySettingRules(const QVariantMap &rules)
+{
+    QVariantList newGivenRules = rules.value("rules").toList();
+    UserPrivacySettingRule newAppliedRule = UserPrivacySettingRule::RuleAllowAll;
+    QListIterator<QVariant> givenRulesIterator(newGivenRules);
+    while (givenRulesIterator.hasNext()) {
+        QString givenRule = givenRulesIterator.next().toMap().value(_TYPE).toString();
+        if (givenRule == "userPrivacySettingRuleAllowContacts") {
+            newAppliedRule = UserPrivacySettingRule::RuleAllowContacts;
+        }
+        if (givenRule == "userPrivacySettingRuleRestrictAll") {
+            newAppliedRule = UserPrivacySettingRule::RuleRestrictAll;
+        }
+    }
+    UserPrivacySetting usedSetting = static_cast<UserPrivacySetting>(rules.value(_EXTRA).toInt());
+    this->userPrivacySettingRules.insert(usedSetting, newAppliedRule);
+    emit userPrivacySettingUpdated(usedSetting, newAppliedRule);
+}
+
+void TDLibWrapper::handleUpdatedUserPrivacySettingRules(const QVariantMap &updatedRules)
+{
+    QString rawSetting = updatedRules.value("setting").toMap().value(_TYPE).toString();
+    UserPrivacySetting usedSetting = UserPrivacySetting::SettingUnknown;
+    if (rawSetting == "userPrivacySettingAllowChatInvites") {
+        usedSetting = UserPrivacySetting::SettingAllowChatInvites;
+    }
+    if (rawSetting == "userPrivacySettingAllowFindingByPhoneNumber") {
+        usedSetting = UserPrivacySetting::SettingAllowFindingByPhoneNumber;
+    }
+    if (rawSetting == "userPrivacySettingShowLinkInForwardedMessages") {
+        usedSetting = UserPrivacySetting::SettingShowLinkInForwardedMessages;
+    }
+    if (rawSetting == "userPrivacySettingShowPhoneNumber") {
+        usedSetting = UserPrivacySetting::SettingShowPhoneNumber;
+    }
+    if (rawSetting == "userPrivacySettingShowProfilePhoto") {
+        usedSetting = UserPrivacySetting::SettingShowProfilePhoto;
+    }
+    if (rawSetting == "userPrivacySettingShowStatus") {
+        usedSetting = UserPrivacySetting::SettingShowStatus;
+    }
+    if (usedSetting != UserPrivacySetting::SettingUnknown) {
+        QVariantMap rawRules = updatedRules.value("rules").toMap();
+        rawRules.insert(_TYPE, usedSetting);
+        this->handleUserPrivacySettingRules(rawRules);
     }
 }
 

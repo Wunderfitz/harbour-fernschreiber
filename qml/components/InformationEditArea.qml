@@ -55,7 +55,7 @@ Column {
             width: parent.width - editAreaButton.width
             textLeftMargin: 0
             anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: Theme.fontSizeSmall
+            font.pixelSize: Theme.fontSizeMedium
         }
         TextField {
             id: editAreaTextField
@@ -68,7 +68,7 @@ Column {
                 editAreaColumn.saveButtonClicked(editAreaColumn.editItem.text);
             }
             EnterKey.iconSource: editAreaButton.icon.source
-            font.pixelSize: Theme.fontSizeSmall
+            font.pixelSize: Theme.fontSizeMedium
         }
         InformationTextItem {
             id: editAreaTextItem

@@ -1531,6 +1531,66 @@
         <comment>user name of the logged-in profile - header</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

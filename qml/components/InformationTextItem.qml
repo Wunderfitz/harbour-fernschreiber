@@ -48,7 +48,7 @@ Column {
         id: labelComponent
         Label {
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            font.pixelSize: Theme.fontSizeSmall
+            font.pixelSize: Theme.fontSizeMedium
             textFormat: Text.StyledText
             color: Theme.primaryColor
             text: Emoji.emojify( Functions.replaceUrlsWithLinks(textItem.text).replace(/\n/g, "<br>"), Theme.fontSizeExtraSmall)
