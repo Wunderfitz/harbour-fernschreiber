@@ -79,7 +79,6 @@ public:
     TDLibWrapper *tdLibWrapper;
 
 public:
-    QVariantMap chatData;
     qlonglong chatId;
     qlonglong order;
     qlonglong groupId;
@@ -104,7 +103,6 @@ public:
 
 ChatListModel::ChatData::ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap &data) :
     tdLibWrapper(tdLibWrapper),
-    chatData(data),
     chatId(data.value(ID).toLongLong()),
     order(data.value(ORDER).toLongLong()),
     groupId(0),
@@ -580,7 +578,7 @@ void ChatListModel::updateSecretChatVisibility(const QVariantMap secretChatDetai
         if (chat->chatType != TDLibWrapper::ChatTypeSecret) {
             continue;
         }
-        if (chat->chatData.value(TYPE).toMap().value(SECRET_CHAT_ID).toLongLong() != secretChatDetails.value(ID).toLongLong()) {
+        if (tdLibWrapper->getChat(chat->chatId).value(TYPE).toMap().value(SECRET_CHAT_ID).toLongLong() != secretChatDetails.value(ID).toLongLong()) {
             continue;
         }
         const QVector<int> changedRoles(chat->updateSecretChat(secretChatDetails));
