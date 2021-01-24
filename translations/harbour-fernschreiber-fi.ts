@@ -85,11 +85,11 @@
     </message>
     <message>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjaudu ulos</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjattu ulos</translation>
     </message>
 </context>
 <context>
@@ -278,11 +278,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista keskustelun kiinnitys</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiinnitä keskustelu</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -820,35 +820,35 @@
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>sait %Ln pisteen</numerusform>
+            <numerusform>sait %Ln pistettä</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>sai %Ln pisteen</numerusform>
+            <numerusform>sai %Ln pistettä</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit pelin</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti pelin</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit videoviestin</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti videoviestin</translation>
     </message>
 </context>
 <context>
@@ -996,16 +996,16 @@
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>sait %Ln pisteen %2 pisteestä</numerusform>
+            <numerusform>sait %Ln pistettä %2 pisteestä</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>sai %Ln pisteen %2 pisteestä</numerusform>
+            <numerusform>sai %Ln pistettä %2 pisteestä</numerusform>
         </translation>
     </message>
 </context>
@@ -1056,7 +1056,7 @@
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>yhteensä %Ln ääni </numerusform>
             <numerusform>yhteensä %Ln ääntä</numerusform>
         </translation>
@@ -1067,14 +1067,14 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation type="unfinished"></translation>
+        <translation>botin %1 kautta</translation>
     </message>
 </context>
 <context>
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Ääniviesti</translation>
     </message>
 </context>
 <context>
@@ -1206,7 +1206,7 @@
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjaudutaan ulos</translation>
     </message>
 </context>
 <context>
@@ -1310,15 +1310,15 @@
     </message>
     <message>
         <source>Enter an optional explanation</source>
-        <translation type="unfinished"></translation>
+        <translation>Syötä valinnainen kuvaus</translation>
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä kun käyttäjä valitsee väärän vastauksen.</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selitys voi olla enintään 200 merkkiä pitkä.</translation>
     </message>
 </context>
 <context>
@@ -1512,23 +1512,23 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Älä käytä välimuistia</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation></translation>
+        <translation>Estää tietojen tallennuksen välimuistiin. Jotkin sovelluksen ominaisuudet voivat olla rajoitettuja tai poistettu käytöstä tässä tilassa. Muutos vaatii Fernschreiberin uudelleenkäynnistyksen.</translation>
     </message>
     <message>
         <source>Privacy</source>
-        <translation type="unfinished"></translation>
+        <translation>Yksityisyys</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation type="unfinished"></translation>
+        <translation>Salli sijainnin lähettäminen upotetuille boteille</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation type="unfinished"></translation>
+        <translation>Jotkin viestinsyöttöriville upotetut botit pyytävät sijaintitietoja niitä käytettäessä</translation>
     </message>
 </context>
 <context>
@@ -2000,19 +2000,19 @@
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>sait %Ln pisteen</numerusform>
+            <numerusform>sait %Ln pistettä</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit pelin</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti pelin</translation>
     </message>
 </context>
 </TS>
