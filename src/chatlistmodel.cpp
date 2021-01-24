@@ -79,47 +79,47 @@ public:
     TDLibWrapper *tdLibWrapper;
 
 public:
+    bool verified;
+    bool isPinned;
+    bool isMarkedAsUnread;
+    bool isChannel;
     qlonglong chatId;
     qlonglong order;
     qlonglong groupId;
-    bool verified;
+    qlonglong lastReadInboxMessageId;
+    qlonglong lastReadOutboxMessageId;
+    qlonglong draftMessageDate;
     TDLibWrapper::ChatType chatType;
     TDLibWrapper::ChatMemberStatus memberStatus;
     TDLibWrapper::SecretChatState secretChatState;
     QVariantMap userInformation;
-    int unreadCount;
-    qlonglong lastReadInboxMessageId;
     QVariantMap lastMessage;
-    qlonglong lastReadOutboxMessageId;
-    QVariant photoSmall;
     QVariantMap notificationSettings;
+    QVariant photoSmall;
+    int unreadCount;
     QString title;
-    bool isPinned;
-    bool isMarkedAsUnread;
-    qlonglong draftMessageDate;
     QString draftMessageText;
-    bool isChannel;
 };
 
 ChatListModel::ChatData::ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap &data) :
     tdLibWrapper(tdLibWrapper),
+    verified(false),
+    isPinned(data.value(IS_PINNED).toBool()),
+    isMarkedAsUnread(data.value(IS_MARKED_AS_UNREAD).toBool()),
+    isChannel(data.value(TYPE).toMap().value(IS_CHANNEL).toBool()),
     chatId(data.value(ID).toLongLong()),
     order(data.value(ORDER).toLongLong()),
     groupId(0),
-    verified(false),
+    lastReadInboxMessageId(data.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong()),
+    lastReadOutboxMessageId(data.value(LAST_READ_OUTBOX_MESSAGE_ID).toLongLong()),
     memberStatus(TDLibWrapper::ChatMemberStatusUnknown),
     secretChatState(TDLibWrapper::SecretChatStateUnknown),
     userInformation(tdLibWrapper->getUserInformation()),
-    unreadCount(data.value(UNREAD_COUNT).toInt()),
-    lastReadInboxMessageId(data.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong()),
     lastMessage(data.value(LAST_MESSAGE).toMap()),
-    lastReadOutboxMessageId(data.value(LAST_READ_OUTBOX_MESSAGE_ID).toLongLong()),
-    photoSmall(data.value(PHOTO).toMap().value(SMALL)),
     notificationSettings(data.value(NOTIFICATION_SETTINGS).toMap()),
-    title(data.value(TITLE).toString()),
-    isPinned(data.value(IS_PINNED).toBool()),
-    isMarkedAsUnread(data.value(IS_MARKED_AS_UNREAD).toBool()),
-    isChannel(data.value(TYPE).toMap().value(IS_CHANNEL).toBool())
+    photoSmall(data.value(PHOTO).toMap().value(SMALL)),
+    unreadCount(data.value(UNREAD_COUNT).toInt()),
+    title(data.value(TITLE).toString())
 {
     const QVariantMap type(data.value(TYPE).toMap());
     switch (chatType = TDLibWrapper::chatTypeFromString(type.value(_TYPE).toString())) {
