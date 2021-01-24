@@ -110,7 +110,7 @@ public:
     Q_INVOKABLE QVariantMap getUnreadChatInformation();
     Q_INVOKABLE QVariantMap getBasicGroup(qlonglong groupId) const;
     Q_INVOKABLE QVariantMap getSuperGroup(qlonglong groupId) const;
-    Q_INVOKABLE QVariantMap getChat(const QString &chatId);
+    Q_INVOKABLE QVariantMap getChat(qlonglong chatId);
     Q_INVOKABLE QVariantMap getSecretChatFromCache(qlonglong secretChatId);
     Q_INVOKABLE QString getOptionString(const QString &optionName);
     Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
@@ -207,7 +207,6 @@ public:
     static ChatType chatTypeFromString(const QString &type);
     static ChatMemberStatus chatMemberStatusFromString(const QString &status);
     static SecretChatState secretChatStateFromString(const QString &state);
-    QVariantMap getChat(qlonglong chatId);
 
 signals:
     void versionDetected(const QString &version);
