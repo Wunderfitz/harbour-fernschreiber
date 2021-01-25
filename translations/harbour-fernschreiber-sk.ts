@@ -852,6 +852,15 @@
         <source>sent a game</source>
         <translation>poslal hru</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>poslali video-poznámku</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>poslal video-poznámku</translation>
+    </message>			 
 </context>
 <context>
     <name>ImagePage</name>
@@ -1316,6 +1325,18 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Kvízy majú jednu správnu odpoveď. Účastníci nemôžu odvolať svoje odpovede.</translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation>Vysvetlenie môže obsahovať až 200 znakov.</translation>
+    </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation>Vložiť voliteľné vysvetlenie</translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation>Zobrazí sa, keď používateľ vyberie nesprávnu odpoveď.</translation>
     </message>
 </context>
 <context>
