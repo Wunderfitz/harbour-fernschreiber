@@ -1617,6 +1617,22 @@
         <source>Privacy setting for managing whether your online status is visible.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Add Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile Pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy Options</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

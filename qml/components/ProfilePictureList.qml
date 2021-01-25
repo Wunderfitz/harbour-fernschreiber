@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf and other contributors
+    Copyright (C) 2020-21 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -18,25 +18,24 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import "../"
 
 Item {
-    visible: imageContainer.tweenFactor > 0.8 && bigProfilePictureList.count > 0
-    property bool isActive: imageContainer.tweenFactor === 1.0
+    id: profilePictureListItem
+    visible: imageContainer.thumbnailVisible && bigProfilePictureList.count > 0
+    property bool isActive: imageContainer.thumbnailActive
 
     opacity: isActive ? 1.0 : 0.0
     Behavior on opacity { FadeAnimation {} }
 
     SlideshowView {
         id: bigProfilePictureList
-        property bool isActive: imageContainer.tweenFactor === 1.0
         width: parent.width
         height: parent.height
         clip: true
         itemWidth: width
         itemHeight: height
         interactive: parent.isActive
-        model: chatInformationPage.chatPartnerProfilePhotos
+        model: imageContainer.thumbnailModel
         delegate: Item {
             width: bigProfilePictureList.itemWidth
             height: bigProfilePictureList.itemHeight
@@ -44,13 +43,13 @@ Item {
                 id: chatPictureDetail
                 photoData: modelData.sizes[modelData.sizes.length - 1].photo
                 replacementStringHint: ""
-                radius: chatPictureThumbnail.radius
+                radius: imageContainer.thumbnailRadius
                 anchors.fill: parent
             }
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("../../pages/ImagePage.qml"), { "photoData" : modelData });
+                    pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), { "photoData" : modelData });
                 }
             }
         }

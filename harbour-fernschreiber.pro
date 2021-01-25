@@ -60,6 +60,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/PinnedMessageItem.qml \
     qml/components/PollPreview.qml \
     qml/components/PressEffect.qml \
+    qml/components/ProfilePictureList.qml \
     qml/components/ReplyMarkupButtons.qml \
     qml/components/StickerPicker.qml \
     qml/components/PhotoTextsListItem.qml \
@@ -70,7 +71,6 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/VoiceNoteOverlay.qml \
     qml/components/chatInformationPage/ChatInformationPageContent.qml \
     qml/components/chatInformationPage/ChatInformationProfilePicture.qml \
-    qml/components/chatInformationPage/ChatInformationProfilePictureList.qml \
     qml/components/chatInformationPage/ChatInformationTabItemBase.qml \
     qml/components/chatInformationPage/ChatInformationTabItemDebug.qml \
     qml/components/chatInformationPage/ChatInformationTabItemMembersGroups.qml \

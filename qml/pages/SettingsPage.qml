@@ -28,6 +28,13 @@ Page {
     allowedOrientations: Orientation.All
 
     readonly property bool landscapeLayout: (width > height && Screen.sizeCategory > Screen.Small) || Screen.sizeCategory > Screen.Medium
+    readonly property var userInformation: tdLibWrapper.getUserInformation()
+
+    onStatusChanged: {
+        if (status === PageStatus.Active) {
+            tdLibWrapper.getUserProfilePhotos(userInformation.id, 100, 0);
+        }
+    }
 
     Connections {
         target: tdLibWrapper
@@ -35,6 +42,11 @@ Page {
             firstNameEditArea.text = userInformation.first_name;
             lastNameEditArea.text = userInformation.last_name;
             userNameEditArea.text = userInformation.username;
+        }
+        onUserProfilePhotosReceived: {
+            if (extra === userInformation.id.toString()) {
+                imageContainer.thumbnailModel = photos;
+            }
         }
     }
 
@@ -68,7 +80,7 @@ Page {
                     visible: true
                     canEdit: true
                     headerText: qsTr("First Name", "first name of the logged-in profile - header")
-                    text: tdLibWrapper.getUserInformation().first_name
+                    text: userInformation.first_name
                     width: parent.columnWidth
                     headerLeftAligned: true
 
@@ -98,7 +110,7 @@ Page {
                     visible: true
                     canEdit: true
                     headerText: qsTr("Last Name", "last name of the logged-in profile - header")
-                    text: tdLibWrapper.getUserInformation().last_name
+                    text: userInformation.last_name
                     width: parent.columnWidth
                     headerLeftAligned: true
 
@@ -128,7 +140,7 @@ Page {
                     visible: true
                     canEdit: true
                     headerText: qsTr("Username", "user name of the logged-in profile - header")
-                    text: tdLibWrapper.getUserInformation().username
+                    text: userInformation.username
                     width: parent.columnWidth
                     headerLeftAligned: true
 
@@ -137,6 +149,70 @@ Page {
                     }
                 }
 
+            }
+
+            SectionHeader {
+                horizontalAlignment: Text.AlignLeft
+                text: qsTr("Profile Pictures")
+            }
+
+            Row {
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                spacing: Theme.paddingMedium
+
+                Item {
+                    id: imageContainer
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width / 2
+                    height: profilePictureLoader.height
+                    property var thumbnailModel: ({})
+                    property bool thumbnailVisible: true
+                    property bool thumbnailActive: thumbnailModel.length > 0
+                    property int thumbnailRadius: imageContainer.width / 2
+
+                    Loader {
+                        id: profilePictureLoader
+                        active: imageContainer.thumbnailActive
+                        asynchronous: true
+                        width: Theme.itemSizeExtraLarge
+                        height: Theme.itemSizeExtraLarge
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        source: "../components/ProfilePictureList.qml"
+                    }
+                }
+
+                Column {
+                    spacing: Theme.paddingSmall
+                    width: parent.width / 2
+
+                    Button {
+                        id: addProfilePictureButton
+                        text: qsTr("Add Picture")
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
+                        onClicked: {
+
+                        }
+                    }
+
+                    Button {
+                        id: removeProfilePictureButton
+                        text: qsTr("Remove Picture")
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
+                        onClicked: {
+
+                        }
+                    }
+
+                }
+            }
+
+            SectionHeader {
+                horizontalAlignment: Text.AlignLeft
+                text: qsTr("Privacy Options")
             }
 
             Grid {
