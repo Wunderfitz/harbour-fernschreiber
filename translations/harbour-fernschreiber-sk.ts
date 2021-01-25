@@ -216,7 +216,7 @@
     </message>
     <message>
         <source>This group is empty.</source>
-        <translation>Táto skupina je prázdna</translation>
+        <translation>Táto skupina je prázdna.</translation>
     </message>
     <message>
         <source>Channel members are anonymous.</source>
@@ -481,7 +481,7 @@
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Pripájanie k proxy</translation>
+        <translation>Pripájanie k proxy...</translation>
     </message>
     <message>
         <source>Connected</source>
@@ -1091,7 +1091,7 @@
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation>Nemáte žiadne kontakty</translation>
+        <translation>Nemáte žiadne kontakty.</translation>
     </message>
     <message>
         <source>Private Chat</source>
