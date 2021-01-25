@@ -1717,15 +1717,16 @@ void TDLibWrapper::handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong mess
 void TDLibWrapper::handleUserPrivacySettingRules(const QVariantMap &rules)
 {
     QVariantList newGivenRules = rules.value("rules").toList();
-    UserPrivacySettingRule newAppliedRule = UserPrivacySettingRule::RuleAllowAll;
+    // If nothing (or something unsupported is sent out) it is considered to be restricted completely
+    UserPrivacySettingRule newAppliedRule = UserPrivacySettingRule::RuleRestrictAll;
     QListIterator<QVariant> givenRulesIterator(newGivenRules);
     while (givenRulesIterator.hasNext()) {
         QString givenRule = givenRulesIterator.next().toMap().value(_TYPE).toString();
         if (givenRule == "userPrivacySettingRuleAllowContacts") {
             newAppliedRule = UserPrivacySettingRule::RuleAllowContacts;
         }
-        if (givenRule == "userPrivacySettingRuleRestrictAll") {
-            newAppliedRule = UserPrivacySettingRule::RuleRestrictAll;
+        if (givenRule == "userPrivacySettingRuleAllowAll") {
+            newAppliedRule = UserPrivacySettingRule::RuleAllowAll;
         }
     }
     UserPrivacySetting usedSetting = static_cast<UserPrivacySetting>(rules.value(_EXTRA).toInt());
@@ -1757,7 +1758,7 @@ void TDLibWrapper::handleUpdatedUserPrivacySettingRules(const QVariantMap &updat
     }
     if (usedSetting != UserPrivacySetting::SettingUnknown) {
         QVariantMap rawRules = updatedRules.value("rules").toMap();
-        rawRules.insert(_TYPE, usedSetting);
+        rawRules.insert(_EXTRA, usedSetting);
         this->handleUserPrivacySettingRules(rawRules);
     }
 }
