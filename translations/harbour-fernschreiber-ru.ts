@@ -85,11 +85,11 @@
     </message>
     <message>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выход</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сеанс завершён</translation>
     </message>
 </context>
 <context>
@@ -153,7 +153,7 @@
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation>Информация</translation>
+        <translation>Сведения</translation>
     </message>
     <message>
         <source>Phone Number</source>
@@ -245,7 +245,7 @@
     <name>ChatListViewItem</name>
     <message>
         <source>Unknown</source>
-        <translation>нет информации</translation>
+        <translation>Нет данных</translation>
     </message>
     <message>
         <source>You</source>
@@ -253,15 +253,15 @@
     </message>
     <message>
         <source>User Info</source>
-        <translation>Информация о пользователе</translation>
+        <translation>Сведения о пользователе</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation>Информация о группе</translation>
+        <translation>Сведения о группе</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
-        <translation>Отметить все сообщения как прочитанные</translation>
+        <translation>Всё прочитано</translation>
     </message>
     <message>
         <source>No message in this chat.</source>
@@ -309,17 +309,17 @@
     <message numerus="yes">
         <source>%1 members</source>
         <translation type="unfinished">
+            <numerusform>%1 участник</numerusform>
+            <numerusform>%1 участника</numerusform>
             <numerusform>%1 участников</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
         <translation type="unfinished">
+            <numerusform>%1 подписчик</numerusform>
+            <numerusform>%1 подписчика</numerusform>
             <numerusform>%1 подписчиков</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -352,11 +352,11 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation>Выйти из чата</translation>
+        <translation>Выйти из Чата</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation>Зайти в чат</translation>
+        <translation>Зайти в Чат</translation>
     </message>
     <message>
         <source>Leaving chat</source>
@@ -846,11 +846,11 @@
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">отправлена игра</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">отправлена игра</translation>
     </message>
     <message>
         <source>sent a video note</source>
@@ -1082,14 +1082,14 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">через %1</translation>
     </message>
 </context>
 <context>
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Голосовое сообщение</translation>
     </message>
 </context>
 <context>
@@ -1222,7 +1222,7 @@
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Завершение сеанса</translation>
     </message>
 </context>
 <context>
@@ -1233,7 +1233,7 @@
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation>Закреплённое Сообщение</translation>
+        <translation>Закреплённое сообщение</translation>
     </message>
     <message>
         <source>Message unpinned</source>
@@ -1328,15 +1328,15 @@
     </message>
     <message>
         <source>Enter an optional explanation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Введите дополнительное объяснение к тесту</translation>
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Показывать, когда пользователь выбирает неправильный ответ.</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Объяснение может быть длиной до 200 символов.</translation>
     </message>
 </context>
 <context>
@@ -1544,15 +1544,15 @@
     </message>
     <message>
         <source>Privacy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Приватность</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Разрешить отправку своего местоположения инлайн-ботам</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Некоторые инлайн-боты просят отправить координаты местоположения при обращении к ним</translation>
     </message>
     <message>
         <source>User Profile</source>

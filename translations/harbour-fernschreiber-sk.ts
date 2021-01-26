@@ -1,95 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fi">
+<TS version="2.1" language="sk_SK">
 <context>
     <name>AboutPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>Tietoa Fernschreiberista</translation>
+        <translation>O aplikácii Fernschreiber</translation>
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>Telegram sovellus Sailfish OS:lle</translation>
+        <translation>Klient Telegram pre Sailfish OS</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Lähetä sähköpostia</translation>
+        <translation>Poslať e-mail</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Lisensoitu GNU GPLv3:lla</translation>
+        <translation>Pod licenciou GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Lähdekoodi GitHubissa</translation>
+        <translation>Zdroje na GitHub</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Käyttöehdot</translation>
+        <translation>Podmienky služby</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Yksityisyyskäytäntö</translation>
+        <translation>Ochrana osobných údajov</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation>Maininnat</translation>
+        <translation>Poďakovanie</translation>
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Tämä projekti käyttää Telegram Database Library (TDLib) ‑kirjastoa. Kiitokset sen jakamisesta Boost Software License 1.0 ‑lisenssillä!</translation>
+        <translation>Tento projekt používa databázovú knižnicu Telegram (TDLib). Vďaka za sprístupnenie podľa podmienok licencie Boost Software License 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Avaa Telegram Database ‑kirjasto GitHubissa</translation>
+        <translation>Open Telegram Database Library na GitHub</translation>
     </message>
     <message>
         <source>About Telegram</source>
-        <translation>Tietoa Telegramista</translation>
+        <translation>O aplikácii Telegram</translation>
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Tämä sovellus käyttää Telegram APIa, mutta ei ole Telegramin hyväksymä tai varmentama.</translation>
+        <translation>Tento produkt používa rozhranie Telegram (API), ale nie je schválený alebo certifikovaný spoločnosťou Telegram.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
-        <translation>TDLib:n versio %1</translation>
+        <translation>Verzia TDLib %1</translation>
     </message>
     <message>
         <source>Logged in as %1</source>
-        <translation>Kirjautunut sisään käyttäjänä %1</translation>
+        <translation>Prihlásený ako %1</translation>
     </message>
     <message>
         <source>Phone number: +%1</source>
-        <translation>Puhelinnumero: +%1</translation>
+        <translation>Telefónne číslo: +%1</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Tämä projekti käyttää twemojia. Tekijänoikeus 2018 Twitter, Inc. ja muut tekijät. Kiitokset sen julkaisusta MIT‑ (lähdekoodi) ja CC-BY 4.0‑ (grafiikat) lisensseillä!</translation>
+        <translation>Tento projekt používa twemoji. Copyright 2018 Twitter, Inc. a a ďalší prispievatelia. Vďaka za sprístupnenie podľa licencie MIT (programovanie) a CC-BY 4.0 (grafika)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Avaa twemoji GitHubissa</translation>
+        <translation>Open twemoji na GitHub</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
-        <translation>Sebastian J. Wolf ja &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;muut tekijät&lt;/a&gt;</translation>
+        <translation>Vytvoril Sebastian J. Wolf a &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;ďalší prispievatelia&lt;/a&gt;</translation>
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation>Tämä projekti käyttää rlottieta. Tekijänoikeus 2020 Samsung Electronics Co., Ltd. ja muut tekijät. Kiitokset sen julkaisusta MIT‑lisenssillä!</translation>
+        <translation>Tento projekt používa rlottie. Copyright 2020 Samsung Electronics Co., Ltd. a ďalší prispievatelia. Vďaka za sprístupnenie podľa licencie MIT!</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
-        <translation>Avaa rlottie GitHubissa</translation>
+        <translation>Open rlottie na GitHub</translation>
     </message>
     <message>
         <source>Log Out</source>
-        <translation>Kirjaudu ulos</translation>
+        <translation>Odhlásiť</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation>Kirjattu ulos</translation>
+        <translation>Odhlásený</translation>
     </message>
 </context>
 <context>
@@ -105,67 +105,69 @@
 </context>
 <context>
     <name>ChatInformationPageContent</name>
+    <message>
+        <source>Unknown</source>
+        <translation>Neznámy</translation>
+    </message>
+    <message>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation>Pozývací odkaz bol skopírovaný do schránky.</translation>
+    </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
         <translation>
-            <numerusform>%1 tilaaja</numerusform>
-            <numerusform>%1 tilaajaa</numerusform>
+            <numerusform>%1 odberateľ</numerusform>
+            <numerusform>%1 odberatelia</numerusform>
+            <numerusform>%1 odberateľov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
         <translation>
-            <numerusform>%1 jäsen</numerusform>
-            <numerusform>%1 jäsentä</numerusform>
+            <numerusform>%1 člen</numerusform>
+            <numerusform>%1 členovia</numerusform>
+            <numerusform>%1 členov</numerusform>
         </translation>
     </message>
     <message>
-        <source>Leave Chat</source>
-        <translation>Poistu keskustelusta</translation>
-    </message>
-    <message>
-        <source>Join Chat</source>
-        <translation>Liity keskusteluun</translation>
-    </message>
-    <message>
         <source>Leaving chat</source>
-        <translation>Poistutaan keskustelusta</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Tuntematon</translation>
-    </message>
-    <message>
-        <source>Chat Title</source>
-        <comment>group title header</comment>
-        <translation>Keskustelun otsikko</translation>
-    </message>
-    <message>
-        <source>Enter 1-128 characters</source>
-        <translation>Syötä 1-128 merkkiä</translation>
-    </message>
-    <message>
-        <source>There is no information text available, yet.</source>
-        <translation>Tietoa ei ole vielä saatavilla.</translation>
+        <translation>Opustiť čet</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation>Tietoa</translation>
+        <translation>Informácia</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation>Puhelinnumero</translation>
+        <translation>Telefónne číslo</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation>Kutsulinkki</translation>
+        <translation>Pozývací odkaz</translation>
     </message>
     <message>
-        <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>Kutsulinkki on kopioitu leikepöydälle.</translation>
+        <source>There is no information text available, yet.</source>
+        <translation>Nie sú dostupné žiadne informácie.</translation>
+    </message>
+    <message>
+        <source>Chat Title</source>
+        <comment>group title header</comment>
+        <translation>Názov četu</translation>
+    </message>
+    <message>
+        <source>Enter 1-128 characters</source>
+        <translation>Zadať 1-128 znakov</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation>Opustiť čet</translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation>Pripojiť sa k četu</translation>
     </message>
     <message>
         <source>%1, %2</source>
@@ -175,21 +177,22 @@
     <message numerus="yes">
         <source>%1 online</source>
         <translation>
-            <numerusform>%1 paikalla</numerusform>
-            <numerusform>%1 paikalla</numerusform>
+            <numerusform>%1 pripojený</numerusform>
+            <numerusform>%1 pripojení</numerusform>
+            <numerusform>%1 pripojených</numerusform>
         </translation>
     </message>
     <message>
         <source>New Secret Chat</source>
-        <translation>Uusi salattu keskustelu</translation>
+        <translation>Nový dôverný čet</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
+        <translation>Ozvučiť čet</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Vaimenna keskustelu</translation>
+        <translation>Umlčať čet</translation>
     </message>
 </context>
 <context>
@@ -197,27 +200,27 @@
     <message>
         <source>Loading common chats…</source>
         <comment>chats you have in common with a user</comment>
-        <translation>Ladataan yhteisiä keskusteluja...</translation>
+        <translation>Načítanie spoločných četov…</translation>
     </message>
     <message>
         <source>Loading group members…</source>
-        <translation>Ladataan ryhmän jäseniä...</translation>
+        <translation>Načítanie členov skupiny…</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>Sinä</translation>
+        <translation>Vy</translation>
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
-        <translation>Sinulla ei ole yhteisiä ryhmiä tämän käyttäjän kanssa.</translation>
+        <translation>Nemáte žiadne spoločné skupiny s týmto používateľom.</translation>
     </message>
     <message>
         <source>This group is empty.</source>
-        <translation>Tämä ryhmä on tyhjä.</translation>
+        <translation>Táto skupina je prázdna.</translation>
     </message>
     <message>
         <source>Channel members are anonymous.</source>
-        <translation>Kanavan jäsenet ovat anonyymejä.</translation>
+        <translation>Členovia kanála sú anonymní.</translation>
     </message>
 </context>
 <context>
@@ -225,174 +228,180 @@
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation>Ryhmät</translation>
+        <translation>Skupiny</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation>Jäsenet</translation>
+        <translation>Členovia</translation>
     </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation>Asetukset</translation>
+        <translation>Nastavenia</translation>
     </message>
 </context>
 <context>
     <name>ChatListViewItem</name>
     <message>
         <source>Unknown</source>
-        <translation>Tuntematon</translation>
+        <translation>Neznámy</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>Sinä</translation>
+        <translation>Vy</translation>
     </message>
     <message>
         <source>User Info</source>
-        <translation>Käyttäjän tiedot</translation>
+        <translation>Informácie o používateľovi</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation>Ryhmän tiedot</translation>
+        <translation>Informácie o skupine</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
-        <translation>Merkitse kaikki viestit luetuiksi</translation>
+        <translation>Označiť všetky správy ako prečítané</translation>
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation>Tässä keskustelussa ei ole viestejä.</translation>
+        <translation>V tomto čete nie je žiadna správa.</translation>
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation>Merkitse keskustelu lukemattomaksi</translation>
+        <translation>Označiť čet ako neprečítaný</translation>
     </message>
     <message>
         <source>Draft</source>
-        <translation>Luonnos</translation>
+        <translation>Koncept</translation>
     </message>
     <message>
         <source>Mark chat as read</source>
-        <translation>Merkitse keskustelu luetuksi</translation>
+        <translation>Označiť čet ako prečítaný</translation>
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation>Poista keskustelun kiinnitys</translation>
+        <translation>Odopnúť čet</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation>Kiinnitä keskustelu</translation>
+        <translation>Pripnúť čet</translation>
     </message>
     <message>
         <source>Unmute chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
+        <translation>Ozvučiť čet</translation>
     </message>
     <message>
         <source>Mute chat</source>
-        <translation>Vaimenna keskustelu</translation>
+        <translation>Umlčať čet</translation>
     </message>
 </context>
 <context>
     <name>ChatPage</name>
     <message>
         <source>Unknown</source>
-        <translation>Tuntematon</translation>
+        <translation>Neznámy</translation>
     </message>
     <message>
         <source>Your message</source>
-        <translation>Viestisi</translation>
+        <translation>Vaša správa</translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
         <translation>
-            <numerusform>%1 jäsen</numerusform>
-            <numerusform>%1 jäsentä</numerusform>
+            <numerusform>%1 člen</numerusform>
+            <numerusform>%1 členovia</numerusform>
+            <numerusform>%1 členov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
         <translation>
-            <numerusform>%1 tilaaja</numerusform>
-            <numerusform>%1 tilaajaa</numerusform>
+            <numerusform>%1 odberateľ</numerusform>
+            <numerusform>%1 odberatelia</numerusform>
+            <numerusform>%1 odberateľov</numerusform>
         </translation>
     </message>
     <message>
         <source>Loading messages...</source>
-        <translation>Ladataan viestejä...</translation>
+        <translation>Načítanie správ...</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
+        <translation>Ozvučiť čet</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Vaimenna keskustelu</translation>
+        <translation>Umlčať čet</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation>Muokkaa viestiä</translation>
+        <translation>Upraviť správu</translation>
     </message>
     <message>
         <source>edited</source>
-        <translation>muokattu</translation>
+        <translation>upravená</translation>
     </message>
     <message>
         <source>Uploading...</source>
-        <translation>Lähetetään...</translation>
+        <translation>Zapisovanie...</translation>
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation>Tämä keskustelu on tyhjä.</translation>
+        <translation>Tento čet je prázdny.</translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation>Poistu keskustelusta</translation>
+        <translation>Opustiť čet</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation>Liity keskusteluun</translation>
+        <translation>Pripojiť sa k četu</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Poistutaan keskustelusta</translation>
+        <translation>Opúšťanie četu</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
-        <translation>Liityit keskusteluun %1</translation>
+        <translation>Ste pripojený k četu %1</translation>
     </message>
     <message>
         <source>Select Messages</source>
-        <translation>Valitse viestejä</translation>
+        <translation>Vybrať správy</translation>
     </message>
     <message numerus="yes">
         <source>%Ln Messages deleted</source>
         <translation>
-            <numerusform>%Ln Viesti poistettu</numerusform>
-            <numerusform>%Ln Viestiä poistettu</numerusform>
+            <numerusform>%Ln správa odstránená</numerusform>
+            <numerusform>%Ln správy odstránené</numerusform>
+            <numerusform>%Ln správ odstránených</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln messages have been copied</source>
         <translation>
-            <numerusform>%Ln viesti kopioitu</numerusform>
-            <numerusform>%Ln viestiä kopioitu</numerusform>
+            <numerusform>%Ln správa bola skopírovaná</numerusform>
+            <numerusform>%Ln správy boli skopírované</numerusform>
+            <numerusform>%Ln správ bolo skopírovaných</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation>
-            <numerusform>Välitä %Ln viesti</numerusform>
-            <numerusform>Välitä %Ln viestiä</numerusform>
+            <numerusform>Postúpená %Ln správa</numerusform>
+            <numerusform>Postúpené %Ln správy</numerusform>
+            <numerusform>Postúpených %Ln správ</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln messages selected</source>
         <comment>number of messages selected</comment>
         <translation>
-            <numerusform>%Ln viesti valittu</numerusform>
-            <numerusform>%Ln viestiä valittu</numerusform>
+            <numerusform>%Ln správa bola vybratá</numerusform>
+            <numerusform>%Ln správy boli vybraté</numerusform>
+            <numerusform>%Ln správ bolo vybratých</numerusform>
         </translation>
     </message>
     <message>
@@ -403,92 +412,92 @@
     <message numerus="yes">
         <source>%1 online</source>
         <translation>
-            <numerusform>%1 paikalla</numerusform>
-            <numerusform>%1 paikalla</numerusform>
+            <numerusform>%1 pripojený</numerusform>
+            <numerusform>%1 pripojení</numerusform>
+            <numerusform>%1 pripojených</numerusform>
         </translation>
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>Tämä salattu keskustelu ei ole vielä valmis. Keskustelukumppanisi täytyy ensin käydä online tilassa.</translation>
+        <translation>Tento dôverný čet ešte nie je prístupný. Váš četovací partner sa musí pripojiť.</translation>
     </message>
     <message>
         <source>Closing chat</source>
-        <translation>Suljetaan keskustelua</translation>
+        <translation>Zatváranie četu</translation>
     </message>
     <message>
         <source>Close Chat</source>
-        <translation>Sulje keskustelu</translation>
+        <translation>Zatvoriť čet</translation>
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation>Etsi keskustelusta</translation>
+        <translation>Hľadať v čete</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation>Etsi keskustelusta...</translation>
+        <translation>Hľadanie v čete...</translation>
     </message>
     <message>
         <source>Location: Obtaining position...</source>
-        <translation>Sijainti: Paikannetaan...</translation>
+        <translation>Poloha: Získavanie pozície...</translation>
     </message>
     <message>
         <source>Location (%1/%2)</source>
-        <translation>Sijainti (%1/%2)</translation>
+        <translation>Poloha (%1/%2)</translation>
     </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
     <message>
         <source>Select Chat</source>
-        <translation>Valitse keskustelu</translation>
+        <translation>Vybrať čet</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>Sinulla ei ole vielä keskusteluja.</translation>
+        <translation>Nemáte žiadne čety.</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>unread message</source>
-        <translation>lukematon viesti</translation>
+        <translation>neprečítaná správa</translation>
     </message>
     <message>
         <source>unread messages</source>
-        <translation>lukematonta viestiä</translation>
+        <translation>neprečítané správy</translation>
     </message>
     <message>
         <source>in</source>
-        <translatorcomment>The preposition &apos;in&apos; is translated to Finnish using the inessive case (suffix ‑ssa/‑ssä), so this string should be left empty in the translation. Unfortunately Qt will ignore empty translations, so let&apos;s use the character U+200B (zero width space) instead.</translatorcomment>
-        <translation>​</translation>
+        <translation>v</translation>
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Odotetaan verkkoa...</translation>
+        <translation>Čakanie na sieť...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Yhdistetään verkkoon...</translation>
+        <translation>Pripájanie k sieti...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Yhdistetään välityspalvelimeen...</translation>
+        <translation>Pripájanie k proxy...</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation>Yhdistetty</translation>
+        <translation>Pripojené</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Päivitetään sisältöä...</translation>
+        <translation>Aktualizácia obsahu...</translation>
     </message>
     <message>
         <source>chat</source>
-        <translation>keskustelussa</translation>
+        <translation>čet</translation>
     </message>
     <message>
         <source>chats</source>
-        <translation>keskustelussa</translation>
+        <translation>čety</translation>
     </message>
 </context>
 <context>
@@ -496,516 +505,520 @@
     <message>
         <source>Group Member Permissions</source>
         <comment>what can normal group members do</comment>
-        <translation>Ryhmän jäsenten käyttöoikeudet</translation>
+        <translation>Oprávnenia člena skupiny</translation>
     </message>
     <message>
         <source>Send Messages</source>
         <comment>member permission</comment>
-        <translation>Lähettä viestejä</translation>
+        <translation>Odosielať správy</translation>
     </message>
     <message>
         <source>Send Media Messages</source>
         <comment>member permission</comment>
-        <translation>Lähettää mediaviestejä</translation>
+        <translation>Odosielať multimediálne správy</translation>
     </message>
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation>Lähettää muita viestejä</translation>
+        <translation>Odosielať iné správy</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation>Lähettää verkkosivuesikatseluita</translation>
+        <translation>Pridávať náhľad webovej stránky</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation>Muuttaa keskustelun tietoja</translation>
+        <translation>Meniť informácie o čete</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation>Kutsua jäseniä</translation>
+        <translation>Pozývať používateľov</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation>Kiinnittää viestejä</translation>
+        <translation>Pripínať správu</translation>
     </message>
     <message>
         <source>New Members</source>
         <comment>what can new group members do</comment>
-        <translation>Uudet jäsenet</translation>
+        <translation>Noví členovia</translation>
     </message>
     <message>
         <source>New members can see older messages</source>
         <comment>member permission</comment>
-        <translation>Uudet jäsenet voivat nähdä vanhoja viestejä</translation>
+        <translation>Noví členovia môžu vidieť staršie správy</translation>
     </message>
 </context>
 <context>
     <name>EditSuperGroupSlowModeColumn</name>
     <message>
         <source>Slow Mode</source>
-        <translation>Hidas moodi</translation>
+        <translation>Pomalý mód</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation>Pois</translation>
+        <translation>Vypnúť</translation>
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation>Aseta kuinka kauan jokaisen keskustelun jäsenen täytyy odottaa viestien välillä</translation>
+        <translation>Nastavenie povinného čakania člena četu medzi správami</translation>
     </message>
 </context>
 <context>
     <name>FernschreiberUtils</name>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Tarra: %1</translation>
-    </message>
-    <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>lähetit kuvan</translation>
+        <translation>poslali obrázok</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>lähetti kuvan</translation>
+        <translation>poslal obrázok</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>lähetit videon</translation>
+        <translation>poslali video</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>lähetti videon</translation>
+        <translation>poslal video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>lähetit animaation</translation>
+        <translation>poslali animáciu</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>lähetti animaation</translation>
+        <translation>poslal animáciu</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <comment>myself</comment>
-        <translation>lähetit ääniviestin</translation>
-    </message>
-    <message>
-        <source>sent a voice note</source>
-        <translation>lähetti ääniviestin</translation>
+        <translation>poslal hlasovú správu</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>lähetit dokumentin</translation>
+        <translation>poslali dokument</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>lähetti dokumentin</translation>
+        <translation>poslal dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>lähetit sijainnin</translation>
+        <translation>poslali polohu</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>lähetti sijainnin</translation>
-    </message>
-    <message>
-        <source>sent a venue</source>
-        <comment>myself</comment>
-        <translation>lähetit paikan</translation>
-    </message>
-    <message>
-        <source>sent a venue</source>
-        <translation>lähetti paikan</translation>
+        <translation>poslal polohu</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>rekisteröidyit Telegramiin</translation>
+        <translation>registrovaní pomocou Telegramu</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>rekisteröityi Telegramiin</translation>
+        <translation>registrovaný pomocou Telegramu</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>liityit keskusteluun</translation>
+        <translation>pripojení v tomto čete</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>liittyi keskusteluun</translation>
+        <translation>pripojený v tomto čete</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>tulit lisätyksi keskusteluun</translation>
+        <translation>pridaní do tohto četu</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>lisättiin keskusteluun</translation>
+        <translation>pridaný do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>poistuit keskustelusta</translation>
+        <translation>opustili tento čet</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>poistui keskustelusta</translation>
+        <translation>opustil tento čet</translation>
+    </message>
+    <message>
+        <source>Sticker: %1</source>
+        <translation>Nálepka: %1</translation>
+    </message>
+    <message>
+        <source>sent a voice note</source>
+        <comment>myself</comment>
+        <translation>poslali hlasovú poznámku</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <comment>myself</comment>
+        <translation>poslali miesto stretnutia</translation>
+    </message>
+    <message>
+        <source>sent a venue</source>
+        <translation>poslal miesto stretnutia</translation>
     </message>
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation>muutit keskustelun otsikkoa</translation>
+        <translation>zmenili názov četu</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation>muutti keskustelun otsikkoa</translation>
+        <translation>zmenil názov četu</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>lähetit kyselyn</translation>
+        <translation>poslali prieskum</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation>lähetti kyselyn</translation>
+        <translation>poslal prieskum</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>lähetit visan</translation>
+        <translation>poslali kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation>lähetti visan</translation>
+        <translation>poslal kvíz</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>loit tämän ryhmän</translation>
+        <translation>vytvorili túto skupinu</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation>loi tämän ryhmän</translation>
+        <translation>vytvoril túto skupinu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>vaihdoit keskustelun kuvakkeen</translation>
+        <translation>zmenili fotografiu četu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation>vaihtoi keskustelun kuvakkeen</translation>
+        <translation>zmenil fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>poistit keskustelun kuvakkeen</translation>
+        <translation>odstránili fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>poisti keskustelun kuvakkeen</translation>
+        <translation>odstránil fotografiu četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>vaihdoit salaisen keskustelun viestien elinajan</translation>
+        <translation>zmenili nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation>vaihtoi salaisen keskustelun viestien elinajan</translation>
+        <translation>zmenil nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>muutit tämän ryhmän superryhmäksi</translation>
+        <translation>aktualizovali túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>vaihdoit kiinnitetyn viestin</translation>
+        <translation>zmenili pripnutú správu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation>vaihtoi kiinnitetyn viestin</translation>
+        <translation>zmenil pripnutú správu</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>otit kuvakaappauksen tästä keskustelusta</translation>
+        <translation>vytvorili snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>otti kuvakaappauksen tästä keskustelusta</translation>
+        <translation>vytvoril snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>lähetit ei-tuetun viestin</translation>
+        <translation>poslali nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation>lähetti ei-tuetun viestin</translation>
+        <translation>poslal nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
-        <translation>lähetti ei-tuetun viestin: %1</translation>
+        <translation>poslal nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation>muutti tämän ryhmän superryhmäksi</translation>
+        <translation>aktualizoval túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>lähetit itsetuhoutuvan kuvan joka vanheni</translation>
+        <translation>poslali samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>lähetit itsetuhoutuvan videon joka vanheni</translation>
+        <translation>poslali samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>lähetti itsetuhoutuvan videon joka vanheni</translation>
+        <translation>poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation>lähetit ei-tuetun viestin: %1</translation>
+        <translation>poslali nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>lähetti itsetuhoutuvan kuvan joka vanheni</translation>
+        <translation>poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>lähetit äänitteen</translation>
+        <translation>poslali zvuk</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>lähetti äänitteen</translation>
+        <translation>poslal zvuk</translation>
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>lisäsi käyttäjän %1 keskusteluun</translation>
+        <translation>pridal %1 do četu</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>posit käyttäjän %1 keskustelusta</translation>
+        <translation>odstránil %1 z četu</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>lisäsit käyttäjän %1 keskusteluun</translation>
+        <translation>pridali %1 do četu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>poistit käyttäjän %1 keskustelusta</translation>
+        <translation>odstránili %1 z četu</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>sait %Ln pisteen</numerusform>
-            <numerusform>sait %Ln pistettä</numerusform>
+            <numerusform>získali %Ln bod</numerusform>
+            <numerusform>získali %Ln body</numerusform>
+            <numerusform>získali %Ln bodov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <translation>
-            <numerusform>sai %Ln pisteen</numerusform>
-            <numerusform>sai %Ln pistettä</numerusform>
+            <numerusform>získal %Ln bod</numerusform>
+            <numerusform>získal %Ln body</numerusform>
+            <numerusform>získal %Ln bodov</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>lähetit pelin</translation>
+        <translation>poslali hru</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>lähetti pelin</translation>
+        <translation>poslal hru</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>lähetit videoviestin</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation>lähetti videoviestin</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
-        <translation>Lataa kuva</translation>
+        <translation>Stiahnuť obrázok</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Kuvan %1 lataus onnistui.</translation>
+        <translation>Stiahovanie %1 bolo úspešne.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Lataus epäonnistui.</translation>
+        <translation>Sťahovanie zlyhalo.</translation>
     </message>
 </context>
 <context>
     <name>InReplyToRow</name>
     <message>
         <source>You</source>
-        <translation>Sinä</translation>
+        <translation>Vy</translation>
     </message>
 </context>
 <context>
     <name>InitializationPage</name>
     <message>
         <source>OK</source>
-        <translation>Ok</translation>
+        <translation>V poriadku</translation>
     </message>
     <message>
         <source>Welcome to Fernschreiber!</source>
-        <translation>Tervetuloa Fernschreiberiin!</translation>
+        <translation>Vitajte vo Fernschreiber!</translation>
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Syötä puhelinnumerosi jatkaaksesi.</translation>
+        <translation>Pre pokračovanie zadajte Vaše telefónne číslo.</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Jatka</translation>
+        <translation>Pokračovať</translation>
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Syötä koodi jonka vastaanotit:</translation>
+        <translation>Zadajte kód, ktorý ste dostali:</translation>
     </message>
     <message>
         <source>Loading...</source>
-        <translation>Ladataan...</translation>
+        <translation>Načítanie...</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
-        <translation>Tunnistautuminen epäonnistui syöttämälläsi koodilla.</translation>
+        <translation>Pomocou zadaného kódu Vás nie je možné overiť.</translation>
     </message>
     <message>
         <source>Enter code again</source>
-        <translation>Syötä koodi uudelleen</translation>
+        <translation>Zadajte kód opäť</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Käynnistä tunnistautuminen uudelleen</translation>
+        <translation>Zopakovať overenie</translation>
     </message>
     <message>
         <source>Please enter your password:</source>
-        <translation>Syötä salasanasi:</translation>
-    </message>
-    <message>
-        <source>User Registration</source>
-        <translation>Käyttäjätilin rekisteröiminen</translation>
-    </message>
-    <message>
-        <source>Enter your First Name</source>
-        <translation>Syötä etunimesi</translation>
-    </message>
-    <message>
-        <source>Enter your Last Name</source>
-        <translation>Syötä sukunimesi</translation>
+        <translation>Prosím vložte vaše heslo:</translation>
     </message>
     <message>
         <source>Register User</source>
-        <translation>Rekisteröi käyttäjätili</translation>
+        <translation>Registrovať používateľa</translation>
+    </message>
+    <message>
+        <source>Enter your First Name</source>
+        <translation>Zadať meno</translation>
+    </message>
+    <message>
+        <source>Enter your Last Name</source>
+        <translation>Zadať priezvisko</translation>
+    </message>
+    <message>
+        <source>User Registration</source>
+        <translation>Registrácia používateľa</translation>
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation>Käytä kansainvälistä muotoa, esimerkiksi %1</translation>
+        <translation>Použite medzinárodný formát, napr. %1</translation>
     </message>
     <message>
         <source>About Fernschreiber</source>
-        <translation>Tietoa Fernschreiberista</translation>
+        <translation>O aplikácii Fernschreiber</translation>
     </message>
 </context>
 <context>
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
-        <translation>Vastaa viestiin</translation>
+        <translation>Odpovedať na správu</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation>Muokkaa viestiä</translation>
+        <translation>Upraviť správu</translation>
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation>Kopioi viesti leikepöydälle</translation>
+        <translation>Kopírovať správu do schránky</translation>
     </message>
     <message>
         <source>Message deleted</source>
-        <translation>Viesti poistettu</translation>
+        <translation>Správa bola odstránená</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation>Poista viesti</translation>
+        <translation>Odstrániť správu</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>Sinä</translation>
+        <translation>Vy</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation>Välitetty viesti</translation>
+        <translation>Postúpená správa</translation>
     </message>
     <message>
         <source>Select Message</source>
-        <translation>Valitse viesti</translation>
+        <translation>Vybrať správu</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation>Kiinnitä viesti</translation>
+        <translation>Pripnúť správu</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation>Viestin kiinnitys poistettu</translation>
+        <translation>Správa bola odopnutá</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation>Poista viestin kiinnitys</translation>
+        <translation>Odopnúť správu</translation>
     </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
-        <translation>Sinä</translation>
+        <translation>Vy</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>sait %Ln pisteen %2 pisteestä</numerusform>
-            <numerusform>sait %Ln pistettä %2 pisteestä</numerusform>
+            <numerusform>získali %Ln bod v %2</numerusform>
+            <numerusform>získali %Ln body v %2</numerusform>
+            <numerusform>získali %Ln bodov v %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <translation>
-            <numerusform>sai %Ln pisteen %2 pisteestä</numerusform>
-            <numerusform>sai %Ln pistettä %2 pisteestä</numerusform>
+            <numerusform>získal %Ln bod v %2</numerusform>
+            <numerusform>získal %Ln body v %2</numerusform>
+            <numerusform>získal %Ln bodov v %2</numerusform>
         </translation>
     </message>
 </context>
@@ -1013,52 +1026,54 @@
     <name>MessageLocation</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation>Asenna Pure Maps tarkastellaksesi sijaintia.</translation>
+        <translation>Pre skontrolovanie tejto polohy nainštalujte Pure Maps.</translation>
     </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation>Sinä</translation>
+        <translation>Vy</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation>Välitetty viesti. Alkuperäinen lähettäjä: %1</translation>
+        <translation>Táto správa bola postúpená. Pôvodný autor: %1</translation>
     </message>
 </context>
 <context>
     <name>MessagePoll</name>
     <message>
         <source>Close Poll</source>
-        <translation>Sulje kysely</translation>
+        <translation>Zatvoriť prieskum</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation>Tyhjennä vastaus</translation>
+        <translation>Obnoviť odpoveď</translation>
     </message>
     <message>
         <source>Final Result:</source>
-        <translation>Lopullinen tulos:</translation>
+        <translation>Konečný výsledok:</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation>Useampi vastaus sallittu.</translation>
+        <translation>Sú prípustné viacnásobné odpovede.</translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
         <translation>
-            <numerusform>%Ln%</numerusform>
-            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>yhteensä %Ln ääni </numerusform>
-            <numerusform>yhteensä %Ln ääntä</numerusform>
+            <numerusform>%Ln hlas spolu</numerusform>
+            <numerusform>%Ln hlasy spolu</numerusform>
+            <numerusform>%Ln hlasov spolu</numerusform>
         </translation>
     </message>
 </context>
@@ -1067,61 +1082,61 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation>botin %1 kautta</translation>
+        <translation>prostredníctvom %1</translation>
     </message>
 </context>
 <context>
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation>Ääniviesti</translation>
+        <translation>Hlasová poznámka</translation>
     </message>
 </context>
 <context>
     <name>NewChatPage</name>
     <message>
         <source>Your Contacts</source>
-        <translation>Yhteystiedot</translation>
+        <translation>Vaše kontakty</translation>
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation>Sinulla ei ole yhteystietoja</translation>
+        <translation>Nemáte žiadne kontakty.</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation>Yksityinen keskustelu</translation>
+        <translation>Súkromný čet</translation>
     </message>
     <message>
         <source>Secret Chat</source>
-        <translation>Salattu keskustelu</translation>
+        <translation>Dôverný čet</translation>
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation>Salattu päästä päähän, käytettävissä vain tällä laitteella</translation>
+        <translation>Šifrované bez prerušenia, je prístupné iba na tomto zariadení</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
-        <translation>Ladataan yhteystietoja...</translation>
+        <translation>Načítanie kontaktov...</translation>
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation>Tiedonsiirto salattu, käyttää Telegramin pilveä, käytettävissä kaikilla laitteillasi</translation>
+        <translation>Transportne šifrované, využíva Telegram Cloud, prístupné medzi zariadeniami</translation>
     </message>
     <message>
         <source>Search a contact...</source>
-        <translation>Etsi yhteystietoa...</translation>
+        <translation>Vyhľadať kontakt...</translation>
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation>Synkronoi yhteystiedot Telegramin kanssa</translation>
+        <translation>Synchronizovať kontakty s Telegramom</translation>
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Yhteystietojasi ei voitu synkronoida Telegramin kanssa.</translation>
+        <translation>Nemožno synchonizovať kontakty s Telegramom.</translation>
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation>Yhteystietojen synkronointi Telegramin kanssa onnistui.</translation>
+        <translation>Kontakty boli úspešne synchronizované s Telegramom.</translation>
     </message>
 </context>
 <context>
@@ -1129,8 +1144,9 @@
     <message numerus="yes">
         <source>%Ln unread messages</source>
         <translation>
-            <numerusform>%Ln lukematon viesti</numerusform>
-            <numerusform>%Ln lukematonta viestiä</numerusform>
+            <numerusform>%Ln neprečítaná správa</numerusform>
+            <numerusform>%Ln neprečítané správy</numerusform>
+            <numerusform>%Ln neprečítaných správ</numerusform>
         </translation>
     </message>
 </context>
@@ -1138,7 +1154,7 @@
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>Tietoa Fernschreiberista</translation>
+        <translation>O aplikácii Fernschreiber</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
@@ -1146,236 +1162,242 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Odotetaan verkkoa...</translation>
+        <translation>Čakanie na sieť...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Yhdistetään verkkoon...</translation>
+        <translation>Pripájanie k sieti...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Yhdistetään välityspalvelimeen...</translation>
+        <translation>Pripájanie k proxy...</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Päivitetään sisältöä...</translation>
+        <translation>Aktualizácia obsahu...</translation>
     </message>
     <message>
         <source>Loading chat list...</source>
-        <translation>Ladataan keskustelulistaa...</translation>
+        <translation>Načítanie zoznamu četov...</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Asetukset</translation>
+        <translation>Nastavenia</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>Sinulla ei ole vielä keskusteluja.</translation>
+        <translation>Nemáte žiadne čety.</translation>
     </message>
     <message>
         <source>New Chat</source>
-        <translation>Uusi keskustelu</translation>
+        <translation>Nový čet</translation>
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation>Suodata keskustelujasi...</translation>
+        <translation>Triedenie vašich četov...</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation>Etsi keskusteluista</translation>
+        <translation>Hľadanie četov</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Tiedoston %1 lataus onnistui.</translation>
+        <translation>Sťahovanie %1 bolo úspešné.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Lataus epäonnistui.</translation>
+        <translation>Sťahovanie zlyhalo.</translation>
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation>Kosketa otsikkopalkkia suodattaaksesi keskusteluja</translation>
+        <translation>Klepnutím na záhlavie filtrovať svoje čety</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation>Hakua vastaavia keskusteluja ei löytynyt,</translation>
+        <translation>Nenašli sa žiadne zodpovedajúce čety.</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation>Voit etsiä julkisia keskusteluja tai luoda uuden keskustelun alasvetovalikosta.</translation>
+        <translation>Môžete vyhľadávať verejné čety alebo vytvoriť nový pomocou rozbaľovacej ponuky.</translation>
     </message>
     <message>
         <source>Logging out</source>
-        <translation>Kirjaudutaan ulos</translation>
+        <translation>Odhlasovanie</translation>
     </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation>Sinä</translation>
+        <translation>Vy</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation>Kiinnitetty viesti</translation>
+        <translation>Pripnutá správa</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation>Viestin kiinnitys poistettu</translation>
+        <translation>Správa bola odopnutá</translation>
     </message>
 </context>
 <context>
     <name>PollCreationPage</name>
     <message>
         <source>All answers have to contain 1-100 characters.</source>
-        <translation>Kaikkien vastauksien tulee sisältää 1-100 merkkiä.</translation>
+        <translation>Každá odpoveď môže obsahovať 1-100 znakov.</translation>
     </message>
     <message>
         <source>To send a quiz, you have to specify the right answer.</source>
-        <translation>Lähettääksesi visan, sinun täytyy määrittää oikea vastaus.</translation>
+        <translation>Poslaný kvíz musí obsahovať správnu odpoveď.</translation>
     </message>
     <message>
         <source>You have to enter a question.</source>
-        <translation>Sinun täytyy syöttää kysymys.</translation>
+        <translation>Musíte zadať otázku.</translation>
     </message>
     <message>
         <source>The question has to be shorter than 256 characters.</source>
-        <translation>Tämän kysymyksen täytyy olla lyhyempi kuin 256 merkkiä.</translation>
+        <translation>Otázka musí obsahovať menej ako 256 znakov.</translation>
     </message>
     <message>
         <source>A poll requires 2-10 answers.</source>
-        <translation>Kysely tarvitsee 2-10 vastausta.</translation>
+        <translation>Prieskum vyžaduje od 2 do 10 odpovedí.</translation>
     </message>
     <message>
         <source>Create a Poll</source>
         <comment>Dialog Header</comment>
-        <translation>Luo kysely</translation>
+        <translation>Vytvoriť prieskum</translation>
     </message>
     <message>
         <source>in %1</source>
         <comment>After dialog header… Create a Poll in [group name]</comment>
-        <translation>ryhmään %1</translation>
+        <translation>v %1</translation>
     </message>
     <message>
         <source>Enter your question here</source>
-        <translation>Kirjoita kysymyksesi tähän</translation>
+        <translation>Tu zadajte otázku</translation>
     </message>
     <message numerus="yes">
         <source>Question (%Ln characters left)</source>
         <translation>
-            <numerusform>Kysymys (%Ln merkki jäljellä)</numerusform>
-            <numerusform>Kysymys (%Ln merkkiä jäljellä)</numerusform>
+            <numerusform>Otázka (zostáva %Ln znak)</numerusform>
+            <numerusform>Otázka (zostáva %Ln znaky))</numerusform>
+            <numerusform>Otázka (zostáva %Ln znakov)</numerusform>
         </translation>
     </message>
     <message>
         <source>Answers</source>
         <comment>Section header</comment>
-        <translation>Vastaukset</translation>
+        <translation>Odpovede</translation>
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation>Kirjoita vastaus tähän</translation>
+        <translation>Tu uveďte odpoveď</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
         <translation>
-            <numerusform>Vastaus (%Ln merkki jäljellä)</numerusform>
-            <numerusform>Vastaus (%Ln merkkiä jäljellä)</numerusform>
+            <numerusform>Odpoveď (zostáva %Ln znak)</numerusform>
+            <numerusform>Odpoveď (zostáva %Ln znaky))</numerusform>
+            <numerusform>Odpoveď (zostáva %Ln znakov)</numerusform>
         </translation>
     </message>
     <message>
         <source>Add an answer</source>
-        <translation>Lisää vastaus</translation>
+        <translation>Pridať odpoveď</translation>
     </message>
     <message>
         <source>Poll Options</source>
         <comment>Section header</comment>
-        <translation>Kyselyn asetukset</translation>
+        <translation>Možnosti prieskumu</translation>
     </message>
     <message>
         <source>Anonymous answers</source>
-        <translation>Anonyymit vastaukset</translation>
+        <translation>Anonymné odpovede</translation>
     </message>
     <message>
         <source>Multiple answers allowed</source>
-        <translation>Salli monta vastausta</translation>
+        <translation>Sú povolené viaceré odpovede</translation>
     </message>
     <message>
         <source>Quiz Mode</source>
-        <translation>Visatila</translation>
+        <translation>Mód kvízu</translation>
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-        <translation>Visoilla on yksi oikea vastaus. Osallistujat eivät voi kumota vastaustaan.</translation>
-    </message>
-    <message>
-        <source>Enter an optional explanation</source>
-        <translation>Syötä valinnainen kuvaus</translation>
-    </message>
-    <message>
-        <source>Shown when the user selects a wrong answer.</source>
-        <translation>Näytä kun käyttäjä valitsee väärän vastauksen.</translation>
+        <translation>Kvízy majú jednu správnu odpoveď. Účastníci nemôžu odvolať svoje odpovede.</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation>Selitys voi olla enintään 200 merkkiä pitkä.</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PollResultsPage</name>
     <message>
         <source>Quiz Results</source>
-        <translation>Visan tulokset</translation>
+        <translation>Výsledky kvízu</translation>
     </message>
     <message>
         <source>Poll Results</source>
-        <translation>Kyselyn tulokset</translation>
+        <translation>Výsledky prieskumu</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>yhteensä %Ln ääni </numerusform>
-            <numerusform>yhteensä %Ln ääntä</numerusform>
+            <numerusform>%Ln hlas spolu</numerusform>
+            <numerusform>%Ln hlasy spolu</numerusform>
+            <numerusform>%Ln hlasov spolu</numerusform>
         </translation>
     </message>
     <message>
         <source>Question</source>
         <comment>section header</comment>
-        <translation>Kysymys</translation>
+        <translation>Otázka</translation>
     </message>
     <message>
         <source>Results</source>
         <comment>section header</comment>
-        <translation>Tulokset</translation>
+        <translation>Výsledky</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%Ln ääni</numerusform>
-            <numerusform>%Ln ääntä</numerusform>
+            <numerusform>%Ln hlas</numerusform>
+            <numerusform>%Ln hlasy</numerusform>
+            <numerusform>%Ln hlasov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
         <translation>
-            <numerusform>%Ln%</numerusform>
-            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
         </translation>
     </message>
     <message>
         <source>Chosen by:</source>
         <comment>This answer has been chosen by the following users</comment>
-        <translation>Valinnut:</translation>
+        <translation>Vybral(a) si:</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%Ln ääni (sinun)</numerusform>
-            <numerusform>%Ln ääntä (mukaan lukien sinun)</numerusform>
+            <numerusform>%Ln hlas, vrátane Vášho</numerusform>
+            <numerusform>%Ln hlasy, vrátane Vášho</numerusform>
+            <numerusform>%Ln hlasov, vrátane Vášho</numerusform>
         </translation>
     </message>
 </context>
@@ -1383,331 +1405,226 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation>Keskusteluja ei löytynyt</translation>
+        <translation>Nebol nenájdený žiaden čet.</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation>Etsitään keskusteluja...</translation>
+        <translation>Hľadanie četov...</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation>Yksityinen keskustelu</translation>
+        <translation>Súkromný čet</translation>
     </message>
     <message>
         <source>Group</source>
-        <translation>Ryhmä</translation>
+        <translation>Skupina</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation>Kanava</translation>
+        <translation>Kanál</translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
         <translation>
-            <numerusform>%1 jäsen</numerusform>
-            <numerusform>%1 jäsentä</numerusform>
+            <numerusform>%1 člen</numerusform>
+            <numerusform>%1 členovia</numerusform>
+            <numerusform>%1 členov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
         <translation>
-            <numerusform>%1 tilaaja</numerusform>
-            <numerusform>%1 tilaajaa</numerusform>
+            <numerusform>%1 odberateľ</numerusform>
+            <numerusform>%1 odberatelia</numerusform>
+            <numerusform>%1 odberateľov</numerusform>
         </translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation>Etsi keskusteluja</translation>
+        <translation>Prehľadávať čety</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation>Etsi keskustelua...</translation>
+        <translation>Hľadať čet...</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation>Syötä hakusanasi etsiäksesi (vähintään 5 merkkiä tarvitaan)</translation>
+        <translation>Pre spustenie hľadania zadajte podmienku (vyžaduje sa najmenej 5 znakov)</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Asetukset</translation>
+        <translation>Nastavenia</translation>
     </message>
     <message>
         <source>Behavior</source>
-        <translation>Toiminta</translation>
+        <translation>Správanie</translation>
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Lähetä viesti rivinvaihdolla</translation>
+        <translation>Správu odoslať klávesom Enter</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Lähetä viestisi painamalla rivinvaihtonäppäintä (enter)</translation>
+        <translation>Správu odošlite stlačením klávesu Enter</translation>
     </message>
     <message>
         <source>Appearance</source>
-        <translation>Ulkoasu</translation>
+        <translation>Vzhľad</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
-        <translation>Näytä tarrat kuvina</translation>
+        <translation>Zobraziť nálepky ako obrázky</translation>
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation>Näytä tarroissa tausta ja keskitä ne kuten kuvat</translation>
+        <translation>Zobraziť pozadie pre nálepky a vycentrovať ich ako obrázky</translation>
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation>Ilmoitusten palaute</translation>
+        <translation>Reakcia oznámenia</translation>
     </message>
     <message>
         <source>All events</source>
-        <translation>Kaikki tapahtumat</translation>
+        <translation>Všetky udalosti</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation>Vain uudet tapahtumat</translation>
+        <translation>Iba nové udalosti</translation>
     </message>
     <message>
         <source>None</source>
-        <translation>Ei mitään</translation>
+        <translation>Žiadne</translation>
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Käytä ei-graafista palautetta (ääni, värinä) ilmoituksille</translation>
+        <translation>Pre upozornenia použiť negrafickú reakciu (zvuk, vibrovanie)</translation>
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation>Avaa sovelluksessa ‑integraatio</translation>
+        <translation>Zaradiť do ponuky &quot;otvoriť pomocou&quot;</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Sisällytä Fernschreiber Sailfish OS:n avaa sovelluksella ‑valikkoon</translation>
+        <translation>Fernschreiber zaradiť do ponuky Sailfish OS &quot;otvoriť pomocou&quot;</translation>
     </message>
     <message>
         <source>Animate stickers</source>
-        <translation>Animoi tarrat</translation>
+        <translation>Animované nálepky</translation>
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation>Ilmoitus kytkee näytön päälle</translation>
+        <translation>Oznámenie zapne displej</translation>
     </message>
     <message>
         <source>Storage</source>
-        <translation>Tallennustila</translation>
+        <translation>Pamäť</translation>
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation>Käytä tallennustilan optimointia</translation>
+        <translation>Povoliť optimalizátor pamäte</translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation>Kohdista tekstinsyöttökenttä lähetyksen jälkeen</translation>
+        <translation>Po odoslaní aktivovať vkladanie textu</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation>Kohdista tekstinsyöttökenttä viestin lähetyksen jälkeen</translation>
+        <translation>Po odoslaní správy aktivovať vkladanie textu</translation>
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation>Älä käytä välimuistia</translation>
+        <translation>Povoliť mód iba pripojený</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Estää tietojen tallennuksen välimuistiin. Jotkin sovelluksen ominaisuudet voivat olla rajoitettuja tai poistettu käytöstä tässä tilassa. Muutos vaatii Fernschreiberin uudelleenkäynnistyksen.</translation>
+        <translation>Zakázať ukladanie do off-line vyrovnávacej pamäte. Niektoré funkcie môžu byť v tomto režime obmedzené alebo môžu chýbať. Zmeny sa prejavia až po reštartovaní Fernschreiber.</translation>
     </message>
     <message>
         <source>Privacy</source>
-        <translation>Yksityisyys</translation>
+        <translation>Ochrana osobných údajov</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation>Salli sijainnin lähettäminen upotetuille boteille</translation>
+        <translation>Povoliť odosielanie polohy inline robotom</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation>Jotkin viestinsyöttöriville upotetut botit pyytävät sijaintitietoja niitä käytettäessä</translation>
-    </message>
-    <message>
-        <source>User Profile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>First Name</source>
-        <comment>first name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter 1-64 characters</source>
-        <translation type="unfinished">Syötä 1-128 merkkiä {1-64 ?}</translation>
-    </message>
-    <message>
-        <source>Last Name</source>
-        <comment>last name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter 0-64 characters</source>
-        <translation type="unfinished">Syötä 1-128 merkkiä {0-64 ?}</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <comment>user name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Allow chat invites</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Your contacts only</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Allow finding by phone number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show link in forwarded messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show phone number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show profile photo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add Picture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile Pictures</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete Picture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Uploading...</source>
-        <translation type="unfinished">Lähetetään...</translation>
-    </message>
-    <message>
-        <source>Deleting profile picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Niektorí inline roboti požadujú údaje o polohe ak ich používajú</translation>
     </message>
 </context>
 <context>
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation>Viimeksi käytetty</translation>
+        <translation>Nedávno použité</translation>
     </message>
     <message>
         <source>Loading stickers...</source>
-        <translation>Ladataan tarroja...</translation>
+        <translation>Načítanie nálepiek...</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download Video</source>
-        <translation>Lataa video</translation>
+        <translation>Sťahovať video</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Videon %1 lataus onnistui.</translation>
+        <translation>Sťahovanie %1 bolo úspešné.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Lataus epäonnistui.</translation>
+        <translation>Sťahovanie zlyhalo.</translation>
     </message>
 </context>
 <context>
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
-        <translation>Nauhoita ääniviesti</translation>
+        <translation>Nahrať hlasovú poznámku</translation>
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation>Paina nappia aloittaaksesi nauhoituksen</translation>
+        <translation>Stlačiť tlačidlo pre spustenie nahrávania</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation>Ei saatavilla</translation>
+        <translation>Nedostupné</translation>
     </message>
     <message>
         <source>Starting</source>
-        <translation>Aloitetaan</translation>
+        <translation>Spúšťanie</translation>
     </message>
     <message>
         <source>Recording</source>
-        <translation>Nauhoitetaan</translation>
+        <translation>Nahrávanie</translation>
     </message>
     <message>
         <source>Stopping</source>
-        <translation>Lopetetaan</translation>
+        <translation>Ukončovanie</translation>
     </message>
     <message>
         <source>Use recording</source>
-        <translation>Käytä nauhoitusta</translation>
+        <translation>Použiť nahrávanie</translation>
     </message>
     <message>
         <source>Voice Note (%1)</source>
-        <translation>Ääniviesti (%1)</translation>
+        <translation>Hlasová poznámka (%1)</translation>
     </message>
     <message>
         <source>Ready</source>
-        <translation>Valmis</translation>
+        <translation>Pripravené</translation>
     </message>
 </context>
 <context>
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation>Esikatselua ei tueta tälle linkille...</translation>
+        <translation>Pre tento odkaz nie je podporovaný náhľad...</translation>
     </message>
 </context>
 <context>
@@ -1718,71 +1635,71 @@
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>rekisteröityi Telegramiin</translation>
+        <translation>registrovaný pomocou Telegramu</translation>
     </message>
     <message>
         <source>Picture: %1</source>
-        <translation>Kuva: %1</translation>
+        <translation>Obrázok: %1</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation>Tarra: %1</translation>
+        <translation>Nálepka: %1</translation>
     </message>
     <message>
         <source>Audio: %1</source>
-        <translation>Äänite: %1</translation>
+        <translation>Zvuk: %1</translation>
     </message>
     <message>
         <source>Voice Note: %1</source>
-        <translation>Ääniviesti: %1</translation>
+        <translation>Hlasová poznámka: %1</translation>
     </message>
     <message>
         <source>Animation: %1</source>
-        <translation>Animaatio: %1</translation>
+        <translation>Animácia: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
-        <translation>Dokumentti: %1</translation>
+        <translation>Dokument: %1</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>lähetti kuvan</translation>
+        <translation>poslal obrázok</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>lähetti videon</translation>
+        <translation>poslal video</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>lähetti animaation</translation>
+        <translation>poslal animáciu</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>lähetti äänitteen</translation>
+        <translation>poslal zvuk</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>lähetti ääniviestin</translation>
+        <translation>poslal hlasovú poznámku</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>lähetti dokumentin</translation>
+        <translation>poslal dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>lähetti sijainnin</translation>
+        <translation>poslal polohu</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>liittyi keskusteluun</translation>
+        <translation>pripojený k tomuto četu</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>lisättiin keskusteluun</translation>
+        <translation>pridaný do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>poistui keskustelusta</translation>
+        <translation>opustil tento čet</translation>
     </message>
     <message>
         <source>%1M</source>
@@ -1793,333 +1710,334 @@
         <translation>%1K</translation>
     </message>
     <message>
+        <source>sent a venue</source>
+        <translation>poslal miesto stretnutia</translation>
+    </message>
+    <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>lähetit kuvan</translation>
+        <translation>poslali obrázok</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>lähetit videon</translation>
+        <translation>poslali video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>lähetit animaation</translation>
+        <translation>poslali animáciu</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>lähetit äänitteen</translation>
+        <translation>poslali zvuk</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>lähetit ääniviestin</translation>
+        <translation>poslali hlasovú poznámku</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>lähetit dokumentin</translation>
+        <translation>poslali dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>lähetit sijainnin</translation>
+        <translation>poslali polohu</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>lähetit paikan</translation>
-    </message>
-    <message>
-        <source>sent a venue</source>
-        <translation>lähetti paikan</translation>
+        <translation>poslali miesto stretnutia</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation>on rekisteröitynyt Telegramiin</translation>
+        <translation>zaregistrovaný pomocou Telegramu</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>liityit keskusteluun</translation>
+        <translation>pripojení k tomuto četu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>tulit lisätyksi keskusteluun</translation>
+        <translation>pridali do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>poistuit keskustelusta</translation>
+        <translation>opustili tento čet</translation>
     </message>
     <message>
         <source>was never online</source>
-        <translation>ei ole ollut koskaan paikalla</translation>
+        <translation>nikdy nebol pripojený</translation>
     </message>
     <message>
         <source>last online: last month</source>
-        <translation>Nähty viimeksi: viime kuussa</translation>
+        <translation>naposledy pripojený: minulý mesiac</translation>
     </message>
     <message>
         <source>last online: last week</source>
-        <translation>Nähty viimeksi: viime viikolla</translation>
+        <translation>naposledy pripojený: minulý týždeň</translation>
     </message>
     <message>
         <source>last online: %1</source>
-        <translation>Nähty viimeksi: %1</translation>
+        <translation>naposledy pripojený: %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation>paikalla</translation>
+        <translation>pripojený</translation>
     </message>
     <message>
         <source>was recently online</source>
-        <translation>oli hetki sitten paikalla</translation>
+        <translation>nedávno pripojený</translation>
     </message>
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation>Pääkäyttäjä</translation>
+        <translation>Administrátor</translation>
     </message>
     <message>
         <source>Banned</source>
         <comment>channel user role</comment>
-        <translation>Estetty</translation>
+        <translation>Zakázaný</translation>
     </message>
     <message>
         <source>Creator</source>
         <comment>channel user role</comment>
-        <translation>Perustaja</translation>
+        <translation>Tvorca</translation>
     </message>
     <message>
         <source>Restricted</source>
         <comment>channel user role</comment>
-        <translation>Rajoitettu</translation>
+        <translation>Obmedzený</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>vaihdoit keskustelun otsikoksi %1</translation>
+        <translation>názov četu zmenili na %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation>vaihtoi keskustelun otsikoksi %1</translation>
+        <translation>názov četu zmenil na %1</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>lähetit kyselyn</translation>
+        <translation>poslali prieskum</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation>lähetti kyselyn</translation>
+        <translation>poslal prieskum</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
         <comment>myself</comment>
-        <translation>lähetit anonyymin visan</translation>
+        <translation>poslali anonymný kvíz</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
-        <translation>lähetti anonyymin visan</translation>
+        <translation>poslal anonymný kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>lähetit visan</translation>
+        <translation>poslali kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation>lähetti visan</translation>
+        <translation>poslal kvíz</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
         <comment>myself</comment>
-        <translation>lähetit anonyymin kyselyn</translation>
+        <translation>poslali anonymný prieskum</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
-        <translation>lähetti anonyymin kyselyn</translation>
+        <translation>poslal anonymný prieskum</translation>
     </message>
     <message>
         <source>Anonymous Quiz</source>
-        <translation>Anonyymi visa</translation>
+        <translation>Anonymný kvíz</translation>
     </message>
     <message>
         <source>Quiz</source>
-        <translation>Visa</translation>
+        <translation>Kvíz</translation>
     </message>
     <message>
         <source>Anonymous Poll</source>
-        <translation>Anonyymi kysely</translation>
+        <translation>Anonymný prieskum</translation>
     </message>
     <message>
         <source>Poll</source>
-        <translation>Kysely</translation>
+        <translation>Prieskum</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>loit tämän ryhmän</translation>
+        <translation>vytvorili túto skupinu</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation>loi tämän ryhmän</translation>
+        <translation>vytvoril túto skupinu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>vaihdoit keskustelun kuvakkeen</translation>
+        <translation>zmenili fotografiu četu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation>vaihtoi keskustelun kuvakkeen</translation>
+        <translation>zmenil fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>poistit keskustelun kuvakkeen</translation>
+        <translation>odstránili fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>poisti keskustelun kuvakkeen</translation>
+        <translation>odstránil fotografiu četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>vaihdoit salaisen keskustelun viestien elinajan</translation>
+        <translation>zmenili nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>vaihtoi salaisen keskustelun viestien elinajan</translation>
+        <translation>zmenil nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>muutit tämän ryhmän superryhmäksi</translation>
+        <translation>aktualizovali túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>vaihdoit kiinnitetyn viestin</translation>
+        <translation>zmenili pripnuté správy</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation>vaihtoi kiinnitetyn viestin</translation>
+        <translation>zmenil pripnuté správy</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>otit kuvakaappauksen tästä keskustelusta</translation>
+        <translation>vytvorili snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>otti kuvakaappauksen tästä keskustelusta</translation>
+        <translation>vytvoril snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>lähetit ei-tuetun viestin</translation>
+        <translation>poslali nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation>lähetti ei-tuetun viestin</translation>
+        <translation>poslal nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation>lähetit ei-tuetun viestin: %1</translation>
+        <translation>poslali nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>%1 is message type</comment>
-        <translation>lähetti ei-tuetun viestin: %1</translation>
+        <translation>poslal nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation>muutti tämän ryhmän superryhmäksi</translation>
+        <translation>aktualizoval túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>lähetit itsetuhoutuvan kuvan joka vanheni</translation>
+        <translation>poslali samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>lähetti itsetuhoutuvan kuvan joka vanheni</translation>
+        <translation>poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>lähetit itsetuhoutuvan videon joka vanheni</translation>
+        <translation>poslali samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>lähetti itsetuhoutuvan videon joka vanheni</translation>
+        <translation>poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation>Käyttäjää ei löydy: %1</translation>
+        <translation>Nemožno nájsť používateľa %1</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>lähetit videoviestin</translation>
+        <translation>poslali video-poznámku</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation>lähetti videoviestin</translation>
+        <translation>poslal video-poznámku</translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation>Olet jo tämän ryhmän jäsen.</translation>
+        <translation>Už ste členom tohto četu.</translation>
     </message>
     <message>
         <source>Closed!</source>
-        <translation>Suljettu!</translation>
+        <translation>Zatvorené!</translation>
     </message>
     <message>
         <source>Pending acknowledgement</source>
-        <translation>Odottaa hyväksyntää</translation>
+        <translation>Čaká sa na potvrdenie</translation>
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>lisäsi käyttäjä %1 keskusteluun</translation>
+        <translation>pridal %1 do četu</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>posit käyttäjän %1 keskustelusta</translation>
+        <translation>odstránil %1 z četu</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>lisäsit käyttäjän %1 keskusteluun</translation>
+        <translation>pridali %1 do četu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>poistit käyttäjän %1 keskustelusta</translation>
+        <translation>odstránili %1 z četu</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>sait %Ln pisteen</numerusform>
-            <numerusform>sait %Ln pistettä</numerusform>
+            <numerusform>získali %Ln bod</numerusform>
+            <numerusform>získali %Ln body</numerusform>
+            <numerusform>získali %Ln bodov</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>lähetit pelin</translation>
+        <translation>poslali hru</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>lähetti pelin</translation>
+        <translation>poslal hru</translation>
     </message>
 </context>
 </TS>
