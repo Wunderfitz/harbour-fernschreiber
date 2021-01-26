@@ -1596,15 +1596,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove Picture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Profile Pictures</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Privacy Options</source>
+        <source>Delete Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

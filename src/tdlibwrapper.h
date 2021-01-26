@@ -219,6 +219,8 @@ public:
     Q_INVOKABLE void setUsername(const QString &userName);
     Q_INVOKABLE void setUserPrivacySettingRule(UserPrivacySetting setting, UserPrivacySettingRule rule);
     Q_INVOKABLE void getUserPrivacySettingRules(UserPrivacySetting setting);
+    Q_INVOKABLE void setProfilePhoto(const QString &filePath);
+    Q_INVOKABLE void deleteProfilePhoto(const QString &profilePhotoId);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -295,6 +297,7 @@ signals:
     void inlineQueryResults(const QString &inlineQueryId, const QString &nextOffset, const QVariantList &results, const QString &switchPmText, const QString &switchPmParameter, const QString &extra);
     void callbackQueryAnswer(const QString &text, bool alert, const QString &url);
     void userPrivacySettingUpdated(UserPrivacySetting setting, UserPrivacySettingRule rule);
+    void okReceived(const QString &request);
 
 public slots:
     void handleVersionDetected(const QString &version);

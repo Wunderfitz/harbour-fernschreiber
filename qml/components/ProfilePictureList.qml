@@ -23,6 +23,7 @@ Item {
     id: profilePictureListItem
     visible: imageContainer.thumbnailVisible && bigProfilePictureList.count > 0
     property bool isActive: imageContainer.thumbnailActive
+    readonly property int currentPictureIndex: bigProfilePictureList.currentIndex
 
     opacity: isActive ? 1.0 : 0.0
     Behavior on opacity { FadeAnimation {} }
@@ -57,14 +58,15 @@ Item {
 
     Text {
         visible: bigProfilePictureList.count > 1
-        width: parent.width
+        width: parent.width - Theme.paddingSmall
         anchors {
             bottomMargin: Theme.paddingSmall
             bottom: parent.bottom
         }
         horizontalAlignment: Text.AlignHCenter
         property var baseString: new Array(bigProfilePictureList.count+1).join(" ○ ")
-        text: baseString.substring(0,bigProfilePictureList.currentIndex*3) + " ● " + baseString.substring((bigProfilePictureList.currentIndex+1)*3)
+        text: (baseString.substring(0,bigProfilePictureList.currentIndex*3) + " ● " + baseString.substring((bigProfilePictureList.currentIndex+1)*3)).trim()
+        font.pixelSize: Theme.fontSizeTiny
         color: Theme.primaryColor
         style: Text.Raised
         styleColor: Theme.highlightDimmerColor

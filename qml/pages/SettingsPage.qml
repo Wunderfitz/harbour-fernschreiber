@@ -18,6 +18,7 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import Sailfish.Pickers 1.0
 import WerkWolf.Fernschreiber 1.0
 import "../components"
 import "../js/functions.js" as Functions
@@ -29,6 +30,7 @@ Page {
 
     readonly property bool landscapeLayout: (width > height && Screen.sizeCategory > Screen.Small) || Screen.sizeCategory > Screen.Medium
     readonly property var userInformation: tdLibWrapper.getUserInformation()
+    property bool uploadInProgress: false
 
     onStatusChanged: {
         if (status === PageStatus.Active) {
@@ -46,6 +48,21 @@ Page {
         onUserProfilePhotosReceived: {
             if (extra === userInformation.id.toString()) {
                 imageContainer.thumbnailModel = photos;
+            }
+        }
+        onFileUpdated: {
+            if (uploadInProgress) {
+                profilePictureButtonColumn.visible = !fileInformation.remote.is_uploading_active;
+                uploadInProgress = fileInformation.remote.is_uploading_active;
+                if (!fileInformation.remote.is_uploading_active) {
+                    uploadInProgress = false;
+                    tdLibWrapper.getUserProfilePhotos(userInformation.id, 100, 0);
+                }
+            }
+        }
+        onOkReceived: {
+            if (request === "deleteProfilePhoto") {
+                tdLibWrapper.getUserProfilePhotos(userInformation.id, 100, 0);
             }
         }
     }
@@ -182,6 +199,7 @@ Page {
                 }
 
                 Column {
+                    id: profilePictureButtonColumn
                     spacing: Theme.paddingSmall
                     width: parent.width / 2
 
@@ -192,27 +210,62 @@ Page {
                             horizontalCenter: parent.horizontalCenter
                         }
                         onClicked: {
-
+                            pageStack.push(imagePickerPage);
                         }
                     }
 
                     Button {
                         id: removeProfilePictureButton
-                        text: qsTr("Remove Picture")
+                        text: qsTr("Delete Picture")
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
                         onClicked: {
-
+                            var pictureIdForDeletion = imageContainer.thumbnailModel[profilePictureLoader.item.currentPictureIndex].id;
+                            Remorse.popupAction(settingsPage, qsTr("Deleting profile picture"), function() { tdLibWrapper.deleteProfilePhoto(pictureIdForDeletion) });
                         }
+                    }
+                }
+
+                Column {
+                    id: uploadStatusColumn
+                    visible: !profilePictureButtonColumn.visible
+                    spacing: Theme.paddingMedium
+                    width: parent.width / 2
+
+                    Text {
+                        id: uploadingText
+                        font.pixelSize: Theme.fontSizeSmall
+                        text: qsTr("Uploading...")
+                        horizontalAlignment: Text.AlignHCenter
+                        color: Theme.secondaryColor
+                        width: parent.width
+                    }
+
+                    BusyIndicator {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        running: uploadStatusColumn.visible
+                        size: BusyIndicatorSize.Medium
                     }
 
                 }
+
             }
+
+            Component {
+                id: imagePickerPage
+                ImagePickerPage {
+                    onSelectedContentPropertiesChanged: {
+                        profilePictureButtonColumn.visible = false;
+                        uploadInProgress = true;
+                        tdLibWrapper.setProfilePhoto(selectedContentProperties.filePath);
+                    }
+                }
+           }
 
             SectionHeader {
                 horizontalAlignment: Text.AlignLeft
-                text: qsTr("Privacy Options")
+                text: qsTr("Privacy")
             }
 
             Grid {

@@ -160,6 +160,7 @@ void TDLibWrapper::initializeTDLibReciever() {
     connect(this->tdLibReceiver, SIGNAL(callbackQueryAnswer(QString, bool, QString)), this, SIGNAL(callbackQueryAnswer(QString, bool, QString)));
     connect(this->tdLibReceiver, SIGNAL(userPrivacySettingRules(QVariantMap)), this, SLOT(handleUserPrivacySettingRules(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(userPrivacySettingRulesUpdated(QVariantMap)), this, SLOT(handleUpdatedUserPrivacySettingRules(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(okReceived(QString)), this, SIGNAL(okReceived(QString)));
 
     this->tdLibReceiver->start();
 }
@@ -1290,6 +1291,35 @@ void TDLibWrapper::getUserPrivacySettingRules(TDLibWrapper::UserPrivacySetting s
         return;
     }
     requestObject.insert("setting", settingMap);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setProfilePhoto(const QString &filePath)
+{
+    LOG("Set a profile photo" << filePath);
+
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setProfilePhoto");
+    QVariantMap inputChatPhoto;
+    inputChatPhoto.insert(_TYPE, "inputChatPhotoStatic");
+    QVariantMap inputFile;
+    inputFile.insert(_TYPE, "inputFileLocal");
+    inputFile.insert("path", filePath);
+    inputChatPhoto.insert("photo", inputFile);
+    requestObject.insert("photo", inputChatPhoto);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::deleteProfilePhoto(const QString &profilePhotoId)
+{
+    LOG("Delete a profile photo" << profilePhotoId);
+
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "deleteProfilePhoto");
+    requestObject.insert(_EXTRA, "deleteProfilePhoto");
+    requestObject.insert("profile_photo_id", profilePhotoId);
 
     this->sendRequest(requestObject);
 }

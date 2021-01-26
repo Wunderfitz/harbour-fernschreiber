@@ -1621,16 +1621,20 @@
         <translation>Add Picture</translation>
     </message>
     <message>
-        <source>Remove Picture</source>
-        <translation>Remove Picture</translation>
-    </message>
-    <message>
         <source>Profile Pictures</source>
         <translation>Profile Pictures</translation>
     </message>
     <message>
-        <source>Privacy Options</source>
-        <translation>Privacy Options</translation>
+        <source>Delete Picture</source>
+        <translation>Delete Picture</translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>Uploading...</translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
+        <translation>Deleting profile picture</translation>
     </message>
 </context>
 <context>

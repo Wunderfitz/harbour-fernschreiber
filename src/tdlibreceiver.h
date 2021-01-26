@@ -97,6 +97,7 @@ signals:
     void callbackQueryAnswer(const QString &text, bool alert, const QString &url);
     void userPrivacySettingRules(const QVariantMap &rules);
     void userPrivacySettingRulesUpdated(const QVariantMap &updatedRules);
+    void okReceived(const QString &request);
 
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);

@@ -558,8 +558,12 @@ void TDLibReceiver::processError(const QVariantMap &receivedInformation)
     emit errorReceived(receivedInformation.value("code").toInt(), receivedInformation.value(MESSAGE).toString(), receivedInformation.value(EXTRA).toString());
 }
 
-void TDLibReceiver::nop(const QVariantMap &)
+void TDLibReceiver::nop(const QVariantMap &receivedInformation)
 {
+    LOG("Received an OK");
+    if (receivedInformation.contains(EXTRA)) {
+        emit okReceived(receivedInformation.value(EXTRA).toString());
+    }
 }
 
 void TDLibReceiver::processSecretChat(const QVariantMap &receivedInformation)
