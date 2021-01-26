@@ -2140,11 +2140,11 @@
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">отправлена игра</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">отправлена игра</translation>
     </message>
 </context>
 </TS>

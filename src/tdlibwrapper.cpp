@@ -1301,6 +1301,7 @@ void TDLibWrapper::setProfilePhoto(const QString &filePath)
 
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setProfilePhoto");
+    requestObject.insert(_EXTRA, "setProfilePhoto");
     QVariantMap inputChatPhoto;
     inputChatPhoto.insert(_TYPE, "inputChatPhotoStatic");
     QVariantMap inputFile;

@@ -71,4 +71,5 @@ Item {
         style: Text.Raised
         styleColor: Theme.highlightDimmerColor
     }
+
 }

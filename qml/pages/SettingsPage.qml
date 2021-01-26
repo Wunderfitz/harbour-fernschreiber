@@ -64,6 +64,11 @@ Page {
             if (request === "deleteProfilePhoto") {
                 tdLibWrapper.getUserProfilePhotos(userInformation.id, 100, 0);
             }
+            if (request === "setProfilePhoto") {
+                tdLibWrapper.getUserProfilePhotos(userInformation.id, 100, 0);
+                profilePictureButtonColumn.visible = true;
+                uploadInProgress = false;
+            }
         }
     }
 
@@ -195,6 +200,16 @@ Page {
                         height: Theme.itemSizeExtraLarge
                         anchors.horizontalCenter: parent.horizontalCenter
                         source: "../components/ProfilePictureList.qml"
+                    }
+
+                    ProfileThumbnail {
+                        id: chatPictureReplacement
+                        visible: !profilePictureLoader.active
+                        replacementStringHint: Functions.getUserName(settingsPage.userInformation)
+                        radius: imageContainer.thumbnailRadius
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        width: Theme.itemSizeExtraLarge
+                        height: Theme.itemSizeExtraLarge
                     }
                 }
 
