@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Open Telegram Database Library na GitHub</translation>
+        <translation>Otvoriť Telegram Database Library na GitHub</translation>
     </message>
     <message>
         <source>About Telegram</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Open twemoji na GitHub</translation>
+        <translation>Otvoriť twemoji na GitHub</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
@@ -81,7 +81,7 @@
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
-        <translation>Open rlottie na GitHub</translation>
+        <translation>Otvoriť rlottie na GitHub</translation>
     </message>
     <message>
         <source>Log Out</source>
@@ -208,7 +208,7 @@
     </message>
     <message>
         <source>You</source>
-        <translation>Vy</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
@@ -249,7 +249,7 @@
     </message>
     <message>
         <source>You</source>
-        <translation>Vy</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>User Info</source>
@@ -573,7 +573,7 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>poslali obrázok</translation>
+        <translation>som poslal obrázok</translation>
     </message>
     <message>
         <source>sent a picture</source>
@@ -582,7 +582,7 @@
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>poslali video</translation>
+        <translation>som poslal video</translation>
     </message>
     <message>
         <source>sent a video</source>
@@ -591,7 +591,7 @@
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>poslali animáciu</translation>
+        <translation>som poslal animáciu</translation>
     </message>
     <message>
         <source>sent an animation</source>
@@ -604,7 +604,7 @@
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>poslali dokument</translation>
+        <translation>som poslal dokument</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -613,7 +613,7 @@
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>poslali polohu</translation>
+        <translation>som poslal polohu</translation>
     </message>
     <message>
         <source>sent a location</source>
@@ -622,7 +622,7 @@
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>registrovaní pomocou Telegramu</translation>
+        <translation>som sa registroval pomocou Telegramu</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
@@ -631,25 +631,25 @@
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>pripojení v tomto čete</translation>
+        <translation>som sa pripojil do tohto četu</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>pripojený v tomto čete</translation>
+        <translation>sa pripojil do tohto četu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>pridaní do tohto četu</translation>
+        <translation>som bol pridaný do tohto četu</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>pridaný do tohto četu</translation>
+        <translation>bol pridaný do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>opustili tento čet</translation>
+        <translation>som opustil tento čet</translation>
     </message>
     <message>
         <source>left this chat</source>
@@ -662,12 +662,12 @@
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>poslali hlasovú poznámku</translation>
+        <translation>som poslal hlasovú poznámku</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>poslali miesto stretnutia</translation>
+        <translation>som poslal miesto stretnutia</translation>
     </message>
     <message>
         <source>sent a venue</source>
@@ -676,7 +676,7 @@
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation>zmenili názov četu</translation>
+        <translation>som zmenil názov četu</translation>
     </message>
     <message>
         <source>changed the chat title</source>
@@ -685,7 +685,7 @@
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>poslali prieskum</translation>
+        <translation>som poslal prieskum</translation>
     </message>
     <message>
         <source>sent a poll</source>
@@ -694,7 +694,7 @@
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>poslali kvíz</translation>
+        <translation>som poslal kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
@@ -703,7 +703,7 @@
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>vytvorili túto skupinu</translation>
+        <translation>som vytvoril túto skupinu</translation>
     </message>
     <message>
         <source>created this group</source>
@@ -712,7 +712,7 @@
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>zmenili fotografiu četu</translation>
+        <translation>som zmenil fotografiu četu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
@@ -721,7 +721,7 @@
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>odstránili fotografiu četu</translation>
+        <translation>som odstránil fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
@@ -730,7 +730,7 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>zmenili nastavenia TTL dôverného četu</translation>
+        <translation>som zmenil nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
@@ -739,12 +739,12 @@
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>aktualizovali túto skupinu na super-skupinu</translation>
+        <translation>som aktualizoval túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>zmenili pripnutú správu</translation>
+        <translation>som zmenil pripnutú správu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
@@ -753,7 +753,7 @@
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>vytvorili snímku obrazovky v tomto čete</translation>
+        <translation>som vytvoril snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
@@ -762,7 +762,7 @@
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>poslali nepodporovanú správu</translation>
+        <translation>som poslal nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
@@ -779,12 +779,12 @@
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>poslali samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
+        <translation>som poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>poslali samodeštrukčné video, ktorého platnosť vypršala</translation>
+        <translation>som poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
@@ -793,7 +793,7 @@
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation>poslali nepodporovanú správu: %1</translation>
+        <translation>som poslal nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
@@ -802,7 +802,7 @@
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>poslali zvuk</translation>
+        <translation>som poslal zvuk</translation>
     </message>
     <message>
         <source>sent an audio</source>
@@ -819,20 +819,20 @@
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>pridali %1 do četu</translation>
+        <translation>som pridal %1 do četu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>odstránili %1 z četu</translation>
+        <translation>som odstránil %1 z četu</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>získali %Ln bod</numerusform>
-            <numerusform>získali %Ln body</numerusform>
-            <numerusform>získali %Ln bodov</numerusform>
+            <numerusform>som získal %Ln bod</numerusform>
+            <numerusform>som získal %Ln body</numerusform>
+            <numerusform>som získal %Ln bodov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -846,7 +846,7 @@
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>poslali hru</translation>
+        <translation>som poslal hru</translation>
     </message>
     <message>
         <source>sent a game</source>
@@ -855,7 +855,7 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>poslali video-poznámku</translation>
+        <translation>som poslal video-poznámku</translation>
     </message>
     <message>
         <source>sent a video note</source>
@@ -881,7 +881,7 @@
     <name>InReplyToRow</name>
     <message>
         <source>You</source>
-        <translation>Vy</translation>
+        <translation>Ja</translation>
     </message>
 </context>
 <context>
@@ -975,7 +975,7 @@
     </message>
     <message>
         <source>You</source>
-        <translation>Vy</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
@@ -1002,15 +1002,15 @@
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
-        <translation>Vy</translation>
+        <translation>Ja</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>získali %Ln bod v %2</numerusform>
-            <numerusform>získali %Ln body v %2</numerusform>
-            <numerusform>získali %Ln bodov v %2</numerusform>
+            <numerusform>som získal %Ln bod v %2</numerusform>
+            <numerusform>som získal %Ln body v %2</numerusform>
+            <numerusform>som získal %Ln bodov v %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1033,7 +1033,7 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation>Vy</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
@@ -1229,7 +1229,7 @@
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation>Vy</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>Pinned Message</source>
@@ -1716,42 +1716,42 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>poslali obrázok</translation>
+        <translation>som poslal obrázok</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>poslali video</translation>
+        <translation>som poslal video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>poslali animáciu</translation>
+        <translation>som poslal animáciu</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>poslali zvuk</translation>
+        <translation>som poslal zvuk</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>poslali hlasovú poznámku</translation>
+        <translation>som poslal hlasovú poznámku</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>poslali dokument</translation>
+        <translation>som poslal dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>poslali polohu</translation>
+        <translation>som poslal polohu</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>poslali miesto stretnutia</translation>
+        <translation>som poslal miesto stretnutia</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
@@ -1760,17 +1760,17 @@
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>pripojení k tomuto četu</translation>
+        <translation>som bol pripojený k tomuto četu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>pridali do tohto četu</translation>
+        <translation>som bol pridaný do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>opustili tento čet</translation>
+        <translation>som opustil tento čet</translation>
     </message>
     <message>
         <source>was never online</source>
@@ -1819,7 +1819,7 @@
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>názov četu zmenili na %1</translation>
+        <translation>som zmenil názov četu na %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
@@ -1828,7 +1828,7 @@
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>poslali prieskum</translation>
+        <translation>som poslal prieskum</translation>
     </message>
     <message>
         <source>sent a poll</source>
@@ -1837,7 +1837,7 @@
     <message>
         <source>sent an anonymous quiz</source>
         <comment>myself</comment>
-        <translation>poslali anonymný kvíz</translation>
+        <translation>som poslal anonymný kvíz</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
@@ -1846,7 +1846,7 @@
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>poslali kvíz</translation>
+        <translation>som poslal kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
@@ -1855,7 +1855,7 @@
     <message>
         <source>sent an anonymous poll</source>
         <comment>myself</comment>
-        <translation>poslali anonymný prieskum</translation>
+        <translation>som poslal anonymný prieskum</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
@@ -1880,7 +1880,7 @@
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>vytvorili túto skupinu</translation>
+        <translation>som vytvoril túto skupinu</translation>
     </message>
     <message>
         <source>created this group</source>
@@ -1889,7 +1889,7 @@
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>zmenili fotografiu četu</translation>
+        <translation>som zmenil fotografiu četu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
@@ -1898,7 +1898,7 @@
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>odstránili fotografiu četu</translation>
+        <translation>som odstránil fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
@@ -1907,7 +1907,7 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>zmenili nastavenia TTL dôverného četu</translation>
+        <translation>som zmenil nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
@@ -1917,21 +1917,21 @@
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>aktualizovali túto skupinu na super-skupinu</translation>
+        <translation>som aktualizoval túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>zmenili pripnuté správy</translation>
+        <translation>som zmenil pripnutú správu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation>zmenil pripnuté správy</translation>
+        <translation>zmenil pripnutú správu</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>vytvorili snímku obrazovky v tomto čete</translation>
+        <translation>som vytvoril snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
@@ -1940,7 +1940,7 @@
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>poslali nepodporovanú správu</translation>
+        <translation>som poslal nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
@@ -1949,7 +1949,7 @@
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation>poslali nepodporovanú správu: %1</translation>
+        <translation>som poslal nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
@@ -1963,7 +1963,7 @@
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>poslali samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
+        <translation>som poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
@@ -1972,7 +1972,7 @@
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>poslali samodeštrukčné video, ktorého platnosť vypršala</translation>
+        <translation>som poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
@@ -1985,7 +1985,7 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>poslali video-poznámku</translation>
+        <translation>som poslal video-poznámku</translation>
     </message>
     <message>
         <source>sent a video note</source>
@@ -2014,26 +2014,26 @@
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>pridali %1 do četu</translation>
+        <translation>som pridal %1 do četu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>odstránili %1 z četu</translation>
+        <translation>som odstránil %1 z četu</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>získali %Ln bod</numerusform>
-            <numerusform>získali %Ln body</numerusform>
-            <numerusform>získali %Ln bodov</numerusform>
+            <numerusform>som získal %Ln bod</numerusform>
+            <numerusform>som získal %Ln body</numerusform>
+            <numerusform>som získal %Ln bodov</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>poslali hru</translation>
+        <translation>som poslal hru</translation>
     </message>
     <message>
         <source>sent a game</source>
