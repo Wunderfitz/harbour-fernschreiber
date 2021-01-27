@@ -85,11 +85,11 @@
     </message>
     <message>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Logga ut</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Utloggad</translation>
     </message>
 </context>
 <context>
@@ -278,11 +278,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Frigör chatten</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Fäst chatten</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -819,35 +819,35 @@
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>kom upp i %Ln poäng</numerusform>
+            <numerusform>kom upp i %Ln poäng</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>kom upp i %Ln poäng</numerusform>
+            <numerusform>kom upp i %Ln poäng</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett spel</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett spel</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation type="unfinished">skickade ett videomeddelande</translation>
+        <translation>skickade ett videomeddelande</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished">skickade ett videomeddelande</translation>
+        <translation>skickade ett videomeddelande</translation>
     </message>
 </context>
 <context>
@@ -995,16 +995,16 @@
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>kom upp i %Ln poäng i %2</numerusform>
+            <numerusform>kom upp i %Ln poäng i %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>kom upp i %Ln poäng i %2</numerusform>
+            <numerusform>kom upp i %Ln poäng i %2</numerusform>
         </translation>
     </message>
 </context>
@@ -1012,7 +1012,7 @@
     <name>MessageLocation</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation type="unfinished">Installera Pure Maps för att inspektera den här platsen.</translation>
+        <translation>Installera Pure Maps för att inspektera den här platsen.</translation>
     </message>
 </context>
 <context>
@@ -1030,24 +1030,24 @@
     <name>MessagePoll</name>
     <message>
         <source>Close Poll</source>
-        <translation type="unfinished">Stäng omröstningen</translation>
+        <translation>Stäng omröstningen</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation type="unfinished">Återställ svar</translation>
+        <translation>Återställ svar</translation>
     </message>
     <message>
         <source>Final Result:</source>
-        <translation type="unfinished">Slutresultat:</translation>
+        <translation>Slutresultat:</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation type="unfinished">Flera svarsalternativ tillåtna.</translation>
+        <translation>Flera svarsalternativ är tillåtna.</translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
             <numerusform>%Ln%</numerusform>
         </translation>
@@ -1055,7 +1055,7 @@
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln röst sammanlagt</numerusform>
             <numerusform>%Ln röster sammanlagt</numerusform>
         </translation>
@@ -1066,14 +1066,14 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation type="unfinished"></translation>
+        <translation>via %1</translation>
     </message>
 </context>
 <context>
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Röstmeddelande</translation>
     </message>
 </context>
 <context>
@@ -1205,7 +1205,7 @@
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation>Loggar ut</translation>
     </message>
 </context>
 <context>
@@ -1309,15 +1309,15 @@
     </message>
     <message>
         <source>Enter an optional explanation</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange en valfri förklaring</translation>
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Visas när användaren väljer fel svar.</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation type="unfinished"></translation>
+        <translation>En förklaring kan vara upp till 200 tecken lång.</translation>
     </message>
 </context>
 <context>
@@ -1511,7 +1511,7 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivera endast-online-läge</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
@@ -1519,15 +1519,15 @@
     </message>
     <message>
         <source>Privacy</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretess</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillåt att skicka plats till infogade robotar</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation type="unfinished"></translation>
+        <translation>Vissa infogade robotar begär platsdata när de används</translation>
     </message>
 </context>
 <context>
@@ -1999,19 +1999,19 @@
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>kom upp i %Ln poäng</numerusform>
+            <numerusform>kom upp i %Ln poäng</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett spel</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>skickade ett spel</translation>
     </message>
 </context>
 </TS>
