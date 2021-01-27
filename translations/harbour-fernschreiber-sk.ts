@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Credits</source>
-        <translation>Poďakovanie</translation>
+        <translation>Poďakovania</translation>
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
