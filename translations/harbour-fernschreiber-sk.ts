@@ -5,7 +5,7 @@
     <name>AboutPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>O aplikácii Fernschreiber</translation>
+        <translation>O  aplikácii Fernschreiber</translation>
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
