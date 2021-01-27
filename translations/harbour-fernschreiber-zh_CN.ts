@@ -831,11 +831,11 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation type="unfinished">发送视频消息</translation>
+        <translation>发送视频消息</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished">发送视频消息</translation>
+        <translation>发送视频消息</translation>
     </message>
 </context>
 <context>
@@ -998,7 +998,7 @@
     <name>MessageLocation</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation type="unfinished">请安装 Pure Maps 以插入位置</translation>
+        <translation>请安装 Pure Maps 以插入位置</translation>
     </message>
 </context>
 <context>
@@ -1016,31 +1016,31 @@
     <name>MessagePoll</name>
     <message>
         <source>Close Poll</source>
-        <translation type="unfinished">关闭投票</translation>
+        <translation>关闭投票</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation type="unfinished">重设回答</translation>
+        <translation>重设回答</translation>
     </message>
     <message>
         <source>Final Result:</source>
-        <translation type="unfinished">最终结果:</translation>
+        <translation>最终结果:</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation type="unfinished">允许多个回答。</translation>
+        <translation>允许多个回答。</translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>总计 %Ln 次投票</numerusform>
         </translation>
     </message>
@@ -1057,7 +1057,7 @@
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>语音消息</translation>
     </message>
 </context>
 <context>
@@ -1290,15 +1290,15 @@
     </message>
     <message>
         <source>Enter an optional explanation</source>
-        <translation type="unfinished"></translation>
+        <translation>输入选项提示</translation>
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>当用户选择错误答案时显示。</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation type="unfinished"></translation>
+        <translation>提示文本可长达200个字符。</translation>
     </message>
 </context>
 <context>
