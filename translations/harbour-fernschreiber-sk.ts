@@ -1536,7 +1536,7 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation>Povoliť mód iba pripojený</translation>
+        <translation>Povoliť mód: Iba pripojený</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
