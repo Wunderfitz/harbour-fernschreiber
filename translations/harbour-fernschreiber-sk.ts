@@ -304,7 +304,7 @@
     </message>
     <message>
         <source>Your message</source>
-        <translation>Vaša správa</translation>
+        <translation>Moja správa</translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
