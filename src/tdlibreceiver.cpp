@@ -139,6 +139,8 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateChatDraftMessage", &TDLibReceiver::processUpdateChatDraftMessage);
     handlers.insert("inlineQueryResults", &TDLibReceiver::processInlineQueryResults);
     handlers.insert("callbackQueryAnswer", &TDLibReceiver::processCallbackQueryAnswer);
+    handlers.insert("userPrivacySettingRules", &TDLibReceiver::processUserPrivacySettingRules);
+    handlers.insert("updateUserPrivacySettingRules", &TDLibReceiver::processUpdateUserPrivacySettingRules);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -556,8 +558,12 @@ void TDLibReceiver::processError(const QVariantMap &receivedInformation)
     emit errorReceived(receivedInformation.value("code").toInt(), receivedInformation.value(MESSAGE).toString(), receivedInformation.value(EXTRA).toString());
 }
 
-void TDLibReceiver::nop(const QVariantMap &)
+void TDLibReceiver::nop(const QVariantMap &receivedInformation)
 {
+    LOG("Received an OK");
+    if (receivedInformation.contains(EXTRA)) {
+        emit okReceived(receivedInformation.value(EXTRA).toString());
+    }
 }
 
 void TDLibReceiver::processSecretChat(const QVariantMap &receivedInformation)
@@ -607,7 +613,18 @@ void TDLibReceiver::processInlineQueryResults(const QVariantMap &receivedInforma
 
 void TDLibReceiver::processCallbackQueryAnswer(const QVariantMap &receivedInformation)
 {
-
     LOG("Callback Query answer");
     emit callbackQueryAnswer(receivedInformation.value(TEXT).toString(), receivedInformation.value("alert").toBool(), receivedInformation.value("url").toString());
+}
+
+void TDLibReceiver::processUserPrivacySettingRules(const QVariantMap &receivedInformation)
+{
+    LOG("User privacy setting rules");
+    emit userPrivacySettingRules(receivedInformation);
+}
+
+void TDLibReceiver::processUpdateUserPrivacySettingRules(const QVariantMap &receivedInformation)
+{
+    LOG("User privacy setting rules updated");
+    emit userPrivacySettingRulesUpdated(receivedInformation);
 }

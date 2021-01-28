@@ -22,8 +22,8 @@ import Sailfish.Silica 1.0
 import "../"
 
 Item {
-    visible: imageContainer.tweenFactor > 0.8 && chatPictureDetail.imageStatus === Image.Ready
-    property bool isActive: imageContainer.tweenFactor === 1.0
+    visible: parent.thumbnailVisible && chatPictureDetail.imageStatus === Image.Ready
+    property bool isActive: parent.thumbnailActive
     opacity: isActive ? 1.0 : 0.0
     Behavior on opacity { FadeAnimation {} }
     ProfileThumbnail {

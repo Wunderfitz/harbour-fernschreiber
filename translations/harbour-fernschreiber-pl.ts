@@ -1554,6 +1554,113 @@
         <source>Some inline bots request location data when using them</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>User Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation type="unfinished">Wprowadź znaki 1-128 {1-64 ?}</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation type="unfinished">Wprowadź znaki 1-128 {0-64 ?}</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile Pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation type="unfinished">Przesyłanie...</translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

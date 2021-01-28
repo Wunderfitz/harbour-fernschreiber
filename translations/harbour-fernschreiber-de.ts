@@ -1529,6 +1529,113 @@
         <source>Some inline bots request location data when using them</source>
         <translation>Einige Inline-Bots fragen bei Nutzung Standortdaten an</translation>
     </message>
+    <message>
+        <source>User Profile</source>
+        <translation>Nutzungsprofil</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>Vorname</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>Geben Sie 1-64 Zeichen ein</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Nachname</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Geben Sie 0-64 Zeichen ein</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Benutzername</translation>
+    </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation>Chateinladungen erlauben</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Sie zu Chats eingeladen werden können.</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation>Nur Ihre Kontakte</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Nein</translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation>Auffinden per Telefonnummer erlauben</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Sie per Telefonnummer gefunden werden können.</translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation>Link in weitergeleiteten Nachrichten anzeigen</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob ein Link zu Ihrem Profil in weitergeleiteten Nachrichten eingebettet wird.</translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation>Telefonnummer anzeigen</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Ihre Telefonnummer sichtbar ist.</translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation>Profilfoto anzeigen</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Ihr Profilfoto sichtbar ist.</translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation>Status anzeigen</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Ihr Onlinestatus sichtbar ist.</translation>
+    </message>
+    <message>
+        <source>Add Picture</source>
+        <translation>Bild hinzufügen</translation>
+    </message>
+    <message>
+        <source>Profile Pictures</source>
+        <translation>Profilbilder</translation>
+    </message>
+    <message>
+        <source>Delete Picture</source>
+        <translation>Bild löschen</translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>Lade hoch...</translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
+        <translation>Lösche Profilbild</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

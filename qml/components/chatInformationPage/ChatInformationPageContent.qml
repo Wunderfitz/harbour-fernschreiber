@@ -256,6 +256,10 @@ SilicaFlickable {
                 }
                 return 1 - Math.max(0, Math.min(1, contentFlickable.contentY / maxDimension))
             }
+            property bool thumbnailVisible: imageContainer.tweenFactor > 0.8
+            property bool thumbnailActive: imageContainer.tweenFactor === 1.0
+            property var thumbnailModel: chatInformationPage.chatPartnerProfilePhotos
+            property int thumbnailRadius: imageContainer.minDimension / 2
 
             function getEased(min,max,factor) {
                 return min + (max-min)*factor
@@ -271,17 +275,18 @@ SilicaFlickable {
                 replacementStringHint: headerItem.title
                 width: parent.width
                 height: width
-                radius: imageContainer.minDimension / 2
+                radius: imageContainer.thumbnailRadius
                 opacity: profilePictureLoader.status !== Loader.Ready || profilePictureLoader.item.opacity < 1 ? 1.0 : 0.0
                 optimizeImageSize: false
             }
+
             Loader {
                 id: profilePictureLoader
                 active: imageContainer.hasImage
                 asynchronous: true
                 anchors.fill: chatPictureThumbnail
                 source: ( chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat)
-                        ? "ChatInformationProfilePictureList.qml"
+                        ? "../ProfilePictureList.qml"
                         : "ChatInformationProfilePicture.qml"
             }
         }
@@ -350,7 +355,7 @@ SilicaFlickable {
                 height: imageContainer.hasImage ? imageContainer.maxDimension : 0
             }
 
-            ChatInformationEditArea {
+            InformationEditArea {
                 visible: canEdit
                 canEdit: !(chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && chatInformationPage.groupInformation.status && (chatInformationPage.groupInformation.status.can_change_info  || chatInformationPage.groupInformation.status["@type"] === "chatMemberStatusCreator")
                 headerText: qsTr("Chat Title", "group title header")
@@ -376,7 +381,7 @@ SilicaFlickable {
                     }
                 }
             }
-            ChatInformationEditArea {
+            InformationEditArea {
                 canEdit: ((chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && chatInformationPage.privateChatUserInformation.id === chatInformationPage.myUserId) || ((chatInformationPage.isBasicGroup || chatInformationPage.isSuperGroup) && chatInformationPage.groupInformation && (chatInformationPage.groupInformation.status.can_change_info || chatInformationPage.groupInformation.status["@type"] === "chatMemberStatusCreator"))
                 emptyPlaceholderText: qsTr("There is no information text available, yet.")
                 headerText: qsTr("Info", "group or user infotext header")
@@ -391,7 +396,7 @@ SilicaFlickable {
                 }
             }
 
-            ChatInformationTextItem {
+            InformationTextItem {
                 headerText: qsTr("Phone Number", "user phone number header")
                 text: ((chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && chatInformationPage.privateChatUserInformation.phone_number ? "+"+chatInformationPage.privateChatUserInformation.phone_number : "") || ""
                 isLinkedLabel: true
@@ -408,7 +413,7 @@ SilicaFlickable {
             Row {
                 width: parent.width
                 visible: !!inviteLinkItem.text
-                ChatInformationTextItem {
+                InformationTextItem {
                     id: inviteLinkItem
                     text: !(chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) ? chatInformationPage.groupFullInformation.invite_link : ""
                     width: parent.width - inviteLinkButton.width

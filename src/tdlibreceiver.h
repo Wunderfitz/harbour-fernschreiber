@@ -95,6 +95,9 @@ signals:
     void chatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order);
     void inlineQueryResults(const QString &inlineQueryId, const QString &nextOffset, const QVariantList &results, const QString &switchPmText, const QString &switchPmParameter, const QString &extra);
     void callbackQueryAnswer(const QString &text, bool alert, const QString &url);
+    void userPrivacySettingRules(const QVariantMap &rules);
+    void userPrivacySettingRulesUpdated(const QVariantMap &updatedRules);
+    void okReceived(const QString &request);
 
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
@@ -164,6 +167,8 @@ private:
     void processUpdateChatDraftMessage(const QVariantMap &receivedInformation);
     void processInlineQueryResults(const QVariantMap &receivedInformation);
     void processCallbackQueryAnswer(const QVariantMap &receivedInformation);
+    void processUserPrivacySettingRules(const QVariantMap &receivedInformation);
+    void processUpdateUserPrivacySettingRules(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H
