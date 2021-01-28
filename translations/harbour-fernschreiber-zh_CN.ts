@@ -1506,110 +1506,110 @@
     </message>
     <message>
         <source>User Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>用户简介</translation>
     </message>
     <message>
         <source>First Name</source>
         <comment>first name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>名字</translation>
     </message>
     <message>
         <source>Enter 1-64 characters</source>
-        <translation type="unfinished">输入 1-128 个字符 {1-64 ?}</translation>
+        <translation>输入 1-64 个字符</translation>
     </message>
     <message>
         <source>Last Name</source>
         <comment>last name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>姓氏</translation>
     </message>
     <message>
         <source>Enter 0-64 characters</source>
-        <translation type="unfinished">输入 1-128 个字符 {0-64 ?}</translation>
+        <translation>输入 0-64 个字符</translation>
     </message>
     <message>
         <source>Username</source>
         <comment>user name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>用户名</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
-        <translation type="unfinished"></translation>
+        <translation>允许对话邀请</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation type="unfinished"></translation>
+        <translation>隐私设置，用于管理是否你可以被邀请到对话。</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>是</translation>
     </message>
     <message>
         <source>Your contacts only</source>
-        <translation type="unfinished"></translation>
+        <translation>仅限联系人</translation>
     </message>
     <message>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>否</translation>
     </message>
     <message>
         <source>Allow finding by phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>允许通过电话号码找到</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation type="unfinished"></translation>
+        <translation>隐私设置，用于管理是否你可以被通过电话号码找到。</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
-        <translation type="unfinished"></translation>
+        <translation>在转发消息中显示链接</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>隐私设置，用于管理是否在转发消息中包含你的账户链接。</translation>
     </message>
     <message>
         <source>Show phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>显示电话号码</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>隐私设置，用于管理你的电话号码是否可见。</translation>
     </message>
     <message>
         <source>Show profile photo</source>
-        <translation type="unfinished"></translation>
+        <translation>显示简介图片</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>隐私设置，用于管理是否你的简介图片可见。</translation>
     </message>
     <message>
         <source>Show status</source>
-        <translation type="unfinished"></translation>
+        <translation>显示状态</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>隐私设置，用于管理是否你的在线状态可见。</translation>
     </message>
     <message>
         <source>Add Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>添加图片</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>简介图片</translation>
     </message>
     <message>
         <source>Delete Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>删除图片</translation>
     </message>
     <message>
         <source>Uploading...</source>
-        <translation type="unfinished">正在上传…</translation>
+        <translation>正在上传…</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
-        <translation type="unfinished"></translation>
+        <translation>删除简介图片</translation>
     </message>
 </context>
 <context>
