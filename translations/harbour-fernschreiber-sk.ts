@@ -1627,7 +1627,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Nastavenie ochrany súkromia pre možnosť vyhťadanie podľa Vášho telefónneho čísla.</translation>
+        <translation>Nastavenie ochrany súkromia pre možnosť vyhťadania podľa Vášho telefónneho čísla.</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
@@ -1635,7 +1635,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Nastavenie ochrany súkromia pre možnosť vloženia odkazu na Váš účet v postúpených správach.</translation>
+        <translation>Nastavenie ochrany súkromia pre možnosť zahrnutia odkazu na Váš účet v postúpených správach.</translation>
     </message>
     <message>
         <source>Show phone number</source>
