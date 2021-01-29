@@ -860,7 +860,7 @@
     <message>
         <source>sent a video note</source>
         <translation>poslal video-poznámku</translation>
-    </message>			 
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
