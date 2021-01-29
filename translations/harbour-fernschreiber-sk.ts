@@ -1583,7 +1583,7 @@
     </message>
     <message>
         <source>Profile Pictures</source>
-        <translation>Profilová forografia</translation>
+        <translation>Profilová fotografia</translation>
     </message>
     <message>
         <source>Add Picture</source>
@@ -1639,7 +1639,7 @@
     </message>
     <message>
         <source>Show phone number</source>
-        <translation>Zobraziť telefńne číslo</translation>
+        <translation>Zobraziť telefónne číslo</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
@@ -1659,7 +1659,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation>Nastavenie ochrany súkromia pre možnosť zobrazenia Vášho stausu pripojenia.</translation>
+        <translation>Nastavenie ochrany súkromia pre možnosť zobrazenia Vášho statusu pripojenia.</translation>
     </message>
 </context>
 <context>
