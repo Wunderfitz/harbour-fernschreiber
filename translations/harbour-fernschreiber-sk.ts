@@ -1579,7 +1579,7 @@
     <message>
         <source>Username</source>
         <comment>user name of the logged-in profile - header</comment>
-        <translationPrihlasovacie meno></translation>
+        <translation>Prihlasovacie meno</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
