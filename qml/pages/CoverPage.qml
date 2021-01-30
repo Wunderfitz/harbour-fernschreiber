@@ -122,7 +122,6 @@ CoverBackground {
         visible: coverPage.authenticated
         Row {
             width: parent.width
-            spacing: Theme.paddingMedium
             Text {
                 id: unreadMessagesCountText
                 font.pixelSize: Theme.fontSizeHuge
@@ -130,11 +129,18 @@ CoverBackground {
                 text: Functions.getShortenedCount(coverPage.unreadMessages)
             }
             Label {
+                id: unreadMessagesTextAnchor
+                width: Theme.paddingMedium
+                font.pixelSize: Theme.fontSizeExtraSmall
+                anchors.baseline: unreadMessagesCountText.baseline
+                text: " "
+            }
+            Label {
                 id: unreadMessagesText
-                font.pixelSize: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeExtraSmall
                 width: parent.width - unreadMessagesCountText.width - Theme.paddingMedium
                 wrapMode: Text.Wrap
-                anchors.verticalCenter: unreadMessagesCountText.verticalCenter
+                anchors.bottom: unreadMessagesTextAnchor.bottom
                 maximumLineCount: 2
                 truncationMode: TruncationMode.Fade
             }
@@ -146,24 +152,25 @@ CoverBackground {
             visible: coverPage.authenticated && coverPage.unreadMessages > 1
             Text {
                 id: inText
-                font.pixelSize: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.primaryColor
                 text: qsTr("in")
-                anchors.verticalCenter: unreadChatsCountText.verticalCenter
+                anchors.baseline: unreadChatsCountText.baseline
             }
             Text {
                 id: unreadChatsCountText
                 font.pixelSize: Theme.fontSizeHuge
                 color: Theme.primaryColor
                 text: Functions.getShortenedCount(coverPage.unreadChats)
+                anchors.bottom: parent.bottom
             }
             Text {
                 id: unreadChatsText
-                font.pixelSize: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.primaryColor
                 width: parent.width - unreadChatsCountText.width - inText.width - ( 2 * Theme.paddingMedium )
                 wrapMode: Text.Wrap
-                anchors.verticalCenter: unreadChatsCountText.verticalCenter
+                anchors.bottom: inText.bottom
             }
         }
 
