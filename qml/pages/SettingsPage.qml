@@ -561,11 +561,66 @@ Page {
                     }
                 }
 
+                ComboBox {
+                    id: feedbackComboBox
+                    width: parent.columnWidth
+                    label: qsTr("Notification feedback")
+                    description: qsTr("Use non-graphical feedback (sound, vibration) for notifications")
+                    menu: ContextMenu {
+                        id: feedbackMenu
+                        x: 0
+                        width: feedbackComboBox.width
+
+                        MenuItem {
+                            readonly property int value: AppSettings.NotificationFeedbackAll
+                            text: qsTr("All events")
+                            onClicked: {
+                                appSettings.notificationFeedback = value
+                            }
+                        }
+                        MenuItem {
+                            readonly property int value: AppSettings.NotificationFeedbackNew
+                            text: qsTr("Only new events")
+                            onClicked: {
+                                appSettings.notificationFeedback = value
+                            }
+                        }
+                        MenuItem {
+                            readonly property int value: AppSettings.NotificationFeedbackNone
+                            text: qsTr("None")
+                            onClicked: {
+                                appSettings.notificationFeedback = value
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: updateFeedbackSelection()
+
+                    function updateFeedbackSelection() {
+                        var menuItems = feedbackMenu.children
+                        var n = menuItems.length
+                        for (var i=0; i<n; i++) {
+                            if (menuItems[i].value === appSettings.notificationFeedback) {
+                                currentIndex = i
+                                return
+                            }
+                        }
+                    }
+
+                    Connections {
+                        target: appSettings
+                        onNotificationFeedbackChanged: {
+                            feedbackComboBox.updateFeedbackSelection()
+                        }
+                    }
+                }
+
                 TextSwitch {
                     width: parent.columnWidth
                     checked: appSettings.notificationTurnsDisplayOn && enabled
                     text: qsTr("Notification turns on the display")
-                    height: appSettings.notificationFeedback === AppSettings.NotificationFeedbackNone ? 0 : implicitHeight
+                    enabled: appSettings.notificationFeedback !== AppSettings.NotificationFeedbackNone
+                    height: enabled ? implicitHeight: 0
                     clip: height < implicitHeight
                     visible: height > 0
                     automaticCheck: false
@@ -574,57 +629,23 @@ Page {
                     }
                     Behavior on height { SmoothedAnimation { duration: 200 } }
                 }
-            }
 
-            ComboBox {
-                id: feedbackComboBox
-                label: qsTr("Notification feedback")
-                description: qsTr("Use non-graphical feedback (sound, vibration) for notifications")
-                menu: ContextMenu {
-                    id: feedbackMenu
-
-                    MenuItem {
-                        readonly property int value: AppSettings.NotificationFeedbackAll
-                        text: qsTr("All events")
-                        onClicked: {
-                            appSettings.notificationFeedback = value
-                        }
+                TextSwitch {
+                    width: parent.columnWidth
+                    checked: appSettings.notificationSoundsEnabled && enabled
+                    text: qsTr("Enable notification sounds")
+                    description: qsTr("When sounds are enabled, Fernschreiber would use Sailfish OS notification sound for chats, which can be configured in system settings.")
+                    enabled: appSettings.notificationFeedback !== AppSettings.NotificationFeedbackNone
+                    height: enabled ? implicitHeight: 0
+                    clip: height < implicitHeight
+                    visible: height > 0
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.notificationSoundsEnabled = !checked
                     }
-                    MenuItem {
-                        readonly property int value: AppSettings.NotificationFeedbackNew
-                        text: qsTr("Only new events")
-                        onClicked: {
-                            appSettings.notificationFeedback = value
-                        }
-                    }
-                    MenuItem {
-                        readonly property int value: AppSettings.NotificationFeedbackNone
-                        text: qsTr("None")
-                        onClicked: {
-                            appSettings.notificationFeedback = value
-                        }
-                    }
+                    Behavior on height { SmoothedAnimation { duration: 200 } }
                 }
 
-                Component.onCompleted: updateFeedbackSelection()
-
-                function updateFeedbackSelection() {
-                    var menuItems = feedbackMenu.children
-                    var n = menuItems.length
-                    for (var i=0; i<n; i++) {
-                        if (menuItems[i].value === appSettings.notificationFeedback) {
-                            currentIndex = i
-                            return
-                        }
-                    }
-                }
-
-                Connections {
-                    target: appSettings
-                    onNotificationFeedbackChanged: {
-                        feedbackComboBox.updateFeedbackSelection()
-                    }
-                }
             }
 
             SectionHeader {

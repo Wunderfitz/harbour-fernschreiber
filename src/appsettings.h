@@ -29,6 +29,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
     Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
+    Q_PROPERTY(bool notificationSoundsEnabled READ notificationSoundsEnabled WRITE setNotificationSoundsEnabled NOTIFY notificationSoundsEnabledChanged)
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
     Q_PROPERTY(bool allowInlineBotLocationAccess READ allowInlineBotLocationAccess WRITE setAllowInlineBotLocationAccess NOTIFY allowInlineBotLocationAccessChanged)
@@ -64,6 +65,9 @@ public:
     bool notificationTurnsDisplayOn() const;
     void setNotificationTurnsDisplayOn(bool turnOn);
 
+    bool notificationSoundsEnabled() const;
+    void setNotificationSoundsEnabled(bool enable);
+
     NotificationFeedback notificationFeedback() const;
     void setNotificationFeedback(NotificationFeedback feedback);
 
@@ -86,6 +90,7 @@ signals:
     void showStickersAsImagesChanged();
     void animateStickersChanged();
     void notificationTurnsDisplayOnChanged();
+    void notificationSoundsEnabledChanged();
     void notificationFeedbackChanged();
     void storageOptimizerChanged();
     void allowInlineBotLocationAccessChanged();
