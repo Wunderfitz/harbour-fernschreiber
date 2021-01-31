@@ -1131,6 +1131,7 @@ Page {
                                 chatId: chatModel.chatId
                                 myMessage: model.display
                                 messageId: model.message_id
+                                messageViewCount: model.view_count
                                 messageIndex: model.index
                                 hasContentComponent: !!myMessage.content && chatView.delegateMessagesContent.indexOf(model.content_type) > -1
                                 canReplyToMessage: chatPage.canSendMessages

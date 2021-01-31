@@ -29,6 +29,7 @@ ListItem {
     property var chatId
     property var messageId
     property int messageIndex
+    property int messageViewCount
     property var myMessage
     property bool canReplyToMessage
     readonly property bool isAnonymous: myMessage.sender["@type"] === "messageSenderChat"
@@ -490,10 +491,10 @@ ListItem {
                         height: parent.height
                         anchors.right: parent.right
                         asynchronous: true
-                        active: chatPage.isChannel && myMessage.interaction_info && myMessage.interaction_info.view_count
+                        active: chatPage.isChannel && messageViewCount
                         sourceComponent: Component {
                             Label {
-                                text: Functions.getShortenedCount(myMessage.interaction_info.view_count)
+                                text: Functions.getShortenedCount(messageViewCount)
                                 leftPadding: Theme.iconSizeSmall
                                 font.pixelSize: Theme.fontSizeTiny
                                 color: Theme.secondaryColor

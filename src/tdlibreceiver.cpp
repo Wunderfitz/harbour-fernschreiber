@@ -48,6 +48,7 @@ namespace {
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
     const QString SECRET_CHAT("secret_chat");
+    const QString INTERACTION_INFO("interaction_info");
 
     const QString TYPE("@type");
     const QString EXTRA("@extra");
@@ -141,6 +142,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("callbackQueryAnswer", &TDLibReceiver::processCallbackQueryAnswer);
     handlers.insert("userPrivacySettingRules", &TDLibReceiver::processUserPrivacySettingRules);
     handlers.insert("updateUserPrivacySettingRules", &TDLibReceiver::processUpdateUserPrivacySettingRules);
+    handlers.insert("updateMessageInteractionInfo", &TDLibReceiver::processUpdateMessageInteractionInfo);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -627,4 +629,12 @@ void TDLibReceiver::processUpdateUserPrivacySettingRules(const QVariantMap &rece
 {
     LOG("User privacy setting rules updated");
     emit userPrivacySettingRulesUpdated(receivedInformation);
+}
+
+void TDLibReceiver::processUpdateMessageInteractionInfo(const QVariantMap &receivedInformation)
+{
+    const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
+    const qlonglong messageId = receivedInformation.value(MESSAGE_ID).toLongLong();
+    LOG("Message interaction info updated" << chatId << messageId);
+    emit messageInteractionInfoUpdated(chatId, messageId, receivedInformation.value(INTERACTION_INFO).toMap());
 }
