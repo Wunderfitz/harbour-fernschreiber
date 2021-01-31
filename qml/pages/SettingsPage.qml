@@ -324,6 +324,8 @@ Page {
                     label: qsTr("Allow chat invites")
                     description: qsTr("Privacy setting for managing whether you can be invited to chats.")
                     menu: ContextMenu {
+                        x: 0
+                        width: allowChatInvitesComboBox.width
 
                         MenuItem {
                             text: qsTr("Yes")
@@ -356,6 +358,8 @@ Page {
                     label: qsTr("Allow finding by phone number")
                     description: qsTr("Privacy setting for managing whether you can be found by your phone number.")
                     menu: ContextMenu {
+                        x: 0
+                        width: allowFindingByPhoneNumberComboBox.width
 
                         MenuItem {
                             text: qsTr("Yes")
@@ -382,6 +386,8 @@ Page {
                     label: qsTr("Show link in forwarded messages")
                     description: qsTr("Privacy setting for managing whether a link to your account is included in forwarded messages.")
                     menu: ContextMenu {
+                        x: 0
+                        width: showLinkInForwardedMessagesComboBox.width
 
                         MenuItem {
                             text: qsTr("Yes")
@@ -414,6 +420,8 @@ Page {
                     label: qsTr("Show phone number")
                     description: qsTr("Privacy setting for managing whether your phone number is visible.")
                     menu: ContextMenu {
+                        x: 0
+                        width: showPhoneNumberComboBox.width
 
                         MenuItem {
                             text: qsTr("Yes")
@@ -446,6 +454,8 @@ Page {
                     label: qsTr("Show profile photo")
                     description: qsTr("Privacy setting for managing whether your profile photo is visible.")
                     menu: ContextMenu {
+                        x: 0
+                        width: showProfilePhotoComboBox.width
 
                         MenuItem {
                             text: qsTr("Yes")
@@ -478,6 +488,8 @@ Page {
                     label: qsTr("Show status")
                     description: qsTr("Privacy setting for managing whether your online status is visible.")
                     menu: ContextMenu {
+                        x: 0
+                        width: showStatusComboBox.width
 
                         MenuItem {
                             text: qsTr("Yes")
