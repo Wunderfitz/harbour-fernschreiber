@@ -493,11 +493,11 @@
     </message>
     <message>
         <source>chat</source>
-        <translation>čet</translation>
+        <translation>čete</translation>
     </message>
     <message>
         <source>chats</source>
-        <translation>čety</translation>
+        <translation>četoch</translation>
     </message>
 </context>
 <context>
