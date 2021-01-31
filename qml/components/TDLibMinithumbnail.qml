@@ -26,14 +26,12 @@ Loader {
     property bool highlighted
     anchors.fill: parent
     active: !!minithumbnail
-    visible: active
     sourceComponent: Component {
         Item {
             Image {
                 id: minithumbnailImage
                 anchors.fill: parent
                 source: "data:image/jpg;base64,"+minithumbnail.data
-                asynchronous: true
                 fillMode: tdLibImage.fillMode
                 opacity: status === Image.Ready ? 1.0 : 0.0
                 cache: false

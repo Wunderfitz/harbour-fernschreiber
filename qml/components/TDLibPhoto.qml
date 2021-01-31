@@ -54,7 +54,7 @@ Item {
     }
 
     BackgroundImage {
-        visible: tdLibImage.opacity < 1.0
+        visible: !tdLibImage.visible && !(minithumbnailLoader.item && minithumbnailLoader.item.visible)
     }
 
     TDLibImage {
