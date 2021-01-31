@@ -450,14 +450,6 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>unread message</source>
-        <translation>lukematon viesti</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>lukematonta viestiä</translation>
-    </message>
-    <message>
         <source>in</source>
         <translatorcomment>The preposition &apos;in&apos; is translated to Finnish using the inessive case (suffix ‑ssa/‑ssä), so this string should be left empty in the translation. Unfortunately Qt will ignore empty translations, so let&apos;s use the character U+200B (zero width space) instead.</translatorcomment>
         <translation>​</translation>
@@ -482,13 +474,19 @@
         <source>Updating content...</source>
         <translation>Päivitetään sisältöä...</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>keskustelussa</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>keskustelussa</translation>
+        <translation type="unfinished">
+            <numerusform>keskustelussa</numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

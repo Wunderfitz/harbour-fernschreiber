@@ -460,14 +460,6 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>unread message</source>
-        <translation>neprečítaná správa</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>neprečítané správy</translation>
-    </message>
-    <message>
         <source>in</source>
         <translation>v</translation>
     </message>
@@ -491,6 +483,7 @@
         <source>Updating content...</source>
         <translation>Aktualizácia obsahu...</translation>
     </message>
+<<<<<<< HEAD
     <message>
         <source>chat</source>
         <translation>čete</translation>
@@ -498,6 +491,23 @@
     <message>
         <source>chats</source>
         <translation>četoch</translation>
+=======
+    <message numerus="yes">
+        <source>chats</source>
+        <translation>
+            <numerusform>čete</numerusform>
+            <numerusform>četoch</numerusform>
+            <numerusform>četoch</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation>
+            <numerusform>neprečítaná správa</numerusform>
+            <numerusform>neprečítané správy</numerusform>
+            <numerusform>neprečítaných správ</numerusform>
+        </translation>
+>>>>>>> 444649c3b2608f42403dc59a132ba944e782288d
     </message>
 </context>
 <context>

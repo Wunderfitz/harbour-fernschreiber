@@ -460,14 +460,6 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>unread message</source>
-        <translation>сообщение</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>сообщений</translation>
-    </message>
-    <message>
         <source>in</source>
         <translation>в</translation>
     </message>
@@ -491,13 +483,21 @@
         <source>Updating content...</source>
         <translation>Обновление контента...</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>чате</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>чатах</translation>
+        <translation type="unfinished">
+            <numerusform>чатах</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
