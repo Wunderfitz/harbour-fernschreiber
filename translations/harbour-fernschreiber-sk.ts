@@ -1603,7 +1603,7 @@
     </message>
     <message>
         <source>Allow chat invites</source>
-        <translation>Povoliť pozvánky</translation>
+        <translation>Povoliť pozvánky do četu</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
@@ -1615,7 +1615,7 @@
     </message>
     <message>
         <source>Your contacts only</source>
-        <translation>Iba Vaše kontakty</translation>
+        <translation>Iba moje kontakty</translation>
     </message>
     <message>
         <source>No</source>
