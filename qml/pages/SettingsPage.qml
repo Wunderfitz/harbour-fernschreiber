@@ -634,7 +634,7 @@ Page {
                     width: parent.columnWidth
                     checked: appSettings.notificationSoundsEnabled && enabled
                     text: qsTr("Enable notification sounds")
-                    description: qsTr("When sounds are enabled, Fernschreiber would use Sailfish OS notification sound for chats, which can be configured in system settings.")
+                    description: qsTr("When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.")
                     enabled: appSettings.notificationFeedback !== AppSettings.NotificationFeedbackNone
                     height: enabled ? implicitHeight: 0
                     clip: height < implicitHeight

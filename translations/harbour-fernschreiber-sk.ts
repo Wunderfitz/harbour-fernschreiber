@@ -1661,6 +1661,14 @@
         <source>Privacy setting for managing whether your online status is visible.</source>
         <translation>Nastavenie ochrany súkromia pre možnosť zobrazenia Vášho statusu pripojenia.</translation>
     </message>
+    <message>
+        <source>Enable notification sounds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

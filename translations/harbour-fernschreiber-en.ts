@@ -1634,6 +1634,14 @@
         <source>Deleting profile picture</source>
         <translation>Deleting profile picture</translation>
     </message>
+    <message>
+        <source>Enable notification sounds</source>
+        <translation>Enable notification sounds</translation>
+    </message>
+    <message>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

@@ -1634,6 +1634,14 @@
         <source>Deleting profile picture</source>
         <translation>Lösche Profilbild</translation>
     </message>
+    <message>
+        <source>Enable notification sounds</source>
+        <translation>Hinweistöne einschalten</translation>
+    </message>
+    <message>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>Wenn Töne eingeschaltet sind, wird Fernschreiber den aktuellen Sailfish OS-Hinweiston für Chats verwenden, der in den Systemeinstellungen konfiguriert werden kann.</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
