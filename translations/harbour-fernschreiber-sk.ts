@@ -485,18 +485,18 @@
     </message>
     <message numerus="yes">
         <source>chats</source>
-        <translation type="unfinished">
-            <numerusform>čety</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>čete</numerusform>
+            <numerusform>četoch</numerusform>
+            <numerusform>četoch</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>neprečítaná správa</numerusform>
+            <numerusform>neprečítané správy</numerusform>
+            <numerusform>neprečítaných správ</numerusform>
         </translation>
     </message>
 </context>
@@ -1603,7 +1603,7 @@
     </message>
     <message>
         <source>Allow chat invites</source>
-        <translation>Povoliť pozvánky</translation>
+        <translation>Povoliť pozvánky do četu</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
@@ -1615,7 +1615,7 @@
     </message>
     <message>
         <source>Your contacts only</source>
-        <translation>Iba Vaše kontakty</translation>
+        <translation>Iba moje kontakty</translation>
     </message>
     <message>
         <source>No</source>
