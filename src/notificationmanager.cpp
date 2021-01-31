@@ -373,7 +373,7 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     } else {
         nemoNotification->setPreviewBody(notificationBody);
         nemoNotification->setPreviewSummary(summary);
-        nemoNotification->setHintValue(HINT_SUPPRESS_SOUND, false);
+        nemoNotification->setHintValue(HINT_SUPPRESS_SOUND, !appSettings->notificationSoundsEnabled());
         nemoNotification->setHintValue(HINT_DISPLAY_ON, appSettings->notificationTurnsDisplayOn());
         nemoNotification->setHintValue(HINT_VISIBILITY, VISIBILITY_PUBLIC);
         nemoNotification->setUrgency(Notification::Normal);
