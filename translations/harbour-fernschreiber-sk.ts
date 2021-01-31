@@ -1556,110 +1556,110 @@
     </message>
     <message>
         <source>User Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Profil používateľa</translation>
     </message>
     <message>
         <source>First Name</source>
         <comment>first name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Meno</translation>
     </message>
     <message>
         <source>Enter 1-64 characters</source>
-        <translation type="unfinished">Zadať 1-128 znakov {1-64 ?}</translation>
+        <translation>Zadať 1-64 znakov</translation>
     </message>
     <message>
         <source>Last Name</source>
         <comment>last name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Priezvisko</translation>
     </message>
     <message>
         <source>Enter 0-64 characters</source>
-        <translation type="unfinished">Zadať 1-128 znakov {0-64 ?}</translation>
+        <translation>Zadať 0-64 znakov</translation>
     </message>
     <message>
         <source>Username</source>
         <comment>user name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Prihlasovacie meno</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Profilová fotografia</translation>
     </message>
     <message>
         <source>Add Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať fotografiu</translation>
     </message>
     <message>
         <source>Delete Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť fotografiu</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstraňovanie profilovej fotografie</translation>
     </message>
     <message>
         <source>Uploading...</source>
-        <translation type="unfinished">Zapisovanie...</translation>
+        <translation>Zapisovanie...</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
-        <translation type="unfinished"></translation>
+        <translation>Povoliť pozvánky</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenie ochrany súkromia pre možnosť pozvánky do četu.</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Áno</translation>
     </message>
     <message>
         <source>Your contacts only</source>
-        <translation type="unfinished"></translation>
+        <translation>Iba Vaše kontakty</translation>
     </message>
     <message>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie</translation>
     </message>
     <message>
         <source>Allow finding by phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>Povoliť vyhľadávanie podľa telefónneho čísla</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenie ochrany súkromia pre možnosť vyhťadania podľa Vášho telefónneho čísla.</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť odkaz v postúpených správach</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenie ochrany súkromia pre možnosť zahrnutia odkazu na Váš účet v postúpených správach.</translation>
     </message>
     <message>
         <source>Show phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť telefónne číslo</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenie ochrany súkromia pre možnosť zobrazenia Vášho telefónneho čísla.</translation>
     </message>
     <message>
         <source>Show profile photo</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť profilovú fotografiu</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenie ochrany súkromia pre možnosť zobrazenia Vašej profilovej fotografie.</translation>
     </message>
     <message>
         <source>Show status</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť status</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenie ochrany súkromia pre možnosť zobrazenia Vášho statusu pripojenia.</translation>
     </message>
 </context>
 <context>
