@@ -483,15 +483,6 @@
         <source>Updating content...</source>
         <translation>Aktualizácia obsahu...</translation>
     </message>
-<<<<<<< HEAD
-    <message>
-        <source>chat</source>
-        <translation>čete</translation>
-    </message>
-    <message>
-        <source>chats</source>
-        <translation>četoch</translation>
-=======
     <message numerus="yes">
         <source>chats</source>
         <translation>
@@ -507,7 +498,6 @@
             <numerusform>neprečítané správy</numerusform>
             <numerusform>neprečítaných správ</numerusform>
         </translation>
->>>>>>> 444649c3b2608f42403dc59a132ba944e782288d
     </message>
 </context>
 <context>
