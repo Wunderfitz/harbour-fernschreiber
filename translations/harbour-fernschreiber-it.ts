@@ -450,14 +450,6 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>unread message</source>
-        <translation>messaggio non letto</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>messaggi non letti</translation>
-    </message>
-    <message>
         <source>in</source>
         <translation>in</translation>
     </message>
@@ -465,13 +457,12 @@
         <source>Connected</source>
         <translation>Connesso</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>chat</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>chat</translation>
+        <translation type="unfinished">
+            <numerusform>chat</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <source>Waiting for network...</source>
@@ -488,6 +479,13 @@
     <message>
         <source>Updating content...</source>
         <translation>Aggiorna contenuti...</translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

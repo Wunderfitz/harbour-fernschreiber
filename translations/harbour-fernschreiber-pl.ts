@@ -460,14 +460,6 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>unread message</source>
-        <translation>nieprzeczytana wiadomość</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>nieprzeczytane wiadomości</translation>
-    </message>
-    <message>
         <source>in</source>
         <translation>w</translation>
     </message>
@@ -491,13 +483,21 @@
         <source>Updating content...</source>
         <translation>Aktualizacja treści...</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>czat</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>czaty</translation>
+        <translation type="unfinished">
+            <numerusform>czaty</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

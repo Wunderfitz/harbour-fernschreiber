@@ -440,16 +440,6 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>unread message</source>
-        <translation>未读
-消息</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>未读
-消息</translation>
-    </message>
-    <message>
         <source>in</source>
         <translation>位于</translation>
     </message>
@@ -473,13 +463,17 @@
         <source>Updating content...</source>
         <translation>正在更新内容…</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>对话</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>对话</translation>
+        <translation type="unfinished">
+            <numerusform>对话</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
