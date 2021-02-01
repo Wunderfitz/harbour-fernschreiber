@@ -548,7 +548,7 @@ Page {
     Connections {
         target: chatModel
         onMessagesReceived: {
-            Debug.log("[ChatPage] Messages received, view has ", chatView.count, " messages, setting view to index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
+            Debug.log("[ChatPage] Messages received, view has ", chatView.count, " messages, last known message index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
             if (totalCount === 0) {
                 if (chatPage.iterativeInitialization) {
                     chatPage.iterativeInitialization = false;

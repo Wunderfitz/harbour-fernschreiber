@@ -366,22 +366,7 @@ QVariantMap ChatModel::getMessage(int index)
 int ChatModel::getLastReadMessageIndex()
 {
     LOG("Obtaining last read message index");
-    if (this->messages.isEmpty()) {
-        LOG("Messages are empty, nothing to do...");
-        return 0;
-    } else if (messages.last()->senderUserId() == tdLibWrapper->getUserInformation().value(ID).toInt()) {
-        LOG("Last message is an own one, then simply set the last read to the last one...");
-        return this->messages.size() - 1;
-    } else {
-        const int lastReadMessageIndex = messageIndexMap.value(chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong(), -1);
-        if (lastReadMessageIndex < 0) {
-            LOG("Last read message not found in the list of messages. That shouldn't happen, therefore setting the unread indicator to the end of the list.");
-            return this->messages.size() - 1;
-        } else {
-            LOG("Found last read message in the already loaded messages. Index:" << lastReadMessageIndex);
-            return lastReadMessageIndex;
-        }
-    }
+    return this->calculateLastKnownMessageId();
 }
 
 void ChatModel::setSearchQuery(const QString newSearchQuery)
@@ -539,6 +524,7 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         const QModelIndex messageIndex(index(pos));
         emit dataChanged(messageIndex, messageIndex, changedRoles);
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
+        tdLibWrapper->viewMessage(QString::number(this->chatId), QString::number(messageId), false);
     }
 }
 
@@ -756,14 +742,29 @@ int ChatModel::calculateLastKnownMessageId()
     LOG("calculateLastKnownMessageId");
     const qlonglong lastKnownMessageId = this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong();
     LOG("lastKnownMessageId" << lastKnownMessageId);
+    const int myUserId = tdLibWrapper->getUserInformation().value(ID).toInt();
+    qlonglong lastOwnMessageId = 0;
+    for (int i = (messages.size() - 1); i >= 0; i--) {
+        MessageData *currentMessage = messages.at(i);
+        if (currentMessage->senderUserId() == myUserId) {
+            lastOwnMessageId = currentMessage->messageId;
+            break;
+        }
+    }
     LOG("size messageIndexMap" << messageIndexMap.size());
-    LOG("contains ID?" << messageIndexMap.contains(lastKnownMessageId));
+    LOG("contains last read ID?" << messageIndexMap.contains(lastKnownMessageId));
+    LOG("contains last own ID?" << messageIndexMap.contains(lastOwnMessageId));
     int listInboxPosition = messageIndexMap.value(lastKnownMessageId, messages.size() - 1);
+    int listOwnPosition = messageIndexMap.value(lastOwnMessageId, messages.size() - 1);
     if (listInboxPosition > this->messages.size() - 1 ) {
         listInboxPosition = this->messages.size() - 1;
     }
+    if (listOwnPosition > this->messages.size() - 1 ) {
+        listOwnPosition = this->messages.size() - 1;
+    }
     LOG("Last known message is at position" << listInboxPosition);
-    return listInboxPosition;
+    LOG("Last own message is at position" << listOwnPosition);
+    return (listInboxPosition > listOwnPosition) ? listInboxPosition : listOwnPosition ;
 }
 
 int ChatModel::calculateLastReadSentMessageId()
