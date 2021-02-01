@@ -60,6 +60,7 @@ namespace {
     const QString HINT_CHAT_ID("x-fernschreiber.chat_id");          // qlonglong
     const QString HINT_TOTAL_COUNT("x-fernschreiber.total_count");  // int
 
+    const QString HINT_IMAGE_PATH("image-path");                    // QString
     const QString HINT_VIBRA("x-nemo-vibrate");                     // bool
     const QString HINT_SUPPRESS_SOUND("suppress-sound");            // bool
     const QString HINT_DISPLAY_ON("x-nemo-display-on");             // bool
@@ -362,6 +363,7 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     nemoNotification->setBody(notificationBody);
     nemoNotification->setSummary(summary);
     nemoNotification->setHintValue(HINT_VIBRA, needFeedback);
+    nemoNotification->setHintValue(HINT_IMAGE_PATH, QString());
 
     // Don't show popup for the currently open chat
     if (!needFeedback || (chatModel->getChatId() == notificationGroup->chatId &&
