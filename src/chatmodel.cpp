@@ -755,12 +755,12 @@ int ChatModel::calculateLastKnownMessageId()
     LOG("contains last read ID?" << messageIndexMap.contains(lastKnownMessageId));
     LOG("contains last own ID?" << messageIndexMap.contains(lastOwnMessageId));
     int listInboxPosition = messageIndexMap.value(lastKnownMessageId, messages.size() - 1);
-    int listOwnPosition = messageIndexMap.value(lastOwnMessageId, messages.size() - 1);
+    int listOwnPosition = messageIndexMap.value(lastOwnMessageId, 0);
     if (listInboxPosition > this->messages.size() - 1 ) {
         listInboxPosition = this->messages.size() - 1;
     }
     if (listOwnPosition > this->messages.size() - 1 ) {
-        listOwnPosition = this->messages.size() - 1;
+        listOwnPosition = 0;
     }
     LOG("Last known message is at position" << listInboxPosition);
     LOG("Last own message is at position" << listOwnPosition);
