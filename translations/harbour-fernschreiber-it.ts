@@ -85,11 +85,11 @@
     </message>
     <message>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Esci</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnesso</translation>
     </message>
 </context>
 <context>
@@ -459,9 +459,9 @@
     </message>
     <message numerus="yes">
         <source>chats</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>chat</numerusform>
-            <numerusform></numerusform>
+            <numerusform>chat</numerusform>
         </translation>
     </message>
     <message>
@@ -482,9 +482,9 @@
     </message>
     <message numerus="yes">
         <source>unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>messaggio non letto</numerusform>
+            <numerusform>messaggi non letti</numerusform>
         </translation>
     </message>
 </context>
@@ -817,35 +817,35 @@
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hai raggiunto %Ln punto</numerusform>
+            <numerusform>hai raggiunto %Ln punti</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>ha raggiunto %Ln punto</numerusform>
+            <numerusform>ha raggiunto %Ln punti</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>hai inviato un gioco</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>ha inviato un gioco</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>hai inviato un videomessaggio</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished"></translation>
+        <translation>ha inviato un videomessaggio</translation>
     </message>
 </context>
 <context>
@@ -993,16 +993,16 @@
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hai raggiunto %Ln punto in %2</numerusform>
+            <numerusform>hai raggiunto %Ln punti in %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>ha raggiunto %Ln punto in %2</numerusform>
+            <numerusform>ha raggiunto %Ln punti in %2</numerusform>
         </translation>
     </message>
 </context>
@@ -1010,7 +1010,7 @@
     <name>MessageLocation</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation type="unfinished">Installa Pure Maps per conoscere questo luogo.</translation>
+        <translation>Installa Pure Maps per conoscere questo luogo.</translation>
     </message>
 </context>
 <context>
@@ -1028,24 +1028,24 @@
     <name>MessagePoll</name>
     <message>
         <source>Close Poll</source>
-        <translation type="unfinished">Termina sondaggio</translation>
+        <translation>Termina sondaggio</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation type="unfinished">Annulla risposta</translation>
+        <translation>Annulla risposta</translation>
     </message>
     <message>
         <source>Final Result:</source>
-        <translation type="unfinished">Risultato:</translation>
+        <translation>Risultato:</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation type="unfinished">Risposte multiple consentite.</translation>
+        <translation>Risposte multiple consentite.</translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
             <numerusform>%Ln%</numerusform>
         </translation>
@@ -1053,7 +1053,7 @@
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln voto in totale</numerusform>
             <numerusform>%Ln voti in totale</numerusform>
         </translation>
@@ -1064,14 +1064,14 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation type="unfinished"></translation>
+        <translation>via %1</translation>
     </message>
 </context>
 <context>
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Messaggio vocale</translation>
     </message>
 </context>
 <context>
@@ -1203,7 +1203,7 @@
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnetto</translation>
     </message>
 </context>
 <context>
@@ -1307,15 +1307,15 @@
     </message>
     <message>
         <source>Enter an optional explanation</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserisci una spiegazione ozionale</translation>
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra quando l'utente sceglie una risposta errata.</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation type="unfinished"></translation>
+        <translation>Una spiegazione può contenere massimo 200 caratteri.</translation>
     </message>
 </context>
 <context>
@@ -1509,138 +1509,138 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Abilita modalità solo online</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Disabilita offline caching. Alcune funzionalità potrebbero non essere presenti in questa modalità. Riavvia Fernschreiber per rendere attive le modifiche.</translation>
     </message>
     <message>
         <source>Privacy</source>
-        <translation type="unfinished"></translation>
+        <translation>Privacy</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation type="unfinished"></translation>
+        <translation>Consenti di inviare la posizione a inline bot</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation type="unfinished"></translation>
+        <translation>Alcuni inline bot richiedono la tua posizione mentre li usi</translation>
     </message>
     <message>
         <source>User Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Profilo utente</translation>
     </message>
     <message>
         <source>First Name</source>
         <comment>first name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <source>Enter 1-64 characters</source>
-        <translation type="unfinished">Inserisci da 1 a 128 caratteri {1-64 ?}</translation>
+        <translation>Inserisci da 1 a 64 caratteri</translation>
     </message>
     <message>
         <source>Last Name</source>
         <comment>last name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cognome</translation>
     </message>
     <message>
         <source>Enter 0-64 characters</source>
-        <translation type="unfinished">Inserisci da 1 a 128 caratteri {0-64 ?}</translation>
+        <translation>Inserisci da 0 a 64 caratteri</translation>
     </message>
     <message>
         <source>Username</source>
         <comment>user name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nome utente</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
-        <translation type="unfinished"></translation>
+        <translation>Consenti inviti chat</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostazione per consentire di essere invitato in una chat.</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Si</translation>
     </message>
     <message>
         <source>Your contacts only</source>
-        <translation type="unfinished"></translation>
+        <translation>Solo tuoi contatti</translation>
     </message>
     <message>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>No</translation>
     </message>
     <message>
         <source>Allow finding by phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>Consenti ricerca con il tuo numero di telefono</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostazione per consentire di essere trovato con il tuo numero di telefono.</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra link nei messaggi inoltrati</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostazione per consentire di inserire un link al tuo account quando vengono inoltrati i tuoi messaggi.</translation>
     </message>
     <message>
         <source>Show phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra il tuo numero</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Indica chi può vedere il tuo numero di telefono.</translation>
     </message>
     <message>
         <source>Show profile photo</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra foto del profilo</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostazioni per gestire chi può vedere la tua foto del profilo.</translation>
     </message>
     <message>
         <source>Show status</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra stato</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostazioni per rendere visibile il tuo ultimo accesso con precisione.</translation>
     </message>
     <message>
         <source>Add Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi foto</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Foto del profilo</translation>
     </message>
     <message>
         <source>Delete Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Elimina foto</translation>
     </message>
     <message>
         <source>Uploading...</source>
-        <translation type="unfinished">Carica...</translation>
+        <translation>Carica...</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Elimina foto del profilo</translation>
     </message>
     <message>
         <source>Enable notification sounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Abilita suoni notifiche</translation>
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Quando i suoni di notifica sono attivi, Fernschreiber utilizza l'attuale suono di notifica per i messaggi scelto per Sailfish OS, il quale può essere modificato dalle impostazioni di sistema.</translation>
     </message>
 </context>
 <context>
@@ -2112,19 +2112,19 @@
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hai raggiunto %Ln punto</numerusform>
+            <numerusform>hai raggiunto %Ln punti</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>hai inviato un gioco</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>ha inviato un gioco</translation>
     </message>
 </context>
 </TS>
