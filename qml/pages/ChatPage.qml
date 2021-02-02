@@ -443,7 +443,6 @@ Page {
                 chatModel.initialize(chatInformation);
 
                 pageStack.pushAttached(Qt.resolvedUrl("ChatInformationPage.qml"), { "chatInformation" : chatInformation, "privateChatUserInformation": chatPartnerInformation, "groupInformation": chatGroupInformation, "chatOnlineMemberCount": chatOnlineMemberCount});
-                chatPage.isInitialized = true;
 
                 if(doSendBotStartMessage) {
                     tdLibWrapper.sendBotStartMessage(chatInformation.id, chatInformation.id, sendBotStartMessageParameter, "")
@@ -595,6 +594,9 @@ Page {
         onMessagesIncrementalUpdate: {
             Debug.log("Incremental update received. View now has ", chatView.count, " messages, view is on index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
             chatView.lastReadSentIndex = lastReadSentIndex;
+            if (!chatPage.isInitialized) {
+                chatView.scrollToIndex(modelIndex);
+            }
             chatViewCooldownTimer.restart();
         }
         onNotificationSettingsUpdated: {
@@ -925,6 +927,12 @@ Page {
                     onTriggered: {
                         Debug.log("[ChatPage] Cooldown completed...");
                         chatView.inCooldown = false;
+
+                        if (!chatPage.isInitialized) {
+                            Debug.log("Page is initialized!");
+                            chatPage.isInitialized = true;
+                            chatView.handleScrollPositionChanged();
+                        }
                     }
                 }
 

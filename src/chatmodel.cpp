@@ -403,6 +403,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
         this->inReload = false;
         int listInboxPosition = this->calculateLastKnownMessageId();
         int listOutboxPosition = this->calculateLastReadSentMessageId();
+        listInboxPosition = this->calculateScrollPosition(listInboxPosition);
         if (this->inIncrementalUpdate) {
             this->inIncrementalUpdate = false;
             emit messagesIncrementalUpdate(listInboxPosition, listOutboxPosition);
@@ -443,6 +444,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
                 this->inReload = false;
                 int listInboxPosition = this->calculateLastKnownMessageId();
                 int listOutboxPosition = this->calculateLastReadSentMessageId();
+                listInboxPosition = this->calculateScrollPosition(listInboxPosition);
                 if (this->inIncrementalUpdate) {
                     this->inIncrementalUpdate = false;
                     emit messagesIncrementalUpdate(listInboxPosition, listOutboxPosition);
@@ -777,6 +779,16 @@ int ChatModel::calculateLastReadSentMessageId()
     const int listOutboxPosition = messageIndexMap.value(lastReadSentMessageId, messages.size() - 1);
     LOG("Last read sent message is at position" << listOutboxPosition);
     return listOutboxPosition;
+}
+
+int ChatModel::calculateScrollPosition(int listInboxPosition)
+{
+    LOG("Calculating new scroll position, current:" << listInboxPosition << ", list size:" << this->messages.size());
+    if ((this->messages.size() - 1) > listInboxPosition) {
+        return listInboxPosition + 1;
+    } else {
+        return listInboxPosition;
+    }
 }
 
 bool ChatModel::isMostRecentMessageLoaded()

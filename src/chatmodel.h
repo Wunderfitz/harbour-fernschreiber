@@ -85,6 +85,7 @@ private:
     QVariantMap enhanceMessage(const QVariantMap &message);
     int calculateLastKnownMessageId();
     int calculateLastReadSentMessageId();
+    int calculateScrollPosition(int listInboxPosition);
     bool isMostRecentMessageLoaded();
 
 private:
