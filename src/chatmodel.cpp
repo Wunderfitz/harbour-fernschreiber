@@ -757,12 +757,12 @@ int ChatModel::calculateLastKnownMessageId()
     LOG("contains last read ID?" << messageIndexMap.contains(lastKnownMessageId));
     LOG("contains last own ID?" << messageIndexMap.contains(lastOwnMessageId));
     int listInboxPosition = messageIndexMap.value(lastKnownMessageId, messages.size() - 1);
-    int listOwnPosition = messageIndexMap.value(lastOwnMessageId, 0);
+    int listOwnPosition = messageIndexMap.value(lastOwnMessageId, -1);
     if (listInboxPosition > this->messages.size() - 1 ) {
         listInboxPosition = this->messages.size() - 1;
     }
     if (listOwnPosition > this->messages.size() - 1 ) {
-        listOwnPosition = 0;
+        listOwnPosition = -1;
     }
     LOG("Last known message is at position" << listInboxPosition);
     LOG("Last own message is at position" << listOwnPosition);
@@ -776,8 +776,9 @@ int ChatModel::calculateLastReadSentMessageId()
     LOG("lastReadSentMessageId" << lastReadSentMessageId);
     LOG("size messageIndexMap" << messageIndexMap.size());
     LOG("contains ID?" << messageIndexMap.contains(lastReadSentMessageId));
-    const int listOutboxPosition = messageIndexMap.value(lastReadSentMessageId, messages.size() - 1);
+    const int listOutboxPosition = messageIndexMap.value(lastReadSentMessageId, -1);
     LOG("Last read sent message is at position" << listOutboxPosition);
+    emit lastReadSentMessageUpdated(listOutboxPosition);
     return listOutboxPosition;
 }
 

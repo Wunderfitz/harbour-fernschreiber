@@ -145,7 +145,7 @@ Page {
     function initializePage() {
         Debug.log("[ChatPage] Initializing chat page...");
         chatView.currentIndex = -1;
-        chatView.lastReadSentIndex = 0;
+        chatView.lastReadSentIndex = -1;
         var chatType = chatInformation.type['@type'];
         isPrivateChat = chatType === "chatTypePrivate";
         isSecretChat = chatType === "chatTypeSecret";
@@ -182,6 +182,7 @@ Page {
     }
 
     function getMessageStatusText(message, listItemIndex, lastReadSentIndex, useElapsed) {
+        Debug.log("Last read sent index: " + lastReadSentIndex);
         var messageStatusSuffix = "";
         if(!message) {
             return "";
@@ -597,6 +598,10 @@ Page {
             if (!chatPage.isInitialized) {
                 chatView.scrollToIndex(modelIndex);
             }
+            if (chatView.height > chatView.contentHeight) {
+                Debug.log("[ChatPage] Chat content quite small...");
+                viewMessageTimer.queueViewMessage(chatView.count - 1);
+            }
             chatViewCooldownTimer.restart();
         }
         onNotificationSettingsUpdated: {
@@ -800,7 +805,7 @@ Page {
 
                     Rectangle {
                         id: chatSecretBackground
-                        color: Theme.highlightBackgroundColor
+                        color: Theme.rgba(Theme.overlayBackgroundColor, Theme.opacityFaint)
                         width: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
                         height: width
                         anchors.left: parent.left
@@ -960,7 +965,7 @@ Page {
                     clip: true
                     highlightMoveDuration: 0
                     highlightResizeDuration: 0
-                    property int lastReadSentIndex: 0
+                    property int lastReadSentIndex: -1
                     property bool inCooldown: false
                     property bool manuallyScrolledToBottom
                     property QtObject precalculatedValues: QtObject {
