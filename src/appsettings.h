@@ -35,6 +35,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool allowInlineBotLocationAccess READ allowInlineBotLocationAccess WRITE setAllowInlineBotLocationAccess NOTIFY allowInlineBotLocationAccessChanged)
     Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
     Q_PROPERTY(bool onlineOnlyMode READ onlineOnlyMode WRITE setOnlineOnlyMode NOTIFY onlineOnlyModeChanged)
+    Q_PROPERTY(bool delayMessageRead READ delayMessageRead WRITE setDelayMessageRead NOTIFY delayMessageReadChanged)
 
 public:
     enum NotificationFeedback {
@@ -83,6 +84,9 @@ public:
     bool onlineOnlyMode() const;
     void setOnlineOnlyMode(bool enable);
 
+    bool delayMessageRead() const;
+    void setDelayMessageRead(bool enable);
+
 signals:
     void sendByEnterChanged();
     void focusTextAreaAfterSendChanged();
@@ -96,6 +100,7 @@ signals:
     void allowInlineBotLocationAccessChanged();
     void remainingInteractionHintsChanged();
     void onlineOnlyModeChanged();
+    void delayMessageReadChanged();
 
 private:
     QSettings settings;

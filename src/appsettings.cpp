@@ -33,6 +33,7 @@ namespace {
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
     const QString KEY_ONLINE_ONLY_MODE("onlineOnlyMode");
+    const QString KEY_DELAY_MESSAGE_READ("delayMessageRead");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
@@ -205,5 +206,19 @@ void AppSettings::setOnlineOnlyMode(bool enable)
         LOG(KEY_ONLINE_ONLY_MODE << enable);
         settings.setValue(KEY_ONLINE_ONLY_MODE, enable);
         emit onlineOnlyModeChanged();
+    }
+}
+
+bool AppSettings::delayMessageRead() const
+{
+    return settings.value(KEY_DELAY_MESSAGE_READ, true).toBool();
+}
+
+void AppSettings::setDelayMessageRead(bool enable)
+{
+    if (delayMessageRead() != enable) {
+        LOG(KEY_DELAY_MESSAGE_READ << enable);
+        settings.setValue(KEY_DELAY_MESSAGE_READ, enable);
+        emit delayMessageReadChanged();
     }
 }

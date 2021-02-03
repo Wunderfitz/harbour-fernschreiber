@@ -562,6 +562,17 @@ Page {
 
                 TextSwitch {
                     width: parent.columnWidth
+                    checked: appSettings.delayMessageRead
+                    text: qsTr("Delay before marking messages as read")
+                    description: qsTr("Fernschreiber will wait a bit before messages are marked as read")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.delayMessageRead = !checked
+                    }
+                }
+
+                TextSwitch {
+                    width: parent.columnWidth
                     checked: appSettings.useOpenWith
                     text: qsTr("Open-with menu integration")
                     description: qsTr("Integrate Fernschreiber into open-with menu of Sailfish OS")

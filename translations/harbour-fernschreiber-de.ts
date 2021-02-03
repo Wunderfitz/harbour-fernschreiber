@@ -1642,6 +1642,14 @@
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
         <translation>Wenn Töne eingeschaltet sind, wird Fernschreiber den aktuellen Sailfish OS-Hinweiston für Chats verwenden, der in den Systemeinstellungen konfiguriert werden kann.</translation>
     </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Verzögerung bevor Nachrichten als gelesen markiert werden</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber wird ein bisschen warten, bevor Nachrichten als gelesen markiert werden</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

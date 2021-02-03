@@ -1642,6 +1642,14 @@
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
         <translation>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</translation>
     </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Delay before marking messages as read</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber will wait a bit before messages are marked as read</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

@@ -657,7 +657,7 @@ Page {
     }
     Timer {
         id: viewMessageTimer
-        interval: 1000
+        interval: appSettings.delayMessageRead ? 1000 : 0
         property int lastQueuedIndex: -1
         function queueViewMessage(index) {
             if (index > lastQueuedIndex) {
