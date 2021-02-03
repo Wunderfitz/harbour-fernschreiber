@@ -1666,16 +1666,16 @@
 <context>
     <name>VideoPage</name>
     <message>
-        <source>Download Video</source>
-        <translation>Lataa video</translation>
-    </message>
-    <message>
         <source>Download of %1 successful.</source>
         <translation>Videon %1 lataus onnistui.</translation>
     </message>
     <message>
         <source>Download failed.</source>
         <translation>Lataus epäonnistui.</translation>
+    </message>
+    <message>
+        <source>Copy video to gallery</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

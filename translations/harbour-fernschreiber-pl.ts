@@ -1692,16 +1692,16 @@
 <context>
     <name>VideoPage</name>
     <message>
-        <source>Download Video</source>
-        <translation>Pobierz film</translation>
-    </message>
-    <message>
         <source>Download of %1 successful.</source>
         <translation>Pobieranie %1 zakończone sukcesem</translation>
     </message>
     <message>
         <source>Download failed.</source>
         <translation>Nieudane pobieranie</translation>
+    </message>
+    <message>
+        <source>Copy video to gallery</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -1638,16 +1638,16 @@
 <context>
     <name>VideoPage</name>
     <message>
-        <source>Download Video</source>
-        <translation>下载视频</translation>
-    </message>
-    <message>
         <source>Download of %1 successful.</source>
         <translation>已成功下载 %1 。</translation>
     </message>
     <message>
         <source>Download failed.</source>
         <translation>下载失败</translation>
+    </message>
+    <message>
+        <source>Copy video to gallery</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -1665,16 +1665,16 @@
 <context>
     <name>VideoPage</name>
     <message>
-        <source>Download Video</source>
-        <translation>Bajar Vídeo</translation>
-    </message>
-    <message>
         <source>Download of %1 successful.</source>
         <translation>Bajada de %1 exitosa.</translation>
     </message>
     <message>
         <source>Download failed.</source>
         <translation>Error al bajar</translation>
+    </message>
+    <message>
+        <source>Copy video to gallery</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
