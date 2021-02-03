@@ -465,14 +465,14 @@
     </message>
     <message numerus="yes">
         <source>chats</source>
-        <translation type="unfinished">
-            <numerusform>对话</numerusform>
+        <translation>
+            <numerusform>个对话</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>则未读消息</numerusform>
         </translation>
     </message>
 </context>
@@ -1108,7 +1108,7 @@
     <message numerus="yes">
         <source>%Ln unread messages</source>
         <translation>
-            <numerusform>%Ln 则消息</numerusform>
+            <numerusform>%Ln 则未读消息</numerusform>
         </translation>
     </message>
 </context>
@@ -1609,11 +1609,11 @@
     </message>
     <message>
         <source>Enable notification sounds</source>
-        <translation type="unfinished"></translation>
+        <translation>开启通知声音</translation>
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果开启声音，Fernschreiber 会采用当前旗鱼系统通知声音作为对话通知声音，你可以在系统设置进行配置。</translation>
     </message>
 </context>
 <context>
