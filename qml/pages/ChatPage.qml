@@ -145,7 +145,7 @@ Page {
     function initializePage() {
         Debug.log("[ChatPage] Initializing chat page...");
         chatView.currentIndex = -1;
-        chatView.lastReadSentIndex = 0;
+        chatView.lastReadSentIndex = -1;
         var chatType = chatInformation.type['@type'];
         isPrivateChat = chatType === "chatTypePrivate";
         isSecretChat = chatType === "chatTypeSecret";
@@ -182,6 +182,7 @@ Page {
     }
 
     function getMessageStatusText(message, listItemIndex, lastReadSentIndex, useElapsed) {
+        Debug.log("Last read sent index: " + lastReadSentIndex);
         var messageStatusSuffix = "";
         if(!message) {
             return "";
@@ -443,7 +444,6 @@ Page {
                 chatModel.initialize(chatInformation);
 
                 pageStack.pushAttached(Qt.resolvedUrl("ChatInformationPage.qml"), { "chatInformation" : chatInformation, "privateChatUserInformation": chatPartnerInformation, "groupInformation": chatGroupInformation, "chatOnlineMemberCount": chatOnlineMemberCount});
-                chatPage.isInitialized = true;
 
                 if(doSendBotStartMessage) {
                     tdLibWrapper.sendBotStartMessage(chatInformation.id, chatInformation.id, sendBotStartMessageParameter, "")
@@ -548,7 +548,7 @@ Page {
     Connections {
         target: chatModel
         onMessagesReceived: {
-            Debug.log("[ChatPage] Messages received, view has ", chatView.count, " messages, setting view to index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
+            Debug.log("[ChatPage] Messages received, view has ", chatView.count, " messages, last known message index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
             if (totalCount === 0) {
                 if (chatPage.iterativeInitialization) {
                     chatPage.iterativeInitialization = false;
@@ -595,6 +595,13 @@ Page {
         onMessagesIncrementalUpdate: {
             Debug.log("Incremental update received. View now has ", chatView.count, " messages, view is on index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
             chatView.lastReadSentIndex = lastReadSentIndex;
+            if (!chatPage.isInitialized) {
+                chatView.scrollToIndex(modelIndex);
+            }
+            if (chatView.height > chatView.contentHeight) {
+                Debug.log("[ChatPage] Chat content quite small...");
+                viewMessageTimer.queueViewMessage(chatView.count - 1);
+            }
             chatViewCooldownTimer.restart();
         }
         onNotificationSettingsUpdated: {
@@ -798,7 +805,7 @@ Page {
 
                     Rectangle {
                         id: chatSecretBackground
-                        color: Theme.highlightBackgroundColor
+                        color: Theme.rgba(Theme.overlayBackgroundColor, Theme.opacityFaint)
                         width: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
                         height: width
                         anchors.left: parent.left
@@ -925,6 +932,12 @@ Page {
                     onTriggered: {
                         Debug.log("[ChatPage] Cooldown completed...");
                         chatView.inCooldown = false;
+
+                        if (!chatPage.isInitialized) {
+                            Debug.log("Page is initialized!");
+                            chatPage.isInitialized = true;
+                            chatView.handleScrollPositionChanged();
+                        }
                     }
                 }
 
@@ -952,7 +965,7 @@ Page {
                     clip: true
                     highlightMoveDuration: 0
                     highlightResizeDuration: 0
-                    property int lastReadSentIndex: 0
+                    property int lastReadSentIndex: -1
                     property bool inCooldown: false
                     property bool manuallyScrolledToBottom
                     property QtObject precalculatedValues: QtObject {
