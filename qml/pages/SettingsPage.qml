@@ -518,6 +518,16 @@ Page {
 
             }
 
+            TextSwitch {
+                checked: appSettings.allowInlineBotLocationAccess
+                text: qsTr("Allow sending Location to inline bots")
+                description: qsTr("Some inline bots request location data when using them")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.allowInlineBotLocationAccess = !checked
+                }
+            }
+
             SectionHeader {
                 text: qsTr("Behavior")
             }
@@ -677,20 +687,6 @@ Page {
                     onClicked: {
                         appSettings.animateStickers = !checked
                     }
-                }
-            }
-
-            SectionHeader {
-                text: qsTr("Privacy")
-            }
-
-            TextSwitch {
-                checked: appSettings.allowInlineBotLocationAccess
-                text: qsTr("Allow sending Location to inline bots")
-                description: qsTr("Some inline bots request location data when using them")
-                automaticCheck: false
-                onClicked: {
-                    appSettings.allowInlineBotLocationAccess = !checked
                 }
             }
 

@@ -1311,7 +1311,7 @@
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation>Mostra quando l'utente sceglie una risposta errata.</translation>
+        <translation>Mostra quando l&apos;utente sceglie una risposta errata.</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
@@ -1640,7 +1640,7 @@
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>Quando i suoni di notifica sono attivi, Fernschreiber utilizza l'attuale suono di notifica per i messaggi scelto per Sailfish OS, il quale può essere modificato dalle impostazioni di sistema.</translation>
+        <translation>Quando i suoni di notifica sono attivi, Fernschreiber utilizza l&apos;attuale suono di notifica per i messaggi scelto per Sailfish OS, il quale può essere modificato dalle impostazioni di sistema.</translation>
     </message>
 </context>
 <context>
