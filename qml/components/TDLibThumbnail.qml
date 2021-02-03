@@ -57,8 +57,8 @@ Item {
     property bool isVideo: !!thumbnail && thumbnail.format["@type"] === "thumbnailFormatMpeg4"
     property string videoMimeType: "video/mp4"
 
-    readonly property bool hasVisibleThumbnail: thumbnailImage.opacity !== 1.0
-        && !(videoThumbnailLoader.item && videoThumbnailLoader.item.opacity === 1.0)
+    readonly property bool hasVisibleThumbnail: thumbnailImage.opacity === 1.0
+        || (videoThumbnailLoader.item && videoThumbnailLoader.item.opacity === 1.0)
 
     layer {
         enabled: highlighted

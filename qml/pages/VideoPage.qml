@@ -21,77 +21,43 @@ import Sailfish.Silica 1.0
 import QtMultimedia 5.6
 import "../components"
 import "../js/functions.js" as Functions
+import "../components/messageContent"
 
 Page {
     id: videoPage
     allowedOrientations: Orientation.All
-
-    property var videoData;
-
-    property int videoWidth : videoData.width
-    property int videoHeight : videoData.height
-    property string videoUrl;
-
-    property real imageSizeFactor : videoWidth / videoHeight;
-    property real screenSizeFactor: videoPage.width / videoPage.height;
-    property real sizingFactor    : imageSizeFactor >= screenSizeFactor ? videoPage.width / videoWidth : videoPage.height / videoHeight;
-
-    Component.onCompleted: {
-        updateVideoData();
-    }
-
-    function updateVideoData() {
-        if (typeof videoData === "object") {
-            if (videoData.video.local.is_downloading_completed) {
-                videoPage.videoUrl = videoData.video.local.path;
-            }
-        }
-    }
-
+    property alias isVideoNote: messageVideo.isVideoNote;
+    property alias contentBase: messageVideo.contentBase;
     SilicaFlickable {
         anchors.fill: parent
 
         PullDownMenu {
             id: videoPagePullDownMenu
-            visible: (videoPage.videoUrl !== "")
+            visible: messageVideo.file.isDownloadingCompleted
             MenuItem {
                 text: qsTr("Download Video")
                 onClicked: {
-                    tdLibWrapper.copyFileToDownloads(videoPage.videoUrl);
+                    tdLibWrapper.copyFileToDownloads(messageVideo.file.path);
                 }
             }
         }
 
         Connections {
             target: tdLibWrapper
-            onFileUpdated: {
-                if (fileId === videoPage.video.id) {
-                    if (fileInformation.local.is_downloading_completed) {
-                        videoPage.video = fileInformation;
-                        videoPage.videoUrl = fileInformation.local.path;
-                        videoPagePullDownMenu.visible = true;
-                    }
-                }
-            }
             onCopyToDownloadsSuccessful: {
                 appNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
             }
-
             onCopyToDownloadsError: {
                 appNotification.show(qsTr("Download failed."));
             }
         }
 
-        Item {
-            width: videoPage.videoWidth * videoPage.sizingFactor
-            height: videoPage.videoHeight * videoPage.sizingFactor
-            anchors.centerIn: parent
-
-            VideoPreview {
-                videoData: videoPage.videoData
-                fullscreen: true
-                onScreen: videoPage.status === PageStatus.Active
-            }
+        MessageVideo {
+            id: messageVideo
+            anchors.fill: parent
+            fullscreen: true
+            playRequested: true
+            onScreen: videoPage.status === PageStatus.Active
         }
 
     }
