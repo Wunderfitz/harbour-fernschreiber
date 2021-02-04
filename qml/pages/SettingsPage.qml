@@ -92,7 +92,7 @@ Page {
             Grid {
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 columns: landscapeLayout ? 2 : 1
-                columnSpacing: Theme.horizontalPageMargin
+                columnSpacing: Theme.paddingLarge
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 readonly property real columnWidth: width/columns
@@ -286,7 +286,6 @@ Page {
             Grid {
                 width: parent.width
                 columns: landscapeLayout ? 2 : 1
-                columnSpacing: Theme.horizontalPageMargin
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 readonly property real columnWidth: width/columns
