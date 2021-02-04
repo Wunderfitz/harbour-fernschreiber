@@ -12,6 +12,40 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Fri Feb 5 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.7
+- Massively extended bot support - thanks to jgibbon
+- Option to change first name, last name, username
+- Add and delete profile pictures
+- Set personal privacy options
+- Pin/unpin chat
+- Option for online-only mode
+- Option to logout - thanks to santoshmanikandan
+- Option to override notification sound settings - thanks to monich
+- Option to disable delay for marking messages as read
+- Show channel members if authorized - thanks to monich
+- New UX for audios, voice notes and documents - thanks to jgibbon
+- Updated Fernschreiber logo - thanks to monich
+- Better loading/preview image - thanks to jgibbon
+- New pinned chat icon - thanks to jgibbon
+- Add explanations to quiz - thanks to jgibbon
+- Real estate optimizations for chat list - thanks to jgibbon
+- Nice landscape layout for settings page - thanks to monich
+- Full width for channel messages - thanks to jgibbon
+- Architecture changes and improvements to message type handling - thanks to jgibbon
+- Update channel message count in real time - thanks to monich
+- Fix: Get sound back for notifications
+- Fix: Chat muted icon always visible in list
+- Fix: Mark older messages as read once a reply has been sent
+- Fix: No longer display own messages as unread
+- Fix: Initial scroll position now normally on the first unread message
+- Fix: Improve sent/read indicator handling
+- Fix: Don't let context menu be wider than its combo box - thanks to monich
+- Fix: Images couldn't be clicked at the complete width - thanks to jgibbon
+- Fix: Don't retry downloading files too often - thanks to monich
+- A lot more fixes - thanks to monich and jgibbon
+- New Slovak translation - thanks to okruhliak
+- Several translations updated - thanks to all contributors
+
 * Wed Jan 6 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.6.1
 - Show indicator for pinned chats
 - Use highlightBackgroundColor and align size for all chat attributes (unread messages, secret chat, pinned chat)
