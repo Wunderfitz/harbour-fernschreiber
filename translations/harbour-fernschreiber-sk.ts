@@ -1671,11 +1671,11 @@
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Oneskorenie pred označením správ ako prečítaných</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Fernschreiber chvíľu počká, kým budú správy označené ako prečítané</translation>
     </message>
 </context>
 <context>
@@ -1701,7 +1701,7 @@
     </message>
     <message>
         <source>Copy video to gallery</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovať video do galérie</translation>
     </message>
 </context>
 <context>
