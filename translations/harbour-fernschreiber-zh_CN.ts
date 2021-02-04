@@ -466,13 +466,13 @@
     <message numerus="yes">
         <source>chats</source>
         <translation>
-            <numerusform>个对话</numerusform>
+            <numerusform>对话</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>unread messages</source>
         <translation>
-            <numerusform>则未读消息</numerusform>
+            <numerusform>未读消息</numerusform>
         </translation>
     </message>
 </context>
@@ -1617,11 +1617,11 @@
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation type="unfinished"></translation>
+        <translation>标记消息已读前延迟</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Fernschreiber 将会在标记消息已读之前延迟一下</translation>
     </message>
 </context>
 <context>
@@ -1647,7 +1647,7 @@
     </message>
     <message>
         <source>Copy video to gallery</source>
-        <translation type="unfinished"></translation>
+        <translation>复制视频到图库</translation>
     </message>
 </context>
 <context>
