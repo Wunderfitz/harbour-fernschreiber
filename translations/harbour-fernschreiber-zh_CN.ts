@@ -472,7 +472,8 @@
     <message numerus="yes">
         <source>unread messages</source>
         <translation>
-            <numerusform>未读消息</numerusform>
+            <numerusform>未读
+消息</numerusform>
         </translation>
     </message>
 </context>
