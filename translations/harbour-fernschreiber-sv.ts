@@ -475,16 +475,16 @@
     </message>
     <message numerus="yes">
         <source>chats</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>chatt</numerusform>
             <numerusform>chattar</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>oläst meddelande</numerusform>
+            <numerusform>olästa meddelanden</numerusform>
         </translation>
     </message>
 </context>
@@ -1529,126 +1529,126 @@
     </message>
     <message>
         <source>User Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Användarprofil</translation>
     </message>
     <message>
         <source>First Name</source>
         <comment>first name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Förnamn</translation>
     </message>
     <message>
         <source>Enter 1-64 characters</source>
-        <translation type="unfinished">Ange 1-128 tecken {1-64 ?}</translation>
+        <translation>Ange 1-64 tecken</translation>
     </message>
     <message>
         <source>Last Name</source>
         <comment>last name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Efternamn</translation>
     </message>
     <message>
         <source>Enter 0-64 characters</source>
-        <translation type="unfinished">Ange 1-128 tecken {0-64 ?}</translation>
+        <translation>Ange 1-64 tecken</translation>
     </message>
     <message>
         <source>Username</source>
         <comment>user name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillåt chattinbjudningar</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretessinställning för att hantera om du kan bjudas in till chattar.</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>Your contacts only</source>
-        <translation type="unfinished"></translation>
+        <translation>Endast mina kontakter</translation>
     </message>
     <message>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Nej</translation>
     </message>
     <message>
         <source>Allow finding by phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillåt att jag hittas via telefonnummer</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretessinställning för att hantera om du kan hittas via ditt telefonnummer.</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa länk i vidarebefordrade meddelanden</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretessinställning för att hantera om en länk till ditt konto inkluderas i vidarebefordrade meddelanden.</translation>
     </message>
     <message>
         <source>Show phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa telefonnummer</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretessinställning för att hantera om ditt telefonnummer är synligt.</translation>
     </message>
     <message>
         <source>Show profile photo</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa profilbild</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretessinställning för att hantera om din profilbild är synlig.</translation>
     </message>
     <message>
         <source>Show status</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa status</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretessinställning för att hantera om din online-status är synlig.</translation>
     </message>
     <message>
         <source>Add Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till bild</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Profilbilder</translation>
     </message>
     <message>
         <source>Delete Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort bild</translation>
     </message>
     <message>
         <source>Uploading...</source>
-        <translation type="unfinished">Ladda upp...</translation>
+        <translation>Laddar upp...</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Tar bort profilbild</translation>
     </message>
     <message>
         <source>Enable notification sounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivera aviseringsljud</translation>
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>När ljud är aktiverat, använder Fernschreiber aktuell Sailfish-signal för chatt-avisering, vilken kan ställas in i systemets ljudinställningar.</translation>
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Fördröjning före meddelanden markeras som lästa</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Fernschreiber väntar en stund innan meddelanden markeras som lästa</translation>
     </message>
 </context>
 <context>
@@ -1674,7 +1674,7 @@
     </message>
     <message>
         <source>Copy video to gallery</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera video till Galleri</translation>
     </message>
 </context>
 <context>
