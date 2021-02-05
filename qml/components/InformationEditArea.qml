@@ -76,7 +76,6 @@ Column {
             anchors.verticalCenter: parent.verticalCenter
             text: editAreaColumn.text || editAreaColumn.emptyPlaceholderText
             width: parent.width - editAreaButton.width
-            height: !editAreaColumn.multiLine ? implicitHeight : editAreaTextField.height
         }
         IconButton {
             id: editAreaButton
