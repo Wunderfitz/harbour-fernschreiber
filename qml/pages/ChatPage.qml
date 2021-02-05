@@ -580,6 +580,7 @@ Page {
             if (chatView.manuallyScrolledToBottom || message.sender.user_id === chatPage.myUserId) {
                 Debug.log("[ChatPage] Own message received or was scrolled to bottom, scrolling down to see it...");
                 chatView.scrollToIndex(chatView.count - 1);
+                viewMessageTimer.queueViewMessage(chatView.count - 1);
             }
         }
         onUnreadCountUpdated: {
