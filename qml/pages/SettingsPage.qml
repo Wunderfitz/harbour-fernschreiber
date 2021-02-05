@@ -28,7 +28,7 @@ Page {
     id: settingsPage
     allowedOrientations: Orientation.All
 
-    readonly property bool landscapeLayout: (width > height && Screen.sizeCategory > Screen.Small) || Screen.sizeCategory > Screen.Medium
+    readonly property bool landscapeLayout: settingsPage.isLandscape
     readonly property var userInformation: tdLibWrapper.getUserInformation()
     property bool uploadInProgress: false
 
