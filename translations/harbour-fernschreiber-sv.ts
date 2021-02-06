@@ -1644,7 +1644,7 @@
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation>Fördröjning före meddelanden markeras som lästa</translation>
+        <translation>Fördröjning innan meddelanden markeras som lästa</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
