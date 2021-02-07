@@ -260,7 +260,11 @@ bool ChatListModel::ChatData::isHidden() const
         }
         break;
     case TDLibWrapper::ChatTypeUnknown:
+        break;
     case TDLibWrapper::ChatTypePrivate:
+        if (chatData.value(LAST_MESSAGE).isNull()) {
+            return true;
+        }
         break;
     case TDLibWrapper::ChatTypeSecret:
         if (secretChatState == TDLibWrapper::SecretChatStateClosed) {
