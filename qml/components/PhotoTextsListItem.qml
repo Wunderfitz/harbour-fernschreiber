@@ -84,7 +84,7 @@ ListItem {
 
             Rectangle {
                 id: chatUnreadMessagesCountBackground
-                color: Theme.highlightBackgroundColor
+                color: isMuted ? ((Theme.colorScheme === Theme.DarkOnLight) ? "lightgray" : "dimgray") : Theme.highlightBackgroundColor
                 width: Theme.fontSizeLarge
                 height: Theme.fontSizeLarge
                 anchors.right: parent.right
@@ -100,6 +100,7 @@ ListItem {
                 color: Theme.primaryColor
                 anchors.centerIn: chatUnreadMessagesCountBackground
                 visible: chatListViewItem.unreadCount > 0
+                opacity: isMuted ? Theme.opacityHigh : 1.0
                 text: chatListViewItem.unreadCount > 99 ? "99+" : chatListViewItem.unreadCount
             }
         }
