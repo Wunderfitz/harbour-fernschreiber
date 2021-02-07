@@ -483,8 +483,10 @@
     <message numerus="yes">
         <source>unread messages</source>
         <translation>
-            <numerusform>unread message</numerusform>
-            <numerusform>unread messages</numerusform>
+            <numerusform>unread
+message</numerusform>
+            <numerusform>unread
+messages</numerusform>
         </translation>
     </message>
 </context>
