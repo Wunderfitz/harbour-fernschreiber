@@ -1194,7 +1194,7 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation>Triedenie vašich četov...</translation>
+        <translation>Filtrovanie četov...</translation>
     </message>
     <message>
         <source>Search Chats</source>
@@ -1320,7 +1320,7 @@
     </message>
     <message>
         <source>Quiz Mode</source>
-        <translation>Mód kvízu</translation>
+        <translation>Režim "kvíz"</translation>
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
@@ -1536,7 +1536,7 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation>Povoliť mód: Iba pripojený</translation>
+        <translation>Povoliť režim "iba pripojený"</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
