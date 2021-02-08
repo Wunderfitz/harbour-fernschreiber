@@ -1412,17 +1412,25 @@ QString TDLibWrapper::getOptionString(const QString &optionName)
     return this->options.value(optionName).toString();
 }
 
-void TDLibWrapper::copyFileToDownloads(const QString &filePath)
+void TDLibWrapper::copyFileToDownloads(const QString &filePath, bool openAfterCopy)
 {
-    LOG("Copy file to downloads" << filePath);
+    LOG("Copy file to downloads" << filePath << openAfterCopy);
     QFileInfo fileInfo(filePath);
     if (fileInfo.exists()) {
         QString downloadFilePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + fileInfo.fileName();
         if (QFile::exists(downloadFilePath)) {
-            emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+            if (openAfterCopy) {
+                this->openFileOnDevice(downloadFilePath);
+            } else {
+                emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+            }
         } else {
             if (QFile::copy(filePath, downloadFilePath)) {
-                emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+                if (openAfterCopy) {
+                    this->openFileOnDevice(downloadFilePath);
+                } else {
+                    emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+                }
             } else {
                 emit copyToDownloadsError(fileInfo.fileName(), downloadFilePath);
             }

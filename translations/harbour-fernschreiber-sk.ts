@@ -1320,7 +1320,7 @@
     </message>
     <message>
         <source>Quiz Mode</source>
-        <translation>Režim "kvíz"</translation>
+        <translation>Režim &quot;kvíz&quot;</translation>
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
@@ -1536,7 +1536,7 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation>Povoliť režim "iba pripojený"</translation>
+        <translation>Povoliť režim &quot;iba pripojený&quot;</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>

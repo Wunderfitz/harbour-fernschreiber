@@ -35,7 +35,7 @@ MessageContentFileInfoBase {
         onClicked: {
             if(file.isDownloadingCompleted) {
                 // in this case, the MouseArea should take over
-                tdLibWrapper.openFileOnDevice(file.path);
+                tdLibWrapper.copyFileToDownloads(file.path, true);
             } else if(!file.isDownloadingActive) {
                 file.load();
             } else {
@@ -76,7 +76,7 @@ MessageContentFileInfoBase {
             rightMargin: copyButton.width
         }
         onClicked: {
-            tdLibWrapper.openFileOnDevice(file.path);
+            tdLibWrapper.copyFileToDownloads(file.path, true);
         }
     }
 }

@@ -132,7 +132,7 @@ public:
     Q_INVOKABLE QVariantMap getChat(const QString &chatId);
     Q_INVOKABLE QVariantMap getSecretChatFromCache(qlonglong secretChatId);
     Q_INVOKABLE QString getOptionString(const QString &optionName);
-    Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
+    Q_INVOKABLE void copyFileToDownloads(const QString &filePath, bool openAfterCopy = false);
     Q_INVOKABLE void openFileOnDevice(const QString &filePath);
     Q_INVOKABLE void controlScreenSaver(bool enabled);
     Q_INVOKABLE bool getJoinChatRequested();
