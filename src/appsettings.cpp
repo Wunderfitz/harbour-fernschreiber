@@ -29,7 +29,7 @@ namespace {
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_SOUNDS_ENABLED("notificationSoundsEnabled");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
-    const QString KEY_STORAGE_OPTIMIZER("storageOptimizer");
+    const QString KEY_STORAGE_OPTIMIZER("useStorageOptimizer");
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
     const QString KEY_ONLINE_ONLY_MODE("onlineOnlyMode");
@@ -154,7 +154,7 @@ void AppSettings::setNotificationFeedback(NotificationFeedback feedback)
 
 bool AppSettings::storageOptimizer() const
 {
-    return settings.value(KEY_STORAGE_OPTIMIZER, false).toBool();
+    return settings.value(KEY_STORAGE_OPTIMIZER, true).toBool();
 }
 
 void AppSettings::setStorageOptimizer(bool enable)
