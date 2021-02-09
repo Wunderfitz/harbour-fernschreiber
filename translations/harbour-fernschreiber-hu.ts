@@ -855,6 +855,14 @@
         <source>You</source>
         <translation>Te</translation>
     </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">Ismeretlen</translation>
+    </message>
+    <message>
+        <source>This message was deleted</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InitializationPage</name>

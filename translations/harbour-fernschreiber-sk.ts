@@ -883,6 +883,14 @@
         <source>You</source>
         <translation>Ja</translation>
     </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">Neznámy</translation>
+    </message>
+    <message>
+        <source>This message was deleted</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InitializationPage</name>

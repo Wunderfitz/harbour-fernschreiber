@@ -871,6 +871,14 @@ messages</numerusform>
         <source>You</source>
         <translation>You</translation>
     </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Unknown</translation>
+    </message>
+    <message>
+        <source>This message was deleted</source>
+        <translation>This message was deleted</translation>
+    </message>
 </context>
 <context>
     <name>InitializationPage</name>

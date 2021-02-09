@@ -170,7 +170,7 @@ ListItem {
         }
         onMessageNotFound: {
             if (messageId === myMessage.reply_to_message_id) {
-                messageInReplyToLoader.active = false;
+                messageInReplyToLoader.inReplyToMessageDeleted = true;
             }
         }
     }
@@ -313,6 +313,7 @@ ListItem {
                     // text height ~= 1,28*font.pixelSize
                     height: active ? precalculatedValues.messageInReplyToHeight : 0
                     property var inReplyToMessage;
+                    property bool inReplyToMessageDeleted: false;
                     sourceComponent: Component {
                         Item {
                             width: messageInReplyToRow.width
@@ -322,6 +323,7 @@ ListItem {
                                 myUserId: page.myUserId
                                 visible: true
                                 inReplyToMessage: messageInReplyToLoader.inReplyToMessage
+                                inReplyToMessageDeleted: messageInReplyToLoader.inReplyToMessageDeleted
                             }
                             MouseArea {
                                 anchors.fill: parent

@@ -869,6 +869,14 @@
         <source>You</source>
         <translation>You</translation>
     </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">Unknown</translation>
+    </message>
+    <message>
+        <source>This message was deleted</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InitializationPage</name>
