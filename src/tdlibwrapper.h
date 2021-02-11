@@ -221,6 +221,7 @@ public:
     Q_INVOKABLE void getUserPrivacySettingRules(UserPrivacySetting setting);
     Q_INVOKABLE void setProfilePhoto(const QString &filePath);
     Q_INVOKABLE void deleteProfilePhoto(const QString &profilePhotoId);
+    Q_INVOKABLE void changeStickerSet(const QString &stickerSetId, bool isInstalled);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);

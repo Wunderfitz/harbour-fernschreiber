@@ -1326,6 +1326,18 @@ void TDLibWrapper::deleteProfilePhoto(const QString &profilePhotoId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::changeStickerSet(const QString &stickerSetId, bool isInstalled)
+{
+    LOG("Change sticker set" << stickerSetId << isInstalled);
+
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "changeStickerSet");
+    requestObject.insert("set_id", stickerSetId);
+    requestObject.insert("is_installed", isInstalled);
+
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);

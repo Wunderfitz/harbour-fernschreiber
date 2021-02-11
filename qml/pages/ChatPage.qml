@@ -1285,6 +1285,28 @@ Page {
                     }
                 }
 
+                Loader {
+                    id: stickerSetOverlayLoader
+
+                    property string stickerSetId;
+
+                    active: false
+                    asynchronous: true
+                    width: parent.width
+                    height: active ? parent.height : 0
+                    sourceComponent: Component {
+                        StickerSetOverlay {
+                            stickerSetId: stickerSetOverlayLoader.stickerSetId
+                            onRequestClose: {
+                                stickerSetOverlayLoader.active = false;
+                            }
+                        }
+                    }
+
+                    onActiveChanged: {
+                    }
+                }
+
                 InlineQuery {
                     id: inlineQuery
                     textField: newMessageTextField

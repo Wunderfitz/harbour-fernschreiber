@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf and other contributors
+    Copyright (C) 2020-21 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -95,6 +95,14 @@ MessageContentBase {
             active: opacity > 0
             opacity: !stickerVisible && !placeHolderDelayTimer.running ? 0.15 : 0
             Behavior on opacity { FadeAnimation {} }
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                stickerSetOverlayLoader.stickerSetId = stickerData.set_id;
+                stickerSetOverlayLoader.active = true;
+            }
         }
     }
 

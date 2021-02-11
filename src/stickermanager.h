@@ -35,6 +35,8 @@ public:
 
     Q_INVOKABLE QVariantList getRecentStickers();
     Q_INVOKABLE QVariantList getInstalledStickerSets();
+    Q_INVOKABLE QVariantMap getStickerSet(const QString &stickerSetId);
+    Q_INVOKABLE bool hasStickerSet(const QString &stickerSetId);
     Q_INVOKABLE bool needsReload();
     Q_INVOKABLE void setNeedsReload(const bool &reloadNeeded);
 
