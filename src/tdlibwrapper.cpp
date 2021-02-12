@@ -1332,6 +1332,7 @@ void TDLibWrapper::changeStickerSet(const QString &stickerSetId, bool isInstalle
 
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "changeStickerSet");
+    requestObject.insert(_EXTRA, isInstalled ? "installStickerSet" : "removeStickerSet");
     requestObject.insert("set_id", stickerSetId);
     requestObject.insert("is_installed", isInstalled);
 

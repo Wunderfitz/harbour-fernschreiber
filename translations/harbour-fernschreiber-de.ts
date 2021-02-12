@@ -1666,8 +1666,23 @@
         <translation>Kürzlich verwendet</translation>
     </message>
     <message>
-        <source>Loading stickers...</source>
-        <translation>Lade Sticker...</translation>
+        <source>Removing sticker set</source>
+        <translation>Entferne Sticker-Set</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>Sticker-Set erfolgreich entfernt!</translation>
+    </message>
+</context>
+<context>
+    <name>StickerSetOverlay</name>
+    <message>
+        <source>Sticker set successfully installed!</source>
+        <translation>Sticker-Set erfolgreich installiert!</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>Sticker-Set erfolgreich entfernt!</translation>
     </message>
 </context>
 <context>

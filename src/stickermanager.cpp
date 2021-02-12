@@ -60,6 +60,11 @@ bool StickerManager::hasStickerSet(const QString &stickerSetId)
     return this->stickerSets.contains(stickerSetId);
 }
 
+bool StickerManager::isStickerSetInstalled(const QString &stickerSetId)
+{
+    return this->installedStickerSetIds.contains(stickerSetId);
+}
+
 bool StickerManager::needsReload()
 {
     return this->reloadNeeded;
@@ -105,7 +110,15 @@ void StickerManager::handleStickerSetsReceived(const QVariantList &stickerSets)
     QListIterator<QVariant> stickerSetsIterator(stickerSets);
     while (stickerSetsIterator.hasNext()) {
         QVariantMap newStickerSet = stickerSetsIterator.next().toMap();
-        this->stickerSets.insert(newStickerSet.value("id").toString(), newStickerSet);
+        QString newSetId = newStickerSet.value("id").toString();
+        bool isInstalled = newStickerSet.value("is_installed").toBool();
+        if (isInstalled && !this->installedStickerSetIds.contains(newSetId)) {
+            this->installedStickerSetIds.append(newSetId);
+        }
+        if (!isInstalled && this->installedStickerSetIds.contains(newSetId)) {
+            this->installedStickerSetIds.removeAll(newSetId);
+        }
+        this->stickerSets.insert(newSetId, newStickerSet);
     }
 
     this->installedStickerSets.clear();

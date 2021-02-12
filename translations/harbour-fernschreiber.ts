@@ -1666,8 +1666,23 @@
         <translation>Recently used</translation>
     </message>
     <message>
-        <source>Loading stickers...</source>
-        <translation>Loading stickers...</translation>
+        <source>Removing sticker set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StickerSetOverlay</name>
+    <message>
+        <source>Sticker set successfully installed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

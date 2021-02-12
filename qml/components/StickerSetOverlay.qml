@@ -32,7 +32,6 @@ Flickable {
 
     property string stickerSetId;
     property var stickerSet;
-    property bool setLoaded: false;
     signal requestClose;
 
     Component.onCompleted: {
@@ -50,15 +49,17 @@ Flickable {
                 stickerSetOverlayFlickable.stickerSet = stickerSet;
             }
         }
-    }
-
-    Timer {
-        id: stickerSetLoadedTimer
-        interval: 100
-        running: true
-        repeat: false
-        onTriggered: {
-            stickerSetOverlayFlickable.setLoaded = true;
+        onOkReceived: {
+            if (request === "installStickerSet") {
+                appNotification.show(qsTr("Sticker set successfully installed!"));
+                installSetButton.visible = false;
+                tdLibWrapper.getInstalledStickerSets();
+            }
+            if (request === "removeStickerSet") {
+                appNotification.show(qsTr("Sticker set successfully removed!"));
+                installSetButton.visible = true;
+                tdLibWrapper.getInstalledStickerSets();
+            }
         }
     }
 
@@ -90,7 +91,7 @@ Flickable {
             Label {
                 id: overlayStickerTitleText
 
-                width: parent.width - ( installSetButton.visible ? installSetButton.width : 0 ) - closeSetButton.width
+                width: parent.width - installSetButton.width - closeSetButton.width
                 text: stickerSet.title
                 font.pixelSize: Theme.fontSizeExtraLarge
                 font.weight: Font.ExtraBold
@@ -104,9 +105,19 @@ Flickable {
                 id: installSetButton
                 icon.source: "image://theme/icon-m-add"
                 anchors.verticalCenter: parent.verticalCenter
-                visible: !stickerSet.is_installed
+                visible: !stickerManager.isStickerSetInstalled(stickerSet.id)
                 onClicked: {
                     tdLibWrapper.changeStickerSet(stickerSet.id, true);
+                }
+            }
+
+            IconButton {
+                id: removeSetButton
+                icon.source: "image://theme/icon-m-remove"
+                anchors.verticalCenter: parent.verticalCenter
+                visible: !installSetButton.visible
+                onClicked: {
+                    tdLibWrapper.changeStickerSet(stickerSet.id, false);
                 }
             }
 
@@ -139,25 +150,17 @@ Flickable {
                 width: stickerSetGridView.cellWidth - Theme.paddingSmall
                 height: stickerSetGridView.cellHeight - Theme.paddingSmall
 
-                Image {
-                    id: singleStickerImage
-                    source: modelData.thumbnail.file.local.is_downloading_completed ? modelData.thumbnail.file.local.path : ""
+                TDLibThumbnail {
+                    id: singleStickerThumbnail
+                    thumbnail: modelData.thumbnail
                     anchors.fill: parent
-                    visible: modelData.thumbnail.file.local.is_downloading_completed
-                    asynchronous: true
-                    onStatusChanged: {
-                        if (status === Image.Ready) {
-                            stickerSetLoadedTimer.restart();
-                        }
-                    }
                 }
+
                 Label {
-                    font.pixelSize: Theme.fontSizeHuge
-                    anchors.fill: parent
-                    maximumLineCount: 1
-                    truncationMode: TruncationMode.Fade
+                    font.pixelSize: Theme.fontSizeSmall
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
                     text: Emoji.emojify(modelData.emoji, font.pixelSize)
-                    visible: !modelData.thumbnail.file.local.is_downloading_completed
                 }
 
             }

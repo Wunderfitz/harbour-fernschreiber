@@ -1640,8 +1640,23 @@
         <translation>最近使用</translation>
     </message>
     <message>
-        <source>Loading stickers...</source>
-        <translation>正在加载表情贴图…</translation>
+        <source>Removing sticker set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StickerSetOverlay</name>
+    <message>
+        <source>Sticker set successfully installed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
