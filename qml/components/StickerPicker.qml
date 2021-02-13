@@ -25,14 +25,8 @@ Item {
     id: stickerPickerOverlayItem
     anchors.fill: parent
 
-    property var recentStickers
-    property var installedStickerSets
-    property int setInRemoval: -1
-
-    Component.onCompleted: {
-        recentStickers = stickerManager.getRecentStickers();
-        installedStickerSets = stickerManager.getInstalledStickerSets();
-    }
+    property var recentStickers: stickerManager.getRecentStickers();
+    property var installedStickerSets: stickerManager.getInstalledStickerSets();
 
     Connections {
         target: tdLibWrapper
@@ -40,12 +34,14 @@ Item {
             if (request === "removeStickerSet") {
                 appNotification.show(qsTr("Sticker set successfully removed!"));
                 tdLibWrapper.getInstalledStickerSets();
-                console.log("Set in removal: " + setInRemoval);
-                if (setInRemoval > -1) {
-                    installedStickerSets.splice(setInRemoval, 1);
-                    setInRemoval = -1;
-                }
             }
+        }
+    }
+
+    Connections {
+        target: stickerManager
+        onStickerSetsReceived: {
+            installedStickerSets = stickerManager.getInstalledStickerSets();
         }
     }
 
@@ -123,20 +119,65 @@ Item {
                 model: stickerPickerOverlayItem.installedStickerSets
                 width: stickerPickerFlickable.width
                 Column {
+                    id: stickerSetColumn
+
+                    property bool isExpanded: false
+                    function toggleDisplaySet() {
+                        stickerSetColumn.isExpanded = !stickerSetColumn.isExpanded;
+                        stickerSetLoader.active = stickerSetColumn.isExpanded;
+                        if (stickerSetLoader.active) {
+                            stickerSetLoader.myStickerSet = modelData.stickers;
+                        } else {
+                            stickerSetLoader.myStickerSet = ({});
+                        }
+                    }
+
                     spacing: Theme.paddingMedium
                     width: parent.width
                     Row {
+                        id: stickerSetTitleRow
                         width: parent.width
-                        height: Math.max(removeSetButton.height, setTitleText.height) + ( 2 * Theme.paddingSmall )
+                        height: stickerSetThumbnail.height + ( 2 * Theme.paddingSmall )
+                        spacing: Theme.paddingMedium
+
+                        TDLibThumbnail {
+                            id: stickerSetThumbnail
+                            thumbnail: modelData.thumbnail
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: Theme.itemSizeMedium
+                            height: Theme.itemSizeMedium
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    toggleDisplaySet();
+                                }
+                            }
+                        }
+
                         Label {
                             id: setTitleText
                             font.pixelSize: Theme.fontSizeLarge
                             font.bold: true
-                            width: parent.width - removeSetButton.width
+                            width: parent.width - removeSetButton.width - expandSetButton.width - stickerSetThumbnail.width - ( 3 * Theme.paddingMedium )
                             anchors.verticalCenter: parent.verticalCenter
                             maximumLineCount: 1
                             truncationMode: TruncationMode.Fade
                             text: modelData.title
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    toggleDisplaySet();
+                                }
+                            }
+                        }
+
+                        IconButton {
+                            id: expandSetButton
+                            icon.source: stickerSetColumn.isExpanded ? "image://theme/icon-m-up" : "image://theme/icon-m-down"
+                            anchors.verticalCenter: parent.verticalCenter
+                            onClicked: {
+                                toggleDisplaySet();
+                            }
                         }
 
                         IconButton {
@@ -145,48 +186,59 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             onClicked: {
                                 var stickerSetId = modelData.id;
-                                setInRemoval = index;
                                 Remorse.popupAction(chatPage, qsTr("Removing sticker set"), function() {
                                     tdLibWrapper.changeStickerSet(stickerSetId, false);
                                 });
                             }
                         }
+
                     }
 
-                    SilicaGridView {
-                        id: installedStickerSetGridView
+                    Loader {
+                        id: stickerSetLoader
                         width: parent.width
-                        height: Theme.itemSizeExtraLarge
-                        cellWidth: Theme.itemSizeExtraLarge;
-                        cellHeight: Theme.itemSizeExtraLarge;
-                        visible: count > 0
-                        clip: true
-                        flow: GridView.FlowTopToBottom
+                        active: false
+                        height: active ? Theme.itemSizeExtraLarge : 0
 
-                        model: modelData.stickers
-                        delegate: Item {
-                            width: installedStickerSetGridView.cellWidth
-                            height: installedStickerSetGridView.cellHeight
+                        property var myStickerSet
 
-                            TDLibThumbnail {
-                                thumbnail: modelData.thumbnail
-                                anchors.fill: parent
-                            }
+                        sourceComponent: Component {
+                            SilicaGridView {
+                                id: installedStickerSetGridView
+                                width: parent.width
+                                height: parent.height
+                                cellWidth: Theme.itemSizeExtraLarge;
+                                cellHeight: Theme.itemSizeExtraLarge;
+                                visible: count > 0
+                                clip: true
+                                flow: GridView.FlowTopToBottom
 
-                            Label {
-                                font.pixelSize: Theme.fontSizeSmall
-                                anchors.right: parent.right
-                                anchors.bottom: parent.bottom
-                                text: Emoji.emojify(modelData.emoji, font.pixelSize)
-                            }
+                                model: stickerSetLoader.myStickerSet
+                                delegate: Item {
+                                    width: installedStickerSetGridView.cellWidth
+                                    height: installedStickerSetGridView.cellHeight
 
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: stickerPickerOverlayItem.stickerPicked(modelData.sticker.remote.id)
+                                    TDLibThumbnail {
+                                        thumbnail: modelData.thumbnail
+                                        anchors.fill: parent
+                                    }
+
+                                    Label {
+                                        font.pixelSize: Theme.fontSizeSmall
+                                        anchors.right: parent.right
+                                        anchors.bottom: parent.bottom
+                                        text: Emoji.emojify(modelData.emoji, font.pixelSize)
+                                    }
+
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: stickerPickerOverlayItem.stickerPicked(modelData.sticker.remote.id)
+                                    }
+                                }
+
+                                HorizontalScrollDecorator {}
                             }
                         }
-
-                        HorizontalScrollDecorator {}
                     }
 
                 }

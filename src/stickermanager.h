@@ -42,6 +42,7 @@ public:
     Q_INVOKABLE void setNeedsReload(const bool &reloadNeeded);
 
 signals:
+    void stickerSetsReceived();
 
 private slots:
 

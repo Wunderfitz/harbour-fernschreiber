@@ -118,7 +118,9 @@ void StickerManager::handleStickerSetsReceived(const QVariantList &stickerSets)
         if (!isInstalled && this->installedStickerSetIds.contains(newSetId)) {
             this->installedStickerSetIds.removeAll(newSetId);
         }
-        this->stickerSets.insert(newSetId, newStickerSet);
+        if (!this->stickerSets.contains(newSetId)) {
+            this->stickerSets.insert(newSetId, newStickerSet);
+        }
     }
 
     this->installedStickerSets.clear();
@@ -133,6 +135,7 @@ void StickerManager::handleStickerSetsReceived(const QVariantList &stickerSets)
             i++;
         }
     }
+    emit stickerSetsReceived();
 }
 
 void StickerManager::handleStickerSetReceived(const QVariantMap &stickerSet)
