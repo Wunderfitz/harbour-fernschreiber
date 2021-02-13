@@ -129,7 +129,7 @@ void StickerManager::handleStickerSetsReceived(const QVariantList &stickerSets)
     this->stickerSetMap.clear();
     while (stickerSetIdIterator.hasNext()) {
         QString stickerSetId = stickerSetIdIterator.next().toString();
-        if (this->installedStickerSetIds.contains(stickerSetId)) {
+        if (this->stickerSets.contains(stickerSetId)) {
             this->installedStickerSets.append(this->stickerSets.value(stickerSetId));
             this->stickerSetMap.insert(stickerSetId, i);
             i++;
