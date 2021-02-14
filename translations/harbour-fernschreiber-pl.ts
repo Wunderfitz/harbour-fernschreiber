@@ -445,6 +445,14 @@
         <source>Location (%1/%2)</source>
         <translation>Lokalizacja (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished">Skopiuj wiadomość do schowka</translation>
+    </message>
+    <message>
+        <source>Message Options</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1004,6 +1012,10 @@
     <message>
         <source>Unpin Message</source>
         <translation>Odepnij wiadomość</translation>
+    </message>
+    <message>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

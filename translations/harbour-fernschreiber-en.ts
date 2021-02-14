@@ -435,6 +435,14 @@
         <source>Location (%1/%2)</source>
         <translation>Location (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished">Copy Message to Clipboard</translation>
+    </message>
+    <message>
+        <source>Message Options</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -992,6 +1000,10 @@ messages</numerusform>
     <message>
         <source>Unpin Message</source>
         <translation>Unpin Message</translation>
+    </message>
+    <message>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

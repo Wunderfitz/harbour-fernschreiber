@@ -435,6 +435,14 @@
         <source>Location (%1/%2)</source>
         <translation>Standort (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished">Nachricht in die Zwischenablage kopieren</translation>
+    </message>
+    <message>
+        <source>Message Options</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -990,6 +998,10 @@
     <message>
         <source>Unpin Message</source>
         <translation>Nachricht losheften</translation>
+    </message>
+    <message>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

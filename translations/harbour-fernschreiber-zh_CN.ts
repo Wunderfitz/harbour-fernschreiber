@@ -425,6 +425,14 @@
         <source>Location (%1/%2)</source>
         <translation>位置 (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished">复制消息到剪切板</translation>
+    </message>
+    <message>
+        <source>Message Options</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -977,6 +985,10 @@
     <message>
         <source>Unpin Message</source>
         <translation>取消置顶</translation>
+    </message>
+    <message>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -78,6 +78,13 @@ ListItem {
         chatView.manuallyScrolledToBottom = false;
     }
 
+    Connections {
+        target: messageOptionsDrawer
+        onCloseRequested: {
+            messageListItem.highlighted = false;
+        }
+    }
+
     Loader {
         id: contextMenuLoader
         active: false
@@ -112,15 +119,18 @@ ListItem {
                 }
                 MenuItem {
                     onClicked: {
-                        Clipboard.text = Functions.getMessageText(myMessage, true, userInformation.id, true);
-                    }
-                    text: qsTr("Copy Message to Clipboard")
-                }
-                MenuItem {
-                    onClicked: {
                         page.toggleMessageSelection(myMessage);
                     }
                     text: qsTr("Select Message")
+                }
+                MenuItem {
+                    onClicked: {
+                        messageOptionsDrawer.myMessage = myMessage;
+                        messageOptionsDrawer.userInformation = userInformation;
+                        messageListItem.highlighted = true;
+                        messageOptionsDrawer.open = true;
+                    }
+                    text: qsTr("More Options...")
                 }
                 MenuItem {
                     onClicked: {

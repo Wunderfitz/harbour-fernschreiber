@@ -435,6 +435,14 @@
         <source>Location (%1/%2)</source>
         <translation>Sijainti (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished">Kopioi viesti leikepöydälle</translation>
+    </message>
+    <message>
+        <source>Message Options</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -991,6 +999,10 @@
     <message>
         <source>Unpin Message</source>
         <translation>Poista viestin kiinnitys</translation>
+    </message>
+    <message>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

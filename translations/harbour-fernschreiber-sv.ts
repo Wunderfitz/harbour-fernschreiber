@@ -435,6 +435,14 @@
         <source>Location (%1/%2)</source>
         <translation>Plats (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished">Kopiera meddelandet till urklipp</translation>
+    </message>
+    <message>
+        <source>Message Options</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -990,6 +998,10 @@
     <message>
         <source>Unpin Message</source>
         <translation>Lösgör meddelandet</translation>
+    </message>
+    <message>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
