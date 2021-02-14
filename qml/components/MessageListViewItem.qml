@@ -72,6 +72,12 @@ ListItem {
             contextMenuLoader.active = true;
         }
     }
+
+    onMenuOpenChanged: {
+        // When opening/closing the context menu, we no longer scroll automatically
+        chatView.manuallyScrolledToBottom = false;
+    }
+
     Loader {
         id: contextMenuLoader
         active: false
