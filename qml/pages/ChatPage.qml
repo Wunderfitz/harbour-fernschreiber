@@ -1245,9 +1245,11 @@ Page {
                     target: stickerPickerLoader.item
                     onStickerPicked: {
                         Debug.log("Sticker picked: " + stickerId);
-                        tdLibWrapper.sendStickerMessage(chatInformation.id, stickerId);
+                        tdLibWrapper.sendStickerMessage(chatInformation.id, stickerId, newMessageColumn.replyToMessageId);
                         stickerPickerLoader.active = false;
                         attachmentOptionsFlickable.isNeeded = false;
+                        newMessageInReplyToRow.inReplyToMessage = null;
+                        newMessageColumn.editMessageId = "0";
                     }
                 }
 
