@@ -142,7 +142,7 @@ Item {
 
                         TDLibThumbnail {
                             id: stickerSetThumbnail
-                            thumbnail: modelData.thumbnail
+                            thumbnail: modelData.thumbnail ? modelData.thumbnail : modelData.stickers[0].thumbnail
                             anchors.verticalCenter: parent.verticalCenter
                             width: Theme.itemSizeMedium
                             height: Theme.itemSizeMedium
