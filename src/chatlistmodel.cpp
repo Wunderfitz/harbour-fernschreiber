@@ -262,7 +262,9 @@ bool ChatListModel::ChatData::isHidden() const
     case TDLibWrapper::ChatTypeUnknown:
         break;
     case TDLibWrapper::ChatTypePrivate:
-        if (chatData.value(LAST_MESSAGE).isNull()) {
+        if (chatData.value(LAST_MESSAGE).isNull()
+                && chatData.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong() == 0
+                && chatData.value(LAST_READ_OUTBOX_MESSAGE_ID).toLongLong() == 0) {
             return true;
         }
         break;
