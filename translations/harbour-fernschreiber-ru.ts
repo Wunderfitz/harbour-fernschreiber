@@ -888,11 +888,11 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Неизвестный(ая)</translation>
+        <translation>Неизвестный(ая)</translation>
     </message>
     <message>
         <source>This message was deleted</source>
-        <translation type="unfinished">Сообщение было удалено</translation>
+        <translation>Сообщение было удалено</translation>
     </message>
 </context>
 <context>
