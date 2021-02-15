@@ -437,19 +437,19 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished">Kopioi viesti leikepöydälle</translation>
+        <translation>Kopioi viesti leikepöydälle</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Viestin kiinnitys poistettu</translation>
+        <translation>Viestin kiinnitys poistettu</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished">Poista viestin kiinnitys</translation>
+        <translation>Poista viestin kiinnitys</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished">Kiinnitä viesti</translation>
+        <translation>Kiinnitä viesti</translation>
     </message>
     <message>
         <source>Additional Options</source>
@@ -457,11 +457,11 @@
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished">Viesti poistettu</translation>
+        <translation>Viesti poistettu</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Poista viesti</translation>
+        <translation>Poista viesti</translation>
     </message>
 </context>
 <context>

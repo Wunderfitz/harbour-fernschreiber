@@ -447,19 +447,19 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished">Skopiuj wiadomość do schowka</translation>
+        <translation>Skopiuj wiadomość do schowka</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Wiadomość opięta</translation>
+        <translation>Wiadomość opięta</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished">Odepnij wiadomość</translation>
+        <translation>Odepnij wiadomość</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished">Przypnij wiadomość</translation>
+        <translation>Przypnij wiadomość</translation>
     </message>
     <message>
         <source>Additional Options</source>
@@ -467,11 +467,11 @@
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished">Wiadomość usunięta</translation>
+        <translation>Wiadomość usunięta</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Usuń wiadomość</translation>
+        <translation>Usuń wiadomość</translation>
     </message>
 </context>
 <context>

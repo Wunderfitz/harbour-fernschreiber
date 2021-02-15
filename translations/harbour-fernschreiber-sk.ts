@@ -447,19 +447,19 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished">Kopírovať správu do schránky</translation>
+        <translation>Kopírovať správu do schránky</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Správa bola odopnutá</translation>
+        <translation>Správa bola odopnutá</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished">Odopnúť správu</translation>
+        <translation>Odopnúť správu</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished">Pripnúť správu</translation>
+        <translation>Pripnúť správu</translation>
     </message>
     <message>
         <source>Additional Options</source>
@@ -467,11 +467,11 @@
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished">Správa bola odstránená</translation>
+        <translation>Správa bola odstránená</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Odstrániť správu</translation>
+        <translation>Odstrániť správu</translation>
     </message>
 </context>
 <context>

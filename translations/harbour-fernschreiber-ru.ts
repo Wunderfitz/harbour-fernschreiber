@@ -447,19 +447,19 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished">Скопировать в буфер обмена</translation>
+        <translation>Скопировать в буфер обмена</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Сообщение откреплено</translation>
+        <translation>Сообщение откреплено</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished">Открепить сообщение</translation>
+        <translation>Открепить сообщение</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished">Закрепить сообщение</translation>
+        <translation>Закрепить сообщение</translation>
     </message>
     <message>
         <source>Additional Options</source>
@@ -467,7 +467,7 @@
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished">Сообщение удалено</translation>
+        <translation>Сообщение удалено</translation>
     </message>
     <message>
         <source>Delete Message</source>

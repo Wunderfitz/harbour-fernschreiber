@@ -427,19 +427,19 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished">复制消息到剪切板</translation>
+        <translation>复制消息到剪切板</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">已取消置顶消息</translation>
+        <translation>已取消置顶消息</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished">取消置顶</translation>
+        <translation>取消置顶</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished">置顶消息</translation>
+        <translation>置顶消息</translation>
     </message>
     <message>
         <source>Additional Options</source>
@@ -447,11 +447,11 @@
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished">已删除消息</translation>
+        <translation>已删除消息</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">删除消息</translation>
+        <translation>删除消息</translation>
     </message>
 </context>
 <context>

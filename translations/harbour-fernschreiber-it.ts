@@ -437,19 +437,19 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished">Copia messaggio nella clipboard</translation>
+        <translation>Copia messaggio nella clipboard</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Messaggio non più in evidenza</translation>
+        <translation>Messaggio non più in evidenza</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished">Togli messaggio in evidenza</translation>
+        <translation>Togli messaggio in evidenza</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished">Metti messaggio in evidenza</translation>
+        <translation>Metti messaggio in evidenza</translation>
     </message>
     <message>
         <source>Additional Options</source>
@@ -457,11 +457,11 @@
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished">Messaggio cancellato</translation>
+        <translation>Messaggio cancellato</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Cancella messaggio</translation>
+        <translation>Cancella messaggio</translation>
     </message>
 </context>
 <context>

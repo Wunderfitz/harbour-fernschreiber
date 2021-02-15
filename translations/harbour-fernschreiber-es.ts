@@ -437,19 +437,19 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished">Copiar</translation>
+        <translation>Copiar</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Mensaje desanclado</translation>
+        <translation>Mensaje desanclado</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished">Desanclar mensaje</translation>
+        <translation>Desanclar mensaje</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished">Anclar mensaje </translation>
+        <translation>Anclar mensaje</translation>
     </message>
     <message>
         <source>Additional Options</source>
@@ -457,11 +457,11 @@
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished">Mensaje borrado</translation>
+        <translation>Mensaje borrado</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Borrar</translation>
+        <translation>Borrar</translation>
     </message>
 </context>
 <context>
@@ -998,18 +998,6 @@
     <message>
         <source>More Options...</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pin Message</source>
-        <translation>Anclar mensaje</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Mensaje desanclado</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Desanclar mensaje</translation>
     </message>
 </context>
 <context>
@@ -2164,18 +2152,18 @@
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>punto %Ln anotado</numerusform>
+            <numerusform>puntos %Ln anotados</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">envió un juego</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">envió un juego</translation>
     </message>
 </context>
 </TS>

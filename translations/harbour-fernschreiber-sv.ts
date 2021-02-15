@@ -437,19 +437,19 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished">Kopiera meddelandet till urklipp</translation>
+        <translation>Kopiera meddelandet till urklipp</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation type="unfinished">Meddelandet lösgjort</translation>
+        <translation>Meddelandet lösgjort</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation type="unfinished">Lösgör meddelandet</translation>
+        <translation>Lösgör meddelandet</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation type="unfinished">Fäst meddelandet</translation>
+        <translation>Fäst meddelandet</translation>
     </message>
     <message>
         <source>Additional Options</source>
@@ -457,11 +457,11 @@
     </message>
     <message>
         <source>Message deleted</source>
-        <translation type="unfinished">Mededelande borttaget</translation>
+        <translation>Mededelande borttaget</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Ta bort meddelandet</translation>
+        <translation>Ta bort meddelandet</translation>
     </message>
 </context>
 <context>
