@@ -916,11 +916,11 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Неизвестный(ая)</translation>
     </message>
     <message>
         <source>This message was deleted</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сообщение было удалено</translation>
     </message>
 </context>
 <context>
@@ -1002,7 +1002,7 @@
     </message>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
