@@ -25,21 +25,27 @@ Item {
     id: stickerPickerOverlayItem
     anchors.fill: parent
 
-    property var recentStickers: stickerManager.getRecentStickers()
-    property var installedStickerSets: stickerManager.getInstalledStickerSets()
-    property bool pickerLoaded: false
+    property var recentStickers: stickerManager.getRecentStickers();
+    property var installedStickerSets: stickerManager.getInstalledStickerSets();
 
-    signal stickerPicked(var stickerId)
-
-    Timer {
-        id: stickerPickerLoadedTimer
-        interval: 100
-        running: true
-        repeat: false
-        onTriggered: {
-            stickerPickerOverlayItem.pickerLoaded = true;
+    Connections {
+        target: tdLibWrapper
+        onOkReceived: {
+            if (request === "removeStickerSet") {
+                appNotification.show(qsTr("Sticker set successfully removed!"));
+                tdLibWrapper.getInstalledStickerSets();
+            }
         }
     }
+
+    Connections {
+        target: stickerManager
+        onStickerSetsReceived: {
+            installedStickerSets = stickerManager.getInstalledStickerSets();
+        }
+    }
+
+    signal stickerPicked(var stickerId)
 
     Rectangle {
         id: stickerPickerOverlayBackground
@@ -54,10 +60,6 @@ Item {
         anchors.fill: parent
         anchors.margins: Theme.paddingMedium
 
-        opacity: stickerPickerOverlayItem.pickerLoaded ? 1 : 0
-        Behavior on opacity { NumberAnimation {} }
-        visible: stickerPickerOverlayItem.pickerLoaded
-
         contentHeight: stickerPickerColumn.height
         clip: true
 
@@ -66,7 +68,7 @@ Item {
             spacing: Theme.paddingMedium
             width: stickerPickerFlickable.width
             Label {
-                font.pixelSize: Theme.fontSizeMedium
+                font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
                 width: parent.width
                 maximumLineCount: 1
@@ -90,15 +92,16 @@ Item {
                     width: recentStickersGridView.cellWidth
                     height: recentStickersGridView.cellHeight
 
-                    Image {
-                        source: modelData.thumbnail.file.local.path
+                    TDLibThumbnail {
+                        thumbnail: modelData.thumbnail
                         anchors.fill: parent
-                        asynchronous: true
-                        onStatusChanged: {
-                            if (status === Image.Ready) {
-                                stickerPickerLoadedTimer.restart();
-                            }
-                        }
+                    }
+
+                    Label {
+                        font.pixelSize: Theme.fontSizeSmall
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        text: Emoji.emojify(modelData.emoji, font.pixelSize)
                     }
 
                     MouseArea {
@@ -116,86 +119,130 @@ Item {
                 model: stickerPickerOverlayItem.installedStickerSets
                 width: stickerPickerFlickable.width
                 Column {
-                    spacing: Theme.paddingMedium
-                    width: parent.width
-                    Label {
-                        font.pixelSize: Theme.fontSizeMedium
-                        font.bold: true
-                        width: parent.width
-                        maximumLineCount: 1
-                        truncationMode: TruncationMode.Fade
-                        text: modelData.title
+                    id: stickerSetColumn
+
+                    property bool isExpanded: false
+                    function toggleDisplaySet() {
+                        stickerSetColumn.isExpanded = !stickerSetColumn.isExpanded;
+                        stickerSetLoader.active = stickerSetColumn.isExpanded;
+                        if (stickerSetLoader.active) {
+                            stickerSetLoader.myStickerSet = modelData.stickers;
+                        } else {
+                            stickerSetLoader.myStickerSet = ({});
+                        }
                     }
 
-                    SilicaGridView {
-                        id: installedStickerSetGridView
+                    spacing: Theme.paddingMedium
+                    width: parent.width
+                    Row {
+                        id: stickerSetTitleRow
                         width: parent.width
-                        height: Theme.itemSizeExtraLarge
-                        cellWidth: Theme.itemSizeExtraLarge;
-                        cellHeight: Theme.itemSizeExtraLarge;
-                        visible: count > 0
-                        clip: true
-                        flow: GridView.FlowTopToBottom
+                        height: stickerSetThumbnail.height + ( 2 * Theme.paddingSmall )
+                        spacing: Theme.paddingMedium
 
-                        model: modelData.stickers
-                        delegate: Item {
-                            width: installedStickerSetGridView.cellWidth
-                            height: installedStickerSetGridView.cellHeight
-
-                            Image {
-                                id: singleStickerImage
-                                source: modelData.thumbnail.file.local.is_downloading_completed ? modelData.thumbnail.file.local.path : ""
-                                anchors.fill: parent
-                                visible: modelData.thumbnail.file.local.is_downloading_completed
-                                asynchronous: true
-                                onStatusChanged: {
-                                    if (status === Image.Ready) {
-                                        stickerPickerLoadedTimer.restart();
-                                    }
-                                }
-                            }
-                            Label {
-                                font.pixelSize: Theme.fontSizeHuge
-                                anchors.fill: parent
-                                maximumLineCount: 1
-                                truncationMode: TruncationMode.Fade
-                                text: Emoji.emojify(modelData.emoji, font.pixelSize)
-                                visible: !modelData.thumbnail.file.local.is_downloading_completed
-                            }
-
+                        TDLibThumbnail {
+                            id: stickerSetThumbnail
+                            thumbnail: modelData.thumbnail ? modelData.thumbnail : modelData.stickers[0].thumbnail
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: Theme.itemSizeMedium
+                            height: Theme.itemSizeMedium
                             MouseArea {
                                 anchors.fill: parent
-                                onClicked: stickerPickerOverlayItem.stickerPicked(modelData.sticker.remote.id)
+                                onClicked: {
+                                    toggleDisplaySet();
+                                }
                             }
                         }
 
-                        HorizontalScrollDecorator {}
+                        Label {
+                            id: setTitleText
+                            font.pixelSize: Theme.fontSizeLarge
+                            font.bold: true
+                            width: parent.width - removeSetButton.width - expandSetButton.width - stickerSetThumbnail.width - ( 3 * Theme.paddingMedium )
+                            anchors.verticalCenter: parent.verticalCenter
+                            maximumLineCount: 1
+                            truncationMode: TruncationMode.Fade
+                            text: modelData.title
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    toggleDisplaySet();
+                                }
+                            }
+                        }
+
+                        IconButton {
+                            id: expandSetButton
+                            icon.source: stickerSetColumn.isExpanded ? "image://theme/icon-m-up" : "image://theme/icon-m-down"
+                            anchors.verticalCenter: parent.verticalCenter
+                            onClicked: {
+                                toggleDisplaySet();
+                            }
+                        }
+
+                        IconButton {
+                            id: removeSetButton
+                            icon.source: "image://theme/icon-m-remove"
+                            anchors.verticalCenter: parent.verticalCenter
+                            onClicked: {
+                                var stickerSetId = modelData.id;
+                                Remorse.popupAction(chatPage, qsTr("Removing sticker set"), function() {
+                                    tdLibWrapper.changeStickerSet(stickerSetId, false);
+                                });
+                            }
+                        }
+
+                    }
+
+                    Loader {
+                        id: stickerSetLoader
+                        width: parent.width
+                        active: false
+                        height: active ? Theme.itemSizeExtraLarge : 0
+
+                        property var myStickerSet
+
+                        sourceComponent: Component {
+                            SilicaGridView {
+                                id: installedStickerSetGridView
+                                width: parent.width
+                                height: parent.height
+                                cellWidth: Theme.itemSizeExtraLarge;
+                                cellHeight: Theme.itemSizeExtraLarge;
+                                visible: count > 0
+                                clip: true
+                                flow: GridView.FlowTopToBottom
+
+                                model: stickerSetLoader.myStickerSet
+                                delegate: Item {
+                                    width: installedStickerSetGridView.cellWidth
+                                    height: installedStickerSetGridView.cellHeight
+
+                                    TDLibThumbnail {
+                                        thumbnail: modelData.thumbnail
+                                        anchors.fill: parent
+                                    }
+
+                                    Label {
+                                        font.pixelSize: Theme.fontSizeSmall
+                                        anchors.right: parent.right
+                                        anchors.bottom: parent.bottom
+                                        text: Emoji.emojify(modelData.emoji, font.pixelSize)
+                                    }
+
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: stickerPickerOverlayItem.stickerPicked(modelData.sticker.remote.id)
+                                    }
+                                }
+
+                                HorizontalScrollDecorator {}
+                            }
+                        }
                     }
 
                 }
             }
-        }
-    }
-
-    Column {
-        anchors.centerIn: parent
-        width: parent.width
-        spacing: Theme.paddingMedium
-
-        opacity: stickerPickerOverlayItem.pickerLoaded ? 0 : 1
-        Behavior on opacity { NumberAnimation {} }
-        visible: !stickerPickerOverlayItem.pickerLoaded
-
-        InfoLabel {
-            id: loadingLabel
-            text: qsTr("Loading stickers...")
-        }
-
-        BusyIndicator {
-            id: loadingBusyIndicator
-            anchors.horizontalCenter: parent.horizontalCenter
-            running: !stickerPickerOverlayItem.pickerLoaded
-            size: BusyIndicatorSize.Large
         }
     }
 

@@ -699,7 +699,7 @@ Page {
         contentWidth: width
 
         PullDownMenu {
-            visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !voiceNoteOverlayLoader.active && !messageOverlayLoader.active
+            visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !voiceNoteOverlayLoader.active && !messageOverlayLoader.active && !stickerSetOverlayLoader.active
             MenuItem {
                 id: closeSecretChatMenuItem
                 visible: chatPage.isSecretChat && chatPage.secretChatDetails.state["@type"] !== "secretChatStateClosed"
@@ -958,7 +958,7 @@ Page {
                     id: chatView
 
                     visible: !blurred
-                    property bool blurred: messageOverlayLoader.item || stickerPickerLoader.item || voiceNoteOverlayLoader.item || inlineQuery.hasOverlay
+                    property bool blurred: messageOverlayLoader.item || stickerPickerLoader.item || voiceNoteOverlayLoader.item || inlineQuery.hasOverlay || stickerSetOverlayLoader.item
 
                     anchors.fill: parent
                     opacity: chatPage.loading ? 0 : 1
@@ -1245,9 +1245,11 @@ Page {
                     target: stickerPickerLoader.item
                     onStickerPicked: {
                         Debug.log("Sticker picked: " + stickerId);
-                        tdLibWrapper.sendStickerMessage(chatInformation.id, stickerId);
+                        tdLibWrapper.sendStickerMessage(chatInformation.id, stickerId, newMessageColumn.replyToMessageId);
                         stickerPickerLoader.active = false;
                         attachmentOptionsFlickable.isNeeded = false;
+                        newMessageInReplyToRow.inReplyToMessage = null;
+                        newMessageColumn.editMessageId = "0";
                     }
                 }
 
@@ -1281,6 +1283,31 @@ Page {
                     onActiveChanged: {
                         if (!active) {
                             fernschreiberUtils.stopRecordingVoiceNote();
+                        }
+                    }
+                }
+
+                Loader {
+                    id: stickerSetOverlayLoader
+
+                    property string stickerSetId;
+
+                    active: false
+                    asynchronous: true
+                    width: parent.width
+                    height: active ? parent.height : 0
+                    sourceComponent: Component {
+                        StickerSetOverlay {
+                            stickerSetId: stickerSetOverlayLoader.stickerSetId
+                            onRequestClose: {
+                                stickerSetOverlayLoader.active = false;
+                            }
+                        }
+                    }
+
+                    onActiveChanged: {
+                        if (active) {
+                            attachmentOptionsFlickable.isNeeded = false;
                         }
                     }
                 }
@@ -1751,7 +1778,7 @@ Page {
                         icon.source: "image://theme/icon-m-attach?" +  (attachmentOptionsFlickable.isNeeded ? Theme.highlightColor : Theme.primaryColor)
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: Theme.paddingSmall
-                        enabled: !attachmentPreviewRow.visible
+                        enabled: !attachmentPreviewRow.visible && !stickerSetOverlayLoader.item
                         visible: !inlineQuery.userNameIsValid
                         onClicked: {
                             if (attachmentOptionsFlickable.isNeeded) {
