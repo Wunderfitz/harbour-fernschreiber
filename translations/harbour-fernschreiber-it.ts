@@ -871,11 +871,11 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Sconosciuto</translation>
+        <translation>Sconosciuto</translation>
     </message>
     <message>
         <source>This message was deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Il messaggio è stato cancellato</translation>
     </message>
 </context>
 <context>
@@ -1652,11 +1652,11 @@
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Attendi prima di segnare i messaggi come già letti</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Fernschreiber attende un attimo prima di segnare i messaggi come già letti</translation>
     </message>
 </context>
 <context>
@@ -1682,7 +1682,7 @@
     </message>
     <message>
         <source>Copy video to gallery</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia il video nella galleria</translation>
     </message>
 </context>
 <context>
