@@ -440,8 +440,28 @@
         <translation type="unfinished">Copiar</translation>
     </message>
     <message>
-        <source>Message Options</source>
+        <source>Message unpinned</source>
+        <translation type="unfinished">Mensaje desanclado</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished">Desanclar mensaje</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished">Anclar mensaje </translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished">Mensaje borrado</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Borrar</translation>
     </message>
 </context>
 <context>
@@ -964,18 +984,6 @@
         <translation>Editar</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Copiar</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Mensaje borrado</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Borrar</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Usted</translation>
     </message>
@@ -986,18 +994,6 @@
     <message>
         <source>Select Message</source>
         <translation>Seleccionar</translation>
-    </message>
-    <message>
-        <source>Pin Message</source>
-        <translation>Anclar mensaje </translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Mensaje desanclado</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Desanclar mensaje</translation>
     </message>
     <message>
         <source>More Options...</source>

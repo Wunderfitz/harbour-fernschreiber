@@ -440,8 +440,28 @@
         <translation type="unfinished">Kopiera meddelandet till urklipp</translation>
     </message>
     <message>
-        <source>Message Options</source>
+        <source>Message unpinned</source>
+        <translation type="unfinished">Meddelandet lösgjort</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished">Lösgör meddelandet</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished">Fäst meddelandet</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished">Mededelande borttaget</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Ta bort meddelandet</translation>
     </message>
 </context>
 <context>
@@ -964,18 +984,6 @@
         <translation>Redigera meddelandet</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Kopiera meddelandet till urklipp</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Mededelande borttaget</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Ta bort meddelandet</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Du</translation>
     </message>
@@ -986,18 +994,6 @@
     <message>
         <source>Select Message</source>
         <translation>Markera meddelanden</translation>
-    </message>
-    <message>
-        <source>Pin Message</source>
-        <translation>Fäst meddelandet</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Meddelandet lösgjort</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Lösgör meddelandet</translation>
     </message>
     <message>
         <source>More Options...</source>

@@ -450,8 +450,28 @@
         <translation type="unfinished">Скопировать в буфер обмена</translation>
     </message>
     <message>
-        <source>Message Options</source>
+        <source>Message unpinned</source>
+        <translation type="unfinished">Сообщение откреплено</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished">Открепить сообщение</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished">Закрепить сообщение</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished">Сообщение удалено</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Удалить</translation>
     </message>
 </context>
 <context>
@@ -981,18 +1001,6 @@
         <translation>Редактировать</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Скопировать в буфер обмена</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Сообщение удалено</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Удалить</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Вы</translation>
     </message>
@@ -1003,18 +1011,6 @@
     <message>
         <source>Select Message</source>
         <translation>Выбрать сообщение</translation>
-    </message>
-    <message>
-        <source>Pin Message</source>
-        <translation>Закрепить сообщение</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Сообщение откреплено</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Открепить сообщение</translation>
     </message>
     <message>
         <source>More Options...</source>

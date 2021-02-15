@@ -430,8 +430,28 @@
         <translation type="unfinished">复制消息到剪切板</translation>
     </message>
     <message>
-        <source>Message Options</source>
+        <source>Message unpinned</source>
+        <translation type="unfinished">已取消置顶消息</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished">取消置顶</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished">置顶消息</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished">已删除消息</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">删除消息</translation>
     </message>
 </context>
 <context>
@@ -951,18 +971,6 @@
         <translation>编辑消息</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>复制消息到剪切板</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>已删除消息</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>删除消息</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>你</translation>
     </message>
@@ -973,18 +981,6 @@
     <message>
         <source>Select Message</source>
         <translation>选择消息</translation>
-    </message>
-    <message>
-        <source>Pin Message</source>
-        <translation>置顶消息</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>已取消消息置顶</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>取消置顶</translation>
     </message>
     <message>
         <source>More Options...</source>

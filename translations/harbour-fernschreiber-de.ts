@@ -437,11 +437,31 @@
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation type="unfinished">Nachricht in die Zwischenablage kopieren</translation>
+        <translation>Nachricht in die Zwischenablage kopieren</translation>
     </message>
     <message>
-        <source>Message Options</source>
-        <translation type="unfinished"></translation>
+        <source>Message unpinned</source>
+        <translation>Nachricht losgeheftet</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Nachricht losheften</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Nachricht anheften</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation>Zusätzliche Optionen</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Nachricht gelöscht</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Nachricht löschen</translation>
     </message>
 </context>
 <context>
@@ -964,18 +984,6 @@
         <translation>Nachricht bearbeiten</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Nachricht in die Zwischenablage kopieren</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Nachricht gelöscht</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Nachricht löschen</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Sie</translation>
     </message>
@@ -988,20 +996,8 @@
         <translation>Nachricht auswählen</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Nachricht anheften</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Nachricht losgeheftet</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Nachricht losheften</translation>
-    </message>
-    <message>
         <source>More Options...</source>
-        <translation type="unfinished"></translation>
+        <translation>Mehr Optionen...</translation>
     </message>
 </context>
 <context>

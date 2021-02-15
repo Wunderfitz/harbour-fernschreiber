@@ -440,8 +440,28 @@
         <translation type="unfinished">Kopioi viesti leikepöydälle</translation>
     </message>
     <message>
-        <source>Message Options</source>
+        <source>Message unpinned</source>
+        <translation type="unfinished">Viestin kiinnitys poistettu</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished">Poista viestin kiinnitys</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished">Kiinnitä viesti</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished">Viesti poistettu</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Poista viesti</translation>
     </message>
 </context>
 <context>
@@ -965,18 +985,6 @@
         <translation>Muokkaa viestiä</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Kopioi viesti leikepöydälle</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Viesti poistettu</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Poista viesti</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Sinä</translation>
     </message>
@@ -987,18 +995,6 @@
     <message>
         <source>Select Message</source>
         <translation>Valitse viesti</translation>
-    </message>
-    <message>
-        <source>Pin Message</source>
-        <translation>Kiinnitä viesti</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Viestin kiinnitys poistettu</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Poista viestin kiinnitys</translation>
     </message>
     <message>
         <source>More Options...</source>

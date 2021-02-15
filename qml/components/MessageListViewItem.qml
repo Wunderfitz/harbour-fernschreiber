@@ -97,16 +97,6 @@ ListItem {
         }
         sourceComponent: Component {
             ContextMenu {
-                Repeater {
-                    model: (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ?
-                        extraContentLoader.item.extraContextMenuItems : 0
-                    delegate: MenuItem {
-                        visible: modelData.visible
-                        text: modelData.name
-                        onClicked: modelData.action()
-                    }
-                }
-
                 MenuItem {
                     visible: messageListItem.canReplyToMessage
                     onClicked: messageListItem.replyToMessage()
@@ -127,31 +117,12 @@ ListItem {
                     onClicked: {
                         messageOptionsDrawer.myMessage = myMessage;
                         messageOptionsDrawer.userInformation = userInformation;
+                        messageOptionsDrawer.sourceItem = messageListItem
+                        messageOptionsDrawer.additionalItemsModel = (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ? extraContentLoader.item.extraContextMenuItems : 0;
                         messageListItem.highlighted = true;
                         messageOptionsDrawer.open = true;
                     }
                     text: qsTr("More Options...")
-                }
-                MenuItem {
-                    onClicked: {
-                        if (myMessage.is_pinned) {
-                            Remorse.popupAction(page, qsTr("Message unpinned"), function() { tdLibWrapper.unpinMessage(page.chatInformation.id, messageId);
-                                                                                             pinnedMessageItem.requestCloseMessage(); } );
-                        } else {
-                            tdLibWrapper.pinMessage(page.chatInformation.id, messageId);
-                        }
-                    }
-                    text: myMessage.is_pinned ? qsTr("Unpin Message") : qsTr("Pin Message")
-                    visible: canPinMessages()
-                }
-                MenuItem {
-                    onClicked: {
-                        var chatId = page.chatInformation.id;
-                        var messageId = messageListItem.messageId;
-                        Remorse.itemAction(messageListItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId]);  })
-                    }
-                    text: qsTr("Delete Message")
-                    visible: myMessage.can_be_deleted_for_all_users || (myMessage.can_be_deleted_only_for_self && myMessage.chat_id === page.myUserId)
                 }
             }
         }

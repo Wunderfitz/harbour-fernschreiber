@@ -450,8 +450,28 @@
         <translation type="unfinished">Skopiuj wiadomość do schowka</translation>
     </message>
     <message>
-        <source>Message Options</source>
+        <source>Message unpinned</source>
+        <translation type="unfinished">Wiadomość opięta</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished">Odepnij wiadomość</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished">Przypnij wiadomość</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished">Wiadomość usunięta</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Usuń wiadomość</translation>
     </message>
 </context>
 <context>
@@ -978,18 +998,6 @@
         <translation>Edytuj widomość</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Skopiuj wiadomość do schowka</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Wiadomość usunięta</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Usuń wiadomość</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Ty</translation>
     </message>
@@ -1000,18 +1008,6 @@
     <message>
         <source>Select Message</source>
         <translation>Wybierz wiadomość</translation>
-    </message>
-    <message>
-        <source>Pin Message</source>
-        <translation>Przypnij wiadomość</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Wiadomość odpięta</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Odepnij wiadomość</translation>
     </message>
     <message>
         <source>More Options...</source>

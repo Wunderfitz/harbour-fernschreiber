@@ -450,8 +450,28 @@
         <translation type="unfinished">Kopírovať správu do schránky</translation>
     </message>
     <message>
-        <source>Message Options</source>
+        <source>Message unpinned</source>
+        <translation type="unfinished">Správa bola odopnutá</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished">Odopnúť správu</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished">Pripnúť správu</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished">Správa bola odstránená</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Odstrániť správu</translation>
     </message>
 </context>
 <context>
@@ -978,18 +998,6 @@
         <translation>Upraviť správu</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Kopírovať správu do schránky</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Správa bola odstránená</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Odstrániť správu</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Ja</translation>
     </message>
@@ -1000,18 +1008,6 @@
     <message>
         <source>Select Message</source>
         <translation>Vybrať správu</translation>
-    </message>
-    <message>
-        <source>Pin Message</source>
-        <translation>Pripnúť správu</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Správa bola odopnutá</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Odopnúť správu</translation>
     </message>
     <message>
         <source>More Options...</source>

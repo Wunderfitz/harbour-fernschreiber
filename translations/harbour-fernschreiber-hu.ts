@@ -430,8 +430,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Message Options</source>
+        <source>Message unpinned</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Üzenet törlése</translation>
     </message>
 </context>
 <context>
@@ -950,18 +970,6 @@
         <translation type="unfinished">Üzenet szerkesztése</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation type="unfinished">Üzenet törlése</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation type="unfinished">Te</translation>
     </message>
@@ -971,18 +979,6 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pin Message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
