@@ -698,7 +698,7 @@ Page {
 
         anchors.fill: parent
         dock: chatPage.isPortrait ? Dock.Bottom : Dock.Right
-        backgroundSize: dock == Dock.Left || dock == Dock.Right ? width / 2 : height / 3
+        backgroundSize: chatPage.isPortrait ? height / 3 : width / 2
 
         background: Column {
             anchors.fill: parent
