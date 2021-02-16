@@ -793,7 +793,7 @@ Page {
                         width: parent.width
                         visible: messageOptionsDrawer.myMessage.can_be_deleted_for_all_users || (messageOptionsDrawer.myMessage.can_be_deleted_only_for_self && messageOptionsDrawer.myMessage.chat_id === chatPage.myUserId)
                         onClicked: {
-                            var chatId = page.chatInformation.id;
+                            var chatId = chatPage.chatInformation.id;
                             var messageId = messageOptionsDrawer.myMessage.id;
                             Remorse.itemAction(messageOptionsDrawer.sourceItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId ]); });
                             messageOptionsDrawer.closeDrawer();
