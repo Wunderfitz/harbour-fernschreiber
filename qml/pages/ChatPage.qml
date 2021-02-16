@@ -575,6 +575,7 @@ Page {
             }
 
             chatViewCooldownTimer.restart();
+            chatViewStartupReadTimer.restart();
         }
         onNewMessageReceived: {
             if (chatView.manuallyScrolledToBottom || message.sender.user_id === chatPage.myUserId) {
@@ -604,6 +605,7 @@ Page {
                 viewMessageTimer.queueViewMessage(chatView.count - 1);
             }
             chatViewCooldownTimer.restart();
+            chatViewStartupReadTimer.restart();
         }
         onNotificationSettingsUpdated: {
             chatInformation = chatModel.getChatInformation();
@@ -933,7 +935,15 @@ Page {
                     onTriggered: {
                         Debug.log("[ChatPage] Cooldown completed...");
                         chatView.inCooldown = false;
+                    }
+                }
 
+                Timer {
+                    id: chatViewStartupReadTimer
+                    interval: 200
+                    repeat: false
+                    running: false
+                    onTriggered: {
                         if (!chatPage.isInitialized) {
                             Debug.log("Page is initialized!");
                             chatPage.isInitialized = true;
