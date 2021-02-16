@@ -43,8 +43,9 @@ ListItem {
     });
     readonly property bool isOwnMessage: page.myUserId === myMessage.sender.user_id
     property bool hasContentComponent
+    property bool additionalOptionsOpened
 
-    highlighted: (down || isSelected) && !menuOpen
+    highlighted: (down || isSelected || additionalOptionsOpened) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
 
     signal replyToMessage()
@@ -81,7 +82,7 @@ ListItem {
     Connections {
         target: messageOptionsDrawer
         onCloseRequested: {
-            messageListItem.highlighted = false;
+            messageListItem.additionalOptionsOpened = false;
         }
     }
 
@@ -119,7 +120,7 @@ ListItem {
                         messageOptionsDrawer.userInformation = userInformation;
                         messageOptionsDrawer.sourceItem = messageListItem
                         messageOptionsDrawer.additionalItemsModel = (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ? extraContentLoader.item.extraContextMenuItems : 0;
-                        messageListItem.highlighted = true;
+                        messageListItem.additionalOptionsOpened = true;
                         messageOptionsDrawer.open = true;
                     }
                     text: qsTr("More Options...")
