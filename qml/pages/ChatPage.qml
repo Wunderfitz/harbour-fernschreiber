@@ -689,6 +689,48 @@ Page {
         property var additionalItemsModel: 0
         property var sourceItem
 
+        property list<NamedAction> messageOptionsModel: [
+            NamedAction {
+                visible: true
+                name: qsTr("Copy Message to Clipboard")
+                action: function () { Clipboard.text = Functions.getMessageText(messageOptionsDrawer.myMessage, true, messageOptionsDrawer.userInformation.id, true); }
+            },
+            NamedAction {
+                visible: canPinMessages()
+                name: messageOptionsDrawer.myMessage.is_pinned ? qsTr("Unpin Message") : qsTr("Pin Message")
+                action: function () {
+                    if (messageOptionsDrawer.myMessage.is_pinned) {
+                        Remorse.popupAction(page, qsTr("Message unpinned"), function() { tdLibWrapper.unpinMessage(chatPage.chatInformation.id, messageOptionsDrawer.myMessage.id);
+                                                                                         pinnedMessageItem.requestCloseMessage(); } );
+                    } else {
+                        tdLibWrapper.pinMessage(chatPage.chatInformation.id, messageOptionsDrawer.myMessage.id);
+                    }
+                }
+            },
+            NamedAction {
+                visible: messageOptionsDrawer.myMessage.can_be_deleted_for_all_users || (messageOptionsDrawer.myMessage.can_be_deleted_only_for_self && messageOptionsDrawer.myMessage.chat_id === chatPage.myUserId)
+                name: qsTr("Delete Message")
+                action: function () {
+                    var chatId = chatPage.chatInformation.id;
+                    var messageId = messageOptionsDrawer.myMessage.id;
+                    Remorse.itemAction(messageOptionsDrawer.sourceItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId ]); });
+                }
+            }
+        ]
+
+        onOpenChanged: {
+            if (open) {
+                var jointModel = [];
+                for (var j = 0; j < additionalItemsModel.length; j++) {
+                    jointModel.push(additionalItemsModel[j]);
+                }
+                for (var i = 0; i < messageOptionsModel.length; i++) {
+                    jointModel.push(messageOptionsModel[i]);
+                }
+                drawerListView.model = jointModel;
+            }
+        }
+
         signal closeRequested();
 
         function closeDrawer() {
@@ -700,9 +742,15 @@ Page {
         dock: chatPage.isPortrait ? Dock.Bottom : Dock.Right
         backgroundSize: chatPage.isPortrait ? height / 3 : width / 2
 
-        background: Column {
+        background: SilicaListView {
+            id: drawerListView
+
             anchors.fill: parent
-            Row {
+            clip: true
+
+            VerticalScrollDecorator {}
+
+            header: Row {
                 id: drawerHeaderRow
                 width: parent.width - ( 2 * Theme.horizontalPageMargin)
                 height: messageOptionsLabel.height + Theme.paddingLarge + ( chatPage.isPortrait ? ( 2 * Theme.paddingSmall ) : 0 )
@@ -728,87 +776,19 @@ Page {
                 }
             }
 
-            Flickable {
-                id: drawerFlickable
-                width: parent.width
-                height: parent.height - drawerHeaderRow.height
-                contentHeight: drawerContentColumn.height
-                clip: true
-                Column {
-                    id: drawerContentColumn
-                    width: parent.width
-                    Repeater {
-                        model: messageOptionsDrawer.additionalItemsModel
-                        delegate: BackgroundItem {
-                            width: parent.width
-                            visible: modelData.visible
-                            onClicked: {
-                                modelData.action();
-                                messageOptionsDrawer.closeDrawer();
-                            }
-                            Label {
-                                width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                                text: modelData.name
-                                anchors.verticalCenter: parent.verticalCenter
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                horizontalAlignment: Text.AlignHCenter
-                            }
-                        }
-                    }
-                    BackgroundItem {
-                        width: parent.width
-                        onClicked: {
-                            Clipboard.text = Functions.getMessageText(messageOptionsDrawer.myMessage, true, messageOptionsDrawer.userInformation.id, true);
-                            messageOptionsDrawer.closeDrawer();
-                        }
-                        Label {
-                            width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                            text: qsTr("Copy Message to Clipboard")
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            horizontalAlignment: Text.AlignHCenter
-                        }
-                    }
-                    BackgroundItem {
-                        width: parent.width
-                        visible: canPinMessages()
-                        onClicked: {
-                            if (messageOptionsDrawer.myMessage.is_pinned) {
-                                Remorse.popupAction(page, qsTr("Message unpinned"), function() { tdLibWrapper.unpinMessage(chatPage.chatInformation.id, messageOptionsDrawer.myMessage.id);
-                                                                                                 pinnedMessageItem.requestCloseMessage(); } );
-                            } else {
-                                tdLibWrapper.pinMessage(chatPage.chatInformation.id, messageOptionsDrawer.myMessage.id);
-                            }
-                            messageOptionsDrawer.closeDrawer();
-                        }
-                        Label {
-                            width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                            text: messageOptionsDrawer.myMessage.is_pinned ? qsTr("Unpin Message") : qsTr("Pin Message")
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            horizontalAlignment: Text.AlignHCenter
-                        }
-                    }
-                    BackgroundItem {
-                        width: parent.width
-                        visible: messageOptionsDrawer.myMessage.can_be_deleted_for_all_users || (messageOptionsDrawer.myMessage.can_be_deleted_only_for_self && messageOptionsDrawer.myMessage.chat_id === chatPage.myUserId)
-                        onClicked: {
-                            var chatId = chatPage.chatInformation.id;
-                            var messageId = messageOptionsDrawer.myMessage.id;
-                            Remorse.itemAction(messageOptionsDrawer.sourceItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId ]); });
-                            messageOptionsDrawer.closeDrawer();
-                        }
-                        Label {
-                            width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                            text: qsTr("Delete Message")
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            horizontalAlignment: Text.AlignHCenter
-                        }
-                    }
-
+            delegate: ListItem {
+                Label {
+                    width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                    text: modelData.name
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    horizontalAlignment: Text.AlignHCenter
                 }
-                VerticalScrollDecorator {}
+                onClicked: {
+                    modelData.action();
+                    messageOptionsDrawer.closeDrawer();
+                }
+                hidden: !modelData.visible
             }
         }
 
