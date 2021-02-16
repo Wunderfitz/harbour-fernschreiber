@@ -208,7 +208,7 @@
     </message>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
@@ -249,7 +249,7 @@
     </message>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>User Info</source>
@@ -912,15 +912,15 @@
     <name>InReplyToRow</name>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Неизвестный(ая)</translation>
+        <translation>Неизвестный(ая)</translation>
     </message>
     <message>
         <source>This message was deleted</source>
-        <translation type="unfinished">Сообщение было удалено</translation>
+        <translation>Сообщение было удалено</translation>
     </message>
 </context>
 <context>
@@ -1021,7 +1021,7 @@
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
@@ -1052,7 +1052,7 @@
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
@@ -1248,7 +1248,7 @@
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>Pinned Message</source>
@@ -1705,22 +1705,22 @@
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation type="unfinished"></translation>
+        <translation>Удаление набора стикеров</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Набор стикеров успешно удалён!</translation>
     </message>
 </context>
 <context>
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Набор стикеров успешно установлен!</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Набор стикеров успешно удалён!</translation>
     </message>
 </context>
 <context>
