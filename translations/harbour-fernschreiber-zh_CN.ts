@@ -453,6 +453,10 @@
         <source>Delete Message</source>
         <translation>删除消息</translation>
     </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

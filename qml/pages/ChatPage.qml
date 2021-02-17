@@ -335,6 +335,18 @@ Page {
 
     }
 
+    function startForwardingMessages(messages) {
+        var ids = Functions.getMessagesArrayIds(messages);
+        var neededPermissions = Functions.getMessagesNeededForwardPermissions(messages);
+        var chatId = chatInformation.id;
+        pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
+            myUserId: chatPage.myUserId,
+            headerDescription: qsTr("Forward %Ln messages", "dialog header", ids.length),
+            payload: {fromChatId: chatId, messageIds:ids, neededPermissions: neededPermissions},
+            state: "forwardMessages"
+        });
+    }
+
     function forwardMessages(fromChatId, messageIds) {
         forwardMessagesTimer.fromChatId = fromChatId;
         forwardMessagesTimer.messageIds = messageIds;
@@ -696,6 +708,14 @@ Page {
                 visible: true
                 name: qsTr("Copy Message to Clipboard")
                 action: function () { Clipboard.text = Functions.getMessageText(messageOptionsDrawer.myMessage, true, messageOptionsDrawer.userInformation.id, true); }
+            },
+            NamedAction {
+                visible: messageOptionsDrawer.myMessage.can_be_forwarded
+                name: qsTr("Forward Message")
+                action: function () {
+                    var messagesToForward = [ messageOptionsDrawer.myMessage ];
+                    startForwardingMessages(messagesToForward);
+                }
             },
             NamedAction {
                 visible: canPinMessages()
@@ -2029,15 +2049,7 @@ Page {
                         icon.sourceSize: Qt.size(Theme.iconSizeMedium, Theme.iconSizeMedium)
                         icon.source: "image://theme/icon-m-forward"
                         onClicked: {
-                            var ids = Functions.getMessagesArrayIds(chatPage.selectedMessages)
-                            var neededPermissions = Functions.getMessagesNeededForwardPermissions(chatPage.selectedMessages)
-                            var chatId = chatInformation.id
-                            pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
-                                myUserId: chatPage.myUserId,
-                                headerDescription: qsTr("Forward %Ln messages", "dialog header", ids.length),
-                                payload: {fromChatId: chatId, messageIds:ids, neededPermissions: neededPermissions},
-                                state: "forwardMessages"
-                            })
+                            startForwardingMessages(chatPage.selectedMessages);
                         }
 
                     }

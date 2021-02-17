@@ -473,6 +473,10 @@
         <source>Delete Message</source>
         <translation>Usuń wiadomość</translation>
     </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

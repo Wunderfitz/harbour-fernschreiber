@@ -463,6 +463,10 @@
         <source>Delete Message</source>
         <translation>Poista viesti</translation>
     </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

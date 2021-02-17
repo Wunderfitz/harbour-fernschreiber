@@ -463,6 +463,10 @@
         <source>Delete Message</source>
         <translation>Delete Message</translation>
     </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Forward Message</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
