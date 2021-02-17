@@ -858,11 +858,11 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">未知</translation>
+        <translation>未知</translation>
     </message>
     <message>
         <source>This message was deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>已删除此消息</translation>
     </message>
 </context>
 <context>
@@ -1641,22 +1641,22 @@
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation type="unfinished"></translation>
+        <translation>正在移除表情包</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>表情包已成功移除！</translation>
     </message>
 </context>
 <context>
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation type="unfinished"></translation>
+        <translation>表情包已成功安装！</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>表情包已成功移除！</translation>
     </message>
 </context>
 <context>
@@ -2118,7 +2118,7 @@
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>取得 %Ln 分 </numerusform>
+            <numerusform>取得 %Ln 分</numerusform>
         </translation>
     </message>
     <message>
