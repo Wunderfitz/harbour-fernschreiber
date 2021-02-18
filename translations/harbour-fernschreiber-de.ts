@@ -435,6 +435,38 @@
         <source>Location (%1/%2)</source>
         <translation>Standort (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Nachricht in die Zwischenablage kopieren</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Nachricht losgeheftet</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Nachricht losheften</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Nachricht anheften</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation>Zusätzliche Optionen</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Nachricht gelöscht</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Nachricht löschen</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Nachricht weiterleiten</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -956,18 +988,6 @@
         <translation>Nachricht bearbeiten</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Nachricht in die Zwischenablage kopieren</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Nachricht gelöscht</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Nachricht löschen</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Sie</translation>
     </message>
@@ -980,16 +1000,8 @@
         <translation>Nachricht auswählen</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Nachricht anheften</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Nachricht losgeheftet</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Nachricht losheften</translation>
+        <source>More Options...</source>
+        <translation>Mehr Optionen...</translation>
     </message>
 </context>
 <context>

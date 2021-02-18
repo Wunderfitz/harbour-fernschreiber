@@ -435,6 +435,38 @@
         <source>Location (%1/%2)</source>
         <translation>Posizione(%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Copia messaggio nella clipboard</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Messaggio non più in evidenza</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Togli messaggio in evidenza</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Metti messaggio in evidenza</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Messaggio cancellato</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Cancella messaggio</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -956,18 +988,6 @@
         <translation>Modifica messaggio</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Copia messaggio nella clipboard</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Messaggio cancellato</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Cancella messaggio</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Tu</translation>
     </message>
@@ -980,16 +1000,8 @@
         <translation>Seleziona messaggio</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Metti messaggio in evidenza</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Messaggio non più in evidenza</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Togli messaggio in evidenza</translation>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

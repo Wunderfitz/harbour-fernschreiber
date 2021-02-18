@@ -435,6 +435,38 @@
         <source>Location (%1/%2)</source>
         <translation>Ubicación: (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Copiar</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Mensaje desanclado</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Desanclar mensaje</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Anclar mensaje</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Mensaje borrado</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Borrar</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -956,18 +988,6 @@
         <translation>Editar</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Copiar</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Mensaje borrado</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Borrar</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Usted</translation>
     </message>
@@ -980,16 +1000,8 @@
         <translation>Seleccionar</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Anclar mensaje</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Mensaje desanclado</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Desanclar mensaje</translation>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2144,18 +2156,18 @@
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>punto %Ln anotado</numerusform>
+            <numerusform>puntos %Ln anotados</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">envió un juego</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">envió un juego</translation>
     </message>
 </context>
 </TS>

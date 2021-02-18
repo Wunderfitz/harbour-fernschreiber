@@ -435,6 +435,38 @@
         <source>Location (%1/%2)</source>
         <translation>Plats (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Kopiera meddelandet till urklipp</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Meddelandet lösgjort</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Lösgör meddelandet</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Fäst meddelandet</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Mededelande borttaget</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Ta bort meddelandet</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -956,18 +988,6 @@
         <translation>Redigera meddelandet</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Kopiera meddelandet till urklipp</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Mededelande borttaget</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Ta bort meddelandet</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Du</translation>
     </message>
@@ -980,16 +1000,8 @@
         <translation>Markera meddelanden</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Fäst meddelandet</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Meddelandet lösgjort</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Lösgör meddelandet</translation>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

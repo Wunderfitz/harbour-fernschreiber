@@ -28,10 +28,18 @@ Dialog {
     allowedOrientations: Orientation.All
     canAccept: false
     acceptDestinationAction: PageStackAction.Replace
-    acceptDestinationReplaceTarget: pageStack.find( function(page){ return(page._depth === 0)} )
+    acceptDestinationReplaceTarget: pageStack.find( function(page){
+        // This crazy workaround is presented to you by a bug introduced with SFOS 4.0.1
+        // See https://forum.sailfishos.org/t/4-0-1-45-pagestack-find-not-working-properly-anymore-in-a-dialog/4723 for details.
+        chatSelectionPage.currentDepth = chatSelectionPage.currentDepth - 1;
+        return(chatSelectionPage.currentDepth === 0);
+    } )
     property int myUserId: tdLibWrapper.getUserInformation().id
     property alias headerTitle: pageHeader.title
     property alias headerDescription: pageHeader.description
+
+    property var currentDepth: pageStack.depth
+
     /*
         payload dependent on chatSelectionPage.state
          - forwardMessages: {fromChatId, messageIds, neededPermissions}

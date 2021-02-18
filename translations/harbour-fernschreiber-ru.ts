@@ -445,6 +445,38 @@
         <source>Location (%1/%2)</source>
         <translation>Местоположение (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Скопировать в буфер обмена</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Сообщение откреплено</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Открепить сообщение</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Закрепить сообщение</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Сообщение удалено</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Удалить</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -973,18 +1005,6 @@
         <translation>Редактировать</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Скопировать в буфер обмена</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Сообщение удалено</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Удалить</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Я</translation>
     </message>
@@ -997,16 +1017,8 @@
         <translation>Выбрать сообщение</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Закрепить сообщение</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Сообщение откреплено</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Открепить сообщение</translation>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

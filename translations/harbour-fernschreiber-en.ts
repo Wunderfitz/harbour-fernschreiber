@@ -435,6 +435,38 @@
         <source>Location (%1/%2)</source>
         <translation>Location (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Copy Message to Clipboard</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Message unpinned</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Unpin Message</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Pin Message</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation>Additional Options</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Message deleted</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Delete Message</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Forward Message</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -958,18 +990,6 @@ messages</numerusform>
         <translation>Edit Message</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Copy Message to Clipboard</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Message deleted</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Delete Message</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>You</translation>
     </message>
@@ -982,16 +1002,8 @@ messages</numerusform>
         <translation>Select Message</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Pin Message</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Message unpinned</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Unpin Message</translation>
+        <source>More Options...</source>
+        <translation>More Options...</translation>
     </message>
 </context>
 <context>

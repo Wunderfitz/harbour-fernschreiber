@@ -445,6 +445,38 @@
         <source>Location (%1/%2)</source>
         <translation>Poloha (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Kopírovať správu do schránky</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Správa bola odopnutá</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Odopnúť správu</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Pripnúť správu</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Správa bola odstránená</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Odstrániť správu</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -970,18 +1002,6 @@
         <translation>Upraviť správu</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Kopírovať správu do schránky</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Správa bola odstránená</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Odstrániť správu</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Ja</translation>
     </message>
@@ -994,16 +1014,8 @@
         <translation>Vybrať správu</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Pripnúť správu</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Správa bola odopnutá</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Odopnúť správu</translation>
+        <source>More Options...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

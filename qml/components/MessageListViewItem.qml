@@ -43,8 +43,9 @@ ListItem {
     });
     readonly property bool isOwnMessage: page.myUserId === myMessage.sender.user_id
     property bool hasContentComponent
+    property bool additionalOptionsOpened
 
-    highlighted: (down || isSelected) && !menuOpen
+    highlighted: (down || isSelected || additionalOptionsOpened) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
 
     signal replyToMessage()
@@ -78,6 +79,13 @@ ListItem {
         chatView.manuallyScrolledToBottom = false;
     }
 
+    Connections {
+        target: messageOptionsDrawer
+        onCloseRequested: {
+            messageListItem.additionalOptionsOpened = false;
+        }
+    }
+
     Loader {
         id: contextMenuLoader
         active: false
@@ -90,16 +98,6 @@ ListItem {
         }
         sourceComponent: Component {
             ContextMenu {
-                Repeater {
-                    model: (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ?
-                        extraContentLoader.item.extraContextMenuItems : 0
-                    delegate: MenuItem {
-                        visible: modelData.visible
-                        text: modelData.name
-                        onClicked: modelData.action()
-                    }
-                }
-
                 MenuItem {
                     visible: messageListItem.canReplyToMessage
                     onClicked: messageListItem.replyToMessage()
@@ -112,36 +110,20 @@ ListItem {
                 }
                 MenuItem {
                     onClicked: {
-                        Clipboard.text = Functions.getMessageText(myMessage, true, userInformation.id, true);
-                    }
-                    text: qsTr("Copy Message to Clipboard")
-                }
-                MenuItem {
-                    onClicked: {
                         page.toggleMessageSelection(myMessage);
                     }
                     text: qsTr("Select Message")
                 }
                 MenuItem {
                     onClicked: {
-                        if (myMessage.is_pinned) {
-                            Remorse.popupAction(page, qsTr("Message unpinned"), function() { tdLibWrapper.unpinMessage(page.chatInformation.id, messageId);
-                                                                                             pinnedMessageItem.requestCloseMessage(); } );
-                        } else {
-                            tdLibWrapper.pinMessage(page.chatInformation.id, messageId);
-                        }
+                        messageOptionsDrawer.myMessage = myMessage;
+                        messageOptionsDrawer.userInformation = userInformation;
+                        messageOptionsDrawer.sourceItem = messageListItem
+                        messageOptionsDrawer.additionalItemsModel = (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ? extraContentLoader.item.extraContextMenuItems : 0;
+                        messageListItem.additionalOptionsOpened = true;
+                        messageOptionsDrawer.open = true;
                     }
-                    text: myMessage.is_pinned ? qsTr("Unpin Message") : qsTr("Pin Message")
-                    visible: canPinMessages()
-                }
-                MenuItem {
-                    onClicked: {
-                        var chatId = page.chatInformation.id;
-                        var messageId = messageListItem.messageId;
-                        Remorse.itemAction(messageListItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId]);  })
-                    }
-                    text: qsTr("Delete Message")
-                    visible: myMessage.can_be_deleted_for_all_users || (myMessage.can_be_deleted_only_for_self && myMessage.chat_id === page.myUserId)
+                    text: qsTr("More Options...")
                 }
             }
         }
