@@ -146,7 +146,7 @@
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation>Nessuna informazione disponibile.</translation>
+        <translation>Nessuna informazione disponibile</translation>
     </message>
     <message>
         <source>Info</source>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>Il link d&apos;invito è stato copiato.</translation>
+        <translation>Il link d&apos;invito è stato copiato</translation>
     </message>
     <message>
         <source>%1, %2</source>
@@ -200,11 +200,11 @@
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
-        <translation>Non hai nessun gruppo in comune con questo utente.</translation>
+        <translation>Nessun gruppo in comune con questo utente</translation>
     </message>
     <message>
         <source>This group is empty.</source>
-        <translation>Questo gruppo è vuoto.</translation>
+        <translation>Questo gruppo è vuoto</translation>
     </message>
     <message>
         <source>Loading common chats…</source>
@@ -217,7 +217,7 @@
     </message>
     <message>
         <source>Channel members are anonymous.</source>
-        <translation>I membri del canale sono anonimi.</translation>
+        <translation>I membri del canale sono anonimi</translation>
     </message>
 </context>
 <context>
@@ -262,7 +262,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation>Nessun messaggio.</translation>
+        <translation>Nessun messaggio</translation>
     </message>
     <message>
         <source>Mark chat as unread</source>
@@ -335,7 +335,7 @@
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation>Questa chat è vuota.</translation>
+        <translation>Questa chat è vuota</translation>
     </message>
     <message>
         <source>Loading messages...</source>
@@ -409,7 +409,7 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>Questa chat non è ancora pronta. Il tuo interlocutore deve essere online.</translation>
+        <translation>Questa chat segreta non è ancora pronta. Il tuo interlocutore deve essere online.</translation>
     </message>
     <message>
         <source>Closing chat</source>
@@ -444,7 +444,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>Nessuna chat presente.</translation>
+        <translation>Nessuna chat presente</translation>
     </message>
 </context>
 <context>
@@ -709,7 +709,7 @@
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>hai cancellato la foto della chats</translation>
+        <translation>hai cancellato la foto della chat</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
@@ -718,7 +718,7 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>hai modificato le impostazioni TTL della chat segreta</translation>
+        <translation>hai cambiato le impostazioni TTL della chat segreta</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
@@ -856,11 +856,11 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download di %1 completato.</translation>
+        <translation>Download di %1 completato</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Download non riuscito.</translation>
+        <translation>Download non riuscito</translation>
     </message>
 </context>
 <context>
@@ -890,7 +890,7 @@
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Inserisci il tuo numero di telefono per continuare.</translation>
+        <translation>Inserisci il tuo numero di telefono per continuare</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -902,7 +902,7 @@
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
-        <translation>Autenticazione non riuscita con il codice inserito.</translation>
+        <translation>Autenticazione non riuscita con il codice inserito</translation>
     </message>
     <message>
         <source>Enter code again</source>
@@ -1018,7 +1018,7 @@
     <name>MessageLocation</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation>Installa Pure Maps per conoscere questo luogo.</translation>
+        <translation>Installa Pure Maps per conoscere questo luogo</translation>
     </message>
 </context>
 <context>
@@ -1048,7 +1048,7 @@
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation>Risposte multiple consentite.</translation>
+        <translation>Risposte multiple consentite</translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
@@ -1090,7 +1090,7 @@
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation>Non hai nessun contatto.</translation>
+        <translation>Non hai nessun contatto</translation>
     </message>
     <message>
         <source>Private Chat</source>
@@ -1122,11 +1122,11 @@
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Sincronizzazione contatti con Telegram non riuscita.</translation>
+        <translation>Sincronizzazione contatti con Telegram non riuscita</translation>
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation>Sincronizzazione contatti con Telegram completata.</translation>
+        <translation>Sincronizzazione contatti con Telegram completata</translation>
     </message>
 </context>
 <context>
@@ -1155,7 +1155,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>Non hai nessuna chat.</translation>
+        <translation>Non hai nessuna chat</translation>
     </message>
     <message>
         <source>Waiting for network...</source>
@@ -1191,11 +1191,11 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download di %1 completato.</translation>
+        <translation>Download di %1 completato</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Download non riuscito.</translation>
+        <translation>Download non riuscito</translation>
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
@@ -1203,11 +1203,11 @@
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation>Nessuna chat corrispondente.</translation>
+        <translation>Nessuna chat corrispondente</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation>Puoi creare una nuova chat o cercare chat pubbliche dal menu a trascinamento.</translation>
+        <translation>Puoi creare una nuova chat o cercare chat pubbliche dal menu a trascinamento</translation>
     </message>
     <message>
         <source>Logging out</source>
@@ -1233,23 +1233,23 @@
     <name>PollCreationPage</name>
     <message>
         <source>All answers have to contain 1-100 characters.</source>
-        <translation>Le risposte devono avere da 1 a 100 caratteri.</translation>
+        <translation>Le risposte devono avere da 1 a 100 caratteri</translation>
     </message>
     <message>
         <source>To send a quiz, you have to specify the right answer.</source>
-        <translation>Per inviare un quiz devi indicare una risposta esatta.</translation>
+        <translation>Per inviare un quiz devi indicare una risposta esatta</translation>
     </message>
     <message>
         <source>You have to enter a question.</source>
-        <translation>Devi inserire una domanda.</translation>
+        <translation>Inserisci una domanda</translation>
     </message>
     <message>
         <source>The question has to be shorter than 256 characters.</source>
-        <translation>La domanda non deve superare 255 caratteri.</translation>
+        <translation>La domanda non deve superare 255 caratteri</translation>
     </message>
     <message>
         <source>A poll requires 2-10 answers.</source>
-        <translation>Un sondaggio richiede tra 2 e 10 risposte.</translation>
+        <translation>Un sondaggio richiede tra 2 e 10 risposte</translation>
     </message>
     <message>
         <source>Create a Poll</source>
@@ -1319,11 +1319,11 @@
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation>Mostra quando l&apos;utente sceglie una risposta errata.</translation>
+        <translation>Mostra quando l&apos;utente sceglie una risposta errata</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation>Una spiegazione può contenere massimo 200 caratteri.</translation>
+        <translation>Una spiegazione può contenere massimo 200 caratteri</translation>
     </message>
 </context>
 <context>
@@ -1388,7 +1388,7 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation>Nessuna chat trovata.</translation>
+        <translation>Nessuna chat trovata</translation>
     </message>
     <message>
         <source>Searching chats...</source>
@@ -1445,7 +1445,7 @@
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Invia messaggio con tasto invio</translation>
+        <translation>Invia messaggi con tasto invio</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
@@ -1461,7 +1461,7 @@
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation>Mostra sfondo per gli sticker e centrali come le immagini.</translation>
+        <translation>Mostra sfondo per gli sticker e centrali come le immagini</translation>
     </message>
     <message>
         <source>Notification feedback</source>
@@ -1568,7 +1568,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation>Impostazione per consentire di essere invitato in una chat.</translation>
+        <translation>Impostazione per consentire di essere invitato in una chat</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -1588,7 +1588,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Impostazione per consentire di essere trovato con il tuo numero di telefono.</translation>
+        <translation>Impostazione per consentire di essere trovato con il tuo numero di telefono</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
@@ -1596,7 +1596,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Impostazione per consentire di inserire un link al tuo account quando vengono inoltrati i tuoi messaggi.</translation>
+        <translation>Impostazione per consentire di inserire un link al tuo account quando vengono inoltrati i tuoi messaggi</translation>
     </message>
     <message>
         <source>Show phone number</source>
@@ -1604,7 +1604,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation>Indica chi può vedere il tuo numero di telefono.</translation>
+        <translation>Indica chi può vedere il tuo numero di telefono</translation>
     </message>
     <message>
         <source>Show profile photo</source>
@@ -1612,7 +1612,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation>Impostazioni per gestire chi può vedere la tua foto del profilo.</translation>
+        <translation>Impostazioni per gestire chi può vedere la tua foto del profilo</translation>
     </message>
     <message>
         <source>Show status</source>
@@ -1620,7 +1620,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation>Impostazioni per rendere visibile il tuo ultimo accesso con precisione.</translation>
+        <translation>Impostazioni per rendere visibile il tuo ultimo accesso con precisione</translation>
     </message>
     <message>
         <source>Add Picture</source>
@@ -1667,33 +1667,33 @@
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi il set di sticker</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Il set di sticker è stato rimosso!</translation>
     </message>
 </context>
 <context>
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Set di sticker installato!</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Il set di sticker è stato rimosso!</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download di %1 completato.</translation>
+        <translation>Download di %1 completato</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Download non riuscito.</translation>
+        <translation>Download non riuscito</translation>
     </message>
     <message>
         <source>Copy video to gallery</source>
@@ -1794,7 +1794,7 @@
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>ha inviato un file audio</translation>
+        <translation>ha inviato un audio</translation>
     </message>
     <message>
         <source>sent a voice note</source>
@@ -1850,7 +1850,7 @@
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>hai inviato un file audio</translation>
+        <translation>hai inviato un audio</translation>
     </message>
     <message>
         <source>sent a voice note</source>
@@ -2112,7 +2112,7 @@
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation>Sei già membro di questa chat.</translation>
+        <translation>Sei già membro di questa chat</translation>
     </message>
     <message>
         <source>Closed!</source>
