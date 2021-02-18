@@ -29,6 +29,7 @@
 #include <QDateTime>
 #include <QGeoCoordinate>
 #include <QGeoLocation>
+#include <QSysInfo>
 
 #define DEBUG_MODULE FernschreiberUtils
 #include "debuglog.h"
@@ -244,6 +245,11 @@ void FernschreiberUtils::stopGeoLocationUpdates()
 bool FernschreiberUtils::supportsGeoLocation()
 {
     return this->geoPositionInfoSource;
+}
+
+QString FernschreiberUtils::getSailfishOSVersion()
+{
+    return QSysInfo::productVersion();
 }
 
 void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status status)
