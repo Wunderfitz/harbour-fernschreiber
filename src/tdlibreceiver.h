@@ -99,6 +99,7 @@ signals:
     void userPrivacySettingRulesUpdated(const QVariantMap &updatedRules);
     void messageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo);
     void okReceived(const QString &request);
+    void sessionsReceived(const QVariantList &sessions);
 
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
@@ -171,6 +172,7 @@ private:
     void processUserPrivacySettingRules(const QVariantMap &receivedInformation);
     void processUpdateUserPrivacySettingRules(const QVariantMap &receivedInformation);
     void processUpdateMessageInteractionInfo(const QVariantMap &receivedInformation);
+    void processSessions(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

@@ -143,6 +143,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("userPrivacySettingRules", &TDLibReceiver::processUserPrivacySettingRules);
     handlers.insert("updateUserPrivacySettingRules", &TDLibReceiver::processUpdateUserPrivacySettingRules);
     handlers.insert("updateMessageInteractionInfo", &TDLibReceiver::processUpdateMessageInteractionInfo);
+    handlers.insert("sessions", &TDLibReceiver::processSessions);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -637,4 +638,10 @@ void TDLibReceiver::processUpdateMessageInteractionInfo(const QVariantMap &recei
     const qlonglong messageId = receivedInformation.value(MESSAGE_ID).toLongLong();
     LOG("Message interaction info updated" << chatId << messageId);
     emit messageInteractionInfoUpdated(chatId, messageId, receivedInformation.value(INTERACTION_INFO).toMap());
+}
+
+void TDLibReceiver::processSessions(const QVariantMap &receivedInformation)
+{
+    QVariantList sessions = receivedInformation.value("sessions").toList();
+    emit sessionsReceived(sessions);
 }

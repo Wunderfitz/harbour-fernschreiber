@@ -219,6 +219,10 @@ function getDateTimeTranslated(timestamp) {
     return new Date(timestamp * 1000).toLocaleString();
 }
 
+function getDateTimeTimepoint(timestamp) {
+    return Silica.Format.formatDate(new Date(timestamp * 1000), Silica.Formatter.TimepointRelative);
+}
+
 function handleHtmlEntity(messageText, messageInsertions, originalString, replacementString) {
     var nextIndex = -1;
     while ((nextIndex = messageText.indexOf(originalString, nextIndex + 1)) > -1) {

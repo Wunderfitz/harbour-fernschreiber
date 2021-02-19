@@ -91,6 +91,45 @@
         <source>Logged out</source>
         <translation>Logged out</translation>
     </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Active Sessions</translation>
+    </message>
+</context>
+<context>
+    <name>ActiveSessionsPage</name>
+    <message>
+        <source>Getting active sessions...</source>
+        <translation>Getting active sessions...</translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Active Sessions</translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Session was terminated</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Terminate Session</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>This app</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP address: %1, origin: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Active since: %1, last online: %2</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Terminating session</translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>

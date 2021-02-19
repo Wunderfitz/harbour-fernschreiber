@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf and other contributors
+    Copyright (C) 2020-21 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -232,7 +232,17 @@ Page {
             }
 
             Button {
-                id: flickrTosButton
+                id: activeSessionsButton
+                text: qsTr("Active Sessions")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("ActiveSessionsPage.qml"));
+                }
+            }
+
+            Button {
                 text: qsTr("Terms of Service")
                 anchors {
                     horizontalCenter: parent.horizontalCenter
@@ -243,7 +253,6 @@ Page {
             }
 
             Button {
-                id: flickrPrivacyButton
                 text: qsTr("Privacy Policy")
                 anchors {
                     horizontalCenter: parent.horizontalCenter

@@ -222,6 +222,8 @@ public:
     Q_INVOKABLE void setProfilePhoto(const QString &filePath);
     Q_INVOKABLE void deleteProfilePhoto(const QString &profilePhotoId);
     Q_INVOKABLE void changeStickerSet(const QString &stickerSetId, bool isInstalled);
+    Q_INVOKABLE void getActiveSessions();
+    Q_INVOKABLE void terminateSession(const QString &sessionId);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -300,6 +302,7 @@ signals:
     void userPrivacySettingUpdated(UserPrivacySetting setting, UserPrivacySettingRule rule);
     void messageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo);
     void okReceived(const QString &request);
+    void sessionsReceived(const QVariantList &sessions);
 
 public slots:
     void handleVersionDetected(const QString &version);

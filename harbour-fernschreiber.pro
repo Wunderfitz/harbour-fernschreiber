@@ -110,6 +110,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/messageContent/WebPagePreview.qml \
     qml/js/debug.js \
     qml/js/functions.js \
+    qml/pages/ActiveSessionsPage.qml \
     qml/pages/ChatInformationPage.qml \
     qml/pages/ChatPage.qml \
     qml/pages/ChatSelectionPage.qml \

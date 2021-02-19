@@ -91,6 +91,45 @@
         <source>Logged out</source>
         <translation>Abgemeldet</translation>
     </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Aktive Sitzungen</translation>
+    </message>
+</context>
+<context>
+    <name>ActiveSessionsPage</name>
+    <message>
+        <source>Getting active sessions...</source>
+        <translation>Erhalte aktive Sitzungen...</translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Aktive Sitzungen</translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Sitzung wurde beendet</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Sitzung beenden</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>Diese App</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP-Adresse: %1, Herkunft: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Aktiv seit: %1, zuletzt online: %2</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Beende Sitzung</translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>

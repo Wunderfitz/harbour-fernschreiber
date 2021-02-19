@@ -162,6 +162,7 @@ void TDLibWrapper::initializeTDLibReciever() {
     connect(this->tdLibReceiver, SIGNAL(userPrivacySettingRulesUpdated(QVariantMap)), this, SLOT(handleUpdatedUserPrivacySettingRules(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(okReceived(QString)), this, SIGNAL(okReceived(QString)));
+    connect(this->tdLibReceiver, SIGNAL(sessionsReceived(QVariantList)), this, SIGNAL(sessionsReceived(QVariantList)));
 
     this->tdLibReceiver->start();
 }
@@ -1336,6 +1337,24 @@ void TDLibWrapper::changeStickerSet(const QString &stickerSetId, bool isInstalle
     requestObject.insert("set_id", stickerSetId);
     requestObject.insert("is_installed", isInstalled);
 
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getActiveSessions()
+{
+    LOG("Get active sessions");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getActiveSessions");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::terminateSession(const QString &sessionId)
+{
+    LOG("Terminate session" << sessionId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "terminateSession");
+    requestObject.insert(_EXTRA, "terminateSession");
+    requestObject.insert("session_id", sessionId);
     this->sendRequest(requestObject);
 }
 
