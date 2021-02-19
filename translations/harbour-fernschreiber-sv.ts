@@ -492,7 +492,7 @@
     </message>
     <message>
         <source>Additional Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Fler alternativ</translation>
     </message>
     <message>
         <source>Message deleted</source>
@@ -504,7 +504,7 @@
     </message>
     <message>
         <source>Forward Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Vidarebefordra meddelande</translation>
     </message>
 </context>
 <context>
@@ -942,11 +942,11 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Okänd</translation>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>This message was deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Meddelandet togs bort</translation>
     </message>
 </context>
 <context>
@@ -1040,7 +1040,7 @@
     </message>
     <message>
         <source>More Options...</source>
-        <translation type="unfinished"></translation>
+        <translation>Fler alternativ...</translation>
     </message>
 </context>
 <context>
@@ -1718,22 +1718,22 @@
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation type="unfinished"></translation>
+        <translation>Tar bort dekaluppsättning</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dekaluppsättning borttagen!</translation>
     </message>
 </context>
 <context>
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dekaluppsättning installerad!</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dekaluppsättning borttagen!</translation>
     </message>
 </context>
 <context>
