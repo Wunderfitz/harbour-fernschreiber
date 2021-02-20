@@ -93,42 +93,42 @@
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiva sessioner</translation>
     </message>
 </context>
 <context>
     <name>ActiveSessionsPage</name>
     <message>
         <source>Getting active sessions...</source>
-        <translation type="unfinished"></translation>
+        <translation>Hämtar aktiva sessioner...</translation>
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiva sessioner</translation>
     </message>
     <message>
         <source>Session was terminated</source>
-        <translation type="unfinished"></translation>
+        <translation>Sessionen avbröts</translation>
     </message>
     <message>
         <source>Terminate Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Avbryt sessionen</translation>
     </message>
     <message>
         <source>This app</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna app</translation>
     </message>
     <message>
         <source>IP address: %1, origin: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>IP-adress: %1, ursprung: %2</translation>
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiv sedan: %1, senast online: %2</translation>
     </message>
     <message>
         <source>Terminating session</source>
-        <translation type="unfinished"></translation>
+        <translation>Avbryter session</translation>
     </message>
 </context>
 <context>
