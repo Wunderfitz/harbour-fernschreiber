@@ -93,42 +93,42 @@
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Активные сеансы</translation>
     </message>
 </context>
 <context>
     <name>ActiveSessionsPage</name>
     <message>
         <source>Getting active sessions...</source>
-        <translation type="unfinished"></translation>
+        <translation>Получение активных сеансов...</translation>
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Активные сеансы</translation>
     </message>
     <message>
         <source>Session was terminated</source>
-        <translation type="unfinished"></translation>
+        <translation>Сеанс был завершён</translation>
     </message>
     <message>
         <source>Terminate Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Завершить сеанс</translation>
     </message>
     <message>
         <source>This app</source>
-        <translation type="unfinished"></translation>
+        <translation>Это приложение</translation>
     </message>
     <message>
         <source>IP address: %1, origin: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>IP-адрес: %1, источник: %2</translation>
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Активен с: %1, был онлайн: %2</translation>
     </message>
     <message>
         <source>Terminating session</source>
-        <translation type="unfinished"></translation>
+        <translation>Завершение сеанса</translation>
     </message>
 </context>
 <context>
@@ -502,7 +502,7 @@
     </message>
     <message>
         <source>Additional Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Дополнительные опции</translation>
     </message>
     <message>
         <source>Message deleted</source>
@@ -510,11 +510,11 @@
     </message>
     <message>
         <source>Delete Message</source>
-        <translation type="unfinished">Удалить</translation>
+        <translation>Удалить сообщение</translation>
     </message>
     <message>
         <source>Forward Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Переслать сообщение</translation>
     </message>
 </context>
 <context>
