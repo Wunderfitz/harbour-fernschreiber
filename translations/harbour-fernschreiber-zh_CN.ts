@@ -93,42 +93,42 @@
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>登录设备情况</translation>
     </message>
 </context>
 <context>
     <name>ActiveSessionsPage</name>
     <message>
         <source>Getting active sessions...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在获取登录设备情况…</translation>
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>登录设备情况</translation>
     </message>
     <message>
         <source>Session was terminated</source>
-        <translation type="unfinished"></translation>
+        <translation>已删除设备</translation>
     </message>
     <message>
         <source>Terminate Session</source>
-        <translation type="unfinished"></translation>
+        <translation>删除设备</translation>
     </message>
     <message>
         <source>This app</source>
-        <translation type="unfinished"></translation>
+        <translation>此应用</translation>
     </message>
     <message>
         <source>IP address: %1, origin: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>IP 地址: %1, 地点: %2</translation>
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>活跃时间: %1, 上次在线: %2</translation>
     </message>
     <message>
         <source>Terminating session</source>
-        <translation type="unfinished"></translation>
+        <translation>删除设备</translation>
     </message>
 </context>
 <context>
@@ -482,7 +482,7 @@
     </message>
     <message>
         <source>Additional Options</source>
-        <translation type="unfinished"></translation>
+        <translation>附加选项</translation>
     </message>
     <message>
         <source>Message deleted</source>
@@ -494,7 +494,7 @@
     </message>
     <message>
         <source>Forward Message</source>
-        <translation type="unfinished"></translation>
+        <translation>转发消息</translation>
     </message>
 </context>
 <context>
@@ -1027,7 +1027,7 @@
     </message>
     <message>
         <source>More Options...</source>
-        <translation type="unfinished"></translation>
+        <translation>更多选项…</translation>
     </message>
 </context>
 <context>
