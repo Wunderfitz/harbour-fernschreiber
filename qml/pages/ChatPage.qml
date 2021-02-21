@@ -750,14 +750,8 @@ Page {
                     jointModel.push(messageOptionsModel[i]);
                 }
                 drawerListView.model = jointModel;
+                focus = true // Take the focus away from the text field
             }
-        }
-
-        signal closeRequested();
-
-        function closeDrawer() {
-            messageOptionsDrawer.closeRequested();
-            messageOptionsDrawer.open = false;
         }
 
         anchors.fill: parent
@@ -793,7 +787,7 @@ Page {
                     icon.source: "image://theme/icon-m-clear"
                     anchors.verticalCenter: parent.verticalCenter
                     onClicked: {
-                        messageOptionsDrawer.closeDrawer();
+                        messageOptionsDrawer.open = false
                     }
                 }
             }
@@ -808,7 +802,7 @@ Page {
                 }
                 onClicked: {
                     modelData.action();
-                    messageOptionsDrawer.closeDrawer();
+                    messageOptionsDrawer.open = false
                 }
                 hidden: !modelData.visible
             }
@@ -1918,6 +1912,11 @@ Page {
                             onTextChanged: {
                                 controlSendButton();
                                 textReplacementTimer.restart();
+                            }
+                            onActiveFocusChanged: {
+                                if (activeFocus) {
+                                    messageOptionsDrawer.open = false
+                                }
                             }
                         }
 

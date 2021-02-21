@@ -80,9 +80,11 @@ ListItem {
     }
 
     Connections {
-        target: messageOptionsDrawer
-        onCloseRequested: {
-            messageListItem.additionalOptionsOpened = false;
+        target: additionalOptionsOpened ? messageOptionsDrawer : null
+        onOpenChanged: {
+            if (!messageOptionsDrawer.open) {
+                additionalOptionsOpened = false
+            }
         }
     }
 
