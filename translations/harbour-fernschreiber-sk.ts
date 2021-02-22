@@ -93,42 +93,42 @@
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktívne relácie</translation>
     </message>
 </context>
 <context>
     <name>ActiveSessionsPage</name>
     <message>
         <source>Getting active sessions...</source>
-        <translation type="unfinished"></translation>
+        <translation>Preberanie aktívnych relácií...</translation>
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktívne relácie</translation>
     </message>
     <message>
         <source>Session was terminated</source>
-        <translation type="unfinished"></translation>
+        <translation>Relácia bola ukončená</translation>
     </message>
     <message>
         <source>Terminate Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukončenie relácie</translation>
     </message>
     <message>
         <source>This app</source>
-        <translation type="unfinished"></translation>
+        <translation>Táto aplikácia</translation>
     </message>
     <message>
         <source>IP address: %1, origin: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>IP adresa: %1, pôvod: %2</translation>
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktívna od: %1, naposledy pripojená: %2</translation>
     </message>
     <message>
         <source>Terminating session</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukončovanie relácie</translation>
     </message>
 </context>
 <context>
@@ -502,7 +502,7 @@
     </message>
     <message>
         <source>Additional Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Prídavné voľby</translation>
     </message>
     <message>
         <source>Message deleted</source>
@@ -514,7 +514,7 @@
     </message>
     <message>
         <source>Forward Message</source>
-        <translation type="unfinished"></translation>
+        <translationPostúpiť správu></translation>
     </message>
 </context>
 <context>
@@ -956,11 +956,11 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Neznámy</translation>
+        <translation>Neznámy</translation>
     </message>
     <message>
         <source>This message was deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Táto správa bola odstránená</translation>
     </message>
 </context>
 <context>
@@ -1054,7 +1054,7 @@
     </message>
     <message>
         <source>More Options...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ďalšie voľby...</translation>
     </message>
 </context>
 <context>
@@ -1745,22 +1745,22 @@
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť sadu nálepiek</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sada nálepiek bola úspešne odstránená!</translation>
     </message>
 </context>
 <context>
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sada nálepiek bola úspešne inštalovaná!</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sada nálepiek bola úspešne odstránená!</translation>
     </message>
 </context>
 <context>
