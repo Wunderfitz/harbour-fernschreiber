@@ -1057,7 +1057,7 @@
     </message>
     <message>
         <source>More Options...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ещё...</translation>
     </message>
 </context>
 <context>
