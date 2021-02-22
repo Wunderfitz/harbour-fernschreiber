@@ -1572,7 +1572,7 @@
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation></translation>
+        <translation>Inaktiverar cachelagring offline. Vissa funktioner kan vara begränsade eller saknas helt i det här läget. Ändringar kräver omstart av Fernschreiber för att träda i kraft.</translation>
     </message>
     <message>
         <source>Privacy</source>
