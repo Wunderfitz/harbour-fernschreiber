@@ -12,6 +12,27 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Mon Feb 22 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.7
+- Tap on a sticker to show overlay with the corresponding sticker set
+- Sticker set overlay allows to uninstall it
+- Redesign sticker picker, improve loading time
+- Additional context menu to prevent the normal one from becoming too big, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/216
+- Manage all Telegram sessions for current user (see About -> Active Sessions)
+- Forward message now directly available in (additional) context menu
+- Use different background colors for muted chats - thanks to monich
+- Enable storage optimizer per default
+- [SFOS 4] Disable contacts sync as no longer possible, see https://forum.sailfishos.org/t/4-0-1-45-non-jailed-contacts-sqlite-database-no-longer-updated/4724
+- Fix: Found private chats no longer appear automatically in the chat list
+- Fix: Stickers can now be sent as replies
+- Fix: Message sticker highlight and click behavior now aligned with other message types - thanks to monich
+- Fix: Don't auto-scroll if context menu is opened, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/139
+- Fix: Deleted in-reply-to messages are now shown with a placeholder, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/374
+- Fix: Sort text replacements better to avoid overlaps in case of special characters, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/334
+- Fix: Trigger mark-as-read (almost) immediately after opening chat (plus configurable delay)
+- Fix: [SFOS 4] Documents app can no longer access all directories, always download before calling it
+- Fix: [SFOS 4] Forwarding a message no longer causes the page stack to become invalid (navigating back was no longer working)
+- Several translations updated - thanks to all contributors
+
 * Fri Feb 5 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.7
 - Massively extended bot support - thanks to jgibbon
 - Option to change first name, last name, username
