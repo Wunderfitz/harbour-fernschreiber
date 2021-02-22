@@ -112,7 +112,7 @@
     </message>
     <message>
         <source>Terminate Session</source>
-        <translation>Ukončenie relácie</translation>
+        <translation>Ukončiť reláciu</translation>
     </message>
     <message>
         <source>This app</source>
@@ -514,7 +514,7 @@
     </message>
     <message>
         <source>Forward Message</source>
-        <translationPostúpiť správu></translation>
+        <translation>Postúpiť správu</translation>
     </message>
 </context>
 <context>
@@ -1745,7 +1745,7 @@
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation>Odstrániť sadu nálepiek</translation>
+        <translation>Odstraňovanie sady nálepiek</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
