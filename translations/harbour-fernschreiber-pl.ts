@@ -1141,7 +1141,7 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation type="unfinished"></translation>
+        <translation>przez %1</translation>
     </message>
 </context>
 <context>
@@ -1662,7 +1662,7 @@
     </message>
     <message>
         <source>Allow finding by phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozwól na wyszukiwanie po numerze telefonu</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
