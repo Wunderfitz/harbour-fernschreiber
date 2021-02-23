@@ -900,37 +900,37 @@
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>zdobyłem %Ln punkt</numerusform>
+            <numerusform>zdobyłem %Ln punkty</numerusform>
+            <numerusform>zdobyłem %Ln punktów</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>zdobył %Ln punkt</numerusform>
+            <numerusform>zdobył %Ln punkty</numerusform>
+            <numerusform>zdobył %Ln punktów</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>wysłałem grę</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>wysłał grę</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>wysłałem notatkę video</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished"></translation>
+        <translation>wysłał notatkę video</translation>
     </message>
 </context>
 <context>
@@ -1066,18 +1066,18 @@
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>zdobyłem %Ln punkt w %2</numerusform>
+            <numerusform>zdobyłem %Ln punkty w %2</numerusform>
+            <numerusform>zdobyłem %Ln punktów w %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>zdobył %Ln punkt w %2</numerusform>
+            <numerusform>zdobył %Ln punkty w %2</numerusform>
+            <numerusform>zdobył %Ln punktów w %2</numerusform>
         </translation>
     </message>
 </context>
@@ -1638,7 +1638,7 @@
     <message>
         <source>Username</source>
         <comment>user name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa użytkownika</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
@@ -2221,20 +2221,20 @@
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>zdobyłem %Ln punkt</numerusform>
+            <numerusform>zdobyłem %Ln punkty</numerusform>
+            <numerusform>zdobyłem %Ln punktów</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>wysłałem grę</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>wysłał grę</translation>
     </message>
 </context>
 </TS>
