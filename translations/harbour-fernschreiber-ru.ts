@@ -1053,7 +1053,7 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation>Выбрать сообщение</translation>
+        <translation>Выделить сообщения</translation>
     </message>
     <message>
         <source>More Options...</source>
