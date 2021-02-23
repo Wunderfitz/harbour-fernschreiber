@@ -301,7 +301,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation>No hay mensaje en esta charla.</translation>
+        <translation>No hay mensaje aún.</translation>
     </message>
     <message>
         <source>Mark chat as unread</source>
@@ -784,7 +784,7 @@
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>borró la foto de la charla</translation>
+        <translation>borró la foto del grupo</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
@@ -1234,7 +1234,7 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation>Filtrar las charlas...</translation>
+        <translation>A b c</translation>
     </message>
     <message>
         <source>Search Chats</source>
@@ -1250,7 +1250,7 @@
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation>Tocar la barra de título para filtrar las charlas</translation>
+        <translation>Tocar la barra de título para buscar</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
@@ -1439,7 +1439,7 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation>No se han encontrado charlas.</translation>
+        <translation>No se han encontrado grupos.</translation>
     </message>
     <message>
         <source>Searching chats...</source>
@@ -1580,15 +1580,15 @@
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation>Permitir enviar ubicación a bots en línea</translation>
+        <translation>Enviar ubicación a bots en línea</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation>Algunos bots en línea solicitan datos de ubicación cuando los usan </translation>
+        <translation>Algunos bots en línea solicitan datos de ubicación cuando los usan</translation>
     </message>
     <message>
         <source>User Profile</source>
-        <translation>Perfil de usuario </translation>
+        <translation>Perfil de usuario</translation>
     </message>
     <message>
         <source>First Name</source>
@@ -1635,7 +1635,7 @@
     </message>
     <message>
         <source>Allow finding by phone number</source>
-        <translation>Permitir buscarme por número telefónico</translation>
+        <translation>Permitir buscarme por número</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
@@ -1989,11 +1989,11 @@
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>se cambió el título de charla a %1</translation>
+        <translation>se cambió el título del grupo a %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation>se cambió el título de charla a %1</translation>
+        <translation>se cambió el título del grupo a %1</translation>
     </message>
     <message>
         <source>sent a poll</source>
