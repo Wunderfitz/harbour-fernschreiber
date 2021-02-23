@@ -85,15 +85,15 @@
     </message>
     <message>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyloguj</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Wylogowałeś się</translation>
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktywne sesje</translation>
     </message>
 </context>
 <context>
@@ -104,31 +104,31 @@
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktywne sesje</translation>
     </message>
     <message>
         <source>Session was terminated</source>
-        <translation type="unfinished"></translation>
+        <translation>Sesja została zakończona</translation>
     </message>
     <message>
         <source>Terminate Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakończ sesję</translation>
     </message>
     <message>
         <source>This app</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta aplikacja</translation>
     </message>
     <message>
         <source>IP address: %1, origin: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Adres IP: %1, oryginalny: %2</translation>
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktywny od: %1, ostatnio aktywny: %2</translation>
     </message>
     <message>
         <source>Terminating session</source>
-        <translation type="unfinished"></translation>
+        <translation>Kończenie sesji</translation>
     </message>
 </context>
 <context>
@@ -320,11 +320,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Odepnij czat</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Przypnij czat</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -502,7 +502,7 @@
     </message>
     <message>
         <source>Additional Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodatkowe opcje</translation>
     </message>
     <message>
         <source>Message deleted</source>
@@ -514,7 +514,7 @@
     </message>
     <message>
         <source>Forward Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Przekaż widomość</translation>
     </message>
 </context>
 <context>
@@ -956,11 +956,11 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished">Nieznany</translation>
+        <translation>Nieznany</translation>
     </message>
     <message>
         <source>This message was deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta wiadomość została skasowana</translation>
     </message>
 </context>
 <context>
@@ -1103,24 +1103,24 @@
     <name>MessagePoll</name>
     <message>
         <source>Close Poll</source>
-        <translation type="unfinished">Zamknij ankietę</translation>
+        <translation>Zamknij ankietę</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation type="unfinished">Resetuj odpowiedź</translation>
+        <translation>Resetuj odpowiedź</translation>
     </message>
     <message>
         <source>Final Result:</source>
-        <translation type="unfinished">Ostateczny wynik:</translation>
+        <translation>Ostateczny wynik:</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation type="unfinished">Dozwolonych jest wiele odpowiedzi.</translation>
+        <translation>Dozwolonych jest wiele odpowiedzi.</translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
             <numerusform>%Ln%</numerusform>
             <numerusform>%Ln%</numerusform>
@@ -1129,7 +1129,7 @@
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln odpowiedź</numerusform>
             <numerusform>%Ln odpowiedzi</numerusform>
             <numerusform>%Ln odpowiedzi</numerusform>
@@ -1148,7 +1148,7 @@
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Notatka głosowa</translation>
     </message>
 </context>
 <context>
@@ -1281,7 +1281,7 @@
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation>Wylogowywanie</translation>
     </message>
 </context>
 <context>
@@ -1615,7 +1615,7 @@
     </message>
     <message>
         <source>User Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Profil użytkownika</translation>
     </message>
     <message>
         <source>First Name</source>
@@ -1624,16 +1624,16 @@
     </message>
     <message>
         <source>Enter 1-64 characters</source>
-        <translation type="unfinished">Wprowadź znaki 1-128 {1-64 ?}</translation>
+        <translation>Wprowadź znaki 1-64</translation>
     </message>
     <message>
         <source>Last Name</source>
         <comment>last name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nazwisko</translation>
     </message>
     <message>
         <source>Enter 0-64 characters</source>
-        <translation type="unfinished">Wprowadź znaki 1-128 {0-64 ?}</translation>
+        <translation>Wprowadź znaki 0-64</translation>
     </message>
     <message>
         <source>Username</source>
@@ -1650,7 +1650,7 @@
     </message>
     <message>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tak</translation>
     </message>
     <message>
         <source>Your contacts only</source>
@@ -1658,7 +1658,7 @@
     </message>
     <message>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie</translation>
     </message>
     <message>
         <source>Allow finding by phone number</source>
@@ -1678,7 +1678,7 @@
     </message>
     <message>
         <source>Show phone number</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż numer telefonu</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
@@ -1686,7 +1686,7 @@
     </message>
     <message>
         <source>Show profile photo</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż zdjęcie profilowe</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
@@ -1694,7 +1694,7 @@
     </message>
     <message>
         <source>Show status</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż status</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
@@ -1702,27 +1702,27 @@
     </message>
     <message>
         <source>Add Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj zdjęcie</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdjęcia profilowe</translation>
     </message>
     <message>
         <source>Delete Picture</source>
-        <translation type="unfinished"></translation>
+        <translation>usuń zdjęcie</translation>
     </message>
     <message>
         <source>Uploading...</source>
-        <translation type="unfinished">Przesyłanie...</translation>
+        <translation>Przesyłanie...</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuwanie zjęcia profilowego</translation>
     </message>
     <message>
         <source>Enable notification sounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Włącz dźwięk powiadomień</translation>
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
