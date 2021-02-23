@@ -100,7 +100,7 @@
     <name>ActiveSessionsPage</name>
     <message>
         <source>Getting active sessions...</source>
-        <translation type="unfinished"></translation>
+        <translation>Uzyskiwanie aktywnych sesji...</translation>
     </message>
     <message>
         <source>Active Sessions</source>
@@ -556,18 +556,18 @@
     </message>
     <message numerus="yes">
         <source>chats</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>czat</numerusform>
             <numerusform>czaty</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>czatów</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>nieprzeczytana wiadomość</numerusform>
+            <numerusform>nieprzeczytane wiadomości</numerusform>
+            <numerusform>nieprzeczytanych wiadomości</numerusform>
         </translation>
     </message>
 </context>
@@ -1054,7 +1054,7 @@
     </message>
     <message>
         <source>More Options...</source>
-        <translation type="unfinished"></translation>
+        <translation>Więcej opcji...</translation>
     </message>
 </context>
 <context>
@@ -1085,7 +1085,7 @@
     <name>MessageLocation</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation type="unfinished">Zainstaluj Pure Maps, aby sprawdzić tę lokalizację.</translation>
+        <translation>Zainstaluj Pure Maps, aby sprawdzić tą lokalizację.</translation>
     </message>
 </context>
 <context>
@@ -1387,15 +1387,15 @@
     </message>
     <message>
         <source>Enter an optional explanation</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź opcjonalne wyjaśnienie</translation>
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetlane, gdy użytkownik wybierze złą odpowiedź. </translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation type="unfinished"></translation>
+        <translation>Objaśnienie może mieć do 200 znaków. </translation>
     </message>
 </context>
 <context>
@@ -1595,23 +1595,23 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Włącz tryb tylko online </translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłącza buforowanie offline. W tym trybie niektóre funkcje mogą być ograniczone lub może ich brakować. Zmiany wymagają ponownego uruchomienia Fernschreibera, aby odniosły skutek. </translation>
     </message>
     <message>
         <source>Privacy</source>
-        <translation type="unfinished"></translation>
+        <translation>Prywatność</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation type="unfinished"></translation>
+        <translation>Zezwalaj na wysyłanie lokalizacji do wbudowanych botów</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation type="unfinished"></translation>
+        <translation>Niektóre roboty wbudowane żądają danych o lokalizacji podczas ich używania </translation>
     </message>
     <message>
         <source>User Profile</source>
@@ -1620,7 +1620,7 @@
     <message>
         <source>First Name</source>
         <comment>first name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Imię</translation>
     </message>
     <message>
         <source>Enter 1-64 characters</source>
@@ -1642,11 +1642,11 @@
     </message>
     <message>
         <source>Allow chat invites</source>
-        <translation type="unfinished"></translation>
+        <translation>Zezwól na zaproszenia do czatu</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia prywatności umożliwiające zarządzanie zaproszeniami do czatów.</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -1654,7 +1654,7 @@
     </message>
     <message>
         <source>Your contacts only</source>
-        <translation type="unfinished"></translation>
+        <translation>Tylko twoje kontakty</translation>
     </message>
     <message>
         <source>No</source>
