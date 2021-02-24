@@ -1707,7 +1707,7 @@
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Si esta habilitado la aplicación espera un segundo hasta que un mensaje que está en la pantalla se marca como leído. Si deshabilitas esta función, los mensajes se marcarán inmediatamente como leído una vez que esté en la pantalla sin desplazarse al mensaje</translation>
+        <translation>Si esta habilitado, la apl espera un segundo hasta que un mensaje que está en la pantalla se marca como leído. Si deshabilitas esta función, los mensajes se marcarán inmediatamente como leído una vez que esté en la pantalla sin desplazarse al mensaje</translation>
     </message>
 </context>
 <context>
