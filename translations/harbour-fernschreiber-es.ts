@@ -293,7 +293,7 @@
     </message>
     <message>
         <source>Group Info</source>
-        <translation>Grupo</translation>
+        <translation>Información </translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
@@ -464,7 +464,7 @@
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation>Buscar</translation>
+        <translation>A b c</translation>
     </message>
     <message>
         <source>Location: Obtaining position...</source>
@@ -1040,7 +1040,7 @@
     </message>
     <message>
         <source>More Options...</source>
-        <translation>Mas opciones...</translation>
+        <translation>Más opciones</translation>
     </message>
 </context>
 <context>
@@ -1703,11 +1703,11 @@
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation>Retrasar antes de marcar los mensajes como leídos</translation>
+        <translation>Marcar mensajes como leídos</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber esperará un poco antes de que los mensajes se marquen como leídos</translation>
+        <translation>Si esta habilitado, la apl espera un segundo hasta que un mensaje que está en la pantalla se marque como leído. Si deshabilitas esta función, los mensajes se marcarán inmediatamente como leído una vez que esté en la pantalla sin desplazarse al mensaje</translation>
     </message>
 </context>
 <context>
