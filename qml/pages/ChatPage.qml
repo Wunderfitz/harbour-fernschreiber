@@ -1270,7 +1270,8 @@ Page {
                                                                        "messageChatJoinByLink",
                                                                        "messageChatSetTtl",
                                                                        "messageChatUpgradeFrom",
-                                                                       // "messageContactRegistered","messageExpiredPhoto", "messageExpiredVideo","messageWebsiteConnected"
+                                                                       "messageContactRegistered",
+                                                                       // "messageExpiredPhoto", "messageExpiredVideo","messageWebsiteConnected"
                                                                        "messageGameScore",
                                                                        "messageChatUpgradeTo",
                                                                        "messageCustomServiceAction",
