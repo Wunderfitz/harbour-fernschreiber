@@ -18,6 +18,7 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 import "../components"
 import "../js/twemoji.js" as Emoji
 
@@ -25,8 +26,7 @@ Page {
     id: aboutPage
     allowedOrientations: Orientation.All
 
-    property bool isLoggedIn : false
-    property var userInformation : tdLibWrapper.getUserInformation();
+    readonly property var userInformation : tdLibWrapper.userInformation
 
     SilicaFlickable {
         id: aboutContainer
@@ -158,7 +158,7 @@ Page {
 
             Loader {
                 id: userInformationLoader
-                active: isLoggedIn
+                active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
                 width: parent.width
                 sourceComponent: Component {
                     Column {
@@ -227,18 +227,18 @@ Page {
                                 }
                             }
                         }
-                    }
-                }
-            }
 
-            Button {
-                id: activeSessionsButton
-                text: qsTr("Active Sessions")
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                }
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ActiveSessionsPage.qml"));
+                        Button {
+                            id: activeSessionsButton
+                            text: qsTr("Active Sessions")
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            onClicked: {
+                                pageStack.push(Qt.resolvedUrl("ActiveSessionsPage.qml"));
+                            }
+                        }
+                    }
                 }
             }
 

@@ -32,7 +32,6 @@ Page {
     property bool initializationCompleted: false;
     property bool loading: true;
     property bool logoutLoading: false;
-    property int authorizationState: TelegramAPI.Closed
     property int connectionState: TelegramAPI.WaitingForNetwork
     property int ownUserId;
     property bool chatListCreated: false;
@@ -146,14 +145,13 @@ Page {
     }
 
     function initializePage() {
-        overviewPage.authorizationState = tdLibWrapper.getAuthorizationState();
         overviewPage.handleAuthorizationState(true);
         overviewPage.connectionState = tdLibWrapper.getConnectionState();
         overviewPage.setPageStatus();
     }
 
     function handleAuthorizationState(isOnInitialization) {
-        switch (overviewPage.authorizationState) {
+        switch (tdLibWrapper.authorizationState) {
         case TelegramAPI.WaitPhoneNumber:
         case TelegramAPI.WaitCode:
         case TelegramAPI.WaitPassword:
@@ -204,8 +202,7 @@ Page {
     Connections {
         target: tdLibWrapper
         onAuthorizationStateChanged: {
-            overviewPage.authorizationState = authorizationState;
-            handleAuthorizationState();
+            handleAuthorizationState(false);
         }
         onConnectionStateChanged: {
             overviewPage.connectionState = connectionState;
@@ -278,7 +275,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("About Fernschreiber")
-                onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"), {isLoggedIn : (overviewPage.authorizationState == TelegramAPI.AuthorizationReady)})
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"))
             }
             MenuItem {
                 text: qsTr("Settings")

@@ -28,7 +28,7 @@ CoverBackground {
 
     property int unreadMessages: 0
     property int unreadChats: 0
-    property bool authenticated: false
+    readonly property bool authenticated: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
     property int connectionState: TelegramAPI.WaitingForNetwork
 
     function setUnreadInfoText() {
@@ -56,7 +56,6 @@ CoverBackground {
     }
 
     Component.onCompleted: {
-        coverPage.authenticated = (tdLibWrapper.getAuthorizationState() === TelegramAPI.AuthorizationReady);
         coverPage.connectionState = tdLibWrapper.getConnectionState();
         coverPage.unreadMessages = tdLibWrapper.getUnreadMessageInformation().unread_count || 0;
         coverPage.unreadChats = tdLibWrapper.getUnreadChatInformation().unread_count || 0;
@@ -74,7 +73,6 @@ CoverBackground {
             setUnreadInfoText();
         }
         onAuthorizationStateChanged: {
-            coverPage.authenticated = (authorizationState === TelegramAPI.AuthorizationReady);
             setUnreadInfoText();
         }
         onConnectionStateChanged: {
