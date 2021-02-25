@@ -26,15 +26,13 @@ Page {
     backNavigation: false
 
     property bool loading: true
-    property int authorizationState: TelegramAPI.Closed
     property var authorizationStateData: null
 
     Component.onCompleted: {
-        initializationPage.authorizationState = tdLibWrapper.getAuthorizationState();
         initializationPage.authorizationStateData = tdLibWrapper.getAuthorizationStateData();
         initializationPage.loading = false;
 
-        switch (authorizationState) {
+        switch (tdLibWrapper.authorizationState) {
         case TelegramAPI.WaitCode:
             initializationPage.loading = false;
             welcomeColumn.visible = false;
@@ -66,7 +64,7 @@ Page {
     Connections {
         target: tdLibWrapper
         onAuthorizationStateChanged: {
-            switch (authorizationState) {
+            switch (tdLibWrapper.authorizationState) {
             case TelegramAPI.WaitCode:
                 initializationPage.loading = false;
                 enterPinColumn.visible = true;
