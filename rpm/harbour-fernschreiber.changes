@@ -12,7 +12,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Mon Feb 22 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.7
+* Mon Mar 01 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.8.1
+- Fix: Show active sessions button only when authenticated - thanks to monich
+- Fix: Show newly registered contact as simple message
+- Updated translations for Finnish, Polish, Russian, Spanish - thanks to all contributors
+
+* Mon Feb 22 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.8
 - Tap on a sticker to show overlay with the corresponding sticker set
 - Sticker set overlay allows to uninstall it
 - Redesign sticker picker, improve loading time
