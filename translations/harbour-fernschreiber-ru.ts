@@ -120,7 +120,7 @@
     </message>
     <message>
         <source>IP address: %1, origin: %2</source>
-        <translation>IP-адрес: %1, источник: %2</translation>
+        <translation>IP-адрес: %1, регион: %2</translation>
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>
