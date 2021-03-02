@@ -1666,15 +1666,15 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienie prywatności umożliwiające określenie, czy można Cię znaleźć według numeru telefonu. </translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż odnośnik w przekazanych wiadomościach</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienie prywatności umożliwiające okreslenie, czy odnośnik do twojego konta jest dodawany do przekazanych wiadomości</translation>
     </message>
     <message>
         <source>Show phone number</source>
@@ -1682,7 +1682,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienie prywatności umożliwiające określenie, czy Twój numer telefonu jest widoczny. </translation>
     </message>
     <message>
         <source>Show profile photo</source>
@@ -1690,7 +1690,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienie prywatności umożliwiające określenie, czy Twoje zdjęcie profilowe jest widoczne. </translation>
     </message>
     <message>
         <source>Show status</source>
@@ -1698,7 +1698,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienie prywatności umożliwiające zarządzanie widocznością statusu online.</translation>
     </message>
     <message>
         <source>Add Picture</source>
@@ -1726,15 +1726,15 @@
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gdy dźwięki są włączone, Fernschreiber użyje bieżącego dźwięku powiadomienia Sailfish OS do czatów, które można skonfigurować w ustawieniach systemu. </translation>
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Opóźnienie przed oznaczeniem wiadomości jako przeczytanych </translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Fernschreiber odczeka chwilę, zanim wiadomości zostaną oznaczone jako przeczytane </translation>
     </message>
 </context>
 <context>
@@ -1745,22 +1745,22 @@
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuwanie zestawu naklejek</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Zestaw naklejek został usuniety!</translation>
     </message>
 </context>
 <context>
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Zestaw naklejek został zainstalowany!</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Zestaw naklejek został usunięty!</translation>
     </message>
 </context>
 <context>
@@ -1775,7 +1775,7 @@
     </message>
     <message>
         <source>Copy video to gallery</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiuj wideo do galerii</translation>
     </message>
 </context>
 <context>
