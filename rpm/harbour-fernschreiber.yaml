@@ -28,7 +28,6 @@ PkgConfigBR:
   - Qt5Multimedia
   - Qt5Positioning
   - nemonotifications-qt5
-  - ngf-qt5
 
 # Build dependencies without a pkgconfig setup can be listed here
 # PkgBR:

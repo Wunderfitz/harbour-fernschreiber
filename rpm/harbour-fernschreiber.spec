@@ -6,11 +6,13 @@
 Name:       harbour-fernschreiber
 
 # >> macros
+%define __provides_exclude_from ^%{_datadir}/.*$
+%define __requires_exclude ^libtdjson.*$
 # << macros
 
 Summary:    Fernschreiber is a Telegram client for Sailfish OS
-Version:    0.8.1
-Release:    2
+Version:    0.8.2
+Release:    1
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://werkwolf.eu/
@@ -26,7 +28,6 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Positioning)
 BuildRequires:  pkgconfig(nemonotifications-qt5)
-BuildRequires:  pkgconfig(ngf-qt5)
 BuildRequires:  desktop-file-utils
 
 %description

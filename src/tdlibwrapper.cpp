@@ -1853,7 +1853,7 @@ void TDLibWrapper::setInitialParameters()
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
     initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     initialParameters.insert("system_version", QSysInfo::prettyProductName());
-    initialParameters.insert("application_version", "0.8.1");
+    initialParameters.insert("application_version", "0.8.2");
     initialParameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
     // initialParameters.insert("use_test_dc", true);
     requestObject.insert("parameters", initialParameters);
