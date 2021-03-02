@@ -12,6 +12,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Mar 02 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.8.2
+- Prepare aarch64 build
+- Updated Polish translation - thanks to atlochowski
+
 * Mon Mar 01 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.8.1
 - Fix: Show active sessions button only when authenticated - thanks to monich
 - Fix: Show newly registered contact as simple message
