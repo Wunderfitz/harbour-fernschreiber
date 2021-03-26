@@ -449,7 +449,9 @@ Page {
                     }
                 }
             }
-
+            break;
+        case PageStatus.Deactivating:
+            messageOptionsDrawer.open = false
             break;
         case PageStatus.Active:
             if (!chatPage.isInitialized) {

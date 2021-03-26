@@ -55,6 +55,9 @@ ListItem {
         if(messageListItem.precalculatedValues.pageIsSelecting) {
             page.toggleMessageSelection(myMessage);
         } else {
+            if (messageOptionsDrawer.sourceItem !== messageListItem) {
+                messageOptionsDrawer.open = false
+            }
             // Allow extra context to react to click
             var extraContent = extraContentLoader.item
             if (extraContent && extraContentLoader.contains(mapToItem(extraContentLoader, mouse.x, mouse.y))) {
@@ -70,6 +73,7 @@ ListItem {
             page.selectedMessages = [];
             page.state = ""
         } else {
+            messageOptionsDrawer.open = false
             contextMenuLoader.active = true;
         }
     }
