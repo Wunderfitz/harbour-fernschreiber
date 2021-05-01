@@ -19,6 +19,7 @@ URL:        http://werkwolf.eu/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-fernschreiber.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
@@ -29,6 +30,9 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Positioning)
 BuildRequires:  pkgconfig(nemonotifications-qt5)
 BuildRequires:  desktop-file-utils
+BuildRequires:  cmake
+BuildRequires:  git
+BuildRequires:  gperf
 
 %description
 Fernschreiber is a Telegram client for Sailfish OS
@@ -43,10 +47,12 @@ Fernschreiber is a Telegram client for Sailfish OS
 %build
 # >> build pre
 # << build pre
+mkdir -p builddir
+cd builddir
+%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr ..
+cd ..
 
-%qmake5 
-
-make %{?_smp_mflags}
+make %{?_smp_mflags} -C builddir
 
 # >> build post
 # << build post
@@ -55,7 +61,8 @@ make %{?_smp_mflags}
 rm -rf %{buildroot}
 # >> install pre
 # << install pre
-%qmake5_install
+
+DESTDIR=%{buildroot} make -C builddir install
 
 # >> install post
 # << install post
@@ -67,8 +74,29 @@ desktop-file-install --delete-original       \
 %files
 %defattr(-,root,root,-)
 %{_bindir}
+%{_libdir}/librlottie.so.*
+%{_libdir}/libtdjson.so.1.7.0
+%{_libdir}/libtdclient.so.1.7.0
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
+
+%exclude /usr/include/*
+%exclude /usr/lib/cmake/Td/*
+%exclude /usr/lib/cmake/rlottie/*
+%exclude /usr/lib/librlottie.so
+%exclude /usr/lib/libtdactor.a
+%exclude /usr/lib/libtdapi.a
+%exclude /usr/lib/libtdclient.so
+%exclude /usr/lib/libtdcore.a
+%exclude /usr/lib/libtddb.a
+%exclude /usr/lib/libtdjson.so
+%exclude /usr/lib/libtdjson_private.a
+%exclude /usr/lib/libtdjson_static.a
+%exclude /usr/lib/libtdnet.a
+%exclude /usr/lib/libtdsqlite.a
+%exclude /usr/lib/libtdutils.a
+%exclude /usr/lib/pkgconfig/*
+
 # >> files
 # << files
