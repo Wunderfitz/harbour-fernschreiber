@@ -1,3 +1,7 @@
 [submodule "rlottie"]
 	path = rlottie
 	url = https://github.com/Samsung/rlottie.git
+[submodule "td-src"]
+	path = td-src
+	url = https://github.com/Wunderfitz/td.git
+	branch = fernschreiber

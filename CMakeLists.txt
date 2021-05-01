@@ -13,11 +13,7 @@ find_package(ZLIB REQUIRED)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-include(ExternalProject)
-
-#ExternalProject_Add(tdlib PREFIX tdlib-build GIT_REPOSITORY https://github.com/Wunderfitz/td.git GIT_TAG origin/fernschreiber)
-
-add_subdirectory(tdlib-src)
+add_subdirectory(td-src)
 
 option(LOTTIE_MODULE "Enable LOTTIE MODULE SUPPORT" OFF)
 add_subdirectory(rlottie)
