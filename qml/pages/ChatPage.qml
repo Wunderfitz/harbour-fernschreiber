@@ -1901,6 +1901,8 @@ Page {
                             enabled: !attachmentPreviewRow.isLocation
                             EnterKey.onClicked: {
                                 if (appSettings.sendByEnter) {
+                                    var messageText = newMessageTextField.text;
+                                    newMessageTextField.text = messageText.substring(0, newMessageTextField.cursorPosition -1) + messageText.substring(newMessageTextField.cursorPosition);
                                     sendMessage();
                                     newMessageTextField.text = "";
                                     if(!appSettings.focusTextAreaAfterSend) {
