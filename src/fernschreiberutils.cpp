@@ -29,6 +29,7 @@
 #include <QDateTime>
 #include <QGeoCoordinate>
 #include <QGeoLocation>
+#include <QSysInfo>
 
 #define DEBUG_MODULE FernschreiberUtils
 #include "debuglog.h"
@@ -92,6 +93,9 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     }
     if (contentType == "messageVideo") {
         return myself ? tr("sent a video", "myself") : tr("sent a video");
+    }
+    if (contentType == "messageVideoNote") {
+        return myself ? tr("sent a video note", "myself") : tr("sent a video note");
     }
     if (contentType == "messageAnimation") {
         return myself ? tr("sent an animation", "myself") : tr("sent an animation");
@@ -241,6 +245,11 @@ void FernschreiberUtils::stopGeoLocationUpdates()
 bool FernschreiberUtils::supportsGeoLocation()
 {
     return this->geoPositionInfoSource;
+}
+
+QString FernschreiberUtils::getSailfishOSVersion()
+{
+    return QSysInfo::productVersion();
 }
 
 void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status status)

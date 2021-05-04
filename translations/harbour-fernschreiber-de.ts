@@ -91,6 +91,45 @@
         <source>Logged out</source>
         <translation>Abgemeldet</translation>
     </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Aktive Sitzungen</translation>
+    </message>
+</context>
+<context>
+    <name>ActiveSessionsPage</name>
+    <message>
+        <source>Getting active sessions...</source>
+        <translation>Erhalte aktive Sitzungen...</translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Aktive Sitzungen</translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Sitzung wurde beendet</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Sitzung beenden</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>Diese App</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP-Adresse: %1, Herkunft: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Aktiv seit: %1, zuletzt online: %2</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Beende Sitzung</translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -435,6 +474,38 @@
         <source>Location (%1/%2)</source>
         <translation>Standort (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Nachricht in die Zwischenablage kopieren</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Nachricht losgeheftet</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Nachricht losheften</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Nachricht anheften</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation>Zusätzliche Optionen</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Nachricht gelöscht</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Nachricht löschen</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Nachricht weiterleiten</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -449,14 +520,6 @@
 </context>
 <context>
     <name>CoverPage</name>
-    <message>
-        <source>unread message</source>
-        <translation>ungelesene Nachricht</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>ungelesene Nachrichten</translation>
-    </message>
     <message>
         <source>in</source>
         <translation>in</translation>
@@ -481,13 +544,19 @@
         <source>Updating content...</source>
         <translation>Aktualisiere Inhalte...</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>Chat</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>Chats</translation>
+        <translation>
+            <numerusform>Chat</numerusform>
+            <numerusform>Chats</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation>
+            <numerusform>ungelesene Nachricht</numerusform>
+            <numerusform>ungelesene Nachrichten</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -840,6 +909,15 @@
         <source>sent a game</source>
         <translation>hat ein Spiel gesendet</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>haben eine Videonachricht geschickt</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>hat eine Videonachricht geschickt</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -861,6 +939,14 @@
     <message>
         <source>You</source>
         <translation>Sie</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
+    </message>
+    <message>
+        <source>This message was deleted</source>
+        <translation>Diese Nachricht wurde gelöscht</translation>
     </message>
 </context>
 <context>
@@ -941,18 +1027,6 @@
         <translation>Nachricht bearbeiten</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Nachricht in die Zwischenablage kopieren</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Nachricht gelöscht</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Nachricht löschen</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Sie</translation>
     </message>
@@ -965,16 +1039,8 @@
         <translation>Nachricht auswählen</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Nachricht anheften</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Nachricht losgeheftet</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Nachricht losheften</translation>
+        <source>More Options...</source>
+        <translation>Mehr Optionen...</translation>
     </message>
 </context>
 <context>
@@ -1064,7 +1130,7 @@
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprachnotiz</translation>
     </message>
 </context>
 <context>
@@ -1298,6 +1364,18 @@
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Quizze haben eine korrekte Antwort. Teilnehmer können ihre Antwort nicht zurückziehen.</translation>
     </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation>Geben Sie eine optionale Erklärung ein</translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation>Wird bei Auswahl einer falschen Antwort gezeigt.</translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation>Eine Erklärung kann bis zu 200 Zeichen lang sein.</translation>
+    </message>
 </context>
 <context>
     <name>PollResultsPage</name>
@@ -1508,6 +1586,129 @@
         <source>Some inline bots request location data when using them</source>
         <translation>Einige Inline-Bots fragen bei Nutzung Standortdaten an</translation>
     </message>
+    <message>
+        <source>User Profile</source>
+        <translation>Nutzungsprofil</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>Vorname</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>Geben Sie 1-64 Zeichen ein</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Nachname</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Geben Sie 0-64 Zeichen ein</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Benutzername</translation>
+    </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation>Chateinladungen erlauben</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Sie zu Chats eingeladen werden können.</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation>Nur Ihre Kontakte</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Nein</translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation>Auffinden per Telefonnummer erlauben</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Sie per Telefonnummer gefunden werden können.</translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation>Link in weitergeleiteten Nachrichten anzeigen</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob ein Link zu Ihrem Profil in weitergeleiteten Nachrichten eingebettet wird.</translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation>Telefonnummer anzeigen</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Ihre Telefonnummer sichtbar ist.</translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation>Profilfoto anzeigen</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Ihr Profilfoto sichtbar ist.</translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation>Status anzeigen</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Ihr Onlinestatus sichtbar ist.</translation>
+    </message>
+    <message>
+        <source>Add Picture</source>
+        <translation>Bild hinzufügen</translation>
+    </message>
+    <message>
+        <source>Profile Pictures</source>
+        <translation>Profilbilder</translation>
+    </message>
+    <message>
+        <source>Delete Picture</source>
+        <translation>Bild löschen</translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>Lade hoch...</translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
+        <translation>Lösche Profilbild</translation>
+    </message>
+    <message>
+        <source>Enable notification sounds</source>
+        <translation>Hinweistöne einschalten</translation>
+    </message>
+    <message>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>Wenn Töne eingeschaltet sind, wird Fernschreiber den aktuellen Sailfish OS-Hinweiston für Chats verwenden, der in den Systemeinstellungen konfiguriert werden kann.</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Verzögerung bevor Nachrichten als gelesen markiert werden</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber wird ein bisschen warten, bevor Nachrichten als gelesen markiert werden</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1516,16 +1717,27 @@
         <translation>Kürzlich verwendet</translation>
     </message>
     <message>
-        <source>Loading stickers...</source>
-        <translation>Lade Sticker...</translation>
+        <source>Removing sticker set</source>
+        <translation>Entferne Sticker-Set</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>Sticker-Set erfolgreich entfernt!</translation>
+    </message>
+</context>
+<context>
+    <name>StickerSetOverlay</name>
+    <message>
+        <source>Sticker set successfully installed!</source>
+        <translation>Sticker-Set erfolgreich installiert!</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>Sticker-Set erfolgreich entfernt!</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
-    <message>
-        <source>Download Video</source>
-        <translation>Video herunterladen</translation>
-    </message>
     <message>
         <source>Download of %1 successful.</source>
         <translation>Download von %1 erfolgreich.</translation>
@@ -1533,6 +1745,10 @@
     <message>
         <source>Download failed.</source>
         <translation>Download fehlgeschlagen.</translation>
+    </message>
+    <message>
+        <source>Copy video to gallery</source>
+        <translation>Video in die Galerie kopieren</translation>
     </message>
 </context>
 <context>
@@ -1939,7 +2155,7 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>haben eine Videonachricht geschicht</translation>
+        <translation>haben eine Videonachricht geschickt</translation>
     </message>
     <message>
         <source>sent a video note</source>

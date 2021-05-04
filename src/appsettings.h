@@ -29,11 +29,13 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
     Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
+    Q_PROPERTY(bool notificationSoundsEnabled READ notificationSoundsEnabled WRITE setNotificationSoundsEnabled NOTIFY notificationSoundsEnabledChanged)
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
     Q_PROPERTY(bool allowInlineBotLocationAccess READ allowInlineBotLocationAccess WRITE setAllowInlineBotLocationAccess NOTIFY allowInlineBotLocationAccessChanged)
     Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
     Q_PROPERTY(bool onlineOnlyMode READ onlineOnlyMode WRITE setOnlineOnlyMode NOTIFY onlineOnlyModeChanged)
+    Q_PROPERTY(bool delayMessageRead READ delayMessageRead WRITE setDelayMessageRead NOTIFY delayMessageReadChanged)
 
 public:
     enum NotificationFeedback {
@@ -64,6 +66,9 @@ public:
     bool notificationTurnsDisplayOn() const;
     void setNotificationTurnsDisplayOn(bool turnOn);
 
+    bool notificationSoundsEnabled() const;
+    void setNotificationSoundsEnabled(bool enable);
+
     NotificationFeedback notificationFeedback() const;
     void setNotificationFeedback(NotificationFeedback feedback);
 
@@ -79,6 +84,9 @@ public:
     bool onlineOnlyMode() const;
     void setOnlineOnlyMode(bool enable);
 
+    bool delayMessageRead() const;
+    void setDelayMessageRead(bool enable);
+
 signals:
     void sendByEnterChanged();
     void focusTextAreaAfterSendChanged();
@@ -86,11 +94,13 @@ signals:
     void showStickersAsImagesChanged();
     void animateStickersChanged();
     void notificationTurnsDisplayOnChanged();
+    void notificationSoundsEnabledChanged();
     void notificationFeedbackChanged();
     void storageOptimizerChanged();
     void allowInlineBotLocationAccessChanged();
     void remainingInteractionHintsChanged();
     void onlineOnlyModeChanged();
+    void delayMessageReadChanged();
 
 private:
     QSettings settings;

@@ -219,6 +219,10 @@ function getDateTimeTranslated(timestamp) {
     return new Date(timestamp * 1000).toLocaleString();
 }
 
+function getDateTimeTimepoint(timestamp) {
+    return Silica.Format.formatDate(new Date(timestamp * 1000), Silica.Formatter.TimepointRelative);
+}
+
 function handleHtmlEntity(messageText, messageInsertions, originalString, replacementString) {
     var nextIndex = -1;
     while ((nextIndex = messageText.indexOf(originalString, nextIndex + 1)) > -1) {
@@ -235,7 +239,15 @@ function enhanceHtmlEntities(simpleText) {
     return simpleText.replace(ampRegExp, "&amp;").replace(ltRegExp, "&lt;").replace(gtRegExp, "&gt;");//.replace(rawNewLineRegExp, "<br>");
 }
 
-function messageInsertionSorter(a, b) { return (b.offset+b.removeLength) - (a.offset+a.removeLength) }
+function messageInsertionSorter(a, b) {
+    if ((b.offset + b.removeLength) > (a.offset + a.removeLength)) {
+        return 1;
+    }
+    if ((b.offset + b.removeLength) < (a.offset + a.removeLength)) {
+        return -1;
+    }
+    return b.offset - a.offset;
+}
 
 function enhanceMessageText(formattedText, ignoreEntities) {
 

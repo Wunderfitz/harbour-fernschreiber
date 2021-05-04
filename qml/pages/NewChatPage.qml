@@ -21,12 +21,14 @@ import Sailfish.Silica 1.0
 import "../components"
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
+import "../js/debug.js" as Debug
 
 Page {
     id: newChatPage
     allowedOrientations: Orientation.All
 
     property bool isLoading: true;
+    property bool syncSupported: false;
 
     function resetFocus() {
         contactsSearchField.focus = false;
@@ -38,7 +40,6 @@ Page {
         contactsListView.model = contactsProxyModel;
         newChatPage.isLoading = false;
     }
-
 
     onStatusChanged: {
         if (status === PageStatus.Active) {
@@ -54,13 +55,26 @@ Page {
         }
     }
 
+    Component.onCompleted: {
+        // With Sailfish OS 4 we can't get up-to-date contacts andmore. We might need to enter Sailjail eventually...
+        // Details see https://forum.sailfishos.org/t/4-0-1-45-non-jailed-contacts-sqlite-database-no-longer-updated/4724
+        var sailfishOSVersion = fernschreiberUtils.getSailfishOSVersion().split(".");
+        if (parseInt(sailfishOSVersion[0]) < 4) {
+            Debug.log("Sailfish OS version 3.x - contact sync should still be possible...")
+            newChatPage.syncSupported = true;
+        } else {
+            Debug.log("Sailfish OS version 4.x - contact sync no longer supported...")
+            newChatPage.syncSupported = false;
+        }
+    }
+
     SilicaFlickable {
         id: newChatContainer
         contentHeight: newChatPage.height
         anchors.fill: parent
 
         PullDownMenu {
-            visible: contactsModel.canSynchronizeContacts()
+            visible: contactsModel.canSynchronizeContacts() && newChatPage.syncSupported
             MenuItem {
                 onClicked: {
                     newChatPage.isLoading = true;

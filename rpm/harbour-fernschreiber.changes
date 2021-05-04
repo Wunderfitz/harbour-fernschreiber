@@ -12,6 +12,70 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Mar 02 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.8.2
+- Prepare aarch64 build
+- Updated Polish translation - thanks to atlochowski
+
+* Mon Mar 01 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.8.1
+- Fix: Show active sessions button only when authenticated - thanks to monich
+- Fix: Show newly registered contact as simple message
+- Updated translations for Finnish, Polish, Russian, Spanish - thanks to all contributors
+
+* Mon Feb 22 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.8
+- Tap on a sticker to show overlay with the corresponding sticker set
+- Sticker set overlay allows to uninstall it
+- Redesign sticker picker, improve loading time
+- Additional context menu to prevent the normal one from becoming too big, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/216
+- Manage all Telegram sessions for current user (see About -> Active Sessions)
+- Forward message now directly available in (additional) context menu
+- Use different background colors for muted chats - thanks to monich
+- Enable storage optimizer per default
+- [SFOS 4] Disable contacts sync as no longer possible, see https://forum.sailfishos.org/t/4-0-1-45-non-jailed-contacts-sqlite-database-no-longer-updated/4724
+- Fix: Found private chats no longer appear automatically in the chat list
+- Fix: Stickers can now be sent as replies
+- Fix: Message sticker highlight and click behavior now aligned with other message types - thanks to monich
+- Fix: Don't auto-scroll if context menu is opened, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/139
+- Fix: Deleted in-reply-to messages are now shown with a placeholder, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/374
+- Fix: Sort text replacements better to avoid overlaps in case of special characters, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/334
+- Fix: Trigger mark-as-read (almost) immediately after opening chat (plus configurable delay)
+- Fix: [SFOS 4] Documents app can no longer access all directories, always download before calling it
+- Fix: [SFOS 4] Forwarding a message no longer causes the page stack to become invalid (navigating back was no longer working)
+- Several translations updated - thanks to all contributors
+
+* Fri Feb 5 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.7
+- Massively extended bot support - thanks to jgibbon
+- Option to change first name, last name, username
+- Add and delete profile pictures
+- Set personal privacy options
+- Pin/unpin chat
+- Option for online-only mode
+- Option to logout - thanks to santoshmanikandan
+- Option to override notification sound settings - thanks to monich
+- Option to disable delay for marking messages as read
+- Show channel members if authorized - thanks to monich
+- New UX for audios, voice notes and documents - thanks to jgibbon
+- Updated Fernschreiber logo - thanks to monich
+- Better loading/preview image - thanks to jgibbon
+- New pinned chat icon - thanks to jgibbon
+- Add explanations to quiz - thanks to jgibbon
+- Real estate optimizations for chat list - thanks to jgibbon
+- Nice landscape layout for settings page - thanks to monich
+- Full width for channel messages - thanks to jgibbon
+- Architecture changes and improvements to message type handling - thanks to jgibbon
+- Update channel message count in real time - thanks to monich
+- Fix: Get sound back for notifications
+- Fix: Chat muted icon always visible in list
+- Fix: Mark older messages as read once a reply has been sent
+- Fix: No longer display own messages as unread
+- Fix: Initial scroll position now normally on the first unread message
+- Fix: Improve sent/read indicator handling
+- Fix: Don't let context menu be wider than its combo box - thanks to monich
+- Fix: Images couldn't be clicked at the complete width - thanks to jgibbon
+- Fix: Don't retry downloading files too often - thanks to monich
+- A lot more fixes - thanks to monich and jgibbon
+- New Slovak translation - thanks to okruhliak
+- Several translations updated - thanks to all contributors
+
 * Wed Jan 6 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.6.1
 - Show indicator for pinned chats
 - Use highlightBackgroundColor and align size for all chat attributes (unread messages, secret chat, pinned chat)

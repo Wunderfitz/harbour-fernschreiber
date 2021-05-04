@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf and other contributors
+    Copyright (C) 2020-21 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -22,12 +22,14 @@ import WerkWolf.Fernschreiber 1.0
 import "../"
 
 MessageContentBase {
+    id: thisItem
+
     readonly property var stickerData: messageListItem ? messageListItem.myMessage.content.sticker : overlayFlickable.overlayMessage.content.sticker;
     readonly property bool animated: stickerData.is_animated && appSettings.animateStickers
     readonly property bool stickerVisible: staticStickerLoader.item ? staticStickerLoader.item.visible :
         animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
     readonly property bool isOwnSticker : messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
-    property real aspectRatio: stickerData.width / stickerData.height
+    readonly property real aspectRatio: stickerData.width / stickerData.height
 
     implicitWidth: stickerData.width
     implicitHeight: stickerData.height
@@ -59,7 +61,7 @@ MessageContentBase {
                     asynchronous: true
                     paused: !Qt.application.active
                     cache: false
-                    layer.enabled: highlighted
+                    layer.enabled: thisItem.highlighted
                     layer.effect: PressEffect { source: animatedSticker }
                 }
             }
@@ -80,7 +82,7 @@ MessageContentBase {
                     visible: opacity > 0
                     opacity: status === Image.Ready ? 1 : 0
                     Behavior on opacity { FadeAnimation {} }
-                    layer.enabled: highlighted
+                    layer.enabled: thisItem.highlighted
                     layer.effect: PressEffect { source: staticSticker }
                 }
             }
@@ -96,6 +98,11 @@ MessageContentBase {
             opacity: !stickerVisible && !placeHolderDelayTimer.running ? 0.15 : 0
             Behavior on opacity { FadeAnimation {} }
         }
+    }
+
+    onClicked: {
+        stickerSetOverlayLoader.stickerSetId = stickerData.set_id
+        stickerSetOverlayLoader.active = true
     }
 
     Timer {

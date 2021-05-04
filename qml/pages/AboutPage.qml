@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf and other contributors
+    Copyright (C) 2020-21 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -18,6 +18,7 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import WerkWolf.Fernschreiber 1.0
 import "../components"
 import "../js/twemoji.js" as Emoji
 
@@ -25,8 +26,7 @@ Page {
     id: aboutPage
     allowedOrientations: Orientation.All
 
-    property bool isLoggedIn : false
-    property var userInformation : tdLibWrapper.getUserInformation();
+    readonly property var userInformation : tdLibWrapper.userInformation
 
     SilicaFlickable {
         id: aboutContainer
@@ -59,7 +59,7 @@ Page {
             }
 
             Label {
-                text: "Fernschreiber 0.7"
+                text: "Fernschreiber 0.8.2"
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraLarge
                 anchors {
@@ -158,7 +158,7 @@ Page {
 
             Loader {
                 id: userInformationLoader
-                active: isLoggedIn
+                active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
                 width: parent.width
                 sourceComponent: Component {
                     Column {
@@ -227,12 +227,22 @@ Page {
                                 }
                             }
                         }
+
+                        Button {
+                            id: activeSessionsButton
+                            text: qsTr("Active Sessions")
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            onClicked: {
+                                pageStack.push(Qt.resolvedUrl("ActiveSessionsPage.qml"));
+                            }
+                        }
                     }
                 }
             }
 
             Button {
-                id: flickrTosButton
                 text: qsTr("Terms of Service")
                 anchors {
                     horizontalCenter: parent.horizontalCenter
@@ -243,7 +253,6 @@ Page {
             }
 
             Button {
-                id: flickrPrivacyButton
                 text: qsTr("Privacy Policy")
                 anchors {
                     horizontalCenter: parent.horizontalCenter

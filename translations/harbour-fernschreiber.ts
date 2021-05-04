@@ -91,6 +91,45 @@
         <source>Logged out</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ActiveSessionsPage</name>
+    <message>
+        <source>Getting active sessions...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -435,6 +474,38 @@
         <source>Location (%1/%2)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished">Copy Message to Clipboard</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished">Message deleted</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Delete Message</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -449,14 +520,6 @@
 </context>
 <context>
     <name>CoverPage</name>
-    <message>
-        <source>unread message</source>
-        <translation>unread message</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>unread messages</translation>
-    </message>
     <message>
         <source>in</source>
         <translation>in</translation>
@@ -481,13 +544,19 @@
         <source>Updating content...</source>
         <translation>Updating content...</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>chat</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>chats</translation>
+        <translation type="unfinished">
+            <numerusform>chats</numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -840,6 +909,15 @@
         <source>sent a game</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation type="unfinished">sent a video note</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation type="unfinished">sent a video note</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -861,6 +939,14 @@
     <message>
         <source>You</source>
         <translation>You</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished">Unknown</translation>
+    </message>
+    <message>
+        <source>This message was deleted</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -941,18 +1027,6 @@
         <translation>Edit Message</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Copy Message to Clipboard</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Message deleted</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Delete Message</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>You</translation>
     </message>
@@ -965,15 +1039,7 @@
         <translation>Select Message</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
+        <source>More Options...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1298,6 +1364,18 @@
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</translation>
     </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PollResultsPage</name>
@@ -1508,6 +1586,129 @@
         <source>Some inline bots request location data when using them</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>User Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation type="unfinished">Enter 1-128 characters {1-64 ?}</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation type="unfinished">Enter 1-128 characters {0-64 ?}</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile Pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation type="unfinished">Uploading...</translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable notification sounds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1516,16 +1717,27 @@
         <translation>Recently used</translation>
     </message>
     <message>
-        <source>Loading stickers...</source>
-        <translation>Loading stickers...</translation>
+        <source>Removing sticker set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StickerSetOverlay</name>
+    <message>
+        <source>Sticker set successfully installed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
-    <message>
-        <source>Download Video</source>
-        <translation>Download Video</translation>
-    </message>
     <message>
         <source>Download of %1 successful.</source>
         <translation>Download of %1 successful.</translation>
@@ -1533,6 +1745,10 @@
     <message>
         <source>Download failed.</source>
         <translation>Download failed.</translation>
+    </message>
+    <message>
+        <source>Copy video to gallery</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

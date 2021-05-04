@@ -18,68 +18,40 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import WerkWolf.Fernschreiber 1.0
 import "../"
 
 MessageContentBase {
-    id: imagePreviewItem
 
-    readonly property int defaultHeight: Math.round(width * 2 / 3)
+    function calculateBiggest() {
+        var candidateBiggest = rawMessage.content.photo.sizes[rawMessage.content.photo.sizes.length - 1];
+        if (candidateBiggest.width === 0 && rawMessage.content.photo.sizes.length > 1) {
+           for (var i = (rawMessage.content.photo.sizes.length - 2); i >= 0; i--) {
+               candidateBiggest = rawMessage.content.photo.sizes[i];
+               if (candidateBiggest.width > 0) {
+                   break;
+               }
+           }
+        }
+        return candidateBiggest;
+    }
 
-    height: singleImage.visible ? Math.min(defaultHeight, singleImage.bestHeight + Theme.paddingSmall) : defaultHeight
+    height: Math.max(Theme.itemSizeExtraSmall, Math.min(defaultHeight, width / (biggest.width/biggest.height)))
+    readonly property int defaultHeight: Math.round(width * 0.66666666)
+    readonly property var biggest: calculateBiggest();
 
     onClicked: {
         pageStack.push(Qt.resolvedUrl("../../pages/ImagePage.qml"), {
-            "photoData" : imagePreviewItem.rawMessage.content.photo
+            "photoData" : photo.photo,
+//            "pictureFileInformation" : photo.fileInformation
         })
     }
-
-    Component.onCompleted: updateImage()
-
-    onRawMessageChanged: updateImage()
-
-    function updateImage() {
-        if (rawMessage.content.photo) {
-            // Check first which size fits best...
-            var photo
-            var photoData = rawMessage.content.photo
-            for (var i = 0; i < photoData.sizes.length; i++) {
-                photo = photoData.sizes[i].photo
-                if (photoData.sizes[i].width >= imagePreviewItem.width) {
-                    break
-                }
-            }
-            if (photo) {
-                imageFile.fileInformation = photo
-            }
-        }
+    TDLibPhoto {
+        id: photo
+        anchors.fill: parent
+        photo: rawMessage.content.photo
+        highlighted: parent.highlighted
     }
-
-    TDLibFile {
-        id: imageFile
-        tdlib: tdLibWrapper
-        autoLoad: true
-    }
-
-    Image {
-        id: singleImage
-        width: parent.width - Theme.paddingSmall
-        height: parent.height - Theme.paddingSmall
-        readonly property int bestHeight: (status === Image.Ready) ? Math.round(implicitHeight * width / implicitWidth) : 0
-        anchors.centerIn: parent
-
-        fillMode: Image.PreserveAspectCrop
-        autoTransform: true
-        asynchronous: true
-        source: imageFile.isDownloadingCompleted ? imageFile.path : ""
-        visible: status === Image.Ready
-        opacity: visible ? 1 : 0
-        Behavior on opacity { FadeAnimation {} }
-        layer.enabled: imagePreviewItem.highlighted
-        layer.effect: PressEffect { source: singleImage }
-    }
-
     BackgroundImage {
-        visible: singleImage.status !== Image.Ready
+        visible: !rawMessage.content.photo.minithumbnail && photo.image.status !== Image.Ready
     }
 }

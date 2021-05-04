@@ -28,21 +28,13 @@ CoverBackground {
 
     property int unreadMessages: 0
     property int unreadChats: 0
-    property bool authenticated: false
+    readonly property bool authenticated: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
     property int connectionState: TelegramAPI.WaitingForNetwork
 
     function setUnreadInfoText() {
-        if (unreadMessages === 1) {
-            unreadMessagesText.text = qsTr("unread message");
-        } else {
-            unreadMessagesText.text = qsTr("unread messages");
-        }
 
-        if (unreadChats === 1) {
-            unreadChatsText.text = qsTr("chat");
-        } else {
-            unreadChatsText.text = qsTr("chats");
-        }
+        unreadMessagesText.text = qsTr("unread messages", "", coverPage.unreadMessages);
+        unreadChatsText.text = qsTr("chats", "", coverPage.unreadChats)
 
         switch (coverPage.connectionState) {
         case TelegramAPI.WaitingForNetwork:
@@ -64,7 +56,6 @@ CoverBackground {
     }
 
     Component.onCompleted: {
-        coverPage.authenticated = (tdLibWrapper.getAuthorizationState() === TelegramAPI.AuthorizationReady);
         coverPage.connectionState = tdLibWrapper.getConnectionState();
         coverPage.unreadMessages = tdLibWrapper.getUnreadMessageInformation().unread_count || 0;
         coverPage.unreadChats = tdLibWrapper.getUnreadChatInformation().unread_count || 0;
@@ -82,7 +73,6 @@ CoverBackground {
             setUnreadInfoText();
         }
         onAuthorizationStateChanged: {
-            coverPage.authenticated = (authorizationState === TelegramAPI.AuthorizationReady);
             setUnreadInfoText();
         }
         onConnectionStateChanged: {
@@ -131,7 +121,7 @@ CoverBackground {
             }
             Label {
                 id: unreadMessagesText
-                font.pixelSize: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeExtraSmall
                 width: parent.width - unreadMessagesCountText.width - Theme.paddingMedium
                 wrapMode: Text.Wrap
                 anchors.verticalCenter: unreadMessagesCountText.verticalCenter
@@ -146,7 +136,7 @@ CoverBackground {
             visible: coverPage.authenticated && coverPage.unreadMessages > 1
             Text {
                 id: inText
-                font.pixelSize: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.primaryColor
                 text: qsTr("in")
                 anchors.verticalCenter: unreadChatsCountText.verticalCenter
@@ -159,7 +149,7 @@ CoverBackground {
             }
             Text {
                 id: unreadChatsText
-                font.pixelSize: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.primaryColor
                 width: parent.width - unreadChatsCountText.width - inText.width - ( 2 * Theme.paddingMedium )
                 wrapMode: Text.Wrap

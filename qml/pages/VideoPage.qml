@@ -20,13 +20,18 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import QtMultimedia 5.6
 import "../components"
+import "../components/messageContent"
 import "../js/functions.js" as Functions
+import "../js/debug.js" as Debug
 
 Page {
     id: videoPage
     allowedOrientations: Orientation.All
 
     property var videoData;
+    property alias videoType: myVideoComponent.videoType
+    property alias isVideoNote: myVideoComponent.isVideoNote
+    property var sourceMessage;
 
     property int videoWidth : videoData.width
     property int videoHeight : videoData.height
@@ -42,8 +47,8 @@ Page {
 
     function updateVideoData() {
         if (typeof videoData === "object") {
-            if (videoData.video.local.is_downloading_completed) {
-                videoPage.videoUrl = videoData.video.local.path;
+            if (videoData[videoType].local.is_downloading_completed) {
+                videoPage.videoUrl = videoData[videoType].local.path;
             }
         }
     }
@@ -55,7 +60,7 @@ Page {
             id: videoPagePullDownMenu
             visible: (videoPage.videoUrl !== "")
             MenuItem {
-                text: qsTr("Download Video")
+                text: qsTr("Copy video to gallery")
                 onClicked: {
                     tdLibWrapper.copyFileToDownloads(videoPage.videoUrl);
                 }
@@ -65,9 +70,8 @@ Page {
         Connections {
             target: tdLibWrapper
             onFileUpdated: {
-                if (fileId === videoPage.video.id) {
+                if (fileId === videoPage.videoData[videoType].id) {
                     if (fileInformation.local.is_downloading_completed) {
-                        videoPage.video = fileInformation;
                         videoPage.videoUrl = fileInformation.local.path;
                         videoPagePullDownMenu.visible = true;
                     }
@@ -87,10 +91,13 @@ Page {
             height: videoPage.videoHeight * videoPage.sizingFactor
             anchors.centerIn: parent
 
-            VideoPreview {
+            MessageVideo {
+                id: myVideoComponent
                 videoData: videoPage.videoData
                 fullscreen: true
                 onScreen: videoPage.status === PageStatus.Active
+                rawMessage: sourceMessage
+                anchors.fill: parent
             }
         }
 

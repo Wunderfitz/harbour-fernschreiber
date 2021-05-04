@@ -40,6 +40,15 @@ namespace {
     const QString PINNED_MESSAGE_ID("pinned_message_id");
     const QString REPLY_MARKUP("reply_markup");
     const QString _TYPE("@type");
+
+    // "interaction_info": {
+    //     "@type": "messageInteractionInfo",
+    //     "forward_count": 0,
+    //     "view_count": 47
+    // }
+    const QString TYPE_MESSAGE_INTERACTION_INFO("messageInteractionInfo");
+    const QString INTERACTION_INFO("interaction_info");
+    const QString VIEW_COUNT("view_count");
 }
 
 class ChatModel::MessageData
@@ -48,16 +57,35 @@ public:
     enum Role {
         RoleDisplay = Qt::DisplayRole,
         RoleMessageId,
-        RoleMessageContentType
+        RoleMessageContentType,
+        RoleMessageViewCount
+    };
+
+    enum RoleFlag {
+        RoleFlagDisplay = 0x01,
+        RoleFlagMessageId = 0x02,
+        RoleFlagMessageContentType = 0x04,
+        RoleFlagMessageViewCount = 0x08
     };
 
     MessageData(const QVariantMap &data, qlonglong msgid);
 
     static bool lessThan(const MessageData *message1, const MessageData *message2);
+    static QVector<int> flagsToRoles(uint flags);
+
+    uint updateMessageData(const QVariantMap &data);
+    uint updateContent(const QVariantMap &content);
+    uint updateContentType(const QVariantMap &content);
+    uint updateReplyMarkup(const QVariantMap &replyMarkup);
+    uint updateViewCount(const QVariantMap &interactionInfo);
+    uint updateInteractionInfo(const QVariantMap &interactionInfo);
+
     QVector<int> diff(const MessageData *message) const;
     QVector<int> setMessageData(const QVariantMap &data);
     QVector<int> setContent(const QVariantMap &content);
     QVector<int> setReplyMarkup(const QVariantMap &replyMarkup);
+    QVector<int> setInteractionInfo(const QVariantMap &interactionInfo);
+
     int senderUserId() const;
     qlonglong senderChatId() const;
     bool senderIsChat() const;
@@ -66,13 +94,33 @@ public:
     QVariantMap messageData;
     const qlonglong messageId;
     QString messageContentType;
+    int viewCount;
 };
 
 ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
     messageData(data),
     messageId(msgid),
-    messageContentType(data.value(CONTENT).toMap().value(_TYPE).toString())
+    messageContentType(data.value(CONTENT).toMap().value(_TYPE).toString()),
+    viewCount(data.value(INTERACTION_INFO).toMap().value(VIEW_COUNT).toInt())
 {
+}
+
+QVector<int> ChatModel::MessageData::flagsToRoles(uint flags)
+{
+    QVector<int> roles;
+    if (flags & RoleFlagDisplay) {
+        roles.append(RoleDisplay);
+    }
+    if (flags & RoleFlagMessageId) {
+        roles.append(RoleMessageId);
+    }
+    if (flags & RoleFlagMessageContentType) {
+        roles.append(RoleMessageContentType);
+    }
+    if (flags & RoleFlagMessageViewCount) {
+        roles.append(RoleMessageViewCount);
+    }
+    return roles;
 }
 
 int ChatModel::MessageData::senderUserId() const
@@ -101,37 +149,74 @@ QVector<int> ChatModel::MessageData::diff(const MessageData *message) const
         if (message->messageContentType != messageContentType) {
             roles.append(RoleMessageContentType);
         }
+        if (message->viewCount != viewCount) {
+            roles.append(RoleMessageViewCount);
+        }
     }
     return roles;
 }
 
-QVector<int> ChatModel::MessageData::setMessageData(const QVariantMap &data)
+uint ChatModel::MessageData::updateMessageData(const QVariantMap &data)
 {
     messageData = data;
-    QVector<int> changedRoles;
-    changedRoles.append(RoleDisplay);
-    return changedRoles;
+    return RoleFlagDisplay |
+        updateContentType(data.value(CONTENT).toMap()) |
+        updateViewCount(data.value(INTERACTION_INFO).toMap());
+}
+
+QVector<int> ChatModel::MessageData::setMessageData(const QVariantMap &data)
+{
+    return flagsToRoles(updateMessageData(data));
+}
+
+uint ChatModel::MessageData::updateContentType(const QVariantMap &content)
+{
+    const QString oldContentType(messageContentType);
+    messageContentType = content.value(_TYPE).toString();
+    return (oldContentType == messageContentType) ? 0 : RoleFlagMessageContentType;
+}
+
+uint ChatModel::MessageData::updateContent(const QVariantMap &content)
+{
+    messageData.insert(CONTENT, content);
+    return RoleFlagDisplay | updateContentType(content);
 }
 
 QVector<int> ChatModel::MessageData::setContent(const QVariantMap &content)
 {
-    const QString oldContentType(messageContentType);
-    messageData.insert(CONTENT, content);
-    messageContentType = content.value(_TYPE).toString();
-    QVector<int> changedRoles;
-    if (oldContentType != messageContentType) {
-        changedRoles.append(RoleMessageContentType);
-    }
-    changedRoles.append(RoleDisplay);
-    return changedRoles;
+    return flagsToRoles(updateContent(content));
+}
+
+uint ChatModel::MessageData::updateReplyMarkup(const QVariantMap &replyMarkup)
+{
+    messageData.insert(REPLY_MARKUP, replyMarkup);
+    return RoleFlagDisplay;
 }
 
 QVector<int> ChatModel::MessageData::setReplyMarkup(const QVariantMap &replyMarkup)
 {
-    messageData.insert(REPLY_MARKUP, replyMarkup);
-    QVector<int> changedRoles;
-    changedRoles.append(RoleDisplay);
-    return changedRoles;
+    return flagsToRoles(updateReplyMarkup(replyMarkup));
+}
+
+uint ChatModel::MessageData::updateViewCount(const QVariantMap &interactionInfo)
+{
+    const int oldViewCount = viewCount;
+    viewCount = interactionInfo.value(VIEW_COUNT).toInt();
+    return (viewCount == oldViewCount) ? 0 : RoleFlagMessageViewCount;
+}
+
+uint ChatModel::MessageData::updateInteractionInfo(const QVariantMap &interactionInfo)
+{
+    if (interactionInfo.value(_TYPE) == TYPE_MESSAGE_INTERACTION_INFO) {
+        messageData.insert(INTERACTION_INFO, interactionInfo);
+        return RoleFlagDisplay | updateViewCount(interactionInfo);
+    }
+    return 0;
+}
+
+QVector<int> ChatModel::MessageData::setInteractionInfo(const QVariantMap &info)
+{
+    return flagsToRoles(updateInteractionInfo(info));
 }
 
 bool ChatModel::MessageData::lessThan(const MessageData *message1, const MessageData *message2)
@@ -157,6 +242,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
     connect(this->tdLibWrapper, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SLOT(handleChatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibWrapper, SIGNAL(messageContentUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageContentUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messagesDeleted(qlonglong, QList<qlonglong>)), this, SLOT(handleMessagesDeleted(qlonglong, QList<qlonglong>)));
 }
 
@@ -172,6 +258,7 @@ QHash<int,QByteArray> ChatModel::roleNames() const
     roles.insert(MessageData::RoleDisplay, "display");
     roles.insert(MessageData::RoleMessageId, "message_id");
     roles.insert(MessageData::RoleMessageContentType, "content_type");
+    roles.insert(MessageData::RoleMessageViewCount, "view_count");
     return roles;
 }
 
@@ -189,6 +276,7 @@ QVariant ChatModel::data(const QModelIndex &index, int role) const
         case MessageData::RoleDisplay: return message->messageData;
         case MessageData::RoleMessageId: return message->messageId;
         case MessageData::RoleMessageContentType: return message->messageContentType;
+        case MessageData::RoleMessageViewCount: return message->viewCount;
         }
     }
     return QVariant();
@@ -278,22 +366,7 @@ QVariantMap ChatModel::getMessage(int index)
 int ChatModel::getLastReadMessageIndex()
 {
     LOG("Obtaining last read message index");
-    if (this->messages.isEmpty()) {
-        LOG("Messages are empty, nothing to do...");
-        return 0;
-    } else if (messages.last()->senderUserId() == tdLibWrapper->getUserInformation().value(ID).toInt()) {
-        LOG("Last message is an own one, then simply set the last read to the last one...");
-        return this->messages.size() - 1;
-    } else {
-        const int lastReadMessageIndex = messageIndexMap.value(chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong(), -1);
-        if (lastReadMessageIndex < 0) {
-            LOG("Last read message not found in the list of messages. That shouldn't happen, therefore setting the unread indicator to the end of the list.");
-            return this->messages.size() - 1;
-        } else {
-            LOG("Found last read message in the already loaded messages. Index:" << lastReadMessageIndex);
-            return lastReadMessageIndex;
-        }
-    }
+    return this->calculateLastKnownMessageId();
 }
 
 void ChatModel::setSearchQuery(const QString newSearchQuery)
@@ -330,6 +403,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
         this->inReload = false;
         int listInboxPosition = this->calculateLastKnownMessageId();
         int listOutboxPosition = this->calculateLastReadSentMessageId();
+        listInboxPosition = this->calculateScrollPosition(listInboxPosition);
         if (this->inIncrementalUpdate) {
             this->inIncrementalUpdate = false;
             emit messagesIncrementalUpdate(listInboxPosition, listOutboxPosition);
@@ -370,6 +444,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
                 this->inReload = false;
                 int listInboxPosition = this->calculateLastKnownMessageId();
                 int listOutboxPosition = this->calculateLastReadSentMessageId();
+                listInboxPosition = this->calculateScrollPosition(listInboxPosition);
                 if (this->inIncrementalUpdate) {
                     this->inIncrementalUpdate = false;
                     emit messagesIncrementalUpdate(listInboxPosition, listOutboxPosition);
@@ -451,6 +526,7 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         const QModelIndex messageIndex(index(pos));
         emit dataChanged(messageIndex, messageIndex, changedRoles);
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
+        tdLibWrapper->viewMessage(QString::number(this->chatId), QString::number(messageId), false);
     }
 }
 
@@ -493,6 +569,19 @@ void ChatModel::handleMessageContentUpdated(qlonglong chatId, qlonglong messageI
             const QModelIndex messageIndex(index(pos));
             emit dataChanged(messageIndex, messageIndex, changedRoles);
             emit messageUpdated(pos);
+        }
+    }
+}
+
+void ChatModel::handleMessageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo)
+{
+    if (chatId == this->chatId && messageIndexMap.contains(messageId)) {
+        const int pos = messageIndexMap.value(messageId, -1);
+        if (pos >= 0) {
+            LOG("Message interaction info was updated at index" << pos);
+            const QVector<int> changedRoles(messages.at(pos)->setInteractionInfo(updatedInfo));
+            const QModelIndex messageIndex(index(pos));
+            emit dataChanged(messageIndex, messageIndex, changedRoles);
         }
     }
 }
@@ -655,14 +744,29 @@ int ChatModel::calculateLastKnownMessageId()
     LOG("calculateLastKnownMessageId");
     const qlonglong lastKnownMessageId = this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong();
     LOG("lastKnownMessageId" << lastKnownMessageId);
+    const int myUserId = tdLibWrapper->getUserInformation().value(ID).toInt();
+    qlonglong lastOwnMessageId = 0;
+    for (int i = (messages.size() - 1); i >= 0; i--) {
+        MessageData *currentMessage = messages.at(i);
+        if (currentMessage->senderUserId() == myUserId) {
+            lastOwnMessageId = currentMessage->messageId;
+            break;
+        }
+    }
     LOG("size messageIndexMap" << messageIndexMap.size());
-    LOG("contains ID?" << messageIndexMap.contains(lastKnownMessageId));
+    LOG("contains last read ID?" << messageIndexMap.contains(lastKnownMessageId));
+    LOG("contains last own ID?" << messageIndexMap.contains(lastOwnMessageId));
     int listInboxPosition = messageIndexMap.value(lastKnownMessageId, messages.size() - 1);
+    int listOwnPosition = messageIndexMap.value(lastOwnMessageId, -1);
     if (listInboxPosition > this->messages.size() - 1 ) {
         listInboxPosition = this->messages.size() - 1;
     }
+    if (listOwnPosition > this->messages.size() - 1 ) {
+        listOwnPosition = -1;
+    }
     LOG("Last known message is at position" << listInboxPosition);
-    return listInboxPosition;
+    LOG("Last own message is at position" << listOwnPosition);
+    return (listInboxPosition > listOwnPosition) ? listInboxPosition : listOwnPosition ;
 }
 
 int ChatModel::calculateLastReadSentMessageId()
@@ -672,9 +776,20 @@ int ChatModel::calculateLastReadSentMessageId()
     LOG("lastReadSentMessageId" << lastReadSentMessageId);
     LOG("size messageIndexMap" << messageIndexMap.size());
     LOG("contains ID?" << messageIndexMap.contains(lastReadSentMessageId));
-    const int listOutboxPosition = messageIndexMap.value(lastReadSentMessageId, messages.size() - 1);
+    const int listOutboxPosition = messageIndexMap.value(lastReadSentMessageId, -1);
     LOG("Last read sent message is at position" << listOutboxPosition);
+    emit lastReadSentMessageUpdated(listOutboxPosition);
     return listOutboxPosition;
+}
+
+int ChatModel::calculateScrollPosition(int listInboxPosition)
+{
+    LOG("Calculating new scroll position, current:" << listInboxPosition << ", list size:" << this->messages.size());
+    if ((this->messages.size() - 1) > listInboxPosition) {
+        return listInboxPosition + 1;
+    } else {
+        return listInboxPosition;
+    }
 }
 
 bool ChatModel::isMostRecentMessageLoaded()

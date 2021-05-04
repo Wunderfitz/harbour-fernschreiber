@@ -85,11 +85,50 @@
     </message>
     <message>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Выйти</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Выход из аккаунта</translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Активные сеансы</translation>
+    </message>
+</context>
+<context>
+    <name>ActiveSessionsPage</name>
+    <message>
+        <source>Getting active sessions...</source>
+        <translation>Получение активных сеансов...</translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Активные сеансы</translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Сеанс был завершён</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Завершить сеанс</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>Это приложение</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP-адрес: %1, регион: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Активен с: %1, был онлайн: %2</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Завершение сеанса</translation>
     </message>
 </context>
 <context>
@@ -107,18 +146,18 @@
     <name>ChatInformationPageContent</name>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 подписчик</numerusform>
+            <numerusform>%1 подписчика</numerusform>
             <numerusform>%1 подписчиков</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 участник</numerusform>
+            <numerusform>%1 участника</numerusform>
             <numerusform>%1 участников</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -153,7 +192,7 @@
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation>Информация</translation>
+        <translation>Сведения</translation>
     </message>
     <message>
         <source>Phone Number</source>
@@ -172,14 +211,14 @@
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 онлайн</numerusform>
+            <numerusform>%1 онлайн</numerusform>
+            <numerusform>%1 онлайн</numerusform>
         </translation>
     </message>
     <message>
@@ -208,7 +247,7 @@
     </message>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
@@ -245,23 +284,23 @@
     <name>ChatListViewItem</name>
     <message>
         <source>Unknown</source>
-        <translation>нет информации</translation>
+        <translation>Нет данных</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>User Info</source>
-        <translation>Информация о пользователе</translation>
+        <translation>Сведения о пользователе</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation>Информация о группе</translation>
+        <translation>Сведения о группе</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
-        <translation>Отметить все сообщения как прочитанные</translation>
+        <translation>Всё прочитано</translation>
     </message>
     <message>
         <source>No message in this chat.</source>
@@ -281,11 +320,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished">Открепить чат</translation>
+        <translation>Открепить чат</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished">Закрепить чат</translation>
+        <translation>Закрепить чат</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -308,18 +347,18 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 участник</numerusform>
+            <numerusform>%1 участника</numerusform>
             <numerusform>%1 участников</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 подписчик</numerusform>
+            <numerusform>%1 подписчика</numerusform>
             <numerusform>%1 подписчиков</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -352,11 +391,11 @@
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation>Выйти из чата</translation>
+        <translation>Выйти из Чата</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation>Зайти в чат</translation>
+        <translation>Зайти в Чат</translation>
     </message>
     <message>
         <source>Leaving chat</source>
@@ -372,49 +411,49 @@
     </message>
     <message numerus="yes">
         <source>%Ln Messages deleted</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln сообщение удалено</numerusform>
+            <numerusform>%Ln сообщения удалено</numerusform>
+            <numerusform>%Ln сообщений удалено</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln messages have been copied</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln сообщение скопировано</numerusform>
+            <numerusform>%Ln сообщения скопировано</numerusform>
+            <numerusform>%Ln сообщений скопировано</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Перенаправить %Ln сообщение</numerusform>
+            <numerusform>Перенаправить %Ln сообщения</numerusform>
+            <numerusform>Перенаправить %Ln сообщений</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Выбрано %Ln сообщение</numerusform>
+            <numerusform>Выбрано %Ln сообщения</numerusform>
+            <numerusform>Выбрано %Ln сообщений</numerusform>
         </translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 онлайн</numerusform>
+            <numerusform>%1 онлайн</numerusform>
+            <numerusform>%1 онлайн</numerusform>
         </translation>
     </message>
     <message>
@@ -439,11 +478,43 @@
     </message>
     <message>
         <source>Location: Obtaining position...</source>
-        <translation type="unfinished">Определение координат...</translation>
+        <translation>Определение координат...</translation>
     </message>
     <message>
         <source>Location (%1/%2)</source>
-        <translation type="unfinished">Местоположение (%1/%2)</translation>
+        <translation>Местоположение (%1/%2)</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Скопировать в буфер обмена</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Сообщение откреплено</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Открепить сообщение</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Закрепить сообщение</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation>Дополнительные опции</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Сообщение удалено</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Удалить сообщение</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Переслать сообщение</translation>
     </message>
 </context>
 <context>
@@ -459,14 +530,6 @@
 </context>
 <context>
     <name>CoverPage</name>
-    <message>
-        <source>unread message</source>
-        <translation>сообщение</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>сообщений</translation>
-    </message>
     <message>
         <source>in</source>
         <translation>в</translation>
@@ -491,13 +554,24 @@
         <source>Updating content...</source>
         <translation>Обновление контента...</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>чате</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>чатах</translation>
+        <translation>
+            <numerusform>чатe</numerusform>
+            <numerusform>чатах</numerusform>
+            <numerusform>чатах</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation>
+            <numerusform>новое
+сообщение</numerusform>
+            <numerusform>новых
+сообщения</numerusform>
+            <numerusform>новых
+сообщений</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -510,17 +584,17 @@
     <message>
         <source>Send Messages</source>
         <comment>member permission</comment>
-        <translation>Посылать сообщения</translation>
+        <translation>Отправлять сообщения</translation>
     </message>
     <message>
         <source>Send Media Messages</source>
         <comment>member permission</comment>
-        <translation>Посылать медиа-сообщения</translation>
+        <translation>Отправлять медиа-сообщения</translation>
     </message>
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation>Посылать другие сообщения</translation>
+        <translation>Отправлять другие сообщения</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
@@ -810,47 +884,56 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished">%1 добавлен в чат</translation>
+        <translation>добавил(а) %1 в чат</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished">%1 удалён из чата</translation>
+        <translation>удалил(а) %1 из чата</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">%1 добавлены в чат</translation>
+        <translation>добавил(а) %1 в чат</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">%1 удалены из чата</translation>
+        <translation>удалил(а) %1 из чата</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>набрал(а) %Ln очко</numerusform>
+            <numerusform>набрал(а) %Ln очка</numerusform>
+            <numerusform>набрал(а) %Ln очков</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>набрал(а) %Ln очко</numerusform>
+            <numerusform>набрал(а) %Ln очка</numerusform>
+            <numerusform>набрал(а) %Ln очков</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>отправил(а) игру</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>отправил(а) игру</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>отправил(а) видео заметку</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>отправил(а) видео заметку</translation>
     </message>
 </context>
 <context>
@@ -872,7 +955,15 @@
     <name>InReplyToRow</name>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Неизвестный(ая)</translation>
+    </message>
+    <message>
+        <source>This message was deleted</source>
+        <translation>Сообщение было удалено</translation>
     </message>
 </context>
 <context>
@@ -953,20 +1044,8 @@
         <translation>Редактировать</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Скопировать в буфер обмена</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Сообщение удалено</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Удалить</translation>
-    </message>
-    <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
@@ -974,42 +1053,34 @@
     </message>
     <message>
         <source>Select Message</source>
-        <translation>Выбрать сообщение</translation>
+        <translation>Выделить сообщения</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Закрепить сообщение</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Сообщение откреплено</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation type="unfinished">Открепить сообщение</translation>
+        <source>More Options...</source>
+        <translation>Ещё...</translation>
     </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>набрал(а) %Ln очко в %2</numerusform>
+            <numerusform>набрал(а) %Ln очка в %2</numerusform>
+            <numerusform>набрал(а) %Ln очков в %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>набрал(а) %Ln очко в %2</numerusform>
+            <numerusform>набрал(а) %Ln очка в %2</numerusform>
+            <numerusform>набрал(а) %Ln очков в %2</numerusform>
         </translation>
     </message>
 </context>
@@ -1017,14 +1088,14 @@
     <name>MessageLocation</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation type="unfinished">Для просмотра карты, установите Pure Maps.</translation>
+        <translation>Для просмотра карты, установите Pure Maps.</translation>
     </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
@@ -1035,36 +1106,36 @@
     <name>MessagePoll</name>
     <message>
         <source>Close Poll</source>
-        <translation type="unfinished">Прекратить Опрос</translation>
+        <translation>Завершить опрос</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation type="unfinished">Обнулить Ответ</translation>
+        <translation>Отозвать ответ</translation>
     </message>
     <message>
         <source>Final Result:</source>
-        <translation type="unfinished">Окончательный Результат</translation>
+        <translation>Окончательный результат:</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation type="unfinished">Разрешено несколько вариантов ответов.</translation>
+        <translation>Можно выбрать несколько вариантов ответа.</translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln голос</numerusform>
+            <numerusform>%Ln голоса</numerusform>
+            <numerusform>%Ln голосов</numerusform>
         </translation>
     </message>
 </context>
@@ -1073,14 +1144,14 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation type="unfinished"></translation>
+        <translation>через %1</translation>
     </message>
 </context>
 <context>
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Голосовое сообщение</translation>
     </message>
 </context>
 <context>
@@ -1134,10 +1205,10 @@
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln новое сообщение</numerusform>
+            <numerusform>%Ln новых сообщения</numerusform>
+            <numerusform>%Ln новых сообщений</numerusform>
         </translation>
     </message>
 </context>
@@ -1205,7 +1276,7 @@
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation type="unfinished">Совпадающих чатов не найдено.</translation>
+        <translation>Чатов не найдено.</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
@@ -1213,18 +1284,18 @@
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation>Завершение сеанса</translation>
     </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation>Вы</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation>Закреплённое Сообщение</translation>
+        <translation>Закреплённое сообщение</translation>
     </message>
     <message>
         <source>Message unpinned</source>
@@ -1269,10 +1340,10 @@
     </message>
     <message numerus="yes">
         <source>Question (%Ln characters left)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Вопрос (остался %Ln знак)</numerusform>
+            <numerusform>Вопрос (осталось %Ln знака)</numerusform>
+            <numerusform>Вопрос (осталось %Ln знаков)</numerusform>
         </translation>
     </message>
     <message>
@@ -1286,10 +1357,10 @@
     </message>
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ответ (остался %Ln знак)</numerusform>
+            <numerusform>Ответ (осталось %Ln знака)</numerusform>
+            <numerusform>Ответ (осталось %Ln знаков)</numerusform>
         </translation>
     </message>
     <message>
@@ -1317,6 +1388,18 @@
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Тесты имеют один правильный ответ. Участники не могут отозвать свои ответы.</translation>
     </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation>Дополнительное пояснение</translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation>Показывается, когда пользователь выбирает неправильный ответ.</translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation>Пояснение может быть длиной до 200 символов.</translation>
+    </message>
 </context>
 <context>
     <name>PollResultsPage</name>
@@ -1331,10 +1414,10 @@
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln голос</numerusform>
+            <numerusform>%Ln голоса</numerusform>
+            <numerusform>%Ln голосов</numerusform>
         </translation>
     </message>
     <message>
@@ -1350,19 +1433,19 @@
     <message numerus="yes">
         <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln голос</numerusform>
+            <numerusform>%Ln голоса</numerusform>
+            <numerusform>%Ln голосов</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln%</numerusform>
         </translation>
     </message>
     <message>
@@ -1373,10 +1456,10 @@
     <message numerus="yes">
         <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%Ln голос, включая ваш</numerusform>
+            <numerusform>%Ln голоса, включая ваш</numerusform>
+            <numerusform>%Ln голосов, включая ваш</numerusform>
         </translation>
     </message>
 </context>
@@ -1404,18 +1487,18 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 участник</numerusform>
+            <numerusform>%1 участника</numerusform>
             <numerusform>%1 участников</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 подписчик</numerusform>
+            <numerusform>%1 подписчика</numerusform>
             <numerusform>%1 подписчиков</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -1463,7 +1546,7 @@
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation>Звуки и вибрация</translation>
+        <translation>Уведомления</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1515,23 +1598,146 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished">Включить режим &quot;только в онлайне&quot;</translation>
+        <translation>Включить режим &quot;только онлайн&quot;</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation type="unfinished">При нём не будет использоваться автономное кэширование и некоторые функции могут быть ограничены или отсутствовать. Изменения вступят в силу после перезапуска Fernschreiber.</translation>
+        <translation>В этом режиме не будет использоваться кэширование и некоторые функции могут быть ограничены или отсутствовать. Изменения вступят в силу после перезапуска Fernschreiber.</translation>
     </message>
     <message>
         <source>Privacy</source>
-        <translation type="unfinished"></translation>
+        <translation>Приватность</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправлять мои координаты инлайн-ботам</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation type="unfinished"></translation>
+        <translation>Некоторые инлайн-боты просят отправить свои координаты при обращении к ним</translation>
+    </message>
+    <message>
+        <source>User Profile</source>
+        <translation>Профиль</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>Имя</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>Введите 1-64 символа</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Фамилия</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Введите 0-64 символа</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Ник</translation>
+    </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation>Разрешить приглашения в чаты</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation>Кто может пригласить меня в чат.</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Кому угодно</translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation>Только моим контактам</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Никому</translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation>Поиск по номеру телефону</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation>Можно ли меня найти по номеру моего телефона.</translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation>Ссылка в перенаправленном сообщении</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation>Вставлять ли ссылку на меня в перенаправленное от меня сообщение.</translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation>Показывать номер телефона</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation>Видят ли другие пользователи номер моего телефона.</translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation>Показывать картинку профиля</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation>Видят ли другие пользователи картинку из моего профиля.</translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation>Показывать мой статус</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation>Виден ли мой статус другим пользователям.</translation>
+    </message>
+    <message>
+        <source>Add Picture</source>
+        <translation>Добавить</translation>
+    </message>
+    <message>
+        <source>Profile Pictures</source>
+        <translation>Картинки профиля</translation>
+    </message>
+    <message>
+        <source>Delete Picture</source>
+        <translation>Удалить</translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>Отправка...</translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
+        <translation>Удаление картинки из профиля</translation>
+    </message>
+    <message>
+        <source>Enable notification sounds</source>
+        <translation>Уведомления издают звук</translation>
+    </message>
+    <message>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>Если звуки разрешены, Fernschreiber использует звук, выбранный для чатов в настройках Sailfish OS.</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Задержка перед отметкой о прочтении</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber может отмечать сообщения как прочитанные с некоторой задержкой, а не сразу как только они показываются на экране.</translation>
     </message>
 </context>
 <context>
@@ -1541,16 +1747,27 @@
         <translation>Недавно использованные</translation>
     </message>
     <message>
-        <source>Loading stickers...</source>
-        <translation>Загрузка стикеров...</translation>
+        <source>Removing sticker set</source>
+        <translation>Удаление набора стикеров</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>Набор стикеров успешно удалён!</translation>
+    </message>
+</context>
+<context>
+    <name>StickerSetOverlay</name>
+    <message>
+        <source>Sticker set successfully installed!</source>
+        <translation>Набор стикеров успешно установлен!</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>Набор стикеров успешно удалён!</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
-    <message>
-        <source>Download Video</source>
-        <translation>Скачать видео</translation>
-    </message>
     <message>
         <source>Download of %1 successful.</source>
         <translation>Успешно скачано %1.</translation>
@@ -1558,6 +1775,10 @@
     <message>
         <source>Download failed.</source>
         <translation>Ошибка скачивания.</translation>
+    </message>
+    <message>
+        <source>Copy video to gallery</source>
+        <translation>Скопировать видео в Галерею</translation>
     </message>
 </context>
 <context>
@@ -1984,39 +2205,39 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation type="unfinished">%1 добавлен в чат</translation>
+        <translation>добавил(а) %1 в чат</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation type="unfinished">%1 удалён из чата</translation>
+        <translation>удалил(а) %1 из чата</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">%1 добавлены в чат</translation>
+        <translation>добавил(а) %1 в чат</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation type="unfinished">%1 удалены из чата</translation>
+        <translation>удалил(а) %1 из чата</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>набрал %Ln очко</numerusform>
+            <numerusform>набрал %Ln очка</numerusform>
+            <numerusform>набрал %Ln очков</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>отправил(а) игру</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>отправил(а) игру</translation>
     </message>
 </context>
 </TS>

@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Este proyecto usa la librería TDLib de Telegram. ¡Gracias por estar disponible bajo las condiciones de la licencia de software-boost 1.0!</translation>
+        <translation>Este proyecto usa la librería TDLib de Telegram. ¡Gracias por estar disponible bajo las condiciones de la licencia software-boost 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
@@ -65,11 +65,11 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Este proyecto usa la librería twemoji de Tweeter. Derechos de autor 2018 Twitter Inc, y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT (codificación) y CC-BY 4.0 (gráficos)!</translation>
+        <translation>Este proyecto usa la librería Twemoji de Tweeter. Derechos de autor 2018 Twitter Inc, y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT y CC-BY 4.0</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Librería twemoji</translation>
+        <translation>Librería Twemoji</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
@@ -77,19 +77,58 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation>Este proyecto usa la librería rlottie de Samsung Electronics Co, y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT</translation>
+        <translation>Este proyecto usa la librería Rlottie de Samsung Electronics Co, y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
-        <translation>Librería rlottie</translation>
+        <translation>Librería Rlottie</translation>
     </message>
     <message>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerrar sesión</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Desconectado</translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Sesiones activas</translation>
+    </message>
+</context>
+<context>
+    <name>ActiveSessionsPage</name>
+    <message>
+        <source>Getting active sessions...</source>
+        <translation>Consiguiendo sesiones activas...</translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Sesiones activas </translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Se terminó la sesión </translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Terminar sesión </translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>Esta apl</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>Dirección IP: %1, origen: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Activo desde: %1, último en línea: %2</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Terminando sesión</translation>
     </message>
 </context>
 <context>
@@ -107,16 +146,16 @@
     <name>ChatInformationPageContent</name>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 suscriptor</numerusform>
             <numerusform>%1 suscriptores</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 miembro</numerusform>
             <numerusform>%1 miembros</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -129,7 +168,7 @@
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Saliendo de la charla</translation>
+        <translation>Saliendo del grupo</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -174,14 +213,14 @@
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 en línea</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 en líneas</numerusform>
         </translation>
     </message>
     <message>
         <source>New Secret Chat</source>
-        <translation>Charla secreta</translation>
+        <translation>Crear conversación secreta</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
@@ -197,7 +236,7 @@
     <message>
         <source>Loading common chats…</source>
         <comment>chats you have in common with a user</comment>
-        <translation>Cargando las charlas comunes…</translation>
+        <translation>Cargando conversaciones comunes…</translation>
     </message>
     <message>
         <source>Loading group members…</source>
@@ -254,7 +293,7 @@
     </message>
     <message>
         <source>Group Info</source>
-        <translation>Grupo</translation>
+        <translation>Información </translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
@@ -262,7 +301,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation>No hay mensaje en esta charla.</translation>
+        <translation>No hay mensaje aún.</translation>
     </message>
     <message>
         <source>Mark chat as unread</source>
@@ -278,11 +317,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation>Desanclar charla</translation>
+        <translation>Desanclar conversación</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation>Anclar charla</translation>
+        <translation>Anclar conversación</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -305,16 +344,16 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 miembro</numerusform>
             <numerusform>%1 miembros</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 suscriptor</numerusform>
             <numerusform>%1 suscriptores</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -343,7 +382,7 @@
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation>Esta charla está vacía.</translation>
+        <translation>Esta conversación está vacía.</translation>
     </message>
     <message>
         <source>Leave Chat</source>
@@ -355,7 +394,7 @@
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Saliendo de la charla</translation>
+        <translation>Saliendo de conversación</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
@@ -367,32 +406,32 @@
     </message>
     <message numerus="yes">
         <source>%Ln Messages deleted</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%Ln Mensajes borrado</numerusform>
             <numerusform>%Ln Mensajes borrados</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln messages have been copied</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%Ln se han copiado los mensaje</numerusform>
             <numerusform>%Ln se han copiado los mensajes</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>Reenviar %Ln mensaje</numerusform>
             <numerusform>Reenviar %Ln mensajes</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln messages selected</source>
         <comment>number of messages selected</comment>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%Ln mensaje seleccionado</numerusform>
             <numerusform>%Ln mensajes seleccionados</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -402,61 +441,85 @@
     </message>
     <message numerus="yes">
         <source>%1 online</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 en línea</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 en líneas</numerusform>
         </translation>
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>Esta charla secreta aún no está lista. El contacto no está conectado.</translation>
+        <translation>Esta conversación secreta aún no está lista. El contacto no está conectado.</translation>
     </message>
     <message>
         <source>Closing chat</source>
-        <translation>Cerrando la charla</translation>
+        <translation>Cerrando la conversación</translation>
     </message>
     <message>
         <source>Close Chat</source>
-        <translation>Cerrar charla</translation>
+        <translation>Cerrar conversación</translation>
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation>Buscar en charla</translation>
+        <translation>Buscar palabras</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation>Buscar</translation>
+        <translation>A b c</translation>
     </message>
     <message>
         <source>Location: Obtaining position...</source>
-        <translation>Ubicación: Recibiendo posición ...</translation>
+        <translation>Ubicación: Recibiendo posición...</translation>
     </message>
     <message>
         <source>Location (%1/%2)</source>
-        <translation>Ubicación (%1/%2)</translation>
+        <translation>Ubicación: (%1/%2)</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Copiar</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Mensaje desanclado</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Desanclar mensaje</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Anclar mensaje</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation>Opciones adicionales </translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Mensaje borrado</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Borrar</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Reenviar mensaje</translation>
     </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
     <message>
         <source>Select Chat</source>
-        <translation>Seleccionar charla</translation>
+        <translation>Seleccionar conversación</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>No hay todavía ninguna charla.</translation>
+        <translation>No hay todavía conversaciones.</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
-    <message>
-        <source>unread message</source>
-        <translation>mensaje no leído</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>mensajes no leído</translation>
-    </message>
     <message>
         <source>in</source>
         <translation>en</translation>
@@ -481,13 +544,19 @@
         <source>Updating content...</source>
         <translation>Actualizando contenido...</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>charla</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>charlas</translation>
+        <translation>
+            <numerusform>conversación</numerusform>
+            <numerusform>conversaciones</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation>
+            <numerusform>mensaje no leído</numerusform>
+            <numerusform>mensajes no leídos</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -520,7 +589,7 @@
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation>Cambiar detalles de charla</translation>
+        <translation>Cambiar detalles de conversación</translation>
     </message>
     <message>
         <source>Invite Users</source>
@@ -530,7 +599,7 @@
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation>Mensajes de PIN</translation>
+        <translation>Mensajes Pin</translation>
     </message>
     <message>
         <source>New Members</source>
@@ -555,7 +624,7 @@
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation>Establecer cuánto tiempo debe esperar cada miembro de la charla entre mensajes</translation>
+        <translation>Establecer cuánto tiempo debe esperar cada miembro de conversación entre mensajes</translation>
     </message>
 </context>
 <context>
@@ -639,11 +708,11 @@
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>dejó esta charla</translation>
+        <translation>dejó esta conversación</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>dejó esta charla</translation>
+        <translation>dejó esta conversación</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
@@ -666,11 +735,11 @@
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation>el título de charla se cambió</translation>
+        <translation>el título del grupo se cambió</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation>el título de charla se cambió</translation>
+        <translation>el título del grupo se cambió</translation>
     </message>
     <message>
         <source>sent a poll</source>
@@ -702,7 +771,7 @@
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>cambió la foto del grupo</translation>
+        <translation>cambió la foto de la conversación</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
@@ -711,20 +780,20 @@
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>borró la foto de la charla</translation>
+        <translation>borró la foto de la conversación</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>borró la foto de la charla</translation>
+        <translation>borró la foto del grupo</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>cambió los ajustes de TTL en charla secreta</translation>
+        <translation>cambió los ajustes TTL en conversación secreta</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation>cambió los ajustes de TTL en charla secreta</translation>
+        <translation>cambió los ajustes TTL en conversación secreta</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
@@ -743,11 +812,11 @@
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>creó un pantallazo en esta charla</translation>
+        <translation>creó un pantallazo en esta conversación</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>creó un pantallazo en esta charla</translation>
+        <translation>creó un pantallazo en esta conversación</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
@@ -800,52 +869,61 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>ha añadido %1 a charla</translation>
+        <translation>ha añadido %1 a la conversación</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>ha quitado %1 de charla</translation>
+        <translation>ha quitado %1 de la conversación</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>ha añadido %1 a la charla</translation>
+        <translation>ha añadido %1 a la conversación</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>ha quitado %1 de charla</translation>
+        <translation>ha quitado %1 de la conversación</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>punto %Ln anotado</numerusform>
+            <numerusform>puntos %Ln anotados</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>punto %Ln anotado</numerusform>
+            <numerusform>puntos %Ln anotados</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió un juego</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>envió un juego</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>envió una nota de video</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>envió una nota de video</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
-        <translation>Bajar Imagen</translation>
+        <translation>Bajar imagen</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
@@ -861,6 +939,14 @@
     <message>
         <source>You</source>
         <translation>Usted</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Desconocido</translation>
+    </message>
+    <message>
+        <source>This message was deleted</source>
+        <translation>Este mensaje fue borrado</translation>
     </message>
 </context>
 <context>
@@ -941,18 +1027,6 @@
         <translation>Editar</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Copiar</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Mensaje borrado</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Borrar</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Usted</translation>
     </message>
@@ -965,16 +1039,8 @@
         <translation>Seleccionar</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Anclar mensaje </translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Mensaje desanclado</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Desanclar mensaje</translation>
+        <source>More Options...</source>
+        <translation>Más opciones</translation>
     </message>
 </context>
 <context>
@@ -986,16 +1052,16 @@
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>punto %Ln anotado en %2</numerusform>
+            <numerusform>puntos %Ln anotados en %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>punto %Ln anotado en %2</numerusform>
+            <numerusform>puntos %Ln anotados en %2</numerusform>
         </translation>
     </message>
 </context>
@@ -1038,17 +1104,17 @@
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%Ln%</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%Ln total de voto</numerusform>
             <numerusform>%Ln total de votos</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -1057,14 +1123,14 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation type="unfinished"></translation>
+        <translation>mensaje publicado a través del usuario bot</translation>
     </message>
 </context>
 <context>
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Nota de voz </translation>
     </message>
 </context>
 <context>
@@ -1099,7 +1165,7 @@
     </message>
     <message>
         <source>Search a contact...</source>
-        <translation>Buscar un contacto...</translation>
+        <translation>A b c</translation>
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
@@ -1118,9 +1184,9 @@
     <name>NotificationManager</name>
     <message numerus="yes">
         <source>%Ln unread messages</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%Ln mensaje no leído</numerusform>
             <numerusform>%Ln mensajes no leídos</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -1136,7 +1202,7 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Esperando conexión...</translation>
+        <translation>Esperando la red...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
@@ -1152,7 +1218,7 @@
     </message>
     <message>
         <source>Loading chat list...</source>
-        <translation>cargando lista de charla...</translation>
+        <translation>cargando lista de conversaciones...</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -1160,19 +1226,19 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>No hay todavía ninguna charla.</translation>
+        <translation>No hay todavía conversaciones.</translation>
     </message>
     <message>
         <source>New Chat</source>
-        <translation>Nueva charla</translation>
+        <translation>Crear conversación</translation>
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation>Filtrar las charlas...</translation>
+        <translation>A b c</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation>Buscar charlas</translation>
+        <translation>Buscar grupos</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
@@ -1184,7 +1250,7 @@
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation>Tocar la barra de título para filtrar las charlas</translation>
+        <translation>Tocar la barra de título para buscar</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
@@ -1192,11 +1258,11 @@
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation>Puede buscar charlas públicas o crear un nueva charla a través de la polea de opciones.</translation>
+        <translation>Puede buscar grupos públicos o crear un grupo a través de la polea de opciones.</translation>
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation>Saliendo de la cuenta</translation>
     </message>
 </context>
 <context>
@@ -1252,9 +1318,9 @@
     </message>
     <message numerus="yes">
         <source>Question (%Ln characters left)</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>Pregunta (quedan %Ln caracter)</numerusform>
             <numerusform>Pregunta (quedan %Ln caracteres)</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -1268,9 +1334,9 @@
     </message>
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>Respuesta (quedan %Ln caracter)</numerusform>
             <numerusform>Respuesta (quedan %Ln caracteres)</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -1298,6 +1364,18 @@
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Los interrogatorios tienen una respuesta correcta. Los participantes no pueden revocar sus respuestas.</translation>
     </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation>Introducir una explicación opcional</translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation>Se muestra cuando la usuario selecciona una respuesta incorrecta.</translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation>Una explicación puede tener hasta 200 caracteres.</translation>
+    </message>
 </context>
 <context>
     <name>PollResultsPage</name>
@@ -1312,9 +1390,9 @@
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%Ln total de voto</numerusform>
             <numerusform>%Ln total de votos</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -1330,17 +1408,17 @@
     <message numerus="yes">
         <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%Ln voto</numerusform>
             <numerusform>%Ln votos</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%Ln%</numerusform>
         </translation>
     </message>
     <message>
@@ -1351,9 +1429,9 @@
     <message numerus="yes">
         <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%Ln voto incluyendo el suyo</numerusform>
             <numerusform>%Ln votos incluyendo el suyo</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -1361,11 +1439,11 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation>No se han encontrado charlas.</translation>
+        <translation>No se han encontrado grupos.</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation>Buscando charlas...</translation>
+        <translation>Buscando grupos...</translation>
     </message>
     <message>
         <source>Private Chat</source>
@@ -1381,21 +1459,21 @@
     </message>
     <message numerus="yes">
         <source>%1 members</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 miembro</numerusform>
             <numerusform>%1 miembros</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%1 suscriptore</numerusform>
             <numerusform>%1 suscriptores</numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation>Buscar charla</translation>
+        <translation>Buscar grupos</translation>
     </message>
     <message>
         <source>Search a chat...</source>
@@ -1422,7 +1500,7 @@
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Envía mensajes pulsando la tecla entrar</translation>
+        <translation>Envía el mensajes pulsando la tecla Entrar</translation>
     </message>
     <message>
         <source>Appearance</source>
@@ -1434,11 +1512,11 @@
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation>Muestra el fondo para pegatinas y las alinea como imágenes</translation>
+        <translation>Muestra un fondo para pegatinas y las alinea como imágenes</translation>
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation>Notificar en </translation>
+        <translation>Notificar en</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1470,7 +1548,7 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation>Mostrar pantalla en notificaciones</translation>
+        <translation>Mostrar notificación por pantalla</translation>
     </message>
     <message>
         <source>Storage</source>
@@ -1498,15 +1576,138 @@
     </message>
     <message>
         <source>Privacy</source>
-        <translation type="unfinished"></translation>
+        <translation>Privacidad</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation type="unfinished"></translation>
+        <translation>Enviar ubicación a bots en línea</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation type="unfinished"></translation>
+        <translation>Algunos bots en línea solicitan datos de ubicación cuando los usan</translation>
+    </message>
+    <message>
+        <source>User Profile</source>
+        <translation>Perfil de usuario</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>Nombre</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>Marcar caracteres 1-128 {1-64 ?}</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Apellido</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Marcar caracteres 1-128 {0-64 ?}</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Usuario </translation>
+    </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation>Permitir invitaciones de grupo</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation>Configuración de privacidad para administrar si puede ser invitado a grupos.</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Si</translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation>Solo contactos </translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>No</translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation>Permitir buscarme por número</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation>Configuración de privacidad para administrar si puede ser encontrado por su número de teléfono.</translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation>Mostrar enlace en mensajes reenviados </translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation>Configuración de privacidad para administrar si un enlace de la cuenta está incluido en los mensajes reenviados.</translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation>Mostrar número telefónico</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation>Configuración de privacidad para administrar si su número de teléfono es visible.</translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation>Mostrar foto de perfil </translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation>Configuración de privacidad para administrar si la foto de perfil es visible.</translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation>Mostrar estado </translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation>Configuración de privacidad para administrar si el estado en línea es visible.</translation>
+    </message>
+    <message>
+        <source>Add Picture</source>
+        <translation>Agregar imagen</translation>
+    </message>
+    <message>
+        <source>Profile Pictures</source>
+        <translation>Perfil de imagen</translation>
+    </message>
+    <message>
+        <source>Delete Picture</source>
+        <translation>Borrar imagen</translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>Subiendo...</translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
+        <translation>Borrando la imagen de perfil</translation>
+    </message>
+    <message>
+        <source>Enable notification sounds</source>
+        <translation>Habilitar sonidos de notificación</translation>
+    </message>
+    <message>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>Cuando los sonidos están habilitados, Fernschreiber utilizará el sonido de notificación actual de Sailfish OS para los grupos, que se puede configurar en la configuración del sistema. </translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Marcar mensajes como leídos</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Si esta habilitado, la apl espera un segundo hasta que un mensaje que está en la pantalla se marque como leído. Si deshabilitas esta función, los mensajes se marcarán inmediatamente como leído una vez que esté en la pantalla sin desplazarse al mensaje</translation>
     </message>
 </context>
 <context>
@@ -1516,16 +1717,27 @@
         <translation>Usado recientemente</translation>
     </message>
     <message>
-        <source>Loading stickers...</source>
-        <translation>Cargando pegatinas...</translation>
+        <source>Removing sticker set</source>
+        <translation>Quitando el álbum  de pegatinas</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>¡Album de pegatinas quitado correctamente!</translation>
+    </message>
+</context>
+<context>
+    <name>StickerSetOverlay</name>
+    <message>
+        <source>Sticker set successfully installed!</source>
+        <translation>¡Album de pegatinas instalado correctamente!</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>¡Album de pegatinas quitado correctamente!</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
-    <message>
-        <source>Download Video</source>
-        <translation>Bajar Vídeo</translation>
-    </message>
     <message>
         <source>Download of %1 successful.</source>
         <translation>Bajada de %1 exitosa.</translation>
@@ -1533,6 +1745,10 @@
     <message>
         <source>Download failed.</source>
         <translation>Error al bajar</translation>
+    </message>
+    <message>
+        <source>Copy video to gallery</source>
+        <translation>Copiar video a la galería </translation>
     </message>
 </context>
 <context>
@@ -1645,15 +1861,15 @@
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>se unió a esta charla</translation>
+        <translation>se unió a este grupo</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>se añadió a esta charla</translation>
+        <translation>se añadió a este grupo</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>dejó esta charla</translation>
+        <translation>dejó este grupo</translation>
     </message>
     <message>
         <source>%1M</source>
@@ -1714,17 +1930,17 @@
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>me uní a esta charla</translation>
+        <translation>me uní a este grupo</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>se agregó a esta charla</translation>
+        <translation>se agregó a esta grupo</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>dejé esta charla</translation>
+        <translation>dejé este grupo</translation>
     </message>
     <message>
         <source>was never online</source>
@@ -1773,11 +1989,11 @@
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>se cambió el título de charla a %1</translation>
+        <translation>se cambió el título del grupo a %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation>se cambió el título de charla a %1</translation>
+        <translation>se cambió el título del grupo a %1</translation>
     </message>
     <message>
         <source>sent a poll</source>
@@ -1843,7 +2059,7 @@
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>cambió la foto de charla</translation>
+        <translation>cambió la foto del grupo</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
@@ -1861,12 +2077,12 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>cambió los ajustes de TTL de charla secreta</translation>
+        <translation>cambió los ajustes de TTL de la conversación secreta</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>cambió los ajustes de TTL de charla secreta</translation>
+        <translation>cambió los ajustes de TTL de la conversación secreta</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
@@ -1885,11 +2101,11 @@
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>creó un pantallazo a esta charla</translation>
+        <translation>creó un pantallazo a esta conversación</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>creó un pantallazo a esta charla</translation>
+        <translation>creó un pantallazo a esta conversación</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
@@ -1959,38 +2175,38 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>ha añadido %1 a la charla</translation>
+        <translation>ha añadido %1 al grupo</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>ha quitado %1 de la charla</translation>
+        <translation>ha quitado %1 del grupo</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>ha añadido %1 a la charla</translation>
+        <translation>ha añadido %1 al grupo</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>ha añadido %1  de la charla</translation>
+        <translation>ha añadido %1  del grupo</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>punto %Ln anotado</numerusform>
+            <numerusform>puntos %Ln anotados</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>envió un juego</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>envió un juego</translation>
     </message>
 </context>
 </TS>

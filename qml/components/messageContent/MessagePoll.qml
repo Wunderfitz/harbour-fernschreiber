@@ -230,6 +230,24 @@ MessageContentBase {
             width: 1
             height: Theme.paddingSmall
         }
+        Label {
+            width: parent.width
+            wrapMode: Text.Wrap
+            visible: isQuiz && text.length > 0
+            text: Emoji.emojify(Functions.enhanceMessageText(pollData.type.explanation) || "", font.pixelSize)
+            textFormat: Text.StyledText
+            color: pollMessageComponent.isOwnMessage || pollMessageComponent.highlighted ? Theme.highlightColor : Theme.primaryColor
+            font.pixelSize: Theme.fontSizeExtraSmall
+            leftPadding: Theme.iconSizeSmall
+            bottomPadding: Theme.paddingSmall
+            Icon {
+                source: "image://theme/icon-s-high-importance"
+                asynchronous: true
+                width: Theme.iconSizeExtraSmall
+                height: Theme.iconSizeExtraSmall
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
 
         Item {
             x: -Theme.horizontalPageMargin/2
@@ -259,7 +277,7 @@ MessageContentBase {
                     visible: !pollMessageComponent.canAnswer && !pollData.is_anonymous && pollData.total_voter_count > 0
                     icon.source: "image://theme/icon-m-media-artists"
                     onClicked: {
-                        pageStack.push(Qt.resolvedUrl("../../pages/PollResultsPage.qml"), { chatId:chatId, message:pollMessageComponent.message});
+                        pageStack.push(Qt.resolvedUrl("../../pages/PollResultsPage.qml"), { chatId:chatId, message:pollMessageComponent.rawMessage});
                     }
                     Icon {
                         opacity: 0.8

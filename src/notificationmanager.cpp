@@ -60,7 +60,9 @@ namespace {
     const QString HINT_CHAT_ID("x-fernschreiber.chat_id");          // qlonglong
     const QString HINT_TOTAL_COUNT("x-fernschreiber.total_count");  // int
 
+    const QString HINT_IMAGE_PATH("image-path");                    // QString
     const QString HINT_VIBRA("x-nemo-vibrate");                     // bool
+    const QString HINT_SUPPRESS_SOUND("suppress-sound");            // bool
     const QString HINT_DISPLAY_ON("x-nemo-display-on");             // bool
     const QString HINT_VISIBILITY("x-nemo-visibility");             // QString
     const QString VISIBILITY_PUBLIC("public");
@@ -207,8 +209,10 @@ void NotificationManager::updateNotificationGroup(int groupId, qlonglong chatId,
         } else {
             // New notification
             Notification *notification = new Notification(this);
+            notification->setCategory("x-nemo.messaging.im");
             notification->setAppName(APP_NAME);
             notification->setAppIcon(appIconFile);
+            notification->setIcon(appIconFile);
             notification->setHintValue(HINT_GROUP_ID, groupId);
             notification->setHintValue(HINT_CHAT_ID, chatId);
             notification->setHintValue(HINT_TOTAL_COUNT, totalCount);
@@ -358,17 +362,20 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     const QString summary(chatInformation ? chatInformation->title : QString());
     nemoNotification->setBody(notificationBody);
     nemoNotification->setSummary(summary);
-    nemoNotification->setPreviewBody(notificationBody);
-    nemoNotification->setPreviewSummary(summary);
     nemoNotification->setHintValue(HINT_VIBRA, needFeedback);
+    nemoNotification->setHintValue(HINT_IMAGE_PATH, QString());
 
     // Don't show popup for the currently open chat
     if (!needFeedback || (chatModel->getChatId() == notificationGroup->chatId &&
             qGuiApp->applicationState() == Qt::ApplicationActive)) {
+        nemoNotification->setHintValue(HINT_SUPPRESS_SOUND, true);
         nemoNotification->setHintValue(HINT_DISPLAY_ON, false);
         nemoNotification->setHintValue(HINT_VISIBILITY, QString());
         nemoNotification->setUrgency(Notification::Low);
     } else {
+        nemoNotification->setPreviewBody(notificationBody);
+        nemoNotification->setPreviewSummary(summary);
+        nemoNotification->setHintValue(HINT_SUPPRESS_SOUND, !appSettings->notificationSoundsEnabled());
         nemoNotification->setHintValue(HINT_DISPLAY_ON, appSettings->notificationTurnsDisplayOn());
         nemoNotification->setHintValue(HINT_VISIBILITY, VISIBILITY_PUBLIC);
         nemoNotification->setUrgency(Notification::Normal);

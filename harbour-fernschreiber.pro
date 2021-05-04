@@ -47,6 +47,8 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/DocumentPreview.qml \
     qml/components/GamePreview.qml \
     qml/components/ImagePreview.qml \
+    qml/components/InformationEditArea.qml \
+    qml/components/InformationTextItem.qml \
     qml/components/InReplyToRow.qml \
     qml/components/InlineQuery.qml \
     qml/components/LocationPreview.qml \
@@ -58,22 +60,23 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/PinnedMessageItem.qml \
     qml/components/PollPreview.qml \
     qml/components/PressEffect.qml \
+    qml/components/ProfilePictureList.qml \
     qml/components/ReplyMarkupButtons.qml \
     qml/components/StickerPicker.qml \
     qml/components/PhotoTextsListItem.qml \
+    qml/components/StickerSetOverlay.qml \
     qml/components/TDLibImage.qml \
+    qml/components/TDLibMinithumbnail.qml \
+    qml/components/TDLibPhoto.qml \
     qml/components/TDLibThumbnail.qml \
     qml/components/VoiceNoteOverlay.qml \
-    qml/components/chatInformationPage/ChatInformationEditArea.qml \
     qml/components/chatInformationPage/ChatInformationPageContent.qml \
     qml/components/chatInformationPage/ChatInformationProfilePicture.qml \
-    qml/components/chatInformationPage/ChatInformationProfilePictureList.qml \
     qml/components/chatInformationPage/ChatInformationTabItemBase.qml \
     qml/components/chatInformationPage/ChatInformationTabItemDebug.qml \
     qml/components/chatInformationPage/ChatInformationTabItemMembersGroups.qml \
     qml/components/chatInformationPage/ChatInformationTabItemSettings.qml \
     qml/components/chatInformationPage/ChatInformationTabView.qml \
-    qml/components/chatInformationPage/ChatInformationTextItem.qml \
     qml/components/chatInformationPage/EditGroupChatPermissionsColumn.qml \
     qml/components/chatInformationPage/EditSuperGroupSlowModeColumn.qml \
     qml/components/inlineQueryResults/InlineQueryResult.qml \
@@ -107,6 +110,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/messageContent/WebPagePreview.qml \
     qml/js/debug.js \
     qml/js/functions.js \
+    qml/pages/ActiveSessionsPage.qml \
     qml/pages/ChatInformationPage.qml \
     qml/pages/ChatPage.qml \
     qml/pages/ChatSelectionPage.qml \
@@ -137,13 +141,21 @@ TRANSLATIONS += translations/harbour-fernschreiber-de.ts \
                 translations/harbour-fernschreiber-pl.ts \
                 translations/harbour-fernschreiber-ru.ts \
                 translations/harbour-fernschreiber-sv.ts \
+                translations/harbour-fernschreiber-sk.ts \
                 translations/harbour-fernschreiber-en.ts \
                 translations/harbour-fernschreiber-zh_CN.ts
 
-contains(QT_ARCH, arm) {
+equals(QT_ARCH, arm) {
+    message(Building ARM)
     TARGET_ARCHITECTURE = armv7hl
-} else {
+}
+equals(QT_ARCH, i386) {
+    message(Building i486)
     TARGET_ARCHITECTURE = i486
+}
+equals(QT_ARCH, arm64){
+    message(Building aarch64)
+    TARGET_ARCHITECTURE = aarch64
 }
 
 INCLUDEPATH += $$PWD/tdlib/include

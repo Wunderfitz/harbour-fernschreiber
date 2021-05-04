@@ -95,6 +95,11 @@ signals:
     void chatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order);
     void inlineQueryResults(const QString &inlineQueryId, const QString &nextOffset, const QVariantList &results, const QString &switchPmText, const QString &switchPmParameter, const QString &extra);
     void callbackQueryAnswer(const QString &text, bool alert, const QString &url);
+    void userPrivacySettingRules(const QVariantMap &rules);
+    void userPrivacySettingRulesUpdated(const QVariantMap &updatedRules);
+    void messageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo);
+    void okReceived(const QString &request);
+    void sessionsReceived(const QVariantList &sessions);
 
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
@@ -104,6 +109,7 @@ private:
     bool isActive;
 
     void receiverLoop();
+    void nop(const QVariantMap &receivedInformation);
     void processReceivedDocument(const QJsonDocument &receivedJsonDocument);
     void processUpdateOption(const QVariantMap &receivedInformation);
     void processUpdateAuthorizationState(const QVariantMap &receivedInformation);
@@ -155,7 +161,6 @@ private:
     void processUpdateMessageIsPinned(const QVariantMap &receivedInformation);
     void processUsers(const QVariantMap &receivedInformation);
     void processError(const QVariantMap &receivedInformation);
-    void nop(const QVariantMap &receivedInformation);
     void processSecretChat(const QVariantMap &receivedInformation);
     void processUpdateSecretChat(const QVariantMap &receivedInformation);
     void processUpdateMessageEdited(const QVariantMap &receivedInformation);
@@ -164,6 +169,10 @@ private:
     void processUpdateChatDraftMessage(const QVariantMap &receivedInformation);
     void processInlineQueryResults(const QVariantMap &receivedInformation);
     void processCallbackQueryAnswer(const QVariantMap &receivedInformation);
+    void processUserPrivacySettingRules(const QVariantMap &receivedInformation);
+    void processUpdateUserPrivacySettingRules(const QVariantMap &receivedInformation);
+    void processUpdateMessageInteractionInfo(const QVariantMap &receivedInformation);
+    void processSessions(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H

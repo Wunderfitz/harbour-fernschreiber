@@ -91,6 +91,45 @@
         <source>Logged out</source>
         <translation>已登出</translation>
     </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>登录设备情况</translation>
+    </message>
+</context>
+<context>
+    <name>ActiveSessionsPage</name>
+    <message>
+        <source>Getting active sessions...</source>
+        <translation>正在获取登录设备情况…</translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>登录设备情况</translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>已删除设备</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>删除设备</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>此应用</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP 地址: %1, 地点: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>活跃时间: %1, 上次在线: %2</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>删除设备</translation>
+    </message>
 </context>
 <context>
     <name>BackgroundProgressIndicator</name>
@@ -425,6 +464,38 @@
         <source>Location (%1/%2)</source>
         <translation>位置 (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>复制消息到剪切板</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>已取消置顶消息</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>取消置顶</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>置顶消息</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation>附加选项</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>已删除消息</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>删除消息</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>转发消息</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -439,14 +510,6 @@
 </context>
 <context>
     <name>CoverPage</name>
-    <message>
-        <source>unread message</source>
-        <translation>未读消息</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>未读消息</translation>
-    </message>
     <message>
         <source>in</source>
         <translation>位于</translation>
@@ -471,13 +534,18 @@
         <source>Updating content...</source>
         <translation>正在更新内容…</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>对话</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>对话</translation>
+        <translation>
+            <numerusform>对话</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation>
+            <numerusform>未读
+消息</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -828,6 +896,15 @@
         <source>sent a game</source>
         <translation>发送游戏</translation>
     </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>发送视频消息</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>发送视频消息</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -849,6 +926,14 @@
     <message>
         <source>You</source>
         <translation>你</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>未知</translation>
+    </message>
+    <message>
+        <source>This message was deleted</source>
+        <translation>已删除此消息</translation>
     </message>
 </context>
 <context>
@@ -929,18 +1014,6 @@
         <translation>编辑消息</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>复制消息到剪切板</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>已删除消息</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>删除消息</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>你</translation>
     </message>
@@ -953,16 +1026,8 @@
         <translation>选择消息</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>置顶消息</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>已取消消息置顶</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>取消置顶</translation>
+        <source>More Options...</source>
+        <translation>更多选项…</translation>
     </message>
 </context>
 <context>
@@ -989,7 +1054,7 @@
     <name>MessageLocation</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation type="unfinished">请安装 Pure Maps 以插入位置</translation>
+        <translation>请安装 Pure Maps 以插入位置</translation>
     </message>
 </context>
 <context>
@@ -1007,31 +1072,31 @@
     <name>MessagePoll</name>
     <message>
         <source>Close Poll</source>
-        <translation type="unfinished">关闭投票</translation>
+        <translation>关闭投票</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation type="unfinished">重设回答</translation>
+        <translation>重设回答</translation>
     </message>
     <message>
         <source>Final Result:</source>
-        <translation type="unfinished">最终结果:</translation>
+        <translation>最终结果:</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation type="unfinished">允许多个回答。</translation>
+        <translation>允许多个回答。</translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%Ln%</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>总计 %Ln 次投票</numerusform>
         </translation>
     </message>
@@ -1048,7 +1113,7 @@
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>语音消息</translation>
     </message>
 </context>
 <context>
@@ -1103,7 +1168,7 @@
     <message numerus="yes">
         <source>%Ln unread messages</source>
         <translation>
-            <numerusform>%Ln 则消息</numerusform>
+            <numerusform>%Ln 则未读消息</numerusform>
         </translation>
     </message>
 </context>
@@ -1278,6 +1343,18 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Quiz 拥有一个正确选项，参与者无法撤销回答。</translation>
+    </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation>输入选项提示</translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation>当用户选择错误答案时显示。</translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation>提示文本可长达200个字符。</translation>
     </message>
 </context>
 <context>
@@ -1483,6 +1560,129 @@
         <source>Some inline bots request location data when using them</source>
         <translation>使用某些内联机器人时会请求位置数据</translation>
     </message>
+    <message>
+        <source>User Profile</source>
+        <translation>用户简介</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>名字</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>输入 1-64 个字符</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>姓氏</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>输入 0-64 个字符</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation>允许对话邀请</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation>隐私设置，用于管理是否你可以被邀请到对话。</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>是</translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation>仅限联系人</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>否</translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation>允许通过电话号码找到</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation>隐私设置，用于管理是否你可以被通过电话号码找到。</translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation>在转发消息中显示链接</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation>隐私设置，用于管理是否在转发消息中包含你的账户链接。</translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation>显示电话号码</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation>隐私设置，用于管理你的电话号码是否可见。</translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation>显示简介图片</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation>隐私设置，用于管理是否你的简介图片可见。</translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation>显示状态</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation>隐私设置，用于管理是否你的在线状态可见。</translation>
+    </message>
+    <message>
+        <source>Add Picture</source>
+        <translation>添加图片</translation>
+    </message>
+    <message>
+        <source>Profile Pictures</source>
+        <translation>简介图片</translation>
+    </message>
+    <message>
+        <source>Delete Picture</source>
+        <translation>删除图片</translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>正在上传…</translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
+        <translation>删除简介图片</translation>
+    </message>
+    <message>
+        <source>Enable notification sounds</source>
+        <translation>开启通知声音</translation>
+    </message>
+    <message>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>如果开启声音，Fernschreiber 会采用当前旗鱼系统通知声音作为对话通知声音，你可以在系统设置进行配置。</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>标记消息已读前延迟</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber 将会在标记消息已读之前延迟一下</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
@@ -1491,16 +1691,27 @@
         <translation>最近使用</translation>
     </message>
     <message>
-        <source>Loading stickers...</source>
-        <translation>正在加载表情贴图…</translation>
+        <source>Removing sticker set</source>
+        <translation>正在移除表情包</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>表情包已成功移除！</translation>
+    </message>
+</context>
+<context>
+    <name>StickerSetOverlay</name>
+    <message>
+        <source>Sticker set successfully installed!</source>
+        <translation>表情包已成功安装！</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>表情包已成功移除！</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
-    <message>
-        <source>Download Video</source>
-        <translation>下载视频</translation>
-    </message>
     <message>
         <source>Download of %1 successful.</source>
         <translation>已成功下载 %1 。</translation>
@@ -1508,6 +1719,10 @@
     <message>
         <source>Download failed.</source>
         <translation>下载失败</translation>
+    </message>
+    <message>
+        <source>Copy video to gallery</source>
+        <translation>复制视频到图库</translation>
     </message>
 </context>
 <context>
@@ -1954,7 +2169,7 @@
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>取得 %Ln 分 </numerusform>
+            <numerusform>取得 %Ln 分</numerusform>
         </translation>
     </message>
     <message>

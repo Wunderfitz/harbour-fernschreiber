@@ -1,134 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en">
+<TS version="2.1" language="sk_SK">
 <context>
     <name>AboutPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>About Fernschreiber</translation>
+        <translation>O aplikácii Fernschreiber</translation>
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>A Telegram client for Sailfish OS</translation>
+        <translation>Klient Telegram pre Sailfish OS</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Send E-Mail</translation>
+        <translation>Poslať e-mail</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Licensed under GNU GPLv3</translation>
+        <translation>Pod licenciou GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Sources on GitHub</translation>
+        <translation>Zdroje na GitHub</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Terms of Service</translation>
+        <translation>Podmienky služby</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Privacy Policy</translation>
+        <translation>Ochrana osobných údajov</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation>Credits</translation>
+        <translation>Poďakovania</translation>
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</translation>
+        <translation>Tento projekt používa databázovú knižnicu Telegram (TDLib). Vďaka za sprístupnenie podľa podmienok licencie Boost Software License 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Open Telegram Database Library on GitHub</translation>
+        <translation>Otvoriť Telegram Database Library na GitHub</translation>
     </message>
     <message>
         <source>About Telegram</source>
-        <translation>About Telegram</translation>
+        <translation>O aplikácii Telegram</translation>
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>This product uses the Telegram API but is not endorsed or certified by Telegram.</translation>
+        <translation>Tento produkt používa rozhranie Telegram (API), ale nie je schválený alebo certifikovaný spoločnosťou Telegram.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
-        <translation>TDLib version %1</translation>
+        <translation>Verzia TDLib %1</translation>
     </message>
     <message>
         <source>Logged in as %1</source>
-        <translation>Logged in as %1</translation>
+        <translation>Prihlásený ako %1</translation>
     </message>
     <message>
         <source>Phone number: +%1</source>
-        <translation>Phone number: +%1</translation>
+        <translation>Telefónne číslo: +%1</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</translation>
+        <translation>Tento projekt používa twemoji. Copyright 2018 Twitter, Inc. a a ďalší prispievatelia. Vďaka za sprístupnenie podľa licencie MIT (programovanie) a CC-BY 4.0 (grafika)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Open twemoji on GitHub</translation>
+        <translation>Otvoriť twemoji na GitHub</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</source>
-        <translation>By Sebastian J. Wolf and &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;other contributors&lt;/a&gt;</translation>
+        <translation>Vytvoril Sebastian J. Wolf a &lt;a href=&quot;https://github.com/Wunderfitz/harbour-fernschreiber#contributions&quot;&gt;ďalší prispievatelia&lt;/a&gt;</translation>
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</translation>
+        <translation>Tento projekt používa rlottie. Copyright 2020 Samsung Electronics Co., Ltd. a ďalší prispievatelia. Vďaka za sprístupnenie podľa licencie MIT!</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
-        <translation>Open rlottie on GitHub</translation>
+        <translation>Otvoriť rlottie na GitHub</translation>
     </message>
     <message>
         <source>Log Out</source>
-        <translation>Log Out</translation>
+        <translation>Odhlásiť</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation>Logged out</translation>
+        <translation>Odhlásený</translation>
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation>Active Sessions</translation>
+        <translation>Aktívne relácie</translation>
     </message>
 </context>
 <context>
     <name>ActiveSessionsPage</name>
     <message>
         <source>Getting active sessions...</source>
-        <translation>Getting active sessions...</translation>
+        <translation>Preberanie aktívnych relácií...</translation>
     </message>
     <message>
         <source>Active Sessions</source>
-        <translation>Active Sessions</translation>
+        <translation>Aktívne relácie</translation>
     </message>
     <message>
         <source>Session was terminated</source>
-        <translation>Session was terminated</translation>
+        <translation>Relácia bola ukončená</translation>
     </message>
     <message>
         <source>Terminate Session</source>
-        <translation>Terminate Session</translation>
+        <translation>Ukončiť reláciu</translation>
     </message>
     <message>
         <source>This app</source>
-        <translation>This app</translation>
+        <translation>Táto aplikácia</translation>
     </message>
     <message>
         <source>IP address: %1, origin: %2</source>
-        <translation>IP address: %1, origin: %2</translation>
+        <translation>IP adresa: %1, pôvod: %2</translation>
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>
-        <translation>Active since: %1, last online: %2</translation>
+        <translation>Aktívna od: %1, naposledy pripojená: %2</translation>
     </message>
     <message>
         <source>Terminating session</source>
-        <translation>Terminating session</translation>
+        <translation>Ukončovanie relácie</translation>
     </message>
 </context>
 <context>
@@ -144,67 +144,69 @@
 </context>
 <context>
     <name>ChatInformationPageContent</name>
+    <message>
+        <source>Unknown</source>
+        <translation>Neznámy</translation>
+    </message>
+    <message>
+        <source>The Invite Link has been copied to the clipboard.</source>
+        <translation>Pozývací odkaz bol skopírovaný do schránky.</translation>
+    </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
         <translation>
-            <numerusform>%1 subscriber</numerusform>
-            <numerusform>%1 subscribers</numerusform>
+            <numerusform>%1 odberateľ</numerusform>
+            <numerusform>%1 odberatelia</numerusform>
+            <numerusform>%1 odberateľov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
         <translation>
-            <numerusform>%1 member</numerusform>
-            <numerusform>%1 members</numerusform>
+            <numerusform>%1 člen</numerusform>
+            <numerusform>%1 členovia</numerusform>
+            <numerusform>%1 členov</numerusform>
         </translation>
     </message>
     <message>
-        <source>Leave Chat</source>
-        <translation>Leave Chat</translation>
-    </message>
-    <message>
-        <source>Join Chat</source>
-        <translation>Join Chat</translation>
-    </message>
-    <message>
         <source>Leaving chat</source>
-        <translation>Leaving chat</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Unknown</translation>
-    </message>
-    <message>
-        <source>Chat Title</source>
-        <comment>group title header</comment>
-        <translation>Chat Title</translation>
-    </message>
-    <message>
-        <source>Enter 1-128 characters</source>
-        <translation>Enter 1-128 characters</translation>
-    </message>
-    <message>
-        <source>There is no information text available, yet.</source>
-        <translation>There is no information text available, yet.</translation>
+        <translation>Opustiť čet</translation>
     </message>
     <message>
         <source>Info</source>
         <comment>group or user infotext header</comment>
-        <translation>Info</translation>
+        <translation>Informácia</translation>
     </message>
     <message>
         <source>Phone Number</source>
         <comment>user phone number header</comment>
-        <translation>Phone Number</translation>
+        <translation>Telefónne číslo</translation>
     </message>
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation>Invite Link</translation>
+        <translation>Pozývací odkaz</translation>
     </message>
     <message>
-        <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>The Invite Link has been copied to the clipboard.</translation>
+        <source>There is no information text available, yet.</source>
+        <translation>Nie sú dostupné žiadne informácie.</translation>
+    </message>
+    <message>
+        <source>Chat Title</source>
+        <comment>group title header</comment>
+        <translation>Názov četu</translation>
+    </message>
+    <message>
+        <source>Enter 1-128 characters</source>
+        <translation>Zadať 1-128 znakov</translation>
+    </message>
+    <message>
+        <source>Leave Chat</source>
+        <translation>Opustiť čet</translation>
+    </message>
+    <message>
+        <source>Join Chat</source>
+        <translation>Pripojiť sa k četu</translation>
     </message>
     <message>
         <source>%1, %2</source>
@@ -214,21 +216,22 @@
     <message numerus="yes">
         <source>%1 online</source>
         <translation>
-            <numerusform>%1 online</numerusform>
-            <numerusform>%1 online</numerusform>
+            <numerusform>%1 pripojený</numerusform>
+            <numerusform>%1 pripojení</numerusform>
+            <numerusform>%1 pripojených</numerusform>
         </translation>
     </message>
     <message>
         <source>New Secret Chat</source>
-        <translation>New Secret Chat</translation>
+        <translation>Nový dôverný čet</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Unmute Chat</translation>
+        <translation>Ozvučiť čet</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Mute Chat</translation>
+        <translation>Umlčať čet</translation>
     </message>
 </context>
 <context>
@@ -236,27 +239,27 @@
     <message>
         <source>Loading common chats…</source>
         <comment>chats you have in common with a user</comment>
-        <translation>Loading common chats…</translation>
+        <translation>Načítanie spoločných četov…</translation>
     </message>
     <message>
         <source>Loading group members…</source>
-        <translation>Loading group members…</translation>
+        <translation>Načítanie členov skupiny…</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>You</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
-        <translation>You don&apos;t have any groups in common with this user.</translation>
+        <translation>Nemáte žiadne spoločné skupiny s týmto používateľom.</translation>
     </message>
     <message>
         <source>This group is empty.</source>
-        <translation>This group is empty.</translation>
+        <translation>Táto skupina je prázdna.</translation>
     </message>
     <message>
         <source>Channel members are anonymous.</source>
-        <translation>Channel members are anonymous.</translation>
+        <translation>Členovia kanála sú anonymní.</translation>
     </message>
 </context>
 <context>
@@ -264,300 +267,307 @@
     <message>
         <source>Groups</source>
         <comment>Button: groups in common (short)</comment>
-        <translation>Groups</translation>
+        <translation>Skupiny</translation>
     </message>
     <message>
         <source>Members</source>
         <comment>Button: Group Members</comment>
-        <translation>Members</translation>
+        <translation>Členovia</translation>
     </message>
     <message>
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
-        <translation>Settings</translation>
+        <translation>Nastavenia</translation>
     </message>
 </context>
 <context>
     <name>ChatListViewItem</name>
     <message>
         <source>Unknown</source>
-        <translation>Unknown</translation>
+        <translation>Neznámy</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>You</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>User Info</source>
-        <translation>User Info</translation>
+        <translation>Informácie o používateľovi</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation>Group Info</translation>
+        <translation>Informácie o skupine</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
-        <translation>Mark all messages as read</translation>
+        <translation>Označiť všetky správy ako prečítané</translation>
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation>No message in this chat.</translation>
+        <translation>V tomto čete nie je žiadna správa.</translation>
     </message>
     <message>
         <source>Mark chat as unread</source>
-        <translation>Mark chat as unread</translation>
-    </message>
-    <message>
-        <source>Mark chat as read</source>
-        <translation>Mark chat as read</translation>
+        <translation>Označiť čet ako neprečítaný</translation>
     </message>
     <message>
         <source>Draft</source>
-        <translation>Draft</translation>
+        <translation>Koncept</translation>
+    </message>
+    <message>
+        <source>Mark chat as read</source>
+        <translation>Označiť čet ako prečítaný</translation>
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation>Unpin chat</translation>
+        <translation>Odopnúť čet</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation>Pin chat</translation>
+        <translation>Pripnúť čet</translation>
     </message>
     <message>
         <source>Unmute chat</source>
-        <translation>Unmute chat</translation>
+        <translation>Ozvučiť čet</translation>
     </message>
     <message>
         <source>Mute chat</source>
-        <translation>Mute chat</translation>
+        <translation>Umlčať čet</translation>
     </message>
 </context>
 <context>
     <name>ChatPage</name>
     <message>
         <source>Unknown</source>
-        <translation>Unknown</translation>
+        <translation>Neznámy</translation>
     </message>
     <message>
         <source>Your message</source>
-        <translation>Your message</translation>
+        <translation>Moja správa</translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
         <translation>
-            <numerusform>%1 member</numerusform>
-            <numerusform>%1 members</numerusform>
+            <numerusform>%1 člen</numerusform>
+            <numerusform>%1 členovia</numerusform>
+            <numerusform>%1 členov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
         <translation>
-            <numerusform>%1 subscriber</numerusform>
-            <numerusform>%1 subscribers</numerusform>
+            <numerusform>%1 odberateľ</numerusform>
+            <numerusform>%1 odberatelia</numerusform>
+            <numerusform>%1 odberateľov</numerusform>
         </translation>
     </message>
     <message>
         <source>Loading messages...</source>
-        <translation>Loading messages...</translation>
+        <translation>Načítanie správ...</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Unmute Chat</translation>
+        <translation>Ozvučiť čet</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Mute Chat</translation>
+        <translation>Umlčať čet</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation>Edit Message</translation>
+        <translation>Upraviť správu</translation>
     </message>
     <message>
         <source>edited</source>
-        <translation>edited</translation>
+        <translation>upravená</translation>
     </message>
     <message>
         <source>Uploading...</source>
-        <translation>Uploading...</translation>
+        <translation>Zapisovanie...</translation>
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation>This chat is empty.</translation>
+        <translation>Tento čet je prázdny.</translation>
     </message>
     <message>
         <source>Leave Chat</source>
-        <translation>Leave Chat</translation>
+        <translation>Opustiť čet</translation>
     </message>
     <message>
         <source>Join Chat</source>
-        <translation>Join Chat</translation>
+        <translation>Pripojiť sa k četu</translation>
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Leaving chat</translation>
+        <translation>Opúšťanie četu</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
-        <translation>You joined the chat %1</translation>
+        <translation>Ste pripojený k četu %1</translation>
     </message>
     <message>
         <source>Select Messages</source>
-        <translation>Select Messages</translation>
+        <translation>Vybrať správy</translation>
     </message>
     <message numerus="yes">
         <source>%Ln Messages deleted</source>
         <translation>
-            <numerusform>%Ln Message deleted</numerusform>
-            <numerusform>%Ln Messages deleted</numerusform>
+            <numerusform>%Ln správa odstránená</numerusform>
+            <numerusform>%Ln správy odstránené</numerusform>
+            <numerusform>%Ln správ odstránených</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln messages have been copied</source>
         <translation>
-            <numerusform>%Ln message has been copied</numerusform>
-            <numerusform>%Ln messages have been copied</numerusform>
+            <numerusform>%Ln správa bola skopírovaná</numerusform>
+            <numerusform>%Ln správy boli skopírované</numerusform>
+            <numerusform>%Ln správ bolo skopírovaných</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>Forward %Ln messages</source>
         <comment>dialog header</comment>
         <translation>
-            <numerusform>Forward %Ln message</numerusform>
-            <numerusform>Forward %Ln messages</numerusform>
+            <numerusform>Postúpená %Ln správa</numerusform>
+            <numerusform>Postúpené %Ln správy</numerusform>
+            <numerusform>Postúpených %Ln správ</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln messages selected</source>
         <comment>number of messages selected</comment>
         <translation>
-            <numerusform>%Ln message selected</numerusform>
-            <numerusform>%Ln messages selected</numerusform>
+            <numerusform>%Ln správa bola vybratá</numerusform>
+            <numerusform>%Ln správy boli vybraté</numerusform>
+            <numerusform>%Ln správ bolo vybratých</numerusform>
         </translation>
     </message>
     <message>
         <source>%1, %2</source>
         <comment>combination of &apos;[x members], [y online]&apos;, which are separate translations</comment>
-        <translation></translation>
+        <translation>%1, %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 online</source>
         <translation>
-            <numerusform>%1 online</numerusform>
-            <numerusform>%1 online</numerusform>
+            <numerusform>%1 pripojený</numerusform>
+            <numerusform>%1 pripojení</numerusform>
+            <numerusform>%1 pripojených</numerusform>
         </translation>
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>This secret chat is not yet ready. Your chat partner needs to go online first.</translation>
+        <translation>Tento dôverný čet ešte nie je prístupný. Váš četovací partner sa musí pripojiť.</translation>
     </message>
     <message>
         <source>Closing chat</source>
-        <translation>Closing chat</translation>
+        <translation>Zatváranie četu</translation>
     </message>
     <message>
         <source>Close Chat</source>
-        <translation>Close Chat</translation>
+        <translation>Zatvoriť čet</translation>
     </message>
     <message>
         <source>Search in Chat</source>
-        <translation>Search in Chat</translation>
+        <translation>Hľadať v čete</translation>
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation>Search in chat...</translation>
+        <translation>Hľadanie v čete...</translation>
     </message>
     <message>
         <source>Location: Obtaining position...</source>
-        <translation>Location: Obtaining position...</translation>
+        <translation>Poloha: Získavanie pozície...</translation>
     </message>
     <message>
         <source>Location (%1/%2)</source>
-        <translation>Location (%1/%2)</translation>
+        <translation>Poloha (%1/%2)</translation>
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
-        <translation>Copy Message to Clipboard</translation>
+        <translation>Kopírovať správu do schránky</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation>Message unpinned</translation>
+        <translation>Správa bola odopnutá</translation>
     </message>
     <message>
         <source>Unpin Message</source>
-        <translation>Unpin Message</translation>
+        <translation>Odopnúť správu</translation>
     </message>
     <message>
         <source>Pin Message</source>
-        <translation>Pin Message</translation>
+        <translation>Pripnúť správu</translation>
     </message>
     <message>
         <source>Additional Options</source>
-        <translation>Additional Options</translation>
+        <translation>Prídavné voľby</translation>
     </message>
     <message>
         <source>Message deleted</source>
-        <translation>Message deleted</translation>
+        <translation>Správa bola odstránená</translation>
     </message>
     <message>
         <source>Delete Message</source>
-        <translation>Delete Message</translation>
+        <translation>Odstrániť správu</translation>
     </message>
     <message>
         <source>Forward Message</source>
-        <translation>Forward Message</translation>
+        <translation>Postúpiť správu</translation>
     </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
     <message>
         <source>Select Chat</source>
-        <translation>Select Chat</translation>
+        <translation>Vybrať čet</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>You don&apos;t have any chats yet.</translation>
+        <translation>Nemáte žiadne čety.</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
-        <translation>in</translation>
+        <translation>v</translation>
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Waiting for network...</translation>
+        <translation>Čakanie na sieť...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Connecting to network...</translation>
+        <translation>Pripájanie k sieti...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Connecting to proxy...</translation>
+        <translation>Pripájanie k proxy...</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation>Connected</translation>
+        <translation>Pripojené</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Updating content...</translation>
+        <translation>Aktualizácia obsahu...</translation>
     </message>
     <message numerus="yes">
         <source>chats</source>
         <translation>
-            <numerusform>chat</numerusform>
-            <numerusform>chats</numerusform>
+            <numerusform>čete</numerusform>
+            <numerusform>četoch</numerusform>
+            <numerusform>četoch</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>unread messages</source>
         <translation>
-            <numerusform>unread
-message</numerusform>
-            <numerusform>unread
-messages</numerusform>
+            <numerusform>neprečítaná správa</numerusform>
+            <numerusform>neprečítané správy</numerusform>
+            <numerusform>neprečítaných správ</numerusform>
         </translation>
     </message>
 </context>
@@ -566,67 +576,67 @@ messages</numerusform>
     <message>
         <source>Group Member Permissions</source>
         <comment>what can normal group members do</comment>
-        <translation>Group Member Permissions</translation>
+        <translation>Oprávnenia člena skupiny</translation>
     </message>
     <message>
         <source>Send Messages</source>
         <comment>member permission</comment>
-        <translation>Send Messages</translation>
+        <translation>Odosielať správy</translation>
     </message>
     <message>
         <source>Send Media Messages</source>
         <comment>member permission</comment>
-        <translation>Send Media Messages</translation>
+        <translation>Odosielať multimediálne správy</translation>
     </message>
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation>Send Other Messages</translation>
+        <translation>Odosielať iné správy</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation>Add Web Page Previews</translation>
+        <translation>Pridávať náhľad webovej stránky</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation>Change Chat Info</translation>
+        <translation>Meniť informácie o čete</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation>Invite Users</translation>
+        <translation>Pozývať používateľov</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation>Pin Messages</translation>
+        <translation>Pripínať správu</translation>
     </message>
     <message>
         <source>New Members</source>
         <comment>what can new group members do</comment>
-        <translation>New Members</translation>
+        <translation>Noví členovia</translation>
     </message>
     <message>
         <source>New members can see older messages</source>
         <comment>member permission</comment>
-        <translation>New members can see older messages</translation>
+        <translation>Noví členovia môžu vidieť staršie správy</translation>
     </message>
 </context>
 <context>
     <name>EditSuperGroupSlowModeColumn</name>
     <message>
         <source>Slow Mode</source>
-        <translation>Slow Mode</translation>
+        <translation>Pomalý mód</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation>Off</translation>
+        <translation>Vypnúť</translation>
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation>Set how long every chat member has to wait between Messages</translation>
+        <translation>Nastavenie povinného čakania člena četu medzi správami</translation>
     </message>
 </context>
 <context>
@@ -634,436 +644,440 @@ messages</numerusform>
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>sent a picture</translation>
+        <translation>som poslal obrázok</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>sent a picture</translation>
+        <translation>poslal obrázok</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>sent a video</translation>
+        <translation>som poslal video</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>sent a video</translation>
+        <translation>poslal video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>sent an animation</translation>
+        <translation>som poslal animáciu</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>sent an animation</translation>
+        <translation>poslal animáciu</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>sent a voice note</translation>
+        <translation>poslal hlasovú správu</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>sent a document</translation>
+        <translation>som poslal dokument</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>sent a document</translation>
+        <translation>poslal dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>sent a location</translation>
+        <translation>som poslal polohu</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>sent a location</translation>
+        <translation>poslal polohu</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>have registered with Telegram</translation>
+        <translation>som sa registroval pomocou Telegramu</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>has registered with Telegram</translation>
+        <translation>registrovaný pomocou Telegramu</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>joined this chat</translation>
+        <translation>som sa pripojil do tohto četu</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>joined this chat</translation>
+        <translation>sa pripojil do tohto četu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>were added to this chat</translation>
+        <translation>som bol pridaný do tohto četu</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>was added to this chat</translation>
+        <translation>bol pridaný do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>left this chat</translation>
+        <translation>som opustil tento čet</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>left this chat</translation>
+        <translation>opustil tento čet</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation>Sticker: %1</translation>
+        <translation>Nálepka: %1</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>sent a voice note</translation>
+        <translation>som poslal hlasovú poznámku</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>sent a venue</translation>
+        <translation>som poslal miesto stretnutia</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>sent a venue</translation>
+        <translation>poslal miesto stretnutia</translation>
     </message>
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation>changed the chat title</translation>
+        <translation>som zmenil názov četu</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation>changed the chat title</translation>
+        <translation>zmenil názov četu</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>sent a poll</translation>
+        <translation>som poslal prieskum</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation>sent a poll</translation>
+        <translation>poslal prieskum</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>sent a quiz</translation>
+        <translation>som poslal kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation>sent a quiz</translation>
+        <translation>poslal kvíz</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>created this group</translation>
+        <translation>som vytvoril túto skupinu</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation>created this group</translation>
+        <translation>vytvoril túto skupinu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>changed the chat photo</translation>
+        <translation>som zmenil fotografiu četu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation>changed the chat photo</translation>
+        <translation>zmenil fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>deleted the chat photo</translation>
+        <translation>som odstránil fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>deleted the chat photo</translation>
+        <translation>odstránil fotografiu četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>changed the secret chat TTL setting</translation>
+        <translation>som zmenil nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation>changed the secret chat TTL setting</translation>
+        <translation>zmenil nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>upgraded this group to a supergroup</translation>
+        <translation>som aktualizoval túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>changed the pinned message</translation>
+        <translation>som zmenil pripnutú správu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation>changed the pinned message</translation>
+        <translation>zmenil pripnutú správu</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>created a screenshot in this chat</translation>
+        <translation>som vytvoril snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>created a screenshot in this chat</translation>
+        <translation>vytvoril snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>sent an unsupported message</translation>
+        <translation>som poslal nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation>sent an unsupported message</translation>
+        <translation>poslal nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
-        <translation>sent an unsupported message: %1</translation>
+        <translation>poslal nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation>upgraded this group to a supergroup</translation>
+        <translation>aktualizoval túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>sent a self-destructing photo that is expired</translation>
+        <translation>som poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>sent a self-destructing video that is expired</translation>
+        <translation>som poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>sent a self-destructing video that is expired</translation>
+        <translation>poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation>sent an unsupported message: %1</translation>
+        <translation>som poslal nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>sent a self-destructing photo that is expired</translation>
+        <translation>poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>sent an audio</translation>
+        <translation>som poslal zvuk</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>sent an audio</translation>
+        <translation>poslal zvuk</translation>
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>has added %1 to the chat</translation>
+        <translation>pridal %1 do četu</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>has removed %1 from the chat</translation>
+        <translation>odstránil %1 z četu</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>have added %1 to the chat</translation>
+        <translation>som pridal %1 do četu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>have removed %1 from the chat</translation>
+        <translation>som odstránil %1 z četu</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>scored %Ln point</numerusform>
-            <numerusform>scored %Ln points</numerusform>
+            <numerusform>som získal %Ln bod</numerusform>
+            <numerusform>som získal %Ln body</numerusform>
+            <numerusform>som získal %Ln bodov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <translation>
-            <numerusform>scored %Ln point</numerusform>
-            <numerusform>scored %Ln points</numerusform>
+            <numerusform>získal %Ln bod</numerusform>
+            <numerusform>získal %Ln body</numerusform>
+            <numerusform>získal %Ln bodov</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>sent a game</translation>
+        <translation>som poslal hru</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>sent a game</translation>
+        <translation>poslal hru</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>sent a video note</translation>
+        <translation>som poslal video-poznámku</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation>sent a video note</translation>
+        <translation>poslal video-poznámku</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
-        <translation>Download Picture</translation>
+        <translation>Stiahnuť obrázok</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download of %1 successful.</translation>
+        <translation>Stiahovanie %1 bolo úspešne.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Download failed.</translation>
+        <translation>Sťahovanie zlyhalo.</translation>
     </message>
 </context>
 <context>
     <name>InReplyToRow</name>
     <message>
         <source>You</source>
-        <translation>You</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Unknown</translation>
+        <translation>Neznámy</translation>
     </message>
     <message>
         <source>This message was deleted</source>
-        <translation>This message was deleted</translation>
+        <translation>Táto správa bola odstránená</translation>
     </message>
 </context>
 <context>
     <name>InitializationPage</name>
     <message>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>V poriadku</translation>
     </message>
     <message>
         <source>Welcome to Fernschreiber!</source>
-        <translation>Welcome to Fernschreiber!</translation>
+        <translation>Vitajte vo Fernschreiber!</translation>
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Please enter your phone number to continue.</translation>
+        <translation>Pre pokračovanie zadajte Vaše telefónne číslo.</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continue</translation>
+        <translation>Pokračovať</translation>
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Please enter the code that you received:</translation>
+        <translation>Zadajte kód, ktorý ste dostali:</translation>
     </message>
     <message>
         <source>Loading...</source>
-        <translation>Loading...</translation>
+        <translation>Načítanie...</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
-        <translation>Unable to authenticate you with the entered code.</translation>
+        <translation>Pomocou zadaného kódu Vás nie je možné overiť.</translation>
     </message>
     <message>
         <source>Enter code again</source>
-        <translation>Enter code again</translation>
+        <translation>Zadajte kód opäť</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Restart authentication</translation>
+        <translation>Zopakovať overenie</translation>
     </message>
     <message>
         <source>Please enter your password:</source>
-        <translation>Please enter your password:</translation>
-    </message>
-    <message>
-        <source>User Registration</source>
-        <translation>User Registration</translation>
-    </message>
-    <message>
-        <source>Enter your First Name</source>
-        <translation>Enter your First Name</translation>
-    </message>
-    <message>
-        <source>Enter your Last Name</source>
-        <translation>Enter your Last Name</translation>
+        <translation>Prosím vložte vaše heslo:</translation>
     </message>
     <message>
         <source>Register User</source>
-        <translation>Register User</translation>
+        <translation>Registrovať používateľa</translation>
+    </message>
+    <message>
+        <source>Enter your First Name</source>
+        <translation>Zadať meno</translation>
+    </message>
+    <message>
+        <source>Enter your Last Name</source>
+        <translation>Zadať priezvisko</translation>
+    </message>
+    <message>
+        <source>User Registration</source>
+        <translation>Registrácia používateľa</translation>
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation>Use the international format, e.g. %1</translation>
+        <translation>Použite medzinárodný formát, napr. %1</translation>
     </message>
     <message>
         <source>About Fernschreiber</source>
-        <translation>About Fernschreiber</translation>
+        <translation>O aplikácii Fernschreiber</translation>
     </message>
 </context>
 <context>
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
-        <translation>Reply to Message</translation>
+        <translation>Odpovedať na správu</translation>
     </message>
     <message>
         <source>Edit Message</source>
-        <translation>Edit Message</translation>
+        <translation>Upraviť správu</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>You</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>Forwarded Message</source>
-        <translation>Forwarded Message</translation>
+        <translation>Postúpená správa</translation>
     </message>
     <message>
         <source>Select Message</source>
-        <translation>Select Message</translation>
+        <translation>Vybrať správu</translation>
     </message>
     <message>
         <source>More Options...</source>
-        <translation>More Options...</translation>
+        <translation>Ďalšie voľby...</translation>
     </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
     <message>
         <source>You</source>
-        <translation>You</translation>
+        <translation>Ja</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>scored %Ln point in %2</numerusform>
-            <numerusform>scored %Ln points in %2</numerusform>
+            <numerusform>som získal %Ln bod v %2</numerusform>
+            <numerusform>som získal %Ln body v %2</numerusform>
+            <numerusform>som získal %Ln bodov v %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <translation>
-            <numerusform>scored %Ln point in %2</numerusform>
-            <numerusform>scored %Ln points in %2</numerusform>
+            <numerusform>získal %Ln bod v %2</numerusform>
+            <numerusform>získal %Ln body v %2</numerusform>
+            <numerusform>získal %Ln bodov v %2</numerusform>
         </translation>
     </message>
 </context>
@@ -1071,52 +1085,54 @@ messages</numerusform>
     <name>MessageLocation</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation>Install Pure Maps to inspect this location.</translation>
+        <translation>Pre skontrolovanie tejto polohy nainštalujte Pure Maps.</translation>
     </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
-        <translation>You</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation>This message was forwarded. Original author: %1</translation>
+        <translation>Táto správa bola postúpená. Pôvodný autor: %1</translation>
     </message>
 </context>
 <context>
     <name>MessagePoll</name>
     <message>
         <source>Close Poll</source>
-        <translation>Close Poll</translation>
+        <translation>Zatvoriť prieskum</translation>
     </message>
     <message>
         <source>Reset Answer</source>
-        <translation>Reset Answer</translation>
+        <translation>Obnoviť odpoveď</translation>
     </message>
     <message>
         <source>Final Result:</source>
-        <translation>Final Result:</translation>
+        <translation>Konečný výsledok:</translation>
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation>Multiple Answers are allowed.</translation>
+        <translation>Sú prípustné viacnásobné odpovede.</translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
         <translation>
-            <numerusform>%Ln%</numerusform>
-            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%Ln vote total</numerusform>
-            <numerusform>%Ln votes total</numerusform>
+            <numerusform>%Ln hlas spolu</numerusform>
+            <numerusform>%Ln hlasy spolu</numerusform>
+            <numerusform>%Ln hlasov spolu</numerusform>
         </translation>
     </message>
 </context>
@@ -1125,61 +1141,61 @@ messages</numerusform>
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation>via %1</translation>
+        <translation>prostredníctvom %1</translation>
     </message>
 </context>
 <context>
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation>Voice Note</translation>
+        <translation>Hlasová poznámka</translation>
     </message>
 </context>
 <context>
     <name>NewChatPage</name>
     <message>
         <source>Your Contacts</source>
-        <translation>Your Contacts</translation>
+        <translation>Vaše kontakty</translation>
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation>You don&apos;t have any contacts.</translation>
+        <translation>Nemáte žiadne kontakty.</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation>Private Chat</translation>
+        <translation>Súkromný čet</translation>
     </message>
     <message>
         <source>Secret Chat</source>
-        <translation>Secret Chat</translation>
+        <translation>Dôverný čet</translation>
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation>End-to-end-encrypted, accessible on this device only</translation>
-    </message>
-    <message>
-        <source>Search a contact...</source>
-        <translation>Search a contact...</translation>
+        <translation>Šifrované bez prerušenia, je prístupné iba na tomto zariadení</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
-        <translation>Loading contacts...</translation>
+        <translation>Načítanie kontaktov...</translation>
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation>Transport-encrypted, uses Telegram Cloud, sharable across devices</translation>
+        <translation>Transportne šifrované, využíva Telegram Cloud, prístupné medzi zariadeniami</translation>
+    </message>
+    <message>
+        <source>Search a contact...</source>
+        <translation>Vyhľadať kontakt...</translation>
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation>Synchronize Contacts with Telegram</translation>
+        <translation>Synchronizovať kontakty s Telegramom</translation>
     </message>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Could not synchronize your contacts with Telegram.</translation>
+        <translation>Nemožno synchonizovať kontakty s Telegramom.</translation>
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation>Contacts successfully synchronized with Telegram.</translation>
+        <translation>Kontakty boli úspešne synchronizované s Telegramom.</translation>
     </message>
 </context>
 <context>
@@ -1187,8 +1203,9 @@ messages</numerusform>
     <message numerus="yes">
         <source>%Ln unread messages</source>
         <translation>
-            <numerusform>%Ln unread message</numerusform>
-            <numerusform>%Ln unread messages</numerusform>
+            <numerusform>%Ln neprečítaná správa</numerusform>
+            <numerusform>%Ln neprečítané správy</numerusform>
+            <numerusform>%Ln neprečítaných správ</numerusform>
         </translation>
     </message>
 </context>
@@ -1196,7 +1213,7 @@ messages</numerusform>
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>About Fernschreiber</translation>
+        <translation>O aplikácii Fernschreiber</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
@@ -1204,236 +1221,242 @@ messages</numerusform>
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Waiting for network...</translation>
+        <translation>Čakanie na sieť...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Connecting to network...</translation>
+        <translation>Pripájanie k sieti...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Connecting to proxy...</translation>
+        <translation>Pripájanie k proxy...</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Updating content...</translation>
+        <translation>Aktualizácia obsahu...</translation>
     </message>
     <message>
         <source>Loading chat list...</source>
-        <translation>Loading chat list...</translation>
+        <translation>Načítanie zoznamu četov...</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation>Nastavenia</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>You don&apos;t have any chats yet.</translation>
+        <translation>Nemáte žiadne čety.</translation>
     </message>
     <message>
         <source>New Chat</source>
-        <translation>New Chat</translation>
+        <translation>Nový čet</translation>
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation>Filter your chats...</translation>
+        <translation>Filtrovanie četov...</translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation>Search Chats</translation>
+        <translation>Hľadanie četov</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download of %1 successful.</translation>
+        <translation>Sťahovanie %1 bolo úspešné.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Download failed.</translation>
+        <translation>Sťahovanie zlyhalo.</translation>
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation>Tap on the title bar to filter your chats</translation>
+        <translation>Klepnutím na záhlavie filtrovať svoje čety</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation>No matching chats found.</translation>
+        <translation>Nenašli sa žiadne zodpovedajúce čety.</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation>You can search public chats or create a new chat via the pull-down menu.</translation>
+        <translation>Môžete vyhľadávať verejné čety alebo vytvoriť nový pomocou rozbaľovacej ponuky.</translation>
     </message>
     <message>
         <source>Logging out</source>
-        <translation>Logging out</translation>
+        <translation>Odhlasovanie</translation>
     </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>
     <message>
         <source>You</source>
-        <translation>You</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation>Pinned Message</translation>
+        <translation>Pripnutá správa</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation>Message unpinned</translation>
+        <translation>Správa bola odopnutá</translation>
     </message>
 </context>
 <context>
     <name>PollCreationPage</name>
     <message>
         <source>All answers have to contain 1-100 characters.</source>
-        <translation>All answers have to contain 1-100 characters.</translation>
+        <translation>Každá odpoveď môže obsahovať 1-100 znakov.</translation>
     </message>
     <message>
         <source>To send a quiz, you have to specify the right answer.</source>
-        <translation>To send a quiz, you have to specify the right answer.</translation>
+        <translation>Poslaný kvíz musí obsahovať správnu odpoveď.</translation>
     </message>
     <message>
         <source>You have to enter a question.</source>
-        <translation>You have to enter a question.</translation>
+        <translation>Musíte zadať otázku.</translation>
     </message>
     <message>
         <source>The question has to be shorter than 256 characters.</source>
-        <translation>The question has to be shorter than 256 characters.</translation>
+        <translation>Otázka musí obsahovať menej ako 256 znakov.</translation>
     </message>
     <message>
         <source>A poll requires 2-10 answers.</source>
-        <translation>A poll requires 2-10 answers.</translation>
+        <translation>Prieskum vyžaduje od 2 do 10 odpovedí.</translation>
     </message>
     <message>
         <source>Create a Poll</source>
         <comment>Dialog Header</comment>
-        <translation>Create a Poll</translation>
+        <translation>Vytvoriť prieskum</translation>
     </message>
     <message>
         <source>in %1</source>
         <comment>After dialog header… Create a Poll in [group name]</comment>
-        <translation>in %1</translation>
+        <translation>v %1</translation>
     </message>
     <message>
         <source>Enter your question here</source>
-        <translation>Enter your question here</translation>
+        <translation>Tu zadajte otázku</translation>
     </message>
     <message numerus="yes">
         <source>Question (%Ln characters left)</source>
         <translation>
-            <numerusform>Question (%Ln character left)</numerusform>
-            <numerusform>Question (%Ln characters left)</numerusform>
+            <numerusform>Otázka (zostáva %Ln znak)</numerusform>
+            <numerusform>Otázka (zostáva %Ln znaky))</numerusform>
+            <numerusform>Otázka (zostáva %Ln znakov)</numerusform>
         </translation>
     </message>
     <message>
         <source>Answers</source>
         <comment>Section header</comment>
-        <translation>Answers</translation>
+        <translation>Odpovede</translation>
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation>Enter an answer here</translation>
+        <translation>Tu uveďte odpoveď</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
         <translation>
-            <numerusform>Answer (%Ln character left)</numerusform>
-            <numerusform>Answer (%Ln characters left)</numerusform>
+            <numerusform>Odpoveď (zostáva %Ln znak)</numerusform>
+            <numerusform>Odpoveď (zostáva %Ln znaky))</numerusform>
+            <numerusform>Odpoveď (zostáva %Ln znakov)</numerusform>
         </translation>
     </message>
     <message>
         <source>Add an answer</source>
-        <translation>Add an answer</translation>
+        <translation>Pridať odpoveď</translation>
     </message>
     <message>
         <source>Poll Options</source>
         <comment>Section header</comment>
-        <translation>Poll Options</translation>
+        <translation>Možnosti prieskumu</translation>
     </message>
     <message>
         <source>Anonymous answers</source>
-        <translation>Anonymous answers</translation>
+        <translation>Anonymné odpovede</translation>
     </message>
     <message>
         <source>Multiple answers allowed</source>
-        <translation>Multiple answers allowed</translation>
+        <translation>Sú povolené viaceré odpovede</translation>
     </message>
     <message>
         <source>Quiz Mode</source>
-        <translation>Quiz Mode</translation>
+        <translation>Režim &quot;kvíz&quot;</translation>
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-        <translation>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</translation>
-    </message>
-    <message>
-        <source>Enter an optional explanation</source>
-        <translation>Enter an optional explanation</translation>
-    </message>
-    <message>
-        <source>Shown when the user selects a wrong answer.</source>
-        <translation>Shown when the user selects a wrong answer.</translation>
+        <translation>Kvízy majú jednu správnu odpoveď. Účastníci nemôžu odvolať svoje odpovede.</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation>An explanation can be up to 200 characters long.</translation>
+        <translation>Vysvetlenie môže obsahovať až 200 znakov.</translation>
+    </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation>Vložiť voliteľné vysvetlenie</translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation>Zobrazí sa, keď používateľ vyberie nesprávnu odpoveď.</translation>
     </message>
 </context>
 <context>
     <name>PollResultsPage</name>
     <message>
         <source>Quiz Results</source>
-        <translation>Quiz Results</translation>
+        <translation>Výsledky kvízu</translation>
     </message>
     <message>
         <source>Poll Results</source>
-        <translation>Poll Results</translation>
+        <translation>Výsledky prieskumu</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>%Ln vote total</numerusform>
-            <numerusform>%Ln votes total</numerusform>
+            <numerusform>%Ln hlas spolu</numerusform>
+            <numerusform>%Ln hlasy spolu</numerusform>
+            <numerusform>%Ln hlasov spolu</numerusform>
         </translation>
     </message>
     <message>
         <source>Question</source>
         <comment>section header</comment>
-        <translation>Question</translation>
+        <translation>Otázka</translation>
     </message>
     <message>
         <source>Results</source>
         <comment>section header</comment>
-        <translation>Results</translation>
+        <translation>Výsledky</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s)</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%Ln vote</numerusform>
-            <numerusform>%Ln votes</numerusform>
+            <numerusform>%Ln hlas</numerusform>
+            <numerusform>%Ln hlasy</numerusform>
+            <numerusform>%Ln hlasov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
         <comment>% of votes for option</comment>
         <translation>
-            <numerusform>%Ln%</numerusform>
-            <numerusform>%Ln%</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
+            <numerusform>%Ln% hlasov</numerusform>
         </translation>
     </message>
     <message>
         <source>Chosen by:</source>
         <comment>This answer has been chosen by the following users</comment>
-        <translation>Chosen by:</translation>
+        <translation>Vybral(a) si:</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) including yours</source>
         <comment>number of votes for option</comment>
         <translation>
-            <numerusform>%Ln vote including yours</numerusform>
-            <numerusform>%Ln votes including yours</numerusform>
+            <numerusform>%Ln hlas, vrátane Vášho</numerusform>
+            <numerusform>%Ln hlasy, vrátane Vášho</numerusform>
+            <numerusform>%Ln hlasov, vrátane Vášho</numerusform>
         </translation>
     </message>
 </context>
@@ -1441,362 +1464,364 @@ messages</numerusform>
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation>No chats found.</translation>
+        <translation>Nebol nenájdený žiaden čet.</translation>
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation>Searching chats...</translation>
+        <translation>Hľadanie četov...</translation>
     </message>
     <message>
         <source>Private Chat</source>
-        <translation>Private Chat</translation>
+        <translation>Súkromný čet</translation>
     </message>
     <message>
         <source>Group</source>
-        <translation>Group</translation>
+        <translation>Skupina</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation>Channel</translation>
+        <translation>Kanál</translation>
     </message>
     <message numerus="yes">
         <source>%1 members</source>
         <translation>
-            <numerusform>%1 member</numerusform>
-            <numerusform>%1 members</numerusform>
+            <numerusform>%1 člen</numerusform>
+            <numerusform>%1 členovia</numerusform>
+            <numerusform>%1 členov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%1 subscribers</source>
         <translation>
-            <numerusform>%1 subscriber</numerusform>
-            <numerusform>%1 subscribers</numerusform>
+            <numerusform>%1 odberateľ</numerusform>
+            <numerusform>%1 odberatelia</numerusform>
+            <numerusform>%1 odberateľov</numerusform>
         </translation>
     </message>
     <message>
         <source>Search Chats</source>
-        <translation>Search Chats</translation>
+        <translation>Prehľadávať čety</translation>
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation>Search a chat...</translation>
+        <translation>Hľadať čet...</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation>Enter your query to start searching (at least 5 characters needed)</translation>
+        <translation>Pre spustenie hľadania zadajte podmienku (vyžaduje sa najmenej 5 znakov)</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation>Nastavenia</translation>
     </message>
     <message>
         <source>Behavior</source>
-        <translation>Behavior</translation>
+        <translation>Správanie</translation>
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Send message by enter</translation>
+        <translation>Správu odoslať klávesom Enter</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Send your message by pressing the enter key</translation>
+        <translation>Správu odošlite stlačením klávesu Enter</translation>
     </message>
     <message>
         <source>Appearance</source>
-        <translation>Appearance</translation>
+        <translation>Vzhľad</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
-        <translation>Show stickers as images</translation>
+        <translation>Zobraziť nálepky ako obrázky</translation>
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation>Show background for stickers and align them centrally like images</translation>
+        <translation>Zobraziť pozadie pre nálepky a vycentrovať ich ako obrázky</translation>
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation>Notification feedback</translation>
+        <translation>Reakcia oznámenia</translation>
     </message>
     <message>
         <source>All events</source>
-        <translation>All events</translation>
+        <translation>Všetky udalosti</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation>Only new events</translation>
+        <translation>Iba nové udalosti</translation>
     </message>
     <message>
         <source>None</source>
-        <translation>None</translation>
+        <translation>Žiadne</translation>
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Use non-graphical feedback (sound, vibration) for notifications</translation>
+        <translation>Pre upozornenia použiť negrafickú reakciu (zvuk, vibrovanie)</translation>
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation>Open-with menu integration</translation>
+        <translation>Zaradiť do ponuky &quot;otvoriť pomocou&quot;</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Integrate Fernschreiber into open-with menu of Sailfish OS</translation>
+        <translation>Fernschreiber zaradiť do ponuky Sailfish OS &quot;otvoriť pomocou&quot;</translation>
     </message>
     <message>
         <source>Animate stickers</source>
-        <translation>Animate stickers</translation>
+        <translation>Animované nálepky</translation>
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation>Notification turns on the display</translation>
+        <translation>Oznámenie zapne displej</translation>
     </message>
     <message>
         <source>Storage</source>
-        <translation>Storage</translation>
+        <translation>Pamäť</translation>
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation>Enable storage optimizer</translation>
+        <translation>Povoliť optimalizátor pamäte</translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation>Focus text input area after send</translation>
+        <translation>Po odoslaní aktivovať vkladanie textu</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation>Focus the text input area after sending a message</translation>
+        <translation>Po odoslaní správy aktivovať vkladanie textu</translation>
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation>Enable online-only mode</translation>
+        <translation>Povoliť režim &quot;iba pripojený&quot;</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</translation>
+        <translation>Zakázať ukladanie do off-line vyrovnávacej pamäte. Niektoré funkcie môžu byť v tomto režime obmedzené alebo môžu chýbať. Zmeny sa prejavia až po reštartovaní Fernschreiber.</translation>
     </message>
     <message>
         <source>Privacy</source>
-        <translation>Privacy</translation>
+        <translation>Ochrana osobných údajov</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation>Allow sending Location to inline bots</translation>
+        <translation>Povoliť odosielanie polohy inline robotom</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation>Some inline bots request location data when using them</translation>
+        <translation>Niektorí inline roboti požadujú údaje o polohe ak ich používajú</translation>
     </message>
     <message>
         <source>User Profile</source>
-        <translation>User Profile</translation>
+        <translation>Profil používateľa</translation>
     </message>
     <message>
         <source>First Name</source>
         <comment>first name of the logged-in profile - header</comment>
-        <translation>First Name</translation>
+        <translation>Meno</translation>
     </message>
     <message>
         <source>Enter 1-64 characters</source>
-        <translation>Enter 1-64 characters</translation>
+        <translation>Zadať 1-64 znakov</translation>
     </message>
     <message>
         <source>Last Name</source>
         <comment>last name of the logged-in profile - header</comment>
-        <translation>Last Name</translation>
+        <translation>Priezvisko</translation>
     </message>
     <message>
         <source>Enter 0-64 characters</source>
-        <translation>Enter 0-64 characters</translation>
+        <translation>Zadať 0-64 znakov</translation>
     </message>
     <message>
         <source>Username</source>
         <comment>user name of the logged-in profile - header</comment>
-        <translation>Username</translation>
-    </message>
-    <message>
-        <source>Allow chat invites</source>
-        <translation>Allow chat invites</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation>Privacy setting for managing whether you can be invited to chats.</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>Yes</translation>
-    </message>
-    <message>
-        <source>Your contacts only</source>
-        <translation>Your contacts only</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>No</translation>
-    </message>
-    <message>
-        <source>Allow finding by phone number</source>
-        <translation>Allow finding by phone number</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Privacy setting for managing whether you can be found by your phone number.</translation>
-    </message>
-    <message>
-        <source>Show link in forwarded messages</source>
-        <translation>Show link in forwarded messages</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Privacy setting for managing whether a link to your account is included in forwarded messages.</translation>
-    </message>
-    <message>
-        <source>Show phone number</source>
-        <translation>Show phone number</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation>Privacy setting for managing whether your phone number is visible.</translation>
-    </message>
-    <message>
-        <source>Show profile photo</source>
-        <translation>Show profile photo</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation>Privacy setting for managing whether your profile photo is visible.</translation>
-    </message>
-    <message>
-        <source>Show status</source>
-        <translation>Show status</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation>Privacy setting for managing whether your online status is visible.</translation>
-    </message>
-    <message>
-        <source>Add Picture</source>
-        <translation>Add Picture</translation>
+        <translation>Prihlasovacie meno</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
-        <translation>Profile Pictures</translation>
+        <translation>Profilová fotografia</translation>
+    </message>
+    <message>
+        <source>Add Picture</source>
+        <translation>Pridať fotografiu</translation>
     </message>
     <message>
         <source>Delete Picture</source>
-        <translation>Delete Picture</translation>
-    </message>
-    <message>
-        <source>Uploading...</source>
-        <translation>Uploading...</translation>
+        <translation>Odstrániť fotografiu</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
-        <translation>Deleting profile picture</translation>
+        <translation>Odstraňovanie profilovej fotografie</translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>Zapisovanie...</translation>
+    </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation>Povoliť pozvánky do četu</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation>Nastavenie ochrany súkromia pre možnosť pozvánky do četu.</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Áno</translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation>Iba moje kontakty</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Nie</translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation>Povoliť vyhľadávanie podľa telefónneho čísla</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation>Nastavenie ochrany súkromia pre možnosť vyhťadania podľa Vášho telefónneho čísla.</translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation>Zobraziť odkaz v postúpených správach</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation>Nastavenie ochrany súkromia pre možnosť zahrnutia odkazu na Váš účet v postúpených správach.</translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation>Zobraziť telefónne číslo</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation>Nastavenie ochrany súkromia pre možnosť zobrazenia Vášho telefónneho čísla.</translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation>Zobraziť profilovú fotografiu</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation>Nastavenie ochrany súkromia pre možnosť zobrazenia Vašej profilovej fotografie.</translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation>Zobraziť status</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation>Nastavenie ochrany súkromia pre možnosť zobrazenia Vášho statusu pripojenia.</translation>
     </message>
     <message>
         <source>Enable notification sounds</source>
-        <translation>Enable notification sounds</translation>
+        <translation>Povoliť zvukové upozornenia</translation>
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</translation>
+        <translation>Keď sú povolené zvukové upozornenia, Fernschreiber použije aktuálne zvukové upozornenia Sailfish OS pre čety, ktoré môžu byť upravené v nastaveniach systému.</translation>
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation>Delay before marking messages as read</translation>
+        <translation>Oneskorenie pred označením správ ako prečítaných</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber will wait a bit before messages are marked as read</translation>
+        <translation>Fernschreiber chvíľu počká, kým budú správy označené ako prečítané</translation>
     </message>
 </context>
 <context>
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation>Recently used</translation>
+        <translation>Nedávno použité</translation>
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation>Removing sticker set</translation>
+        <translation>Odstraňovanie sady nálepiek</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation>Sticker set successfully removed!</translation>
+        <translation>Sada nálepiek bola úspešne odstránená!</translation>
     </message>
 </context>
 <context>
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation>Sticker set successfully installed!</translation>
+        <translation>Sada nálepiek bola úspešne inštalovaná!</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation>Sticker set successfully removed!</translation>
+        <translation>Sada nálepiek bola úspešne odstránená!</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download of %1 successful.</translation>
+        <translation>Sťahovanie %1 bolo úspešné.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Download failed.</translation>
+        <translation>Sťahovanie zlyhalo.</translation>
     </message>
     <message>
         <source>Copy video to gallery</source>
-        <translation>Copy video to gallery</translation>
+        <translation>Kopírovať video do galérie</translation>
     </message>
 </context>
 <context>
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
-        <translation>Record a Voice Note</translation>
+        <translation>Nahrať hlasovú poznámku</translation>
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation>Press the button to start recording</translation>
+        <translation>Stlačiť tlačidlo pre spustenie nahrávania</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation>Unavailable</translation>
+        <translation>Nedostupné</translation>
     </message>
     <message>
         <source>Starting</source>
-        <translation>Starting</translation>
+        <translation>Spúšťanie</translation>
     </message>
     <message>
         <source>Recording</source>
-        <translation>Recording</translation>
+        <translation>Nahrávanie</translation>
     </message>
     <message>
         <source>Stopping</source>
-        <translation>Stopping</translation>
+        <translation>Ukončovanie</translation>
     </message>
     <message>
         <source>Use recording</source>
-        <translation>Use recording</translation>
+        <translation>Použiť nahrávanie</translation>
     </message>
     <message>
         <source>Voice Note (%1)</source>
-        <translation>Voice Note (%1)</translation>
+        <translation>Hlasová poznámka (%1)</translation>
     </message>
     <message>
         <source>Ready</source>
-        <translation>Ready</translation>
+        <translation>Pripravené</translation>
     </message>
 </context>
 <context>
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation>Preview not supported for this link...</translation>
+        <translation>Pre tento odkaz nie je podporovaný náhľad...</translation>
     </message>
 </context>
 <context>
@@ -1807,71 +1832,71 @@ messages</numerusform>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>has registered with Telegram</translation>
+        <translation>registrovaný pomocou Telegramu</translation>
     </message>
     <message>
         <source>Picture: %1</source>
-        <translation>Picture: %1</translation>
+        <translation>Obrázok: %1</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation>Sticker: %1</translation>
+        <translation>Nálepka: %1</translation>
     </message>
     <message>
         <source>Audio: %1</source>
-        <translation>Audio: %1</translation>
+        <translation>Zvuk: %1</translation>
     </message>
     <message>
         <source>Voice Note: %1</source>
-        <translation>Voice Note: %1</translation>
+        <translation>Hlasová poznámka: %1</translation>
     </message>
     <message>
         <source>Animation: %1</source>
-        <translation>Animation: %1</translation>
+        <translation>Animácia: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
-        <translation>Document: %1</translation>
+        <translation>Dokument: %1</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>sent a picture</translation>
+        <translation>poslal obrázok</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>sent a video</translation>
+        <translation>poslal video</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>sent an animation</translation>
+        <translation>poslal animáciu</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>sent an audio</translation>
+        <translation>poslal zvuk</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>sent a voice note</translation>
+        <translation>poslal hlasovú poznámku</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>sent a document</translation>
+        <translation>poslal dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>sent a location</translation>
+        <translation>poslal polohu</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>joined this chat</translation>
+        <translation>pripojený k tomuto četu</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>was added to this chat</translation>
+        <translation>pridaný do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>left this chat</translation>
+        <translation>opustil tento čet</translation>
     </message>
     <message>
         <source>%1M</source>
@@ -1883,332 +1908,333 @@ messages</numerusform>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>sent a venue</translation>
+        <translation>poslal miesto stretnutia</translation>
     </message>
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>sent a picture</translation>
+        <translation>som poslal obrázok</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>sent a video</translation>
+        <translation>som poslal video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>sent an animation</translation>
+        <translation>som poslal animáciu</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>sent an audio</translation>
+        <translation>som poslal zvuk</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>sent a voice note</translation>
+        <translation>som poslal hlasovú poznámku</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>sent a document</translation>
+        <translation>som poslal dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>sent a location</translation>
+        <translation>som poslal polohu</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>sent a venue</translation>
+        <translation>som poslal miesto stretnutia</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation>have registered with Telegram</translation>
+        <translation>zaregistrovaný pomocou Telegramu</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>joined this chat</translation>
+        <translation>som bol pripojený k tomuto četu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>were added to this chat</translation>
+        <translation>som bol pridaný do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>left this chat</translation>
+        <translation>som opustil tento čet</translation>
     </message>
     <message>
         <source>was never online</source>
-        <translation>was never online</translation>
+        <translation>nikdy nebol pripojený</translation>
     </message>
     <message>
         <source>last online: last month</source>
-        <translation>last online: last month</translation>
+        <translation>naposledy pripojený: minulý mesiac</translation>
     </message>
     <message>
         <source>last online: last week</source>
-        <translation>last online: last week</translation>
+        <translation>naposledy pripojený: minulý týždeň</translation>
     </message>
     <message>
         <source>last online: %1</source>
-        <translation>last online: %1</translation>
+        <translation>naposledy pripojený: %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation>online</translation>
+        <translation>pripojený</translation>
     </message>
     <message>
         <source>was recently online</source>
-        <translation>was recently online</translation>
+        <translation>nedávno pripojený</translation>
     </message>
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation>Admin</translation>
+        <translation>Administrátor</translation>
     </message>
     <message>
         <source>Banned</source>
         <comment>channel user role</comment>
-        <translation>Banned</translation>
+        <translation>Zakázaný</translation>
     </message>
     <message>
         <source>Creator</source>
         <comment>channel user role</comment>
-        <translation>Creator</translation>
+        <translation>Tvorca</translation>
     </message>
     <message>
         <source>Restricted</source>
         <comment>channel user role</comment>
-        <translation>Restricted</translation>
+        <translation>Obmedzený</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>changed the chat title to %1</translation>
+        <translation>som zmenil názov četu na %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation>changed the chat title to %1</translation>
+        <translation>názov četu zmenil na %1</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>sent a poll</translation>
+        <translation>som poslal prieskum</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation>sent a poll</translation>
+        <translation>poslal prieskum</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
         <comment>myself</comment>
-        <translation>sent an anonymous quiz</translation>
+        <translation>som poslal anonymný kvíz</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
-        <translation>sent an anonymous quiz</translation>
+        <translation>poslal anonymný kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>sent a quiz</translation>
+        <translation>som poslal kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation>sent a quiz</translation>
+        <translation>poslal kvíz</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
         <comment>myself</comment>
-        <translation>sent an anonymous poll</translation>
+        <translation>som poslal anonymný prieskum</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
-        <translation>sent an anonymous poll</translation>
+        <translation>poslal anonymný prieskum</translation>
     </message>
     <message>
         <source>Anonymous Quiz</source>
-        <translation>Anonymous Quiz</translation>
+        <translation>Anonymný kvíz</translation>
     </message>
     <message>
         <source>Quiz</source>
-        <translation>Quiz</translation>
+        <translation>Kvíz</translation>
     </message>
     <message>
         <source>Anonymous Poll</source>
-        <translation>Anonymous Poll</translation>
+        <translation>Anonymný prieskum</translation>
     </message>
     <message>
         <source>Poll</source>
-        <translation>Poll</translation>
+        <translation>Prieskum</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>created this group</translation>
+        <translation>som vytvoril túto skupinu</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation>created this group</translation>
+        <translation>vytvoril túto skupinu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>changed the chat photo</translation>
+        <translation>som zmenil fotografiu četu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation>changed the chat photo</translation>
+        <translation>zmenil fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>deleted the chat photo</translation>
+        <translation>som odstránil fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>deleted the chat photo</translation>
+        <translation>odstránil fotografiu četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>changed the secret chat TTL setting</translation>
+        <translation>som zmenil nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>changed the secret chat TTL setting</translation>
+        <translation>zmenil nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>upgraded this group to a supergroup</translation>
+        <translation>som aktualizoval túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>changed the pinned message</translation>
+        <translation>som zmenil pripnutú správu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation>changed the pinned message</translation>
+        <translation>zmenil pripnutú správu</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>created a screenshot in this chat</translation>
+        <translation>som vytvoril snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>created a screenshot in this chat</translation>
+        <translation>vytvoril snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>sent an unsupported message</translation>
+        <translation>som poslal nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation>sent an unsupported message</translation>
+        <translation>poslal nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation>sent an unsupported message: %1</translation>
+        <translation>som poslal nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>%1 is message type</comment>
-        <translation>sent an unsupported message: %1</translation>
+        <translation>poslal nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation>upgraded this group to a supergroup</translation>
+        <translation>aktualizoval túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>sent a self-destructing photo that is expired</translation>
+        <translation>som poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>sent a self-destructing photo that is expired</translation>
+        <translation>poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>sent a self-destructing video that is expired</translation>
+        <translation>som poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>sent a self-destructing video that is expired</translation>
+        <translation>poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation>Unable to find user %1</translation>
+        <translation>Nemožno nájsť používateľa %1</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>sent a video note</translation>
+        <translation>som poslal video-poznámku</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation>sent a video note</translation>
+        <translation>poslal video-poznámku</translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation>You are already a member of this chat.</translation>
+        <translation>Už ste členom tohto četu.</translation>
     </message>
     <message>
         <source>Closed!</source>
-        <translation>Closed!</translation>
+        <translation>Zatvorené!</translation>
     </message>
     <message>
         <source>Pending acknowledgement</source>
-        <translation>Pending acknowledgement</translation>
+        <translation>Čaká sa na potvrdenie</translation>
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>has added %1 to the chat</translation>
+        <translation>pridal %1 do četu</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>has removed %1 from the chat</translation>
+        <translation>odstránil %1 z četu</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>have added %1 to the chat</translation>
+        <translation>som pridal %1 do četu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>have removed %1 from the chat</translation>
+        <translation>som odstránil %1 z četu</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>scored %Ln point</numerusform>
-            <numerusform>scored %Ln points</numerusform>
+            <numerusform>som získal %Ln bod</numerusform>
+            <numerusform>som získal %Ln body</numerusform>
+            <numerusform>som získal %Ln bodov</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>sent a game</translation>
+        <translation>som poslal hru</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>sent a game</translation>
+        <translation>poslal hru</translation>
     </message>
 </context>
 </TS>

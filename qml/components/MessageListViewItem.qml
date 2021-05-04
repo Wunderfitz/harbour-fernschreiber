@@ -29,6 +29,7 @@ ListItem {
     property var chatId
     property var messageId
     property int messageIndex
+    property int messageViewCount
     property var myMessage
     property bool canReplyToMessage
     readonly property bool isAnonymous: myMessage.sender["@type"] === "messageSenderChat"
@@ -42,8 +43,9 @@ ListItem {
     });
     readonly property bool isOwnMessage: page.myUserId === myMessage.sender.user_id
     property bool hasContentComponent
+    property bool additionalOptionsOpened
 
-    highlighted: (down || isSelected) && !menuOpen
+    highlighted: (down || isSelected || additionalOptionsOpened) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
 
     signal replyToMessage()
@@ -53,12 +55,12 @@ ListItem {
         if(messageListItem.precalculatedValues.pageIsSelecting) {
             page.toggleMessageSelection(myMessage);
         } else {
+            if (messageOptionsDrawer.sourceItem !== messageListItem) {
+                messageOptionsDrawer.open = false
+            }
             // Allow extra context to react to click
             var extraContent = extraContentLoader.item
-            if (extraContent && ("clicked" in extraContent) && (typeof extraContent.clicked === "function") &&
-                mouseX >= extraContentLoader.x && mouseY >= extraContentLoader.y &&
-                mouseX < (extraContentLoader.x + extraContentLoader.width) &&
-                mouseY < (extraContentLoader.y + extraContentLoader.height)) {
+            if (extraContent && extraContentLoader.contains(mapToItem(extraContentLoader, mouse.x, mouse.y))) {
                 extraContent.clicked()
             } else if (webPagePreviewLoader.item) {
                 webPagePreviewLoader.item.clicked()
@@ -71,9 +73,25 @@ ListItem {
             page.selectedMessages = [];
             page.state = ""
         } else {
+            messageOptionsDrawer.open = false
             contextMenuLoader.active = true;
         }
     }
+
+    onMenuOpenChanged: {
+        // When opening/closing the context menu, we no longer scroll automatically
+        chatView.manuallyScrolledToBottom = false;
+    }
+
+    Connections {
+        target: additionalOptionsOpened ? messageOptionsDrawer : null
+        onOpenChanged: {
+            if (!messageOptionsDrawer.open) {
+                additionalOptionsOpened = false
+            }
+        }
+    }
+
     Loader {
         id: contextMenuLoader
         active: false
@@ -86,16 +104,6 @@ ListItem {
         }
         sourceComponent: Component {
             ContextMenu {
-                Repeater {
-                    model: (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ?
-                        extraContentLoader.item.extraContextMenuItems : 0
-                    delegate: MenuItem {
-                        visible: modelData.visible
-                        text: modelData.name
-                        onClicked: modelData.action()
-                    }
-                }
-
                 MenuItem {
                     visible: messageListItem.canReplyToMessage
                     onClicked: messageListItem.replyToMessage()
@@ -108,36 +116,20 @@ ListItem {
                 }
                 MenuItem {
                     onClicked: {
-                        Clipboard.text = Functions.getMessageText(myMessage, true, userInformation.id, true);
-                    }
-                    text: qsTr("Copy Message to Clipboard")
-                }
-                MenuItem {
-                    onClicked: {
                         page.toggleMessageSelection(myMessage);
                     }
                     text: qsTr("Select Message")
                 }
                 MenuItem {
                     onClicked: {
-                        if (myMessage.is_pinned) {
-                            Remorse.popupAction(page, qsTr("Message unpinned"), function() { tdLibWrapper.unpinMessage(page.chatInformation.id, messageId);
-                                                                                             pinnedMessageItem.requestCloseMessage(); } );
-                        } else {
-                            tdLibWrapper.pinMessage(page.chatInformation.id, messageId);
-                        }
+                        messageOptionsDrawer.myMessage = myMessage;
+                        messageOptionsDrawer.userInformation = userInformation;
+                        messageOptionsDrawer.sourceItem = messageListItem
+                        messageOptionsDrawer.additionalItemsModel = (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ? extraContentLoader.item.extraContextMenuItems : 0;
+                        messageListItem.additionalOptionsOpened = true;
+                        messageOptionsDrawer.open = true;
                     }
-                    text: myMessage.is_pinned ? qsTr("Unpin Message") : qsTr("Pin Message")
-                    visible: canPinMessages()
-                }
-                MenuItem {
-                    onClicked: {
-                        var chatId = page.chatInformation.id;
-                        var messageId = messageListItem.messageId;
-                        Remorse.itemAction(messageListItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId]);  })
-                    }
-                    text: qsTr("Delete Message")
-                    visible: myMessage.can_be_deleted_for_all_users || (myMessage.can_be_deleted_only_for_self && myMessage.chat_id === page.myUserId)
+                    text: qsTr("More Options...")
                 }
             }
         }
@@ -172,7 +164,7 @@ ListItem {
         }
         onMessageNotFound: {
             if (messageId === myMessage.reply_to_message_id) {
-                messageInReplyToLoader.active = false;
+                messageInReplyToLoader.inReplyToMessageDeleted = true;
             }
         }
     }
@@ -186,11 +178,11 @@ ListItem {
     }
 
     onMyMessageChanged: {
-        Debug.log("[ChatModel] This message was updated, index", messageIndex, ", updating content...")
-        messageDateText.text = getMessageStatusText(myMessage, messageIndex, chatView.lastReadSentIndex, messageDateText.useElapsed)
-        messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, page.myUserId, false), messageText.font.pixelSize)
+        Debug.log("[ChatModel] This message was updated, index", messageIndex, ", updating content...");
+        messageDateText.text = getMessageStatusText(myMessage, messageIndex, chatView.lastReadSentIndex, messageDateText.useElapsed);
+        messageText.text = Emoji.emojify(Functions.getMessageText(myMessage, false, page.myUserId, false), Theme.fontSizeSmall);
         if (webPagePreviewLoader.item) {
-            webPagePreviewLoader.item.webPageData = myMessage.content.web_page
+            webPagePreviewLoader.item.webPageData = myMessage.content.web_page;
         }
     }
 
@@ -315,6 +307,7 @@ ListItem {
                     // text height ~= 1,28*font.pixelSize
                     height: active ? precalculatedValues.messageInReplyToHeight : 0
                     property var inReplyToMessage;
+                    property bool inReplyToMessageDeleted: false;
                     sourceComponent: Component {
                         Item {
                             width: messageInReplyToRow.width
@@ -324,6 +317,7 @@ ListItem {
                                 myUserId: page.myUserId
                                 visible: true
                                 inReplyToMessage: messageInReplyToLoader.inReplyToMessage
+                                inReplyToMessageDeleted: messageInReplyToLoader.inReplyToMessageDeleted
                             }
                             MouseArea {
                                 anchors.fill: parent
@@ -399,7 +393,7 @@ ListItem {
                 Text {
                     id: messageText
                     width: parent.width
-                    text: Emoji.emojify(Functions.getMessageText(myMessage, false, page.myUserId, false), font.pixelSize)
+                    text: Emoji.emojify(Functions.getMessageText(myMessage, false, page.myUserId, false), Theme.fontSizeMedium)
                     font.pixelSize: Theme.fontSizeSmall
                     color: messageListItem.textColor
                     wrapMode: Text.Wrap
@@ -475,6 +469,7 @@ ListItem {
                     color: messageListItem.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
                     horizontalAlignment: messageListItem.textAlign
                     text: getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed)
+                    rightPadding: interactionLoader.active ? interactionLoader.width : 0
                     MouseArea {
                         anchors.fill: parent
                         enabled: !messageListItem.precalculatedValues.pageIsSelecting
@@ -482,6 +477,34 @@ ListItem {
                             messageDateText.useElapsed = !messageDateText.useElapsed;
                             messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
                         }
+                    }
+
+                    Loader {
+                        id: interactionLoader
+                        height: parent.height
+                        anchors.right: parent.right
+                        asynchronous: true
+                        active: chatPage.isChannel && messageViewCount
+                        sourceComponent: Component {
+                            Label {
+                                text: Functions.getShortenedCount(messageViewCount)
+                                leftPadding: Theme.iconSizeSmall
+                                font.pixelSize: Theme.fontSizeTiny
+                                color: Theme.secondaryColor
+                                Icon {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: Theme.iconSizeExtraSmall
+                                    height: Theme.iconSizeExtraSmall
+                                    opacity: 0.6
+                                    source: "../../images/icon-s-eye.svg"
+                                    sourceSize {
+                                        width: Theme.iconSizeExtraSmall
+                                        height: Theme.iconSizeExtraSmall
+                                    }
+                                }
+                            }
+                        }
+
                     }
                 }
 

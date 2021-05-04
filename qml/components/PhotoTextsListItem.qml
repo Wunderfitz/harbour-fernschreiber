@@ -18,175 +18,173 @@ ListItem {
     property bool isMuted: false
     property alias pictureThumbnail: pictureThumbnail
 
-    contentHeight: mainRow.height + separator.height + 2 * Theme.paddingMedium
+    contentHeight: Theme.itemSizeExtraLarge
     contentWidth: parent.width
 
-    Column {
-        id: mainColumn
-        width: parent.width - ( 2 * Theme.horizontalPageMargin )
-        spacing: Theme.paddingSmall
+
+    ShaderEffectSource {
+        id: pictureItem
+        height: Theme.itemSizeLarge
+        width: height
         anchors {
-            horizontalCenter: parent.horizontalCenter
+            left: parent.left
+            leftMargin: Theme.horizontalPageMargin
             verticalCenter: parent.verticalCenter
         }
 
+        sourceItem: Item {
+            width: pictureItem.width
+            height: pictureItem.width
+
+            ProfileThumbnail {
+                id: pictureThumbnail
+                replacementStringHint: primaryText.text
+                width: parent.width
+                height: parent.width
+            }
+
+            Rectangle {
+                id: chatPinnedBackground
+                color: Theme.rgba(Theme.overlayBackgroundColor, Theme.opacityFaint)
+                width: Theme.fontSizeLarge
+                height: Theme.fontSizeLarge
+                anchors.top: parent.top
+                radius: parent.width / 2
+                visible: chatListViewItem.isPinned
+            }
+
+            Icon {
+                source: "../../images/icon-s-pin.svg"
+                height: Theme.iconSizeExtraSmall
+                width: Theme.iconSizeExtraSmall
+                highlighted: chatListViewItem.highlighted
+                sourceSize: Qt.size(Theme.iconSizeExtraSmall, Theme.iconSizeExtraSmall)
+                anchors.centerIn: chatPinnedBackground
+                visible: chatListViewItem.isPinned
+            }
+
+            Rectangle {
+                id: chatSecretBackground
+                color: Theme.rgba(Theme.overlayBackgroundColor, Theme.opacityFaint)
+                width: Theme.fontSizeLarge
+                height: Theme.fontSizeLarge
+                anchors.bottom: parent.bottom
+                radius: parent.width / 2
+                visible: chatListViewItem.isSecret
+            }
+
+            Icon {
+                source: "image://theme/icon-s-secure"
+                height: Theme.iconSizeExtraSmall
+                width: Theme.iconSizeExtraSmall
+                highlighted: chatListViewItem.highlighted
+                anchors.centerIn: chatSecretBackground
+                visible: chatListViewItem.isSecret
+            }
+
+            Rectangle {
+                id: chatUnreadMessagesCountBackground
+                color: isMuted ? ((Theme.colorScheme === Theme.DarkOnLight) ? "lightgray" : "dimgray") : Theme.highlightBackgroundColor
+                width: Theme.fontSizeLarge
+                height: Theme.fontSizeLarge
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                radius: parent.width / 2
+                visible: chatListViewItem.unreadCount > 0 || chatListViewItem.isMarkedAsUnread
+            }
+
+            Text {
+                id: chatUnreadMessagesCount
+                font.pixelSize: Theme.fontSizeExtraSmall
+                font.bold: true
+                color: Theme.primaryColor
+                anchors.centerIn: chatUnreadMessagesCountBackground
+                visible: chatListViewItem.unreadCount > 0
+                opacity: isMuted ? Theme.opacityHigh : 1.0
+                text: chatListViewItem.unreadCount > 99 ? "99+" : chatListViewItem.unreadCount
+            }
+        }
+    }
+    Column {
+        id: contentColumn
+        anchors {
+            verticalCenter: parent.verticalCenter
+            left: pictureItem.right
+            leftMargin: Theme.paddingSmall
+            right: parent.right
+            rightMargin: Theme.horizontalPageMargin
+        }
+        spacing: Theme.paddingSmall / 2
+
         Row {
-            id: mainRow
-            height: contentColumn.height
+            id: primaryTextRow
             spacing: Theme.paddingMedium
 
-            ShaderEffectSource {
-                id: pictureItem
-                width: contentColumn.height - Theme.paddingSmall
-                height: contentColumn.height - Theme.paddingSmall
+            Label {
+                id: primaryText
+                textFormat: Text.StyledText
+                font.pixelSize: Theme.fontSizeMedium
+                truncationMode: TruncationMode.Fade
                 anchors.verticalCenter: parent.verticalCenter
-                sourceItem:  Item {
-                    width: pictureItem.width
-                    height: pictureItem.width
-
-                    ProfileThumbnail {
-                        id: pictureThumbnail
-                        replacementStringHint: primaryText.text
-                        width: parent.width
-                        height: parent.width
-                    }
-
-                    Rectangle {
-                        id: chatPinnedBackground
-                        color: Theme.highlightBackgroundColor
-                        width: Theme.fontSizeLarge
-                        height: Theme.fontSizeLarge
-                        anchors.top: parent.top
-                        radius: parent.width / 2
-                        visible: chatListViewItem.isPinned
-                    }
-
-                    Image {
-                        source: "../../images/icon-s-pin.svg"
-                        height: Theme.fontSizeSmall
-                        width: Theme.fontSizeSmall
-                        sourceSize: Qt.size(Theme.iconSizeSmall, Theme.iconSizeSmall)
-                        anchors.centerIn: chatPinnedBackground
-                        visible: chatListViewItem.isPinned
-                    }
-
-                    Rectangle {
-                        id: chatSecretBackground
-                        color: Theme.highlightBackgroundColor
-                        width: Theme.fontSizeLarge
-                        height: Theme.fontSizeLarge
-                        anchors.bottom: parent.bottom
-                        radius: parent.width / 2
-                        visible: chatListViewItem.isSecret
-                    }
-
-                    Image {
-                        source: "image://theme/icon-s-secure"
-                        height: Theme.fontSizeSmall
-                        width: Theme.fontSizeSmall
-                        anchors.centerIn: chatSecretBackground
-                        visible: chatListViewItem.isSecret
-                    }
-
-                    Rectangle {
-                        id: chatUnreadMessagesCountBackground
-                        color: Theme.highlightBackgroundColor
-                        width: Theme.fontSizeLarge
-                        height: Theme.fontSizeLarge
-                        anchors.right: parent.right
-                        anchors.bottom: parent.bottom
-                        radius: parent.width / 2
-                        visible: chatListViewItem.unreadCount > 0 || chatListViewItem.isMarkedAsUnread
-                    }
-
-                    Text {
-                        id: chatUnreadMessagesCount
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        font.bold: true
-                        color: Theme.primaryColor
-                        anchors.centerIn: chatUnreadMessagesCountBackground
-                        visible: chatListViewItem.unreadCount > 0
-                        text: chatListViewItem.unreadCount > 99 ? "99+" : chatListViewItem.unreadCount
-                    }
-                }
+                width: Math.min(contentColumn.width - (verifiedImage.visible ? (verifiedImage.width + primaryTextRow.spacing) :  0) - (mutedImage.visible ? (mutedImage.width + primaryTextRow.spacing) :  0), implicitWidth)
             }
 
-            Column {
-                id: contentColumn
-                width: mainColumn.width - pictureItem.width - mainRow.spacing
-                spacing: Theme.paddingSmall
-
-                Row {
-                    id: primaryTextRow
-                    spacing: Theme.paddingMedium
-
-                    Label {
-                        id: primaryText
-                        textFormat: Text.StyledText
-                        font.pixelSize: Theme.fontSizeMedium
-                        truncationMode: TruncationMode.Fade
-                        anchors.verticalCenter: parent.verticalCenter
-                        width: Math.min(contentColumn.width - (verifiedImage.visible ? (verifiedImage.width + primaryTextRow.spacing) :  0) - (mutedImage.visible ? (mutedImage.width + primaryTextRow.spacing) :  0), implicitWidth)
-                    }
-
-                    Image {
-                        id: verifiedImage
-                        anchors.verticalCenter: parent.verticalCenter
-                        source: chatListViewItem.isVerified ? "../../images/icon-verified.svg" : ""
-                        sourceSize: Qt.size(Theme.iconSizeExtraSmall, Theme.iconSizeExtraSmall)
-                        width: Theme.iconSizeSmall
-                        height: Theme.iconSizeSmall
-                        visible: status === Image.Ready
-                    }
-
-                    Image {
-                        id: mutedImage
-                        anchors.verticalCenter: parent.verticalCenter
-                        source: chatListViewItem.isMuted ? "../js/emoji/1f507.svg" : ""
-                        sourceSize: Qt.size(Theme.iconSizeExtraSmall, Theme.iconSizeExtraSmall)
-                        width: Theme.iconSizeSmall
-                        height: Theme.iconSizeSmall
-                        visible: status === Image.Ready
-                    }
-                }
-
-                Row {
-                    width: parent.width
-                    spacing: Theme.paddingSmall
-                    Label {
-                        id: prologSecondaryText
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        width: Math.min(implicitWidth, parent.width)
-                        color: Theme.highlightColor
-                        textFormat: Text.StyledText
-                        truncationMode: TruncationMode.Fade
-                    }
-                    Label {
-                        id: secondaryText
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        width: parent.width - Theme.paddingMedium - prologSecondaryText.width
-                        truncationMode: TruncationMode.Fade
-                        textFormat: Text.StyledText
-                        visible: prologSecondaryText.width < ( parent.width - Theme.paddingLarge )
-                    }
-                }
-
-                Label {
-                    id: tertiaryText
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeTiny
-                    color: Theme.secondaryColor
-                    truncationMode: TruncationMode.Fade
-                }
+            Image {
+                id: verifiedImage
+                anchors.verticalCenter: parent.verticalCenter
+                source: chatListViewItem.isVerified ? "../../images/icon-verified.svg" : ""
+                sourceSize: Qt.size(Theme.iconSizeExtraSmall, Theme.iconSizeExtraSmall)
+                width: Theme.iconSizeSmall
+                height: Theme.iconSizeSmall
+                visible: status === Image.Ready
             }
+
+            Image {
+                id: mutedImage
+                anchors.verticalCenter: parent.verticalCenter
+                source: chatListViewItem.isMuted ? "../js/emoji/1f507.svg" : ""
+                sourceSize: Qt.size(Theme.iconSizeExtraSmall, Theme.iconSizeExtraSmall)
+                width: Theme.iconSizeSmall
+                height: Theme.iconSizeSmall
+                visible: status === Image.Ready
+            }
+        }
+
+        Row {
+            width: parent.width
+            spacing: Theme.paddingSmall
+            Label {
+                id: prologSecondaryText
+                font.pixelSize: Theme.fontSizeExtraSmall
+                width: Math.min(implicitWidth, parent.width)
+                color: Theme.highlightColor
+                textFormat: Text.StyledText
+                truncationMode: TruncationMode.Fade
+            }
+            Label {
+                id: secondaryText
+                font.pixelSize: Theme.fontSizeExtraSmall
+                width: parent.width - Theme.paddingMedium - prologSecondaryText.width
+                truncationMode: TruncationMode.Fade
+                textFormat: Text.StyledText
+                visible: prologSecondaryText.width < ( parent.width - Theme.paddingLarge )
+            }
+        }
+
+        Label {
+            id: tertiaryText
+            width: parent.width
+            font.pixelSize: Theme.fontSizeTiny
+            color: Theme.secondaryColor
+            truncationMode: TruncationMode.Fade
         }
     }
 
     Separator {
         id: separator
         anchors {
-            top: mainColumn.bottom
-            topMargin: Theme.paddingMedium
+            bottom: parent.bottom
+            bottomMargin: -1
         }
 
         width: parent.width

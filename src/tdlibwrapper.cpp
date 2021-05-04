@@ -158,6 +158,11 @@ void TDLibWrapper::initializeTDLibReciever() {
     connect(this->tdLibReceiver, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)), this, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)));
     connect(this->tdLibReceiver, SIGNAL(inlineQueryResults(QString, QString, QVariantList, QString, QString, QString)), this, SIGNAL(inlineQueryResults(QString, QString, QVariantList, QString, QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(callbackQueryAnswer(QString, bool, QString)), this, SIGNAL(callbackQueryAnswer(QString, bool, QString)));
+    connect(this->tdLibReceiver, SIGNAL(userPrivacySettingRules(QVariantMap)), this, SLOT(handleUserPrivacySettingRules(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(userPrivacySettingRulesUpdated(QVariantMap)), this, SLOT(handleUpdatedUserPrivacySettingRules(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(okReceived(QString)), this, SIGNAL(okReceived(QString)));
+    connect(this->tdLibReceiver, SIGNAL(sessionsReceived(QVariantList)), this, SIGNAL(sessionsReceived(QVariantList)));
 
     this->tdLibReceiver->start();
 }
@@ -569,7 +574,7 @@ void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &file
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &replyToMessageId)
+void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &explanation, const QString &replyToMessageId)
 {
     LOG("Sending poll message" << chatId << question << replyToMessageId);
     QVariantMap requestObject;
@@ -585,6 +590,11 @@ void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &questio
     if(correctOption > -1) {
         pollType.insert(_TYPE, "pollTypeQuiz");
         pollType.insert("correct_option_id", correctOption);
+        if(!explanation.isEmpty()) {
+            QVariantMap formattedExplanation;
+            formattedExplanation.insert("text", explanation);
+            pollType.insert("explanation", formattedExplanation);
+        }
     } else {
         pollType.insert(_TYPE, "pollTypeRegular");
         pollType.insert("allow_multiple_answers", multiple);
@@ -1177,6 +1187,177 @@ void TDLibWrapper::deleteFile(int fileId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::setName(const QString &firstName, const QString &lastName)
+{
+    LOG("Set name of current user" << firstName << lastName);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setName");
+    requestObject.insert("first_name", firstName);
+    requestObject.insert("last_name", lastName);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setUsername(const QString &userName)
+{
+    LOG("Set username of current user" << userName);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setUsername");
+    requestObject.insert("username", userName);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setUserPrivacySettingRule(TDLibWrapper::UserPrivacySetting setting, TDLibWrapper::UserPrivacySettingRule rule)
+{
+    LOG("Set user privacy setting rule of current user" << setting << rule);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setUserPrivacySettingRules");
+
+    QVariantMap settingMap;
+    switch (setting) {
+    case SettingShowStatus:
+        settingMap.insert(_TYPE, "userPrivacySettingShowStatus");
+        break;
+    case SettingShowPhoneNumber:
+        settingMap.insert(_TYPE, "userPrivacySettingShowPhoneNumber");
+        break;
+    case SettingAllowChatInvites:
+        settingMap.insert(_TYPE, "userPrivacySettingAllowChatInvites");
+        break;
+    case SettingShowProfilePhoto:
+        settingMap.insert(_TYPE, "userPrivacySettingShowProfilePhoto");
+        break;
+    case SettingAllowFindingByPhoneNumber:
+        settingMap.insert(_TYPE, "userPrivacySettingAllowFindingByPhoneNumber");
+        break;
+    case SettingShowLinkInForwardedMessages:
+        settingMap.insert(_TYPE, "userPrivacySettingShowLinkInForwardedMessages");
+        break;
+    case SettingUnknown:
+        return;
+    }
+    requestObject.insert("setting", settingMap);
+
+
+    QVariantMap ruleMap;
+    switch (rule) {
+    case RuleAllowAll:
+        ruleMap.insert(_TYPE, "userPrivacySettingRuleAllowAll");
+        break;
+    case RuleAllowContacts:
+        ruleMap.insert(_TYPE, "userPrivacySettingRuleAllowContacts");
+        break;
+    case RuleRestrictAll:
+        ruleMap.insert(_TYPE, "userPrivacySettingRuleRestrictAll");
+        break;
+    }
+    QVariantList ruleMaps;
+    ruleMaps.append(ruleMap);
+    QVariantMap encapsulatedRules;
+    encapsulatedRules.insert(_TYPE, "userPrivacySettingRules");
+    encapsulatedRules.insert("rules", ruleMaps);
+    requestObject.insert("rules", encapsulatedRules);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getUserPrivacySettingRules(TDLibWrapper::UserPrivacySetting setting)
+{
+    LOG("Getting user privacy setting rules of current user" << setting);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getUserPrivacySettingRules");
+    requestObject.insert(_EXTRA, setting);
+
+    QVariantMap settingMap;
+    switch (setting) {
+    case SettingShowStatus:
+        settingMap.insert(_TYPE, "userPrivacySettingShowStatus");
+        break;
+    case SettingShowPhoneNumber:
+        settingMap.insert(_TYPE, "userPrivacySettingShowPhoneNumber");
+        break;
+    case SettingAllowChatInvites:
+        settingMap.insert(_TYPE, "userPrivacySettingAllowChatInvites");
+        break;
+    case SettingShowProfilePhoto:
+        settingMap.insert(_TYPE, "userPrivacySettingShowProfilePhoto");
+        break;
+    case SettingAllowFindingByPhoneNumber:
+        settingMap.insert(_TYPE, "userPrivacySettingAllowFindingByPhoneNumber");
+        break;
+    case SettingShowLinkInForwardedMessages:
+        settingMap.insert(_TYPE, "userPrivacySettingShowLinkInForwardedMessages");
+        break;
+    case SettingUnknown:
+        return;
+    }
+    requestObject.insert("setting", settingMap);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setProfilePhoto(const QString &filePath)
+{
+    LOG("Set a profile photo" << filePath);
+
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setProfilePhoto");
+    requestObject.insert(_EXTRA, "setProfilePhoto");
+    QVariantMap inputChatPhoto;
+    inputChatPhoto.insert(_TYPE, "inputChatPhotoStatic");
+    QVariantMap inputFile;
+    inputFile.insert(_TYPE, "inputFileLocal");
+    inputFile.insert("path", filePath);
+    inputChatPhoto.insert("photo", inputFile);
+    requestObject.insert("photo", inputChatPhoto);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::deleteProfilePhoto(const QString &profilePhotoId)
+{
+    LOG("Delete a profile photo" << profilePhotoId);
+
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "deleteProfilePhoto");
+    requestObject.insert(_EXTRA, "deleteProfilePhoto");
+    requestObject.insert("profile_photo_id", profilePhotoId);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::changeStickerSet(const QString &stickerSetId, bool isInstalled)
+{
+    LOG("Change sticker set" << stickerSetId << isInstalled);
+
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "changeStickerSet");
+    requestObject.insert(_EXTRA, isInstalled ? "installStickerSet" : "removeStickerSet");
+    requestObject.insert("set_id", stickerSetId);
+    requestObject.insert("is_installed", isInstalled);
+
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getActiveSessions()
+{
+    LOG("Get active sessions");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getActiveSessions");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::terminateSession(const QString &sessionId)
+{
+    LOG("Terminate session" << sessionId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "terminateSession");
+    requestObject.insert(_EXTRA, "terminateSession");
+    requestObject.insert("session_id", sessionId);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
@@ -1206,6 +1387,11 @@ bool TDLibWrapper::hasUserInformation(const QString &userId)
 QVariantMap TDLibWrapper::getUserInformationByName(const QString &userName)
 {
     return this->allUserNames.value(userName).toMap();
+}
+
+TDLibWrapper::UserPrivacySettingRule TDLibWrapper::getUserPrivacySettingRule(TDLibWrapper::UserPrivacySetting userPrivacySetting)
+{
+    return this->userPrivacySettingRules.value(userPrivacySetting, UserPrivacySettingRule::RuleAllowAll);
 }
 
 QVariantMap TDLibWrapper::getUnreadMessageInformation()
@@ -1258,17 +1444,25 @@ QString TDLibWrapper::getOptionString(const QString &optionName)
     return this->options.value(optionName).toString();
 }
 
-void TDLibWrapper::copyFileToDownloads(const QString &filePath)
+void TDLibWrapper::copyFileToDownloads(const QString &filePath, bool openAfterCopy)
 {
-    LOG("Copy file to downloads" << filePath);
+    LOG("Copy file to downloads" << filePath << openAfterCopy);
     QFileInfo fileInfo(filePath);
     if (fileInfo.exists()) {
         QString downloadFilePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + fileInfo.fileName();
         if (QFile::exists(downloadFilePath)) {
-            emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+            if (openAfterCopy) {
+                this->openFileOnDevice(downloadFilePath);
+            } else {
+                emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+            }
         } else {
             if (QFile::copy(filePath, downloadFilePath)) {
-                emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+                if (openAfterCopy) {
+                    this->openFileOnDevice(downloadFilePath);
+                } else {
+                    emit copyToDownloadsSuccessful(fileInfo.fileName(), downloadFilePath);
+                }
             } else {
                 emit copyToDownloadsError(fileInfo.fileName(), downloadFilePath);
             }
@@ -1431,6 +1625,7 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
     if (updatedUserId == this->options.value("my_id").toString()) {
         LOG("Own user information updated :)");
         this->userInformation = userInformation;
+        emit ownUserUpdated(userInformation);
     }
     LOG("User information updated:" << userInformation.value(USERNAME).toString() << userInformation.value(FIRST_NAME).toString() << userInformation.value(LAST_NAME).toString());
     this->allUsers.insert(updatedUserId, userInformation);
@@ -1591,6 +1786,55 @@ void TDLibWrapper::handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong mess
     }
 }
 
+void TDLibWrapper::handleUserPrivacySettingRules(const QVariantMap &rules)
+{
+    QVariantList newGivenRules = rules.value("rules").toList();
+    // If nothing (or something unsupported is sent out) it is considered to be restricted completely
+    UserPrivacySettingRule newAppliedRule = UserPrivacySettingRule::RuleRestrictAll;
+    QListIterator<QVariant> givenRulesIterator(newGivenRules);
+    while (givenRulesIterator.hasNext()) {
+        QString givenRule = givenRulesIterator.next().toMap().value(_TYPE).toString();
+        if (givenRule == "userPrivacySettingRuleAllowContacts") {
+            newAppliedRule = UserPrivacySettingRule::RuleAllowContacts;
+        }
+        if (givenRule == "userPrivacySettingRuleAllowAll") {
+            newAppliedRule = UserPrivacySettingRule::RuleAllowAll;
+        }
+    }
+    UserPrivacySetting usedSetting = static_cast<UserPrivacySetting>(rules.value(_EXTRA).toInt());
+    this->userPrivacySettingRules.insert(usedSetting, newAppliedRule);
+    emit userPrivacySettingUpdated(usedSetting, newAppliedRule);
+}
+
+void TDLibWrapper::handleUpdatedUserPrivacySettingRules(const QVariantMap &updatedRules)
+{
+    QString rawSetting = updatedRules.value("setting").toMap().value(_TYPE).toString();
+    UserPrivacySetting usedSetting = UserPrivacySetting::SettingUnknown;
+    if (rawSetting == "userPrivacySettingAllowChatInvites") {
+        usedSetting = UserPrivacySetting::SettingAllowChatInvites;
+    }
+    if (rawSetting == "userPrivacySettingAllowFindingByPhoneNumber") {
+        usedSetting = UserPrivacySetting::SettingAllowFindingByPhoneNumber;
+    }
+    if (rawSetting == "userPrivacySettingShowLinkInForwardedMessages") {
+        usedSetting = UserPrivacySetting::SettingShowLinkInForwardedMessages;
+    }
+    if (rawSetting == "userPrivacySettingShowPhoneNumber") {
+        usedSetting = UserPrivacySetting::SettingShowPhoneNumber;
+    }
+    if (rawSetting == "userPrivacySettingShowProfilePhoto") {
+        usedSetting = UserPrivacySetting::SettingShowProfilePhoto;
+    }
+    if (rawSetting == "userPrivacySettingShowStatus") {
+        usedSetting = UserPrivacySetting::SettingShowStatus;
+    }
+    if (usedSetting != UserPrivacySetting::SettingUnknown) {
+        QVariantMap rawRules = updatedRules.value("rules").toMap();
+        rawRules.insert(_EXTRA, usedSetting);
+        this->handleUserPrivacySettingRules(rawRules);
+    }
+}
+
 void TDLibWrapper::setInitialParameters()
 {
     LOG("Sending initial parameters to TD Lib");
@@ -1609,7 +1853,7 @@ void TDLibWrapper::setInitialParameters()
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
     initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     initialParameters.insert("system_version", QSysInfo::prettyProductName());
-    initialParameters.insert("application_version", "0.7");
+    initialParameters.insert("application_version", "0.8.2");
     initialParameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
     // initialParameters.insert("use_test_dc", true);
     requestObject.insert("parameters", initialParameters);

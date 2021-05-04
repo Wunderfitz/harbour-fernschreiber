@@ -16,6 +16,9 @@
     You should have received a copy of the GNU General Public License
     along with Fernschreiber. If not, see <http://www.gnu.org/licenses/>.
 */
+
 import QtQuick 2.6
 
-MessageLocation {}
+MessageLocation {
+    locationData: rawMessage.content.venue.location
+}

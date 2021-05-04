@@ -48,6 +48,7 @@ namespace {
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
     const QString SECRET_CHAT("secret_chat");
+    const QString INTERACTION_INFO("interaction_info");
 
     const QString TYPE("@type");
     const QString EXTRA("@extra");
@@ -139,6 +140,10 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateChatDraftMessage", &TDLibReceiver::processUpdateChatDraftMessage);
     handlers.insert("inlineQueryResults", &TDLibReceiver::processInlineQueryResults);
     handlers.insert("callbackQueryAnswer", &TDLibReceiver::processCallbackQueryAnswer);
+    handlers.insert("userPrivacySettingRules", &TDLibReceiver::processUserPrivacySettingRules);
+    handlers.insert("updateUserPrivacySettingRules", &TDLibReceiver::processUpdateUserPrivacySettingRules);
+    handlers.insert("updateMessageInteractionInfo", &TDLibReceiver::processUpdateMessageInteractionInfo);
+    handlers.insert("sessions", &TDLibReceiver::processSessions);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -556,8 +561,12 @@ void TDLibReceiver::processError(const QVariantMap &receivedInformation)
     emit errorReceived(receivedInformation.value("code").toInt(), receivedInformation.value(MESSAGE).toString(), receivedInformation.value(EXTRA).toString());
 }
 
-void TDLibReceiver::nop(const QVariantMap &)
+void TDLibReceiver::nop(const QVariantMap &receivedInformation)
 {
+    LOG("Received an OK");
+    if (receivedInformation.contains(EXTRA)) {
+        emit okReceived(receivedInformation.value(EXTRA).toString());
+    }
 }
 
 void TDLibReceiver::processSecretChat(const QVariantMap &receivedInformation)
@@ -607,7 +616,32 @@ void TDLibReceiver::processInlineQueryResults(const QVariantMap &receivedInforma
 
 void TDLibReceiver::processCallbackQueryAnswer(const QVariantMap &receivedInformation)
 {
-
     LOG("Callback Query answer");
     emit callbackQueryAnswer(receivedInformation.value(TEXT).toString(), receivedInformation.value("alert").toBool(), receivedInformation.value("url").toString());
+}
+
+void TDLibReceiver::processUserPrivacySettingRules(const QVariantMap &receivedInformation)
+{
+    LOG("User privacy setting rules");
+    emit userPrivacySettingRules(receivedInformation);
+}
+
+void TDLibReceiver::processUpdateUserPrivacySettingRules(const QVariantMap &receivedInformation)
+{
+    LOG("User privacy setting rules updated");
+    emit userPrivacySettingRulesUpdated(receivedInformation);
+}
+
+void TDLibReceiver::processUpdateMessageInteractionInfo(const QVariantMap &receivedInformation)
+{
+    const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
+    const qlonglong messageId = receivedInformation.value(MESSAGE_ID).toLongLong();
+    LOG("Message interaction info updated" << chatId << messageId);
+    emit messageInteractionInfoUpdated(chatId, messageId, receivedInformation.value(INTERACTION_INFO).toMap());
+}
+
+void TDLibReceiver::processSessions(const QVariantMap &receivedInformation)
+{
+    QVariantList sessions = receivedInformation.value("sessions").toList();
+    emit sessionsReceived(sessions);
 }

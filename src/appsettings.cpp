@@ -27,11 +27,13 @@ namespace {
     const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
     const QString KEY_ANIMATE_STICKERS("animateStickers");
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
+    const QString KEY_NOTIFICATION_SOUNDS_ENABLED("notificationSoundsEnabled");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
-    const QString KEY_STORAGE_OPTIMIZER("storageOptimizer");
+    const QString KEY_STORAGE_OPTIMIZER("useStorageOptimizer");
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
     const QString KEY_ONLINE_ONLY_MODE("onlineOnlyMode");
+    const QString KEY_DELAY_MESSAGE_READ("delayMessageRead");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
@@ -122,6 +124,20 @@ void AppSettings::setNotificationTurnsDisplayOn(bool turnOn)
     }
 }
 
+bool AppSettings::notificationSoundsEnabled() const
+{
+    return settings.value(KEY_NOTIFICATION_SOUNDS_ENABLED, true).toBool();
+}
+
+void AppSettings::setNotificationSoundsEnabled(bool enable)
+{
+    if (notificationSoundsEnabled() != enable) {
+        LOG(KEY_NOTIFICATION_SOUNDS_ENABLED << enable);
+        settings.setValue(KEY_NOTIFICATION_SOUNDS_ENABLED, enable);
+        emit notificationSoundsEnabledChanged();
+    }
+}
+
 AppSettings::NotificationFeedback AppSettings::notificationFeedback() const
 {
     return (NotificationFeedback) settings.value(KEY_NOTIFICATION_FEEDBACK, (int) NotificationFeedbackAll).toInt();
@@ -138,7 +154,7 @@ void AppSettings::setNotificationFeedback(NotificationFeedback feedback)
 
 bool AppSettings::storageOptimizer() const
 {
-    return settings.value(KEY_STORAGE_OPTIMIZER, false).toBool();
+    return settings.value(KEY_STORAGE_OPTIMIZER, true).toBool();
 }
 
 void AppSettings::setStorageOptimizer(bool enable)
@@ -190,5 +206,19 @@ void AppSettings::setOnlineOnlyMode(bool enable)
         LOG(KEY_ONLINE_ONLY_MODE << enable);
         settings.setValue(KEY_ONLINE_ONLY_MODE, enable);
         emit onlineOnlyModeChanged();
+    }
+}
+
+bool AppSettings::delayMessageRead() const
+{
+    return settings.value(KEY_DELAY_MESSAGE_READ, true).toBool();
+}
+
+void AppSettings::setDelayMessageRead(bool enable)
+{
+    if (delayMessageRead() != enable) {
+        LOG(KEY_DELAY_MESSAGE_READ << enable);
+        settings.setValue(KEY_DELAY_MESSAGE_READ, enable);
+        emit delayMessageReadChanged();
     }
 }

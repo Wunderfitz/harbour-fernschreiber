@@ -96,7 +96,7 @@ public:
     TDLibWrapper::ChatType chatType;
     TDLibWrapper::ChatMemberStatus memberStatus;
     TDLibWrapper::SecretChatState secretChatState;
-    QVariantMap userInformation;
+
 };
 
 ChatListModel::ChatData::ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap &data) :
@@ -107,8 +107,7 @@ ChatListModel::ChatData::ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap 
     groupId(0),
     verified(false),
     memberStatus(TDLibWrapper::ChatMemberStatusUnknown),
-    secretChatState(TDLibWrapper::SecretChatStateUnknown),
-    userInformation(tdLibWrapper->getUserInformation())
+    secretChatState(TDLibWrapper::SecretChatStateUnknown)
 {
     const QVariantMap type(data.value(TYPE).toMap());
     switch (chatType = TDLibWrapper::chatTypeFromString(type.value(_TYPE).toString())) {
@@ -192,13 +191,15 @@ qlonglong ChatListModel::ChatData::senderMessageDate() const
 
 QString ChatListModel::ChatData::senderMessageText() const
 {
-    return FernschreiberUtils::getMessageShortText(tdLibWrapper, lastMessage(CONTENT).toMap(), isChannel(), this->userInformation.value(ID).toLongLong(), lastMessage(SENDER).toMap() );
+    qlonglong myUserId = tdLibWrapper->getUserInformation().value(ID).toLongLong();
+    return FernschreiberUtils::getMessageShortText(tdLibWrapper, lastMessage(CONTENT).toMap(), isChannel(), myUserId, lastMessage(SENDER).toMap() );
 }
 
 
 QString ChatListModel::ChatData::senderMessageStatus() const
 {
-    if (isChannel() || this->userInformation.value(ID).toLongLong() != senderUserId() || this->userInformation.value(ID).toLongLong() == chatId) {
+    qlonglong myUserId = tdLibWrapper->getUserInformation().value(ID).toLongLong();
+    if (isChannel() || myUserId != senderUserId() || myUserId == chatId) {
         return "";
     }
     if (lastMessage(ID) == chatData.value(LAST_READ_OUTBOX_MESSAGE_ID)) {
@@ -259,7 +260,13 @@ bool ChatListModel::ChatData::isHidden() const
         }
         break;
     case TDLibWrapper::ChatTypeUnknown:
+        break;
     case TDLibWrapper::ChatTypePrivate:
+        if (chatData.value(LAST_MESSAGE).isNull()
+                && chatData.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong() == 0
+                && chatData.value(LAST_READ_OUTBOX_MESSAGE_ID).toLongLong() == 0) {
+            return true;
+        }
         break;
     case TDLibWrapper::ChatTypeSecret:
         if (secretChatState == TDLibWrapper::SecretChatStateClosed) {

@@ -31,6 +31,9 @@
 class TDLibWrapper : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(AuthorizationState authorizationState READ getAuthorizationState NOTIFY authorizationStateChanged)
+    Q_PROPERTY(QVariantMap userInformation READ getUserInformation NOTIFY ownUserUpdated)
+
 public:
     explicit TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent = nullptr);
     ~TDLibWrapper();
@@ -89,6 +92,24 @@ public:
     };
     Q_ENUM(SecretChatState)
 
+    enum UserPrivacySetting {
+        SettingAllowChatInvites,
+        SettingAllowFindingByPhoneNumber,
+        SettingShowLinkInForwardedMessages,
+        SettingShowPhoneNumber,
+        SettingShowProfilePhoto,
+        SettingShowStatus,
+        SettingUnknown
+    };
+    Q_ENUM(UserPrivacySetting)
+
+    enum UserPrivacySettingRule {
+        RuleAllowAll,
+        RuleAllowContacts,
+        RuleRestrictAll
+    };
+    Q_ENUM(UserPrivacySettingRule)
+
     class Group {
     public:
         Group(qlonglong id) : groupId(id) { }
@@ -106,6 +127,7 @@ public:
     Q_INVOKABLE QVariantMap getUserInformation(const QString &userId);
     Q_INVOKABLE bool hasUserInformation(const QString &userId);
     Q_INVOKABLE QVariantMap getUserInformationByName(const QString &userName);
+    Q_INVOKABLE UserPrivacySettingRule getUserPrivacySettingRule(UserPrivacySetting userPrivacySetting);
     Q_INVOKABLE QVariantMap getUnreadMessageInformation();
     Q_INVOKABLE QVariantMap getUnreadChatInformation();
     Q_INVOKABLE QVariantMap getBasicGroup(qlonglong groupId) const;
@@ -113,7 +135,7 @@ public:
     Q_INVOKABLE QVariantMap getChat(const QString &chatId);
     Q_INVOKABLE QVariantMap getSecretChatFromCache(qlonglong secretChatId);
     Q_INVOKABLE QString getOptionString(const QString &optionName);
-    Q_INVOKABLE void copyFileToDownloads(const QString &filePath);
+    Q_INVOKABLE void copyFileToDownloads(const QString &filePath, bool openAfterCopy = false);
     Q_INVOKABLE void openFileOnDevice(const QString &filePath);
     Q_INVOKABLE void controlScreenSaver(bool enabled);
     Q_INVOKABLE bool getJoinChatRequested();
@@ -145,7 +167,7 @@ public:
     Q_INVOKABLE void sendVoiceNoteMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendLocationMessage(const QString &chatId, double latitude, double longitude, double horizontalAccuracy, const QString &replyToMessageId = "0");
     Q_INVOKABLE void sendStickerMessage(const QString &chatId, const QString &fileId, const QString &replyToMessageId = "0");
-    Q_INVOKABLE void sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &replyToMessageId = "0");
+    Q_INVOKABLE void sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &explanation, const QString &replyToMessageId = "0");
     Q_INVOKABLE void forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, bool sendCopy, bool removeCaption);
     Q_INVOKABLE void getMessage(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void getCallbackQueryAnswer(const QString &chatId, const QString &messageId, const QVariantMap &payload);
@@ -196,6 +218,15 @@ public:
     Q_INVOKABLE void cancelDownloadFile(int fileId);
     Q_INVOKABLE void cancelUploadFile(int fileId);
     Q_INVOKABLE void deleteFile(int fileId);
+    Q_INVOKABLE void setName(const QString &firstName, const QString &lastName);
+    Q_INVOKABLE void setUsername(const QString &userName);
+    Q_INVOKABLE void setUserPrivacySettingRule(UserPrivacySetting setting, UserPrivacySettingRule rule);
+    Q_INVOKABLE void getUserPrivacySettingRules(UserPrivacySetting setting);
+    Q_INVOKABLE void setProfilePhoto(const QString &filePath);
+    Q_INVOKABLE void deleteProfilePhoto(const QString &profilePhotoId);
+    Q_INVOKABLE void changeStickerSet(const QString &stickerSetId, bool isInstalled);
+    Q_INVOKABLE void getActiveSessions();
+    Q_INVOKABLE void terminateSession(const QString &sessionId);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -224,6 +255,7 @@ signals:
     void chatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, int unreadCount);
     void chatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
     void userUpdated(const QString &userId, const QVariantMap &userInformation);
+    void ownUserUpdated(const QVariantMap &userInformation);
     void basicGroupUpdated(qlonglong groupId);
     void superGroupUpdated(qlonglong groupId);
     void chatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount);
@@ -270,6 +302,10 @@ signals:
     void chatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order);
     void inlineQueryResults(const QString &inlineQueryId, const QString &nextOffset, const QVariantList &results, const QString &switchPmText, const QString &switchPmParameter, const QString &extra);
     void callbackQueryAnswer(const QString &text, bool alert, const QString &url);
+    void userPrivacySettingUpdated(UserPrivacySetting setting, UserPrivacySettingRule rule);
+    void messageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo);
+    void okReceived(const QString &request);
+    void sessionsReceived(const QVariantList &sessions);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -294,6 +330,8 @@ public slots:
     void handleErrorReceived(int code, const QString &message, const QString &extra);
     void handleMessageInformation(qlonglong chatId, qlonglong messageId, const QVariantMap &receivedInformation);
     void handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned);
+    void handleUserPrivacySettingRules(const QVariantMap &rules);
+    void handleUpdatedUserPrivacySettingRules(const QVariantMap &updatedRules);
 
 private:
     void setOption(const QString &name, const QString &type, const QVariant &value);
@@ -315,6 +353,7 @@ private:
     TDLibWrapper::ConnectionState connectionState;
     QVariantMap options;
     QVariantMap userInformation;
+    QMap<UserPrivacySetting, UserPrivacySettingRule> userPrivacySettingRules;
     QVariantMap allUsers;
     QVariantMap allUserNames;
     QVariantMap chats;

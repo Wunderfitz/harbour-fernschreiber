@@ -52,6 +52,7 @@ public:
     Q_INVOKABLE void startGeoLocationUpdates();
     Q_INVOKABLE void stopGeoLocationUpdates();
     Q_INVOKABLE bool supportsGeoLocation();
+    Q_INVOKABLE QString getSailfishOSVersion();
 
 signals:
     void voiceNoteDurationChanged(qlonglong duration);

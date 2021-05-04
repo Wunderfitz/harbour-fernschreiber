@@ -85,11 +85,50 @@
     </message>
     <message>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjaudu ulos</translation>
     </message>
     <message>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjattu ulos</translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Aktiiviset istunnot</translation>
+    </message>
+</context>
+<context>
+    <name>ActiveSessionsPage</name>
+    <message>
+        <source>Getting active sessions...</source>
+        <translation>Haetaan aktiivisia istuntoja...</translation>
+    </message>
+    <message>
+        <source>Active Sessions</source>
+        <translation>Aktiiviset istunnot</translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Istunto suljettiin</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Sulje istunto</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>Tämä sovellus</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP-osoite: %1, sijainti: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Aktiivinen %1 alkaen, viimeksi paikalla: %2</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Suljetaan istuntoa</translation>
     </message>
 </context>
 <context>
@@ -278,11 +317,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista keskustelun kiinnitys</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiinnitä keskustelu</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -435,6 +474,38 @@
         <source>Location (%1/%2)</source>
         <translation>Sijainti (%1/%2)</translation>
     </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Kopioi viesti leikepöydälle</translation>
+    </message>
+    <message>
+        <source>Message unpinned</source>
+        <translation>Viestin kiinnitys poistettu</translation>
+    </message>
+    <message>
+        <source>Unpin Message</source>
+        <translation>Poista viestin kiinnitys</translation>
+    </message>
+    <message>
+        <source>Pin Message</source>
+        <translation>Kiinnitä viesti</translation>
+    </message>
+    <message>
+        <source>Additional Options</source>
+        <translation>Lisää vaihtoehtoja</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Viesti poistettu</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Poista viesti</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Välitä viesti</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -449,14 +520,6 @@
 </context>
 <context>
     <name>CoverPage</name>
-    <message>
-        <source>unread message</source>
-        <translation>lukematon viesti</translation>
-    </message>
-    <message>
-        <source>unread messages</source>
-        <translation>lukematonta viestiä</translation>
-    </message>
     <message>
         <source>in</source>
         <translatorcomment>The preposition &apos;in&apos; is translated to Finnish using the inessive case (suffix ‑ssa/‑ssä), so this string should be left empty in the translation. Unfortunately Qt will ignore empty translations, so let&apos;s use the character U+200B (zero width space) instead.</translatorcomment>
@@ -482,13 +545,19 @@
         <source>Updating content...</source>
         <translation>Päivitetään sisältöä...</translation>
     </message>
-    <message>
-        <source>chat</source>
-        <translation>keskustelussa</translation>
-    </message>
-    <message>
+    <message numerus="yes">
         <source>chats</source>
-        <translation>keskustelussa</translation>
+        <translation>
+            <numerusform>keskustelussa</numerusform>
+            <numerusform>keskustelussa</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>unread messages</source>
+        <translation>
+            <numerusform>lukematon viesti</numerusform>
+            <numerusform>lukematonta viestiä</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -820,26 +889,35 @@
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>sait %Ln pisteen</numerusform>
+            <numerusform>sait %Ln pistettä</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>sai %Ln pisteen</numerusform>
+            <numerusform>sai %Ln pistettä</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit pelin</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti pelin</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <comment>myself</comment>
+        <translation>lähetit videoviestin</translation>
+    </message>
+    <message>
+        <source>sent a video note</source>
+        <translation>lähetti videoviestin</translation>
     </message>
 </context>
 <context>
@@ -862,6 +940,14 @@
     <message>
         <source>You</source>
         <translation>Sinä</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Tuntematon</translation>
+    </message>
+    <message>
+        <source>This message was deleted</source>
+        <translation>Tämä viesti poistettiin</translation>
     </message>
 </context>
 <context>
@@ -942,18 +1028,6 @@
         <translation>Muokkaa viestiä</translation>
     </message>
     <message>
-        <source>Copy Message to Clipboard</source>
-        <translation>Kopioi viesti leikepöydälle</translation>
-    </message>
-    <message>
-        <source>Message deleted</source>
-        <translation>Viesti poistettu</translation>
-    </message>
-    <message>
-        <source>Delete Message</source>
-        <translation>Poista viesti</translation>
-    </message>
-    <message>
         <source>You</source>
         <translation>Sinä</translation>
     </message>
@@ -966,16 +1040,8 @@
         <translation>Valitse viesti</translation>
     </message>
     <message>
-        <source>Pin Message</source>
-        <translation>Kiinnitä viesti</translation>
-    </message>
-    <message>
-        <source>Message unpinned</source>
-        <translation>Viestin kiinnitys poistettu</translation>
-    </message>
-    <message>
-        <source>Unpin Message</source>
-        <translation>Poista viestin kiinnitys</translation>
+        <source>More Options...</source>
+        <translation>Lisää valintoja...</translation>
     </message>
 </context>
 <context>
@@ -987,16 +1053,16 @@
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>sait %Ln pisteen %2 pisteestä</numerusform>
+            <numerusform>sait %Ln pistettä %2 pisteestä</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>sai %Ln pisteen %2 pisteestä</numerusform>
+            <numerusform>sai %Ln pistettä %2 pisteestä</numerusform>
         </translation>
     </message>
 </context>
@@ -1047,7 +1113,7 @@
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>yhteensä %Ln ääni </numerusform>
             <numerusform>yhteensä %Ln ääntä</numerusform>
         </translation>
@@ -1058,14 +1124,14 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation type="unfinished"></translation>
+        <translation>botin %1 kautta</translation>
     </message>
 </context>
 <context>
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Ääniviesti</translation>
     </message>
 </context>
 <context>
@@ -1197,7 +1263,7 @@
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjaudutaan ulos</translation>
     </message>
 </context>
 <context>
@@ -1298,6 +1364,18 @@
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
         <translation>Visoilla on yksi oikea vastaus. Osallistujat eivät voi kumota vastaustaan.</translation>
+    </message>
+    <message>
+        <source>Enter an optional explanation</source>
+        <translation>Syötä valinnainen kuvaus</translation>
+    </message>
+    <message>
+        <source>Shown when the user selects a wrong answer.</source>
+        <translation>Näytä kun käyttäjä valitsee väärän vastauksen.</translation>
+    </message>
+    <message>
+        <source>An explanation can be up to 200 characters long.</source>
+        <translation>Selitys voi olla enintään 200 merkkiä pitkä.</translation>
     </message>
 </context>
 <context>
@@ -1491,23 +1569,146 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Älä käytä välimuistia</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation></translation>
+        <translation>Estää tietojen tallennuksen välimuistiin. Jotkin sovelluksen ominaisuudet voivat olla rajoitettuja tai poistettu käytöstä tässä tilassa. Muutos vaatii Fernschreiberin uudelleenkäynnistyksen.</translation>
     </message>
     <message>
         <source>Privacy</source>
-        <translation type="unfinished"></translation>
+        <translation>Yksityisyys</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation type="unfinished"></translation>
+        <translation>Salli sijainnin lähettäminen upotetuille boteille</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation type="unfinished"></translation>
+        <translation>Jotkin viestinsyöttöriville upotetut botit pyytävät sijaintitietoja niitä käytettäessä</translation>
+    </message>
+    <message>
+        <source>User Profile</source>
+        <translation>Käyttäjäprofiili</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>Etunimi</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>Syötä 1-64 merkkiä</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Sukunimi</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Syötä 1-64 merkkiä</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Käyttäjätunnus</translation>
+    </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation>Salli keskustelukutsut</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation>Yksityisyysasetus joka määrittää voiko keskustelukutsuja lähettää sinulle.</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Kyllä</translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation>Vain yhteystiedoillesi</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Ei</translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation>Salli haku puhelinnumerolla</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation>Yksityisyysasetus joka määrittää voivatko muut löytää käyttäjäsi puhelinnumeron perusteella.</translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation>Näytä linkki välitetyissä viesteissä</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation>Yksityisyysasetus joka määrittää sisältävätkö välitetyt viesti linkin käyttäjätunnukseesi.</translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation>Näytä puhelinnumero</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation>Yksityisyysasetus joka määrittää onko puhelinnumerosi julkinen.</translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation>Näytä profiilikuva</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation>Yksityisyysasetus joka määrittää onko profiilikuvasi julkinen.</translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation>Näytä tila</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation>Yksityisyysasetus joka määrittää näytetäänkö muille käyttäjille kun olet online-tilassa</translation>
+    </message>
+    <message>
+        <source>Add Picture</source>
+        <translation>Lisää kuva</translation>
+    </message>
+    <message>
+        <source>Profile Pictures</source>
+        <translation>Profiilikuvat</translation>
+    </message>
+    <message>
+        <source>Delete Picture</source>
+        <translation>Poista kuva</translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>Lähetetään...</translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
+        <translation>Poistetaan profiilikuvaa</translation>
+    </message>
+    <message>
+        <source>Enable notification sounds</source>
+        <translation>Käytä äänimerkkejä</translation>
+    </message>
+    <message>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>Kun äänet ovat käytössä, Fernschreiber käyttää Sailfish OS:n ilmoitusääniä keskusteluille, jotia voit muuttaa järjestelmäasetuksista.</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Viive viestien merkitsemisessä luetuksi</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber odottaa hetken ennen kuin viestit merkitään luetuiksi</translation>
     </message>
 </context>
 <context>
@@ -1517,16 +1718,27 @@
         <translation>Viimeksi käytetty</translation>
     </message>
     <message>
-        <source>Loading stickers...</source>
-        <translation>Ladataan tarroja...</translation>
+        <source>Removing sticker set</source>
+        <translation>Poistetaan tarrapakettia</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>Tarrapaketti poistettu!</translation>
+    </message>
+</context>
+<context>
+    <name>StickerSetOverlay</name>
+    <message>
+        <source>Sticker set successfully installed!</source>
+        <translation>Tarrapaketti asennettu!</translation>
+    </message>
+    <message>
+        <source>Sticker set successfully removed!</source>
+        <translation>Tarrapaketti poistettu!</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
-    <message>
-        <source>Download Video</source>
-        <translation>Lataa video</translation>
-    </message>
     <message>
         <source>Download of %1 successful.</source>
         <translation>Videon %1 lataus onnistui.</translation>
@@ -1534,6 +1746,10 @@
     <message>
         <source>Download failed.</source>
         <translation>Lataus epäonnistui.</translation>
+    </message>
+    <message>
+        <source>Copy video to gallery</source>
+        <translation>Kopioi video galleriaan</translation>
     </message>
 </context>
 <context>
@@ -1979,19 +2195,19 @@
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>sait %Ln pisteen</numerusform>
+            <numerusform>sait %Ln pistettä</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lähetit pelin</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
+        <translation>lähetti pelin</translation>
     </message>
 </context>
 </TS>

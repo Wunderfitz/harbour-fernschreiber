@@ -15,7 +15,7 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 - Hide send message button if send-by-enter is switched on [santhoshmanikandan](https://github.com/santhoshmanikandan)
 
 ### Logo/Icon
-- Designed by [Matteo](https://github.com/iamnomeutente)
+- Designed by [Matteo](https://github.com/iamnomeutente), adjustments by [Slava Monich](https://github.com/monich)
 
 ### Translations
 - Chinese: [dashinfantry](https://github.com/dashinfantry)
@@ -24,6 +24,7 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 - Italian: [Matteo](https://github.com/iamnomeutente)
 - Polish: [atlochowski](https://github.com/atlochowski)
 - Russian: [Rustem Abzalov](https://github.com/arustg) and [Slava Monich](https://github.com/monich)
+- Slovak: [okruhliak](https://github.com/okruhliak)
 - Spanish: [carlosgonz](https://github.com/GNUuser)
 - Swedish: [Åke Engelbrektson](https://github.com/eson57)
 

@@ -73,6 +73,7 @@ private slots:
     void handleChatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void handleMessageContentUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &newContent);
     void handleMessageEditedUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &replyMarkup);
+    void handleMessageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo);
     void handleMessagesDeleted(qlonglong chatId, const QList<qlonglong> &messageIds);
 
 private:
@@ -84,6 +85,7 @@ private:
     QVariantMap enhanceMessage(const QVariantMap &message);
     int calculateLastKnownMessageId();
     int calculateLastReadSentMessageId();
+    int calculateScrollPosition(int listInboxPosition);
     bool isMostRecentMessageLoaded();
 
 private:
