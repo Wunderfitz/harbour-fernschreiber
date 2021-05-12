@@ -550,6 +550,17 @@ Page {
 
                 TextSwitch {
                     width: parent.columnWidth
+                    checked: appSettings.focusTextAreaOnChatOpen
+                    text: qsTr("Focus text input on chat open")
+                    description: qsTr("Focus the text input area when entering a chat")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.focusTextAreaOnChatOpen = !checked
+                    }
+                }
+
+                TextSwitch {
+                    width: parent.columnWidth
                     checked: appSettings.focusTextAreaAfterSend
                     text: qsTr("Focus text input area after send")
                     description: qsTr("Focus the text input area after sending a message")

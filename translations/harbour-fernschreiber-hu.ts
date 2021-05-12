@@ -1682,6 +1682,14 @@
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Focus the text input area when entering a chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Focus text input on chat open</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

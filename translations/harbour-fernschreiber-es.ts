@@ -1709,6 +1709,14 @@
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
         <translation>Si esta habilitado, la apl espera un segundo hasta que un mensaje que está en la pantalla se marque como leído. Si deshabilitas esta función, los mensajes se marcarán inmediatamente como leído una vez que esté en la pantalla sin desplazarse al mensaje</translation>
     </message>
+    <message>
+        <source>Focus the text input area when entering a chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Focus text input on chat open</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>
