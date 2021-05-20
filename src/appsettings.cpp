@@ -34,6 +34,7 @@ namespace {
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
     const QString KEY_ONLINE_ONLY_MODE("onlineOnlyMode");
     const QString KEY_DELAY_MESSAGE_READ("delayMessageRead");
+    const QString KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN("focusTextAreaOnChatOpen");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
@@ -220,5 +221,19 @@ void AppSettings::setDelayMessageRead(bool enable)
         LOG(KEY_DELAY_MESSAGE_READ << enable);
         settings.setValue(KEY_DELAY_MESSAGE_READ, enable);
         emit delayMessageReadChanged();
+    }
+}
+
+bool AppSettings::getFocusTextAreaOnChatOpen() const
+{
+    return settings.value(KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN, false).toBool();
+}
+
+void AppSettings::setFocusTextAreaOnChatOpen(bool focusTextAreaOnChatOpen)
+{
+    if (getFocusTextAreaOnChatOpen() != focusTextAreaOnChatOpen) {
+        LOG(KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN << focusTextAreaOnChatOpen);
+        settings.setValue(KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN, focusTextAreaOnChatOpen);
+        emit focusTextAreaOnChatOpenChanged();
     }
 }

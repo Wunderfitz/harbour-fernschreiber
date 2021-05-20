@@ -36,6 +36,8 @@ class AppSettings : public QObject {
     Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
     Q_PROPERTY(bool onlineOnlyMode READ onlineOnlyMode WRITE setOnlineOnlyMode NOTIFY onlineOnlyModeChanged)
     Q_PROPERTY(bool delayMessageRead READ delayMessageRead WRITE setDelayMessageRead NOTIFY delayMessageReadChanged)
+    Q_PROPERTY(bool focusTextAreaOnChatOpen READ getFocusTextAreaOnChatOpen WRITE setFocusTextAreaOnChatOpen NOTIFY focusTextAreaOnChatOpenChanged)
+
 
 public:
     enum NotificationFeedback {
@@ -87,6 +89,9 @@ public:
     bool delayMessageRead() const;
     void setDelayMessageRead(bool enable);
 
+    bool getFocusTextAreaOnChatOpen() const;
+    void setFocusTextAreaOnChatOpen(bool focusTextAreaOnChatOpen);
+
 signals:
     void sendByEnterChanged();
     void focusTextAreaAfterSendChanged();
@@ -101,6 +106,7 @@ signals:
     void remainingInteractionHintsChanged();
     void onlineOnlyModeChanged();
     void delayMessageReadChanged();
+    void focusTextAreaOnChatOpenChanged();
 
 private:
     QSettings settings;

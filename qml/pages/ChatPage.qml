@@ -1899,6 +1899,7 @@ Page {
                             textLeftMargin: 0
                             textTopMargin: 0
                             enabled: !attachmentPreviewRow.isLocation
+                            focus: appSettings.focusTextAreaOnChatOpen
                             EnterKey.onClicked: {
                                 if (appSettings.sendByEnter) {
                                     var messageText = newMessageTextField.text;
