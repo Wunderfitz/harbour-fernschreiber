@@ -1711,11 +1711,11 @@
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Texteingabe fokussieren, wenn ein Chat betreten wird</translation>
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
+        <translation>Texteingabe fokussieren beim Öffnen eines Chats</translation>
     </message>
 </context>
 <context>

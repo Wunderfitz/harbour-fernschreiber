@@ -1713,11 +1713,11 @@ messages</numerusform>
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Focus the text input area when entering a chat</translation>
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
+        <translation>Focus text input on chat open</translation>
     </message>
 </context>
 <context>
