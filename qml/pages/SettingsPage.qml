@@ -690,6 +690,18 @@ Page {
                 readonly property real columnWidth: width/columns
 
                 TextSwitch {
+                    id: stickersAsEmojisTextSwitch
+                    width: parent.columnWidth
+                    checked: appSettings.showStickersAsEmojis
+                    text: qsTr("Show stickers as emojis")
+                    description: qsTr("Only display emojis instead of the actual stickers")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.showStickersAsEmojis = !checked
+                    }
+                }
+
+                TextSwitch {
                     width: parent.columnWidth
                     checked: appSettings.showStickersAsImages
                     text: qsTr("Show stickers as images")
@@ -698,6 +710,7 @@ Page {
                     onClicked: {
                         appSettings.showStickersAsImages = !checked
                     }
+                    enabled: !stickersAsEmojisTextSwitch.checked
                 }
 
                 TextSwitch {
@@ -708,6 +721,7 @@ Page {
                     onClicked: {
                         appSettings.animateStickers = !checked
                     }
+                    enabled: !stickersAsEmojisTextSwitch.checked
                 }
             }
 
