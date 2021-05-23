@@ -165,7 +165,6 @@ Item {
                             verticalCenter: parent.verticalCenter
                             margins: Theme.paddingSmall
                         }
-                        maximumLineCount: 1
                         truncationMode: TruncationMode.Fade
                         text: modelData.title
                     }
