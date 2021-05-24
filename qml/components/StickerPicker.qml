@@ -78,6 +78,7 @@ Item {
         color: Theme.overlayBackgroundColor
         opacity: 0.7
     }
+
     SilicaListView {
         id: stickerPickerListView
         anchors.fill: parent
@@ -86,8 +87,10 @@ Item {
         model: stickerPickerOverlayItem.installedStickerSets
 
         header: Column {
+            spacing: Theme.paddingSmall
             width: stickerPickerListView.width
-            height: childrenRect.height
+            height: recentStickersGridView.count > 0 ? ( Theme.fontSizeLarge + Theme.itemSizeExtraLarge + 4 * Theme.paddingSmall ) : 0
+            topPadding: Theme.paddingSmall
             Label {
                 font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
@@ -100,7 +103,7 @@ Item {
             SilicaGridView {
                 id: recentStickersGridView
                 width: stickerPickerListView.width
-                height: Theme.itemSizeExtraLarge
+                height: Theme.itemSizeExtraLarge + Theme.paddingSmall
                 cellWidth: Theme.itemSizeExtraLarge;
                 cellHeight: Theme.itemSizeExtraLarge;
                 visible: count > 0
@@ -125,7 +128,7 @@ Item {
                 }
             }
 
-            spacing: Theme.paddingMedium
+            spacing: Theme.paddingSmall
             width: parent.width
 
             Row {
@@ -201,7 +204,7 @@ Item {
                 id: stickerSetLoader
                 width: parent.width
                 active: stickerSetColumn.isExpanded || height > 0
-                height: stickerSetColumn.isExpanded ? Theme.itemSizeExtraLarge : 0
+                height: stickerSetColumn.isExpanded ? Theme.itemSizeExtraLarge + Theme.paddingSmall : 0
                 opacity: stickerSetColumn.isExpanded ? 1.0 : 0.0
 
                 Behavior on height {
@@ -223,7 +226,7 @@ Item {
                         id: installedStickerSetGridView
                         width: stickerSetLoader.width
                         height: stickerSetLoader.height
-                        y: (height - Theme.itemSizeExtraLarge)/2
+
                         orientation: Qt.Horizontal
                         visible: count > 0
 
