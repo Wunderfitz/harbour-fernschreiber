@@ -20,11 +20,13 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 import "../"
+import "../../js/twemoji.js" as Emoji
 
 MessageContentBase {
     id: thisItem
 
     readonly property var stickerData: messageListItem ? messageListItem.myMessage.content.sticker : overlayFlickable.overlayMessage.content.sticker;
+    readonly property bool asEmoji: appSettings.showStickersAsEmojis
     readonly property bool animated: stickerData.is_animated && appSettings.animateStickers
     readonly property bool stickerVisible: staticStickerLoader.item ? staticStickerLoader.item.visible :
         animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
@@ -52,7 +54,7 @@ MessageContentBase {
         Loader {
             id: animatedStickerLoader
             anchors.fill: parent
-            active: animated
+            active: animated && !asEmoji
             sourceComponent: Component {
                 AnimatedImage {
                     id: animatedSticker
@@ -70,12 +72,16 @@ MessageContentBase {
         Loader {
             id: staticStickerLoader
             anchors.fill: parent
-            active: !animated
+            active: !animated || asEmoji
             sourceComponent: Component {
                 Image {
                     id: staticSticker
                     anchors.fill: parent
-                    source: file.path
+                    source: asEmoji ? Emoji.getEmojiPath(stickerData.emoji) : file.path
+                    sourceSize {
+                        width: width
+                        height: height
+                    }
                     fillMode: Image.PreserveAspectFit
                     autoTransform: true
                     asynchronous: true

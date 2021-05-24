@@ -1719,6 +1719,14 @@ messages</numerusform>
         <source>Focus text input on chat open</source>
         <translation>Focus text input on chat open</translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation>Show stickers as emojis</translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation>Only display emojis instead of the actual stickers</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

@@ -1717,6 +1717,14 @@
         <source>Focus text input on chat open</source>
         <translation>Texteingabe fokussieren beim Öffnen eines Chats</translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation>Sticker als Emojis anzeigen</translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation>Nur Emojis anstelle der eigentlichen Sticker anzeigen</translation>
+    </message>
 </context>
 <context>
     <name>StickerPicker</name>

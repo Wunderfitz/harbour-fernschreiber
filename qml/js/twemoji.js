@@ -38,6 +38,10 @@ function toCodePoint(unicodeSurrogates) {
   return r.join('-');
 }
 
+function getEmojiPath(str) {
+    return basePath + toCodePoint(str.indexOf(U200D) < 0 ? str.replace(UFE0Fg, '') : str) + '.svg';
+}
+
 function emojify(str, emojiSize) {
   return String(str).replace(re, function (rawText) {
     var iconId = toCodePoint(rawText.indexOf(U200D) < 0 ?
