@@ -520,6 +520,8 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         MessageData* oldMessage = messages.at(pos);
         MessageData* newMessage = new MessageData(message, messageId);
         messages.replace(pos, newMessage);
+        messageIndexMap.remove(oldMessageId);
+        messageIndexMap.insert(messageId, pos);
         const QVector<int> changedRoles(newMessage->diff(oldMessage));
         delete oldMessage;
         LOG("Message was replaced at index" << pos);
@@ -766,7 +768,7 @@ int ChatModel::calculateLastKnownMessageId()
     }
     LOG("Last known message is at position" << listInboxPosition);
     LOG("Last own message is at position" << listOwnPosition);
-    return (listInboxPosition > listOwnPosition) ? listInboxPosition : listOwnPosition ;
+    return (listInboxPosition > listOwnPosition) ? listInboxPosition : listOwnPosition;
 }
 
 int ChatModel::calculateLastReadSentMessageId()
