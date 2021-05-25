@@ -1050,8 +1050,13 @@ Page {
                     }
 
                     onHeightChanged: {
-                        var deltaHeight = previousHeight - height;
-                        chatView.contentY = chatView.contentY + deltaHeight;
+                        console.log("Height changed, previous: " + previousHeight + ", now: " + height);
+                        if (previousHeight > height) {
+                            var deltaHeight = previousHeight - height;
+                            chatView.contentY = chatView.contentY + deltaHeight;
+                        } else {
+                            chatView.handleScrollPositionChanged();
+                        }
                         previousHeight = height;
                     }
 
