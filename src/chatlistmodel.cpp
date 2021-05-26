@@ -674,7 +674,7 @@ void ChatListModel::handleChatDiscovered(const QString &, const QVariantMap &cha
         }
     }
 
-    if (chat->isHidden()) {
+    if (chat->isHidden() && !showHiddenChats) {
         LOG("Hidden chat" << chat->chatId);
         hiddenChats.insert(chat->chatId, chat);
     } else {
@@ -708,6 +708,12 @@ void ChatListModel::handleChatLastMessageUpdated(const QString &id, const QStrin
                 LOG("Updating last message for hidden chat" << chatId << "new order" << order);
                 chat->setOrder(order);
                 chat->chatData.insert(LAST_MESSAGE, lastMessage);
+                // A chat can become visible (e.g. when a known contact joins Telegram)
+                // When the private chat is discovered it doesn't have any messages, now it could be there...
+                if (!chat->isHidden() || showHiddenChats) {
+                    hiddenChats.remove(chatId);
+                    addVisibleChat(chat);
+                }
             }
         }
     }
