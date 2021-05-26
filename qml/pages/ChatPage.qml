@@ -1050,7 +1050,6 @@ Page {
                     }
 
                     onHeightChanged: {
-                        console.log("Height changed, previous: " + previousHeight + ", now: " + height);
                         if (previousHeight > height) {
                             var deltaHeight = previousHeight - height;
                             chatView.contentY = chatView.contentY + deltaHeight;
