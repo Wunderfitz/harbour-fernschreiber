@@ -1,0 +1,105 @@
+name: Fernschreiber build
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+  # to prevent secrets leaking,
+  # we don't build on PRs
+  #pull_request:
+  #  branches:
+  #    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+
+    - name: Prepare
+      run: mkdir output
+      
+    - name: Fetch TDLib
+      uses: dsaltares/fetch-gh-release-asset@master
+      with: 
+        repo: "Wunderfitz/td"
+        file: "tdlib.zip"
+        target: tdlib/tdlib.zip
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Decompress TDLib
+      uses: TonyBogdanov/zip@1.0
+      with:
+        args: unzip -qq ./tdlib/tdlib.zip -d ./tdlib
+        
+    - name: Set Secrets
+      uses: DamianReeves/write-file-action@master
+      with:
+        path: ./src/tdlibsecrets.h
+        contents: |
+          #ifndef TDLIBSECRETS_H
+          #define TDLIBSECRETS_H
+          const char TDLIB_API_ID[] = "${{secrets.TDLIB_API_ID}}";
+          const char TDLIB_API_HASH[] = "${{secrets.TDLIB_API_HASH}}";
+          #endif // TDLIBSECRETS_H
+        write-mode: overwrite
+
+    - name: Build armv7hl
+      id: build_armv7hl
+      uses: coderus/github-sfos-build@master
+      with:
+        release: 3.4.0.24
+        
+    - name: Build i486
+      id: build_i486
+      uses: coderus/github-sfos-build@master
+      with:
+        release: 3.4.0.24
+        arch: i486
+
+    # aarch64 complains about ssl/crypto
+    # with older targets, so we use a
+    # newer release
+    - name: Build aarch64
+      id: build_aarch64
+      uses: coderus/github-sfos-build@master
+      with:
+        release: 4.0.1.45
+        arch: aarch64
+      
+    - name: Upload build result
+      uses: actions/upload-artifact@v2
+      with:
+        name: rpm-build-result
+        path: RPMS
+
+    - name: Create release
+      if: contains(github.ref, 'v')
+      run: |
+        set -x
+        assets=()
+        for asset in RPMS/*.rpm; do
+          assets+=("-a" "$asset")
+        done
+        tag_name="${GITHUB_REF##*/}"
+        hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Create prerelease
+      if: contains(github.ref, 'pre')
+      run: |
+        set -x
+        assets=()
+        for asset in RPMS/*.rpm; do
+          assets+=("-a" "$asset")
+        done
+        tag_name="${GITHUB_REF##*/}"
+        hub release create -p "${assets[@]}" -m "$tag_name" -m "This is a pre-release for testing purposes only. It may or may not be unstable." -m "Join the Telegram group to help out: https://github.com/Wunderfitz/harbour-fernschreiber/issues/162" "$tag_name"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
