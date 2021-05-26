@@ -36,6 +36,10 @@ Page {
     property int ownUserId;
     property bool chatListCreated: false;
 
+    // link handler:
+    property string urlToOpen: null;
+    property var chatToOpen: null; //null or [chatId, messageId]
+
     onStatusChanged: {
         if (status === PageStatus.Active && initializationCompleted && !chatListCreated && !logoutLoading) {
             updateContent();
@@ -45,15 +49,12 @@ Page {
     Connections {
         target: dBusAdaptor
         onPleaseOpenMessage: {
-            Debug.log("[OverviewPage] Opening chat from external call...")
-            if (chatListCreated) {
-                pageStack.pop(overviewPage, PageStackAction.Immediate)
-                pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : chatListModel.getById(chatId) }, PageStackAction.Immediate)
-            }
+            Debug.log("[OverviewPage] Opening chat from external requested: ", chatId);
+            openMessage(chatId, messageId);
         }
         onPleaseOpenUrl: {
             Debug.log("[OverviewPage] Opening URL requested: ", url);
-            Functions.handleLink(url);
+            openUrl(url);
         }
     }
 
@@ -73,6 +74,8 @@ Page {
                 titleInteractionHint.opacity = 1.0;
                 appSettings.remainingInteractionHints = remainingInteractionHints - 1;
             }
+            openUrl();
+            openMessage();
         }
     }
 
@@ -112,6 +115,29 @@ Page {
                 chatListView.model = chatListProxyModel;
             }
             chatListProxyModel.setFilterWildcard("*" + chatSearchField.text + "*");
+        }
+    }
+
+    function openMessage(chatId, messageId) {
+        if(chatId && messageId) {
+            chatToOpen = [chatId, messageId];
+        }
+        if(chatListCreated && chatToOpen && chatToOpen.length === 2) { // messageId not handled (yet)
+            Debug.log("[OverviewPage] Opening Chat: ", chatToOpen[0]);
+            pageStack.pop(overviewPage, PageStackAction.Immediate);
+            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : chatListModel.getById(chatToOpen[0]) }, PageStackAction.Immediate);
+            chatToOpen = null;
+        }
+    }
+
+    function openUrl(url) {
+        if(url && url.length > 0) {
+            urlToOpen = url;
+        }
+        if(chatListCreated && urlToOpen && urlToOpen.length > 1) {
+            Debug.log("[OverviewPage] Opening URL: ", urlToOpen);
+            Functions.handleLink(urlToOpen);
+            urlToOpen = null;
         }
     }
 
