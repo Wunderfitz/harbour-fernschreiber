@@ -1654,15 +1654,28 @@ Page {
                         property bool isVoiceNote: false;
                         property bool isLocation: false;
                         property var locationData: null;
+                        property var geocodedAddress: qsTr("Unknown address")
                         property var fileProperties: null;
                         property string attachmentDescription: "";
+
+                        function getLocationDescription() {
+                            return qsTr("Location (%1/%2)").arg(attachmentPreviewRow.locationData.latitude).arg(attachmentPreviewRow.locationData.longitude) + " | "
+                                    + qsTr("Accuracy: %1m").arg(attachmentPreviewRow.locationData.horizontalAccuracy) + "\n"
+                                    + attachmentPreviewRow.geocodedAddress;
+                        }
 
                         Connections {
                             target: fernschreiberUtils
                             onNewPositionInformation: {
                                 attachmentPreviewRow.locationData = positionInformation;
                                 if (attachmentPreviewRow.isLocation) {
-                                    attachmentPreviewRow.attachmentDescription = qsTr("Location (%1/%2)").arg(attachmentPreviewRow.locationData.latitude).arg(attachmentPreviewRow.locationData.longitude);
+                                    attachmentPreviewRow.attachmentDescription = attachmentPreviewRow.getLocationDescription();
+                                }
+                            }
+                            onNewGeocodedAddress: {
+                                attachmentPreviewRow.geocodedAddress = geocodedAddress;
+                                if (attachmentPreviewRow.isLocation) {
+                                    attachmentPreviewRow.attachmentDescription = attachmentPreviewRow.getLocationDescription();
                                 }
                             }
                         }
@@ -1695,7 +1708,9 @@ Page {
                             text: ( attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation ) ? attachmentPreviewRow.attachmentDescription : ( !!attachmentPreviewRow.fileProperties ? attachmentPreviewRow.fileProperties.fileName || "" : "" );
                             anchors.verticalCenter: parent.verticalCenter
 
-                            maximumLineCount: 1
+                            width: parent.width - removeAttachmentsIconButton.width - Theme.paddingMedium
+                            maximumLineCount: 2
+                            wrapMode: Text.Wrap
                             truncationMode: TruncationMode.Fade
                             color: Theme.secondaryColor
                             visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation

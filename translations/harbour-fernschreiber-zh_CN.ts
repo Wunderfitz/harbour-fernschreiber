@@ -496,6 +496,14 @@
         <source>Forward Message</source>
         <translation>转发消息</translation>
     </message>
+    <message>
+        <source>Unknown address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accuracy: %1m</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

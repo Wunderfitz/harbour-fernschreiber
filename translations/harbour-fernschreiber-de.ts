@@ -506,6 +506,14 @@
         <source>Forward Message</source>
         <translation>Nachricht weiterleiten</translation>
     </message>
+    <message>
+        <source>Unknown address</source>
+        <translation>Unbekannte Adresse</translation>
+    </message>
+    <message>
+        <source>Accuracy: %1m</source>
+        <translation>Genauigkeit: %1m</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

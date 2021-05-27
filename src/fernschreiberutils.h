@@ -24,6 +24,7 @@
 #include <QAudioRecorder>
 #include <QGeoPositionInfo>
 #include <QGeoPositionInfoSource>
+#include <QNetworkAccessManager>
 #include "tdlibwrapper.h"
 
 class FernschreiberUtils : public QObject
@@ -53,21 +54,25 @@ public:
     Q_INVOKABLE void stopGeoLocationUpdates();
     Q_INVOKABLE bool supportsGeoLocation();
     Q_INVOKABLE QString getSailfishOSVersion();
+    Q_INVOKABLE void initiateReverseGeocode(double latitude, double longitude);
 
 signals:
     void voiceNoteDurationChanged(qlonglong duration);
     void voiceNoteRecordingStateChanged(VoiceNoteRecordingState state);
     void newPositionInformation(const QVariantMap &positionInformation);
+    void newGeocodedAddress(const QString &geocodedAddress);
 
 private slots:
     void handleAudioRecorderStatusChanged(QMediaRecorder::Status status);
     void handleGeoPositionUpdated(const QGeoPositionInfo &info);
+    void handleReverseGeocodeFinished();
 
 private:
     QAudioRecorder audioRecorder;
     VoiceNoteRecordingState voiceNoteRecordingState;
 
     QGeoPositionInfoSource *geoPositionInfoSource;
+    QNetworkAccessManager *manager;
 
     void cleanUp();
     QString getTemporaryDirectoryPath();

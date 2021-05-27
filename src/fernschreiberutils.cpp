@@ -26,10 +26,13 @@
 #include <QDirIterator>
 #include <QFile>
 #include <QUrl>
+#include <QUrlQuery>
 #include <QDateTime>
 #include <QGeoCoordinate>
 #include <QGeoLocation>
 #include <QSysInfo>
+#include <QNetworkRequest>
+#include <QNetworkReply>
 
 #define DEBUG_MODULE FernschreiberUtils
 #include "debuglog.h"
@@ -65,6 +68,8 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
     } else {
         LOG("Unable to initialize geolocation!");
     }
+
+    this->manager = new QNetworkAccessManager(this);
 }
 
 FernschreiberUtils::~FernschreiberUtils()
@@ -252,6 +257,25 @@ QString FernschreiberUtils::getSailfishOSVersion()
     return QSysInfo::productVersion();
 }
 
+void FernschreiberUtils::initiateReverseGeocode(double latitude, double longitude)
+{
+    LOG("Initiating reverse geocode:" << latitude << longitude);
+    QUrl url = QUrl("https://nominatim.openstreetmap.org/reverse");
+    QUrlQuery urlQuery;
+    urlQuery.addQueryItem("lat", QString::number(latitude));
+    urlQuery.addQueryItem("lon", QString::number(longitude));
+    urlQuery.addQueryItem("format", "json");
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::UserAgentHeader, "Fernschreiber (Sailfish OS)");
+    request.setRawHeader(QByteArray("Accept"), QByteArray("application/json"));
+    request.setRawHeader(QByteArray("Accept-Charset"), QByteArray("utf-8"));
+    request.setRawHeader(QByteArray("Connection"), QByteArray("close"));
+    request.setRawHeader(QByteArray("Cache-Control"), QByteArray("max-age=0"));
+    QNetworkReply *reply = manager->get(request);
+    connect(reply, SIGNAL(finished()), this, SLOT(handleReverseGeocodeFinished()));
+}
+
 void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status status)
 {
     LOG("Audio recorder status changed:" << status);
@@ -296,8 +320,26 @@ void FernschreiberUtils::handleGeoPositionUpdated(const QGeoPositionInfo &info)
     positionInformation.insert("latitude", geoCoordinate.latitude());
     positionInformation.insert("longitude", geoCoordinate.longitude());
 
+    this->initiateReverseGeocode(geoCoordinate.latitude(), geoCoordinate.longitude());
 
     emit newPositionInformation(positionInformation);
+}
+
+void FernschreiberUtils::handleReverseGeocodeFinished()
+{
+    qDebug() << "FernschreiberUtils::handleReverseGeocodeFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    qDebug().noquote() << jsonDocument.toJson(QJsonDocument::Indented);
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit newGeocodedAddress(responseObject.value("display_name").toString());
+    }
 }
 
 void FernschreiberUtils::cleanUp()
