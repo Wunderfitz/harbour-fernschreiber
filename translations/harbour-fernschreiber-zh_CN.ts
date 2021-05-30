@@ -95,6 +95,14 @@
         <source>Active Sessions</source>
         <translation>登录设备情况</translation>
     </message>
+    <message>
+        <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open OSM Nominatim Wiki</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ActiveSessionsPage</name>

@@ -95,6 +95,14 @@
         <source>Active Sessions</source>
         <translation>Aktive Sitzungen</translation>
     </message>
+    <message>
+        <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
+        <translation>Dieses Projekt nutzt OpenStreetMap Nominatim für das reverse Geokodieren von Standort-Anhängen. Vielen Dank dafür, dass es als Web-Service zur Verfügung gestellt wird!</translation>
+    </message>
+    <message>
+        <source>Open OSM Nominatim Wiki</source>
+        <translation>OSM Nominatim-Wiki öffnen</translation>
+    </message>
 </context>
 <context>
     <name>ActiveSessionsPage</name>

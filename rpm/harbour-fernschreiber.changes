@@ -12,6 +12,21 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun May 30 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.9
+- Enhanced information for location attachments (accuracy, nearest location as plain text using OSM Nominatim)
+- Sticker picker performance optimizations - thanks to jgibbon
+- Updated rlottie library (for animated stickers)
+- Add option to focus text input when entering a chat - thanks to santoshmanikandan
+- Add option to display stickers as emojis
+- Fix: Correct message sent/read indicator after messages were sent, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/407
+- Fix: Disable auto-scroll when app is in background, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/410
+- Fix: Adjust scroll position when keyboard is hidden, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/418
+- Fix: Chat of recently joined contact now shows up properly
+- Fix: Opening Fernschreiber from a notification should no longer result in an error message, see https://github.com/Wunderfitz/harbour-fernschreiber/issues/412
+- Fix: Improve handling for additional options drawer - thanks to monich
+- Fix: Avoid newline in text input when using send by enter - thanks to santoshmanikandan
+
+
 * Tue Mar 02 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.8.2
 - Prepare aarch64 build
 - Updated Polish translation - thanks to atlochowski
