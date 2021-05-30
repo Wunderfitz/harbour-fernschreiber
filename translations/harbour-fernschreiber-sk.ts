@@ -97,11 +97,11 @@
     </message>
     <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento projekt využíva OpenStreetMap Nominatim na reverzné geokódovanie príloh umiestnenia. Ďakujeme, že je sprístupnený ako webová služba!</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvorť OSM Nominatim Wiki</translation>
     </message>
 </context>
 <context>
@@ -526,11 +526,11 @@
     </message>
     <message>
         <source>Unknown address</source>
-        <translation type="unfinished"></translation>
+        <translation>Neznáma adresa</translation>
     </message>
     <message>
         <source>Accuracy: %1m</source>
-        <translation type="unfinished"></translation>
+        <translation>Presnosť: %1 m</translation>
     </message>
 </context>
 <context>
@@ -1754,19 +1754,19 @@
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Pri vstupe do četu aktivovať vstupné pole</translation>
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
+        <translation>Pri otvorení četu aktivovať vstupné pole</translation>
     </message>
     <message>
         <source>Show stickers as emojis</source>
-        <translation type="unfinished"></translation>
+        <translation>Nálepky zobraziť ako emotikony</translation>
     </message>
     <message>
         <source>Only display emojis instead of the actual stickers</source>
-        <translation type="unfinished"></translation>
+        <translation>Namiesto nálepiek zobrazovať emotikony</translation>
     </message>
 </context>
 <context>
