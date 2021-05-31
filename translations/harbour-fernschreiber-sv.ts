@@ -97,11 +97,11 @@
     </message>
     <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
-        <translation type="unfinished"></translation>
+        <translation>Detta projekt använder OpenStreetMap Nominatim för omvänd geokodning av platsbilagor. Tack för att ni gjorde den tillgänglig som webbtjänst!</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
-        <translation type="unfinished"></translation>
+        <translation>Open OSM Nominatim Wiki</translation>
     </message>
 </context>
 <context>
@@ -516,11 +516,11 @@
     </message>
     <message>
         <source>Unknown address</source>
-        <translation type="unfinished"></translation>
+        <translation>Okänd adress</translation>
     </message>
     <message>
         <source>Accuracy: %1m</source>
-        <translation type="unfinished"></translation>
+        <translation>Noggrannhet: %1m</translation>
     </message>
 </context>
 <context>
@@ -1727,19 +1727,19 @@
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Fokusera textinmatningsområdet vid anslutning till en chatt</translation>
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
+        <translation>Fokusera textinmatningen vid chatt-öppning</translation>
     </message>
     <message>
         <source>Show stickers as emojis</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa dekaler som emoji</translation>
     </message>
     <message>
         <source>Only display emojis instead of the actual stickers</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa bara emoji istället för de faktiska dekalerna</translation>
     </message>
 </context>
 <context>
