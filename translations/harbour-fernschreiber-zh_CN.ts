@@ -97,11 +97,11 @@
     </message>
     <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
-        <translation type="unfinished"></translation>
+        <translation>该项目使用 OpenStreetMap Nominatim 对位置附件进行反向地理编码。感谢把它作为网络服务提供给我们！</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
-        <translation type="unfinished"></translation>
+        <translation>打开 OSM Nominatim Wiki</translation>
     </message>
 </context>
 <context>
@@ -506,11 +506,11 @@
     </message>
     <message>
         <source>Unknown address</source>
-        <translation type="unfinished"></translation>
+        <translation>未知位置</translation>
     </message>
     <message>
         <source>Accuracy: %1m</source>
-        <translation type="unfinished"></translation>
+        <translation>精度: %1m</translation>
     </message>
 </context>
 <context>
@@ -1701,19 +1701,19 @@
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
+        <translation>进入对话时聚焦文本输入区域</translation>
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
+        <translation>开启对话时聚焦文本输入区域</translation>
     </message>
     <message>
         <source>Show stickers as emojis</source>
-        <translation type="unfinished"></translation>
+        <translation>显示表情贴图为 emoji</translation>
     </message>
     <message>
         <source>Only display emojis instead of the actual stickers</source>
-        <translation type="unfinished"></translation>
+        <translation>仅显示 emoji 而非实际的表情贴图</translation>
     </message>
 </context>
 <context>
