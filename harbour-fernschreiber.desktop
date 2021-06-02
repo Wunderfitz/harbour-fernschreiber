@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-X-Nemo-Application-Type=silica-qt5
+X-Nemo-Application-Type=generic
 Icon=harbour-fernschreiber
 Exec=harbour-fernschreiber
 Name=Fernschreiber
