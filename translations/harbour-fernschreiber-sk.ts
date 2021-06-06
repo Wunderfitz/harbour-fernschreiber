@@ -1528,11 +1528,34 @@
     </message>
 </context>
 <context>
-    <name>SettingsPage</name>
+    <name>SettingsAppearance</name>
     <message>
-        <source>Settings</source>
-        <translation>Nastavenia</translation>
+        <source>Appearance</source>
+        <translation>Vzhľad</translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation>Nálepky zobraziť ako emotikony</translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation>Namiesto nálepiek zobrazovať emotikony</translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation>Zobraziť nálepky ako obrázky</translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation>Zobraziť pozadie pre nálepky a vycentrovať ich ako obrázky</translation>
+    </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation>Animované nálepky</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBehavior</name>
     <message>
         <source>Behavior</source>
         <translation>Správanie</translation>
@@ -1546,20 +1569,44 @@
         <translation>Správu odošlite stlačením klávesu Enter</translation>
     </message>
     <message>
-        <source>Appearance</source>
-        <translation>Vzhľad</translation>
+        <source>Focus text input on chat open</source>
+        <translation>Pri otvorení četu aktivovať vstupné pole</translation>
     </message>
     <message>
-        <source>Show stickers as images</source>
-        <translation>Zobraziť nálepky ako obrázky</translation>
+        <source>Focus the text input area when entering a chat</source>
+        <translation>Pri vstupe do četu aktivovať vstupné pole</translation>
     </message>
     <message>
-        <source>Show background for stickers and align them centrally like images</source>
-        <translation>Zobraziť pozadie pre nálepky a vycentrovať ich ako obrázky</translation>
+        <source>Focus text input area after send</source>
+        <translation>Po odoslaní aktivovať vkladanie textu</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Po odoslaní správy aktivovať vkladanie textu</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Oneskorenie pred označením správ ako prečítaných</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber chvíľu počká, kým budú správy označené ako prečítané</translation>
+    </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation>Zaradiť do ponuky &quot;otvoriť pomocou&quot;</translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation>Fernschreiber zaradiť do ponuky Sailfish OS &quot;otvoriť pomocou&quot;</translation>
     </message>
     <message>
         <source>Notification feedback</source>
         <translation>Reakcia oznámenia</translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
+        <translation>Pre upozornenia použiť negrafickú reakciu (zvuk, vibrovanie)</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1574,107 +1621,30 @@
         <translation>Žiadne</translation>
     </message>
     <message>
-        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Pre upozornenia použiť negrafickú reakciu (zvuk, vibrovanie)</translation>
-    </message>
-    <message>
-        <source>Open-with menu integration</source>
-        <translation>Zaradiť do ponuky &quot;otvoriť pomocou&quot;</translation>
-    </message>
-    <message>
-        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Fernschreiber zaradiť do ponuky Sailfish OS &quot;otvoriť pomocou&quot;</translation>
-    </message>
-    <message>
-        <source>Animate stickers</source>
-        <translation>Animované nálepky</translation>
-    </message>
-    <message>
         <source>Notification turns on the display</source>
         <translation>Oznámenie zapne displej</translation>
     </message>
     <message>
-        <source>Storage</source>
-        <translation>Pamäť</translation>
+        <source>Enable notification sounds</source>
+        <translation>Povoliť zvukové upozornenia</translation>
     </message>
     <message>
-        <source>Enable storage optimizer</source>
-        <translation>Povoliť optimalizátor pamäte</translation>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>Keď sú povolené zvukové upozornenia, Fernschreiber použije aktuálne zvukové upozornenia Sailfish OS pre čety, ktoré môžu byť upravené v nastaveniach systému.</translation>
     </message>
+</context>
+<context>
+    <name>SettingsPage</name>
     <message>
-        <source>Focus text input area after send</source>
-        <translation>Po odoslaní aktivovať vkladanie textu</translation>
+        <source>Settings</source>
+        <translation>Nastavenia</translation>
     </message>
-    <message>
-        <source>Focus the text input area after sending a message</source>
-        <translation>Po odoslaní správy aktivovať vkladanie textu</translation>
-    </message>
-    <message>
-        <source>Enable online-only mode</source>
-        <translation>Povoliť režim &quot;iba pripojený&quot;</translation>
-    </message>
-    <message>
-        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Zakázať ukladanie do off-line vyrovnávacej pamäte. Niektoré funkcie môžu byť v tomto režime obmedzené alebo môžu chýbať. Zmeny sa prejavia až po reštartovaní Fernschreiber.</translation>
-    </message>
+</context>
+<context>
+    <name>SettingsPrivacy</name>
     <message>
         <source>Privacy</source>
         <translation>Ochrana osobných údajov</translation>
-    </message>
-    <message>
-        <source>Allow sending Location to inline bots</source>
-        <translation>Povoliť odosielanie polohy inline robotom</translation>
-    </message>
-    <message>
-        <source>Some inline bots request location data when using them</source>
-        <translation>Niektorí inline roboti požadujú údaje o polohe ak ich používajú</translation>
-    </message>
-    <message>
-        <source>User Profile</source>
-        <translation>Profil používateľa</translation>
-    </message>
-    <message>
-        <source>First Name</source>
-        <comment>first name of the logged-in profile - header</comment>
-        <translation>Meno</translation>
-    </message>
-    <message>
-        <source>Enter 1-64 characters</source>
-        <translation>Zadať 1-64 znakov</translation>
-    </message>
-    <message>
-        <source>Last Name</source>
-        <comment>last name of the logged-in profile - header</comment>
-        <translation>Priezvisko</translation>
-    </message>
-    <message>
-        <source>Enter 0-64 characters</source>
-        <translation>Zadať 0-64 znakov</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <comment>user name of the logged-in profile - header</comment>
-        <translation>Prihlasovacie meno</translation>
-    </message>
-    <message>
-        <source>Profile Pictures</source>
-        <translation>Profilová fotografia</translation>
-    </message>
-    <message>
-        <source>Add Picture</source>
-        <translation>Pridať fotografiu</translation>
-    </message>
-    <message>
-        <source>Delete Picture</source>
-        <translation>Odstrániť fotografiu</translation>
-    </message>
-    <message>
-        <source>Deleting profile picture</source>
-        <translation>Odstraňovanie profilovej fotografie</translation>
-    </message>
-    <message>
-        <source>Uploading...</source>
-        <translation>Zapisovanie...</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
@@ -1737,36 +1707,81 @@
         <translation>Nastavenie ochrany súkromia pre možnosť zobrazenia Vášho statusu pripojenia.</translation>
     </message>
     <message>
-        <source>Enable notification sounds</source>
-        <translation>Povoliť zvukové upozornenia</translation>
+        <source>Allow sending Location to inline bots</source>
+        <translation>Povoliť odosielanie polohy inline robotom</translation>
     </message>
     <message>
-        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>Keď sú povolené zvukové upozornenia, Fernschreiber použije aktuálne zvukové upozornenia Sailfish OS pre čety, ktoré môžu byť upravené v nastaveniach systému.</translation>
+        <source>Some inline bots request location data when using them</source>
+        <translation>Niektorí inline roboti požadujú údaje o polohe ak ich používajú</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsStorage</name>
+    <message>
+        <source>Storage</source>
+        <translation>Pamäť</translation>
     </message>
     <message>
-        <source>Delay before marking messages as read</source>
-        <translation>Oneskorenie pred označením správ ako prečítaných</translation>
+        <source>Enable online-only mode</source>
+        <translation>Povoliť režim &quot;iba pripojený&quot;</translation>
     </message>
     <message>
-        <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber chvíľu počká, kým budú správy označené ako prečítané</translation>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Zakázať ukladanie do off-line vyrovnávacej pamäte. Niektoré funkcie môžu byť v tomto režime obmedzené alebo môžu chýbať. Zmeny sa prejavia až po reštartovaní Fernschreiber.</translation>
     </message>
     <message>
-        <source>Focus the text input area when entering a chat</source>
-        <translation>Pri vstupe do četu aktivovať vstupné pole</translation>
+        <source>Enable storage optimizer</source>
+        <translation>Povoliť optimalizátor pamäte</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsUserProfile</name>
+    <message>
+        <source>User Profile</source>
+        <translation>Profil používateľa</translation>
     </message>
     <message>
-        <source>Focus text input on chat open</source>
-        <translation>Pri otvorení četu aktivovať vstupné pole</translation>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>Meno</translation>
     </message>
     <message>
-        <source>Show stickers as emojis</source>
-        <translation>Nálepky zobraziť ako emotikony</translation>
+        <source>Enter 1-64 characters</source>
+        <translation>Zadať 1-64 znakov</translation>
     </message>
     <message>
-        <source>Only display emojis instead of the actual stickers</source>
-        <translation>Namiesto nálepiek zobrazovať emotikony</translation>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Priezvisko</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Zadať 0-64 znakov</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Prihlasovacie meno</translation>
+    </message>
+    <message>
+        <source>Profile Pictures</source>
+        <translation>Profilová fotografia</translation>
+    </message>
+    <message>
+        <source>Add Picture</source>
+        <translation>Pridať fotografiu</translation>
+    </message>
+    <message>
+        <source>Delete Picture</source>
+        <translation>Odstrániť fotografiu</translation>
+    </message>
+    <message>
+        <source>Deleting profile picture</source>
+        <translation>Odstraňovanie profilovej fotografie</translation>
+    </message>
+    <message>
+        <source>Uploading...</source>
+        <translation>Zapisovanie...</translation>
     </message>
 </context>
 <context>

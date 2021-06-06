@@ -1475,11 +1475,34 @@
     </message>
 </context>
 <context>
-    <name>SettingsPage</name>
+    <name>SettingsAppearance</name>
     <message>
-        <source>Settings</source>
-        <translation>设置</translation>
+        <source>Appearance</source>
+        <translation>外观</translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation>以图片形式显示表情贴图</translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation>显示表情贴图背景并以图片形式自动居中</translation>
+    </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation>动态表情贴图</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBehavior</name>
     <message>
         <source>Behavior</source>
         <translation>状态</translation>
@@ -1493,20 +1516,44 @@
         <translation>通过按下回车键发送消息</translation>
     </message>
     <message>
-        <source>Appearance</source>
-        <translation>外观</translation>
+        <source>Focus text input on chat open</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show stickers as images</source>
-        <translation>以图片形式显示表情贴图</translation>
+        <source>Focus the text input area when entering a chat</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show background for stickers and align them centrally like images</source>
-        <translation>显示表情贴图背景并以图片形式自动居中</translation>
+        <source>Focus text input area after send</source>
+        <translation>发送后聚焦文本输入区域</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>发送消息后聚焦文本输入区域</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>标记消息已读前延迟</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber 将会在标记消息已读之前延迟一下</translation>
+    </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation>整合打开方式菜单</translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation>整合 Fernschreiber 到旗鱼系统打开方式菜单</translation>
     </message>
     <message>
         <source>Notification feedback</source>
         <translation>通知反馈</translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
+        <translation>使用非图像反馈方式通知消息（例如声音及振动）</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1521,87 +1568,30 @@
         <translation>无</translation>
     </message>
     <message>
-        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>使用非图像反馈方式通知消息（例如声音及振动）</translation>
-    </message>
-    <message>
-        <source>Open-with menu integration</source>
-        <translation>整合打开方式菜单</translation>
-    </message>
-    <message>
-        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>整合 Fernschreiber 到旗鱼系统打开方式菜单</translation>
-    </message>
-    <message>
-        <source>Animate stickers</source>
-        <translation>动态表情贴图</translation>
-    </message>
-    <message>
         <source>Notification turns on the display</source>
         <translation>收到通知时点亮屏幕</translation>
     </message>
     <message>
-        <source>Storage</source>
-        <translation>储存</translation>
+        <source>Enable notification sounds</source>
+        <translation>开启通知声音</translation>
     </message>
     <message>
-        <source>Enable storage optimizer</source>
-        <translation>开启储存加速器</translation>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>如果开启声音，Fernschreiber 会采用当前旗鱼系统通知声音作为对话通知声音，你可以在系统设置进行配置。</translation>
     </message>
+</context>
+<context>
+    <name>SettingsPage</name>
     <message>
-        <source>Focus text input area after send</source>
-        <translation>发送后聚焦文本输入区域</translation>
+        <source>Settings</source>
+        <translation>设置</translation>
     </message>
-    <message>
-        <source>Focus the text input area after sending a message</source>
-        <translation>发送消息后聚焦文本输入区域</translation>
-    </message>
-    <message>
-        <source>Enable online-only mode</source>
-        <translation>开启仅在线模式</translation>
-    </message>
-    <message>
-        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>禁用离线缓存。某些特定功能会在此模式中受限或消失。切换模式需要重启 fernschreiber 才能生效。</translation>
-    </message>
+</context>
+<context>
+    <name>SettingsPrivacy</name>
     <message>
         <source>Privacy</source>
         <translation>隐私</translation>
-    </message>
-    <message>
-        <source>Allow sending Location to inline bots</source>
-        <translation>允许发送位置到内联机器人</translation>
-    </message>
-    <message>
-        <source>Some inline bots request location data when using them</source>
-        <translation>使用某些内联机器人时会请求位置数据</translation>
-    </message>
-    <message>
-        <source>User Profile</source>
-        <translation>用户简介</translation>
-    </message>
-    <message>
-        <source>First Name</source>
-        <comment>first name of the logged-in profile - header</comment>
-        <translation>名字</translation>
-    </message>
-    <message>
-        <source>Enter 1-64 characters</source>
-        <translation>输入 1-64 个字符</translation>
-    </message>
-    <message>
-        <source>Last Name</source>
-        <comment>last name of the logged-in profile - header</comment>
-        <translation>姓氏</translation>
-    </message>
-    <message>
-        <source>Enter 0-64 characters</source>
-        <translation>输入 0-64 个字符</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <comment>user name of the logged-in profile - header</comment>
-        <translation>用户名</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
@@ -1664,56 +1654,81 @@
         <translation>隐私设置，用于管理是否你的在线状态可见。</translation>
     </message>
     <message>
-        <source>Add Picture</source>
-        <translation>添加图片</translation>
+        <source>Allow sending Location to inline bots</source>
+        <translation>允许发送位置到内联机器人</translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
+        <translation>使用某些内联机器人时会请求位置数据</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsStorage</name>
+    <message>
+        <source>Storage</source>
+        <translation>储存</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>开启仅在线模式</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>禁用离线缓存。某些特定功能会在此模式中受限或消失。切换模式需要重启 fernschreiber 才能生效。</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>开启储存加速器</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsUserProfile</name>
+    <message>
+        <source>User Profile</source>
+        <translation>用户简介</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>名字</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>输入 1-64 个字符</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>姓氏</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>输入 0-64 个字符</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>用户名</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
         <translation>简介图片</translation>
     </message>
     <message>
-        <source>Delete Picture</source>
-        <translation>删除图片</translation>
+        <source>Add Picture</source>
+        <translation>添加图片</translation>
     </message>
     <message>
-        <source>Uploading...</source>
-        <translation>正在上传…</translation>
+        <source>Delete Picture</source>
+        <translation>删除图片</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
         <translation>删除简介图片</translation>
     </message>
     <message>
-        <source>Enable notification sounds</source>
-        <translation>开启通知声音</translation>
-    </message>
-    <message>
-        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>如果开启声音，Fernschreiber 会采用当前旗鱼系统通知声音作为对话通知声音，你可以在系统设置进行配置。</translation>
-    </message>
-    <message>
-        <source>Delay before marking messages as read</source>
-        <translation>标记消息已读前延迟</translation>
-    </message>
-    <message>
-        <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber 将会在标记消息已读之前延迟一下</translation>
-    </message>
-    <message>
-        <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show stickers as emojis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Only display emojis instead of the actual stickers</source>
-        <translation type="unfinished"></translation>
+        <source>Uploading...</source>
+        <translation>正在上传…</translation>
     </message>
 </context>
 <context>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="hu_HU">
 <context>
     <name>AboutPage</name>
     <message>
@@ -1474,11 +1474,34 @@
     </message>
 </context>
 <context>
-    <name>SettingsPage</name>
+    <name>SettingsAppearance</name>
     <message>
-        <source>Settings</source>
-        <translation>Beállítások</translation>
+        <source>Appearance</source>
+        <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBehavior</name>
     <message>
         <source>Behavior</source>
         <translation>Működés</translation>
@@ -1492,19 +1515,43 @@
         <translation>Üzenet küldése az enter gomb lenyomásával</translation>
     </message>
     <message>
-        <source>Appearance</source>
+        <source>Focus text input on chat open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show stickers as images</source>
+        <source>Focus the text input area when entering a chat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show background for stickers and align them centrally like images</source>
+        <source>Focus text input area after send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Notification feedback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1520,86 +1567,29 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open-with menu integration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Animate stickers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Notification turns on the display</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Storage</source>
+        <source>Enable notification sounds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable storage optimizer</source>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SettingsPage</name>
     <message>
-        <source>Focus text input area after send</source>
-        <translation type="unfinished"></translation>
+        <source>Settings</source>
+        <translation>Beállítások</translation>
     </message>
-    <message>
-        <source>Focus the text input area after sending a message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable online-only mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation></translation>
-    </message>
+</context>
+<context>
+    <name>SettingsPrivacy</name>
     <message>
         <source>Privacy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Allow sending Location to inline bots</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Some inline bots request location data when using them</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>User Profile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>First Name</source>
-        <comment>first name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter 1-64 characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Last Name</source>
-        <comment>last name of the logged-in profile - header</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter 0-64 characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <comment>user name of the logged-in profile - header</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1663,7 +1653,60 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add Picture</source>
+        <source>Allow sending Location to inline bots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsStorage</name>
+    <message>
+        <source>Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsUserProfile</name>
+    <message>
+        <source>User Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1671,11 +1714,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Delete Picture</source>
+        <source>Add Picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Uploading...</source>
+        <source>Delete Picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1683,35 +1726,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable notification sounds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delay before marking messages as read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show stickers as emojis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Only display emojis instead of the actual stickers</source>
+        <source>Uploading...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

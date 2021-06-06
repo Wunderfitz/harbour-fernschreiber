@@ -1502,11 +1502,34 @@
     </message>
 </context>
 <context>
-    <name>SettingsPage</name>
+    <name>SettingsAppearance</name>
     <message>
-        <source>Settings</source>
-        <translation>Asetukset</translation>
+        <source>Appearance</source>
+        <translation>Ulkoasu</translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation>Näytä tarrat kuvina</translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation>Näytä tarroissa tausta ja keskitä ne kuten kuvat</translation>
+    </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation>Animoi tarrat</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBehavior</name>
     <message>
         <source>Behavior</source>
         <translation>Toiminta</translation>
@@ -1520,20 +1543,44 @@
         <translation>Lähetä viestisi painamalla rivinvaihtonäppäintä (enter)</translation>
     </message>
     <message>
-        <source>Appearance</source>
-        <translation>Ulkoasu</translation>
+        <source>Focus text input on chat open</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show stickers as images</source>
-        <translation>Näytä tarrat kuvina</translation>
+        <source>Focus the text input area when entering a chat</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show background for stickers and align them centrally like images</source>
-        <translation>Näytä tarroissa tausta ja keskitä ne kuten kuvat</translation>
+        <source>Focus text input area after send</source>
+        <translation>Kohdista tekstinsyöttökenttä lähetyksen jälkeen</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Kohdista tekstinsyöttökenttä viestin lähetyksen jälkeen</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Viive viestien merkitsemisessä luetuksi</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber odottaa hetken ennen kuin viestit merkitään luetuiksi</translation>
+    </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation>Avaa sovelluksessa ‑integraatio</translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation>Sisällytä Fernschreiber Sailfish OS:n avaa sovelluksella ‑valikkoon</translation>
     </message>
     <message>
         <source>Notification feedback</source>
         <translation>Ilmoitusten palaute</translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
+        <translation>Käytä ei-graafista palautetta (ääni, värinä) ilmoituksille</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1548,87 +1595,30 @@
         <translation>Ei mitään</translation>
     </message>
     <message>
-        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Käytä ei-graafista palautetta (ääni, värinä) ilmoituksille</translation>
-    </message>
-    <message>
-        <source>Open-with menu integration</source>
-        <translation>Avaa sovelluksessa ‑integraatio</translation>
-    </message>
-    <message>
-        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Sisällytä Fernschreiber Sailfish OS:n avaa sovelluksella ‑valikkoon</translation>
-    </message>
-    <message>
-        <source>Animate stickers</source>
-        <translation>Animoi tarrat</translation>
-    </message>
-    <message>
         <source>Notification turns on the display</source>
         <translation>Ilmoitus kytkee näytön päälle</translation>
     </message>
     <message>
-        <source>Storage</source>
-        <translation>Tallennustila</translation>
+        <source>Enable notification sounds</source>
+        <translation>Käytä äänimerkkejä</translation>
     </message>
     <message>
-        <source>Enable storage optimizer</source>
-        <translation>Käytä tallennustilan optimointia</translation>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>Kun äänet ovat käytössä, Fernschreiber käyttää Sailfish OS:n ilmoitusääniä keskusteluille, jotia voit muuttaa järjestelmäasetuksista.</translation>
     </message>
+</context>
+<context>
+    <name>SettingsPage</name>
     <message>
-        <source>Focus text input area after send</source>
-        <translation>Kohdista tekstinsyöttökenttä lähetyksen jälkeen</translation>
+        <source>Settings</source>
+        <translation>Asetukset</translation>
     </message>
-    <message>
-        <source>Focus the text input area after sending a message</source>
-        <translation>Kohdista tekstinsyöttökenttä viestin lähetyksen jälkeen</translation>
-    </message>
-    <message>
-        <source>Enable online-only mode</source>
-        <translation>Älä käytä välimuistia</translation>
-    </message>
-    <message>
-        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Estää tietojen tallennuksen välimuistiin. Jotkin sovelluksen ominaisuudet voivat olla rajoitettuja tai poistettu käytöstä tässä tilassa. Muutos vaatii Fernschreiberin uudelleenkäynnistyksen.</translation>
-    </message>
+</context>
+<context>
+    <name>SettingsPrivacy</name>
     <message>
         <source>Privacy</source>
         <translation>Yksityisyys</translation>
-    </message>
-    <message>
-        <source>Allow sending Location to inline bots</source>
-        <translation>Salli sijainnin lähettäminen upotetuille boteille</translation>
-    </message>
-    <message>
-        <source>Some inline bots request location data when using them</source>
-        <translation>Jotkin viestinsyöttöriville upotetut botit pyytävät sijaintitietoja niitä käytettäessä</translation>
-    </message>
-    <message>
-        <source>User Profile</source>
-        <translation>Käyttäjäprofiili</translation>
-    </message>
-    <message>
-        <source>First Name</source>
-        <comment>first name of the logged-in profile - header</comment>
-        <translation>Etunimi</translation>
-    </message>
-    <message>
-        <source>Enter 1-64 characters</source>
-        <translation>Syötä 1-64 merkkiä</translation>
-    </message>
-    <message>
-        <source>Last Name</source>
-        <comment>last name of the logged-in profile - header</comment>
-        <translation>Sukunimi</translation>
-    </message>
-    <message>
-        <source>Enter 0-64 characters</source>
-        <translation>Syötä 1-64 merkkiä</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <comment>user name of the logged-in profile - header</comment>
-        <translation>Käyttäjätunnus</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
@@ -1688,59 +1678,84 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation>Yksityisyysasetus joka määrittää näytetäänkö muille käyttäjille kun olet online-tilassa</translation>
+        <translation>Yksityisyysasetus joka määrittää näytetäänkö muille käyttäjille kun olet online-tilassa.</translation>
     </message>
     <message>
-        <source>Add Picture</source>
-        <translation>Lisää kuva</translation>
+        <source>Allow sending Location to inline bots</source>
+        <translation>Salli sijainnin lähettäminen upotetuille boteille</translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
+        <translation>Jotkin viestinsyöttöriville upotetut botit pyytävät sijaintitietoja niitä käytettäessä</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsStorage</name>
+    <message>
+        <source>Storage</source>
+        <translation>Tallennustila</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>Älä käytä välimuistia</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Estää tietojen tallennuksen välimuistiin. Jotkin sovelluksen ominaisuudet voivat olla rajoitettuja tai poistettu käytöstä tässä tilassa. Muutos vaatii Fernschreiberin uudelleenkäynnistyksen.</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>Käytä tallennustilan optimointia</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsUserProfile</name>
+    <message>
+        <source>User Profile</source>
+        <translation>Käyttäjäprofiili</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>Etunimi</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>Syötä 1-64 merkkiä</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Sukunimi</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Syötä 1-64 merkkiä</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Käyttäjätunnus</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
         <translation>Profiilikuvat</translation>
     </message>
     <message>
-        <source>Delete Picture</source>
-        <translation>Poista kuva</translation>
+        <source>Add Picture</source>
+        <translation>Lisää kuva</translation>
     </message>
     <message>
-        <source>Uploading...</source>
-        <translation>Lähetetään...</translation>
+        <source>Delete Picture</source>
+        <translation>Poista kuva</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
         <translation>Poistetaan profiilikuvaa</translation>
     </message>
     <message>
-        <source>Enable notification sounds</source>
-        <translation>Käytä äänimerkkejä</translation>
-    </message>
-    <message>
-        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>Kun äänet ovat käytössä, Fernschreiber käyttää Sailfish OS:n ilmoitusääniä keskusteluille, jotia voit muuttaa järjestelmäasetuksista.</translation>
-    </message>
-    <message>
-        <source>Delay before marking messages as read</source>
-        <translation>Viive viestien merkitsemisessä luetuksi</translation>
-    </message>
-    <message>
-        <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber odottaa hetken ennen kuin viestit merkitään luetuiksi</translation>
-    </message>
-    <message>
-        <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show stickers as emojis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Only display emojis instead of the actual stickers</source>
-        <translation type="unfinished"></translation>
+        <source>Uploading...</source>
+        <translation>Lähetetään...</translation>
     </message>
 </context>
 <context>
