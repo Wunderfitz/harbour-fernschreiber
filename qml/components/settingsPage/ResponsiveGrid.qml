@@ -23,7 +23,5 @@ import Sailfish.Silica 1.0
 Grid {
     width: parent.width - ( 2 * x )
     columns: (appWindow.deviceOrientation & Orientation.LandscapeMask) || Screen.sizeCategory === Screen.Large || Screen.sizeCategory === Screen.ExtraLarge ? 2 : 1
-
     readonly property real columnWidth: width/columns
-
 }

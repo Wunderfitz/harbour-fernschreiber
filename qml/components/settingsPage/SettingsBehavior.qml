@@ -165,7 +165,6 @@ AccordionItem {
                 }
                 Behavior on height { SmoothedAnimation { duration: 200 } }
             }
-
         }
     }
 }

@@ -39,9 +39,4 @@ Column {
         property: "contentY"
         duration: 200
     }
-    onSetActiveArea: {
-        if(activeAreaTitle && flickable) {
-//            flickable.scrollToTop();
-        }
-    }
 }

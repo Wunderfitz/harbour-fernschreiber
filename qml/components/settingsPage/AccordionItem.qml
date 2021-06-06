@@ -103,13 +103,4 @@ Item {
         asynchronous: true
         clip: true
     }
-//    Column {
-//        id: content
-//        width: parent.width
-//        anchors.top: button.bottom
-//        bottomPadding: Theme.paddingLarge
-//        height: 0
-//        opacity: 0
-//        clip: true
-//    }
 }

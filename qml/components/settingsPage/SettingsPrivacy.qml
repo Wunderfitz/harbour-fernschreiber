@@ -263,5 +263,4 @@ AccordionItem {
             }
         }
     }
-
 }
