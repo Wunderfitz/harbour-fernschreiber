@@ -187,6 +187,14 @@ SilicaFlickable {
                 chatInformationPage.chatInformation = newInformation
             }
         }
+        onChatNotificationSettingsUpdated: {
+            if (chatInformationPage.chatInformation.id.toString() === chatId) {
+                // set whole object to trigger change
+                var newInformation = chatInformation;
+                newInformation.notification_settings = chatNotificationSettings;
+                chatInformationPage.chatInformation = newInformation;
+            }
+        }
     }
 
     Component.onCompleted: {
