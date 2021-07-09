@@ -309,7 +309,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation>Keine Nachricht in diesem Chat</translation>
+        <translation>Keine Nachricht in diesem Chat.</translation>
     </message>
     <message>
         <source>Mark chat as unread</source>
@@ -1501,11 +1501,34 @@
     </message>
 </context>
 <context>
-    <name>SettingsPage</name>
+    <name>SettingsAppearance</name>
     <message>
-        <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <source>Appearance</source>
+        <translation>Erscheinungsbild</translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation>Sticker als Emojis anzeigen</translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation>Nur Emojis anstelle der eigentlichen Sticker anzeigen</translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation>Sticker als Bilder anzeigen</translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation>Hintergrund für Sticker anzeigen und sie wie Bilder mittig platzieren</translation>
+    </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation>Sticker animieren</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBehavior</name>
     <message>
         <source>Behavior</source>
         <translation>Verhalten</translation>
@@ -1519,20 +1542,44 @@
         <translation>Senden Sie Ihre Nachricht, indem Sie die Enter-Taste drücken</translation>
     </message>
     <message>
-        <source>Appearance</source>
-        <translation>Erscheinungsbild</translation>
+        <source>Focus text input on chat open</source>
+        <translation>Texteingabe fokussieren beim Öffnen eines Chats</translation>
     </message>
     <message>
-        <source>Show stickers as images</source>
-        <translation>Sticker als Bilder anzeigen</translation>
+        <source>Focus the text input area when entering a chat</source>
+        <translation>Texteingabe fokussieren, wenn ein Chat betreten wird</translation>
     </message>
     <message>
-        <source>Show background for stickers and align them centrally like images</source>
-        <translation>Hintergrund für Sticker anzeigen und sie wie Bilder mittig platzieren</translation>
+        <source>Focus text input area after send</source>
+        <translation>Texteingabe nach Senden fokussieren</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Fokussiert die Texteingabe nach Senden einer Nachricht</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Verzögerung bevor Nachrichten als gelesen markiert werden</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber wird ein bisschen warten, bevor Nachrichten als gelesen markiert werden</translation>
+    </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation>Integration im Öffnen-Mit-Menü</translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation>Fernschreiber ins Öffnen-Mit-Menü von Sailfish OS integrieren</translation>
     </message>
     <message>
         <source>Notification feedback</source>
         <translation>Rückmeldung bei Hinweisen</translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
+        <translation>Nicht-grafische Rückmeldungen (Klänge, Vibration) bei Hinweisen nutzen</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1547,87 +1594,30 @@
         <translation>Keine</translation>
     </message>
     <message>
-        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Nicht-grafische Rückmeldungen (Klänge, Vibration) bei Hinweisen nutzen</translation>
-    </message>
-    <message>
-        <source>Open-with menu integration</source>
-        <translation>Integration im Öffnen-Mit-Menü</translation>
-    </message>
-    <message>
-        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Fernschreiber ins Öffnen-Mit-Menü von Sailfish OS integrieren</translation>
-    </message>
-    <message>
-        <source>Animate stickers</source>
-        <translation>Sticker animieren</translation>
-    </message>
-    <message>
         <source>Notification turns on the display</source>
         <translation>Hinweis schaltet den Bildschirm an</translation>
     </message>
     <message>
-        <source>Storage</source>
-        <translation>Speicher</translation>
+        <source>Enable notification sounds</source>
+        <translation>Hinweistöne einschalten</translation>
     </message>
     <message>
-        <source>Enable storage optimizer</source>
-        <translation>Speicheroptimierer einschalten</translation>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>Wenn Töne eingeschaltet sind, wird Fernschreiber den aktuellen Sailfish OS-Hinweiston für Chats verwenden, der in den Systemeinstellungen konfiguriert werden kann.</translation>
     </message>
+</context>
+<context>
+    <name>SettingsPage</name>
     <message>
-        <source>Focus text input area after send</source>
-        <translation>Texteingabe nach Senden fokussieren</translation>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
     </message>
-    <message>
-        <source>Focus the text input area after sending a message</source>
-        <translation>Fokussiert die Texteingabe nach Senden einer Nachricht</translation>
-    </message>
-    <message>
-        <source>Enable online-only mode</source>
-        <translation>Nur-Online-Modus einschalten</translation>
-    </message>
-    <message>
-        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Schaltet das Offline-Caching aus. Bestimmte Features können in diesem Modus eingeschränkt sein oder fehlen. Änderungen erfordern einen Neustart von Fernschreiber, um in Kraft zu treten.</translation>
-    </message>
+</context>
+<context>
+    <name>SettingsPrivacy</name>
     <message>
         <source>Privacy</source>
         <translation>Privatsphäre</translation>
-    </message>
-    <message>
-        <source>Allow sending Location to inline bots</source>
-        <translation>Erlaubt Standortsendung an Inline-Bots</translation>
-    </message>
-    <message>
-        <source>Some inline bots request location data when using them</source>
-        <translation>Einige Inline-Bots fragen bei Nutzung Standortdaten an</translation>
-    </message>
-    <message>
-        <source>User Profile</source>
-        <translation>Nutzungsprofil</translation>
-    </message>
-    <message>
-        <source>First Name</source>
-        <comment>first name of the logged-in profile - header</comment>
-        <translation>Vorname</translation>
-    </message>
-    <message>
-        <source>Enter 1-64 characters</source>
-        <translation>Geben Sie 1-64 Zeichen ein</translation>
-    </message>
-    <message>
-        <source>Last Name</source>
-        <comment>last name of the logged-in profile - header</comment>
-        <translation>Nachname</translation>
-    </message>
-    <message>
-        <source>Enter 0-64 characters</source>
-        <translation>Geben Sie 0-64 Zeichen ein</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <comment>user name of the logged-in profile - header</comment>
-        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
@@ -1690,56 +1680,81 @@
         <translation>Privatsphären-Einstellung zur Regelung, ob Ihr Onlinestatus sichtbar ist.</translation>
     </message>
     <message>
-        <source>Add Picture</source>
-        <translation>Bild hinzufügen</translation>
+        <source>Allow sending Location to inline bots</source>
+        <translation>Erlaubt Standortsendung an Inline-Bots</translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
+        <translation>Einige Inline-Bots fragen bei Nutzung Standortdaten an</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsStorage</name>
+    <message>
+        <source>Storage</source>
+        <translation>Speicher</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>Nur-Online-Modus einschalten</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Schaltet das Offline-Caching aus. Bestimmte Features können in diesem Modus eingeschränkt sein oder fehlen. Änderungen erfordern einen Neustart von Fernschreiber, um in Kraft zu treten.</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>Speicheroptimierer einschalten</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsUserProfile</name>
+    <message>
+        <source>User Profile</source>
+        <translation>Nutzungsprofil</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>Vorname</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>Geben Sie 1-64 Zeichen ein</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Nachname</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Geben Sie 0-64 Zeichen ein</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
         <translation>Profilbilder</translation>
     </message>
     <message>
-        <source>Delete Picture</source>
-        <translation>Bild löschen</translation>
+        <source>Add Picture</source>
+        <translation>Bild hinzufügen</translation>
     </message>
     <message>
-        <source>Uploading...</source>
-        <translation>Lade hoch...</translation>
+        <source>Delete Picture</source>
+        <translation>Bild löschen</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
         <translation>Lösche Profilbild</translation>
     </message>
     <message>
-        <source>Enable notification sounds</source>
-        <translation>Hinweistöne einschalten</translation>
-    </message>
-    <message>
-        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>Wenn Töne eingeschaltet sind, wird Fernschreiber den aktuellen Sailfish OS-Hinweiston für Chats verwenden, der in den Systemeinstellungen konfiguriert werden kann.</translation>
-    </message>
-    <message>
-        <source>Delay before marking messages as read</source>
-        <translation>Verzögerung bevor Nachrichten als gelesen markiert werden</translation>
-    </message>
-    <message>
-        <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber wird ein bisschen warten, bevor Nachrichten als gelesen markiert werden</translation>
-    </message>
-    <message>
-        <source>Focus the text input area when entering a chat</source>
-        <translation>Texteingabe fokussieren, wenn ein Chat betreten wird</translation>
-    </message>
-    <message>
-        <source>Focus text input on chat open</source>
-        <translation>Texteingabe fokussieren beim Öffnen eines Chats</translation>
-    </message>
-    <message>
-        <source>Show stickers as emojis</source>
-        <translation>Sticker als Emojis anzeigen</translation>
-    </message>
-    <message>
-        <source>Only display emojis instead of the actual stickers</source>
-        <translation>Nur Emojis anstelle der eigentlichen Sticker anzeigen</translation>
+        <source>Uploading...</source>
+        <translation>Lade hoch...</translation>
     </message>
 </context>
 <context>

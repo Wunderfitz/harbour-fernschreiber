@@ -37,7 +37,7 @@ Page {
     property bool chatListCreated: false;
 
     // link handler:
-    property string urlToOpen: null;
+    property string urlToOpen;
     property var chatToOpen: null; //null or [chatId, messageId]
 
     onStatusChanged: {
@@ -137,7 +137,7 @@ Page {
         if(chatListCreated && urlToOpen && urlToOpen.length > 1) {
             Debug.log("[OverviewPage] Opening URL: ", urlToOpen);
             Functions.handleLink(urlToOpen);
-            urlToOpen = null;
+            urlToOpen = "";
         }
     }
 

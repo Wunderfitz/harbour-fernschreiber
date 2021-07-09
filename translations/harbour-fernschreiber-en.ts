@@ -1503,11 +1503,34 @@ messages</numerusform>
     </message>
 </context>
 <context>
-    <name>SettingsPage</name>
+    <name>SettingsAppearance</name>
     <message>
-        <source>Settings</source>
-        <translation>Settings</translation>
+        <source>Appearance</source>
+        <translation>Appearance</translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation>Show stickers as emojis</translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation>Only display emojis instead of the actual stickers</translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation>Show stickers as images</translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation>Show background for stickers and align them centrally like images</translation>
+    </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation>Animate stickers</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBehavior</name>
     <message>
         <source>Behavior</source>
         <translation>Behavior</translation>
@@ -1521,20 +1544,44 @@ messages</numerusform>
         <translation>Send your message by pressing the enter key</translation>
     </message>
     <message>
-        <source>Appearance</source>
-        <translation>Appearance</translation>
+        <source>Focus text input on chat open</source>
+        <translation>Focus text input on chat open</translation>
     </message>
     <message>
-        <source>Show stickers as images</source>
-        <translation>Show stickers as images</translation>
+        <source>Focus the text input area when entering a chat</source>
+        <translation>Focus the text input area when entering a chat</translation>
     </message>
     <message>
-        <source>Show background for stickers and align them centrally like images</source>
-        <translation>Show background for stickers and align them centrally like images</translation>
+        <source>Focus text input area after send</source>
+        <translation>Focus text input area after send</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Focus the text input area after sending a message</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Delay before marking messages as read</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber will wait a bit before messages are marked as read</translation>
+    </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation>Open-with menu integration</translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation>Integrate Fernschreiber into open-with menu of Sailfish OS</translation>
     </message>
     <message>
         <source>Notification feedback</source>
         <translation>Notification feedback</translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
+        <translation>Use non-graphical feedback (sound, vibration) for notifications</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1549,87 +1596,30 @@ messages</numerusform>
         <translation>None</translation>
     </message>
     <message>
-        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Use non-graphical feedback (sound, vibration) for notifications</translation>
-    </message>
-    <message>
-        <source>Open-with menu integration</source>
-        <translation>Open-with menu integration</translation>
-    </message>
-    <message>
-        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Integrate Fernschreiber into open-with menu of Sailfish OS</translation>
-    </message>
-    <message>
-        <source>Animate stickers</source>
-        <translation>Animate stickers</translation>
-    </message>
-    <message>
         <source>Notification turns on the display</source>
         <translation>Notification turns on the display</translation>
     </message>
     <message>
-        <source>Storage</source>
-        <translation>Storage</translation>
+        <source>Enable notification sounds</source>
+        <translation>Enable notification sounds</translation>
     </message>
     <message>
-        <source>Enable storage optimizer</source>
-        <translation>Enable storage optimizer</translation>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</translation>
     </message>
+</context>
+<context>
+    <name>SettingsPage</name>
     <message>
-        <source>Focus text input area after send</source>
-        <translation>Focus text input area after send</translation>
+        <source>Settings</source>
+        <translation>Settings</translation>
     </message>
-    <message>
-        <source>Focus the text input area after sending a message</source>
-        <translation>Focus the text input area after sending a message</translation>
-    </message>
-    <message>
-        <source>Enable online-only mode</source>
-        <translation>Enable online-only mode</translation>
-    </message>
-    <message>
-        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</translation>
-    </message>
+</context>
+<context>
+    <name>SettingsPrivacy</name>
     <message>
         <source>Privacy</source>
         <translation>Privacy</translation>
-    </message>
-    <message>
-        <source>Allow sending Location to inline bots</source>
-        <translation>Allow sending Location to inline bots</translation>
-    </message>
-    <message>
-        <source>Some inline bots request location data when using them</source>
-        <translation>Some inline bots request location data when using them</translation>
-    </message>
-    <message>
-        <source>User Profile</source>
-        <translation>User Profile</translation>
-    </message>
-    <message>
-        <source>First Name</source>
-        <comment>first name of the logged-in profile - header</comment>
-        <translation>First Name</translation>
-    </message>
-    <message>
-        <source>Enter 1-64 characters</source>
-        <translation>Enter 1-64 characters</translation>
-    </message>
-    <message>
-        <source>Last Name</source>
-        <comment>last name of the logged-in profile - header</comment>
-        <translation>Last Name</translation>
-    </message>
-    <message>
-        <source>Enter 0-64 characters</source>
-        <translation>Enter 0-64 characters</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <comment>user name of the logged-in profile - header</comment>
-        <translation>Username</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
@@ -1692,56 +1682,81 @@ messages</numerusform>
         <translation>Privacy setting for managing whether your online status is visible.</translation>
     </message>
     <message>
-        <source>Add Picture</source>
-        <translation>Add Picture</translation>
+        <source>Allow sending Location to inline bots</source>
+        <translation>Allow sending Location to inline bots</translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
+        <translation>Some inline bots request location data when using them</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsStorage</name>
+    <message>
+        <source>Storage</source>
+        <translation>Storage</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>Enable online-only mode</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>Enable storage optimizer</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsUserProfile</name>
+    <message>
+        <source>User Profile</source>
+        <translation>User Profile</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>First Name</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>Enter 1-64 characters</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Last Name</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Enter 0-64 characters</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Username</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
         <translation>Profile Pictures</translation>
     </message>
     <message>
-        <source>Delete Picture</source>
-        <translation>Delete Picture</translation>
+        <source>Add Picture</source>
+        <translation>Add Picture</translation>
     </message>
     <message>
-        <source>Uploading...</source>
-        <translation>Uploading...</translation>
+        <source>Delete Picture</source>
+        <translation>Delete Picture</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
         <translation>Deleting profile picture</translation>
     </message>
     <message>
-        <source>Enable notification sounds</source>
-        <translation>Enable notification sounds</translation>
-    </message>
-    <message>
-        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</translation>
-    </message>
-    <message>
-        <source>Delay before marking messages as read</source>
-        <translation>Delay before marking messages as read</translation>
-    </message>
-    <message>
-        <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber will wait a bit before messages are marked as read</translation>
-    </message>
-    <message>
-        <source>Focus the text input area when entering a chat</source>
-        <translation>Focus the text input area when entering a chat</translation>
-    </message>
-    <message>
-        <source>Focus text input on chat open</source>
-        <translation>Focus text input on chat open</translation>
-    </message>
-    <message>
-        <source>Show stickers as emojis</source>
-        <translation>Show stickers as emojis</translation>
-    </message>
-    <message>
-        <source>Only display emojis instead of the actual stickers</source>
-        <translation>Only display emojis instead of the actual stickers</translation>
+        <source>Uploading...</source>
+        <translation>Uploading...</translation>
     </message>
 </context>
 <context>

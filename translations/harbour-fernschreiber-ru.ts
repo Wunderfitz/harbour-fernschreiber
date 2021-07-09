@@ -1531,11 +1531,34 @@
     </message>
 </context>
 <context>
-    <name>SettingsPage</name>
+    <name>SettingsAppearance</name>
     <message>
-        <source>Settings</source>
-        <translation>Настройки</translation>
+        <source>Appearance</source>
+        <translation>Внешний вид</translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation>Эмодзи вместо стикеров</translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation>Показывать только эмодзи при отображении актуальных стикеров</translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation>Показывать стикеры как обычные изображения</translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation>То есть рисовать под ними фон и позиционировать по центру.</translation>
+    </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation>Анимировать стикеры</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBehavior</name>
     <message>
         <source>Behavior</source>
         <translation>Поведение</translation>
@@ -1549,20 +1572,44 @@
         <translation>Тогда клавиша ввода на клавиатуре будет отправлять сообщение, а не переносить строку.</translation>
     </message>
     <message>
-        <source>Appearance</source>
-        <translation>Внешний вид</translation>
+        <source>Focus text input on chat open</source>
+        <translation>При открытии чата фокусироваться на поле ввода текста</translation>
     </message>
     <message>
-        <source>Show stickers as images</source>
-        <translation>Показывать стикеры как обычные изображения</translation>
+        <source>Focus the text input area when entering a chat</source>
+        <translation>Приоритет фокусировки при открытии чата</translation>
     </message>
     <message>
-        <source>Show background for stickers and align them centrally like images</source>
-        <translation>То есть рисовать под ними фон и позиционировать по центру.</translation>
+        <source>Focus text input area after send</source>
+        <translation>Приоритет фокусировки при разговоре в чате</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Сфокусироваться на поле ввода текста после отправки сообщения</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Задержка перед отметкой о прочтении</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber может отмечать сообщения как прочитанные с некоторой задержкой, а не сразу как только они показываются на экране.</translation>
+    </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation>Меню &quot;открыть с помощью&quot;</translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation>Встроить Fernschreiber в системное меню &quot;открыть с помощью&quot;</translation>
     </message>
     <message>
         <source>Notification feedback</source>
         <translation>Уведомления</translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
+        <translation>Сопровождать уведомления звуками и вибрацией.</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1577,87 +1624,30 @@
         <translation>Никогда</translation>
     </message>
     <message>
-        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Сопровождать уведомления звуками и вибрацией.</translation>
-    </message>
-    <message>
-        <source>Open-with menu integration</source>
-        <translation>Меню &quot;открыть с помощью&quot;</translation>
-    </message>
-    <message>
-        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Встроить Fernschreiber в системное меню &quot;открыть с помощью&quot;</translation>
-    </message>
-    <message>
-        <source>Animate stickers</source>
-        <translation>Анимировать стикеры</translation>
-    </message>
-    <message>
         <source>Notification turns on the display</source>
         <translation>Уведомления включают дисплей</translation>
     </message>
     <message>
-        <source>Storage</source>
-        <translation>Хранилище</translation>
+        <source>Enable notification sounds</source>
+        <translation>Уведомления издают звук</translation>
     </message>
     <message>
-        <source>Enable storage optimizer</source>
-        <translation>Включить оптимизацию хранилища</translation>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>Если звуки разрешены, Fernschreiber использует звук, выбранный для чатов в настройках Sailfish OS.</translation>
     </message>
+</context>
+<context>
+    <name>SettingsPage</name>
     <message>
-        <source>Focus text input area after send</source>
-        <translation>Приоритет фокусировки при разговоре в чате</translation>
+        <source>Settings</source>
+        <translation>Настройки</translation>
     </message>
-    <message>
-        <source>Focus the text input area after sending a message</source>
-        <translation>Сфокусироваться на поле ввода текста после отправки сообщения</translation>
-    </message>
-    <message>
-        <source>Enable online-only mode</source>
-        <translation>Включить режим &quot;только онлайн&quot;</translation>
-    </message>
-    <message>
-        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>В этом режиме не будет использоваться кэширование и некоторые функции могут быть ограничены или отсутствовать. Изменения вступят в силу после перезапуска Fernschreiber.</translation>
-    </message>
+</context>
+<context>
+    <name>SettingsPrivacy</name>
     <message>
         <source>Privacy</source>
         <translation>Приватность</translation>
-    </message>
-    <message>
-        <source>Allow sending Location to inline bots</source>
-        <translation>Отправлять мои координаты инлайн-ботам</translation>
-    </message>
-    <message>
-        <source>Some inline bots request location data when using them</source>
-        <translation>Некоторые инлайн-боты просят отправить свои координаты при обращении к ним</translation>
-    </message>
-    <message>
-        <source>User Profile</source>
-        <translation>Профиль</translation>
-    </message>
-    <message>
-        <source>First Name</source>
-        <comment>first name of the logged-in profile - header</comment>
-        <translation>Имя</translation>
-    </message>
-    <message>
-        <source>Enter 1-64 characters</source>
-        <translation>Введите 1-64 символа</translation>
-    </message>
-    <message>
-        <source>Last Name</source>
-        <comment>last name of the logged-in profile - header</comment>
-        <translation>Фамилия</translation>
-    </message>
-    <message>
-        <source>Enter 0-64 characters</source>
-        <translation>Введите 0-64 символа</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <comment>user name of the logged-in profile - header</comment>
-        <translation>Ник</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
@@ -1720,56 +1710,81 @@
         <translation>Виден ли мой статус другим пользователям.</translation>
     </message>
     <message>
-        <source>Add Picture</source>
-        <translation>Добавить</translation>
+        <source>Allow sending Location to inline bots</source>
+        <translation>Отправлять мои координаты инлайн-ботам</translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
+        <translation>Некоторые инлайн-боты просят отправить свои координаты при обращении к ним</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsStorage</name>
+    <message>
+        <source>Storage</source>
+        <translation>Хранилище</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>Включить режим &quot;только онлайн&quot;</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>В этом режиме не будет использоваться кэширование и некоторые функции могут быть ограничены или отсутствовать. Изменения вступят в силу после перезапуска Fernschreiber.</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>Включить оптимизацию хранилища</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsUserProfile</name>
+    <message>
+        <source>User Profile</source>
+        <translation>Профиль</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>Имя</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>Введите 1-64 символа</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Фамилия</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Введите 0-64 символа</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Ник</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
         <translation>Картинки профиля</translation>
     </message>
     <message>
-        <source>Delete Picture</source>
-        <translation>Удалить</translation>
+        <source>Add Picture</source>
+        <translation>Добавить</translation>
     </message>
     <message>
-        <source>Uploading...</source>
-        <translation>Отправка...</translation>
+        <source>Delete Picture</source>
+        <translation>Удалить</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
         <translation>Удаление картинки из профиля</translation>
     </message>
     <message>
-        <source>Enable notification sounds</source>
-        <translation>Уведомления издают звук</translation>
-    </message>
-    <message>
-        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>Если звуки разрешены, Fernschreiber использует звук, выбранный для чатов в настройках Sailfish OS.</translation>
-    </message>
-    <message>
-        <source>Delay before marking messages as read</source>
-        <translation>Задержка перед отметкой о прочтении</translation>
-    </message>
-    <message>
-        <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber может отмечать сообщения как прочитанные с некоторой задержкой, а не сразу как только они показываются на экране.</translation>
-    </message>
-    <message>
-        <source>Focus the text input area when entering a chat</source>
-        <translation>Приоритет фокусировки при открытии чата</translation>
-    </message>
-    <message>
-        <source>Focus text input on chat open</source>
-        <translation>При открытии чата фокусироваться на поле ввода текста</translation>
-    </message>
-    <message>
-        <source>Show stickers as emojis</source>
-        <translation>Эмодзи вместо стикеров</translation>
-    </message>
-    <message>
-        <source>Only display emojis instead of the actual stickers</source>
-        <translation>Показывать только эмодзи при отображении актуальных стикеров</translation>
+        <source>Uploading...</source>
+        <translation>Отправка...</translation>
     </message>
 </context>
 <context>

@@ -108,6 +108,14 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/messageContent/MessageVideo.qml \
     qml/components/messageContent/MessageVoiceNote.qml \
     qml/components/messageContent/WebPagePreview.qml \
+    qml/components/settingsPage/Accordion.qml \
+    qml/components/settingsPage/AccordionItem.qml \
+    qml/components/settingsPage/ResponsiveGrid.qml \
+    qml/components/settingsPage/SettingsAppearance.qml \
+    qml/components/settingsPage/SettingsBehavior.qml \
+    qml/components/settingsPage/SettingsPrivacy.qml \
+    qml/components/settingsPage/SettingsStorage.qml \
+    qml/components/settingsPage/SettingsUserProfile.qml \
     qml/js/debug.js \
     qml/js/functions.js \
     qml/pages/ActiveSessionsPage.qml \
