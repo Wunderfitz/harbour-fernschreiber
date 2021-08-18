@@ -170,9 +170,9 @@ Here's a list of the implemented emojis:
 | ![1f91a-1f3ff.svg](../qml/js/emoji/1f91a-1f3ff.svg) |	raised back of hand: dark skin tone |
 | ![1f590.svg](../qml/js/emoji/1f590.svg) |	hand with fingers splayed |
 | ![1f590-1f3fb.svg](../qml/js/emoji/1f590-1f3fb.svg) |	hand with fingers splayed: light skin tone |
-| ![1f590-1f3fc.svg](../qml/js/emoji/1f590-1f3fc.svg) |	hand with fingers splayed: medium-light skin  |tone
+| ![1f590-1f3fc.svg](../qml/js/emoji/1f590-1f3fc.svg) |	hand with fingers splayed: medium-light skin tone |
 | ![1f590-1f3fd.svg](../qml/js/emoji/1f590-1f3fd.svg) |	hand with fingers splayed: medium skin tone |
-| ![1f590-1f3fe.svg](../qml/js/emoji/1f590-1f3fe.svg) |	hand with fingers splayed: medium-dark skin  |tone
+| ![1f590-1f3fe.svg](../qml/js/emoji/1f590-1f3fe.svg) |	hand with fingers splayed: medium-dark skin tone |
 | ![1f590-1f3ff.svg](../qml/js/emoji/1f590-1f3ff.svg) |	hand with fingers splayed: dark skin tone |
 | ![270b.svg](../qml/js/emoji/270b.svg) |	raised hand |
 | ![270b-1f3fb.svg](../qml/js/emoji/270b-1f3fb.svg) |	raised hand: light skin tone |
@@ -236,21 +236,21 @@ Here's a list of the implemented emojis:
 | ![1f919-1f3ff.svg](../qml/js/emoji/1f919-1f3ff.svg) |	call me hand: dark skin tone |
 | ![1f448.svg](../qml/js/emoji/1f448.svg) |	backhand index pointing left |
 | ![1f448-1f3fb.svg](../qml/js/emoji/1f448-1f3fb.svg) |	backhand index pointing left: light skin tone |
-| ![1f448-1f3fc.svg](../qml/js/emoji/1f448-1f3fc.svg) |	backhand index pointing left: medium-light  |skin tone
+| ![1f448-1f3fc.svg](../qml/js/emoji/1f448-1f3fc.svg) |	backhand index pointing left: medium-light skin tone |
 | ![1f448-1f3fd.svg](../qml/js/emoji/1f448-1f3fd.svg) |	backhand index pointing left: medium skin tone |
-| ![1f448-1f3fe.svg](../qml/js/emoji/1f448-1f3fe.svg) |	backhand index pointing left: medium-dark  |skin tone
+| ![1f448-1f3fe.svg](../qml/js/emoji/1f448-1f3fe.svg) |	backhand index pointing left: medium-dark skin tone |
 | ![1f448-1f3ff.svg](../qml/js/emoji/1f448-1f3ff.svg) |	backhand index pointing left: dark skin tone |
 | ![1f449.svg](../qml/js/emoji/1f449.svg) |	backhand index pointing right |
 | ![1f449-1f3fb.svg](../qml/js/emoji/1f449-1f3fb.svg) |	backhand index pointing right: light skin tone |
-| ![1f449-1f3fc.svg](../qml/js/emoji/1f449-1f3fc.svg) |	backhand index pointing right: medium-light  |skin tone
-| ![1f449-1f3fd.svg](../qml/js/emoji/1f449-1f3fd.svg) |	backhand index pointing right: medium skin  |tone
-| ![1f449-1f3fe.svg](../qml/js/emoji/1f449-1f3fe.svg) |	backhand index pointing right: medium-dark  |skin tone
+| ![1f449-1f3fc.svg](../qml/js/emoji/1f449-1f3fc.svg) |	backhand index pointing right: medium-light skin tone |
+| ![1f449-1f3fd.svg](../qml/js/emoji/1f449-1f3fd.svg) |	backhand index pointing right: medium skin tone |
+| ![1f449-1f3fe.svg](../qml/js/emoji/1f449-1f3fe.svg) |	backhand index pointing right: medium-dark skin tone |
 | ![1f449-1f3ff.svg](../qml/js/emoji/1f449-1f3ff.svg) |	backhand index pointing right: dark skin tone |
 | ![1f446.svg](../qml/js/emoji/1f446.svg) |	backhand index pointing up |
 | ![1f446-1f3fb.svg](../qml/js/emoji/1f446-1f3fb.svg) |	backhand index pointing up: light skin tone |
-| ![1f446-1f3fc.svg](../qml/js/emoji/1f446-1f3fc.svg) |	backhand index pointing up: medium-light skin  |tone
+| ![1f446-1f3fc.svg](../qml/js/emoji/1f446-1f3fc.svg) |	backhand index pointing up: medium-light skin tone |
 | ![1f446-1f3fd.svg](../qml/js/emoji/1f446-1f3fd.svg) |	backhand index pointing up: medium skin tone |
-| ![1f446-1f3fe.svg](../qml/js/emoji/1f446-1f3fe.svg) |	backhand index pointing up: medium-dark skin  |tone
+| ![1f446-1f3fe.svg](../qml/js/emoji/1f446-1f3fe.svg) |	backhand index pointing up: medium-dark skin tone |
 | ![1f446-1f3ff.svg](../qml/js/emoji/1f446-1f3ff.svg) |	backhand index pointing up: dark skin tone |
 | ![1f595.svg](../qml/js/emoji/1f595.svg) |	middle finger |
 | ![1f595-1f3fb.svg](../qml/js/emoji/1f595-1f3fb.svg) |	middle finger: light skin tone |
@@ -260,9 +260,9 @@ Here's a list of the implemented emojis:
 | ![1f595-1f3ff.svg](../qml/js/emoji/1f595-1f3ff.svg) |	middle finger: dark skin tone |
 | ![1f447.svg](../qml/js/emoji/1f447.svg) |	backhand index pointing down |
 | ![1f447-1f3fb.svg](../qml/js/emoji/1f447-1f3fb.svg) |	backhand index pointing down: light skin tone |
-| ![1f447-1f3fc.svg](../qml/js/emoji/1f447-1f3fc.svg) |	backhand index pointing down: medium-light  |skin tone
+| ![1f447-1f3fc.svg](../qml/js/emoji/1f447-1f3fc.svg) |	backhand index pointing down: medium-light skin tone |
 | ![1f447-1f3fd.svg](../qml/js/emoji/1f447-1f3fd.svg) |	backhand index pointing down: medium skin tone |
-| ![1f447-1f3fe.svg](../qml/js/emoji/1f447-1f3fe.svg) |	backhand index pointing down: medium-dark  |skin tone
+| ![1f447-1f3fe.svg](../qml/js/emoji/1f447-1f3fe.svg) |	backhand index pointing down: medium-dark skin tone |
 | ![1f447-1f3ff.svg](../qml/js/emoji/1f447-1f3ff.svg) |	backhand index pointing down: dark skin tone |
 | ![261d.svg](../qml/js/emoji/261d.svg) |	index pointing up |
 | ![261d-1f3fb.svg](../qml/js/emoji/261d-1f3fb.svg) |	index pointing up: light skin tone |
@@ -452,21 +452,21 @@ Here's a list of the implemented emojis:
 | ![1f9d4-1f3ff.svg](../qml/js/emoji/1f9d4-1f3ff.svg) |	man: dark skin tone, beard |
 | ![1f468-200d-1f9b0.svg](../qml/js/emoji/1f468-200d-1f9b0.svg) |	man: red hair |
 | ![1f468-1f3fb-200d-1f9b0.svg](../qml/js/emoji/1f468-1f3fb-200d-1f9b0.svg) |	man: light skin tone, red hair |
-| ![1f468-1f3fc-200d-1f9b0.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9b0.svg) |	man: medium-light skin tone, red  |hair
+| ![1f468-1f3fc-200d-1f9b0.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9b0.svg) |	man: medium-light skin tone, red hair |
 | ![1f468-1f3fd-200d-1f9b0.svg](../qml/js/emoji/1f468-1f3fd-200d-1f9b0.svg) |	man: medium skin tone, red hair |
-| ![1f468-1f3fe-200d-1f9b0.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9b0.svg) |	man: medium-dark skin tone, red  |hair
+| ![1f468-1f3fe-200d-1f9b0.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9b0.svg) |	man: medium-dark skin tone, red hair |
 | ![1f468-1f3ff-200d-1f9b0.svg](../qml/js/emoji/1f468-1f3ff-200d-1f9b0.svg) |	man: dark skin tone, red hair |
 | ![1f468-200d-1f9b1.svg](../qml/js/emoji/1f468-200d-1f9b1.svg) |	man: curly hair |
 | ![1f468-1f3fb-200d-1f9b1.svg](../qml/js/emoji/1f468-1f3fb-200d-1f9b1.svg) |	man: light skin tone, curly hair |
-| ![1f468-1f3fc-200d-1f9b1.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9b1.svg) |	man: medium-light skin tone,  |curly hair
+| ![1f468-1f3fc-200d-1f9b1.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9b1.svg) |	man: medium-light skin tone, curly hair |
 | ![1f468-1f3fd-200d-1f9b1.svg](../qml/js/emoji/1f468-1f3fd-200d-1f9b1.svg) |	man: medium skin tone, curly hair |
-| ![1f468-1f3fe-200d-1f9b1.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9b1.svg) |	man: medium-dark skin tone, curly  |hair
+| ![1f468-1f3fe-200d-1f9b1.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9b1.svg) |	man: medium-dark skin tone, curly hair |
 | ![1f468-1f3ff-200d-1f9b1.svg](../qml/js/emoji/1f468-1f3ff-200d-1f9b1.svg) |	man: dark skin tone, curly hair |
 | ![1f468-200d-1f9b3.svg](../qml/js/emoji/1f468-200d-1f9b3.svg) |	man: white hair |
 | ![1f468-1f3fb-200d-1f9b3.svg](../qml/js/emoji/1f468-1f3fb-200d-1f9b3.svg) |	man: light skin tone, white hair |
-| ![1f468-1f3fc-200d-1f9b3.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9b3.svg) |	man: medium-light skin tone,  |white hair
+| ![1f468-1f3fc-200d-1f9b3.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9b3.svg) |	man: medium-light skin tone, white hair |
 | ![1f468-1f3fd-200d-1f9b3.svg](../qml/js/emoji/1f468-1f3fd-200d-1f9b3.svg) |	man: medium skin tone, white hair |
-| ![1f468-1f3fe-200d-1f9b3.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9b3.svg) |	man: medium-dark skin tone, white  |hair
+| ![1f468-1f3fe-200d-1f9b3.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9b3.svg) |	man: medium-dark skin tone, white hair |
 | ![1f468-1f3ff-200d-1f9b3.svg](../qml/js/emoji/1f468-1f3ff-200d-1f9b3.svg) |	man: dark skin tone, white hair |
 | ![1f468-200d-1f9b2.svg](../qml/js/emoji/1f468-200d-1f9b2.svg) |	man: bald |
 | ![1f468-1f3fb-200d-1f9b2.svg](../qml/js/emoji/1f468-1f3fb-200d-1f9b2.svg) |	man: light skin tone, bald |
@@ -482,64 +482,64 @@ Here's a list of the implemented emojis:
 | ![1f469-1f3ff.svg](../qml/js/emoji/1f469-1f3ff.svg) |	woman: dark skin tone |
 | ![1f469-200d-1f9b0.svg](../qml/js/emoji/1f469-200d-1f9b0.svg) |	woman: red hair |
 | ![1f469-1f3fb-200d-1f9b0.svg](../qml/js/emoji/1f469-1f3fb-200d-1f9b0.svg) |	woman: light skin tone, red hair |
-| ![1f469-1f3fc-200d-1f9b0.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9b0.svg) |	woman: medium-light skin tone,  |red hair
+| ![1f469-1f3fc-200d-1f9b0.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9b0.svg) |	woman: medium-light skin tone, red hair |
 | ![1f469-1f3fd-200d-1f9b0.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9b0.svg) |	woman: medium skin tone, red hair |
-| ![1f469-1f3fe-200d-1f9b0.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9b0.svg) |	woman: medium-dark skin tone, red  |hair
+| ![1f469-1f3fe-200d-1f9b0.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9b0.svg) |	woman: medium-dark skin tone, red hair |
 | ![1f469-1f3ff-200d-1f9b0.svg](../qml/js/emoji/1f469-1f3ff-200d-1f9b0.svg) |	woman: dark skin tone, red hair |
 | ![1f9d1-200d-1f9b0.svg](../qml/js/emoji/1f9d1-200d-1f9b0.svg) |	person: red hair |
 | ![1f9d1-1f3fb-200d-1f9b0.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9b0.svg) |	person: light skin tone, red hair |
-| ![1f9d1-1f3fc-200d-1f9b0.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9b0.svg) |	person: medium-light skin tone,  |red hair
+| ![1f9d1-1f3fc-200d-1f9b0.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9b0.svg) |	person: medium-light skin tone, red hair |
 | ![1f9d1-1f3fd-200d-1f9b0.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9b0.svg) |	person: medium skin tone, red hair |
-| ![1f9d1-1f3fe-200d-1f9b0.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9b0.svg) |	person: medium-dark skin tone,  |red hair
+| ![1f9d1-1f3fe-200d-1f9b0.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9b0.svg) |	person: medium-dark skin tone, red hair |
 | ![1f9d1-1f3ff-200d-1f9b0.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f9b0.svg) |	person: dark skin tone, red hair |
 | ![1f469-200d-1f9b1.svg](../qml/js/emoji/1f469-200d-1f9b1.svg) |	woman: curly hair |
 | ![1f469-1f3fb-200d-1f9b1.svg](../qml/js/emoji/1f469-1f3fb-200d-1f9b1.svg) |	woman: light skin tone, curly hair |
-| ![1f469-1f3fc-200d-1f9b1.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9b1.svg) |	woman: medium-light skin tone,  |curly hair
-| ![1f469-1f3fd-200d-1f9b1.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9b1.svg) |	woman: medium skin tone, curly  |hair
-| ![1f469-1f3fe-200d-1f9b1.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9b1.svg) |	woman: medium-dark skin tone,  |curly hair
+| ![1f469-1f3fc-200d-1f9b1.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9b1.svg) |	woman: medium-light skin tone, curly hair |
+| ![1f469-1f3fd-200d-1f9b1.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9b1.svg) |	woman: medium skin tone, curly hair |
+| ![1f469-1f3fe-200d-1f9b1.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9b1.svg) |	woman: medium-dark skin tone, curly hair |
 | ![1f469-1f3ff-200d-1f9b1.svg](../qml/js/emoji/1f469-1f3ff-200d-1f9b1.svg) |	woman: dark skin tone, curly hair |
 | ![1f9d1-200d-1f9b1.svg](../qml/js/emoji/1f9d1-200d-1f9b1.svg) |	person: curly hair |
-| ![1f9d1-1f3fb-200d-1f9b1.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9b1.svg) |	person: light skin tone, curly  |hair
-| ![1f9d1-1f3fc-200d-1f9b1.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9b1.svg) |	person: medium-light skin tone,  |curly hair
-| ![1f9d1-1f3fd-200d-1f9b1.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9b1.svg) |	person: medium skin tone, curly  |hair
-| ![1f9d1-1f3fe-200d-1f9b1.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9b1.svg) |	person: medium-dark skin tone,  |curly hair
+| ![1f9d1-1f3fb-200d-1f9b1.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9b1.svg) |	person: light skin tone, curly hair |
+| ![1f9d1-1f3fc-200d-1f9b1.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9b1.svg) |	person: medium-light skin tone, curly hair |
+| ![1f9d1-1f3fd-200d-1f9b1.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9b1.svg) |	person: medium skin tone, curly hair |
+| ![1f9d1-1f3fe-200d-1f9b1.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9b1.svg) |	person: medium-dark skin tone, curly hair |
 | ![1f9d1-1f3ff-200d-1f9b1.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f9b1.svg) |	person: dark skin tone, curly hair |
 | ![1f469-200d-1f9b3.svg](../qml/js/emoji/1f469-200d-1f9b3.svg) |	woman: white hair |
 | ![1f469-1f3fb-200d-1f9b3.svg](../qml/js/emoji/1f469-1f3fb-200d-1f9b3.svg) |	woman: light skin tone, white hair |
-| ![1f469-1f3fc-200d-1f9b3.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9b3.svg) |	woman: medium-light skin tone,  |white hair
-| ![1f469-1f3fd-200d-1f9b3.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9b3.svg) |	woman: medium skin tone, white  |hair
-| ![1f469-1f3fe-200d-1f9b3.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9b3.svg) |	woman: medium-dark skin tone,  |white hair
+| ![1f469-1f3fc-200d-1f9b3.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9b3.svg) |	woman: medium-light skin tone, white hair |
+| ![1f469-1f3fd-200d-1f9b3.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9b3.svg) |	woman: medium skin tone, white hair |
+| ![1f469-1f3fe-200d-1f9b3.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9b3.svg) |	woman: medium-dark skin tone, white hair |
 | ![1f469-1f3ff-200d-1f9b3.svg](../qml/js/emoji/1f469-1f3ff-200d-1f9b3.svg) |	woman: dark skin tone, white hair |
 | ![1f9d1-200d-1f9b3.svg](../qml/js/emoji/1f9d1-200d-1f9b3.svg) |	person: white hair |
-| ![1f9d1-1f3fb-200d-1f9b3.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9b3.svg) |	person: light skin tone, white  |hair
-| ![1f9d1-1f3fc-200d-1f9b3.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9b3.svg) |	person: medium-light skin tone,  |white hair
-| ![1f9d1-1f3fd-200d-1f9b3.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9b3.svg) |	person: medium skin tone, white  |hair
-| ![1f9d1-1f3fe-200d-1f9b3.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9b3.svg) |	person: medium-dark skin tone,  |white hair
+| ![1f9d1-1f3fb-200d-1f9b3.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9b3.svg) |	person: light skin tone, white hair |
+| ![1f9d1-1f3fc-200d-1f9b3.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9b3.svg) |	person: medium-light skin tone, white hair |
+| ![1f9d1-1f3fd-200d-1f9b3.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9b3.svg) |	person: medium skin tone, white hair |
+| ![1f9d1-1f3fe-200d-1f9b3.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9b3.svg) |	person: medium-dark skin tone, white hair |
 | ![1f9d1-1f3ff-200d-1f9b3.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f9b3.svg) |	person: dark skin tone, white hair |
 | ![1f469-200d-1f9b2.svg](../qml/js/emoji/1f469-200d-1f9b2.svg) |	woman: bald |
 | ![1f469-1f3fb-200d-1f9b2.svg](../qml/js/emoji/1f469-1f3fb-200d-1f9b2.svg) |	woman: light skin tone, bald |
-| ![1f469-1f3fc-200d-1f9b2.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9b2.svg) |	woman: medium-light skin tone,  |bald
+| ![1f469-1f3fc-200d-1f9b2.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9b2.svg) |	woman: medium-light skin tone, bald |
 | ![1f469-1f3fd-200d-1f9b2.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9b2.svg) |	woman: medium skin tone, bald |
 | ![1f469-1f3fe-200d-1f9b2.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9b2.svg) |	woman: medium-dark skin tone, bald |
 | ![1f469-1f3ff-200d-1f9b2.svg](../qml/js/emoji/1f469-1f3ff-200d-1f9b2.svg) |	woman: dark skin tone, bald |
 | ![1f9d1-200d-1f9b2.svg](../qml/js/emoji/1f9d1-200d-1f9b2.svg) |	person: bald |
 | ![1f9d1-1f3fb-200d-1f9b2.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9b2.svg) |	person: light skin tone, bald |
-| ![1f9d1-1f3fc-200d-1f9b2.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9b2.svg) |	person: medium-light skin tone,  |bald
+| ![1f9d1-1f3fc-200d-1f9b2.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9b2.svg) |	person: medium-light skin tone, bald |
 | ![1f9d1-1f3fd-200d-1f9b2.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9b2.svg) |	person: medium skin tone, bald |
-| ![1f9d1-1f3fe-200d-1f9b2.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9b2.svg) |	person: medium-dark skin tone,  |bald
+| ![1f9d1-1f3fe-200d-1f9b2.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9b2.svg) |	person: medium-dark skin tone, bald |
 | ![1f9d1-1f3ff-200d-1f9b2.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f9b2.svg) |	person: dark skin tone, bald |
 | ![1f471-200d-2640-fe0f.svg](../qml/js/emoji/1f471-200d-2640-fe0f.svg) |	woman: blond hair |
-| ![1f471-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f471-1f3fb-200d-2640-fe0f.svg) |	woman: light skin tone, blond  |hair
-| ![1f471-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f471-1f3fc-200d-2640-fe0f.svg) |	woman: medium-light skin  |tone, blond hair
-| ![1f471-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f471-1f3fd-200d-2640-fe0f.svg) |	woman: medium skin tone,  |blond hair
-| ![1f471-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f471-1f3fe-200d-2640-fe0f.svg) |	woman: medium-dark skin tone,  |blond hair
-| ![1f471-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f471-1f3ff-200d-2640-fe0f.svg) |	woman: dark skin tone, blond  |hair
+| ![1f471-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f471-1f3fb-200d-2640-fe0f.svg) |	woman: light skin tone, blond hair |
+| ![1f471-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f471-1f3fc-200d-2640-fe0f.svg) |	woman: medium-light skin tone, blond hair |
+| ![1f471-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f471-1f3fd-200d-2640-fe0f.svg) |	woman: medium skin tone, blond hair |
+| ![1f471-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f471-1f3fe-200d-2640-fe0f.svg) |	woman: medium-dark skin tone, blond hair |
+| ![1f471-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f471-1f3ff-200d-2640-fe0f.svg) |	woman: dark skin tone, blond hair |
 | ![1f471-200d-2642-fe0f.svg](../qml/js/emoji/1f471-200d-2642-fe0f.svg) |	man: blond hair |
-| ![1f471-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f471-1f3fb-200d-2642-fe0f.svg) |	man: light skin tone, blond  |hair
-| ![1f471-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f471-1f3fc-200d-2642-fe0f.svg) |	man: medium-light skin tone,  |blond hair
-| ![1f471-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f471-1f3fd-200d-2642-fe0f.svg) |	man: medium skin tone, blond  |hair
-| ![1f471-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f471-1f3fe-200d-2642-fe0f.svg) |	man: medium-dark skin tone,  |blond hair
-| ![1f471-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f471-1f3ff-200d-2642-fe0f.svg) |	man: dark skin tone, blond  |hair
+| ![1f471-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f471-1f3fb-200d-2642-fe0f.svg) |	man: light skin tone, blond hair |
+| ![1f471-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f471-1f3fc-200d-2642-fe0f.svg) |	man: medium-light skin tone, blond hair |
+| ![1f471-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f471-1f3fd-200d-2642-fe0f.svg) |	man: medium skin tone, blond hair |
+| ![1f471-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f471-1f3fe-200d-2642-fe0f.svg) |	man: medium-dark skin tone, blond hair |
+| ![1f471-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f471-1f3ff-200d-2642-fe0f.svg) |	man: dark skin tone, blond hair |
 | ![1f9d3.svg](../qml/js/emoji/1f9d3.svg) |	older person |
 | ![1f9d3-1f3fb.svg](../qml/js/emoji/1f9d3-1f3fb.svg) |	older person: light skin tone |
 | ![1f9d3-1f3fc.svg](../qml/js/emoji/1f9d3-1f3fc.svg) |	older person: medium-light skin tone |
@@ -566,15 +566,15 @@ Here's a list of the implemented emojis:
 | ![1f64d-1f3ff.svg](../qml/js/emoji/1f64d-1f3ff.svg) |	person frowning: dark skin tone |
 | ![1f64d-200d-2642-fe0f.svg](../qml/js/emoji/1f64d-200d-2642-fe0f.svg) |	man frowning |
 | ![1f64d-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f64d-1f3fb-200d-2642-fe0f.svg) |	man frowning: light skin tone |
-| ![1f64d-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f64d-1f3fc-200d-2642-fe0f.svg) |	man frowning: medium-light  |skin tone
+| ![1f64d-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f64d-1f3fc-200d-2642-fe0f.svg) |	man frowning: medium-light skin tone |
 | ![1f64d-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f64d-1f3fd-200d-2642-fe0f.svg) |	man frowning: medium skin tone |
-| ![1f64d-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f64d-1f3fe-200d-2642-fe0f.svg) |	man frowning: medium-dark  |skin tone
+| ![1f64d-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f64d-1f3fe-200d-2642-fe0f.svg) |	man frowning: medium-dark skin tone |
 | ![1f64d-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f64d-1f3ff-200d-2642-fe0f.svg) |	man frowning: dark skin tone |
 | ![1f64d-200d-2640-fe0f.svg](../qml/js/emoji/1f64d-200d-2640-fe0f.svg) |	woman frowning |
-| ![1f64d-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f64d-1f3fb-200d-2640-fe0f.svg) |	woman frowning: light skin  |tone
-| ![1f64d-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f64d-1f3fc-200d-2640-fe0f.svg) |	woman frowning: medium-light  |skin tone
-| ![1f64d-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f64d-1f3fd-200d-2640-fe0f.svg) |	woman frowning: medium skin  |tone
-| ![1f64d-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f64d-1f3fe-200d-2640-fe0f.svg) |	woman frowning: medium-dark  |skin tone
+| ![1f64d-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f64d-1f3fb-200d-2640-fe0f.svg) |	woman frowning: light skin tone |
+| ![1f64d-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f64d-1f3fc-200d-2640-fe0f.svg) |	woman frowning: medium-light skin tone |
+| ![1f64d-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f64d-1f3fd-200d-2640-fe0f.svg) |	woman frowning: medium skin tone |
+| ![1f64d-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f64d-1f3fe-200d-2640-fe0f.svg) |	woman frowning: medium-dark skin tone |
 | ![1f64d-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f64d-1f3ff-200d-2640-fe0f.svg) |	woman frowning: dark skin tone |
 | ![1f64e.svg](../qml/js/emoji/1f64e.svg) |	person pouting |
 | ![1f64e-1f3fb.svg](../qml/js/emoji/1f64e-1f3fb.svg) |	person pouting: light skin tone |
@@ -584,15 +584,15 @@ Here's a list of the implemented emojis:
 | ![1f64e-1f3ff.svg](../qml/js/emoji/1f64e-1f3ff.svg) |	person pouting: dark skin tone |
 | ![1f64e-200d-2642-fe0f.svg](../qml/js/emoji/1f64e-200d-2642-fe0f.svg) |	man pouting |
 | ![1f64e-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f64e-1f3fb-200d-2642-fe0f.svg) |	man pouting: light skin tone |
-| ![1f64e-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f64e-1f3fc-200d-2642-fe0f.svg) |	man pouting: medium-light  |skin tone
+| ![1f64e-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f64e-1f3fc-200d-2642-fe0f.svg) |	man pouting: medium-light skin tone |
 | ![1f64e-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f64e-1f3fd-200d-2642-fe0f.svg) |	man pouting: medium skin tone |
-| ![1f64e-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f64e-1f3fe-200d-2642-fe0f.svg) |	man pouting: medium-dark skin  |tone
+| ![1f64e-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f64e-1f3fe-200d-2642-fe0f.svg) |	man pouting: medium-dark skin tone |
 | ![1f64e-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f64e-1f3ff-200d-2642-fe0f.svg) |	man pouting: dark skin tone |
 | ![1f64e-200d-2640-fe0f.svg](../qml/js/emoji/1f64e-200d-2640-fe0f.svg) |	woman pouting |
 | ![1f64e-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f64e-1f3fb-200d-2640-fe0f.svg) |	woman pouting: light skin tone |
-| ![1f64e-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f64e-1f3fc-200d-2640-fe0f.svg) |	woman pouting: medium-light  |skin tone
-| ![1f64e-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f64e-1f3fd-200d-2640-fe0f.svg) |	woman pouting: medium skin  |tone
-| ![1f64e-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f64e-1f3fe-200d-2640-fe0f.svg) |	woman pouting: medium-dark  |skin tone
+| ![1f64e-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f64e-1f3fc-200d-2640-fe0f.svg) |	woman pouting: medium-light skin tone |
+| ![1f64e-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f64e-1f3fd-200d-2640-fe0f.svg) |	woman pouting: medium skin tone |
+| ![1f64e-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f64e-1f3fe-200d-2640-fe0f.svg) |	woman pouting: medium-dark skin tone |
 | ![1f64e-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f64e-1f3ff-200d-2640-fe0f.svg) |	woman pouting: dark skin tone |
 | ![1f645.svg](../qml/js/emoji/1f645.svg) |	person gesturing NO |
 | ![1f645-1f3fb.svg](../qml/js/emoji/1f645-1f3fb.svg) |	person gesturing NO: light skin tone |
@@ -601,17 +601,17 @@ Here's a list of the implemented emojis:
 | ![1f645-1f3fe.svg](../qml/js/emoji/1f645-1f3fe.svg) |	person gesturing NO: medium-dark skin tone |
 | ![1f645-1f3ff.svg](../qml/js/emoji/1f645-1f3ff.svg) |	person gesturing NO: dark skin tone |
 | ![1f645-200d-2642-fe0f.svg](../qml/js/emoji/1f645-200d-2642-fe0f.svg) |	man gesturing NO |
-| ![1f645-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f645-1f3fb-200d-2642-fe0f.svg) |	man gesturing NO: light skin  |tone
-| ![1f645-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f645-1f3fc-200d-2642-fe0f.svg) |	man gesturing NO:  |medium-light skin tone
-| ![1f645-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f645-1f3fd-200d-2642-fe0f.svg) |	man gesturing NO: medium skin  |tone
-| ![1f645-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f645-1f3fe-200d-2642-fe0f.svg) |	man gesturing NO: medium-dark  |skin tone
-| ![1f645-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f645-1f3ff-200d-2642-fe0f.svg) |	man gesturing NO: dark skin  |tone
+| ![1f645-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f645-1f3fb-200d-2642-fe0f.svg) |	man gesturing NO: light skin tone |
+| ![1f645-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f645-1f3fc-200d-2642-fe0f.svg) |	man gesturing NO: medium-light skin tone |
+| ![1f645-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f645-1f3fd-200d-2642-fe0f.svg) |	man gesturing NO: medium skin tone |
+| ![1f645-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f645-1f3fe-200d-2642-fe0f.svg) |	man gesturing NO: medium-dark skin tone |
+| ![1f645-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f645-1f3ff-200d-2642-fe0f.svg) |	man gesturing NO: dark skin tone |
 | ![1f645-200d-2640-fe0f.svg](../qml/js/emoji/1f645-200d-2640-fe0f.svg) |	woman gesturing NO |
-| ![1f645-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f645-1f3fb-200d-2640-fe0f.svg) |	woman gesturing NO: light  |skin tone
-| ![1f645-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f645-1f3fc-200d-2640-fe0f.svg) |	woman gesturing NO:  |medium-light skin tone
-| ![1f645-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f645-1f3fd-200d-2640-fe0f.svg) |	woman gesturing NO: medium  |skin tone
-| ![1f645-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f645-1f3fe-200d-2640-fe0f.svg) |	woman gesturing NO:  |medium-dark skin tone
-| ![1f645-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f645-1f3ff-200d-2640-fe0f.svg) |	woman gesturing NO: dark skin  |tone
+| ![1f645-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f645-1f3fb-200d-2640-fe0f.svg) |	woman gesturing NO: light skin tone |
+| ![1f645-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f645-1f3fc-200d-2640-fe0f.svg) |	woman gesturing NO: medium-light skin tone |
+| ![1f645-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f645-1f3fd-200d-2640-fe0f.svg) |	woman gesturing NO: medium skin tone |
+| ![1f645-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f645-1f3fe-200d-2640-fe0f.svg) |	woman gesturing NO: medium-dark skin tone |
+| ![1f645-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f645-1f3ff-200d-2640-fe0f.svg) |	woman gesturing NO: dark skin tone |
 | ![1f646.svg](../qml/js/emoji/1f646.svg) |	person gesturing OK |
 | ![1f646-1f3fb.svg](../qml/js/emoji/1f646-1f3fb.svg) |	person gesturing OK: light skin tone |
 | ![1f646-1f3fc.svg](../qml/js/emoji/1f646-1f3fc.svg) |	person gesturing OK: medium-light skin tone |
@@ -619,17 +619,17 @@ Here's a list of the implemented emojis:
 | ![1f646-1f3fe.svg](../qml/js/emoji/1f646-1f3fe.svg) |	person gesturing OK: medium-dark skin tone |
 | ![1f646-1f3ff.svg](../qml/js/emoji/1f646-1f3ff.svg) |	person gesturing OK: dark skin tone |
 | ![1f646-200d-2642-fe0f.svg](../qml/js/emoji/1f646-200d-2642-fe0f.svg) |	man gesturing OK |
-| ![1f646-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f646-1f3fb-200d-2642-fe0f.svg) |	man gesturing OK: light skin  |tone
-| ![1f646-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f646-1f3fc-200d-2642-fe0f.svg) |	man gesturing OK:  |medium-light skin tone
-| ![1f646-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f646-1f3fd-200d-2642-fe0f.svg) |	man gesturing OK: medium skin  |tone
-| ![1f646-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f646-1f3fe-200d-2642-fe0f.svg) |	man gesturing OK: medium-dark  |skin tone
-| ![1f646-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f646-1f3ff-200d-2642-fe0f.svg) |	man gesturing OK: dark skin  |tone
+| ![1f646-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f646-1f3fb-200d-2642-fe0f.svg) |	man gesturing OK: light skin tone |
+| ![1f646-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f646-1f3fc-200d-2642-fe0f.svg) |	man gesturing OK: medium-light skin tone |
+| ![1f646-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f646-1f3fd-200d-2642-fe0f.svg) |	man gesturing OK: medium skin tone |
+| ![1f646-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f646-1f3fe-200d-2642-fe0f.svg) |	man gesturing OK: medium-dark skin tone |
+| ![1f646-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f646-1f3ff-200d-2642-fe0f.svg) |	man gesturing OK: dark skin tone |
 | ![1f646-200d-2640-fe0f.svg](../qml/js/emoji/1f646-200d-2640-fe0f.svg) |	woman gesturing OK |
-| ![1f646-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f646-1f3fb-200d-2640-fe0f.svg) |	woman gesturing OK: light  |skin tone
-| ![1f646-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f646-1f3fc-200d-2640-fe0f.svg) |	woman gesturing OK:  |medium-light skin tone
-| ![1f646-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f646-1f3fd-200d-2640-fe0f.svg) |	woman gesturing OK: medium  |skin tone
-| ![1f646-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f646-1f3fe-200d-2640-fe0f.svg) |	woman gesturing OK:  |medium-dark skin tone
-| ![1f646-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f646-1f3ff-200d-2640-fe0f.svg) |	woman gesturing OK: dark skin  |tone
+| ![1f646-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f646-1f3fb-200d-2640-fe0f.svg) |	woman gesturing OK: light skin tone |
+| ![1f646-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f646-1f3fc-200d-2640-fe0f.svg) |	woman gesturing OK: medium-light skin tone |
+| ![1f646-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f646-1f3fd-200d-2640-fe0f.svg) |	woman gesturing OK: medium skin tone |
+| ![1f646-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f646-1f3fe-200d-2640-fe0f.svg) |	woman gesturing OK: medium-dark skin tone |
+| ![1f646-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f646-1f3ff-200d-2640-fe0f.svg) |	woman gesturing OK: dark skin tone |
 | ![1f481.svg](../qml/js/emoji/1f481.svg) |	person tipping hand |
 | ![1f481-1f3fb.svg](../qml/js/emoji/1f481-1f3fb.svg) |	person tipping hand: light skin tone |
 | ![1f481-1f3fc.svg](../qml/js/emoji/1f481-1f3fc.svg) |	person tipping hand: medium-light skin tone |
@@ -637,17 +637,17 @@ Here's a list of the implemented emojis:
 | ![1f481-1f3fe.svg](../qml/js/emoji/1f481-1f3fe.svg) |	person tipping hand: medium-dark skin tone |
 | ![1f481-1f3ff.svg](../qml/js/emoji/1f481-1f3ff.svg) |	person tipping hand: dark skin tone |
 | ![1f481-200d-2642-fe0f.svg](../qml/js/emoji/1f481-200d-2642-fe0f.svg) |	man tipping hand |
-| ![1f481-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f481-1f3fb-200d-2642-fe0f.svg) |	man tipping hand: light skin  |tone
-| ![1f481-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f481-1f3fc-200d-2642-fe0f.svg) |	man tipping hand:  |medium-light skin tone
-| ![1f481-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f481-1f3fd-200d-2642-fe0f.svg) |	man tipping hand: medium skin  |tone
-| ![1f481-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f481-1f3fe-200d-2642-fe0f.svg) |	man tipping hand: medium-dark  |skin tone
-| ![1f481-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f481-1f3ff-200d-2642-fe0f.svg) |	man tipping hand: dark skin  |tone
+| ![1f481-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f481-1f3fb-200d-2642-fe0f.svg) |	man tipping hand: light skin tone |
+| ![1f481-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f481-1f3fc-200d-2642-fe0f.svg) |	man tipping hand: medium-light skin tone |
+| ![1f481-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f481-1f3fd-200d-2642-fe0f.svg) |	man tipping hand: medium skin tone |
+| ![1f481-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f481-1f3fe-200d-2642-fe0f.svg) |	man tipping hand: medium-dark skin tone |
+| ![1f481-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f481-1f3ff-200d-2642-fe0f.svg) |	man tipping hand: dark skin tone |
 | ![1f481-200d-2640-fe0f.svg](../qml/js/emoji/1f481-200d-2640-fe0f.svg) |	woman tipping hand |
-| ![1f481-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f481-1f3fb-200d-2640-fe0f.svg) |	woman tipping hand: light  |skin tone
-| ![1f481-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f481-1f3fc-200d-2640-fe0f.svg) |	woman tipping hand:  |medium-light skin tone
-| ![1f481-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f481-1f3fd-200d-2640-fe0f.svg) |	woman tipping hand: medium  |skin tone
-| ![1f481-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f481-1f3fe-200d-2640-fe0f.svg) |	woman tipping hand:  |medium-dark skin tone
-| ![1f481-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f481-1f3ff-200d-2640-fe0f.svg) |	woman tipping hand: dark skin  |tone
+| ![1f481-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f481-1f3fb-200d-2640-fe0f.svg) |	woman tipping hand: light skin tone |
+| ![1f481-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f481-1f3fc-200d-2640-fe0f.svg) |	woman tipping hand: medium-light skin tone |
+| ![1f481-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f481-1f3fd-200d-2640-fe0f.svg) |	woman tipping hand: medium skin tone |
+| ![1f481-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f481-1f3fe-200d-2640-fe0f.svg) |	woman tipping hand: medium-dark skin tone |
+| ![1f481-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f481-1f3ff-200d-2640-fe0f.svg) |	woman tipping hand: dark skin tone |
 | ![1f64b.svg](../qml/js/emoji/1f64b.svg) |	person raising hand |
 | ![1f64b-1f3fb.svg](../qml/js/emoji/1f64b-1f3fb.svg) |	person raising hand: light skin tone |
 | ![1f64b-1f3fc.svg](../qml/js/emoji/1f64b-1f3fc.svg) |	person raising hand: medium-light skin tone |
@@ -655,17 +655,17 @@ Here's a list of the implemented emojis:
 | ![1f64b-1f3fe.svg](../qml/js/emoji/1f64b-1f3fe.svg) |	person raising hand: medium-dark skin tone |
 | ![1f64b-1f3ff.svg](../qml/js/emoji/1f64b-1f3ff.svg) |	person raising hand: dark skin tone |
 | ![1f64b-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-200d-2642-fe0f.svg) |	man raising hand |
-| ![1f64b-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-1f3fb-200d-2642-fe0f.svg) |	man raising hand: light skin  |tone
-| ![1f64b-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-1f3fc-200d-2642-fe0f.svg) |	man raising hand:  |medium-light skin tone
-| ![1f64b-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-1f3fd-200d-2642-fe0f.svg) |	man raising hand: medium skin  |tone
-| ![1f64b-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-1f3fe-200d-2642-fe0f.svg) |	man raising hand: medium-dark  |skin tone
-| ![1f64b-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-1f3ff-200d-2642-fe0f.svg) |	man raising hand: dark skin  |tone
+| ![1f64b-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-1f3fb-200d-2642-fe0f.svg) |	man raising hand: light skin tone |
+| ![1f64b-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-1f3fc-200d-2642-fe0f.svg) |	man raising hand: medium-light skin tone |
+| ![1f64b-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-1f3fd-200d-2642-fe0f.svg) |	man raising hand: medium skin tone |
+| ![1f64b-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-1f3fe-200d-2642-fe0f.svg) |	man raising hand: medium-dark skin tone |
+| ![1f64b-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f64b-1f3ff-200d-2642-fe0f.svg) |	man raising hand: dark skin tone |
 | ![1f64b-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-200d-2640-fe0f.svg) |	woman raising hand |
-| ![1f64b-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-1f3fb-200d-2640-fe0f.svg) |	woman raising hand: light  |skin tone
-| ![1f64b-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-1f3fc-200d-2640-fe0f.svg) |	woman raising hand:  |medium-light skin tone
-| ![1f64b-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-1f3fd-200d-2640-fe0f.svg) |	woman raising hand: medium  |skin tone
-| ![1f64b-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-1f3fe-200d-2640-fe0f.svg) |	woman raising hand:  |medium-dark skin tone
-| ![1f64b-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-1f3ff-200d-2640-fe0f.svg) |	woman raising hand: dark skin  |tone
+| ![1f64b-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-1f3fb-200d-2640-fe0f.svg) |	woman raising hand: light skin tone |
+| ![1f64b-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-1f3fc-200d-2640-fe0f.svg) |	woman raising hand: medium-light skin tone |
+| ![1f64b-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-1f3fd-200d-2640-fe0f.svg) |	woman raising hand: medium skin tone |
+| ![1f64b-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-1f3fe-200d-2640-fe0f.svg) |	woman raising hand: medium-dark skin tone |
+| ![1f64b-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f64b-1f3ff-200d-2640-fe0f.svg) |	woman raising hand: dark skin tone |
 | ![1f9cf.svg](../qml/js/emoji/1f9cf.svg) |	deaf person |
 | ![1f9cf-1f3fb.svg](../qml/js/emoji/1f9cf-1f3fb.svg) |	deaf person: light skin tone |
 | ![1f9cf-1f3fc.svg](../qml/js/emoji/1f9cf-1f3fc.svg) |	deaf person: medium-light skin tone |
@@ -674,15 +674,15 @@ Here's a list of the implemented emojis:
 | ![1f9cf-1f3ff.svg](../qml/js/emoji/1f9cf-1f3ff.svg) |	deaf person: dark skin tone |
 | ![1f9cf-200d-2642-fe0f.svg](../qml/js/emoji/1f9cf-200d-2642-fe0f.svg) |	deaf man |
 | ![1f9cf-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9cf-1f3fb-200d-2642-fe0f.svg) |	deaf man: light skin tone |
-| ![1f9cf-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9cf-1f3fc-200d-2642-fe0f.svg) |	deaf man: medium-light skin  |tone
+| ![1f9cf-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9cf-1f3fc-200d-2642-fe0f.svg) |	deaf man: medium-light skin tone |
 | ![1f9cf-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9cf-1f3fd-200d-2642-fe0f.svg) |	deaf man: medium skin tone |
-| ![1f9cf-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9cf-1f3fe-200d-2642-fe0f.svg) |	deaf man: medium-dark skin  |tone
+| ![1f9cf-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9cf-1f3fe-200d-2642-fe0f.svg) |	deaf man: medium-dark skin tone |
 | ![1f9cf-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9cf-1f3ff-200d-2642-fe0f.svg) |	deaf man: dark skin tone |
 | ![1f9cf-200d-2640-fe0f.svg](../qml/js/emoji/1f9cf-200d-2640-fe0f.svg) |	deaf woman |
 | ![1f9cf-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9cf-1f3fb-200d-2640-fe0f.svg) |	deaf woman: light skin tone |
-| ![1f9cf-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9cf-1f3fc-200d-2640-fe0f.svg) |	deaf woman: medium-light skin  |tone
+| ![1f9cf-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9cf-1f3fc-200d-2640-fe0f.svg) |	deaf woman: medium-light skin tone |
 | ![1f9cf-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9cf-1f3fd-200d-2640-fe0f.svg) |	deaf woman: medium skin tone |
-| ![1f9cf-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9cf-1f3fe-200d-2640-fe0f.svg) |	deaf woman: medium-dark skin  |tone
+| ![1f9cf-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9cf-1f3fe-200d-2640-fe0f.svg) |	deaf woman: medium-dark skin tone |
 | ![1f9cf-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9cf-1f3ff-200d-2640-fe0f.svg) |	deaf woman: dark skin tone |
 | ![1f647.svg](../qml/js/emoji/1f647.svg) |	person bowing |
 | ![1f647-1f3fb.svg](../qml/js/emoji/1f647-1f3fb.svg) |	person bowing: light skin tone |
@@ -692,15 +692,15 @@ Here's a list of the implemented emojis:
 | ![1f647-1f3ff.svg](../qml/js/emoji/1f647-1f3ff.svg) |	person bowing: dark skin tone |
 | ![1f647-200d-2642-fe0f.svg](../qml/js/emoji/1f647-200d-2642-fe0f.svg) |	man bowing |
 | ![1f647-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f647-1f3fb-200d-2642-fe0f.svg) |	man bowing: light skin tone |
-| ![1f647-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f647-1f3fc-200d-2642-fe0f.svg) |	man bowing: medium-light skin  |tone
+| ![1f647-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f647-1f3fc-200d-2642-fe0f.svg) |	man bowing: medium-light skin tone |
 | ![1f647-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f647-1f3fd-200d-2642-fe0f.svg) |	man bowing: medium skin tone |
-| ![1f647-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f647-1f3fe-200d-2642-fe0f.svg) |	man bowing: medium-dark skin  |tone
+| ![1f647-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f647-1f3fe-200d-2642-fe0f.svg) |	man bowing: medium-dark skin tone |
 | ![1f647-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f647-1f3ff-200d-2642-fe0f.svg) |	man bowing: dark skin tone |
 | ![1f647-200d-2640-fe0f.svg](../qml/js/emoji/1f647-200d-2640-fe0f.svg) |	woman bowing |
 | ![1f647-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f647-1f3fb-200d-2640-fe0f.svg) |	woman bowing: light skin tone |
-| ![1f647-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f647-1f3fc-200d-2640-fe0f.svg) |	woman bowing: medium-light  |skin tone
+| ![1f647-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f647-1f3fc-200d-2640-fe0f.svg) |	woman bowing: medium-light skin tone |
 | ![1f647-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f647-1f3fd-200d-2640-fe0f.svg) |	woman bowing: medium skin tone |
-| ![1f647-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f647-1f3fe-200d-2640-fe0f.svg) |	woman bowing: medium-dark  |skin tone
+| ![1f647-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f647-1f3fe-200d-2640-fe0f.svg) |	woman bowing: medium-dark skin tone |
 | ![1f647-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f647-1f3ff-200d-2640-fe0f.svg) |	woman bowing: dark skin tone |
 | ![1f926.svg](../qml/js/emoji/1f926.svg) |	person facepalming |
 | ![1f926-1f3fb.svg](../qml/js/emoji/1f926-1f3fb.svg) |	person facepalming: light skin tone |
@@ -709,17 +709,17 @@ Here's a list of the implemented emojis:
 | ![1f926-1f3fe.svg](../qml/js/emoji/1f926-1f3fe.svg) |	person facepalming: medium-dark skin tone |
 | ![1f926-1f3ff.svg](../qml/js/emoji/1f926-1f3ff.svg) |	person facepalming: dark skin tone |
 | ![1f926-200d-2642-fe0f.svg](../qml/js/emoji/1f926-200d-2642-fe0f.svg) |	man facepalming |
-| ![1f926-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f926-1f3fb-200d-2642-fe0f.svg) |	man facepalming: light skin  |tone
-| ![1f926-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f926-1f3fc-200d-2642-fe0f.svg) |	man facepalming: medium-light  |skin tone
-| ![1f926-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f926-1f3fd-200d-2642-fe0f.svg) |	man facepalming: medium skin  |tone
-| ![1f926-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f926-1f3fe-200d-2642-fe0f.svg) |	man facepalming: medium-dark  |skin tone
-| ![1f926-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f926-1f3ff-200d-2642-fe0f.svg) |	man facepalming: dark skin  |tone
+| ![1f926-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f926-1f3fb-200d-2642-fe0f.svg) |	man facepalming: light skin tone |
+| ![1f926-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f926-1f3fc-200d-2642-fe0f.svg) |	man facepalming: medium-light skin tone |
+| ![1f926-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f926-1f3fd-200d-2642-fe0f.svg) |	man facepalming: medium skin tone |
+| ![1f926-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f926-1f3fe-200d-2642-fe0f.svg) |	man facepalming: medium-dark skin tone |
+| ![1f926-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f926-1f3ff-200d-2642-fe0f.svg) |	man facepalming: dark skin tone |
 | ![1f926-200d-2640-fe0f.svg](../qml/js/emoji/1f926-200d-2640-fe0f.svg) |	woman facepalming |
-| ![1f926-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f926-1f3fb-200d-2640-fe0f.svg) |	woman facepalming: light skin  |tone
-| ![1f926-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f926-1f3fc-200d-2640-fe0f.svg) |	woman facepalming:  |medium-light skin tone
-| ![1f926-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f926-1f3fd-200d-2640-fe0f.svg) |	woman facepalming: medium  |skin tone
-| ![1f926-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f926-1f3fe-200d-2640-fe0f.svg) |	woman facepalming:  |medium-dark skin tone
-| ![1f926-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f926-1f3ff-200d-2640-fe0f.svg) |	woman facepalming: dark skin  |tone
+| ![1f926-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f926-1f3fb-200d-2640-fe0f.svg) |	woman facepalming: light skin tone |
+| ![1f926-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f926-1f3fc-200d-2640-fe0f.svg) |	woman facepalming: medium-light skin tone |
+| ![1f926-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f926-1f3fd-200d-2640-fe0f.svg) |	woman facepalming: medium skin tone |
+| ![1f926-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f926-1f3fe-200d-2640-fe0f.svg) |	woman facepalming: medium-dark skin tone |
+| ![1f926-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f926-1f3ff-200d-2640-fe0f.svg) |	woman facepalming: dark skin tone |
 | ![1f937.svg](../qml/js/emoji/1f937.svg) |	person shrugging |
 | ![1f937-1f3fb.svg](../qml/js/emoji/1f937-1f3fb.svg) |	person shrugging: light skin tone |
 | ![1f937-1f3fc.svg](../qml/js/emoji/1f937-1f3fc.svg) |	person shrugging: medium-light skin tone |
@@ -728,34 +728,34 @@ Here's a list of the implemented emojis:
 | ![1f937-1f3ff.svg](../qml/js/emoji/1f937-1f3ff.svg) |	person shrugging: dark skin tone |
 | ![1f937-200d-2642-fe0f.svg](../qml/js/emoji/1f937-200d-2642-fe0f.svg) |	man shrugging |
 | ![1f937-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f937-1f3fb-200d-2642-fe0f.svg) |	man shrugging: light skin tone |
-| ![1f937-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f937-1f3fc-200d-2642-fe0f.svg) |	man shrugging: medium-light  |skin tone
-| ![1f937-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f937-1f3fd-200d-2642-fe0f.svg) |	man shrugging: medium skin  |tone
-| ![1f937-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f937-1f3fe-200d-2642-fe0f.svg) |	man shrugging: medium-dark  |skin tone
+| ![1f937-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f937-1f3fc-200d-2642-fe0f.svg) |	man shrugging: medium-light skin tone |
+| ![1f937-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f937-1f3fd-200d-2642-fe0f.svg) |	man shrugging: medium skin tone |
+| ![1f937-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f937-1f3fe-200d-2642-fe0f.svg) |	man shrugging: medium-dark skin tone |
 | ![1f937-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f937-1f3ff-200d-2642-fe0f.svg) |	man shrugging: dark skin tone |
 | ![1f937-200d-2640-fe0f.svg](../qml/js/emoji/1f937-200d-2640-fe0f.svg) |	woman shrugging |
-| ![1f937-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f937-1f3fb-200d-2640-fe0f.svg) |	woman shrugging: light skin  |tone
-| ![1f937-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f937-1f3fc-200d-2640-fe0f.svg) |	woman shrugging: medium-light  |skin tone
-| ![1f937-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f937-1f3fd-200d-2640-fe0f.svg) |	woman shrugging: medium skin  |tone
-| ![1f937-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f937-1f3fe-200d-2640-fe0f.svg) |	woman shrugging: medium-dark  |skin tone
-| ![1f937-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f937-1f3ff-200d-2640-fe0f.svg) |	woman shrugging: dark skin  |tone
+| ![1f937-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f937-1f3fb-200d-2640-fe0f.svg) |	woman shrugging: light skin tone |
+| ![1f937-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f937-1f3fc-200d-2640-fe0f.svg) |	woman shrugging: medium-light skin tone |
+| ![1f937-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f937-1f3fd-200d-2640-fe0f.svg) |	woman shrugging: medium skin tone |
+| ![1f937-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f937-1f3fe-200d-2640-fe0f.svg) |	woman shrugging: medium-dark skin tone |
+| ![1f937-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f937-1f3ff-200d-2640-fe0f.svg) |	woman shrugging: dark skin tone |
 | ![1f9d1-200d-2695-fe0f.svg](../qml/js/emoji/1f9d1-200d-2695-fe0f.svg) |	health worker |
 | ![1f9d1-1f3fb-200d-2695-fe0f.svg](../qml/js/emoji/1f9d1-1f3fb-200d-2695-fe0f.svg) |	health worker: light skin tone |
-| ![1f9d1-1f3fc-200d-2695-fe0f.svg](../qml/js/emoji/1f9d1-1f3fc-200d-2695-fe0f.svg) |	health worker: medium-light  |skin tone
-| ![1f9d1-1f3fd-200d-2695-fe0f.svg](../qml/js/emoji/1f9d1-1f3fd-200d-2695-fe0f.svg) |	health worker: medium skin  |tone
-| ![1f9d1-1f3fe-200d-2695-fe0f.svg](../qml/js/emoji/1f9d1-1f3fe-200d-2695-fe0f.svg) |	health worker: medium-dark  |skin tone
+| ![1f9d1-1f3fc-200d-2695-fe0f.svg](../qml/js/emoji/1f9d1-1f3fc-200d-2695-fe0f.svg) |	health worker: medium-light skin tone |
+| ![1f9d1-1f3fd-200d-2695-fe0f.svg](../qml/js/emoji/1f9d1-1f3fd-200d-2695-fe0f.svg) |	health worker: medium skin tone |
+| ![1f9d1-1f3fe-200d-2695-fe0f.svg](../qml/js/emoji/1f9d1-1f3fe-200d-2695-fe0f.svg) |	health worker: medium-dark skin tone |
 | ![1f9d1-1f3ff-200d-2695-fe0f.svg](../qml/js/emoji/1f9d1-1f3ff-200d-2695-fe0f.svg) |	health worker: dark skin tone |
 | ![1f468-200d-2695-fe0f.svg](../qml/js/emoji/1f468-200d-2695-fe0f.svg) |	man health worker |
-| ![1f468-1f3fb-200d-2695-fe0f.svg](../qml/js/emoji/1f468-1f3fb-200d-2695-fe0f.svg) |	man health worker: light skin  |tone
-| ![1f468-1f3fc-200d-2695-fe0f.svg](../qml/js/emoji/1f468-1f3fc-200d-2695-fe0f.svg) |	man health worker:  |medium-light skin tone
-| ![1f468-1f3fd-200d-2695-fe0f.svg](../qml/js/emoji/1f468-1f3fd-200d-2695-fe0f.svg) |	man health worker: medium  |skin tone
-| ![1f468-1f3fe-200d-2695-fe0f.svg](../qml/js/emoji/1f468-1f3fe-200d-2695-fe0f.svg) |	man health worker:  |medium-dark skin tone
-| ![1f468-1f3ff-200d-2695-fe0f.svg](../qml/js/emoji/1f468-1f3ff-200d-2695-fe0f.svg) |	man health worker: dark skin  |tone
+| ![1f468-1f3fb-200d-2695-fe0f.svg](../qml/js/emoji/1f468-1f3fb-200d-2695-fe0f.svg) |	man health worker: light skin tone |
+| ![1f468-1f3fc-200d-2695-fe0f.svg](../qml/js/emoji/1f468-1f3fc-200d-2695-fe0f.svg) |	man health worker: medium-light skin tone |
+| ![1f468-1f3fd-200d-2695-fe0f.svg](../qml/js/emoji/1f468-1f3fd-200d-2695-fe0f.svg) |	man health worker: medium skin tone |
+| ![1f468-1f3fe-200d-2695-fe0f.svg](../qml/js/emoji/1f468-1f3fe-200d-2695-fe0f.svg) |	man health worker: medium-dark skin tone |
+| ![1f468-1f3ff-200d-2695-fe0f.svg](../qml/js/emoji/1f468-1f3ff-200d-2695-fe0f.svg) |	man health worker: dark skin tone |
 | ![1f469-200d-2695-fe0f.svg](../qml/js/emoji/1f469-200d-2695-fe0f.svg) |	woman health worker |
-| ![1f469-1f3fb-200d-2695-fe0f.svg](../qml/js/emoji/1f469-1f3fb-200d-2695-fe0f.svg) |	woman health worker: light  |skin tone
-| ![1f469-1f3fc-200d-2695-fe0f.svg](../qml/js/emoji/1f469-1f3fc-200d-2695-fe0f.svg) |	woman health worker:  |medium-light skin tone
-| ![1f469-1f3fd-200d-2695-fe0f.svg](../qml/js/emoji/1f469-1f3fd-200d-2695-fe0f.svg) |	woman health worker: medium  |skin tone
-| ![1f469-1f3fe-200d-2695-fe0f.svg](../qml/js/emoji/1f469-1f3fe-200d-2695-fe0f.svg) |	woman health worker:  |medium-dark skin tone
-| ![1f469-1f3ff-200d-2695-fe0f.svg](../qml/js/emoji/1f469-1f3ff-200d-2695-fe0f.svg) |	woman health worker: dark  |skin tone
+| ![1f469-1f3fb-200d-2695-fe0f.svg](../qml/js/emoji/1f469-1f3fb-200d-2695-fe0f.svg) |	woman health worker: light skin tone |
+| ![1f469-1f3fc-200d-2695-fe0f.svg](../qml/js/emoji/1f469-1f3fc-200d-2695-fe0f.svg) |	woman health worker: medium-light skin tone |
+| ![1f469-1f3fd-200d-2695-fe0f.svg](../qml/js/emoji/1f469-1f3fd-200d-2695-fe0f.svg) |	woman health worker: medium skin tone |
+| ![1f469-1f3fe-200d-2695-fe0f.svg](../qml/js/emoji/1f469-1f3fe-200d-2695-fe0f.svg) |	woman health worker: medium-dark skin tone |
+| ![1f469-1f3ff-200d-2695-fe0f.svg](../qml/js/emoji/1f469-1f3ff-200d-2695-fe0f.svg) |	woman health worker: dark skin tone |
 | ![1f9d1-200d-1f393.svg](../qml/js/emoji/1f9d1-200d-1f393.svg) |	student |
 | ![1f9d1-1f3fb-200d-1f393.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f393.svg) |	student: light skin tone |
 | ![1f9d1-1f3fc-200d-1f393.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f393.svg) |	student: medium-light skin tone |
@@ -764,15 +764,15 @@ Here's a list of the implemented emojis:
 | ![1f9d1-1f3ff-200d-1f393.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f393.svg) |	student: dark skin tone |
 | ![1f468-200d-1f393.svg](../qml/js/emoji/1f468-200d-1f393.svg) |	man student |
 | ![1f468-1f3fb-200d-1f393.svg](../qml/js/emoji/1f468-1f3fb-200d-1f393.svg) |	man student: light skin tone |
-| ![1f468-1f3fc-200d-1f393.svg](../qml/js/emoji/1f468-1f3fc-200d-1f393.svg) |	man student: medium-light skin  |tone
+| ![1f468-1f3fc-200d-1f393.svg](../qml/js/emoji/1f468-1f3fc-200d-1f393.svg) |	man student: medium-light skin tone |
 | ![1f468-1f3fd-200d-1f393.svg](../qml/js/emoji/1f468-1f3fd-200d-1f393.svg) |	man student: medium skin tone |
 | ![1f468-1f3fe-200d-1f393.svg](../qml/js/emoji/1f468-1f3fe-200d-1f393.svg) |	man student: medium-dark skin tone |
 | ![1f468-1f3ff-200d-1f393.svg](../qml/js/emoji/1f468-1f3ff-200d-1f393.svg) |	man student: dark skin tone |
 | ![1f469-200d-1f393.svg](../qml/js/emoji/1f469-200d-1f393.svg) |	woman student |
 | ![1f469-1f3fb-200d-1f393.svg](../qml/js/emoji/1f469-1f3fb-200d-1f393.svg) |	woman student: light skin tone |
-| ![1f469-1f3fc-200d-1f393.svg](../qml/js/emoji/1f469-1f3fc-200d-1f393.svg) |	woman student: medium-light skin  |tone
+| ![1f469-1f3fc-200d-1f393.svg](../qml/js/emoji/1f469-1f3fc-200d-1f393.svg) |	woman student: medium-light skin tone |
 | ![1f469-1f3fd-200d-1f393.svg](../qml/js/emoji/1f469-1f3fd-200d-1f393.svg) |	woman student: medium skin tone |
-| ![1f469-1f3fe-200d-1f393.svg](../qml/js/emoji/1f469-1f3fe-200d-1f393.svg) |	woman student: medium-dark skin  |tone
+| ![1f469-1f3fe-200d-1f393.svg](../qml/js/emoji/1f469-1f3fe-200d-1f393.svg) |	woman student: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f393.svg](../qml/js/emoji/1f469-1f3ff-200d-1f393.svg) |	woman student: dark skin tone |
 | ![1f9d1-200d-1f3eb.svg](../qml/js/emoji/1f9d1-200d-1f3eb.svg) |	teacher |
 | ![1f9d1-1f3fb-200d-1f3eb.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f3eb.svg) |	teacher: light skin tone |
@@ -782,15 +782,15 @@ Here's a list of the implemented emojis:
 | ![1f9d1-1f3ff-200d-1f3eb.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f3eb.svg) |	teacher: dark skin tone |
 | ![1f468-200d-1f3eb.svg](../qml/js/emoji/1f468-200d-1f3eb.svg) |	man teacher |
 | ![1f468-1f3fb-200d-1f3eb.svg](../qml/js/emoji/1f468-1f3fb-200d-1f3eb.svg) |	man teacher: light skin tone |
-| ![1f468-1f3fc-200d-1f3eb.svg](../qml/js/emoji/1f468-1f3fc-200d-1f3eb.svg) |	man teacher: medium-light skin  |tone
+| ![1f468-1f3fc-200d-1f3eb.svg](../qml/js/emoji/1f468-1f3fc-200d-1f3eb.svg) |	man teacher: medium-light skin tone |
 | ![1f468-1f3fd-200d-1f3eb.svg](../qml/js/emoji/1f468-1f3fd-200d-1f3eb.svg) |	man teacher: medium skin tone |
 | ![1f468-1f3fe-200d-1f3eb.svg](../qml/js/emoji/1f468-1f3fe-200d-1f3eb.svg) |	man teacher: medium-dark skin tone |
 | ![1f468-1f3ff-200d-1f3eb.svg](../qml/js/emoji/1f468-1f3ff-200d-1f3eb.svg) |	man teacher: dark skin tone |
 | ![1f469-200d-1f3eb.svg](../qml/js/emoji/1f469-200d-1f3eb.svg) |	woman teacher |
 | ![1f469-1f3fb-200d-1f3eb.svg](../qml/js/emoji/1f469-1f3fb-200d-1f3eb.svg) |	woman teacher: light skin tone |
-| ![1f469-1f3fc-200d-1f3eb.svg](../qml/js/emoji/1f469-1f3fc-200d-1f3eb.svg) |	woman teacher: medium-light skin  |tone
+| ![1f469-1f3fc-200d-1f3eb.svg](../qml/js/emoji/1f469-1f3fc-200d-1f3eb.svg) |	woman teacher: medium-light skin tone |
 | ![1f469-1f3fd-200d-1f3eb.svg](../qml/js/emoji/1f469-1f3fd-200d-1f3eb.svg) |	woman teacher: medium skin tone |
-| ![1f469-1f3fe-200d-1f3eb.svg](../qml/js/emoji/1f469-1f3fe-200d-1f3eb.svg) |	woman teacher: medium-dark skin  |tone
+| ![1f469-1f3fe-200d-1f3eb.svg](../qml/js/emoji/1f469-1f3fe-200d-1f3eb.svg) |	woman teacher: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f3eb.svg](../qml/js/emoji/1f469-1f3ff-200d-1f3eb.svg) |	woman teacher: dark skin tone |
 | ![1f9d1-200d-2696-fe0f.svg](../qml/js/emoji/1f9d1-200d-2696-fe0f.svg) |	judge |
 | ![1f9d1-1f3fb-200d-2696-fe0f.svg](../qml/js/emoji/1f9d1-1f3fb-200d-2696-fe0f.svg) |	judge: light skin tone |
@@ -800,15 +800,15 @@ Here's a list of the implemented emojis:
 | ![1f9d1-1f3ff-200d-2696-fe0f.svg](../qml/js/emoji/1f9d1-1f3ff-200d-2696-fe0f.svg) |	judge: dark skin tone |
 | ![1f468-200d-2696-fe0f.svg](../qml/js/emoji/1f468-200d-2696-fe0f.svg) |	man judge |
 | ![1f468-1f3fb-200d-2696-fe0f.svg](../qml/js/emoji/1f468-1f3fb-200d-2696-fe0f.svg) |	man judge: light skin tone |
-| ![1f468-1f3fc-200d-2696-fe0f.svg](../qml/js/emoji/1f468-1f3fc-200d-2696-fe0f.svg) |	man judge: medium-light skin  |tone
+| ![1f468-1f3fc-200d-2696-fe0f.svg](../qml/js/emoji/1f468-1f3fc-200d-2696-fe0f.svg) |	man judge: medium-light skin tone |
 | ![1f468-1f3fd-200d-2696-fe0f.svg](../qml/js/emoji/1f468-1f3fd-200d-2696-fe0f.svg) |	man judge: medium skin tone |
-| ![1f468-1f3fe-200d-2696-fe0f.svg](../qml/js/emoji/1f468-1f3fe-200d-2696-fe0f.svg) |	man judge: medium-dark skin  |tone
+| ![1f468-1f3fe-200d-2696-fe0f.svg](../qml/js/emoji/1f468-1f3fe-200d-2696-fe0f.svg) |	man judge: medium-dark skin tone |
 | ![1f468-1f3ff-200d-2696-fe0f.svg](../qml/js/emoji/1f468-1f3ff-200d-2696-fe0f.svg) |	man judge: dark skin tone |
 | ![1f469-200d-2696-fe0f.svg](../qml/js/emoji/1f469-200d-2696-fe0f.svg) |	woman judge |
 | ![1f469-1f3fb-200d-2696-fe0f.svg](../qml/js/emoji/1f469-1f3fb-200d-2696-fe0f.svg) |	woman judge: light skin tone |
-| ![1f469-1f3fc-200d-2696-fe0f.svg](../qml/js/emoji/1f469-1f3fc-200d-2696-fe0f.svg) |	woman judge: medium-light  |skin tone
+| ![1f469-1f3fc-200d-2696-fe0f.svg](../qml/js/emoji/1f469-1f3fc-200d-2696-fe0f.svg) |	woman judge: medium-light skin tone |
 | ![1f469-1f3fd-200d-2696-fe0f.svg](../qml/js/emoji/1f469-1f3fd-200d-2696-fe0f.svg) |	woman judge: medium skin tone |
-| ![1f469-1f3fe-200d-2696-fe0f.svg](../qml/js/emoji/1f469-1f3fe-200d-2696-fe0f.svg) |	woman judge: medium-dark skin  |tone
+| ![1f469-1f3fe-200d-2696-fe0f.svg](../qml/js/emoji/1f469-1f3fe-200d-2696-fe0f.svg) |	woman judge: medium-dark skin tone |
 | ![1f469-1f3ff-200d-2696-fe0f.svg](../qml/js/emoji/1f469-1f3ff-200d-2696-fe0f.svg) |	woman judge: dark skin tone |
 | ![1f9d1-200d-1f33e.svg](../qml/js/emoji/1f9d1-200d-1f33e.svg) |	farmer |
 | ![1f9d1-1f3fb-200d-1f33e.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f33e.svg) |	farmer: light skin tone |
@@ -824,9 +824,9 @@ Here's a list of the implemented emojis:
 | ![1f468-1f3ff-200d-1f33e.svg](../qml/js/emoji/1f468-1f3ff-200d-1f33e.svg) |	man farmer: dark skin tone |
 | ![1f469-200d-1f33e.svg](../qml/js/emoji/1f469-200d-1f33e.svg) |	woman farmer |
 | ![1f469-1f3fb-200d-1f33e.svg](../qml/js/emoji/1f469-1f3fb-200d-1f33e.svg) |	woman farmer: light skin tone |
-| ![1f469-1f3fc-200d-1f33e.svg](../qml/js/emoji/1f469-1f3fc-200d-1f33e.svg) |	woman farmer: medium-light skin  |tone
+| ![1f469-1f3fc-200d-1f33e.svg](../qml/js/emoji/1f469-1f3fc-200d-1f33e.svg) |	woman farmer: medium-light skin tone |
 | ![1f469-1f3fd-200d-1f33e.svg](../qml/js/emoji/1f469-1f3fd-200d-1f33e.svg) |	woman farmer: medium skin tone |
-| ![1f469-1f3fe-200d-1f33e.svg](../qml/js/emoji/1f469-1f3fe-200d-1f33e.svg) |	woman farmer: medium-dark skin  |tone
+| ![1f469-1f3fe-200d-1f33e.svg](../qml/js/emoji/1f469-1f3fe-200d-1f33e.svg) |	woman farmer: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f33e.svg](../qml/js/emoji/1f469-1f3ff-200d-1f33e.svg) |	woman farmer: dark skin tone |
 | ![1f9d1-200d-1f373.svg](../qml/js/emoji/1f9d1-200d-1f373.svg) |	cook |
 | ![1f9d1-1f3fb-200d-1f373.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f373.svg) |	cook: light skin tone |
@@ -854,52 +854,52 @@ Here's a list of the implemented emojis:
 | ![1f9d1-1f3ff-200d-1f527.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f527.svg) |	mechanic: dark skin tone |
 | ![1f468-200d-1f527.svg](../qml/js/emoji/1f468-200d-1f527.svg) |	man mechanic |
 | ![1f468-1f3fb-200d-1f527.svg](../qml/js/emoji/1f468-1f3fb-200d-1f527.svg) |	man mechanic: light skin tone |
-| ![1f468-1f3fc-200d-1f527.svg](../qml/js/emoji/1f468-1f3fc-200d-1f527.svg) |	man mechanic: medium-light skin  |tone
+| ![1f468-1f3fc-200d-1f527.svg](../qml/js/emoji/1f468-1f3fc-200d-1f527.svg) |	man mechanic: medium-light skin tone |
 | ![1f468-1f3fd-200d-1f527.svg](../qml/js/emoji/1f468-1f3fd-200d-1f527.svg) |	man mechanic: medium skin tone |
-| ![1f468-1f3fe-200d-1f527.svg](../qml/js/emoji/1f468-1f3fe-200d-1f527.svg) |	man mechanic: medium-dark skin  |tone
+| ![1f468-1f3fe-200d-1f527.svg](../qml/js/emoji/1f468-1f3fe-200d-1f527.svg) |	man mechanic: medium-dark skin tone |
 | ![1f468-1f3ff-200d-1f527.svg](../qml/js/emoji/1f468-1f3ff-200d-1f527.svg) |	man mechanic: dark skin tone |
 | ![1f469-200d-1f527.svg](../qml/js/emoji/1f469-200d-1f527.svg) |	woman mechanic |
 | ![1f469-1f3fb-200d-1f527.svg](../qml/js/emoji/1f469-1f3fb-200d-1f527.svg) |	woman mechanic: light skin tone |
-| ![1f469-1f3fc-200d-1f527.svg](../qml/js/emoji/1f469-1f3fc-200d-1f527.svg) |	woman mechanic: medium-light skin  |tone
+| ![1f469-1f3fc-200d-1f527.svg](../qml/js/emoji/1f469-1f3fc-200d-1f527.svg) |	woman mechanic: medium-light skin tone |
 | ![1f469-1f3fd-200d-1f527.svg](../qml/js/emoji/1f469-1f3fd-200d-1f527.svg) |	woman mechanic: medium skin tone |
-| ![1f469-1f3fe-200d-1f527.svg](../qml/js/emoji/1f469-1f3fe-200d-1f527.svg) |	woman mechanic: medium-dark skin  |tone
+| ![1f469-1f3fe-200d-1f527.svg](../qml/js/emoji/1f469-1f3fe-200d-1f527.svg) |	woman mechanic: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f527.svg](../qml/js/emoji/1f469-1f3ff-200d-1f527.svg) |	woman mechanic: dark skin tone |
 | ![1f9d1-200d-1f3ed.svg](../qml/js/emoji/1f9d1-200d-1f3ed.svg) |	factory worker |
 | ![1f9d1-1f3fb-200d-1f3ed.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f3ed.svg) |	factory worker: light skin tone |
-| ![1f9d1-1f3fc-200d-1f3ed.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f3ed.svg) |	factory worker: medium-light skin  |tone
+| ![1f9d1-1f3fc-200d-1f3ed.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f3ed.svg) |	factory worker: medium-light skin tone |
 | ![1f9d1-1f3fd-200d-1f3ed.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f3ed.svg) |	factory worker: medium skin tone |
-| ![1f9d1-1f3fe-200d-1f3ed.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f3ed.svg) |	factory worker: medium-dark skin  |tone
+| ![1f9d1-1f3fe-200d-1f3ed.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f3ed.svg) |	factory worker: medium-dark skin tone |
 | ![1f9d1-1f3ff-200d-1f3ed.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f3ed.svg) |	factory worker: dark skin tone |
 | ![1f468-200d-1f3ed.svg](../qml/js/emoji/1f468-200d-1f3ed.svg) |	man factory worker |
-| ![1f468-1f3fb-200d-1f3ed.svg](../qml/js/emoji/1f468-1f3fb-200d-1f3ed.svg) |	man factory worker: light skin  |tone
-| ![1f468-1f3fc-200d-1f3ed.svg](../qml/js/emoji/1f468-1f3fc-200d-1f3ed.svg) |	man factory worker: medium-light  |skin tone
-| ![1f468-1f3fd-200d-1f3ed.svg](../qml/js/emoji/1f468-1f3fd-200d-1f3ed.svg) |	man factory worker: medium skin  |tone
-| ![1f468-1f3fe-200d-1f3ed.svg](../qml/js/emoji/1f468-1f3fe-200d-1f3ed.svg) |	man factory worker: medium-dark  |skin tone
+| ![1f468-1f3fb-200d-1f3ed.svg](../qml/js/emoji/1f468-1f3fb-200d-1f3ed.svg) |	man factory worker: light skin tone |
+| ![1f468-1f3fc-200d-1f3ed.svg](../qml/js/emoji/1f468-1f3fc-200d-1f3ed.svg) |	man factory worker: medium-light skin tone |
+| ![1f468-1f3fd-200d-1f3ed.svg](../qml/js/emoji/1f468-1f3fd-200d-1f3ed.svg) |	man factory worker: medium skin tone |
+| ![1f468-1f3fe-200d-1f3ed.svg](../qml/js/emoji/1f468-1f3fe-200d-1f3ed.svg) |	man factory worker: medium-dark skin tone |
 | ![1f468-1f3ff-200d-1f3ed.svg](../qml/js/emoji/1f468-1f3ff-200d-1f3ed.svg) |	man factory worker: dark skin tone |
 | ![1f469-200d-1f3ed.svg](../qml/js/emoji/1f469-200d-1f3ed.svg) |	woman factory worker |
-| ![1f469-1f3fb-200d-1f3ed.svg](../qml/js/emoji/1f469-1f3fb-200d-1f3ed.svg) |	woman factory worker: light skin  |tone
-| ![1f469-1f3fc-200d-1f3ed.svg](../qml/js/emoji/1f469-1f3fc-200d-1f3ed.svg) |	woman factory worker:  |medium-light skin tone
-| ![1f469-1f3fd-200d-1f3ed.svg](../qml/js/emoji/1f469-1f3fd-200d-1f3ed.svg) |	woman factory worker: medium skin  |tone
-| ![1f469-1f3fe-200d-1f3ed.svg](../qml/js/emoji/1f469-1f3fe-200d-1f3ed.svg) |	woman factory worker: medium-dark  |skin tone
-| ![1f469-1f3ff-200d-1f3ed.svg](../qml/js/emoji/1f469-1f3ff-200d-1f3ed.svg) |	woman factory worker: dark skin  |tone
+| ![1f469-1f3fb-200d-1f3ed.svg](../qml/js/emoji/1f469-1f3fb-200d-1f3ed.svg) |	woman factory worker: light skin tone |
+| ![1f469-1f3fc-200d-1f3ed.svg](../qml/js/emoji/1f469-1f3fc-200d-1f3ed.svg) |	woman factory worker: medium-light skin tone |
+| ![1f469-1f3fd-200d-1f3ed.svg](../qml/js/emoji/1f469-1f3fd-200d-1f3ed.svg) |	woman factory worker: medium skin tone |
+| ![1f469-1f3fe-200d-1f3ed.svg](../qml/js/emoji/1f469-1f3fe-200d-1f3ed.svg) |	woman factory worker: medium-dark skin tone |
+| ![1f469-1f3ff-200d-1f3ed.svg](../qml/js/emoji/1f469-1f3ff-200d-1f3ed.svg) |	woman factory worker: dark skin tone |
 | ![1f9d1-200d-1f4bc.svg](../qml/js/emoji/1f9d1-200d-1f4bc.svg) |	office worker |
 | ![1f9d1-1f3fb-200d-1f4bc.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f4bc.svg) |	office worker: light skin tone |
-| ![1f9d1-1f3fc-200d-1f4bc.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f4bc.svg) |	office worker: medium-light skin  |tone
+| ![1f9d1-1f3fc-200d-1f4bc.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f4bc.svg) |	office worker: medium-light skin tone |
 | ![1f9d1-1f3fd-200d-1f4bc.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f4bc.svg) |	office worker: medium skin tone |
-| ![1f9d1-1f3fe-200d-1f4bc.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f4bc.svg) |	office worker: medium-dark skin  |tone
+| ![1f9d1-1f3fe-200d-1f4bc.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f4bc.svg) |	office worker: medium-dark skin tone |
 | ![1f9d1-1f3ff-200d-1f4bc.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f4bc.svg) |	office worker: dark skin tone |
 | ![1f468-200d-1f4bc.svg](../qml/js/emoji/1f468-200d-1f4bc.svg) |	man office worker |
 | ![1f468-1f3fb-200d-1f4bc.svg](../qml/js/emoji/1f468-1f3fb-200d-1f4bc.svg) |	man office worker: light skin tone |
-| ![1f468-1f3fc-200d-1f4bc.svg](../qml/js/emoji/1f468-1f3fc-200d-1f4bc.svg) |	man office worker: medium-light  |skin tone
-| ![1f468-1f3fd-200d-1f4bc.svg](../qml/js/emoji/1f468-1f3fd-200d-1f4bc.svg) |	man office worker: medium skin  |tone
-| ![1f468-1f3fe-200d-1f4bc.svg](../qml/js/emoji/1f468-1f3fe-200d-1f4bc.svg) |	man office worker: medium-dark  |skin tone
+| ![1f468-1f3fc-200d-1f4bc.svg](../qml/js/emoji/1f468-1f3fc-200d-1f4bc.svg) |	man office worker: medium-light skin tone |
+| ![1f468-1f3fd-200d-1f4bc.svg](../qml/js/emoji/1f468-1f3fd-200d-1f4bc.svg) |	man office worker: medium skin tone |
+| ![1f468-1f3fe-200d-1f4bc.svg](../qml/js/emoji/1f468-1f3fe-200d-1f4bc.svg) |	man office worker: medium-dark skin tone |
 | ![1f468-1f3ff-200d-1f4bc.svg](../qml/js/emoji/1f468-1f3ff-200d-1f4bc.svg) |	man office worker: dark skin tone |
 | ![1f469-200d-1f4bc.svg](../qml/js/emoji/1f469-200d-1f4bc.svg) |	woman office worker |
-| ![1f469-1f3fb-200d-1f4bc.svg](../qml/js/emoji/1f469-1f3fb-200d-1f4bc.svg) |	woman office worker: light skin  |tone
-| ![1f469-1f3fc-200d-1f4bc.svg](../qml/js/emoji/1f469-1f3fc-200d-1f4bc.svg) |	woman office worker: medium-light  |skin tone
-| ![1f469-1f3fd-200d-1f4bc.svg](../qml/js/emoji/1f469-1f3fd-200d-1f4bc.svg) |	woman office worker: medium skin  |tone
-| ![1f469-1f3fe-200d-1f4bc.svg](../qml/js/emoji/1f469-1f3fe-200d-1f4bc.svg) |	woman office worker: medium-dark  |skin tone
-| ![1f469-1f3ff-200d-1f4bc.svg](../qml/js/emoji/1f469-1f3ff-200d-1f4bc.svg) |	woman office worker: dark skin  |tone
+| ![1f469-1f3fb-200d-1f4bc.svg](../qml/js/emoji/1f469-1f3fb-200d-1f4bc.svg) |	woman office worker: light skin tone |
+| ![1f469-1f3fc-200d-1f4bc.svg](../qml/js/emoji/1f469-1f3fc-200d-1f4bc.svg) |	woman office worker: medium-light skin tone |
+| ![1f469-1f3fd-200d-1f4bc.svg](../qml/js/emoji/1f469-1f3fd-200d-1f4bc.svg) |	woman office worker: medium skin tone |
+| ![1f469-1f3fe-200d-1f4bc.svg](../qml/js/emoji/1f469-1f3fe-200d-1f4bc.svg) |	woman office worker: medium-dark skin tone |
+| ![1f469-1f3ff-200d-1f4bc.svg](../qml/js/emoji/1f469-1f3ff-200d-1f4bc.svg) |	woman office worker: dark skin tone |
 | ![1f9d1-200d-1f52c.svg](../qml/js/emoji/1f9d1-200d-1f52c.svg) |	scientist |
 | ![1f9d1-1f3fb-200d-1f52c.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f52c.svg) |	scientist: light skin tone |
 | ![1f9d1-1f3fc-200d-1f52c.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f52c.svg) |	scientist: medium-light skin tone |
@@ -908,33 +908,33 @@ Here's a list of the implemented emojis:
 | ![1f9d1-1f3ff-200d-1f52c.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f52c.svg) |	scientist: dark skin tone |
 | ![1f468-200d-1f52c.svg](../qml/js/emoji/1f468-200d-1f52c.svg) |	man scientist |
 | ![1f468-1f3fb-200d-1f52c.svg](../qml/js/emoji/1f468-1f3fb-200d-1f52c.svg) |	man scientist: light skin tone |
-| ![1f468-1f3fc-200d-1f52c.svg](../qml/js/emoji/1f468-1f3fc-200d-1f52c.svg) |	man scientist: medium-light skin  |tone
+| ![1f468-1f3fc-200d-1f52c.svg](../qml/js/emoji/1f468-1f3fc-200d-1f52c.svg) |	man scientist: medium-light skin tone |
 | ![1f468-1f3fd-200d-1f52c.svg](../qml/js/emoji/1f468-1f3fd-200d-1f52c.svg) |	man scientist: medium skin tone |
-| ![1f468-1f3fe-200d-1f52c.svg](../qml/js/emoji/1f468-1f3fe-200d-1f52c.svg) |	man scientist: medium-dark skin  |tone
+| ![1f468-1f3fe-200d-1f52c.svg](../qml/js/emoji/1f468-1f3fe-200d-1f52c.svg) |	man scientist: medium-dark skin tone |
 | ![1f468-1f3ff-200d-1f52c.svg](../qml/js/emoji/1f468-1f3ff-200d-1f52c.svg) |	man scientist: dark skin tone |
 | ![1f469-200d-1f52c.svg](../qml/js/emoji/1f469-200d-1f52c.svg) |	woman scientist |
 | ![1f469-1f3fb-200d-1f52c.svg](../qml/js/emoji/1f469-1f3fb-200d-1f52c.svg) |	woman scientist: light skin tone |
-| ![1f469-1f3fc-200d-1f52c.svg](../qml/js/emoji/1f469-1f3fc-200d-1f52c.svg) |	woman scientist: medium-light  |skin tone
+| ![1f469-1f3fc-200d-1f52c.svg](../qml/js/emoji/1f469-1f3fc-200d-1f52c.svg) |	woman scientist: medium-light skin tone |
 | ![1f469-1f3fd-200d-1f52c.svg](../qml/js/emoji/1f469-1f3fd-200d-1f52c.svg) |	woman scientist: medium skin tone |
-| ![1f469-1f3fe-200d-1f52c.svg](../qml/js/emoji/1f469-1f3fe-200d-1f52c.svg) |	woman scientist: medium-dark skin  |tone
+| ![1f469-1f3fe-200d-1f52c.svg](../qml/js/emoji/1f469-1f3fe-200d-1f52c.svg) |	woman scientist: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f52c.svg](../qml/js/emoji/1f469-1f3ff-200d-1f52c.svg) |	woman scientist: dark skin tone |
 | ![1f9d1-200d-1f4bb.svg](../qml/js/emoji/1f9d1-200d-1f4bb.svg) |	technologist |
 | ![1f9d1-1f3fb-200d-1f4bb.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f4bb.svg) |	technologist: light skin tone |
-| ![1f9d1-1f3fc-200d-1f4bb.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f4bb.svg) |	technologist: medium-light skin  |tone
+| ![1f9d1-1f3fc-200d-1f4bb.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f4bb.svg) |	technologist: medium-light skin tone |
 | ![1f9d1-1f3fd-200d-1f4bb.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f4bb.svg) |	technologist: medium skin tone |
-| ![1f9d1-1f3fe-200d-1f4bb.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f4bb.svg) |	technologist: medium-dark skin  |tone
+| ![1f9d1-1f3fe-200d-1f4bb.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f4bb.svg) |	technologist: medium-dark skin tone |
 | ![1f9d1-1f3ff-200d-1f4bb.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f4bb.svg) |	technologist: dark skin tone |
 | ![1f468-200d-1f4bb.svg](../qml/js/emoji/1f468-200d-1f4bb.svg) |	man technologist |
 | ![1f468-1f3fb-200d-1f4bb.svg](../qml/js/emoji/1f468-1f3fb-200d-1f4bb.svg) |	man technologist: light skin tone |
-| ![1f468-1f3fc-200d-1f4bb.svg](../qml/js/emoji/1f468-1f3fc-200d-1f4bb.svg) |	man technologist: medium-light  |skin tone
+| ![1f468-1f3fc-200d-1f4bb.svg](../qml/js/emoji/1f468-1f3fc-200d-1f4bb.svg) |	man technologist: medium-light skin tone |
 | ![1f468-1f3fd-200d-1f4bb.svg](../qml/js/emoji/1f468-1f3fd-200d-1f4bb.svg) |	man technologist: medium skin tone |
-| ![1f468-1f3fe-200d-1f4bb.svg](../qml/js/emoji/1f468-1f3fe-200d-1f4bb.svg) |	man technologist: medium-dark  |skin tone
+| ![1f468-1f3fe-200d-1f4bb.svg](../qml/js/emoji/1f468-1f3fe-200d-1f4bb.svg) |	man technologist: medium-dark skin tone |
 | ![1f468-1f3ff-200d-1f4bb.svg](../qml/js/emoji/1f468-1f3ff-200d-1f4bb.svg) |	man technologist: dark skin tone |
 | ![1f469-200d-1f4bb.svg](../qml/js/emoji/1f469-200d-1f4bb.svg) |	woman technologist |
-| ![1f469-1f3fb-200d-1f4bb.svg](../qml/js/emoji/1f469-1f3fb-200d-1f4bb.svg) |	woman technologist: light skin  |tone
-| ![1f469-1f3fc-200d-1f4bb.svg](../qml/js/emoji/1f469-1f3fc-200d-1f4bb.svg) |	woman technologist: medium-light  |skin tone
-| ![1f469-1f3fd-200d-1f4bb.svg](../qml/js/emoji/1f469-1f3fd-200d-1f4bb.svg) |	woman technologist: medium skin  |tone
-| ![1f469-1f3fe-200d-1f4bb.svg](../qml/js/emoji/1f469-1f3fe-200d-1f4bb.svg) |	woman technologist: medium-dark  |skin tone
+| ![1f469-1f3fb-200d-1f4bb.svg](../qml/js/emoji/1f469-1f3fb-200d-1f4bb.svg) |	woman technologist: light skin tone |
+| ![1f469-1f3fc-200d-1f4bb.svg](../qml/js/emoji/1f469-1f3fc-200d-1f4bb.svg) |	woman technologist: medium-light skin tone |
+| ![1f469-1f3fd-200d-1f4bb.svg](../qml/js/emoji/1f469-1f3fd-200d-1f4bb.svg) |	woman technologist: medium skin tone |
+| ![1f469-1f3fe-200d-1f4bb.svg](../qml/js/emoji/1f469-1f3fe-200d-1f4bb.svg) |	woman technologist: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f4bb.svg](../qml/js/emoji/1f469-1f3ff-200d-1f4bb.svg) |	woman technologist: dark skin tone |
 | ![1f9d1-200d-1f3a4.svg](../qml/js/emoji/1f9d1-200d-1f3a4.svg) |	singer |
 | ![1f9d1-1f3fb-200d-1f3a4.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f3a4.svg) |	singer: light skin tone |
@@ -950,9 +950,9 @@ Here's a list of the implemented emojis:
 | ![1f468-1f3ff-200d-1f3a4.svg](../qml/js/emoji/1f468-1f3ff-200d-1f3a4.svg) |	man singer: dark skin tone |
 | ![1f469-200d-1f3a4.svg](../qml/js/emoji/1f469-200d-1f3a4.svg) |	woman singer |
 | ![1f469-1f3fb-200d-1f3a4.svg](../qml/js/emoji/1f469-1f3fb-200d-1f3a4.svg) |	woman singer: light skin tone |
-| ![1f469-1f3fc-200d-1f3a4.svg](../qml/js/emoji/1f469-1f3fc-200d-1f3a4.svg) |	woman singer: medium-light skin  |tone
+| ![1f469-1f3fc-200d-1f3a4.svg](../qml/js/emoji/1f469-1f3fc-200d-1f3a4.svg) |	woman singer: medium-light skin tone |
 | ![1f469-1f3fd-200d-1f3a4.svg](../qml/js/emoji/1f469-1f3fd-200d-1f3a4.svg) |	woman singer: medium skin tone |
-| ![1f469-1f3fe-200d-1f3a4.svg](../qml/js/emoji/1f469-1f3fe-200d-1f3a4.svg) |	woman singer: medium-dark skin  |tone
+| ![1f469-1f3fe-200d-1f3a4.svg](../qml/js/emoji/1f469-1f3fe-200d-1f3a4.svg) |	woman singer: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f3a4.svg](../qml/js/emoji/1f469-1f3ff-200d-1f3a4.svg) |	woman singer: dark skin tone |
 | ![1f9d1-200d-1f3a8.svg](../qml/js/emoji/1f9d1-200d-1f3a8.svg) |	artist |
 | ![1f9d1-1f3fb-200d-1f3a8.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f3a8.svg) |	artist: light skin tone |
@@ -968,9 +968,9 @@ Here's a list of the implemented emojis:
 | ![1f468-1f3ff-200d-1f3a8.svg](../qml/js/emoji/1f468-1f3ff-200d-1f3a8.svg) |	man artist: dark skin tone |
 | ![1f469-200d-1f3a8.svg](../qml/js/emoji/1f469-200d-1f3a8.svg) |	woman artist |
 | ![1f469-1f3fb-200d-1f3a8.svg](../qml/js/emoji/1f469-1f3fb-200d-1f3a8.svg) |	woman artist: light skin tone |
-| ![1f469-1f3fc-200d-1f3a8.svg](../qml/js/emoji/1f469-1f3fc-200d-1f3a8.svg) |	woman artist: medium-light skin  |tone
+| ![1f469-1f3fc-200d-1f3a8.svg](../qml/js/emoji/1f469-1f3fc-200d-1f3a8.svg) |	woman artist: medium-light skin tone |
 | ![1f469-1f3fd-200d-1f3a8.svg](../qml/js/emoji/1f469-1f3fd-200d-1f3a8.svg) |	woman artist: medium skin tone |
-| ![1f469-1f3fe-200d-1f3a8.svg](../qml/js/emoji/1f469-1f3fe-200d-1f3a8.svg) |	woman artist: medium-dark skin  |tone
+| ![1f469-1f3fe-200d-1f3a8.svg](../qml/js/emoji/1f469-1f3fe-200d-1f3a8.svg) |	woman artist: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f3a8.svg](../qml/js/emoji/1f469-1f3ff-200d-1f3a8.svg) |	woman artist: dark skin tone |
 | ![1f9d1-200d-2708-fe0f.svg](../qml/js/emoji/1f9d1-200d-2708-fe0f.svg) |	pilot |
 | ![1f9d1-1f3fb-200d-2708-fe0f.svg](../qml/js/emoji/1f9d1-1f3fb-200d-2708-fe0f.svg) |	pilot: light skin tone |
@@ -980,15 +980,15 @@ Here's a list of the implemented emojis:
 | ![1f9d1-1f3ff-200d-2708-fe0f.svg](../qml/js/emoji/1f9d1-1f3ff-200d-2708-fe0f.svg) |	pilot: dark skin tone |
 | ![1f468-200d-2708-fe0f.svg](../qml/js/emoji/1f468-200d-2708-fe0f.svg) |	man pilot |
 | ![1f468-1f3fb-200d-2708-fe0f.svg](../qml/js/emoji/1f468-1f3fb-200d-2708-fe0f.svg) |	man pilot: light skin tone |
-| ![1f468-1f3fc-200d-2708-fe0f.svg](../qml/js/emoji/1f468-1f3fc-200d-2708-fe0f.svg) |	man pilot: medium-light skin  |tone
+| ![1f468-1f3fc-200d-2708-fe0f.svg](../qml/js/emoji/1f468-1f3fc-200d-2708-fe0f.svg) |	man pilot: medium-light skin tone |
 | ![1f468-1f3fd-200d-2708-fe0f.svg](../qml/js/emoji/1f468-1f3fd-200d-2708-fe0f.svg) |	man pilot: medium skin tone |
-| ![1f468-1f3fe-200d-2708-fe0f.svg](../qml/js/emoji/1f468-1f3fe-200d-2708-fe0f.svg) |	man pilot: medium-dark skin  |tone
+| ![1f468-1f3fe-200d-2708-fe0f.svg](../qml/js/emoji/1f468-1f3fe-200d-2708-fe0f.svg) |	man pilot: medium-dark skin tone |
 | ![1f468-1f3ff-200d-2708-fe0f.svg](../qml/js/emoji/1f468-1f3ff-200d-2708-fe0f.svg) |	man pilot: dark skin tone |
 | ![1f469-200d-2708-fe0f.svg](../qml/js/emoji/1f469-200d-2708-fe0f.svg) |	woman pilot |
 | ![1f469-1f3fb-200d-2708-fe0f.svg](../qml/js/emoji/1f469-1f3fb-200d-2708-fe0f.svg) |	woman pilot: light skin tone |
-| ![1f469-1f3fc-200d-2708-fe0f.svg](../qml/js/emoji/1f469-1f3fc-200d-2708-fe0f.svg) |	woman pilot: medium-light  |skin tone
+| ![1f469-1f3fc-200d-2708-fe0f.svg](../qml/js/emoji/1f469-1f3fc-200d-2708-fe0f.svg) |	woman pilot: medium-light skin tone |
 | ![1f469-1f3fd-200d-2708-fe0f.svg](../qml/js/emoji/1f469-1f3fd-200d-2708-fe0f.svg) |	woman pilot: medium skin tone |
-| ![1f469-1f3fe-200d-2708-fe0f.svg](../qml/js/emoji/1f469-1f3fe-200d-2708-fe0f.svg) |	woman pilot: medium-dark skin  |tone
+| ![1f469-1f3fe-200d-2708-fe0f.svg](../qml/js/emoji/1f469-1f3fe-200d-2708-fe0f.svg) |	woman pilot: medium-dark skin tone |
 | ![1f469-1f3ff-200d-2708-fe0f.svg](../qml/js/emoji/1f469-1f3ff-200d-2708-fe0f.svg) |	woman pilot: dark skin tone |
 | ![1f9d1-200d-1f680.svg](../qml/js/emoji/1f9d1-200d-1f680.svg) |	astronaut |
 | ![1f9d1-1f3fb-200d-1f680.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f680.svg) |	astronaut: light skin tone |
@@ -998,33 +998,33 @@ Here's a list of the implemented emojis:
 | ![1f9d1-1f3ff-200d-1f680.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f680.svg) |	astronaut: dark skin tone |
 | ![1f468-200d-1f680.svg](../qml/js/emoji/1f468-200d-1f680.svg) |	man astronaut |
 | ![1f468-1f3fb-200d-1f680.svg](../qml/js/emoji/1f468-1f3fb-200d-1f680.svg) |	man astronaut: light skin tone |
-| ![1f468-1f3fc-200d-1f680.svg](../qml/js/emoji/1f468-1f3fc-200d-1f680.svg) |	man astronaut: medium-light skin  |tone
+| ![1f468-1f3fc-200d-1f680.svg](../qml/js/emoji/1f468-1f3fc-200d-1f680.svg) |	man astronaut: medium-light skin tone |
 | ![1f468-1f3fd-200d-1f680.svg](../qml/js/emoji/1f468-1f3fd-200d-1f680.svg) |	man astronaut: medium skin tone |
-| ![1f468-1f3fe-200d-1f680.svg](../qml/js/emoji/1f468-1f3fe-200d-1f680.svg) |	man astronaut: medium-dark skin  |tone
+| ![1f468-1f3fe-200d-1f680.svg](../qml/js/emoji/1f468-1f3fe-200d-1f680.svg) |	man astronaut: medium-dark skin tone |
 | ![1f468-1f3ff-200d-1f680.svg](../qml/js/emoji/1f468-1f3ff-200d-1f680.svg) |	man astronaut: dark skin tone |
 | ![1f469-200d-1f680.svg](../qml/js/emoji/1f469-200d-1f680.svg) |	woman astronaut |
 | ![1f469-1f3fb-200d-1f680.svg](../qml/js/emoji/1f469-1f3fb-200d-1f680.svg) |	woman astronaut: light skin tone |
-| ![1f469-1f3fc-200d-1f680.svg](../qml/js/emoji/1f469-1f3fc-200d-1f680.svg) |	woman astronaut: medium-light  |skin tone
+| ![1f469-1f3fc-200d-1f680.svg](../qml/js/emoji/1f469-1f3fc-200d-1f680.svg) |	woman astronaut: medium-light skin tone |
 | ![1f469-1f3fd-200d-1f680.svg](../qml/js/emoji/1f469-1f3fd-200d-1f680.svg) |	woman astronaut: medium skin tone |
-| ![1f469-1f3fe-200d-1f680.svg](../qml/js/emoji/1f469-1f3fe-200d-1f680.svg) |	woman astronaut: medium-dark skin  |tone
+| ![1f469-1f3fe-200d-1f680.svg](../qml/js/emoji/1f469-1f3fe-200d-1f680.svg) |	woman astronaut: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f680.svg](../qml/js/emoji/1f469-1f3ff-200d-1f680.svg) |	woman astronaut: dark skin tone |
 | ![1f9d1-200d-1f692.svg](../qml/js/emoji/1f9d1-200d-1f692.svg) |	firefighter |
 | ![1f9d1-1f3fb-200d-1f692.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f692.svg) |	firefighter: light skin tone |
-| ![1f9d1-1f3fc-200d-1f692.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f692.svg) |	firefighter: medium-light skin  |tone
+| ![1f9d1-1f3fc-200d-1f692.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f692.svg) |	firefighter: medium-light skin tone |
 | ![1f9d1-1f3fd-200d-1f692.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f692.svg) |	firefighter: medium skin tone |
 | ![1f9d1-1f3fe-200d-1f692.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f692.svg) |	firefighter: medium-dark skin tone |
 | ![1f9d1-1f3ff-200d-1f692.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f692.svg) |	firefighter: dark skin tone |
 | ![1f468-200d-1f692.svg](../qml/js/emoji/1f468-200d-1f692.svg) |	man firefighter |
 | ![1f468-1f3fb-200d-1f692.svg](../qml/js/emoji/1f468-1f3fb-200d-1f692.svg) |	man firefighter: light skin tone |
-| ![1f468-1f3fc-200d-1f692.svg](../qml/js/emoji/1f468-1f3fc-200d-1f692.svg) |	man firefighter: medium-light  |skin tone
+| ![1f468-1f3fc-200d-1f692.svg](../qml/js/emoji/1f468-1f3fc-200d-1f692.svg) |	man firefighter: medium-light skin tone |
 | ![1f468-1f3fd-200d-1f692.svg](../qml/js/emoji/1f468-1f3fd-200d-1f692.svg) |	man firefighter: medium skin tone |
-| ![1f468-1f3fe-200d-1f692.svg](../qml/js/emoji/1f468-1f3fe-200d-1f692.svg) |	man firefighter: medium-dark skin  |tone
+| ![1f468-1f3fe-200d-1f692.svg](../qml/js/emoji/1f468-1f3fe-200d-1f692.svg) |	man firefighter: medium-dark skin tone |
 | ![1f468-1f3ff-200d-1f692.svg](../qml/js/emoji/1f468-1f3ff-200d-1f692.svg) |	man firefighter: dark skin tone |
 | ![1f469-200d-1f692.svg](../qml/js/emoji/1f469-200d-1f692.svg) |	woman firefighter |
 | ![1f469-1f3fb-200d-1f692.svg](../qml/js/emoji/1f469-1f3fb-200d-1f692.svg) |	woman firefighter: light skin tone |
-| ![1f469-1f3fc-200d-1f692.svg](../qml/js/emoji/1f469-1f3fc-200d-1f692.svg) |	woman firefighter: medium-light  |skin tone
-| ![1f469-1f3fd-200d-1f692.svg](../qml/js/emoji/1f469-1f3fd-200d-1f692.svg) |	woman firefighter: medium skin  |tone
-| ![1f469-1f3fe-200d-1f692.svg](../qml/js/emoji/1f469-1f3fe-200d-1f692.svg) |	woman firefighter: medium-dark  |skin tone
+| ![1f469-1f3fc-200d-1f692.svg](../qml/js/emoji/1f469-1f3fc-200d-1f692.svg) |	woman firefighter: medium-light skin tone |
+| ![1f469-1f3fd-200d-1f692.svg](../qml/js/emoji/1f469-1f3fd-200d-1f692.svg) |	woman firefighter: medium skin tone |
+| ![1f469-1f3fe-200d-1f692.svg](../qml/js/emoji/1f469-1f3fe-200d-1f692.svg) |	woman firefighter: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f692.svg](../qml/js/emoji/1f469-1f3ff-200d-1f692.svg) |	woman firefighter: dark skin tone |
 | ![1f46e.svg](../qml/js/emoji/1f46e.svg) |	police officer |
 | ![1f46e-1f3fb.svg](../qml/js/emoji/1f46e-1f3fb.svg) |	police officer: light skin tone |
@@ -1033,17 +1033,17 @@ Here's a list of the implemented emojis:
 | ![1f46e-1f3fe.svg](../qml/js/emoji/1f46e-1f3fe.svg) |	police officer: medium-dark skin tone |
 | ![1f46e-1f3ff.svg](../qml/js/emoji/1f46e-1f3ff.svg) |	police officer: dark skin tone |
 | ![1f46e-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-200d-2642-fe0f.svg) |	man police officer |
-| ![1f46e-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-1f3fb-200d-2642-fe0f.svg) |	man police officer: light  |skin tone
-| ![1f46e-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-1f3fc-200d-2642-fe0f.svg) |	man police officer:  |medium-light skin tone
-| ![1f46e-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-1f3fd-200d-2642-fe0f.svg) |	man police officer: medium  |skin tone
-| ![1f46e-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-1f3fe-200d-2642-fe0f.svg) |	man police officer:  |medium-dark skin tone
-| ![1f46e-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-1f3ff-200d-2642-fe0f.svg) |	man police officer: dark skin  |tone
+| ![1f46e-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-1f3fb-200d-2642-fe0f.svg) |	man police officer: light skin tone |
+| ![1f46e-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-1f3fc-200d-2642-fe0f.svg) |	man police officer: medium-light skin tone |
+| ![1f46e-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-1f3fd-200d-2642-fe0f.svg) |	man police officer: medium skin tone |
+| ![1f46e-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-1f3fe-200d-2642-fe0f.svg) |	man police officer: medium-dark skin tone |
+| ![1f46e-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f46e-1f3ff-200d-2642-fe0f.svg) |	man police officer: dark skin tone |
 | ![1f46e-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-200d-2640-fe0f.svg) |	woman police officer |
-| ![1f46e-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-1f3fb-200d-2640-fe0f.svg) |	woman police officer: light  |skin tone
-| ![1f46e-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-1f3fc-200d-2640-fe0f.svg) |	woman police officer:  |medium-light skin tone
-| ![1f46e-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-1f3fd-200d-2640-fe0f.svg) |	woman police officer: medium  |skin tone
-| ![1f46e-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-1f3fe-200d-2640-fe0f.svg) |	woman police officer:  |medium-dark skin tone
-| ![1f46e-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-1f3ff-200d-2640-fe0f.svg) |	woman police officer: dark  |skin tone
+| ![1f46e-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-1f3fb-200d-2640-fe0f.svg) |	woman police officer: light skin tone |
+| ![1f46e-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-1f3fc-200d-2640-fe0f.svg) |	woman police officer: medium-light skin tone |
+| ![1f46e-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-1f3fd-200d-2640-fe0f.svg) |	woman police officer: medium skin tone |
+| ![1f46e-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-1f3fe-200d-2640-fe0f.svg) |	woman police officer: medium-dark skin tone |
+| ![1f46e-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f46e-1f3ff-200d-2640-fe0f.svg) |	woman police officer: dark skin tone |
 | ![1f575.svg](../qml/js/emoji/1f575.svg) |	detective |
 | ![1f575-1f3fb.svg](../qml/js/emoji/1f575-1f3fb.svg) |	detective: light skin tone |
 | ![1f575-1f3fc.svg](../qml/js/emoji/1f575-1f3fc.svg) |	detective: medium-light skin tone |
@@ -1052,16 +1052,16 @@ Here's a list of the implemented emojis:
 | ![1f575-1f3ff.svg](../qml/js/emoji/1f575-1f3ff.svg) |	detective: dark skin tone |
 | ![1f575-fe0f-200d-2642-fe0f.svg](../qml/js/emoji/1f575-fe0f-200d-2642-fe0f.svg) |	man detective |
 | ![1f575-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f575-1f3fb-200d-2642-fe0f.svg) |	man detective: light skin tone |
-| ![1f575-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f575-1f3fc-200d-2642-fe0f.svg) |	man detective: medium-light  |skin tone
-| ![1f575-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f575-1f3fd-200d-2642-fe0f.svg) |	man detective: medium skin  |tone
-| ![1f575-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f575-1f3fe-200d-2642-fe0f.svg) |	man detective: medium-dark  |skin tone
+| ![1f575-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f575-1f3fc-200d-2642-fe0f.svg) |	man detective: medium-light skin tone |
+| ![1f575-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f575-1f3fd-200d-2642-fe0f.svg) |	man detective: medium skin tone |
+| ![1f575-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f575-1f3fe-200d-2642-fe0f.svg) |	man detective: medium-dark skin tone |
 | ![1f575-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f575-1f3ff-200d-2642-fe0f.svg) |	man detective: dark skin tone |
 | ![1f575-fe0f-200d-2640-fe0f.svg](../qml/js/emoji/1f575-fe0f-200d-2640-fe0f.svg) |	woman detective |
-| ![1f575-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f575-1f3fb-200d-2640-fe0f.svg) |	woman detective: light skin  |tone
-| ![1f575-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f575-1f3fc-200d-2640-fe0f.svg) |	woman detective: medium-light  |skin tone
-| ![1f575-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f575-1f3fd-200d-2640-fe0f.svg) |	woman detective: medium skin  |tone
-| ![1f575-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f575-1f3fe-200d-2640-fe0f.svg) |	woman detective: medium-dark  |skin tone
-| ![1f575-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f575-1f3ff-200d-2640-fe0f.svg) |	woman detective: dark skin  |tone
+| ![1f575-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f575-1f3fb-200d-2640-fe0f.svg) |	woman detective: light skin tone |
+| ![1f575-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f575-1f3fc-200d-2640-fe0f.svg) |	woman detective: medium-light skin tone |
+| ![1f575-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f575-1f3fd-200d-2640-fe0f.svg) |	woman detective: medium skin tone |
+| ![1f575-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f575-1f3fe-200d-2640-fe0f.svg) |	woman detective: medium-dark skin tone |
+| ![1f575-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f575-1f3ff-200d-2640-fe0f.svg) |	woman detective: dark skin tone |
 | ![1f482.svg](../qml/js/emoji/1f482.svg) |	guard |
 | ![1f482-1f3fb.svg](../qml/js/emoji/1f482-1f3fb.svg) |	guard: light skin tone |
 | ![1f482-1f3fc.svg](../qml/js/emoji/1f482-1f3fc.svg) |	guard: medium-light skin tone |
@@ -1070,15 +1070,15 @@ Here's a list of the implemented emojis:
 | ![1f482-1f3ff.svg](../qml/js/emoji/1f482-1f3ff.svg) |	guard: dark skin tone |
 | ![1f482-200d-2642-fe0f.svg](../qml/js/emoji/1f482-200d-2642-fe0f.svg) |	man guard |
 | ![1f482-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f482-1f3fb-200d-2642-fe0f.svg) |	man guard: light skin tone |
-| ![1f482-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f482-1f3fc-200d-2642-fe0f.svg) |	man guard: medium-light skin  |tone
+| ![1f482-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f482-1f3fc-200d-2642-fe0f.svg) |	man guard: medium-light skin tone |
 | ![1f482-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f482-1f3fd-200d-2642-fe0f.svg) |	man guard: medium skin tone |
-| ![1f482-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f482-1f3fe-200d-2642-fe0f.svg) |	man guard: medium-dark skin  |tone
+| ![1f482-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f482-1f3fe-200d-2642-fe0f.svg) |	man guard: medium-dark skin tone |
 | ![1f482-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f482-1f3ff-200d-2642-fe0f.svg) |	man guard: dark skin tone |
 | ![1f482-200d-2640-fe0f.svg](../qml/js/emoji/1f482-200d-2640-fe0f.svg) |	woman guard |
 | ![1f482-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f482-1f3fb-200d-2640-fe0f.svg) |	woman guard: light skin tone |
-| ![1f482-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f482-1f3fc-200d-2640-fe0f.svg) |	woman guard: medium-light  |skin tone
+| ![1f482-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f482-1f3fc-200d-2640-fe0f.svg) |	woman guard: medium-light skin tone |
 | ![1f482-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f482-1f3fd-200d-2640-fe0f.svg) |	woman guard: medium skin tone |
-| ![1f482-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f482-1f3fe-200d-2640-fe0f.svg) |	woman guard: medium-dark skin  |tone
+| ![1f482-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f482-1f3fe-200d-2640-fe0f.svg) |	woman guard: medium-dark skin tone |
 | ![1f482-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f482-1f3ff-200d-2640-fe0f.svg) |	woman guard: dark skin tone |
 | ![1f977.svg](../qml/js/emoji/1f977.svg) |	ninja |
 | ![1f977-1f3fb.svg](../qml/js/emoji/1f977-1f3fb.svg) |	ninja: light skin tone |
@@ -1093,17 +1093,17 @@ Here's a list of the implemented emojis:
 | ![1f477-1f3fe.svg](../qml/js/emoji/1f477-1f3fe.svg) |	construction worker: medium-dark skin tone |
 | ![1f477-1f3ff.svg](../qml/js/emoji/1f477-1f3ff.svg) |	construction worker: dark skin tone |
 | ![1f477-200d-2642-fe0f.svg](../qml/js/emoji/1f477-200d-2642-fe0f.svg) |	man construction worker |
-| ![1f477-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f477-1f3fb-200d-2642-fe0f.svg) |	man construction worker:  |light skin tone
-| ![1f477-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f477-1f3fc-200d-2642-fe0f.svg) |	man construction worker:  |medium-light skin tone
-| ![1f477-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f477-1f3fd-200d-2642-fe0f.svg) |	man construction worker:  |medium skin tone
-| ![1f477-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f477-1f3fe-200d-2642-fe0f.svg) |	man construction worker:  |medium-dark skin tone
-| ![1f477-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f477-1f3ff-200d-2642-fe0f.svg) |	man construction worker: dark  |skin tone
+| ![1f477-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f477-1f3fb-200d-2642-fe0f.svg) |	man construction worker: light skin tone |
+| ![1f477-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f477-1f3fc-200d-2642-fe0f.svg) |	man construction worker: medium-light skin tone |
+| ![1f477-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f477-1f3fd-200d-2642-fe0f.svg) |	man construction worker: medium skin tone |
+| ![1f477-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f477-1f3fe-200d-2642-fe0f.svg) |	man construction worker: medium-dark skin tone |
+| ![1f477-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f477-1f3ff-200d-2642-fe0f.svg) |	man construction worker: dark skin tone |
 | ![1f477-200d-2640-fe0f.svg](../qml/js/emoji/1f477-200d-2640-fe0f.svg) |	woman construction worker |
-| ![1f477-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f477-1f3fb-200d-2640-fe0f.svg) |	woman construction worker:  |light skin tone
-| ![1f477-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f477-1f3fc-200d-2640-fe0f.svg) |	woman construction worker:  |medium-light skin tone
-| ![1f477-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f477-1f3fd-200d-2640-fe0f.svg) |	woman construction worker:  |medium skin tone
-| ![1f477-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f477-1f3fe-200d-2640-fe0f.svg) |	woman construction worker:  |medium-dark skin tone
-| ![1f477-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f477-1f3ff-200d-2640-fe0f.svg) |	woman construction worker:  |dark skin tone
+| ![1f477-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f477-1f3fb-200d-2640-fe0f.svg) |	woman construction worker: light skin tone |
+| ![1f477-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f477-1f3fc-200d-2640-fe0f.svg) |	woman construction worker: medium-light skin tone |
+| ![1f477-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f477-1f3fd-200d-2640-fe0f.svg) |	woman construction worker: medium skin tone |
+| ![1f477-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f477-1f3fe-200d-2640-fe0f.svg) |	woman construction worker: medium-dark skin tone |
+| ![1f477-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f477-1f3ff-200d-2640-fe0f.svg) |	woman construction worker: dark skin tone |
 | ![1f934.svg](../qml/js/emoji/1f934.svg) |	prince |
 | ![1f934-1f3fb.svg](../qml/js/emoji/1f934-1f3fb.svg) |	prince: light skin tone |
 | ![1f934-1f3fc.svg](../qml/js/emoji/1f934-1f3fc.svg) |	prince: medium-light skin tone |
@@ -1123,17 +1123,17 @@ Here's a list of the implemented emojis:
 | ![1f473-1f3fe.svg](../qml/js/emoji/1f473-1f3fe.svg) |	person wearing turban: medium-dark skin tone |
 | ![1f473-1f3ff.svg](../qml/js/emoji/1f473-1f3ff.svg) |	person wearing turban: dark skin tone |
 | ![1f473-200d-2642-fe0f.svg](../qml/js/emoji/1f473-200d-2642-fe0f.svg) |	man wearing turban |
-| ![1f473-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f473-1f3fb-200d-2642-fe0f.svg) |	man wearing turban: light  |skin tone
-| ![1f473-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f473-1f3fc-200d-2642-fe0f.svg) |	man wearing turban:  |medium-light skin tone
-| ![1f473-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f473-1f3fd-200d-2642-fe0f.svg) |	man wearing turban: medium  |skin tone
-| ![1f473-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f473-1f3fe-200d-2642-fe0f.svg) |	man wearing turban:  |medium-dark skin tone
-| ![1f473-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f473-1f3ff-200d-2642-fe0f.svg) |	man wearing turban: dark skin  |tone
+| ![1f473-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f473-1f3fb-200d-2642-fe0f.svg) |	man wearing turban: light skin tone |
+| ![1f473-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f473-1f3fc-200d-2642-fe0f.svg) |	man wearing turban: medium-light skin tone |
+| ![1f473-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f473-1f3fd-200d-2642-fe0f.svg) |	man wearing turban: medium skin tone |
+| ![1f473-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f473-1f3fe-200d-2642-fe0f.svg) |	man wearing turban: medium-dark skin tone |
+| ![1f473-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f473-1f3ff-200d-2642-fe0f.svg) |	man wearing turban: dark skin tone |
 | ![1f473-200d-2640-fe0f.svg](../qml/js/emoji/1f473-200d-2640-fe0f.svg) |	woman wearing turban |
-| ![1f473-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f473-1f3fb-200d-2640-fe0f.svg) |	woman wearing turban: light  |skin tone
-| ![1f473-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f473-1f3fc-200d-2640-fe0f.svg) |	woman wearing turban:  |medium-light skin tone
-| ![1f473-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f473-1f3fd-200d-2640-fe0f.svg) |	woman wearing turban: medium  |skin tone
-| ![1f473-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f473-1f3fe-200d-2640-fe0f.svg) |	woman wearing turban:  |medium-dark skin tone
-| ![1f473-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f473-1f3ff-200d-2640-fe0f.svg) |	woman wearing turban: dark  |skin tone
+| ![1f473-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f473-1f3fb-200d-2640-fe0f.svg) |	woman wearing turban: light skin tone |
+| ![1f473-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f473-1f3fc-200d-2640-fe0f.svg) |	woman wearing turban: medium-light skin tone |
+| ![1f473-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f473-1f3fd-200d-2640-fe0f.svg) |	woman wearing turban: medium skin tone |
+| ![1f473-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f473-1f3fe-200d-2640-fe0f.svg) |	woman wearing turban: medium-dark skin tone |
+| ![1f473-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f473-1f3ff-200d-2640-fe0f.svg) |	woman wearing turban: dark skin tone |
 | ![1f472.svg](../qml/js/emoji/1f472.svg) |	person with skullcap |
 | ![1f472-1f3fb.svg](../qml/js/emoji/1f472-1f3fb.svg) |	person with skullcap: light skin tone |
 | ![1f472-1f3fc.svg](../qml/js/emoji/1f472-1f3fc.svg) |	person with skullcap: medium-light skin tone |
@@ -1154,16 +1154,16 @@ Here's a list of the implemented emojis:
 | ![1f935-1f3ff.svg](../qml/js/emoji/1f935-1f3ff.svg) |	person in tuxedo: dark skin tone |
 | ![1f935-200d-2642-fe0f.svg](../qml/js/emoji/1f935-200d-2642-fe0f.svg) |	man in tuxedo |
 | ![1f935-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f935-1f3fb-200d-2642-fe0f.svg) |	man in tuxedo: light skin tone |
-| ![1f935-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f935-1f3fc-200d-2642-fe0f.svg) |	man in tuxedo: medium-light  |skin tone
-| ![1f935-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f935-1f3fd-200d-2642-fe0f.svg) |	man in tuxedo: medium skin  |tone
-| ![1f935-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f935-1f3fe-200d-2642-fe0f.svg) |	man in tuxedo: medium-dark  |skin tone
+| ![1f935-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f935-1f3fc-200d-2642-fe0f.svg) |	man in tuxedo: medium-light skin tone |
+| ![1f935-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f935-1f3fd-200d-2642-fe0f.svg) |	man in tuxedo: medium skin tone |
+| ![1f935-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f935-1f3fe-200d-2642-fe0f.svg) |	man in tuxedo: medium-dark skin tone |
 | ![1f935-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f935-1f3ff-200d-2642-fe0f.svg) |	man in tuxedo: dark skin tone |
 | ![1f935-200d-2640-fe0f.svg](../qml/js/emoji/1f935-200d-2640-fe0f.svg) |	woman in tuxedo |
-| ![1f935-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f935-1f3fb-200d-2640-fe0f.svg) |	woman in tuxedo: light skin  |tone
-| ![1f935-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f935-1f3fc-200d-2640-fe0f.svg) |	woman in tuxedo: medium-light  |skin tone
-| ![1f935-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f935-1f3fd-200d-2640-fe0f.svg) |	woman in tuxedo: medium skin  |tone
-| ![1f935-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f935-1f3fe-200d-2640-fe0f.svg) |	woman in tuxedo: medium-dark  |skin tone
-| ![1f935-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f935-1f3ff-200d-2640-fe0f.svg) |	woman in tuxedo: dark skin  |tone
+| ![1f935-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f935-1f3fb-200d-2640-fe0f.svg) |	woman in tuxedo: light skin tone |
+| ![1f935-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f935-1f3fc-200d-2640-fe0f.svg) |	woman in tuxedo: medium-light skin tone |
+| ![1f935-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f935-1f3fd-200d-2640-fe0f.svg) |	woman in tuxedo: medium skin tone |
+| ![1f935-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f935-1f3fe-200d-2640-fe0f.svg) |	woman in tuxedo: medium-dark skin tone |
+| ![1f935-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f935-1f3ff-200d-2640-fe0f.svg) |	woman in tuxedo: dark skin tone |
 | ![1f470.svg](../qml/js/emoji/1f470.svg) |	person with veil |
 | ![1f470-1f3fb.svg](../qml/js/emoji/1f470-1f3fb.svg) |	person with veil: light skin tone |
 | ![1f470-1f3fc.svg](../qml/js/emoji/1f470-1f3fc.svg) |	person with veil: medium-light skin tone |
@@ -1172,16 +1172,16 @@ Here's a list of the implemented emojis:
 | ![1f470-1f3ff.svg](../qml/js/emoji/1f470-1f3ff.svg) |	person with veil: dark skin tone |
 | ![1f470-200d-2642-fe0f.svg](../qml/js/emoji/1f470-200d-2642-fe0f.svg) |	man with veil |
 | ![1f470-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f470-1f3fb-200d-2642-fe0f.svg) |	man with veil: light skin tone |
-| ![1f470-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f470-1f3fc-200d-2642-fe0f.svg) |	man with veil: medium-light  |skin tone
-| ![1f470-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f470-1f3fd-200d-2642-fe0f.svg) |	man with veil: medium skin  |tone
-| ![1f470-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f470-1f3fe-200d-2642-fe0f.svg) |	man with veil: medium-dark  |skin tone
+| ![1f470-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f470-1f3fc-200d-2642-fe0f.svg) |	man with veil: medium-light skin tone |
+| ![1f470-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f470-1f3fd-200d-2642-fe0f.svg) |	man with veil: medium skin tone |
+| ![1f470-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f470-1f3fe-200d-2642-fe0f.svg) |	man with veil: medium-dark skin tone |
 | ![1f470-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f470-1f3ff-200d-2642-fe0f.svg) |	man with veil: dark skin tone |
 | ![1f470-200d-2640-fe0f.svg](../qml/js/emoji/1f470-200d-2640-fe0f.svg) |	woman with veil |
-| ![1f470-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f470-1f3fb-200d-2640-fe0f.svg) |	woman with veil: light skin  |tone
-| ![1f470-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f470-1f3fc-200d-2640-fe0f.svg) |	woman with veil: medium-light  |skin tone
-| ![1f470-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f470-1f3fd-200d-2640-fe0f.svg) |	woman with veil: medium skin  |tone
-| ![1f470-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f470-1f3fe-200d-2640-fe0f.svg) |	woman with veil: medium-dark  |skin tone
-| ![1f470-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f470-1f3ff-200d-2640-fe0f.svg) |	woman with veil: dark skin  |tone
+| ![1f470-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f470-1f3fb-200d-2640-fe0f.svg) |	woman with veil: light skin tone |
+| ![1f470-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f470-1f3fc-200d-2640-fe0f.svg) |	woman with veil: medium-light skin tone |
+| ![1f470-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f470-1f3fd-200d-2640-fe0f.svg) |	woman with veil: medium skin tone |
+| ![1f470-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f470-1f3fe-200d-2640-fe0f.svg) |	woman with veil: medium-dark skin tone |
+| ![1f470-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f470-1f3ff-200d-2640-fe0f.svg) |	woman with veil: dark skin tone |
 | ![1f930.svg](../qml/js/emoji/1f930.svg) |	pregnant woman |
 | ![1f930-1f3fb.svg](../qml/js/emoji/1f930-1f3fb.svg) |	pregnant woman: light skin tone |
 | ![1f930-1f3fc.svg](../qml/js/emoji/1f930-1f3fc.svg) |	pregnant woman: medium-light skin tone |
@@ -1195,23 +1195,23 @@ Here's a list of the implemented emojis:
 | ![1f931-1f3fe.svg](../qml/js/emoji/1f931-1f3fe.svg) |	breast-feeding: medium-dark skin tone |
 | ![1f931-1f3ff.svg](../qml/js/emoji/1f931-1f3ff.svg) |	breast-feeding: dark skin tone |
 | ![1f469-200d-1f37c.svg](../qml/js/emoji/1f469-200d-1f37c.svg) |	woman feeding baby |
-| ![1f469-1f3fb-200d-1f37c.svg](../qml/js/emoji/1f469-1f3fb-200d-1f37c.svg) |	woman feeding baby: light skin  |tone
-| ![1f469-1f3fc-200d-1f37c.svg](../qml/js/emoji/1f469-1f3fc-200d-1f37c.svg) |	woman feeding baby: medium-light  |skin tone
-| ![1f469-1f3fd-200d-1f37c.svg](../qml/js/emoji/1f469-1f3fd-200d-1f37c.svg) |	woman feeding baby: medium skin  |tone
-| ![1f469-1f3fe-200d-1f37c.svg](../qml/js/emoji/1f469-1f3fe-200d-1f37c.svg) |	woman feeding baby: medium-dark  |skin tone
+| ![1f469-1f3fb-200d-1f37c.svg](../qml/js/emoji/1f469-1f3fb-200d-1f37c.svg) |	woman feeding baby: light skin tone |
+| ![1f469-1f3fc-200d-1f37c.svg](../qml/js/emoji/1f469-1f3fc-200d-1f37c.svg) |	woman feeding baby: medium-light skin tone |
+| ![1f469-1f3fd-200d-1f37c.svg](../qml/js/emoji/1f469-1f3fd-200d-1f37c.svg) |	woman feeding baby: medium skin tone |
+| ![1f469-1f3fe-200d-1f37c.svg](../qml/js/emoji/1f469-1f3fe-200d-1f37c.svg) |	woman feeding baby: medium-dark skin tone |
 | ![1f469-1f3ff-200d-1f37c.svg](../qml/js/emoji/1f469-1f3ff-200d-1f37c.svg) |	woman feeding baby: dark skin tone |
 | ![1f468-200d-1f37c.svg](../qml/js/emoji/1f468-200d-1f37c.svg) |	man feeding baby |
 | ![1f468-1f3fb-200d-1f37c.svg](../qml/js/emoji/1f468-1f3fb-200d-1f37c.svg) |	man feeding baby: light skin tone |
-| ![1f468-1f3fc-200d-1f37c.svg](../qml/js/emoji/1f468-1f3fc-200d-1f37c.svg) |	man feeding baby: medium-light  |skin tone
+| ![1f468-1f3fc-200d-1f37c.svg](../qml/js/emoji/1f468-1f3fc-200d-1f37c.svg) |	man feeding baby: medium-light skin tone |
 | ![1f468-1f3fd-200d-1f37c.svg](../qml/js/emoji/1f468-1f3fd-200d-1f37c.svg) |	man feeding baby: medium skin tone |
-| ![1f468-1f3fe-200d-1f37c.svg](../qml/js/emoji/1f468-1f3fe-200d-1f37c.svg) |	man feeding baby: medium-dark  |skin tone
+| ![1f468-1f3fe-200d-1f37c.svg](../qml/js/emoji/1f468-1f3fe-200d-1f37c.svg) |	man feeding baby: medium-dark skin tone |
 | ![1f468-1f3ff-200d-1f37c.svg](../qml/js/emoji/1f468-1f3ff-200d-1f37c.svg) |	man feeding baby: dark skin tone |
 | ![1f9d1-200d-1f37c.svg](../qml/js/emoji/1f9d1-200d-1f37c.svg) |	person feeding baby |
-| ![1f9d1-1f3fb-200d-1f37c.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f37c.svg) |	person feeding baby: light skin  |tone
-| ![1f9d1-1f3fc-200d-1f37c.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f37c.svg) |	person feeding baby: medium-light  |skin tone
-| ![1f9d1-1f3fd-200d-1f37c.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f37c.svg) |	person feeding baby: medium skin  |tone
-| ![1f9d1-1f3fe-200d-1f37c.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f37c.svg) |	person feeding baby: medium-dark  |skin tone
-| ![1f9d1-1f3ff-200d-1f37c.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f37c.svg) |	person feeding baby: dark skin  |tone
+| ![1f9d1-1f3fb-200d-1f37c.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f37c.svg) |	person feeding baby: light skin tone |
+| ![1f9d1-1f3fc-200d-1f37c.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f37c.svg) |	person feeding baby: medium-light skin tone |
+| ![1f9d1-1f3fd-200d-1f37c.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f37c.svg) |	person feeding baby: medium skin tone |
+| ![1f9d1-1f3fe-200d-1f37c.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f37c.svg) |	person feeding baby: medium-dark skin tone |
+| ![1f9d1-1f3ff-200d-1f37c.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f37c.svg) |	person feeding baby: dark skin tone |
 | ![1f47c.svg](../qml/js/emoji/1f47c.svg) |	baby angel |
 | ![1f47c-1f3fb.svg](../qml/js/emoji/1f47c-1f3fb.svg) |	baby angel: light skin tone |
 | ![1f47c-1f3fc.svg](../qml/js/emoji/1f47c-1f3fc.svg) |	baby angel: medium-light skin tone |
@@ -1244,16 +1244,16 @@ Here's a list of the implemented emojis:
 | ![1f9b8-1f3ff.svg](../qml/js/emoji/1f9b8-1f3ff.svg) |	superhero: dark skin tone |
 | ![1f9b8-200d-2642-fe0f.svg](../qml/js/emoji/1f9b8-200d-2642-fe0f.svg) |	man superhero |
 | ![1f9b8-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9b8-1f3fb-200d-2642-fe0f.svg) |	man superhero: light skin tone |
-| ![1f9b8-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9b8-1f3fc-200d-2642-fe0f.svg) |	man superhero: medium-light  |skin tone
-| ![1f9b8-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9b8-1f3fd-200d-2642-fe0f.svg) |	man superhero: medium skin  |tone
-| ![1f9b8-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9b8-1f3fe-200d-2642-fe0f.svg) |	man superhero: medium-dark  |skin tone
+| ![1f9b8-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9b8-1f3fc-200d-2642-fe0f.svg) |	man superhero: medium-light skin tone |
+| ![1f9b8-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9b8-1f3fd-200d-2642-fe0f.svg) |	man superhero: medium skin tone |
+| ![1f9b8-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9b8-1f3fe-200d-2642-fe0f.svg) |	man superhero: medium-dark skin tone |
 | ![1f9b8-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9b8-1f3ff-200d-2642-fe0f.svg) |	man superhero: dark skin tone |
 | ![1f9b8-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-200d-2640-fe0f.svg) |	woman superhero |
-| ![1f9b8-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-1f3fb-200d-2640-fe0f.svg) |	woman superhero: light skin  |tone
-| ![1f9b8-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-1f3fc-200d-2640-fe0f.svg) |	woman superhero: medium-light  |skin tone
-| ![1f9b8-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-1f3fd-200d-2640-fe0f.svg) |	woman superhero: medium skin  |tone
-| ![1f9b8-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-1f3fe-200d-2640-fe0f.svg) |	woman superhero: medium-dark  |skin tone
-| ![1f9b8-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-1f3ff-200d-2640-fe0f.svg) |	woman superhero: dark skin  |tone
+| ![1f9b8-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-1f3fb-200d-2640-fe0f.svg) |	woman superhero: light skin tone |
+| ![1f9b8-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-1f3fc-200d-2640-fe0f.svg) |	woman superhero: medium-light skin tone |
+| ![1f9b8-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-1f3fd-200d-2640-fe0f.svg) |	woman superhero: medium skin tone |
+| ![1f9b8-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-1f3fe-200d-2640-fe0f.svg) |	woman superhero: medium-dark skin tone |
+| ![1f9b8-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9b8-1f3ff-200d-2640-fe0f.svg) |	woman superhero: dark skin tone |
 | ![1f9b9.svg](../qml/js/emoji/1f9b9.svg) |	supervillain |
 | ![1f9b9-1f3fb.svg](../qml/js/emoji/1f9b9-1f3fb.svg) |	supervillain: light skin tone |
 | ![1f9b9-1f3fc.svg](../qml/js/emoji/1f9b9-1f3fc.svg) |	supervillain: medium-light skin tone |
@@ -1261,17 +1261,17 @@ Here's a list of the implemented emojis:
 | ![1f9b9-1f3fe.svg](../qml/js/emoji/1f9b9-1f3fe.svg) |	supervillain: medium-dark skin tone |
 | ![1f9b9-1f3ff.svg](../qml/js/emoji/1f9b9-1f3ff.svg) |	supervillain: dark skin tone |
 | ![1f9b9-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-200d-2642-fe0f.svg) |	man supervillain |
-| ![1f9b9-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-1f3fb-200d-2642-fe0f.svg) |	man supervillain: light skin  |tone
-| ![1f9b9-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-1f3fc-200d-2642-fe0f.svg) |	man supervillain:  |medium-light skin tone
-| ![1f9b9-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-1f3fd-200d-2642-fe0f.svg) |	man supervillain: medium skin  |tone
-| ![1f9b9-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-1f3fe-200d-2642-fe0f.svg) |	man supervillain: medium-dark  |skin tone
-| ![1f9b9-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-1f3ff-200d-2642-fe0f.svg) |	man supervillain: dark skin  |tone
+| ![1f9b9-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-1f3fb-200d-2642-fe0f.svg) |	man supervillain: light skin tone |
+| ![1f9b9-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-1f3fc-200d-2642-fe0f.svg) |	man supervillain: medium-light skin tone |
+| ![1f9b9-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-1f3fd-200d-2642-fe0f.svg) |	man supervillain: medium skin tone |
+| ![1f9b9-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-1f3fe-200d-2642-fe0f.svg) |	man supervillain: medium-dark skin tone |
+| ![1f9b9-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9b9-1f3ff-200d-2642-fe0f.svg) |	man supervillain: dark skin tone |
 | ![1f9b9-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-200d-2640-fe0f.svg) |	woman supervillain |
-| ![1f9b9-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-1f3fb-200d-2640-fe0f.svg) |	woman supervillain: light  |skin tone
-| ![1f9b9-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-1f3fc-200d-2640-fe0f.svg) |	woman supervillain:  |medium-light skin tone
-| ![1f9b9-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-1f3fd-200d-2640-fe0f.svg) |	woman supervillain: medium  |skin tone
-| ![1f9b9-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-1f3fe-200d-2640-fe0f.svg) |	woman supervillain:  |medium-dark skin tone
-| ![1f9b9-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-1f3ff-200d-2640-fe0f.svg) |	woman supervillain: dark skin  |tone
+| ![1f9b9-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-1f3fb-200d-2640-fe0f.svg) |	woman supervillain: light skin tone |
+| ![1f9b9-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-1f3fc-200d-2640-fe0f.svg) |	woman supervillain: medium-light skin tone |
+| ![1f9b9-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-1f3fd-200d-2640-fe0f.svg) |	woman supervillain: medium skin tone |
+| ![1f9b9-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-1f3fe-200d-2640-fe0f.svg) |	woman supervillain: medium-dark skin tone |
+| ![1f9b9-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9b9-1f3ff-200d-2640-fe0f.svg) |	woman supervillain: dark skin tone |
 | ![1f9d9.svg](../qml/js/emoji/1f9d9.svg) |	mage |
 | ![1f9d9-1f3fb.svg](../qml/js/emoji/1f9d9-1f3fb.svg) |	mage: light skin tone |
 | ![1f9d9-1f3fc.svg](../qml/js/emoji/1f9d9-1f3fc.svg) |	mage: medium-light skin tone |
@@ -1280,15 +1280,15 @@ Here's a list of the implemented emojis:
 | ![1f9d9-1f3ff.svg](../qml/js/emoji/1f9d9-1f3ff.svg) |	mage: dark skin tone |
 | ![1f9d9-200d-2642-fe0f.svg](../qml/js/emoji/1f9d9-200d-2642-fe0f.svg) |	man mage |
 | ![1f9d9-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9d9-1f3fb-200d-2642-fe0f.svg) |	man mage: light skin tone |
-| ![1f9d9-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9d9-1f3fc-200d-2642-fe0f.svg) |	man mage: medium-light skin  |tone
+| ![1f9d9-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9d9-1f3fc-200d-2642-fe0f.svg) |	man mage: medium-light skin tone |
 | ![1f9d9-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9d9-1f3fd-200d-2642-fe0f.svg) |	man mage: medium skin tone |
-| ![1f9d9-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9d9-1f3fe-200d-2642-fe0f.svg) |	man mage: medium-dark skin  |tone
+| ![1f9d9-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9d9-1f3fe-200d-2642-fe0f.svg) |	man mage: medium-dark skin tone |
 | ![1f9d9-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9d9-1f3ff-200d-2642-fe0f.svg) |	man mage: dark skin tone |
 | ![1f9d9-200d-2640-fe0f.svg](../qml/js/emoji/1f9d9-200d-2640-fe0f.svg) |	woman mage |
 | ![1f9d9-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9d9-1f3fb-200d-2640-fe0f.svg) |	woman mage: light skin tone |
-| ![1f9d9-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9d9-1f3fc-200d-2640-fe0f.svg) |	woman mage: medium-light skin  |tone
+| ![1f9d9-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9d9-1f3fc-200d-2640-fe0f.svg) |	woman mage: medium-light skin tone |
 | ![1f9d9-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9d9-1f3fd-200d-2640-fe0f.svg) |	woman mage: medium skin tone |
-| ![1f9d9-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9d9-1f3fe-200d-2640-fe0f.svg) |	woman mage: medium-dark skin  |tone
+| ![1f9d9-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9d9-1f3fe-200d-2640-fe0f.svg) |	woman mage: medium-dark skin tone |
 | ![1f9d9-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9d9-1f3ff-200d-2640-fe0f.svg) |	woman mage: dark skin tone |
 | ![1f9da.svg](../qml/js/emoji/1f9da.svg) |	fairy |
 | ![1f9da-1f3fb.svg](../qml/js/emoji/1f9da-1f3fb.svg) |	fairy: light skin tone |
@@ -1298,15 +1298,15 @@ Here's a list of the implemented emojis:
 | ![1f9da-1f3ff.svg](../qml/js/emoji/1f9da-1f3ff.svg) |	fairy: dark skin tone |
 | ![1f9da-200d-2642-fe0f.svg](../qml/js/emoji/1f9da-200d-2642-fe0f.svg) |	man fairy |
 | ![1f9da-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9da-1f3fb-200d-2642-fe0f.svg) |	man fairy: light skin tone |
-| ![1f9da-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9da-1f3fc-200d-2642-fe0f.svg) |	man fairy: medium-light skin  |tone
+| ![1f9da-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9da-1f3fc-200d-2642-fe0f.svg) |	man fairy: medium-light skin tone |
 | ![1f9da-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9da-1f3fd-200d-2642-fe0f.svg) |	man fairy: medium skin tone |
-| ![1f9da-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9da-1f3fe-200d-2642-fe0f.svg) |	man fairy: medium-dark skin  |tone
+| ![1f9da-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9da-1f3fe-200d-2642-fe0f.svg) |	man fairy: medium-dark skin tone |
 | ![1f9da-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9da-1f3ff-200d-2642-fe0f.svg) |	man fairy: dark skin tone |
 | ![1f9da-200d-2640-fe0f.svg](../qml/js/emoji/1f9da-200d-2640-fe0f.svg) |	woman fairy |
 | ![1f9da-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9da-1f3fb-200d-2640-fe0f.svg) |	woman fairy: light skin tone |
-| ![1f9da-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9da-1f3fc-200d-2640-fe0f.svg) |	woman fairy: medium-light  |skin tone
+| ![1f9da-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9da-1f3fc-200d-2640-fe0f.svg) |	woman fairy: medium-light skin tone |
 | ![1f9da-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9da-1f3fd-200d-2640-fe0f.svg) |	woman fairy: medium skin tone |
-| ![1f9da-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9da-1f3fe-200d-2640-fe0f.svg) |	woman fairy: medium-dark skin  |tone
+| ![1f9da-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9da-1f3fe-200d-2640-fe0f.svg) |	woman fairy: medium-dark skin tone |
 | ![1f9da-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9da-1f3ff-200d-2640-fe0f.svg) |	woman fairy: dark skin tone |
 | ![1f9db.svg](../qml/js/emoji/1f9db.svg) |	vampire |
 | ![1f9db-1f3fb.svg](../qml/js/emoji/1f9db-1f3fb.svg) |	vampire: light skin tone |
@@ -1316,15 +1316,15 @@ Here's a list of the implemented emojis:
 | ![1f9db-1f3ff.svg](../qml/js/emoji/1f9db-1f3ff.svg) |	vampire: dark skin tone |
 | ![1f9db-200d-2642-fe0f.svg](../qml/js/emoji/1f9db-200d-2642-fe0f.svg) |	man vampire |
 | ![1f9db-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9db-1f3fb-200d-2642-fe0f.svg) |	man vampire: light skin tone |
-| ![1f9db-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9db-1f3fc-200d-2642-fe0f.svg) |	man vampire: medium-light  |skin tone
+| ![1f9db-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9db-1f3fc-200d-2642-fe0f.svg) |	man vampire: medium-light skin tone |
 | ![1f9db-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9db-1f3fd-200d-2642-fe0f.svg) |	man vampire: medium skin tone |
-| ![1f9db-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9db-1f3fe-200d-2642-fe0f.svg) |	man vampire: medium-dark skin  |tone
+| ![1f9db-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9db-1f3fe-200d-2642-fe0f.svg) |	man vampire: medium-dark skin tone |
 | ![1f9db-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9db-1f3ff-200d-2642-fe0f.svg) |	man vampire: dark skin tone |
 | ![1f9db-200d-2640-fe0f.svg](../qml/js/emoji/1f9db-200d-2640-fe0f.svg) |	woman vampire |
 | ![1f9db-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9db-1f3fb-200d-2640-fe0f.svg) |	woman vampire: light skin tone |
-| ![1f9db-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9db-1f3fc-200d-2640-fe0f.svg) |	woman vampire: medium-light  |skin tone
-| ![1f9db-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9db-1f3fd-200d-2640-fe0f.svg) |	woman vampire: medium skin  |tone
-| ![1f9db-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9db-1f3fe-200d-2640-fe0f.svg) |	woman vampire: medium-dark  |skin tone
+| ![1f9db-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9db-1f3fc-200d-2640-fe0f.svg) |	woman vampire: medium-light skin tone |
+| ![1f9db-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9db-1f3fd-200d-2640-fe0f.svg) |	woman vampire: medium skin tone |
+| ![1f9db-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9db-1f3fe-200d-2640-fe0f.svg) |	woman vampire: medium-dark skin tone |
 | ![1f9db-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9db-1f3ff-200d-2640-fe0f.svg) |	woman vampire: dark skin tone |
 | ![1f9dc.svg](../qml/js/emoji/1f9dc.svg) |	merperson |
 | ![1f9dc-1f3fb.svg](../qml/js/emoji/1f9dc-1f3fb.svg) |	merperson: light skin tone |
@@ -1340,7 +1340,7 @@ Here's a list of the implemented emojis:
 | ![1f9dc-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9dc-1f3ff-200d-2642-fe0f.svg) |	merman: dark skin tone |
 | ![1f9dc-200d-2640-fe0f.svg](../qml/js/emoji/1f9dc-200d-2640-fe0f.svg) |	mermaid |
 | ![1f9dc-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9dc-1f3fb-200d-2640-fe0f.svg) |	mermaid: light skin tone |
-| ![1f9dc-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9dc-1f3fc-200d-2640-fe0f.svg) |	mermaid: medium-light skin  |tone
+| ![1f9dc-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9dc-1f3fc-200d-2640-fe0f.svg) |	mermaid: medium-light skin tone |
 | ![1f9dc-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9dc-1f3fd-200d-2640-fe0f.svg) |	mermaid: medium skin tone |
 | ![1f9dc-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9dc-1f3fe-200d-2640-fe0f.svg) |	mermaid: medium-dark skin tone |
 | ![1f9dc-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9dc-1f3ff-200d-2640-fe0f.svg) |	mermaid: dark skin tone |
@@ -1352,15 +1352,15 @@ Here's a list of the implemented emojis:
 | ![1f9dd-1f3ff.svg](../qml/js/emoji/1f9dd-1f3ff.svg) |	elf: dark skin tone |
 | ![1f9dd-200d-2642-fe0f.svg](../qml/js/emoji/1f9dd-200d-2642-fe0f.svg) |	man elf |
 | ![1f9dd-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9dd-1f3fb-200d-2642-fe0f.svg) |	man elf: light skin tone |
-| ![1f9dd-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9dd-1f3fc-200d-2642-fe0f.svg) |	man elf: medium-light skin  |tone
+| ![1f9dd-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9dd-1f3fc-200d-2642-fe0f.svg) |	man elf: medium-light skin tone |
 | ![1f9dd-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9dd-1f3fd-200d-2642-fe0f.svg) |	man elf: medium skin tone |
 | ![1f9dd-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9dd-1f3fe-200d-2642-fe0f.svg) |	man elf: medium-dark skin tone |
 | ![1f9dd-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9dd-1f3ff-200d-2642-fe0f.svg) |	man elf: dark skin tone |
 | ![1f9dd-200d-2640-fe0f.svg](../qml/js/emoji/1f9dd-200d-2640-fe0f.svg) |	woman elf |
 | ![1f9dd-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9dd-1f3fb-200d-2640-fe0f.svg) |	woman elf: light skin tone |
-| ![1f9dd-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9dd-1f3fc-200d-2640-fe0f.svg) |	woman elf: medium-light skin  |tone
+| ![1f9dd-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9dd-1f3fc-200d-2640-fe0f.svg) |	woman elf: medium-light skin tone |
 | ![1f9dd-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9dd-1f3fd-200d-2640-fe0f.svg) |	woman elf: medium skin tone |
-| ![1f9dd-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9dd-1f3fe-200d-2640-fe0f.svg) |	woman elf: medium-dark skin  |tone
+| ![1f9dd-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9dd-1f3fe-200d-2640-fe0f.svg) |	woman elf: medium-dark skin tone |
 | ![1f9dd-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9dd-1f3ff-200d-2640-fe0f.svg) |	woman elf: dark skin tone |
 | ![1f9de.svg](../qml/js/emoji/1f9de.svg) |	genie |
 | ![1f9de-200d-2642-fe0f.svg](../qml/js/emoji/1f9de-200d-2642-fe0f.svg) |	man genie |
@@ -1375,17 +1375,17 @@ Here's a list of the implemented emojis:
 | ![1f486-1f3fe.svg](../qml/js/emoji/1f486-1f3fe.svg) |	person getting massage: medium-dark skin tone |
 | ![1f486-1f3ff.svg](../qml/js/emoji/1f486-1f3ff.svg) |	person getting massage: dark skin tone |
 | ![1f486-200d-2642-fe0f.svg](../qml/js/emoji/1f486-200d-2642-fe0f.svg) |	man getting massage |
-| ![1f486-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f486-1f3fb-200d-2642-fe0f.svg) |	man getting massage: light  |skin tone
-| ![1f486-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f486-1f3fc-200d-2642-fe0f.svg) |	man getting massage:  |medium-light skin tone
-| ![1f486-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f486-1f3fd-200d-2642-fe0f.svg) |	man getting massage: medium  |skin tone
-| ![1f486-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f486-1f3fe-200d-2642-fe0f.svg) |	man getting massage:  |medium-dark skin tone
-| ![1f486-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f486-1f3ff-200d-2642-fe0f.svg) |	man getting massage: dark  |skin tone
+| ![1f486-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f486-1f3fb-200d-2642-fe0f.svg) |	man getting massage: light skin tone |
+| ![1f486-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f486-1f3fc-200d-2642-fe0f.svg) |	man getting massage: medium-light skin tone |
+| ![1f486-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f486-1f3fd-200d-2642-fe0f.svg) |	man getting massage: medium skin tone |
+| ![1f486-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f486-1f3fe-200d-2642-fe0f.svg) |	man getting massage: medium-dark skin tone |
+| ![1f486-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f486-1f3ff-200d-2642-fe0f.svg) |	man getting massage: dark skin tone |
 | ![1f486-200d-2640-fe0f.svg](../qml/js/emoji/1f486-200d-2640-fe0f.svg) |	woman getting massage |
-| ![1f486-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f486-1f3fb-200d-2640-fe0f.svg) |	woman getting massage: light  |skin tone
-| ![1f486-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f486-1f3fc-200d-2640-fe0f.svg) |	woman getting massage:  |medium-light skin tone
-| ![1f486-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f486-1f3fd-200d-2640-fe0f.svg) |	woman getting massage: medium  |skin tone
-| ![1f486-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f486-1f3fe-200d-2640-fe0f.svg) |	woman getting massage:  |medium-dark skin tone
-| ![1f486-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f486-1f3ff-200d-2640-fe0f.svg) |	woman getting massage: dark  |skin tone
+| ![1f486-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f486-1f3fb-200d-2640-fe0f.svg) |	woman getting massage: light skin tone |
+| ![1f486-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f486-1f3fc-200d-2640-fe0f.svg) |	woman getting massage: medium-light skin tone |
+| ![1f486-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f486-1f3fd-200d-2640-fe0f.svg) |	woman getting massage: medium skin tone |
+| ![1f486-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f486-1f3fe-200d-2640-fe0f.svg) |	woman getting massage: medium-dark skin tone |
+| ![1f486-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f486-1f3ff-200d-2640-fe0f.svg) |	woman getting massage: dark skin tone |
 | ![1f487.svg](../qml/js/emoji/1f487.svg) |	person getting haircut |
 | ![1f487-1f3fb.svg](../qml/js/emoji/1f487-1f3fb.svg) |	person getting haircut: light skin tone |
 | ![1f487-1f3fc.svg](../qml/js/emoji/1f487-1f3fc.svg) |	person getting haircut: medium-light skin tone |
@@ -1393,17 +1393,17 @@ Here's a list of the implemented emojis:
 | ![1f487-1f3fe.svg](../qml/js/emoji/1f487-1f3fe.svg) |	person getting haircut: medium-dark skin tone |
 | ![1f487-1f3ff.svg](../qml/js/emoji/1f487-1f3ff.svg) |	person getting haircut: dark skin tone |
 | ![1f487-200d-2642-fe0f.svg](../qml/js/emoji/1f487-200d-2642-fe0f.svg) |	man getting haircut |
-| ![1f487-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f487-1f3fb-200d-2642-fe0f.svg) |	man getting haircut: light  |skin tone
-| ![1f487-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f487-1f3fc-200d-2642-fe0f.svg) |	man getting haircut:  |medium-light skin tone
-| ![1f487-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f487-1f3fd-200d-2642-fe0f.svg) |	man getting haircut: medium  |skin tone
-| ![1f487-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f487-1f3fe-200d-2642-fe0f.svg) |	man getting haircut:  |medium-dark skin tone
-| ![1f487-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f487-1f3ff-200d-2642-fe0f.svg) |	man getting haircut: dark  |skin tone
+| ![1f487-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f487-1f3fb-200d-2642-fe0f.svg) |	man getting haircut: light skin tone |
+| ![1f487-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f487-1f3fc-200d-2642-fe0f.svg) |	man getting haircut: medium-light skin tone |
+| ![1f487-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f487-1f3fd-200d-2642-fe0f.svg) |	man getting haircut: medium skin tone |
+| ![1f487-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f487-1f3fe-200d-2642-fe0f.svg) |	man getting haircut: medium-dark skin tone |
+| ![1f487-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f487-1f3ff-200d-2642-fe0f.svg) |	man getting haircut: dark skin tone |
 | ![1f487-200d-2640-fe0f.svg](../qml/js/emoji/1f487-200d-2640-fe0f.svg) |	woman getting haircut |
-| ![1f487-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f487-1f3fb-200d-2640-fe0f.svg) |	woman getting haircut: light  |skin tone
-| ![1f487-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f487-1f3fc-200d-2640-fe0f.svg) |	woman getting haircut:  |medium-light skin tone
-| ![1f487-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f487-1f3fd-200d-2640-fe0f.svg) |	woman getting haircut: medium  |skin tone
-| ![1f487-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f487-1f3fe-200d-2640-fe0f.svg) |	woman getting haircut:  |medium-dark skin tone
-| ![1f487-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f487-1f3ff-200d-2640-fe0f.svg) |	woman getting haircut: dark  |skin tone
+| ![1f487-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f487-1f3fb-200d-2640-fe0f.svg) |	woman getting haircut: light skin tone |
+| ![1f487-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f487-1f3fc-200d-2640-fe0f.svg) |	woman getting haircut: medium-light skin tone |
+| ![1f487-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f487-1f3fd-200d-2640-fe0f.svg) |	woman getting haircut: medium skin tone |
+| ![1f487-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f487-1f3fe-200d-2640-fe0f.svg) |	woman getting haircut: medium-dark skin tone |
+| ![1f487-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f487-1f3ff-200d-2640-fe0f.svg) |	woman getting haircut: dark skin tone |
 | ![1f6b6.svg](../qml/js/emoji/1f6b6.svg) |	person walking |
 | ![1f6b6-1f3fb.svg](../qml/js/emoji/1f6b6-1f3fb.svg) |	person walking: light skin tone |
 | ![1f6b6-1f3fc.svg](../qml/js/emoji/1f6b6-1f3fc.svg) |	person walking: medium-light skin tone |
@@ -1412,15 +1412,15 @@ Here's a list of the implemented emojis:
 | ![1f6b6-1f3ff.svg](../qml/js/emoji/1f6b6-1f3ff.svg) |	person walking: dark skin tone |
 | ![1f6b6-200d-2642-fe0f.svg](../qml/js/emoji/1f6b6-200d-2642-fe0f.svg) |	man walking |
 | ![1f6b6-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f6b6-1f3fb-200d-2642-fe0f.svg) |	man walking: light skin tone |
-| ![1f6b6-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f6b6-1f3fc-200d-2642-fe0f.svg) |	man walking: medium-light  |skin tone
+| ![1f6b6-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f6b6-1f3fc-200d-2642-fe0f.svg) |	man walking: medium-light skin tone |
 | ![1f6b6-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f6b6-1f3fd-200d-2642-fe0f.svg) |	man walking: medium skin tone |
-| ![1f6b6-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f6b6-1f3fe-200d-2642-fe0f.svg) |	man walking: medium-dark skin  |tone
+| ![1f6b6-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f6b6-1f3fe-200d-2642-fe0f.svg) |	man walking: medium-dark skin tone |
 | ![1f6b6-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f6b6-1f3ff-200d-2642-fe0f.svg) |	man walking: dark skin tone |
 | ![1f6b6-200d-2640-fe0f.svg](../qml/js/emoji/1f6b6-200d-2640-fe0f.svg) |	woman walking |
 | ![1f6b6-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f6b6-1f3fb-200d-2640-fe0f.svg) |	woman walking: light skin tone |
-| ![1f6b6-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f6b6-1f3fc-200d-2640-fe0f.svg) |	woman walking: medium-light  |skin tone
-| ![1f6b6-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f6b6-1f3fd-200d-2640-fe0f.svg) |	woman walking: medium skin  |tone
-| ![1f6b6-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f6b6-1f3fe-200d-2640-fe0f.svg) |	woman walking: medium-dark  |skin tone
+| ![1f6b6-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f6b6-1f3fc-200d-2640-fe0f.svg) |	woman walking: medium-light skin tone |
+| ![1f6b6-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f6b6-1f3fd-200d-2640-fe0f.svg) |	woman walking: medium skin tone |
+| ![1f6b6-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f6b6-1f3fe-200d-2640-fe0f.svg) |	woman walking: medium-dark skin tone |
 | ![1f6b6-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f6b6-1f3ff-200d-2640-fe0f.svg) |	woman walking: dark skin tone |
 | ![1f9cd.svg](../qml/js/emoji/1f9cd.svg) |	person standing |
 | ![1f9cd-1f3fb.svg](../qml/js/emoji/1f9cd-1f3fb.svg) |	person standing: light skin tone |
@@ -1430,15 +1430,15 @@ Here's a list of the implemented emojis:
 | ![1f9cd-1f3ff.svg](../qml/js/emoji/1f9cd-1f3ff.svg) |	person standing: dark skin tone |
 | ![1f9cd-200d-2642-fe0f.svg](../qml/js/emoji/1f9cd-200d-2642-fe0f.svg) |	man standing |
 | ![1f9cd-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9cd-1f3fb-200d-2642-fe0f.svg) |	man standing: light skin tone |
-| ![1f9cd-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9cd-1f3fc-200d-2642-fe0f.svg) |	man standing: medium-light  |skin tone
+| ![1f9cd-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9cd-1f3fc-200d-2642-fe0f.svg) |	man standing: medium-light skin tone |
 | ![1f9cd-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9cd-1f3fd-200d-2642-fe0f.svg) |	man standing: medium skin tone |
-| ![1f9cd-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9cd-1f3fe-200d-2642-fe0f.svg) |	man standing: medium-dark  |skin tone
+| ![1f9cd-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9cd-1f3fe-200d-2642-fe0f.svg) |	man standing: medium-dark skin tone |
 | ![1f9cd-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9cd-1f3ff-200d-2642-fe0f.svg) |	man standing: dark skin tone |
 | ![1f9cd-200d-2640-fe0f.svg](../qml/js/emoji/1f9cd-200d-2640-fe0f.svg) |	woman standing |
-| ![1f9cd-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9cd-1f3fb-200d-2640-fe0f.svg) |	woman standing: light skin  |tone
-| ![1f9cd-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9cd-1f3fc-200d-2640-fe0f.svg) |	woman standing: medium-light  |skin tone
-| ![1f9cd-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9cd-1f3fd-200d-2640-fe0f.svg) |	woman standing: medium skin  |tone
-| ![1f9cd-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9cd-1f3fe-200d-2640-fe0f.svg) |	woman standing: medium-dark  |skin tone
+| ![1f9cd-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9cd-1f3fb-200d-2640-fe0f.svg) |	woman standing: light skin tone |
+| ![1f9cd-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9cd-1f3fc-200d-2640-fe0f.svg) |	woman standing: medium-light skin tone |
+| ![1f9cd-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9cd-1f3fd-200d-2640-fe0f.svg) |	woman standing: medium skin tone |
+| ![1f9cd-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9cd-1f3fe-200d-2640-fe0f.svg) |	woman standing: medium-dark skin tone |
 | ![1f9cd-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9cd-1f3ff-200d-2640-fe0f.svg) |	woman standing: dark skin tone |
 | ![1f9ce.svg](../qml/js/emoji/1f9ce.svg) |	person kneeling |
 | ![1f9ce-1f3fb.svg](../qml/js/emoji/1f9ce-1f3fb.svg) |	person kneeling: light skin tone |
@@ -1448,70 +1448,70 @@ Here's a list of the implemented emojis:
 | ![1f9ce-1f3ff.svg](../qml/js/emoji/1f9ce-1f3ff.svg) |	person kneeling: dark skin tone |
 | ![1f9ce-200d-2642-fe0f.svg](../qml/js/emoji/1f9ce-200d-2642-fe0f.svg) |	man kneeling |
 | ![1f9ce-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9ce-1f3fb-200d-2642-fe0f.svg) |	man kneeling: light skin tone |
-| ![1f9ce-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9ce-1f3fc-200d-2642-fe0f.svg) |	man kneeling: medium-light  |skin tone
+| ![1f9ce-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9ce-1f3fc-200d-2642-fe0f.svg) |	man kneeling: medium-light skin tone |
 | ![1f9ce-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9ce-1f3fd-200d-2642-fe0f.svg) |	man kneeling: medium skin tone |
-| ![1f9ce-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9ce-1f3fe-200d-2642-fe0f.svg) |	man kneeling: medium-dark  |skin tone
+| ![1f9ce-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9ce-1f3fe-200d-2642-fe0f.svg) |	man kneeling: medium-dark skin tone |
 | ![1f9ce-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9ce-1f3ff-200d-2642-fe0f.svg) |	man kneeling: dark skin tone |
 | ![1f9ce-200d-2640-fe0f.svg](../qml/js/emoji/1f9ce-200d-2640-fe0f.svg) |	woman kneeling |
-| ![1f9ce-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9ce-1f3fb-200d-2640-fe0f.svg) |	woman kneeling: light skin  |tone
-| ![1f9ce-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9ce-1f3fc-200d-2640-fe0f.svg) |	woman kneeling: medium-light  |skin tone
-| ![1f9ce-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9ce-1f3fd-200d-2640-fe0f.svg) |	woman kneeling: medium skin  |tone
-| ![1f9ce-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9ce-1f3fe-200d-2640-fe0f.svg) |	woman kneeling: medium-dark  |skin tone
+| ![1f9ce-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9ce-1f3fb-200d-2640-fe0f.svg) |	woman kneeling: light skin tone |
+| ![1f9ce-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9ce-1f3fc-200d-2640-fe0f.svg) |	woman kneeling: medium-light skin tone |
+| ![1f9ce-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9ce-1f3fd-200d-2640-fe0f.svg) |	woman kneeling: medium skin tone |
+| ![1f9ce-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9ce-1f3fe-200d-2640-fe0f.svg) |	woman kneeling: medium-dark skin tone |
 | ![1f9ce-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9ce-1f3ff-200d-2640-fe0f.svg) |	woman kneeling: dark skin tone |
 | ![1f9d1-200d-1f9af.svg](../qml/js/emoji/1f9d1-200d-1f9af.svg) |	person with white cane |
-| ![1f9d1-1f3fb-200d-1f9af.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9af.svg) |	person with white cane: light  |skin tone
-| ![1f9d1-1f3fc-200d-1f9af.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9af.svg) |	person with white cane:  |medium-light skin tone
-| ![1f9d1-1f3fd-200d-1f9af.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9af.svg) |	person with white cane: medium  |skin tone
-| ![1f9d1-1f3fe-200d-1f9af.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9af.svg) |	person with white cane:  |medium-dark skin tone
-| ![1f9d1-1f3ff-200d-1f9af.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f9af.svg) |	person with white cane: dark skin  |tone
+| ![1f9d1-1f3fb-200d-1f9af.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9af.svg) |	person with white cane: light skin tone |
+| ![1f9d1-1f3fc-200d-1f9af.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9af.svg) |	person with white cane: medium-light skin tone |
+| ![1f9d1-1f3fd-200d-1f9af.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9af.svg) |	person with white cane: medium skin tone |
+| ![1f9d1-1f3fe-200d-1f9af.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9af.svg) |	person with white cane: medium-dark skin tone |
+| ![1f9d1-1f3ff-200d-1f9af.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f9af.svg) |	person with white cane: dark skin tone |
 | ![1f468-200d-1f9af.svg](../qml/js/emoji/1f468-200d-1f9af.svg) |	man with white cane |
-| ![1f468-1f3fb-200d-1f9af.svg](../qml/js/emoji/1f468-1f3fb-200d-1f9af.svg) |	man with white cane: light skin  |tone
-| ![1f468-1f3fc-200d-1f9af.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9af.svg) |	man with white cane: medium-light  |skin tone
-| ![1f468-1f3fd-200d-1f9af.svg](../qml/js/emoji/1f468-1f3fd-200d-1f9af.svg) |	man with white cane: medium skin  |tone
-| ![1f468-1f3fe-200d-1f9af.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9af.svg) |	man with white cane: medium-dark  |skin tone
-| ![1f468-1f3ff-200d-1f9af.svg](../qml/js/emoji/1f468-1f3ff-200d-1f9af.svg) |	man with white cane: dark skin  |tone
+| ![1f468-1f3fb-200d-1f9af.svg](../qml/js/emoji/1f468-1f3fb-200d-1f9af.svg) |	man with white cane: light skin tone |
+| ![1f468-1f3fc-200d-1f9af.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9af.svg) |	man with white cane: medium-light skin tone |
+| ![1f468-1f3fd-200d-1f9af.svg](../qml/js/emoji/1f468-1f3fd-200d-1f9af.svg) |	man with white cane: medium skin tone |
+| ![1f468-1f3fe-200d-1f9af.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9af.svg) |	man with white cane: medium-dark skin tone |
+| ![1f468-1f3ff-200d-1f9af.svg](../qml/js/emoji/1f468-1f3ff-200d-1f9af.svg) |	man with white cane: dark skin tone |
 | ![1f469-200d-1f9af.svg](../qml/js/emoji/1f469-200d-1f9af.svg) |	woman with white cane |
-| ![1f469-1f3fb-200d-1f9af.svg](../qml/js/emoji/1f469-1f3fb-200d-1f9af.svg) |	woman with white cane: light skin  |tone
-| ![1f469-1f3fc-200d-1f9af.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9af.svg) |	woman with white cane:  |medium-light skin tone
-| ![1f469-1f3fd-200d-1f9af.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9af.svg) |	woman with white cane: medium  |skin tone
-| ![1f469-1f3fe-200d-1f9af.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9af.svg) |	woman with white cane:  |medium-dark skin tone
-| ![1f469-1f3ff-200d-1f9af.svg](../qml/js/emoji/1f469-1f3ff-200d-1f9af.svg) |	woman with white cane: dark skin  |tone
+| ![1f469-1f3fb-200d-1f9af.svg](../qml/js/emoji/1f469-1f3fb-200d-1f9af.svg) |	woman with white cane: light skin tone |
+| ![1f469-1f3fc-200d-1f9af.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9af.svg) |	woman with white cane: medium-light skin tone |
+| ![1f469-1f3fd-200d-1f9af.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9af.svg) |	woman with white cane: medium skin tone |
+| ![1f469-1f3fe-200d-1f9af.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9af.svg) |	woman with white cane: medium-dark skin tone |
+| ![1f469-1f3ff-200d-1f9af.svg](../qml/js/emoji/1f469-1f3ff-200d-1f9af.svg) |	woman with white cane: dark skin tone |
 | ![1f9d1-200d-1f9bc.svg](../qml/js/emoji/1f9d1-200d-1f9bc.svg) |	person in motorized wheelchair |
-| ![1f9d1-1f3fb-200d-1f9bc.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9bc.svg) |	person in motorized wheelchair:  |light skin tone
-| ![1f9d1-1f3fc-200d-1f9bc.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9bc.svg) |	person in motorized wheelchair:  |medium-light skin tone
-| ![1f9d1-1f3fd-200d-1f9bc.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9bc.svg) |	person in motorized wheelchair:  |medium skin tone
-| ![1f9d1-1f3fe-200d-1f9bc.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9bc.svg) |	person in motorized wheelchair:  |medium-dark skin tone
-| ![1f9d1-1f3ff-200d-1f9bc.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f9bc.svg) |	person in motorized wheelchair:  |dark skin tone
+| ![1f9d1-1f3fb-200d-1f9bc.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9bc.svg) |	person in motorized wheelchair: light skin tone |
+| ![1f9d1-1f3fc-200d-1f9bc.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9bc.svg) |	person in motorized wheelchair: medium-light skin tone |
+| ![1f9d1-1f3fd-200d-1f9bc.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9bc.svg) |	person in motorized wheelchair: medium skin tone |
+| ![1f9d1-1f3fe-200d-1f9bc.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9bc.svg) |	person in motorized wheelchair: medium-dark skin tone |
+| ![1f9d1-1f3ff-200d-1f9bc.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f9bc.svg) |	person in motorized wheelchair: dark skin tone |
 | ![1f468-200d-1f9bc.svg](../qml/js/emoji/1f468-200d-1f9bc.svg) |	man in motorized wheelchair |
-| ![1f468-1f3fb-200d-1f9bc.svg](../qml/js/emoji/1f468-1f3fb-200d-1f9bc.svg) |	man in motorized wheelchair:  |light skin tone
-| ![1f468-1f3fc-200d-1f9bc.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9bc.svg) |	man in motorized wheelchair:  |medium-light skin tone
-| ![1f468-1f3fd-200d-1f9bc.svg](../qml/js/emoji/1f468-1f3fd-200d-1f9bc.svg) |	man in motorized wheelchair:  |medium skin tone
-| ![1f468-1f3fe-200d-1f9bc.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9bc.svg) |	man in motorized wheelchair:  |medium-dark skin tone
-| ![1f468-1f3ff-200d-1f9bc.svg](../qml/js/emoji/1f468-1f3ff-200d-1f9bc.svg) |	man in motorized wheelchair: dark  |skin tone
+| ![1f468-1f3fb-200d-1f9bc.svg](../qml/js/emoji/1f468-1f3fb-200d-1f9bc.svg) |	man in motorized wheelchair: light skin tone |
+| ![1f468-1f3fc-200d-1f9bc.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9bc.svg) |	man in motorized wheelchair: medium-light skin tone |
+| ![1f468-1f3fd-200d-1f9bc.svg](../qml/js/emoji/1f468-1f3fd-200d-1f9bc.svg) |	man in motorized wheelchair: medium skin tone |
+| ![1f468-1f3fe-200d-1f9bc.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9bc.svg) |	man in motorized wheelchair: medium-dark skin tone |
+| ![1f468-1f3ff-200d-1f9bc.svg](../qml/js/emoji/1f468-1f3ff-200d-1f9bc.svg) |	man in motorized wheelchair: dark skin tone |
 | ![1f469-200d-1f9bc.svg](../qml/js/emoji/1f469-200d-1f9bc.svg) |	woman in motorized wheelchair |
-| ![1f469-1f3fb-200d-1f9bc.svg](../qml/js/emoji/1f469-1f3fb-200d-1f9bc.svg) |	woman in motorized wheelchair:  |light skin tone
-| ![1f469-1f3fc-200d-1f9bc.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9bc.svg) |	woman in motorized wheelchair:  |medium-light skin tone
-| ![1f469-1f3fd-200d-1f9bc.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9bc.svg) |	woman in motorized wheelchair:  |medium skin tone
-| ![1f469-1f3fe-200d-1f9bc.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9bc.svg) |	woman in motorized wheelchair:  |medium-dark skin tone
-| ![1f469-1f3ff-200d-1f9bc.svg](../qml/js/emoji/1f469-1f3ff-200d-1f9bc.svg) |	woman in motorized wheelchair:  |dark skin tone
+| ![1f469-1f3fb-200d-1f9bc.svg](../qml/js/emoji/1f469-1f3fb-200d-1f9bc.svg) |	woman in motorized wheelchair: light skin tone |
+| ![1f469-1f3fc-200d-1f9bc.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9bc.svg) |	woman in motorized wheelchair: medium-light skin tone |
+| ![1f469-1f3fd-200d-1f9bc.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9bc.svg) |	woman in motorized wheelchair: medium skin tone |
+| ![1f469-1f3fe-200d-1f9bc.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9bc.svg) |	woman in motorized wheelchair: medium-dark skin tone |
+| ![1f469-1f3ff-200d-1f9bc.svg](../qml/js/emoji/1f469-1f3ff-200d-1f9bc.svg) |	woman in motorized wheelchair: dark skin tone |
 | ![1f9d1-200d-1f9bd.svg](../qml/js/emoji/1f9d1-200d-1f9bd.svg) |	person in manual wheelchair |
-| ![1f9d1-1f3fb-200d-1f9bd.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9bd.svg) |	person in manual wheelchair:  |light skin tone
-| ![1f9d1-1f3fc-200d-1f9bd.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9bd.svg) |	person in manual wheelchair:  |medium-light skin tone
-| ![1f9d1-1f3fd-200d-1f9bd.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9bd.svg) |	person in manual wheelchair:  |medium skin tone
-| ![1f9d1-1f3fe-200d-1f9bd.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9bd.svg) |	person in manual wheelchair:  |medium-dark skin tone
-| ![1f9d1-1f3ff-200d-1f9bd.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f9bd.svg) |	person in manual wheelchair: dark  |skin tone
+| ![1f9d1-1f3fb-200d-1f9bd.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f9bd.svg) |	person in manual wheelchair: light skin tone |
+| ![1f9d1-1f3fc-200d-1f9bd.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f9bd.svg) |	person in manual wheelchair: medium-light skin tone |
+| ![1f9d1-1f3fd-200d-1f9bd.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f9bd.svg) |	person in manual wheelchair: medium skin tone |
+| ![1f9d1-1f3fe-200d-1f9bd.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f9bd.svg) |	person in manual wheelchair: medium-dark skin tone |
+| ![1f9d1-1f3ff-200d-1f9bd.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f9bd.svg) |	person in manual wheelchair: dark skin tone |
 | ![1f468-200d-1f9bd.svg](../qml/js/emoji/1f468-200d-1f9bd.svg) |	man in manual wheelchair |
-| ![1f468-1f3fb-200d-1f9bd.svg](../qml/js/emoji/1f468-1f3fb-200d-1f9bd.svg) |	man in manual wheelchair: light  |skin tone
-| ![1f468-1f3fc-200d-1f9bd.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9bd.svg) |	man in manual wheelchair:  |medium-light skin tone
-| ![1f468-1f3fd-200d-1f9bd.svg](../qml/js/emoji/1f468-1f3fd-200d-1f9bd.svg) |	man in manual wheelchair: medium  |skin tone
-| ![1f468-1f3fe-200d-1f9bd.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9bd.svg) |	man in manual wheelchair:  |medium-dark skin tone
-| ![1f468-1f3ff-200d-1f9bd.svg](../qml/js/emoji/1f468-1f3ff-200d-1f9bd.svg) |	man in manual wheelchair: dark  |skin tone
+| ![1f468-1f3fb-200d-1f9bd.svg](../qml/js/emoji/1f468-1f3fb-200d-1f9bd.svg) |	man in manual wheelchair: light skin tone |
+| ![1f468-1f3fc-200d-1f9bd.svg](../qml/js/emoji/1f468-1f3fc-200d-1f9bd.svg) |	man in manual wheelchair: medium-light skin tone |
+| ![1f468-1f3fd-200d-1f9bd.svg](../qml/js/emoji/1f468-1f3fd-200d-1f9bd.svg) |	man in manual wheelchair: medium skin tone |
+| ![1f468-1f3fe-200d-1f9bd.svg](../qml/js/emoji/1f468-1f3fe-200d-1f9bd.svg) |	man in manual wheelchair: medium-dark skin tone |
+| ![1f468-1f3ff-200d-1f9bd.svg](../qml/js/emoji/1f468-1f3ff-200d-1f9bd.svg) |	man in manual wheelchair: dark skin tone |
 | ![1f469-200d-1f9bd.svg](../qml/js/emoji/1f469-200d-1f9bd.svg) |	woman in manual wheelchair |
-| ![1f469-1f3fb-200d-1f9bd.svg](../qml/js/emoji/1f469-1f3fb-200d-1f9bd.svg) |	woman in manual wheelchair: light  |skin tone
-| ![1f469-1f3fc-200d-1f9bd.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9bd.svg) |	woman in manual wheelchair:  |medium-light skin tone
-| ![1f469-1f3fd-200d-1f9bd.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9bd.svg) |	woman in manual wheelchair:  |medium skin tone
-| ![1f469-1f3fe-200d-1f9bd.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9bd.svg) |	woman in manual wheelchair:  |medium-dark skin tone
-| ![1f469-1f3ff-200d-1f9bd.svg](../qml/js/emoji/1f469-1f3ff-200d-1f9bd.svg) |	woman in manual wheelchair: dark  |skin tone
+| ![1f469-1f3fb-200d-1f9bd.svg](../qml/js/emoji/1f469-1f3fb-200d-1f9bd.svg) |	woman in manual wheelchair: light skin tone |
+| ![1f469-1f3fc-200d-1f9bd.svg](../qml/js/emoji/1f469-1f3fc-200d-1f9bd.svg) |	woman in manual wheelchair: medium-light skin tone |
+| ![1f469-1f3fd-200d-1f9bd.svg](../qml/js/emoji/1f469-1f3fd-200d-1f9bd.svg) |	woman in manual wheelchair: medium skin tone |
+| ![1f469-1f3fe-200d-1f9bd.svg](../qml/js/emoji/1f469-1f3fe-200d-1f9bd.svg) |	woman in manual wheelchair: medium-dark skin tone |
+| ![1f469-1f3ff-200d-1f9bd.svg](../qml/js/emoji/1f469-1f3ff-200d-1f9bd.svg) |	woman in manual wheelchair: dark skin tone |
 | ![1f3c3.svg](../qml/js/emoji/1f3c3.svg) |	person running |
 | ![1f3c3-1f3fb.svg](../qml/js/emoji/1f3c3-1f3fb.svg) |	person running: light skin tone |
 | ![1f3c3-1f3fc.svg](../qml/js/emoji/1f3c3-1f3fc.svg) |	person running: medium-light skin tone |
@@ -1520,15 +1520,15 @@ Here's a list of the implemented emojis:
 | ![1f3c3-1f3ff.svg](../qml/js/emoji/1f3c3-1f3ff.svg) |	person running: dark skin tone |
 | ![1f3c3-200d-2642-fe0f.svg](../qml/js/emoji/1f3c3-200d-2642-fe0f.svg) |	man running |
 | ![1f3c3-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f3c3-1f3fb-200d-2642-fe0f.svg) |	man running: light skin tone |
-| ![1f3c3-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f3c3-1f3fc-200d-2642-fe0f.svg) |	man running: medium-light  |skin tone
+| ![1f3c3-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f3c3-1f3fc-200d-2642-fe0f.svg) |	man running: medium-light skin tone |
 | ![1f3c3-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f3c3-1f3fd-200d-2642-fe0f.svg) |	man running: medium skin tone |
-| ![1f3c3-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f3c3-1f3fe-200d-2642-fe0f.svg) |	man running: medium-dark skin  |tone
+| ![1f3c3-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f3c3-1f3fe-200d-2642-fe0f.svg) |	man running: medium-dark skin tone |
 | ![1f3c3-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f3c3-1f3ff-200d-2642-fe0f.svg) |	man running: dark skin tone |
 | ![1f3c3-200d-2640-fe0f.svg](../qml/js/emoji/1f3c3-200d-2640-fe0f.svg) |	woman running |
 | ![1f3c3-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f3c3-1f3fb-200d-2640-fe0f.svg) |	woman running: light skin tone |
-| ![1f3c3-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f3c3-1f3fc-200d-2640-fe0f.svg) |	woman running: medium-light  |skin tone
-| ![1f3c3-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f3c3-1f3fd-200d-2640-fe0f.svg) |	woman running: medium skin  |tone
-| ![1f3c3-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f3c3-1f3fe-200d-2640-fe0f.svg) |	woman running: medium-dark  |skin tone
+| ![1f3c3-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f3c3-1f3fc-200d-2640-fe0f.svg) |	woman running: medium-light skin tone |
+| ![1f3c3-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f3c3-1f3fd-200d-2640-fe0f.svg) |	woman running: medium skin tone |
+| ![1f3c3-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f3c3-1f3fe-200d-2640-fe0f.svg) |	woman running: medium-dark skin tone |
 | ![1f3c3-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f3c3-1f3ff-200d-2640-fe0f.svg) |	woman running: dark skin tone |
 | ![1f483.svg](../qml/js/emoji/1f483.svg) |	woman dancing |
 | ![1f483-1f3fb.svg](../qml/js/emoji/1f483-1f3fb.svg) |	woman dancing: light skin tone |
@@ -1544,9 +1544,9 @@ Here's a list of the implemented emojis:
 | ![1f57a-1f3ff.svg](../qml/js/emoji/1f57a-1f3ff.svg) |	man dancing: dark skin tone |
 | ![1f574.svg](../qml/js/emoji/1f574.svg) |	person in suit levitating |
 | ![1f574-1f3fb.svg](../qml/js/emoji/1f574-1f3fb.svg) |	person in suit levitating: light skin tone |
-| ![1f574-1f3fc.svg](../qml/js/emoji/1f574-1f3fc.svg) |	person in suit levitating: medium-light skin  |tone
+| ![1f574-1f3fc.svg](../qml/js/emoji/1f574-1f3fc.svg) |	person in suit levitating: medium-light skin tone |
 | ![1f574-1f3fd.svg](../qml/js/emoji/1f574-1f3fd.svg) |	person in suit levitating: medium skin tone |
-| ![1f574-1f3fe.svg](../qml/js/emoji/1f574-1f3fe.svg) |	person in suit levitating: medium-dark skin  |tone
+| ![1f574-1f3fe.svg](../qml/js/emoji/1f574-1f3fe.svg) |	person in suit levitating: medium-dark skin tone |
 | ![1f574-1f3ff.svg](../qml/js/emoji/1f574-1f3ff.svg) |	person in suit levitating: dark skin tone |
 | ![1f46f.svg](../qml/js/emoji/1f46f.svg) |	people with bunny ears |
 | ![1f46f-200d-2642-fe0f.svg](../qml/js/emoji/1f46f-200d-2642-fe0f.svg) |	men with bunny ears |
@@ -1558,17 +1558,17 @@ Here's a list of the implemented emojis:
 | ![1f9d6-1f3fe.svg](../qml/js/emoji/1f9d6-1f3fe.svg) |	person in steamy room: medium-dark skin tone |
 | ![1f9d6-1f3ff.svg](../qml/js/emoji/1f9d6-1f3ff.svg) |	person in steamy room: dark skin tone |
 | ![1f9d6-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-200d-2642-fe0f.svg) |	man in steamy room |
-| ![1f9d6-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-1f3fb-200d-2642-fe0f.svg) |	man in steamy room: light  |skin tone
-| ![1f9d6-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-1f3fc-200d-2642-fe0f.svg) |	man in steamy room:  |medium-light skin tone
-| ![1f9d6-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-1f3fd-200d-2642-fe0f.svg) |	man in steamy room: medium  |skin tone
-| ![1f9d6-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-1f3fe-200d-2642-fe0f.svg) |	man in steamy room:  |medium-dark skin tone
-| ![1f9d6-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-1f3ff-200d-2642-fe0f.svg) |	man in steamy room: dark skin  |tone
+| ![1f9d6-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-1f3fb-200d-2642-fe0f.svg) |	man in steamy room: light skin tone |
+| ![1f9d6-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-1f3fc-200d-2642-fe0f.svg) |	man in steamy room: medium-light skin tone |
+| ![1f9d6-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-1f3fd-200d-2642-fe0f.svg) |	man in steamy room: medium skin tone |
+| ![1f9d6-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-1f3fe-200d-2642-fe0f.svg) |	man in steamy room: medium-dark skin tone |
+| ![1f9d6-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9d6-1f3ff-200d-2642-fe0f.svg) |	man in steamy room: dark skin tone |
 | ![1f9d6-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-200d-2640-fe0f.svg) |	woman in steamy room |
-| ![1f9d6-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-1f3fb-200d-2640-fe0f.svg) |	woman in steamy room: light  |skin tone
-| ![1f9d6-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-1f3fc-200d-2640-fe0f.svg) |	woman in steamy room:  |medium-light skin tone
-| ![1f9d6-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-1f3fd-200d-2640-fe0f.svg) |	woman in steamy room: medium  |skin tone
-| ![1f9d6-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-1f3fe-200d-2640-fe0f.svg) |	woman in steamy room:  |medium-dark skin tone
-| ![1f9d6-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-1f3ff-200d-2640-fe0f.svg) |	woman in steamy room: dark  |skin tone
+| ![1f9d6-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-1f3fb-200d-2640-fe0f.svg) |	woman in steamy room: light skin tone |
+| ![1f9d6-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-1f3fc-200d-2640-fe0f.svg) |	woman in steamy room: medium-light skin tone |
+| ![1f9d6-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-1f3fd-200d-2640-fe0f.svg) |	woman in steamy room: medium skin tone |
+| ![1f9d6-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-1f3fe-200d-2640-fe0f.svg) |	woman in steamy room: medium-dark skin tone |
+| ![1f9d6-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9d6-1f3ff-200d-2640-fe0f.svg) |	woman in steamy room: dark skin tone |
 | ![1f9d7.svg](../qml/js/emoji/1f9d7.svg) |	person climbing |
 | ![1f9d7-1f3fb.svg](../qml/js/emoji/1f9d7-1f3fb.svg) |	person climbing: light skin tone |
 | ![1f9d7-1f3fc.svg](../qml/js/emoji/1f9d7-1f3fc.svg) |	person climbing: medium-light skin tone |
@@ -1577,15 +1577,15 @@ Here's a list of the implemented emojis:
 | ![1f9d7-1f3ff.svg](../qml/js/emoji/1f9d7-1f3ff.svg) |	person climbing: dark skin tone |
 | ![1f9d7-200d-2642-fe0f.svg](../qml/js/emoji/1f9d7-200d-2642-fe0f.svg) |	man climbing |
 | ![1f9d7-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9d7-1f3fb-200d-2642-fe0f.svg) |	man climbing: light skin tone |
-| ![1f9d7-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9d7-1f3fc-200d-2642-fe0f.svg) |	man climbing: medium-light  |skin tone
+| ![1f9d7-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9d7-1f3fc-200d-2642-fe0f.svg) |	man climbing: medium-light skin tone |
 | ![1f9d7-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9d7-1f3fd-200d-2642-fe0f.svg) |	man climbing: medium skin tone |
-| ![1f9d7-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9d7-1f3fe-200d-2642-fe0f.svg) |	man climbing: medium-dark  |skin tone
+| ![1f9d7-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9d7-1f3fe-200d-2642-fe0f.svg) |	man climbing: medium-dark skin tone |
 | ![1f9d7-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9d7-1f3ff-200d-2642-fe0f.svg) |	man climbing: dark skin tone |
 | ![1f9d7-200d-2640-fe0f.svg](../qml/js/emoji/1f9d7-200d-2640-fe0f.svg) |	woman climbing |
-| ![1f9d7-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9d7-1f3fb-200d-2640-fe0f.svg) |	woman climbing: light skin  |tone
-| ![1f9d7-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9d7-1f3fc-200d-2640-fe0f.svg) |	woman climbing: medium-light  |skin tone
-| ![1f9d7-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9d7-1f3fd-200d-2640-fe0f.svg) |	woman climbing: medium skin  |tone
-| ![1f9d7-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9d7-1f3fe-200d-2640-fe0f.svg) |	woman climbing: medium-dark  |skin tone
+| ![1f9d7-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9d7-1f3fb-200d-2640-fe0f.svg) |	woman climbing: light skin tone |
+| ![1f9d7-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9d7-1f3fc-200d-2640-fe0f.svg) |	woman climbing: medium-light skin tone |
+| ![1f9d7-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9d7-1f3fd-200d-2640-fe0f.svg) |	woman climbing: medium skin tone |
+| ![1f9d7-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9d7-1f3fe-200d-2640-fe0f.svg) |	woman climbing: medium-dark skin tone |
 | ![1f9d7-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9d7-1f3ff-200d-2640-fe0f.svg) |	woman climbing: dark skin tone |
 | ![1f93a.svg](../qml/js/emoji/1f93a.svg) |	person fencing |
 | ![1f3c7.svg](../qml/js/emoji/1f3c7.svg) |	horse racing |
@@ -1609,15 +1609,15 @@ Here's a list of the implemented emojis:
 | ![1f3cc-1f3ff.svg](../qml/js/emoji/1f3cc-1f3ff.svg) |	person golfing: dark skin tone |
 | ![1f3cc-fe0f-200d-2642-fe0f.svg](../qml/js/emoji/1f3cc-fe0f-200d-2642-fe0f.svg) |	man golfing |
 | ![1f3cc-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f3cc-1f3fb-200d-2642-fe0f.svg) |	man golfing: light skin tone |
-| ![1f3cc-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f3cc-1f3fc-200d-2642-fe0f.svg) |	man golfing: medium-light  |skin tone
+| ![1f3cc-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f3cc-1f3fc-200d-2642-fe0f.svg) |	man golfing: medium-light skin tone |
 | ![1f3cc-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f3cc-1f3fd-200d-2642-fe0f.svg) |	man golfing: medium skin tone |
-| ![1f3cc-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f3cc-1f3fe-200d-2642-fe0f.svg) |	man golfing: medium-dark skin  |tone
+| ![1f3cc-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f3cc-1f3fe-200d-2642-fe0f.svg) |	man golfing: medium-dark skin tone |
 | ![1f3cc-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f3cc-1f3ff-200d-2642-fe0f.svg) |	man golfing: dark skin tone |
 | ![1f3cc-fe0f-200d-2640-fe0f.svg](../qml/js/emoji/1f3cc-fe0f-200d-2640-fe0f.svg) |	woman golfing |
 | ![1f3cc-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f3cc-1f3fb-200d-2640-fe0f.svg) |	woman golfing: light skin tone |
-| ![1f3cc-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f3cc-1f3fc-200d-2640-fe0f.svg) |	woman golfing: medium-light  |skin tone
-| ![1f3cc-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f3cc-1f3fd-200d-2640-fe0f.svg) |	woman golfing: medium skin  |tone
-| ![1f3cc-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f3cc-1f3fe-200d-2640-fe0f.svg) |	woman golfing: medium-dark  |skin tone
+| ![1f3cc-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f3cc-1f3fc-200d-2640-fe0f.svg) |	woman golfing: medium-light skin tone |
+| ![1f3cc-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f3cc-1f3fd-200d-2640-fe0f.svg) |	woman golfing: medium skin tone |
+| ![1f3cc-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f3cc-1f3fe-200d-2640-fe0f.svg) |	woman golfing: medium-dark skin tone |
 | ![1f3cc-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f3cc-1f3ff-200d-2640-fe0f.svg) |	woman golfing: dark skin tone |
 | ![1f3c4.svg](../qml/js/emoji/1f3c4.svg) |	person surfing |
 | ![1f3c4-1f3fb.svg](../qml/js/emoji/1f3c4-1f3fb.svg) |	person surfing: light skin tone |
@@ -1627,15 +1627,15 @@ Here's a list of the implemented emojis:
 | ![1f3c4-1f3ff.svg](../qml/js/emoji/1f3c4-1f3ff.svg) |	person surfing: dark skin tone |
 | ![1f3c4-200d-2642-fe0f.svg](../qml/js/emoji/1f3c4-200d-2642-fe0f.svg) |	man surfing |
 | ![1f3c4-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f3c4-1f3fb-200d-2642-fe0f.svg) |	man surfing: light skin tone |
-| ![1f3c4-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f3c4-1f3fc-200d-2642-fe0f.svg) |	man surfing: medium-light  |skin tone
+| ![1f3c4-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f3c4-1f3fc-200d-2642-fe0f.svg) |	man surfing: medium-light skin tone |
 | ![1f3c4-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f3c4-1f3fd-200d-2642-fe0f.svg) |	man surfing: medium skin tone |
-| ![1f3c4-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f3c4-1f3fe-200d-2642-fe0f.svg) |	man surfing: medium-dark skin  |tone
+| ![1f3c4-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f3c4-1f3fe-200d-2642-fe0f.svg) |	man surfing: medium-dark skin tone |
 | ![1f3c4-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f3c4-1f3ff-200d-2642-fe0f.svg) |	man surfing: dark skin tone |
 | ![1f3c4-200d-2640-fe0f.svg](../qml/js/emoji/1f3c4-200d-2640-fe0f.svg) |	woman surfing |
 | ![1f3c4-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f3c4-1f3fb-200d-2640-fe0f.svg) |	woman surfing: light skin tone |
-| ![1f3c4-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f3c4-1f3fc-200d-2640-fe0f.svg) |	woman surfing: medium-light  |skin tone
-| ![1f3c4-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f3c4-1f3fd-200d-2640-fe0f.svg) |	woman surfing: medium skin  |tone
-| ![1f3c4-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f3c4-1f3fe-200d-2640-fe0f.svg) |	woman surfing: medium-dark  |skin tone
+| ![1f3c4-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f3c4-1f3fc-200d-2640-fe0f.svg) |	woman surfing: medium-light skin tone |
+| ![1f3c4-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f3c4-1f3fd-200d-2640-fe0f.svg) |	woman surfing: medium skin tone |
+| ![1f3c4-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f3c4-1f3fe-200d-2640-fe0f.svg) |	woman surfing: medium-dark skin tone |
 | ![1f3c4-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f3c4-1f3ff-200d-2640-fe0f.svg) |	woman surfing: dark skin tone |
 | ![1f6a3.svg](../qml/js/emoji/1f6a3.svg) |	person rowing boat |
 | ![1f6a3-1f3fb.svg](../qml/js/emoji/1f6a3-1f3fb.svg) |	person rowing boat: light skin tone |
@@ -1644,17 +1644,17 @@ Here's a list of the implemented emojis:
 | ![1f6a3-1f3fe.svg](../qml/js/emoji/1f6a3-1f3fe.svg) |	person rowing boat: medium-dark skin tone |
 | ![1f6a3-1f3ff.svg](../qml/js/emoji/1f6a3-1f3ff.svg) |	person rowing boat: dark skin tone |
 | ![1f6a3-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-200d-2642-fe0f.svg) |	man rowing boat |
-| ![1f6a3-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-1f3fb-200d-2642-fe0f.svg) |	man rowing boat: light skin  |tone
-| ![1f6a3-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-1f3fc-200d-2642-fe0f.svg) |	man rowing boat: medium-light  |skin tone
-| ![1f6a3-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-1f3fd-200d-2642-fe0f.svg) |	man rowing boat: medium skin  |tone
-| ![1f6a3-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-1f3fe-200d-2642-fe0f.svg) |	man rowing boat: medium-dark  |skin tone
-| ![1f6a3-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-1f3ff-200d-2642-fe0f.svg) |	man rowing boat: dark skin  |tone
+| ![1f6a3-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-1f3fb-200d-2642-fe0f.svg) |	man rowing boat: light skin tone |
+| ![1f6a3-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-1f3fc-200d-2642-fe0f.svg) |	man rowing boat: medium-light skin tone |
+| ![1f6a3-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-1f3fd-200d-2642-fe0f.svg) |	man rowing boat: medium skin tone |
+| ![1f6a3-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-1f3fe-200d-2642-fe0f.svg) |	man rowing boat: medium-dark skin tone |
+| ![1f6a3-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f6a3-1f3ff-200d-2642-fe0f.svg) |	man rowing boat: dark skin tone |
 | ![1f6a3-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-200d-2640-fe0f.svg) |	woman rowing boat |
-| ![1f6a3-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-1f3fb-200d-2640-fe0f.svg) |	woman rowing boat: light skin  |tone
-| ![1f6a3-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-1f3fc-200d-2640-fe0f.svg) |	woman rowing boat:  |medium-light skin tone
-| ![1f6a3-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-1f3fd-200d-2640-fe0f.svg) |	woman rowing boat: medium  |skin tone
-| ![1f6a3-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-1f3fe-200d-2640-fe0f.svg) |	woman rowing boat:  |medium-dark skin tone
-| ![1f6a3-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-1f3ff-200d-2640-fe0f.svg) |	woman rowing boat: dark skin  |tone
+| ![1f6a3-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-1f3fb-200d-2640-fe0f.svg) |	woman rowing boat: light skin tone |
+| ![1f6a3-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-1f3fc-200d-2640-fe0f.svg) |	woman rowing boat: medium-light skin tone |
+| ![1f6a3-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-1f3fd-200d-2640-fe0f.svg) |	woman rowing boat: medium skin tone |
+| ![1f6a3-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-1f3fe-200d-2640-fe0f.svg) |	woman rowing boat: medium-dark skin tone |
+| ![1f6a3-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f6a3-1f3ff-200d-2640-fe0f.svg) |	woman rowing boat: dark skin tone |
 | ![1f3ca.svg](../qml/js/emoji/1f3ca.svg) |	person swimming |
 | ![1f3ca-1f3fb.svg](../qml/js/emoji/1f3ca-1f3fb.svg) |	person swimming: light skin tone |
 | ![1f3ca-1f3fc.svg](../qml/js/emoji/1f3ca-1f3fc.svg) |	person swimming: medium-light skin tone |
@@ -1663,15 +1663,15 @@ Here's a list of the implemented emojis:
 | ![1f3ca-1f3ff.svg](../qml/js/emoji/1f3ca-1f3ff.svg) |	person swimming: dark skin tone |
 | ![1f3ca-200d-2642-fe0f.svg](../qml/js/emoji/1f3ca-200d-2642-fe0f.svg) |	man swimming |
 | ![1f3ca-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f3ca-1f3fb-200d-2642-fe0f.svg) |	man swimming: light skin tone |
-| ![1f3ca-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f3ca-1f3fc-200d-2642-fe0f.svg) |	man swimming: medium-light  |skin tone
+| ![1f3ca-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f3ca-1f3fc-200d-2642-fe0f.svg) |	man swimming: medium-light skin tone |
 | ![1f3ca-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f3ca-1f3fd-200d-2642-fe0f.svg) |	man swimming: medium skin tone |
-| ![1f3ca-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f3ca-1f3fe-200d-2642-fe0f.svg) |	man swimming: medium-dark  |skin tone
+| ![1f3ca-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f3ca-1f3fe-200d-2642-fe0f.svg) |	man swimming: medium-dark skin tone |
 | ![1f3ca-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f3ca-1f3ff-200d-2642-fe0f.svg) |	man swimming: dark skin tone |
 | ![1f3ca-200d-2640-fe0f.svg](../qml/js/emoji/1f3ca-200d-2640-fe0f.svg) |	woman swimming |
-| ![1f3ca-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f3ca-1f3fb-200d-2640-fe0f.svg) |	woman swimming: light skin  |tone
-| ![1f3ca-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f3ca-1f3fc-200d-2640-fe0f.svg) |	woman swimming: medium-light  |skin tone
-| ![1f3ca-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f3ca-1f3fd-200d-2640-fe0f.svg) |	woman swimming: medium skin  |tone
-| ![1f3ca-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f3ca-1f3fe-200d-2640-fe0f.svg) |	woman swimming: medium-dark  |skin tone
+| ![1f3ca-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f3ca-1f3fb-200d-2640-fe0f.svg) |	woman swimming: light skin tone |
+| ![1f3ca-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f3ca-1f3fc-200d-2640-fe0f.svg) |	woman swimming: medium-light skin tone |
+| ![1f3ca-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f3ca-1f3fd-200d-2640-fe0f.svg) |	woman swimming: medium skin tone |
+| ![1f3ca-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f3ca-1f3fe-200d-2640-fe0f.svg) |	woman swimming: medium-dark skin tone |
 | ![1f3ca-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f3ca-1f3ff-200d-2640-fe0f.svg) |	woman swimming: dark skin tone |
 | ![26f9.svg](../qml/js/emoji/26f9.svg) |	person bouncing ball |
 | ![26f9-1f3fb.svg](../qml/js/emoji/26f9-1f3fb.svg) |	person bouncing ball: light skin tone |
@@ -1680,17 +1680,17 @@ Here's a list of the implemented emojis:
 | ![26f9-1f3fe.svg](../qml/js/emoji/26f9-1f3fe.svg) |	person bouncing ball: medium-dark skin tone |
 | ![26f9-1f3ff.svg](../qml/js/emoji/26f9-1f3ff.svg) |	person bouncing ball: dark skin tone |
 | ![26f9-fe0f-200d-2642-fe0f.svg](../qml/js/emoji/26f9-fe0f-200d-2642-fe0f.svg) |	man bouncing ball |
-| ![26f9-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/26f9-1f3fb-200d-2642-fe0f.svg) |	man bouncing ball: light skin  |tone
-| ![26f9-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/26f9-1f3fc-200d-2642-fe0f.svg) |	man bouncing ball:  |medium-light skin tone
-| ![26f9-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/26f9-1f3fd-200d-2642-fe0f.svg) |	man bouncing ball: medium  |skin tone
-| ![26f9-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/26f9-1f3fe-200d-2642-fe0f.svg) |	man bouncing ball:  |medium-dark skin tone
-| ![26f9-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/26f9-1f3ff-200d-2642-fe0f.svg) |	man bouncing ball: dark skin  |tone
+| ![26f9-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/26f9-1f3fb-200d-2642-fe0f.svg) |	man bouncing ball: light skin tone |
+| ![26f9-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/26f9-1f3fc-200d-2642-fe0f.svg) |	man bouncing ball: medium-light skin tone |
+| ![26f9-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/26f9-1f3fd-200d-2642-fe0f.svg) |	man bouncing ball: medium skin tone |
+| ![26f9-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/26f9-1f3fe-200d-2642-fe0f.svg) |	man bouncing ball: medium-dark skin tone |
+| ![26f9-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/26f9-1f3ff-200d-2642-fe0f.svg) |	man bouncing ball: dark skin tone |
 | ![26f9-fe0f-200d-2640-fe0f.svg](../qml/js/emoji/26f9-fe0f-200d-2640-fe0f.svg) |	woman bouncing ball |
-| ![26f9-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/26f9-1f3fb-200d-2640-fe0f.svg) |	woman bouncing ball: light  |skin tone
-| ![26f9-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/26f9-1f3fc-200d-2640-fe0f.svg) |	woman bouncing ball:  |medium-light skin tone
-| ![26f9-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/26f9-1f3fd-200d-2640-fe0f.svg) |	woman bouncing ball: medium  |skin tone
-| ![26f9-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/26f9-1f3fe-200d-2640-fe0f.svg) |	woman bouncing ball:  |medium-dark skin tone
-| ![26f9-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/26f9-1f3ff-200d-2640-fe0f.svg) |	woman bouncing ball: dark  |skin tone
+| ![26f9-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/26f9-1f3fb-200d-2640-fe0f.svg) |	woman bouncing ball: light skin tone |
+| ![26f9-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/26f9-1f3fc-200d-2640-fe0f.svg) |	woman bouncing ball: medium-light skin tone |
+| ![26f9-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/26f9-1f3fd-200d-2640-fe0f.svg) |	woman bouncing ball: medium skin tone |
+| ![26f9-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/26f9-1f3fe-200d-2640-fe0f.svg) |	woman bouncing ball: medium-dark skin tone |
+| ![26f9-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/26f9-1f3ff-200d-2640-fe0f.svg) |	woman bouncing ball: dark skin tone |
 | ![1f3cb.svg](../qml/js/emoji/1f3cb.svg) |	person lifting weights |
 | ![1f3cb-1f3fb.svg](../qml/js/emoji/1f3cb-1f3fb.svg) |	person lifting weights: light skin tone |
 | ![1f3cb-1f3fc.svg](../qml/js/emoji/1f3cb-1f3fc.svg) |	person lifting weights: medium-light skin tone |
@@ -1698,17 +1698,17 @@ Here's a list of the implemented emojis:
 | ![1f3cb-1f3fe.svg](../qml/js/emoji/1f3cb-1f3fe.svg) |	person lifting weights: medium-dark skin tone |
 | ![1f3cb-1f3ff.svg](../qml/js/emoji/1f3cb-1f3ff.svg) |	person lifting weights: dark skin tone |
 | ![1f3cb-fe0f-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-fe0f-200d-2642-fe0f.svg) |	man lifting weights |
-| ![1f3cb-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-1f3fb-200d-2642-fe0f.svg) |	man lifting weights: light  |skin tone
-| ![1f3cb-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-1f3fc-200d-2642-fe0f.svg) |	man lifting weights:  |medium-light skin tone
-| ![1f3cb-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-1f3fd-200d-2642-fe0f.svg) |	man lifting weights: medium  |skin tone
-| ![1f3cb-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-1f3fe-200d-2642-fe0f.svg) |	man lifting weights:  |medium-dark skin tone
-| ![1f3cb-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-1f3ff-200d-2642-fe0f.svg) |	man lifting weights: dark  |skin tone
+| ![1f3cb-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-1f3fb-200d-2642-fe0f.svg) |	man lifting weights: light skin tone |
+| ![1f3cb-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-1f3fc-200d-2642-fe0f.svg) |	man lifting weights: medium-light skin tone |
+| ![1f3cb-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-1f3fd-200d-2642-fe0f.svg) |	man lifting weights: medium skin tone |
+| ![1f3cb-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-1f3fe-200d-2642-fe0f.svg) |	man lifting weights: medium-dark skin tone |
+| ![1f3cb-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f3cb-1f3ff-200d-2642-fe0f.svg) |	man lifting weights: dark skin tone |
 | ![1f3cb-fe0f-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-fe0f-200d-2640-fe0f.svg) |	woman lifting weights |
-| ![1f3cb-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-1f3fb-200d-2640-fe0f.svg) |	woman lifting weights: light  |skin tone
-| ![1f3cb-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-1f3fc-200d-2640-fe0f.svg) |	woman lifting weights:  |medium-light skin tone
-| ![1f3cb-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-1f3fd-200d-2640-fe0f.svg) |	woman lifting weights: medium  |skin tone
-| ![1f3cb-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-1f3fe-200d-2640-fe0f.svg) |	woman lifting weights:  |medium-dark skin tone
-| ![1f3cb-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-1f3ff-200d-2640-fe0f.svg) |	woman lifting weights: dark  |skin tone
+| ![1f3cb-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-1f3fb-200d-2640-fe0f.svg) |	woman lifting weights: light skin tone |
+| ![1f3cb-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-1f3fc-200d-2640-fe0f.svg) |	woman lifting weights: medium-light skin tone |
+| ![1f3cb-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-1f3fd-200d-2640-fe0f.svg) |	woman lifting weights: medium skin tone |
+| ![1f3cb-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-1f3fe-200d-2640-fe0f.svg) |	woman lifting weights: medium-dark skin tone |
+| ![1f3cb-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f3cb-1f3ff-200d-2640-fe0f.svg) |	woman lifting weights: dark skin tone |
 | ![1f6b4.svg](../qml/js/emoji/1f6b4.svg) |	person biking |
 | ![1f6b4-1f3fb.svg](../qml/js/emoji/1f6b4-1f3fb.svg) |	person biking: light skin tone |
 | ![1f6b4-1f3fc.svg](../qml/js/emoji/1f6b4-1f3fc.svg) |	person biking: medium-light skin tone |
@@ -1717,15 +1717,15 @@ Here's a list of the implemented emojis:
 | ![1f6b4-1f3ff.svg](../qml/js/emoji/1f6b4-1f3ff.svg) |	person biking: dark skin tone |
 | ![1f6b4-200d-2642-fe0f.svg](../qml/js/emoji/1f6b4-200d-2642-fe0f.svg) |	man biking |
 | ![1f6b4-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f6b4-1f3fb-200d-2642-fe0f.svg) |	man biking: light skin tone |
-| ![1f6b4-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f6b4-1f3fc-200d-2642-fe0f.svg) |	man biking: medium-light skin  |tone
+| ![1f6b4-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f6b4-1f3fc-200d-2642-fe0f.svg) |	man biking: medium-light skin tone |
 | ![1f6b4-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f6b4-1f3fd-200d-2642-fe0f.svg) |	man biking: medium skin tone |
-| ![1f6b4-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f6b4-1f3fe-200d-2642-fe0f.svg) |	man biking: medium-dark skin  |tone
+| ![1f6b4-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f6b4-1f3fe-200d-2642-fe0f.svg) |	man biking: medium-dark skin tone |
 | ![1f6b4-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f6b4-1f3ff-200d-2642-fe0f.svg) |	man biking: dark skin tone |
 | ![1f6b4-200d-2640-fe0f.svg](../qml/js/emoji/1f6b4-200d-2640-fe0f.svg) |	woman biking |
 | ![1f6b4-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f6b4-1f3fb-200d-2640-fe0f.svg) |	woman biking: light skin tone |
-| ![1f6b4-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f6b4-1f3fc-200d-2640-fe0f.svg) |	woman biking: medium-light  |skin tone
+| ![1f6b4-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f6b4-1f3fc-200d-2640-fe0f.svg) |	woman biking: medium-light skin tone |
 | ![1f6b4-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f6b4-1f3fd-200d-2640-fe0f.svg) |	woman biking: medium skin tone |
-| ![1f6b4-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f6b4-1f3fe-200d-2640-fe0f.svg) |	woman biking: medium-dark  |skin tone
+| ![1f6b4-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f6b4-1f3fe-200d-2640-fe0f.svg) |	woman biking: medium-dark skin tone |
 | ![1f6b4-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f6b4-1f3ff-200d-2640-fe0f.svg) |	woman biking: dark skin tone |
 | ![1f6b5.svg](../qml/js/emoji/1f6b5.svg) |	person mountain biking |
 | ![1f6b5-1f3fb.svg](../qml/js/emoji/1f6b5-1f3fb.svg) |	person mountain biking: light skin tone |
@@ -1734,17 +1734,17 @@ Here's a list of the implemented emojis:
 | ![1f6b5-1f3fe.svg](../qml/js/emoji/1f6b5-1f3fe.svg) |	person mountain biking: medium-dark skin tone |
 | ![1f6b5-1f3ff.svg](../qml/js/emoji/1f6b5-1f3ff.svg) |	person mountain biking: dark skin tone |
 | ![1f6b5-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-200d-2642-fe0f.svg) |	man mountain biking |
-| ![1f6b5-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-1f3fb-200d-2642-fe0f.svg) |	man mountain biking: light  |skin tone
-| ![1f6b5-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-1f3fc-200d-2642-fe0f.svg) |	man mountain biking:  |medium-light skin tone
-| ![1f6b5-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-1f3fd-200d-2642-fe0f.svg) |	man mountain biking: medium  |skin tone
-| ![1f6b5-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-1f3fe-200d-2642-fe0f.svg) |	man mountain biking:  |medium-dark skin tone
-| ![1f6b5-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-1f3ff-200d-2642-fe0f.svg) |	man mountain biking: dark  |skin tone
+| ![1f6b5-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-1f3fb-200d-2642-fe0f.svg) |	man mountain biking: light skin tone |
+| ![1f6b5-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-1f3fc-200d-2642-fe0f.svg) |	man mountain biking: medium-light skin tone |
+| ![1f6b5-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-1f3fd-200d-2642-fe0f.svg) |	man mountain biking: medium skin tone |
+| ![1f6b5-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-1f3fe-200d-2642-fe0f.svg) |	man mountain biking: medium-dark skin tone |
+| ![1f6b5-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f6b5-1f3ff-200d-2642-fe0f.svg) |	man mountain biking: dark skin tone |
 | ![1f6b5-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-200d-2640-fe0f.svg) |	woman mountain biking |
-| ![1f6b5-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-1f3fb-200d-2640-fe0f.svg) |	woman mountain biking: light  |skin tone
-| ![1f6b5-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-1f3fc-200d-2640-fe0f.svg) |	woman mountain biking:  |medium-light skin tone
-| ![1f6b5-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-1f3fd-200d-2640-fe0f.svg) |	woman mountain biking: medium  |skin tone
-| ![1f6b5-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-1f3fe-200d-2640-fe0f.svg) |	woman mountain biking:  |medium-dark skin tone
-| ![1f6b5-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-1f3ff-200d-2640-fe0f.svg) |	woman mountain biking: dark  |skin tone
+| ![1f6b5-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-1f3fb-200d-2640-fe0f.svg) |	woman mountain biking: light skin tone |
+| ![1f6b5-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-1f3fc-200d-2640-fe0f.svg) |	woman mountain biking: medium-light skin tone |
+| ![1f6b5-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-1f3fd-200d-2640-fe0f.svg) |	woman mountain biking: medium skin tone |
+| ![1f6b5-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-1f3fe-200d-2640-fe0f.svg) |	woman mountain biking: medium-dark skin tone |
+| ![1f6b5-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f6b5-1f3ff-200d-2640-fe0f.svg) |	woman mountain biking: dark skin tone |
 | ![1f938.svg](../qml/js/emoji/1f938.svg) |	person cartwheeling |
 | ![1f938-1f3fb.svg](../qml/js/emoji/1f938-1f3fb.svg) |	person cartwheeling: light skin tone |
 | ![1f938-1f3fc.svg](../qml/js/emoji/1f938-1f3fc.svg) |	person cartwheeling: medium-light skin tone |
@@ -1752,56 +1752,56 @@ Here's a list of the implemented emojis:
 | ![1f938-1f3fe.svg](../qml/js/emoji/1f938-1f3fe.svg) |	person cartwheeling: medium-dark skin tone |
 | ![1f938-1f3ff.svg](../qml/js/emoji/1f938-1f3ff.svg) |	person cartwheeling: dark skin tone |
 | ![1f938-200d-2642-fe0f.svg](../qml/js/emoji/1f938-200d-2642-fe0f.svg) |	man cartwheeling |
-| ![1f938-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f938-1f3fb-200d-2642-fe0f.svg) |	man cartwheeling: light skin  |tone
-| ![1f938-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f938-1f3fc-200d-2642-fe0f.svg) |	man cartwheeling:  |medium-light skin tone
-| ![1f938-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f938-1f3fd-200d-2642-fe0f.svg) |	man cartwheeling: medium skin  |tone
-| ![1f938-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f938-1f3fe-200d-2642-fe0f.svg) |	man cartwheeling: medium-dark  |skin tone
-| ![1f938-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f938-1f3ff-200d-2642-fe0f.svg) |	man cartwheeling: dark skin  |tone
+| ![1f938-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f938-1f3fb-200d-2642-fe0f.svg) |	man cartwheeling: light skin tone |
+| ![1f938-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f938-1f3fc-200d-2642-fe0f.svg) |	man cartwheeling: medium-light skin tone |
+| ![1f938-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f938-1f3fd-200d-2642-fe0f.svg) |	man cartwheeling: medium skin tone |
+| ![1f938-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f938-1f3fe-200d-2642-fe0f.svg) |	man cartwheeling: medium-dark skin tone |
+| ![1f938-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f938-1f3ff-200d-2642-fe0f.svg) |	man cartwheeling: dark skin tone |
 | ![1f938-200d-2640-fe0f.svg](../qml/js/emoji/1f938-200d-2640-fe0f.svg) |	woman cartwheeling |
-| ![1f938-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f938-1f3fb-200d-2640-fe0f.svg) |	woman cartwheeling: light  |skin tone
-| ![1f938-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f938-1f3fc-200d-2640-fe0f.svg) |	woman cartwheeling:  |medium-light skin tone
-| ![1f938-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f938-1f3fd-200d-2640-fe0f.svg) |	woman cartwheeling: medium  |skin tone
-| ![1f938-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f938-1f3fe-200d-2640-fe0f.svg) |	woman cartwheeling:  |medium-dark skin tone
-| ![1f938-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f938-1f3ff-200d-2640-fe0f.svg) |	woman cartwheeling: dark skin  |tone
+| ![1f938-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f938-1f3fb-200d-2640-fe0f.svg) |	woman cartwheeling: light skin tone |
+| ![1f938-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f938-1f3fc-200d-2640-fe0f.svg) |	woman cartwheeling: medium-light skin tone |
+| ![1f938-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f938-1f3fd-200d-2640-fe0f.svg) |	woman cartwheeling: medium skin tone |
+| ![1f938-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f938-1f3fe-200d-2640-fe0f.svg) |	woman cartwheeling: medium-dark skin tone |
+| ![1f938-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f938-1f3ff-200d-2640-fe0f.svg) |	woman cartwheeling: dark skin tone |
 | ![1f93c.svg](../qml/js/emoji/1f93c.svg) |	people wrestling |
 | ![1f93c-200d-2642-fe0f.svg](../qml/js/emoji/1f93c-200d-2642-fe0f.svg) |	men wrestling |
 | ![1f93c-200d-2640-fe0f.svg](../qml/js/emoji/1f93c-200d-2640-fe0f.svg) |	women wrestling |
 | ![1f93d.svg](../qml/js/emoji/1f93d.svg) |	person playing water polo |
 | ![1f93d-1f3fb.svg](../qml/js/emoji/1f93d-1f3fb.svg) |	person playing water polo: light skin tone |
-| ![1f93d-1f3fc.svg](../qml/js/emoji/1f93d-1f3fc.svg) |	person playing water polo: medium-light skin  |tone
+| ![1f93d-1f3fc.svg](../qml/js/emoji/1f93d-1f3fc.svg) |	person playing water polo: medium-light skin tone |
 | ![1f93d-1f3fd.svg](../qml/js/emoji/1f93d-1f3fd.svg) |	person playing water polo: medium skin tone |
-| ![1f93d-1f3fe.svg](../qml/js/emoji/1f93d-1f3fe.svg) |	person playing water polo: medium-dark skin  |tone
+| ![1f93d-1f3fe.svg](../qml/js/emoji/1f93d-1f3fe.svg) |	person playing water polo: medium-dark skin tone |
 | ![1f93d-1f3ff.svg](../qml/js/emoji/1f93d-1f3ff.svg) |	person playing water polo: dark skin tone |
 | ![1f93d-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-200d-2642-fe0f.svg) |	man playing water polo |
-| ![1f93d-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-1f3fb-200d-2642-fe0f.svg) |	man playing water polo: light  |skin tone
-| ![1f93d-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-1f3fc-200d-2642-fe0f.svg) |	man playing water polo:  |medium-light skin tone
-| ![1f93d-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-1f3fd-200d-2642-fe0f.svg) |	man playing water polo:  |medium skin tone
-| ![1f93d-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-1f3fe-200d-2642-fe0f.svg) |	man playing water polo:  |medium-dark skin tone
-| ![1f93d-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-1f3ff-200d-2642-fe0f.svg) |	man playing water polo: dark  |skin tone
+| ![1f93d-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-1f3fb-200d-2642-fe0f.svg) |	man playing water polo: light skin tone |
+| ![1f93d-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-1f3fc-200d-2642-fe0f.svg) |	man playing water polo: medium-light skin tone |
+| ![1f93d-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-1f3fd-200d-2642-fe0f.svg) |	man playing water polo: medium skin tone |
+| ![1f93d-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-1f3fe-200d-2642-fe0f.svg) |	man playing water polo: medium-dark skin tone |
+| ![1f93d-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f93d-1f3ff-200d-2642-fe0f.svg) |	man playing water polo: dark skin tone |
 | ![1f93d-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-200d-2640-fe0f.svg) |	woman playing water polo |
-| ![1f93d-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-1f3fb-200d-2640-fe0f.svg) |	woman playing water polo:  |light skin tone
-| ![1f93d-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-1f3fc-200d-2640-fe0f.svg) |	woman playing water polo:  |medium-light skin tone
-| ![1f93d-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-1f3fd-200d-2640-fe0f.svg) |	woman playing water polo:  |medium skin tone
-| ![1f93d-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-1f3fe-200d-2640-fe0f.svg) |	woman playing water polo:  |medium-dark skin tone
-| ![1f93d-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-1f3ff-200d-2640-fe0f.svg) |	woman playing water polo:  |dark skin tone
+| ![1f93d-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-1f3fb-200d-2640-fe0f.svg) |	woman playing water polo: light skin tone |
+| ![1f93d-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-1f3fc-200d-2640-fe0f.svg) |	woman playing water polo: medium-light skin tone |
+| ![1f93d-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-1f3fd-200d-2640-fe0f.svg) |	woman playing water polo: medium skin tone |
+| ![1f93d-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-1f3fe-200d-2640-fe0f.svg) |	woman playing water polo: medium-dark skin tone |
+| ![1f93d-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f93d-1f3ff-200d-2640-fe0f.svg) |	woman playing water polo: dark skin tone |
 | ![1f93e.svg](../qml/js/emoji/1f93e.svg) |	person playing handball |
 | ![1f93e-1f3fb.svg](../qml/js/emoji/1f93e-1f3fb.svg) |	person playing handball: light skin tone |
-| ![1f93e-1f3fc.svg](../qml/js/emoji/1f93e-1f3fc.svg) |	person playing handball: medium-light skin  |tone
+| ![1f93e-1f3fc.svg](../qml/js/emoji/1f93e-1f3fc.svg) |	person playing handball: medium-light skin tone |
 | ![1f93e-1f3fd.svg](../qml/js/emoji/1f93e-1f3fd.svg) |	person playing handball: medium skin tone |
 | ![1f93e-1f3fe.svg](../qml/js/emoji/1f93e-1f3fe.svg) |	person playing handball: medium-dark skin tone |
 | ![1f93e-1f3ff.svg](../qml/js/emoji/1f93e-1f3ff.svg) |	person playing handball: dark skin tone |
 | ![1f93e-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-200d-2642-fe0f.svg) |	man playing handball |
-| ![1f93e-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-1f3fb-200d-2642-fe0f.svg) |	man playing handball: light  |skin tone
-| ![1f93e-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-1f3fc-200d-2642-fe0f.svg) |	man playing handball:  |medium-light skin tone
-| ![1f93e-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-1f3fd-200d-2642-fe0f.svg) |	man playing handball: medium  |skin tone
-| ![1f93e-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-1f3fe-200d-2642-fe0f.svg) |	man playing handball:  |medium-dark skin tone
-| ![1f93e-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-1f3ff-200d-2642-fe0f.svg) |	man playing handball: dark  |skin tone
+| ![1f93e-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-1f3fb-200d-2642-fe0f.svg) |	man playing handball: light skin tone |
+| ![1f93e-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-1f3fc-200d-2642-fe0f.svg) |	man playing handball: medium-light skin tone |
+| ![1f93e-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-1f3fd-200d-2642-fe0f.svg) |	man playing handball: medium skin tone |
+| ![1f93e-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-1f3fe-200d-2642-fe0f.svg) |	man playing handball: medium-dark skin tone |
+| ![1f93e-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f93e-1f3ff-200d-2642-fe0f.svg) |	man playing handball: dark skin tone |
 | ![1f93e-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-200d-2640-fe0f.svg) |	woman playing handball |
-| ![1f93e-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-1f3fb-200d-2640-fe0f.svg) |	woman playing handball: light  |skin tone
-| ![1f93e-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-1f3fc-200d-2640-fe0f.svg) |	woman playing handball:  |medium-light skin tone
-| ![1f93e-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-1f3fd-200d-2640-fe0f.svg) |	woman playing handball:  |medium skin tone
-| ![1f93e-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-1f3fe-200d-2640-fe0f.svg) |	woman playing handball:  |medium-dark skin tone
-| ![1f93e-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-1f3ff-200d-2640-fe0f.svg) |	woman playing handball: dark  |skin tone
+| ![1f93e-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-1f3fb-200d-2640-fe0f.svg) |	woman playing handball: light skin tone |
+| ![1f93e-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-1f3fc-200d-2640-fe0f.svg) |	woman playing handball: medium-light skin tone |
+| ![1f93e-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-1f3fd-200d-2640-fe0f.svg) |	woman playing handball: medium skin tone |
+| ![1f93e-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-1f3fe-200d-2640-fe0f.svg) |	woman playing handball: medium-dark skin tone |
+| ![1f93e-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f93e-1f3ff-200d-2640-fe0f.svg) |	woman playing handball: dark skin tone |
 | ![1f939.svg](../qml/js/emoji/1f939.svg) |	person juggling |
 | ![1f939-1f3fb.svg](../qml/js/emoji/1f939-1f3fb.svg) |	person juggling: light skin tone |
 | ![1f939-1f3fc.svg](../qml/js/emoji/1f939-1f3fc.svg) |	person juggling: medium-light skin tone |
@@ -1810,34 +1810,34 @@ Here's a list of the implemented emojis:
 | ![1f939-1f3ff.svg](../qml/js/emoji/1f939-1f3ff.svg) |	person juggling: dark skin tone |
 | ![1f939-200d-2642-fe0f.svg](../qml/js/emoji/1f939-200d-2642-fe0f.svg) |	man juggling |
 | ![1f939-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f939-1f3fb-200d-2642-fe0f.svg) |	man juggling: light skin tone |
-| ![1f939-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f939-1f3fc-200d-2642-fe0f.svg) |	man juggling: medium-light  |skin tone
+| ![1f939-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f939-1f3fc-200d-2642-fe0f.svg) |	man juggling: medium-light skin tone |
 | ![1f939-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f939-1f3fd-200d-2642-fe0f.svg) |	man juggling: medium skin tone |
-| ![1f939-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f939-1f3fe-200d-2642-fe0f.svg) |	man juggling: medium-dark  |skin tone
+| ![1f939-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f939-1f3fe-200d-2642-fe0f.svg) |	man juggling: medium-dark skin tone |
 | ![1f939-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f939-1f3ff-200d-2642-fe0f.svg) |	man juggling: dark skin tone |
 | ![1f939-200d-2640-fe0f.svg](../qml/js/emoji/1f939-200d-2640-fe0f.svg) |	woman juggling |
-| ![1f939-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f939-1f3fb-200d-2640-fe0f.svg) |	woman juggling: light skin  |tone
-| ![1f939-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f939-1f3fc-200d-2640-fe0f.svg) |	woman juggling: medium-light  |skin tone
-| ![1f939-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f939-1f3fd-200d-2640-fe0f.svg) |	woman juggling: medium skin  |tone
-| ![1f939-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f939-1f3fe-200d-2640-fe0f.svg) |	woman juggling: medium-dark  |skin tone
+| ![1f939-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f939-1f3fb-200d-2640-fe0f.svg) |	woman juggling: light skin tone |
+| ![1f939-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f939-1f3fc-200d-2640-fe0f.svg) |	woman juggling: medium-light skin tone |
+| ![1f939-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f939-1f3fd-200d-2640-fe0f.svg) |	woman juggling: medium skin tone |
+| ![1f939-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f939-1f3fe-200d-2640-fe0f.svg) |	woman juggling: medium-dark skin tone |
 | ![1f939-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f939-1f3ff-200d-2640-fe0f.svg) |	woman juggling: dark skin tone |
 | ![1f9d8.svg](../qml/js/emoji/1f9d8.svg) |	person in lotus position |
 | ![1f9d8-1f3fb.svg](../qml/js/emoji/1f9d8-1f3fb.svg) |	person in lotus position: light skin tone |
-| ![1f9d8-1f3fc.svg](../qml/js/emoji/1f9d8-1f3fc.svg) |	person in lotus position: medium-light skin  |tone
+| ![1f9d8-1f3fc.svg](../qml/js/emoji/1f9d8-1f3fc.svg) |	person in lotus position: medium-light skin tone |
 | ![1f9d8-1f3fd.svg](../qml/js/emoji/1f9d8-1f3fd.svg) |	person in lotus position: medium skin tone |
-| ![1f9d8-1f3fe.svg](../qml/js/emoji/1f9d8-1f3fe.svg) |	person in lotus position: medium-dark skin  |tone
+| ![1f9d8-1f3fe.svg](../qml/js/emoji/1f9d8-1f3fe.svg) |	person in lotus position: medium-dark skin tone |
 | ![1f9d8-1f3ff.svg](../qml/js/emoji/1f9d8-1f3ff.svg) |	person in lotus position: dark skin tone |
 | ![1f9d8-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-200d-2642-fe0f.svg) |	man in lotus position |
-| ![1f9d8-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-1f3fb-200d-2642-fe0f.svg) |	man in lotus position: light  |skin tone
-| ![1f9d8-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-1f3fc-200d-2642-fe0f.svg) |	man in lotus position:  |medium-light skin tone
-| ![1f9d8-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-1f3fd-200d-2642-fe0f.svg) |	man in lotus position: medium  |skin tone
-| ![1f9d8-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-1f3fe-200d-2642-fe0f.svg) |	man in lotus position:  |medium-dark skin tone
-| ![1f9d8-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-1f3ff-200d-2642-fe0f.svg) |	man in lotus position: dark  |skin tone
+| ![1f9d8-1f3fb-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-1f3fb-200d-2642-fe0f.svg) |	man in lotus position: light skin tone |
+| ![1f9d8-1f3fc-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-1f3fc-200d-2642-fe0f.svg) |	man in lotus position: medium-light skin tone |
+| ![1f9d8-1f3fd-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-1f3fd-200d-2642-fe0f.svg) |	man in lotus position: medium skin tone |
+| ![1f9d8-1f3fe-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-1f3fe-200d-2642-fe0f.svg) |	man in lotus position: medium-dark skin tone |
+| ![1f9d8-1f3ff-200d-2642-fe0f.svg](../qml/js/emoji/1f9d8-1f3ff-200d-2642-fe0f.svg) |	man in lotus position: dark skin tone |
 | ![1f9d8-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-200d-2640-fe0f.svg) |	woman in lotus position |
-| ![1f9d8-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-1f3fb-200d-2640-fe0f.svg) |	woman in lotus position:  |light skin tone
-| ![1f9d8-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-1f3fc-200d-2640-fe0f.svg) |	woman in lotus position:  |medium-light skin tone
-| ![1f9d8-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-1f3fd-200d-2640-fe0f.svg) |	woman in lotus position:  |medium skin tone
-| ![1f9d8-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-1f3fe-200d-2640-fe0f.svg) |	woman in lotus position:  |medium-dark skin tone
-| ![1f9d8-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-1f3ff-200d-2640-fe0f.svg) |	woman in lotus position: dark  |skin tone
+| ![1f9d8-1f3fb-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-1f3fb-200d-2640-fe0f.svg) |	woman in lotus position: light skin tone |
+| ![1f9d8-1f3fc-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-1f3fc-200d-2640-fe0f.svg) |	woman in lotus position: medium-light skin tone |
+| ![1f9d8-1f3fd-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-1f3fd-200d-2640-fe0f.svg) |	woman in lotus position: medium skin tone |
+| ![1f9d8-1f3fe-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-1f3fe-200d-2640-fe0f.svg) |	woman in lotus position: medium-dark skin tone |
+| ![1f9d8-1f3ff-200d-2640-fe0f.svg](../qml/js/emoji/1f9d8-1f3ff-200d-2640-fe0f.svg) |	woman in lotus position: dark skin tone |
 | ![1f6c0.svg](../qml/js/emoji/1f6c0.svg) |	person taking bath |
 | ![1f6c0-1f3fb.svg](../qml/js/emoji/1f6c0-1f3fb.svg) |	person taking bath: light skin tone |
 | ![1f6c0-1f3fc.svg](../qml/js/emoji/1f6c0-1f3fc.svg) |	person taking bath: medium-light skin tone |
@@ -1851,133 +1851,133 @@ Here's a list of the implemented emojis:
 | ![1f6cc-1f3fe.svg](../qml/js/emoji/1f6cc-1f3fe.svg) |	person in bed: medium-dark skin tone |
 | ![1f6cc-1f3ff.svg](../qml/js/emoji/1f6cc-1f3ff.svg) |	person in bed: dark skin tone |
 | ![1f9d1-200d-1f91d-200d-1f9d1.svg](../qml/js/emoji/1f9d1-200d-1f91d-200d-1f9d1.svg) |	people holding hands |
-| ![1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fb.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fb.svg) |	people holding  |hands: light skin tone
-| ![1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fc.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fc.svg) |	people holding  |hands: light skin tone, medium-light skin tone
-| ![1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fd.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fd.svg) |	people holding  |hands: light skin tone, medium skin tone
-| ![1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fe.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fe.svg) |	people holding  |hands: light skin tone, medium-dark skin tone
-| ![1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3ff.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3ff.svg) |	people holding  |hands: light skin tone, dark skin tone
-| ![1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fb.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fb.svg) |	people holding  |hands: medium-light skin tone, light skin tone
-| ![1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fc.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fc.svg) |	people holding  |hands: medium-light skin tone
-| ![1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fd.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fd.svg) |	people holding  |hands: medium-light skin tone, medium skin tone
-| ![1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fe.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fe.svg) |	people holding  |hands: medium-light skin tone, medium-dark skin tone
-| ![1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3ff.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3ff.svg) |	people holding  |hands: medium-light skin tone, dark skin tone
-| ![1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fb.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fb.svg) |	people holding  |hands: medium skin tone, light skin tone
-| ![1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fc.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fc.svg) |	people holding  |hands: medium skin tone, medium-light skin tone
-| ![1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fd.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fd.svg) |	people holding  |hands: medium skin tone
-| ![1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fe.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fe.svg) |	people holding  |hands: medium skin tone, medium-dark skin tone
-| ![1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3ff.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3ff.svg) |	people holding  |hands: medium skin tone, dark skin tone
-| ![1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fb.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fb.svg) |	people holding  |hands: medium-dark skin tone, light skin tone
-| ![1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fc.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fc.svg) |	people holding  |hands: medium-dark skin tone, medium-light skin tone
-| ![1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fd.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fd.svg) |	people holding  |hands: medium-dark skin tone, medium skin tone
-| ![1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fe.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fe.svg) |	people holding  |hands: medium-dark skin tone
-| ![1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3ff.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3ff.svg) |	people holding  |hands: medium-dark skin tone, dark skin tone
-| ![1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fb.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fb.svg) |	people holding  |hands: dark skin tone, light skin tone
-| ![1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fc.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fc.svg) |	people holding  |hands: dark skin tone, medium-light skin tone
-| ![1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fd.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fd.svg) |	people holding  |hands: dark skin tone, medium skin tone
-| ![1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fe.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fe.svg) |	people holding  |hands: dark skin tone, medium-dark skin tone
-| ![1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3ff.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3ff.svg) |	people holding  |hands: dark skin tone
+| ![1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fb.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fb.svg) |	people holding hands: light skin tone |
+| ![1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fc.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fc.svg) |	people holding hands: light skin tone, medium-light skin tone |
+| ![1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fd.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fd.svg) |	people holding hands: light skin tone, medium skin tone |
+| ![1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fe.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3fe.svg) |	people holding hands: light skin tone, medium-dark skin tone |
+| ![1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3ff.svg](../qml/js/emoji/1f9d1-1f3fb-200d-1f91d-200d-1f9d1-1f3ff.svg) |	people holding hands: light skin tone, dark skin tone |
+| ![1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fb.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fb.svg) |	people holding hands: medium-light skin tone, light skin tone |
+| ![1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fc.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fc.svg) |	people holding hands: medium-light skin tone |
+| ![1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fd.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fd.svg) |	people holding hands: medium-light skin tone, medium skin tone |
+| ![1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fe.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3fe.svg) |	people holding hands: medium-light skin tone, medium-dark skin tone |
+| ![1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3ff.svg](../qml/js/emoji/1f9d1-1f3fc-200d-1f91d-200d-1f9d1-1f3ff.svg) |	people holding hands: medium-light skin tone, dark skin tone |
+| ![1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fb.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fb.svg) |	people holding hands: medium skin tone, light skin tone |
+| ![1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fc.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fc.svg) |	people holding hands: medium skin tone, medium-light skin tone |
+| ![1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fd.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fd.svg) |	people holding hands: medium skin tone |
+| ![1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fe.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3fe.svg) |	people holding hands: medium skin tone, medium-dark skin tone |
+| ![1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3ff.svg](../qml/js/emoji/1f9d1-1f3fd-200d-1f91d-200d-1f9d1-1f3ff.svg) |	people holding hands: medium skin tone, dark skin tone |
+| ![1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fb.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fb.svg) |	people holding hands: medium-dark skin tone, light skin tone |
+| ![1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fc.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fc.svg) |	people holding hands: medium-dark skin tone, medium-light skin tone |
+| ![1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fd.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fd.svg) |	people holding hands: medium-dark skin tone, medium skin tone |
+| ![1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fe.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3fe.svg) |	people holding hands: medium-dark skin tone |
+| ![1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3ff.svg](../qml/js/emoji/1f9d1-1f3fe-200d-1f91d-200d-1f9d1-1f3ff.svg) |	people holding hands: medium-dark skin tone, dark skin tone |
+| ![1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fb.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fb.svg) |	people holding hands: dark skin tone, light skin tone |
+| ![1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fc.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fc.svg) |	people holding hands: dark skin tone, medium-light skin tone |
+| ![1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fd.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fd.svg) |	people holding hands: dark skin tone, medium skin tone |
+| ![1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fe.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3fe.svg) |	people holding hands: dark skin tone, medium-dark skin tone |
+| ![1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3ff.svg](../qml/js/emoji/1f9d1-1f3ff-200d-1f91d-200d-1f9d1-1f3ff.svg) |	people holding hands: dark skin tone |
 | ![1f46d.svg](../qml/js/emoji/1f46d.svg) |	women holding hands |
 | ![1f46d-1f3fb.svg](../qml/js/emoji/1f46d-1f3fb.svg) |	women holding hands: light skin tone |
-| ![1f469-1f3fb-200d-1f91d-200d-1f469-1f3fc.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f469-1f3fc.svg) |	women holding  |hands: light skin tone, medium-light skin tone
-| ![1f469-1f3fb-200d-1f91d-200d-1f469-1f3fd.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f469-1f3fd.svg) |	women holding  |hands: light skin tone, medium skin tone
-| ![1f469-1f3fb-200d-1f91d-200d-1f469-1f3fe.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f469-1f3fe.svg) |	women holding  |hands: light skin tone, medium-dark skin tone
-| ![1f469-1f3fb-200d-1f91d-200d-1f469-1f3ff.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f469-1f3ff.svg) |	women holding  |hands: light skin tone, dark skin tone
-| ![1f469-1f3fc-200d-1f91d-200d-1f469-1f3fb.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f469-1f3fb.svg) |	women holding  |hands: medium-light skin tone, light skin tone
+| ![1f469-1f3fb-200d-1f91d-200d-1f469-1f3fc.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f469-1f3fc.svg) |	women holding hands: light skin tone, medium-light skin tone |
+| ![1f469-1f3fb-200d-1f91d-200d-1f469-1f3fd.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f469-1f3fd.svg) |	women holding hands: light skin tone, medium skin tone |
+| ![1f469-1f3fb-200d-1f91d-200d-1f469-1f3fe.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f469-1f3fe.svg) |	women holding hands: light skin tone, medium-dark skin tone |
+| ![1f469-1f3fb-200d-1f91d-200d-1f469-1f3ff.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f469-1f3ff.svg) |	women holding hands: light skin tone, dark skin tone |
+| ![1f469-1f3fc-200d-1f91d-200d-1f469-1f3fb.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f469-1f3fb.svg) |	women holding hands: medium-light skin tone, light skin tone |
 | ![1f46d-1f3fc.svg](../qml/js/emoji/1f46d-1f3fc.svg) |	women holding hands: medium-light skin tone |
-| ![1f469-1f3fc-200d-1f91d-200d-1f469-1f3fd.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f469-1f3fd.svg) |	women holding  |hands: medium-light skin tone, medium skin tone
-| ![1f469-1f3fc-200d-1f91d-200d-1f469-1f3fe.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f469-1f3fe.svg) |	women holding  |hands: medium-light skin tone, medium-dark skin tone
-| ![1f469-1f3fc-200d-1f91d-200d-1f469-1f3ff.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f469-1f3ff.svg) |	women holding  |hands: medium-light skin tone, dark skin tone
-| ![1f469-1f3fd-200d-1f91d-200d-1f469-1f3fb.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f469-1f3fb.svg) |	women holding  |hands: medium skin tone, light skin tone
-| ![1f469-1f3fd-200d-1f91d-200d-1f469-1f3fc.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f469-1f3fc.svg) |	women holding  |hands: medium skin tone, medium-light skin tone
+| ![1f469-1f3fc-200d-1f91d-200d-1f469-1f3fd.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f469-1f3fd.svg) |	women holding hands: medium-light skin tone, medium skin tone |
+| ![1f469-1f3fc-200d-1f91d-200d-1f469-1f3fe.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f469-1f3fe.svg) |	women holding hands: medium-light skin tone, medium-dark skin tone |
+| ![1f469-1f3fc-200d-1f91d-200d-1f469-1f3ff.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f469-1f3ff.svg) |	women holding hands: medium-light skin tone, dark skin tone |
+| ![1f469-1f3fd-200d-1f91d-200d-1f469-1f3fb.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f469-1f3fb.svg) |	women holding hands: medium skin tone, light skin tone |
+| ![1f469-1f3fd-200d-1f91d-200d-1f469-1f3fc.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f469-1f3fc.svg) |	women holding hands: medium skin tone, medium-light skin tone |
 | ![1f46d-1f3fd.svg](../qml/js/emoji/1f46d-1f3fd.svg) |	women holding hands: medium skin tone |
-| ![1f469-1f3fd-200d-1f91d-200d-1f469-1f3fe.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f469-1f3fe.svg) |	women holding  |hands: medium skin tone, medium-dark skin tone
-| ![1f469-1f3fd-200d-1f91d-200d-1f469-1f3ff.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f469-1f3ff.svg) |	women holding  |hands: medium skin tone, dark skin tone
-| ![1f469-1f3fe-200d-1f91d-200d-1f469-1f3fb.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f469-1f3fb.svg) |	women holding  |hands: medium-dark skin tone, light skin tone
-| ![1f469-1f3fe-200d-1f91d-200d-1f469-1f3fc.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f469-1f3fc.svg) |	women holding  |hands: medium-dark skin tone, medium-light skin tone
-| ![1f469-1f3fe-200d-1f91d-200d-1f469-1f3fd.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f469-1f3fd.svg) |	women holding  |hands: medium-dark skin tone, medium skin tone
+| ![1f469-1f3fd-200d-1f91d-200d-1f469-1f3fe.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f469-1f3fe.svg) |	women holding hands: medium skin tone, medium-dark skin tone |
+| ![1f469-1f3fd-200d-1f91d-200d-1f469-1f3ff.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f469-1f3ff.svg) |	women holding hands: medium skin tone, dark skin tone |
+| ![1f469-1f3fe-200d-1f91d-200d-1f469-1f3fb.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f469-1f3fb.svg) |	women holding hands: medium-dark skin tone, light skin tone |
+| ![1f469-1f3fe-200d-1f91d-200d-1f469-1f3fc.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f469-1f3fc.svg) |	women holding hands: medium-dark skin tone, medium-light skin tone |
+| ![1f469-1f3fe-200d-1f91d-200d-1f469-1f3fd.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f469-1f3fd.svg) |	women holding hands: medium-dark skin tone, medium skin tone |
 | ![1f46d-1f3fe.svg](../qml/js/emoji/1f46d-1f3fe.svg) |	women holding hands: medium-dark skin tone |
-| ![1f469-1f3fe-200d-1f91d-200d-1f469-1f3ff.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f469-1f3ff.svg) |	women holding  |hands: medium-dark skin tone, dark skin tone
-| ![1f469-1f3ff-200d-1f91d-200d-1f469-1f3fb.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f469-1f3fb.svg) |	women holding  |hands: dark skin tone, light skin tone
-| ![1f469-1f3ff-200d-1f91d-200d-1f469-1f3fc.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f469-1f3fc.svg) |	women holding  |hands: dark skin tone, medium-light skin tone
-| ![1f469-1f3ff-200d-1f91d-200d-1f469-1f3fd.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f469-1f3fd.svg) |	women holding  |hands: dark skin tone, medium skin tone
-| ![1f469-1f3ff-200d-1f91d-200d-1f469-1f3fe.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f469-1f3fe.svg) |	women holding  |hands: dark skin tone, medium-dark skin tone
+| ![1f469-1f3fe-200d-1f91d-200d-1f469-1f3ff.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f469-1f3ff.svg) |	women holding hands: medium-dark skin tone, dark skin tone |
+| ![1f469-1f3ff-200d-1f91d-200d-1f469-1f3fb.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f469-1f3fb.svg) |	women holding hands: dark skin tone, light skin tone |
+| ![1f469-1f3ff-200d-1f91d-200d-1f469-1f3fc.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f469-1f3fc.svg) |	women holding hands: dark skin tone, medium-light skin tone |
+| ![1f469-1f3ff-200d-1f91d-200d-1f469-1f3fd.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f469-1f3fd.svg) |	women holding hands: dark skin tone, medium skin tone |
+| ![1f469-1f3ff-200d-1f91d-200d-1f469-1f3fe.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f469-1f3fe.svg) |	women holding hands: dark skin tone, medium-dark skin tone |
 | ![1f46d-1f3ff.svg](../qml/js/emoji/1f46d-1f3ff.svg) |	women holding hands: dark skin tone |
 | ![1f46b.svg](../qml/js/emoji/1f46b.svg) |	woman and man holding hands |
 | ![1f46b-1f3fb.svg](../qml/js/emoji/1f46b-1f3fb.svg) |	woman and man holding hands: light skin tone |
-| ![1f469-1f3fb-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fc.svg) |	woman and man  |holding hands: light skin tone, medium-light skin tone
-| ![1f469-1f3fb-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fd.svg) |	woman and man  |holding hands: light skin tone, medium skin tone
-| ![1f469-1f3fb-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fe.svg) |	woman and man  |holding hands: light skin tone, medium-dark skin tone
-| ![1f469-1f3fb-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f468-1f3ff.svg) |	woman and man  |holding hands: light skin tone, dark skin tone
-| ![1f469-1f3fc-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f468-1f3fb.svg) |	woman and man  |holding hands: medium-light skin tone, light skin tone
-| ![1f46b-1f3fc.svg](../qml/js/emoji/1f46b-1f3fc.svg) |	woman and man holding hands: medium-light  |skin tone
-| ![1f469-1f3fc-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f468-1f3fd.svg) |	woman and man  |holding hands: medium-light skin tone, medium skin tone
-| ![1f469-1f3fc-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f468-1f3fe.svg) |	woman and man  |holding hands: medium-light skin tone, medium-dark skin tone
-| ![1f469-1f3fc-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f468-1f3ff.svg) |	woman and man  |holding hands: medium-light skin tone, dark skin tone
-| ![1f469-1f3fd-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f468-1f3fb.svg) |	woman and man  |holding hands: medium skin tone, light skin tone
-| ![1f469-1f3fd-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f468-1f3fc.svg) |	woman and man  |holding hands: medium skin tone, medium-light skin tone
+| ![1f469-1f3fb-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fc.svg) |	woman and man holding hands: light skin tone, medium-light skin tone |
+| ![1f469-1f3fb-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fd.svg) |	woman and man holding hands: light skin tone, medium skin tone |
+| ![1f469-1f3fb-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fe.svg) |	woman and man holding hands: light skin tone, medium-dark skin tone |
+| ![1f469-1f3fb-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f469-1f3fb-200d-1f91d-200d-1f468-1f3ff.svg) |	woman and man holding hands: light skin tone, dark skin tone |
+| ![1f469-1f3fc-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f468-1f3fb.svg) |	woman and man holding hands: medium-light skin tone, light skin tone |
+| ![1f46b-1f3fc.svg](../qml/js/emoji/1f46b-1f3fc.svg) |	woman and man holding hands: medium-light skin tone |
+| ![1f469-1f3fc-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f468-1f3fd.svg) |	woman and man holding hands: medium-light skin tone, medium skin tone |
+| ![1f469-1f3fc-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f468-1f3fe.svg) |	woman and man holding hands: medium-light skin tone, medium-dark skin tone |
+| ![1f469-1f3fc-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f469-1f3fc-200d-1f91d-200d-1f468-1f3ff.svg) |	woman and man holding hands: medium-light skin tone, dark skin tone |
+| ![1f469-1f3fd-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f468-1f3fb.svg) |	woman and man holding hands: medium skin tone, light skin tone |
+| ![1f469-1f3fd-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f468-1f3fc.svg) |	woman and man holding hands: medium skin tone, medium-light skin tone |
 | ![1f46b-1f3fd.svg](../qml/js/emoji/1f46b-1f3fd.svg) |	woman and man holding hands: medium skin tone |
-| ![1f469-1f3fd-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f468-1f3fe.svg) |	woman and man  |holding hands: medium skin tone, medium-dark skin tone
-| ![1f469-1f3fd-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f468-1f3ff.svg) |	woman and man  |holding hands: medium skin tone, dark skin tone
-| ![1f469-1f3fe-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f468-1f3fb.svg) |	woman and man  |holding hands: medium-dark skin tone, light skin tone
-| ![1f469-1f3fe-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f468-1f3fc.svg) |	woman and man  |holding hands: medium-dark skin tone, medium-light skin tone
-| ![1f469-1f3fe-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f468-1f3fd.svg) |	woman and man  |holding hands: medium-dark skin tone, medium skin tone
-| ![1f46b-1f3fe.svg](../qml/js/emoji/1f46b-1f3fe.svg) |	woman and man holding hands: medium-dark skin  |tone
-| ![1f469-1f3fe-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f468-1f3ff.svg) |	woman and man  |holding hands: medium-dark skin tone, dark skin tone
-| ![1f469-1f3ff-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f468-1f3fb.svg) |	woman and man  |holding hands: dark skin tone, light skin tone
-| ![1f469-1f3ff-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f468-1f3fc.svg) |	woman and man  |holding hands: dark skin tone, medium-light skin tone
-| ![1f469-1f3ff-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f468-1f3fd.svg) |	woman and man  |holding hands: dark skin tone, medium skin tone
-| ![1f469-1f3ff-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f468-1f3fe.svg) |	woman and man  |holding hands: dark skin tone, medium-dark skin tone
+| ![1f469-1f3fd-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f468-1f3fe.svg) |	woman and man holding hands: medium skin tone, medium-dark skin tone |
+| ![1f469-1f3fd-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f469-1f3fd-200d-1f91d-200d-1f468-1f3ff.svg) |	woman and man holding hands: medium skin tone, dark skin tone |
+| ![1f469-1f3fe-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f468-1f3fb.svg) |	woman and man holding hands: medium-dark skin tone, light skin tone |
+| ![1f469-1f3fe-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f468-1f3fc.svg) |	woman and man holding hands: medium-dark skin tone, medium-light skin tone |
+| ![1f469-1f3fe-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f468-1f3fd.svg) |	woman and man holding hands: medium-dark skin tone, medium skin tone |
+| ![1f46b-1f3fe.svg](../qml/js/emoji/1f46b-1f3fe.svg) |	woman and man holding hands: medium-dark skin tone |
+| ![1f469-1f3fe-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f469-1f3fe-200d-1f91d-200d-1f468-1f3ff.svg) |	woman and man holding hands: medium-dark skin tone, dark skin tone |
+| ![1f469-1f3ff-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f468-1f3fb.svg) |	woman and man holding hands: dark skin tone, light skin tone |
+| ![1f469-1f3ff-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f468-1f3fc.svg) |	woman and man holding hands: dark skin tone, medium-light skin tone |
+| ![1f469-1f3ff-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f468-1f3fd.svg) |	woman and man holding hands: dark skin tone, medium skin tone |
+| ![1f469-1f3ff-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f469-1f3ff-200d-1f91d-200d-1f468-1f3fe.svg) |	woman and man holding hands: dark skin tone, medium-dark skin tone |
 | ![1f46b-1f3ff.svg](../qml/js/emoji/1f46b-1f3ff.svg) |	woman and man holding hands: dark skin tone |
 | ![1f46c.svg](../qml/js/emoji/1f46c.svg) |	men holding hands |
 | ![1f46c-1f3fb.svg](../qml/js/emoji/1f46c-1f3fb.svg) |	men holding hands: light skin tone |
-| ![1f468-1f3fb-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f468-1f3fb-200d-1f91d-200d-1f468-1f3fc.svg) |	men holding  |hands: light skin tone, medium-light skin tone
-| ![1f468-1f3fb-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f468-1f3fb-200d-1f91d-200d-1f468-1f3fd.svg) |	men holding  |hands: light skin tone, medium skin tone
-| ![1f468-1f3fb-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f468-1f3fb-200d-1f91d-200d-1f468-1f3fe.svg) |	men holding  |hands: light skin tone, medium-dark skin tone
-| ![1f468-1f3fb-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f468-1f3fb-200d-1f91d-200d-1f468-1f3ff.svg) |	men holding  |hands: light skin tone, dark skin tone
-| ![1f468-1f3fc-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f468-1f3fc-200d-1f91d-200d-1f468-1f3fb.svg) |	men holding  |hands: medium-light skin tone, light skin tone
+| ![1f468-1f3fb-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f468-1f3fb-200d-1f91d-200d-1f468-1f3fc.svg) |	men holding hands: light skin tone, medium-light skin tone |
+| ![1f468-1f3fb-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f468-1f3fb-200d-1f91d-200d-1f468-1f3fd.svg) |	men holding hands: light skin tone, medium skin tone |
+| ![1f468-1f3fb-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f468-1f3fb-200d-1f91d-200d-1f468-1f3fe.svg) |	men holding hands: light skin tone, medium-dark skin tone |
+| ![1f468-1f3fb-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f468-1f3fb-200d-1f91d-200d-1f468-1f3ff.svg) |	men holding hands: light skin tone, dark skin tone |
+| ![1f468-1f3fc-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f468-1f3fc-200d-1f91d-200d-1f468-1f3fb.svg) |	men holding hands: medium-light skin tone, light skin tone |
 | ![1f46c-1f3fc.svg](../qml/js/emoji/1f46c-1f3fc.svg) |	men holding hands: medium-light skin tone |
-| ![1f468-1f3fc-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f468-1f3fc-200d-1f91d-200d-1f468-1f3fd.svg) |	men holding  |hands: medium-light skin tone, medium skin tone
-| ![1f468-1f3fc-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f468-1f3fc-200d-1f91d-200d-1f468-1f3fe.svg) |	men holding  |hands: medium-light skin tone, medium-dark skin tone
-| ![1f468-1f3fc-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f468-1f3fc-200d-1f91d-200d-1f468-1f3ff.svg) |	men holding  |hands: medium-light skin tone, dark skin tone
-| ![1f468-1f3fd-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f468-1f3fd-200d-1f91d-200d-1f468-1f3fb.svg) |	men holding  |hands: medium skin tone, light skin tone
-| ![1f468-1f3fd-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f468-1f3fd-200d-1f91d-200d-1f468-1f3fc.svg) |	men holding  |hands: medium skin tone, medium-light skin tone
+| ![1f468-1f3fc-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f468-1f3fc-200d-1f91d-200d-1f468-1f3fd.svg) |	men holding hands: medium-light skin tone, medium skin tone |
+| ![1f468-1f3fc-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f468-1f3fc-200d-1f91d-200d-1f468-1f3fe.svg) |	men holding hands: medium-light skin tone, medium-dark skin tone |
+| ![1f468-1f3fc-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f468-1f3fc-200d-1f91d-200d-1f468-1f3ff.svg) |	men holding hands: medium-light skin tone, dark skin tone |
+| ![1f468-1f3fd-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f468-1f3fd-200d-1f91d-200d-1f468-1f3fb.svg) |	men holding hands: medium skin tone, light skin tone |
+| ![1f468-1f3fd-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f468-1f3fd-200d-1f91d-200d-1f468-1f3fc.svg) |	men holding hands: medium skin tone, medium-light skin tone |
 | ![1f46c-1f3fd.svg](../qml/js/emoji/1f46c-1f3fd.svg) |	men holding hands: medium skin tone |
-| ![1f468-1f3fd-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f468-1f3fd-200d-1f91d-200d-1f468-1f3fe.svg) |	men holding  |hands: medium skin tone, medium-dark skin tone
-| ![1f468-1f3fd-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f468-1f3fd-200d-1f91d-200d-1f468-1f3ff.svg) |	men holding  |hands: medium skin tone, dark skin tone
-| ![1f468-1f3fe-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f468-1f3fe-200d-1f91d-200d-1f468-1f3fb.svg) |	men holding  |hands: medium-dark skin tone, light skin tone
-| ![1f468-1f3fe-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f468-1f3fe-200d-1f91d-200d-1f468-1f3fc.svg) |	men holding  |hands: medium-dark skin tone, medium-light skin tone
-| ![1f468-1f3fe-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f468-1f3fe-200d-1f91d-200d-1f468-1f3fd.svg) |	men holding  |hands: medium-dark skin tone, medium skin tone
+| ![1f468-1f3fd-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f468-1f3fd-200d-1f91d-200d-1f468-1f3fe.svg) |	men holding hands: medium skin tone, medium-dark skin tone |
+| ![1f468-1f3fd-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f468-1f3fd-200d-1f91d-200d-1f468-1f3ff.svg) |	men holding hands: medium skin tone, dark skin tone |
+| ![1f468-1f3fe-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f468-1f3fe-200d-1f91d-200d-1f468-1f3fb.svg) |	men holding hands: medium-dark skin tone, light skin tone |
+| ![1f468-1f3fe-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f468-1f3fe-200d-1f91d-200d-1f468-1f3fc.svg) |	men holding hands: medium-dark skin tone, medium-light skin tone |
+| ![1f468-1f3fe-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f468-1f3fe-200d-1f91d-200d-1f468-1f3fd.svg) |	men holding hands: medium-dark skin tone, medium skin tone |
 | ![1f46c-1f3fe.svg](../qml/js/emoji/1f46c-1f3fe.svg) |	men holding hands: medium-dark skin tone |
-| ![1f468-1f3fe-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f468-1f3fe-200d-1f91d-200d-1f468-1f3ff.svg) |	men holding  |hands: medium-dark skin tone, dark skin tone
-| ![1f468-1f3ff-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f468-1f3ff-200d-1f91d-200d-1f468-1f3fb.svg) |	men holding  |hands: dark skin tone, light skin tone
-| ![1f468-1f3ff-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f468-1f3ff-200d-1f91d-200d-1f468-1f3fc.svg) |	men holding  |hands: dark skin tone, medium-light skin tone
-| ![1f468-1f3ff-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f468-1f3ff-200d-1f91d-200d-1f468-1f3fd.svg) |	men holding  |hands: dark skin tone, medium skin tone
-| ![1f468-1f3ff-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f468-1f3ff-200d-1f91d-200d-1f468-1f3fe.svg) |	men holding  |hands: dark skin tone, medium-dark skin tone
+| ![1f468-1f3fe-200d-1f91d-200d-1f468-1f3ff.svg](../qml/js/emoji/1f468-1f3fe-200d-1f91d-200d-1f468-1f3ff.svg) |	men holding hands: medium-dark skin tone, dark skin tone |
+| ![1f468-1f3ff-200d-1f91d-200d-1f468-1f3fb.svg](../qml/js/emoji/1f468-1f3ff-200d-1f91d-200d-1f468-1f3fb.svg) |	men holding hands: dark skin tone, light skin tone |
+| ![1f468-1f3ff-200d-1f91d-200d-1f468-1f3fc.svg](../qml/js/emoji/1f468-1f3ff-200d-1f91d-200d-1f468-1f3fc.svg) |	men holding hands: dark skin tone, medium-light skin tone |
+| ![1f468-1f3ff-200d-1f91d-200d-1f468-1f3fd.svg](../qml/js/emoji/1f468-1f3ff-200d-1f91d-200d-1f468-1f3fd.svg) |	men holding hands: dark skin tone, medium skin tone |
+| ![1f468-1f3ff-200d-1f91d-200d-1f468-1f3fe.svg](../qml/js/emoji/1f468-1f3ff-200d-1f91d-200d-1f468-1f3fe.svg) |	men holding hands: dark skin tone, medium-dark skin tone |
 | ![1f46c-1f3ff.svg](../qml/js/emoji/1f46c-1f3ff.svg) |	men holding hands: dark skin tone |
 | ![1f48f.svg](../qml/js/emoji/1f48f.svg) |	kiss |
-| ![1f469-200d-2764-fe0f-200d-1f48b-200d-1f468.svg](../qml/js/emoji/1f469-200d-2764-fe0f-200d-1f48b-200d-1f468.svg) |	kiss: woman,  |man
+| ![1f469-200d-2764-fe0f-200d-1f48b-200d-1f468.svg](../qml/js/emoji/1f469-200d-2764-fe0f-200d-1f48b-200d-1f468.svg) |	kiss: woman, man |
 | ![1f468-200d-2764-fe0f-200d-1f48b-200d-1f468.svg](../qml/js/emoji/1f468-200d-2764-fe0f-200d-1f48b-200d-1f468.svg) |	kiss: man, man |
-| ![1f469-200d-2764-fe0f-200d-1f48b-200d-1f469.svg](../qml/js/emoji/1f469-200d-2764-fe0f-200d-1f48b-200d-1f469.svg) |	kiss: woman,  |woman
+| ![1f469-200d-2764-fe0f-200d-1f48b-200d-1f469.svg](../qml/js/emoji/1f469-200d-2764-fe0f-200d-1f48b-200d-1f469.svg) |	kiss: woman, woman |
 | ![1f491.svg](../qml/js/emoji/1f491.svg) |	couple with heart |
-| ![1f469-200d-2764-fe0f-200d-1f468.svg](../qml/js/emoji/1f469-200d-2764-fe0f-200d-1f468.svg) |	couple with heart: woman,  |man
-| ![1f468-200d-2764-fe0f-200d-1f468.svg](../qml/js/emoji/1f468-200d-2764-fe0f-200d-1f468.svg) |	couple with heart: man,  |man
-| ![1f469-200d-2764-fe0f-200d-1f469.svg](../qml/js/emoji/1f469-200d-2764-fe0f-200d-1f469.svg) |	couple with heart: woman,  |woman
+| ![1f469-200d-2764-fe0f-200d-1f468.svg](../qml/js/emoji/1f469-200d-2764-fe0f-200d-1f468.svg) |	couple with heart: woman, man |
+| ![1f468-200d-2764-fe0f-200d-1f468.svg](../qml/js/emoji/1f468-200d-2764-fe0f-200d-1f468.svg) |	couple with heart: man, man |
+| ![1f469-200d-2764-fe0f-200d-1f469.svg](../qml/js/emoji/1f469-200d-2764-fe0f-200d-1f469.svg) |	couple with heart: woman, woman |
 | ![1f46a.svg](../qml/js/emoji/1f46a.svg) |	family |
 | ![1f468-200d-1f469-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f469-200d-1f466.svg) |	family: man, woman, boy |
 | ![1f468-200d-1f469-200d-1f467.svg](../qml/js/emoji/1f468-200d-1f469-200d-1f467.svg) |	family: man, woman, girl |
-| ![1f468-200d-1f469-200d-1f467-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f469-200d-1f467-200d-1f466.svg) |	family: man,  |woman, girl, boy
-| ![1f468-200d-1f469-200d-1f466-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f469-200d-1f466-200d-1f466.svg) |	family: man,  |woman, boy, boy
-| ![1f468-200d-1f469-200d-1f467-200d-1f467.svg](../qml/js/emoji/1f468-200d-1f469-200d-1f467-200d-1f467.svg) |	family: man,  |woman, girl, girl
+| ![1f468-200d-1f469-200d-1f467-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f469-200d-1f467-200d-1f466.svg) |	family: man, woman, girl, boy |
+| ![1f468-200d-1f469-200d-1f466-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f469-200d-1f466-200d-1f466.svg) |	family: man, woman, boy, boy |
+| ![1f468-200d-1f469-200d-1f467-200d-1f467.svg](../qml/js/emoji/1f468-200d-1f469-200d-1f467-200d-1f467.svg) |	family: man, woman, girl, girl |
 | ![1f468-200d-1f468-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f468-200d-1f466.svg) |	family: man, man, boy |
 | ![1f468-200d-1f468-200d-1f467.svg](../qml/js/emoji/1f468-200d-1f468-200d-1f467.svg) |	family: man, man, girl |
-| ![1f468-200d-1f468-200d-1f467-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f468-200d-1f467-200d-1f466.svg) |	family: man, man,  |girl, boy
-| ![1f468-200d-1f468-200d-1f466-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f468-200d-1f466-200d-1f466.svg) |	family: man, man,  |boy, boy
-| ![1f468-200d-1f468-200d-1f467-200d-1f467.svg](../qml/js/emoji/1f468-200d-1f468-200d-1f467-200d-1f467.svg) |	family: man, man,  |girl, girl
+| ![1f468-200d-1f468-200d-1f467-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f468-200d-1f467-200d-1f466.svg) |	family: man, man, girl, boy |
+| ![1f468-200d-1f468-200d-1f466-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f468-200d-1f466-200d-1f466.svg) |	family: man, man, boy, boy |
+| ![1f468-200d-1f468-200d-1f467-200d-1f467.svg](../qml/js/emoji/1f468-200d-1f468-200d-1f467-200d-1f467.svg) |	family: man, man, girl, girl |
 | ![1f469-200d-1f469-200d-1f466.svg](../qml/js/emoji/1f469-200d-1f469-200d-1f466.svg) |	family: woman, woman, boy |
 | ![1f469-200d-1f469-200d-1f467.svg](../qml/js/emoji/1f469-200d-1f469-200d-1f467.svg) |	family: woman, woman, girl |
-| ![1f469-200d-1f469-200d-1f467-200d-1f466.svg](../qml/js/emoji/1f469-200d-1f469-200d-1f467-200d-1f466.svg) |	family: woman,  |woman, girl, boy
-| ![1f469-200d-1f469-200d-1f466-200d-1f466.svg](../qml/js/emoji/1f469-200d-1f469-200d-1f466-200d-1f466.svg) |	family: woman,  |woman, boy, boy
-| ![1f469-200d-1f469-200d-1f467-200d-1f467.svg](../qml/js/emoji/1f469-200d-1f469-200d-1f467-200d-1f467.svg) |	family: woman,  |woman, girl, girl
+| ![1f469-200d-1f469-200d-1f467-200d-1f466.svg](../qml/js/emoji/1f469-200d-1f469-200d-1f467-200d-1f466.svg) |	family: woman, woman, girl, boy |
+| ![1f469-200d-1f469-200d-1f466-200d-1f466.svg](../qml/js/emoji/1f469-200d-1f469-200d-1f466-200d-1f466.svg) |	family: woman, woman, boy, boy |
+| ![1f469-200d-1f469-200d-1f467-200d-1f467.svg](../qml/js/emoji/1f469-200d-1f469-200d-1f467-200d-1f467.svg) |	family: woman, woman, girl, girl |
 | ![1f468-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f466.svg) |	family: man, boy |
 | ![1f468-200d-1f466-200d-1f466.svg](../qml/js/emoji/1f468-200d-1f466-200d-1f466.svg) |	family: man, boy, boy |
 | ![1f468-200d-1f467.svg](../qml/js/emoji/1f468-200d-1f467.svg) |	family: man, girl |
