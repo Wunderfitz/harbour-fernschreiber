@@ -1501,11 +1501,34 @@
     </message>
 </context>
 <context>
-    <name>SettingsPage</name>
+    <name>SettingsAppearance</name>
     <message>
-        <source>Settings</source>
-        <translation>Inställningar</translation>
+        <source>Appearance</source>
+        <translation>Utseende</translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation>Visa dekaler som emoji</translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation>Visa bara emoji istället för de faktiska dekalerna</translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation>Visa dekaler som bilder</translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation>Visa bakgrund för dekaler och justera dem centralt som bilder</translation>
+    </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation>Animera dekaler</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBehavior</name>
     <message>
         <source>Behavior</source>
         <translation>Beteende</translation>
@@ -1519,20 +1542,44 @@
         <translation>Skicka meddelanden genom att trycka på returtangenten</translation>
     </message>
     <message>
-        <source>Appearance</source>
-        <translation>Utseende</translation>
+        <source>Focus text input on chat open</source>
+        <translation>Fokusera textinmatningen vid chatt-öppning</translation>
     </message>
     <message>
-        <source>Show stickers as images</source>
-        <translation>Visa dekaler som bilder</translation>
+        <source>Focus the text input area when entering a chat</source>
+        <translation>Fokusera textinmatningsområdet vid anslutning till en chatt</translation>
     </message>
     <message>
-        <source>Show background for stickers and align them centrally like images</source>
-        <translation>Visa bakgrund för dekaler och justera dem centralt som bilder</translation>
+        <source>Focus text input area after send</source>
+        <translation>Fokusera textinmatningsfältet efter sändning</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Fokusera textinmatningsfältet efter att ett meddelande skickats</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Fördröjning innan meddelanden markeras som lästa</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber väntar en stund innan meddelanden markeras som lästa</translation>
+    </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation>Integrering av menyn &quot;Öppna med&quot;</translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation>Integrera Fernschreiber med menyn &quot;Öppna med&quot;, i Sailfish OS</translation>
     </message>
     <message>
         <source>Notification feedback</source>
         <translation>Aviseringsåterkoppling</translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
+        <translation>Använd icke-grafisk återkoppling (ljud, vibration) för avisering</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1547,87 +1594,30 @@
         <translation>Inget</translation>
     </message>
     <message>
-        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Använd icke-grafisk återkoppling (ljud, vibration) för avisering</translation>
-    </message>
-    <message>
-        <source>Open-with menu integration</source>
-        <translation>Integrering av menyn &quot;Öppna med&quot;</translation>
-    </message>
-    <message>
-        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Integrera Fernschreiber med menyn &quot;Öppna med&quot;, i Sailfish OS</translation>
-    </message>
-    <message>
-        <source>Animate stickers</source>
-        <translation>Animera dekaler</translation>
-    </message>
-    <message>
         <source>Notification turns on the display</source>
         <translation>Avisering tänder skärmen</translation>
     </message>
     <message>
-        <source>Storage</source>
-        <translation>Lagring</translation>
+        <source>Enable notification sounds</source>
+        <translation>Aktivera aviseringsljud</translation>
     </message>
     <message>
-        <source>Enable storage optimizer</source>
-        <translation>Aktivera lagringsoptimering</translation>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>När ljud är aktiverat, använder Fernschreiber aktuell Sailfish-signal för chatt-avisering, vilken kan ställas in i systemets ljudinställningar.</translation>
     </message>
+</context>
+<context>
+    <name>SettingsPage</name>
     <message>
-        <source>Focus text input area after send</source>
-        <translation>Fokusera textinmatningsfältet efter sändning</translation>
+        <source>Settings</source>
+        <translation>Inställningar</translation>
     </message>
-    <message>
-        <source>Focus the text input area after sending a message</source>
-        <translation>Fokusera textinmatningsfältet efter att ett meddelande skickats</translation>
-    </message>
-    <message>
-        <source>Enable online-only mode</source>
-        <translation>Aktivera endast-online-läge</translation>
-    </message>
-    <message>
-        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Inaktiverar cachelagring offline. Vissa funktioner kan vara begränsade eller saknas helt i det här läget. Ändringar kräver omstart av Fernschreiber för att träda i kraft.</translation>
-    </message>
+</context>
+<context>
+    <name>SettingsPrivacy</name>
     <message>
         <source>Privacy</source>
         <translation>Sekretess</translation>
-    </message>
-    <message>
-        <source>Allow sending Location to inline bots</source>
-        <translation>Tillåt att skicka plats till infogade robotar</translation>
-    </message>
-    <message>
-        <source>Some inline bots request location data when using them</source>
-        <translation>Vissa infogade robotar begär platsdata när de används</translation>
-    </message>
-    <message>
-        <source>User Profile</source>
-        <translation>Användarprofil</translation>
-    </message>
-    <message>
-        <source>First Name</source>
-        <comment>first name of the logged-in profile - header</comment>
-        <translation>Förnamn</translation>
-    </message>
-    <message>
-        <source>Enter 1-64 characters</source>
-        <translation>Ange 1-64 tecken</translation>
-    </message>
-    <message>
-        <source>Last Name</source>
-        <comment>last name of the logged-in profile - header</comment>
-        <translation>Efternamn</translation>
-    </message>
-    <message>
-        <source>Enter 0-64 characters</source>
-        <translation>Ange 1-64 tecken</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <comment>user name of the logged-in profile - header</comment>
-        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
@@ -1690,56 +1680,81 @@
         <translation>Sekretessinställning för att hantera om din online-status är synlig.</translation>
     </message>
     <message>
-        <source>Add Picture</source>
-        <translation>Lägg till bild</translation>
+        <source>Allow sending Location to inline bots</source>
+        <translation>Tillåt att skicka plats till infogade robotar</translation>
+    </message>
+    <message>
+        <source>Some inline bots request location data when using them</source>
+        <translation>Vissa infogade robotar begär platsdata när de används</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsStorage</name>
+    <message>
+        <source>Storage</source>
+        <translation>Lagring</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>Aktivera endast-online-läge</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Inaktiverar cachelagring offline. Vissa funktioner kan vara begränsade eller saknas helt i det här läget. Ändringar kräver omstart av Fernschreiber för att träda i kraft.</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>Aktivera lagringsoptimering</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsUserProfile</name>
+    <message>
+        <source>User Profile</source>
+        <translation>Användarprofil</translation>
+    </message>
+    <message>
+        <source>First Name</source>
+        <comment>first name of the logged-in profile - header</comment>
+        <translation>Förnamn</translation>
+    </message>
+    <message>
+        <source>Enter 1-64 characters</source>
+        <translation>Ange 1-64 tecken</translation>
+    </message>
+    <message>
+        <source>Last Name</source>
+        <comment>last name of the logged-in profile - header</comment>
+        <translation>Efternamn</translation>
+    </message>
+    <message>
+        <source>Enter 0-64 characters</source>
+        <translation>Ange 1-64 tecken</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <comment>user name of the logged-in profile - header</comment>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
         <translation>Profilbilder</translation>
     </message>
     <message>
-        <source>Delete Picture</source>
-        <translation>Ta bort bild</translation>
+        <source>Add Picture</source>
+        <translation>Lägg till bild</translation>
     </message>
     <message>
-        <source>Uploading...</source>
-        <translation>Laddar upp...</translation>
+        <source>Delete Picture</source>
+        <translation>Ta bort bild</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
         <translation>Tar bort profilbild</translation>
     </message>
     <message>
-        <source>Enable notification sounds</source>
-        <translation>Aktivera aviseringsljud</translation>
-    </message>
-    <message>
-        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>När ljud är aktiverat, använder Fernschreiber aktuell Sailfish-signal för chatt-avisering, vilken kan ställas in i systemets ljudinställningar.</translation>
-    </message>
-    <message>
-        <source>Delay before marking messages as read</source>
-        <translation>Fördröjning innan meddelanden markeras som lästa</translation>
-    </message>
-    <message>
-        <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber väntar en stund innan meddelanden markeras som lästa</translation>
-    </message>
-    <message>
-        <source>Focus the text input area when entering a chat</source>
-        <translation>Fokusera textinmatningsområdet vid anslutning till en chatt</translation>
-    </message>
-    <message>
-        <source>Focus text input on chat open</source>
-        <translation>Fokusera textinmatningen vid chatt-öppning</translation>
-    </message>
-    <message>
-        <source>Show stickers as emojis</source>
-        <translation>Visa dekaler som emoji</translation>
-    </message>
-    <message>
-        <source>Only display emojis instead of the actual stickers</source>
-        <translation>Visa bara emoji istället för de faktiska dekalerna</translation>
+        <source>Uploading...</source>
+        <translation>Ladda upp...</translation>
     </message>
 </context>
 <context>

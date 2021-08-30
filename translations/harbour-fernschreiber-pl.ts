@@ -1528,11 +1528,34 @@
     </message>
 </context>
 <context>
-    <name>SettingsPage</name>
+    <name>SettingsAppearance</name>
     <message>
-        <source>Settings</source>
-        <translation>Ustawienia</translation>
+        <source>Appearance</source>
+        <translation>Wygląd</translation>
     </message>
+    <message>
+        <source>Show stickers as emojis</source>
+        <translation>Pokaż naklejki jako emoji</translation>
+    </message>
+    <message>
+        <source>Only display emojis instead of the actual stickers</source>
+        <translation>Pokaż tylko emoji zamiast najklejek</translation>
+    </message>
+    <message>
+        <source>Show stickers as images</source>
+        <translation>Pokaż naklejki jako obrazy</translation>
+    </message>
+    <message>
+        <source>Show background for stickers and align them centrally like images</source>
+        <translation>Pokaż tło naklejek i wyrównaj je centralnie, jak obrazy</translation>
+    </message>
+    <message>
+        <source>Animate stickers</source>
+        <translation>Animowane naklejki</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsBehavior</name>
     <message>
         <source>Behavior</source>
         <translation>Zachowanie</translation>
@@ -1546,20 +1569,44 @@
         <translation>Wyślij wiadomość przez naciśniecie przycisku enter</translation>
     </message>
     <message>
-        <source>Appearance</source>
-        <translation>Wygląd</translation>
+        <source>Focus text input on chat open</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show stickers as images</source>
-        <translation>Pokaż naklejki jako obrazy</translation>
+        <source>Focus the text input area when entering a chat</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show background for stickers and align them centrally like images</source>
-        <translation>Pokaż tło naklejek i wyrównaj je centralnie, jak obrazy</translation>
+        <source>Focus text input area after send</source>
+        <translation>Po wysłaniu zaznacz pole wprowadzania tekstu</translation>
+    </message>
+    <message>
+        <source>Focus the text input area after sending a message</source>
+        <translation>Po wysłaniu wiadomości zaznacz pole wprowadzania tekstu</translation>
+    </message>
+    <message>
+        <source>Delay before marking messages as read</source>
+        <translation>Opóźnienie przed oznaczeniem wiadomości jako przeczytanych</translation>
+    </message>
+    <message>
+        <source>Fernschreiber will wait a bit before messages are marked as read</source>
+        <translation>Fernschreiber odczeka chwilę, zanim wiadomości zostaną oznaczone jako przeczytane</translation>
+    </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation>Integracja z menu &quot;otwórz za pomocą&quot;</translation>
+    </message>
+    <message>
+        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
+        <translation>Zintegruj Fernschreiber z menu &quot;otwórz za pomocą&quot; w SailfishOS</translation>
     </message>
     <message>
         <source>Notification feedback</source>
         <translation>Rodzaj powiadomienia</translation>
+    </message>
+    <message>
+        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
+        <translation>Użyj niewizualnych powiadomień (dźwięk, wibracja)</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1574,52 +1621,90 @@
         <translation>Żadne</translation>
     </message>
     <message>
-        <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Użyj niewizualnych powiadomień (dźwięk, wibracja)</translation>
-    </message>
-    <message>
-        <source>Open-with menu integration</source>
-        <translation>Integracja z menu &quot;otwórz za pomocą&quot;</translation>
-    </message>
-    <message>
-        <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Zintegruj Fernschreiber z menu &quot;otwórz za pomocą&quot; w SailfishOS</translation>
-    </message>
-    <message>
-        <source>Animate stickers</source>
-        <translation>Animowane naklejki</translation>
-    </message>
-    <message>
         <source>Notification turns on the display</source>
         <translation>Powiadomienie włącza wyświetlacz</translation>
     </message>
     <message>
-        <source>Storage</source>
-        <translation>Pamięć</translation>
+        <source>Enable notification sounds</source>
+        <translation>Włącz dźwięk powiadomień</translation>
     </message>
     <message>
-        <source>Enable storage optimizer</source>
-        <translation>Włącz optymalizację pamięci</translation>
+        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
+        <translation>Gdy dźwięki są włączone, Fernschreiber użyje bieżącego dźwięku powiadomienia Sailfish OS do czatów, które można skonfigurować w ustawieniach systemu.</translation>
     </message>
+</context>
+<context>
+    <name>SettingsPage</name>
     <message>
-        <source>Focus text input area after send</source>
-        <translation>Po wysłaniu zaznacz pole wprowadzania tekstu</translation>
+        <source>Settings</source>
+        <translation>Ustawienia</translation>
     </message>
-    <message>
-        <source>Focus the text input area after sending a message</source>
-        <translation>Po wysłaniu wiadomości zaznacz pole wprowadzania tekstu</translation>
-    </message>
-    <message>
-        <source>Enable online-only mode</source>
-        <translation>Włącz tryb tylko online </translation>
-    </message>
-    <message>
-        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Wyłącza buforowanie offline. W tym trybie niektóre funkcje mogą być ograniczone lub może ich brakować. Zmiany wymagają ponownego uruchomienia Fernschreibera, aby odniosły skutek. </translation>
-    </message>
+</context>
+<context>
+    <name>SettingsPrivacy</name>
     <message>
         <source>Privacy</source>
         <translation>Prywatność</translation>
+    </message>
+    <message>
+        <source>Allow chat invites</source>
+        <translation>Zezwól na zaproszenia do czatu</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be invited to chats.</source>
+        <translation>Ustawienia prywatności umożliwiające zarządzanie zaproszeniami do czatów.</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Tak</translation>
+    </message>
+    <message>
+        <source>Your contacts only</source>
+        <translation>Tylko twoje kontakty</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Nie</translation>
+    </message>
+    <message>
+        <source>Allow finding by phone number</source>
+        <translation>Pozwól na wyszukiwanie po numerze telefonu</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be found by your phone number.</source>
+        <translation>Ustawienie prywatności umożliwiające określenie, czy można Cię znaleźć według numeru telefonu.</translation>
+    </message>
+    <message>
+        <source>Show link in forwarded messages</source>
+        <translation>Pokaż odnośnik w przekazanych wiadomościach</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
+        <translation>Ustawienie prywatności umożliwiające okreslenie, czy odnośnik do twojego konta jest dodawany do przekazanych wiadomości.</translation>
+    </message>
+    <message>
+        <source>Show phone number</source>
+        <translation>Pokaż numer telefonu</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your phone number is visible.</source>
+        <translation>Ustawienie prywatności umożliwiające określenie, czy Twój numer telefonu jest widoczny.</translation>
+    </message>
+    <message>
+        <source>Show profile photo</source>
+        <translation>Pokaż zdjęcie profilowe</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your profile photo is visible.</source>
+        <translation>Ustawienie prywatności umożliwiające określenie, czy Twoje zdjęcie profilowe jest widoczne.</translation>
+    </message>
+    <message>
+        <source>Show status</source>
+        <translation>Pokaż status</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your online status is visible.</source>
+        <translation>Ustawienie prywatności umożliwiające zarządzanie widocznością statusu online.</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
@@ -1627,8 +1712,30 @@
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation>Niektóre roboty wbudowane żądają danych o lokalizacji podczas ich używania </translation>
+        <translation>Niektóre roboty wbudowane żądają danych o lokalizacji podczas ich używania</translation>
     </message>
+</context>
+<context>
+    <name>SettingsStorage</name>
+    <message>
+        <source>Storage</source>
+        <translation>Pamięć</translation>
+    </message>
+    <message>
+        <source>Enable online-only mode</source>
+        <translation>Włącz tryb tylko online</translation>
+    </message>
+    <message>
+        <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
+        <translation>Wyłącza buforowanie offline. W tym trybie niektóre funkcje mogą być ograniczone lub może ich brakować. Zmiany wymagają ponownego uruchomienia Fernschreibera, aby odniosły skutek.</translation>
+    </message>
+    <message>
+        <source>Enable storage optimizer</source>
+        <translation>Włącz optymalizację pamięci</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsUserProfile</name>
     <message>
         <source>User Profile</source>
         <translation>Profil użytkownika</translation>
@@ -1657,116 +1764,24 @@
         <translation>Nazwa użytkownika</translation>
     </message>
     <message>
-        <source>Allow chat invites</source>
-        <translation>Zezwól na zaproszenia do czatu</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation>Ustawienia prywatności umożliwiające zarządzanie zaproszeniami do czatów.</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>Tak</translation>
-    </message>
-    <message>
-        <source>Your contacts only</source>
-        <translation>Tylko twoje kontakty</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>Nie</translation>
-    </message>
-    <message>
-        <source>Allow finding by phone number</source>
-        <translation>Pozwól na wyszukiwanie po numerze telefonu</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Ustawienie prywatności umożliwiające określenie, czy można Cię znaleźć według numeru telefonu. </translation>
-    </message>
-    <message>
-        <source>Show link in forwarded messages</source>
-        <translation>Pokaż odnośnik w przekazanych wiadomościach</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Ustawienie prywatności umożliwiające okreslenie, czy odnośnik do twojego konta jest dodawany do przekazanych wiadomości</translation>
-    </message>
-    <message>
-        <source>Show phone number</source>
-        <translation>Pokaż numer telefonu</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation>Ustawienie prywatności umożliwiające określenie, czy Twój numer telefonu jest widoczny. </translation>
-    </message>
-    <message>
-        <source>Show profile photo</source>
-        <translation>Pokaż zdjęcie profilowe</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation>Ustawienie prywatności umożliwiające określenie, czy Twoje zdjęcie profilowe jest widoczne. </translation>
-    </message>
-    <message>
-        <source>Show status</source>
-        <translation>Pokaż status</translation>
-    </message>
-    <message>
-        <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation>Ustawienie prywatności umożliwiające zarządzanie widocznością statusu online.</translation>
+        <source>Profile Pictures</source>
+        <translation>Zdjęcia profilowe</translation>
     </message>
     <message>
         <source>Add Picture</source>
         <translation>Dodaj zdjęcie</translation>
     </message>
     <message>
-        <source>Profile Pictures</source>
-        <translation>Zdjęcia profilowe</translation>
-    </message>
-    <message>
         <source>Delete Picture</source>
         <translation>usuń zdjęcie</translation>
-    </message>
-    <message>
-        <source>Uploading...</source>
-        <translation>Przesyłanie...</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
         <translation>Usuwanie zjęcia profilowego</translation>
     </message>
     <message>
-        <source>Enable notification sounds</source>
-        <translation>Włącz dźwięk powiadomień</translation>
-    </message>
-    <message>
-        <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>Gdy dźwięki są włączone, Fernschreiber użyje bieżącego dźwięku powiadomienia Sailfish OS do czatów, które można skonfigurować w ustawieniach systemu. </translation>
-    </message>
-    <message>
-        <source>Delay before marking messages as read</source>
-        <translation>Opóźnienie przed oznaczeniem wiadomości jako przeczytanych </translation>
-    </message>
-    <message>
-        <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber odczeka chwilę, zanim wiadomości zostaną oznaczone jako przeczytane </translation>
-    </message>
-    <message>
-        <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show stickers as emojis</source>
-        <translation>Pokaż naklejki jako emoji</translation>
-    </message>
-    <message>
-        <source>Only display emojis instead of the actual stickers</source>
-        <translation>Pokaż tylko emoji zamiast najklejek</translation>
+        <source>Uploading...</source>
+        <translation>Przesyłanie...</translation>
     </message>
 </context>
 <context>
