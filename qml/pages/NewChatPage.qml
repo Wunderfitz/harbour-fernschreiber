@@ -18,6 +18,7 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import org.nemomobile.contacts 1.0
 import "../components"
 import "../js/twemoji.js" as Emoji
 import "../js/functions.js" as Functions
@@ -29,6 +30,7 @@ Page {
 
     property bool isLoading: true;
     property bool syncSupported: false;
+    property bool nemoSync: false;
 
     function resetFocus() {
         contactsSearchField.focus = false;
@@ -56,16 +58,22 @@ Page {
     }
 
     Component.onCompleted: {
-        // With Sailfish OS 4 we can't get up-to-date contacts andmore. We might need to enter Sailjail eventually...
-        // Details see https://forum.sailfishos.org/t/4-0-1-45-non-jailed-contacts-sqlite-database-no-longer-updated/4724
         var sailfishOSVersion = fernschreiberUtils.getSailfishOSVersion().split(".");
         if (parseInt(sailfishOSVersion[0]) < 4) {
             Debug.log("Sailfish OS version 3.x - contact sync should still be possible...")
             newChatPage.syncSupported = true;
         } else {
-            Debug.log("Sailfish OS version 4.x - contact sync no longer supported...")
-            newChatPage.syncSupported = false;
+            // With Sailfish OS 4 we can't get up-to-date contacts with the standard database anymore. We might need to enter Sailjail eventually...
+            // Details see https://forum.sailfishos.org/t/4-0-1-45-non-jailed-contacts-sqlite-database-no-longer-updated/4724
+            // We try it with the inofficial Nemo Contact API...
+            newChatPage.nemoSync = true;
         }
+    }
+
+    PeopleModel {
+        id: peopleModel
+        filterType: PeopleModel.FilterAll
+        requiredProperty: PeopleModel.PhoneNumberRequired
     }
 
     SilicaFlickable {
@@ -74,13 +82,26 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
-            visible: contactsModel.canSynchronizeContacts() && newChatPage.syncSupported
             MenuItem {
                 onClicked: {
                     newChatPage.isLoading = true;
-                    if (!contactsModel.synchronizeContacts()) {
-                        reloadContacts();
-                        appNotification.show(qsTr("Could not synchronize your contacts with Telegram."));
+                    if (newChatPage.nemoSync) {
+                        if (peopleModel.count === 0) {
+                            appNotification.show(qsTr("Could not synchronize your contacts with Telegram."));
+                            newChatPage.isLoading = false;
+                        } else {
+                            contactsModel.startImportingContacts();
+                            for (var i = 0; i < peopleModel.count; i++ ) {
+                                contactsModel.importContact(peopleModel.get(i));
+                            }
+                            contactsModel.stopImportingContacts();
+                        }
+                    }
+                    if (newChatPage.syncSupported) {
+                        if (!contactsModel.synchronizeContacts()) {
+                            reloadContacts();
+                            appNotification.show(qsTr("Could not synchronize your contacts with Telegram."));
+                        }
                     }
                     // Success message is not fired before TDLib returned "Contacts imported" (see above)
                 }

@@ -201,8 +201,11 @@ fernschreiber.desktop.files = harbour-fernschreiber.desktop
 database.files = db
 database.path = /usr/share/$${TARGET}
 
+mapplauncher.path = /usr/share/mapplauncherd/privileges.d
+mapplauncher.files = privileges/harbour-fernschreiber.privileges
+
 INSTALLS += telegram 86.png 108.png 128.png 172.png 256.png \
-            fernschreiber.desktop gui images database
+            fernschreiber.desktop gui images database mapplauncher
 
 HEADERS += \
     src/appsettings.h \
