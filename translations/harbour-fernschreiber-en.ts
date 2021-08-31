@@ -535,6 +535,13 @@
     </message>
 </context>
 <context>
+    <name>ContactSync</name>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation type="unfinished">Could not synchronize your contacts with Telegram.</translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
@@ -1757,6 +1764,14 @@ messages</numerusform>
     <message>
         <source>Uploading...</source>
         <translation>Uploading...</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation type="unfinished">Synchronize Contacts with Telegram</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation type="unfinished">Contacts successfully synchronized with Telegram.</translation>
     </message>
 </context>
 <context>

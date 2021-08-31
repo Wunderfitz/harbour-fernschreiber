@@ -535,6 +535,13 @@
     </message>
 </context>
 <context>
+    <name>ContactSync</name>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation type="unfinished">Yhteystietojasi ei voitu synkronoida Telegramin kanssa.</translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
@@ -1756,6 +1763,14 @@
     <message>
         <source>Uploading...</source>
         <translation>Lähetetään...</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation type="unfinished">Synkronoi yhteystiedot Telegramin kanssa</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation type="unfinished">Yhteystietojen synkronointi Telegramin kanssa onnistui.</translation>
     </message>
 </context>
 <context>

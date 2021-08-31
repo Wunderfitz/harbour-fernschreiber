@@ -34,6 +34,7 @@ AccordionItem {
 
             readonly property var userInformation: tdLibWrapper.getUserInformation()
             property bool uploadInProgress: false
+            property bool contactSyncEnabled: false
 
             Component.onCompleted: {
                 tdLibWrapper.getUserProfilePhotos(userInformation.id, 100, 0);
@@ -152,6 +153,49 @@ AccordionItem {
 
             }
 
+            Column {
+                id: contactSyncItem
+                width: parent.width
+                height: syncInProgress ? ( syncContactsBusyIndicator.height + Theme.paddingMedium ) : ( syncContactsButton.height + Theme.paddingMedium )
+                visible: accordionContent.contactSyncEnabled
+
+                property bool syncInProgress: false
+
+                Connections {
+                    target: contactSyncLoader.item
+                    onSyncError: {
+                        contactSyncItem.syncInProgress = false;
+                    }
+                }
+
+                Connections {
+                    target: tdLibWrapper
+                    onContactsImported: {
+                        appNotification.show(qsTr("Contacts successfully synchronized with Telegram."));
+                    }
+                }
+
+                Button {
+                    id: syncContactsButton
+                    text: qsTr("Synchronize Contacts with Telegram")
+                    visible: !contactSyncItem.syncInProgress
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                    }
+                    onClicked: {
+                        contactSyncLoader.item.synchronize();
+                    }
+                }
+
+                BusyIndicator {
+                    id: syncContactsBusyIndicator
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    running: contactSyncItem.syncInProgress
+                    size: BusyIndicatorSize.Small
+                    visible: running
+                }
+            }
+
             SectionHeader {
                 horizontalAlignment: Text.AlignLeft
                 text: qsTr("Profile Pictures")
@@ -244,6 +288,15 @@ AccordionItem {
 
                 }
 
+            }
+
+            Loader {
+                id: contactSyncLoader
+                source: "../ContactSync.qml"
+                active: true
+                onLoaded: {
+                    accordionContent.contactSyncEnabled = true;
+                }
             }
 
             Component {

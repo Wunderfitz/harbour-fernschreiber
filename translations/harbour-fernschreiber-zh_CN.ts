@@ -525,6 +525,13 @@
     </message>
 </context>
 <context>
+    <name>ContactSync</name>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation type="unfinished">无法同步你的云端 Telegram 联系人。</translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
@@ -1729,6 +1736,14 @@
     <message>
         <source>Uploading...</source>
         <translation>正在上传…</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation type="unfinished">同步 Telegram 联系人</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation type="unfinished">已成功同步 Telegram 联系人。</translation>
     </message>
 </context>
 <context>

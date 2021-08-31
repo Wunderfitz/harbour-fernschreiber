@@ -545,6 +545,13 @@
     </message>
 </context>
 <context>
+    <name>ContactSync</name>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation type="unfinished">Nemožno synchonizovať kontakty s Telegramom.</translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
@@ -1782,6 +1789,14 @@
     <message>
         <source>Uploading...</source>
         <translation>Zapisovanie...</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation type="unfinished">Synchronizovať kontakty s Telegramom</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation type="unfinished">Kontakty boli úspešne synchronizované s Telegramom.</translation>
     </message>
 </context>
 <context>
