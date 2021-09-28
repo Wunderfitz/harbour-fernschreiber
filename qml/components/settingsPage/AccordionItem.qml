@@ -32,7 +32,7 @@ Item {
     states: [
         State {
             when: area.expanded
-            PropertyChanges { target: image; rotation: -90 }
+            PropertyChanges { target: image; rotation: 90 }
             PropertyChanges { target: content; height: content.implicitHeight + Theme.paddingLarge; opacity: 1.0 }
         }
     ]
@@ -40,6 +40,7 @@ Item {
         to: "*"
         enabled: area.parent.animate
         NumberAnimation { target: content; properties: "height, opacity"; duration: 200}
+        NumberAnimation { target: image; properties: "rotation"; duration: 200}
     }
     Connections {
         target: area.parent
@@ -90,8 +91,8 @@ Item {
             }
             width: visible ? Theme.iconSizeMedium : 0
             highlighted: parent.highlighted
-            source: "image://theme/icon-m-right"
-            rotation: 90
+            source: "image://theme/icon-m-left"
+            rotation: -90
         }
     }
     Loader {
