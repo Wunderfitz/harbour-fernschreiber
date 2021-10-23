@@ -1551,101 +1551,101 @@
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation>Focaliser la saise après l'envoie</translation>
+        <translation>Focaliser la zone de saise après l'envoi</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation>Focaliser </translation>
+        <translation>Focaliser la zone de saisie après l'envoi d'un message</translation>
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation>Delay before marking messages as read</translation>
+        <translation>Délai après marquer un message comme lu</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber will wait a bit before messages are marked as read</translation>
+        <translation>Fernschreiber attendra un peu avant de marquer les messages comme lus</translation>
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation>Open-with menu integration</translation>
+        <translation>Integration avec le menu ouvrir avec</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Integrate Fernschreiber into open-with menu of Sailfish OS</translation>
+        <translation>Intégrer Fernschreiber avec le menu ouvrir avec de Sailfish OS</translation>
     </message>
     <message>
         <source>Notification feedback</source>
-        <translation>Notification feedback</translation>
+        <translation>Retour de notification</translation>
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Use non-graphical feedback (sound, vibration) for notifications</translation>
+        <translation>Notifier avec un retour non graphique (son, vibration)</translation>
     </message>
     <message>
         <source>All events</source>
-        <translation>All events</translation>
+        <translation>Tous les événements</translation>
     </message>
     <message>
         <source>Only new events</source>
-        <translation>Only new events</translation>
+        <translation>Uniquement les nouveaux événements</translation>
     </message>
     <message>
         <source>None</source>
-        <translation>None</translation>
+        <translation>Aucun</translation>
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation>Notification turns on the display</translation>
+        <translation>Notification allume l'écran</translation>
     </message>
     <message>
         <source>Enable notification sounds</source>
-        <translation>Enable notification sounds</translation>
+        <translation>Actuver les notifications sonores</translation>
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</translation>
+        <translation>Lorsque le son est activé, Fernschreiber utilisera le réglage de Sailfish OS. Celui-ci est paramétrable depuis les paramètres du système.</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation>Paramètres</translation>
     </message>
 </context>
 <context>
     <name>SettingsPrivacy</name>
     <message>
         <source>Privacy</source>
-        <translation>Privacy</translation>
+        <translation>Confidentialité</translation>
     </message>
     <message>
         <source>Allow chat invites</source>
-        <translation>Allow chat invites</translation>
+        <translation>Autoriser les invitations à une conversation</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation>Privacy setting for managing whether you can be invited to chats.</translation>
+        <translation>Paramètre de confidentialité pour configurer si vous pouvez être invité à une conversation.</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation>Yes</translation>
+        <translation>Oui</translation>
     </message>
     <message>
         <source>Your contacts only</source>
-        <translation>Your contacts only</translation>
+        <translation>Vos contacts seulement</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>No</translation>
+        <translation>Non</translation>
     </message>
     <message>
         <source>Allow finding by phone number</source>
-        <translation>Allow finding by phone number</translation>
+        <translation>Autoriser de trouver à travers le numéro de téléphone</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Privacy setting for managing whether you can be found by your phone number.</translation>
+        <translation>Paramètre de confidentialité pour .</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
