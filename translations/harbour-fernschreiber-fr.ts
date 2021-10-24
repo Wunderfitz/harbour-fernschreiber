@@ -1599,7 +1599,7 @@
     </message>
     <message>
         <source>Enable notification sounds</source>
-        <translation>Actuver les notifications sonores</translation>
+        <translation>Activer les notifications sonores</translation>
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
@@ -1641,446 +1641,446 @@
     </message>
     <message>
         <source>Allow finding by phone number</source>
-        <translation>Autoriser de trouver à travers le numéro de téléphone</translation>
+        <translation>Autoriser de vous trouver via votre numéro de téléphone</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Paramètre de confidentialité pour .</translation>
+        <translation>Paramètre de confidentialité pour configurer si vous pouvez être trouvé via votre numéro de téléphone .</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
-        <translation>Show link in forwarded messages</translation>
+        <translation>Afficher le lien dans les messages transférés</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Privacy setting for managing whether a link to your account is included in forwarded messages.</translation>
+        <translation>Paramètre de confidentialité pour configurer si un lien à votre compte est inclus dans les messages transférés.</translation>
     </message>
     <message>
         <source>Show phone number</source>
-        <translation>Show phone number</translation>
+        <translation>Afficher le numéro de téléphone</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation>Privacy setting for managing whether your phone number is visible.</translation>
+        <translation>Paramètre de confidentialité pour configurer la visibilité de votre numéro de téléphone.</translation>
     </message>
     <message>
         <source>Show profile photo</source>
-        <translation>Show profile photo</translation>
+        <translation>Afficher la photo de profil</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation>Privacy setting for managing whether your profile photo is visible.</translation>
+        <translation>Paramètre de confidentialité pour configurer la visibilité de votre photo de profil.</translation>
     </message>
     <message>
         <source>Show status</source>
-        <translation>Show status</translation>
+        <translation>Affiche le status</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation>Privacy setting for managing whether your online status is visible.</translation>
+        <translation>Paramètre de confidentialité pour configurer la visibilité de votre status en ligne.</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation>Allow sending Location to inline bots</translation>
+        <translation>Autoriser l'envoi de localisation au bots intégrés</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation>Some inline bots request location data when using them</translation>
+        <translation>Des bots intégrés nécessite une localisations lors de leur utilisation</translation>
     </message>
 </context>
 <context>
     <name>SettingsStorage</name>
     <message>
         <source>Storage</source>
-        <translation>Storage</translation>
+        <translation>Espace de stockage</translation>
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation>Enable online-only mode</translation>
+        <translation>Activer le mode en-ligne seulement</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</translation>
+        <translation>Désactiver le cache hors-ligne. Certaines fonctionalités peuvent être limitées ou manquantes avec ce mode. Nécessite de redémarrer Fernschreiber.</translation>
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation>Enable storage optimizer</translation>
+        <translation>Activer l'optimisation de l'espace de stockage</translation>
     </message>
 </context>
 <context>
     <name>SettingsUserProfile</name>
     <message>
         <source>User Profile</source>
-        <translation>User Profile</translation>
+        <translation>Profil utilisateur</translation>
     </message>
     <message>
         <source>First Name</source>
         <comment>first name of the logged-in profile - header</comment>
-        <translation>First Name</translation>
+        <translation>Prénom</translation>
     </message>
     <message>
         <source>Enter 1-64 characters</source>
-        <translation>Enter 1-64 characters</translation>
+        <translation>Insérez entre 1 à 64 caractères</translation>
     </message>
     <message>
         <source>Last Name</source>
         <comment>last name of the logged-in profile - header</comment>
-        <translation>Last Name</translation>
+        <translation>Nom de famille</translation>
     </message>
     <message>
         <source>Enter 0-64 characters</source>
-        <translation>Enter 0-64 characters</translation>
+        <translation>Insérez entre 0 à 64 caractères</translation>
     </message>
     <message>
         <source>Username</source>
         <comment>user name of the logged-in profile - header</comment>
-        <translation>Username</translation>
+        <translation>Nom d'utilisateur</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
-        <translation>Profile Pictures</translation>
+        <translation>Images de profil</translation>
     </message>
     <message>
         <source>Add Picture</source>
-        <translation>Add Picture</translation>
+        <translation>Ajouter une image</translation>
     </message>
     <message>
         <source>Delete Picture</source>
-        <translation>Delete Picture</translation>
+        <translation>Supprimer des images</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
-        <translation>Deleting profile picture</translation>
+        <translation>Supprimer l'image de profil</translation>
     </message>
     <message>
         <source>Uploading...</source>
-        <translation>Uploading...</translation>
+        <translation>Téléverse...</translation>
     </message>
 </context>
 <context>
     <name>StickerPicker</name>
     <message>
         <source>Recently used</source>
-        <translation>Recently used</translation>
+        <translation>Récemment utilisé</translation>
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation>Removing sticker set</translation>
+        <translation>Suppression du lot d'autocollants</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation>Sticker set successfully removed!</translation>
+        <translation>Lot d'autocollants supprimés avec succès !</translation>
     </message>
 </context>
 <context>
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation>Sticker set successfully installed!</translation>
+        <translation>Lot d'autocollant installé avec succès !</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation>Sticker set successfully removed!</translation>
+        <translation>Lot d'autocollant supprimé avec succès!</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download of %1 successful.</translation>
+        <translation>Téléchargement de %1 avec succès.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Download failed.</translation>
+        <translation>Téléchargement échoué.</translation>
     </message>
     <message>
         <source>Copy video to gallery</source>
-        <translation>Copy video to gallery</translation>
+        <translation>Copier la vidéo dans la galerie</translation>
     </message>
 </context>
 <context>
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
-        <translation>Record a Voice Note</translation>
+        <translation>Enregistrer une note vocale</translation>
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation>Press the button to start recording</translation>
+        <translation>Appuyez sur le bouton pour démarrer l'enregistrement</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation>Unavailable</translation>
+        <translation>Introuvable</translation>
     </message>
     <message>
         <source>Starting</source>
-        <translation>Starting</translation>
+        <translation>Démarre</translation>
     </message>
     <message>
         <source>Recording</source>
-        <translation>Recording</translation>
+        <translation>Enregistre</translation>
     </message>
     <message>
         <source>Stopping</source>
-        <translation>Stopping</translation>
+        <translation>Arrêt</translation>
     </message>
     <message>
         <source>Use recording</source>
-        <translation>Use recording</translation>
+        <translation>Utilise l'enregistrement</translation>
     </message>
     <message>
         <source>Voice Note (%1)</source>
-        <translation>Voice Note (%1)</translation>
+        <translation>Note vocale (%1)</translation>
     </message>
     <message>
         <source>Ready</source>
-        <translation>Ready</translation>
+        <translation>Prêt</translation>
     </message>
 </context>
 <context>
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation>Preview not supported for this link...</translation>
+        <translation>Prévisualisation non supportée pour ce lien...</translation>
     </message>
 </context>
 <context>
     <name>functions</name>
     <message>
         <source>Video: %1</source>
-        <translation>Video: %1</translation>
+        <translation>Vidéo : %1</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>has registered with Telegram</translation>
+        <translation>s'est inscrit avec Telegram</translation>
     </message>
     <message>
         <source>Picture: %1</source>
-        <translation>Picture: %1</translation>
+        <translation>Image : %1</translation>
     </message>
     <message>
         <source>Sticker: %1</source>
-        <translation>Sticker: %1</translation>
+        <translation>Autocollant : %1</translation>
     </message>
     <message>
         <source>Audio: %1</source>
-        <translation>Audio: %1</translation>
+        <translation>Audio : %1</translation>
     </message>
     <message>
         <source>Voice Note: %1</source>
-        <translation>Voice Note: %1</translation>
+        <translation>Note vocale : %1</translation>
     </message>
     <message>
         <source>Animation: %1</source>
-        <translation>Animation: %1</translation>
+        <translation>Animation : %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
-        <translation>Document: %1</translation>
+        <translation>Document : %1</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>sent a picture</translation>
+        <translation>envoi une image</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>sent a video</translation>
+        <translation>envoi une vidéo</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>sent an animation</translation>
+        <translation>envoi une animation</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>sent an audio</translation>
+        <translation>envoi un audio</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>sent a voice note</translation>
+        <translation>envoi une note vocale</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>sent a document</translation>
+        <translation>envoi un document</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>sent a location</translation>
+        <translation>envoi une localisation</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>joined this chat</translation>
+        <translation>a rejoint cette conversation</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>was added to this chat</translation>
+        <translation>a été ajouté à cette conversation</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>left this chat</translation>
+        <translation>a quitté cette conversation</translation>
     </message>
     <message>
         <source>%1M</source>
-        <translation>%1M</translation>
+        <translation>%1 M</translation>
     </message>
     <message>
         <source>%1K</source>
-        <translation>%1K</translation>
+        <translation>%1 K</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>sent a venue</translation>
+        <translation>a envoyé un lieu</translation>
     </message>
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>sent a picture</translation>
+        <translation>a envoyé une image</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>sent a video</translation>
+        <translation>a envoyé une vidéo</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>sent an animation</translation>
+        <translation>a envoyé une animation</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>sent an audio</translation>
+        <translation>a envoyé un audio</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>sent a voice note</translation>
+        <translation>a envoyé une note vocale</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>sent a document</translation>
+        <translation>a envoyé un document</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>sent a location</translation>
+        <translation>a envoyé une localisation</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>sent a venue</translation>
+        <translation>a envoyé un lieu</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation>have registered with Telegram</translation>
+        <translation>se sont inscrits avec Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>joined this chat</translation>
+        <translation>a joint cette conversation</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>were added to this chat</translation>
+        <translation>ont été ajouté à cette conversation</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>left this chat</translation>
+        <translation>a quitté cette conversation</translation>
     </message>
     <message>
         <source>was never online</source>
-        <translation>was never online</translation>
+        <translation>n'a jamais été en ligne</translation>
     </message>
     <message>
         <source>last online: last month</source>
-        <translation>last online: last month</translation>
+        <translation>dernière connexion : le mois dernier</translation>
     </message>
     <message>
         <source>last online: last week</source>
-        <translation>last online: last week</translation>
+        <translation>dernière connexion : la semaine passée</translation>
     </message>
     <message>
         <source>last online: %1</source>
-        <translation>last online: %1</translation>
+        <translation>dernière connexion : %1</translation>
     </message>
     <message>
         <source>online</source>
-        <translation>online</translation>
+        <translation>en ligne</translation>
     </message>
     <message>
         <source>was recently online</source>
-        <translation>was recently online</translation>
+        <translation>été récemment en ligne</translation>
     </message>
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation>Admin</translation>
+        <translation>Administrateur</translation>
     </message>
     <message>
         <source>Banned</source>
         <comment>channel user role</comment>
-        <translation>Banned</translation>
+        <translation>Banni</translation>
     </message>
     <message>
         <source>Creator</source>
         <comment>channel user role</comment>
-        <translation>Creator</translation>
+        <translation>Créateur</translation>
     </message>
     <message>
         <source>Restricted</source>
         <comment>channel user role</comment>
-        <translation>Restricted</translation>
+        <translation>Restreint</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>changed the chat title to %1</translation>
+        <translation>a changé le titre de le conversation à %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation>changed the chat title to %1</translation>
+        <translation>a changé le titre de la conversation a %1</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>sent a poll</translation>
+        <translation>a envoyé un sondage</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation>sent a poll</translation>
+        <translation>a envoyé un sondage</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
         <comment>myself</comment>
-        <translation>sent an anonymous quiz</translation>
+        <translation>a envoyé un quiz anonyme</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
-        <translation>sent an anonymous quiz</translation>
+        <translation>a envoyé un quiz anonyme</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>sent a quiz</translation>
+        <translation>a envoyé un quiz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation>sent a quiz</translation>
+        <translation>a envoyé un quiz</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
         <comment>myself</comment>
-        <translation>sent an anonymous poll</translation>
+        <translation>a envoyé un sondage anonyme</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
-        <translation>sent an anonymous poll</translation>
+        <translation>a envoyé un sondage anonyme</translation>
     </message>
     <message>
         <source>Anonymous Quiz</source>
-        <translation>Anonymous Quiz</translation>
+        <translation>Quiz anonyme</translation>
     </message>
     <message>
         <source>Quiz</source>
@@ -2088,172 +2088,172 @@
     </message>
     <message>
         <source>Anonymous Poll</source>
-        <translation>Anonymous Poll</translation>
+        <translation>Sondage anonyme</translation>
     </message>
     <message>
         <source>Poll</source>
-        <translation>Poll</translation>
+        <translation>Sondage</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>created this group</translation>
+        <translation>a créé ce groupe</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation>created this group</translation>
+        <translation>a créé ce groupe</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>changed the chat photo</translation>
+        <translation>a changé la photo de la conversation</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation>changed the chat photo</translation>
+        <translation>a changé la photo de la conversation</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>deleted the chat photo</translation>
+        <translation>a supprimé la photo de la conversation</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>deleted the chat photo</translation>
+        <translation>a supprimé la photo de la conversation</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>changed the secret chat TTL setting</translation>
+        <translation>a changé le paramètre de durée de vie de l'échange secret</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>changed the secret chat TTL setting</translation>
+        <translation>a changé le paramètre de durée de vie de l'échange secret</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>upgraded this group to a supergroup</translation>
+        <translation>a promu ce groupe en supergroupe</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>changed the pinned message</translation>
+        <translation>a modifié le message épinglé</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation>changed the pinned message</translation>
+        <translation>a modifié le message épinglé</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>created a screenshot in this chat</translation>
+        <translation>a réalisé une capture d'écran de cette conversation</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>created a screenshot in this chat</translation>
+        <translation>a réalisé une capture d'écran de cette conversation</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>sent an unsupported message</translation>
+        <translation>a envoyé un message non supporté</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation>sent an unsupported message</translation>
+        <translation>a envoyé un message non supporté</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation>sent an unsupported message: %1</translation>
+        <translation>a envoyé un message non supporté : %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>%1 is message type</comment>
-        <translation>sent an unsupported message: %1</translation>
+        <translation>a envoyé un message non supporté: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation>upgraded this group to a supergroup</translation>
+        <translation>a promu ce groupe en supergroupe</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>sent a self-destructing photo that is expired</translation>
+        <translation>a envoyé une photo autodestructrice qui a expirée</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>sent a self-destructing photo that is expired</translation>
+        <translation>a envoyé une photo autodestructrice qui a expirée</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>sent a self-destructing video that is expired</translation>
+        <translation>a envoyé une vidéo autodestructrice qui a expirée</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>sent a self-destructing video that is expired</translation>
+        <translation>a envoyé une vidéo autodestrucrice qui a expirée</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation>Unable to find user %1</translation>
+        <translation>Impossible de trouver l'utilisateur %1</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>sent a video note</translation>
+        <translation>a envoyé un message vidéo</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation>sent a video note</translation>
+        <translation>a envoyé un message vidéo</translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation>You are already a member of this chat.</translation>
+        <translation>Vous êtes déjà membre de cette conversation.</translation>
     </message>
     <message>
         <source>Closed!</source>
-        <translation>Closed!</translation>
+        <translation>Fermé !</translation>
     </message>
     <message>
         <source>Pending acknowledgement</source>
-        <translation>Pending acknowledgement</translation>
+        <translation>Confirmation en attente</translation>
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>has added %1 to the chat</translation>
+        <translation>a ajouté %1 à la conversation</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>has removed %1 from the chat</translation>
+        <translation>a supprimé %1 de la conversation</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>have added %1 to the chat</translation>
+        <translation>a ajouté %1 à cette conversation</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>have removed %1 from the chat</translation>
+        <translation>a supprimé %1 de la conversation</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>scored %Ln point</numerusform>
-            <numerusform>scored %Ln points</numerusform>
+            <numerusform>a marqué %Ln point</numerusform>
+            <numerusform>a marqué %Ln points</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>sent a game</translation>
+        <translation>a envoyé un jeu</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>sent a game</translation>
+        <translation>a envoyé un jeu</translation>
     </message>
 </context>
 </TS>
