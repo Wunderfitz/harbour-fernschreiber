@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
-        <translation>Oouvrir Telegram Database Library sur GitHub</translation>
+        <translation>Ouvrir Telegram Database Library sur GitHub</translation>
     </message>
     <message>
         <source>About Telegram</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Ce produit utilise l'API de Telegram, mais n'est pas cautionné ou certifié par Telegram.</translation>
+        <translation>Ce produit utilise l'API de Telegram, mais n'est ni appuyé ni certifié par Telegram.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Ce projet utilise twemoji. Copyright 2018 Twitter, Inc. et autres contributeurs. Merci de l'avoir distribué sous les conditions de la licence MIT (code) et CC-BY 4.0 (graphismes)</translation>
+        <translation>Ce projet utilise twemoji. Copyright 2018 Twitter, Inc. et autres contributeurs. Merci de l'avoir distribué sous les conditions de la licence MIT (code) et CC-BY 4.0 (graphismes) !</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -132,11 +132,11 @@
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>
-        <translation>Actif depuis : %1, dernière mise en ligne : %2</translation>
+        <translation>Actif depuis : %1, en ligne : %2</translation>
     </message>
     <message>
         <source>Terminating session</source>
-        <translation>Fin de la session</translation>
+        <translation>Clôture la session</translation>
     </message>
 </context>
 <context>
@@ -193,7 +193,7 @@
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation>Il n'y encore aucun texte d'information disponible.</translation>
+        <translation>Aucun texte informatif pour l'instant.</translation>
     </message>
     <message>
         <source>Info</source>
@@ -256,7 +256,7 @@
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
-        <translation>Vous n&apos; aucun groupes en commun avec cet utilisateur.</translation>
+        <translation>Aucun groupes en commun avec cet utilisateur.</translation>
     </message>
     <message>
         <source>This group is empty.</source>
@@ -297,11 +297,11 @@
     </message>
     <message>
         <source>User Info</source>
-        <translation>Information sur l'utilisateur</translation>
+        <translation>Informations sur l'utilisateur</translation>
     </message>
     <message>
         <source>Group Info</source>
-        <translation>Information sur le groupe</translation>
+        <translation>Informations sur le groupe</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
@@ -456,7 +456,7 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>Cet échange secret n'est pas encore prêt. Votre interlocuteur doit en premier être en ligne</translation>
+        <translation>Cet échange secret n'est pas encore prêt. Votre interlocuteur doit être en ligne</translation>
     </message>
     <message>
         <source>Closing chat</source>
@@ -472,11 +472,11 @@
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation>Recherche dans la conversation...</translation>
+        <translation>Recherche dans la conversation…</translation>
     </message>
     <message>
         <source>Location: Obtaining position...</source>
-        <translation>Localisation: Obtention de la position...</translation>
+        <translation>Localisation: Obtention de la position…</translation>
     </message>
     <message>
         <source>Location (%1/%2)</source>
@@ -500,7 +500,7 @@
     </message>
     <message>
         <source>Additional Options</source>
-        <translation>Options additionnelles</translation>
+        <translation>Options supplémentaires</translation>
     </message>
     <message>
         <source>Message deleted</source>
@@ -531,7 +531,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>Vous n&apos;avez aucune conversation.</translation>
+        <translation>Vous n'avez aucune conversation.</translation>
     </message>
 </context>
 <context>
@@ -542,15 +542,15 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>En attente d'une connexion...</translation>
+        <translation>En attente d'une connexion…</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Se connecte au réseau...</translation>
+        <translation>Se connecte au réseau…</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Se connecte à un proxy...</translation>
+        <translation>Se connecte à un proxy…</translation>
     </message>
     <message>
         <source>Connected</source>
@@ -558,7 +558,7 @@
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Mise à jour du contenu...</translation>
+        <translation>Mise à jour du contenu…</translation>
     </message>
     <message numerus="yes">
         <source>chats</source>
@@ -580,7 +580,7 @@
     <message>
         <source>Group Member Permissions</source>
         <comment>what can normal group members do</comment>
-        <translation>Permissions d'un membre dans le groupe</translation>
+        <translation>Autorisations d'un membre dans le groupe</translation>
     </message>
     <message>
         <source>Send Messages</source>
@@ -595,7 +595,7 @@
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation>Envoyer d'autres type de messages</translation>
+        <translation>Envoyer d'autres types de messages</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
@@ -625,7 +625,7 @@
     <message>
         <source>New members can see older messages</source>
         <comment>member permission</comment>
-        <translation>Nouveaux membres peuvent lire les anciens messages</translation>
+        <translation>Autoriser la lecture des anciens messages aux nouveaux membres</translation>
     </message>
 </context>
 <context>
@@ -640,7 +640,7 @@
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation>Paramétrez combien de temps chaque membre attend entre les messages</translation>
+        <translation>Paramétrer combien de temps chaque membre attend entre les messages</translation>
     </message>
 </context>
 <context>
@@ -805,11 +805,11 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>a changé le paramètre TTL de l'échange secret</translation>
+        <translation>a changé la durée de vie de l'échange secret</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation>a changé le paramètre TTL de l'échange secret</translation>
+        <translation>a changé la durée de vie de l'échange secret</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
@@ -985,11 +985,11 @@
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Saisissez le code que vous avez reçu:</translation>
+        <translation>Saisissez le code que vous avez reçu :</translation>
     </message>
     <message>
         <source>Loading...</source>
-        <translation>Chargement...</translation>
+        <translation>Chargement…</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
@@ -1005,7 +1005,7 @@
     </message>
     <message>
         <source>Please enter your password:</source>
-        <translation>Saisissez votre mot de passe:</translation>
+        <translation>Saisissez votre mot de passe :</translation>
     </message>
     <message>
         <source>User Registration</source>
@@ -1025,7 +1025,7 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation>Utilisez le format internation, ex. %1</translation>
+        <translation>Utilisez le format international, ex. %1</translation>
     </message>
     <message>
         <source>About Fernschreiber</source>
@@ -1056,7 +1056,7 @@
     </message>
     <message>
         <source>More Options...</source>
-        <translation>Plus d'options...</translation>
+        <translation>Plus d'options…</translation>
     </message>
 </context>
 <context>
@@ -1085,7 +1085,7 @@
     <name>MessageLocation</name>
     <message>
         <source>Install Pure Maps to inspect this location.</source>
-        <translation>Installez Pure Maps pour inspecter cette localisation.</translation>
+        <translation>Installez Pure Maps pour afficher cette localisation.</translation>
     </message>
 </context>
 <context>
@@ -1096,7 +1096,7 @@
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation>Ce message a été transféré. Autheur d'origine : %1</translation>
+        <translation>Ce message a été transféré. Auteur d'origine : %1</translation>
     </message>
 </context>
 <context>
@@ -1115,7 +1115,7 @@
     </message>
     <message>
         <source>Multiple Answers are allowed.</source>
-        <translation>Plusieurs réponses sont authorisées.</translation>
+        <translation>Plusieurs réponses sont autorisées.</translation>
     </message>
     <message numerus="yes">
         <source>%Ln%</source>
@@ -1173,11 +1173,11 @@
     </message>
     <message>
         <source>Search a contact...</source>
-        <translation>Rechercher un contact...</translation>
+        <translation>Rechercher un contact…</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
-        <translation>Chargement des contacts...</translation>
+        <translation>Chargement des contacts…</translation>
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
@@ -1193,7 +1193,7 @@
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation>Contacs synchronisés avec Telegram avec succès.</translation>
+        <translation>Contacts synchronisés avec Telegram avec succès.</translation>
     </message>
 </context>
 <context>
@@ -1210,7 +1210,7 @@
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>Concernant Fernschreiber</translation>
+        <translation>À propos Fernschreiber</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
@@ -1218,23 +1218,23 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>En attente de réseau...</translation>
+        <translation>En attente de réseau…</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Connexion au réseau...</translation>
+        <translation>Connexion au réseau…</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Se connecte au proxy...</translation>
+        <translation>Se connecte au proxy…</translation>
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Téléverse du contenu...</translation>
+        <translation>Téléverse du contenu…</translation>
     </message>
     <message>
         <source>Loading chat list...</source>
-        <translation>Chargement de la liste de conversation...</translation>
+        <translation>Chargement de la liste des conversations…</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -1250,7 +1250,7 @@
     </message>
     <message>
         <source>Filter your chats...</source>
-        <translation>Filtrer vos conversations...</translation>
+        <translation>Filtrer vos conversations…</translation>
     </message>
     <message>
         <source>Search Chats</source>
@@ -1266,7 +1266,7 @@
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation>Tapez sur la barre de titre pour filtrer vos conversations</translation>
+        <translation>Appuyez sur la barre de titre pour filtrer vos conversations</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
@@ -1370,7 +1370,7 @@
     </message>
     <message>
         <source>Multiple answers allowed</source>
-        <translation>Plusieurs réponses authorisées</translation>
+        <translation>Plusieurs réponses autorisées</translation>
     </message>
     <message>
         <source>Quiz Mode</source>
@@ -1378,11 +1378,11 @@
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-        <translation>Une seule réponse pour le quiz. Impossible de révoquer la réponse.</translation>
+        <translation>Une seule réponse pour le quiz. Impossible d'annuler la réponse.</translation>
     </message>
     <message>
         <source>Enter an optional explanation</source>
-        <translation>Saisisir une explication optionnelle</translation>
+        <translation>Saisisir une explication (facultatif)</translation>
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
@@ -1440,7 +1440,7 @@
     <message>
         <source>Chosen by:</source>
         <comment>This answer has been chosen by the following users</comment>
-        <translation>Chosen by:</translation>
+        <translation>Choisi par :</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) including yours</source>
@@ -1459,7 +1459,7 @@
     </message>
     <message>
         <source>Searching chats...</source>
-        <translation>Recherche une conversation...</translation>
+        <translation>Recherche une conversation…</translation>
     </message>
     <message>
         <source>Private Chat</source>
@@ -1493,11 +1493,11 @@
     </message>
     <message>
         <source>Search a chat...</source>
-        <translation>Rechercher une conversation...</translation>
+        <translation>Rechercher une conversation…</translation>
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation>Insérer votre requête pour initier une recherche (min. 5 caractères)</translation>
+        <translation>Insérez votre requête pour initier une recherche (min. 5 caractères)</translation>
     </message>
 </context>
 <context>
@@ -1535,11 +1535,11 @@
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Envoyer le message avec la touche enter</translation>
+        <translation>Envoyer le message avec la touche d'entrée</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Envoyer votre message en appuyant sur la touche enter</translation>
+        <translation>Envoyer votre message en appuyant sur la touche d'entrée</translation>
     </message>
     <message>
         <source>Focus text input on chat open</source>
@@ -1559,11 +1559,11 @@
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation>Délai après marquer un message comme lu</translation>
+        <translation>Délai pour marquer un message comme lu</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Fernschreiber attendra un peu avant de marquer les messages comme lus</translation>
+        <translation>Fernschreiber attendra un instant avant de marquer les messages comme lus</translation>
     </message>
     <message>
         <source>Open-with menu integration</source>
@@ -1625,7 +1625,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation>Paramètre de confidentialité pour configurer si vous pouvez être invité à une conversation.</translation>
+        <translation>Paramètre de confidentialité pour configurer l'invitation à une conversation.</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -1645,7 +1645,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Paramètre de confidentialité pour configurer si vous pouvez être trouvé via votre numéro de téléphone .</translation>
+        <translation>Paramètre de confidentialité pour configurer si de vous trouver via votre numéro de téléphone.</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
@@ -1653,7 +1653,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Paramètre de confidentialité pour configurer si un lien à votre compte est inclus dans les messages transférés.</translation>
+        <translation>Paramètre de confidentialité pour configurer l'inclusion d'un lien de votre compte dans les messages transférés.</translation>
     </message>
     <message>
         <source>Show phone number</source>
@@ -1681,11 +1681,11 @@
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation>Autoriser l'envoi de localisation au bots intégrés</translation>
+        <translation>Autoriser l'envoi de localisation aux bots intégrés</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation>Des bots intégrés nécessite une localisations lors de leur utilisation</translation>
+        <translation>Des bots intégrés nécessitent une localisations lors de leur utilisation</translation>
     </message>
 </context>
 <context>
@@ -1720,7 +1720,7 @@
     </message>
     <message>
         <source>Enter 1-64 characters</source>
-        <translation>Insérez entre 1 à 64 caractères</translation>
+        <translation>Insérez 1 à 64 caractères</translation>
     </message>
     <message>
         <source>Last Name</source>
@@ -1729,7 +1729,7 @@
     </message>
     <message>
         <source>Enter 0-64 characters</source>
-        <translation>Insérez entre 0 à 64 caractères</translation>
+        <translation>Insérez 0 à 64 caractères</translation>
     </message>
     <message>
         <source>Username</source>
@@ -1754,7 +1754,7 @@
     </message>
     <message>
         <source>Uploading...</source>
-        <translation>Téléverse...</translation>
+        <translation>Téléverse…</translation>
     </message>
 </context>
 <context>
@@ -1776,11 +1776,11 @@
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation>Lot d'autocollant installé avec succès !</translation>
+        <translation>Lot d'autocollants installé avec succès !</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation>Lot d'autocollant supprimé avec succès!</translation>
+        <translation>Lot d'autocollants supprimé avec succès!</translation>
     </message>
 </context>
 <context>
@@ -1822,7 +1822,7 @@
     </message>
     <message>
         <source>Stopping</source>
-        <translation>Arrêt</translation>
+        <translation>Arrête</translation>
     </message>
     <message>
         <source>Use recording</source>
@@ -1841,7 +1841,7 @@
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation>Prévisualisation non supportée pour ce lien...</translation>
+        <translation>Prévisualisation non supportée pour ce lien…</translation>
     </message>
 </context>
 <context>
@@ -2036,11 +2036,11 @@
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>a changé le titre de le conversation à %1</translation>
+        <translation>a changé le titre de le conversation pour %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation>a changé le titre de la conversation a %1</translation>
+        <translation>a changé le titre de la conversation pour %1</translation>
     </message>
     <message>
         <source>sent a poll</source>
@@ -2180,20 +2180,20 @@
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>a envoyé une photo autodestructrice qui a expirée</translation>
+        <translation>a envoyé une photo autodestructrice périmée</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>a envoyé une photo autodestructrice qui a expirée</translation>
+        <translation>a envoyé une photo autodestructrice périmée</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>a envoyé une vidéo autodestructrice qui a expirée</translation>
+        <translation>a envoyé une vidéo autodestructrice périmée</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>a envoyé une vidéo autodestrucrice qui a expirée</translation>
+        <translation>a envoyé une vidéo autodestrucrice périmée</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
