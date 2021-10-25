@@ -256,7 +256,7 @@
     </message>
     <message>
         <source>You don&apos;t have any groups in common with this user.</source>
-        <translation>Aucun groupes en commun avec cet utilisateur.</translation>
+        <translation>Aucun groupe en commun avec cet utilisateur.</translation>
     </message>
     <message>
         <source>This group is empty.</source>
