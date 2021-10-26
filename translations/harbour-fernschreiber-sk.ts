@@ -573,9 +573,9 @@
     <message numerus="yes">
         <source>chats</source>
         <translation>
-            <numerusform>čete</numerusform>
-            <numerusform>četoch</numerusform>
-            <numerusform>četoch</numerusform>
+            <numerusform>čet</numerusform>
+            <numerusform>čety</numerusform>
+            <numerusform>četov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
