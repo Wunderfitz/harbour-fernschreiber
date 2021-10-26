@@ -21,6 +21,7 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 ### Translations
 - Chinese: [dashinfantry](https://github.com/dashinfantry)
 - Finnish: [jorm1s](https://github.com/jorm1s)
+- French: [Patrick Hervieux](https://github.com/pherjung)
 - Hungarian: [edp17](https://github.com/edp17)
 - Italian: [Matteo](https://github.com/iamnomeutente)
 - Polish: [atlochowski](https://github.com/atlochowski)
