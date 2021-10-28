@@ -648,51 +648,51 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>envoie une image</translation>
+        <translation>a envoyé une image</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>envoie une image</translation>
+        <translation>a envoyé une image</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>envoie une vidéo</translation>
+        <translation>a envoyé une vidéo</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>envoie une vidéo</translation>
+        <translation>a envoyé une vidéo</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>envoie une animation</translation>
+        <translation>a envoyé une animation</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>envoie une animation</translation>
+        <translation>a envoyé une animation</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>envoie une note vocale</translation>
+        <translation>a envoyé une note vocale</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>envoie un document</translation>
+        <translation>a envoyé un document</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>envoie un document</translation>
+        <translation>enva envoyéoie un document</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>envoie une localisation</translation>
+        <translation>a envoyé une localisation</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>envoie une localisation</translation>
+        <translation>a envoyé une localisation</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
@@ -737,16 +737,16 @@
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>envoie une note vocale</translation>
+        <translation>a envoyé une note vocale</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>envoie un lieu</translation>
+        <translation>a envoyé un lieu</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>envoie un lieu</translation>
+        <translation>a envoyé un lieu</translation>
     </message>
     <message>
         <source>changed the chat title</source>
@@ -1880,31 +1880,31 @@
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>envoi une image</translation>
+        <translation>a envoyé une image</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>envoi une vidéo</translation>
+        <translation>a envoyé une vidéo</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>envoi une animation</translation>
+        <translation>a envoyé une animation</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>envoi un audio</translation>
+        <translation>a envoyé un audio</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>envoi une note vocale</translation>
+        <translation>a envoyé une note vocale</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>envoi un document</translation>
+        <translation>a envoyé un document</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>envoi une localisation</translation>
+        <translation>a envoyé une localisation</translation>
     </message>
     <message>
         <source>joined this chat</source>
@@ -2011,7 +2011,7 @@
     </message>
     <message>
         <source>was recently online</source>
-        <translation>été récemment en ligne</translation>
+        <translation>a été récemment en ligne</translation>
     </message>
     <message>
         <source>Admin</source>
