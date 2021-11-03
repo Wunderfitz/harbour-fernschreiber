@@ -4,3 +4,7 @@ X-Nemo-Application-Type=generic
 Icon=harbour-fernschreiber
 Exec=harbour-fernschreiber
 Name=Fernschreiber
+MimeType=x-url-handler/t.me;x-scheme-handler/tg;
+X-Maemo-Service=de.ygriega.fernschreiber
+X-Maemo-Object-Path=/de/ygriega/fernschreiber
+X-Maemo-Method=de.ygriega.fernschreiber.openUrl

@@ -369,8 +369,25 @@ function enhanceMessageText(formattedText, ignoreEntities) {
     return messageText;
 }
 
+function handleTMeLink(link, usedPrefix) {
+    if (link.indexOf("joinchat") !== -1) {
+        Debug.log("Joining Chat: ", link);
+        tdLibWrapper.joinChatByInviteLink(link);
+        // Do the necessary stuff to open the chat if successful
+        // Fail with nice error message if it doesn't work
+    } else {
+        Debug.log("Search public chat: ", link.substring(usedPrefix.length));
+        tdLibWrapper.searchPublicChat(link.substring(usedPrefix.length), true);
+        // Check responses for updateBasicGroup or updateSupergroup
+        // Fire createBasicGroupChat or createSupergroupChat
+        // Do the necessary stuff to open the chat
+        // Fail with nice error message if chat can't be found
+    }
+}
+
 function handleLink(link) {
     var tMePrefix = tdLibWrapper.getOptionString("t_me_url");
+    var tMePrefixHttp = tMePrefix.replace('https', 'http');
     if (link.indexOf("user://") === 0) {
         var userName = link.substring(8);
         var userInformation = tdLibWrapper.getUserInformationByName(userName);
@@ -392,19 +409,9 @@ function handleLink(link) {
         return link.substring(13);
     } else {
         if (link.indexOf(tMePrefix) === 0) {
-            if (link.indexOf("joinchat") !== -1) {
-                Debug.log("Joining Chat: ", link);
-                tdLibWrapper.joinChatByInviteLink(link);
-                // Do the necessary stuff to open the chat if successful
-                // Fail with nice error message if it doesn't work
-            } else {
-                Debug.log("Search public chat: ", link.substring(tMePrefix.length));
-                tdLibWrapper.searchPublicChat(link.substring(tMePrefix.length), true);
-                // Check responses for updateBasicGroup or updateSupergroup
-                // Fire createBasicGroupChat or createSupergroupChat
-                // Do the necessary stuff to open the chat
-                // Fail with nice error message if chat can't be found
-            }
+            handleTMeLink(link, tMePrefix);
+        } else if (link.indexOf(tMePrefixHttp) === 0) {
+            handleTMeLink(link, tMePrefixHttp);
         } else {
             Qt.openUrlExternally(link);
         }

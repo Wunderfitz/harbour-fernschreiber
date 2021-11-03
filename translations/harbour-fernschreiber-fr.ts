@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions d'utilisation</translation>
+        <translation>Conditions d&apos;utilisation</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Ce projet utilise Telegram Database Library (TDLib). Merci de l'avoir distribuée sous les conditions de la Boost Software Licences 1.0 !</translation>
+        <translation>Ce projet utilise Telegram Database Library (TDLib). Merci de l&apos;avoir distribuée sous les conditions de la Boost Software Licences 1.0 !</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Ce produit utilise l'API de Telegram, mais n'est ni appuyé ni certifié par Telegram.</translation>
+        <translation>Ce produit utilise l&apos;API de Telegram, mais n&apos;est ni appuyé ni certifié par Telegram.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Ce projet utilise twemoji. Copyright 2018 Twitter, Inc. et autres contributeurs. Merci de l'avoir distribué sous les conditions de la licence MIT (code) et CC-BY 4.0 (graphismes) !</translation>
+        <translation>Ce projet utilise twemoji. Copyright 2018 Twitter, Inc. et autres contributeurs. Merci de l&apos;avoir distribué sous les conditions de la licence MIT (code) et CC-BY 4.0 (graphismes) !</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -77,7 +77,7 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation>Ce projet utilise rlottie. Copyright 2020 Samsung Electronics Co., Ltd. et autres contributeurs. Merci de l'avoir distribué sous les conditions de la licence MIT !</translation>
+        <translation>Ce projet utilise rlottie. Copyright 2020 Samsung Electronics Co., Ltd. et autres contributeurs. Merci de l&apos;avoir distribué sous les conditions de la licence MIT !</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
@@ -97,7 +97,7 @@
     </message>
     <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
-        <translation>Ce projet utilise OpenStreetMap Nominatim pour du géocodage inversé des pièces jointes de localisation. Merci de l'avoir mis à disposition en tant que service web !</translation>
+        <translation>Ce projet utilise OpenStreetMap Nominatim pour du géocodage inversé des pièces jointes de localisation. Merci de l&apos;avoir mis à disposition en tant que service web !</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
@@ -193,7 +193,7 @@
     </message>
     <message>
         <source>There is no information text available, yet.</source>
-        <translation>Aucun texte informatif pour l'instant.</translation>
+        <translation>Aucun texte informatif pour l&apos;instant.</translation>
     </message>
     <message>
         <source>Info</source>
@@ -208,11 +208,11 @@
     <message>
         <source>Invite Link</source>
         <comment>header</comment>
-        <translation>Lien d'invitation</translation>
+        <translation>Lien d&apos;invitation</translation>
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>Le lien d'invitation a été copié dans le presse-papiers.</translation>
+        <translation>Le lien d&apos;invitation a été copié dans le presse-papiers.</translation>
     </message>
     <message>
         <source>%1, %2</source>
@@ -297,7 +297,7 @@
     </message>
     <message>
         <source>User Info</source>
-        <translation>Informations sur l'utilisateur</translation>
+        <translation>Informations sur l&apos;utilisateur</translation>
     </message>
     <message>
         <source>Group Info</source>
@@ -456,7 +456,7 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>Cet échange secret n'est pas encore prêt. Votre interlocuteur doit être en ligne</translation>
+        <translation>Cet échange secret n&apos;est pas encore prêt. Votre interlocuteur doit être en ligne</translation>
     </message>
     <message>
         <source>Closing chat</source>
@@ -531,7 +531,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>Vous n'avez aucune conversation.</translation>
+        <translation>Vous n&apos;avez aucune conversation.</translation>
     </message>
 </context>
 <context>
@@ -542,7 +542,7 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>En attente d'une connexion…</translation>
+        <translation>En attente d&apos;une connexion…</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
@@ -580,7 +580,7 @@
     <message>
         <source>Group Member Permissions</source>
         <comment>what can normal group members do</comment>
-        <translation>Autorisations d'un membre dans le groupe</translation>
+        <translation>Autorisations d&apos;un membre dans le groupe</translation>
     </message>
     <message>
         <source>Send Messages</source>
@@ -595,7 +595,7 @@
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation>Envoyer d'autres types de messages</translation>
+        <translation>Envoyer d&apos;autres types de messages</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
@@ -697,11 +697,11 @@
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>s'est enregistré avec Telegram</translation>
+        <translation>s&apos;est enregistré avec Telegram</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>s'est enregistré avec Telegram</translation>
+        <translation>s&apos;est enregistré avec Telegram</translation>
     </message>
     <message>
         <source>joined this chat</source>
@@ -805,11 +805,11 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>a changé la durée de vie de l'échange secret</translation>
+        <translation>a changé la durée de vie de l&apos;échange secret</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation>a changé la durée de vie de l'échange secret</translation>
+        <translation>a changé la durée de vie de l&apos;échange secret</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
@@ -828,11 +828,11 @@
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>a créé une capture d'écran de cette conversation</translation>
+        <translation>a créé une capture d&apos;écran de cette conversation</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>a créé une capture d'écran de cette conversation</translation>
+        <translation>a créé une capture d&apos;écran de cette conversation</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
@@ -854,16 +854,16 @@
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>a envoyé une photo s'autodétruisant périmée</translation>
+        <translation>a envoyé une photo s&apos;autodétruisant périmée</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>a envoyé une vidéo s'autodétruisant périmée</translation>
+        <translation>a envoyé une vidéo s&apos;autodétruisant périmée</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>a envoyé une vidéo s'autodétruisant périmée</translation>
+        <translation>a envoyé une vidéo s&apos;autodétruisant périmée</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
@@ -872,7 +872,7 @@
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>a envoyé une photo s'autodétruisant périmée</translation>
+        <translation>a envoyé une photo s&apos;autodétruisant périmée</translation>
     </message>
     <message>
         <source>sent an audio</source>
@@ -939,7 +939,7 @@
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
-        <translation>Télécharger l'image</translation>
+        <translation>Télécharger l&apos;image</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
@@ -993,7 +993,7 @@
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
-        <translation>Impossible de s'authentifier avec le code saisi.</translation>
+        <translation>Impossible de s&apos;authentifier avec le code saisi.</translation>
     </message>
     <message>
         <source>Enter code again</source>
@@ -1001,7 +1001,7 @@
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Redémarrer l'authentification</translation>
+        <translation>Redémarrer l&apos;authentification</translation>
     </message>
     <message>
         <source>Please enter your password:</source>
@@ -1009,7 +1009,7 @@
     </message>
     <message>
         <source>User Registration</source>
-        <translation>Enregistrement de l'utilisateur</translation>
+        <translation>Enregistrement de l&apos;utilisateur</translation>
     </message>
     <message>
         <source>Enter your First Name</source>
@@ -1021,7 +1021,7 @@
     </message>
     <message>
         <source>Register User</source>
-        <translation>Enregistrement de l'utilisateur</translation>
+        <translation>Enregistrement de l&apos;utilisateur</translation>
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
@@ -1056,7 +1056,7 @@
     </message>
     <message>
         <source>More Options...</source>
-        <translation>Plus d'options…</translation>
+        <translation>Plus d&apos;options…</translation>
     </message>
 </context>
 <context>
@@ -1096,7 +1096,7 @@
     </message>
     <message>
         <source>This message was forwarded. Original author: %1</source>
-        <translation>Ce message a été transféré. Auteur d'origine : %1</translation>
+        <translation>Ce message a été transféré. Auteur d&apos;origine : %1</translation>
     </message>
 </context>
 <context>
@@ -1157,7 +1157,7 @@
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation>Vous n'avez aucun contact.</translation>
+        <translation>Vous n&apos;avez aucun contact.</translation>
     </message>
     <message>
         <source>Private Chat</source>
@@ -1242,7 +1242,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>Vous n'avez aucune conversation.</translation>
+        <translation>Vous n&apos;avez aucune conversation.</translation>
     </message>
     <message>
         <source>New Chat</source>
@@ -1378,7 +1378,7 @@
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-        <translation>Une seule réponse pour le quiz. Impossible d'annuler la réponse.</translation>
+        <translation>Une seule réponse pour le quiz. Impossible d&apos;annuler la réponse.</translation>
     </message>
     <message>
         <source>Enter an optional explanation</source>
@@ -1386,11 +1386,11 @@
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation>Aficher quand l'utilisateur sélectionne une réponse erronée.</translation>
+        <translation>Aficher quand l&apos;utilisateur sélectionne une réponse erronée.</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation>Une explication peut comporter jusqu'à 200 caractères.</translation>
+        <translation>Une explication peut comporter jusqu&apos;à 200 caractères.</translation>
     </message>
 </context>
 <context>
@@ -1512,7 +1512,7 @@
     </message>
     <message>
         <source>Only display emojis instead of the actual stickers</source>
-        <translation>Afficher uniquement les emojis au lieu d'un autocollant</translation>
+        <translation>Afficher uniquement les emojis au lieu d&apos;un autocollant</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
@@ -1520,7 +1520,7 @@
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation>Afficher l'arrière-plan pour l'autocollant et l'aligner au centre comme les images</translation>
+        <translation>Afficher l&apos;arrière-plan pour l&apos;autocollant et l&apos;aligner au centre comme les images</translation>
     </message>
     <message>
         <source>Animate stickers</source>
@@ -1535,15 +1535,15 @@
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Envoyer le message avec la touche d'entrée</translation>
+        <translation>Envoyer le message avec la touche d&apos;entrée</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Envoyer votre message en appuyant sur la touche d'entrée</translation>
+        <translation>Envoyer votre message en appuyant sur la touche d&apos;entrée</translation>
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation>Focaliser la saisie lorsque la conversation s'ouvre</translation>
+        <translation>Focaliser la saisie lorsque la conversation s&apos;ouvre</translation>
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
@@ -1551,11 +1551,11 @@
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation>Focaliser la zone de saise après l'envoi</translation>
+        <translation>Focaliser la zone de saise après l&apos;envoi</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation>Focaliser la zone de saisie après l'envoi d'un message</translation>
+        <translation>Focaliser la zone de saisie après l&apos;envoi d&apos;un message</translation>
     </message>
     <message>
         <source>Delay before marking messages as read</source>
@@ -1595,7 +1595,7 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation>Notification allume l'écran</translation>
+        <translation>Notification allume l&apos;écran</translation>
     </message>
     <message>
         <source>Enable notification sounds</source>
@@ -1625,7 +1625,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation>Paramètre de confidentialité pour configurer l'invitation à une conversation.</translation>
+        <translation>Paramètre de confidentialité pour configurer l&apos;invitation à une conversation.</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -1653,7 +1653,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Paramètre de confidentialité pour configurer l'inclusion d'un lien vers votre compte dans les messages transférés.</translation>
+        <translation>Paramètre de confidentialité pour configurer l&apos;inclusion d&apos;un lien vers votre compte dans les messages transférés.</translation>
     </message>
     <message>
         <source>Show phone number</source>
@@ -1681,7 +1681,7 @@
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation>Autoriser l'envoi de localisation aux bots intégrés</translation>
+        <translation>Autoriser l&apos;envoi de localisation aux bots intégrés</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
@@ -1704,7 +1704,7 @@
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation>Activer l'optimisation de l'espace de stockage</translation>
+        <translation>Activer l&apos;optimisation de l&apos;espace de stockage</translation>
     </message>
 </context>
 <context>
@@ -1734,7 +1734,7 @@
     <message>
         <source>Username</source>
         <comment>user name of the logged-in profile - header</comment>
-        <translation>Nom d'utilisateur</translation>
+        <translation>Nom d&apos;utilisateur</translation>
     </message>
     <message>
         <source>Profile Pictures</source>
@@ -1750,7 +1750,7 @@
     </message>
     <message>
         <source>Deleting profile picture</source>
-        <translation>Supprimer l'image de profil</translation>
+        <translation>Supprimer l&apos;image de profil</translation>
     </message>
     <message>
         <source>Uploading...</source>
@@ -1765,22 +1765,22 @@
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation>Suppression du lot d'autocollants</translation>
+        <translation>Suppression du lot d&apos;autocollants</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation>Lot d'autocollants supprimés avec succès !</translation>
+        <translation>Lot d&apos;autocollants supprimés avec succès !</translation>
     </message>
 </context>
 <context>
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation>Lot d'autocollants installé avec succès !</translation>
+        <translation>Lot d&apos;autocollants installé avec succès !</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation>Lot d'autocollants supprimé avec succès!</translation>
+        <translation>Lot d&apos;autocollants supprimé avec succès!</translation>
     </message>
 </context>
 <context>
@@ -1806,7 +1806,7 @@
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation>Appuyez sur le bouton pour démarrer l'enregistrement</translation>
+        <translation>Appuyez sur le bouton pour démarrer l&apos;enregistrement</translation>
     </message>
     <message>
         <source>Unavailable</source>
@@ -1826,7 +1826,7 @@
     </message>
     <message>
         <source>Use recording</source>
-        <translation>Utilise l'enregistrement</translation>
+        <translation>Utilise l&apos;enregistrement</translation>
     </message>
     <message>
         <source>Voice Note (%1)</source>
@@ -1852,7 +1852,7 @@
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>s'est inscrit avec Telegram</translation>
+        <translation>s&apos;est inscrit avec Telegram</translation>
     </message>
     <message>
         <source>Picture: %1</source>
@@ -1991,7 +1991,7 @@
     </message>
     <message>
         <source>was never online</source>
-        <translation>n'a jamais été en ligne</translation>
+        <translation>n&apos;a jamais été en ligne</translation>
     </message>
     <message>
         <source>last online: last month</source>
@@ -2124,12 +2124,12 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>a changé le paramètre de durée de vie de l'échange secret</translation>
+        <translation>a changé le paramètre de durée de vie de l&apos;échange secret</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>a changé le paramètre de durée de vie de l'échange secret</translation>
+        <translation>a changé le paramètre de durée de vie de l&apos;échange secret</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
@@ -2148,11 +2148,11 @@
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>a réalisé une capture d'écran de cette conversation</translation>
+        <translation>a réalisé une capture d&apos;écran de cette conversation</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>a réalisé une capture d'écran de cette conversation</translation>
+        <translation>a réalisé une capture d&apos;écran de cette conversation</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
@@ -2197,7 +2197,7 @@
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation>Impossible de trouver l'utilisateur %1</translation>
+        <translation>Impossible de trouver l&apos;utilisateur %1</translation>
     </message>
     <message>
         <source>sent a video note</source>
