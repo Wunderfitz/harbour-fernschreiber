@@ -1029,7 +1029,7 @@
     </message>
     <message>
         <source>About Fernschreiber</source>
-        <translation>Concernant Fernschreiber</translation>
+        <translation>À propos de Fernschreiber</translation>
     </message>
 </context>
 <context>
@@ -1210,7 +1210,7 @@
     <name>OverviewPage</name>
     <message>
         <source>About Fernschreiber</source>
-        <translation>À propos Fernschreiber</translation>
+        <translation>À propos de Fernschreiber</translation>
     </message>
     <message>
         <source>Fernschreiber</source>
@@ -1645,7 +1645,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Paramètre de confidentialité pour configurer si de vous trouver via votre numéro de téléphone.</translation>
+        <translation>Paramètre de confidentialité pour configurer si vous pouvez être trouvé via votre numéro de téléphone.</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
@@ -1653,7 +1653,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Paramètre de confidentialité pour configurer l'inclusion d'un lien de votre compte dans les messages transférés.</translation>
+        <translation>Paramètre de confidentialité pour configurer l'inclusion d'un lien vers votre compte dans les messages transférés.</translation>
     </message>
     <message>
         <source>Show phone number</source>
@@ -2193,7 +2193,7 @@
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>a envoyé une vidéo autodestrucrice périmée</translation>
+        <translation>a envoyé une vidéo autodestructrice périmée</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
