@@ -1,7 +1,7 @@
 Name: harbour-fernschreiber
 Summary: Fernschreiber is a Telegram client for Sailfish OS
 Version: 0.10
-Release: 1
+Release: 2
 # The contents of the Group field should be one of the groups listed here:
 # https://github.com/mer-tools/spectacle/blob/master/data/GROUPS
 Group: Qt/Qt
@@ -28,10 +28,11 @@ PkgConfigBR:
   - Qt5Multimedia
   - Qt5Positioning
   - nemonotifications-qt5
+  - openssl
 
 # Build dependencies without a pkgconfig setup can be listed here
-# PkgBR:
-#   - package-needed-to-build
+PkgBR:
+   - gperf
 
 # Runtime dependencies which are not automatically detected
 Requires:
