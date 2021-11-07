@@ -53,23 +53,20 @@ jobs:
       id: build_armv7hl
       uses: coderus/github-sfos-build@master
       with:
-        release: 3.4.0.24
+        release: 4.2.0.21
         
     - name: Build i486
       id: build_i486
       uses: coderus/github-sfos-build@master
       with:
-        release: 3.4.0.24
+        release: 4.2.0.21
         arch: i486
 
-    # aarch64 complains about ssl/crypto
-    # with older targets, so we use a
-    # newer release
     - name: Build aarch64
       id: build_aarch64
       uses: coderus/github-sfos-build@master
       with:
-        release: 4.0.1.45
+        release: 4.2.0.21
         arch: aarch64
       
     - name: Upload build result
