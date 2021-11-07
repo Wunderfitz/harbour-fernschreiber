@@ -1901,15 +1901,19 @@ void TDLibWrapper::initializeOpenWith()
         if (QFile::exists(openUrlFilePath)) {
             LOG("Old open URL file exists, that needs to go away...!");
             QFile::remove(openUrlFilePath);
+            QProcess::startDetached("update-desktop-database " + applicationsLocation);
         }
-        const QString sailfishBrowserFilePath(applicationsLocation + "/sailfish-browser.desktop");
-        if (!QFile::exists(sailfishBrowserFilePath)) {
-            LOG("Copying standard Sailfish Browser desktop file to " << sailfishBrowserFilePath);
-            if (QFile::copy("/usr/share/applications/sailfish-browser.desktop", sailfishBrowserFilePath)) {
-                LOG("Standard Sailfish Browser desktop file successfully copied to " << sailfishBrowserFilePath);
-                QProcess::startDetached("update-desktop-database " + applicationsLocation);
-            } else {
-                LOG("ERROR copying standard Sailfish Browser desktop file to " << sailfishBrowserFilePath);
+        // Something special for Verla...
+        if (sailfishOSMajorVersion == 4 && sailfishOSMinorVersion == 2) {
+            const QString sailfishBrowserFilePath(applicationsLocation + "/sailfish-browser.desktop");
+            if (!QFile::exists(sailfishBrowserFilePath)) {
+                LOG("Copying standard Sailfish Browser desktop file to " << sailfishBrowserFilePath);
+                if (QFile::copy("/usr/share/applications/sailfish-browser.desktop", sailfishBrowserFilePath)) {
+                    LOG("Standard Sailfish Browser desktop file successfully copied to " << sailfishBrowserFilePath);
+                    QProcess::startDetached("update-desktop-database " + applicationsLocation);
+                } else {
+                    LOG("ERROR copying standard Sailfish Browser desktop file to " << sailfishBrowserFilePath);
+                }
             }
         }
     }
@@ -1917,30 +1921,33 @@ void TDLibWrapper::initializeOpenWith()
     const QString desktopFilePath(applicationsLocation + "/harbour-fernschreiber-open-url.desktop");
     QFile desktopFile(desktopFilePath);
     if (desktopFile.exists()) {
-        LOG("Fernschreiber open-with file existing, removing and re-creating...");
+        LOG("Fernschreiber open-with file existing, removing...");
         desktopFile.remove();
-    }
-    LOG("Creating Fernschreiber open-with file at " << desktopFile.fileName());
-    if (desktopFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QTextStream fileOut(&desktopFile);
-        fileOut.setCodec("UTF-8");
-        fileOut << QString("[Desktop Entry]").toUtf8() << "\n";
-        fileOut << QString("Type=Application").toUtf8() << "\n";
-        fileOut << QString("Name=Fernschreiber").toUtf8() << "\n";
-        fileOut << QString("Icon=harbour-fernschreiber").toUtf8() << "\n";
-        fileOut << QString("NotShowIn=X-MeeGo;").toUtf8() << "\n";
-        if (sailfishOSMajorVersion < 4 || ( sailfishOSMajorVersion == 4 && sailfishOSMinorVersion < 1 )) {
-            fileOut << QString("MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/tg;").toUtf8() << "\n";
-        } else {
-            fileOut << QString("MimeType=x-url-handler/t.me;x-scheme-handler/tg;").toUtf8() << "\n";
-        }
-        fileOut << QString("X-Maemo-Service=de.ygriega.fernschreiber").toUtf8() << "\n";
-        fileOut << QString("X-Maemo-Object-Path=/de/ygriega/fernschreiber").toUtf8() << "\n";
-        fileOut << QString("X-Maemo-Method=de.ygriega.fernschreiber.openUrl").toUtf8() << "\n";
-        fileOut << QString("Hidden=true;").toUtf8() << "\n";
-        fileOut.flush();
-        desktopFile.close();
         QProcess::startDetached("update-desktop-database " + applicationsLocation);
+    }
+    if (sailfishOSMajorVersion < 4 || (sailfishOSMajorVersion == 4 && sailfishOSMinorVersion < 3)) {
+        LOG("Creating Fernschreiber open-with file at " << desktopFile.fileName());
+        if (desktopFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream fileOut(&desktopFile);
+            fileOut.setCodec("UTF-8");
+            fileOut << QString("[Desktop Entry]").toUtf8() << "\n";
+            fileOut << QString("Type=Application").toUtf8() << "\n";
+            fileOut << QString("Name=Fernschreiber").toUtf8() << "\n";
+            fileOut << QString("Icon=harbour-fernschreiber").toUtf8() << "\n";
+            fileOut << QString("NotShowIn=X-MeeGo;").toUtf8() << "\n";
+            if (sailfishOSMajorVersion < 4 || ( sailfishOSMajorVersion == 4 && sailfishOSMinorVersion < 1 )) {
+                fileOut << QString("MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/tg;").toUtf8() << "\n";
+            } else {
+                fileOut << QString("MimeType=x-url-handler/t.me;x-scheme-handler/tg;").toUtf8() << "\n";
+            }
+            fileOut << QString("X-Maemo-Service=de.ygriega.fernschreiber").toUtf8() << "\n";
+            fileOut << QString("X-Maemo-Object-Path=/de/ygriega/fernschreiber").toUtf8() << "\n";
+            fileOut << QString("X-Maemo-Method=de.ygriega.fernschreiber.openUrl").toUtf8() << "\n";
+            fileOut << QString("Hidden=true;").toUtf8() << "\n";
+            fileOut.flush();
+            desktopFile.close();
+            QProcess::startDetached("update-desktop-database " + applicationsLocation);
+        }
     }
 
     QString dbusPathName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/dbus-1/services";
