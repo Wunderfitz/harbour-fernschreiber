@@ -1882,20 +1882,35 @@ void TDLibWrapper::setLogVerbosityLevel()
 void TDLibWrapper::initializeOpenWith()
 {
     LOG("Initialize open-with");LOG("Checking standard open URL file...");
+
+    const QStringList sailfishOSVersion = QSysInfo::productVersion().split(".");
+    int sailfishOSMajorVersion = sailfishOSVersion.value(0).toInt();
+    int sailfishOSMinorVersion = sailfishOSVersion.value(1).toInt();
+
     const QString applicationsLocation(QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
     const QString openUrlFilePath(applicationsLocation + "/open-url.desktop");
-    if (QFile::exists(openUrlFilePath)) {
-        LOG("Old open URL file exists, that needs to go away...!");
-        QFile::remove(openUrlFilePath);
-    }
-    const QString sailfishBrowserFilePath(applicationsLocation + "/sailfish-browser.desktop");
-    if (!QFile::exists(sailfishBrowserFilePath)) {
-        LOG("Copying standard Sailfish Browser desktop file to " << sailfishBrowserFilePath);
-        if (QFile::copy("/usr/share/applications/sailfish-browser.desktop", sailfishBrowserFilePath)) {
-            LOG("Standard Sailfish Browser desktop file successfully copied to " << sailfishBrowserFilePath);
-            QProcess::startDetached("update-desktop-database " + applicationsLocation);
+    if (sailfishOSMajorVersion < 4 || ( sailfishOSMajorVersion == 4 && sailfishOSMinorVersion < 2 )) {
+        if (QFile::exists(openUrlFilePath)) {
+            LOG("Standard open URL file exists, good!");
         } else {
-            LOG("ERROR copying standard Sailfish Browser desktop file to " << sailfishBrowserFilePath);
+            LOG("Copying standard open URL file to " << openUrlFilePath);
+            QFile::copy("/usr/share/applications/open-url.desktop", openUrlFilePath);
+            QProcess::startDetached("update-desktop-database " + applicationsLocation);
+        }
+    } else {
+        if (QFile::exists(openUrlFilePath)) {
+            LOG("Old open URL file exists, that needs to go away...!");
+            QFile::remove(openUrlFilePath);
+        }
+        const QString sailfishBrowserFilePath(applicationsLocation + "/sailfish-browser.desktop");
+        if (!QFile::exists(sailfishBrowserFilePath)) {
+            LOG("Copying standard Sailfish Browser desktop file to " << sailfishBrowserFilePath);
+            if (QFile::copy("/usr/share/applications/sailfish-browser.desktop", sailfishBrowserFilePath)) {
+                LOG("Standard Sailfish Browser desktop file successfully copied to " << sailfishBrowserFilePath);
+                QProcess::startDetached("update-desktop-database " + applicationsLocation);
+            } else {
+                LOG("ERROR copying standard Sailfish Browser desktop file to " << sailfishBrowserFilePath);
+            }
         }
     }
 
@@ -1914,7 +1929,11 @@ void TDLibWrapper::initializeOpenWith()
         fileOut << QString("Name=Fernschreiber").toUtf8() << "\n";
         fileOut << QString("Icon=harbour-fernschreiber").toUtf8() << "\n";
         fileOut << QString("NotShowIn=X-MeeGo;").toUtf8() << "\n";
-        fileOut << QString("MimeType=x-url-handler/t.me;x-scheme-handler/tg;").toUtf8() << "\n";
+        if (sailfishOSMajorVersion < 4 || ( sailfishOSMajorVersion == 4 && sailfishOSMinorVersion < 1 )) {
+            fileOut << QString("MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/tg;").toUtf8() << "\n";
+        } else {
+            fileOut << QString("MimeType=x-url-handler/t.me;x-scheme-handler/tg;").toUtf8() << "\n";
+        }
         fileOut << QString("X-Maemo-Service=de.ygriega.fernschreiber").toUtf8() << "\n";
         fileOut << QString("X-Maemo-Object-Path=/de/ygriega/fernschreiber").toUtf8() << "\n";
         fileOut << QString("X-Maemo-Method=de.ygriega.fernschreiber.openUrl").toUtf8() << "\n";
