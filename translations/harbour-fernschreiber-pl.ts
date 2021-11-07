@@ -97,7 +97,7 @@
     </message>
     <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ten projekt wykorzystuje OpenStreetMap Nominatim do odwrotnego geokodowania załączników lokalizacji. Dziękujemy za udostępnienie go jako usługi internetowej! </translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
@@ -1570,11 +1570,11 @@
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
+        <translation>Skup się na wpisywaniu tekstu na otwartym czacie</translation>
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Skoncentruj obszar wprowadzania tekstu podczas wchodzenia na czat </translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
