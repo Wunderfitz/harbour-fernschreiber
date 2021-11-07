@@ -12,6 +12,15 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Nov 07 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.10
+- Support for SFOS 4.3 on armv7hl and i486
+- New settings accordion - thanks to jgibbon and monich
+- Fix open-with issues with browser and Fernschreiber on SFOS 4.2 and later
+- Fix: No 'Recently used' section if there are no stickers
+- Use generic app booster, fixes some crashes related to animated stickers - thanks to monich
+- New translation to French - thanks to pherjung and nbourdais
+- Updated translations for Polish, Russian, Slovak, Swedish - thanks to all contributors
+
 * Sun May 30 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.9
 - Enhanced information for location attachments (accuracy, nearest location as plain text using OSM Nominatim)
 - Sticker picker performance optimizations - thanks to jgibbon
