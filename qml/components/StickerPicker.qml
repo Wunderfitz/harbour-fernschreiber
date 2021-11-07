@@ -96,6 +96,7 @@ Item {
                 font.bold: true
                 width: recentStickersGridView.width
                 leftPadding: Theme.paddingMedium
+                visible: recentStickersGridView.count > 0
                 maximumLineCount: 1
                 truncationMode: TruncationMode.Fade
                 text: qsTr("Recently used")
