@@ -12,6 +12,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Nov 09 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.10.1
+- Fix: Startup wasn't possible on fresh SFOS installation (thanks to Jolla Harbour QA!)
+- Fix: New open-with handling created duplicate browser shortcuts
+- Open-with support on SFOS 4.2 is (again) a workaround. SFOS 4.3 seems to behave much better...
+- Updated translations for Polish - thanks to atlochowski
+
 * Sun Nov 07 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.10
 - Support for SFOS 4.3 on armv7hl and i486
 - New settings accordion - thanks to jgibbon and monich
