@@ -921,6 +921,10 @@
         <source>sent a video note</source>
         <translation>发送视频消息</translation>
     </message>
+    <message>
+        <source>Animated Emoji: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -2227,6 +2231,10 @@
     <message>
         <source>sent a game</source>
         <translation>发送游戏</translation>
+    </message>
+    <message>
+        <source>Animated Emoji: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

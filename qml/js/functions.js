@@ -45,6 +45,8 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         }
     case 'messageSticker':
         return simple ? qsTr("Sticker: %1").arg(message.content.sticker.emoji) : "";
+    case 'messageAnimatedEmoji':
+        return simple ? qsTr("Animated Emoji: %1").arg(message.content.animated_emoji.sticker.emoji) : "";
     case 'messagePhoto':
         if (message.content.caption.text !== "") {
             return simple ? qsTr("Picture: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)

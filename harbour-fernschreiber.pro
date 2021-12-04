@@ -93,6 +93,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/inlineQueryResults/InlineQueryResultVenue.qml \
     qml/components/inlineQueryResults/InlineQueryResultVideo.qml \
     qml/components/inlineQueryResults/InlineQueryResultVoiceNote.qml \
+    qml/components/messageContent/MessageAnimatedEmoji.qml \
     qml/components/messageContent/MessageAnimation.qml \
     qml/components/messageContent/MessageAudio.qml \
     qml/components/messageContent/MessageContentBase.qml \

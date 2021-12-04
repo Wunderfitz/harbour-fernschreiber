@@ -948,6 +948,10 @@
         <source>sent a video note</source>
         <translation>poslal video-poznámku</translation>
     </message>
+    <message>
+        <source>Animated Emoji: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -2282,6 +2286,10 @@
     <message>
         <source>sent a game</source>
         <translation>poslal hru</translation>
+    </message>
+    <message>
+        <source>Animated Emoji: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -936,6 +936,10 @@ messages</numerusform>
         <source>sent a video note</source>
         <translation>sent a video note</translation>
     </message>
+    <message>
+        <source>Animated Emoji: %1</source>
+        <translation>Animated Emoji: %1</translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -2256,6 +2260,10 @@ messages</numerusform>
     <message>
         <source>sent a game</source>
         <translation>sent a game</translation>
+    </message>
+    <message>
+        <source>Animated Emoji: %1</source>
+        <translation>Animated Emoji: %1</translation>
     </message>
 </context>
 </TS>

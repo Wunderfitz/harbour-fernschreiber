@@ -934,6 +934,10 @@
         <source>sent a video note</source>
         <translation>ha inviato un videomessaggio</translation>
     </message>
+    <message>
+        <source>Animated Emoji: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ImagePage</name>
@@ -2254,6 +2258,10 @@
     <message>
         <source>sent a game</source>
         <translation>ha inviato un gioco</translation>
+    </message>
+    <message>
+        <source>Animated Emoji: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

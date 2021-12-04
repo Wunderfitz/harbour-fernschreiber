@@ -1220,6 +1220,8 @@ Page {
 
                         function getContentComponentHeight(contentType, content, parentWidth) {
                             switch(contentType) {
+                            case "messageAnimatedEmoji":
+                                return content.animated_emoji.sticker.height;
                             case "messageAnimation":
                                 return Functions.getVideoHeight(parentWidth, content.animation);
                             case "messageAudio":
@@ -1247,6 +1249,7 @@ Page {
                         }
 
                         readonly property var delegateMessagesContent: [
+                            "messageAnimatedEmoji",
                             "messageAnimation",
                             "messageAudio",
                             // "messageContact",

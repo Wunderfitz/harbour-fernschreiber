@@ -25,7 +25,7 @@ import "../../js/twemoji.js" as Emoji
 MessageContentBase {
     id: thisItem
 
-    readonly property var stickerData: messageListItem ? messageListItem.myMessage.content.sticker : overlayFlickable.overlayMessage.content.sticker;
+    property var stickerData: messageListItem ? messageListItem.myMessage.content.sticker : overlayFlickable.overlayMessage.content.sticker;
     readonly property bool asEmoji: appSettings.showStickersAsEmojis
     readonly property bool animated: stickerData.is_animated && appSettings.animateStickers
     readonly property bool stickerVisible: staticStickerLoader.item ? staticStickerLoader.item.visible :
@@ -44,6 +44,7 @@ MessageContentBase {
     }
 
     Item {
+
         width: Math.min( stickerData.width, parent.width )
         height: width * aspectRatio
         // (centered in image mode, text-like in sticker mode)

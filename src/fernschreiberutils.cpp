@@ -93,6 +93,9 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     if (contentType == "messageSticker") {
         return tr("Sticker: %1").arg(messageContent.value("sticker").toMap().value("emoji").toString());
     }
+    if (contentType == "messageAnimatedEmoji") {
+        return tr("Animated Emoji: %1").arg(messageContent.value("animated_emoji").toMap().value("sticker").toMap().value("emoji").toString());
+    }
     if (contentType == "messagePhoto") {
         return myself ? tr("sent a picture", "myself") : tr("sent a picture");
     }
