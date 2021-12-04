@@ -78,7 +78,6 @@ Item {
             }
             horizontalAlignment: Text.AlignRight
             truncationMode: TruncationMode.Fade
-            font.pixelSize: Theme.fontSizeSmall
             color: button.highlighted ? Theme.highlightColor : Theme.primaryColor
             textFormat: Text.PlainText
         }
