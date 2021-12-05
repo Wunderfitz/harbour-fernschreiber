@@ -101,6 +101,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateSupergroup", &TDLibReceiver::processUpdateSuperGroup);
     handlers.insert("updateChatOnlineMemberCount", &TDLibReceiver::processChatOnlineMemberCountUpdated);
     handlers.insert("messages", &TDLibReceiver::processMessages);
+    handlers.insert("sponsoredMessages", &TDLibReceiver::processSponsoredMessages);
     handlers.insert("updateNewMessage", &TDLibReceiver::processUpdateNewMessage);
     handlers.insert("message", &TDLibReceiver::processMessage);
     handlers.insert("updateMessageSendSucceeded", &TDLibReceiver::processMessageSendSucceeded);
@@ -354,6 +355,12 @@ void TDLibReceiver::processMessages(const QVariantMap &receivedInformation)
 {
     LOG("Received new messages, amount: " << receivedInformation.value(TOTAL_COUNT).toString());
     emit messagesReceived(receivedInformation.value(MESSAGES).toList(), receivedInformation.value(TOTAL_COUNT).toInt());
+}
+
+void TDLibReceiver::processSponsoredMessages(const QVariantMap &receivedInformation)
+{
+    LOG("Received sponsored messages");
+    emit sponsoredMessagesReceived(receivedInformation.value("messages").toList());
 }
 
 void TDLibReceiver::processUpdateNewMessage(const QVariantMap &receivedInformation)

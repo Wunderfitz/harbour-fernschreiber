@@ -108,6 +108,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/messageContent/MessageVideoNote.qml \
     qml/components/messageContent/MessageVideo.qml \
     qml/components/messageContent/MessageVoiceNote.qml \
+    qml/components/messageContent/SponsoredMessage.qml \
     qml/components/messageContent/WebPagePreview.qml \
     qml/components/settingsPage/Accordion.qml \
     qml/components/settingsPage/AccordionItem.qml \

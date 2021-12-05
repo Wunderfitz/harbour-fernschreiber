@@ -512,6 +512,10 @@
         <source>Accuracy: %1m</source>
         <translation>精度: %1m</translation>
     </message>
+    <message>
+        <source>Sponsored Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1733,6 +1737,21 @@
     <message>
         <source>Uploading...</source>
         <translation>正在上传…</translation>
+    </message>
+</context>
+<context>
+    <name>SponsoredMessage</name>
+    <message>
+        <source>Go to Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Bot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

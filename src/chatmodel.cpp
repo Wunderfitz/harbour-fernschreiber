@@ -221,6 +221,17 @@ QVector<int> ChatModel::MessageData::setInteractionInfo(const QVariantMap &info)
 
 bool ChatModel::MessageData::lessThan(const MessageData *message1, const MessageData *message2)
 {
+    bool message1Sponsored = message1->messageData.value("@type") == "sponsoredMessage";
+    bool message2Sponsored = message2->messageData.value("@type") == "sponsoredMessage";
+    if (message1Sponsored && message2Sponsored) {
+        return message1->messageId < message2->messageId;
+    }
+    if (message1Sponsored && !message2Sponsored) {
+        return false;
+    }
+    if (!message1Sponsored && message2Sponsored) {
+        return true;
+    }
     return message1->messageId < message2->messageId;
 }
 
@@ -232,6 +243,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
 {
     this->tdLibWrapper = tdLibWrapper;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
+    connect(this->tdLibWrapper, SIGNAL(sponsoredMessagesReceived(QVariantList)), this, SLOT(handleSponsoredMessagesReceived(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SLOT(handleNewMessageReceived(qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(receivedMessage(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageReceived(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
@@ -462,6 +474,23 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
 
 }
 
+void ChatModel::handleSponsoredMessagesReceived(const QVariantList &sponsoredMessages)
+{
+    LOG("Handling sponsored messages:" <<sponsoredMessages.size());
+    if (sponsoredMessages.size() > 0) {
+        QList<MessageData*> messagesToBeAdded;
+        for (QVariant sponsoredMessage: sponsoredMessages) {
+            QVariantMap sponsoredMessageData = sponsoredMessage.toMap();
+            const qlonglong messageId = sponsoredMessageData.value(ID).toLongLong();
+            if (messageId && !messageIndexMap.contains(messageId)) {
+                LOG("New sponsored message will be added:" << messageId);
+                messagesToBeAdded.append(new MessageData(sponsoredMessageData, messageId));
+            }
+        }
+        appendMessages(messagesToBeAdded);
+    }
+}
+
 void ChatModel::handleNewMessageReceived(qlonglong chatId, const QVariantMap &message)
 {
     const qlonglong messageId = message.value(ID).toLongLong();
@@ -662,7 +691,14 @@ void ChatModel::insertMessages(const QList<MessageData*> newMessages)
         appendMessages(newMessages);
     } else if (!newMessages.isEmpty()) {
         // There is only an append or a prepend, tertium non datur! (probably ;))
-        const qlonglong lastKnownId = messages.last()->messageId;
+        qlonglong lastKnownId = -1;
+        for (int i = (messages.size() - 1); i >=0; i-- ) {
+            if (messages.at(i)->messageData.value("@type").toString() == "sponsoredMessage") {
+                continue;
+            } else {
+                lastKnownId = messages.at(i)->messageId;
+            }
+        }
         const qlonglong firstNewId = newMessages.first()->messageId;
         LOG("Inserting messages, last known ID:" << lastKnownId << ", first new ID:" << firstNewId);
         if (lastKnownId < firstNewId) {
