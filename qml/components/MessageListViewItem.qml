@@ -42,14 +42,45 @@ ListItem {
         return existingMessage.id === messageId
     });
     readonly property bool isOwnMessage: page.myUserId === myMessage.sender.user_id
+    readonly property bool canDeleteMessage: myMessage.can_be_deleted_for_all_users || (myMessage.can_be_deleted_only_for_self && myMessage.chat_id === page.myUserId)
     property bool hasContentComponent
     property bool additionalOptionsOpened
+
+    readonly property var additionalItemsModel: (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ?
+        extraContentLoader.item.extraContextMenuItems : 0
+    readonly property int numberOfExtraOptionsOtherThanDeleteMessage:
+        (showCopyMessageToClipboardMenuItem ? 0 : 1) +
+        (showForwardMessageMenuItem ? 0 : 1) +
+        (page.canPinMessages() ? 1 : 0) +
+        (additionalItemsModel ? additionalItemsModel.length : 0)
+    readonly property bool deleteMessageIsOnlyExtraOption: canDeleteMessage && !numberOfExtraOptionsOtherThanDeleteMessage
+
+    readonly property int maxContextMenuItemCount: page.isPortrait ? 5 : 4
+    readonly property int baseContextMenuItemCount: (canReplyToMessage ? 1 : 0) +
+        (myMessage.can_be_edited ? 1 : 0) + 2 /* "Select Message" and "More Options..." */
+    readonly property bool showCopyMessageToClipboardMenuItem: (baseContextMenuItemCount + 1) <= maxContextMenuItemCount
+    readonly property bool showForwardMessageMenuItem: (baseContextMenuItemCount + 2) <= maxContextMenuItemCount
+    // And don't count "More Options..." for "Delete Message" if "Delete Message" is the only extra option
+    readonly property bool haveSpaceForDeleteMessageMenuItem: (baseContextMenuItemCount + 3 - (deleteMessageIsOnlyExtraOption ? 1 : 0)) <= maxContextMenuItemCount
 
     highlighted: (down || isSelected || additionalOptionsOpened) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
 
     signal replyToMessage()
     signal editMessage()
+    signal forwardMessage()
+
+    function deleteMessage() {
+        var chatId = page.chatInformation.id
+        var messageId = myMessage.id
+        Remorse.itemAction(messageListItem, qsTr("Message deleted"), function() {
+            tdLibWrapper.deleteMessages(chatId, [ messageId ]);
+        })
+    }
+
+    function copyMessageToClipboard() {
+        Clipboard.text = Functions.getMessageText(myMessage, true, userInformation.id, true)
+    }
 
     onClicked: {
         if(messageListItem.precalculatedValues.pageIsSelecting) {
@@ -105,27 +136,45 @@ ListItem {
         sourceComponent: Component {
             ContextMenu {
                 MenuItem {
-                    visible: messageListItem.canReplyToMessage
-                    onClicked: messageListItem.replyToMessage()
+                    visible: canReplyToMessage
+                    onClicked: replyToMessage()
                     text: qsTr("Reply to Message")
                 }
                 MenuItem {
                     visible: typeof myMessage.can_be_edited !== "undefined" && myMessage.can_be_edited
-                    onClicked: messageListItem.editMessage()
+                    onClicked: editMessage()
                     text: qsTr("Edit Message")
                 }
                 MenuItem {
-                    onClicked: {
-                        page.toggleMessageSelection(myMessage);
-                    }
+                    onClicked: page.toggleMessageSelection(myMessage)
                     text: qsTr("Select Message")
                 }
                 MenuItem {
+                    visible: showCopyMessageToClipboardMenuItem
+                    onClicked: copyMessageToClipboard()
+                    text: qsTr("Copy Message to Clipboard")
+                }
+                MenuItem {
+                    visible: showForwardMessageMenuItem
+                    onClicked: forwardMessage()
+                    text: qsTr("Forward Message")
+                }
+                MenuItem {
+                    visible: canDeleteMessage && haveSpaceForDeleteMessageMenuItem
+                    onClicked: deleteMessage()
+                    text: qsTr("Delete Message")
+                }
+                MenuItem {
+                    visible: (numberOfExtraOptionsOtherThanDeleteMessage > 0) ||
+                        (deleteMessageIsOnlyExtraOption && !haveSpaceForDeleteMessageMenuItem)
                     onClicked: {
                         messageOptionsDrawer.myMessage = myMessage;
                         messageOptionsDrawer.userInformation = userInformation;
                         messageOptionsDrawer.sourceItem = messageListItem
-                        messageOptionsDrawer.additionalItemsModel = (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ? extraContentLoader.item.extraContextMenuItems : 0;
+                        messageOptionsDrawer.additionalItemsModel = additionalItemsModel
+                        messageOptionsDrawer.showCopyMessageToClipboardMenuItem = !showCopyMessageToClipboardMenuItem
+                        messageOptionsDrawer.showForwardMessageMenuItem = !showForwardMessageMenuItem
+                        messageOptionsDrawer.showDeleteMessageMenuItem = canDeleteMessage && !haveSpaceForDeleteMessageMenuItem
                         messageListItem.additionalOptionsOpened = true;
                         messageOptionsDrawer.open = true;
                     }
