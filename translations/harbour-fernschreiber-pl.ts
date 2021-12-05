@@ -530,7 +530,7 @@
     </message>
     <message>
         <source>Sponsored Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiadomość sponsorowana</translation>
     </message>
 </context>
 <context>
@@ -950,7 +950,7 @@
     </message>
     <message>
         <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Animowane Emoji: %1</translation>
     </message>
 </context>
 <context>
@@ -1808,15 +1808,15 @@
     <name>SponsoredMessage</name>
     <message>
         <source>Go to Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Przejdź do Kanału</translation>
     </message>
     <message>
         <source>Go to Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Przejdź do Wiadomości</translation>
     </message>
     <message>
         <source>Start Bot</source>
-        <translation type="unfinished"></translation>
+        <translation>Uruchom Bota</translation>
     </message>
 </context>
 <context>
@@ -2320,7 +2320,7 @@
     </message>
     <message>
         <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Animowane Emoji: %1</translation>
     </message>
 </context>
 </TS>
