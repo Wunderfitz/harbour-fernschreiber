@@ -704,19 +704,21 @@ Page {
         property var userInformation: ({})
         property var additionalItemsModel: 0
         property var sourceItem
+        property bool showCopyMessageToClipboardMenuItem
+        property bool showForwardMessageMenuItem
+        property bool showDeleteMessageMenuItem
 
         property list<NamedAction> messageOptionsModel: [
             NamedAction {
-                visible: true
+                visible: messageOptionsDrawer.showCopyMessageToClipboardMenuItem
                 name: qsTr("Copy Message to Clipboard")
-                action: function () { Clipboard.text = Functions.getMessageText(messageOptionsDrawer.myMessage, true, messageOptionsDrawer.userInformation.id, true); }
+                action: messageOptionsDrawer.myMessage.copyMessageToClipboard
             },
             NamedAction {
-                visible: messageOptionsDrawer.myMessage.can_be_forwarded
+                visible: messageOptionsDrawer.showForwardMessageMenuItem && messageOptionsDrawer.myMessage.can_be_forwarded
                 name: qsTr("Forward Message")
                 action: function () {
-                    var messagesToForward = [ messageOptionsDrawer.myMessage ];
-                    startForwardingMessages(messagesToForward);
+                    startForwardingMessages([messageOptionsDrawer.myMessage])
                 }
             },
             NamedAction {
@@ -732,13 +734,9 @@ Page {
                 }
             },
             NamedAction {
-                visible: messageOptionsDrawer.myMessage.can_be_deleted_for_all_users || (messageOptionsDrawer.myMessage.can_be_deleted_only_for_self && messageOptionsDrawer.myMessage.chat_id === chatPage.myUserId)
+                visible: messageOptionsDrawer.showDeleteMessageMenuItem
                 name: qsTr("Delete Message")
-                action: function () {
-                    var chatId = chatPage.chatInformation.id;
-                    var messageId = messageOptionsDrawer.myMessage.id;
-                    Remorse.itemAction(messageOptionsDrawer.sourceItem, qsTr("Message deleted"), function() { tdLibWrapper.deleteMessages(chatId, [ messageId ]); });
-                }
+                action: messageOptionsDrawer.sourceItem.deleteMessage
             }
         ]
 
@@ -749,7 +747,8 @@ Page {
                     jointModel.push(additionalItemsModel[j]);
                 }
                 for (var i = 0; i < messageOptionsModel.length; i++) {
-                    jointModel.push(messageOptionsModel[i]);
+                    var item = messageOptionsModel[i]
+                    if (item.visible) jointModel.push(item)
                 }
                 drawerListView.model = jointModel;
                 focus = true // Take the focus away from the text field
@@ -1309,6 +1308,9 @@ Page {
                                         newMessageColumn.editMessageId = messageId
                                         newMessageTextField.text = Functions.getMessageText(myMessage, false, chatPage.myUserId, true)
                                         newMessageTextField.focus = true
+                                    }
+                                    onForwardMessage: {
+                                        startForwardingMessages([myMessage])
                                     }
                                 }
                             }
