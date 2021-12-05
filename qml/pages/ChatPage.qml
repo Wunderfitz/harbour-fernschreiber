@@ -44,6 +44,7 @@ Page {
     property bool isBasicGroup: false;
     property bool isSuperGroup: false;
     property bool isChannel: false;
+    property bool containsSponsoredMessages: false;
     property var chatPartnerInformation;
     property var botInformation;
     property var chatGroupInformation;
@@ -186,6 +187,10 @@ Page {
         var messageStatusSuffix = "";
         if(!message) {
             return "";
+        }
+
+        if (message['@type'] === "sponsoredMessage") {
+            return qsTr("Sponsored Message");
         }
 
         if (message.edit_date > 0) {
@@ -552,10 +557,12 @@ Page {
             }
         }
         onUserFullInfoUpdated: {
-
             if(userId === chatPartnerInformation.id) {
                 chatPage.botInformation = userFullInfo;
             }
+        }
+        onSponsoredMessagesReceived: {
+            chatPage.containsSponsoredMessages = true;
         }
     }
 
@@ -684,8 +691,10 @@ Page {
         }
 
         onTriggered: {
-            if(chatInformation.unread_count > 0 && lastQueuedIndex > -1) {
-                var messageToRead = chatModel.getMessage(lastQueuedIndex);
+            var messageToRead = chatModel.getMessage(lastQueuedIndex);
+            if (messageToRead['@type'] === "sponsoredMessage") {
+                tdLibWrapper.viewSponsoredMessage(chatInformation.id, messageToRead.id);
+            } else if (chatInformation.unread_count > 0 && lastQueuedIndex > -1) {
                 if (messageToRead && messageToRead.id) {
                     tdLibWrapper.viewMessage(chatInformation.id, messageToRead.id, false);
                 }
@@ -1085,6 +1094,9 @@ Page {
                                 Debug.log("Page is initialized!");
                                 chatPage.isInitialized = true;
                                 chatView.handleScrollPositionChanged();
+                                if (chatPage.isChannel) {
+                                    tdLibWrapper.getChatSponsoredMessages(chatInformation.id);
+                                }
                             }
                         }
                     }
@@ -1135,7 +1147,8 @@ Page {
 
                         function handleScrollPositionChanged() {
                             Debug.log("Current position: ", chatView.contentY);
-                            if (chatOverviewItem.visible && chatInformation.unread_count > 0) {
+                            Debug.log("Contains sponsored messages?", chatPage.containsSponsoredMessages);
+                            if (chatOverviewItem.visible && ( chatInformation.unread_count > 0 || chatPage.containsSponsoredMessages ) ) {
                                 var bottomIndex = chatView.indexAt(chatView.contentX, ( chatView.contentY + chatView.height - Theme.horizontalPageMargin ));
                                 if (bottomIndex > -1) {
                                     viewMessageTimer.queueViewMessage(bottomIndex)

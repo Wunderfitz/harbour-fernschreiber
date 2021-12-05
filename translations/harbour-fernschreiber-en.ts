@@ -522,6 +522,10 @@
         <source>Accuracy: %1m</source>
         <translation>Accuracy: %1m</translation>
     </message>
+    <message>
+        <source>Sponsored Message</source>
+        <translation>Sponsored Message</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1761,6 +1765,21 @@ messages</numerusform>
     <message>
         <source>Uploading...</source>
         <translation>Uploading...</translation>
+    </message>
+</context>
+<context>
+    <name>SponsoredMessage</name>
+    <message>
+        <source>Go to Channel</source>
+        <translation>Go to Channel</translation>
+    </message>
+    <message>
+        <source>Go to Message</source>
+        <translation>Go to Message</translation>
+    </message>
+    <message>
+        <source>Start Bot</source>
+        <translation>Start Bot</translation>
     </message>
 </context>
 <context>

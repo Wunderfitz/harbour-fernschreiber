@@ -158,6 +158,7 @@ public:
     Q_INVOKABLE void leaveChat(const QString &chatId);
     Q_INVOKABLE void getChatHistory(qlonglong chatId, qlonglong fromMessageId = 0, int offset = -1, int limit = 50, bool onlyLocal = false);
     Q_INVOKABLE void viewMessage(const QString &chatId, const QString &messageId, bool force);
+    Q_INVOKABLE void viewSponsoredMessage(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void pinMessage(const QString &chatId, const QString &messageId, bool disableNotification = false);
     Q_INVOKABLE void unpinMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId = "0");
@@ -172,6 +173,7 @@ public:
     Q_INVOKABLE void getMessage(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void getCallbackQueryAnswer(const QString &chatId, const QString &messageId, const QVariantMap &payload);
     Q_INVOKABLE void getChatPinnedMessage(qlonglong chatId);
+    Q_INVOKABLE void getChatSponsoredMessages(qlonglong chatId);
     Q_INVOKABLE void setOptionInteger(const QString &optionName, int optionValue);
     Q_INVOKABLE void setOptionBoolean(const QString &optionName, bool optionValue);
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);
@@ -260,6 +262,7 @@ signals:
     void superGroupUpdated(qlonglong groupId);
     void chatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount);
     void messagesReceived(const QVariantList &messages, int totalCount);
+    void sponsoredMessagesReceived(const QVariantList &sponsoredMessages);
     void newMessageReceived(qlonglong chatId, const QVariantMap &message);
     void copyToDownloadsSuccessful(const QString &fileName, const QString &filePath);
     void copyToDownloadsError(const QString &fileName, const QString &filePath);

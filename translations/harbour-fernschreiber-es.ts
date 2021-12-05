@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Usa la licencia GPLv3</translation>
+        <translation>Licenciado por: GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
@@ -97,11 +97,11 @@
     </message>
     <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
-        <translation type="unfinished"></translation>
+        <translation>Este proyecto usa la librería OpenStreetMap Nominatim para la codificación geográfica inversa de archivos adjuntos de ubicación. ¡Gracias por estar disponible como servicio web!</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
-        <translation type="unfinished"></translation>
+        <translation>Librería OSM Nominatim</translation>
     </message>
 </context>
 <context>
@@ -516,10 +516,14 @@
     </message>
     <message>
         <source>Unknown address</source>
-        <translation type="unfinished"></translation>
+        <translation>Dirección desconocida</translation>
     </message>
     <message>
         <source>Accuracy: %1m</source>
+        <translation>Exactitud: %1m</translation>
+    </message>
+    <message>
+        <source>Sponsored Message</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -737,7 +741,7 @@
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>envie una nota de voz</translation>
+        <translation>envié una nota de voz</translation>
     </message>
     <message>
         <source>sent a venue</source>
@@ -936,7 +940,7 @@
     </message>
     <message>
         <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Emoji animado: %1</translation>
     </message>
 </context>
 <context>
@@ -1181,7 +1185,7 @@
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation>Transporte-encriptado, usa la nube de Telegram, se puede compartir entre dispositivos</translation>
+        <translation>Transporte-encriptado, usa la nube de Telegram, compartible entre dispositivos</translation>
     </message>
     <message>
         <source>Search a contact...</source>
@@ -1512,11 +1516,11 @@
     </message>
     <message>
         <source>Show stickers as emojis</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar pegatinas como emojis</translation>
     </message>
     <message>
         <source>Only display emojis instead of the actual stickers</source>
-        <translation></translation>
+        <translation>Solo muestra emojis en lugar de las pegatinas reales</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
@@ -1547,11 +1551,11 @@
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
+        <translation>Enfocar la entrada de texto en la conversación abierta</translation>
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Enfocar el área de entrada de texto al ingresar a una conversación</translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
@@ -1742,7 +1746,7 @@
     </message>
     <message>
         <source>Profile Pictures</source>
-        <translation>Perfil de imagen</translation>
+        <translation>Imagen de perfil</translation>
     </message>
     <message>
         <source>Add Picture</source>
@@ -1759,6 +1763,21 @@
     <message>
         <source>Uploading...</source>
         <translation>Subiendo...</translation>
+    </message>
+</context>
+<context>
+    <name>SponsoredMessage</name>
+    <message>
+        <source>Go to Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Bot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1799,7 +1818,7 @@
     </message>
     <message>
         <source>Copy video to gallery</source>
-        <translation>Copiar video a la galería </translation>
+        <translation>Copiar video a la galería</translation>
     </message>
 </context>
 <context>
@@ -2261,7 +2280,7 @@
     </message>
     <message>
         <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Emoji animado: %1</translation>
     </message>
 </context>
 </TS>

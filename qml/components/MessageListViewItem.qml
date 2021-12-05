@@ -141,7 +141,7 @@ ListItem {
                     text: qsTr("Reply to Message")
                 }
                 MenuItem {
-                    visible: myMessage.can_be_edited
+                    visible: typeof myMessage.can_be_edited !== "undefined" && myMessage.can_be_edited
                     onClicked: editMessage()
                     text: qsTr("Edit Message")
                 }
@@ -187,16 +187,16 @@ ListItem {
     Connections {
         target: chatModel
         onMessagesReceived: {
-            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex();
+            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex() && myMessage['@type'] !== "sponsoredMessage";
         }
         onMessagesIncrementalUpdate: {
-            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex();
+            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex() && myMessage['@type'] !== "sponsoredMessage";
         }
         onNewMessageReceived: {
-            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex();
+            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex() && myMessage['@type'] !== "sponsoredMessage";
         }
         onUnreadCountUpdated: {
-            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex();
+            messageBackground.isUnread = index > chatModel.getLastReadMessageIndex() && myMessage['@type'] !== "sponsoredMessage";
         }
         onLastReadSentMessageUpdated: {
             Debug.log("[ChatModel] Messages in this chat were read, new last read: ", lastReadSentIndex, ", updating description for index ", index, ", status: ", (index <= lastReadSentIndex));
@@ -305,7 +305,7 @@ ListItem {
                 }
                 height: messageTextColumn.height + precalculatedValues.paddingMediumDouble
                 width: precalculatedValues.backgroundWidth
-                property bool isUnread: index > chatModel.getLastReadMessageIndex()
+                property bool isUnread: index > chatModel.getLastReadMessageIndex() && myMessage['@type'] !== "sponsoredMessage"
                 color: Theme.colorScheme === Theme.LightOnDark ? (isUnread ? Theme.secondaryHighlightColor : Theme.secondaryColor) : (isUnread ? Theme.backgroundGlowColor : Theme.overlayBackgroundColor)
                 radius: parent.width / 50
                 opacity: isUnread ? 0.5 : 0.2
@@ -327,7 +327,7 @@ ListItem {
                     id: userText
 
                     width: parent.width
-                    text: messageListItem.isOwnMessage ? qsTr("You") : Emoji.emojify(messageListItem.isAnonymous ? page.chatInformation.title : Functions.getUserName(messageListItem.userInformation), font.pixelSize)
+                    text: messageListItem.isOwnMessage ? qsTr("You") : Emoji.emojify( myMessage['@type'] === "sponsoredMessage" ? tdLibWrapper.getChat(myMessage.sponsor_chat_id).title : ( messageListItem.isAnonymous ? page.chatInformation.title : Functions.getUserName(messageListItem.userInformation) ), font.pixelSize)
                     font.pixelSize: Theme.fontSizeExtraSmall
                     font.weight: Font.ExtraBold
                     color: messageListItem.textColor
@@ -335,7 +335,7 @@ ListItem {
                     truncationMode: TruncationMode.Fade
                     textFormat: Text.StyledText
                     horizontalAlignment: messageListItem.textAlign
-                    visible: precalculatedValues.showUserInfo
+                    visible: precalculatedValues.showUserInfo || myMessage['@type'] === "sponsoredMessage"
                     MouseArea {
                         anchors.fill: parent
                         enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous)
@@ -351,7 +351,7 @@ ListItem {
 
                 Loader {
                     id: messageInReplyToLoader
-                    active: myMessage.reply_to_message_id !== 0
+                    active: typeof myMessage.reply_to_message_id !== "undefined" && myMessage.reply_to_message_id !== 0
                     width: parent.width
                     // text height ~= 1,28*font.pixelSize
                     height: active ? precalculatedValues.messageInReplyToHeight : 0
@@ -456,6 +456,21 @@ ListItem {
                     horizontalAlignment: messageListItem.textAlign
                     linkColor: Theme.highlightColor
                     visible: (text !== "")
+                }
+
+                Loader {
+                    id: sponsoredMessageButtonLoader
+                    active: myMessage['@type'] === "sponsoredMessage"
+                    asynchronous: true
+                    width: parent.width
+                    height: (status === Loader.Ready) ? item.implicitHeight : myMessage['@type'] === "sponsoredMessage" ? Theme.itemSizeMedium : 0
+
+                    sourceComponent: Component {
+                        SponsoredMessage {
+                            sponsoredMessageData: myMessage
+                            width: parent.width
+                        }
+                    }
                 }
 
                 Loader {

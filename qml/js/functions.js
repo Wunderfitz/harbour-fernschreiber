@@ -34,7 +34,10 @@ function getUserName(userInformation) {
 
 function getMessageText(message, simple, currentUserId, ignoreEntities) {
 
-    var myself = ( message.sender['@type'] === "messageSenderUser" && message.sender.user_id.toString() === currentUserId.toString() );
+    var myself = false;
+    if ( message['@type'] !== "sponsoredMessage" ) {
+        myself = ( message.sender['@type'] === "messageSenderUser" && message.sender.user_id.toString() === currentUserId.toString() );
+    }
 
     switch(message.content['@type']) {
     case 'messageText':

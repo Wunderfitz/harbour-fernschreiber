@@ -118,6 +118,7 @@ void TDLibWrapper::initializeTDLibReciever() {
     connect(this->tdLibReceiver, SIGNAL(superGroupUpdated(qlonglong, QVariantMap)), this, SLOT(handleSuperGroupUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SIGNAL(chatOnlineMemberCountUpdated(QString, int)));
     connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList, int)), this, SIGNAL(messagesReceived(QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(sponsoredMessagesReceived(QVariantList)), this, SIGNAL(sponsoredMessagesReceived(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SIGNAL(newMessageReceived(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageInformation(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageInformation(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)));
@@ -332,6 +333,17 @@ void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId, 
     QVariantList messageIds;
     messageIds.append(messageId);
     requestObject.insert("message_ids", messageIds);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::viewSponsoredMessage(qlonglong chatId, qlonglong messageId)
+{
+    LOG("Mark sponsored message as viewed" << chatId << messageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "viewSponsoredMessage");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("sponsored_message_id", messageId);
+    requestObject.insert(_EXTRA, "viewSponsoredMessage");
     this->sendRequest(requestObject);
 }
 
@@ -652,6 +664,16 @@ void TDLibWrapper::getChatPinnedMessage(qlonglong chatId)
     requestObject.insert(_TYPE, "getChatPinnedMessage");
     requestObject.insert(CHAT_ID, chatId);
     requestObject.insert(_EXTRA, "getChatPinnedMessage:" + QString::number(chatId));
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getChatSponsoredMessages(qlonglong chatId)
+{
+    LOG("Retrieving sponsored messages" << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getChatSponsoredMessages");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(_EXTRA, "getChatSponsoredMessages:" + QString::number(chatId));
     this->sendRequest(requestObject);
 }
 

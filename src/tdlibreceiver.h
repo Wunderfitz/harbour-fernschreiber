@@ -56,6 +56,7 @@ signals:
     void superGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void chatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount);
     void messagesReceived(const QVariantList &messages, int totalCount);
+    void sponsoredMessagesReceived(const QVariantList &sponsoredMessages);
     void newMessageReceived(qlonglong chatId, const QVariantMap &message);
     void messageInformation(qlonglong chatId, qlonglong messageId, const QVariantMap &message);
     void messageSendSucceeded(qlonglong messageId, qlonglong oldMessageId, const QVariantMap &message);
@@ -130,6 +131,7 @@ private:
     void processUpdateSuperGroup(const QVariantMap &receivedInformation);
     void processChatOnlineMemberCountUpdated(const QVariantMap &receivedInformation);
     void processMessages(const QVariantMap &receivedInformation);
+    void processSponsoredMessages(const QVariantMap &receivedInformation);
     void processUpdateNewMessage(const QVariantMap &receivedInformation);
     void processMessage(const QVariantMap &receivedInformation);
     void processMessageSendSucceeded(const QVariantMap &receivedInformation);
