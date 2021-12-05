@@ -12,6 +12,14 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Dec 05 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.11
+- Update to TDLib 1.7.9 - bring Fernschreiber back to life
+- Support for animated emoji
+- Preliminary support for sponsored messages - mandatory after January 1, 2022
+- Use larger font for settings section headers - thanks to monich
+- Hide "Extra options..." context menu item if it's not needed - thanks to monich
+- Updated translation for Spanish - thanks to carlosgonz0
+
 * Tue Nov 09 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.10.1
 - Fix: Startup wasn't possible on fresh SFOS installation (thanks to Jolla Harbour QA!)
 - Fix: New open-with handling created duplicate browser shortcuts

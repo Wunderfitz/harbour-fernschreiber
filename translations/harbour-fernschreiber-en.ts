@@ -503,10 +503,6 @@
         <translation>Additional Options</translation>
     </message>
     <message>
-        <source>Message deleted</source>
-        <translation>Message deleted</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Delete Message</translation>
     </message>
@@ -1067,6 +1063,22 @@ messages</numerusform>
     <message>
         <source>More Options...</source>
         <translation>More Options...</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Message deleted</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Copy Message to Clipboard</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Forward Message</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Delete Message</translation>
     </message>
 </context>
 <context>

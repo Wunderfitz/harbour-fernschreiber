@@ -503,10 +503,6 @@
         <translation>Opciones adicionales </translation>
     </message>
     <message>
-        <source>Message deleted</source>
-        <translation>Mensaje borrado</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Borrar</translation>
     </message>
@@ -1065,6 +1061,22 @@
     <message>
         <source>More Options...</source>
         <translation>Más opciones</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Mensaje borrado</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Copiar</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Reenviar mensaje</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Borrar</translation>
     </message>
 </context>
 <context>

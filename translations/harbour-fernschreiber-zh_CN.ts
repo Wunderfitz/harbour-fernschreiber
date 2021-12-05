@@ -493,10 +493,6 @@
         <translation>附加选项</translation>
     </message>
     <message>
-        <source>Message deleted</source>
-        <translation>已删除消息</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>删除消息</translation>
     </message>
@@ -1052,6 +1048,22 @@
     <message>
         <source>More Options...</source>
         <translation>更多选项…</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>已删除消息</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>复制消息到剪切板</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>转发消息</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>删除消息</translation>
     </message>
 </context>
 <context>

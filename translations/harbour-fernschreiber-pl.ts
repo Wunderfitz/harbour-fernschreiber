@@ -513,10 +513,6 @@
         <translation>Dodatkowe opcje</translation>
     </message>
     <message>
-        <source>Message deleted</source>
-        <translation>Wiadomość usunięta</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Usuń wiadomość</translation>
     </message>
@@ -1079,6 +1075,22 @@
     <message>
         <source>More Options...</source>
         <translation>Więcej opcji...</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Wiadomość usunięta</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Skopiuj wiadomość do schowka</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Przekaż widomość</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Usuń wiadomość</translation>
     </message>
 </context>
 <context>

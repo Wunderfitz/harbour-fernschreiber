@@ -513,10 +513,6 @@
         <translation>Дополнительные опции</translation>
     </message>
     <message>
-        <source>Message deleted</source>
-        <translation>Сообщение удалено</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Удалить сообщение</translation>
     </message>
@@ -1082,6 +1078,22 @@
     <message>
         <source>More Options...</source>
         <translation>Ещё...</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Сообщение удалено</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Скопировать в буфер обмена</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Переслать сообщение</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Удалить сообщение</translation>
     </message>
 </context>
 <context>

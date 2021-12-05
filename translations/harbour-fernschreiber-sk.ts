@@ -513,10 +513,6 @@
         <translation>Prídavné voľby</translation>
     </message>
     <message>
-        <source>Message deleted</source>
-        <translation>Správa bola odstránená</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Odstrániť správu</translation>
     </message>
@@ -1079,6 +1075,22 @@
     <message>
         <source>More Options...</source>
         <translation>Ďalšie voľby...</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Správa bola odstránená</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Kopírovať správu do schránky</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Postúpiť správu</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Odstrániť správu</translation>
     </message>
 </context>
 <context>

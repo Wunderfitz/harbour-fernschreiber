@@ -493,10 +493,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Message deleted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation type="unfinished">Üzenet törlése</translation>
     </message>
@@ -1051,6 +1047,22 @@
     <message>
         <source>More Options...</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation type="unfinished">Üzenet törlése</translation>
     </message>
 </context>
 <context>

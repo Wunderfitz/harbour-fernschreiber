@@ -503,10 +503,6 @@
         <translation>Fler alternativ</translation>
     </message>
     <message>
-        <source>Message deleted</source>
-        <translation>Mededelande borttaget</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Ta bort meddelandet</translation>
     </message>
@@ -1065,6 +1061,22 @@
     <message>
         <source>More Options...</source>
         <translation>Fler alternativ...</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Mededelande borttaget</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Kopiera meddelandet till urklipp</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Vidarebefordra meddelande</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Ta bort meddelandet</translation>
     </message>
 </context>
 <context>

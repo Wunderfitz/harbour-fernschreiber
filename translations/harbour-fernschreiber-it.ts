@@ -503,10 +503,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Message deleted</source>
-        <translation>Messaggio cancellato</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Cancella messaggio</translation>
     </message>
@@ -1065,6 +1061,22 @@
     <message>
         <source>More Options...</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Messaggio cancellato</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Copia messaggio nella clipboard</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Cancella messaggio</translation>
     </message>
 </context>
 <context>

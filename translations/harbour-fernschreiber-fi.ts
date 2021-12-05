@@ -503,10 +503,6 @@
         <translation>Lisää vaihtoehtoja</translation>
     </message>
     <message>
-        <source>Message deleted</source>
-        <translation>Viesti poistettu</translation>
-    </message>
-    <message>
         <source>Delete Message</source>
         <translation>Poista viesti</translation>
     </message>
@@ -1066,6 +1062,22 @@
     <message>
         <source>More Options...</source>
         <translation>Lisää valintoja...</translation>
+    </message>
+    <message>
+        <source>Message deleted</source>
+        <translation>Viesti poistettu</translation>
+    </message>
+    <message>
+        <source>Copy Message to Clipboard</source>
+        <translation>Kopioi viesti leikepöydälle</translation>
+    </message>
+    <message>
+        <source>Forward Message</source>
+        <translation>Välitä viesti</translation>
+    </message>
+    <message>
+        <source>Delete Message</source>
+        <translation>Poista viesti</translation>
     </message>
 </context>
 <context>
