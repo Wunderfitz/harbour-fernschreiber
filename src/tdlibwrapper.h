@@ -262,7 +262,7 @@ signals:
     void superGroupUpdated(qlonglong groupId);
     void chatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount);
     void messagesReceived(const QVariantList &messages, int totalCount);
-    void sponsoredMessagesReceived(const QVariantList &sponsoredMessages);
+    void sponsoredMessagesReceived(qlonglong chatId, const QVariantList &messages);
     void newMessageReceived(qlonglong chatId, const QVariantMap &message);
     void copyToDownloadsSuccessful(const QString &fileName, const QString &filePath);
     void copyToDownloadsError(const QString &fileName, const QString &filePath);
@@ -335,6 +335,7 @@ public slots:
     void handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned);
     void handleUserPrivacySettingRules(const QVariantMap &rules);
     void handleUpdatedUserPrivacySettingRules(const QVariantMap &updatedRules);
+    void handleSponsoredMess(qlonglong chatId, const QVariantList &messages);
 
 private:
     void setOption(const QString &name, const QString &type, const QVariant &value);

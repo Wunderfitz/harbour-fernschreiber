@@ -49,6 +49,8 @@ namespace {
     const QString TYPE_MESSAGE_INTERACTION_INFO("messageInteractionInfo");
     const QString INTERACTION_INFO("interaction_info");
     const QString VIEW_COUNT("view_count");
+
+    const QString TYPE_SPONSORED_MESSAGE("sponsoredMessage");
 }
 
 class ChatModel::MessageData
@@ -93,6 +95,7 @@ public:
 public:
     QVariantMap messageData;
     const qlonglong messageId;
+    QString messageType;
     QString messageContentType;
     int viewCount;
 };
@@ -100,6 +103,7 @@ public:
 ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
     messageData(data),
     messageId(msgid),
+    messageType(data.value(_TYPE).toString()),
     messageContentType(data.value(CONTENT).toMap().value(_TYPE).toString()),
     viewCount(data.value(INTERACTION_INFO).toMap().value(VIEW_COUNT).toInt())
 {
@@ -159,6 +163,7 @@ QVector<int> ChatModel::MessageData::diff(const MessageData *message) const
 uint ChatModel::MessageData::updateMessageData(const QVariantMap &data)
 {
     messageData = data;
+    messageType = data.value(_TYPE).toString();
     return RoleFlagDisplay |
         updateContentType(data.value(CONTENT).toMap()) |
         updateViewCount(data.value(INTERACTION_INFO).toMap());
@@ -221,8 +226,8 @@ QVector<int> ChatModel::MessageData::setInteractionInfo(const QVariantMap &info)
 
 bool ChatModel::MessageData::lessThan(const MessageData *message1, const MessageData *message2)
 {
-    bool message1Sponsored = message1->messageData.value("@type") == "sponsoredMessage";
-    bool message2Sponsored = message2->messageData.value("@type") == "sponsoredMessage";
+    bool message1Sponsored = message1->messageType == TYPE_SPONSORED_MESSAGE;
+    bool message2Sponsored = message2->messageType == TYPE_SPONSORED_MESSAGE;
     if (message1Sponsored && message2Sponsored) {
         return message1->messageId < message2->messageId;
     }
@@ -243,7 +248,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
 {
     this->tdLibWrapper = tdLibWrapper;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
-    connect(this->tdLibWrapper, SIGNAL(sponsoredMessagesReceived(QVariantList)), this, SLOT(handleSponsoredMessagesReceived(QVariantList)));
+    connect(this->tdLibWrapper, SIGNAL(sponsoredMessagesReceived(qlonglong, QVariantList)), this, SLOT(handleSponsoredMessagesReceived(qlonglong, QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SLOT(handleNewMessageReceived(qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(receivedMessage(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageReceived(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
@@ -474,10 +479,10 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
 
 }
 
-void ChatModel::handleSponsoredMessagesReceived(const QVariantList &sponsoredMessages)
+void ChatModel::handleSponsoredMessagesReceived(qlonglong chatId, const QVariantList &sponsoredMessages)
 {
-    LOG("Handling sponsored messages:" <<sponsoredMessages.size());
-    if (sponsoredMessages.size() > 0) {
+    if (chatId == this->chatId && sponsoredMessages.size() > 0) {
+        LOG("Handling sponsored messages:" <<sponsoredMessages.size());
         QList<MessageData*> messagesToBeAdded;
         for (QVariant sponsoredMessage: sponsoredMessages) {
             QVariantMap sponsoredMessageData = sponsoredMessage.toMap();
@@ -692,11 +697,10 @@ void ChatModel::insertMessages(const QList<MessageData*> newMessages)
     } else if (!newMessages.isEmpty()) {
         // There is only an append or a prepend, tertium non datur! (probably ;))
         qlonglong lastKnownId = -1;
-        for (int i = (messages.size() - 1); i >=0; i-- ) {
-            if (messages.at(i)->messageData.value("@type").toString() == "sponsoredMessage") {
-                continue;
-            } else {
-                lastKnownId = messages.at(i)->messageId;
+        for (int i = (messages.size() - 1); i >= 0; i-- ) {
+            const MessageData* message = messages.at(i);
+            if (message->messageType != TYPE_SPONSORED_MESSAGE) {
+                lastKnownId = message->messageId;
             }
         }
         const qlonglong firstNewId = newMessages.first()->messageId;
