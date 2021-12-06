@@ -118,7 +118,7 @@ void TDLibWrapper::initializeTDLibReciever() {
     connect(this->tdLibReceiver, SIGNAL(superGroupUpdated(qlonglong, QVariantMap)), this, SLOT(handleSuperGroupUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SIGNAL(chatOnlineMemberCountUpdated(QString, int)));
     connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList, int)), this, SIGNAL(messagesReceived(QVariantList, int)));
-    connect(this->tdLibReceiver, SIGNAL(sponsoredMessagesReceived(QVariantList)), this, SIGNAL(sponsoredMessagesReceived(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(sponsoredMessagesReceived(qlonglong, QVariantList)), this, SLOT(handleSponsoredMess(qlonglong, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SIGNAL(newMessageReceived(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageInformation(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageInformation(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)));
@@ -673,7 +673,7 @@ void TDLibWrapper::getChatSponsoredMessages(qlonglong chatId)
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getChatSponsoredMessages");
     requestObject.insert(CHAT_ID, chatId);
-    requestObject.insert(_EXTRA, "getChatSponsoredMessages:" + QString::number(chatId));
+    requestObject.insert(_EXTRA, chatId); // see TDLibReceiver::processSponsoredMessages
     this->sendRequest(requestObject);
 }
 
@@ -1854,6 +1854,25 @@ void TDLibWrapper::handleUpdatedUserPrivacySettingRules(const QVariantMap &updat
         QVariantMap rawRules = updatedRules.value("rules").toMap();
         rawRules.insert(_EXTRA, usedSetting);
         this->handleUserPrivacySettingRules(rawRules);
+    }
+}
+
+void TDLibWrapper::handleSponsoredMess(qlonglong chatId, const QVariantList &messages)
+{
+    switch (appSettings->getSponsoredMess()) {
+    case AppSettings::SponsoredMessHandle:
+        emit sponsoredMessagesReceived(chatId, messages);
+        break;
+    case AppSettings::SponsoredMessAutoView:
+        LOG("Auto-viewing sponsored mess");
+        for (int i = 0; i < messages.count(); i++) {
+            const QVariantMap mess(messages.at(i).toMap());
+            viewSponsoredMessage(chatId, mess.value(ID).toULongLong());
+        }
+        break;
+    case AppSettings::SponsoredMessIgnore:
+        LOG("Ignoring sponsored mess");
+        break;
     }
 }
 

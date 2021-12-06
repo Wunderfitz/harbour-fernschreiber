@@ -359,8 +359,9 @@ void TDLibReceiver::processMessages(const QVariantMap &receivedInformation)
 
 void TDLibReceiver::processSponsoredMessages(const QVariantMap &receivedInformation)
 {
-    LOG("Received sponsored messages");
-    emit sponsoredMessagesReceived(receivedInformation.value("messages").toList());
+    const qlonglong chatId = receivedInformation.value(EXTRA).toLongLong(); // See TDLibWrapper::getChatSponsoredMessages
+    LOG("Received sponsored messages for chat" << chatId);
+    emit sponsoredMessagesReceived(chatId, receivedInformation.value(MESSAGES).toList());
 }
 
 void TDLibReceiver::processUpdateNewMessage(const QVariantMap &receivedInformation)

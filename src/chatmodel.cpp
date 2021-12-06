@@ -248,7 +248,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
 {
     this->tdLibWrapper = tdLibWrapper;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
-    connect(this->tdLibWrapper, SIGNAL(sponsoredMessagesReceived(QVariantList)), this, SLOT(handleSponsoredMessagesReceived(QVariantList)));
+    connect(this->tdLibWrapper, SIGNAL(sponsoredMessagesReceived(qlonglong, QVariantList)), this, SLOT(handleSponsoredMessagesReceived(qlonglong, QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SLOT(handleNewMessageReceived(qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(receivedMessage(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageReceived(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
@@ -479,10 +479,10 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
 
 }
 
-void ChatModel::handleSponsoredMessagesReceived(const QVariantList &sponsoredMessages)
+void ChatModel::handleSponsoredMessagesReceived(qlonglong chatId, const QVariantList &sponsoredMessages)
 {
-    LOG("Handling sponsored messages:" <<sponsoredMessages.size());
-    if (sponsoredMessages.size() > 0) {
+    if (chatId == this->chatId && sponsoredMessages.size() > 0) {
+        LOG("Handling sponsored messages:" <<sponsoredMessages.size());
         QList<MessageData*> messagesToBeAdded;
         for (QVariant sponsoredMessage: sponsoredMessages) {
             QVariantMap sponsoredMessageData = sponsoredMessage.toMap();

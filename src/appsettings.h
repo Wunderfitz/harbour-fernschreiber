@@ -38,9 +38,16 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool onlineOnlyMode READ onlineOnlyMode WRITE setOnlineOnlyMode NOTIFY onlineOnlyModeChanged)
     Q_PROPERTY(bool delayMessageRead READ delayMessageRead WRITE setDelayMessageRead NOTIFY delayMessageReadChanged)
     Q_PROPERTY(bool focusTextAreaOnChatOpen READ getFocusTextAreaOnChatOpen WRITE setFocusTextAreaOnChatOpen NOTIFY focusTextAreaOnChatOpenChanged)
-
+    Q_PROPERTY(SponsoredMess sponsoredMess READ getSponsoredMess WRITE setSponsoredMess NOTIFY sponsoredMessChanged)
 
 public:
+    enum SponsoredMess {
+        SponsoredMessHandle,
+        SponsoredMessAutoView,
+        SponsoredMessIgnore
+    };
+    Q_ENUM(SponsoredMess)
+
     enum NotificationFeedback {
         NotificationFeedbackNone,
         NotificationFeedbackNew,
@@ -96,6 +103,9 @@ public:
     bool getFocusTextAreaOnChatOpen() const;
     void setFocusTextAreaOnChatOpen(bool focusTextAreaOnChatOpen);
 
+    SponsoredMess getSponsoredMess() const;
+    void setSponsoredMess(SponsoredMess sponsoredMess);
+
 signals:
     void sendByEnterChanged();
     void focusTextAreaAfterSendChanged();
@@ -112,6 +122,7 @@ signals:
     void onlineOnlyModeChanged();
     void delayMessageReadChanged();
     void focusTextAreaOnChatOpenChanged();
+    void sponsoredMessChanged();
 
 private:
     QSettings settings;

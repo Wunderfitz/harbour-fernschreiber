@@ -36,6 +36,7 @@ namespace {
     const QString KEY_ONLINE_ONLY_MODE("onlineOnlyMode");
     const QString KEY_DELAY_MESSAGE_READ("delayMessageRead");
     const QString KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN("focusTextAreaOnChatOpen");
+    const QString KEY_SPONSORED_MESS("sponsoredMess");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
@@ -250,5 +251,20 @@ void AppSettings::setFocusTextAreaOnChatOpen(bool focusTextAreaOnChatOpen)
         LOG(KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN << focusTextAreaOnChatOpen);
         settings.setValue(KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN, focusTextAreaOnChatOpen);
         emit focusTextAreaOnChatOpenChanged();
+    }
+}
+
+AppSettings::SponsoredMess AppSettings::getSponsoredMess() const
+{
+    return (SponsoredMess) settings.value(KEY_SPONSORED_MESS, (int)
+        AppSettings::SponsoredMessHandle).toInt();
+}
+
+void AppSettings::setSponsoredMess(SponsoredMess sponsoredMess)
+{
+    if (getSponsoredMess() != sponsoredMess) {
+        LOG(KEY_SPONSORED_MESS << sponsoredMess);
+        settings.setValue(KEY_SPONSORED_MESS, sponsoredMess);
+        emit sponsoredMessChanged();
     }
 }
