@@ -520,7 +520,7 @@
     </message>
     <message>
         <source>Sponsored Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Reklammeddelande</translation>
     </message>
 </context>
 <context>
@@ -936,7 +936,7 @@
     </message>
     <message>
         <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Animerad emoji: %1</translation>
     </message>
 </context>
 <context>
@@ -1781,15 +1781,15 @@
     <name>SponsoredMessage</name>
     <message>
         <source>Go to Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Gå till kanal</translation>
     </message>
     <message>
         <source>Go to Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Gå till meddelande</translation>
     </message>
     <message>
         <source>Start Bot</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta robot</translation>
     </message>
 </context>
 <context>
@@ -2292,7 +2292,7 @@
     </message>
     <message>
         <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Animerad emoji: %1</translation>
     </message>
 </context>
 </TS>
