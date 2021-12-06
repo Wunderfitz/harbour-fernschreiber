@@ -179,7 +179,7 @@ ChatInformationTabItemBase {
                 if(members && members.length > 0 && chatInformationPage.groupInformation.member_count > membersView.count) {
                     for(var memberIndex in members) {
                         var memberData = members[memberIndex];
-                        var userInfo = tdLibWrapper.getUserInformation(memberData.user_id) || {user:{}, bot_info:{}};
+                        var userInfo = tdLibWrapper.getUserInformation(memberData.member_id.user_id) || {user:{}, bot_info:{}};
                         memberData.user = userInfo;
                         memberData.bot_info = memberData.bot_info || {};
                         pageContent.membersList.append(memberData);
