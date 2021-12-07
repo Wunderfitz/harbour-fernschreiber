@@ -743,10 +743,6 @@
         <translation>opustil tento čet</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Nálepka: %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation>som poslal hlasovú poznámku</translation>
@@ -947,10 +943,6 @@
     <message>
         <source>sent a video note</source>
         <translation>poslal video-poznámku</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1921,10 +1913,6 @@
         <translation>Obrázok: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Nálepka: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Zvuk: %1</translation>
     </message>
@@ -2317,10 +2305,6 @@
     <message>
         <source>sent a game</source>
         <translation>poslal hru</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

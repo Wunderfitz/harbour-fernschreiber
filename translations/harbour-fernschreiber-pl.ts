@@ -743,10 +743,6 @@
         <translation>opuścił ten czat</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Naklejka: %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation>wysłałem notatke głosową</translation>
@@ -947,10 +943,6 @@
     <message>
         <source>sent a video note</source>
         <translation>wysłał notatkę video</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation>Animowane Emoji: %1</translation>
     </message>
 </context>
 <context>
@@ -1921,10 +1913,6 @@
         <translation>Obraz: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Naklejka: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Dźwięk: %1</translation>
     </message>
@@ -2317,10 +2305,6 @@
     <message>
         <source>sent a game</source>
         <translation>wysłał grę</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation>Animowane Emoji: %1</translation>
     </message>
 </context>
 </TS>

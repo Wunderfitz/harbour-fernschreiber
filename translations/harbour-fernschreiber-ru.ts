@@ -746,10 +746,6 @@
         <translation>покунул(а) чат</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Стикер: %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation>отправил(а) голосовую заметку</translation>
@@ -950,10 +946,6 @@
     <message>
         <source>sent a video note</source>
         <translation>отправил(а) видео заметку</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1924,10 +1916,6 @@
         <translation>Картинка: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Стикер: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Аудио: %1</translation>
     </message>
@@ -2320,10 +2308,6 @@
     <message>
         <source>sent a game</source>
         <translation>отправил(а) игру</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

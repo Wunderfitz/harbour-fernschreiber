@@ -104,6 +104,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("sponsoredMessages", &TDLibReceiver::processSponsoredMessages);
     handlers.insert("updateNewMessage", &TDLibReceiver::processUpdateNewMessage);
     handlers.insert("message", &TDLibReceiver::processMessage);
+    handlers.insert("messageLinkInfo", &TDLibReceiver::processMessageLinkInfo);
     handlers.insert("updateMessageSendSucceeded", &TDLibReceiver::processMessageSendSucceeded);
     handlers.insert("updateActiveNotifications", &TDLibReceiver::processUpdateActiveNotifications);
     handlers.insert("updateNotificationGroup", &TDLibReceiver::processUpdateNotificationGroup);
@@ -378,6 +379,13 @@ void TDLibReceiver::processMessage(const QVariantMap &receivedInformation)
     const qlonglong messageId = receivedInformation.value(ID).toLongLong();
     LOG("Received message " << chatId << messageId);
     emit messageInformation(chatId, messageId, receivedInformation);
+}
+
+void TDLibReceiver::processMessageLinkInfo(const QVariantMap &receivedInformation)
+{
+    const QString url = receivedInformation.value(EXTRA).toString();
+    LOG("Received message link info " << url);
+    emit messageLinkInfoReceived(url, receivedInformation);
 }
 
 void TDLibReceiver::processMessageSendSucceeded(const QVariantMap &receivedInformation)

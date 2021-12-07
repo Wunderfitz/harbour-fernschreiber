@@ -731,10 +731,6 @@
         <translation>a quitté cette conversation</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Autocollant : %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation>a envoyé une note vocale</translation>
@@ -933,10 +929,6 @@
     <message>
         <source>sent a video note</source>
         <translation>a envoyé une note vidéo</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1894,10 +1886,6 @@
         <translation>Image : %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Autocollant : %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Audio : %1</translation>
     </message>
@@ -2289,10 +2277,6 @@
     <message>
         <source>sent a game</source>
         <translation>a envoyé un jeu</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

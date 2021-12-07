@@ -731,10 +731,6 @@
         <translation>lämnade denna chatt</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Dekal: %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation>skickade ett röstmeddelande</translation>
@@ -933,10 +929,6 @@
     <message>
         <source>sent a video note</source>
         <translation>skickade ett videomeddelande</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation>Animerad emoji: %1</translation>
     </message>
 </context>
 <context>
@@ -1894,10 +1886,6 @@
         <translation>Bild: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Dekal: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Ljud: %1</translation>
     </message>
@@ -2289,10 +2277,6 @@
     <message>
         <source>sent a game</source>
         <translation>skickade ett spel</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation>Animerad emoji: %1</translation>
     </message>
 </context>
 </TS>

@@ -119,6 +119,7 @@ void TDLibWrapper::initializeTDLibReciever() {
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SIGNAL(chatOnlineMemberCountUpdated(QString, int)));
     connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList, int)), this, SIGNAL(messagesReceived(QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(sponsoredMessagesReceived(qlonglong, QVariantList)), this, SLOT(handleSponsoredMess(qlonglong, QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(messageLinkInfoReceived(QString, QVariantMap)), this, SIGNAL(messageLinkInfoReceived(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SIGNAL(newMessageReceived(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageInformation(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageInformation(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageSendSucceeded(qlonglong, qlonglong, QVariantMap)));
@@ -643,6 +644,16 @@ void TDLibWrapper::getMessage(qlonglong chatId, qlonglong messageId)
     requestObject.insert(CHAT_ID, chatId);
     requestObject.insert(MESSAGE_ID, messageId);
     requestObject.insert(_EXTRA, QString("getMessage:%1:%2").arg(chatId).arg(messageId));
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getMessageLinkInfo(const QString &url)
+{
+    LOG("Retrieving message link info" << url);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getMessageLinkInfo");
+    requestObject.insert("url", url);
+    requestObject.insert(_EXTRA, url);
     this->sendRequest(requestObject);
 }
 

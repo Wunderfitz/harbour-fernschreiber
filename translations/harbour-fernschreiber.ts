@@ -731,10 +731,6 @@
         <translation>left this chat</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Sticker: %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation>sent a voice note</translation>
@@ -933,10 +929,6 @@
     <message>
         <source>sent a video note</source>
         <translation type="unfinished">sent a video note</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1894,10 +1886,6 @@
         <translation>Picture: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Sticker: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Audio: %1</translation>
     </message>
@@ -2288,10 +2276,6 @@
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -719,10 +719,6 @@
         <translation type="unfinished">kilépett a csevegésből</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation type="unfinished">Matrica: %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation type="unfinished">hangüzenetet küldött</translation>
@@ -918,10 +914,6 @@
     </message>
     <message>
         <source>sent a video note</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1867,10 +1859,6 @@
         <translation>Kép: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Matrica: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Audió: %1</translation>
     </message>
@@ -2260,10 +2248,6 @@
     </message>
     <message>
         <source>sent a game</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
