@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Licenciado por: GPLv3</translation>
+        <translation>Licenciado bajo GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
@@ -936,7 +936,7 @@
     </message>
     <message>
         <source>Animated Emoji: %1</source>
-        <translation>Emoji animado: %1</translation>
+        <translation>Emoticono animado: %1</translation>
     </message>
 </context>
 <context>
@@ -1528,11 +1528,11 @@
     </message>
     <message>
         <source>Show stickers as emojis</source>
-        <translation>Mostrar pegatinas como emojis</translation>
+        <translation>Mostrar pegatinas como emoticonos</translation>
     </message>
     <message>
         <source>Only display emojis instead of the actual stickers</source>
-        <translation>Solo muestra emojis en lugar de las pegatinas reales</translation>
+        <translation>Solo muestra los emoticonos en lugar de las pegatinas reales</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
@@ -1563,11 +1563,11 @@
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation>Enfocar la entrada de texto en la conversación abierta</translation>
+        <translation>Enfocar entrada de texto en conversación</translation>
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation>Enfocar el área de entrada de texto al ingresar a una conversación</translation>
+        <translation>Enfoca el área de entrada de texto al ingresar a una conversación</translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
@@ -2292,7 +2292,7 @@
     </message>
     <message>
         <source>Animated Emoji: %1</source>
-        <translation>Emoji animado: %1</translation>
+        <translation>Emoticono animado: %1</translation>
     </message>
 </context>
 </TS>
