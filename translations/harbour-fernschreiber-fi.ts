@@ -647,10 +647,6 @@
 <context>
     <name>FernschreiberUtils</name>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Tarra: %1</translation>
-    </message>
-    <message>
         <source>sent a picture</source>
         <comment>myself</comment>
         <translation>lähetit kuvan</translation>
@@ -934,10 +930,6 @@
     <message>
         <source>sent a video note</source>
         <translation>lähetti videoviestin</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1895,10 +1887,6 @@
         <translation>Kuva: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Tarra: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Äänite: %1</translation>
     </message>
@@ -2290,10 +2278,6 @@
     <message>
         <source>sent a game</source>
         <translation>lähetti pelin</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

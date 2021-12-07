@@ -37,6 +37,30 @@
 #define DEBUG_MODULE FernschreiberUtils
 #include "debuglog.h"
 
+namespace {
+    const QString _TYPE("@type");
+    const QString TEXT("text");
+    const QString EMOJI("emoji");
+    const QString ANIMATED_EMOJI("animated_emoji");
+    const QString STICKER("sticker");
+    const QString USER_ID("user_id");
+
+    const QString MESSAGE_SENDER_TYPE_USER("messageSenderUser");
+
+    const QString MESSAGE_CONTENT_TYPE_TEXT("messageText");
+    const QString MESSAGE_CONTENT_TYPE_STICKER("messageSticker");
+    const QString MESSAGE_CONTENT_TYPE_ANIMATED_EMOJI("messageAnimatedEmoji");
+    const QString MESSAGE_CONTENT_TYPE_PHOTO("messagePhoto");
+    const QString MESSAGE_CONTENT_TYPE_VIDEO("messageVideo");
+    const QString MESSAGE_CONTENT_TYPE_VIDEO_NOTE("messageVideoNote");
+    const QString MESSAGE_CONTENT_TYPE_ANIMATION("messageAnimation");
+    const QString MESSAGE_CONTENT_TYPE_AUDIO("messageAudio");
+    const QString MESSAGE_CONTENT_TYPE_VOICE_NOTE("messageVoiceNote");
+    const QString MESSAGE_CONTENT_TYPE_DOCUMENT("messageDocument");
+    const QString MESSAGE_CONTENT_TYPE_LOCATION("messageLocation");
+    const QString MESSAGE_CONTENT_TYPE_VENUE("messageVenue");
+}
+
 FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
 {
     LOG("Initializing audio recorder...");
@@ -83,44 +107,45 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
         return QString();
     }
 
-    const bool myself = !isChannel && (messageSender.value("@type").toString() == "messageSenderUser" && messageSender.value("user_id").toLongLong() == currentUserId);
+    const QString contentType(messageContent.value(_TYPE).toString());
+    const QString messageSenderType(messageSender.value(_TYPE).toString());
+    const qlonglong messageSenderUserId = messageSender.value(USER_ID).toLongLong();
+    const bool myself = !isChannel && (messageSenderType == MESSAGE_SENDER_TYPE_USER && messageSenderUserId == currentUserId);
 
-    QString contentType = messageContent.value("@type").toString();
-
-    if (contentType == "messageText") {
-        return messageContent.value("text").toMap().value("text").toString();
+    if (contentType == MESSAGE_CONTENT_TYPE_TEXT) {
+        return messageContent.value(TEXT).toMap().value(TEXT).toString();
     }
-    if (contentType == "messageSticker") {
-        return tr("Sticker: %1").arg(messageContent.value("sticker").toMap().value("emoji").toString());
+    if (contentType == MESSAGE_CONTENT_TYPE_STICKER) {
+        return messageContent.value(STICKER).toMap().value(EMOJI).toString();
     }
-    if (contentType == "messageAnimatedEmoji") {
-        return tr("Animated Emoji: %1").arg(messageContent.value("animated_emoji").toMap().value("sticker").toMap().value("emoji").toString());
+    if (contentType == MESSAGE_CONTENT_TYPE_ANIMATED_EMOJI) {
+        return messageContent.value(ANIMATED_EMOJI).toMap().value(STICKER).toMap().value(EMOJI).toString();
     }
-    if (contentType == "messagePhoto") {
+    if (contentType == MESSAGE_CONTENT_TYPE_PHOTO) {
         return myself ? tr("sent a picture", "myself") : tr("sent a picture");
     }
-    if (contentType == "messageVideo") {
+    if (contentType == MESSAGE_CONTENT_TYPE_VIDEO) {
         return myself ? tr("sent a video", "myself") : tr("sent a video");
     }
-    if (contentType == "messageVideoNote") {
+    if (contentType == MESSAGE_CONTENT_TYPE_VIDEO_NOTE) {
         return myself ? tr("sent a video note", "myself") : tr("sent a video note");
     }
-    if (contentType == "messageAnimation") {
+    if (contentType == MESSAGE_CONTENT_TYPE_ANIMATION) {
         return myself ? tr("sent an animation", "myself") : tr("sent an animation");
     }
-    if (contentType == "messageAudio") {
+    if (contentType == MESSAGE_CONTENT_TYPE_AUDIO) {
         return myself ? tr("sent an audio", "myself") : tr("sent an audio");
     }
-    if (contentType == "messageVoiceNote") {
+    if (contentType == MESSAGE_CONTENT_TYPE_VOICE_NOTE) {
         return myself ? tr("sent a voice note", "myself") : tr("sent a voice note");
     }
-    if (contentType == "messageDocument") {
+    if (contentType == MESSAGE_CONTENT_TYPE_DOCUMENT) {
         return myself ? tr("sent a document", "myself") : tr("sent a document");
     }
-    if (contentType == "messageLocation") {
+    if (contentType == MESSAGE_CONTENT_TYPE_LOCATION) {
         return myself ? tr("sent a location", "myself") : tr("sent a location");
     }
-    if (contentType == "messageVenue") {
+    if (contentType == MESSAGE_CONTENT_TYPE_VENUE) {
         return myself ? tr("sent a venue", "myself") : tr("sent a venue");
     }
     if (contentType == "messageContactRegistered") {
@@ -130,7 +155,7 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
         return myself ? tr("joined this chat", "myself") : tr("joined this chat");
     }
     if (contentType == "messageChatAddMembers") {
-        if (messageSender.value("@type").toString() == "messageSenderUser" && messageSender.value("user_id").toLongLong() == messageContent.value("member_user_ids").toList().at(0).toLongLong()) {
+        if (messageSenderType == MESSAGE_SENDER_TYPE_USER && messageSenderUserId == messageContent.value("member_user_ids").toList().at(0).toLongLong()) {
             return myself ? tr("were added to this chat", "myself") : tr("was added to this chat");
         } else {
             QVariantList memberUserIds = messageContent.value("member_user_ids").toList();
@@ -145,7 +170,7 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
         }
     }
     if (contentType == "messageChatDeleteMember") {
-        if (messageSender.value("@type").toString() == "messageSenderUser" && messageSender.value("user_id").toLongLong() == messageContent.value("user_id").toLongLong()) {
+        if (messageSenderType == MESSAGE_SENDER_TYPE_USER && messageSenderUserId == messageContent.value("user_id").toLongLong()) {
             return myself ? tr("left this chat", "myself") : tr("left this chat");
         } else {
             return myself ? tr("have removed %1 from the chat", "myself").arg(getUserName(tdLibWrapper->getUserInformation(messageContent.value("user_id").toString()))) : tr("has removed %1 from the chat").arg(getUserName(tdLibWrapper->getUserInformation(messageContent.value("user_id").toString())));
@@ -176,7 +201,7 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
         return myself ? tr("upgraded this group to a supergroup", "myself") : tr("upgraded this group to a supergroup");
     }
     if (contentType == "messageCustomServiceAction") {
-        return messageContent.value("text").toString();
+        return messageContent.value(TEXT).toString();
     }
     if (contentType == "messagePinMessage") {
         return myself ? tr("changed the pinned message", "myself") : tr("changed the pinned message");
