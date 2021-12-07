@@ -733,10 +733,6 @@ messages</numerusform>
         <translation>left this chat</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Sticker: %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation>sent a voice note</translation>
@@ -935,10 +931,6 @@ messages</numerusform>
     <message>
         <source>sent a video note</source>
         <translation>sent a video note</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation>Animated Emoji: %1</translation>
     </message>
 </context>
 <context>
@@ -1896,10 +1888,6 @@ messages</numerusform>
         <translation>Picture: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Sticker: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Audio: %1</translation>
     </message>
@@ -2291,10 +2279,6 @@ messages</numerusform>
     <message>
         <source>sent a game</source>
         <translation>sent a game</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation>Animated Emoji: %1</translation>
     </message>
 </context>
 </TS>

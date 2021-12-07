@@ -720,10 +720,6 @@
         <translation>离开此对话</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>表情贴图: %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation>发送视频消息</translation>
@@ -920,10 +916,6 @@
     <message>
         <source>sent a video note</source>
         <translation>发送视频消息</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1868,10 +1860,6 @@
         <translation>图片: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>表情贴图: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>音频: %1</translation>
     </message>
@@ -2262,10 +2250,6 @@
     <message>
         <source>sent a game</source>
         <translation>发送游戏</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

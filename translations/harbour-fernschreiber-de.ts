@@ -731,10 +731,6 @@
         <translation>hat diesen Chat verlassen</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Sticker: %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation>haben eine Sprachnachricht geschickt</translation>
@@ -933,10 +929,6 @@
     <message>
         <source>sent a video note</source>
         <translation>hat eine Videonachricht geschickt</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation>Animiertes Emoji: %1</translation>
     </message>
 </context>
 <context>
@@ -1894,10 +1886,6 @@
         <translation>Bild: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Sticker: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Audio: %1</translation>
     </message>
@@ -2289,10 +2277,6 @@
     <message>
         <source>sent a game</source>
         <translation>hat ein Spiel gesendet</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation>Animiertes Emoji: %1</translation>
     </message>
 </context>
 </TS>

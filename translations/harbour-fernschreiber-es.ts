@@ -731,10 +731,6 @@
         <translation>dejó esta conversación</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Pegatina: %1</translation>
-    </message>
-    <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
         <translation>envié una nota de voz</translation>
@@ -933,10 +929,6 @@
     <message>
         <source>sent a video note</source>
         <translation>envió una nota de video</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation>Emoji animado: %1</translation>
     </message>
 </context>
 <context>
@@ -1894,10 +1886,6 @@
         <translation>Imagen: %1</translation>
     </message>
     <message>
-        <source>Sticker: %1</source>
-        <translation>Pegatina: %1</translation>
-    </message>
-    <message>
         <source>Audio: %1</source>
         <translation>Audio: %1</translation>
     </message>
@@ -2289,10 +2277,6 @@
     <message>
         <source>sent a game</source>
         <translation>envió un juego</translation>
-    </message>
-    <message>
-        <source>Animated Emoji: %1</source>
-        <translation>Emoji animado: %1</translation>
     </message>
 </context>
 </TS>
