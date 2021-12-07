@@ -79,7 +79,7 @@ ChatInformationTabItemBase {
             // chat title
             primaryText.text: Emoji.emojify(Functions.getUserName(user), primaryText.font.pixelSize)
             // last user
-            prologSecondaryText.text: "@"+(user.username !== "" ? user.username : user_id) + (user_id === chatInformationPage.myUserId ? " " + qsTr("You") : "")
+            prologSecondaryText.text: "@"+(user.username !== "" ? user.username : member_id.user_id) + (member_id.user_id === chatInformationPage.myUserId ? " " + qsTr("You") : "")
             secondaryText {
                 horizontalAlignment: Text.AlignRight
                 property string statusText: Functions.getChatMemberStatusText(model.status["@type"])
@@ -92,7 +92,7 @@ ChatInformationTabItemBase {
             }
 
             onClicked: {
-                tdLibWrapper.createPrivateChat(user_id, "openDirectly");
+                tdLibWrapper.createPrivateChat(member_id.user_id, "openDirectly");
             }
         }
         footer: Component {
