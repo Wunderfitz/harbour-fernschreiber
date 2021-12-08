@@ -98,7 +98,7 @@ SilicaFlickable {
         if(groupFullInfo.members && groupFullInfo.members.length > 0) {
             for(var memberIndex in groupFullInfo.members) {
                 var memberData = groupFullInfo.members[memberIndex];
-                var userInfo = tdLibWrapper.getUserInformation(memberData.user_id) || {user:{}, bot_info:{}};
+                var userInfo = tdLibWrapper.getUserInformation(memberData.member_id.user_id) || {user:{}, bot_info:{}};
                 memberData.user = userInfo;
                 memberData.bot_info = memberData.bot_info || {};
                 membersList.append(memberData);
