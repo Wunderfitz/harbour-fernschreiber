@@ -522,6 +522,14 @@
         <source>Sponsored Message</source>
         <translation>Sponsored Message</translation>
     </message>
+    <message>
+        <source>Deleting chat</source>
+        <translation>Deleting chat</translation>
+    </message>
+    <message>
+        <source>Delete Chat</source>
+        <translation>Delete Chat</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

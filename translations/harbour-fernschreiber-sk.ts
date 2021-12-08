@@ -532,6 +532,14 @@
         <source>Sponsored Message</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Deleting chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

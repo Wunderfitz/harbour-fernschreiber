@@ -311,6 +311,15 @@ void TDLibWrapper::leaveChat(const QString &chatId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::deleteChat(qlonglong chatId)
+{
+    LOG("Deleting chat " << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "deleteChat");
+    requestObject.insert(CHAT_ID, chatId);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::getChatHistory(qlonglong chatId, qlonglong fromMessageId, int offset, int limit, bool onlyLocal)
 {
     LOG("Retrieving chat history" << chatId << fromMessageId << offset << limit << onlyLocal);

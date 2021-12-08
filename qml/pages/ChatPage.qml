@@ -837,6 +837,20 @@ Page {
 
             PullDownMenu {
                 visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !voiceNoteOverlayLoader.active && !messageOverlayLoader.active && !stickerSetOverlayLoader.active
+
+                MenuItem {
+                    id: deleteChatMenuItem
+                    visible: chatPage.isPrivateChat
+                    onClicked: {
+                        var privateChatId = chatInformation.id;
+                        Remorse.popupAction(chatPage, qsTr("Deleting chat"), function() {
+                            tdLibWrapper.deleteChat(privateChatId);
+                            pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
+                        }, 10000);
+                    }
+                    text: qsTr("Delete Chat")
+                }
+
                 MenuItem {
                     id: closeSecretChatMenuItem
                     visible: chatPage.isSecretChat && chatPage.secretChatDetails.state["@type"] !== "secretChatStateClosed"
