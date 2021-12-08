@@ -28,6 +28,7 @@ class ChatListModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(bool showAllChats READ showAllChats WRITE setShowAllChats NOTIFY showAllChatsChanged)
+    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 
 public:
 
@@ -57,9 +58,9 @@ public:
     ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSettings);
     ~ChatListModel() override;
 
-    virtual QHash<int,QByteArray> roleNames() const override;
-    virtual int rowCount(const QModelIndex&) const override;
-    virtual QVariant data(const QModelIndex &index, int role) const override;
+    QHash<int,QByteArray> roleNames() const Q_DECL_OVERRIDE;
+    int rowCount(const QModelIndex &index = QModelIndex()) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;
 
     Q_INVOKABLE void redrawModel();
     Q_INVOKABLE QVariantMap get(int row);
@@ -90,6 +91,7 @@ private slots:
     void handleRelativeTimeRefreshTimer();
 
 signals:
+    void countChanged();
     void showAllChatsChanged();
     void chatChanged(const qlonglong &changedChatId);
     void chatJoined(const qlonglong &chatId, const QString &chatTitle);

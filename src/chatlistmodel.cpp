@@ -320,6 +320,7 @@ QVector<int> ChatListModel::ChatData::updateLastMessage(const QVariantMap &messa
         changedRoles.append(RoleLastMessageDate);
     }
     if (prevSenderMessageText != senderMessageText()) {
+        changedRoles.append(RoleFilter);
         changedRoles.append(RoleLastMessageText);
     }
     if (prevSenderMessageStatus != senderMessageStatus()) {
@@ -388,6 +389,9 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSetting
     relativeTimeRefreshTimer->setSingleShot(false);
     relativeTimeRefreshTimer->setInterval(30000);
     connect(relativeTimeRefreshTimer, SIGNAL(timeout()), SLOT(handleRelativeTimeRefreshTimer()));
+    connect(this, SIGNAL(rowsInserted(QModelIndex,int,int)), SIGNAL(countChanged()));
+    connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)), SIGNAL(countChanged()));
+    connect(this, SIGNAL(modelReset()), SIGNAL(countChanged()));
 }
 
 ChatListModel::~ChatListModel()
@@ -457,7 +461,7 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RoleIsChannel: return data->isChannel();
         case ChatListModel::RoleIsMarkedAsUnread: return data->isMarkedAsUnread();
         case ChatListModel::RoleIsPinned: return data->isPinned();
-        case ChatListModel::RoleFilter: return QString(data->title() + " " + data->senderMessageText()).trimmed();
+        case ChatListModel::RoleFilter: return data->title() + " " + data->senderMessageText();
         case ChatListModel::RoleDraftMessageText: return data->draftMessageText();
         case ChatListModel::RoleDraftMessageDate: return data->draftMessageDate();
         }
@@ -891,6 +895,7 @@ void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString 
         chat->chatData.insert(TITLE, title);
         QVector<int> changedRoles;
         changedRoles.append(ChatListModel::RoleTitle);
+        changedRoles.append(ChatListModel::RoleFilter);
         const QModelIndex modelIndex(index(chatIndex));
         emit dataChanged(modelIndex, modelIndex, changedRoles);
     } else {
