@@ -44,6 +44,7 @@ Page {
     property bool isBasicGroup: false;
     property bool isSuperGroup: false;
     property bool isChannel: false;
+    property bool isDeletedUser: false;
     property bool containsSponsoredMessages: false;
     property var chatPartnerInformation;
     property var botInformation;
@@ -117,9 +118,12 @@ Page {
                 statusText += secretChatStatus;
             }
         }
-
         if (statusText) {
             chatStatusText.text = statusText;
+        }
+        if (chatPartnerInformation.type['@type'] === "userTypeDeleted") {
+            chatNameText.text = qsTr("Deleted User");
+            chatPage.isDeletedUser = true;
         }
     }
 
@@ -433,7 +437,7 @@ Page {
     }
 
     Component.onDestruction: {
-        if (chatPage.canSendMessages) {
+        if (chatPage.canSendMessages && !chatPage.isDeletedUser) {
             tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text);
         }
         fernschreiberUtils.stopGeoLocationUpdates();

@@ -530,6 +530,10 @@
         <source>Delete Chat</source>
         <translation>Chat löschen</translation>
     </message>
+    <message>
+        <source>Deleted User</source>
+        <translation>Gelöschtes Konto</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

@@ -520,6 +520,10 @@
         <source>Delete Chat</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Deleted User</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
