@@ -309,7 +309,7 @@ ListItem {
                 color: Theme.colorScheme === Theme.LightOnDark ? (isUnread ? Theme.secondaryHighlightColor : Theme.secondaryColor) : (isUnread ? Theme.backgroundGlowColor : Theme.overlayBackgroundColor)
                 radius: parent.width / 50
                 opacity: isUnread ? 0.5 : 0.2
-                visible: appSettings.showStickersAsImages || myMessage.content['@type'] !== "messageSticker"
+                visible: appSettings.showStickersAsImages || (myMessage.content['@type'] !== "messageSticker" && myMessage.content['@type'] !== "messageAnimatedEmoji")
                 Behavior on color { ColorAnimation { duration: 200 } }
                 Behavior on opacity { FadeAnimation {} }
             }
