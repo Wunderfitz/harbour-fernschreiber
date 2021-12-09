@@ -520,19 +520,19 @@
     </message>
     <message>
         <source>Sponsored Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Mensaje patrocinado</translation>
     </message>
     <message>
         <source>Deleting chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrando la conversación</translation>
     </message>
     <message>
         <source>Delete Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrar conversación</translation>
     </message>
     <message>
         <source>Deleted User</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuario borrado</translation>
     </message>
 </context>
 <context>
@@ -1163,7 +1163,7 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation>mensaje publicado a través del usuario bot</translation>
+        <translation>mensaje publicado a través del usuario Robot</translation>
     </message>
 </context>
 <context>
@@ -1705,11 +1705,11 @@
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation>Enviar ubicación a bots en línea</translation>
+        <translation>Enviar ubicación a Robot(Bot) en línea</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
-        <translation>Algunos bots en línea solicitan datos de ubicación cuando los usan</translation>
+        <translation>Algunos Robot en línea solicitan datos de ubicación al usarlos</translation>
     </message>
 </context>
 <context>
@@ -1785,15 +1785,15 @@
     <name>SponsoredMessage</name>
     <message>
         <source>Go to Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ir al canal</translation>
     </message>
     <message>
         <source>Go to Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Ir al mensaje</translation>
     </message>
     <message>
         <source>Start Bot</source>
-        <translation type="unfinished"></translation>
+        <translation>Iniciar Robot(Bot)</translation>
     </message>
 </context>
 <context>
