@@ -42,6 +42,7 @@
 #include "dbusadaptor.h"
 #include "processlauncher.h"
 #include "stickermanager.h"
+#include "textfiltermodel.h"
 #include "tgsplugin.h"
 #include "fernschreiberutils.h"
 #include "knownusersmodel.h"
@@ -69,6 +70,7 @@ int main(int argc, char *argv[])
     const char *uri = "WerkWolf.Fernschreiber";
     qmlRegisterType<TDLibFile>(uri, 1, 0, "TDLibFile");
     qmlRegisterType<NamedAction>(uri, 1, 0, "NamedAction");
+    qmlRegisterType<TextFilterModel>(uri, 1, 0, "TextFilterModel");
     qmlRegisterSingletonType<DebugLogJS>(uri, 1, 0, "DebugLog", DebugLogJS::createSingleton);
 
     AppSettings *appSettings = new AppSettings(view.data());
@@ -89,11 +91,6 @@ int main(int argc, char *argv[])
 
     ChatListModel chatListModel(tdLibWrapper, appSettings);
     context->setContextProperty("chatListModel", &chatListModel);
-    QSortFilterProxyModel chatListProxyModel(view.data());
-    chatListProxyModel.setSourceModel(&chatListModel);
-    chatListProxyModel.setFilterRole(ChatListModel::RoleFilter);
-    chatListProxyModel.setFilterCaseSensitivity(Qt::CaseInsensitive);
-    context->setContextProperty("chatListProxyModel", &chatListProxyModel);
 
     ChatModel chatModel(tdLibWrapper);
     context->setContextProperty("chatModel", &chatModel);

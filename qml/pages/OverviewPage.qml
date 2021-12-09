@@ -103,19 +103,11 @@ Page {
         }
     }
 
-    Timer {
-        id: searchChatTimer
-        interval: 300
-        running: false
-        repeat: false
-        onTriggered: {
-            if (chatSearchField.text === "") {
-                chatListView.model = chatListModel;
-            } else {
-                chatListView.model = chatListProxyModel;
-            }
-            chatListProxyModel.setFilterWildcard("*" + chatSearchField.text + "*");
-        }
+    TextFilterModel {
+        id: chatListProxyModel
+        sourceModel: (chatSearchField.opacity > 0) ? chatListModel : null
+        filterRoleName: "filter"
+        filterText: chatSearchField.text
     }
 
     function openMessage(chatId, messageId) {
@@ -355,10 +347,6 @@ Page {
             placeholderText: qsTr("Filter your chats...")
             canHide: text === ""
 
-            onTextChanged: {
-                searchChatTimer.restart();
-            }
-
             onHideClicked: {
                 resetFocus();
             }
@@ -380,7 +368,7 @@ Page {
             clip: true
             opacity: (overviewPage.chatListCreated && !overviewPage.logoutLoading) ? 1 : 0
             Behavior on opacity { FadeAnimation {} }
-            model: chatListModel
+            model: chatListProxyModel.sourceModel ? chatListProxyModel : chatListModel
             delegate: ChatListViewItem {
                 ownUserId: overviewPage.ownUserId
                 isVerified: is_verified
@@ -394,7 +382,7 @@ Page {
 
             ViewPlaceholder {
                 enabled: chatListView.count === 0
-                text: chatSearchField.text === "" ? qsTr("You don't have any chats yet.") : qsTr("No matching chats found.")
+                text: chatListModel.count === 0 ? qsTr("You don't have any chats yet.") : qsTr("No matching chats found.")
                 hintText: qsTr("You can search public chats or create a new chat via the pull-down menu.")
             }
 
