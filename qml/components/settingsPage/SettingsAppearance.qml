@@ -22,17 +22,31 @@ import Sailfish.Silica 1.0
 
 AccordionItem {
     text: qsTr("Appearance")
+    clip: heightBehavior.enabled || heightAnimation.running
+
+    // One-shot behavior
+    Behavior on height {
+        id: heightBehavior
+        enabled: false
+        SequentialAnimation {
+            id: heightAnimation
+            SmoothedAnimation { duration: 200 }
+            ScriptAction { script: heightBehavior.enabled = false }
+        }
+    }
+
     Component {
         ResponsiveGrid {
             bottomPadding: Theme.paddingMedium
+
             TextSwitch {
-                id: stickersAsEmojisTextSwitch
                 width: parent.columnWidth
                 checked: appSettings.showStickersAsEmojis
                 text: qsTr("Show stickers as emojis")
                 description: qsTr("Only display emojis instead of the actual stickers")
                 automaticCheck: false
                 onClicked: {
+                    heightBehavior.enabled = true
                     appSettings.showStickersAsEmojis = !checked
                 }
             }
@@ -46,7 +60,16 @@ AccordionItem {
                 onClicked: {
                     appSettings.showStickersAsImages = !checked
                 }
-                enabled: !stickersAsEmojisTextSwitch.checked
+                visible: !appSettings.showStickersAsEmojis
+                opacity: visible ? 1 : 0
+                Behavior on opacity { FadeAnimation  { } }
+            }
+
+            Item {
+                // Placeholder to move the next switch to the second column
+                visible: parent.columns === 2
+                width: 1
+                height: 1
             }
 
             TextSwitch {
@@ -57,7 +80,9 @@ AccordionItem {
                 onClicked: {
                     appSettings.animateStickers = !checked
                 }
-                enabled: !stickersAsEmojisTextSwitch.checked
+                visible: !appSettings.showStickersAsEmojis
+                opacity: visible ? 1 : 0
+                Behavior on opacity { FadeAnimation  { } }
             }
         }
     }
