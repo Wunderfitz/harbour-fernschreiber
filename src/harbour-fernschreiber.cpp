@@ -34,6 +34,7 @@
 #include "debuglogjs.h"
 #include "tdlibfile.h"
 #include "tdlibwrapper.h"
+#include "chatpermissionfiltermodel.h"
 #include "chatlistmodel.h"
 #include "chatmodel.h"
 #include "namedaction.h"
@@ -71,6 +72,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<TDLibFile>(uri, 1, 0, "TDLibFile");
     qmlRegisterType<NamedAction>(uri, 1, 0, "NamedAction");
     qmlRegisterType<TextFilterModel>(uri, 1, 0, "TextFilterModel");
+    qmlRegisterType<ChatPermissionFilterModel>(uri, 1, 0, "ChatPermissionFilterModel");
     qmlRegisterSingletonType<DebugLogJS>(uri, 1, 0, "DebugLog", DebugLogJS::createSingleton);
 
     AppSettings *appSettings = new AppSettings(view.data());

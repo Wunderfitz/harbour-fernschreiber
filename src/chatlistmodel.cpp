@@ -413,6 +413,7 @@ QHash<int,QByteArray> ChatListModel::roleNames() const
     roles.insert(ChatListModel::RoleDisplay, "display");
     roles.insert(ChatListModel::RoleChatId, "chat_id");
     roles.insert(ChatListModel::RoleChatType, "chat_type");
+    roles.insert(ChatListModel::RoleGroupId, "group_id");
     roles.insert(ChatListModel::RoleTitle, "title");
     roles.insert(ChatListModel::RolePhotoSmall, "photo_small");
     roles.insert(ChatListModel::RoleUnreadCount, "unread_count");
@@ -447,6 +448,7 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RoleDisplay: return data->chatData;
         case ChatListModel::RoleChatId: return data->chatId;
         case ChatListModel::RoleChatType: return data->chatType;
+        case ChatListModel::RoleGroupId: return data->groupId;
         case ChatListModel::RoleTitle: return data->title();
         case ChatListModel::RolePhotoSmall: return data->photoSmall();
         case ChatListModel::RoleUnreadCount: return data->unreadCount();
