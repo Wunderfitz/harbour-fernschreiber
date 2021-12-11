@@ -1286,6 +1286,10 @@
         <source>Logging out</source>
         <translation>正在登出</translation>
     </message>
+    <message>
+        <source>Unable to open link.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

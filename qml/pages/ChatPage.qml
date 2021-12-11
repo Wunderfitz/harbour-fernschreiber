@@ -52,6 +52,8 @@ Page {
     property int chatOnlineMemberCount: 0;
     property var emojiProposals;
     property bool iterativeInitialization: false;
+    property var messageToShow;
+    property string messageIdToShow;
     readonly property bool userIsMember: ((isPrivateChat || isSecretChat) && chatInformation["@type"]) || // should be optimized
                                 (isBasicGroup || isSuperGroup) && (
                                     (chatGroupInformation.status["@type"] === "chatMemberStatusMember")
@@ -529,6 +531,11 @@ Page {
             }
             if (chatInformation.draft_message && messageId === chatInformation.draft_message.reply_to_message_id) {
                 newMessageInReplyToRow.inReplyToMessage = message;
+            }
+            Debug.log("Received message ID: " + messageId + ", message ID to show: " + chatPage.messageIdToShow)
+            if (chatPage.messageIdToShow && chatPage.messageIdToShow === String(messageId)) {
+                messageOverlayLoader.overlayMessage = message;
+                messageOverlayLoader.active = true;
             }
         }
         onSecretChatReceived: {
@@ -1114,6 +1121,13 @@ Page {
                                 chatView.handleScrollPositionChanged();
                                 if (chatPage.isChannel) {
                                     tdLibWrapper.getChatSponsoredMessages(chatInformation.id);
+                                }
+                                if (typeof chatPage.messageToShow !== "undefined" && chatPage.messageToShow !== {}) {
+                                    messageOverlayLoader.overlayMessage = chatPage.messageToShow;
+                                    messageOverlayLoader.active = true;
+                                }
+                                if (typeof chatPage.messageIdToShow !== "undefined") {
+                                    tdLibWrapper.getMessage(chatPage.chatInformation.id, chatPage.messageIdToShow);
                                 }
                             }
                         }

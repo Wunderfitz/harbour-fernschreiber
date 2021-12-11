@@ -1304,6 +1304,10 @@
         <source>Logging out</source>
         <translation>Se déconnecte</translation>
     </message>
+    <message>
+        <source>Unable to open link.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

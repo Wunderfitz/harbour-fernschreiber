@@ -1304,6 +1304,10 @@
         <source>Logging out</source>
         <translation>Saliendo de la cuenta</translation>
     </message>
+    <message>
+        <source>Unable to open link.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

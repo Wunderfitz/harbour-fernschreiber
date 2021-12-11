@@ -70,7 +70,6 @@ Column {
             }
             if (advertisesBot) {
                 tdLibWrapper.createPrivateChat(tdLibWrapper.getUserInformationByName(sponsoredMessageData.link.bot_username).id, "openAndSendStartToBot:" + sponsoredMessageData.link.start_parameter);
-                //tdLibWrapper.sendBotStartMessage(tdLibWrapper.getUserInformationByName(sponsoredMessageData.link.bot_username).id, sponsoredMessageData.sponsor_chat_id, sponsoredMessageData.link.start_parameter, "");
             }
         }
     }

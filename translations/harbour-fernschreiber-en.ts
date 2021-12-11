@@ -1306,6 +1306,10 @@ messages</numerusform>
         <source>Logging out</source>
         <translation>Logging out</translation>
     </message>
+    <message>
+        <source>Unable to open link.</source>
+        <translation>Unable to open link.</translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>

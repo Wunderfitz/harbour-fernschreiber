@@ -383,9 +383,18 @@ void TDLibReceiver::processMessage(const QVariantMap &receivedInformation)
 
 void TDLibReceiver::processMessageLinkInfo(const QVariantMap &receivedInformation)
 {
-    const QString url = receivedInformation.value(EXTRA).toString();
-    LOG("Received message link info " << url);
-    emit messageLinkInfoReceived(url, receivedInformation);
+    const QString oldExtra = receivedInformation.value(EXTRA).toString();
+    QString url = "";
+    QString extra = "";
+    LOG("Received message link info " << oldExtra);
+    if (oldExtra.contains("|")) {
+        const int midIndex = oldExtra.indexOf("|");
+        url = oldExtra.left(midIndex);
+        extra = oldExtra.mid(midIndex + 1);
+    } else {
+        url = oldExtra;
+    }
+    emit messageLinkInfoReceived(url, receivedInformation, extra);
 }
 
 void TDLibReceiver::processMessageSendSucceeded(const QVariantMap &receivedInformation)

@@ -49,8 +49,10 @@ Page {
     Connections {
         target: dBusAdaptor
         onPleaseOpenMessage: {
-            Debug.log("[OverviewPage] Opening chat from external requested: ", chatId);
-            openMessage(chatId, messageId);
+            Debug.log("[OverviewPage] Opening chat from external requested: ", chatId, messageId);
+            // We open the chat only for now - as it's automatically positioned at the last read message
+            // it's probably better as if the message itself is displayed in the overlay
+            openChat(chatId);
         }
         onPleaseOpenUrl: {
             Debug.log("[OverviewPage] Opening URL requested: ", url);
@@ -74,8 +76,6 @@ Page {
                 titleInteractionHint.opacity = 1.0;
                 appSettings.remainingInteractionHints = remainingInteractionHints - 1;
             }
-            openUrl();
-            openMessage();
         }
     }
 
@@ -110,14 +110,35 @@ Page {
         filterText: chatSearchField.text
     }
 
-    function openMessage(chatId, messageId) {
+    function openChat(chatId) {
+        if(chatListCreated && chatId) {
+            Debug.log("[OverviewPage] Opening Chat: ", chatId);
+            pageStack.pop(overviewPage, PageStackAction.Immediate);
+            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chatId) }, PageStackAction.Immediate);
+            chatToOpen = null;
+        }
+    }
+
+    function openChatWithMessageId(chatId, messageId) {
         if(chatId && messageId) {
             chatToOpen = [chatId, messageId];
         }
-        if(chatListCreated && chatToOpen && chatToOpen.length === 2) { // messageId not handled (yet)
-            Debug.log("[OverviewPage] Opening Chat: ", chatToOpen[0]);
+        if(chatListCreated && chatToOpen && chatToOpen.length === 2) {
+            Debug.log("[OverviewPage] Opening Chat: ", chatToOpen[0], "message ID: " + chatToOpen[1]);
             pageStack.pop(overviewPage, PageStackAction.Immediate);
-            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : chatListModel.getById(chatToOpen[0]) }, PageStackAction.Immediate);
+            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chatToOpen[0]), "messageIdToShow" : chatToOpen[1] }, PageStackAction.Immediate);
+            chatToOpen = null;
+        }
+    }
+
+    function openChatWithMessage(chatId, message) {
+        if(chatId && message) {
+            chatToOpen = [chatId, message];
+        }
+        if(chatListCreated && chatToOpen && chatToOpen.length === 2) {
+            Debug.log("[OverviewPage] Opening Chat (with provided message): ", chatToOpen[0]);
+            pageStack.pop(overviewPage, PageStackAction.Immediate);
+            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chatToOpen[0]), "messageToShow" : chatToOpen[1] }, PageStackAction.Immediate);
             chatToOpen = null;
         }
     }
@@ -271,6 +292,15 @@ Page {
 
         onCopyToDownloadsError: {
             appNotification.show(qsTr("Download failed."));
+        }
+        onMessageLinkInfoReceived: {
+            if (extra === "openDirectly") {
+                if (messageLinkInfo.chat_id === 0) {
+                    appNotification.show(qsTr("Unable to open link."));
+                } else {
+                    openChatWithMessage(messageLinkInfo.chat_id, messageLinkInfo.message);
+                }
+            }
         }
     }
 

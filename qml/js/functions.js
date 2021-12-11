@@ -393,6 +393,19 @@ function handleTMeLink(link, usedPrefix) {
 function handleLink(link) {
     var tMePrefix = tdLibWrapper.getOptionString("t_me_url");
     var tMePrefixHttp = tMePrefix.replace('https', 'http');
+
+    // Checking if we have a direct message link...
+    Debug.log("URL open requested: " + link);
+    if ( (link.indexOf(tMePrefix) === 0 && link.substring(tMePrefix.length).indexOf("/") > 0) ||
+         (link.indexOf(tMePrefixHttp) === 0 && link.substring(tMePrefixHttp.length).indexOf("/") > 0) ||
+          link.indexOf("tg://privatepost") === 0 ||
+          link.indexOf("tg://resolve") === 0 ) {
+        Debug.log("Using message link info for: " + link);
+        tdLibWrapper.getMessageLinkInfo(link, "openDirectly");
+        return;
+    }
+
+    Debug.log("Trying to parse link ourselves: " + link);
     if (link.indexOf("user://") === 0) {
         var userName = link.substring(8);
         var userInformation = tdLibWrapper.getUserInformationByName(userName);

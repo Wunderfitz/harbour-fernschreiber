@@ -1304,6 +1304,10 @@
         <source>Logging out</source>
         <translation>Abmelden</translation>
     </message>
+    <message>
+        <source>Unable to open link.</source>
+        <translation>Kann Link nicht öffnen.</translation>
+    </message>
 </context>
 <context>
     <name>PinnedMessageItem</name>
