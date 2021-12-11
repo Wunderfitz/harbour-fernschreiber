@@ -399,7 +399,7 @@ function handleLink(link) {
     if ( (link.indexOf(tMePrefix) === 0 && link.substring(tMePrefix.length).indexOf("/") > 0) ||
          (link.indexOf(tMePrefixHttp) === 0 && link.substring(tMePrefixHttp.length).indexOf("/") > 0) ||
           link.indexOf("tg://privatepost") === 0 ||
-          link.indexOf("tg://resolve") === 0 ) {
+          ( link.indexOf("tg://resolve") === 0 && link.indexOf("post") > 0 ) ) {
         Debug.log("Using message link info for: " + link);
         tdLibWrapper.getMessageLinkInfo(link, "openDirectly");
         return;
