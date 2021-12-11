@@ -1306,7 +1306,7 @@
     </message>
     <message>
         <source>Unable to open link.</source>
-        <translation type="unfinished"></translation>
+        <translation>No se pudo abrir el enlace.</translation>
     </message>
 </context>
 <context>
