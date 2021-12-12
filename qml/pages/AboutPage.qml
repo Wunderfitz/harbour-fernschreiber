@@ -1,3 +1,4 @@
+
 /*
     Copyright (C) 2020-21 Sebastian J. Wolf and other contributors
 
@@ -20,13 +21,10 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 import "../components"
-import "../js/twemoji.js" as Emoji
 
 Page {
     id: aboutPage
     allowedOrientations: Orientation.All
-
-    readonly property var userInformation : tdLibWrapper.userInformation
 
     SilicaFlickable {
         id: aboutContainer
@@ -153,92 +151,6 @@ Page {
                 wrapMode: Text.Wrap
                 anchors {
                     horizontalCenter: parent.horizontalCenter
-                }
-            }
-
-            Loader {
-                id: userInformationLoader
-                active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
-                width: parent.width
-                sourceComponent: Component {
-                    Column {
-
-                        spacing: Theme.paddingSmall
-
-                        Text {
-                            x: Theme.horizontalPageMargin
-                            width: parent.width  - ( 2 * Theme.horizontalPageMargin )
-                            horizontalAlignment: Text.AlignHCenter
-                            text: qsTr("Logged in as %1").arg(Emoji.emojify(aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name, Theme.fontSizeSmall))
-                            font.pixelSize: Theme.fontSizeSmall
-                            wrapMode: Text.Wrap
-                            color: Theme.primaryColor
-                            textFormat: Text.StyledText
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                            }
-                        }
-
-                        ProfileThumbnail {
-                            photoData: ((typeof aboutPage.userInformation.profile_photo !== "undefined") ? aboutPage.userInformation.profile_photo.small : {})
-                            width: Theme.itemSizeExtraLarge
-                            height: Theme.itemSizeExtraLarge
-                            replacementStringHint: aboutPage.userInformation.first_name + " " + aboutPage.userInformation.last_name
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                            }
-                        }
-
-                        Label {
-                            x: Theme.horizontalPageMargin
-                            width: parent.width  - ( 2 * Theme.horizontalPageMargin )
-                            horizontalAlignment: Text.AlignHCenter
-                            text: qsTr("Phone number: +%1").arg(aboutPage.userInformation.phone_number)
-                            font.pixelSize: Theme.fontSizeSmall
-                            wrapMode: Text.Wrap
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                            }
-                        }
-                        BackgroundItem {
-                            width: parent.width
-
-                            BackgroundItem {
-                                id: logOutItem
-                                width: parent.width
-                                function showRemorseItem() {
-                                    remorse.execute(logOutItem, qsTr("Logged out"), function() {
-                                        tdLibWrapper.logout();
-                                        pageStack.pop();
-                                    });
-                                }
-                                RemorseItem {
-                                    id: remorse
-                                }
-                                Button {
-                                   id: logOutButton
-                                    text: qsTr("Log Out")
-                                    anchors {
-                                        horizontalCenter: parent.horizontalCenter
-                                    }
-                                    onClicked: {
-                                        logOutItem.showRemorseItem();
-                                    }
-                                }
-                            }
-                        }
-
-                        Button {
-                            id: activeSessionsButton
-                            text: qsTr("Active Sessions")
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                            }
-                            onClicked: {
-                                pageStack.push(Qt.resolvedUrl("ActiveSessionsPage.qml"));
-                            }
-                        }
-                    }
                 }
             }
 
