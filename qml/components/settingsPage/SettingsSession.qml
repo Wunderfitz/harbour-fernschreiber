@@ -59,14 +59,16 @@ AccordionItem {
 
             ResponsiveGrid {
                 bottomPadding: Theme.paddingMedium
+                width: parent.width
 
                 Loader {
                     id: userInformationLoader
                     active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
-                    width: parent.width
+                    width: parent.columnWidth
                     sourceComponent: Component {
                         Column {
-                            spacing: Theme.paddingSmall
+                            anchors.topMargin: Theme.paddingMedium
+                            spacing: Theme.paddingMedium
 
                             Text {
                                 x: Theme.horizontalPageMargin
@@ -121,11 +123,6 @@ AccordionItem {
                                     onClicked: logOutItem.showRemorseItem()
                                 }
                             }
-                            Separator {
-                                width: parent.width
-                                color: Theme.primaryColor
-                                horizontalAlignment: Qt.AlignHCenter
-                            }
                         }
                     }
                 }
@@ -133,16 +130,23 @@ AccordionItem {
                 Loader {
                     id: sessionInformationLoader
                     active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
-                    width: parent.width
+                    width: parent.columnWidth
                     sourceComponent: Component {
                         SilicaListView {
                             id: activeSessionsListView
                             width: parent.width
-                            // TODO/FIXME: do a proper height calculation here:
-                            height: Theme.itemSizeLarge * 5
+                            // one activeSessionListItem is about 1.52 times itemSizeLarge
+                            // show max 5 items at a time
+                            height: Theme.itemSizeLarge * 1.5 * Math.min(5 , activeSessionsItem.activeSessions.length )
                             clip: true
 
                             model: activeSessionsItem.activeSessions
+                            headerPositioning: ListView.OverlayHeader
+                            header: Separator {
+                                    width: parent.width
+                                    color: Theme.primaryColor
+                                    horizontalAlignment: Qt.AlignHCenter
+                            }
                             delegate: ListItem {
                                 id: activeSessionListItem
                                 width: parent.width
