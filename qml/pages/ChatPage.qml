@@ -702,10 +702,14 @@ Page {
         }
 
         onTriggered: {
+            Debug.log("scroll position changed, message index: ", lastQueuedIndex);
+            Debug.log("unread count: ", chatInformation.unread_count);
             var messageToRead = chatModel.getMessage(lastQueuedIndex);
             if (messageToRead['@type'] === "sponsoredMessage") {
+                Debug.log("sponsored message to read: ", messageToRead.id);
                 tdLibWrapper.viewSponsoredMessage(chatInformation.id, messageToRead.id);
             } else if (chatInformation.unread_count > 0 && lastQueuedIndex > -1) {
+                Debug.log("message to read: ", messageToRead.id);
                 if (messageToRead && messageToRead.id) {
                     tdLibWrapper.viewMessage(chatInformation.id, messageToRead.id, false);
                 }
