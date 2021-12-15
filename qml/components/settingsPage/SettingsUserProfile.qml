@@ -35,24 +35,13 @@ AccordionItem {
 
             readonly property var userInformation: tdLibWrapper.getUserInformation()
             property bool uploadInProgress: false
-            property variant activeSessions;
-            property bool loaded : false;
 
             Component.onCompleted: {
                 tdLibWrapper.getUserProfilePhotos(userInformation.id, 100, 0);
-                if (!activeSessions) {
-                    tdLibWrapper.getActiveSessions();
-                } else {
-                    accordionContent.loaded = true;
-                }
             }
 
             Connections {
                 target: tdLibWrapper
-                onSessionsReceived: {
-                    accordionContent.activeSessions = sessions;
-                    accordionContent.loaded = true;
-                }
                 onOwnUserUpdated: {
                     firstNameEditArea.text = userInformation.first_name;
                     lastNameEditArea.text = userInformation.last_name;
