@@ -23,6 +23,7 @@ import Sailfish.Pickers 1.0
 import WerkWolf.Fernschreiber 1.0
 import "../"
 import "../../pages/"
+import "../../js/twemoji.js" as Emoji
 import "../../js/functions.js" as Functions
 
 AccordionItem {
@@ -34,13 +35,24 @@ AccordionItem {
 
             readonly property var userInformation: tdLibWrapper.getUserInformation()
             property bool uploadInProgress: false
+            property variant activeSessions;
+            property bool loaded : false;
 
             Component.onCompleted: {
                 tdLibWrapper.getUserProfilePhotos(userInformation.id, 100, 0);
+                if (!activeSessions) {
+                    tdLibWrapper.getActiveSessions();
+                } else {
+                    accordionContent.loaded = true;
+                }
             }
 
             Connections {
                 target: tdLibWrapper
+                onSessionsReceived: {
+                    accordionContent.activeSessions = sessions;
+                    accordionContent.loaded = true;
+                }
                 onOwnUserUpdated: {
                     firstNameEditArea.text = userInformation.first_name;
                     lastNameEditArea.text = userInformation.last_name;
@@ -62,6 +74,11 @@ AccordionItem {
                     }
                 }
                 onOkReceived: {
+                    if (request === "terminateSession") {
+                        appNotification.show(qsTr("Session was terminated"));
+                        accordionContent.loaded = false;
+                        tdLibWrapper.getActiveSessions();
+                    }
                     if (request === "deleteProfilePhoto") {
                         tdLibWrapper.getUserProfilePhotos(userInformation.id, 100, 0);
                     }
@@ -253,6 +270,85 @@ AccordionItem {
                         profilePictureButtonColumn.visible = false;
                         uploadInProgress = true;
                         tdLibWrapper.setProfilePhoto(selectedContentProperties.filePath);
+                    }
+                }
+            }
+
+            SectionHeader {
+                horizontalAlignment: Text.AlignLeft
+                text: qsTr("Logged in as")
+            }
+
+            Row {
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                spacing: Theme.paddingMedium
+
+                Loader {
+                    id: userInformationLoader
+                    active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
+                    width: parent.width / 2
+                    sourceComponent: Component {
+                        Column {
+                            width: parent.width
+                            spacing: Theme.paddingMedium
+                            anchors.topMargin: Theme.paddingMedium
+
+                            Text {
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                horizontalAlignment: Text.AlignHCenter
+                                text: Emoji.emojify(accordionContent.userInformation.first_name + " " + accordionContent.userInformation.last_name, Theme.fontSizeSmall)
+                                font.pixelSize: Theme.fontSizeSmall
+                                wrapMode: Text.Wrap
+                                color: Theme.primaryColor
+                                textFormat: Text.StyledText
+                                anchors {
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                            }
+
+                            ProfileThumbnail {
+                                photoData: ((typeof accordionContent.userInformation.profile_photo !== "undefined") ? accordionContent.userInformation.profile_photo.small : {})
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                width: Theme.itemSizeSmall
+                                height: Theme.itemSizeSmall
+                                replacementStringHint: accordionContent.userInformation.first_name + " " + accordionContent.userInformation.last_name
+                                anchors {
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                            }
+
+                            Label {
+                                width: accordionContent.width / 2 - Theme.horizontalPageMargin
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                horizontalAlignment: Text.AlignHCenter
+                                text: qsTr("Phone number: +%1").arg(accordionContent.userInformation.phone_number)
+                                font.pixelSize: Theme.fontSizeSmall
+                                wrapMode: Text.Wrap
+                                anchors {
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                            }
+                        }
+                    }
+                }
+                BackgroundItem {
+                    id: logOutItem
+                    width: parent.width / 2
+                    height: userInformationLoader.height
+                    anchors.verticalCenter: parent.verticalCenter
+                    enabled: userInformationLoader.status == Loader.Ready
+                    function showRemorseItem() {
+                        remorse.execute(logOutItem, qsTr("Logged out"), function() {
+                            tdLibWrapper.logout();
+                            pageStack.pop();
+                        });
+                    }
+                    RemorseItem { id: remorse }
+                    Button {
+                        id: logOutButton
+                        text: qsTr("Log Out")
+                        anchors.centerIn: parent
+                        onClicked: logOutItem.showRemorseItem()
                     }
                 }
             }

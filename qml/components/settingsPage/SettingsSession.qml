@@ -21,7 +21,6 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 import "../../components"
-import "../../js/twemoji.js" as Emoji
 import "../../js/functions.js" as Functions
 
 AccordionItem {
@@ -32,7 +31,6 @@ AccordionItem {
             bottomPadding: Theme.paddingMedium
             property variant activeSessions;
             property bool loaded : false;
-            readonly property var userInformation : tdLibWrapper.userInformation
 
             Component.onCompleted: {
                 if (!activeSessions) {
