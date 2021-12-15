@@ -117,11 +117,11 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/settingsPage/SettingsAppearance.qml \
     qml/components/settingsPage/SettingsBehavior.qml \
     qml/components/settingsPage/SettingsPrivacy.qml \
+    qml/components/settingsPage/SettingsSession.qml \
     qml/components/settingsPage/SettingsStorage.qml \
     qml/components/settingsPage/SettingsUserProfile.qml \
     qml/js/debug.js \
     qml/js/functions.js \
-    qml/pages/ActiveSessionsPage.qml \
     qml/pages/ChatInformationPage.qml \
     qml/pages/ChatPage.qml \
     qml/pages/ChatSelectionPage.qml \
