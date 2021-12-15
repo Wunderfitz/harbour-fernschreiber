@@ -74,11 +74,6 @@ AccordionItem {
                     }
                 }
                 onOkReceived: {
-                    if (request === "terminateSession") {
-                        appNotification.show(qsTr("Session was terminated"));
-                        accordionContent.loaded = false;
-                        tdLibWrapper.getActiveSessions();
-                    }
                     if (request === "deleteProfilePhoto") {
                         tdLibWrapper.getUserProfilePhotos(userInformation.id, 100, 0);
                     }
