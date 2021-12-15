@@ -114,7 +114,7 @@ Page {
         if(chatListCreated && chatId) {
             Debug.log("[OverviewPage] Opening Chat: ", chatId);
             pageStack.pop(overviewPage, PageStackAction.Immediate);
-            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : tdLibWrapper.getChat(chatId) }, PageStackAction.Immediate);
+            pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), { "chatInformation" : chatListModel.getById(chatId) }, PageStackAction.Immediate);
             chatToOpen = null;
         }
     }
