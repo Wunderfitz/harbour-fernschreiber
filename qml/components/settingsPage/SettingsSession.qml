@@ -57,193 +57,125 @@ AccordionItem {
                 }
             }
 
-            ResponsiveGrid {
-                bottomPadding: Theme.paddingMedium
+            Loader {
+                id: sessionInformationLoader
+                active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
                 width: parent.width
+                sourceComponent: Component {
+                    SilicaListView {
+                        id: activeSessionsListView
+                        width: parent.width
+                        // one activeSessionListItem is about 1.52 times itemSizeLarge
+                        // show max 5 items at a time
+                        height: Theme.itemSizeLarge * 1.5 * Math.min(5 , activeSessionsItem.activeSessions.length )
+                        clip: true
 
-                Loader {
-                    id: userInformationLoader
-                    active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
-                    width: parent.columnWidth
-                    sourceComponent: Component {
-                        Column {
-                            anchors.topMargin: Theme.paddingMedium
-                            spacing: Theme.paddingMedium
-
-                            Text {
-                                x: Theme.horizontalPageMargin
-                                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
-                                horizontalAlignment: Text.AlignHCenter
-                                text: qsTr("Logged in as %1").arg(Emoji.emojify(activeSessionsItem.userInformation.first_name + " " + activeSessionsItem.userInformation.last_name, Theme.fontSizeSmall))
-                                font.pixelSize: Theme.fontSizeSmall
-                                wrapMode: Text.Wrap
-                                color: Theme.primaryColor
-                                textFormat: Text.StyledText
-                                anchors {
-                                    horizontalCenter: parent.horizontalCenter
-                                }
-                            }
-
-                            ProfileThumbnail {
-                                photoData: ((typeof activeSessionsItem.userInformation.profile_photo !== "undefined") ? activeSessionsItem.userInformation.profile_photo.small : {})
-                                width: Theme.itemSizeExtraLarge
-                                height: Theme.itemSizeExtraLarge
-                                replacementStringHint: activeSessionsItem.userInformation.first_name + " " + activeSessionsItem.userInformation.last_name
-                                anchors {
-                                    horizontalCenter: parent.horizontalCenter
-                                }
-                            }
-
-                            Label {
-                                x: Theme.horizontalPageMargin
-                                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
-                                horizontalAlignment: Text.AlignHCenter
-                                text: qsTr("Phone number: +%1").arg(activeSessionsItem.userInformation.phone_number)
-                                font.pixelSize: Theme.fontSizeSmall
-                                wrapMode: Text.Wrap
-                                anchors {
-                                    horizontalCenter: parent.horizontalCenter
-                                }
-                            }
-
-                            BackgroundItem {
-                                id: logOutItem
-                                width: parent.width
-                                function showRemorseItem() {
-                                    remorse.execute(logOutItem, qsTr("Logged out"), function() {
-                                        tdLibWrapper.logout();
-                                        pageStack.pop();
-                                    });
-                                }
-                                RemorseItem { id: remorse }
-                                Button {
-                                    id: logOutButton
-                                    text: qsTr("Log Out")
-                                    anchors.horizontalCenter: parent.horizontalCenter
-                                    onClicked: logOutItem.showRemorseItem()
-                                }
-                            }
-                        }
-                    }
-                }
-
-                Loader {
-                    id: sessionInformationLoader
-                    active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
-                    width: parent.columnWidth
-                    sourceComponent: Component {
-                        SilicaListView {
-                            id: activeSessionsListView
+                        model: activeSessionsItem.activeSessions
+                        headerPositioning: ListView.OverlayHeader
+                        header: Separator {
                             width: parent.width
-                            // one activeSessionListItem is about 1.52 times itemSizeLarge
-                            // show max 5 items at a time
-                            height: Theme.itemSizeLarge * 1.5 * Math.min(5 , activeSessionsItem.activeSessions.length )
-                            clip: true
-
-                            model: activeSessionsItem.activeSessions
-                            headerPositioning: ListView.OverlayHeader
-                            header: Separator {
-                                    width: parent.width
-                                    color: Theme.primaryColor
-                                    horizontalAlignment: Qt.AlignHCenter
-                            }
-                            delegate: ListItem {
-                                id: activeSessionListItem
-                                width: parent.width
-                                contentHeight: activeSessionColumn.height + ( 2 * Theme.paddingMedium )
-
-                                menu: ContextMenu {
-                                    hasContent: !modelData.is_current
-                                    MenuItem {
-                                        onClicked: {
-                                            var sessionId = modelData.id;
-                                            Remorse.itemAction(activeSessionListItem, qsTr("Terminating session"), function() { tdLibWrapper.terminateSession(sessionId); });
-                                        }
-                                        text: qsTr("Terminate Session")
-                                    }
-                                }
-
-                                Rectangle {
-                                    height: parent.height - Theme.paddingSmall
-                                    width: parent.width
-                                    anchors.centerIn: parent
-                                    visible: modelData.is_current
-                                    color: Theme.rgba(Theme.highlightBackgroundColor, Theme.opacityFaint)
-                                }
-
-                                Column {
-                                    id: activeSessionColumn
-                                    width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                                    spacing: Theme.paddingSmall
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    anchors.horizontalCenter: parent.horizontalCenter
-
-                                    Label {
-                                        width: parent.width
-                                        property string hltext: modelData.is_current ? " (" + qsTr("this app") + ")" : ""
-                                        text: Theme.highlightText( modelData.application_name + " " + modelData.application_version + hltext, hltext, Theme.highlightColor)
-                                        font.pixelSize: modelData.is_current ? Theme.fontSizeMedium : Theme.fontSizeSmall
-                                        font.bold: true
-                                        color: Theme.primaryColor
-                                        maximumLineCount: 1
-                                        elide: Text.ElideRight
-                                        anchors {
-                                            horizontalCenter: parent.horizontalCenter
-                                        }
-                                    }
-
-                                    Label {
-                                        width: parent.width
-                                        text: modelData.device_model + ", " + (modelData.platform + " " + modelData.system_version).trim()
-                                        font.pixelSize: Theme.fontSizeSmall
-                                        color: Theme.primaryColor
-                                        maximumLineCount: 1
-                                        truncationMode: TruncationMode.Fade
-                                        anchors {
-                                            horizontalCenter: parent.horizontalCenter
-                                        }
-                                    }
-
-                                    Label {
-                                        width: parent.width
-                                        text: qsTr("IP address: %1, origin: %2").arg(modelData.ip).arg(modelData.country)
-                                        font.pixelSize: Theme.fontSizeExtraSmall
-                                        color: Theme.secondaryColor
-                                        maximumLineCount: 1
-                                        truncationMode: TruncationMode.Fade
-                                        anchors {
-                                            horizontalCenter: parent.horizontalCenter
-                                        }
-                                    }
-
-                                    Label {
-                                        width: parent.width
-                                        text: qsTr("Active since: %1, last online: %2").arg(Functions.getDateTimeTimepoint(modelData.log_in_date)).arg(Functions.getDateTimeElapsed(modelData.last_active_date))
-                                        font.pixelSize: Theme.fontSizeExtraSmall
-                                        color: Theme.primaryColor
-                                        maximumLineCount: 1
-                                        truncationMode: TruncationMode.Fade
-                                        anchors {
-                                            horizontalCenter: parent.horizontalCenter
-                                        }
-                                    }
-                                }
-
-                                Separator {
-                                    id: separator
-                                    anchors {
-                                        bottom: parent.bottom
-                                    }
-
-                                    width: parent.width
-                                    color: Theme.primaryColor
-                                    horizontalAlignment: Qt.AlignHCenter
-                                }
-
-                            }
-
-                            VerticalScrollDecorator {}
+                            color: Theme.primaryColor
+                            horizontalAlignment: Qt.AlignHCenter
                         }
+                        delegate: ListItem {
+                            id: activeSessionListItem
+                            width: parent.width
+                            contentHeight: activeSessionColumn.height + ( 2 * Theme.paddingMedium )
+
+                            menu: ContextMenu {
+                                hasContent: !modelData.is_current
+                                MenuItem {
+                                    onClicked: {
+                                        var sessionId = modelData.id;
+                                        Remorse.itemAction(activeSessionListItem, qsTr("Terminating session"), function() { tdLibWrapper.terminateSession(sessionId); });
+                                    }
+                                    text: qsTr("Terminate Session")
+                                }
+                            }
+
+                            Column {
+                                id: activeSessionColumn
+                                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                                spacing: Theme.paddingSmall
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
+
+                                Label {
+                                    width: parent.width
+                                    text: qsTr("This app")
+                                    font.pixelSize: Theme.fontSizeMedium
+                                    font.bold: true
+                                    visible: modelData.is_current
+                                    color: Theme.highlightColor
+                                    anchors {
+                                        horizontalCenter: parent.horizontalCenter
+                                    }
+                                }
+
+                                Label {
+                                    width: parent.width
+                                    text: modelData.application_name + " " + modelData.application_version
+                                    font.pixelSize: Theme.fontSizeMedium
+                                    font.bold: true
+                                    color: Theme.primaryColor
+                                    maximumLineCount: 1
+                                    elide: Text.ElideRight
+                                    anchors {
+                                        horizontalCenter: parent.horizontalCenter
+                                    }
+                                }
+
+                                Label {
+                                    width: parent.width
+                                    text: modelData.device_model + ", " + (modelData.platform + " " + modelData.system_version).trim()
+                                    font.pixelSize: Theme.fontSizeSmall
+                                    color: Theme.primaryColor
+                                    maximumLineCount: 1
+                                    truncationMode: TruncationMode.Fade
+                                    anchors {
+                                        horizontalCenter: parent.horizontalCenter
+                                    }
+                                }
+
+                                Label {
+                                    width: parent.width
+                                    text: qsTr("IP address: %1, origin: %2").arg(modelData.ip).arg(modelData.country)
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    color: Theme.secondaryColor
+                                    maximumLineCount: 1
+                                    truncationMode: TruncationMode.Fade
+                                    anchors {
+                                        horizontalCenter: parent.horizontalCenter
+                                    }
+                                }
+
+                                Label {
+                                    width: parent.width
+                                    text: qsTr("Active since: %1, last online: %2").arg(Functions.getDateTimeTimepoint(modelData.log_in_date)).arg(Functions.getDateTimeElapsed(modelData.last_active_date))
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    color: Theme.primaryColor
+                                    maximumLineCount: 1
+                                    truncationMode: TruncationMode.Fade
+                                    anchors {
+                                        horizontalCenter: parent.horizontalCenter
+                                    }
+                                }
+                            }
+
+                            Separator {
+                                id: separator
+                                anchors {
+                                    bottom: parent.bottom
+                                }
+
+                                width: parent.width
+                                color: Theme.primaryColor
+                                horizontalAlignment: Qt.AlignHCenter
+                            }
+
+                        }
+
+                        VerticalScrollDecorator {}
                     }
                 }
             }
