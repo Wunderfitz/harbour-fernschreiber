@@ -321,18 +321,14 @@ AccordionItem {
                     height: userInformationLoader.height
                     anchors.verticalCenter: parent.verticalCenter
                     enabled: userInformationLoader.status == Loader.Ready
-                    function showRemorseItem() {
-                        remorse.execute(logOutItem, qsTr("Logged out"), function() {
-                            tdLibWrapper.logout();
-                            pageStack.pop();
-                        });
-                    }
-                    RemorseItem { id: remorse }
                     Button {
                         id: logOutButton
                         text: qsTr("Log Out")
                         anchors.centerIn: parent
-                        onClicked: logOutItem.showRemorseItem()
+                        onClicked: Remorse.popupAction(settingsPage, qsTr("Logged out"), function() { 
+                            tdLibWrapper.logout();
+                            pageStack.pop();
+                        });
                     }
                 }
             }
