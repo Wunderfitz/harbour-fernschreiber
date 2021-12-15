@@ -56,14 +56,6 @@
         <translation>TDLib:n versio %1</translation>
     </message>
     <message>
-        <source>Logged in as %1</source>
-        <translation>Kirjautunut sisään käyttäjänä %1</translation>
-    </message>
-    <message>
-        <source>Phone number: +%1</source>
-        <translation>Puhelinnumero: +%1</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>Tämä projekti käyttää twemojia. Tekijänoikeus 2018 Twitter, Inc. ja muut tekijät. Kiitokset sen julkaisusta MIT‑ (lähdekoodi) ja CC-BY 4.0‑ (grafiikat) lisensseillä!</translation>
     </message>
@@ -84,59 +76,12 @@
         <translation>Avaa rlottie GitHubissa</translation>
     </message>
     <message>
-        <source>Log Out</source>
-        <translation>Kirjaudu ulos</translation>
-    </message>
-    <message>
-        <source>Logged out</source>
-        <translation>Kirjattu ulos</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Aktiiviset istunnot</translation>
-    </message>
-    <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ActiveSessionsPage</name>
-    <message>
-        <source>Getting active sessions...</source>
-        <translation>Haetaan aktiivisia istuntoja...</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Aktiiviset istunnot</translation>
-    </message>
-    <message>
-        <source>Session was terminated</source>
-        <translation>Istunto suljettiin</translation>
-    </message>
-    <message>
-        <source>Terminate Session</source>
-        <translation>Sulje istunto</translation>
-    </message>
-    <message>
-        <source>This app</source>
-        <translation>Tämä sovellus</translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation>IP-osoite: %1, sijainti: %2</translation>
-    </message>
-    <message>
-        <source>Active since: %1, last online: %2</source>
-        <translation>Aktiivinen %1 alkaen, viimeksi paikalla: %2</translation>
-    </message>
-    <message>
-        <source>Terminating session</source>
-        <translation>Suljetaan istuntoa</translation>
     </message>
 </context>
 <context>
@@ -1718,6 +1663,37 @@
     </message>
 </context>
 <context>
+    <name>SettingsSession</name>
+    <message>
+        <source>Sessions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Istunto suljettiin</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Suljetaan istuntoa</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Sulje istunto</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>Tämä sovellus</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP-osoite: %1, sijainti: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Aktiivinen %1 alkaen, viimeksi paikalla: %2</translation>
+    </message>
+</context>
+<context>
     <name>SettingsStorage</name>
     <message>
         <source>Storage</source>
@@ -1784,6 +1760,18 @@
     <message>
         <source>Uploading...</source>
         <translation>Lähetetään...</translation>
+    </message>
+    <message>
+        <source>Log Out</source>
+        <translation>Kirjaudu ulos</translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation>Kirjattu ulos</translation>
+    </message>
+    <message>
+        <source>Phone number: +%1</source>
+        <translation>Puhelinnumero: +%1</translation>
     </message>
 </context>
 <context>

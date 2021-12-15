@@ -56,14 +56,6 @@
         <translation>Versión TDLib: %1</translation>
     </message>
     <message>
-        <source>Logged in as %1</source>
-        <translation>Registrado como: %1</translation>
-    </message>
-    <message>
-        <source>Phone number: +%1</source>
-        <translation>Número telefónico: +%1</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>Este proyecto usa la librería Twemoji de Tweeter. Derechos de autor 2018 Twitter Inc, y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT y CC-BY 4.0</translation>
     </message>
@@ -84,59 +76,12 @@
         <translation>Librería Rlottie</translation>
     </message>
     <message>
-        <source>Log Out</source>
-        <translation>Cerrar sesión</translation>
-    </message>
-    <message>
-        <source>Logged out</source>
-        <translation>Desconectado</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Sesiones activas</translation>
-    </message>
-    <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
         <translation>Este proyecto usa la librería OpenStreetMap Nominatim para la codificación geográfica inversa de archivos adjuntos de ubicación. ¡Gracias por estar disponible como servicio web!</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
         <translation>Librería OSM Nominatim</translation>
-    </message>
-</context>
-<context>
-    <name>ActiveSessionsPage</name>
-    <message>
-        <source>Getting active sessions...</source>
-        <translation>Consiguiendo sesiones activas...</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Sesiones activas </translation>
-    </message>
-    <message>
-        <source>Session was terminated</source>
-        <translation>Se terminó la sesión </translation>
-    </message>
-    <message>
-        <source>Terminate Session</source>
-        <translation>Terminar sesión </translation>
-    </message>
-    <message>
-        <source>This app</source>
-        <translation>Esta apl</translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation>Dirección IP: %1, origen: %2</translation>
-    </message>
-    <message>
-        <source>Active since: %1, last online: %2</source>
-        <translation>Activo desde: %1, último en línea: %2</translation>
-    </message>
-    <message>
-        <source>Terminating session</source>
-        <translation>Terminando sesión</translation>
     </message>
 </context>
 <context>
@@ -1717,6 +1662,37 @@
     </message>
 </context>
 <context>
+    <name>SettingsSession</name>
+    <message>
+        <source>Sessions</source>
+        <translation>Sesiones</translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Se terminó la sesión </translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Terminando sesión</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Terminar sesión </translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>Esta apl</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>Dirección IP: %1, origen: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Activo desde: %1, último en línea: %2</translation>
+    </message>
+</context>
+<context>
     <name>SettingsStorage</name>
     <message>
         <source>Storage</source>
@@ -1783,6 +1759,18 @@
     <message>
         <source>Uploading...</source>
         <translation>Subiendo...</translation>
+    </message>
+    <message>
+        <source>Log Out</source>
+        <translation>Cerrar sesión</translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation>Desconectado</translation>
+    </message>
+    <message>
+        <source>Phone number: +%1</source>
+        <translation></translation>
     </message>
 </context>
 <context>

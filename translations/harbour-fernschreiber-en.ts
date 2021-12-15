@@ -56,14 +56,6 @@
         <translation>TDLib version %1</translation>
     </message>
     <message>
-        <source>Logged in as %1</source>
-        <translation>Logged in as %1</translation>
-    </message>
-    <message>
-        <source>Phone number: +%1</source>
-        <translation>Phone number: +%1</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</translation>
     </message>
@@ -84,59 +76,12 @@
         <translation>Open rlottie on GitHub</translation>
     </message>
     <message>
-        <source>Log Out</source>
-        <translation>Log Out</translation>
-    </message>
-    <message>
-        <source>Logged out</source>
-        <translation>Logged out</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Active Sessions</translation>
-    </message>
-    <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
         <translation>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
         <translation>Open OSM Nominatim Wiki</translation>
-    </message>
-</context>
-<context>
-    <name>ActiveSessionsPage</name>
-    <message>
-        <source>Getting active sessions...</source>
-        <translation>Getting active sessions...</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Active Sessions</translation>
-    </message>
-    <message>
-        <source>Session was terminated</source>
-        <translation>Session was terminated</translation>
-    </message>
-    <message>
-        <source>Terminate Session</source>
-        <translation>Terminate Session</translation>
-    </message>
-    <message>
-        <source>This app</source>
-        <translation>This app</translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation>IP address: %1, origin: %2</translation>
-    </message>
-    <message>
-        <source>Active since: %1, last online: %2</source>
-        <translation>Active since: %1, last online: %2</translation>
-    </message>
-    <message>
-        <source>Terminating session</source>
-        <translation>Terminating session</translation>
     </message>
 </context>
 <context>
@@ -1719,6 +1664,37 @@ messages</numerusform>
     </message>
 </context>
 <context>
+    <name>SettingsSession</name>
+    <message>
+        <source>Sessions</source>
+        <translation>Sessions</translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Session was terminated</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Terminating session</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Terminate Session</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>This app</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP address: %1, origin: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Active since: %1, last online: %2</translation>
+    </message>
+</context>
+<context>
     <name>SettingsStorage</name>
     <message>
         <source>Storage</source>
@@ -1785,6 +1761,18 @@ messages</numerusform>
     <message>
         <source>Uploading...</source>
         <translation>Uploading...</translation>
+    </message>
+    <message>
+        <source>Log Out</source>
+        <translation>Log Out</translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation>Logged out</translation>
+    </message>
+    <message>
+        <source>Phone number: +%1</source>
+        <translation>Phone number: +%1</translation>
     </message>
 </context>
 <context>

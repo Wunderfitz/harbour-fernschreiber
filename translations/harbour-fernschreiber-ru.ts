@@ -56,14 +56,6 @@
         <translation>Версия TDLib %1</translation>
     </message>
     <message>
-        <source>Logged in as %1</source>
-        <translation>Вы тут как %1</translation>
-    </message>
-    <message>
-        <source>Phone number: +%1</source>
-        <translation>Ваш телефон: +%1</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>Этот проект использует twemoji. Copyright 2018 Twitter, Inc. и др. Спасибо, что сделали её доступной на условиях лицензии MIT License (программирование) und CC-BY 4.0 (графика)!</translation>
     </message>
@@ -84,59 +76,12 @@
         <translation>Открыть rlottie на GitHub</translation>
     </message>
     <message>
-        <source>Log Out</source>
-        <translation>Выйти</translation>
-    </message>
-    <message>
-        <source>Logged out</source>
-        <translation>Выход из аккаунта</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Активные сеансы</translation>
-    </message>
-    <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
         <translation>Этот проект использует OpenStreetMap Nominatim для обратного геокодирования вложений местоположения. Спасибо, что сделали его доступным в качестве веб-сервиса!</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
         <translation>Открыть OSM Nominatim Wiki</translation>
-    </message>
-</context>
-<context>
-    <name>ActiveSessionsPage</name>
-    <message>
-        <source>Getting active sessions...</source>
-        <translation>Получение активных сеансов...</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Активные сеансы</translation>
-    </message>
-    <message>
-        <source>Session was terminated</source>
-        <translation>Сеанс был завершён</translation>
-    </message>
-    <message>
-        <source>Terminate Session</source>
-        <translation>Завершить сеанс</translation>
-    </message>
-    <message>
-        <source>This app</source>
-        <translation>Это приложение</translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation>IP-адрес: %1, регион: %2</translation>
-    </message>
-    <message>
-        <source>Active since: %1, last online: %2</source>
-        <translation>Активен с: %1, был онлайн: %2</translation>
-    </message>
-    <message>
-        <source>Terminating session</source>
-        <translation>Завершение сеанса</translation>
     </message>
 </context>
 <context>
@@ -1747,6 +1692,37 @@
     </message>
 </context>
 <context>
+    <name>SettingsSession</name>
+    <message>
+        <source>Sessions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Сеанс был завершён</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Завершение сеанса</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Завершить сеанс</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>Это приложение</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP-адрес: %1, регион: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Активен с: %1, был онлайн: %2</translation>
+    </message>
+</context>
+<context>
     <name>SettingsStorage</name>
     <message>
         <source>Storage</source>
@@ -1813,6 +1789,18 @@
     <message>
         <source>Uploading...</source>
         <translation>Отправка...</translation>
+    </message>
+    <message>
+        <source>Log Out</source>
+        <translation>Выйти</translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation>Выход из аккаунта</translation>
+    </message>
+    <message>
+        <source>Phone number: +%1</source>
+        <translation>Ваш телефон: +%1</translation>
     </message>
 </context>
 <context>

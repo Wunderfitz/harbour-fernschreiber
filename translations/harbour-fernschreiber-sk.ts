@@ -56,14 +56,6 @@
         <translation>Verzia TDLib %1</translation>
     </message>
     <message>
-        <source>Logged in as %1</source>
-        <translation>Prihlásený ako %1</translation>
-    </message>
-    <message>
-        <source>Phone number: +%1</source>
-        <translation>Telefónne číslo: +%1</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>Tento projekt používa twemoji. Copyright 2018 Twitter, Inc. a a ďalší prispievatelia. Vďaka za sprístupnenie podľa licencie MIT (programovanie) a CC-BY 4.0 (grafika)!</translation>
     </message>
@@ -84,59 +76,12 @@
         <translation>Otvoriť rlottie na GitHub</translation>
     </message>
     <message>
-        <source>Log Out</source>
-        <translation>Odhlásiť</translation>
-    </message>
-    <message>
-        <source>Logged out</source>
-        <translation>Odhlásený</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Aktívne relácie</translation>
-    </message>
-    <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
         <translation>Tento projekt využíva OpenStreetMap Nominatim na reverzné geokódovanie príloh umiestnenia. Ďakujeme, že je sprístupnený ako webová služba!</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
         <translation>Otvorť OSM Nominatim Wiki</translation>
-    </message>
-</context>
-<context>
-    <name>ActiveSessionsPage</name>
-    <message>
-        <source>Getting active sessions...</source>
-        <translation>Preberanie aktívnych relácií...</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Aktívne relácie</translation>
-    </message>
-    <message>
-        <source>Session was terminated</source>
-        <translation>Relácia bola ukončená</translation>
-    </message>
-    <message>
-        <source>Terminate Session</source>
-        <translation>Ukončiť reláciu</translation>
-    </message>
-    <message>
-        <source>This app</source>
-        <translation>Táto aplikácia</translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation>IP adresa: %1, pôvod: %2</translation>
-    </message>
-    <message>
-        <source>Active since: %1, last online: %2</source>
-        <translation>Aktívna od: %1, naposledy pripojená: %2</translation>
-    </message>
-    <message>
-        <source>Terminating session</source>
-        <translation>Ukončovanie relácie</translation>
     </message>
 </context>
 <context>
@@ -1744,6 +1689,37 @@
     </message>
 </context>
 <context>
+    <name>SettingsSession</name>
+    <message>
+        <source>Sessions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Relácia bola ukončená</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Ukončovanie relácie</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Ukončiť reláciu</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>Táto aplikácia</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP adresa: %1, pôvod: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Aktívna od: %1, naposledy pripojená: %2</translation>
+    </message>
+</context>
+<context>
     <name>SettingsStorage</name>
     <message>
         <source>Storage</source>
@@ -1810,6 +1786,18 @@
     <message>
         <source>Uploading...</source>
         <translation>Zapisovanie...</translation>
+    </message>
+    <message>
+        <source>Log Out</source>
+        <translation>Odhlásiť</translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation>Odhlásený</translation>
+    </message>
+    <message>
+        <source>Phone number: +%1</source>
+        <translation>Telefónne číslo: +%1</translation>
     </message>
 </context>
 <context>

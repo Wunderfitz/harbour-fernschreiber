@@ -56,14 +56,6 @@
         <translation>TDLib 版本 %1</translation>
     </message>
     <message>
-        <source>Logged in as %1</source>
-        <translation>登录账号 %1</translation>
-    </message>
-    <message>
-        <source>Phone number: +%1</source>
-        <translation>电话号码: +%1</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>该项目使用 twemoji 2018 Twitter, Inc. 版权所有。感谢使它在 MIT 许可证（编码）及 CC-BY 4.0（图像）许可证下可用。</translation>
     </message>
@@ -84,59 +76,12 @@
         <translation>在 Github 打开 rlottie</translation>
     </message>
     <message>
-        <source>Log Out</source>
-        <translation>登出</translation>
-    </message>
-    <message>
-        <source>Logged out</source>
-        <translation>已登出</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>登录设备情况</translation>
-    </message>
-    <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
         <translation>该项目使用 OpenStreetMap Nominatim 对位置附件进行反向地理编码。感谢把它作为网络服务提供给我们！</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
         <translation>打开 OSM Nominatim Wiki</translation>
-    </message>
-</context>
-<context>
-    <name>ActiveSessionsPage</name>
-    <message>
-        <source>Getting active sessions...</source>
-        <translation>正在获取登录设备情况…</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>登录设备情况</translation>
-    </message>
-    <message>
-        <source>Session was terminated</source>
-        <translation>已删除设备</translation>
-    </message>
-    <message>
-        <source>Terminate Session</source>
-        <translation>删除设备</translation>
-    </message>
-    <message>
-        <source>This app</source>
-        <translation>此应用</translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation>IP 地址: %1, 地点: %2</translation>
-    </message>
-    <message>
-        <source>Active since: %1, last online: %2</source>
-        <translation>活跃时间: %1, 上次在线: %2</translation>
-    </message>
-    <message>
-        <source>Terminating session</source>
-        <translation>删除设备</translation>
     </message>
 </context>
 <context>
@@ -1691,6 +1636,37 @@
     </message>
 </context>
 <context>
+    <name>SettingsSession</name>
+    <message>
+        <source>Sessions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>已删除设备</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>删除设备</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>删除设备</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>此应用</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP 地址: %1, 地点: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>活跃时间: %1, 上次在线: %2</translation>
+    </message>
+</context>
+<context>
     <name>SettingsStorage</name>
     <message>
         <source>Storage</source>
@@ -1757,6 +1733,18 @@
     <message>
         <source>Uploading...</source>
         <translation>正在上传…</translation>
+    </message>
+    <message>
+        <source>Log Out</source>
+        <translation>登出</translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation>已登出</translation>
+    </message>
+    <message>
+        <source>Phone number: +%1</source>
+        <translation>电话号码: +%1</translation>
     </message>
 </context>
 <context>

@@ -56,14 +56,6 @@
         <translation>TDLib version %1</translation>
     </message>
     <message>
-        <source>Logged in as %1</source>
-        <translation>Logged in as %1</translation>
-    </message>
-    <message>
-        <source>Phone number: +%1</source>
-        <translation>Phone number: +%1</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</translation>
     </message>
@@ -84,58 +76,11 @@
         <translation>Open rlottie on GitHub</translation>
     </message>
     <message>
-        <source>Log Out</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Logged out</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ActiveSessionsPage</name>
-    <message>
-        <source>Getting active sessions...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Session was terminated</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Terminate Session</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>This app</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Active since: %1, last online: %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Terminating session</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1717,6 +1662,37 @@
     </message>
 </context>
 <context>
+    <name>SettingsSession</name>
+    <message>
+        <source>Sessions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsStorage</name>
     <message>
         <source>Storage</source>
@@ -1783,6 +1759,18 @@
     <message>
         <source>Uploading...</source>
         <translation type="unfinished">Uploading...</translation>
+    </message>
+    <message>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Phone number: +%1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

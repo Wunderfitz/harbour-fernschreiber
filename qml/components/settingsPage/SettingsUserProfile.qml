@@ -258,79 +258,35 @@ AccordionItem {
                 }
             }
 
-            SectionHeader {
-                horizontalAlignment: Text.AlignLeft
-                text: qsTr("Logged in as")
-            }
+            Column {
 
-            Row {
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 spacing: Theme.paddingMedium
 
-                Loader {
-                    id: userInformationLoader
-                    active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
-                    width: parent.width / 2
-                    sourceComponent: Component {
-                        Column {
-                            width: parent.width
-                            spacing: Theme.paddingMedium
-                            anchors.topMargin: Theme.paddingMedium
-
-                            Text {
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                horizontalAlignment: Text.AlignHCenter
-                                text: Emoji.emojify(accordionContent.userInformation.first_name + " " + accordionContent.userInformation.last_name, Theme.fontSizeSmall)
-                                font.pixelSize: Theme.fontSizeSmall
-                                wrapMode: Text.Wrap
-                                color: Theme.primaryColor
-                                textFormat: Text.StyledText
-                                anchors {
-                                    horizontalCenter: parent.horizontalCenter
-                                }
-                            }
-
-                            ProfileThumbnail {
-                                photoData: ((typeof accordionContent.userInformation.profile_photo !== "undefined") ? accordionContent.userInformation.profile_photo.small : {})
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                width: Theme.itemSizeSmall
-                                height: Theme.itemSizeSmall
-                                replacementStringHint: accordionContent.userInformation.first_name + " " + accordionContent.userInformation.last_name
-                                anchors {
-                                    horizontalCenter: parent.horizontalCenter
-                                }
-                            }
-
-                            Label {
-                                width: accordionContent.width / 2 - Theme.horizontalPageMargin
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                horizontalAlignment: Text.AlignHCenter
-                                text: qsTr("Phone number: +%1").arg(accordionContent.userInformation.phone_number)
-                                font.pixelSize: Theme.fontSizeSmall
-                                wrapMode: Text.Wrap
-                                anchors {
-                                    horizontalCenter: parent.horizontalCenter
-                                }
-                            }
-                        }
+                Label {
+                    width: parent.width
+                    height: Theme.fontSizeExtraLarge
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignBottom
+                    text: qsTr("Phone number: +%1").arg(accordionContent.userInformation.phone_number)
+                    font.pixelSize: Theme.fontSizeSmall
+                    wrapMode: Text.Wrap
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
                     }
                 }
-                BackgroundItem {
-                    id: logOutItem
-                    width: parent.width / 2
-                    height: userInformationLoader.height
-                    anchors.verticalCenter: parent.verticalCenter
-                    enabled: userInformationLoader.status == Loader.Ready
-                    Button {
-                        id: logOutButton
-                        text: qsTr("Log Out")
-                        anchors.centerIn: parent
-                        onClicked: Remorse.popupAction(settingsPage, qsTr("Logged out"), function() { 
-                            tdLibWrapper.logout();
-                            pageStack.pop();
-                        });
-                    }
+
+                Button {
+                    id: logOutButton
+                    text: qsTr("Log Out")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: Remorse.popupAction(settingsPage, qsTr("Logged out"), function() {
+                        tdLibWrapper.logout();
+                        pageStack.pop();
+                    });
                 }
+
             }
         }
     }

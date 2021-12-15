@@ -56,14 +56,6 @@
         <translation>TDLib version %1</translation>
     </message>
     <message>
-        <source>Logged in as %1</source>
-        <translation>Inloggad som %1</translation>
-    </message>
-    <message>
-        <source>Phone number: +%1</source>
-        <translation>Telefonnummer: +%1</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>Detta projekt använder twemoji. Copyright 2018 Twitter, Inc. och andra medverkande. Tack för att det gjorts tillgängligt under villkoren för MIT License (kodning) och CC-BY 4.0 (grafik)!</translation>
     </message>
@@ -84,59 +76,12 @@
         <translation>Öppna rlottie på GitHub</translation>
     </message>
     <message>
-        <source>Log Out</source>
-        <translation>Logga ut</translation>
-    </message>
-    <message>
-        <source>Logged out</source>
-        <translation>Utloggad</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Aktiva sessioner</translation>
-    </message>
-    <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
         <translation>Detta projekt använder OpenStreetMap Nominatim för omvänd geokodning av platsbilagor. Tack för att ni gjorde den tillgänglig som webbtjänst!</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
         <translation>Open OSM Nominatim Wiki</translation>
-    </message>
-</context>
-<context>
-    <name>ActiveSessionsPage</name>
-    <message>
-        <source>Getting active sessions...</source>
-        <translation>Hämtar aktiva sessioner...</translation>
-    </message>
-    <message>
-        <source>Active Sessions</source>
-        <translation>Aktiva sessioner</translation>
-    </message>
-    <message>
-        <source>Session was terminated</source>
-        <translation>Sessionen avbröts</translation>
-    </message>
-    <message>
-        <source>Terminate Session</source>
-        <translation>Avbryt sessionen</translation>
-    </message>
-    <message>
-        <source>This app</source>
-        <translation>Denna app</translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation>IP-adress: %1, ursprung: %2</translation>
-    </message>
-    <message>
-        <source>Active since: %1, last online: %2</source>
-        <translation>Aktiv sedan: %1, senast online: %2</translation>
-    </message>
-    <message>
-        <source>Terminating session</source>
-        <translation>Avbryter session</translation>
     </message>
 </context>
 <context>
@@ -1717,6 +1662,37 @@
     </message>
 </context>
 <context>
+    <name>SettingsSession</name>
+    <message>
+        <source>Sessions</source>
+        <translation>Sessioner</translation>
+    </message>
+    <message>
+        <source>Session was terminated</source>
+        <translation>Sessionen avbröts</translation>
+    </message>
+    <message>
+        <source>Terminating session</source>
+        <translation>Avbryter session</translation>
+    </message>
+    <message>
+        <source>Terminate Session</source>
+        <translation>Avbryt sessionen</translation>
+    </message>
+    <message>
+        <source>This app</source>
+        <translation>Denna app</translation>
+    </message>
+    <message>
+        <source>IP address: %1, origin: %2</source>
+        <translation>IP-adress: %1, ursprung: %2</translation>
+    </message>
+    <message>
+        <source>Active since: %1, last online: %2</source>
+        <translation>Aktiv sedan: %1, senast online: %2</translation>
+    </message>
+</context>
+<context>
     <name>SettingsStorage</name>
     <message>
         <source>Storage</source>
@@ -1783,6 +1759,18 @@
     <message>
         <source>Uploading...</source>
         <translation>Ladda upp...</translation>
+    </message>
+    <message>
+        <source>Log Out</source>
+        <translation>Logga ut</translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation>Utloggad</translation>
+    </message>
+    <message>
+        <source>Phone number: +%1</source>
+        <translation>Telefonnummer: +%1</translation>
     </message>
 </context>
 <context>
