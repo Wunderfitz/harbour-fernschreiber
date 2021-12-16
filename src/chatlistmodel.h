@@ -36,6 +36,7 @@ public:
         RoleDisplay = Qt::DisplayRole,
         RoleChatId,
         RoleChatType,
+        RoleGroupId,
         RoleTitle,
         RolePhotoSmall,
         RoleUnreadCount,
