@@ -110,8 +110,11 @@ private:
     void *tdLibClient;
     bool isActive;
 
+private:
+    static const QVariantList cleanupList(const QVariantList& list, bool *updated = Q_NULLPTR);
+    static const QVariantMap cleanupMap(const QVariantMap& data, bool *updated = Q_NULLPTR);
     void receiverLoop();
-    void nop(const QVariantMap &receivedInformation);
+    void ok(const QVariantMap &receivedInformation);
     void processReceivedDocument(const QJsonDocument &receivedJsonDocument);
     void processUpdateOption(const QVariantMap &receivedInformation);
     void processUpdateAuthorizationState(const QVariantMap &receivedInformation);
