@@ -82,6 +82,15 @@ ListItem {
         Clipboard.text = Functions.getMessageText(myMessage, true, userInformation.id, true)
     }
 
+    function openContextMenu() {
+        messageOptionsDrawer.open = false
+        if (menu) {
+            openMenu()
+        } else {
+            contextMenuLoader.active = true
+        }
+    }
+
     onClicked: {
         if(messageListItem.precalculatedValues.pageIsSelecting) {
             page.toggleMessageSelection(myMessage);
@@ -100,12 +109,11 @@ ListItem {
     }
 
     onPressAndHold: {
-        if(messageListItem.precalculatedValues.pageIsSelecting) {
-            page.selectedMessages = [];
-            page.state = ""
+        if (openMenuOnPressAndHold) {
+            openContextMenu()
         } else {
-            messageOptionsDrawer.open = false
-            contextMenuLoader.active = true;
+            page.selectedMessages = []
+            page.state = ""
         }
     }
 
@@ -364,15 +372,27 @@ ListItem {
                             InReplyToRow {
                                 id: messageInReplyToRow
                                 myUserId: page.myUserId
-                                visible: true
+                                layer.enabled: messageInReplyToMouseArea.pressed && !messageListItem.highlighted && !messageListItem.menuOpen
+                                layer.effect: PressEffect { source: messageInReplyToRow }
                                 inReplyToMessage: messageInReplyToLoader.inReplyToMessage
                                 inReplyToMessageDeleted: messageInReplyToLoader.inReplyToMessageDeleted
                             }
                             MouseArea {
+                                id: messageInReplyToMouseArea
                                 anchors.fill: parent
                                 onClicked: {
-                                    messageOverlayLoader.overlayMessage = messageInReplyToRow.inReplyToMessage;
-                                    messageOverlayLoader.active = true;
+                                    if (precalculatedValues.pageIsSelecting) {
+                                        page.toggleMessageSelection(myMessage)
+                                    } else {
+                                        messageOptionsDrawer.open = false
+                                        messageOverlayLoader.overlayMessage = messageInReplyToRow.inReplyToMessage
+                                        messageOverlayLoader.active = true
+                                    }
+                                }
+                                onPressAndHold: {
+                                    if (openMenuOnPressAndHold) {
+                                        openContextMenu()
+                                    }
                                 }
                             }
                         }
