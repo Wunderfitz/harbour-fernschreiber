@@ -12,8 +12,9 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 ### Code (Features, Bugfixes, Optimizations etc.)
 - Chat list model, chat model, notifications, TDLib receiver, animated stickers, project dependencies, qml/c++ optimizations, chatPhoto, TDLibFile, code reviews, logging categories: [Slava Monich](https://github.com/monich)
 - Chat info page, performance improvements to chat page, location support, app initialization/registration with Telegram, project dependencies, emoji handling, qml/js optimizations, multi-message actions, i18n fixes, chat permission handling, code reviews, logging categories, bot support, github build: [jgibbon](https://github.com/jgibbon)
-- Copy message to clipboard [Christian Stemmle](https://github.com/chstem)
-- Hide send message button if send-by-enter is switched on, focus text input on entering a chat [santhoshmanikandan](https://github.com/santhoshmanikandan)
+- Copy message to clipboard: [Christian Stemmle](https://github.com/chstem)
+- Hide send message button if send-by-enter is switched on, focus text input on entering a chat: [santhoshmanikandan](https://github.com/santhoshmanikandan)
+- Integration of logout and sesison options to settings page: [Peter G.](https://github.com/nephros)
 
 ### Logo/Icon
 - Designed by [Matteo](https://github.com/iamnomeutente), adjustments by [Slava Monich](https://github.com/monich)

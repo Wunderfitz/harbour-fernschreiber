@@ -12,6 +12,22 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Dec 19 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.12
+- Add option to delete private chat
+- Improve chat search performance - thanks to monich
+- Improve message forwarding - thanks to monich
+- Handle external links better for individual messages
+- Full support for sponsored messages (yes, that's required before January 1, 2022)
+- Move session and logout options from about to settings page - thanks to nephros
+- Remove short texts for stickers and animated emojis - thanks to monich
+- Fix: Display chat members correctly again after TDLib update
+- Fix: Long tap on reply-to headers finally opens context menu - thanks to monich
+- Fix: Apply "show stickers as images" setting to animated emojis - thanks to monich
+- Fix: Don't save draft for chats with deleted users
+- Fix: Hide appearance settings that are not applicable - thanks to monich
+- Fix: Less memory consumption for stickers after TDLib upgrade - thanks to monich
+- Updated translations for Polish, Spanish, Swedish - thanks to atlochowski, carlosgonz0, eson57
+
 * Sun Dec 05 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.11
 - Update to TDLib 1.7.9 - bring Fernschreiber back to life
 - Support for animated emoji
