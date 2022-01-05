@@ -105,6 +105,7 @@ bool ChatPermissionFilterModel::filterAcceptsRow(int sourceRow, const QModelInde
             switch (memberStatus) {
             case TDLibWrapper::ChatMemberStatusCreator:
             case TDLibWrapper::ChatMemberStatusAdministrator:
+                return true;
             case TDLibWrapper::ChatMemberStatusMember:
                 permissions = model->data(index, ChatListModel::RoleDisplay).toMap().value(PERMISSIONS).toMap();
                 break;
