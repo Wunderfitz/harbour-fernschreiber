@@ -479,15 +479,15 @@
     </message>
     <message>
         <source>Deleting chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuwanie czatu</translation>
     </message>
     <message>
         <source>Delete Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń czat</translation>
     </message>
     <message>
         <source>Deleted User</source>
-        <translation type="unfinished"></translation>
+        <translation>Usunięty użytkownik</translation>
     </message>
 </context>
 <context>
@@ -1270,7 +1270,7 @@
     </message>
     <message>
         <source>Unable to open link.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie można otworzyć linku.</translation>
     </message>
 </context>
 <context>
@@ -1692,7 +1692,7 @@
     <name>SettingsSession</name>
     <message>
         <source>Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Sesje</translation>
     </message>
     <message>
         <source>Session was terminated</source>
