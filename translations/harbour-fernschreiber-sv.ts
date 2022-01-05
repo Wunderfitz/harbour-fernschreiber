@@ -469,15 +469,15 @@
     </message>
     <message>
         <source>Deleting chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Tar bort chatt</translation>
     </message>
     <message>
         <source>Delete Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort chatt</translation>
     </message>
     <message>
         <source>Deleted User</source>
-        <translation type="unfinished"></translation>
+        <translation>Tog bort användare</translation>
     </message>
 </context>
 <context>
@@ -1251,7 +1251,7 @@
     </message>
     <message>
         <source>Unable to open link.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte öppna länk.</translation>
     </message>
 </context>
 <context>
