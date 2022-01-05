@@ -477,7 +477,7 @@
     </message>
     <message>
         <source>Deleted User</source>
-        <translation>Supprimer l'utilisateur</translation>
+        <translation>Supprimer l&apos;utilisateur</translation>
     </message>
 </context>
 <context>
@@ -1251,7 +1251,7 @@
     </message>
     <message>
         <source>Unable to open link.</source>
-        <translation>Impossible d'ouvrir le lien</translation>
+        <translation>Impossible d&apos;ouvrir le lien</translation>
     </message>
 </context>
 <context>

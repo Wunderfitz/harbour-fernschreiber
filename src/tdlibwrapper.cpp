@@ -256,7 +256,7 @@ void TDLibWrapper::getChats()
 {
     LOG("Getting chats");
     QVariantMap requestObject;
-    requestObject.insert(_TYPE, "getChats");
+    requestObject.insert(_TYPE, "loadChats");
     requestObject.insert("limit", 5);
     this->sendRequest(requestObject);
 }
