@@ -475,19 +475,19 @@
     </message>
     <message>
         <source>Sponsored Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Спонсировано</translation>
     </message>
     <message>
         <source>Deleting chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Удаление чата</translation>
     </message>
     <message>
         <source>Delete Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить чат</translation>
     </message>
     <message>
         <source>Deleted User</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалённый пользователь</translation>
     </message>
 </context>
 <context>
@@ -1273,7 +1273,7 @@
     </message>
     <message>
         <source>Unable to open link.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удаётся открыть ссылку</translation>
     </message>
 </context>
 <context>
@@ -1695,7 +1695,7 @@
     <name>SettingsSession</name>
     <message>
         <source>Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Сеансы</translation>
     </message>
     <message>
         <source>Session was terminated</source>
@@ -1807,15 +1807,15 @@
     <name>SponsoredMessage</name>
     <message>
         <source>Go to Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>ОТКРЫТЬ КАНАЛ</translation>
     </message>
     <message>
         <source>Go to Message</source>
-        <translation type="unfinished"></translation>
+        <translation>ОТКРЫТЬ СООБЩЕНИЕ</translation>
     </message>
     <message>
         <source>Start Bot</source>
-        <translation type="unfinished"></translation>
+        <translation>ЗАПУСТИТЬ БОТА</translation>
     </message>
 </context>
 <context>
