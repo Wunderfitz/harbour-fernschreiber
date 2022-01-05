@@ -409,7 +409,7 @@
     </message>
     <message>
         <source>Close Chat</source>
-        <translation>Ferme la conversation</translation>
+        <translation>Fermer la conversation</translation>
     </message>
     <message>
         <source>Search in Chat</source>
@@ -465,19 +465,19 @@
     </message>
     <message>
         <source>Sponsored Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Message sponsorisé</translation>
     </message>
     <message>
         <source>Deleting chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Suppression de la conversation</translation>
     </message>
     <message>
         <source>Delete Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer la conversation</translation>
     </message>
     <message>
         <source>Deleted User</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer l'utilisateur</translation>
     </message>
 </context>
 <context>
@@ -1251,7 +1251,7 @@
     </message>
     <message>
         <source>Unable to open link.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d'ouvrir le lien</translation>
     </message>
 </context>
 <context>
@@ -1770,22 +1770,22 @@
     </message>
     <message>
         <source>Phone number: +%1</source>
-        <translation></translation>
+        <translation>Numéro de téléphone : +%1</translation>
     </message>
 </context>
 <context>
     <name>SponsoredMessage</name>
     <message>
         <source>Go to Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le canal</translation>
     </message>
     <message>
         <source>Go to Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le message</translation>
     </message>
     <message>
         <source>Start Bot</source>
-        <translation type="unfinished"></translation>
+        <translation>Démarrer le bot</translation>
     </message>
 </context>
 <context>
