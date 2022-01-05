@@ -228,9 +228,9 @@ ListItem {
 
     Component.onCompleted: {
         delegateComponentLoadingTimer.start();
-
-        if (myMessage.reply_to_message_id !== 0) {
-            tdLibWrapper.getMessage(page.chatInformation.id, myMessage.reply_to_message_id);
+        if (myMessage.reply_to_message_id) {
+            tdLibWrapper.getMessage(myMessage.reply_in_chat_id ? myMessage.reply_in_chat_id : page.chatInformation.id,
+                myMessage.reply_to_message_id)
         }
     }
 
