@@ -1130,7 +1130,7 @@ Page {
                                     messageOverlayLoader.overlayMessage = chatPage.messageToShow;
                                     messageOverlayLoader.active = true;
                                 }
-                                if (typeof chatPage.messageIdToShow !== "undefined") {
+                                if (chatPage.messageIdToShow) {
                                     tdLibWrapper.getMessage(chatPage.chatInformation.id, chatPage.messageIdToShow);
                                 }
                             }
