@@ -175,7 +175,7 @@ public:
     Q_INVOKABLE void getMessageLinkInfo(const QString &url, const QString &extra = "");
     Q_INVOKABLE void getCallbackQueryAnswer(const QString &chatId, const QString &messageId, const QVariantMap &payload);
     Q_INVOKABLE void getChatPinnedMessage(qlonglong chatId);
-    Q_INVOKABLE void getChatSponsoredMessages(qlonglong chatId);
+    Q_INVOKABLE void getChatSponsoredMessage(qlonglong chatId);
     Q_INVOKABLE void setOptionInteger(const QString &optionName, int optionValue);
     Q_INVOKABLE void setOptionBoolean(const QString &optionName, bool optionValue);
     Q_INVOKABLE void setChatNotificationSettings(const QString &chatId, const QVariantMap &notificationSettings);
@@ -264,7 +264,7 @@ signals:
     void superGroupUpdated(qlonglong groupId);
     void chatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount);
     void messagesReceived(const QVariantList &messages, int totalCount);
-    void sponsoredMessagesReceived(qlonglong chatId, const QVariantList &messages);
+    void sponsoredMessageReceived(qlonglong chatId, const QVariantMap &message);
     void messageLinkInfoReceived(const QString &url, const QVariantMap &messageLinkInfo, const QString &extra);
     void newMessageReceived(qlonglong chatId, const QVariantMap &message);
     void copyToDownloadsSuccessful(const QString &fileName, const QString &filePath);
@@ -338,7 +338,7 @@ public slots:
     void handleMessageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned);
     void handleUserPrivacySettingRules(const QVariantMap &rules);
     void handleUpdatedUserPrivacySettingRules(const QVariantMap &updatedRules);
-    void handleSponsoredMess(qlonglong chatId, const QVariantList &messages);
+    void handleSponsoredMessage(qlonglong chatId, const QVariantMap &message);
 
 private:
     void setOption(const QString &name, const QString &type, const QVariant &value);

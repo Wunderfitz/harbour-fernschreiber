@@ -118,7 +118,7 @@ void TDLibWrapper::initializeTDLibReciever() {
     connect(this->tdLibReceiver, SIGNAL(superGroupUpdated(qlonglong, QVariantMap)), this, SLOT(handleSuperGroupUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SIGNAL(chatOnlineMemberCountUpdated(QString, int)));
     connect(this->tdLibReceiver, SIGNAL(messagesReceived(QVariantList, int)), this, SIGNAL(messagesReceived(QVariantList, int)));
-    connect(this->tdLibReceiver, SIGNAL(sponsoredMessagesReceived(qlonglong, QVariantList)), this, SLOT(handleSponsoredMess(qlonglong, QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(sponsoredMessageReceived(qlonglong, QVariantMap)), this, SLOT(handleSponsoredMessage(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageLinkInfoReceived(QString, QVariantMap, QString)), this, SIGNAL(messageLinkInfoReceived(QString, QVariantMap, QString)));
     connect(this->tdLibReceiver, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SIGNAL(newMessageReceived(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageInformation(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageInformation(qlonglong, qlonglong, QVariantMap)));
@@ -692,13 +692,13 @@ void TDLibWrapper::getChatPinnedMessage(qlonglong chatId)
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::getChatSponsoredMessages(qlonglong chatId)
+void TDLibWrapper::getChatSponsoredMessage(qlonglong chatId)
 {
-    LOG("Retrieving sponsored messages" << chatId);
+    LOG("Retrieving sponsored message" << chatId);
     QVariantMap requestObject;
-    requestObject.insert(_TYPE, "getChatSponsoredMessages");
+    requestObject.insert(_TYPE, "getChatSponsoredMessage");
     requestObject.insert(CHAT_ID, chatId);
-    requestObject.insert(_EXTRA, chatId); // see TDLibReceiver::processSponsoredMessages
+    requestObject.insert(_EXTRA, chatId); // see TDLibReceiver::processSponsoredMessage
     this->sendRequest(requestObject);
 }
 
@@ -1882,21 +1882,18 @@ void TDLibWrapper::handleUpdatedUserPrivacySettingRules(const QVariantMap &updat
     }
 }
 
-void TDLibWrapper::handleSponsoredMess(qlonglong chatId, const QVariantList &messages)
+void TDLibWrapper::handleSponsoredMessage(qlonglong chatId, const QVariantMap &message)
 {
     switch (appSettings->getSponsoredMess()) {
     case AppSettings::SponsoredMessHandle:
-        emit sponsoredMessagesReceived(chatId, messages);
+        emit sponsoredMessageReceived(chatId, message);
         break;
     case AppSettings::SponsoredMessAutoView:
-        LOG("Auto-viewing sponsored mess");
-        for (int i = 0; i < messages.count(); i++) {
-            const QVariantMap mess(messages.at(i).toMap());
-            viewSponsoredMessage(chatId, mess.value(ID).toULongLong());
-        }
+        LOG("Auto-viewing sponsored message");
+        viewSponsoredMessage(chatId, message.value(ID).toULongLong());
         break;
     case AppSettings::SponsoredMessIgnore:
-        LOG("Ignoring sponsored mess");
+        LOG("Ignoring sponsored message");
         break;
     }
 }

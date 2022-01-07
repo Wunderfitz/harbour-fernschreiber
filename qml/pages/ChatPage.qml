@@ -572,7 +572,7 @@ Page {
                 chatPage.botInformation = userFullInfo;
             }
         }
-        onSponsoredMessagesReceived: {
+        onSponsoredMessageReceived: {
             chatPage.containsSponsoredMessages = true;
         }
     }
@@ -707,7 +707,7 @@ Page {
             var messageToRead = chatModel.getMessage(lastQueuedIndex);
             if (messageToRead['@type'] === "sponsoredMessage") {
                 Debug.log("sponsored message to read: ", messageToRead.id);
-                tdLibWrapper.viewSponsoredMessage(chatInformation.id, messageToRead.id);
+                tdLibWrapper.viewMessage(chatInformation.id, messageToRead.message_id, false);
             } else if (chatInformation.unread_count > 0 && lastQueuedIndex > -1) {
                 Debug.log("message to read: ", messageToRead.id);
                 if (messageToRead && messageToRead.id) {
@@ -1124,7 +1124,7 @@ Page {
                                 chatPage.isInitialized = true;
                                 chatView.handleScrollPositionChanged();
                                 if (chatPage.isChannel) {
-                                    tdLibWrapper.getChatSponsoredMessages(chatInformation.id);
+                                    tdLibWrapper.getChatSponsoredMessage(chatInformation.id);
                                 }
                                 if (typeof chatPage.messageToShow !== "undefined" && chatPage.messageToShow !== {}) {
                                     messageOverlayLoader.overlayMessage = chatPage.messageToShow;

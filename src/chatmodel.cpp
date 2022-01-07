@@ -37,6 +37,7 @@ namespace {
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
     const QString SENDER_ID("sender_id");
     const QString USER_ID("user_id");
+    const QString MESSAGE_ID("message_id");
     const QString PINNED_MESSAGE_ID("pinned_message_id");
     const QString REPLY_MARKUP("reply_markup");
     const QString _TYPE("@type");
@@ -248,7 +249,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
 {
     this->tdLibWrapper = tdLibWrapper;
     connect(this->tdLibWrapper, SIGNAL(messagesReceived(QVariantList, int)), this, SLOT(handleMessagesReceived(QVariantList, int)));
-    connect(this->tdLibWrapper, SIGNAL(sponsoredMessagesReceived(qlonglong, QVariantList)), this, SLOT(handleSponsoredMessagesReceived(qlonglong, QVariantList)));
+    connect(this->tdLibWrapper, SIGNAL(sponsoredMessageReceived(qlonglong, QVariantMap)), this, SLOT(handleSponsoredMessageReceived(qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(newMessageReceived(qlonglong, QVariantMap)), this, SLOT(handleNewMessageReceived(qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(receivedMessage(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageReceived(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SLOT(handleChatReadInboxUpdated(QString, QString, int)));
@@ -479,21 +480,16 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
 
 }
 
-void ChatModel::handleSponsoredMessagesReceived(qlonglong chatId, const QVariantList &sponsoredMessages)
+void ChatModel::handleSponsoredMessageReceived(qlonglong chatId, const QVariantMap &sponsoredMessage)
 {
-    if (chatId == this->chatId && sponsoredMessages.size() > 0) {
-        LOG("Handling sponsored messages:" <<sponsoredMessages.size());
-        QList<MessageData*> messagesToBeAdded;
-        for (QVariant sponsoredMessage: sponsoredMessages) {
-            QVariantMap sponsoredMessageData = sponsoredMessage.toMap();
-            const qlonglong messageId = sponsoredMessageData.value(ID).toLongLong();
-            if (messageId && !messageIndexMap.contains(messageId)) {
-                LOG("New sponsored message will be added:" << messageId);
-                messagesToBeAdded.append(new MessageData(sponsoredMessageData, messageId));
-            }
-        }
-        appendMessages(messagesToBeAdded);
+    LOG("Handling sponsored message" << chatId);
+    QList<MessageData*> messagesToBeAdded;
+    const qlonglong messageId = sponsoredMessage.value(MESSAGE_ID).toLongLong();
+    if (messageId && !messageIndexMap.contains(messageId)) {
+        LOG("New sponsored message will be added:" << messageId);
+        messagesToBeAdded.append(new MessageData(sponsoredMessage, messageId));
     }
+    appendMessages(messagesToBeAdded);
 }
 
 void ChatModel::handleNewMessageReceived(qlonglong chatId, const QVariantMap &message)
