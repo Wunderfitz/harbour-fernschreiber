@@ -36,7 +36,7 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
 
     var myself = false;
     if ( message['@type'] !== "sponsoredMessage" ) {
-        myself = ( message.sender['@type'] === "messageSenderUser" && message.sender.user_id.toString() === currentUserId.toString() );
+        myself = ( message.sender_id['@type'] === "messageSenderUser" && message.sender_id.user_id.toString() === currentUserId.toString() );
     }
 
     switch(message.content['@type']) {
@@ -97,7 +97,7 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
     case 'messageChatJoinByLink':
         return myself ? qsTr("joined this chat", "myself") : qsTr("joined this chat");
     case 'messageChatAddMembers':
-        if (message.sender['@type'] === "messageSenderUser" && message.sender.user_id === message.content.member_user_ids[0]) {
+        if (message.sender_id['@type'] === "messageSenderUser" && message.sender_id.user_id === message.content.member_user_ids[0]) {
             return myself ? qsTr("were added to this chat", "myself") : qsTr("was added to this chat");
         } else {
             var addedUserNames = "";
@@ -110,7 +110,7 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
             return myself ? qsTr("have added %1 to the chat", "myself").arg(addedUserNames) : qsTr("has added %1 to the chat").arg(addedUserNames);
         }
     case 'messageChatDeleteMember':
-        if (message.sender['@type'] === "messageSenderUser" && message.sender.user_id === message.content.user_id) {
+        if (message.sender_id['@type'] === "messageSenderUser" && message.sender_id.user_id === message.content.user_id) {
             return myself ? qsTr("left this chat", "myself") : qsTr("left this chat");
         } else {
             return myself ? qsTr("have removed %1 from the chat", "myself").arg(getUserName(tdLibWrapper.getUserInformation(message.content.user_id))) : qsTr("has removed %1 from the chat").arg(getUserName(tdLibWrapper.getUserInformation(message.content.user_id)));
@@ -469,7 +469,7 @@ function getMessagesArrayText(messages) {
     var lastSenderName = "";
     var lines = [];
     for(var i = 0; i < messages.length; i += 1) {
-        var senderName = getUserName(tdLibWrapper.getUserInformation(messages[i].sender.user_id));
+        var senderName = getUserName(tdLibWrapper.getUserInformation(messages[i].sender_id.user_id));
         if(senderName !== lastSenderName) {
             lines.push(senderName);
         }

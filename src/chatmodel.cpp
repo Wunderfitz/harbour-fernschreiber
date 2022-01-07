@@ -35,7 +35,7 @@ namespace {
     const QString UNREAD_COUNT("unread_count");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
-    const QString SENDER("sender");
+    const QString SENDER_ID("sender_id");
     const QString USER_ID("user_id");
     const QString PINNED_MESSAGE_ID("pinned_message_id");
     const QString REPLY_MARKUP("reply_markup");
@@ -129,17 +129,17 @@ QVector<int> ChatModel::MessageData::flagsToRoles(uint flags)
 
 int ChatModel::MessageData::senderUserId() const
 {
-    return messageData.value(SENDER).toMap().value(USER_ID).toInt();
+    return messageData.value(SENDER_ID).toMap().value(USER_ID).toInt();
 }
 
 qlonglong ChatModel::MessageData::senderChatId() const
 {
-    return messageData.value(SENDER).toMap().value(CHAT_ID).toLongLong();
+    return messageData.value(SENDER_ID).toMap().value(CHAT_ID).toLongLong();
 }
 
 bool ChatModel::MessageData::senderIsChat() const
 {
-    return messageData.value(SENDER).toMap().value(_TYPE).toString() == "messageSenderChat";
+    return messageData.value(SENDER_ID).toMap().value(_TYPE).toString() == "messageSenderChat";
 }
 
 QVector<int> ChatModel::MessageData::diff(const MessageData *message) const

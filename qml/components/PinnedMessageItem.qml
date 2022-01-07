@@ -33,7 +33,7 @@ Item {
     onPinnedMessageChanged: {
         if (pinnedMessage) {
             Debug.log("[ChatPage] Activating pinned message");
-            var messageUserText = (pinnedMessage.sender.user_id !== chatPage.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(pinnedMessage.sender.user_id)), pinnedMessageUserText.font.pixelSize) : qsTr("You");
+            var messageUserText = (pinnedMessage.sender_id.user_id !== chatPage.myUserId) ? Emoji.emojify(Functions.getUserName(tdLibWrapper.getUserInformation(pinnedMessage.sender_id.user_id)), pinnedMessageUserText.font.pixelSize) : qsTr("You");
             pinnedMessageUserText.text = (messageUserText === "" ? qsTr("Pinned Message") : messageUserText );
             pinnedMessageText.text = Emoji.emojify(Functions.getMessageText(pinnedMessage, true, chatPage.myUserId, false), pinnedMessageText.font.pixelSize);
             pinnedMessageItem.visible = true;

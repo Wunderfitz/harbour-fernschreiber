@@ -25,9 +25,9 @@ import "../js/debug.js" as Debug
 Item {
     id: messageListItem
     property var myMessage: display
-    property bool senderIsUser: myMessage.sender["@type"] === "messageSenderUser"
-    property var userInformation: senderIsUser ? tdLibWrapper.getUserInformation(myMessage.sender.user_id) : null
-    property bool isOwnMessage: senderIsUser && chatPage.myUserId === myMessage.sender.user_id
+    property bool senderIsUser: myMessage.sender_id["@type"] === "messageSenderUser"
+    property var userInformation: senderIsUser ? tdLibWrapper.getUserInformation(myMessage.sender_id.user_id) : null
+    property bool isOwnMessage: senderIsUser && chatPage.myUserId === myMessage.sender_id.user_id
     property var linkedMessage
     height: backgroundRectangle.height + Theme.paddingMedium
 

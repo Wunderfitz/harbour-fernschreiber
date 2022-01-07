@@ -37,7 +37,7 @@ namespace {
     const QString CONTENT("content");
     const QString LAST_MESSAGE("last_message");
     const QString DRAFT_MESSAGE("draft_message");
-    const QString SENDER("sender");
+    const QString SENDER_ID("sender_id");
     const QString USER_ID("user_id");
     const QString BASIC_GROUP_ID("basic_group_id");
     const QString SUPERGROUP_ID("supergroup_id");
@@ -171,17 +171,17 @@ qlonglong ChatListModel::ChatData::lastReadInboxMessageId() const
 
 qlonglong ChatListModel::ChatData::senderUserId() const
 {
-    return lastMessage(SENDER).toMap().value(USER_ID).toLongLong();
+    return lastMessage(SENDER_ID).toMap().value(USER_ID).toLongLong();
 }
 
 qlonglong ChatListModel::ChatData::senderChatId() const
 {
-    return lastMessage(SENDER).toMap().value(CHAT_ID).toLongLong();
+    return lastMessage(SENDER_ID).toMap().value(CHAT_ID).toLongLong();
 }
 
 bool ChatListModel::ChatData::senderIsChat() const
 {
-    return lastMessage(SENDER).toMap().value(_TYPE).toString() == "messageSenderChat";
+    return lastMessage(SENDER_ID).toMap().value(_TYPE).toString() == "messageSenderChat";
 }
 
 qlonglong ChatListModel::ChatData::senderMessageDate() const
@@ -192,7 +192,7 @@ qlonglong ChatListModel::ChatData::senderMessageDate() const
 QString ChatListModel::ChatData::senderMessageText() const
 {
     qlonglong myUserId = tdLibWrapper->getUserInformation().value(ID).toLongLong();
-    return FernschreiberUtils::getMessageShortText(tdLibWrapper, lastMessage(CONTENT).toMap(), isChannel(), myUserId, lastMessage(SENDER).toMap() );
+    return FernschreiberUtils::getMessageShortText(tdLibWrapper, lastMessage(CONTENT).toMap(), isChannel(), myUserId, lastMessage(SENDER_ID).toMap() );
 }
 
 

@@ -203,7 +203,7 @@ Page {
             messageStatusSuffix += " - " + qsTr("edited");
         }
 
-        if (chatPage.myUserId === message.sender.user_id) {
+        if (chatPage.myUserId === message.sender_id.user_id) {
             messageStatusSuffix += "&nbsp;&nbsp;"
             if (listItemIndex <= lastReadSentIndex) {
                 // Read by other party
@@ -610,7 +610,7 @@ Page {
             chatViewStartupReadTimer.restart();
         }
         onNewMessageReceived: {
-            if (( chatView.manuallyScrolledToBottom && Qt.application.state === Qt.ApplicationActive ) || message.sender.user_id === chatPage.myUserId) {
+            if (( chatView.manuallyScrolledToBottom && Qt.application.state === Qt.ApplicationActive ) || message.sender_id.user_id === chatPage.myUserId) {
                 Debug.log("[ChatPage] Own message received or was scrolled to bottom, scrolling down to see it...");
                 chatView.scrollToIndex(chatView.count - 1);
                 viewMessageTimer.queueViewMessage(chatView.count - 1);

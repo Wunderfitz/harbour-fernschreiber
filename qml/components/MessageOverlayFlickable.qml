@@ -32,9 +32,9 @@ Flickable {
 
     property var overlayMessage;
     property bool showHeader: true
-    readonly property var userInformation: tdLibWrapper.getUserInformation(overlayMessage.sender.user_id);
-    readonly property bool isOwnMessage: tdLibWrapper.getUserInformation().id === overlayMessage.sender.user_id;
-    readonly property bool isAnonymous: overlayMessage.sender["@type"] === "messageSenderChat"
+    readonly property var userInformation: tdLibWrapper.getUserInformation(overlayMessage.sender_id.user_id);
+    readonly property bool isOwnMessage: tdLibWrapper.getUserInformation().id === overlayMessage.sender_id.user_id;
+    readonly property bool isAnonymous: overlayMessage.sender_id["@type"] === "messageSenderChat"
     property bool hasContentComponent: overlayMessage.content && chatView.delegateMessagesContent.indexOf(overlayMessage.content['@type']) > -1
     signal requestClose;
 
@@ -44,7 +44,7 @@ Flickable {
                 var otherChatInformation = tdLibWrapper.getChat(forwardInformation.origin.chat_id);
                 return Emoji.emojify(otherChatInformation.title, fontSize);
             case "messageForwardOriginUser":
-                var otherUserInformation = tdLibWrapper.getUserInformation(forwardInformation.origin.sender.user_id);
+                var otherUserInformation = tdLibWrapper.getUserInformation(forwardInformation.origin.sender_id.user_id);
                 return Emoji.emojify(Functions.getUserName(otherUserInformation), fontSize);
             default:
                 return Emoji.emojify(forwardInformation.origin.sender_name, fontSize);

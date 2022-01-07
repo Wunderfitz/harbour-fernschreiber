@@ -32,8 +32,8 @@ ListItem {
     property int messageViewCount
     property var myMessage
     property bool canReplyToMessage
-    readonly property bool isAnonymous: myMessage.sender["@type"] === "messageSenderChat"
-    readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender.user_id)
+    readonly property bool isAnonymous: myMessage.sender_id["@type"] === "messageSenderChat"
+    readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender_id.user_id)
     property QtObject precalculatedValues: ListView.view.precalculatedValues
     readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
     readonly property int textAlign: isOwnMessage ? Text.AlignRight : Text.AlignLeft
@@ -41,7 +41,7 @@ ListItem {
     readonly property bool isSelected: messageListItem.precalculatedValues.pageIsSelecting && page.selectedMessages.some(function(existingMessage) {
         return existingMessage.id === messageId
     });
-    readonly property bool isOwnMessage: page.myUserId === myMessage.sender.user_id
+    readonly property bool isOwnMessage: page.myUserId === myMessage.sender_id.user_id
     readonly property bool canDeleteMessage: myMessage.can_be_deleted_for_all_users || (myMessage.can_be_deleted_only_for_self && myMessage.chat_id === page.myUserId)
     property bool hasContentComponent
     property bool additionalOptionsOpened

@@ -43,7 +43,7 @@ namespace {
     const QString MESSAGE("message");
     const QString FIRST_NAME("first_name");
     const QString LAST_NAME("last_name");
-    const QString SENDER("sender");
+    const QString SENDER_ID("sender_id");
     const QString USER_ID("user_id");
     const QString NOTIFICATIONS("notifications");
     const QString NOTIFICATION_GROUP_ID("notification_group_id");
@@ -336,7 +336,7 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     }
 
     QString notificationBody;
-    const QVariantMap senderInformation = messageMap.value(SENDER).toMap();
+    const QVariantMap senderInformation = messageMap.value(SENDER_ID).toMap();
     if (notificationGroup->totalCount == 1 && !messageMap.isEmpty()) {
         LOG("Group" << notificationGroup->notificationGroupId << "has 1 notification");
         if (chatInformation && (chatInformation->type == TDLibWrapper::ChatTypeBasicGroup ||
