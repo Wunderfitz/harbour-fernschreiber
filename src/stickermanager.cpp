@@ -27,6 +27,7 @@ StickerManager::StickerManager(TDLibWrapper *tdLibWrapper, QObject *parent) : QO
 {
     LOG("Initializing...");
     this->tdLibWrapper = tdLibWrapper;
+    this->reloadNeeded = false;
 
     connect(this->tdLibWrapper, SIGNAL(recentStickersUpdated(QVariantList)), this, SLOT(handleRecentStickersUpdated(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(stickersReceived(QVariantList)), this, SLOT(handleStickersReceived(QVariantList)));
@@ -157,7 +158,6 @@ void StickerManager::handleStickerSetReceived(const QVariantMap &stickerSet)
         QVariantMap thumbnailLocalFile = thumbnailFile.value("local").toMap();
         if (!thumbnailLocalFile.value("is_downloading_completed").toBool()) {
             tdLibWrapper->downloadFile(thumbnailFile.value("id").toInt());
-            this->reloadNeeded = true;
         }
     }
 }

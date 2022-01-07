@@ -178,9 +178,8 @@ Page {
             updateGroupStatusText();
         }
         if (stickerManager.needsReload()) {
-            Debug.log("[ChatPage] Stickers will be reloaded!");
+            Debug.log("[ChatPage] Recent stickers will be reloaded!");
             tdLibWrapper.getRecentStickers();
-            tdLibWrapper.getInstalledStickerSets();
             stickerManager.setNeedsReload(false);
         }
         tdLibWrapper.getChatPinnedMessage(chatInformation.id);
@@ -1448,6 +1447,7 @@ Page {
                         target: stickerPickerLoader.item
                         onStickerPicked: {
                             Debug.log("Sticker picked: " + stickerId);
+                            stickerManager.setNeedsReload(true);
                             tdLibWrapper.sendStickerMessage(chatInformation.id, stickerId, newMessageColumn.replyToMessageId);
                             stickerPickerLoader.active = false;
                             attachmentOptionsFlickable.isNeeded = false;
