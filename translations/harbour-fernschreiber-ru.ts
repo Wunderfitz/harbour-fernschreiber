@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>Телеграм клиент для Sailfish OS</translation>
+        <translation>Telegram-клиент для Sailfish OS</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
@@ -943,7 +943,7 @@
     </message>
     <message>
         <source>Welcome to Fernschreiber!</source>
-        <translation>Fernschreiber приветствует вас!</translation>
+        <translation>Fernschreiber</translation>
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
