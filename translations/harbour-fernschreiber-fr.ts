@@ -1477,7 +1477,7 @@
     <name>SettingsAppearance</name>
     <message>
         <source>Appearance</source>
-        <translation>Apparance</translation>
+        <translation>Apparence</translation>
     </message>
     <message>
         <source>Show stickers as emojis</source>
