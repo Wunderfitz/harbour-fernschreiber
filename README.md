@@ -52,10 +52,6 @@ Moreover, you need to have a compiled version of [TDLib 1.7](https://github.com/
 
 You may just want to download the [tdlib.zip from our fork](https://github.com/Wunderfitz/td/releases) to just use the exact version of the latest official Fernschreiber release. To use it, you need to extract it into your local `tdlib/` folder as described above. If so, you're done and can compile Fernschreiber using the Sailfish SDK. If you want to build TDLib for yourself, please keep on reading.
 
-In case you encounter strange performance issues on startup (several seconds delay, app seems to do nothing), please be sure to [follow the instructions from the respective GitHub issue](https://github.com/tdlib/td/issues/1322), i.e. let TDLib build SQLite with `-DOMIT_MEMLOCK` and be sure to comment the two lines 22558 (`#ifndef OMIT_MEMLOCK`) and 22567 (`#endif`) in the file `sqlite/sqlite/sqlite3.c`.
-
-Moreover, TDLib 1.7 has issues loading some pinned messages in case the message database is used (which is the case in Fernschreiber). [A small patch](https://github.com/tdlib/td/commit/30d912bd4b145afb8d494b307d37645ffa21ec29) is required to make TDLib work properly in all cases. See [the respective TDLib issue](https://github.com/tdlib/td/issues/1343) for more details.
-
 In case you want to use the same codebase which was used to compile the library that is shipped with Fernschreiber, please [check out the fork](https://github.com/Wunderfitz/td), be sure to use the branch `fernschreiber` and compile these sources using the following commands (be sure to have the Sailfish OS build engine running):
 
 - `alias sfdk=~/SailfishOS/bin/sfdk`

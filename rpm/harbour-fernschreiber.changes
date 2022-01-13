@@ -12,6 +12,14 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Thu Jan 13 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.13
+- Update to TDLib 1.8 - let's see if everything still works ;)
+- Fix: Forward message to channels - thanks to monich
+- Fix: Message reference issues in repplies - thanks to monich
+- Fix: Don't load message with zero IDs - thanks to monich
+- Fix: Avoid repeated sticker set loading
+- Updated translations for French, Polish, Russian, Swedish - thanks to all contributors
+
 * Sun Dec 19 2021 Sebastian J. Wolf <sebastian@ygriega.de> 0.12
 - Add option to delete private chat
 - Improve chat search performance - thanks to monich
