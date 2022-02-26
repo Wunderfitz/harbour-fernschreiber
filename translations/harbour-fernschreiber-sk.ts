@@ -475,19 +475,19 @@
     </message>
     <message>
         <source>Sponsored Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Sponzorovaná správa</translation>
     </message>
     <message>
         <source>Deleting chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstraňovanie četu</translation>
     </message>
     <message>
         <source>Delete Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť čet</translation>
     </message>
     <message>
         <source>Deleted User</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstránený používateľ</translation>
     </message>
 </context>
 <context>
@@ -1270,7 +1270,7 @@
     </message>
     <message>
         <source>Unable to open link.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nemožno otvoriť odkaz.</translation>
     </message>
 </context>
 <context>
@@ -1692,7 +1692,7 @@
     <name>SettingsSession</name>
     <message>
         <source>Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Relácie</translation>
     </message>
     <message>
         <source>Session was terminated</source>
@@ -1804,15 +1804,15 @@
     <name>SponsoredMessage</name>
     <message>
         <source>Go to Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Prejsť na kanál</translation>
     </message>
     <message>
         <source>Go to Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Prejsť na správu</translation>
     </message>
     <message>
         <source>Start Bot</source>
-        <translation type="unfinished"></translation>
+        <translation>Spustiť robota</translation>
     </message>
 </context>
 <context>
