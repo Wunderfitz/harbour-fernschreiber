@@ -477,7 +477,7 @@
     </message>
     <message>
         <source>Deleted User</source>
-        <translation>Supprimer l'utilisateur</translation>
+        <translation>Supprimer l&apos;utilisateur</translation>
     </message>
 </context>
 <context>
@@ -605,7 +605,7 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>a envoyé une image</translation>
+        <translation>avez envoyé une image</translation>
     </message>
     <message>
         <source>sent a picture</source>
@@ -614,7 +614,7 @@
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>a envoyé une vidéo</translation>
+        <translation>avez envoyé une vidéo</translation>
     </message>
     <message>
         <source>sent a video</source>
@@ -623,7 +623,7 @@
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>a envoyé une animation</translation>
+        <translation>avez envoyé une animation</translation>
     </message>
     <message>
         <source>sent an animation</source>
@@ -636,16 +636,16 @@
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>a envoyé un document</translation>
+        <translation>avez envoyé un document</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>enva envoyéoie un document</translation>
+        <translation>a envoyé un document</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>a envoyé une localisation</translation>
+        <translation>avez envoyé une localisation</translation>
     </message>
     <message>
         <source>sent a location</source>
@@ -654,7 +654,7 @@
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>s&apos;est enregistré avec Telegram</translation>
+        <translation>vous êtes enregistré avec Telegram</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
@@ -663,7 +663,7 @@
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>a rejoint cette conversation</translation>
+        <translation>avez rejoint cette conversation</translation>
     </message>
     <message>
         <source>joined this chat</source>
@@ -672,7 +672,7 @@
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>ont été ajouté à cette conversation</translation>
+        <translation>avez été ajouté à cette conversation</translation>
     </message>
     <message>
         <source>was added to this chat</source>
@@ -681,7 +681,7 @@
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>a quitté cette conversation</translation>
+        <translation>avez quitté cette conversation</translation>
     </message>
     <message>
         <source>left this chat</source>
@@ -690,12 +690,12 @@
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>a envoyé une note vocale</translation>
+        <translation>avez envoyé une note vocale</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>a envoyé un lieu</translation>
+        <translation>avez envoyé un lieu</translation>
     </message>
     <message>
         <source>sent a venue</source>
@@ -704,7 +704,7 @@
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation>a changé le titre de la conversation</translation>
+        <translation>avez changé le titre de la conversation</translation>
     </message>
     <message>
         <source>changed the chat title</source>
@@ -713,7 +713,7 @@
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>a envoyé un sondage</translation>
+        <translation>avez envoyé un sondage</translation>
     </message>
     <message>
         <source>sent a poll</source>
@@ -722,7 +722,7 @@
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>a envoyé un quiz</translation>
+        <translation>avez envoyé un quiz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
@@ -731,7 +731,7 @@
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>a créé ce groupe</translation>
+        <translation>avez créé ce groupe</translation>
     </message>
     <message>
         <source>created this group</source>
@@ -740,7 +740,7 @@
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>a changé la photo de profil</translation>
+        <translation>avez changé la photo de profil</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
@@ -749,7 +749,7 @@
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>a supprimé la photo de conversation</translation>
+        <translation>avez supprimé la photo de conversation</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
@@ -758,7 +758,7 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>a changé la durée de vie de l&apos;échange secret</translation>
+        <translation>avez changé la durée de vie de l&apos;échange secret</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
@@ -767,12 +767,12 @@
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>a promu ce groupe en supergroupe</translation>
+        <translation>avez promu ce groupe en supergroupe</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>a changé le message épinglé</translation>
+        <translation>avez changé le message épinglé</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
@@ -781,7 +781,7 @@
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>a créé une capture d&apos;écran de cette conversation</translation>
+        <translation>avez créé une capture d&apos;écran de cette conversation</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
@@ -790,7 +790,7 @@
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>a envoyé un message non-supporté</translation>
+        <translation>avez envoyé un message non-supporté</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
@@ -807,12 +807,12 @@
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>a envoyé une photo s&apos;autodétruisant périmée</translation>
+        <translation>avez envoyé une photo s&apos;autodétruisant périmée</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>a envoyé une vidéo s&apos;autodétruisant périmée</translation>
+        <translation>avez envoyé une vidéo s&apos;autodétruisant périmée</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
@@ -821,7 +821,7 @@
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation>a envoyé un messagen non-supporté: %1</translation>
+        <translation>avez envoyé un messagen non-supporté: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
@@ -830,7 +830,7 @@
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>a envoyé un audio</translation>
+        <translation>avez envoyé un audio</translation>
     </message>
     <message>
         <source>sent an audio</source>
@@ -847,19 +847,19 @@
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>a ajouté %1 à cette conversation</translation>
+        <translation>avez ajouté %1 à cette conversation</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>a supprimé %1 de cette conversation</translation>
+        <translation>avez supprimé %1 de cette conversation</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>a marqué %Ln point</numerusform>
-            <numerusform>a marqué %Ln points</numerusform>
+            <numerusform>avez marqué %Ln point</numerusform>
+            <numerusform>avez marqué %Ln points</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -872,7 +872,7 @@
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>a envoyé un jeu</translation>
+        <translation>avez envoyé un jeu</translation>
     </message>
     <message>
         <source>sent a game</source>
@@ -881,7 +881,7 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>a envoyé une note vidéo</translation>
+        <translation>avez envoyé une note vidéo</translation>
     </message>
     <message>
         <source>sent a video note</source>
@@ -1038,8 +1038,8 @@
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>a marqué %Ln point dans %2</numerusform>
-            <numerusform>a marqué %Ln points dans %2</numerusform>
+            <numerusform>avez marqué %Ln point dans %2</numerusform>
+            <numerusform>avez marqué %Ln points dans %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1251,7 +1251,7 @@
     </message>
     <message>
         <source>Unable to open link.</source>
-        <translation>Impossible d'ouvrir le lien</translation>
+        <translation>Impossible d&apos;ouvrir le lien</translation>
     </message>
 </context>
 <context>
@@ -1960,42 +1960,42 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>a envoyé une image</translation>
+        <translation>avez envoyé une image</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>a envoyé une vidéo</translation>
+        <translation>avez envoyé une vidéo</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>a envoyé une animation</translation>
+        <translation>avez envoyé une animation</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>a envoyé un audio</translation>
+        <translation>avez envoyé un audio</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>a envoyé une note vocale</translation>
+        <translation>avez envoyé une note vocale</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>a envoyé un document</translation>
+        <translation>avez envoyé un document</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>a envoyé une localisation</translation>
+        <translation>avez envoyé une localisation</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>a envoyé un lieu</translation>
+        <translation>avez envoyé un lieu</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
@@ -2004,17 +2004,17 @@
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>a joint cette conversation</translation>
+        <translation>avez joint cette conversation</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>ont été ajouté à cette conversation</translation>
+        <translation>avez été ajouté à cette conversation</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>a quitté cette conversation</translation>
+        <translation>avez quitté cette conversation</translation>
     </message>
     <message>
         <source>was never online</source>
@@ -2063,7 +2063,7 @@
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>a changé le titre de le conversation pour %1</translation>
+        <translation>avez changé le titre de le conversation pour %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
@@ -2072,7 +2072,7 @@
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>a envoyé un sondage</translation>
+        <translation>avez envoyé un sondage</translation>
     </message>
     <message>
         <source>sent a poll</source>
@@ -2081,7 +2081,7 @@
     <message>
         <source>sent an anonymous quiz</source>
         <comment>myself</comment>
-        <translation>a envoyé un quiz anonyme</translation>
+        <translation>avez envoyé un quiz anonyme</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
@@ -2090,7 +2090,7 @@
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>a envoyé un quiz</translation>
+        <translation>avez envoyé un quiz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
@@ -2099,7 +2099,7 @@
     <message>
         <source>sent an anonymous poll</source>
         <comment>myself</comment>
-        <translation>a envoyé un sondage anonyme</translation>
+        <translation>avez envoyé un sondage anonyme</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
@@ -2124,7 +2124,7 @@
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>a créé ce groupe</translation>
+        <translation>avez créé ce groupe</translation>
     </message>
     <message>
         <source>created this group</source>
@@ -2133,7 +2133,7 @@
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>a changé la photo de la conversation</translation>
+        <translation>avez changé la photo de la conversation</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
@@ -2142,7 +2142,7 @@
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>a supprimé la photo de la conversation</translation>
+        <translation>avez supprimé la photo de la conversation</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
@@ -2151,7 +2151,7 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>a changé le paramètre de durée de vie de l&apos;échange secret</translation>
+        <translation>avez changé le paramètre de durée de vie de l&apos;échange secret</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
@@ -2161,12 +2161,12 @@
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>a promu ce groupe en supergroupe</translation>
+        <translation>avez promu ce groupe en supergroupe</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>a modifié le message épinglé</translation>
+        <translation>avez modifié le message épinglé</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
@@ -2175,7 +2175,7 @@
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>a réalisé une capture d&apos;écran de cette conversation</translation>
+        <translation>avez réalisé une capture d&apos;écran de cette conversation</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
@@ -2184,7 +2184,7 @@
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>a envoyé un message non supporté</translation>
+        <translation>avez envoyé un message non supporté</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
@@ -2193,7 +2193,7 @@
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation>a envoyé un message non supporté : %1</translation>
+        <translation>avez envoyé un message non supporté : %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
@@ -2207,7 +2207,7 @@
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>a envoyé une photo autodestructrice périmée</translation>
+        <translation>avez envoyé une photo autodestructrice périmée</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
@@ -2216,7 +2216,7 @@
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>a envoyé une vidéo autodestructrice périmée</translation>
+        <translation>avez envoyé une vidéo autodestructrice périmée</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
@@ -2229,7 +2229,7 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>a envoyé un message vidéo</translation>
+        <translation>avez envoyé un message vidéo</translation>
     </message>
     <message>
         <source>sent a video note</source>
@@ -2258,25 +2258,25 @@
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>a ajouté %1 à cette conversation</translation>
+        <translation>avez ajouté %1 à cette conversation</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>a supprimé %1 de la conversation</translation>
+        <translation>avez supprimé %1 de la conversation</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>a marqué %Ln point</numerusform>
-            <numerusform>a marqué %Ln points</numerusform>
+            <numerusform>avez marqué %Ln point</numerusform>
+            <numerusform>avez marqué %Ln points</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>a envoyé un jeu</translation>
+        <translation>avez envoyé un jeu</translation>
     </message>
     <message>
         <source>sent a game</source>
