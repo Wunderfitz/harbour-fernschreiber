@@ -302,6 +302,12 @@ function enhanceMessageText(formattedText, ignoreEntities) {
                     { offset: (entity.offset + entity.length), insertionString: "</i>", removeLength: 0 }
                 );
             break;
+            case "textEntityTypeStrikethrough":
+                messageInsertions.push(
+                    { offset: entity.offset, insertionString: "<s>", removeLength: 0 },
+                    { offset: (entity.offset + entity.length), insertionString: "</s>", removeLength: 0 }
+                );
+            break;
             case "textEntityTypeMention":
                 messageInsertions.push(
                     { offset: entity.offset, insertionString: "<a href=\"user://" + messageText.substring(entity.offset, ( entity.offset + entity.length )) + "\">", removeLength: 0 },
