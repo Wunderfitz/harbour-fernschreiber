@@ -158,7 +158,7 @@ public:
     Q_INVOKABLE void leaveChat(const QString &chatId);
     Q_INVOKABLE void deleteChat(qlonglong chatId);
     Q_INVOKABLE void getChatHistory(qlonglong chatId, qlonglong fromMessageId = 0, int offset = -1, int limit = 50, bool onlyLocal = false);
-    Q_INVOKABLE void viewMessage(const QString &chatId, const QString &messageId, bool force);
+    Q_INVOKABLE void viewMessage(qlonglong chatId, qlonglong messageId, bool force);
     Q_INVOKABLE void viewSponsoredMessage(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void pinMessage(const QString &chatId, const QString &messageId, bool disableNotification = false);
     Q_INVOKABLE void unpinMessage(const QString &chatId, const QString &messageId);

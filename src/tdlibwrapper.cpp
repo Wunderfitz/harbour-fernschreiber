@@ -333,7 +333,7 @@ void TDLibWrapper::getChatHistory(qlonglong chatId, qlonglong fromMessageId, int
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::viewMessage(const QString &chatId, const QString &messageId, bool force)
+void TDLibWrapper::viewMessage(qlonglong chatId, qlonglong messageId, bool force)
 {
     LOG("Mark message as viewed" << chatId << messageId);
     QVariantMap requestObject;
