@@ -346,17 +346,6 @@ void TDLibWrapper::viewMessage(qlonglong chatId, qlonglong messageId, bool force
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::viewSponsoredMessage(qlonglong chatId, qlonglong messageId)
-{
-    LOG("Mark sponsored message as viewed" << chatId << messageId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "viewSponsoredMessage");
-    requestObject.insert(CHAT_ID, chatId);
-    requestObject.insert("sponsored_message_id", messageId);
-    requestObject.insert(_EXTRA, "viewSponsoredMessage");
-    this->sendRequest(requestObject);
-}
-
 void TDLibWrapper::pinMessage(const QString &chatId, const QString &messageId, bool disableNotification)
 {
     LOG("Pin message to chat" << chatId << messageId << disableNotification);
@@ -1890,7 +1879,7 @@ void TDLibWrapper::handleSponsoredMessage(qlonglong chatId, const QVariantMap &m
         break;
     case AppSettings::SponsoredMessAutoView:
         LOG("Auto-viewing sponsored message");
-        viewSponsoredMessage(chatId, message.value(ID).toULongLong());
+        viewMessage(chatId, message.value(MESSAGE_ID).toULongLong(), false);
         break;
     case AppSettings::SponsoredMessIgnore:
         LOG("Ignoring sponsored message");
