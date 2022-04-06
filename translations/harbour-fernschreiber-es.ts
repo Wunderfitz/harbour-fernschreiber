@@ -930,7 +930,7 @@
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Marcar el número de teléfono para continuar.</translation>
+        <translation>Marcar el número telefónico.</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -938,7 +938,7 @@
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Marcar el código recibido:</translation>
+        <translation>Marcar el código recibido.</translation>
     </message>
     <message>
         <source>Loading...</source>
@@ -1227,7 +1227,7 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Bajada de %1 exitosa.</translation>
+        <translation>Bajada %1 exitosa.</translation>
     </message>
     <message>
         <source>Download failed.</source>
@@ -1235,7 +1235,7 @@
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation>Tocar la barra de título para buscar</translation>
+        <translation>Deslizar hacia abajo para la polea de opciones</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
