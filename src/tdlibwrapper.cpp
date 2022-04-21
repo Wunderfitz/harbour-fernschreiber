@@ -62,7 +62,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
     this->authorizationState = AuthorizationState::Closed;
     this->isLoggingOut = false;
 
-    initializeTDLibReciever();
+    initializeTDLibReceiver();
 
     QString tdLibDatabaseDirectoryPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib";
     QDir tdLibDatabaseDirectory(tdLibDatabaseDirectoryPath);
@@ -98,7 +98,7 @@ TDLibWrapper::~TDLibWrapper()
     td_json_client_destroy(this->tdLibClient);
 }
 
-void TDLibWrapper::initializeTDLibReciever() {
+void TDLibWrapper::initializeTDLibReceiver() {
     this->tdLibReceiver = new TDLibReceiver(this->tdLibClient, this);
     connect(this->tdLibReceiver, SIGNAL(versionDetected(QString)), this, SLOT(handleVersionDetected(QString)));
     connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString, QVariantMap)), this, SLOT(handleAuthorizationStateChanged(QString, QVariantMap)));
@@ -1628,7 +1628,7 @@ void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationS
         QDir appPath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
         appPath.removeRecursively();
         this->tdLibClient = td_json_client_create();
-        initializeTDLibReciever();
+        initializeTDLibReceiver();
         this->isLoggingOut = false;
     }
     this->authorizationStateData = authorizationStateData;
@@ -2035,17 +2035,19 @@ void TDLibWrapper::initializeOpenWith()
     }
     QString dbusServiceFileName = dbusPathName + "/de.ygriega.fernschreiber.service";
     QFile dbusServiceFile(dbusServiceFileName);
-    if (!dbusServiceFile.exists()) {
-        LOG("Creating D-Bus service file at" << dbusServiceFile.fileName());
-        if (dbusServiceFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-            QTextStream fileOut(&dbusServiceFile);
-            fileOut.setCodec("UTF-8");
-            fileOut << QString("[D-BUS Service]").toUtf8() << "\n";
-            fileOut << QString("Name=de.ygriega.fernschreiber").toUtf8() << "\n";
-            fileOut << QString("Exec=/usr/bin/invoker -s --type=silica-qt5 /usr/bin/harbour-fernschreiber").toUtf8() << "\n";
-            fileOut.flush();
-            dbusServiceFile.close();
-        }
+    if (dbusServiceFile.exists()) {
+        LOG("D-BUS service file existing, removing to ensure proper re-creation...");
+        dbusServiceFile.remove();
+    }
+    LOG("Creating D-Bus service file at" << dbusServiceFile.fileName());
+    if (dbusServiceFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream fileOut(&dbusServiceFile);
+        fileOut.setCodec("UTF-8");
+        fileOut << QString("[D-BUS Service]").toUtf8() << "\n";
+        fileOut << QString("Name=de.ygriega.fernschreiber").toUtf8() << "\n";
+        fileOut << QString("Exec=sailjail -- /usr/bin/harbour-fernschreiber").toUtf8() << "\n";
+        fileOut.flush();
+        dbusServiceFile.close();
     }
 }
 

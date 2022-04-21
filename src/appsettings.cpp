@@ -39,7 +39,7 @@ namespace {
     const QString KEY_SPONSORED_MESS("sponsoredMess");
 }
 
-AppSettings::AppSettings(QObject *parent) : QObject(parent), settings("harbour-fernschreiber", "settings")
+AppSettings::AppSettings(QObject *parent) : QObject(parent), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/fernschreiber/settings.conf", QSettings::NativeFormat)
 {
 }
 

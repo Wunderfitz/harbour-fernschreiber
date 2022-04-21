@@ -346,7 +346,7 @@ private:
     void setEncryptionKey();
     void setLogVerbosityLevel();
     const Group *updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups);
-    void initializeTDLibReciever();
+    void initializeTDLibReceiver();
 
 private:
     void *tdLibClient;

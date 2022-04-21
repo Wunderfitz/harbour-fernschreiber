@@ -4,3 +4,8 @@ X-Nemo-Application-Type=generic
 Icon=harbour-fernschreiber
 Exec=harbour-fernschreiber
 Name=Fernschreiber
+
+[X-Sailjail]
+Permissions=Audio;Contacts;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;PublicDir;UserDirs;Videos
+OrganizationName=de.ygriega
+ApplicationName=fernschreiber

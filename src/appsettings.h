@@ -20,6 +20,7 @@
 
 #include <QObject>
 #include <QSettings>
+#include <QStandardPaths>
 
 class AppSettings : public QObject {
     Q_OBJECT
