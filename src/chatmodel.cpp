@@ -558,7 +558,7 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         const QModelIndex messageIndex(index(pos));
         emit dataChanged(messageIndex, messageIndex, changedRoles);
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
-        tdLibWrapper->viewMessage(QString::number(this->chatId), QString::number(messageId), false);
+        tdLibWrapper->viewMessage(this->chatId, messageId, false);
     }
 }
 
