@@ -12,6 +12,14 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Apr 24 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.14
+- Adjustments to SFOS 4.4: Setup application profile, migrate configuration, fix notification sound (bug #486)
+- Support for Emoji 14.0
+- Support striked-through text - thanks to monich
+- Fix: Clean up correctly after creating voice notes (bug #481)
+- Fix: Mark sponsored messages as read correctly - thanks to monich
+- Updated translations for French, Slovak, Spanish - thanks to pherjung, okruhliak, carlosgonz0
+
 * Thu Jan 13 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.13
 - Update to TDLib 1.8 - let's see if everything still works ;)
 - Fix: Forward message to channels - thanks to monich
