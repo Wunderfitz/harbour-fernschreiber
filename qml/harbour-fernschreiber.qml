@@ -40,6 +40,13 @@ ApplicationWindow
         }
     }
 
+    Connections {
+        target: tdLibWrapper
+        onOpenFileExternally: {
+            Qt.openUrlExternally(filePath);
+        }
+    }
+
     AppNotification {
         id: appNotification
         parent: pageStack.currentPage

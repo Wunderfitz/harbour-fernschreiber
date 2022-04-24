@@ -311,6 +311,7 @@ signals:
     void messageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo);
     void okReceived(const QString &request);
     void sessionsReceived(const QVariantList &sessions);
+    void openFileExternally(const QString &filePath);
 
 public slots:
     void handleVersionDetected(const QString &version);

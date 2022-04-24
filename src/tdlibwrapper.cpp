@@ -1511,14 +1511,7 @@ void TDLibWrapper::copyFileToDownloads(const QString &filePath, bool openAfterCo
 void TDLibWrapper::openFileOnDevice(const QString &filePath)
 {
     LOG("Open file on device:" << filePath);
-    QStringList argumentsList;
-    argumentsList.append(filePath);
-    bool successfullyStarted = QProcess::startDetached("xdg-open", argumentsList);
-    if (successfullyStarted) {
-        LOG("Successfully opened file " << filePath);
-    } else {
-        LOG("Error opening file " << filePath);
-    }
+    emit openFileExternally(filePath);
 }
 
 void TDLibWrapper::controlScreenSaver(bool enabled)
