@@ -1696,7 +1696,7 @@ Page {
 
                     Row {
                         id: attachmentPreviewRow
-                        visible: (!!locationData || !!fileProperties) && !inlineQuery.userNameIsValid
+                        visible: (!!locationData || !!fileProperties || isVoiceNote) && !inlineQuery.userNameIsValid
                         spacing: Theme.paddingMedium
                         width: parent.width
                         layoutDirection: Qt.RightToLeft
