@@ -1623,7 +1623,10 @@ void TDLibWrapper::handleOptionUpdated(const QString &optionName, const QVariant
     this->options.insert(optionName, optionValue);
     emit optionUpdated(optionName, optionValue);
     if (optionName == "my_id") {
-        emit ownUserIdFound(optionValue.toString());
+        QString ownUserId = optionValue.toString();
+        this->userInformation = this->getUserInformation(ownUserId);
+        emit ownUserIdFound(ownUserId);
+
     }
 }
 
