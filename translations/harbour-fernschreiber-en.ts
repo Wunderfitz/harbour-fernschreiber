@@ -1053,13 +1053,6 @@ messages</numerusform>
     </message>
 </context>
 <context>
-    <name>MessageLocation</name>
-    <message>
-        <source>Install Pure Maps to inspect this location.</source>
-        <translation>Install Pure Maps to inspect this location.</translation>
-    </message>
-</context>
-<context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>

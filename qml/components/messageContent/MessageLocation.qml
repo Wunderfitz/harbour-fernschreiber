@@ -29,9 +29,7 @@ MessageContentBase {
     property string fileExtra;
 
     onClicked: {
-        if(!processLauncher.launchProgram('harbour-pure-maps', ["geo:"+locationData.latitude+","+locationData.longitude])) {
-            imageNotification.show(qsTr("Install Pure Maps to inspect this location."));
-        }
+        Qt.openUrlExternally("geo:" + locationData.latitude + "," + locationData.longitude);
     }
     onLocationDataChanged: updatePicture()
     onWidthChanged: updatePicture()

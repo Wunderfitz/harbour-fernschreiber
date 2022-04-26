@@ -1070,13 +1070,6 @@
     </message>
 </context>
 <context>
-    <name>MessageLocation</name>
-    <message>
-        <source>Install Pure Maps to inspect this location.</source>
-        <translation>Для просмотра карты, установите Pure Maps.</translation>
-    </message>
-</context>
-<context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>

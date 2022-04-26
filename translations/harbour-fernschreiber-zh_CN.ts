@@ -1036,13 +1036,6 @@
     </message>
 </context>
 <context>
-    <name>MessageLocation</name>
-    <message>
-        <source>Install Pure Maps to inspect this location.</source>
-        <translation>请安装 Pure Maps 以插入位置</translation>
-    </message>
-</context>
-<context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>

@@ -1067,13 +1067,6 @@
     </message>
 </context>
 <context>
-    <name>MessageLocation</name>
-    <message>
-        <source>Install Pure Maps to inspect this location.</source>
-        <translation>Zainstaluj Pure Maps, aby sprawdzić tą lokalizację.</translation>
-    </message>
-</context>
-<context>
     <name>MessageOverlayFlickable</name>
     <message>
         <source>You</source>
