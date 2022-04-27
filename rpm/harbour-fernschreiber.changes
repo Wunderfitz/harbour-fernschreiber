@@ -14,7 +14,7 @@
 
 * Wed Apr 27 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.15
 - Use geo: URL handler to open locations (direct call to Pure Maps is no longer working on SFOS 4.4)
-- Use generic file handler to open downloaded files (cdg-open is no longer working on SFOS 4.4)
+- Use generic file handler to open downloaded files (xdg-open is no longer working on SFOS 4.4)
 - Fix: Race condition on initial login caused malfunction of chats and settings page
 - Fix: Bring notifications back to lock screen of SFOS 4.4
 
