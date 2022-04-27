@@ -66,6 +66,7 @@ namespace {
     const QString HINT_DISPLAY_ON("x-nemo-display-on");             // bool
     const QString HINT_VISIBILITY("x-nemo-visibility");             // QString
     const QString HINT_FEEDBACK("x-nemo-feedback");                 // QString
+    const QString HINT_PRIORITY("x-nemo-priority");                 // int
     const QString VISIBILITY_PUBLIC("public");
 }
 
@@ -218,6 +219,7 @@ void NotificationManager::updateNotificationGroup(int groupId, qlonglong chatId,
             notification->setHintValue(HINT_CHAT_ID, chatId);
             notification->setHintValue(HINT_TOTAL_COUNT, totalCount);
             notification->setHintValue(HINT_FEEDBACK, "chat_exists");
+            notification->setHintValue(HINT_PRIORITY, 120);
             notificationGroups.insert(groupId, notificationGroup =
                 new NotificationGroup(groupId, chatId, totalCount, notification));
         }
