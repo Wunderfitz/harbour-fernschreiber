@@ -162,6 +162,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateUserPrivacySettingRules", &TDLibReceiver::processUpdateUserPrivacySettingRules);
     handlers.insert("updateMessageInteractionInfo", &TDLibReceiver::processUpdateMessageInteractionInfo);
     handlers.insert("sessions", &TDLibReceiver::processSessions);
+    handlers.insert("availableReactions", &TDLibReceiver::processAvailableReactions);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -686,6 +687,15 @@ void TDLibReceiver::processSessions(const QVariantMap &receivedInformation)
 {
     QVariantList sessions = receivedInformation.value("sessions").toList();
     emit sessionsReceived(sessions);
+}
+
+void TDLibReceiver::processAvailableReactions(const QVariantMap &receivedInformation)
+{
+    const qlonglong messageId = receivedInformation.value(_EXTRA).toLongLong();
+    const QStringList reactions = receivedInformation.value("reactions").toStringList();
+    if (!reactions.isEmpty()) {
+        emit availableReactionsReceived(messageId, reactions);
+    }
 }
 
 // Recursively removes (some) unused entries from QVariantMaps to reduce

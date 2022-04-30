@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf and other contributors
+    Copyright (C) 2020-22 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -230,6 +230,7 @@ public:
     Q_INVOKABLE void changeStickerSet(const QString &stickerSetId, bool isInstalled);
     Q_INVOKABLE void getActiveSessions();
     Q_INVOKABLE void terminateSession(const QString &sessionId);
+    Q_INVOKABLE void getMessageAvailableReactions(qlonglong chatId, qlonglong messageId);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -312,6 +313,7 @@ signals:
     void okReceived(const QString &request);
     void sessionsReceived(const QVariantList &sessions);
     void openFileExternally(const QString &filePath);
+    void availableReactionsReceived(qlonglong messageId, const QStringList &reactions);
 
 public slots:
     void handleVersionDetected(const QString &version);
