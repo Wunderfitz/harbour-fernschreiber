@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Sebastian J. Wolf and other contributors
+    Copyright (C) 2020-22 Sebastian J. Wolf and other contributors
 
     This file is part of Fernschreiber.
 
@@ -165,6 +165,7 @@ void TDLibWrapper::initializeTDLibReciever() {
     connect(this->tdLibReceiver, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(okReceived(QString)), this, SIGNAL(okReceived(QString)));
     connect(this->tdLibReceiver, SIGNAL(sessionsReceived(QVariantList)), this, SIGNAL(sessionsReceived(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(availableReactionsReceived(qlonglong, QStringList)), this, SIGNAL(availableReactionsReceived(qlonglong, QStringList)));
 
     this->tdLibReceiver->start();
 }
@@ -1402,6 +1403,17 @@ void TDLibWrapper::terminateSession(const QString &sessionId)
     requestObject.insert(_TYPE, "terminateSession");
     requestObject.insert(_EXTRA, "terminateSession");
     requestObject.insert("session_id", sessionId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getMessageAvailableReactions(qlonglong chatId, qlonglong messageId)
+{
+    LOG("Get available reactions for message" << chatId << messageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getMessageAvailableReactions");
+    requestObject.insert(_EXTRA, QString::number(messageId));
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_id", messageId);
     this->sendRequest(requestObject);
 }
 

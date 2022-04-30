@@ -105,6 +105,7 @@ ListItem {
             } else if (webPagePreviewLoader.item) {
                 webPagePreviewLoader.item.clicked()
             }
+            tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
         }
     }
 
@@ -222,6 +223,11 @@ ListItem {
         onMessageNotFound: {
             if (messageId === myMessage.reply_to_message_id) {
                 messageInReplyToLoader.inReplyToMessageDeleted = true;
+            }
+        }
+        onAvailableReactionsReceived: {
+            if (messageListItem.messageId === messageId) {
+                Debug.log("Available reactions for this message: " + reactions);
             }
         }
     }
