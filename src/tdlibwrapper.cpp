@@ -661,6 +661,21 @@ void TDLibWrapper::getMessageLinkInfo(const QString &url, const QString &extra)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::getExternalLinkInfo(const QString &url, const QString &extra)
+{
+    LOG("Retrieving external link info" << url << extra);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getExternalLinkInfo");
+    requestObject.insert("url", url);
+    if (extra == "") {
+        requestObject.insert(_EXTRA, url);
+    } else {
+        requestObject.insert(_EXTRA, url + "|" + extra);
+    }
+
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::getCallbackQueryAnswer(const QString &chatId, const QString &messageId, const QVariantMap &payload)
 {
     LOG("Getting Callback Query Answer" << chatId << messageId);

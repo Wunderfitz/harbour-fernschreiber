@@ -172,6 +172,7 @@ public:
     Q_INVOKABLE void forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, bool sendCopy, bool removeCaption);
     Q_INVOKABLE void getMessage(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void getMessageLinkInfo(const QString &url, const QString &extra = "");
+    Q_INVOKABLE void getExternalLinkInfo(const QString &url, const QString &extra = "");
     Q_INVOKABLE void getCallbackQueryAnswer(const QString &chatId, const QString &messageId, const QVariantMap &payload);
     Q_INVOKABLE void getChatPinnedMessage(qlonglong chatId);
     Q_INVOKABLE void getChatSponsoredMessage(qlonglong chatId);
