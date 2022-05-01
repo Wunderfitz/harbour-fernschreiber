@@ -25,6 +25,7 @@ import "../../js/functions.js" as Functions
 
 AccordionItem {
     text: qsTr("Sessions")
+    property SilicaFlickable flickable: parent.flickable
     Component {
         Column {
             id: activeSessionsItem
@@ -63,11 +64,7 @@ AccordionItem {
                     SilicaListView {
                         id: activeSessionsListView
                         width: parent.width
-                        // one activeSessionListItem is about 1.52 times itemSizeLarge
-                        // show max 5 items at a time
-                        height: Theme.itemSizeLarge * 1.5 * Math.min(5 , activeSessionsItem.activeSessions.length )
-                        clip: true
-
+                        height: contentHeight
                         model: activeSessionsItem.activeSessions
                         headerPositioning: ListView.OverlayHeader
                         header: Separator {
@@ -82,6 +79,15 @@ AccordionItem {
 
                             menu: ContextMenu {
                                 hasContent: !modelData.is_current
+                                onHeightChanged: {
+                                    if (parent && flickable) {
+                                        // Make sure we are inside the screen area
+                                        var bottom = parent.mapToItem(flickable, x, y).y + height
+                                        if (bottom > flickable.height) {
+                                            flickable.contentY += bottom - flickable.height
+                                        }
+                                    }
+                                }
                                 MenuItem {
                                     onClicked: {
                                         var sessionId = modelData.id;
@@ -172,8 +178,6 @@ AccordionItem {
                             }
 
                         }
-
-                        VerticalScrollDecorator {}
                     }
                 }
             }
