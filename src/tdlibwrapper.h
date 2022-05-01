@@ -20,6 +20,10 @@
 #define TDLIBWRAPPER_H
 
 #include <QCoreApplication>
+#include <QUrl>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QNetworkAccessManager>
 #include <td/telegram/td_json_client.h>
 #include "tdlibreceiver.h"
 #include "dbusadaptor.h"
@@ -232,6 +236,7 @@ public:
     Q_INVOKABLE void getActiveSessions();
     Q_INVOKABLE void terminateSession(const QString &sessionId);
     Q_INVOKABLE void getMessageAvailableReactions(qlonglong chatId, qlonglong messageId);
+    Q_INVOKABLE void getPageSource(const QString &address);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -315,6 +320,7 @@ signals:
     void sessionsReceived(const QVariantList &sessions);
     void openFileExternally(const QString &filePath);
     void availableReactionsReceived(qlonglong messageId, const QStringList &reactions);
+    void tgUrlFound(const QString &tgUrl);
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -343,6 +349,8 @@ public slots:
     void handleUpdatedUserPrivacySettingRules(const QVariantMap &updatedRules);
     void handleSponsoredMessage(qlonglong chatId, const QVariantMap &message);
 
+    void handleGetPageSourceFinished();
+
 private:
     void setOption(const QString &name, const QString &type, const QVariant &value);
     void setInitialParameters();
@@ -353,6 +361,7 @@ private:
 
 private:
     void *tdLibClient;
+    QNetworkAccessManager *manager;
     AppSettings *appSettings;
     MceInterface *mceInterface;
     TDLibReceiver *tdLibReceiver;

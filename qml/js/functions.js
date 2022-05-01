@@ -387,8 +387,8 @@ function handleTMeLink(link, usedPrefix) {
         // Do the necessary stuff to open the chat if successful
         // Fail with nice error message if it doesn't work
     } else if (link.indexOf("/+") !== -1) {
-        // Can't handle t.me/+... links, let the user choose the browser instead
-        Qt.openUrlExternally(link);
+        // Can't handle t.me/+... links directly, try to parse the Telegram page...
+        tdLibWrapper.getPageSource(link);
     } else {
         Debug.log("Search public chat: ", link.substring(usedPrefix.length));
         tdLibWrapper.searchPublicChat(link.substring(usedPrefix.length), true);

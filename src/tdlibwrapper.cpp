@@ -53,7 +53,7 @@ namespace {
     const QString CHAT_LIST_MAIN("chatListMain");
 }
 
-TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent) : QObject(parent), joinChatRequested(false)
+TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent) : QObject(parent), manager(new QNetworkAccessManager(this)), joinChatRequested(false)
 {
     LOG("Initializing TD Lib...");
     this->appSettings = appSettings;
@@ -1421,6 +1421,21 @@ void TDLibWrapper::getMessageAvailableReactions(qlonglong chatId, qlonglong mess
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::getPageSource(const QString &address)
+{
+    QUrl url = QUrl(address);
+    QNetworkRequest request(url);
+    request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    request.setHeader(QNetworkRequest::UserAgentHeader, "Fernschreiber Bot (Sailfish OS)");
+    request.setRawHeader(QByteArray("Accept"), QByteArray("text/html,application/xhtml+xml"));
+    request.setRawHeader(QByteArray("Accept-Charset"), QByteArray("utf-8"));
+    request.setRawHeader(QByteArray("Connection"), QByteArray("close"));
+    request.setRawHeader(QByteArray("Cache-Control"), QByteArray("max-age=0"));
+    QNetworkReply *reply = manager->get(request);
+
+    connect(reply, SIGNAL(finished()), this, SLOT(handleGetPageSourceFinished()));
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
@@ -1907,6 +1922,56 @@ void TDLibWrapper::handleSponsoredMessage(qlonglong chatId, const QVariantMap &m
     case AppSettings::SponsoredMessIgnore:
         LOG("Ignoring sponsored message");
         break;
+    }
+}
+
+void TDLibWrapper::handleGetPageSourceFinished()
+{
+    LOG("TDLibWrapper::handleGetPageSourceFinished");
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QString requestAddress = reply->request().url().toString();
+
+    QVariant contentTypeHeader = reply->header(QNetworkRequest::ContentTypeHeader);
+    if (!contentTypeHeader.isValid()) {
+        return;
+    }
+    LOG("Page source content type header: " + contentTypeHeader.toString());
+    if (contentTypeHeader.toString().indexOf("text/html", 0, Qt::CaseInsensitive) == -1) {
+        LOG(requestAddress + " is not HTML, not searching for TG URL...");
+        return;
+    }
+
+    QString charset = "UTF-8";
+    QRegularExpression charsetRegularExpression("charset\\s*\\=[\\s\\\"\\\']*([^\\s\\\"\\\'\\,>]*)");
+    QRegularExpressionMatchIterator matchIterator = charsetRegularExpression.globalMatch(contentTypeHeader.toString());
+    QStringList availableCharsets;
+    while (matchIterator.hasNext()) {
+        QRegularExpressionMatch nextMatch = matchIterator.next();
+        QString currentCharset = nextMatch.captured(1).toUpper();
+        LOG("Available page source charset: " << currentCharset);
+        availableCharsets.append(currentCharset);
+    }
+    if (availableCharsets.size() > 0 && !availableCharsets.contains("UTF-8")) {
+        // If we haven't received the requested UTF-8, we simply use the last one which we received in the header
+        charset = availableCharsets.last();
+    }
+    LOG("Charset for " << requestAddress << ": " << charset);
+
+    QByteArray rawDocument = reply->readAll();
+    QTextCodec *codec = QTextCodec::codecForName(charset.toUtf8());
+    if (codec == nullptr){
+      return;
+    }
+    QString resultDocument = codec->toUnicode(rawDocument);
+    QRegExp urlRegex("href\\=\"(tg\\:[^\"]+)\\\"");
+    if (urlRegex.indexIn(resultDocument) != -1) {
+        LOG("TG URL found: " + urlRegex.cap(1));
+        emit tgUrlFound(urlRegex.cap(1));
     }
 }
 

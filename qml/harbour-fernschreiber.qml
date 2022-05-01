@@ -45,6 +45,9 @@ ApplicationWindow
         onOpenFileExternally: {
             Qt.openUrlExternally(filePath);
         }
+        onTgUrlFound: {
+            Functions.handleLink(tgUrl);
+        }
     }
 
     AppNotification {
