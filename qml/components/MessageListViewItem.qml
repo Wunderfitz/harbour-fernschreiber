@@ -25,7 +25,8 @@ import "../js/debug.js" as Debug
 
 ListItem {
     id: messageListItem
-    contentHeight: messageBackground.height + Theme.paddingMedium
+    contentHeight: messageBackground.height + Theme.paddingMedium + ( reactionsColumn.visible ? reactionsColumn.height : 0 )
+    Behavior on contentHeight { NumberAnimation { duration: 200 } }
     property var chatId
     property var messageId
     property int messageIndex
@@ -62,6 +63,7 @@ ListItem {
     readonly property bool showForwardMessageMenuItem: (baseContextMenuItemCount + 2) <= maxContextMenuItemCount
     // And don't count "More Options..." for "Delete Message" if "Delete Message" is the only extra option
     readonly property bool haveSpaceForDeleteMessageMenuItem: (baseContextMenuItemCount + 3 - (deleteMessageIsOnlyExtraOption ? 1 : 0)) <= maxContextMenuItemCount
+    property var messageReactions
 
     highlighted: (down || isSelected || additionalOptionsOpened) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
@@ -92,7 +94,7 @@ ListItem {
     }
 
     onClicked: {
-        if(messageListItem.precalculatedValues.pageIsSelecting) {
+        if (messageListItem.precalculatedValues.pageIsSelecting) {
             page.toggleMessageSelection(myMessage);
         } else {
             if (messageOptionsDrawer.sourceItem !== messageListItem) {
@@ -105,7 +107,12 @@ ListItem {
             } else if (webPagePreviewLoader.item) {
                 webPagePreviewLoader.item.clicked()
             }
-            tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
+
+            if (messageListItem.messageReactions) {
+                messageListItem.messageReactions = null;
+            } else {
+                tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
+            }
         }
     }
 
@@ -226,8 +233,32 @@ ListItem {
             }
         }
         onAvailableReactionsReceived: {
-            if (messageListItem.messageId === messageId) {
+            if (messageListItem.messageId === messageId &&
+                    pageStack.currentPage === chatPage) {
                 Debug.log("Available reactions for this message: " + reactions);
+                messageListItem.messageReactions = reactions;
+                showItemCompletelyTimer.requestedIndex = index;
+                showItemCompletelyTimer.start();
+            }
+        }
+    }
+
+    Timer {
+        id: showItemCompletelyTimer
+
+        property int requestedIndex: (chatView.count - 1)
+
+        repeat: false
+        running: false
+        interval: 200
+        triggeredOnStart: false
+        onTriggered: {
+            if (requestedIndex === index) {
+                chatView.highlightMoveDuration = -1;
+                chatView.highlightResizeDuration = -1;
+                chatView.scrollToIndex(requestedIndex);
+                chatView.highlightMoveDuration = 0;
+                chatView.highlightResizeDuration = 0;
             }
         }
     }
@@ -274,7 +305,8 @@ ListItem {
         id: messageTextRow
         spacing: Theme.paddingSmall
         width: precalculatedValues.entryWidth
-        anchors.centerIn: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: Theme.paddingSmall
 
         Loader {
             id: profileThumbnailLoader
@@ -548,7 +580,6 @@ ListItem {
                     }
                 }
 
-
                 Text {
                     width: parent.width
 
@@ -603,5 +634,60 @@ ListItem {
         }
 
     }
+
+    Column {
+        id: reactionsColumn
+        width: parent.width - ( 2 * Theme.horizontalPageMargin )
+        anchors.top: messageTextRow.bottom
+        anchors.topMargin: Theme.paddingSmall
+        anchors.horizontalCenter: parent.horizontalCenter
+        visible: messageListItem.messageReactions ? ( messageListItem.messageReactions.length > 0 ? true : false ) : false
+        opacity: messageListItem.messageReactions ? ( messageListItem.messageReactions.length > 0 ? 1 : 0 ) : 0
+        Behavior on opacity { NumberAnimation {} }
+        spacing: Theme.paddingMedium
+
+        Flickable {
+            width: parent.width
+            height: reactionsResultRow.height + Theme.paddingSmall
+            anchors.horizontalCenter: parent.horizontalCenter
+            contentWidth: reactionsResultRow.width
+            clip: true
+            Row {
+                id: reactionsResultRow
+                spacing: Theme.paddingMedium
+                Repeater {
+                    model: messageListItem.messageReactions
+
+                    Item {
+                        height: singleReactionRow.height
+                        width: singleReactionRow.width
+
+                        Row {
+                            id: singleReactionRow
+                            spacing: Theme.paddingSmall
+
+                            Image {
+                                id: emojiPicture
+                                source: Emoji.getEmojiPath(modelData)
+                                width: Theme.fontSizeLarge
+                                height: Theme.fontSizeLarge
+                            }
+
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                Debug.log("Reaction clicked: " + modelData);
+                                messageListItem.messageReactions = null;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
 
 }
