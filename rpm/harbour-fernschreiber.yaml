@@ -28,7 +28,7 @@ PkgConfigBR:
   - Qt5Multimedia
   - Qt5Positioning
   - nemonotifications-qt5
-  - openssl
+  - openssl >= 1.1.1k
 
 # Build dependencies without a pkgconfig setup can be listed here
 PkgBR:
