@@ -237,6 +237,7 @@ public:
     Q_INVOKABLE void terminateSession(const QString &sessionId);
     Q_INVOKABLE void getMessageAvailableReactions(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void getPageSource(const QString &address);
+    Q_INVOKABLE void setMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);

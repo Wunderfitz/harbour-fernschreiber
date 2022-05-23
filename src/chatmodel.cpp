@@ -50,6 +50,7 @@ namespace {
     const QString TYPE_MESSAGE_INTERACTION_INFO("messageInteractionInfo");
     const QString INTERACTION_INFO("interaction_info");
     const QString VIEW_COUNT("view_count");
+    const QString REACTIONS("reactions");
 
     const QString TYPE_SPONSORED_MESSAGE("sponsoredMessage");
 }
@@ -61,14 +62,16 @@ public:
         RoleDisplay = Qt::DisplayRole,
         RoleMessageId,
         RoleMessageContentType,
-        RoleMessageViewCount
+        RoleMessageViewCount,
+        RoleMessageReactions
     };
 
     enum RoleFlag {
         RoleFlagDisplay = 0x01,
         RoleFlagMessageId = 0x02,
         RoleFlagMessageContentType = 0x04,
-        RoleFlagMessageViewCount = 0x08
+        RoleFlagMessageViewCount = 0x08,
+        RoleFlagMessageReactions = 0x16
     };
 
     MessageData(const QVariantMap &data, qlonglong msgid);
@@ -82,6 +85,7 @@ public:
     uint updateReplyMarkup(const QVariantMap &replyMarkup);
     uint updateViewCount(const QVariantMap &interactionInfo);
     uint updateInteractionInfo(const QVariantMap &interactionInfo);
+    uint updateReactions(const QVariantMap &interactionInfo);
 
     QVector<int> diff(const MessageData *message) const;
     QVector<int> setMessageData(const QVariantMap &data);
@@ -99,6 +103,7 @@ public:
     QString messageType;
     QString messageContentType;
     int viewCount;
+    QVariantList reactions;
 };
 
 ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
@@ -106,7 +111,8 @@ ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
     messageId(msgid),
     messageType(data.value(_TYPE).toString()),
     messageContentType(data.value(CONTENT).toMap().value(_TYPE).toString()),
-    viewCount(data.value(INTERACTION_INFO).toMap().value(VIEW_COUNT).toInt())
+    viewCount(data.value(INTERACTION_INFO).toMap().value(VIEW_COUNT).toInt()),
+    reactions(data.value(INTERACTION_INFO).toMap().value(REACTIONS).toList())
 {
 }
 
@@ -124,6 +130,9 @@ QVector<int> ChatModel::MessageData::flagsToRoles(uint flags)
     }
     if (flags & RoleFlagMessageViewCount) {
         roles.append(RoleMessageViewCount);
+    }
+    if (flags & RoleFlagMessageReactions) {
+        roles.append(RoleMessageReactions);
     }
     return roles;
 }
@@ -157,6 +166,9 @@ QVector<int> ChatModel::MessageData::diff(const MessageData *message) const
         if (message->viewCount != viewCount) {
             roles.append(RoleMessageViewCount);
         }
+        if (message->reactions != reactions) {
+            roles.append(RoleMessageReactions);
+        }
     }
     return roles;
 }
@@ -167,7 +179,7 @@ uint ChatModel::MessageData::updateMessageData(const QVariantMap &data)
     messageType = data.value(_TYPE).toString();
     return RoleFlagDisplay |
         updateContentType(data.value(CONTENT).toMap()) |
-        updateViewCount(data.value(INTERACTION_INFO).toMap());
+        updateInteractionInfo(data.value(INTERACTION_INFO).toMap());
 }
 
 QVector<int> ChatModel::MessageData::setMessageData(const QVariantMap &data)
@@ -215,9 +227,16 @@ uint ChatModel::MessageData::updateInteractionInfo(const QVariantMap &interactio
 {
     if (interactionInfo.value(_TYPE) == TYPE_MESSAGE_INTERACTION_INFO) {
         messageData.insert(INTERACTION_INFO, interactionInfo);
-        return RoleFlagDisplay | updateViewCount(interactionInfo);
+        return RoleFlagDisplay | updateViewCount(interactionInfo) | updateReactions(interactionInfo);
     }
     return 0;
+}
+
+uint ChatModel::MessageData::updateReactions(const QVariantMap &interactionInfo)
+{
+    const QVariantList oldReactions = reactions;
+    reactions = interactionInfo.value(REACTIONS).toList();
+    return (reactions == oldReactions) ? 0 : RoleFlagMessageReactions;
 }
 
 QVector<int> ChatModel::MessageData::setInteractionInfo(const QVariantMap &info)
@@ -277,6 +296,7 @@ QHash<int,QByteArray> ChatModel::roleNames() const
     roles.insert(MessageData::RoleMessageId, "message_id");
     roles.insert(MessageData::RoleMessageContentType, "content_type");
     roles.insert(MessageData::RoleMessageViewCount, "view_count");
+    roles.insert(MessageData::RoleMessageReactions, "reactions");
     return roles;
 }
 
@@ -295,6 +315,7 @@ QVariant ChatModel::data(const QModelIndex &index, int role) const
         case MessageData::RoleMessageId: return message->messageId;
         case MessageData::RoleMessageContentType: return message->messageContentType;
         case MessageData::RoleMessageViewCount: return message->viewCount;
+        case MessageData::RoleMessageReactions: return message->reactions;
         }
     }
     return QVariant();

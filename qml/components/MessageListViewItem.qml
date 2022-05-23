@@ -32,6 +32,7 @@ ListItem {
     property int messageIndex
     property int messageViewCount
     property var myMessage
+    property var reactions
     property bool canReplyToMessage
     readonly property bool isAnonymous: myMessage.sender_id["@type"] === "messageSenderChat"
     readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender_id.user_id)
@@ -91,6 +92,20 @@ ListItem {
         } else {
             contextMenuLoader.active = true
         }
+    }
+
+    function getInteractionText(viewCount, reactions) {
+        var interactionText = "";
+        if (viewCount > 0) {
+            interactionText = Emoji.emojify("👁️", Theme.fontSizeTiny) + Functions.getShortenedCount(viewCount);
+        }
+        for (var i = 0; i < reactions.length; i++) {
+            interactionText += ( "&nbsp;" + Emoji.emojify(reactions[i].reaction, Theme.fontSizeTiny) );
+            if (!chatPage.isPrivateChat) {
+                interactionText += ( " " + Functions.getShortenedCount(reactions[i].total_count) );
+            }
+        }
+        return interactionText;
     }
 
     onClicked: {
@@ -269,6 +284,8 @@ ListItem {
             tdLibWrapper.getMessage(myMessage.reply_in_chat_id ? myMessage.reply_in_chat_id : page.chatInformation.id,
                 myMessage.reply_to_message_id)
         }
+
+        console.log("HUGGA: " + messageViewCount + " | " + JSON.stringify(reactions));
     }
 
     onMyMessageChanged: {
@@ -590,7 +607,6 @@ ListItem {
                     color: messageListItem.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
                     horizontalAlignment: messageListItem.textAlign
                     text: getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed)
-                    rightPadding: interactionLoader.active ? interactionLoader.width : 0
                     MouseArea {
                         anchors.fill: parent
                         enabled: !messageListItem.precalculatedValues.pageIsSelecting
@@ -599,33 +615,24 @@ ListItem {
                             messageDateText.text = getMessageStatusText(myMessage, index, chatView.lastReadSentIndex, messageDateText.useElapsed);
                         }
                     }
+                }
 
-                    Loader {
-                        id: interactionLoader
-                        height: parent.height
-                        anchors.right: parent.right
-                        asynchronous: true
-                        active: chatPage.isChannel && messageViewCount
-                        sourceComponent: Component {
-                            Label {
-                                text: Functions.getShortenedCount(messageViewCount)
-                                leftPadding: Theme.iconSizeSmall
-                                font.pixelSize: Theme.fontSizeTiny
-                                color: Theme.secondaryColor
-                                Icon {
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    width: Theme.iconSizeExtraSmall
-                                    height: Theme.iconSizeExtraSmall
-                                    opacity: 0.6
-                                    source: "../../images/icon-s-eye.svg"
-                                    sourceSize {
-                                        width: Theme.iconSizeExtraSmall
-                                        height: Theme.iconSizeExtraSmall
-                                    }
-                                }
-                            }
+                Loader {
+                    id: interactionLoader
+                    width: parent.width
+                    asynchronous: true
+                    active: ( chatPage.isChannel && messageViewCount > 0 ) || reactions.length > 0
+                    sourceComponent: Component {
+                        Label {
+                            text: getInteractionText(messageViewCount, reactions)
+                            width: parent.width
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: messageListItem.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                            horizontalAlignment: messageListItem.textAlign
+                            textFormat: Text.StyledText
+                            maximumLineCount: 1
+                            elide: Text.ElideRight
                         }
-
                     }
                 }
 
@@ -678,7 +685,7 @@ ListItem {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                Debug.log("Reaction clicked: " + modelData);
+                                tdLibWrapper.setMessageReaction(messageListItem.chatId, messageListItem.messageId, modelData);
                                 messageListItem.messageReactions = null;
                             }
                         }
