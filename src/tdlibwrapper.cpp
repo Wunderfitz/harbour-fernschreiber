@@ -1417,6 +1417,18 @@ void TDLibWrapper::getMessageAvailableReactions(qlonglong chatId, qlonglong mess
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::setMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction)
+{
+    LOG("Set message reaction" << chatId << messageId << reaction);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setMessageReaction");
+    requestObject.insert("chat_id", chatId);
+    requestObject.insert("message_id", messageId);
+    requestObject.insert("reaction", reaction);
+    requestObject.insert("is_big", false);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
