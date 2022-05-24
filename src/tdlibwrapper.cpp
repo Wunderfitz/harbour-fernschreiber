@@ -1113,6 +1113,15 @@ void TDLibWrapper::readAllChatMentions(qlonglong chatId)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::readAllChatReactions(qlonglong chatId)
+{
+    LOG("Read all chat reactions" << chatId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "readAllChatReactions");
+    requestObject.insert(CHAT_ID, chatId);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::toggleChatIsMarkedAsUnread(qlonglong chatId, bool isMarkedAsUnread)
 {
     LOG("Toggle chat is marked as unread" << chatId << isMarkedAsUnread);

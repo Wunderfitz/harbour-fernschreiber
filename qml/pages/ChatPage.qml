@@ -716,6 +716,7 @@ Page {
             }
             if (chatInformation.unread_count === 0) {
                 tdLibWrapper.readAllChatMentions(chatInformation.id);
+                tdLibWrapper.readAllChatReactions(chatInformation.id);
             }
         }
     }

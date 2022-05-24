@@ -51,6 +51,8 @@ PhotoTextsListItem {
                     visible: unread_count > 0
                     onClicked: {
                         tdLibWrapper.viewMessage(chat_id, display.last_message.id, true);
+                        tdLibWrapper.readAllChatMentions(chat_id);
+                        tdLibWrapper.readAllChatReactions(chat_id);
                         tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, false);
                     }
                     text: qsTr("Mark all messages as read")
