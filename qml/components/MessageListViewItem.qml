@@ -254,6 +254,8 @@ ListItem {
                 messageListItem.messageReactions = reactions;
                 showItemCompletelyTimer.requestedIndex = index;
                 showItemCompletelyTimer.start();
+            } else {
+                messageListItem.messageReactions = null;
             }
         }
     }

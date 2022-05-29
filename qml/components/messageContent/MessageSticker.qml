@@ -27,7 +27,7 @@ MessageContentBase {
 
     property var stickerData: messageListItem ? messageListItem.myMessage.content.sticker : overlayFlickable.overlayMessage.content.sticker;
     readonly property bool asEmoji: appSettings.showStickersAsEmojis
-    readonly property bool animated: stickerData.is_animated && appSettings.animateStickers
+    readonly property bool animated: stickerData.type["@type"] === "stickerTypeAnimated" && appSettings.animateStickers
     readonly property bool stickerVisible: staticStickerLoader.item ? staticStickerLoader.item.visible :
         animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
     readonly property bool isOwnSticker : messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
