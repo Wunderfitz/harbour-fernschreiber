@@ -48,16 +48,17 @@ const char TDLIB_API_HASH[] = "1234567890abcdef1234567890abcdef";
 
 You get the Telegram API ID and hash as soon as you've registered your own application on [https://my.telegram.org](https://my.telegram.org).
 
-Moreover, you need to have a compiled version of [TDLib 1.7](https://github.com/tdlib/td) in the sub-directory `tdlib`. This sub-directory must contain another sub-directory that fits to the target device architecture (e.g. armv7hl, i486). Within this directory, there needs to be a folder called `lib` that contains at least `libtdjson.so`. For armv7hl the relative path would consequently be `tdlib/armv7hl/lib`.
+Moreover, you need to have a compiled version of [TDLib 1.8.3](https://github.com/tdlib/td) or higher in the sub-directory `tdlib`. This sub-directory must contain another sub-directory that fits to the target device architecture (e.g. armv7hl, i486). Within this directory, there needs to be a folder called `lib` that contains at least `libtdjson.so`. For armv7hl the relative path would consequently be `tdlib/armv7hl/lib`.
 
 You may just want to download the [tdlib.zip from our fork](https://github.com/Wunderfitz/td/releases) to just use the exact version of the latest official Fernschreiber release. To use it, you need to extract it into your local `tdlib/` folder as described above. If so, you're done and can compile Fernschreiber using the Sailfish SDK. If you want to build TDLib for yourself, please keep on reading.
 
 In case you want to use the same codebase which was used to compile the library that is shipped with Fernschreiber, please [check out the fork](https://github.com/Wunderfitz/td), be sure to use the branch `fernschreiber` and compile these sources using the following commands (be sure to have the Sailfish OS build engine running):
 
 - `alias sfdk=~/SailfishOS/bin/sfdk`
-- `sfdk config target=SailfishOS-3.3.0.16-armv7hl` (this compiles the sources on SFOS 3.3 and ARM - the target needs to be adjusted according to the running SDK engine and the platform)
+- `sfdk config target=SailfishOS-4.4.0.58-armv7hl` (this compiles the sources on SFOS 4.4 and ARM - the target needs to be adjusted according to the running SDK engine and the platform)
 - `mkdir build`
 - `cd build`
+- `sfdk build-init`
 - `sfdk build-shell cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=../tdlib -DTD_ENABLE_LTO=ON ..` (in case of compilation issues, try removing the flag `-DTD_ENABLE_LTO=ON`)
 - `sfdk build-shell cmake --build . --target install`
 
