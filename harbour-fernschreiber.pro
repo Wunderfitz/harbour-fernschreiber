@@ -160,7 +160,7 @@ TRANSLATIONS += translations/harbour-fernschreiber-de.ts \
 
 equals(QT_ARCH, arm) {
     message(Building ARM)
-    TARGET_ARCHITECTURE = armv7hl
+    TARGET_ARCHITECTURE = armv7hl-openssl10
 }
 equals(QT_ARCH, i386) {
     message(Building i486)
