@@ -225,15 +225,13 @@ uint ChatModel::MessageData::updateViewCount(const QVariantMap &interactionInfo)
 
 uint ChatModel::MessageData::updateInteractionInfo(const QVariantMap &interactionInfo)
 {
-    if (interactionInfo.value(_TYPE) == TYPE_MESSAGE_INTERACTION_INFO) {
-        messageData.insert(INTERACTION_INFO, interactionInfo);
-        return RoleFlagDisplay | updateViewCount(interactionInfo) | updateReactions(interactionInfo);
-    }
-    return 0;
+    messageData.insert(INTERACTION_INFO, interactionInfo);
+    return RoleFlagDisplay | updateViewCount(interactionInfo) | updateReactions(interactionInfo);
 }
 
 uint ChatModel::MessageData::updateReactions(const QVariantMap &interactionInfo)
 {
+    LOG("Updating reactions...");
     const QVariantList oldReactions = reactions;
     reactions = interactionInfo.value(REACTIONS).toList();
     return (reactions == oldReactions) ? 0 : RoleFlagMessageReactions;
