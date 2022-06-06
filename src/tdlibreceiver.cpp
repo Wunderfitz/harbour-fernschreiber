@@ -44,6 +44,8 @@ namespace {
     const QString LAST_MESSAGE("last_message");
     const QString TOTAL_COUNT("total_count");
     const QString UNREAD_COUNT("unread_count");
+    const QString UNREAD_MENTION_COUNT("unread_mention_count");
+    const QString UNREAD_REACTION_COUNT("unread_reaction_count");
     const QString TEXT("text");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
@@ -163,6 +165,8 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateMessageInteractionInfo", &TDLibReceiver::processUpdateMessageInteractionInfo);
     handlers.insert("sessions", &TDLibReceiver::processSessions);
     handlers.insert("availableReactions", &TDLibReceiver::processAvailableReactions);
+    handlers.insert("updateChatUnreadMentionCount", &TDLibReceiver::processUpdateChatUnreadMentionCount);
+    handlers.insert("updateChatUnreadReactionCount", &TDLibReceiver::processUpdateChatUnreadReactionCount);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -696,6 +700,22 @@ void TDLibReceiver::processAvailableReactions(const QVariantMap &receivedInforma
     if (!reactions.isEmpty()) {
         emit availableReactionsReceived(messageId, reactions);
     }
+}
+
+void TDLibReceiver::processUpdateChatUnreadMentionCount(const QVariantMap &receivedInformation)
+{
+    const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
+    const int unreadMentionCount = receivedInformation.value(UNREAD_MENTION_COUNT).toInt();
+    LOG("Chat unread mention count updated" << chatId << unreadMentionCount);
+    emit chatUnreadMentionCountUpdated(chatId, unreadMentionCount);
+}
+
+void TDLibReceiver::processUpdateChatUnreadReactionCount(const QVariantMap &receivedInformation)
+{
+    const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
+    const int unreadReactionCount = receivedInformation.value(UNREAD_REACTION_COUNT).toInt();
+    LOG("Chat unread reaction count updated" << chatId << unreadReactionCount);
+    emit chatUnreadReactionCountUpdated(chatId, unreadReactionCount);
 }
 
 // Recursively removes (some) unused entries from QVariantMaps to reduce

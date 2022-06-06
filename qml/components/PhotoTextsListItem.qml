@@ -11,6 +11,8 @@ ListItem {
     property alias tertiaryText: tertiaryText //usually last message date
 
     property int unreadCount: 0
+    property int unreadMentionCount: 0
+    property int unreadReactionCount: 0
     property bool isSecret: false
     property bool isVerified: false
     property bool isMarkedAsUnread: false
@@ -102,6 +104,50 @@ ListItem {
                 visible: chatListViewItem.unreadCount > 0
                 opacity: isMuted ? Theme.opacityHigh : 1.0
                 text: chatListViewItem.unreadCount > 99 ? "99+" : chatListViewItem.unreadCount
+            }
+
+            Rectangle {
+                id: chatUnreadReactionCountBackground
+                color: isMuted ? ((Theme.colorScheme === Theme.DarkOnLight) ? "lightgray" : "dimgray") : Theme.highlightBackgroundColor
+                width: Theme.fontSizeLarge
+                height: Theme.fontSizeLarge
+                anchors.right: parent.right
+                anchors.top: parent.top
+                radius: parent.width / 2
+                visible: chatListViewItem.unreadReactionCount > 0
+            }
+
+            Text {
+                id: chatUnreadReactionCount
+                font.pixelSize: Theme.fontSizeSmall
+                font.bold: true
+                color: Theme.primaryColor
+                anchors.centerIn: chatUnreadReactionCountBackground
+                visible: chatListViewItem.unreadReactionCount > 0
+                opacity: isMuted ? Theme.opacityHigh : 1.0
+                text: "❤️"
+            }
+
+            Rectangle {
+                id: chatUnreadMentionCountBackground
+                color: isMuted ? ((Theme.colorScheme === Theme.DarkOnLight) ? "lightgray" : "dimgray") : Theme.highlightBackgroundColor
+                width: Theme.fontSizeLarge
+                height: Theme.fontSizeLarge
+                anchors.right: parent.right
+                anchors.top: parent.top
+                radius: parent.width / 2
+                visible: chatListViewItem.unreadMentionCount > 0
+            }
+
+            Text {
+                id: chatUnreadMentionCount
+                font.pixelSize: Theme.fontSizeSmall
+                font.bold: true
+                color: Theme.primaryColor
+                anchors.centerIn: chatUnreadMentionCountBackground
+                visible: chatListViewItem.unreadMentionCount > 0
+                opacity: isMuted ? Theme.opacityHigh : 1.0
+                text: "@"
             }
         }
     }

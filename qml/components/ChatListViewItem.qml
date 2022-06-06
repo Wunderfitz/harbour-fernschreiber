@@ -24,6 +24,8 @@ PhotoTextsListItem {
     // message date
     tertiaryText.text: showDraft ? Functions.getDateTimeElapsed(draft_message_date) : ( last_message_date ? ( last_message_date.length === 0 ? "" : Functions.getDateTimeElapsed(last_message_date) + Emoji.emojify(last_message_status, tertiaryText.font.pixelSize) ) : "" )
     unreadCount: unread_count
+    unreadReactionCount: unread_reaction_count
+    unreadMentionCount: unread_mention_count
     isSecret: ( chat_type === TelegramAPI.ChatTypeSecret )
     isMarkedAsUnread: is_marked_as_unread
     isPinned: is_pinned
@@ -48,7 +50,7 @@ PhotoTextsListItem {
         sourceComponent: Component {
             ContextMenu {
                 MenuItem {
-                    visible: unread_count > 0
+                    visible: unread_count > 0 || unread_reaction_count > 0 || unread_mention_count > 0
                     onClicked: {
                         tdLibWrapper.viewMessage(chat_id, display.last_message.id, true);
                         tdLibWrapper.readAllChatMentions(chat_id);
@@ -59,7 +61,7 @@ PhotoTextsListItem {
                 }
 
                 MenuItem {
-                    visible: unread_count === 0
+                    visible: unread_count === 0 && unread_reaction_count === 0 && unread_mention_count === 0
                     onClicked: {
                         tdLibWrapper.toggleChatIsMarkedAsUnread(chat_id, !is_marked_as_unread);
                     }

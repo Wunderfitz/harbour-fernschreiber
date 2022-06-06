@@ -316,6 +316,8 @@ signals:
     void okReceived(const QString &request);
     void sessionsReceived(const QVariantList &sessions);
     void availableReactionsReceived(qlonglong messageId, const QStringList &reactions);
+    void chatUnreadMentionCountUpdated(qlonglong chatId, int unreadMentionCount);
+    void chatUnreadReactionCountUpdated(qlonglong chatId, int unreadReactionCount);
 
 public slots:
     void handleVersionDetected(const QString &version);
