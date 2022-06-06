@@ -42,6 +42,8 @@ namespace {
     const QString BASIC_GROUP_ID("basic_group_id");
     const QString SUPERGROUP_ID("supergroup_id");
     const QString UNREAD_COUNT("unread_count");
+    const QString UNREAD_MENTION_COUNT("unread_mention_count");
+    const QString UNREAD_REACTION_COUNT("unread_reaction_count");
     const QString NOTIFICATION_SETTINGS("notification_settings");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
@@ -66,6 +68,8 @@ public:
     const QVariant lastMessage(const QString &key) const;
     QString title() const;
     int unreadCount() const;
+    int unreadMentionCount() const;
+    int unreadReactionCount() const;
     QVariant photoSmall() const;
     qlonglong lastReadInboxMessageId() const;
     qlonglong senderUserId() const;
@@ -157,6 +161,16 @@ QString ChatListModel::ChatData::title() const
 int ChatListModel::ChatData::unreadCount() const
 {
     return chatData.value(UNREAD_COUNT).toInt();
+}
+
+int ChatListModel::ChatData::unreadMentionCount() const
+{
+    return chatData.value(UNREAD_MENTION_COUNT).toInt();
+}
+
+int ChatListModel::ChatData::unreadReactionCount() const
+{
+    return chatData.value(UNREAD_REACTION_COUNT).toInt();
 }
 
 QVariant ChatListModel::ChatData::photoSmall() const
@@ -384,6 +398,8 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSetting
     connect(tdLibWrapper, SIGNAL(chatIsMarkedAsUnreadUpdated(qlonglong, bool)), this, SLOT(handleChatIsMarkedAsUnreadUpdated(qlonglong, bool)));
     connect(tdLibWrapper, SIGNAL(chatPinnedUpdated(qlonglong, bool)), this, SLOT(handleChatPinnedUpdated(qlonglong, bool)));
     connect(tdLibWrapper, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)), this, SLOT(handleChatDraftMessageUpdated(qlonglong, QVariantMap, QString)));
+    connect(tdLibWrapper, SIGNAL(chatUnreadMentionCountUpdated(qlonglong, int)), this, SLOT(handleChatUnreadMentionCountUpdated(qlonglong, int)));
+    connect(tdLibWrapper, SIGNAL(chatUnreadReactionCountUpdated(qlonglong, int)), this, SLOT(handleChatUnreadReactionCountUpdated(qlonglong, int)));
 
     // Don't start the timer until we have at least one chat
     relativeTimeRefreshTimer = new QTimer(this);
@@ -418,6 +434,8 @@ QHash<int,QByteArray> ChatListModel::roleNames() const
     roles.insert(ChatListModel::RoleTitle, "title");
     roles.insert(ChatListModel::RolePhotoSmall, "photo_small");
     roles.insert(ChatListModel::RoleUnreadCount, "unread_count");
+    roles.insert(ChatListModel::RoleUnreadMentionCount, "unread_mention_count");
+    roles.insert(ChatListModel::RoleUnreadReactionCount, "unread_reaction_count");
     roles.insert(ChatListModel::RoleLastReadInboxMessageId, "last_read_inbox_message_id");
     roles.insert(ChatListModel::RoleLastMessageSenderId, "last_message_sender_id");
     roles.insert(ChatListModel::RoleLastMessageDate, "last_message_date");
@@ -453,6 +471,8 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RoleTitle: return data->title();
         case ChatListModel::RolePhotoSmall: return data->photoSmall();
         case ChatListModel::RoleUnreadCount: return data->unreadCount();
+        case ChatListModel::RoleUnreadMentionCount: return data->unreadMentionCount();
+        case ChatListModel::RoleUnreadReactionCount: return data->unreadReactionCount();
         case ChatListModel::RoleLastReadInboxMessageId: return data->lastReadInboxMessageId();
         case ChatListModel::RoleLastMessageSenderId: return data->senderUserId();
         case ChatListModel::RoleLastMessageText: return data->senderMessageText();
@@ -965,6 +985,46 @@ void ChatListModel::handleChatDraftMessageUpdated(qlonglong chatId, const QVaria
         emit dataChanged(modelIndex, modelIndex, changedRoles);
         if (chat->setOrder(order)) {
             updateChatOrder(chatIndex);
+        }
+    }
+}
+
+void ChatListModel::handleChatUnreadMentionCountUpdated(qlonglong chatId, int unreadMentionCount)
+{
+    if (chatIndexMap.contains(chatId)) {
+        LOG("Updating mention count for" << chatId << unreadMentionCount);
+        const int chatIndex = chatIndexMap.value(chatId);
+        ChatData *chat = chatList.at(chatIndex);
+        chat->chatData.insert(UNREAD_MENTION_COUNT, unreadMentionCount);
+        QVector<int> changedRoles;
+        changedRoles.append(ChatListModel::RoleUnreadMentionCount);
+        const QModelIndex modelIndex(index(chatIndex));
+        emit dataChanged(modelIndex, modelIndex, changedRoles);
+    } else {
+        ChatData *chat = hiddenChats.value(chatId);
+        if (chat) {
+            LOG("Updating mention count for hidden chat" << chatId << unreadMentionCount);
+            chat->chatData.insert(UNREAD_MENTION_COUNT, unreadMentionCount);
+        }
+    }
+}
+
+void ChatListModel::handleChatUnreadReactionCountUpdated(qlonglong chatId, int unreadReactionCount)
+{
+    if (chatIndexMap.contains(chatId)) {
+        LOG("Updating reaction count for" << chatId << unreadReactionCount);
+        const int chatIndex = chatIndexMap.value(chatId);
+        ChatData *chat = chatList.at(chatIndex);
+        chat->chatData.insert(UNREAD_REACTION_COUNT, unreadReactionCount);
+        QVector<int> changedRoles;
+        changedRoles.append(ChatListModel::RoleUnreadReactionCount);
+        const QModelIndex modelIndex(index(chatIndex));
+        emit dataChanged(modelIndex, modelIndex, changedRoles);
+    } else {
+        ChatData *chat = hiddenChats.value(chatId);
+        if (chat) {
+            LOG("Updating reaction count for hidden chat" << chatId << unreadReactionCount);
+            chat->chatData.insert(UNREAD_REACTION_COUNT, unreadReactionCount);
         }
     }
 }

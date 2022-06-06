@@ -1191,6 +1191,7 @@ Page {
                                 }
                             } else {
                                 tdLibWrapper.readAllChatMentions(chatInformation.id);
+                                tdLibWrapper.readAllChatReactions(chatInformation.id);
                             }
                             manuallyScrolledToBottom = chatView.atYEnd
                         }

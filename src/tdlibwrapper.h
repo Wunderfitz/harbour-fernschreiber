@@ -322,6 +322,8 @@ signals:
     void sessionsReceived(const QVariantList &sessions);
     void openFileExternally(const QString &filePath);
     void availableReactionsReceived(qlonglong messageId, const QStringList &reactions);
+    void chatUnreadMentionCountUpdated(qlonglong chatId, int unreadMentionCount);
+    void chatUnreadReactionCountUpdated(qlonglong chatId, int unreadReactionCount);
     void tgUrlFound(const QString &tgUrl);
 
 public slots:

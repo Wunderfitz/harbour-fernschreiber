@@ -103,6 +103,8 @@ signals:
     void okReceived(const QString &request);
     void sessionsReceived(const QVariantList &sessions);
     void availableReactionsReceived(qlonglong messageId, const QStringList &reactions);
+    void chatUnreadMentionCountUpdated(qlonglong chatId, int unreadMentionCount);
+    void chatUnreadReactionCountUpdated(qlonglong chatId, int unreadReactionCount);
 
 private:
     typedef void (TDLibReceiver::*Handler)(const QVariantMap &);
@@ -182,6 +184,8 @@ private:
     void processUpdateMessageInteractionInfo(const QVariantMap &receivedInformation);
     void processSessions(const QVariantMap &receivedInformation);
     void processAvailableReactions(const QVariantMap &receivedInformation);
+    void processUpdateChatUnreadMentionCount(const QVariantMap &receivedInformation);
+    void processUpdateChatUnreadReactionCount(const QVariantMap &receivedInformation);
 };
 
 #endif // TDLIBRECEIVER_H
