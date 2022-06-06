@@ -286,8 +286,6 @@ ListItem {
             tdLibWrapper.getMessage(myMessage.reply_in_chat_id ? myMessage.reply_in_chat_id : page.chatInformation.id,
                 myMessage.reply_to_message_id)
         }
-
-        console.log("HUGGA: " + messageViewCount + " | " + JSON.stringify(reactions));
     }
 
     onMyMessageChanged: {
