@@ -12,6 +12,28 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Xxx Jun XX 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.16
+- Support message reactions
+- Support t.me/+... links
+- Update to TDLib 1.8.3 - let's see if everything still works ;)
+- Fix: Much stricter chat list handling, should avoid ghost chats
+- Fix: Add RemovableMedia permission to allow uploads from SD card again
+- Fix: Context menu in settings/sessions should now always stay in screen area, thanks to monich
+
+* Wed Apr 27 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.15
+- Use geo: URL handler to open locations (direct call to Pure Maps is no longer working on SFOS 4.4)
+- Use generic file handler to open downloaded files (xdg-open is no longer working on SFOS 4.4)
+- Fix: Race condition on initial login caused malfunction of chats and settings page
+- Fix: Bring notifications back to lock screen of SFOS 4.4
+
+* Sun Apr 24 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.14
+- Adjustments to SFOS 4.4: Setup application profile, migrate configuration, fix notification sound (bug #486)
+- Support for Emoji 14.0
+- Support striked-through text - thanks to monich
+- Fix: Clean up correctly after creating voice notes (bug #481)
+- Fix: Mark sponsored messages as read correctly - thanks to monich
+- Updated translations for French, Slovak, Spanish - thanks to pherjung, okruhliak, carlosgonz0
+
 * Thu Jan 13 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.13
 - Update to TDLib 1.8 - let's see if everything still works ;)
 - Fix: Forward message to channels - thanks to monich
