@@ -622,6 +622,7 @@ ListItem {
                     width: parent.width
                     asynchronous: true
                     active: ( chatPage.isChannel && messageViewCount > 0 ) || reactions.length > 0
+                    height: ( ( chatPage.isChannel && messageViewCount > 0 ) || reactions.length > 0 ) ? ( Theme.fontSizeExtraSmall + Theme.paddingSmall ) : 0
                     sourceComponent: Component {
                         Label {
                             text: getInteractionText(messageViewCount, reactions)
