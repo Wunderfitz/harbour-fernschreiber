@@ -12,7 +12,7 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Tue Jun 07 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.16
+* Sun Jun 12 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.16
 - Support message reactions
 - Support t.me/+... links
 - Update to TDLib 1.8.3 - let's see if everything still works ;)
