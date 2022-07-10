@@ -61,7 +61,9 @@ namespace {
     const QString MESSAGE_CONTENT_TYPE_VENUE("messageVenue");
 }
 
-FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
+FernschreiberUtils::FernschreiberUtils(QObject *parent)
+    : QObject(parent)
+    , manager(new QNetworkAccessManager(this))
 {
     LOG("Initializing audio recorder...");
 
@@ -92,8 +94,6 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent) : QObject(parent)
     } else {
         LOG("Unable to initialize geolocation!");
     }
-
-    this->manager = new QNetworkAccessManager(this);
 }
 
 FernschreiberUtils::~FernschreiberUtils()

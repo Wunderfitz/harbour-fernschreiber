@@ -24,6 +24,7 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
+#include <QNetworkConfigurationManager>
 #include <td/telegram/td_json_client.h>
 #include "tdlibreceiver.h"
 #include "dbusadaptor.h"
@@ -113,6 +114,15 @@ public:
         RuleRestrictAll
     };
     Q_ENUM(UserPrivacySettingRule)
+
+    enum NetworkType {
+        Mobile,
+        MobileRoaming,
+        None,
+        Other,
+        WiFi
+    };
+    Q_ENUM(NetworkType)
 
     class Group {
     public:
@@ -239,6 +249,7 @@ public:
     Q_INVOKABLE void getMessageAvailableReactions(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void getPageSource(const QString &address);
     Q_INVOKABLE void setMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction);
+    Q_INVOKABLE void setNetworkType(NetworkType networkType);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -352,6 +363,7 @@ public slots:
     void handleUserPrivacySettingRules(const QVariantMap &rules);
     void handleUpdatedUserPrivacySettingRules(const QVariantMap &updatedRules);
     void handleSponsoredMessage(qlonglong chatId, const QVariantMap &message);
+    void handleNetworkConfigurationChanged(const QNetworkConfiguration &config);
 
     void handleGetPageSourceFinished();
 
@@ -366,6 +378,7 @@ private:
 private:
     void *tdLibClient;
     QNetworkAccessManager *manager;
+    QNetworkConfigurationManager *networkConfigurationManager;
     AppSettings *appSettings;
     MceInterface *mceInterface;
     TDLibReceiver *tdLibReceiver;

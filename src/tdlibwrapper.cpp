@@ -53,7 +53,11 @@ namespace {
     const QString CHAT_LIST_MAIN("chatListMain");
 }
 
-TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent) : QObject(parent), manager(new QNetworkAccessManager(this)), joinChatRequested(false)
+TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent)
+    : QObject(parent)
+    , manager(new QNetworkAccessManager(this))
+    , networkConfigurationManager(new QNetworkConfigurationManager(this))
+    , joinChatRequested(false)
 {
     LOG("Initializing TD Lib...");
     this->appSettings = appSettings;
@@ -81,6 +85,8 @@ TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface,
 
     connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
     connect(this->appSettings, SIGNAL(storageOptimizerChanged()), this, SLOT(handleStorageOptimizerChanged()));
+
+    connect(networkConfigurationManager, SIGNAL(configurationChanged(QNetworkConfiguration)), this, SLOT(handleNetworkConfigurationChanged(QNetworkConfiguration)));
 
     this->setLogVerbosityLevel();
     this->setOptionInteger("notification_group_count_max", 5);
@@ -1459,6 +1465,40 @@ void TDLibWrapper::setMessageReaction(qlonglong chatId, qlonglong messageId, con
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::setNetworkType(NetworkType networkType)
+{
+    LOG("Set network type" << networkType);
+
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setNetworkType");
+    requestObject.insert(_EXTRA, "setNetworkType");
+    QVariantMap networkTypeObject;
+    switch (networkType) {
+    case Mobile:
+        networkTypeObject.insert(_TYPE, "networkTypeMobile");
+        break;
+    case MobileRoaming:
+        networkTypeObject.insert(_TYPE, "networkTypeMobileRoaming");
+        break;
+    case None:
+        networkTypeObject.insert(_TYPE, "networkTypeNone");
+        break;
+    case Other:
+        networkTypeObject.insert(_TYPE, "networkTypeOther");
+        break;
+    case WiFi:
+        networkTypeObject.insert(_TYPE, "networkTypeWiFi");
+        break;
+    default:
+        networkTypeObject.insert(_TYPE, "networkTypeOther");
+        break;
+    }
+
+    requestObject.insert("type", networkTypeObject);
+
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
@@ -1945,6 +1985,45 @@ void TDLibWrapper::handleSponsoredMessage(qlonglong chatId, const QVariantMap &m
     case AppSettings::SponsoredMessIgnore:
         LOG("Ignoring sponsored message");
         break;
+    }
+}
+
+
+void TDLibWrapper::handleNetworkConfigurationChanged(const QNetworkConfiguration &config)
+{
+    LOG("A network configuration changed: " << config.bearerTypeName() << config.state());
+    LOG("Checking overall network state...");
+
+    bool wifiFound = false;
+    bool mobileFound = false;
+
+    QList<QNetworkConfiguration> activeConfigurations = networkConfigurationManager->allConfigurations(QNetworkConfiguration::Active);
+    QListIterator<QNetworkConfiguration> configurationIterator(activeConfigurations);
+    while (configurationIterator.hasNext()) {
+        QNetworkConfiguration activeConfiguration = configurationIterator.next();
+        if (activeConfiguration.bearerType() == QNetworkConfiguration::BearerWLAN
+                || activeConfiguration.bearerType() == QNetworkConfiguration::BearerEthernet) {
+            LOG("Active WiFi found...");
+            wifiFound = true;
+        }
+        if (activeConfiguration.bearerType() == QNetworkConfiguration::Bearer2G
+                || activeConfiguration.bearerType() == QNetworkConfiguration::Bearer3G
+                || activeConfiguration.bearerType() == QNetworkConfiguration::Bearer4G
+                || activeConfiguration.bearerType() == QNetworkConfiguration::BearerCDMA2000
+                || activeConfiguration.bearerType() == QNetworkConfiguration::BearerEVDO
+                || activeConfiguration.bearerType() == QNetworkConfiguration::BearerHSPA
+                || activeConfiguration.bearerType() == QNetworkConfiguration::BearerLTE
+                || activeConfiguration.bearerType() == QNetworkConfiguration::BearerWCDMA) {
+            LOG("Active mobile connection found...");
+            mobileFound = true;
+        }
+    }
+    if (wifiFound) {
+        this->setNetworkType(NetworkType::WiFi);
+    } else if (mobileFound) {
+        this->setNetworkType(NetworkType::Mobile);
+    } else {
+        this->setNetworkType(NetworkType::None);
     }
 }
 
