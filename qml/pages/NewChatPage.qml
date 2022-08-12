@@ -139,7 +139,9 @@ Page {
                         ViewPlaceholder {
                             y: Theme.paddingLarge
                             enabled: contactsListView.count === 0
-                            text: qsTr("You don't have any contacts.")
+                            text: (contactsSearchField.text.length > 0)
+                                ? qsTr("No contacts found.")
+                                : qsTr("You don't have any contacts.")
                         }
 
                         delegate: Item {
