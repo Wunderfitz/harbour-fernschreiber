@@ -341,7 +341,14 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
 
     QString notificationBody;
     const QVariantMap senderInformation = messageMap.value(SENDER_ID).toMap();
-    if (notificationGroup->totalCount == 1 && !messageMap.isEmpty()) {
+    bool outputMessageCount = notificationGroup->totalCount > 1;
+    bool messageIsEmpty = messageMap.isEmpty();
+    if (outputMessageCount || messageIsEmpty) {
+        // Either we have more than one notification or we have no content to display
+        LOG("Group" << notificationGroup->notificationGroupId << "has" << notificationGroup->totalCount << "notifications");
+        notificationBody = tr("%Ln unread messages", "", notificationGroup->totalCount);
+    }
+    if (!messageIsEmpty) {
         LOG("Group" << notificationGroup->notificationGroupId << "has 1 notification");
         if (chatInformation && (chatInformation->type == TDLibWrapper::ChatTypeBasicGroup ||
            (chatInformation->type == TDLibWrapper::ChatTypeSupergroup && !chatInformation->isChannel))) {
@@ -352,15 +359,12 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
             } else {
                 fullName = FernschreiberUtils::getUserName(tdLibWrapper->getUserInformation(senderInformation.value(USER_ID).toString()));
             }
-
-            notificationBody = notificationBody + fullName.trimmed() + ": ";
+            if (outputMessageCount) {
+                notificationBody += "; ";
+            }
+            notificationBody += fullName.trimmed() + ": ";
         }
         notificationBody += FernschreiberUtils::getMessageShortText(tdLibWrapper, messageMap.value(CONTENT).toMap(), (chatInformation ? chatInformation->isChannel : false), tdLibWrapper->getUserInformation().value(ID).toLongLong(), senderInformation );
-        nemoNotification->setBody(notificationBody);
-    } else {
-        // Either we have more than one notification or we have no content to display
-        LOG("Group" << notificationGroup->notificationGroupId << "has" << notificationGroup->totalCount << "notifications");
-        notificationBody = tr("%Ln unread messages", "", notificationGroup->totalCount);
     }
 
     const QString summary(chatInformation ? chatInformation->title : QString());
