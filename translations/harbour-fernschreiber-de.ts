@@ -183,6 +183,10 @@
         <source>Mute Chat</source>
         <translation>Chat stummschalten</translation>
     </message>
+    <message>
+        <source>ID has been copied to the clipboard.</source>
+        <translation>ID wurde kopiert.</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -1156,6 +1160,10 @@
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
         <translation>Die Kontakte wurden erfolgreich mit Telegram synchronisiert.</translation>
+    </message>
+    <message>
+        <source>No contacts found.</source>
+        <translation>Keine Kontakte gefunden.</translation>
     </message>
 </context>
 <context>

@@ -183,6 +183,10 @@
         <source>Mute Chat</source>
         <translation>Mute Chat</translation>
     </message>
+    <message>
+        <source>ID has been copied to the clipboard.</source>
+        <translation>ID has been copied to the clipboard.</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -1158,6 +1162,10 @@ messages</numerusform>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
         <translation>Contacts successfully synchronized with Telegram.</translation>
+    </message>
+    <message>
+        <source>No contacts found.</source>
+        <translation>No contacts found.</translation>
     </message>
 </context>
 <context>
