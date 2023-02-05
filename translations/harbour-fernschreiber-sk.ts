@@ -186,6 +186,10 @@
         <source>Mute Chat</source>
         <translation>Umlčať čet</translation>
     </message>
+    <message>
+        <source>ID has been copied to the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -499,6 +503,13 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Nemáte žiadne čety.</translation>
+    </message>
+</context>
+<context>
+    <name>ContactSync</name>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation>Nemožno synchonizovať kontakty s Telegramom.</translation>
     </message>
 </context>
 <context>
@@ -1168,12 +1179,12 @@
         <translation>Synchronizovať kontakty s Telegramom</translation>
     </message>
     <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Nemožno synchonizovať kontakty s Telegramom.</translation>
-    </message>
-    <message>
         <source>Contacts successfully synchronized with Telegram.</source>
         <translation>Kontakty boli úspešne synchronizované s Telegramom.</translation>
+    </message>
+    <message>
+        <source>No contacts found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1791,6 +1802,14 @@
     <message>
         <source>Phone number: +%1</source>
         <translation>Telefónne číslo: +%1</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation>Kontakty boli úspešne synchronizované s Telegramom.</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation>Synchronizovať kontakty s Telegramom</translation>
     </message>
 </context>
 <context>

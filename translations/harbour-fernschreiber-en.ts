@@ -183,6 +183,10 @@
         <source>Mute Chat</source>
         <translation>Mute Chat</translation>
     </message>
+    <message>
+        <source>ID has been copied to the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -489,6 +493,13 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>You don&apos;t have any chats yet.</translation>
+    </message>
+</context>
+<context>
+    <name>ContactSync</name>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation type="unfinished">Could not synchronize your contacts with Telegram.</translation>
     </message>
 </context>
 <context>
@@ -1152,12 +1163,12 @@ messages</numerusform>
         <translation>Synchronize Contacts with Telegram</translation>
     </message>
     <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Could not synchronize your contacts with Telegram.</translation>
-    </message>
-    <message>
         <source>Contacts successfully synchronized with Telegram.</source>
         <translation>Contacts successfully synchronized with Telegram.</translation>
+    </message>
+    <message>
+        <source>No contacts found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1766,6 +1777,14 @@ messages</numerusform>
     <message>
         <source>Phone number: +%1</source>
         <translation>Phone number: +%1</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation type="unfinished">Contacts successfully synchronized with Telegram.</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation type="unfinished">Synchronize Contacts with Telegram</translation>
     </message>
 </context>
 <context>

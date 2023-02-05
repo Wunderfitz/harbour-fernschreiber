@@ -180,6 +180,10 @@
         <source>Mute Chat</source>
         <translation>Csevegés némítása</translation>
     </message>
+    <message>
+        <source>ID has been copied to the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -478,6 +482,13 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ContactSync</name>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1132,11 +1143,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
+        <source>Contacts successfully synchronized with Telegram.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Contacts successfully synchronized with Telegram.</source>
+        <source>No contacts found.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1736,6 +1747,14 @@
     </message>
     <message>
         <source>Phone number: +%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -180,6 +180,10 @@
         <source>Mute Chat</source>
         <translation>静音对话</translation>
     </message>
+    <message>
+        <source>ID has been copied to the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -479,6 +483,13 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>你还没有任何对话。</translation>
+    </message>
+</context>
+<context>
+    <name>ContactSync</name>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation type="unfinished">无法同步你的云端 Telegram 联系人。</translation>
     </message>
 </context>
 <context>
@@ -1133,12 +1144,12 @@
         <translation>同步 Telegram 联系人</translation>
     </message>
     <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>无法同步你的云端 Telegram 联系人。</translation>
-    </message>
-    <message>
         <source>Contacts successfully synchronized with Telegram.</source>
         <translation>已成功同步 Telegram 联系人。</translation>
+    </message>
+    <message>
+        <source>No contacts found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1738,6 +1749,14 @@
     <message>
         <source>Phone number: +%1</source>
         <translation>电话号码: +%1</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation>已成功同步 Telegram 联系人。</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation>同步 Telegram 联系人</translation>
     </message>
 </context>
 <context>

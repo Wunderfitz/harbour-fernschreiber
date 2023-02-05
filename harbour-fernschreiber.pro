@@ -46,6 +46,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/AudioPreview.qml \
     qml/components/BackgroundImage.qml \
     qml/components/ChatListViewItem.qml \
+    qml/components/ContactSync.qml \
     qml/components/DocumentPreview.qml \
     qml/components/GamePreview.qml \
     qml/components/ImagePreview.qml \

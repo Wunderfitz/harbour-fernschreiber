@@ -183,6 +183,10 @@
         <source>Mute Chat</source>
         <translation>Chat stummschalten</translation>
     </message>
+    <message>
+        <source>ID has been copied to the clipboard.</source>
+        <translation>ID wurde in die Zwischenablage kopiert</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -489,6 +493,13 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>Sie haben noch keine Chats.</translation>
+    </message>
+</context>
+<context>
+    <name>ContactSync</name>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation>Konnte Ihre Kontakte nicht mit Telegram synchronisieren.</translation>
     </message>
 </context>
 <context>
@@ -1150,12 +1161,12 @@
         <translation>Kontakte mit Telegram synchronisieren</translation>
     </message>
     <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Konnte Ihre Kontakte nicht mit Telegram synchronisieren.</translation>
-    </message>
-    <message>
         <source>Contacts successfully synchronized with Telegram.</source>
         <translation>Die Kontakte wurden erfolgreich mit Telegram synchronisiert.</translation>
+    </message>
+    <message>
+        <source>No contacts found.</source>
+        <translation>Keine Kontakte gefunden</translation>
     </message>
 </context>
 <context>
@@ -1764,6 +1775,14 @@
     <message>
         <source>Phone number: +%1</source>
         <translation>Telefonnummer: +%1</translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation>Die Kontakte wurden erfolgreich mit Telegram synchronisiert.</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation>Kontakte mit Telegram synchronisieren</translation>
     </message>
 </context>
 <context>

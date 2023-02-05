@@ -55,16 +55,19 @@ Page {
         }
     }
 
-    Component.onCompleted: {
-        // With Sailfish OS 4 we can't get up-to-date contacts andmore. We might need to enter Sailjail eventually...
-        // Details see https://forum.sailfishos.org/t/4-0-1-45-non-jailed-contacts-sqlite-database-no-longer-updated/4724
-        var sailfishOSVersion = fernschreiberUtils.getSailfishOSVersion().split(".");
-        if (parseInt(sailfishOSVersion[0]) < 4) {
-            Debug.log("Sailfish OS version 3.x - contact sync should still be possible...")
+    Connections {
+        target: contactSyncLoader.item
+        onSyncError: {
+            newChatPage.isLoading = false;
+        }
+    }
+
+    Loader {
+        id: contactSyncLoader
+        source: "../components/ContactSync.qml"
+        active: true
+        onLoaded: {
             newChatPage.syncSupported = true;
-        } else {
-            Debug.log("Sailfish OS version 4.x - contact sync no longer supported...")
-            newChatPage.syncSupported = false;
         }
     }
 
@@ -74,14 +77,11 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
-            visible: contactsModel.canSynchronizeContacts() && newChatPage.syncSupported
+            visible: newChatPage.syncSupported
             MenuItem {
                 onClicked: {
                     newChatPage.isLoading = true;
-                    if (!contactsModel.synchronizeContacts()) {
-                        reloadContacts();
-                        appNotification.show(qsTr("Could not synchronize your contacts with Telegram."));
-                    }
+                    contactSyncLoader.item.synchronize();
                     // Success message is not fired before TDLib returned "Contacts imported" (see above)
                 }
                 text: qsTr("Synchronize Contacts with Telegram")
