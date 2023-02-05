@@ -37,7 +37,7 @@ namespace {
     const QString KEY_DELAY_MESSAGE_READ("delayMessageRead");
     const QString KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN("focusTextAreaOnChatOpen");
     const QString KEY_SPONSORED_MESS("sponsoredMess");
-    const QString KEY_HIGHLIGHT_UNREAD("highlightUnread");
+    const QString KEY_HIGHLIGHT_UNREADCONVS("highlightUnreadConversations");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/fernschreiber/settings.conf", QSettings::NativeFormat)
@@ -241,17 +241,17 @@ void AppSettings::setDelayMessageRead(bool enable)
     }
 }
 
-bool AppSettings::highlightUnread() const
+bool AppSettings::highlightUnreadConversations() const
 {
-    return settings.value(KEY_HIGHLIGHT_UNREAD, true).toBool();
+    return settings.value(KEY_HIGHLIGHT_UNREADCONVS, true).toBool();
 }
 
-void AppSettings::setHighlightUnread(bool enable)
+void AppSettings::setHighlightUnreadConversations(bool enable)
 {
-    if (highlightUnread() != enable) {
-        LOG(KEY_HIGHLIGHT_UNREAD << enable);
-        settings.setValue(KEY_HIGHLIGHT_UNREAD, enable);
-        emit highlightUnreadChanged();
+    if (highlightUnreadConversations() != enable) {
+        LOG(KEY_HIGHLIGHT_UNREADCONVS << enable);
+        settings.setValue(KEY_HIGHLIGHT_UNREADCONVS, enable);
+        emit highlightUnreadConversationsChanged();
     }
 }
 

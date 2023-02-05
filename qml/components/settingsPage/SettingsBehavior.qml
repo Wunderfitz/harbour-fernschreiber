@@ -72,12 +72,12 @@ AccordionItem {
 
             TextSwitch {
                 width: parent.columnWidth
-                checked: appSettings.highlightUnread
+                checked: appSettings.highlightUnreadConversations
                 text: qsTr("Highlight unread messages")
                 description: qsTr("Highlight Conversations with unread messages")
                 automaticCheck: false
                 onClicked: {
-                    appSettings.highlightUnread = !checked
+                    appSettings.highlightUnreadConversations = !checked
                 }
             }
 
