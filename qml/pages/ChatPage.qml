@@ -618,8 +618,8 @@ Page {
         onUnreadCountUpdated: {
             Debug.log("[ChatPage] Unread count updated, new count: ", unreadCount);
             chatInformation.unread_count = unreadCount;
-            chatUnreadMessagesItem.visible = ( !chatPage.loading && chatInformation.unread_count > 0 && chatOverviewItem.visible );
-            chatUnreadMessagesCount.text = unreadCount > 99 ? "99+" : unreadCount;
+            chatUnreadMessagesItem.visible = ( !chatPage.loading && unreadCount > 0 && chatOverviewItem.visible );
+            chatUnreadMessagesCount.text = Functions.formatUnreadCount(unreadCount)
         }
         onLastReadSentMessageUpdated: {
             Debug.log("[ChatPage] Updating last read sent index, new index: ", lastReadSentIndex);
@@ -1427,7 +1427,7 @@ Page {
                             color: Theme.primaryColor
                             anchors.centerIn: chatUnreadMessagesCountBackground
                             visible: chatUnreadMessagesItem.visible
-                            text: chatInformation.unread_count > 99 ? "99+" : chatInformation.unread_count
+                            text: Functions.formatUnreadCount(chatInformation.unread_count)
                         }
                         MouseArea {
                             anchors.fill: parent

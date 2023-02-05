@@ -1,6 +1,7 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
+import "../js/functions.js" as Functions
 
 ListItem {
     id: chatListViewItem
@@ -103,7 +104,7 @@ ListItem {
                 anchors.centerIn: chatUnreadMessagesCountBackground
                 visible: chatListViewItem.unreadCount > 0
                 opacity: isMuted ? Theme.opacityHigh : 1.0
-                text: chatListViewItem.unreadCount > 99 ? "99+" : chatListViewItem.unreadCount
+                text: Functions.formatUnreadCount(chatListViewItem.unreadCount)
             }
 
             Rectangle {
