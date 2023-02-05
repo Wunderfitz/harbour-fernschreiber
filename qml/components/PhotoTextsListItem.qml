@@ -206,6 +206,12 @@ ListItem {
         }
     }
 
+    Rectangle { id: statusRect
+        anchors.fill: parent
+        visible: appSettings.highlightUnread && ( !chatListViewItem.isMuted && (chatListViewItem.unreadCount > 0 || chatListViewItem.isMarkedAsUnread) )
+        // if it's stupid but it works it's not stupid ...
+        color: visible ? Theme.rgba(Theme.highlightColor, Theme.highlightBackgroundOpacity) : "transparent"
+    }
     Separator {
         id: separator
         anchors {

@@ -72,6 +72,18 @@ AccordionItem {
 
             TextSwitch {
                 width: parent.columnWidth
+                checked: appSettings.highlightUnread
+                text: qsTr("Highlight unread messages")
+                description: qsTr("Highlight Conversations with unread messages")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.highlightUnread = !checked
+                }
+            }
+
+
+            TextSwitch {
+                width: parent.columnWidth
                 checked: appSettings.useOpenWith
                 text: qsTr("Open-with menu integration")
                 description: qsTr("Integrate Fernschreiber into open-with menu of Sailfish OS")

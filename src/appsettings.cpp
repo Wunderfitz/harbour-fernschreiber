@@ -37,6 +37,7 @@ namespace {
     const QString KEY_DELAY_MESSAGE_READ("delayMessageRead");
     const QString KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN("focusTextAreaOnChatOpen");
     const QString KEY_SPONSORED_MESS("sponsoredMess");
+    const QString KEY_HIGHLIGHT_UNREAD("highlightUnread");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/fernschreiber/settings.conf", QSettings::NativeFormat)
@@ -237,6 +238,20 @@ void AppSettings::setDelayMessageRead(bool enable)
         LOG(KEY_DELAY_MESSAGE_READ << enable);
         settings.setValue(KEY_DELAY_MESSAGE_READ, enable);
         emit delayMessageReadChanged();
+    }
+}
+
+bool AppSettings::highlightUnread() const
+{
+    return settings.value(KEY_HIGHLIGHT_UNREAD, true).toBool();
+}
+
+void AppSettings::setHighlightUnread(bool enable)
+{
+    if (highlightUnread() != enable) {
+        LOG(KEY_HIGHLIGHT_UNREAD << enable);
+        settings.setValue(KEY_HIGHLIGHT_UNREAD, enable);
+        emit highlightUnreadChanged();
     }
 }
 
