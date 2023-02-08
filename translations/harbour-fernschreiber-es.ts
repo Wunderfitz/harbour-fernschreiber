@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Este proyecto usa la librería TDLib de Telegram. ¡Gracias por estar disponible bajo las condiciones de la licencia software-boost 1.0!</translation>
+        <translation>Este proyecto usa la librería TDLib de Telegrama. ¡Gracias por estar disponible bajo las condiciones de la licencia software-boost 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Este programa usa la API de Telegram, pero no está respaldado ni certificado por Telegram.</translation>
+        <translation>Este programa usa la API de Telegrama, pero no está respaldado ni certificado por Telegrama.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
@@ -81,7 +81,7 @@
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
-        <translation>Librería OSM Nominatim</translation>
+        <translation>Librería Nominatim</translation>
     </message>
 </context>
 <context>
@@ -185,7 +185,7 @@
     </message>
     <message>
         <source>ID has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>ID copiado a portapapeles.</translation>
     </message>
 </context>
 <context>
@@ -499,7 +499,7 @@
     <name>ContactSync</name>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
-        <translation type="unfinished">No se pudieron sincronizar los contactos con Telegram.</translation>
+        <translation>No se puede sincronizar los contactos con Telegrama.</translation>
     </message>
 </context>
 <context>
@@ -1166,7 +1166,7 @@
     </message>
     <message>
         <source>No contacts found.</source>
-        <translation type="unfinished"></translation>
+        <translation>No contactos encontrados.</translation>
     </message>
 </context>
 <context>
@@ -1658,7 +1658,7 @@
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation>Enviar ubicación a Robot(Bot) en línea</translation>
+        <translation>Enviar ubicación de Robot enlínea</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
