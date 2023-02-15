@@ -1571,6 +1571,14 @@
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
         <translation>Cuando los sonidos están habilitados, Fernschreiber utilizará el sonido de notificación actual de Sailfish OS para los grupos, que se puede configurar en la configuración del sistema.</translation>
     </message>
+    <message>
+        <source>Always append message preview to notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
