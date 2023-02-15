@@ -348,7 +348,7 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
         LOG("Group" << notificationGroup->notificationGroupId << "has" << notificationGroup->totalCount << "notifications");
         notificationBody = tr("%Ln unread messages", "", notificationGroup->totalCount);
     }
-    if (!messageIsEmpty) {
+    if ((!outputMessageCount || appSettings->notificationAlwaysShowPreview()) && !messageIsEmpty) {
         LOG("Group" << notificationGroup->notificationGroupId << "has 1 notification");
         if (chatInformation && (chatInformation->type == TDLibWrapper::ChatTypeBasicGroup ||
            (chatInformation->type == TDLibWrapper::ChatTypeSupergroup && !chatInformation->isChannel))) {
