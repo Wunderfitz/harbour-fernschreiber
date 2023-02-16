@@ -188,7 +188,7 @@
     </message>
     <message>
         <source>ID has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>ID скопирован в буфер обмена.</translation>
     </message>
 </context>
 <context>
@@ -1187,7 +1187,7 @@
     </message>
     <message>
         <source>No contacts found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Контакты не найдены.</translation>
     </message>
 </context>
 <context>
