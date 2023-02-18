@@ -183,6 +183,10 @@
         <source>Mute Chat</source>
         <translation>No notificar</translation>
     </message>
+    <message>
+        <source>ID has been copied to the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -489,6 +493,13 @@
     <message>
         <source>You don&apos;t have any chats yet.</source>
         <translation>No hay todavía conversaciones.</translation>
+    </message>
+</context>
+<context>
+    <name>ContactSync</name>
+    <message>
+        <source>Could not synchronize your contacts with Telegram.</source>
+        <translation type="unfinished">No se pudieron sincronizar los contactos con Telegram.</translation>
     </message>
 </context>
 <context>
@@ -1150,12 +1161,12 @@
         <translation>Sincronizar con Telegram</translation>
     </message>
     <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>No se pudieron sincronizar los contactos con Telegram.</translation>
-    </message>
-    <message>
         <source>Contacts successfully synchronized with Telegram.</source>
         <translation>Contactos sincronizados con éxito con Telegram.</translation>
+    </message>
+    <message>
+        <source>No contacts found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1772,6 +1783,14 @@
     <message>
         <source>Phone number: +%1</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Contacts successfully synchronized with Telegram.</source>
+        <translation>Contactos sincronizados con éxito con Telegram.</translation>
+    </message>
+    <message>
+        <source>Synchronize Contacts with Telegram</source>
+        <translation>Sincronizar con Telegram</translation>
     </message>
 </context>
 <context>

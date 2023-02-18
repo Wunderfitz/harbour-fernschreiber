@@ -300,7 +300,8 @@ SilicaFlickable {
         }
         leftMargin: imageContainer.getEased((imageContainer.minDimension + Theme.paddingMedium), 0, imageContainer.tweenFactor) + Theme.horizontalPageMargin
         title: chatInformationPage.chatInformation.title !== "" ? Emoji.emojify(chatInformationPage.chatInformation.title, Theme.fontSizeLarge) : qsTr("Unknown")
-        description: (chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) ? ("@"+(chatInformationPage.privateChatUserInformation.username || chatInformationPage.chatPartnerGroupId)) : ""
+        description: ((chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && chatInformationPage.privateChatUserInformation.username)
+            ? ("@"+chatInformationPage.privateChatUserInformation.username) : ""
     }
 
     SilicaFlickable {
@@ -361,6 +362,27 @@ SilicaFlickable {
             Item { //large image placeholder
                 width: parent.width
                 height: imageContainer.hasImage ? imageContainer.maxDimension : 0
+            }
+
+            Label {
+                id: copyIdText
+                x: Math.max(headerItem.x + imageContainer.x - groupInfoItem.x + (imageContainer.width - width)/2, 0)
+                text: chatInformationPage.chatPartnerGroupId
+                font.pixelSize: Theme.fontSizeSmall
+                color: copyIdMouseArea.pressed ? Theme.secondaryHighlightColor : Theme.highlightColor
+                visible: text !== ""
+
+                MouseArea {
+                    id: copyIdMouseArea
+                    anchors {
+                        fill: parent
+                        margins: -Theme.paddingLarge
+                    }
+                    onClicked: {
+                        Clipboard.text = copyIdText.text
+                        appNotification.show(qsTr("ID has been copied to the clipboard."));
+                    }
+                }
             }
 
             InformationEditArea {
