@@ -350,6 +350,9 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     }
     if ((!outputMessageCount || appSettings->notificationAlwaysShowPreview()) && !messageIsEmpty) {
         LOG("Group" << notificationGroup->notificationGroupId << "has 1 notification");
+        if (outputMessageCount) {
+            notificationBody += "; ";
+        }
         if (chatInformation && (chatInformation->type == TDLibWrapper::ChatTypeBasicGroup ||
            (chatInformation->type == TDLibWrapper::ChatTypeSupergroup && !chatInformation->isChannel))) {
             // Add author
@@ -358,9 +361,6 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
                 fullName = tdLibWrapper->getChat(senderInformation.value(CHAT_ID).toString()).value(TITLE).toString();
             } else {
                 fullName = FernschreiberUtils::getUserName(tdLibWrapper->getUserInformation(senderInformation.value(USER_ID).toString()));
-            }
-            if (outputMessageCount) {
-                notificationBody += "; ";
             }
             notificationBody += fullName.trimmed() + ": ";
         }
