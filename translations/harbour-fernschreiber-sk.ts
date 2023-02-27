@@ -188,7 +188,7 @@
     </message>
     <message>
         <source>ID has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>ID bol skopírovaný do schránky.</translation>
     </message>
 </context>
 <context>
@@ -1184,7 +1184,7 @@
     </message>
     <message>
         <source>No contacts found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Žiadne kontakty neboli nájdené.</translation>
     </message>
 </context>
 <context>
