@@ -1583,7 +1583,7 @@
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Pre upozornenia použiť negrafickú reakciu (zvuk, vibrovanie)</translation>
+        <translation>Pre oznamy použiť negrafickú reakciu (zvuk, vibrovanie)</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1603,11 +1603,11 @@
     </message>
     <message>
         <source>Enable notification sounds</source>
-        <translation>Povoliť zvukové upozornenia</translation>
+        <translation>Povoliť zvukové oznamy</translation>
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>Keď sú povolené zvukové upozornenia, Fernschreiber použije aktuálne zvukové upozornenia Sailfish OS pre čety, ktoré môžu byť upravené v nastaveniach systému.</translation>
+        <translation>Keď sú povolené zvukové oznamy, Fernschreiber použije aktuálne zvukové oznamy Sailfish OS pre čety, ktoré môžu byť upravené v nastaveniach systému.</translation>
     </message>
 </context>
 <context>
