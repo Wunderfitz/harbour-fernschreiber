@@ -95,7 +95,7 @@ MessageContentBase {
                     tdLibWrapper.downloadFile(previewFileId);
                 }
             } else {
-                placeholderImage.source = "image://theme/icon-l-video?white";
+                placeholderImage.source = "image://theme/icon-m-video?white";
                 placeholderImage.width = Theme.itemSizeLarge
                 placeholderImage.height = Theme.itemSizeLarge
             }
