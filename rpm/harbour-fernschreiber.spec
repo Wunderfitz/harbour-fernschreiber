@@ -7,7 +7,7 @@ Name:       harbour-fernschreiber
 
 # >> macros
 %define __provides_exclude_from ^%{_datadir}/.*$
-%define __requires_exclude ^libtdjson.*$
+%define __requires_exclude ^lib(tdjson|ssl|crypto).*$
 # << macros
 
 Summary:    Fernschreiber is a Telegram client for Sailfish OS
@@ -29,7 +29,7 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Positioning)
 BuildRequires:  pkgconfig(nemonotifications-qt5)
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 1.1.1k
 BuildRequires:  gperf
 BuildRequires:  desktop-file-utils
 
@@ -58,7 +58,8 @@ make %{?_smp_mflags}
 rm -rf %{buildroot}
 # >> install pre
 # << install pre
-%qmake5_install
+#%qmake5_install
+make INSTALL_ROOT=%{buildroot} install
 
 # >> install post
 # << install post

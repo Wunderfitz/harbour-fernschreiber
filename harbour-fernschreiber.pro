@@ -140,7 +140,6 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/VideoPage.qml \
     rpm/harbour-fernschreiber.changes \
     rpm/harbour-fernschreiber.spec \
-    rpm/harbour-fernschreiber.yaml \
     translations/*.ts \
     harbour-fernschreiber.desktop
 
