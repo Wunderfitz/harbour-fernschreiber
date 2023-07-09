@@ -38,7 +38,7 @@ ListItem {
     readonly property var userInformation: tdLibWrapper.getUserInformation(myMessage.sender_id.user_id)
     property QtObject precalculatedValues: ListView.view.precalculatedValues
     readonly property color textColor: isOwnMessage ? Theme.highlightColor : Theme.primaryColor
-    readonly property int textAlign: isOwnMessage ? Text.AlignRight : Text.AlignLeft
+    readonly property int textAlign: Text.AlignLeft
     readonly property Page page: precalculatedValues.page
     readonly property bool isSelected: messageListItem.precalculatedValues.pageIsSelecting && page.selectedMessages.some(function(existingMessage) {
         return existingMessage.id === messageId
