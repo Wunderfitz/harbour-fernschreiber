@@ -363,7 +363,8 @@ ListItem {
 
                 anchors {
                     left: parent.left
-                    leftMargin: messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0
+//                    leftMargin: messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0
+                    leftMargin: 0
                     verticalCenter: parent.verticalCenter
                 }
                 height: messageTextColumn.height + precalculatedValues.paddingMediumDouble
