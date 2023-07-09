@@ -398,7 +398,7 @@ ListItem {
                     truncationMode: TruncationMode.Fade
                     textFormat: Text.StyledText
                     horizontalAlignment: messageListItem.textAlign
-                    visible: precalculatedValues.showUserInfo || myMessage['@type'] === "sponsoredMessage"
+                    visible: messageListItem.isOwnMessage ? false : (precalculatedValues.showUserInfo || myMessage['@type'] === "sponsoredMessage")
                     MouseArea {
                         anchors.fill: parent
                         enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous)
