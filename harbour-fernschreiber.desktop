@@ -6,6 +6,6 @@ Exec=harbour-fernschreiber
 Name=Fernschreiber
 
 [X-Sailjail]
-Permissions=Audio;Contacts;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;PublicDir;RemovableMedia;UserDirs;Videos
+Permissions=Audio;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;PublicDir;RemovableMedia;UserDirs;Videos
 OrganizationName=de.ygriega
 ApplicationName=fernschreiber
