@@ -363,14 +363,15 @@ ListItem {
 
                 anchors {
                     left: parent.left
-//                    leftMargin: messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0
                     leftMargin: 0
+//                    leftMargin: messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0
+//                    leftMargin: precalculatedValues.showUserInfo ? (messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0) : 0
                     verticalCenter: parent.verticalCenter
                 }
                 height: messageTextColumn.height + precalculatedValues.paddingMediumDouble
                 width: precalculatedValues.backgroundWidth
                 property bool isUnread: index > chatModel.getLastReadMessageIndex() && myMessage['@type'] !== "sponsoredMessage"
-                color: Theme.colorScheme === Theme.LightOnDark ? (isUnread ? Theme.secondaryHighlightColor : Theme.secondaryColor) : (isUnread ? Theme.backgroundGlowColor : Theme.overlayBackgroundColor)
+                color: Theme.colorScheme === Theme.LightOnDark ? (isOwnMessage ? Theme.highlightBackgroundColor : (isUnread ? Theme.secondaryHighlightColor : Theme.secondaryColor)) : (isOwnMessage ? Theme.highlightBackgroundColor : (isUnread ? Theme.backgroundGlowColor : Theme.overlayBackgroundColor))
                 radius: parent.width / 50
                 opacity: isUnread ? 0.5 : 0.2
                 visible: appSettings.showStickersAsImages || (myMessage.content['@type'] !== "messageSticker" && myMessage.content['@type'] !== "messageAnimatedEmoji")

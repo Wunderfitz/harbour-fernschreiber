@@ -1170,9 +1170,10 @@ Page {
                             readonly property int profileThumbnailDimensions: showUserInfo ? Theme.itemSizeSmall : 0
                             readonly property int pageMarginDouble: 2 * Theme.horizontalPageMargin
                             readonly property int paddingMediumDouble: 2 * Theme.paddingMedium
-                            readonly property int entryWidth: chatView.width - pageMarginDouble
+                            readonly property int entryWidth: chatView.width - pageMarginDouble //ширина полной строки сообщения вместе с аватаркой
                             readonly property int textItemWidth: entryWidth - profileThumbnailDimensions - Theme.paddingSmall
-                            readonly property int backgroundWidth: page.isChannel ? textItemWidth : textItemWidth - pageMarginDouble
+//                            readonly property int backgroundWidth: page.isChannel ? textItemWidth : textItemWidth - pageMarginDouble //ширина бэкграунда для канала/обычного чата
+                            readonly property int backgroundWidth: textItemWidth //ширина бэкграунда для канала/обычного чата
                             readonly property int backgroundRadius: textItemWidth/50
                             readonly property int textColumnWidth: backgroundWidth - Theme.horizontalPageMargin
                             readonly property int messageInReplyToHeight: Theme.fontSizeExtraSmall * 2.571428571 + Theme.paddingSmall;
