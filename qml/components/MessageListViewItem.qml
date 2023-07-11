@@ -363,9 +363,7 @@ ListItem {
 
                 anchors {
                     left: parent.left
-                    leftMargin: 0
-//                    leftMargin: messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0
-//                    leftMargin: precalculatedValues.showUserInfo ? (messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0) : 0
+                    leftMargin: page.isPrivateChat ? (messageListItem.isOwnMessage ? precalculatedValues.pageMarginDouble : 0) : 0 //левый марджин для собственных сообщений в приватных чатах. В остальных на полную ширину
                     verticalCenter: parent.verticalCenter
                 }
                 height: messageTextColumn.height + precalculatedValues.paddingMediumDouble
