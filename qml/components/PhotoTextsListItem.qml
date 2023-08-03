@@ -87,7 +87,7 @@ ListItem {
             Rectangle {
                 id: chatUnreadMessagesCountBackground
                 color: isMuted ? ((Theme.colorScheme === Theme.DarkOnLight) ? "lightgray" : "dimgray") : Theme.highlightBackgroundColor
-                width: Theme.fontSizeLarge
+                width: chatUnreadMessagesCount.width + Theme.fontSizeLarge / 2
                 height: Theme.fontSizeLarge
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
