@@ -1405,7 +1405,7 @@ Page {
 
                     Item {
                         id: chatUnreadMessagesItem
-                        width: Theme.fontSizeHuge
+                        width: chatUnreadMessagesCount.width + Theme.fontSizeLarge / 2
                         height: Theme.fontSizeHuge
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.paddingMedium
