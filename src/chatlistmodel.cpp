@@ -561,6 +561,15 @@ int ChatListModel::updateChatOrder(int chatIndex)
     return newIndex;
 }
 
+void ChatListModel::enableRefreshTimer()
+{
+    // Start timestamp refresh timer if not yet active (usually when the first visible chat is discovered)
+    if (!relativeTimeRefreshTimer->isActive()) {
+        LOG("Enabling refresh timer");
+        relativeTimeRefreshTimer->start();
+    }
+}
+
 void ChatListModel::calculateUnreadState()
 {
     if (this->appSettings->onlineOnlyMode()) {
@@ -599,6 +608,7 @@ void ChatListModel::addVisibleChat(ChatData *chat)
         this->tdLibWrapper->registerJoinChat();
         emit chatJoined(chat->chatId, chat->chatData.value("title").toString());
     }
+    enableRefreshTimer();
 }
 
 void ChatListModel::updateChatVisibility(const TDLibWrapper::Group *group)
@@ -687,6 +697,7 @@ void ChatListModel::setShowAllChats(bool showAll)
 
 void ChatListModel::handleChatDiscovered(const QString &, const QVariantMap &chatToBeAdded)
 {
+    LOG("New chat discovered");
     ChatData *chat = new ChatData(tdLibWrapper, chatToBeAdded);
 
     const TDLibWrapper::Group *group = tdLibWrapper->getGroup(chat->groupId);
@@ -705,12 +716,8 @@ void ChatListModel::handleChatDiscovered(const QString &, const QVariantMap &cha
         LOG("Hidden chat" << chat->chatId);
         hiddenChats.insert(chat->chatId, chat);
     } else {
+        LOG("Visible chat" << chat->chatId);
         addVisibleChat(chat);
-
-        // Start timestamp refresh timer when the first visible chat is discovered
-        if (!relativeTimeRefreshTimer->isActive()) {
-            relativeTimeRefreshTimer->start();
-        }
     }
 }
 
@@ -1034,5 +1041,6 @@ void ChatListModel::handleRelativeTimeRefreshTimer()
     LOG("Refreshing timestamps");
     QVector<int> roles;
     roles.append(ChatListModel::RoleLastMessageDate);
+    roles.append(ChatListModel::RoleLastMessageStatus);
     emit dataChanged(index(0), index(chatList.size() - 1), roles);
 }
