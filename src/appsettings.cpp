@@ -29,6 +29,7 @@ namespace {
     const QString KEY_ANIMATE_STICKERS("animateStickers");
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_SOUNDS_ENABLED("notificationSoundsEnabled");
+    const QString KEY_NOTIFICATION_SUPPRESS_ENABLED("notificationSuppressContent");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
     const QString KEY_STORAGE_OPTIMIZER("useStorageOptimizer");
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
@@ -152,6 +153,20 @@ void AppSettings::setNotificationSoundsEnabled(bool enable)
         LOG(KEY_NOTIFICATION_SOUNDS_ENABLED << enable);
         settings.setValue(KEY_NOTIFICATION_SOUNDS_ENABLED, enable);
         emit notificationSoundsEnabledChanged();
+    }
+}
+
+bool AppSettings::notificationSuppressContent() const
+{
+    return settings.value(KEY_NOTIFICATION_SUPPRESS_ENABLED, false).toBool();
+}
+
+void AppSettings::setNotificationSuppressContent(bool enable)
+{
+    if (notificationSuppressContent() != enable) {
+        LOG(KEY_NOTIFICATION_SUPPRESS_ENABLED << enable);
+        settings.setValue(KEY_NOTIFICATION_SUPPRESS_ENABLED, enable);
+        emit notificationSuppressContentChanged();
     }
 }
 
