@@ -137,6 +137,17 @@ AccordionItem {
 
             TextSwitch {
                 width: parent.columnWidth
+                checked: appSettings.notificationSuppressContent && enabled
+                text: qsTr("Hide content in Notifications")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.notificationSuppressContent = !checked
+                }
+                Behavior on height { SmoothedAnimation { duration: 200 } }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
                 checked: appSettings.notificationTurnsDisplayOn && enabled
                 text: qsTr("Notification turns on the display")
                 enabled: appSettings.notificationFeedback !== AppSettings.NotificationFeedbackNone
