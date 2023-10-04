@@ -380,7 +380,7 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
         if (!appSettings->notificationSuppressContent()) {
             nemoNotification->setPreviewBody(notificationBody);
         } else {
-            nemoNotification->setPreviewBody(tr("<<message content hidden>>",""));
+            nemoNotification->setPreviewBody(tr("%Ln unread messages", "", notificationGroup->totalCount));
         }
         nemoNotification->setPreviewSummary(summary);
         nemoNotification->setHintValue(HINT_SUPPRESS_SOUND, !appSettings->notificationSoundsEnabled());
