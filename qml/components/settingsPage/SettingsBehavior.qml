@@ -137,8 +137,11 @@ AccordionItem {
 
             TextSwitch {
                 width: parent.columnWidth
-                checked: appSettings.notificationSuppressContent
+                checked: appSettings.notificationSuppressContent && enabled
                 text: qsTr("Hide content in Notifications")
+                enabled: appSettings.notificationFeedback !== AppSettings.NotificationFeedbackNone
+                clip: height < implicitHeight
+                visible: height > 0
                 automaticCheck: false
                 onClicked: {
                     appSettings.notificationSuppressContent = !checked
