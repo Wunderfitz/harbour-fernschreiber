@@ -108,6 +108,7 @@ private:
     void updateChatVisibility(const TDLibWrapper::Group *group);
     void updateSecretChatVisibility(const QVariantMap secretChatDetails);
     int updateChatOrder(int chatIndex);
+    void enableRefreshTimer();
 
 private:
     TDLibWrapper *tdLibWrapper;
