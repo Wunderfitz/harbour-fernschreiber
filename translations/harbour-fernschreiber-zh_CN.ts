@@ -486,13 +486,6 @@
     </message>
 </context>
 <context>
-    <name>ContactSync</name>
-    <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation type="unfinished">无法同步你的云端 Telegram 联系人。</translation>
-    </message>
-</context>
-<context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
