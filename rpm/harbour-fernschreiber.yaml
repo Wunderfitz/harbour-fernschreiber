@@ -30,6 +30,11 @@ PkgConfigBR:
   - nemonotifications-qt5
   - openssl
 
+# NB: spectacle has a bug where it will remove custom "#<< macros" lines, so define them here:
+Macros:
+  - '__provides_exclude_from;^%{_datadir}/.*$'
+  - '__requires_exclude;^libtdjson.*$'
+
 # Build dependencies without a pkgconfig setup can be listed here
 PkgBR:
    - gperf
