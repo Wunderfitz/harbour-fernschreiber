@@ -36,6 +36,9 @@
 #define DEBUG_MODULE TDLibWrapper
 #include "debuglog.h"
 
+#define VERSION_NUMBER(x,y,z) \
+    ((((x) & 0x3ff) << 20) | (((y) & 0x3ff) << 10) | ((z) & 0x3ff))
+
 namespace {
     const QString STATUS("status");
     const QString ID("id");
@@ -53,18 +56,19 @@ namespace {
     const QString CHAT_LIST_MAIN("chatListMain");
 }
 
-TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent)
+TDLibWrapper::TDLibWrapper(AppSettings *settings, MceInterface *mce, QObject *parent)
     : QObject(parent)
+    , tdLibClient(td_json_client_create())
     , manager(new QNetworkAccessManager(this))
     , networkConfigurationManager(new QNetworkConfigurationManager(this))
+    , appSettings(settings)
+    , mceInterface(mce)
+    , authorizationState(AuthorizationState::Closed)
+    , versionNumber(0)
     , joinChatRequested(false)
+    , isLoggingOut(false)
 {
     LOG("Initializing TD Lib...");
-    this->appSettings = appSettings;
-    this->mceInterface = mceInterface;
-    this->tdLibClient = td_json_client_create();
-    this->authorizationState = AuthorizationState::Closed;
-    this->isLoggingOut = false;
 
     initializeTDLibReceiver();
 
@@ -192,7 +196,7 @@ void TDLibWrapper::sendRequest(const QVariantMap &requestObject)
 
 QString TDLibWrapper::getVersion()
 {
-    return this->version;
+    return this->versionString;
 }
 
 TDLibWrapper::AuthorizationState TDLibWrapper::getAuthorizationState()
@@ -1645,7 +1649,16 @@ DBusAdaptor *TDLibWrapper::getDBusAdaptor()
 
 void TDLibWrapper::handleVersionDetected(const QString &version)
 {
-    this->version = version;
+    this->versionString = version;
+    const QStringList parts(version.split('.'));
+    uint major, minor, release;
+    bool ok;
+    if (parts.count() >= 3 &&
+       (major = parts.at(0).toInt(&ok), ok) &&
+       (minor = parts.at(1).toInt(&ok), ok) &&
+       (release = parts.at(2).toInt(&ok), ok)) {
+        versionNumber = VERSION_NUMBER(major, minor, release);
+    }
     emit versionDetected(version);
 }
 
@@ -2077,28 +2090,40 @@ void TDLibWrapper::handleGetPageSourceFinished()
     }
 }
 
+QVariantMap& TDLibWrapper::fillTdlibParameters(QVariantMap& parameters)
+{
+    parameters.insert("api_id", TDLIB_API_ID);
+    parameters.insert("api_hash", TDLIB_API_HASH);
+    parameters.insert("database_directory", QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib");
+    bool onlineOnlyMode = this->appSettings->onlineOnlyMode();
+    parameters.insert("use_file_database", !onlineOnlyMode);
+    parameters.insert("use_chat_info_database", !onlineOnlyMode);
+    parameters.insert("use_message_database", !onlineOnlyMode);
+    parameters.insert("use_secret_chats", true);
+    parameters.insert("system_language_code", QLocale::system().name());
+    QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
+    parameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
+    parameters.insert("system_version", QSysInfo::prettyProductName());
+    parameters.insert("application_version", "0.17");
+    parameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
+    // parameters.insert("use_test_dc", true);
+    return parameters;
+}
+
 void TDLibWrapper::setInitialParameters()
 {
     LOG("Sending initial parameters to TD Lib");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setTdlibParameters");
-    QVariantMap initialParameters;
-    initialParameters.insert("api_id", TDLIB_API_ID);
-    initialParameters.insert("api_hash", TDLIB_API_HASH);
-    initialParameters.insert("database_directory", QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib");
-    bool onlineOnlyMode = this->appSettings->onlineOnlyMode();
-    initialParameters.insert("use_file_database", !onlineOnlyMode);
-    initialParameters.insert("use_chat_info_database", !onlineOnlyMode);
-    initialParameters.insert("use_message_database", !onlineOnlyMode);
-    initialParameters.insert("use_secret_chats", true);
-    initialParameters.insert("system_language_code", QLocale::system().name());
-    QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
-    initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
-    initialParameters.insert("system_version", QSysInfo::prettyProductName());
-    initialParameters.insert("application_version", "0.17");
-    initialParameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
-    // initialParameters.insert("use_test_dc", true);
-    requestObject.insert("parameters", initialParameters);
+    // tdlibParameters were inlined between 1.8.5 and 1.8.6
+    // See https://github.com/tdlib/td/commit/f6a2ecd
+    if (versionNumber > VERSION_NUMBER(1,8,5)) {
+        fillTdlibParameters(requestObject);
+    } else {
+        QVariantMap initialParameters;
+        fillTdlibParameters(initialParameters);
+        requestObject.insert("parameters", initialParameters);
+    }
     this->sendRequest(requestObject);
 }
 

@@ -372,6 +372,7 @@ private:
     void setInitialParameters();
     void setEncryptionKey();
     void setLogVerbosityLevel();
+    QVariantMap &fillTdlibParameters(QVariantMap &parameters);
     const Group *updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups);
     void initializeTDLibReceiver();
 
@@ -383,7 +384,7 @@ private:
     MceInterface *mceInterface;
     TDLibReceiver *tdLibReceiver;
     DBusInterface *dbusInterface;
-    QString version;
+    QString versionString;
     TDLibWrapper::AuthorizationState authorizationState;
     QVariantMap authorizationStateData;
     TDLibWrapper::ConnectionState connectionState;
@@ -400,6 +401,7 @@ private:
     QHash<qlonglong,Group*> superGroups;
     EmojiSearchWorker emojiSearchWorker;
 
+    int versionNumber;
     QString activeChatSearchName;
     bool joinChatRequested;
     bool isLoggingOut;
