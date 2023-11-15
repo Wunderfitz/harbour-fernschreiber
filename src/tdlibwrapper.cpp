@@ -713,7 +713,11 @@ void TDLibWrapper::getChatSponsoredMessage(qlonglong chatId)
 {
     LOG("Retrieving sponsored message" << chatId);
     QVariantMap requestObject;
-    requestObject.insert(_TYPE, "getChatSponsoredMessage");
+    // getChatSponsoredMessage has been replaced with getChatSponsoredMessages
+    // between 1.8.7 and 1.8.8
+    // See https://github.com/tdlib/td/commit/ec1310a
+    requestObject.insert(_TYPE, QString((versionNumber > VERSION_NUMBER(1,8,7)) ?
+        "getChatSponsoredMessages" : "getChatSponsoredMessage"));
     requestObject.insert(CHAT_ID, chatId);
     requestObject.insert(_EXTRA, chatId); // see TDLibReceiver::processSponsoredMessage
     this->sendRequest(requestObject);
