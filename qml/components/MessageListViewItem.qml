@@ -95,7 +95,7 @@ ListItem {
         }
     }
 
-    function getInteractionText(viewCount, reactions, size) {
+    function getInteractionText(viewCount, reactions, size, highlightColor) {
         var interactionText = "";
         if (viewCount > 0) {
             interactionText = Emoji.emojify("👁️ ", size) + Functions.getShortenedCount(viewCount);
@@ -106,7 +106,9 @@ ListItem {
             if (reactionText) {
                 interactionText += ( "&nbsp;" + Emoji.emojify(reactionText, size) );
                 if (!chatPage.isPrivateChat) {
-                    interactionText += ( " " + Functions.getShortenedCount(reaction.total_count) );
+                    var count = Functions.getShortenedCount(reaction.total_count)
+                    interactionText += " "
+                    interactionText += (reaction.is_chosen ? ( "<font color='" + highlightColor + "'><b>" + count + "</b></font>" ) : count)
                 }
             }
         }
@@ -632,7 +634,7 @@ ListItem {
                     height: ( ( chatPage.isChannel && messageViewCount > 0 ) || reactions.length > 0 ) ? ( Theme.fontSizeExtraSmall + Theme.paddingSmall ) : 0
                     sourceComponent: Component {
                         Label {
-                            text: getInteractionText(messageViewCount, reactions, font.pixelSize)
+                            text: getInteractionText(messageViewCount, reactions, font.pixelSize, Theme.highlightColor)
                             width: parent.width
                             font.pixelSize: Theme.fontSizeTiny
                             color: messageListItem.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor
