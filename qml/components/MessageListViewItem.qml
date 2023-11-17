@@ -64,6 +64,7 @@ ListItem {
     readonly property bool showForwardMessageMenuItem: (baseContextMenuItemCount + 2) <= maxContextMenuItemCount
     // And don't count "More Options..." for "Delete Message" if "Delete Message" is the only extra option
     readonly property bool haveSpaceForDeleteMessageMenuItem: (baseContextMenuItemCount + 3 - (deleteMessageIsOnlyExtraOption ? 1 : 0)) <= maxContextMenuItemCount
+    property var chatReactions
     property var messageReactions
 
     highlighted: (down || isSelected || additionalOptionsOpened) && !menuOpen
@@ -129,6 +130,8 @@ ListItem {
 
             if (messageListItem.messageReactions) {
                 messageListItem.messageReactions = null;
+            } else if (messageListItem.chatReactions) {
+                messageListItem.messageReactions = chatReactions
             } else {
                 tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
             }

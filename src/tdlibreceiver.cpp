@@ -60,6 +60,7 @@ namespace {
     const QString CONTENT("content");
     const QString NEW_CONTENT("new_content");
     const QString SETS("sets");
+    const QString EMOJIS("emojis");
 
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
@@ -168,6 +169,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("availableReactions", &TDLibReceiver::processAvailableReactions);
     handlers.insert("updateChatUnreadMentionCount", &TDLibReceiver::processUpdateChatUnreadMentionCount);
     handlers.insert("updateChatUnreadReactionCount", &TDLibReceiver::processUpdateChatUnreadReactionCount);
+    handlers.insert("updateActiveEmojiReactions", &TDLibReceiver::processUpdateActiveEmojiReactions);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -730,6 +732,13 @@ void TDLibReceiver::processUpdateChatUnreadReactionCount(const QVariantMap &rece
     const int unreadReactionCount = receivedInformation.value(UNREAD_REACTION_COUNT).toInt();
     LOG("Chat unread reaction count updated" << chatId << unreadReactionCount);
     emit chatUnreadReactionCountUpdated(chatId, unreadReactionCount);
+}
+
+void TDLibReceiver::processUpdateActiveEmojiReactions(const QVariantMap &receivedInformation)
+{
+    // updateActiveEmojiReactions was introduced between 1.8.5 and 1.8.6
+    // See https://github.com/tdlib/td/commit/d29d367
+    emit activeEmojiReactionsUpdated(receivedInformation.value(EMOJIS).toStringList());
 }
 
 // Recursively removes (some) unused entries from QVariantMaps to reduce
