@@ -476,11 +476,12 @@ ListItem {
                             width: parent.width
 
                             Component.onCompleted: {
-                                if (myMessage.forward_info.origin["@type"] === "messageForwardOriginChannel") {
+                                var originType = myMessage.forward_info.origin["@type"]
+                                if (originType === "messageOriginChannel" || originType === "messageForwardOriginChannel") {
                                     var otherChatInformation = tdLibWrapper.getChat(myMessage.forward_info.origin.chat_id);
                                     forwardedThumbnail.photoData = (typeof otherChatInformation.photo !== "undefined") ? otherChatInformation.photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(otherChatInformation.title, Theme.fontSizeExtraSmall);
-                                } else if (myMessage.forward_info.origin["@type"] === "messageForwardOriginUser") {
+                                } else if (originType === "messageOriginUser" || originType === "messageForwardOriginUser") {
                                     var otherUserInformation = tdLibWrapper.getUserInformation(myMessage.forward_info.origin.sender_user_id);
                                     forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(Functions.getUserName(otherUserInformation), Theme.fontSizeExtraSmall);
