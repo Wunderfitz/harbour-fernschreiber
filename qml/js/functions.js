@@ -27,6 +27,14 @@ function setGlobals(globals) {
     tdLibWrapper = globals.tdLibWrapper;
     appNotification = globals.appNotification;
 }
+function formatUnreadCount(value) {
+    if(value < 1000) {
+        return value;
+    } else if(value > 9000) {
+        return '9k+';
+    }
+    return ''+Math.floor(value / 1000)+'k'+((value % 1000)>0 ? '+' : '');
+}
 
 function getUserName(userInformation) {
     return ((userInformation.first_name || "") + " " + (userInformation.last_name || "")).trim();
