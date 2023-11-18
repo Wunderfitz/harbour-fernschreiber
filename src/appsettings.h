@@ -40,6 +40,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool delayMessageRead READ delayMessageRead WRITE setDelayMessageRead NOTIFY delayMessageReadChanged)
     Q_PROPERTY(bool focusTextAreaOnChatOpen READ getFocusTextAreaOnChatOpen WRITE setFocusTextAreaOnChatOpen NOTIFY focusTextAreaOnChatOpenChanged)
     Q_PROPERTY(SponsoredMess sponsoredMess READ getSponsoredMess WRITE setSponsoredMess NOTIFY sponsoredMessChanged)
+    Q_PROPERTY(bool highlightUnreadConversations READ highlightUnreadConversations WRITE setHighlightUnreadConversations NOTIFY highlightUnreadConversationsChanged)
 
 public:
     enum SponsoredMess {
@@ -107,6 +108,9 @@ public:
     SponsoredMess getSponsoredMess() const;
     void setSponsoredMess(SponsoredMess sponsoredMess);
 
+    bool highlightUnreadConversations() const;
+    void setHighlightUnreadConversations(bool enable);
+
 signals:
     void sendByEnterChanged();
     void focusTextAreaAfterSendChanged();
@@ -124,6 +128,7 @@ signals:
     void delayMessageReadChanged();
     void focusTextAreaOnChatOpenChanged();
     void sponsoredMessChanged();
+    void highlightUnreadConversationsChanged();
 
 private:
     QSettings settings;
