@@ -64,6 +64,7 @@ namespace {
     const QString REPLY_TO("reply_to");
     const QString REPLY_IN_CHAT_ID("reply_in_chat_id");
     const QString REPLY_TO_MESSAGE_ID("reply_to_message_id");
+    const QString DRAFT_MESSAGE("draft_message");
 
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
@@ -77,6 +78,8 @@ namespace {
     const QString TYPE_MESSAGE_REPLY_TO_MESSAGE("messageReplyToMessage");
     const QString TYPE_MESSAGE_ANIMATED_EMOJI("messageAnimatedEmoji");
     const QString TYPE_ANIMATED_EMOJI("animatedEmoji");
+    const QString TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE("inputMessageReplyToMessage");
+    const QString TYPE_DRAFT_MESSAGE("draftMessage");
 }
 
 static QString getChatPositionOrder(const QVariantMap &position)
@@ -445,7 +448,7 @@ void TDLibReceiver::processMessageSendSucceeded(const QVariantMap &receivedInfor
     const QVariantMap message = receivedInformation.value(MESSAGE).toMap();
     const qlonglong messageId = message.value(ID).toLongLong();
     LOG("Message send succeeded" << messageId << oldMessageId);
-    emit messageSendSucceeded(messageId, oldMessageId, message);
+    emit messageSendSucceeded(messageId, oldMessageId, cleanupMap(message));
 }
 
 void TDLibReceiver::processUpdateActiveNotifications(const QVariantMap &receivedInformation)
@@ -672,7 +675,7 @@ void TDLibReceiver::processUpdateChatIsMarkedAsUnread(const QVariantMap &receive
 void TDLibReceiver::processUpdateChatDraftMessage(const QVariantMap &receivedInformation)
 {
     LOG("Draft message was updated");
-    emit chatDraftMessageUpdated(receivedInformation.value(CHAT_ID).toLongLong(), receivedInformation.value("draft_message").toMap(), findChatPositionOrder(receivedInformation.value(POSITIONS).toList()));
+    emit chatDraftMessageUpdated(receivedInformation.value(CHAT_ID).toLongLong(), cleanupMap(receivedInformation.value(DRAFT_MESSAGE).toMap()), findChatPositionOrder(receivedInformation.value(POSITIONS).toList()));
 }
 
 void TDLibReceiver::processInlineQueryResults(const QVariantMap &receivedInformation)
@@ -814,6 +817,24 @@ const QVariantMap TDLibReceiver::cleanupMap(const QVariantMap& map, bool *update
             message.insert(_TYPE, TYPE_MESSAGE); // Replace with a shared value
             if (updated) *updated = true;
             return message;
+        }
+    } else if (type == TYPE_DRAFT_MESSAGE) {
+        QVariantMap draftMessage(map);
+        QVariantMap reply_to(draftMessage.value(REPLY_TO).toMap());
+        // In TdLib 1.8.21 reply_to_message_id has been replaced with reply_to
+        if (reply_to.value(_TYPE).toString() == TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE) {
+            if (reply_to.contains(MESSAGE_ID) &&
+                !draftMessage.contains(REPLY_TO_MESSAGE_ID)) {
+                // reply_to_message_id is what QML (still) expects
+                draftMessage.insert(REPLY_TO_MESSAGE_ID, reply_to.value(MESSAGE_ID));
+            }
+            reply_to.remove(_TYPE);
+            reply_to.insert(_TYPE, TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE); // Shared value
+            draftMessage.insert(REPLY_TO, reply_to);
+            draftMessage.remove(_TYPE);
+            draftMessage.insert(_TYPE, DRAFT_MESSAGE); // Shared value
+            if (updated) *updated = true;
+            return draftMessage;
         }
     } else if (type == TYPE_MESSAGE_STICKER) {
         bool cleaned = false;
