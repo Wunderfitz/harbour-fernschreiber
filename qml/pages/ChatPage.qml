@@ -440,7 +440,8 @@ Page {
 
     Component.onDestruction: {
         if (chatPage.canSendMessages && !chatPage.isDeletedUser) {
-            tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text);
+            tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text,
+                newMessageInReplyToRow.inReplyToMessage ? newMessageInReplyToRow.inReplyToMessage.id : 0);
         }
         fernschreiberUtils.stopGeoLocationUpdates();
         tdLibWrapper.closeChat(chatInformation.id);
