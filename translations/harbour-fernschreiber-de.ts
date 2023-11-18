@@ -1582,6 +1582,14 @@
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
         <translation>Wenn Töne eingeschaltet sind, wird Fernschreiber den aktuellen Sailfish OS-Hinweiston für Chats verwenden, der in den Systemeinstellungen konfiguriert werden kann.</translation>
     </message>
+    <message>
+        <source>Always append message preview to notifications</source>
+        <translation>Immer bei Hinweisen die Nachricht ausgeben</translation>
+    </message>
+    <message>
+        <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
+        <translation>Zusätzlich zur Anzahl der ungelesenen Nachrichten wird immer die neuste Nachricht an Hinweise angefügt.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

@@ -31,6 +31,7 @@ namespace {
     const QString KEY_NOTIFICATION_SOUNDS_ENABLED("notificationSoundsEnabled");
     const QString KEY_NOTIFICATION_SUPPRESS_ENABLED("notificationSuppressContent");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
+    const QString KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW("notificationAlwaysShowPreview");
     const QString KEY_STORAGE_OPTIMIZER("useStorageOptimizer");
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
@@ -182,6 +183,20 @@ void AppSettings::setNotificationFeedback(NotificationFeedback feedback)
         LOG(KEY_NOTIFICATION_FEEDBACK << feedback);
         settings.setValue(KEY_NOTIFICATION_FEEDBACK, (int) feedback);
         emit notificationFeedbackChanged();
+    }
+}
+
+bool AppSettings::notificationAlwaysShowPreview() const
+{
+    return settings.value(KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW, false).toBool();
+}
+
+void AppSettings::setNotificationAlwaysShowPreview(bool enable)
+{
+    if (notificationAlwaysShowPreview() != enable) {
+        LOG(KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW << enable);
+        settings.setValue(KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW, enable);
+        emit notificationAlwaysShowPreviewChanged();
     }
 }
 
