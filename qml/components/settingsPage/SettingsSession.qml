@@ -143,18 +143,6 @@ AccordionItem {
 
                                 Label {
                                     width: parent.width
-                                    text: qsTr("IP address: %1, origin: %2").arg(modelData.ip).arg(modelData.country)
-                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                    color: Theme.secondaryColor
-                                    maximumLineCount: 1
-                                    truncationMode: TruncationMode.Fade
-                                    anchors {
-                                        horizontalCenter: parent.horizontalCenter
-                                    }
-                                }
-
-                                Label {
-                                    width: parent.width
                                     text: qsTr("Active since: %1, last online: %2").arg(Functions.getDateTimeTimepoint(modelData.log_in_date)).arg(Functions.getDateTimeElapsed(modelData.last_active_date))
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     color: Theme.primaryColor
