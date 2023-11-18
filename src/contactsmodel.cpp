@@ -68,7 +68,7 @@ QVariant ContactsModel::data(const QModelIndex &index, int role) const
             case ContactRole::RoleDisplay: return requestedContact;
             case ContactRole::RoleTitle: return QString(requestedContact.value("first_name").toString() + " " + requestedContact.value("last_name").toString()).trimmed();
             case ContactRole::RoleUserId: return requestedContact.value("id");
-            case ContactRole::RoleUsername: return requestedContact.value("username");
+            case ContactRole::RoleUsername: return requestedContact.value("usernames").toMap().value("editable_username").toString();
             case ContactRole::RolePhotoSmall: return requestedContact.value("profile_photo").toMap().value("small");
             case ContactRole::RoleUserStatus: return requestedContact.value("status").toMap().value("@type");
             case ContactRole::RoleUserLastOnline: return requestedContact.value("status").toMap().value("was_online");

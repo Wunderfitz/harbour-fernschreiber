@@ -143,7 +143,7 @@ AccordionItem {
                     visible: true
                     canEdit: true
                     headerText: qsTr("Username", "user name of the logged-in profile - header")
-                    text: userInformation.username
+                    text: userInformation.usernames.editable_username
                     width: parent.columnWidth
                     headerLeftAligned: true
 
