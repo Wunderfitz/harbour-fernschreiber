@@ -377,7 +377,11 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
         nemoNotification->setHintValue(HINT_VISIBILITY, QString());
         nemoNotification->setUrgency(Notification::Low);
     } else {
-        nemoNotification->setPreviewBody(notificationBody);
+        if (!appSettings->notificationSuppressContent()) {
+            nemoNotification->setPreviewBody(notificationBody);
+        } else {
+            nemoNotification->setPreviewBody(tr("%Ln unread messages", "", notificationGroup->totalCount));
+        }
         nemoNotification->setPreviewSummary(summary);
         nemoNotification->setHintValue(HINT_SUPPRESS_SOUND, !appSettings->notificationSoundsEnabled());
         nemoNotification->setHintValue(HINT_DISPLAY_ON, appSettings->notificationTurnsDisplayOn());
