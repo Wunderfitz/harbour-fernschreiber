@@ -496,13 +496,6 @@
     </message>
 </context>
 <context>
-    <name>ContactSync</name>
-    <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Kunde inte synkronisera dina kontakter med Telegram.</translation>
-    </message>
-</context>
-<context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
