@@ -1585,6 +1585,18 @@ messages</numerusform>
         <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
         <translation>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</translation>
     </message>
+    <message>
+        <source>Highlight unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Highlight Conversations with unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide content in Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -1689,10 +1701,6 @@ messages</numerusform>
     <message>
         <source>This app</source>
         <translation>This app</translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation>IP address: %1, origin: %2</translation>
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>
