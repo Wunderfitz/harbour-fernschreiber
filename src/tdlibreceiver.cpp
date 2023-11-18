@@ -61,6 +61,9 @@ namespace {
     const QString NEW_CONTENT("new_content");
     const QString SETS("sets");
     const QString EMOJIS("emojis");
+    const QString REPLY_TO("reply_to");
+    const QString REPLY_IN_CHAT_ID("reply_in_chat_id");
+    const QString REPLY_TO_MESSAGE_ID("reply_to_message_id");
 
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
@@ -71,6 +74,7 @@ namespace {
     const QString TYPE_MESSAGE("message");
     const QString TYPE_STICKER("sticker");
     const QString TYPE_MESSAGE_STICKER("messageSticker");
+    const QString TYPE_MESSAGE_REPLY_TO_MESSAGE("messageReplyToMessage");
     const QString TYPE_MESSAGE_ANIMATED_EMOJI("messageAnimatedEmoji");
     const QString TYPE_ANIMATED_EMOJI("animatedEmoji");
 }
@@ -416,7 +420,7 @@ void TDLibReceiver::processMessage(const QVariantMap &receivedInformation)
     const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
     const qlonglong messageId = receivedInformation.value(ID).toLongLong();
     LOG("Received message " << chatId << messageId);
-    emit messageInformation(chatId, messageId, receivedInformation);
+    emit messageInformation(chatId, messageId, cleanupMap(receivedInformation));
 }
 
 void TDLibReceiver::processMessageLinkInfo(const QVariantMap &receivedInformation)
@@ -770,12 +774,42 @@ const QVariantMap TDLibReceiver::cleanupMap(const QVariantMap& map, bool *update
             return animated_emoji;
         }
     } else if (type == TYPE_MESSAGE) {
-        bool cleaned = false;
-        const QVariantMap content(cleanupMap(map.value(CONTENT).toMap(), &cleaned));
-        if (cleaned) {
-            QVariantMap message(map);
+        QVariantMap message(map);
+        bool messageChanged = false;
+        const QVariantMap content(cleanupMap(map.value(CONTENT).toMap(), &messageChanged));
+        if (messageChanged) {
             message.remove(CONTENT);
             message.insert(CONTENT, content);
+        }
+        if (map.contains(REPLY_TO)) {
+            // In TdLib 1.8.15 reply_to_message_id and reply_in_chat_id attributes
+            // had been replaced with reply_to structure, e.g:
+            //
+            //     "reply_to": {
+            //         "@type": "messageReplyToMessage",
+            //         "chat_id": -1001234567890,
+            //         "is_quote_manual": false,
+            //         "message_id": 234567890,
+            //         "origin_send_date": 0
+            //     }
+            //
+            QVariantMap reply_to(message.value(REPLY_TO).toMap());
+            if (reply_to.value(_TYPE).toString() == TYPE_MESSAGE_REPLY_TO_MESSAGE) {
+                if (reply_to.contains(MESSAGE_ID) &&
+                    !message.contains(REPLY_TO_MESSAGE_ID)) {
+                    message.insert(REPLY_TO_MESSAGE_ID, reply_to.value(MESSAGE_ID));
+                }
+                if (reply_to.contains(CHAT_ID) &&
+                    !message.contains(REPLY_IN_CHAT_ID)) {
+                    message.insert(REPLY_IN_CHAT_ID, reply_to.value(CHAT_ID));
+                }
+                reply_to.remove(_TYPE);
+                reply_to.insert(_TYPE, TYPE_MESSAGE_REPLY_TO_MESSAGE);
+                message.insert(REPLY_TO, reply_to);
+                messageChanged = true;
+            }
+        }
+        if (messageChanged) {
             message.remove(_TYPE);
             message.insert(_TYPE, TYPE_MESSAGE); // Replace with a shared value
             if (updated) *updated = true;
