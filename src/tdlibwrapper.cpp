@@ -36,6 +36,9 @@
 #define DEBUG_MODULE TDLibWrapper
 #include "debuglog.h"
 
+#define VERSION_NUMBER(x,y,z) \
+    ((((x) & 0x3ff) << 20) | (((y) & 0x3ff) << 10) | ((z) & 0x3ff))
+
 namespace {
     const QString STATUS("status");
     const QString ID("id");
@@ -51,20 +54,28 @@ namespace {
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
     const QString CHAT_LIST_MAIN("chatListMain");
+    const QString CHAT_AVAILABLE_REACTIONS("available_reactions");
+    const QString CHAT_AVAILABLE_REACTIONS_ALL("chatAvailableReactionsAll");
+    const QString CHAT_AVAILABLE_REACTIONS_SOME("chatAvailableReactionsSome");
+    const QString REACTIONS("reactions");
+    const QString REACTION_TYPE("reaction_type");
+    const QString REACTION_TYPE_EMOJI("reactionTypeEmoji");
+    const QString EMOJI("emoji");
 }
 
-TDLibWrapper::TDLibWrapper(AppSettings *appSettings, MceInterface *mceInterface, QObject *parent)
+TDLibWrapper::TDLibWrapper(AppSettings *settings, MceInterface *mce, QObject *parent)
     : QObject(parent)
+    , tdLibClient(td_json_client_create())
     , manager(new QNetworkAccessManager(this))
     , networkConfigurationManager(new QNetworkConfigurationManager(this))
+    , appSettings(settings)
+    , mceInterface(mce)
+    , authorizationState(AuthorizationState::Closed)
+    , versionNumber(0)
     , joinChatRequested(false)
+    , isLoggingOut(false)
 {
     LOG("Initializing TD Lib...");
-    this->appSettings = appSettings;
-    this->mceInterface = mceInterface;
-    this->tdLibClient = td_json_client_create();
-    this->authorizationState = AuthorizationState::Closed;
-    this->isLoggingOut = false;
 
     initializeTDLibReceiver();
 
@@ -174,6 +185,7 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(availableReactionsReceived(qlonglong, QStringList)), this, SIGNAL(availableReactionsReceived(qlonglong, QStringList)));
     connect(this->tdLibReceiver, SIGNAL(chatUnreadMentionCountUpdated(qlonglong, int)), this, SIGNAL(chatUnreadMentionCountUpdated(qlonglong, int)));
     connect(this->tdLibReceiver, SIGNAL(chatUnreadReactionCountUpdated(qlonglong, int)), this, SIGNAL(chatUnreadReactionCountUpdated(qlonglong, int)));
+    connect(this->tdLibReceiver, SIGNAL(activeEmojiReactionsUpdated(QStringList)), this, SLOT(handleActiveEmojiReactionsUpdated(QStringList)));
 
     this->tdLibReceiver->start();
 }
@@ -192,7 +204,7 @@ void TDLibWrapper::sendRequest(const QVariantMap &requestObject)
 
 QString TDLibWrapper::getVersion()
 {
-    return this->version;
+    return this->versionString;
 }
 
 TDLibWrapper::AuthorizationState TDLibWrapper::getAuthorizationState()
@@ -255,7 +267,7 @@ void TDLibWrapper::logout()
 {
     LOG("Logging out");
     QVariantMap requestObject;
-    requestObject.insert("@type", "logOut");
+    requestObject.insert(_TYPE, "logOut");
     this->sendRequest(requestObject);
     this->isLoggingOut = true;
 
@@ -436,7 +448,7 @@ void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message
             QVariantMap entityType;
             entityType.insert(_TYPE, "textEntityTypeMentionName");
             entityType.insert("user_id", nextReplacement.value("userId").toString());
-            entity.insert("type", entityType);
+            entity.insert(TYPE, entityType);
             entities.append(entity);
             offsetCorrection += replacementLength - replacementPlainText.length();
         }
@@ -586,7 +598,7 @@ void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &file
 
     QVariantMap stickerInputFile;
     stickerInputFile.insert(_TYPE, "inputFileRemote");
-    stickerInputFile.insert("id", fileId);
+    stickerInputFile.insert(ID, fileId);
 
     inputMessageContent.insert("sticker", stickerInputFile);
 
@@ -620,7 +632,7 @@ void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &questio
         pollType.insert("allow_multiple_answers", multiple);
     }
 
-    inputMessageContent.insert("type", pollType);
+    inputMessageContent.insert(TYPE, pollType);
     inputMessageContent.insert("question", question);
     inputMessageContent.insert("options", options);
     inputMessageContent.insert("is_anonymous", anonymous);
@@ -709,7 +721,11 @@ void TDLibWrapper::getChatSponsoredMessage(qlonglong chatId)
 {
     LOG("Retrieving sponsored message" << chatId);
     QVariantMap requestObject;
-    requestObject.insert(_TYPE, "getChatSponsoredMessage");
+    // getChatSponsoredMessage has been replaced with getChatSponsoredMessages
+    // between 1.8.7 and 1.8.8
+    // See https://github.com/tdlib/td/commit/ec1310a
+    requestObject.insert(_TYPE, QString((versionNumber > VERSION_NUMBER(1,8,7)) ?
+        "getChatSponsoredMessages" : "getChatSponsoredMessage"));
     requestObject.insert(CHAT_ID, chatId);
     requestObject.insert(_EXTRA, chatId); // see TDLibReceiver::processSponsoredMessage
     this->sendRequest(requestObject);
@@ -1433,8 +1449,8 @@ void TDLibWrapper::getMessageAvailableReactions(qlonglong chatId, qlonglong mess
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getMessageAvailableReactions");
     requestObject.insert(_EXTRA, QString::number(messageId));
-    requestObject.insert("chat_id", chatId);
-    requestObject.insert("message_id", messageId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
     this->sendRequest(requestObject);
 }
 
@@ -1457,11 +1473,23 @@ void TDLibWrapper::setMessageReaction(qlonglong chatId, qlonglong messageId, con
 {
     LOG("Set message reaction" << chatId << messageId << reaction);
     QVariantMap requestObject;
-    requestObject.insert(_TYPE, "setMessageReaction");
-    requestObject.insert("chat_id", chatId);
-    requestObject.insert("message_id", messageId);
-    requestObject.insert("reaction", reaction);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
     requestObject.insert("is_big", false);
+    if (versionNumber > VERSION_NUMBER(1,8,5)) {
+        // "reaction_type": {
+        //     "@type": "reactionTypeEmoji",
+        //     "emoji": "..."
+        // }
+        QVariantMap reactionType;
+        reactionType.insert(_TYPE, REACTION_TYPE_EMOJI);
+        reactionType.insert(EMOJI, reaction);
+        requestObject.insert(REACTION_TYPE, reactionType);
+        requestObject.insert(_TYPE, "addMessageReaction");
+    } else {
+        requestObject.insert("reaction", reaction);
+        requestObject.insert(_TYPE, "setMessageReaction");
+    }
     this->sendRequest(requestObject);
 }
 
@@ -1494,7 +1522,7 @@ void TDLibWrapper::setNetworkType(NetworkType networkType)
         break;
     }
 
-    requestObject.insert("type", networkTypeObject);
+    requestObject.insert(TYPE, networkTypeObject);
 
     this->sendRequest(requestObject);
 }
@@ -1575,6 +1603,43 @@ QVariantMap TDLibWrapper::getChat(const QString &chatId)
     return this->chats.value(chatId).toMap();
 }
 
+QStringList TDLibWrapper::getChatReactions(const QString &chatId)
+{
+    const QVariant available_reactions(chats.value(chatId).toMap().value(CHAT_AVAILABLE_REACTIONS));
+    const QVariantMap map(available_reactions.toMap());
+    const QString reactions_type(map.value(_TYPE).toString());
+    if (reactions_type == CHAT_AVAILABLE_REACTIONS_ALL) {
+        return activeEmojiReactions;
+    } else if (reactions_type == CHAT_AVAILABLE_REACTIONS_SOME) {
+        const QVariantList reactions(map.value(REACTIONS).toList());
+        const int n = reactions.count();
+        QStringList emojis;
+
+        // "available_reactions": {
+        //     "@type": "chatAvailableReactionsSome",
+        //     "reactions": [
+        //         {
+        //             "@type": "reactionTypeEmoji",
+        //             "emoji": "..."
+        //         },
+        emojis.reserve(n);
+        for (int i = 0; i < n; i++) {
+            const QVariantMap reaction(reactions.at(i).toMap());
+            if (reaction.value(_TYPE).toString() == REACTION_TYPE_EMOJI) {
+                const QString emoji(reaction.value(EMOJI).toString());
+                if (!emoji.isEmpty()) {
+                    emojis.append(emoji);
+                }
+            }
+        }
+        return emojis;
+    } else if (reactions_type.isEmpty()) {
+        return available_reactions.toStringList();
+    } else {
+        return QStringList();
+    }
+}
+
 QVariantMap TDLibWrapper::getSecretChatFromCache(qlonglong secretChatId)
 {
     return this->secretChats.value(secretChatId);
@@ -1645,7 +1710,16 @@ DBusAdaptor *TDLibWrapper::getDBusAdaptor()
 
 void TDLibWrapper::handleVersionDetected(const QString &version)
 {
-    this->version = version;
+    this->versionString = version;
+    const QStringList parts(version.split('.'));
+    uint major, minor, release;
+    bool ok;
+    if (parts.count() >= 3 &&
+       (major = parts.at(0).toInt(&ok), ok) &&
+       (minor = parts.at(1).toInt(&ok), ok) &&
+       (release = parts.at(2).toInt(&ok), ok)) {
+        versionNumber = VERSION_NUMBER(major, minor, release);
+    }
     emit versionDetected(version);
 }
 
@@ -1758,7 +1832,7 @@ void TDLibWrapper::handleConnectionStateChanged(const QString &connectionState)
 
 void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
 {
-    QString updatedUserId = userInformation.value("id").toString();
+    QString updatedUserId = userInformation.value(ID).toString();
     if (updatedUserId == this->options.value("my_id").toString()) {
         LOG("Own user information updated :)");
         this->userInformation = userInformation;
@@ -1774,11 +1848,11 @@ void TDLibWrapper::handleUserStatusUpdated(const QString &userId, const QVariant
 {
     if (userId == this->options.value("my_id").toString()) {
         LOG("Own user status information updated :)");
-        this->userInformation.insert("status", userStatusInformation);
+        this->userInformation.insert(STATUS, userStatusInformation);
     }
     LOG("User status information updated:" << userId << userStatusInformation.value(_TYPE).toString());
     QVariantMap updatedUserInformation = this->allUsers.value(userId).toMap();
-    updatedUserInformation.insert("status", userStatusInformation);
+    updatedUserInformation.insert(STATUS, userStatusInformation);
     this->allUsers.insert(userId, updatedUserInformation);
     this->allUserNames.insert(userInformation.value(USERNAME).toString(), userInformation);
     emit userUpdated(userId, updatedUserInformation);
@@ -1786,12 +1860,12 @@ void TDLibWrapper::handleUserStatusUpdated(const QString &userId, const QVariant
 
 void TDLibWrapper::handleFileUpdated(const QVariantMap &fileInformation)
 {
-    emit fileUpdated(fileInformation.value("id").toInt(), fileInformation);
+    emit fileUpdated(fileInformation.value(ID).toInt(), fileInformation);
 }
 
 void TDLibWrapper::handleNewChatDiscovered(const QVariantMap &chatInformation)
 {
-    QString chatId = chatInformation.value("id").toString();
+    QString chatId = chatInformation.value(ID).toString();
     this->chats.insert(chatId, chatInformation);
     emit newChatDiscovered(chatId, chatInformation);
 }
@@ -1856,7 +1930,7 @@ void TDLibWrapper::handleStickerSets(const QVariantList &stickerSets)
     QListIterator<QVariant> stickerSetIterator(stickerSets);
     while (stickerSetIterator.hasNext()) {
         QVariantMap stickerSet = stickerSetIterator.next().toMap();
-        this->getStickerSet(stickerSet.value("id").toString());
+        this->getStickerSet(stickerSet.value(ID).toString());
     }
     emit this->stickerSetsReceived(stickerSets);
 }
@@ -1988,6 +2062,13 @@ void TDLibWrapper::handleSponsoredMessage(qlonglong chatId, const QVariantMap &m
     }
 }
 
+void TDLibWrapper::handleActiveEmojiReactionsUpdated(const QStringList& emojis)
+{
+    if (activeEmojiReactions != emojis) {
+        activeEmojiReactions = emojis;
+        LOG(emojis.count() << "reaction(s) available");
+    }
+}
 
 void TDLibWrapper::handleNetworkConfigurationChanged(const QNetworkConfiguration &config)
 {
@@ -2077,28 +2158,40 @@ void TDLibWrapper::handleGetPageSourceFinished()
     }
 }
 
+QVariantMap& TDLibWrapper::fillTdlibParameters(QVariantMap& parameters)
+{
+    parameters.insert("api_id", TDLIB_API_ID);
+    parameters.insert("api_hash", TDLIB_API_HASH);
+    parameters.insert("database_directory", QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib");
+    bool onlineOnlyMode = this->appSettings->onlineOnlyMode();
+    parameters.insert("use_file_database", !onlineOnlyMode);
+    parameters.insert("use_chat_info_database", !onlineOnlyMode);
+    parameters.insert("use_message_database", !onlineOnlyMode);
+    parameters.insert("use_secret_chats", true);
+    parameters.insert("system_language_code", QLocale::system().name());
+    QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
+    parameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
+    parameters.insert("system_version", QSysInfo::prettyProductName());
+    parameters.insert("application_version", "0.17");
+    parameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
+    // parameters.insert("use_test_dc", true);
+    return parameters;
+}
+
 void TDLibWrapper::setInitialParameters()
 {
     LOG("Sending initial parameters to TD Lib");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setTdlibParameters");
-    QVariantMap initialParameters;
-    initialParameters.insert("api_id", TDLIB_API_ID);
-    initialParameters.insert("api_hash", TDLIB_API_HASH);
-    initialParameters.insert("database_directory", QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tdlib");
-    bool onlineOnlyMode = this->appSettings->onlineOnlyMode();
-    initialParameters.insert("use_file_database", !onlineOnlyMode);
-    initialParameters.insert("use_chat_info_database", !onlineOnlyMode);
-    initialParameters.insert("use_message_database", !onlineOnlyMode);
-    initialParameters.insert("use_secret_chats", true);
-    initialParameters.insert("system_language_code", QLocale::system().name());
-    QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
-    initialParameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
-    initialParameters.insert("system_version", QSysInfo::prettyProductName());
-    initialParameters.insert("application_version", "0.17");
-    initialParameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
-    // initialParameters.insert("use_test_dc", true);
-    requestObject.insert("parameters", initialParameters);
+    // tdlibParameters were inlined between 1.8.5 and 1.8.6
+    // See https://github.com/tdlib/td/commit/f6a2ecd
+    if (versionNumber > VERSION_NUMBER(1,8,5)) {
+        fillTdlibParameters(requestObject);
+    } else {
+        QVariantMap initialParameters;
+        fillTdlibParameters(initialParameters);
+        requestObject.insert("parameters", initialParameters);
+    }
     this->sendRequest(requestObject);
 }
 
