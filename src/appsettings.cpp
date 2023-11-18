@@ -243,7 +243,7 @@ void AppSettings::setDelayMessageRead(bool enable)
 
 bool AppSettings::highlightUnreadConversations() const
 {
-    return settings.value(KEY_HIGHLIGHT_UNREADCONVS, true).toBool();
+    return settings.value(KEY_HIGHLIGHT_UNREADCONVS, false).toBool();
 }
 
 void AppSettings::setHighlightUnreadConversations(bool enable)
