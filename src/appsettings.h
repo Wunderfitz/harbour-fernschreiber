@@ -34,6 +34,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool notificationSoundsEnabled READ notificationSoundsEnabled WRITE setNotificationSoundsEnabled NOTIFY notificationSoundsEnabledChanged)
     Q_PROPERTY(bool notificationSuppressContent READ notificationSuppressContent WRITE setNotificationSuppressContent NOTIFY notificationSuppressContentChanged)
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
+    Q_PROPERTY(bool notificationAlwaysShowPreview READ notificationAlwaysShowPreview WRITE setNotificationAlwaysShowPreview NOTIFY notificationAlwaysShowPreviewChanged)
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
     Q_PROPERTY(bool allowInlineBotLocationAccess READ allowInlineBotLocationAccess WRITE setAllowInlineBotLocationAccess NOTIFY allowInlineBotLocationAccessChanged)
     Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
@@ -91,6 +92,9 @@ public:
     NotificationFeedback notificationFeedback() const;
     void setNotificationFeedback(NotificationFeedback feedback);
 
+    bool notificationAlwaysShowPreview() const;
+    void setNotificationAlwaysShowPreview(bool enable);
+
     bool storageOptimizer() const;
     void setStorageOptimizer(bool enable);
 
@@ -126,6 +130,7 @@ signals:
     void notificationSoundsEnabledChanged();
     void notificationSuppressContentChanged();
     void notificationFeedbackChanged();
+    void notificationAlwaysShowPreviewChanged();
     void storageOptimizerChanged();
     void allowInlineBotLocationAccessChanged();
     void remainingInteractionHintsChanged();
