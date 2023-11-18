@@ -148,6 +148,7 @@ public:
     Q_INVOKABLE QVariantMap getSuperGroup(qlonglong groupId) const;
     Q_INVOKABLE QVariantMap getChat(const QString &chatId);
     Q_INVOKABLE QVariantMap getSecretChatFromCache(qlonglong secretChatId);
+    Q_INVOKABLE QStringList getChatReactions(const QString &chatId);
     Q_INVOKABLE QString getOptionString(const QString &optionName);
     Q_INVOKABLE void copyFileToDownloads(const QString &filePath, bool openAfterCopy = false);
     Q_INVOKABLE void openFileOnDevice(const QString &filePath);
@@ -364,7 +365,7 @@ public slots:
     void handleUpdatedUserPrivacySettingRules(const QVariantMap &updatedRules);
     void handleSponsoredMessage(qlonglong chatId, const QVariantMap &message);
     void handleNetworkConfigurationChanged(const QNetworkConfiguration &config);
-
+    void handleActiveEmojiReactionsUpdated(const QStringList& emojis);
     void handleGetPageSourceFinished();
 
 private:
@@ -372,6 +373,7 @@ private:
     void setInitialParameters();
     void setEncryptionKey();
     void setLogVerbosityLevel();
+    QVariantMap &fillTdlibParameters(QVariantMap &parameters);
     const Group *updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups);
     void initializeTDLibReceiver();
 
@@ -383,7 +385,7 @@ private:
     MceInterface *mceInterface;
     TDLibReceiver *tdLibReceiver;
     DBusInterface *dbusInterface;
-    QString version;
+    QString versionString;
     TDLibWrapper::AuthorizationState authorizationState;
     QVariantMap authorizationStateData;
     TDLibWrapper::ConnectionState connectionState;
@@ -399,7 +401,9 @@ private:
     QHash<qlonglong,Group*> basicGroups;
     QHash<qlonglong,Group*> superGroups;
     EmojiSearchWorker emojiSearchWorker;
+    QStringList activeEmojiReactions;
 
+    int versionNumber;
     QString activeChatSearchName;
     bool joinChatRequested;
     bool isLoggingOut;

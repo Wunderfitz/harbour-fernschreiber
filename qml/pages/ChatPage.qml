@@ -66,6 +66,7 @@ Page {
     readonly property bool canSendMessages: hasSendPrivilege("can_send_messages")
     property bool doSendBotStartMessage
     property string sendBotStartMessageParameter
+    property var availableReactions
 
     states: [
         State {
@@ -184,7 +185,7 @@ Page {
         }
         tdLibWrapper.getChatPinnedMessage(chatInformation.id);
         tdLibWrapper.toggleChatIsMarkedAsUnread(chatInformation.id, false);
-
+        availableReactions = tdLibWrapper.getChatReactions(chatInformation.id);
     }
 
     function getMessageStatusText(message, listItemIndex, lastReadSentIndex, useElapsed) {
@@ -1348,6 +1349,7 @@ Page {
                                     messageId: model.message_id
                                     messageViewCount: model.view_count
                                     reactions: model.reactions
+                                    chatReactions: availableReactions
                                     messageIndex: model.index
                                     hasContentComponent: !!myMessage.content && chatView.delegateMessagesContent.indexOf(model.content_type) > -1
                                     canReplyToMessage: chatPage.canSendMessages

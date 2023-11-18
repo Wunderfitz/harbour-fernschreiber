@@ -60,6 +60,10 @@ namespace {
     const QString CONTENT("content");
     const QString NEW_CONTENT("new_content");
     const QString SETS("sets");
+    const QString EMOJIS("emojis");
+    const QString REPLY_TO("reply_to");
+    const QString REPLY_IN_CHAT_ID("reply_in_chat_id");
+    const QString REPLY_TO_MESSAGE_ID("reply_to_message_id");
 
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
@@ -70,6 +74,7 @@ namespace {
     const QString TYPE_MESSAGE("message");
     const QString TYPE_STICKER("sticker");
     const QString TYPE_MESSAGE_STICKER("messageSticker");
+    const QString TYPE_MESSAGE_REPLY_TO_MESSAGE("messageReplyToMessage");
     const QString TYPE_MESSAGE_ANIMATED_EMOJI("messageAnimatedEmoji");
     const QString TYPE_ANIMATED_EMOJI("animatedEmoji");
 }
@@ -119,7 +124,8 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateSupergroup", &TDLibReceiver::processUpdateSuperGroup);
     handlers.insert("updateChatOnlineMemberCount", &TDLibReceiver::processChatOnlineMemberCountUpdated);
     handlers.insert("messages", &TDLibReceiver::processMessages);
-    handlers.insert("sponsoredMessage", &TDLibReceiver::processSponsoredMessage);
+    handlers.insert("sponsoredMessage", &TDLibReceiver::processSponsoredMessage);   // TdLib <= 1.8.7
+    handlers.insert("sponsoredMessages", &TDLibReceiver::processSponsoredMessages); // TdLib >= 1.8.8
     handlers.insert("updateNewMessage", &TDLibReceiver::processUpdateNewMessage);
     handlers.insert("message", &TDLibReceiver::processMessage);
     handlers.insert("messageLinkInfo", &TDLibReceiver::processMessageLinkInfo);
@@ -167,6 +173,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("availableReactions", &TDLibReceiver::processAvailableReactions);
     handlers.insert("updateChatUnreadMentionCount", &TDLibReceiver::processUpdateChatUnreadMentionCount);
     handlers.insert("updateChatUnreadReactionCount", &TDLibReceiver::processUpdateChatUnreadReactionCount);
+    handlers.insert("updateActiveEmojiReactions", &TDLibReceiver::processUpdateActiveEmojiReactions);
 }
 
 void TDLibReceiver::setActive(bool active)
@@ -382,9 +389,22 @@ void TDLibReceiver::processMessages(const QVariantMap &receivedInformation)
 
 void TDLibReceiver::processSponsoredMessage(const QVariantMap &receivedInformation)
 {
+    // TdLib <= 1.8.7
     const qlonglong chatId = receivedInformation.value(_EXTRA).toLongLong(); // See TDLibWrapper::getChatSponsoredMessage
     LOG("Received sponsored message for chat" << chatId);
     emit sponsoredMessageReceived(chatId, receivedInformation);
+}
+
+void TDLibReceiver::processSponsoredMessages(const QVariantMap &receivedInformation)
+{
+    // TdLib >= 1.8.8
+    const qlonglong chatId = receivedInformation.value(_EXTRA).toLongLong(); // See TDLibWrapper::getChatSponsoredMessage
+    const QVariantList messages(receivedInformation.value(MESSAGES).toList());
+    LOG("Received" << messages.count() << "sponsored messages for chat" << chatId);
+    QListIterator<QVariant> it(messages);
+    while (it.hasNext()) {
+        emit sponsoredMessageReceived(chatId, it.next().toMap());
+    }
 }
 
 void TDLibReceiver::processUpdateNewMessage(const QVariantMap &receivedInformation)
@@ -400,7 +420,7 @@ void TDLibReceiver::processMessage(const QVariantMap &receivedInformation)
     const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
     const qlonglong messageId = receivedInformation.value(ID).toLongLong();
     LOG("Received message " << chatId << messageId);
-    emit messageInformation(chatId, messageId, receivedInformation);
+    emit messageInformation(chatId, messageId, cleanupMap(receivedInformation));
 }
 
 void TDLibReceiver::processMessageLinkInfo(const QVariantMap &receivedInformation)
@@ -718,6 +738,13 @@ void TDLibReceiver::processUpdateChatUnreadReactionCount(const QVariantMap &rece
     emit chatUnreadReactionCountUpdated(chatId, unreadReactionCount);
 }
 
+void TDLibReceiver::processUpdateActiveEmojiReactions(const QVariantMap &receivedInformation)
+{
+    // updateActiveEmojiReactions was introduced between 1.8.5 and 1.8.6
+    // See https://github.com/tdlib/td/commit/d29d367
+    emit activeEmojiReactionsUpdated(receivedInformation.value(EMOJIS).toStringList());
+}
+
 // Recursively removes (some) unused entries from QVariantMaps to reduce
 // memory usage. QStrings allocated by QVariantMaps are the top consumers
 // of memory. The biggest saving is achieved by removing "outline" from
@@ -747,12 +774,42 @@ const QVariantMap TDLibReceiver::cleanupMap(const QVariantMap& map, bool *update
             return animated_emoji;
         }
     } else if (type == TYPE_MESSAGE) {
-        bool cleaned = false;
-        const QVariantMap content(cleanupMap(map.value(CONTENT).toMap(), &cleaned));
-        if (cleaned) {
-            QVariantMap message(map);
+        QVariantMap message(map);
+        bool messageChanged = false;
+        const QVariantMap content(cleanupMap(map.value(CONTENT).toMap(), &messageChanged));
+        if (messageChanged) {
             message.remove(CONTENT);
             message.insert(CONTENT, content);
+        }
+        if (map.contains(REPLY_TO)) {
+            // In TdLib 1.8.15 reply_to_message_id and reply_in_chat_id attributes
+            // had been replaced with reply_to structure, e.g:
+            //
+            //     "reply_to": {
+            //         "@type": "messageReplyToMessage",
+            //         "chat_id": -1001234567890,
+            //         "is_quote_manual": false,
+            //         "message_id": 234567890,
+            //         "origin_send_date": 0
+            //     }
+            //
+            QVariantMap reply_to(message.value(REPLY_TO).toMap());
+            if (reply_to.value(_TYPE).toString() == TYPE_MESSAGE_REPLY_TO_MESSAGE) {
+                if (reply_to.contains(MESSAGE_ID) &&
+                    !message.contains(REPLY_TO_MESSAGE_ID)) {
+                    message.insert(REPLY_TO_MESSAGE_ID, reply_to.value(MESSAGE_ID));
+                }
+                if (reply_to.contains(CHAT_ID) &&
+                    !message.contains(REPLY_IN_CHAT_ID)) {
+                    message.insert(REPLY_IN_CHAT_ID, reply_to.value(CHAT_ID));
+                }
+                reply_to.remove(_TYPE);
+                reply_to.insert(_TYPE, TYPE_MESSAGE_REPLY_TO_MESSAGE);
+                message.insert(REPLY_TO, reply_to);
+                messageChanged = true;
+            }
+        }
+        if (messageChanged) {
             message.remove(_TYPE);
             message.insert(_TYPE, TYPE_MESSAGE); // Replace with a shared value
             if (updated) *updated = true;
