@@ -563,12 +563,12 @@ Page {
             }
         }
         onUserFullInfoReceived: {
-            if(userFullInfo["@extra"] === chatPartnerInformation.id.toString()) {
+            if ((isPrivateChat || isSecretChat) && userFullInfo["@extra"] === chatPartnerInformation.id.toString()) {
                 chatPage.botInformation = userFullInfo;
             }
         }
         onUserFullInfoUpdated: {
-            if(userId === chatPartnerInformation.id) {
+            if ((isPrivateChat || isSecretChat) && userId === chatPartnerInformation.id) {
                 chatPage.botInformation = userFullInfo;
             }
         }
