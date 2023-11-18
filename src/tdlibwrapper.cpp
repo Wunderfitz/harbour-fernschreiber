@@ -51,6 +51,8 @@ namespace {
     const QString THREAD_ID("thread_id");
     const QString VALUE("value");
     const QString CHAT_LIST_TYPE("chat_list_type");
+    const QString REPLY_TO_MESSAGE_ID("reply_to_message_id");
+    const QString REPLY_TO("reply_to");
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
     const QString CHAT_LIST_MAIN("chatListMain");
@@ -61,6 +63,8 @@ namespace {
     const QString REACTION_TYPE("reaction_type");
     const QString REACTION_TYPE_EMOJI("reactionTypeEmoji");
     const QString EMOJI("emoji");
+    const QString TYPE_MESSAGE_REPLY_TO_MESSAGE("messageReplyToMessage");
+    const QString TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE("inputMessageReplyToMessage");
 }
 
 TDLibWrapper::TDLibWrapper(AppSettings *settings, MceInterface *mce, QObject *parent)
@@ -401,15 +405,33 @@ static bool compareReplacements(const QVariant &replacement1, const QVariant &re
     }
 }
 
-void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message, const QString &replyToMessageId)
+QVariantMap TDLibWrapper::newSendMessageRequest(qlonglong chatId, qlonglong replyToMessageId)
+{
+    QVariantMap request;
+    request.insert(_TYPE, "sendMessage");
+    request.insert(CHAT_ID, chatId);
+    if (replyToMessageId) {
+        if (versionNumber > VERSION_NUMBER(1,8,14)) {
+            QVariantMap replyTo;
+            if (versionNumber > VERSION_NUMBER(1,8,20)) {
+                replyTo.insert(_TYPE, TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE);
+            } else {
+                replyTo.insert(_TYPE, TYPE_MESSAGE_REPLY_TO_MESSAGE);
+            }
+            replyTo.insert(CHAT_ID, chatId);
+            replyTo.insert(MESSAGE_ID, replyToMessageId);
+            request.insert(REPLY_TO, replyTo);
+        } else {
+            request.insert(REPLY_TO_MESSAGE_ID, replyToMessageId);
+        }
+    }
+    return request;
+}
+
+void TDLibWrapper::sendTextMessage(qlonglong chatId, const QString &message, qlonglong replyToMessageId)
 {
     LOG("Sending text message" << chatId << message << replyToMessageId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert(CHAT_ID, chatId);
-    if (replyToMessageId != "0") {
-        requestObject.insert("reply_to_message_id", replyToMessageId);
-    }
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageText");
 
@@ -462,17 +484,13 @@ void TDLibWrapper::sendTextMessage(const QString &chatId, const QString &message
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendPhotoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
+void TDLibWrapper::sendPhotoMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId)
 {
     LOG("Sending photo message" << chatId << filePath << message << replyToMessageId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert(CHAT_ID, chatId);
-    if (replyToMessageId != "0") {
-        requestObject.insert("reply_to_message_id", replyToMessageId);
-    }
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessagePhoto");
+
     QVariantMap formattedText;
     formattedText.insert("text", message);
     formattedText.insert(_TYPE, "formattedText");
@@ -486,17 +504,13 @@ void TDLibWrapper::sendPhotoMessage(const QString &chatId, const QString &filePa
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendVideoMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
+void TDLibWrapper::sendVideoMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId)
 {
     LOG("Sending video message" << chatId << filePath << message << replyToMessageId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert(CHAT_ID, chatId);
-    if (replyToMessageId != "0") {
-        requestObject.insert("reply_to_message_id", replyToMessageId);
-    }
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageVideo");
+
     QVariantMap formattedText;
     formattedText.insert("text", message);
     formattedText.insert(_TYPE, "formattedText");
@@ -510,17 +524,13 @@ void TDLibWrapper::sendVideoMessage(const QString &chatId, const QString &filePa
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
+void TDLibWrapper::sendDocumentMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId)
 {
     LOG("Sending document message" << chatId << filePath << message << replyToMessageId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert(CHAT_ID, chatId);
-    if (replyToMessageId != "0") {
-        requestObject.insert("reply_to_message_id", replyToMessageId);
-    }
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageDocument");
+
     QVariantMap formattedText;
     formattedText.insert("text", message);
     formattedText.insert(_TYPE, "formattedText");
@@ -534,17 +544,13 @@ void TDLibWrapper::sendDocumentMessage(const QString &chatId, const QString &fil
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendVoiceNoteMessage(const QString &chatId, const QString &filePath, const QString &message, const QString &replyToMessageId)
+void TDLibWrapper::sendVoiceNoteMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId)
 {
     LOG("Sending voice note message" << chatId << filePath << message << replyToMessageId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert(CHAT_ID, chatId);
-    if (replyToMessageId != "0") {
-        requestObject.insert("reply_to_message_id", replyToMessageId);
-    }
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageVoiceNote");
+
     QVariantMap formattedText;
     formattedText.insert("text", message);
     formattedText.insert(_TYPE, "formattedText");
@@ -558,24 +564,19 @@ void TDLibWrapper::sendVoiceNoteMessage(const QString &chatId, const QString &fi
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendLocationMessage(const QString &chatId, double latitude, double longitude, double horizontalAccuracy, const QString &replyToMessageId)
+void TDLibWrapper::sendLocationMessage(qlonglong chatId, double latitude, double longitude, double horizontalAccuracy, qlonglong replyToMessageId)
 {
     LOG("Sending location message" << chatId << latitude << longitude << horizontalAccuracy << replyToMessageId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert(CHAT_ID, chatId);
-    if (replyToMessageId != "0") {
-        requestObject.insert("reply_to_message_id", replyToMessageId);
-    }
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageLocation");
+
     QVariantMap location;
     location.insert("latitude", latitude);
     location.insert("longitude", longitude);
     location.insert("horizontal_accuracy", horizontalAccuracy);
     location.insert(_TYPE, "location");
     inputMessageContent.insert("location", location);
-
     inputMessageContent.insert("live_period", 0);
     inputMessageContent.insert("heading", 0);
     inputMessageContent.insert("proximity_alert_radius", 0);
@@ -584,15 +585,10 @@ void TDLibWrapper::sendLocationMessage(const QString &chatId, double latitude, d
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &fileId, const QString &replyToMessageId)
+void TDLibWrapper::sendStickerMessage(qlonglong chatId, const QString &fileId, qlonglong replyToMessageId)
 {
     LOG("Sending sticker message" << chatId << fileId << replyToMessageId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert(CHAT_ID, chatId);
-    if (replyToMessageId != "0") {
-        requestObject.insert("reply_to_message_id", replyToMessageId);
-    }
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageSticker");
 
@@ -606,15 +602,10 @@ void TDLibWrapper::sendStickerMessage(const QString &chatId, const QString &file
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendPollMessage(const QString &chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &explanation, const QString &replyToMessageId)
+void TDLibWrapper::sendPollMessage(qlonglong chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &explanation, qlonglong replyToMessageId)
 {
     LOG("Sending poll message" << chatId << question << replyToMessageId);
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "sendMessage");
-    requestObject.insert(CHAT_ID, chatId);
-    if (replyToMessageId != "0") {
-        requestObject.insert("reply_to_message_id", replyToMessageId);
-    }
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessagePoll");
 
@@ -1187,8 +1178,17 @@ void TDLibWrapper::setChatDraftMessage(qlonglong chatId, qlonglong threadId, qlo
     inputMessageContent.insert(_TYPE, "inputMessageText");
     inputMessageContent.insert("text", formattedText);
     draftMessage.insert(_TYPE, "draftMessage");
-    draftMessage.insert("reply_to_message_id", replyToMessageId);
     draftMessage.insert("input_message_text", inputMessageContent);
+
+    if (versionNumber > VERSION_NUMBER(1,8,20)) {
+        QVariantMap replyTo;
+        replyTo.insert(_TYPE, TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE);
+        replyTo.insert(CHAT_ID, chatId);
+        replyTo.insert(MESSAGE_ID, replyToMessageId);
+        draftMessage.insert(REPLY_TO, replyTo);
+    } else {
+        draftMessage.insert(REPLY_TO_MESSAGE_ID, replyToMessageId);
+    }
 
     requestObject.insert("draft_message", draftMessage);
     this->sendRequest(requestObject);
