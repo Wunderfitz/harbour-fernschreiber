@@ -1704,10 +1704,6 @@
         <source>Active since: %1, last online: %2</source>
         <translation>Aktiv sedan: %1, senast online: %2</translation>
     </message>
-    <message>
-        <source>Terminate old sessions if inactive for</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message numerus="yes">
         <source>%1 day(s)</source>
         <translation type="unfinished">
@@ -1733,6 +1729,14 @@
     </message>
     <message>
         <source>1 year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session Timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inactive sessions will be terminated after this timeframe</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
