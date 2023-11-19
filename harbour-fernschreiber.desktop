@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-X-Nemo-Application-Type=generic
+X-Nemo-Application-Type=silica-qt5
 Icon=harbour-fernschreiber
 Exec=harbour-fernschreiber
 Name=Fernschreiber
@@ -8,4 +8,4 @@ Name=Fernschreiber
 [X-Sailjail]
 Permissions=Audio;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;PublicDir;RemovableMedia;UserDirs;Videos
 OrganizationName=de.ygriega
-ApplicationName=fernschreiber
+ApplicationName=de.ygriega.fernschreiber
