@@ -151,6 +151,9 @@ ListItem {
                 truncationMode: TruncationMode.Fade
                 anchors.verticalCenter: parent.verticalCenter
                 width: Math.min(contentColumn.width - (verifiedImage.visible ? (verifiedImage.width + primaryTextRow.spacing) :  0) - (mutedImage.visible ? (mutedImage.width + primaryTextRow.spacing) :  0), implicitWidth)
+                font.bold: appSettings.highlightUnreadConversations && ( !chatListViewItem.isMuted && (chatListViewItem.unreadCount > 0 || chatListViewItem.isMarkedAsUnread) )
+                font.italic: appSettings.highlightUnreadConversations  && (chatListViewItem.unreadReactionCount > 0)
+                color: (appSettings.highlightUnreadConversations && (chatListViewItem.unreadCount > 0)) ? Theme.highlightColor : Theme.primaryColor
             }
 
             Image {

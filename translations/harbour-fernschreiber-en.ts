@@ -1577,6 +1577,26 @@ messages</numerusform>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
         <translation>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</translation>
     </message>
+    <message>
+        <source>Always append message preview to notifications</source>
+        <translation>Always append message preview to notifications</translation>
+    </message>
+    <message>
+        <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
+        <translation>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</translation>
+    </message>
+    <message>
+        <source>Highlight unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Highlight Conversations with unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide content in notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -1681,10 +1701,6 @@ messages</numerusform>
     <message>
         <source>This app</source>
         <translation>This app</translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation>IP address: %1, origin: %2</translation>
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>

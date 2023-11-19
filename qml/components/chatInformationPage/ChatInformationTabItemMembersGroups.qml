@@ -79,7 +79,7 @@ ChatInformationTabItemBase {
             // chat title
             primaryText.text: Emoji.emojify(Functions.getUserName(user), primaryText.font.pixelSize)
             // last user
-            prologSecondaryText.text: "@"+(user.username !== "" ? user.username : member_id.user_id) + (member_id.user_id === chatInformationPage.myUserId ? " " + qsTr("You") : "")
+            prologSecondaryText.text: "@"+(user.username ? user.username : member_id.user_id) + (member_id.user_id === chatInformationPage.myUserId ? " " + qsTr("You") : "")
             secondaryText {
                 horizontalAlignment: Text.AlignRight
                 property string statusText: Functions.getChatMemberStatusText(model.status["@type"])
@@ -180,6 +180,9 @@ ChatInformationTabItemBase {
                     for(var memberIndex in members) {
                         var memberData = members[memberIndex];
                         var userInfo = tdLibWrapper.getUserInformation(memberData.member_id.user_id) || {user:{}, bot_info:{}};
+                        if (!userInfo.username && userInfo.usernames && userInfo.usernames.active_usernames) {
+                            userInfo.username = userInfo.usernames.active_usernames[0]
+                        }
                         memberData.user = userInfo;
                         memberData.bot_info = memberData.bot_info || {};
                         pageContent.membersList.append(memberData);

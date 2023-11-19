@@ -1549,6 +1549,26 @@
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
         <translation>如果开启声音，Fernschreiber 会采用当前旗鱼系统通知声音作为对话通知声音，你可以在系统设置进行配置。</translation>
     </message>
+    <message>
+        <source>Always append message preview to notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Highlight unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Highlight Conversations with unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide content in notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -1653,10 +1673,6 @@
     <message>
         <source>This app</source>
         <translation>此应用</translation>
-    </message>
-    <message>
-        <source>IP address: %1, origin: %2</source>
-        <translation>IP 地址: %1, 地点: %2</translation>
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>

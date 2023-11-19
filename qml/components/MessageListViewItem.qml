@@ -64,6 +64,7 @@ ListItem {
     readonly property bool showForwardMessageMenuItem: (baseContextMenuItemCount + 2) <= maxContextMenuItemCount
     // And don't count "More Options..." for "Delete Message" if "Delete Message" is the only extra option
     readonly property bool haveSpaceForDeleteMessageMenuItem: (baseContextMenuItemCount + 3 - (deleteMessageIsOnlyExtraOption ? 1 : 0)) <= maxContextMenuItemCount
+    property var chatReactions
     property var messageReactions
 
     highlighted: (down || isSelected || additionalOptionsOpened) && !menuOpen
@@ -94,15 +95,21 @@ ListItem {
         }
     }
 
-    function getInteractionText(viewCount, reactions) {
+    function getInteractionText(viewCount, reactions, size, highlightColor) {
         var interactionText = "";
         if (viewCount > 0) {
-            interactionText = Emoji.emojify("👁️", Theme.fontSizeTiny) + Functions.getShortenedCount(viewCount);
+            interactionText = Emoji.emojify("👁️ ", size) + Functions.getShortenedCount(viewCount);
         }
         for (var i = 0; i < reactions.length; i++) {
-            interactionText += ( "&nbsp;" + Emoji.emojify(reactions[i].reaction, Theme.fontSizeTiny) );
-            if (!chatPage.isPrivateChat) {
-                interactionText += ( " " + Functions.getShortenedCount(reactions[i].total_count) );
+            var reaction = reactions[i]
+            var reactionText = reaction.reaction ? reaction.reaction : (reaction.type && reaction.type.emoji) ? reaction.type.emoji : ""
+            if (reactionText) {
+                interactionText += ( "&nbsp;" + Emoji.emojify(reactionText, size) );
+                if (!chatPage.isPrivateChat) {
+                    var count = Functions.getShortenedCount(reaction.total_count)
+                    interactionText += " "
+                    interactionText += (reaction.is_chosen ? ( "<font color='" + highlightColor + "'><b>" + count + "</b></font>" ) : count)
+                }
             }
         }
         return interactionText;
@@ -125,6 +132,8 @@ ListItem {
 
             if (messageListItem.messageReactions) {
                 messageListItem.messageReactions = null;
+            } else if (messageListItem.chatReactions) {
+                messageListItem.messageReactions = chatReactions
             } else {
                 tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
             }
@@ -467,11 +476,12 @@ ListItem {
                             width: parent.width
 
                             Component.onCompleted: {
-                                if (myMessage.forward_info.origin["@type"] === "messageForwardOriginChannel") {
+                                var originType = myMessage.forward_info.origin["@type"]
+                                if (originType === "messageOriginChannel" || originType === "messageForwardOriginChannel") {
                                     var otherChatInformation = tdLibWrapper.getChat(myMessage.forward_info.origin.chat_id);
                                     forwardedThumbnail.photoData = (typeof otherChatInformation.photo !== "undefined") ? otherChatInformation.photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(otherChatInformation.title, Theme.fontSizeExtraSmall);
-                                } else if (myMessage.forward_info.origin["@type"] === "messageForwardOriginUser") {
+                                } else if (originType === "messageOriginUser" || originType === "messageForwardOriginUser") {
                                     var otherUserInformation = tdLibWrapper.getUserInformation(myMessage.forward_info.origin.sender_user_id);
                                     forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(Functions.getUserName(otherUserInformation), Theme.fontSizeExtraSmall);
@@ -625,7 +635,7 @@ ListItem {
                     height: ( ( chatPage.isChannel && messageViewCount > 0 ) || reactions.length > 0 ) ? ( Theme.fontSizeExtraSmall + Theme.paddingSmall ) : 0
                     sourceComponent: Component {
                         Label {
-                            text: getInteractionText(messageViewCount, reactions)
+                            text: getInteractionText(messageViewCount, reactions, font.pixelSize, Theme.highlightColor)
                             width: parent.width
                             font.pixelSize: Theme.fontSizeTiny
                             color: messageListItem.isOwnMessage ? Theme.secondaryHighlightColor : Theme.secondaryColor

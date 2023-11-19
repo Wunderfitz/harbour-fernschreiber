@@ -63,9 +63,10 @@ Page {
                                     )
     property var selectedMessages: []
     readonly property bool isSelecting: selectedMessages.length > 0
-    readonly property bool canSendMessages: hasSendPrivilege("can_send_messages")
+    readonly property bool canSendMessages: hasSendPrivilege("can_send_basic_messages")
     property bool doSendBotStartMessage
     property string sendBotStartMessageParameter
+    property var availableReactions
 
     states: [
         State {
@@ -184,7 +185,7 @@ Page {
         }
         tdLibWrapper.getChatPinnedMessage(chatInformation.id);
         tdLibWrapper.toggleChatIsMarkedAsUnread(chatInformation.id, false);
-
+        availableReactions = tdLibWrapper.getChatReactions(chatInformation.id);
     }
 
     function getMessageStatusText(message, listItemIndex, lastReadSentIndex, useElapsed) {
@@ -439,7 +440,8 @@ Page {
 
     Component.onDestruction: {
         if (chatPage.canSendMessages && !chatPage.isDeletedUser) {
-            tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text);
+            tdLibWrapper.setChatDraftMessage(chatInformation.id, 0, newMessageColumn.replyToMessageId, newMessageTextField.text,
+                newMessageInReplyToRow.inReplyToMessage ? newMessageInReplyToRow.inReplyToMessage.id : 0);
         }
         fernschreiberUtils.stopGeoLocationUpdates();
         tdLibWrapper.closeChat(chatInformation.id);
@@ -562,12 +564,12 @@ Page {
             }
         }
         onUserFullInfoReceived: {
-            if(userFullInfo["@extra"] === chatPartnerInformation.id.toString()) {
+            if ((isPrivateChat || isSecretChat) && userFullInfo["@extra"] === chatPartnerInformation.id.toString()) {
                 chatPage.botInformation = userFullInfo;
             }
         }
         onUserFullInfoUpdated: {
-            if(userId === chatPartnerInformation.id) {
+            if ((isPrivateChat || isSecretChat) && userId === chatPartnerInformation.id) {
                 chatPage.botInformation = userFullInfo;
             }
         }
@@ -1348,6 +1350,7 @@ Page {
                                     messageId: model.message_id
                                     messageViewCount: model.view_count
                                     reactions: model.reactions
+                                    chatReactions: availableReactions
                                     messageIndex: model.index
                                     hasContentComponent: !!myMessage.content && chatView.delegateMessagesContent.indexOf(model.content_type) > -1
                                     canReplyToMessage: chatPage.canSendMessages
@@ -1596,7 +1599,7 @@ Page {
 
                             IconButton {
                                 id: attachImageIconButton
-                                visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                                visible: chatPage.hasSendPrivilege("can_send_photos")
                                 icon.source: "image://theme/icon-m-image"
                                 onClicked: {
                                     var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage", {
@@ -1612,7 +1615,7 @@ Page {
                                 }
                             }
                             IconButton {
-                                visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                                visible: chatPage.hasSendPrivilege("can_send_videos")
                                 icon.source: "image://theme/icon-m-video"
                                 onClicked: {
                                     var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage", {
@@ -1628,7 +1631,7 @@ Page {
                                 }
                             }
                             IconButton {
-                                visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                                visible: chatPage.hasSendPrivilege("can_send_voice_notes")
                                 icon.source: "image://theme/icon-m-mic"
                                 icon.sourceSize {
                                     width: Theme.iconSizeMedium
@@ -1641,7 +1644,7 @@ Page {
                                 }
                             }
                             IconButton {
-                                visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                                visible: chatPage.hasSendPrivilege("can_send_documents")
                                 icon.source: "image://theme/icon-m-document"
                                 onClicked: {
                                     var picker = pageStack.push("Sailfish.Pickers.FilePickerPage", {

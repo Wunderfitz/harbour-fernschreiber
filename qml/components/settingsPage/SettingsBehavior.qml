@@ -72,12 +72,34 @@ AccordionItem {
 
             TextSwitch {
                 width: parent.columnWidth
+                checked: appSettings.highlightUnreadConversations
+                text: qsTr("Highlight unread messages")
+                description: qsTr("Highlight Conversations with unread messages")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.highlightUnreadConversations = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
                 checked: appSettings.useOpenWith
                 text: qsTr("Open-with menu integration")
                 description: qsTr("Integrate Fernschreiber into open-with menu of Sailfish OS")
                 automaticCheck: false
                 onClicked: {
                     appSettings.useOpenWith = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.notificationAlwaysShowPreview
+                text: qsTr("Always append message preview to notifications")
+                description: qsTr("In addition to showing the number of unread messages, the latest message will also be appended to notifications.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.notificationAlwaysShowPreview = !checked
                 }
             }
 
@@ -135,35 +157,53 @@ AccordionItem {
                 }
             }
 
-            TextSwitch {
-                width: parent.columnWidth
-                checked: appSettings.notificationTurnsDisplayOn && enabled
-                text: qsTr("Notification turns on the display")
-                enabled: appSettings.notificationFeedback !== AppSettings.NotificationFeedbackNone
-                height: enabled ? implicitHeight: 0
-                clip: height < implicitHeight
-                visible: height > 0
-                automaticCheck: false
-                onClicked: {
-                    appSettings.notificationTurnsDisplayOn = !checked
-                }
-                Behavior on height { SmoothedAnimation { duration: 200 } }
+            Item {
+                // Occupies one grid cell so that the column ends up under the combo box
+                // in the landscape layout
+                visible: parent.columns === 2
+                width: 1
+                height: 1
             }
 
-            TextSwitch {
-                width: parent.columnWidth
-                checked: appSettings.notificationSoundsEnabled && enabled
-                text: qsTr("Enable notification sounds")
-                description: qsTr("When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.")
+            Column {
                 enabled: appSettings.notificationFeedback !== AppSettings.NotificationFeedbackNone
+                width: parent.columnWidth
                 height: enabled ? implicitHeight: 0
                 clip: height < implicitHeight
                 visible: height > 0
-                automaticCheck: false
-                onClicked: {
-                    appSettings.notificationSoundsEnabled = !checked
-                }
+
                 Behavior on height { SmoothedAnimation { duration: 200 } }
+
+                TextSwitch {
+                    checked: appSettings.notificationSuppressContent && enabled
+                    text: qsTr("Hide content in notifications")
+                    enabled: parent.enabled
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.notificationSuppressContent = !checked
+                    }
+                }
+
+                TextSwitch {
+                    checked: appSettings.notificationTurnsDisplayOn && enabled
+                    text: qsTr("Notification turns on the display")
+                    enabled: parent.enabled
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.notificationTurnsDisplayOn = !checked
+                    }
+                }
+
+                TextSwitch {
+                    checked: appSettings.notificationSoundsEnabled && enabled
+                    text: qsTr("Enable notification sounds")
+                    description: qsTr("When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.")
+                    enabled: parent.enabled
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.notificationSoundsEnabled = !checked
+                    }
+                }
             }
         }
     }

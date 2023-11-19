@@ -29,7 +29,9 @@ namespace {
     const QString KEY_ANIMATE_STICKERS("animateStickers");
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_SOUNDS_ENABLED("notificationSoundsEnabled");
+    const QString KEY_NOTIFICATION_SUPPRESS_ENABLED("notificationSuppressContent");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
+    const QString KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW("notificationAlwaysShowPreview");
     const QString KEY_STORAGE_OPTIMIZER("useStorageOptimizer");
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
@@ -37,6 +39,7 @@ namespace {
     const QString KEY_DELAY_MESSAGE_READ("delayMessageRead");
     const QString KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN("focusTextAreaOnChatOpen");
     const QString KEY_SPONSORED_MESS("sponsoredMess");
+    const QString KEY_HIGHLIGHT_UNREADCONVS("highlightUnreadConversations");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/fernschreiber/settings.conf", QSettings::NativeFormat)
@@ -155,6 +158,20 @@ void AppSettings::setNotificationSoundsEnabled(bool enable)
     }
 }
 
+bool AppSettings::notificationSuppressContent() const
+{
+    return settings.value(KEY_NOTIFICATION_SUPPRESS_ENABLED, false).toBool();
+}
+
+void AppSettings::setNotificationSuppressContent(bool enable)
+{
+    if (notificationSuppressContent() != enable) {
+        LOG(KEY_NOTIFICATION_SUPPRESS_ENABLED << enable);
+        settings.setValue(KEY_NOTIFICATION_SUPPRESS_ENABLED, enable);
+        emit notificationSuppressContentChanged();
+    }
+}
+
 AppSettings::NotificationFeedback AppSettings::notificationFeedback() const
 {
     return (NotificationFeedback) settings.value(KEY_NOTIFICATION_FEEDBACK, (int) NotificationFeedbackAll).toInt();
@@ -166,6 +183,20 @@ void AppSettings::setNotificationFeedback(NotificationFeedback feedback)
         LOG(KEY_NOTIFICATION_FEEDBACK << feedback);
         settings.setValue(KEY_NOTIFICATION_FEEDBACK, (int) feedback);
         emit notificationFeedbackChanged();
+    }
+}
+
+bool AppSettings::notificationAlwaysShowPreview() const
+{
+    return settings.value(KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW, false).toBool();
+}
+
+void AppSettings::setNotificationAlwaysShowPreview(bool enable)
+{
+    if (notificationAlwaysShowPreview() != enable) {
+        LOG(KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW << enable);
+        settings.setValue(KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW, enable);
+        emit notificationAlwaysShowPreviewChanged();
     }
 }
 
@@ -237,6 +268,20 @@ void AppSettings::setDelayMessageRead(bool enable)
         LOG(KEY_DELAY_MESSAGE_READ << enable);
         settings.setValue(KEY_DELAY_MESSAGE_READ, enable);
         emit delayMessageReadChanged();
+    }
+}
+
+bool AppSettings::highlightUnreadConversations() const
+{
+    return settings.value(KEY_HIGHLIGHT_UNREADCONVS, true).toBool();
+}
+
+void AppSettings::setHighlightUnreadConversations(bool enable)
+{
+    if (highlightUnreadConversations() != enable) {
+        LOG(KEY_HIGHLIGHT_UNREADCONVS << enable);
+        settings.setValue(KEY_HIGHLIGHT_UNREADCONVS, enable);
+        emit highlightUnreadConversationsChanged();
     }
 }
 
