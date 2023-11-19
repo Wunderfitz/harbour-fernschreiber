@@ -712,8 +712,9 @@ void TDLibReceiver::processUpdateMessageInteractionInfo(const QVariantMap &recei
 
 void TDLibReceiver::processSessions(const QVariantMap &receivedInformation)
 {
+    int inactive_session_ttl_days = receivedInformation.value("inactive_session_ttl_days").toInt();
     QVariantList sessions = receivedInformation.value("sessions").toList();
-    emit sessionsReceived(sessions);
+    emit sessionsReceived(inactive_session_ttl_days, sessions);
 }
 
 void TDLibReceiver::processAvailableReactions(const QVariantMap &receivedInformation)

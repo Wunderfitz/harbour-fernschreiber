@@ -30,141 +30,182 @@ AccordionItem {
         Column {
             id: activeSessionsItem
             bottomPadding: Theme.paddingMedium
-            property variant activeSessions;
-            property bool loaded : false;
+            property variant activeSessions
+            property int inactiveSessionsTtlDays
 
             Component.onCompleted: {
                 if (!activeSessions) {
                     tdLibWrapper.getActiveSessions();
-                } else {
-                    activeSessionsItem.loaded = true;
                 }
             }
 
             Connections {
                 target: tdLibWrapper
                 onSessionsReceived: {
-                    activeSessionsItem.activeSessions = sessions;
-                    activeSessionsItem.loaded = true;
+                    activeSessionsItem.activeSessions = sessions
+                    activeSessionsItem.inactiveSessionsTtlDays = inactive_session_ttl_days
                 }
                 onOkReceived: {
                     if (request === "terminateSession") {
                         appNotification.show(qsTr("Session was terminated"));
-                        activeSessionsItem.loaded = false;
                         tdLibWrapper.getActiveSessions();
                     }
                 }
             }
 
             Loader {
-                id: sessionInformationLoader
                 active: tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady
                 width: parent.width
                 sourceComponent: Component {
-                    SilicaListView {
-                        id: activeSessionsListView
-                        width: parent.width
-                        height: contentHeight
-                        model: activeSessionsItem.activeSessions
-                        headerPositioning: ListView.OverlayHeader
-                        header: Separator {
-                            width: parent.width
-                            color: Theme.primaryColor
-                            horizontalAlignment: Qt.AlignHCenter
+                    Column {
+                        BusyIndicator {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            running: !activeSessionsListView.count && !activeSessionsItem.inactiveSessionsTtlDays
+                            size: BusyIndicatorSize.Medium
+                            visible: opacity > 0
+                            height: running ? implicitHeight : 0
                         }
-                        delegate: ListItem {
-                            id: activeSessionListItem
+
+                        SilicaListView {
+                            id: activeSessionsListView
                             width: parent.width
-                            contentHeight: activeSessionColumn.height + ( 2 * Theme.paddingMedium )
-
-                            menu: ContextMenu {
-                                hasContent: !modelData.is_current
-                                onHeightChanged: {
-                                    if (parent && flickable) {
-                                        // Make sure we are inside the screen area
-                                        var bottom = parent.mapToItem(flickable, x, y).y + height
-                                        if (bottom > flickable.height) {
-                                            flickable.contentY += bottom - flickable.height
-                                        }
-                                    }
-                                }
-                                MenuItem {
-                                    onClicked: {
-                                        var sessionId = modelData.id;
-                                        Remorse.itemAction(activeSessionListItem, qsTr("Terminating session"), function() { tdLibWrapper.terminateSession(sessionId); });
-                                    }
-                                    text: qsTr("Terminate Session")
-                                }
-                            }
-
-                            Column {
-                                id: activeSessionColumn
-                                width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                                spacing: Theme.paddingSmall
-                                anchors.verticalCenter: parent.verticalCenter
-                                anchors.horizontalCenter: parent.horizontalCenter
-
-                                Label {
-                                    width: parent.width
-                                    text: qsTr("This app")
-                                    font.pixelSize: Theme.fontSizeMedium
-                                    font.bold: true
-                                    visible: modelData.is_current
-                                    color: Theme.highlightColor
-                                    anchors {
-                                        horizontalCenter: parent.horizontalCenter
-                                    }
-                                }
-
-                                Label {
-                                    width: parent.width
-                                    text: modelData.application_name + " " + modelData.application_version
-                                    font.pixelSize: Theme.fontSizeMedium
-                                    font.bold: true
-                                    color: Theme.primaryColor
-                                    maximumLineCount: 1
-                                    elide: Text.ElideRight
-                                    anchors {
-                                        horizontalCenter: parent.horizontalCenter
-                                    }
-                                }
-
-                                Label {
-                                    width: parent.width
-                                    text: modelData.device_model + ", " + (modelData.platform + " " + modelData.system_version).trim()
-                                    font.pixelSize: Theme.fontSizeSmall
-                                    color: Theme.primaryColor
-                                    maximumLineCount: 1
-                                    truncationMode: TruncationMode.Fade
-                                    anchors {
-                                        horizontalCenter: parent.horizontalCenter
-                                    }
-                                }
-
-                                Label {
-                                    width: parent.width
-                                    text: qsTr("Active since: %1, last online: %2").arg(Functions.getDateTimeTimepoint(modelData.log_in_date)).arg(Functions.getDateTimeElapsed(modelData.last_active_date))
-                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                    color: Theme.primaryColor
-                                    maximumLineCount: 1
-                                    truncationMode: TruncationMode.Fade
-                                    anchors {
-                                        horizontalCenter: parent.horizontalCenter
-                                    }
-                                }
-                            }
-
-                            Separator {
-                                id: separator
-                                anchors {
-                                    bottom: parent.bottom
-                                }
-
+                            height: contentHeight
+                            model: activeSessionsItem.activeSessions
+                            headerPositioning: ListView.OverlayHeader
+                            header: Separator {
                                 width: parent.width
                                 color: Theme.primaryColor
                                 horizontalAlignment: Qt.AlignHCenter
+                                visible: activeSessionsListView.count > 0
+                            }
+                            delegate: ListItem {
+                                id: activeSessionListItem
+                                width: parent.width
+                                contentHeight: activeSessionColumn.height + ( 2 * Theme.paddingMedium )
+
+                                menu: ContextMenu {
+                                    hasContent: !modelData.is_current
+                                    onHeightChanged: {
+                                        if (parent && flickable) {
+                                            // Make sure we are inside the screen area
+                                            var bottom = parent.mapToItem(flickable, x, y).y + height
+                                            if (bottom > flickable.height) {
+                                                flickable.contentY += bottom - flickable.height
+                                            }
+                                        }
+                                    }
+                                    MenuItem {
+                                        onClicked: {
+                                            var sessionId = modelData.id;
+                                            Remorse.itemAction(activeSessionListItem, qsTr("Terminating session"), function() { tdLibWrapper.terminateSession(sessionId); });
+                                        }
+                                        text: qsTr("Terminate Session")
+                                    }
+                                }
+
+                                Column {
+                                    id: activeSessionColumn
+                                    width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                                    spacing: Theme.paddingSmall
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    anchors.horizontalCenter: parent.horizontalCenter
+
+                                    Label {
+                                        width: parent.width
+                                        text: qsTr("This app")
+                                        font.pixelSize: Theme.fontSizeMedium
+                                        font.bold: true
+                                        visible: modelData.is_current
+                                        color: Theme.highlightColor
+                                    }
+
+                                    Label {
+                                        width: parent.width
+                                        text: modelData.application_name + " " + modelData.application_version
+                                        font.pixelSize: Theme.fontSizeMedium
+                                        font.bold: true
+                                        maximumLineCount: 1
+                                        elide: Text.ElideRight
+                                    }
+
+                                    Label {
+                                        width: parent.width
+                                        text: modelData.device_model + ", " + (modelData.platform + " " + modelData.system_version).trim()
+                                        font.pixelSize: Theme.fontSizeSmall
+                                        maximumLineCount: 1
+                                        truncationMode: TruncationMode.Fade
+                                    }
+
+                                    Label {
+                                        width: parent.width
+                                        text: qsTr("Active since: %1, last online: %2").arg(Functions.getDateTimeTimepoint(modelData.log_in_date)).arg(Functions.getDateTimeElapsed(modelData.last_active_date))
+                                        font.pixelSize: Theme.fontSizeExtraSmall
+                                        maximumLineCount: 1
+                                        truncationMode: TruncationMode.Fade
+                                    }
+                                }
+
+                                Separator {
+                                    anchors {
+                                        bottom: parent.bottom
+                                    }
+
+                                    width: parent.width
+                                    color: Theme.primaryColor
+                                    horizontalAlignment: Qt.AlignHCenter
+                                }
+                            }
+                        }
+
+                        ComboBox {
+                            readonly property int ttl: activeSessionsItem.inactiveSessionsTtlDays
+                            label: qsTr("Terminate old sessions if inactive for")
+                            value: (currentItem && currentItem.text) ? currentItem.text : qsTr("%1 day(s)", "", ttl).arg(ttl)
+                            visible: ttl > 0
+                            menu: ContextMenu {
+                                id: ttlMenu
+                                MenuItem {
+                                    readonly property int days: 7
+                                    text: qsTr("1 week")
+                                    onClicked: tdLibWrapper.setInactiveSessionTtl(days)
+                                }
+                                MenuItem {
+                                    readonly property int days: 30
+                                    text: qsTr("1 month")
+                                    onClicked: tdLibWrapper.setInactiveSessionTtl(days)
+                                }
+                                MenuItem {
+                                    readonly property int days: 90
+                                    text: qsTr("3 months")
+                                    onClicked: tdLibWrapper.setInactiveSessionTtl(days)
+                                }
+                                MenuItem {
+                                    readonly property int days: 180
+                                    text: qsTr("6 months")
+                                    onClicked: tdLibWrapper.setInactiveSessionTtl(days)
+                                }
+                                MenuItem {
+                                    readonly property int days: 365
+                                    text: qsTr("1 year")
+                                    onClicked: tdLibWrapper.setInactiveSessionTtl(days)
+                                }
                             }
 
+                            Component.onCompleted: updateSelection()
+
+                            onTtlChanged: updateSelection()
+
+                            function updateSelection() {
+                                var menuItems = ttlMenu.children
+                                var n = menuItems.length
+                                for (var i = 0; i < n; i++) {
+                                    if (menuItems[i].days === ttl) {
+                                        currentIndex = i
+                                        return
+                                    }
+                                }
+                                currentIndex = -1
+                            }
                         }
                     }
                 }
