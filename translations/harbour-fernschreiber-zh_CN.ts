@@ -1573,7 +1573,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Hide content in Notifications</source>
+        <source>Hide content in notifications</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

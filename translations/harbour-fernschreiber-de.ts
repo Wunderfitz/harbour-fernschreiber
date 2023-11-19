@@ -1599,7 +1599,7 @@
         <translation>Unterhaltungen mit ungelesenen Nachrichten hervorheben</translation>
     </message>
     <message>
-        <source>Hide content in Notifications</source>
+        <source>Hide content in notifications</source>
         <translation>Inhalte in Hinweisen verbergen</translation>
     </message>
 </context>
