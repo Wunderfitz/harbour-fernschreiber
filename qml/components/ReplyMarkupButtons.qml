@@ -60,12 +60,12 @@ Column {
                         },
                         inlineKeyboardButtonTypeSwitchInline: function() {
                             if(modelData.type.in_current_chat) {
-                                chatPage.setMessageText("@" + userInformation.username + " "+(modelData.type.query || ""))
+                                chatPage.setMessageText("@" + userInformation.usernames.editable_username + " "+(modelData.type.query || ""))
                             } else {
 
                                 pageStack.push(Qt.resolvedUrl("../pages/ChatSelectionPage.qml"), {
                                     myUserId: chatPage.myUserId,
-                                    payload: { neededPermissions: ["can_send_other_messages"], text:"@" + userInformation.username + " "+(modelData.type.query || "")},
+                                    payload: { neededPermissions: ["can_send_other_messages"], text:"@" + userInformation.usernames.editable_username + " "+(modelData.type.query || "")},
                                     state: "fillTextArea"
                                 })
                             }

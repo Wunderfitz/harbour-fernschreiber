@@ -48,6 +48,8 @@ namespace {
     const QString LAST_NAME("last_name");
     const QString FIRST_NAME("first_name");
     const QString USERNAME("username");
+    const QString USERNAMES("usernames");
+    const QString EDITABLE_USERNAME("editable_username");
     const QString THREAD_ID("thread_id");
     const QString VALUE("value");
     const QString CHAT_LIST_TYPE("chat_list_type");
@@ -1829,9 +1831,9 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
         this->userInformation = userInformation;
         emit ownUserUpdated(userInformation);
     }
-    LOG("User information updated:" << userInformation.value(USERNAME).toString() << userInformation.value(FIRST_NAME).toString() << userInformation.value(LAST_NAME).toString());
+    LOG("User information updated:" << userInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString() << userInformation.value(FIRST_NAME).toString() << userInformation.value(LAST_NAME).toString());
     this->allUsers.insert(updatedUserId, userInformation);
-    this->allUserNames.insert(userInformation.value(USERNAME).toString(), userInformation);
+    this->allUserNames.insert(userInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString(), userInformation);
     emit userUpdated(updatedUserId, userInformation);
 }
 
@@ -1845,7 +1847,7 @@ void TDLibWrapper::handleUserStatusUpdated(const QString &userId, const QVariant
     QVariantMap updatedUserInformation = this->allUsers.value(userId).toMap();
     updatedUserInformation.insert(STATUS, userStatusInformation);
     this->allUsers.insert(userId, updatedUserInformation);
-    this->allUserNames.insert(userInformation.value(USERNAME).toString(), userInformation);
+    this->allUserNames.insert(userInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString(), userInformation);
     emit userUpdated(userId, updatedUserInformation);
 }
 

@@ -300,8 +300,8 @@ SilicaFlickable {
         }
         leftMargin: imageContainer.getEased((imageContainer.minDimension + Theme.paddingMedium), 0, imageContainer.tweenFactor) + Theme.horizontalPageMargin
         title: chatInformationPage.chatInformation.title !== "" ? Emoji.emojify(chatInformationPage.chatInformation.title, Theme.fontSizeLarge) : qsTr("Unknown")
-        description: ((chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && chatInformationPage.privateChatUserInformation.username)
-            ? ("@"+chatInformationPage.privateChatUserInformation.username) : ""
+        description: ((chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && chatInformationPage.privateChatUserInformation.usernames.editable_username)
+            ? ("@"+chatInformationPage.privateChatUserInformation.usernames.editable_username) : ""
     }
 
     SilicaFlickable {
