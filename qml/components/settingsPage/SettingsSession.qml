@@ -159,7 +159,8 @@ AccordionItem {
 
                         ComboBox {
                             readonly property int ttl: activeSessionsItem.inactiveSessionsTtlDays
-                            label: qsTr("Terminate old sessions if inactive for")
+                            label: qsTr("Session Timeout")
+                            description: qsTr("Inactive sessions will be terminated after this timeframe")
                             value: (currentItem && currentItem.text) ? currentItem.text : qsTr("%1 day(s)", "", ttl).arg(ttl)
                             visible: ttl > 0
                             menu: ContextMenu {

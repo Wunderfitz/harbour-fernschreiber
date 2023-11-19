@@ -1713,6 +1713,41 @@ messages</numerusform>
         <source>Active since: %1, last online: %2</source>
         <translation>Active since: %1, last online: %2</translation>
     </message>
+    <message numerus="yes">
+        <source>%1 day(s)</source>
+        <translation>
+            <numerusform>%1 day</numerusform>
+            <numerusform>%1 days</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>1 week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>6 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session Timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inactive sessions will be terminated after this timeframe</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsStorage</name>

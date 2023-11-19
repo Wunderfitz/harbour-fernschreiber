@@ -1711,6 +1711,41 @@
         <source>Sessions</source>
         <translation>Sitzungen</translation>
     </message>
+    <message numerus="yes">
+        <source>%1 day(s)</source>
+        <translation>
+            <numerusform>%1 Tag</numerusform>
+            <numerusform>%1 Tage</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>1 week</source>
+        <translation>1 Woche</translation>
+    </message>
+    <message>
+        <source>1 month</source>
+        <translation>1 Monat</translation>
+    </message>
+    <message>
+        <source>3 months</source>
+        <translation>3 Monate</translation>
+    </message>
+    <message>
+        <source>6 months</source>
+        <translation>6 Monate</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 Jahr</translation>
+    </message>
+    <message>
+        <source>Session Timeout</source>
+        <translation>Timeout von Sitzungen</translation>
+    </message>
+    <message>
+        <source>Inactive sessions will be terminated after this timeframe</source>
+        <translation>Inaktive Sitzungen werden nach dieser Zeitdauer abgeschaltet</translation>
+    </message>
 </context>
 <context>
     <name>SettingsStorage</name>
