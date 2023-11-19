@@ -63,7 +63,7 @@ Page {
                                     )
     property var selectedMessages: []
     readonly property bool isSelecting: selectedMessages.length > 0
-    readonly property bool canSendMessages: hasSendPrivilege("can_send_messages")
+    readonly property bool canSendMessages: hasSendPrivilege("can_send_basic_messages")
     property bool doSendBotStartMessage
     property string sendBotStartMessageParameter
     property var availableReactions
@@ -1599,7 +1599,7 @@ Page {
 
                             IconButton {
                                 id: attachImageIconButton
-                                visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                                visible: chatPage.hasSendPrivilege("can_send_photos")
                                 icon.source: "image://theme/icon-m-image"
                                 onClicked: {
                                     var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage", {
@@ -1615,7 +1615,7 @@ Page {
                                 }
                             }
                             IconButton {
-                                visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                                visible: chatPage.hasSendPrivilege("can_send_videos")
                                 icon.source: "image://theme/icon-m-video"
                                 onClicked: {
                                     var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage", {
@@ -1631,7 +1631,7 @@ Page {
                                 }
                             }
                             IconButton {
-                                visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                                visible: chatPage.hasSendPrivilege("can_send_voice_notes")
                                 icon.source: "image://theme/icon-m-mic"
                                 icon.sourceSize {
                                     width: Theme.iconSizeMedium
@@ -1644,7 +1644,7 @@ Page {
                                 }
                             }
                             IconButton {
-                                visible: chatPage.hasSendPrivilege("can_send_media_messages")
+                                visible: chatPage.hasSendPrivilege("can_send_documents")
                                 icon.source: "image://theme/icon-m-document"
                                 onClicked: {
                                     var picker = pageStack.push("Sailfish.Pickers.FilePickerPage", {
