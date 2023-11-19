@@ -1731,6 +1731,38 @@
         <source>Active since: %1, last online: %2</source>
         <translation>Aktywny od: %1, ostatnio aktywny: %2</translation>
     </message>
+    <message>
+        <source>Terminate old sessions if inactive for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%1 day(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>1 week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>6 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsStorage</name>

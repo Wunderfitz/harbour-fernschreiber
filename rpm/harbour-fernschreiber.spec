@@ -12,7 +12,7 @@ Name:       harbour-fernschreiber
 
 Summary:    Fernschreiber is a Telegram client for Aurora OS
 Version:    0.17
-Release:    4
+Release:    5
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://werkwolf.eu/
