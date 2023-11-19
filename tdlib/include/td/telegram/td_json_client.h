@@ -1,5 +1,5 @@
 //
-// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2021
+// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2023
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -28,7 +28,7 @@
  * Requests can be sent using td_send and the received client identifier.
  * New updates and responses to requests can be received through td_receive from any thread after the first request
  * has been sent to the client instance. This function must not be called simultaneously from two different threads.
- * Also note that all updates and responses to requests must be applied in the order they were received for consistency.
+ * Also, note that all updates and responses to requests must be applied in the order they were received for consistency.
  * Some TDLib requests can be executed synchronously from any thread using td_execute.
  * TDLib client instances are destroyed automatically after they are closed.
  * All TDLib client instances must be closed before application termination to ensure data consistency.
@@ -88,10 +88,10 @@ TDJSON_EXPORT const char *td_execute(const char *request);
 /**
  * A type of callback function that will be called when a message is added to the internal TDLib log.
  *
- * \param verbosity_level Log verbosity level with which the message was added (-1 - 1024).
+ * \param verbosity_level Log verbosity level with which the message was added from -1 up to 1024.
  *                        If 0, then TDLib will crash as soon as the callback returns.
  *                        None of the TDLib methods can be called from the callback.
- * \param message Null-terminated string with the logged message.
+ * \param message Null-terminated UTF-8-encoded string with the message added to the log.
  */
 typedef void (*td_log_message_callback_ptr)(int verbosity_level, const char *message);
 
@@ -118,7 +118,7 @@ TDJSON_EXPORT void td_set_log_message_callback(int max_verbosity_level, td_log_m
  * A TDLib client instance can be created through td_json_client_create.
  * Requests then can be sent using td_json_client_send from any thread.
  * New updates and request responses can be received through td_json_client_receive from any thread. This function
- * must not be called simultaneously from two different threads. Also note that all updates and request responses
+ * must not be called simultaneously from two different threads. Also, note that all updates and request responses
  * must be applied in the order they were received to ensure consistency.
  * Given this information, it's advisable to call this function from a dedicated thread.
  * Some service TDLib requests can be executed synchronously from any thread by using td_json_client_execute.
