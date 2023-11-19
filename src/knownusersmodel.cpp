@@ -56,10 +56,10 @@ QVariant KnownUsersModel::data(const QModelIndex &index, int role) const
             case KnownUserRole::RoleDisplay: return requestedUser;
             case KnownUserRole::RoleUserId: return requestedUser.value("id");
             case KnownUserRole::RoleTitle: return QString(requestedUser.value("first_name").toString() + " " + requestedUser.value("last_name").toString()).trimmed();
-            case KnownUserRole::RoleUsername: return requestedUser.value("username");
-            case KnownUserRole::RoleUserHandle: return QString("@" + (requestedUser.value("username").toString().isEmpty() ? requestedUser.value("id").toString() : requestedUser.value("username").toString()));
+            case KnownUserRole::RoleUsername: return requestedUser.value("usernames").toMap().value("editable_username").toString();
+            case KnownUserRole::RoleUserHandle: return QString("@" + (requestedUser.value("usernames").toMap().value("editable_username").toString().isEmpty() ? requestedUser.value("id").toString() : requestedUser.value("usernames").toMap().value("editable_username").toString()));
             case KnownUserRole::RolePhotoSmall: return requestedUser.value("profile_photo").toMap().value("small");
-            case KnownUserRole::RoleFilter: return  QString(requestedUser.value("first_name").toString() + " " + requestedUser.value("last_name").toString() + " " + requestedUser.value("username").toString()).trimmed();
+            case KnownUserRole::RoleFilter: return  QString(requestedUser.value("first_name").toString() + " " + requestedUser.value("last_name").toString() + " " + requestedUser.value("usernames").toMap().value("editable_username").toString()).trimmed();
         }
     }
     return QVariant();

@@ -48,6 +48,8 @@ namespace {
     const QString LAST_NAME("last_name");
     const QString FIRST_NAME("first_name");
     const QString USERNAME("username");
+    const QString USERNAMES("usernames");
+    const QString EDITABLE_USERNAME("editable_username");
     const QString THREAD_ID("thread_id");
     const QString VALUE("value");
     const QString CHAT_LIST_TYPE("chat_list_type");
@@ -185,7 +187,7 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(userPrivacySettingRulesUpdated(QVariantMap)), this, SLOT(handleUpdatedUserPrivacySettingRules(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(okReceived(QString)), this, SIGNAL(okReceived(QString)));
-    connect(this->tdLibReceiver, SIGNAL(sessionsReceived(QVariantList)), this, SIGNAL(sessionsReceived(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(sessionsReceived(int, QVariantList)), this, SIGNAL(sessionsReceived(int, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(availableReactionsReceived(qlonglong, QStringList)), this, SIGNAL(availableReactionsReceived(qlonglong, QStringList)));
     connect(this->tdLibReceiver, SIGNAL(chatUnreadMentionCountUpdated(qlonglong, int)), this, SIGNAL(chatUnreadMentionCountUpdated(qlonglong, int)));
     connect(this->tdLibReceiver, SIGNAL(chatUnreadReactionCountUpdated(qlonglong, int)), this, SIGNAL(chatUnreadReactionCountUpdated(qlonglong, int)));
@@ -411,19 +413,10 @@ QVariantMap TDLibWrapper::newSendMessageRequest(qlonglong chatId, qlonglong repl
     request.insert(_TYPE, "sendMessage");
     request.insert(CHAT_ID, chatId);
     if (replyToMessageId) {
-        if (versionNumber > VERSION_NUMBER(1,8,14)) {
-            QVariantMap replyTo;
-            if (versionNumber > VERSION_NUMBER(1,8,20)) {
-                replyTo.insert(_TYPE, TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE);
-            } else {
-                replyTo.insert(_TYPE, TYPE_MESSAGE_REPLY_TO_MESSAGE);
-            }
-            replyTo.insert(CHAT_ID, chatId);
-            replyTo.insert(MESSAGE_ID, replyToMessageId);
-            request.insert(REPLY_TO, replyTo);
-        } else {
-            request.insert(REPLY_TO_MESSAGE_ID, replyToMessageId);
-        }
+        QVariantMap replyTo;
+        replyTo.insert(_TYPE, TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE);
+        replyTo.insert(MESSAGE_ID, replyToMessageId);
+        request.insert(REPLY_TO, replyTo);
     }
     return request;
 }
@@ -1527,6 +1520,14 @@ void TDLibWrapper::setNetworkType(NetworkType networkType)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::setInactiveSessionTtl(int days)
+{
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setInactiveSessionTtl");
+    requestObject.insert("inactive_session_ttl_days", days);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchEmoji(const QString &queryString)
 {
     LOG("Searching emoji" << queryString);
@@ -1838,9 +1839,9 @@ void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
         this->userInformation = userInformation;
         emit ownUserUpdated(userInformation);
     }
-    LOG("User information updated:" << userInformation.value(USERNAME).toString() << userInformation.value(FIRST_NAME).toString() << userInformation.value(LAST_NAME).toString());
+    LOG("User information updated:" << userInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString() << userInformation.value(FIRST_NAME).toString() << userInformation.value(LAST_NAME).toString());
     this->allUsers.insert(updatedUserId, userInformation);
-    this->allUserNames.insert(userInformation.value(USERNAME).toString(), userInformation);
+    this->allUserNames.insert(userInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString(), userInformation);
     emit userUpdated(updatedUserId, userInformation);
 }
 
@@ -1854,7 +1855,7 @@ void TDLibWrapper::handleUserStatusUpdated(const QString &userId, const QVariant
     QVariantMap updatedUserInformation = this->allUsers.value(userId).toMap();
     updatedUserInformation.insert(STATUS, userStatusInformation);
     this->allUsers.insert(userId, updatedUserInformation);
-    this->allUserNames.insert(userInformation.value(USERNAME).toString(), userInformation);
+    this->allUserNames.insert(userInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString(), userInformation);
     emit userUpdated(userId, updatedUserInformation);
 }
 

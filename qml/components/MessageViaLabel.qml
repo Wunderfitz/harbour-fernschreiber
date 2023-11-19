@@ -31,12 +31,12 @@ Loader {
         property var botUserInformation: tdLibWrapper.getUserInformation(message.via_bot_user_id)
         color: Theme.secondaryColor
         font.pixelSize: Theme.fontSizeExtraSmall
-        text: qsTr("via %1", "message posted via bot user").arg("<a style=\"text-decoration: none; font-weight: bold; color:"+Theme.primaryColor+"\" href=\"userId://" + message.via_bot_user_id + "\">@" + Emoji.emojify(botUserInformation.username, font.pixelSize)+"</a>")
+        text: qsTr("via %1", "message posted via bot user").arg("<a style=\"text-decoration: none; font-weight: bold; color:"+Theme.primaryColor+"\" href=\"userId://" + message.via_bot_user_id + "\">@" + Emoji.emojify(botUserInformation.usernames.editable_username, font.pixelSize)+"</a>")
         textFormat: Text.RichText
         truncationMode: TruncationMode.Fade
         onLinkActivated: {
             if(link === "userId://" + message.via_bot_user_id && botUserInformation.type.is_inline) {
-                newMessageTextField.text = "@"+botUserInformation.username+" "
+                newMessageTextField.text = "@"+botUserInformation.usernames.editable_username+" "
                 newMessageTextField.cursorPosition = newMessageTextField.text.length
                 lostFocusTimer.start();
             }

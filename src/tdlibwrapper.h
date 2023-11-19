@@ -251,6 +251,7 @@ public:
     Q_INVOKABLE void getPageSource(const QString &address);
     Q_INVOKABLE void setMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction);
     Q_INVOKABLE void setNetworkType(NetworkType networkType);
+    Q_INVOKABLE void setInactiveSessionTtl(int days);
 
     // Others (candidates for extraction ;))
     Q_INVOKABLE void searchEmoji(const QString &queryString);
@@ -331,7 +332,7 @@ signals:
     void userPrivacySettingUpdated(UserPrivacySetting setting, UserPrivacySettingRule rule);
     void messageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo);
     void okReceived(const QString &request);
-    void sessionsReceived(const QVariantList &sessions);
+    void sessionsReceived(int inactive_session_ttl_days, const QVariantList &sessions);
     void openFileExternally(const QString &filePath);
     void availableReactionsReceived(qlonglong messageId, const QStringList &reactions);
     void chatUnreadMentionCountUpdated(qlonglong chatId, int unreadMentionCount);
