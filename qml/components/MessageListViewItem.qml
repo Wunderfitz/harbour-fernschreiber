@@ -687,7 +687,7 @@ ListItem {
                             Image {
                                 id: emojiPicture
                                 source: Emoji.getEmojiPath(modelData)
-                                width: Theme.fontSizeLarge
+                                width: status === Image.Ready ? Theme.fontSizeLarge : 0
                                 height: Theme.fontSizeLarge
                             }
 
