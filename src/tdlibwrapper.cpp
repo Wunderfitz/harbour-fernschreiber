@@ -411,19 +411,10 @@ QVariantMap TDLibWrapper::newSendMessageRequest(qlonglong chatId, qlonglong repl
     request.insert(_TYPE, "sendMessage");
     request.insert(CHAT_ID, chatId);
     if (replyToMessageId) {
-        if (versionNumber > VERSION_NUMBER(1,8,14)) {
-            QVariantMap replyTo;
-            if (versionNumber > VERSION_NUMBER(1,8,20)) {
-                replyTo.insert(_TYPE, TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE);
-            } else {
-                replyTo.insert(_TYPE, TYPE_MESSAGE_REPLY_TO_MESSAGE);
-            }
-            replyTo.insert(CHAT_ID, chatId);
-            replyTo.insert(MESSAGE_ID, replyToMessageId);
-            request.insert(REPLY_TO, replyTo);
-        } else {
-            request.insert(REPLY_TO_MESSAGE_ID, replyToMessageId);
-        }
+        QVariantMap replyTo;
+        replyTo.insert(_TYPE, TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE);
+        replyTo.insert(MESSAGE_ID, replyToMessageId);
+        request.insert(REPLY_TO, replyTo);
     }
     return request;
 }
