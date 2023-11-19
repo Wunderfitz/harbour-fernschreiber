@@ -185,7 +185,7 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(userPrivacySettingRulesUpdated(QVariantMap)), this, SLOT(handleUpdatedUserPrivacySettingRules(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(okReceived(QString)), this, SIGNAL(okReceived(QString)));
-    connect(this->tdLibReceiver, SIGNAL(sessionsReceived(QVariantList)), this, SIGNAL(sessionsReceived(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(sessionsReceived(int, QVariantList)), this, SIGNAL(sessionsReceived(int, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(availableReactionsReceived(qlonglong, QStringList)), this, SIGNAL(availableReactionsReceived(qlonglong, QStringList)));
     connect(this->tdLibReceiver, SIGNAL(chatUnreadMentionCountUpdated(qlonglong, int)), this, SIGNAL(chatUnreadMentionCountUpdated(qlonglong, int)));
     connect(this->tdLibReceiver, SIGNAL(chatUnreadReactionCountUpdated(qlonglong, int)), this, SIGNAL(chatUnreadReactionCountUpdated(qlonglong, int)));
@@ -1515,6 +1515,14 @@ void TDLibWrapper::setNetworkType(NetworkType networkType)
 
     requestObject.insert(TYPE, networkTypeObject);
 
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setInactiveSessionTtl(int days)
+{
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setInactiveSessionTtl");
+    requestObject.insert("inactive_session_ttl_days", days);
     this->sendRequest(requestObject);
 }
 
