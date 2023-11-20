@@ -133,8 +133,10 @@ ListItem {
             if (messageListItem.messageReactions) {
                 messageListItem.messageReactions = null;
             } else if (messageListItem.chatReactions) {
+                Debug.log("Using chat reactions")
                 messageListItem.messageReactions = chatReactions
             } else {
+                Debug.log("Obtaining message reactions")
                 tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
             }
         }
