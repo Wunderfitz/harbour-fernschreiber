@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>Un cliente de Telegram para Sailfish SO</translation>
+        <translation>Un cliente de Telegrama para Sailfish SO</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Licenciado bajo GNU GPLv3</translation>
+        <translation>Licencia GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Este proyecto usa la librería TDLib de Telegrama. ¡Gracias por estar disponible bajo las condiciones de la licencia software-boost 1.0!</translation>
+        <translation>Este proyecto usa librería TDLib de Telegrama. ¡Gracias por estar disponible bajo la licencia software-boost 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
-        <translation>Este programa usa la API de Telegrama, pero no está respaldado ni certificado por Telegrama.</translation>
+        <translation>Este programa usa API de Telegrama, pero no está respaldado ni certificado por Telegrama.</translation>
     </message>
     <message>
         <source>TDLib version %1</source>
@@ -57,7 +57,7 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Este proyecto usa la librería Twemoji de Tweeter. Derechos de autor 2018 Twitter Inc, y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT y CC-BY 4.0</translation>
+        <translation>Este proyecto usa librería Twemoji de Tweeter. Derechos de autor 2018 Twitter Inc, y otros colaboradores. ¡Gracias por estar disponible bajo la licencia MIT y CC-BY 4.0</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>This project uses rlottie. Copyright 2020 Samsung Electronics Co., Ltd. and other contributors. Thanks for making it available under the conditions of the MIT License!</source>
-        <translation>Este proyecto usa la librería Rlottie de Samsung Electronics Co, y otros colaboradores. ¡Gracias por estar disponible bajo las condiciones de la licencia MIT</translation>
+        <translation>Este proyecto usa librería Rlottie de Samsung Electronics Co, y otros colaboradores. ¡Gracias por estar disponible bajo la licencia MIT</translation>
     </message>
     <message>
         <source>Open rlottie on GitHub</source>
@@ -77,7 +77,7 @@
     </message>
     <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
-        <translation>Este proyecto usa la librería OpenStreetMap Nominatim para la codificación geográfica inversa de archivos adjuntos de ubicación. ¡Gracias por estar disponible como servicio web!</translation>
+        <translation>Este proyecto usa librería OpenStreetMap Nominatim para la codificación geográfica inversa de archivos adjuntos de ubicación. ¡Gracias por estar disponible como servicio web!</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
@@ -157,7 +157,7 @@
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>El enlace de invitación se ha copiado en el portapapeles.</translation>
+        <translation>El enlace de invitación se ha copiado a portapapeles.</translation>
     </message>
     <message>
         <source>%1, %2</source>
@@ -250,7 +250,7 @@
     </message>
     <message>
         <source>Group Info</source>
-        <translation>Información </translation>
+        <translation>Información</translation>
     </message>
     <message>
         <source>Mark all messages as read</source>
@@ -258,7 +258,7 @@
     </message>
     <message>
         <source>No message in this chat.</source>
-        <translation>No hay mensaje aún.</translation>
+        <translation>No hay mensaje.</translation>
     </message>
     <message>
         <source>Mark chat as unread</source>
@@ -355,7 +355,7 @@
     </message>
     <message>
         <source>You joined the chat %1</source>
-        <translation>Te uniste al grupo</translation>
+        <translation>Unido al grupo</translation>
     </message>
     <message>
         <source>Select Messages</source>
@@ -405,7 +405,7 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>Esta conversación secreta aún no está lista. El contacto no está conectado.</translation>
+        <translation>Esta conversación secreta no está lista. El contacto no está conectado.</translation>
     </message>
     <message>
         <source>Closing chat</source>
@@ -492,7 +492,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>No hay todavía conversaciones.</translation>
+        <translation>No hay conversaciones.</translation>
     </message>
 </context>
 <context>
@@ -510,11 +510,11 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Esperando la red...</translation>
+        <translation>Esperando red...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Conectando al servidor...</translation>
+        <translation>Conectando a servidor...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
@@ -593,7 +593,7 @@
     <message>
         <source>New members can see older messages</source>
         <comment>member permission</comment>
-        <translation>Los miembros nuevos pueden ver mensajes antiguos</translation>
+        <translation>Miembros nuevos pueden ver mensajes antiguos</translation>
     </message>
 </context>
 <context>
@@ -665,29 +665,29 @@
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>se registró en Telegram</translation>
+        <translation>se registró a Telegram</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>te has registrado en Telegram</translation>
+        <translation>Registrado a Telegrama</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>se unió al grupo</translation>
+        <translation>unido a grupo</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>se unió a este grupo</translation>
+        <translation>unido a grupo</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>se añadió a este grupo</translation>
+        <translation>unido a grupo</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>se añadió al grupo</translation>
+        <translation>unido a grupo</translation>
     </message>
     <message>
         <source>left this chat</source>
@@ -715,11 +715,11 @@
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation>el título del grupo se cambió</translation>
+        <translation>título del grupo se cambió</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation>el título del grupo se cambió</translation>
+        <translation>título del grupo se cambió</translation>
     </message>
     <message>
         <source>sent a poll</source>
@@ -760,110 +760,110 @@
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>borró la foto de la conversación</translation>
+        <translation>borró foto de conversación</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>borró la foto del grupo</translation>
+        <translation>borró foto de grupo</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>cambió los ajustes TTL en conversación secreta</translation>
+        <translation>cambió ajustes TTL en conversación secreta</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation>cambió los ajustes TTL en conversación secreta</translation>
+        <translation>cambió ajustes TTL en conversación secreta</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>actualizó este grupo a un supergrupo</translation>
+        <translation>actualizó este grupo a supergrupo</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>actualizó este grupo a un supergrupo</translation>
+        <translation>actualizó este grupo a supergrupo</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation>cambió el mensaje fijado</translation>
+        <translation>cambió mensaje fijado</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>creó un pantallazo en esta conversación</translation>
+        <translation>creó pantallazo a esta conversación</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>creó un pantallazo en esta conversación</translation>
+        <translation>creó pantallazo a esta conversación</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>envió un mensaje no admitido</translation>
+        <translation>envió mensaje no admitido</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation>envió un mensaje no admitido</translation>
+        <translation>envió mensaje no admitido</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
-        <translation>envió un mensaje no admitido: %1</translation>
+        <translation>envió mensaje no admitido: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation>actualizó este grupo a un supergrupo</translation>
+        <translation>actualizó grupo a supergrupo</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>envió una foto autodestructiva que está caducada</translation>
+        <translation>envió foto autodestructiva que está caducada</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>envió una foto autodestructiva que está caducada</translation>
+        <translation>envió foto autodestructiva que está caducada</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>envió un vídeo autodestructivo que está caducado</translation>
+        <translation>envió vídeo autodestructivo que está caducado</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation>envió un mensaje no admitido: %1</translation>
+        <translation>envió mensaje no admitido: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>envió un foto autodestructivo que está caducado</translation>
+        <translation>envió foto autodestructivo que está caducado</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>envió un audio</translation>
+        <translation>envió audio</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>envió un audio</translation>
+        <translation>envió audio</translation>
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>ha añadido %1 a la conversación</translation>
+        <translation>ha añadido %1 a conversación</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>ha quitado %1 de la conversación</translation>
+        <translation>ha quitado %1 de conversación</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>ha añadido %1 a la conversación</translation>
+        <translation>ha añadido %1 a conversación</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>ha quitado %1 de la conversación</translation>
+        <translation>ha quitado %1 de conversación</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
@@ -883,20 +883,20 @@
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>envió un juego</translation>
+        <translation>envió juego</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>envió un juego</translation>
+        <translation>envió juego</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>envió una nota de video</translation>
+        <translation>envió nota de video</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation>envió una nota de video</translation>
+        <translation>envió nota de video</translation>
     </message>
 </context>
 <context>
@@ -937,11 +937,11 @@
     </message>
     <message>
         <source>Welcome to Fernschreiber!</source>
-        <translation>Bienvenidos a Fernschreiber</translation>
+        <translation>Bienvenidos a Ferni!</translation>
     </message>
     <message>
         <source>Please enter your phone number to continue.</source>
-        <translation>Marcar el número telefónico.</translation>
+        <translation>Marcar número telefónico.</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -949,7 +949,7 @@
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Marcar el código recibido.</translation>
+        <translation>Marcar código recibido.</translation>
     </message>
     <message>
         <source>Loading...</source>
@@ -957,19 +957,19 @@
     </message>
     <message>
         <source>Unable to authenticate you with the entered code.</source>
-        <translation>No se pudo autenticar con el código marcado.</translation>
+        <translation>No se pudo autenticar con código marcado.</translation>
     </message>
     <message>
         <source>Enter code again</source>
-        <translation>Marcar código de nuevo</translation>
+        <translation>Remarcar código</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Reiniciar la autenticación</translation>
+        <translation>Reiniciar autenticación</translation>
     </message>
     <message>
         <source>Please enter your password:</source>
-        <translation>Por favor, marcar el código:</translation>
+        <translation>Por favor, marcar código:</translation>
     </message>
     <message>
         <source>Register User</source>
@@ -977,15 +977,15 @@
     </message>
     <message>
         <source>Enter your First Name</source>
-        <translation>Marcar el nombre</translation>
+        <translation>Marcar nombre</translation>
     </message>
     <message>
         <source>Enter your Last Name</source>
-        <translation>Marcar el apellido</translation>
+        <translation>Marcar apellido</translation>
     </message>
     <message>
         <source>User Registration</source>
-        <translation>Registro de usuario</translation>
+        <translation>Registrar usuario</translation>
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
@@ -1112,14 +1112,14 @@
     <message>
         <source>via %1</source>
         <comment>message posted via bot user</comment>
-        <translation>mensaje publicado a través del usuario Robot</translation>
+        <translation>via %1</translation>
     </message>
 </context>
 <context>
     <name>MessageVoiceNote</name>
     <message>
         <source>Voice Note</source>
-        <translation>Nota de voz </translation>
+        <translation>Nota de voz</translation>
     </message>
 </context>
 <context>
@@ -1142,7 +1142,7 @@
     </message>
     <message>
         <source>End-to-end-encrypted, accessible on this device only</source>
-        <translation>Encriptado fin-a-fin, accesible solo en este dispositivo</translation>
+        <translation>Encriptado fin-a-fin, accesible solo a este dispositivo</translation>
     </message>
     <message>
         <source>Loading contacts...</source>
@@ -1150,7 +1150,7 @@
     </message>
     <message>
         <source>Transport-encrypted, uses Telegram Cloud, sharable across devices</source>
-        <translation>Transporte-encriptado, usa la nube de Telegram, compartible entre dispositivos</translation>
+        <translation>Transporte-encriptado, usa nube de Telegrama, compartible entre dispositivos</translation>
     </message>
     <message>
         <source>Search a contact...</source>
@@ -1158,11 +1158,11 @@
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation>Sincronizar con Telegram</translation>
+        <translation>Sincronizar con Telegrama</translation>
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation>Contactos sincronizados con éxito con Telegram.</translation>
+        <translation>Contactos sincronizados con éxito con Telegrama.</translation>
     </message>
     <message>
         <source>No contacts found.</source>
@@ -1187,15 +1187,15 @@
     </message>
     <message>
         <source>Fernschreiber</source>
-        <translation>Fernschreiber</translation>
+        <translation>Ferni</translation>
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Esperando la red...</translation>
+        <translation>Esperando red...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
-        <translation>Conectando al servidor...</translation>
+        <translation>Conectando a servidor...</translation>
     </message>
     <message>
         <source>Connecting to proxy...</source>
@@ -1207,7 +1207,7 @@
     </message>
     <message>
         <source>Loading chat list...</source>
-        <translation>cargando lista de conversaciones...</translation>
+        <translation>cargando lista de conversación...</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -1215,7 +1215,7 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>No hay todavía conversaciones.</translation>
+        <translation>No hay conversaciones.</translation>
     </message>
     <message>
         <source>New Chat</source>
@@ -1235,11 +1235,11 @@
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Error al bajar</translation>
+        <translation>Error a bajar</translation>
     </message>
     <message>
         <source>Tap on the title bar to filter your chats</source>
-        <translation>Deslizar hacia abajo para la polea de opciones</translation>
+        <translation>Deslizar hacia abajo para polea de opciones</translation>
     </message>
     <message>
         <source>No matching chats found.</source>
@@ -1247,15 +1247,15 @@
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
-        <translation>Puede buscar grupos públicos o crear un grupo a través de la polea de opciones.</translation>
+        <translation>Puede buscar grupos públicos o crear un grupo a través de polea de opciones.</translation>
     </message>
     <message>
         <source>Logging out</source>
-        <translation>Saliendo de la cuenta</translation>
+        <translation>Saliendo de cuenta</translation>
     </message>
     <message>
         <source>Unable to open link.</source>
-        <translation>No se pudo abrir el enlace.</translation>
+        <translation>No se pudo abrir enlace.</translation>
     </message>
 </context>
 <context>
@@ -1277,11 +1277,11 @@
     <name>PollCreationPage</name>
     <message>
         <source>All answers have to contain 1-100 characters.</source>
-        <translation>Todas las respuestas deben contener de 1 a 100 caracteres.</translation>
+        <translation>Todas respuestas deben contener de 1 a 100 caracteres.</translation>
     </message>
     <message>
         <source>To send a quiz, you have to specify the right answer.</source>
-        <translation>Para enviar una cuestión, debe especificar la respuesta correcta.</translation>
+        <translation>Para enviar una cuestión, debe especificar respuesta correcta.</translation>
     </message>
     <message>
         <source>You have to enter a question.</source>
@@ -1293,7 +1293,7 @@
     </message>
     <message>
         <source>A poll requires 2-10 answers.</source>
-        <translation>Una encuesta requiere de 2 a 10 respuestas.</translation>
+        <translation>Encuesta requiere 2 a 10 respuestas.</translation>
     </message>
     <message>
         <source>Create a Poll</source>
@@ -1307,7 +1307,7 @@
     </message>
     <message>
         <source>Enter your question here</source>
-        <translation>Hacer la pregunta</translation>
+        <translation>Hacer pregunta</translation>
     </message>
     <message numerus="yes">
         <source>Question (%Ln characters left)</source>
@@ -1323,7 +1323,7 @@
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation>Hacer la  respuesta</translation>
+        <translation>Hacer respuesta</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
@@ -1334,7 +1334,7 @@
     </message>
     <message>
         <source>Add an answer</source>
-        <translation>Agregar una respuesta</translation>
+        <translation>Agregar respuesta</translation>
     </message>
     <message>
         <source>Poll Options</source>
@@ -1355,30 +1355,30 @@
     </message>
     <message>
         <source>Quizzes have one correct answer. Participants can&apos;t revoke their responses.</source>
-        <translation>Los interrogatorios tienen una respuesta correcta. Los participantes no pueden revocar sus respuestas.</translation>
+        <translation>Cuestionarios tienen respuesta correcta. Participantes no pueden revocar las respuestas.</translation>
     </message>
     <message>
         <source>Enter an optional explanation</source>
-        <translation>Introducir una explicación opcional</translation>
+        <translation>Introducir explicación opcional</translation>
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation>Se muestra cuando la usuario selecciona una respuesta incorrecta.</translation>
+        <translation>Muestra cuando usuario selecciona respuesta incorrecta.</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
-        <translation>Una explicación puede tener hasta 200 caracteres.</translation>
+        <translation>Explicación debe hasta 200 caracteres.</translation>
     </message>
 </context>
 <context>
     <name>PollResultsPage</name>
     <message>
         <source>Quiz Results</source>
-        <translation>Resultados de cuestionario</translation>
+        <translation>Resultados cuestionario</translation>
     </message>
     <message>
         <source>Poll Results</source>
-        <translation>Resultados de encuesta</translation>
+        <translation>Resultados encuesta</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
@@ -1432,7 +1432,7 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation>No se han encontrado grupos.</translation>
+        <translation>No se encontrado grupos.</translation>
     </message>
     <message>
         <source>Searching chats...</source>
@@ -1474,7 +1474,7 @@
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation>Para iniciar la búsqueda se necesitan al menos 5 caracteres</translation>
+        <translation>Iniciar búsqueda con al menos 5 caracteres</translation>
     </message>
 </context>
 <context>
@@ -1489,7 +1489,7 @@
     </message>
     <message>
         <source>Only display emojis instead of the actual stickers</source>
-        <translation>Solo muestra los emoticonos en lugar de las pegatinas reales</translation>
+        <translation>Muestra emoticonos en lugar de pegatinas reales</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
@@ -1497,7 +1497,7 @@
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation>Muestra un fondo para pegatinas y las alinea como imágenes</translation>
+        <translation>Muestra un fondo para pegatinas y alinea como imágenes</translation>
     </message>
     <message>
         <source>Animate stickers</source>
@@ -1512,19 +1512,19 @@
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Enviar mensaje por tecla Entrar</translation>
+        <translation>Enviar mensaje tecla Entrar</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Envía el mensajes pulsando la tecla Entrar</translation>
+        <translation>Envía mensajes pulsando tecla Entrar</translation>
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation>Enfocar entrada de texto en conversación</translation>
+        <translation>Enfocar entrada de texto a conversación</translation>
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation>Enfoca el área de entrada de texto al ingresar a una conversación</translation>
+        <translation>Enfoca área de entrada de texto al ingresar a  conversación</translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
@@ -1532,7 +1532,7 @@
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation>Enfoca el área de entrada de texto después de enviar un mensaje</translation>
+        <translation>Enfoca área de entrada de texto después de enviar mensaje</translation>
     </message>
     <message>
         <source>Delay before marking messages as read</source>
@@ -1540,15 +1540,15 @@
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Si esta habilitado, la apl espera un segundo hasta que un mensaje que está en la pantalla se marque como leído. Si deshabilitas esta función, los mensajes se marcarán inmediatamente como leído una vez que esté en la pantalla sin desplazarse al mensaje</translation>
+        <translation>Si esta habilitado, apl espera un segundo hasta que mensaje que está en pantalla se marque como leído. Si deshabilita esta función,  mensajes se marcarán inmediatamente como leído una vez que esté en pantalla sin desplazarse a mensaje</translation>
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation>Integrar la opción Abrir-con</translation>
+        <translation>Integrar opción Abrir-Con</translation>
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Fernschreiber usa la opción abrir-con de Sailfish SO</translation>
+        <translation>Ferni usa opción Abrir-Con de Sailfish SO</translation>
     </message>
     <message>
         <source>Notification feedback</source>
@@ -1556,7 +1556,7 @@
     </message>
     <message>
         <source>Use non-graphical feedback (sound, vibration) for notifications</source>
-        <translation>Usa comentarios no gráficos (sonido, vibración) para las notificaciones</translation>
+        <translation>Usa comentarios no gráficos (sonido, vibración) para notificaciones</translation>
     </message>
     <message>
         <source>All events</source>
@@ -1576,31 +1576,31 @@
     </message>
     <message>
         <source>Enable notification sounds</source>
-        <translation>Habilitar sonidos de notificación</translation>
+        <translation>Habilitar sonidos notificación</translation>
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>Cuando los sonidos están habilitados, Fernschreiber utilizará el sonido de notificación actual de Sailfish OS para los grupos, que se puede configurar en la configuración del sistema.</translation>
+        <translation>Cuando sonidos están habilitados, Ferni utilizará sonido de notificación actual de Sailfish OS para los grupos, que se puede ajustar a configuración del sistema.</translation>
     </message>
     <message>
         <source>Always append message preview to notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar vista previa mensaje a notificaciones</translation>
     </message>
     <message>
         <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrará cantidad mensajes no leídos, el último mensaje se agregará a notificaciones.</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Resaltar mensajes no leídos</translation>
     </message>
     <message>
         <source>Highlight Conversations with unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Resaltar conversaciones a mensajes no leídos</translation>
     </message>
     <message>
         <source>Hide content in notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocultar contenido a notificaciones</translation>
     </message>
 </context>
 <context>
@@ -1622,7 +1622,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation>Configuración de privacidad para administrar si puede ser invitado a grupos.</translation>
+        <translation>Ajustes de privacidad administrar si puede ser invitado a grupos.</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -1642,15 +1642,15 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Configuración de privacidad para administrar si puede ser encontrado por su número de teléfono.</translation>
+        <translation>Ajustes de privacidad  administrar si puede ser encontrado por su número de teléfono.</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
-        <translation>Mostrar enlace en mensajes reenviados</translation>
+        <translation>Mostrar enlace a mensajes reenviados</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Configuración de privacidad para administrar si un enlace de la cuenta está incluido en los mensajes reenviados.</translation>
+        <translation>Ajustes de privacidad administrar si un enlace de cuenta está incluido en mensajes reenviados.</translation>
     </message>
     <message>
         <source>Show phone number</source>
@@ -1658,7 +1658,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation>Configuración de privacidad para administrar si su número de teléfono es visible.</translation>
+        <translation>Ajustes de privacidad administrar si su número de teléfono es visible.</translation>
     </message>
     <message>
         <source>Show profile photo</source>
@@ -1666,7 +1666,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation>Configuración de privacidad para administrar si la foto de perfil es visible.</translation>
+        <translation>Ajustes de privacidad administrar si la foto de perfil es visible.</translation>
     </message>
     <message>
         <source>Show status</source>
@@ -1674,7 +1674,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation>Configuración de privacidad para administrar si el estado en línea es visible.</translation>
+        <translation>Ajustes de privacidad administrar si el estado en línea es visible.</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
@@ -1693,7 +1693,7 @@
     </message>
     <message>
         <source>Session was terminated</source>
-        <translation>Se terminó la sesión </translation>
+        <translation>Se terminó sesión </translation>
     </message>
     <message>
         <source>Terminating session</source>
@@ -1720,31 +1720,31 @@
     </message>
     <message>
         <source>1 week</source>
-        <translation type="unfinished"></translation>
+        <translation> 1 semana</translation>
     </message>
     <message>
         <source>1 month</source>
-        <translation type="unfinished"></translation>
+        <translation>1 mes</translation>
     </message>
     <message>
         <source>3 months</source>
-        <translation type="unfinished"></translation>
+        <translation>3 meses</translation>
     </message>
     <message>
         <source>6 months</source>
-        <translation type="unfinished"></translation>
+        <translation>6 meses</translation>
     </message>
     <message>
         <source>1 year</source>
-        <translation type="unfinished"></translation>
+        <translation>1 año</translation>
     </message>
     <message>
         <source>Session Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Sesión caducada</translation>
     </message>
     <message>
         <source>Inactive sessions will be terminated after this timeframe</source>
-        <translation type="unfinished"></translation>
+        <translation>Sesiones inactivas finalizarán después de período de tiempo.</translation>
     </message>
 </context>
 <context>
@@ -1755,11 +1755,11 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation>Modo solo en línea</translation>
+        <translation>Modo solo enlínea</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Deshabilita el almacenamiento en caché sin conexión. Algunas funciones pueden estar limitadas o ausentes en este modo. Se requiere reiniciar Fernschreiber para su efecto.</translation>
+        <translation>Deshabilita almacenamiento en caché sin conexión. Algunas funciones pueden estar limitadas o ausentes en este modo. Se requiere reiniciar Ferni para efecto.</translation>
     </message>
     <message>
         <source>Enable storage optimizer</source>
@@ -1770,7 +1770,7 @@
     <name>SettingsUserProfile</name>
     <message>
         <source>User Profile</source>
-        <translation>Perfil de usuario</translation>
+        <translation>Perfil usuario</translation>
     </message>
     <message>
         <source>First Name</source>
@@ -1797,7 +1797,7 @@
     </message>
     <message>
         <source>Profile Pictures</source>
-        <translation>Imagen de perfil</translation>
+        <translation>Imagen perfil</translation>
     </message>
     <message>
         <source>Add Picture</source>
@@ -1809,7 +1809,7 @@
     </message>
     <message>
         <source>Deleting profile picture</source>
-        <translation>Borrando la imagen de perfil</translation>
+        <translation>Borrando imagen perfil</translation>
     </message>
     <message>
         <source>Uploading...</source>
@@ -1825,30 +1825,30 @@
     </message>
     <message>
         <source>Phone number: +%1</source>
-        <translation></translation>
+        <translation>Número telefónico: +%1</translation>
     </message>
     <message>
         <source>Contacts successfully synchronized with Telegram.</source>
-        <translation>Contactos sincronizados con éxito con Telegram.</translation>
+        <translation>Contactos sincronizados con éxito Telegrama.</translation>
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation>Sincronizar con Telegram</translation>
+        <translation>Sincronizar Telegram</translation>
     </message>
 </context>
 <context>
     <name>SponsoredMessage</name>
     <message>
         <source>Go to Channel</source>
-        <translation>Ir al canal</translation>
+        <translation>Ir a canal</translation>
     </message>
     <message>
         <source>Go to Message</source>
-        <translation>Ir al mensaje</translation>
+        <translation>Ir a mensaje</translation>
     </message>
     <message>
         <source>Start Bot</source>
-        <translation>Iniciar Robot(Bot)</translation>
+        <translation>Iniciar Robot</translation>
     </message>
 </context>
 <context>
@@ -1859,37 +1859,37 @@
     </message>
     <message>
         <source>Removing sticker set</source>
-        <translation>Quitando el álbum  de pegatinas</translation>
+        <translation>Quitando álbum pegatinas</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation>¡Album de pegatinas quitado correctamente!</translation>
+        <translation>¡Album pegatinas quitado correctamente!</translation>
     </message>
 </context>
 <context>
     <name>StickerSetOverlay</name>
     <message>
         <source>Sticker set successfully installed!</source>
-        <translation>¡Album de pegatinas instalado correctamente!</translation>
+        <translation>¡Album pegatinas instalado correctamente!</translation>
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation>¡Album de pegatinas quitado correctamente!</translation>
+        <translation>¡Album pegatinas quitado correctamente!</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Bajada de %1 exitosa.</translation>
+        <translation>Bajada %1 exitosa.</translation>
     </message>
     <message>
         <source>Download failed.</source>
-        <translation>Error al bajar</translation>
+        <translation>Error a bajar</translation>
     </message>
     <message>
         <source>Copy video to gallery</source>
-        <translation>Copiar video a la galería</translation>
+        <translation>Copiar video a galería</translation>
     </message>
 </context>
 <context>
@@ -1900,7 +1900,7 @@
     </message>
     <message>
         <source>Press the button to start recording</source>
-        <translation>Presionar el botón para iniciar a grabar</translation>
+        <translation>Presionar botón para grabar</translation>
     </message>
     <message>
         <source>Unavailable</source>
@@ -1935,7 +1935,7 @@
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation>Vista previa no compatible con este enlace ...</translation>
+        <translation>Vista previa compatible con enlace ...</translation>
     </message>
 </context>
 <context>
@@ -1946,7 +1946,7 @@
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>te has registrado en Telegram</translation>
+        <translation>Registrado a Telegrama</translation>
     </message>
     <message>
         <source>Picture: %1</source>
@@ -1970,43 +1970,43 @@
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>envió una imagen</translation>
+        <translation>envió imagen</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>envió un video</translation>
+        <translation>envió video</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>envió una animación</translation>
+        <translation>envió animación</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>envió un audio</translation>
+        <translation>envió audio</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>envió una nota de voz</translation>
+        <translation>envió nota de voz</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>envió un documento</translation>
+        <translation>envió documento</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>envió una ubicación</translation>
+        <translation>envió ubicación</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>se unió a este grupo</translation>
+        <translation>Unido a grupo</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>se añadió a este grupo</translation>
+        <translation>Unido a grupo</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>dejó este grupo</translation>
+        <translation>dejó  grupo</translation>
     </message>
     <message>
         <source>%1M</source>
@@ -2018,61 +2018,61 @@
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>envió un lugar</translation>
+        <translation>envió lugar</translation>
     </message>
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>envió una imagen</translation>
+        <translation>envió imagen</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>envié un video</translation>
+        <translation>envié video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>envió una animación</translation>
+        <translation>envió animación</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>envió un audio</translation>
+        <translation>envió audio</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>envió una nota de voz</translation>
+        <translation>envió nota de voz</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>envió un documento</translation>
+        <translation>envió documento</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>envió una ubicación</translation>
+        <translation>envió ubicación</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>envió un lugar</translation>
+        <translation>envió lugar</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
-        <translation>se ha registrado en Telegram</translation>
+        <translation>registrado a Telegrama</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>me uní a este grupo</translation>
+        <translation>unido a grupo</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>se agregó a esta grupo</translation>
+        <translation>unido a grupo</translation>
     </message>
     <message>
         <source>left this chat</source>
@@ -2097,7 +2097,7 @@
     </message>
     <message>
         <source>online</source>
-        <translation>en línea</translation>
+        <translation>enlínea</translation>
     </message>
     <message>
         <source>was recently online</source>
@@ -2126,47 +2126,47 @@
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>se cambió el título del grupo a %1</translation>
+        <translation>cambió título de grupo a %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation>se cambió el título del grupo a %1</translation>
+        <translation>cambió título de grupo a %1</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>envió una encuesta</translation>
+        <translation>envió encuesta</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation>envió una encuesta</translation>
+        <translation>envió encuesta</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
         <comment>myself</comment>
-        <translation>envió un cuestionario anónimo</translation>
+        <translation>envió cuestionario anónimo</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
-        <translation>envió un cuestionario anónimo</translation>
+        <translation>envió cuestionario anónimo</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>envió un cuestionario</translation>
+        <translation>envió cuestionario</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation>envió un cuestionario</translation>
+        <translation>envió cuestionario</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
         <comment>myself</comment>
-        <translation>envió una encuesta anónima</translation>
+        <translation>envió encuesta anónima</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
-        <translation>envió una encuesta anónima</translation>
+        <translation>envió encuesta anónima</translation>
     </message>
     <message>
         <source>Anonymous Quiz</source>
@@ -2187,120 +2187,120 @@
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>creó este grupo</translation>
+        <translation>creó grupo</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation>creó este grupo</translation>
+        <translation>creó grupo</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>cambió la foto del grupo</translation>
+        <translation>cambió foto de grupo</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation>cambió la foto del grupo</translation>
+        <translation>cambió foto de grupo</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>borró la foto del grupo</translation>
+        <translation>borró foto de grupo</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>borró la foto del grupo</translation>
+        <translation>borró foto de grupo</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>cambió los ajustes de TTL de la conversación secreta</translation>
+        <translation>cambió ajustes de TTL de conversación secreta</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>cambió los ajustes de TTL de la conversación secreta</translation>
+        <translation>cambió ajustes de TTL de conversación secreta</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>actualizó este grupo a un supergrupo</translation>
+        <translation>actualizó grupo a supergrupo</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>cambió el mensaje fijado</translation>
+        <translation>cambió mensaje fijado</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation>cambió el mensaje fijado</translation>
+        <translation>cambió mensaje fijado</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>creó un pantallazo a esta conversación</translation>
+        <translation>creó pantallazo a conversación</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>creó un pantallazo a esta conversación</translation>
+        <translation>creó pantallazo a conversación</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>envió un mensaje no admitido</translation>
+        <translation>envió mensaje no admitido</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation>envió un mensaje no admitido</translation>
+        <translation>envió mensaje no admitido</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation>envió un mensaje no admitido: %1</translation>
+        <translation>envió mensaje no admitido: %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>%1 is message type</comment>
-        <translation>envió un mensaje no admitido: %1</translation>
+        <translation>envió mensaje no admitido: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation>actualizó este grupo a un supergrupo</translation>
+        <translation>actualizó grupo a supergrupo</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>envió una foto autodestructiva que está caducada</translation>
+        <translation>envió foto autodestructiva que está caducada</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>envió una foto autodestructiva que está caducada</translation>
+        <translation>envió foto autodestructiva que está caducada</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>envió un vídeo autodestructivo que está caducado</translation>
+        <translation>envió vídeo autodestructivo que está caducado</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>envió un vídeo autodestructivo que está caducado</translation>
+        <translation>envió vídeo autodestructivo que está caducado</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation>Error al buscar %1</translation>
+        <translation>Error buscar %1</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>envió una nota de video</translation>
+        <translation>envió nota de video</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation>envió una nota de video</translation>
+        <translation>envió nota de video</translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
-        <translation>Ya eres miembro de este grupo.</translation>
+        <translation>Ya miembro de grupo.</translation>
     </message>
     <message>
         <source>Closed!</source>
@@ -2312,21 +2312,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>ha añadido %1 al grupo</translation>
+        <translation>ha añadido %1 a grupo</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>ha quitado %1 del grupo</translation>
+        <translation>quitado %1 de grupo</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>ha añadido %1 al grupo</translation>
+        <translation>agregado %1 a grupo</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>ha añadido %1  del grupo</translation>
+        <translation>agregado %1  de grupo</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
@@ -2339,11 +2339,11 @@
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>envió un juego</translation>
+        <translation>envió juego</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>envió un juego</translation>
+        <translation>envió juego</translation>
     </message>
 </context>
 </TS>
