@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>Un cliente de Telegrama para Sailfish SO</translation>
+        <translation>Cliente de Telegrama para Sailfish SO</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
@@ -157,7 +157,7 @@
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>El enlace de invitación se ha copiado a portapapeles.</translation>
+        <translation>Enlace invitación se ha copiado a portapapeles.</translation>
     </message>
     <message>
         <source>%1, %2</source>
@@ -665,11 +665,11 @@
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>se registró a Telegram</translation>
+        <translation>registrado a Telegram</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>Registrado a Telegrama</translation>
+        <translation>registrado a Telegrama</translation>
     </message>
     <message>
         <source>joined this chat</source>
