@@ -133,8 +133,12 @@ ListItem {
             if (messageListItem.messageReactions) {
                 messageListItem.messageReactions = null;
             } else if (messageListItem.chatReactions) {
+                Debug.log("Using chat reactions")
                 messageListItem.messageReactions = chatReactions
+                showItemCompletelyTimer.requestedIndex = index;
+                showItemCompletelyTimer.start();
             } else {
+                Debug.log("Obtaining message reactions")
                 tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
             }
         }
@@ -279,6 +283,7 @@ ListItem {
         interval: 200
         triggeredOnStart: false
         onTriggered: {
+            Debug.log("Show item completely timer triggered, requested index: " + requestedIndex + ", current index: " + index)
             if (requestedIndex === index) {
                 chatView.highlightMoveDuration = -1;
                 chatView.highlightResizeDuration = -1;
