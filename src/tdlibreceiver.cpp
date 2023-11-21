@@ -175,6 +175,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateMessageInteractionInfo", &TDLibReceiver::processUpdateMessageInteractionInfo);
     handlers.insert("sessions", &TDLibReceiver::processSessions);
     handlers.insert("availableReactions", &TDLibReceiver::processAvailableReactions);
+    handlers.insert("updateMessageMentionRead", &TDLibReceiver::processUpdateChatUnreadMentionCount);
     handlers.insert("updateChatUnreadMentionCount", &TDLibReceiver::processUpdateChatUnreadMentionCount);
     handlers.insert("updateChatUnreadReactionCount", &TDLibReceiver::processUpdateChatUnreadReactionCount);
     handlers.insert("updateActiveEmojiReactions", &TDLibReceiver::processUpdateActiveEmojiReactions);
@@ -736,6 +737,8 @@ void TDLibReceiver::processAvailableReactions(const QVariantMap &receivedInforma
 
 void TDLibReceiver::processUpdateChatUnreadMentionCount(const QVariantMap &receivedInformation)
 {
+    // Handles both updateMessageMentionRead and updateChatUnreadMentionCount
+    // They both have chat_id and unread_mention_count which is all we need
     const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
     const int unreadMentionCount = receivedInformation.value(UNREAD_MENTION_COUNT).toInt();
     LOG("Chat unread mention count updated" << chatId << unreadMentionCount);

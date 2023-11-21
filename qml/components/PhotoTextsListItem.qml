@@ -108,27 +108,38 @@ ListItem {
             }
 
             Rectangle {
-                id: chatUnreadReactionCountBackground
                 color: isMuted ? ((Theme.colorScheme === Theme.DarkOnLight) ? "lightgray" : "dimgray") : Theme.highlightBackgroundColor
                 width: Theme.fontSizeLarge
                 height: Theme.fontSizeLarge
                 anchors.right: parent.right
                 anchors.top: parent.top
                 radius: parent.width / 2
-                visible: chatListViewItem.unreadReactionCount > 0
-            }
+                visible: chatListViewItem.unreadReactionCount > 0 || chatListViewItem.unreadMentionCount > 0
 
-            Icon {
-                source: "image://theme/icon-s-favorite"
-                height: Theme.iconSizeExtraSmall
-                width: Theme.iconSizeExtraSmall
-                highlighted: chatListViewItem.highlighted
-                anchors.centerIn: chatUnreadReactionCountBackground
-                visible: chatListViewItem.unreadReactionCount > 0
-            }
+                Icon {
+                    source: "image://theme/icon-s-favorite"
+                    height: Theme.iconSizeExtraSmall
+                    width: Theme.iconSizeExtraSmall
+                    highlighted: chatListViewItem.highlighted
+                    anchors.centerIn: parent
+                    visible: chatListViewItem.unreadReactionCount > 0 && !chatListViewItem.unreadMentionCount
+                }
 
+                Text {
+                    font {
+                        pixelSize: Theme.iconSizeExtraSmall
+                        bold: true
+                    }
+                    color: Theme.primaryColor
+                    anchors.centerIn: parent
+                    visible: chatListViewItem.unreadMentionCount > 0
+                    opacity: isMuted ? Theme.opacityHigh : 1.0
+                    text: "@"
+                }
+            }
         }
     }
+
     Column {
         id: contentColumn
         anchors {
