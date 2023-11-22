@@ -38,6 +38,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
     Q_PROPERTY(bool allowInlineBotLocationAccess READ allowInlineBotLocationAccess WRITE setAllowInlineBotLocationAccess NOTIFY allowInlineBotLocationAccessChanged)
     Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
+    Q_PROPERTY(int remainingDoubleTapHints READ remainingDoubleTapHints WRITE setRemainingDoubleTapHints NOTIFY remainingDoubleTapHintsChanged)
     Q_PROPERTY(bool onlineOnlyMode READ onlineOnlyMode WRITE setOnlineOnlyMode NOTIFY onlineOnlyModeChanged)
     Q_PROPERTY(bool delayMessageRead READ delayMessageRead WRITE setDelayMessageRead NOTIFY delayMessageReadChanged)
     Q_PROPERTY(bool focusTextAreaOnChatOpen READ getFocusTextAreaOnChatOpen WRITE setFocusTextAreaOnChatOpen NOTIFY focusTextAreaOnChatOpenChanged)
@@ -104,6 +105,9 @@ public:
     int remainingInteractionHints() const;
     void setRemainingInteractionHints(int remainingHints);
 
+    int remainingDoubleTapHints() const;
+    void setRemainingDoubleTapHints(int remainingHints);
+
     bool onlineOnlyMode() const;
     void setOnlineOnlyMode(bool enable);
 
@@ -134,6 +138,7 @@ signals:
     void storageOptimizerChanged();
     void allowInlineBotLocationAccessChanged();
     void remainingInteractionHintsChanged();
+    void remainingDoubleTapHintsChanged();
     void onlineOnlyModeChanged();
     void delayMessageReadChanged();
     void focusTextAreaOnChatOpenChanged();

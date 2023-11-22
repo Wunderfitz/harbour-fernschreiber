@@ -483,6 +483,10 @@
         <source>Deleted User</source>
         <translation>Gelöschtes Konto</translation>
     </message>
+    <message>
+        <source>Double-tap on a message to choose a reaction</source>
+        <translation>Drücke zweimal auf eine Nachricht, um eine Reaktion auszuwählen</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

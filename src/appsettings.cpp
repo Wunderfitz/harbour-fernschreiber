@@ -35,6 +35,7 @@ namespace {
     const QString KEY_STORAGE_OPTIMIZER("useStorageOptimizer");
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
+    const QString KEY_REMAINING_DOUBLE_TAP_HINTS("remainingDoubleTapHints");
     const QString KEY_ONLINE_ONLY_MODE("onlineOnlyMode");
     const QString KEY_DELAY_MESSAGE_READ("delayMessageRead");
     const QString KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN("focusTextAreaOnChatOpen");
@@ -240,6 +241,20 @@ void AppSettings::setRemainingInteractionHints(int remainingHints)
         LOG(KEY_REMAINING_INTERACTION_HINTS << remainingHints);
         settings.setValue(KEY_REMAINING_INTERACTION_HINTS, remainingHints);
         emit remainingInteractionHintsChanged();
+    }
+}
+
+int AppSettings::remainingDoubleTapHints() const
+{
+    return settings.value(KEY_REMAINING_DOUBLE_TAP_HINTS, 3).toInt();
+}
+
+void AppSettings::setRemainingDoubleTapHints(int remainingHints)
+{
+    if (remainingDoubleTapHints() != remainingHints) {
+        LOG(KEY_REMAINING_DOUBLE_TAP_HINTS << remainingHints);
+        settings.setValue(KEY_REMAINING_DOUBLE_TAP_HINTS, remainingHints);
+        emit remainingDoubleTapHintsChanged();
     }
 }
 

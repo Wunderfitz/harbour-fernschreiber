@@ -609,6 +609,15 @@ Page {
 
             chatViewCooldownTimer.restart();
             chatViewStartupReadTimer.restart();
+
+            var remainingDoubleTapHints = appSettings.remainingDoubleTapHints;
+            Debug.log("Remaining double tap hints: " + remainingDoubleTapHints);
+            if (remainingDoubleTapHints > 0) {
+                doubleTapHintTimer.start();
+                tapHint.visible = true;
+                tapHintLabel.visible = true;
+                appSettings.remainingDoubleTapHints = remainingDoubleTapHints - 1;
+            }
         }
         onNewMessageReceived: {
             if (( chatView.manuallyScrolledToBottom && Qt.application.state === Qt.ApplicationActive ) || message.sender_id.user_id === chatPage.myUserId) {
@@ -2156,5 +2165,32 @@ Page {
                 }
             }
         }
+    }
+
+    Timer {
+        id: doubleTapHintTimer
+        running: true
+        triggeredOnStart: false
+        repeat: false
+        interval: 6000
+        onTriggered: {
+            tapHint.visible = false;
+            tapHintLabel.visible = false;
+        }
+    }
+
+    TapInteractionHint {
+        id: tapHint
+        loops: Animation.Infinite
+        taps: 2
+        anchors.centerIn: parent
+        visible: false
+    }
+
+    InteractionHintLabel {
+        id: tapHintLabel
+        anchors.bottom: parent.bottom
+        text: qsTr("Double-tap on a message to choose a reaction")
+        visible: false
     }
 }

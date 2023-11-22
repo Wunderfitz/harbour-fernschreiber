@@ -483,6 +483,10 @@
         <source>Deleted User</source>
         <translation>Supprimer l&apos;utilisateur</translation>
     </message>
+    <message>
+        <source>Double-tap on a message to choose a reaction</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
