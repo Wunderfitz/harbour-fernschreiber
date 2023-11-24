@@ -485,7 +485,7 @@
     </message>
     <message>
         <source>Double-tap on a message to choose a reaction</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulsar doble a mensaje y elegir reacción</translation>
     </message>
 </context>
 <context>
