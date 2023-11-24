@@ -136,6 +136,17 @@ AccordionItem {
                     }
                 }
 
+                TextSwitch {
+                    width: parent.columnWidth
+                    checked: appSettings.showMutedUnread
+                    text: qsTr("Include muted chats in unread count")
+                    description: qsTr("Show unread messages in muted chats on the cover")
+                    automaticCheck: false
+                    onClicked: {
+                        appSettings.showMutedUnread = checked
+                    }
+                }
+
                 Component.onCompleted: updateFeedbackSelection()
 
                 function updateFeedbackSelection() {
