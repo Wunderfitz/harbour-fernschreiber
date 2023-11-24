@@ -30,6 +30,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool showStickersAsEmojis READ showStickersAsEmojis WRITE setShowStickersAsEmojis NOTIFY showStickersAsEmojisChanged)
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
+    Q_PROPERTY(bool showMutedUnread READ showMutedUnread WRITE setShowMutedUnread NOTIFY showMutedUnreadChanged)
     Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
     Q_PROPERTY(bool notificationSoundsEnabled READ notificationSoundsEnabled WRITE setNotificationSoundsEnabled NOTIFY notificationSoundsEnabledChanged)
     Q_PROPERTY(bool notificationSuppressContent READ notificationSuppressContent WRITE setNotificationSuppressContent NOTIFY notificationSuppressContentChanged)
@@ -81,6 +82,9 @@ public:
     bool animateStickers() const;
     void setAnimateStickers(bool animate);
 
+    bool showMutedUnread() const;
+    void setShowMutedUnread(bool wantMutedUnread);
+
     bool notificationTurnsDisplayOn() const;
     void setNotificationTurnsDisplayOn(bool turnOn);
 
@@ -130,6 +134,7 @@ signals:
     void showStickersAsEmojisChanged();
     void showStickersAsImagesChanged();
     void animateStickersChanged();
+    void showMutedUnreadChanged();
     void notificationTurnsDisplayOnChanged();
     void notificationSoundsEnabledChanged();
     void notificationSuppressContentChanged();
