@@ -57,8 +57,13 @@ CoverBackground {
 
     Component.onCompleted: {
         coverPage.connectionState = tdLibWrapper.getConnectionState();
-        coverPage.unreadMessages = tdLibWrapper.getUnreadMessageInformation().unread_count || 0;
-        coverPage.unreadChats = tdLibWrapper.getUnreadChatInformation().unread_count || 0;
+        if (appSettings.showMutedUnread) {
+            coverPage.unreadMessages = tdLibWrapper.getUnreadMessageInformation().unread_count || 0;
+            coverPage.unreadChats = tdLibWrapper.getUnreadChatInformation().unread_count || 0;
+        } else {
+            coverPage.unreadMessages = tdLibWrapper.getUnreadMessageInformation().unread_unmuted_count || 0;
+            coverPage.unreadChats = tdLibWrapper.getUnreadChatInformation().unread_unmuted_count || 0;
+        }
         setUnreadInfoText();
     }
 
