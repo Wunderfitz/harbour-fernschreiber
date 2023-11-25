@@ -103,6 +103,17 @@ AccordionItem {
                 }
             }
 
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.showMutedUnread
+                text: qsTr("Include muted chats in unread count")
+                description: qsTr("Show unread messages in muted chats on the cover")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.showMutedUnread = checked
+                }
+            }
+
             ComboBox {
                 id: feedbackComboBox
                 width: parent.columnWidth
@@ -133,17 +144,6 @@ AccordionItem {
                         onClicked: {
                             appSettings.notificationFeedback = value
                         }
-                    }
-                }
-
-                TextSwitch {
-                    width: parent.columnWidth
-                    checked: appSettings.showMutedUnread
-                    text: qsTr("Include muted chats in unread count")
-                    description: qsTr("Show unread messages in muted chats on the cover")
-                    automaticCheck: false
-                    onClicked: {
-                        appSettings.showMutedUnread = checked
                     }
                 }
 
