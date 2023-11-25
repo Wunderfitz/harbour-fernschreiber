@@ -110,7 +110,7 @@ AccordionItem {
                 description: qsTr("Show unread messages in muted chats on the cover")
                 automaticCheck: false
                 onClicked: {
-                    appSettings.showMutedUnread = checked
+                    appSettings.showMutedUnread = !checked
                 }
             }
 
