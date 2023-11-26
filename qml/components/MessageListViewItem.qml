@@ -652,6 +652,8 @@ ListItem {
             Rectangle {
                 id: selectReactionBubble
                 visible: false
+                opacity: visible ? 0.5 : 0.0
+                Behavior on opacity { NumberAnimation {} }
                 anchors {
                     horizontalCenter: messageListItem.isOwnMessage ? messageBackground.left : messageBackground.right
                     verticalCenter: messageBackground.verticalCenter
@@ -660,12 +662,13 @@ ListItem {
                 width: Theme.itemSizeExtraSmall
                 color: Theme.primaryColor
                 radius: parent.width / 2
-                opacity: 0.5
             }
 
             IconButton {
                 id: selectReactionButton
                 visible: selectReactionBubble.visible
+                opacity: visible ? 1.0 : 0.0
+                Behavior on opacity { NumberAnimation {} }
                 icon.source: "image://theme/icon-s-favorite"
                 anchors.centerIn: selectReactionBubble
                 onClicked: {
