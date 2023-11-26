@@ -115,6 +115,19 @@ ListItem {
         return interactionText;
     }
 
+    function openReactions() {
+        if (messageListItem.chatReactions) {
+            Debug.log("Using chat reactions")
+            messageListItem.messageReactions = chatReactions
+            showItemCompletelyTimer.requestedIndex = index;
+            showItemCompletelyTimer.start();
+        } else {
+            Debug.log("Obtaining message reactions")
+            tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
+        }
+        selectReactionBubble.visible = false;
+    }
+
     onClicked: {
         if (messageListItem.precalculatedValues.pageIsSelecting) {
             page.toggleMessageSelection(myMessage);
@@ -134,9 +147,15 @@ ListItem {
                 messageListItem.messageReactions = null;
                 selectReactionBubble.visible = false;
             } else {
-                selectReactionBubble.visible = !selectReactionBubble.visible;
+                if (messageListItem.chatReactions) {
+                    selectReactionBubble.visible = !selectReactionBubble.visible;
+                }
             }
         }
+    }
+
+    onDoubleClicked: {
+        openReactions();
     }
 
     onPressAndHold: {
@@ -643,6 +662,17 @@ ListItem {
                             textFormat: Text.StyledText
                             maximumLineCount: 1
                             elide: Text.ElideRight
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    if (messageListItem.messageReactions) {
+                                        messageListItem.messageReactions = null;
+                                        selectReactionBubble.visible = false;
+                                    } else {
+                                        openReactions();
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -672,16 +702,7 @@ ListItem {
                 icon.source: "image://theme/icon-s-favorite"
                 anchors.centerIn: selectReactionBubble
                 onClicked: {
-                    if (messageListItem.chatReactions) {
-                        Debug.log("Using chat reactions")
-                        messageListItem.messageReactions = chatReactions
-                        showItemCompletelyTimer.requestedIndex = index;
-                        showItemCompletelyTimer.start();
-                    } else {
-                        Debug.log("Obtaining message reactions")
-                        tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
-                    }
-                    selectReactionBubble.visible = false;
+                    openReactions();
                 }
             }
 

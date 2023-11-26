@@ -576,6 +576,9 @@ Page {
         onSponsoredMessageReceived: {
             chatPage.containsSponsoredMessages = true;
         }
+        onReactionsUpdated: {
+            availableReactions = tdLibWrapper.getChatReactions(chatInformation.id);
+        }
     }
 
     Connections {

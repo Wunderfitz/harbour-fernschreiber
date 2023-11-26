@@ -339,6 +339,7 @@ signals:
     void chatUnreadMentionCountUpdated(qlonglong chatId, int unreadMentionCount);
     void chatUnreadReactionCountUpdated(qlonglong chatId, int unreadReactionCount);
     void tgUrlFound(const QString &tgUrl);
+    void reactionsUpdated();
 
 public slots:
     void handleVersionDetected(const QString &version);
