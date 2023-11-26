@@ -1462,9 +1462,8 @@ void TDLibWrapper::getPageSource(const QString &address)
     connect(reply, SIGNAL(finished()), this, SLOT(handleGetPageSourceFinished()));
 }
 
-void TDLibWrapper::setMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction)
+void TDLibWrapper::addMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction)
 {
-    LOG("Set message reaction" << chatId << messageId << reaction);
     QVariantMap requestObject;
     requestObject.insert(CHAT_ID, chatId);
     requestObject.insert(MESSAGE_ID, messageId);
@@ -1479,9 +1478,35 @@ void TDLibWrapper::setMessageReaction(qlonglong chatId, qlonglong messageId, con
         reactionType.insert(EMOJI, reaction);
         requestObject.insert(REACTION_TYPE, reactionType);
         requestObject.insert(_TYPE, "addMessageReaction");
+        LOG("Add message reaction" << chatId << messageId << reaction);
     } else {
         requestObject.insert("reaction", reaction);
         requestObject.insert(_TYPE, "setMessageReaction");
+        LOG("Toggle message reaction" << chatId << messageId << reaction);
+    }
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::removeMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction)
+{
+    QVariantMap requestObject;
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    if (versionNumber > VERSION_NUMBER(1,8,5)) {
+        // "reaction_type": {
+        //     "@type": "reactionTypeEmoji",
+        //     "emoji": "..."
+        // }
+        QVariantMap reactionType;
+        reactionType.insert(_TYPE, REACTION_TYPE_EMOJI);
+        reactionType.insert(EMOJI, reaction);
+        requestObject.insert(REACTION_TYPE, reactionType);
+        requestObject.insert(_TYPE, "removeMessageReaction");
+        LOG("Remove message reaction" << chatId << messageId << reaction);
+    } else {
+        requestObject.insert("reaction", reaction);
+        requestObject.insert(_TYPE, "setMessageReaction");
+        LOG("Toggle message reaction" << chatId << messageId << reaction);
     }
     this->sendRequest(requestObject);
 }

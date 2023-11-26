@@ -705,12 +705,25 @@ ListItem {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                tdLibWrapper.setMessageReaction(messageListItem.chatId, messageListItem.messageId, modelData);
-                                messageListItem.messageReactions = null;
+                                for (var i = 0; i < reactions.length; i++) {
+                                    var reaction = reactions[i]
+                                    var reactionText = reaction.reaction ? reaction.reaction : (reaction.type && reaction.type.emoji) ? reaction.type.emoji : ""
+                                    if (reactionText === modelData) {
+                                        if (reaction.is_chosen) {
+                                            // Reaction is already selected
+                                            tdLibWrapper.removeMessageReaction(chatId, messageId, reactionText)
+                                            messageReactions = null
+                                            return
+                                        }
+                                        break
+                                    }
+                                }
+                                // Reaction is not yet selected
+                                tdLibWrapper.addMessageReaction(chatId, messageId, modelData)
+                                messageReactions = null
                             }
                         }
                     }
-
                 }
             }
         }
