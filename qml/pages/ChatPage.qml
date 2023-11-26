@@ -610,6 +610,8 @@ Page {
             chatViewCooldownTimer.restart();
             chatViewStartupReadTimer.restart();
 
+            /*
+            // Double-tap for reactions is currently disabled, let's see if we'll ever need it again
             var remainingDoubleTapHints = appSettings.remainingDoubleTapHints;
             Debug.log("Remaining double tap hints: " + remainingDoubleTapHints);
             if (remainingDoubleTapHints > 0) {
@@ -618,6 +620,8 @@ Page {
                 tapHintLabel.visible = true;
                 appSettings.remainingDoubleTapHints = remainingDoubleTapHints - 1;
             }
+             */
+
         }
         onNewMessageReceived: {
             if (( chatView.manuallyScrolledToBottom && Qt.application.state === Qt.ApplicationActive ) || message.sender_id.user_id === chatPage.myUserId) {

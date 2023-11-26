@@ -132,19 +132,10 @@ ListItem {
 
             if (messageListItem.messageReactions) {
                 messageListItem.messageReactions = null;
+                selectReactionBubble.visible = false;
+            } else {
+                selectReactionBubble.visible = !selectReactionBubble.visible;
             }
-        }
-    }
-
-    onDoubleClicked: {
-        if (messageListItem.chatReactions) {
-            Debug.log("Using chat reactions")
-            messageListItem.messageReactions = chatReactions
-            showItemCompletelyTimer.requestedIndex = index;
-            showItemCompletelyTimer.start();
-        } else {
-            Debug.log("Obtaining message reactions")
-            tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
         }
     }
 
@@ -658,6 +649,39 @@ ListItem {
 
             }
 
+            Rectangle {
+                id: selectReactionBubble
+                visible: false
+                anchors {
+                    horizontalCenter: messageListItem.isOwnMessage ? messageBackground.left : messageBackground.right
+                    verticalCenter: messageBackground.verticalCenter
+                }
+                height: Theme.itemSizeExtraSmall
+                width: Theme.itemSizeExtraSmall
+                color: Theme.primaryColor
+                radius: parent.width / 2
+                opacity: 0.5
+            }
+
+            IconButton {
+                id: selectReactionButton
+                visible: selectReactionBubble.visible
+                icon.source: "image://theme/icon-s-favorite"
+                anchors.centerIn: selectReactionBubble
+                onClicked: {
+                    if (messageListItem.chatReactions) {
+                        Debug.log("Using chat reactions")
+                        messageListItem.messageReactions = chatReactions
+                        showItemCompletelyTimer.requestedIndex = index;
+                        showItemCompletelyTimer.start();
+                    } else {
+                        Debug.log("Obtaining message reactions")
+                        tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
+                    }
+                    selectReactionBubble.visible = false;
+                }
+            }
+
         }
 
     }
@@ -666,7 +690,7 @@ ListItem {
         id: reactionsColumn
         width: parent.width - ( 2 * Theme.horizontalPageMargin )
         anchors.top: messageTextRow.bottom
-        anchors.topMargin: Theme.paddingSmall
+        anchors.topMargin: Theme.paddingMedium
         anchors.horizontalCenter: parent.horizontalCenter
         visible: messageListItem.messageReactions ? ( messageListItem.messageReactions.length > 0 ? true : false ) : false
         opacity: messageListItem.messageReactions ? ( messageListItem.messageReactions.length > 0 ? 1 : 0 ) : 0
@@ -675,7 +699,7 @@ ListItem {
 
         Flickable {
             width: parent.width
-            height: reactionsResultRow.height + Theme.paddingSmall
+            height: reactionsResultRow.height + 2 * Theme.paddingMedium
             anchors.horizontalCenter: parent.horizontalCenter
             contentWidth: reactionsResultRow.width
             clip: true
@@ -691,13 +715,13 @@ ListItem {
 
                         Row {
                             id: singleReactionRow
-                            spacing: Theme.paddingSmall
+                            spacing: Theme.paddingMedium
 
                             Image {
                                 id: emojiPicture
                                 source: Emoji.getEmojiPath(modelData)
-                                width: status === Image.Ready ? Theme.fontSizeLarge : 0
-                                height: Theme.fontSizeLarge
+                                width: status === Image.Ready ? Theme.fontSizeExtraLarge : 0
+                                height: Theme.fontSizeExtraLarge
                             }
 
                         }
@@ -721,6 +745,7 @@ ListItem {
                                 // Reaction is not yet selected
                                 tdLibWrapper.addMessageReaction(chatId, messageId, modelData)
                                 messageReactions = null
+                                selectReactionBubble.visible = false
                             }
                         }
                     }
