@@ -448,7 +448,12 @@ function handleLink(link) {
         } else if (link.indexOf(tMePrefixHttp) === 0) {
             handleTMeLink(link, tMePrefixHttp);
         } else {
-            Qt.openUrlExternally(link);
+            Debug.log("Trying to open URL externally: " + link)
+            if (link.indexOf("://") === -1) {
+                Qt.openUrlExternally("https://" + link)
+            } else {
+                Qt.openUrlExternally(link);
+            }
         }
     }
 }
