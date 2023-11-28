@@ -40,12 +40,14 @@ public:
     Q_INVOKABLE void clear(bool contentOnly = false);
     Q_INVOKABLE void initialize(const QVariantMap &chatInformation);
     Q_INVOKABLE void triggerLoadMoreHistory();
+    Q_INVOKABLE void triggerLoadHistoryForMessage(qlonglong messageId);
     Q_INVOKABLE void triggerLoadMoreFuture();
     Q_INVOKABLE QVariantMap getChatInformation();
     Q_INVOKABLE QVariantMap getMessage(int index);
     Q_INVOKABLE int getLastReadMessageIndex();
     Q_INVOKABLE void setSearchQuery(const QString newSearchQuery);
 
+    Q_INVOKABLE int getMessageIndex(qlonglong messageId);
     QVariantMap smallPhoto() const;
     qlonglong getChatId() const;
 

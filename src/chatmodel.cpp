@@ -363,6 +363,15 @@ void ChatModel::initialize(const QVariantMap &chatInformation)
     tdLibWrapper->getChatHistory(chatId, this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong());
 }
 
+void ChatModel::triggerLoadHistoryForMessage(qlonglong messageId)
+{
+    if (!this->inIncrementalUpdate && !messages.isEmpty()) {
+        LOG("Trigger loading message with id..." << messageId);
+        this->inIncrementalUpdate = true;
+        this->tdLibWrapper->getChatHistory(chatId, messageId);
+    }
+}
+
 void ChatModel::triggerLoadMoreHistory()
 {
     if (!this->inIncrementalUpdate && !messages.isEmpty()) {
@@ -398,6 +407,17 @@ QVariantMap ChatModel::getMessage(int index)
         return messages.at(index)->messageData;
     }
     return QVariantMap();
+}
+
+int ChatModel::getMessageIndex(qlonglong messageId)
+{
+    if (messages.size() == 0) {
+        return -1;
+    }
+    if (messageIndexMap.contains(messageId)) {
+        return messageIndexMap.value(messageId);
+    }
+    return -1;
 }
 
 int ChatModel::getLastReadMessageIndex()
