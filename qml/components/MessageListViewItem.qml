@@ -454,8 +454,7 @@ ListItem {
                                         page.toggleMessageSelection(myMessage)
                                     } else {
                                         messageOptionsDrawer.open = false
-                                        messageOverlayLoader.overlayMessage = messageInReplyToRow.inReplyToMessage
-                                        messageOverlayLoader.active = true
+                                        chatPage.showMessage(messageInReplyToRow.inReplyToMessage.id, true)
                                     }
                                 }
                                 onPressAndHold: {
