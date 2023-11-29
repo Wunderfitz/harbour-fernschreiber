@@ -88,7 +88,8 @@ signals:
     void chatTitleUpdated(const QString &chatId, const QString &title);
     void chatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void messageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned);
-    void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
+    void usersReceived(const QString &extra, const QVariantList &senders, int totalUsers);
+    void messageSendersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
     void errorReceived(const int code, const QString &message, const QString &extra);
     void secretChat(qlonglong secretChatId, const QVariantMap &secretChat);
     void secretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
@@ -173,6 +174,7 @@ private:
     void processUpdateChatPinnedMessage(const QVariantMap &receivedInformation);
     void processUpdateMessageIsPinned(const QVariantMap &receivedInformation);
     void processUsers(const QVariantMap &receivedInformation);
+    void processMessageSenders(const QVariantMap &receivedInformation);
     void processError(const QVariantMap &receivedInformation);
     void processSecretChat(const QVariantMap &receivedInformation);
     void processUpdateSecretChat(const QVariantMap &receivedInformation);

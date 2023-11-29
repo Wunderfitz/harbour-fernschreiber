@@ -143,10 +143,11 @@ Page {
 
                         Connections {
                             target: tdLibWrapper
-                            onUsersReceived: {
+                            onMessageSendersReceived: {
+                                Debug.log("Received poll users...")
                                 if(extra === optionDelegate.usersResponseIdentifierString) {
-                                    for(var i = 0; i < userIds.length; i += 1) {
-                                        optionDelegate.users.append({id: userIds[i], user:tdLibWrapper.getUserInformation(userIds[i])});
+                                    for(var i = 0; i < senders.length; i += 1) {
+                                        optionDelegate.users.append({id: senders[i].user_id, user:tdLibWrapper.getUserInformation(senders[i].user_id)});
                                     }
                                     loadUsersTimer.start();
                                 }

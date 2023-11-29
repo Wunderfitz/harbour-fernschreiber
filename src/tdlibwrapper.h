@@ -323,6 +323,7 @@ signals:
     void chatTitleUpdated(const QString &chatId, const QString &title);
     void chatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
+    void messageSendersReceived(const QString &extra, const QVariantList &senders, int totalUsers);
     void errorReceived(int code, const QString &message, const QString &extra);
     void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
     void messageNotFound(qlonglong chatId, qlonglong messageId);
