@@ -46,6 +46,7 @@ namespace {
     const QString UNREAD_COUNT("unread_count");
     const QString UNREAD_MENTION_COUNT("unread_mention_count");
     const QString UNREAD_REACTION_COUNT("unread_reaction_count");
+    const QString AVAILABLE_REACTIONS("available_reactions");
     const QString TEXT("text");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
@@ -123,6 +124,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateChatPosition", &TDLibReceiver::processUpdateChatPosition);
     handlers.insert("updateChatReadInbox", &TDLibReceiver::processUpdateChatReadInbox);
     handlers.insert("updateChatReadOutbox", &TDLibReceiver::processUpdateChatReadOutbox);
+    handlers.insert("updateChatAvailableReactions", &TDLibReceiver::processUpdateChatAvailableReactions);
     handlers.insert("updateBasicGroup", &TDLibReceiver::processUpdateBasicGroup);
     handlers.insert("updateSupergroup", &TDLibReceiver::processUpdateSuperGroup);
     handlers.insert("updateChatOnlineMemberCount", &TDLibReceiver::processChatOnlineMemberCountUpdated);
@@ -361,6 +363,14 @@ void TDLibReceiver::processUpdateChatReadOutbox(const QVariantMap &receivedInfor
     const QString last_read_outbox_message_id(receivedInformation.value(LAST_READ_OUTBOX_MESSAGE_ID).toString());
     LOG("Sent messages read information updated for" << chat_id << "last read message ID:" << last_read_outbox_message_id);
     emit chatReadOutboxUpdated(chat_id, last_read_outbox_message_id);
+}
+
+void TDLibReceiver::processUpdateChatAvailableReactions(const QVariantMap &receivedInformation)
+{
+    const qlonglong chat_id(receivedInformation.value(CHAT_ID).toLongLong());
+    const QVariantMap available_reactions(receivedInformation.value(AVAILABLE_REACTIONS).toMap());
+    LOG("Available reactions updated for" << chat_id << "new information:" << available_reactions);
+    emit chatAvailableReactionsUpdated(chat_id, available_reactions);
 }
 
 void TDLibReceiver::processUpdateBasicGroup(const QVariantMap &receivedInformation)

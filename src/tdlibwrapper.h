@@ -280,6 +280,7 @@ signals:
     void chatPinnedUpdated(qlonglong chatId, bool isPinned);
     void chatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, int unreadCount);
     void chatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
+    void chatAvailableReactionsUpdated(const qlonglong &chatId, const QVariantMap &availableReactions);
     void userUpdated(const QString &userId, const QVariantMap &userInformation);
     void ownUserUpdated(const QVariantMap &userInformation);
     void basicGroupUpdated(qlonglong groupId);
@@ -354,6 +355,7 @@ public slots:
     void handleChatReceived(const QVariantMap &chatInformation);
     void handleUnreadMessageCountUpdated(const QVariantMap &messageCountInformation);
     void handleUnreadChatCountUpdated(const QVariantMap &chatCountInformation);
+    void handleAvailableReactionsUpdated(qlonglong chatId, const QVariantMap &availableReactions);
     void handleBasicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void handleSuperGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void handleStickerSets(const QVariantList &stickerSets);
