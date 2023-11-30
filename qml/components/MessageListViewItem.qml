@@ -26,7 +26,6 @@ import "../js/debug.js" as Debug
 ListItem {
     id: messageListItem
     contentHeight: messageBackground.height + Theme.paddingMedium + ( reactionsColumn.visible ? reactionsColumn.height : 0 )
-    Behavior on contentHeight { NumberAnimation { duration: 200 } }
     property var chatId
     property var messageId
     property int messageIndex
