@@ -468,7 +468,12 @@ ListItem {
                                         page.toggleMessageSelection(myMessage)
                                     } else {
                                         messageOptionsDrawer.open = false
-                                        chatPage.showMessage(messageInReplyToRow.inReplyToMessage.id, true)
+                                        if(appSettings.goToQuotedMessage) {
+                                            chatPage.showMessage(messageInReplyToRow.inReplyToMessage.id, true)
+                                        } else {
+                                            messageOverlayLoader.active = true
+                                            messageOverlayLoader.overlayMessage = messageInReplyToRow.inReplyToMessage
+                                        }
                                     }
                                 }
                                 onPressAndHold: {

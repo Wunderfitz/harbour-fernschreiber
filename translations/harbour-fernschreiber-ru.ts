@@ -1636,6 +1636,14 @@
         <source>Hide content in notifications</source>
         <translation>Не показывать содержимое сообщений в уведомлениях</translation>
     </message>
+    <message>
+        <source>Go to quoted message</source>
+        <translation>Переходить к цитируемому сообщению</translation>
+    </message>
+    <message>
+        <source>When tapping a quoted message, open it in chat instead of showing it in an overlay.</source>
+        <translation>По нажатию на цитируемое сообщение, переходить к нему в чате вместо отображения во всплывающем окне.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
