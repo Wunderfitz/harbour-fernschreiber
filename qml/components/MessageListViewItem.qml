@@ -47,6 +47,7 @@ ListItem {
     readonly property bool canDeleteMessage: myMessage.can_be_deleted_for_all_users || (myMessage.can_be_deleted_only_for_self && myMessage.chat_id === page.myUserId)
     property bool hasContentComponent
     property bool additionalOptionsOpened
+    property bool wasNavigatedTo: false
 
     readonly property var additionalItemsModel: (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ?
         extraContentLoader.item.extraContextMenuItems : 0
@@ -67,7 +68,7 @@ ListItem {
     property var chatReactions
     property var messageReactions
 
-    highlighted: (down || isSelected || additionalOptionsOpened) && !menuOpen
+    highlighted: (down || isSelected || additionalOptionsOpened || wasNavigatedTo) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
 
     signal replyToMessage()
@@ -193,6 +194,12 @@ ListItem {
         onElementSelected: {
             if (elementIndex !== index) {
                 selectReactionBubble.visible = false;
+            }
+        }
+        onNavigatedTo: {
+            if (targetIndex === index) {
+                messageListItem.wasNavigatedTo = true;
+                restoreNormalityTimer.start();
             }
         }
     }
@@ -324,6 +331,19 @@ ListItem {
                 chatView.highlightMoveDuration = 0;
                 chatView.highlightResizeDuration = 0;
             }
+        }
+    }
+
+    Timer {
+        id: restoreNormalityTimer
+
+        repeat: false
+        running: false
+        interval: 1000
+        triggeredOnStart: false
+        onTriggered: {
+            Debug.log("Restore normality for index " + index);
+            messageListItem.wasNavigatedTo = false;
         }
     }
 

@@ -70,6 +70,7 @@ Page {
     property var availableReactions
     signal resetElements()
     signal elementSelected(int elementIndex)
+    signal navigatedTo(int targetIndex)
 
     states: [
         State {
@@ -420,6 +421,7 @@ Page {
             if(index !== -1) {
                 chatPage.messageIdToScrollTo = "";
                 chatView.scrollToIndex(index);
+                navigatedTo(index);
             } else if(initialRun) {
                 // we only want to do this once.
                 chatModel.triggerLoadHistoryForMessage(chatPage.messageIdToScrollTo)
