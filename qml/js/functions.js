@@ -541,6 +541,6 @@ function getMessagesNeededForwardPermissions(messages) {
     return neededPermissions
 }
 
-function isTablet(appWindow) {
+function isWidescreen(appWindow) {
     return (appWindow.deviceOrientation & Silica.Orientation.LandscapeMask) || Silica.Screen.sizeCategory === Silica.Screen.Large || Silica.Screen.sizeCategory === Silica.Screen.ExtraLarge
 }

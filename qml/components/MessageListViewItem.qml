@@ -129,7 +129,7 @@ ListItem {
     }
 
     function getContentWidthMultiplier() {
-        return Functions.isTablet(appWindow) ? 0.4 : 1.0
+        return Functions.isWidescreen(appWindow) ? 0.4 : 1.0
     }
 
     onClicked: {
@@ -369,10 +369,10 @@ ListItem {
         id: messageTextRow
         spacing: Theme.paddingSmall
         width: precalculatedValues.entryWidth
-        anchors.horizontalCenter: Functions.isTablet(appWindow) ? undefined : parent.horizontalCenter
-        anchors.left: Functions.isTablet(appWindow) ? parent.left : undefined
+        anchors.horizontalCenter: Functions.isWidescreen(appWindow) ? undefined : parent.horizontalCenter
+        anchors.left: Functions.isWidescreen(appWindow) ? parent.left : undefined
         y: Theme.paddingSmall
-        anchors.leftMargin: Functions.isTablet(appWindow) ? Theme.paddingMedium : undefined
+        anchors.leftMargin: Functions.isWidescreen(appWindow) ? Theme.paddingMedium : undefined
 
         Loader {
             id: profileThumbnailLoader
