@@ -128,6 +128,10 @@ ListItem {
         selectReactionBubble.visible = false;
     }
 
+    function getContentWidthMultiplier() {
+        return Functions.isTablet(appWindow) ? 0.4 : 1.0
+    }
+
     onClicked: {
         if (messageListItem.precalculatedValues.pageIsSelecting) {
             page.toggleMessageSelection(myMessage);
@@ -365,8 +369,10 @@ ListItem {
         id: messageTextRow
         spacing: Theme.paddingSmall
         width: precalculatedValues.entryWidth
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter: Functions.isTablet(appWindow) ? undefined : parent.horizontalCenter
+        anchors.left: Functions.isTablet(appWindow) ? parent.left : undefined
         y: Theme.paddingSmall
+        anchors.leftMargin: Functions.isTablet(appWindow) ? Theme.paddingMedium : undefined
 
         Loader {
             id: profileThumbnailLoader
@@ -596,7 +602,7 @@ ListItem {
                     id: webPagePreviewLoader
                     active: false
                     asynchronous: true
-                    width: parent.width
+                    width: parent.width * getContentWidthMultiplier()
                     height: (status === Loader.Ready) ? item.implicitHeight : myMessage.content.web_page ? precalculatedValues.webPagePreviewHeight : 0
 
                     sourceComponent: Component {
@@ -610,7 +616,7 @@ ListItem {
 
                 Loader {
                     id: extraContentLoader
-                    width: parent.width
+                    width: parent.width * getContentWidthMultiplier()
                     asynchronous: true
                     height: item ? item.height : (messageListItem.hasContentComponent ? chatView.getContentComponentHeight(model.content_type, myMessage.content, width) : 0)
                 }
