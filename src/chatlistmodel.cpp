@@ -407,7 +407,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSetting
     connect(tdLibWrapper, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)), this, SLOT(handleChatDraftMessageUpdated(qlonglong, QVariantMap, QString)));
     connect(tdLibWrapper, SIGNAL(chatUnreadMentionCountUpdated(qlonglong, int)), this, SLOT(handleChatUnreadMentionCountUpdated(qlonglong, int)));
     connect(tdLibWrapper, SIGNAL(chatUnreadReactionCountUpdated(qlonglong, int)), this, SLOT(handleChatUnreadReactionCountUpdated(qlonglong, int)));
-    connect(tdLibWrapper, SIGNAL(chatAvailableReactionsUpdated(qlonglong, QString)), this, SLOT(handleChatAvailableReactionsUpdated(qlonglong, QString)));
+    connect(tdLibWrapper, SIGNAL(chatAvailableReactionsUpdated(qlonglong,QVariantMap)), this, SLOT(handleChatAvailableReactionsUpdated(qlonglong,QVariantMap)));
 
     // Don't start the timer until we have at least one chat
     relativeTimeRefreshTimer = new QTimer(this);
