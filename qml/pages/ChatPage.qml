@@ -54,6 +54,7 @@ Page {
     property bool iterativeInitialization: false;
     property var messageToShow;
     property string messageIdToShow;
+    property string messageIdToScrollTo;
     readonly property bool userIsMember: ((isPrivateChat || isSecretChat) && chatInformation["@type"]) || // should be optimized
                                 (isBasicGroup || isSuperGroup) && (
                                     (chatGroupInformation.status["@type"] === "chatMemberStatusMember")
@@ -409,6 +410,23 @@ Page {
         chatPage.focus = true;
     }
 
+    function showMessage(messageId, initialRun) {
+        // Means we tapped a quoted message and had to load it.
+        if(initialRun) {
+            chatPage.messageIdToScrollTo = messageId
+        }
+        if (chatPage.messageIdToScrollTo && chatPage.messageIdToScrollTo != "") {
+            var index = chatModel.getMessageIndex(chatPage.messageIdToScrollTo);
+            if(index !== -1) {
+                chatPage.messageIdToScrollTo = "";
+                chatView.scrollToIndex(index);
+            } else if(initialRun) {
+                // we only want to do this once.
+                chatModel.triggerLoadHistoryForMessage(chatPage.messageIdToScrollTo)
+            }
+        }
+    }
+
     Timer {
         id: forwardMessagesTimer
         interval: 200
@@ -657,6 +675,8 @@ Page {
             if (chatView.height > chatView.contentHeight) {
                 Debug.log("[ChatPage] Chat content quite small...");
                 viewMessageTimer.queueViewMessage(chatView.count - 1);
+            } else if (chatPage.messageIdToScrollTo && chatPage.messageIdToScrollTo != "") {
+                showMessage(chatPage.messageIdToScrollTo, false)
             }
             chatViewCooldownTimer.restart();
             chatViewStartupReadTimer.restart();
