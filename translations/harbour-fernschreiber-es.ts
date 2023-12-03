@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>About Telegram</source>
-        <translation>Telegram</translation>
+        <translation>Telegrama</translation>
     </message>
     <message>
         <source>This product uses the Telegram API but is not endorsed or certified by Telegram.</source>
@@ -173,7 +173,7 @@
     </message>
     <message>
         <source>New Secret Chat</source>
-        <translation>Crear conversación secreta</translation>
+        <translation>Crear Charla Secreta</translation>
     </message>
     <message>
         <source>Unmute Chat</source>
@@ -193,7 +193,7 @@
     <message>
         <source>Loading common chats…</source>
         <comment>chats you have in common with a user</comment>
-        <translation>Cargando conversaciones comunes…</translation>
+        <translation>Cargando charlas comunes…</translation>
     </message>
     <message>
         <source>Loading group members…</source>
@@ -274,11 +274,11 @@
     </message>
     <message>
         <source>Unpin chat</source>
-        <translation>Desanclar conversación</translation>
+        <translation>Desanclar charla</translation>
     </message>
     <message>
         <source>Pin chat</source>
-        <translation>Anclar conversación</translation>
+        <translation>Anclar charla</translation>
     </message>
     <message>
         <source>Unmute chat</source>
@@ -339,7 +339,7 @@
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation>Esta conversación está vacía.</translation>
+        <translation>Esta charla está vacía.</translation>
     </message>
     <message>
         <source>Leave Chat</source>
@@ -351,7 +351,7 @@
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Saliendo de conversación</translation>
+        <translation>Saliendo de charla</translation>
     </message>
     <message>
         <source>You joined the chat %1</source>
@@ -405,15 +405,15 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>Esta conversación secreta no está lista. El contacto no está conectado.</translation>
+        <translation>Esta charla secreta no está lista. El contacto no está conectado.</translation>
     </message>
     <message>
         <source>Closing chat</source>
-        <translation>Cerrando la conversación</translation>
+        <translation>Cerrando charla</translation>
     </message>
     <message>
         <source>Close Chat</source>
-        <translation>Cerrar conversación</translation>
+        <translation>Cerrar charla</translation>
     </message>
     <message>
         <source>Search in Chat</source>
@@ -473,11 +473,11 @@
     </message>
     <message>
         <source>Deleting chat</source>
-        <translation>Borrando la conversación</translation>
+        <translation>Borrando charla</translation>
     </message>
     <message>
         <source>Delete Chat</source>
-        <translation>Borrar conversación</translation>
+        <translation>Borrar Charla</translation>
     </message>
     <message>
         <source>Deleted User</source>
@@ -492,11 +492,11 @@
     <name>ChatSelectionPage</name>
     <message>
         <source>Select Chat</source>
-        <translation>Seleccionar conversación</translation>
+        <translation>Seleccionar Charla</translation>
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>No hay conversaciones.</translation>
+        <translation>No hay charlas.</translation>
     </message>
 </context>
 <context>
@@ -536,7 +536,7 @@
         <source>chats</source>
         <translation>
             <numerusform>conversación</numerusform>
-            <numerusform>conversaciones</numerusform>
+            <numerusform>charlas</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -577,7 +577,7 @@
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation>Cambiar detalles de conversación</translation>
+        <translation>Cambiar detalles de Charla</translation>
     </message>
     <message>
         <source>Invite Users</source>
@@ -612,7 +612,7 @@
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation>Establecer cuánto tiempo debe esperar cada miembro de conversación entre mensajes</translation>
+        <translation>Establecer cuánto tiempo debe esperar cada miembro de charla entre Mensajes</translation>
     </message>
 </context>
 <context>
@@ -669,7 +669,7 @@
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>registrado a Telegram</translation>
+        <translation>registrado a Telegrama</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
@@ -696,11 +696,11 @@
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>dejó esta conversación</translation>
+        <translation>dejó esta charla</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>dejó esta conversación</translation>
+        <translation>dejó esta charla</translation>
     </message>
     <message>
         <source>sent a voice note</source>
@@ -755,7 +755,7 @@
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>cambió la foto de la conversación</translation>
+        <translation>cambió foto de charla</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
@@ -764,7 +764,7 @@
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>borró foto de conversación</translation>
+        <translation>borró foto de charla</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
@@ -773,11 +773,11 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>cambió ajustes TTL en conversación secreta</translation>
+        <translation>cambió ajustes TTL en charla secreta</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation>cambió ajustes TTL en conversación secreta</translation>
+        <translation>cambió ajustes TTL en charla secreta</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
@@ -796,11 +796,11 @@
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>creó pantallazo a esta conversación</translation>
+        <translation>creó pantallazo a esta charla</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>creó pantallazo a esta conversación</translation>
+        <translation>creó pantallazo a esta charla</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
@@ -853,21 +853,21 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>ha añadido %1 a conversación</translation>
+        <translation>ha añadido %1 a charla</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>ha quitado %1 de conversación</translation>
+        <translation>ha quitado %1 de charla</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>ha añadido %1 a conversación</translation>
+        <translation>ha añadido %1 a charla</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>ha quitado %1 de conversación</translation>
+        <translation>ha quitado %1 de charla</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
@@ -887,11 +887,11 @@
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>envió juego</translation>
+        <translation>envió un juego</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>envió juego</translation>
+        <translation>envió un juego</translation>
     </message>
     <message>
         <source>sent a video note</source>
@@ -1211,7 +1211,7 @@
     </message>
     <message>
         <source>Loading chat list...</source>
-        <translation>cargando lista de conversación...</translation>
+        <translation>cargando lista de charla...</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -1219,11 +1219,11 @@
     </message>
     <message>
         <source>You don&apos;t have any chats yet.</source>
-        <translation>No hay conversaciones.</translation>
+        <translation>No hay charlas.</translation>
     </message>
     <message>
         <source>New Chat</source>
-        <translation>Crear conversación</translation>
+        <translation>Crear Charla</translation>
     </message>
     <message>
         <source>Filter your chats...</source>
@@ -1489,7 +1489,7 @@
     </message>
     <message>
         <source>Show stickers as emojis</source>
-        <translation>Mostrar pegatinas como emoticonos</translation>
+        <translation>Mostrar pegatinas como Emoticonos</translation>
     </message>
     <message>
         <source>Only display emojis instead of the actual stickers</source>
@@ -1497,7 +1497,7 @@
     </message>
     <message>
         <source>Show stickers as images</source>
-        <translation>Mostrar pegatinas como imágenes</translation>
+        <translation>Mostrar pegatinas como Imágenes</translation>
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
@@ -1505,7 +1505,7 @@
     </message>
     <message>
         <source>Animate stickers</source>
-        <translation>Mostrar pegatinas animadas</translation>
+        <translation>Mostrar pegatinas Animadas</translation>
     </message>
 </context>
 <context>
@@ -1524,15 +1524,15 @@
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation>Enfocar entrada de texto a conversación</translation>
+        <translation>Enfocar entrada de texto de Charla</translation>
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation>Enfoca área de entrada de texto al ingresar a  conversación</translation>
+        <translation>Enfoca área de entrada de texto al ingresar a charla</translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation>Enfocar área de entrada de texto</translation>
+        <translation>Enfocar área de entrada de Texto</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
@@ -1540,11 +1540,11 @@
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation>Marcar mensajes como leídos</translation>
+        <translation>Marcar mensajes como Leídos</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
-        <translation>Si esta habilitado, apl espera un segundo hasta que mensaje que está en pantalla se marque como leído. Si deshabilita esta función,  mensajes se marcarán inmediatamente como leído una vez que esté en pantalla sin desplazarse a mensaje</translation>
+        <translation>Si esta habilitado, Apl espera un segundo hasta que mensaje que está en monitor se marque como leído. Si deshabilita esta función,  mensajes se marcarán inmediatamente como leído una vez que esté en monitor sin desplazarse a mensaje</translation>
     </message>
     <message>
         <source>Open-with menu integration</source>
@@ -1576,19 +1576,19 @@
     </message>
     <message>
         <source>Notification turns on the display</source>
-        <translation>Mostrar notificación por pantalla</translation>
+        <translation>Mostrar notificación por Monitor</translation>
     </message>
     <message>
         <source>Enable notification sounds</source>
-        <translation>Habilitar sonidos notificación</translation>
+        <translation>Habilitar sonidos de Notificación</translation>
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>Cuando sonidos están habilitados, Ferni utilizará sonido de notificación actual de Sailfish OS para los grupos, que se puede ajustar a configuración del sistema.</translation>
+        <translation>Cuando los sonidos están habilitados, Ferni utilizará sonido de notificación actual de Sailfish OS para los grupos, que se puede ajustar a configuración del sistema.</translation>
     </message>
     <message>
         <source>Always append message preview to notifications</source>
-        <translation>Agregar vista previa mensaje a notificaciones</translation>
+        <translation>Vista previa de mensaje en Notificaciones</translation>
     </message>
     <message>
         <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
@@ -1596,15 +1596,15 @@
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation>Resaltar mensajes no leídos</translation>
+        <translation>Resaltar mensajes no Leídos</translation>
     </message>
     <message>
         <source>Highlight Conversations with unread messages</source>
-        <translation>Resaltar conversaciones a mensajes no leídos</translation>
+        <translation>Resalta la charla en mensajes no leídos</translation>
     </message>
     <message>
         <source>Hide content in notifications</source>
-        <translation>Ocultar contenido a notificaciones</translation>
+        <translation>Ocultar contenido de notificaciones</translation>
     </message>
     <message>
         <source>Go to quoted message</source>
@@ -1630,7 +1630,7 @@
     </message>
     <message>
         <source>Allow chat invites</source>
-        <translation>Permitir invitaciones de grupo</translation>
+        <translation>Permitir invitaciones de Grupo</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
@@ -1650,7 +1650,7 @@
     </message>
     <message>
         <source>Allow finding by phone number</source>
-        <translation>Permitir buscarme por número</translation>
+        <translation>Permitir buscarme por Número</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
@@ -1658,7 +1658,7 @@
     </message>
     <message>
         <source>Show link in forwarded messages</source>
-        <translation>Mostrar enlace a mensajes reenviados</translation>
+        <translation>Mostrar enlace a mensajes Reenviados</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
@@ -1666,7 +1666,7 @@
     </message>
     <message>
         <source>Show phone number</source>
-        <translation>Mostrar número telefónico</translation>
+        <translation>Mostrar número Telefónico</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
@@ -1674,7 +1674,7 @@
     </message>
     <message>
         <source>Show profile photo</source>
-        <translation>Mostrar foto de perfil</translation>
+        <translation>Mostrar foto de Perfil</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
@@ -1682,7 +1682,7 @@
     </message>
     <message>
         <source>Show status</source>
-        <translation>Mostrar estado</translation>
+        <translation>Mostrar Estado</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
@@ -1690,7 +1690,7 @@
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
-        <translation>Enviar ubicación de Robot enlínea</translation>
+        <translation>Enviar ubicación de Robot Enlínea</translation>
     </message>
     <message>
         <source>Some inline bots request location data when using them</source>
@@ -1767,15 +1767,15 @@
     </message>
     <message>
         <source>Enable online-only mode</source>
-        <translation>Modo solo enlínea</translation>
+        <translation>Modo solo Enlínea</translation>
     </message>
     <message>
         <source>Disables offline caching. Certain features may be limited or missing in this mode. Changes require a restart of Fernschreiber to take effect.</source>
-        <translation>Deshabilita almacenamiento en caché sin conexión. Algunas funciones pueden estar limitadas o ausentes en este modo. Se requiere reiniciar Ferni para efecto.</translation>
+        <translation>Deshabilita el almacenamiento en caché sin conexión. Algunas funciones pueden estar limitadas o ausentes en este modo. Se requiere reiniciar Ferni para efecto.</translation>
     </message>
     <message>
         <source>Enable storage optimizer</source>
-        <translation>Optimizador de almacenamiento</translation>
+        <translation>Optimizar Almacenamiento</translation>
     </message>
 </context>
 <context>
@@ -1845,7 +1845,7 @@
     </message>
     <message>
         <source>Synchronize Contacts with Telegram</source>
-        <translation>Sincronizar Telegram</translation>
+        <translation>Sincronizar Telegrama</translation>
     </message>
 </context>
 <context>
@@ -2226,12 +2226,12 @@
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>cambió ajustes de TTL de conversación secreta</translation>
+        <translation>cambió ajustes de TTL de charla secreta</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>cambió ajustes de TTL de conversación secreta</translation>
+        <translation>cambió ajustes de TTL de charla secreta</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
@@ -2250,11 +2250,11 @@
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>creó pantallazo a conversación</translation>
+        <translation>creó pantallazo de charla</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>creó pantallazo a conversación</translation>
+        <translation>creó pantallazo a charla</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
