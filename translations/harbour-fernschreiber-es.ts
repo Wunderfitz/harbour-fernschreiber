@@ -1608,11 +1608,11 @@
     </message>
     <message>
         <source>Go to quoted message</source>
-        <translation type="unfinished"></translation>
+        <translation>Ir a mensaje citado</translation>
     </message>
     <message>
         <source>When tapping a quoted message, open it in chat instead of showing it in an overlay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Al Pulsar mensaje citado, abrirá en Charla en lugar de mostrarlo en una superposición.</translation>
     </message>
 </context>
 <context>
@@ -1725,9 +1725,9 @@
     </message>
     <message numerus="yes">
         <source>%1 day(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 dia</numerusform>
+            <numerusform>%1 dias</numerusform>
         </translation>
     </message>
     <message>
@@ -2351,11 +2351,11 @@
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>envió juego</translation>
+        <translation>envió un juego</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>envió juego</translation>
+        <translation>envió un juego</translation>
     </message>
 </context>
 </TS>
