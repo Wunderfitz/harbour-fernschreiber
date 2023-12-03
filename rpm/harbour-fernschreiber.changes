@@ -12,6 +12,26 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Dec 03 2023 Sebastian J. Wolf <sebastian@ygriega.de> 0.17
+- Update to TDLib 1.8.21, expect some hiccups ;)
+- Added contacts sync (OpenRepos builds only)
+- Tweaks to reaction handling (opens now on double click or click + star)
+- Option to jump to quoted message
+- Option to highlight unread conversations
+- Option to suppress notification previews
+- Option to append last message content to notifications
+- Added "unread mention" indicator to chat list
+- Improve message when search yields no results
+- New unread info for chats with high amount of unread messages
+- Setting for session inactivity timeout
+- UI improvements in landscape mode
+- Fix: Restore video functionality on SFOS 4.5
+- Fix: Chat list timestamp now updated more reliably
+- Fix: Faster reconnect after network changes
+- Fix: Some URLs couldn't be opened
+- Updated translations for several languages
+- Thanks to monich, nephros, arustg, jgibbon, carlosgonz0, okruhliak, dscheinah, pherjung and mbarashkov for your contributions
+
 * Sun Jun 12 2022 Sebastian J. Wolf <sebastian@ygriega.de> 0.16
 - Support message reactions
 - Support t.me/+... links
