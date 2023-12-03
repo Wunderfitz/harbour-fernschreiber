@@ -1241,10 +1241,9 @@ Page {
                             manuallyScrolledToBottom = chatView.atYEnd
                         }
 
-                        function scrollToIndex(index) {
+                        function scrollToIndex(index, mode) {
                             if(index > 0 && index < chatView.count) {
-                                positionViewAtIndex(index, ListView.Contain)
-    //                            currentIndex = index;
+                                positionViewAtIndex(index, (mode === undefined) ? ListView.Contain : mode)
                                 if(index === chatView.count - 1) {
                                     manuallyScrolledToBottom = true;
                                 }

@@ -325,11 +325,15 @@ ListItem {
         onTriggered: {
             Debug.log("Show item completely timer triggered, requested index: " + requestedIndex + ", current index: " + index)
             if (requestedIndex === index) {
-                chatView.highlightMoveDuration = -1;
-                chatView.highlightResizeDuration = -1;
-                chatView.scrollToIndex(requestedIndex);
-                chatView.highlightMoveDuration = 0;
-                chatView.highlightResizeDuration = 0;
+                var p = chatView.contentItem.mapFromItem(reactionsColumn, 0, 0)
+                if (chatView.contentY > p.y || p.y + reactionsColumn.height > chatView.contentY + chatView.height) {
+                    Debug.log("Moving reactions for item at", requestedIndex, "info the view")
+                    chatView.highlightMoveDuration = -1
+                    chatView.highlightResizeDuration = -1
+                    chatView.scrollToIndex(requestedIndex, height <= chatView.height ? ListView.Contain : ListView.End)
+                    chatView.highlightMoveDuration = 0
+                    chatView.highlightResizeDuration = 0
+                }
             }
         }
     }
