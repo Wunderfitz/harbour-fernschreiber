@@ -58,7 +58,7 @@ ListItem {
         (additionalItemsModel ? additionalItemsModel.length : 0)
     readonly property bool deleteMessageIsOnlyExtraOption: canDeleteMessage && !numberOfExtraOptionsOtherThanDeleteMessage
 
-    readonly property int maxContextMenuItemCount: page.isPortrait ? 5 : 4
+    readonly property int maxContextMenuItemCount: page.isPortrait ? 5 : Functions.isWidescreen(appWindow) ? 6 : 4
     readonly property int baseContextMenuItemCount: (canReplyToMessage ? 1 : 0) +
         (myMessage.can_be_edited ? 1 : 0) + 2 /* "Select Message" and "More Options..." */
     readonly property bool showCopyMessageToClipboardMenuItem: (baseContextMenuItemCount + 1) <= maxContextMenuItemCount
