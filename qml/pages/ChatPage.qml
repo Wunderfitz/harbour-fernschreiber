@@ -781,7 +781,7 @@ Page {
             NamedAction {
                 visible: messageOptionsDrawer.showCopyMessageToClipboardMenuItem
                 name: qsTr("Copy Message to Clipboard")
-                action: messageOptionsDrawer.myMessage.copyMessageToClipboard
+                action: messageOptionsDrawer.sourceItem.copyMessageToClipboard
             },
             NamedAction {
                 visible: messageOptionsDrawer.showForwardMessageMenuItem && messageOptionsDrawer.myMessage.can_be_forwarded
