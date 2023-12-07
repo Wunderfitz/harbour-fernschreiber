@@ -64,6 +64,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/PollPreview.qml \
     qml/components/PressEffect.qml \
     qml/components/ProfilePictureList.qml \
+    qml/components/ReactionButton.qml \
     qml/components/ReplyMarkupButtons.qml \
     qml/components/StickerPicker.qml \
     qml/components/PhotoTextsListItem.qml \
