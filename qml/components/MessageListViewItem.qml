@@ -47,6 +47,7 @@ ListItem {
     readonly property bool canDeleteMessage: myMessage.can_be_deleted_for_all_users || (myMessage.can_be_deleted_only_for_self && myMessage.chat_id === page.myUserId)
     property bool hasContentComponent
     property bool additionalOptionsOpened
+    property bool wasNavigatedTo: false
 
     readonly property var additionalItemsModel: (extraContentLoader.item && ("extraContextMenuItems" in extraContentLoader.item)) ?
         extraContentLoader.item.extraContextMenuItems : 0
@@ -67,7 +68,7 @@ ListItem {
     property var chatReactions
     property var messageReactions
 
-    highlighted: (down || isSelected || additionalOptionsOpened) && !menuOpen
+    highlighted: (down || isSelected || additionalOptionsOpened || wasNavigatedTo) && !menuOpen
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
 
     signal replyToMessage()
@@ -115,6 +116,23 @@ ListItem {
         return interactionText;
     }
 
+    function openReactions() {
+        if (messageListItem.chatReactions) {
+            Debug.log("Using chat reactions")
+            messageListItem.messageReactions = chatReactions
+            showItemCompletelyTimer.requestedIndex = index;
+            showItemCompletelyTimer.start();
+        } else {
+            Debug.log("Obtaining message reactions")
+            tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
+        }
+        selectReactionBubble.visible = false;
+    }
+
+    function getContentWidthMultiplier() {
+        return Functions.isWidescreen(appWindow) ? 0.4 : 1.0
+    }
+
     onClicked: {
         if (messageListItem.precalculatedValues.pageIsSelecting) {
             page.toggleMessageSelection(myMessage);
@@ -132,20 +150,16 @@ ListItem {
 
             if (messageListItem.messageReactions) {
                 messageListItem.messageReactions = null;
+                selectReactionBubble.visible = false;
+            } else {
+                selectReactionBubble.visible = !selectReactionBubble.visible;
+                elementSelected(index);
             }
         }
     }
 
     onDoubleClicked: {
-        if (messageListItem.chatReactions) {
-            Debug.log("Using chat reactions")
-            messageListItem.messageReactions = chatReactions
-            showItemCompletelyTimer.requestedIndex = index;
-            showItemCompletelyTimer.start();
-        } else {
-            Debug.log("Obtaining message reactions")
-            tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
-        }
+        openReactions();
     }
 
     onPressAndHold: {
@@ -167,6 +181,25 @@ ListItem {
         onOpenChanged: {
             if (!messageOptionsDrawer.open) {
                 additionalOptionsOpened = false
+            }
+        }
+    }
+
+    Connections {
+        target: chatPage
+        onResetElements: {
+            messageListItem.messageReactions = null;
+            selectReactionBubble.visible = false;
+        }
+        onElementSelected: {
+            if (elementIndex !== index) {
+                selectReactionBubble.visible = false;
+            }
+        }
+        onNavigatedTo: {
+            if (targetIndex === index) {
+                messageListItem.wasNavigatedTo = true;
+                restoreNormalityTimer.start();
             }
         }
     }
@@ -275,6 +308,9 @@ ListItem {
                 messageListItem.messageReactions = null;
             }
         }
+        onReactionsUpdated: {
+            chatReactions = tdLibWrapper.getChatReactions(page.chatInformation.id);
+        }
     }
 
     Timer {
@@ -289,12 +325,29 @@ ListItem {
         onTriggered: {
             Debug.log("Show item completely timer triggered, requested index: " + requestedIndex + ", current index: " + index)
             if (requestedIndex === index) {
-                chatView.highlightMoveDuration = -1;
-                chatView.highlightResizeDuration = -1;
-                chatView.scrollToIndex(requestedIndex);
-                chatView.highlightMoveDuration = 0;
-                chatView.highlightResizeDuration = 0;
+                var p = chatView.contentItem.mapFromItem(reactionsColumn, 0, 0)
+                if (chatView.contentY > p.y || p.y + reactionsColumn.height > chatView.contentY + chatView.height) {
+                    Debug.log("Moving reactions for item at", requestedIndex, "info the view")
+                    chatView.highlightMoveDuration = -1
+                    chatView.highlightResizeDuration = -1
+                    chatView.scrollToIndex(requestedIndex, height <= chatView.height ? ListView.Contain : ListView.End)
+                    chatView.highlightMoveDuration = 0
+                    chatView.highlightResizeDuration = 0
+                }
             }
+        }
+    }
+
+    Timer {
+        id: restoreNormalityTimer
+
+        repeat: false
+        running: false
+        interval: 1000
+        triggeredOnStart: false
+        onTriggered: {
+            Debug.log("Restore normality for index " + index);
+            messageListItem.wasNavigatedTo = false;
         }
     }
 
@@ -340,8 +393,10 @@ ListItem {
         id: messageTextRow
         spacing: Theme.paddingSmall
         width: precalculatedValues.entryWidth
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter: Functions.isWidescreen(appWindow) ? undefined : parent.horizontalCenter
+        anchors.left: Functions.isWidescreen(appWindow) ? parent.left : undefined
         y: Theme.paddingSmall
+        anchors.leftMargin: Functions.isWidescreen(appWindow) ? Theme.paddingMedium : undefined
 
         Loader {
             id: profileThumbnailLoader
@@ -458,8 +513,12 @@ ListItem {
                                         page.toggleMessageSelection(myMessage)
                                     } else {
                                         messageOptionsDrawer.open = false
-                                        messageOverlayLoader.overlayMessage = messageInReplyToRow.inReplyToMessage
-                                        messageOverlayLoader.active = true
+                                        if(appSettings.goToQuotedMessage) {
+                                            chatPage.showMessage(messageInReplyToRow.inReplyToMessage.id, true)
+                                        } else {
+                                            messageOverlayLoader.active = true
+                                            messageOverlayLoader.overlayMessage = messageInReplyToRow.inReplyToMessage
+                                        }
                                     }
                                 }
                                 onPressAndHold: {
@@ -571,7 +630,7 @@ ListItem {
                     id: webPagePreviewLoader
                     active: false
                     asynchronous: true
-                    width: parent.width
+                    width: parent.width * getContentWidthMultiplier()
                     height: (status === Loader.Ready) ? item.implicitHeight : myMessage.content.web_page ? precalculatedValues.webPagePreviewHeight : 0
 
                     sourceComponent: Component {
@@ -585,7 +644,7 @@ ListItem {
 
                 Loader {
                     id: extraContentLoader
-                    width: parent.width
+                    width: parent.width * getContentWidthMultiplier()
                     asynchronous: true
                     height: item ? item.height : (messageListItem.hasContentComponent ? chatView.getContentComponentHeight(model.content_type, myMessage.content, width) : 0)
                 }
@@ -652,10 +711,48 @@ ListItem {
                             textFormat: Text.StyledText
                             maximumLineCount: 1
                             elide: Text.ElideRight
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    if (messageListItem.messageReactions) {
+                                        messageListItem.messageReactions = null;
+                                        selectReactionBubble.visible = false;
+                                    } else {
+                                        openReactions();
+                                    }
+                                }
+                            }
                         }
                     }
                 }
 
+            }
+
+            Rectangle {
+                id: selectReactionBubble
+                visible: false
+                opacity: visible ? 0.5 : 0.0
+                Behavior on opacity { NumberAnimation {} }
+                anchors {
+                    horizontalCenter: messageListItem.isOwnMessage ? messageBackground.left : messageBackground.right
+                    verticalCenter: messageBackground.verticalCenter
+                }
+                height: Theme.itemSizeExtraSmall
+                width: Theme.itemSizeExtraSmall
+                color: Theme.primaryColor
+                radius: parent.width / 2
+            }
+
+            IconButton {
+                id: selectReactionButton
+                visible: selectReactionBubble.visible
+                opacity: visible ? 1.0 : 0.0
+                Behavior on opacity { NumberAnimation {} }
+                icon.source: "image://theme/icon-s-favorite"
+                anchors.centerIn: selectReactionBubble
+                onClicked: {
+                    openReactions();
+                }
             }
 
         }
@@ -666,7 +763,7 @@ ListItem {
         id: reactionsColumn
         width: parent.width - ( 2 * Theme.horizontalPageMargin )
         anchors.top: messageTextRow.bottom
-        anchors.topMargin: Theme.paddingSmall
+        anchors.topMargin: Theme.paddingMedium
         anchors.horizontalCenter: parent.horizontalCenter
         visible: messageListItem.messageReactions ? ( messageListItem.messageReactions.length > 0 ? true : false ) : false
         opacity: messageListItem.messageReactions ? ( messageListItem.messageReactions.length > 0 ? 1 : 0 ) : 0
@@ -675,7 +772,7 @@ ListItem {
 
         Flickable {
             width: parent.width
-            height: reactionsResultRow.height + Theme.paddingSmall
+            height: reactionsResultRow.height + 2 * Theme.paddingMedium
             anchors.horizontalCenter: parent.horizontalCenter
             contentWidth: reactionsResultRow.width
             clip: true
@@ -691,13 +788,13 @@ ListItem {
 
                         Row {
                             id: singleReactionRow
-                            spacing: Theme.paddingSmall
+                            spacing: Theme.paddingMedium
 
                             Image {
                                 id: emojiPicture
                                 source: Emoji.getEmojiPath(modelData)
-                                width: status === Image.Ready ? Theme.fontSizeLarge : 0
-                                height: Theme.fontSizeLarge
+                                width: status === Image.Ready ? Theme.fontSizeExtraLarge : 0
+                                height: Theme.fontSizeExtraLarge
                             }
 
                         }
@@ -705,12 +802,26 @@ ListItem {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                tdLibWrapper.setMessageReaction(messageListItem.chatId, messageListItem.messageId, modelData);
-                                messageListItem.messageReactions = null;
+                                for (var i = 0; i < reactions.length; i++) {
+                                    var reaction = reactions[i]
+                                    var reactionText = reaction.reaction ? reaction.reaction : (reaction.type && reaction.type.emoji) ? reaction.type.emoji : ""
+                                    if (reactionText === modelData) {
+                                        if (reaction.is_chosen) {
+                                            // Reaction is already selected
+                                            tdLibWrapper.removeMessageReaction(chatId, messageId, reactionText)
+                                            messageReactions = null
+                                            return
+                                        }
+                                        break
+                                    }
+                                }
+                                // Reaction is not yet selected
+                                tdLibWrapper.addMessageReaction(chatId, messageId, modelData)
+                                messageReactions = null
+                                selectReactionBubble.visible = false
                             }
                         }
                     }
-
                 }
             }
         }

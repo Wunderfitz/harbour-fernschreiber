@@ -33,6 +33,7 @@ namespace {
     const QString KEY_NOTIFICATION_SUPPRESS_ENABLED("notificationSuppressContent");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
     const QString KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW("notificationAlwaysShowPreview");
+    const QString KEY_GO_TO_QUOTED_MESSAGE("goToQuotedMessage");
     const QString KEY_STORAGE_OPTIMIZER("useStorageOptimizer");
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
@@ -214,6 +215,20 @@ void AppSettings::setNotificationAlwaysShowPreview(bool enable)
         LOG(KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW << enable);
         settings.setValue(KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW, enable);
         emit notificationAlwaysShowPreviewChanged();
+    }
+}
+
+bool AppSettings::goToQuotedMessage() const
+{
+    return settings.value(KEY_GO_TO_QUOTED_MESSAGE, false).toBool();
+}
+
+void AppSettings::setGoToQuotedMessage(bool enable)
+{
+    if (goToQuotedMessage() != enable) {
+        LOG(KEY_GO_TO_QUOTED_MESSAGE << enable);
+        settings.setValue(KEY_GO_TO_QUOTED_MESSAGE, enable);
+        emit goToQuotedMessageChanged();
     }
 }
 

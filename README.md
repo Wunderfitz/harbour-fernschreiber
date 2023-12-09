@@ -14,7 +14,11 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 - Chat info page, performance improvements to chat page, location support, app initialization/registration with Telegram, project dependencies, emoji handling, qml/js optimizations, multi-message actions, i18n fixes, chat permission handling, code reviews, logging categories, bot support, github build: [jgibbon](https://github.com/jgibbon)
 - Copy message to clipboard: [Christian Stemmle](https://github.com/chstem)
 - Hide send message button if send-by-enter is switched on, focus text input on entering a chat: [santhoshmanikandan](https://github.com/santhoshmanikandan)
-- Integration of logout and sesison options to settings page: [Peter G.](https://github.com/nephros)
+- Integration of logout and sesison options to settings page, search results optimization, highlight unread conversations: [Peter G.](https://github.com/nephros)
+- Option to always append last message in notifications: [Johannes Bachmann](https://github.com/dscheinah)
+- Option to jump to quoted message, widescreen UI adjustments: [Mikhail Barashkov](https://github.com/mbarashkov)
+
+This list might not be complete. In case I forgot something/somebody, please let me know or create a PR, thanks! :)
 
 ### Logo/Icon
 - Designed by [Matteo](https://github.com/iamnomeutente), adjustments by [Slava Monich](https://github.com/monich)
@@ -48,7 +52,7 @@ const char TDLIB_API_HASH[] = "1234567890abcdef1234567890abcdef";
 
 You get the Telegram API ID and hash as soon as you've registered your own application on [https://my.telegram.org](https://my.telegram.org).
 
-Moreover, you need to have a compiled version of [TDLib 1.8.3](https://github.com/tdlib/td) or higher in the sub-directory `tdlib`. This sub-directory must contain another sub-directory that fits to the target device architecture (e.g. armv7hl, i486). Within this directory, there needs to be a folder called `lib` that contains at least `libtdjson.so`. For armv7hl the relative path would consequently be `tdlib/armv7hl/lib`.
+Moreover, you need to have a compiled version of [TDLib 1.8.21](https://github.com/tdlib/td) or higher in the sub-directory `tdlib`. This sub-directory must contain another sub-directory that fits to the target device architecture (e.g. armv7hl, i486). Within this directory, there needs to be a folder called `lib` that contains at least `libtdjson.so`. For armv7hl the relative path would consequently be `tdlib/armv7hl/lib`.
 
 You may just want to download the [tdlib.zip from our fork](https://github.com/Wunderfitz/td/releases) to just use the exact version of the latest official Fernschreiber release. To use it, you need to extract it into your local `tdlib/` folder as described above. If so, you're done and can compile Fernschreiber using the Sailfish SDK. If you want to build TDLib for yourself, please keep on reading.
 

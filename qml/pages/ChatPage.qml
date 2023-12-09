@@ -54,6 +54,7 @@ Page {
     property bool iterativeInitialization: false;
     property var messageToShow;
     property string messageIdToShow;
+    property string messageIdToScrollTo;
     readonly property bool userIsMember: ((isPrivateChat || isSecretChat) && chatInformation["@type"]) || // should be optimized
                                 (isBasicGroup || isSuperGroup) && (
                                     (chatGroupInformation.status["@type"] === "chatMemberStatusMember")
@@ -67,6 +68,9 @@ Page {
     property bool doSendBotStartMessage
     property string sendBotStartMessageParameter
     property var availableReactions
+    signal resetElements()
+    signal elementSelected(int elementIndex)
+    signal navigatedTo(int targetIndex)
 
     states: [
         State {
@@ -407,6 +411,24 @@ Page {
         chatPage.focus = true;
     }
 
+    function showMessage(messageId, initialRun) {
+        // Means we tapped a quoted message and had to load it.
+        if(initialRun) {
+            chatPage.messageIdToScrollTo = messageId
+        }
+        if (chatPage.messageIdToScrollTo && chatPage.messageIdToScrollTo != "") {
+            var index = chatModel.getMessageIndex(chatPage.messageIdToScrollTo);
+            if(index !== -1) {
+                chatPage.messageIdToScrollTo = "";
+                chatView.scrollToIndex(index);
+                navigatedTo(index);
+            } else if(initialRun) {
+                // we only want to do this once.
+                chatModel.triggerLoadHistoryForMessage(chatPage.messageIdToScrollTo)
+            }
+        }
+    }
+
     Timer {
         id: forwardMessagesTimer
         interval: 200
@@ -480,7 +502,10 @@ Page {
             if (pageStack.depth === 1) {
                 // Only clear chat model if navigated back to overview page. In other cases we keep the information...
                 chatModel.clear();
+            } else {
+                resetElements();
             }
+
             break;
         }
     }
@@ -576,6 +601,9 @@ Page {
         onSponsoredMessageReceived: {
             chatPage.containsSponsoredMessages = true;
         }
+        onReactionsUpdated: {
+            availableReactions = tdLibWrapper.getChatReactions(chatInformation.id);
+        }
     }
 
     Connections {
@@ -610,6 +638,8 @@ Page {
             chatViewCooldownTimer.restart();
             chatViewStartupReadTimer.restart();
 
+            /*
+            // Double-tap for reactions is currently disabled, let's see if we'll ever need it again
             var remainingDoubleTapHints = appSettings.remainingDoubleTapHints;
             Debug.log("Remaining double tap hints: " + remainingDoubleTapHints);
             if (remainingDoubleTapHints > 0) {
@@ -618,6 +648,8 @@ Page {
                 tapHintLabel.visible = true;
                 appSettings.remainingDoubleTapHints = remainingDoubleTapHints - 1;
             }
+             */
+
         }
         onNewMessageReceived: {
             if (( chatView.manuallyScrolledToBottom && Qt.application.state === Qt.ApplicationActive ) || message.sender_id.user_id === chatPage.myUserId) {
@@ -645,6 +677,8 @@ Page {
             if (chatView.height > chatView.contentHeight) {
                 Debug.log("[ChatPage] Chat content quite small...");
                 viewMessageTimer.queueViewMessage(chatView.count - 1);
+            } else if (chatPage.messageIdToScrollTo && chatPage.messageIdToScrollTo != "") {
+                showMessage(chatPage.messageIdToScrollTo, false)
             }
             chatViewCooldownTimer.restart();
             chatViewStartupReadTimer.restart();
@@ -1207,10 +1241,9 @@ Page {
                             manuallyScrolledToBottom = chatView.atYEnd
                         }
 
-                        function scrollToIndex(index) {
+                        function scrollToIndex(index, mode) {
                             if(index > 0 && index < chatView.count) {
-                                positionViewAtIndex(index, ListView.Contain)
-    //                            currentIndex = index;
+                                positionViewAtIndex(index, (mode === undefined) ? ListView.Contain : mode)
                                 if(index === chatView.count - 1) {
                                     manuallyScrolledToBottom = true;
                                 }

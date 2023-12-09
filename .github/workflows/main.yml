@@ -84,7 +84,7 @@ jobs:
           assets+=("-a" "$asset")
         done
         tag_name="${GITHUB_REF##*/}"
-        hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
+        gh release create "$tag_name" "${assets[@]}" 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
@@ -97,6 +97,6 @@ jobs:
           assets+=("-a" "$asset")
         done
         tag_name="${GITHUB_REF##*/}"
-        hub release create -p "${assets[@]}" -m "$tag_name" -m "This is a pre-release for testing purposes only. It may or may not be unstable." -m "Join the Telegram group to help out: https://github.com/Wunderfitz/harbour-fernschreiber/issues/162" "$tag_name"
+        gh release create "$tag_name" -p -n "This is a pre-release for testing purposes only. It may or may not be unstable." "${assets[@]}"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

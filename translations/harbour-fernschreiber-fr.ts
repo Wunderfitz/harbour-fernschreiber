@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en">
+<TS version="2.1" language="fr">
 <context>
     <name>AboutPage</name>
     <message>
@@ -485,7 +485,7 @@
     </message>
     <message>
         <source>Double-tap on a message to choose a reaction</source>
-        <translation type="unfinished"></translation>
+        <translation>Toucher deux fois sur un message pour réagir</translation>
     </message>
 </context>
 <context>
@@ -1170,7 +1170,7 @@
     </message>
     <message>
         <source>No contacts found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun contact trouvé</translation>
     </message>
 </context>
 <context>
@@ -1588,22 +1588,30 @@
     </message>
     <message>
         <source>Always append message preview to notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Toujours visualiser le message dans les notifications</translation>
     </message>
     <message>
         <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
-        <translation type="unfinished"></translation>
+        <translation>En plus d&apos;afficher le nombre de messages non-lus, le dernier message sera également ajouté aux notifications.</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre en valeur les messages non-lus</translation>
     </message>
     <message>
         <source>Highlight Conversations with unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre en valeur les conversations avec des messages non-lus</translation>
     </message>
     <message>
         <source>Hide content in notifications</source>
+        <translation>Masquer le contenu dans les notifications</translation>
+    </message>
+    <message>
+        <source>Go to quoted message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When tapping a quoted message, open it in chat instead of showing it in an overlay.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1717,38 +1725,38 @@
     </message>
     <message numerus="yes">
         <source>%1 day(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 jour(s)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <source>1 week</source>
-        <translation type="unfinished"></translation>
+        <translation>1 semaine</translation>
     </message>
     <message>
         <source>1 month</source>
-        <translation type="unfinished"></translation>
+        <translation>1 mois</translation>
     </message>
     <message>
         <source>3 months</source>
-        <translation type="unfinished"></translation>
+        <translation>3 mois</translation>
     </message>
     <message>
         <source>6 months</source>
-        <translation type="unfinished"></translation>
+        <translation>6 mois</translation>
     </message>
     <message>
         <source>1 year</source>
-        <translation type="unfinished"></translation>
+        <translation>1 année</translation>
     </message>
     <message>
         <source>Session Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Délai d&apos;inactivité de session</translation>
     </message>
     <message>
         <source>Inactive sessions will be terminated after this timeframe</source>
-        <translation type="unfinished"></translation>
+        <translation>Sessions inactives seront terminées après ce délai</translation>
     </message>
 </context>
 <context>

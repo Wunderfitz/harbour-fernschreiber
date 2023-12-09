@@ -44,6 +44,7 @@ namespace {
     const QString UNREAD_COUNT("unread_count");
     const QString UNREAD_MENTION_COUNT("unread_mention_count");
     const QString UNREAD_REACTION_COUNT("unread_reaction_count");
+    const QString AVAILABLE_REACTIONS("available_reactions");
     const QString NOTIFICATION_SETTINGS("notification_settings");
     const QString LAST_READ_INBOX_MESSAGE_ID("last_read_inbox_message_id");
     const QString LAST_READ_OUTBOX_MESSAGE_ID("last_read_outbox_message_id");
@@ -70,6 +71,7 @@ public:
     int unreadCount() const;
     int unreadMentionCount() const;
     int unreadReactionCount() const;
+    QVariant availableReactions() const;
     QVariant photoSmall() const;
     qlonglong lastReadInboxMessageId() const;
     qlonglong senderUserId() const;
@@ -166,6 +168,11 @@ int ChatListModel::ChatData::unreadCount() const
 int ChatListModel::ChatData::unreadMentionCount() const
 {
     return chatData.value(UNREAD_MENTION_COUNT).toInt();
+}
+
+QVariant ChatListModel::ChatData::availableReactions() const
+{
+    return chatData.value(AVAILABLE_REACTIONS);
 }
 
 int ChatListModel::ChatData::unreadReactionCount() const
@@ -400,6 +407,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSetting
     connect(tdLibWrapper, SIGNAL(chatDraftMessageUpdated(qlonglong, QVariantMap, QString)), this, SLOT(handleChatDraftMessageUpdated(qlonglong, QVariantMap, QString)));
     connect(tdLibWrapper, SIGNAL(chatUnreadMentionCountUpdated(qlonglong, int)), this, SLOT(handleChatUnreadMentionCountUpdated(qlonglong, int)));
     connect(tdLibWrapper, SIGNAL(chatUnreadReactionCountUpdated(qlonglong, int)), this, SLOT(handleChatUnreadReactionCountUpdated(qlonglong, int)));
+    connect(tdLibWrapper, SIGNAL(chatAvailableReactionsUpdated(qlonglong,QVariantMap)), this, SLOT(handleChatAvailableReactionsUpdated(qlonglong,QVariantMap)));
 
     // Don't start the timer until we have at least one chat
     relativeTimeRefreshTimer = new QTimer(this);
@@ -436,6 +444,7 @@ QHash<int,QByteArray> ChatListModel::roleNames() const
     roles.insert(ChatListModel::RoleUnreadCount, "unread_count");
     roles.insert(ChatListModel::RoleUnreadMentionCount, "unread_mention_count");
     roles.insert(ChatListModel::RoleUnreadReactionCount, "unread_reaction_count");
+    roles.insert(ChatListModel::RoleAvailableReactions, "available_reactions");
     roles.insert(ChatListModel::RoleLastReadInboxMessageId, "last_read_inbox_message_id");
     roles.insert(ChatListModel::RoleLastMessageSenderId, "last_message_sender_id");
     roles.insert(ChatListModel::RoleLastMessageDate, "last_message_date");
@@ -472,6 +481,7 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RolePhotoSmall: return data->photoSmall();
         case ChatListModel::RoleUnreadCount: return data->unreadCount();
         case ChatListModel::RoleUnreadMentionCount: return data->unreadMentionCount();
+        case ChatListModel::RoleAvailableReactions: return data->availableReactions();
         case ChatListModel::RoleUnreadReactionCount: return data->unreadReactionCount();
         case ChatListModel::RoleLastReadInboxMessageId: return data->lastReadInboxMessageId();
         case ChatListModel::RoleLastMessageSenderId: return data->senderUserId();
@@ -1032,6 +1042,26 @@ void ChatListModel::handleChatUnreadReactionCountUpdated(qlonglong chatId, int u
         if (chat) {
             LOG("Updating reaction count for hidden chat" << chatId << unreadReactionCount);
             chat->chatData.insert(UNREAD_REACTION_COUNT, unreadReactionCount);
+        }
+    }
+}
+
+void ChatListModel::handleChatAvailableReactionsUpdated(qlonglong chatId, const QVariantMap availableReactions)
+{
+    if (chatIndexMap.contains(chatId)) {
+        LOG("Updating available reaction type for" << chatId << availableReactions);
+        const int chatIndex = chatIndexMap.value(chatId);
+        ChatData *chat = chatList.at(chatIndex);
+        chat->chatData.insert(AVAILABLE_REACTIONS, availableReactions);
+        QVector<int> changedRoles;
+        changedRoles.append(ChatListModel::RoleAvailableReactions);
+        const QModelIndex modelIndex(index(chatIndex));
+        emit dataChanged(modelIndex, modelIndex, changedRoles);
+    } else {
+        ChatData *chat = hiddenChats.value(chatId);
+        if (chat) {
+            LOG("Updating available reaction type for hidden chat" << chatId << availableReactions);
+            chat->chatData.insert(AVAILABLE_REACTIONS, availableReactions);
         }
     }
 }

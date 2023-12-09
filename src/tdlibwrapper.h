@@ -249,7 +249,8 @@ public:
     Q_INVOKABLE void terminateSession(const QString &sessionId);
     Q_INVOKABLE void getMessageAvailableReactions(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void getPageSource(const QString &address);
-    Q_INVOKABLE void setMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction);
+    Q_INVOKABLE void addMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction);
+    Q_INVOKABLE void removeMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction);
     Q_INVOKABLE void setNetworkType(NetworkType networkType);
     Q_INVOKABLE void setInactiveSessionTtl(int days);
 
@@ -279,6 +280,7 @@ signals:
     void chatPinnedUpdated(qlonglong chatId, bool isPinned);
     void chatReadInboxUpdated(const QString &chatId, const QString &lastReadInboxMessageId, int unreadCount);
     void chatReadOutboxUpdated(const QString &chatId, const QString &lastReadOutboxMessageId);
+    void chatAvailableReactionsUpdated(const qlonglong &chatId, const QVariantMap &availableReactions);
     void userUpdated(const QString &userId, const QVariantMap &userInformation);
     void ownUserUpdated(const QVariantMap &userInformation);
     void basicGroupUpdated(qlonglong groupId);
@@ -322,6 +324,7 @@ signals:
     void chatTitleUpdated(const QString &chatId, const QString &title);
     void chatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
+    void messageSendersReceived(const QString &extra, const QVariantList &senders, int totalUsers);
     void errorReceived(int code, const QString &message, const QString &extra);
     void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
     void messageNotFound(qlonglong chatId, qlonglong messageId);
@@ -338,6 +341,7 @@ signals:
     void chatUnreadMentionCountUpdated(qlonglong chatId, int unreadMentionCount);
     void chatUnreadReactionCountUpdated(qlonglong chatId, int unreadReactionCount);
     void tgUrlFound(const QString &tgUrl);
+    void reactionsUpdated();
 
 public slots:
     void handleVersionDetected(const QString &version);
@@ -351,6 +355,7 @@ public slots:
     void handleChatReceived(const QVariantMap &chatInformation);
     void handleUnreadMessageCountUpdated(const QVariantMap &messageCountInformation);
     void handleUnreadChatCountUpdated(const QVariantMap &chatCountInformation);
+    void handleAvailableReactionsUpdated(qlonglong chatId, const QVariantMap &availableReactions);
     void handleBasicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void handleSuperGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void handleStickerSets(const QVariantList &stickerSets);

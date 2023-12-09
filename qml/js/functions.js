@@ -448,7 +448,12 @@ function handleLink(link) {
         } else if (link.indexOf(tMePrefixHttp) === 0) {
             handleTMeLink(link, tMePrefixHttp);
         } else {
-            Qt.openUrlExternally(link);
+            Debug.log("Trying to open URL externally: " + link)
+            if (link.indexOf("://") === -1) {
+                Qt.openUrlExternally("https://" + link)
+            } else {
+                Qt.openUrlExternally(link);
+            }
         }
     }
 }
@@ -534,4 +539,8 @@ function getMessagesNeededForwardPermissions(messages) {
         }
     }
     return neededPermissions
+}
+
+function isWidescreen(appWindow) {
+    return (appWindow.deviceOrientation & Silica.Orientation.LandscapeMask) || Silica.Screen.sizeCategory === Silica.Screen.Large || Silica.Screen.sizeCategory === Silica.Screen.ExtraLarge
 }

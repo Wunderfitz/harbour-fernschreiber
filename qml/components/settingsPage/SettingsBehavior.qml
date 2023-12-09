@@ -114,6 +114,17 @@ AccordionItem {
                 }
             }
 
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.goToQuotedMessage
+                text: qsTr("Go to quoted message")
+                description: qsTr("When tapping a quoted message, open it in chat instead of showing it in an overlay.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.goToQuotedMessage = !checked
+                }
+            }
+
             ComboBox {
                 id: feedbackComboBox
                 width: parent.columnWidth

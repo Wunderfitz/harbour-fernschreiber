@@ -137,6 +137,7 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(chatOrderUpdated(QString, QString)), this, SIGNAL(chatOrderUpdated(QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(chatReadInboxUpdated(QString, QString, int)), this, SIGNAL(chatReadInboxUpdated(QString, QString, int)));
     connect(this->tdLibReceiver, SIGNAL(chatReadOutboxUpdated(QString, QString)), this, SIGNAL(chatReadOutboxUpdated(QString, QString)));
+    connect(this->tdLibReceiver, SIGNAL(chatAvailableReactionsUpdated(qlonglong, QVariantMap)), this, SLOT(handleAvailableReactionsUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(basicGroupUpdated(qlonglong, QVariantMap)), this, SLOT(handleBasicGroupUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(superGroupUpdated(qlonglong, QVariantMap)), this, SLOT(handleSuperGroupUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatOnlineMemberCountUpdated(QString, int)), this, SIGNAL(chatOnlineMemberCountUpdated(QString, int)));
@@ -176,6 +177,7 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibReceiver, SIGNAL(messageIsPinnedUpdated(qlonglong, qlonglong, bool)), this, SLOT(handleMessageIsPinnedUpdated(qlonglong, qlonglong, bool)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(messageSendersReceived(QString, QVariantList, int)), this, SIGNAL(messageSendersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString, QString)), this, SLOT(handleErrorReceived(int, QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(contactsImported(QVariantList, QVariantList)), this, SIGNAL(contactsImported(QVariantList, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
@@ -1462,9 +1464,8 @@ void TDLibWrapper::getPageSource(const QString &address)
     connect(reply, SIGNAL(finished()), this, SLOT(handleGetPageSourceFinished()));
 }
 
-void TDLibWrapper::setMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction)
+void TDLibWrapper::addMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction)
 {
-    LOG("Set message reaction" << chatId << messageId << reaction);
     QVariantMap requestObject;
     requestObject.insert(CHAT_ID, chatId);
     requestObject.insert(MESSAGE_ID, messageId);
@@ -1479,9 +1480,35 @@ void TDLibWrapper::setMessageReaction(qlonglong chatId, qlonglong messageId, con
         reactionType.insert(EMOJI, reaction);
         requestObject.insert(REACTION_TYPE, reactionType);
         requestObject.insert(_TYPE, "addMessageReaction");
+        LOG("Add message reaction" << chatId << messageId << reaction);
     } else {
         requestObject.insert("reaction", reaction);
         requestObject.insert(_TYPE, "setMessageReaction");
+        LOG("Toggle message reaction" << chatId << messageId << reaction);
+    }
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::removeMessageReaction(qlonglong chatId, qlonglong messageId, const QString &reaction)
+{
+    QVariantMap requestObject;
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    if (versionNumber > VERSION_NUMBER(1,8,5)) {
+        // "reaction_type": {
+        //     "@type": "reactionTypeEmoji",
+        //     "emoji": "..."
+        // }
+        QVariantMap reactionType;
+        reactionType.insert(_TYPE, REACTION_TYPE_EMOJI);
+        reactionType.insert(EMOJI, reaction);
+        requestObject.insert(REACTION_TYPE, reactionType);
+        requestObject.insert(_TYPE, "removeMessageReaction");
+        LOG("Remove message reaction" << chatId << messageId << reaction);
+    } else {
+        requestObject.insert("reaction", reaction);
+        requestObject.insert(_TYPE, "setMessageReaction");
+        LOG("Toggle message reaction" << chatId << messageId << reaction);
     }
     this->sendRequest(requestObject);
 }
@@ -1606,12 +1633,15 @@ QVariantMap TDLibWrapper::getChat(const QString &chatId)
 
 QStringList TDLibWrapper::getChatReactions(const QString &chatId)
 {
+    LOG("Obtaining chat reactions for chat" << chatId);
     const QVariant available_reactions(chats.value(chatId).toMap().value(CHAT_AVAILABLE_REACTIONS));
     const QVariantMap map(available_reactions.toMap());
     const QString reactions_type(map.value(_TYPE).toString());
     if (reactions_type == CHAT_AVAILABLE_REACTIONS_ALL) {
+        LOG("Chat uses all available reactions, currently available number" << activeEmojiReactions.size());
         return activeEmojiReactions;
     } else if (reactions_type == CHAT_AVAILABLE_REACTIONS_SOME) {
+        LOG("Chat uses reduced set of reactions");
         const QVariantList reactions(map.value(REACTIONS).toList());
         const int n = reactions.count();
         QStringList emojis;
@@ -1633,10 +1663,13 @@ QStringList TDLibWrapper::getChatReactions(const QString &chatId)
                 }
             }
         }
+        LOG("Found emojis for this chat" << emojis.size());
         return emojis;
     } else if (reactions_type.isEmpty()) {
+        LOG("No chat reaction type specified, using all reactions");
         return available_reactions.toStringList();
     } else {
+        LOG("Unknown chat reaction type" << reactions_type);
         return QStringList();
     }
 }
@@ -1906,6 +1939,17 @@ void TDLibWrapper::handleUnreadChatCountUpdated(const QVariantMap &chatCountInfo
     }
 }
 
+void TDLibWrapper::handleAvailableReactionsUpdated(qlonglong chatId, const QVariantMap &availableReactions)
+{
+    LOG("Updating available reactions for chat" << chatId << availableReactions);
+    QString chatIdString = QString::number(chatId);
+    QVariantMap chatInformation = this->getChat(chatIdString);
+    chatInformation.insert(CHAT_AVAILABLE_REACTIONS, availableReactions);
+    this->chats.insert(chatIdString, chatInformation);
+    emit chatAvailableReactionsUpdated(chatId, availableReactions);
+
+}
+
 void TDLibWrapper::handleBasicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation)
 {
     emit basicGroupUpdated(updateGroup(groupId, groupInformation, &basicGroups)->groupId);
@@ -2068,6 +2112,7 @@ void TDLibWrapper::handleActiveEmojiReactionsUpdated(const QStringList& emojis)
     if (activeEmojiReactions != emojis) {
         activeEmojiReactions = emojis;
         LOG(emojis.count() << "reaction(s) available");
+        emit reactionsUpdated();
     }
 }
 

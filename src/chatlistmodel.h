@@ -42,6 +42,7 @@ public:
         RoleUnreadCount,
         RoleUnreadMentionCount,
         RoleUnreadReactionCount,
+        RoleAvailableReactions,
         RoleLastReadInboxMessageId,
         RoleLastMessageSenderId,
         RoleLastMessageDate,
@@ -93,6 +94,7 @@ private slots:
     void handleChatDraftMessageUpdated(qlonglong chatId, const QVariantMap &draftMessage, const QString &order);
     void handleChatUnreadMentionCountUpdated(qlonglong chatId, int unreadMentionCount);
     void handleChatUnreadReactionCountUpdated(qlonglong chatId, int unreadReactionCount);
+    void handleChatAvailableReactionsUpdated(qlonglong chatId, const QVariantMap availableReactions);
     void handleRelativeTimeRefreshTimer();
 
 signals:
