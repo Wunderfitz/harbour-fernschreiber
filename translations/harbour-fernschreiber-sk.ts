@@ -495,7 +495,7 @@
     </message>
     <message>
         <source>Double-tap on a message to choose a reaction</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvojitým klepnutím na správu vybrať reakciu</translation>
     </message>
 </context>
 <context>
@@ -1615,31 +1615,31 @@
     </message>
     <message>
         <source>Always append message preview to notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>K upozorneniam vždy pripojiť ukážku správy</translation>
     </message>
     <message>
         <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
-        <translation type="unfinished"></translation>
+        <translation>Okrem zobrazenia počtu neprečítaných správ pripojiť k upozorneniam aj najnovšiu správu.</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvýrazniť neprečítané správy</translation>
     </message>
     <message>
         <source>Highlight Conversations with unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvýrazniť konverzácie s neprečítanými správami</translation>
     </message>
     <message>
         <source>Hide content in notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>V upozorneniach skryť obsah</translation>
     </message>
     <message>
         <source>Go to quoted message</source>
-        <translation type="unfinished"></translation>
+        <translation>Prejsť na citovanú správu</translation>
     </message>
     <message>
         <source>When tapping a quoted message, open it in chat instead of showing it in an overlay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Citovanú správu otvoriť v čete namiesto v náhľade.</translation>
     </message>
 </context>
 <context>
@@ -1752,39 +1752,39 @@
     </message>
     <message numerus="yes">
         <source>%1 day(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 deň</numerusform>
+            <numerusform>%1 dni</numerusform>
+            <numerusform>%1 dní</numerusform>
         </translation>
     </message>
     <message>
         <source>1 week</source>
-        <translation type="unfinished"></translation>
+        <translation>1 týždeň</translation>
     </message>
     <message>
         <source>1 month</source>
-        <translation type="unfinished"></translation>
+        <translation>1 mesiac</translation>
     </message>
     <message>
         <source>3 months</source>
-        <translation type="unfinished"></translation>
+        <translation>3 mesiace</translation>
     </message>
     <message>
         <source>6 months</source>
-        <translation type="unfinished"></translation>
+        <translation>6 mesiacov</translation>
     </message>
     <message>
         <source>1 year</source>
-        <translation type="unfinished"></translation>
+        <translation>1 rok</translation>
     </message>
     <message>
         <source>Session Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Časový limit relácie</translation>
     </message>
     <message>
         <source>Inactive sessions will be terminated after this timeframe</source>
-        <translation type="unfinished"></translation>
+        <translation>Neaktívne relácie budú po tomto časovom rámci ukončené</translation>
     </message>
 </context>
 <context>
