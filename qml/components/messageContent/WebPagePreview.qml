@@ -29,6 +29,7 @@ Column {
     property var webPageData;
     property bool largerFontSize: false;
     property bool highlighted
+    property double mediaAttachmentSizeMultiplier
     readonly property bool hasImage: picture.fileId !== 0
     readonly property int fontSize: largerFontSize ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
 
@@ -109,7 +110,7 @@ Column {
 
     Item {
         id: webPagePreviewImageItem
-        width: parent.width
+        width: parent.width * mediaAttachmentSizeMultiplier
         height: width * 2 / 3
         visible: hasImage
 

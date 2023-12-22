@@ -133,6 +133,10 @@ ListItem {
         return Functions.isWidescreen(appWindow) ? 0.4 : 1.0
     }
 
+    function shouldRightAlignMessage() {
+        return page.isPrivateChat && messageListItem.isOwnMessage
+    }
+
     onClicked: {
         if (messageListItem.precalculatedValues.pageIsSelecting) {
             page.toggleMessageSelection(myMessage);
@@ -394,7 +398,8 @@ ListItem {
         spacing: Theme.paddingSmall
         width: precalculatedValues.entryWidth
         anchors.horizontalCenter: Functions.isWidescreen(appWindow) ? undefined : parent.horizontalCenter
-        anchors.left: Functions.isWidescreen(appWindow) ? parent.left : undefined
+        anchors.left: Functions.isWidescreen(appWindow) || !shouldRightAlignMessage ? parent.left : undefined
+        anchors.right: Functions.isWidescreen(appWindow) && shouldRightAlignMessage ? parent.right : undefined
         y: Theme.paddingSmall
         anchors.leftMargin: Functions.isWidescreen(appWindow) ? Theme.paddingMedium : undefined
 
@@ -630,7 +635,7 @@ ListItem {
                     id: webPagePreviewLoader
                     active: false
                     asynchronous: true
-                    width: parent.width * getContentWidthMultiplier()
+                    width: parent.width
                     height: (status === Loader.Ready) ? item.implicitHeight : myMessage.content.web_page ? precalculatedValues.webPagePreviewHeight : 0
 
                     sourceComponent: Component {
@@ -638,6 +643,7 @@ ListItem {
                             webPageData: myMessage.content.web_page
                             width: parent.width
                             highlighted: messageListItem.highlighted
+                            mediaAttachmentSizeMultiplier: getContentWidthMultiplier()
                         }
                     }
                 }
