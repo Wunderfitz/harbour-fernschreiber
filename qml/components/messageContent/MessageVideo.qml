@@ -26,7 +26,12 @@ import "../../js/debug.js" as Debug
 MessageContentBase {
     id: videoMessageComponent
 
-    property var videoData:  ( rawMessage.content['@type'] === "messageVideo" ) ?  rawMessage.content.video : ( ( rawMessage.content['@type'] === "messageAnimation" ) ? rawMessage.content.animation : rawMessage.content.video_note )
+    property var videoData:  ( rawMessage.content['@type'] === "messageVideo" )
+                             ? rawMessage.content.video
+                             : (
+                                   ( rawMessage.content['@type'] === "messageAnimation" )
+                                   ? rawMessage.content.animation
+                                   : rawMessage.content.video_note )
     property string videoUrl;
     property int previewFileId;
     property int videoFileId;
