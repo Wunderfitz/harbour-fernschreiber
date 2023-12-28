@@ -51,6 +51,7 @@
 #include "processlauncher.h"
 #include "stickermanager.h"
 #include "textfiltermodel.h"
+#include "boolfiltermodel.h"
 #include "tgsplugin.h"
 #include "fernschreiberutils.h"
 #include "knownusersmodel.h"
@@ -130,6 +131,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<TDLibFile>(uri, 1, 0, "TDLibFile");
     qmlRegisterType<NamedAction>(uri, 1, 0, "NamedAction");
     qmlRegisterType<TextFilterModel>(uri, 1, 0, "TextFilterModel");
+    qmlRegisterType<BoolFilterModel>(uri, 1, 0, "BoolFilterModel");
     qmlRegisterType<ChatPermissionFilterModel>(uri, 1, 0, "ChatPermissionFilterModel");
     qmlRegisterSingletonType<DebugLogJS>(uri, 1, 0, "DebugLog", DebugLogJS::createSingleton);
 

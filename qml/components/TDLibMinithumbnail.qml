@@ -24,6 +24,7 @@ Loader {
     id: loader
     property var minithumbnail
     property bool highlighted
+    property int fillMode: tdLibImage.fillMode
     anchors.fill: parent
     active: !!minithumbnail
     sourceComponent: Component {
@@ -32,7 +33,7 @@ Loader {
                 id: minithumbnailImage
                 anchors.fill: parent
                 source: "data:image/jpg;base64,"+minithumbnail.data
-                fillMode: tdLibImage.fillMode
+                fillMode: loader.fillMode
                 opacity: status === Image.Ready ? 1.0 : 0.0
                 cache: false
                 visible: opacity > 0
@@ -43,12 +44,12 @@ Loader {
                     effect: PressEffect { source: minithumbnailImage }
                 }
             }
-
-            FastBlur {
-                anchors.fill: parent
-                source: minithumbnailImage
-                radius: Theme.paddingLarge
-            }
+            // this had a visible impact on performance
+//            FastBlur {
+//                anchors.fill: parent
+//                source: minithumbnailImage
+//                radius: Theme.paddingLarge
+//            }
         }
     }
 }
