@@ -130,6 +130,12 @@ ListItem {
     }
 
     function getContentWidthMultiplier() {
+        var type = myMessage.content["@type"];
+        if(type === "messagePoll") {
+            // We do not want to limit messagePoll content width on wide screens, it will not result in huge message items
+            // as other content types like image and video do.
+            return 1.0
+        }
         return Functions.isWidescreen(appWindow) ? 0.4 : 1.0
     }
 
