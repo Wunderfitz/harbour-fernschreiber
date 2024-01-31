@@ -1877,7 +1877,7 @@ Page {
 
                                             Image {
                                                 id: emojiPicture
-                                                source: "../js/emoji/" + modelData.file_name
+                                                source: "../js/emoji/" + modelData.file_name +".svg"
                                                 width: Theme.fontSizeLarge
                                                 height: Theme.fontSizeLarge
                                             }
