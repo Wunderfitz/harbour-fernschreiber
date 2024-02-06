@@ -609,7 +609,8 @@ Page {
     Connections {
         target: chatModel
         onMessagesReceived: {
-            Debug.log("[ChatPage] Messages received, view has ", chatView.count, " messages, last known message index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
+            var proxyIndex = chatProxyModel.mapRowFromSource(modelIndex, -1);
+            Debug.log("[ChatPage] Messages received, view has ", chatView.count, " messages, last known message index ", proxyIndex, "("+modelIndex+"), own messages were read before index ", lastReadSentIndex);
             if (totalCount === 0) {
                 if (chatPage.iterativeInitialization) {
                     chatPage.iterativeInitialization = false;
@@ -623,9 +624,9 @@ Page {
             }
 
             chatView.lastReadSentIndex = lastReadSentIndex;
-            chatView.scrollToIndex(modelIndex);
+            chatView.scrollToIndex(proxyIndex);
             chatPage.loading = false;
-            if (chatOverviewItem.visible && modelIndex >= (chatView.count - 10)) {
+            if (chatOverviewItem.visible && proxyIndex >= (chatView.count - 10)) {
                 chatView.inCooldown = true;
                 chatModel.triggerLoadMoreFuture();
             }
@@ -669,10 +670,13 @@ Page {
             chatView.lastReadSentIndex = lastReadSentIndex;
         }
         onMessagesIncrementalUpdate: {
-            Debug.log("Incremental update received. View now has ", chatView.count, " messages, view is on index ", modelIndex, ", own messages were read before index ", lastReadSentIndex);
+            var proxyIndex = chatProxyModel.mapRowFromSource(modelIndex, -1);
+            Debug.log("Incremental update received. View now has ", chatView.count, " messages, view is on index ", proxyIndex, "("+modelIndex+"), own messages were read before index ", lastReadSentIndex);
             chatView.lastReadSentIndex = lastReadSentIndex;
             if (!chatPage.isInitialized) {
-                chatView.scrollToIndex(modelIndex);
+                if (proxyIndex > -1) {
+                    chatView.scrollToIndex(proxyIndex);
+                }
             }
             if (chatView.height > chatView.contentHeight) {
                 Debug.log("[ChatPage] Chat content quite small...");
@@ -748,14 +752,26 @@ Page {
         onTriggered: {
             Debug.log("scroll position changed, message index: ", lastQueuedIndex);
             Debug.log("unread count: ", chatInformation.unread_count);
-            var messageToRead = chatModel.getMessage(lastQueuedIndex);
+            var modelIndex = chatProxyModel.mapRowToSource(lastQueuedIndex);
+            var messageToRead = chatModel.getMessage(modelIndex);
             if (messageToRead['@type'] === "sponsoredMessage") {
                 Debug.log("sponsored message to read: ", messageToRead.id);
                 tdLibWrapper.viewMessage(chatInformation.id, messageToRead.message_id, false);
             } else if (chatInformation.unread_count > 0 && lastQueuedIndex > -1) {
-                Debug.log("message to read: ", messageToRead.id);
-                if (messageToRead && messageToRead.id) {
-                    tdLibWrapper.viewMessage(chatInformation.id, messageToRead.id, false);
+                if (messageToRead) {
+                    Debug.log("message to read: ", messageToRead.id);
+                    var messageId = messageToRead.id;
+                    var type = messageToRead.content["@type"];
+                    if (messageToRead.media_album_id !== '0') {
+                        var albumIds = chatModel.getMessageIdsForAlbum(messageToRead.media_album_id);
+                        if (albumIds.length > 0) {
+                            messageId = albumIds[albumIds.length - 1];
+                            Debug.log("message to read last album message id: ", messageId);
+                        }
+                    }
+                    if (messageId) {
+                        tdLibWrapper.viewMessage(chatInformation.id, messageId, false);
+                    }
                 }
                 lastQueuedIndex = -1
             }
@@ -1223,7 +1239,6 @@ Page {
                             readonly property int messageInReplyToHeight: Theme.fontSizeExtraSmall * 2.571428571 + Theme.paddingSmall;
                             readonly property int webPagePreviewHeight: ( (textColumnWidth * 2 / 3) + (6 * Theme.fontSizeExtraSmall) + ( 7 * Theme.paddingSmall) )
                             readonly property bool pageIsSelecting: chatPage.isSelecting
-
                         }
 
                         function handleScrollPositionChanged() {
@@ -1246,6 +1261,9 @@ Page {
                                 positionViewAtIndex(index, (mode === undefined) ? ListView.Contain : mode)
                                 if(index === chatView.count - 1) {
                                     manuallyScrolledToBottom = true;
+                                    if(!chatView.atYEnd) {
+                                        chatView.positionViewAtEnd();
+                                    }
                                 }
                             }
                         }
@@ -1278,7 +1296,13 @@ Page {
                             }
                         }
 
-                        model: chatModel
+                        BoolFilterModel {
+                            id: chatProxyModel
+                            sourceModel: chatModel
+                            filterRoleName: "album_entry_filter"
+                            filterValue: false
+                        }
+                        model: chatProxyModel
                         header: Component {
                             Loader {
                                 active: !!chatPage.botInformation
@@ -1311,7 +1335,8 @@ Page {
                             }
                         }
 
-                        function getContentComponentHeight(contentType, content, parentWidth) {
+                        function getContentComponentHeight(contentType, content, parentWidth, albumEntries) {
+                            var unit;
                             switch(contentType) {
                             case "messageAnimatedEmoji":
                                 return content.animated_emoji.sticker.height;
@@ -1327,6 +1352,10 @@ Page {
                             case "messageVenue":
                                 return parentWidth * 0.66666666; // 2 / 3;
                             case "messagePhoto":
+                                if(albumEntries > 0) {
+                                    unit = (parentWidth * 0.66666666)
+                                    return (albumEntries % 2 !== 0 ? unit * 0.75 : 0) + unit * albumEntries * 0.25
+                                }
                                 var biggest = content.photo.sizes[content.photo.sizes.length - 1];
                                 var aspectRatio = biggest.width/biggest.height;
                                 return Math.max(Theme.itemSizeExtraSmall, Math.min(parentWidth * 0.66666666, parentWidth / aspectRatio));
@@ -1335,6 +1364,10 @@ Page {
                             case "messageSticker":
                                 return content.sticker.height;
                             case "messageVideo":
+                                if(albumEntries > 0) {
+                                    unit = (parentWidth * 0.66666666)
+                                    return (albumEntries % 2 !== 0 ? unit * 0.75 : 0) + unit * albumEntries * 0.25
+                                }
                                 return Functions.getVideoHeight(parentWidth, content.video);
                             case "messageVideoNote":
                                 return parentWidth
@@ -1390,10 +1423,11 @@ Page {
                                     chatId: chatModel.chatId
                                     myMessage: model.display
                                     messageId: model.message_id
+                                    messageAlbumMessageIds: model.album_message_ids
                                     messageViewCount: model.view_count
                                     reactions: model.reactions
                                     chatReactions: availableReactions
-                                    messageIndex: model.index
+                                    messageIndex: chatProxyModel.mapRowToSource(model.index)
                                     hasContentComponent: !!myMessage.content && chatView.delegateMessagesContent.indexOf(model.content_type) > -1
                                     canReplyToMessage: chatPage.canSendMessages
                                     onReplyToMessage: {
@@ -1414,9 +1448,21 @@ Page {
                                 id: messageListViewItemSimpleComponent
                                 MessageListViewItemSimple {}
                             }
-                            sourceComponent: chatView.simpleDelegateMessages.indexOf(model.content_type) > -1 ? messageListViewItemSimpleComponent : messageListViewItemComponent
+                            Component {
+                                id: messageListViewItemHiddenComponent
+                                Item {
+                                    property var myMessage: display
+                                    property bool senderIsUser: myMessage.sender_id["@type"] === "messageSenderUser"
+                                    property var userInformation: senderIsUser ? tdLibWrapper.getUserInformation(myMessage.sender_id.user_id) : null
+                                    property bool isOwnMessage: senderIsUser && chatPage.myUserId === myMessage.sender_id.user_id
+                                    height: 1
+                                }
+                            }
+                            sourceComponent: chatView.simpleDelegateMessages.indexOf(model.content_type) > -1
+                                               ? messageListViewItemSimpleComponent
+                                               : messageListViewItemComponent
                         }
-                        VerticalScrollDecorator {}
+                        VerticalScrollDecorator { flickable: chatView }
 
                         ViewPlaceholder {
                             id: chatViewPlaceholder

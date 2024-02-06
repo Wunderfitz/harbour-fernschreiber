@@ -22,6 +22,7 @@ DEFINES += QT_STATICPLUGIN
 
 SOURCES += src/harbour-fernschreiber.cpp \
     src/appsettings.cpp \
+    src/boolfiltermodel.cpp \
     src/chatpermissionfiltermodel.cpp \
     src/chatlistmodel.cpp \
     src/chatmodel.cpp \
@@ -105,14 +106,21 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/messageContent/MessageGame.qml \
     qml/components/messageContent/MessageLocation.qml \
     qml/components/messageContent/MessagePhoto.qml \
+    qml/components/messageContent/MessagePhotoAlbum.qml \
     qml/components/messageContent/MessagePoll.qml \
     qml/components/messageContent/MessageSticker.qml \
     qml/components/messageContent/MessageVenue.qml \
+    qml/components/messageContent/MessageVideoAlbum.qml \
     qml/components/messageContent/MessageVideoNote.qml \
     qml/components/messageContent/MessageVideo.qml \
     qml/components/messageContent/MessageVoiceNote.qml \
     qml/components/messageContent/SponsoredMessage.qml \
     qml/components/messageContent/WebPagePreview.qml \
+    qml/components/messageContent/mediaAlbumPage/FullscreenOverlay.qml \
+    qml/components/messageContent/mediaAlbumPage/PhotoComponent.qml \
+    qml/components/messageContent/mediaAlbumPage/VideoComponent.qml \
+    qml/components/messageContent/mediaAlbumPage/ZoomArea.qml \
+    qml/components/messageContent/mediaAlbumPage/ZoomImage.qml \
     qml/components/settingsPage/Accordion.qml \
     qml/components/settingsPage/AccordionItem.qml \
     qml/components/settingsPage/ResponsiveGrid.qml \
@@ -130,6 +138,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/CoverPage.qml \
     qml/pages/DebugPage.qml \
     qml/pages/InitializationPage.qml \
+    qml/pages/MediaAlbumPage.qml \
     qml/pages/NewChatPage.qml \
     qml/pages/OverviewPage.qml \
     qml/pages/AboutPage.qml \
@@ -212,6 +221,7 @@ INSTALLS += telegram 86.png 108.png 128.png 172.png 256.png \
 
 HEADERS += \
     src/appsettings.h \
+    src/boolfiltermodel.h \
     src/chatpermissionfiltermodel.h \
     src/chatlistmodel.h \
     src/chatmodel.h \

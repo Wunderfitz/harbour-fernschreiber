@@ -30,6 +30,7 @@ namespace {
     const QString ID("id");
     const QString CONTENT("content");
     const QString CHAT_ID("chat_id");
+    const QString DATE("date");
     const QString PHOTO("photo");
     const QString SMALL("small");
     const QString UNREAD_COUNT("unread_count");
@@ -48,6 +49,7 @@ namespace {
     //     "view_count": 47
     // }
     const QString TYPE_MESSAGE_INTERACTION_INFO("messageInteractionInfo");
+    const QString MEDIA_ALBUM_ID("media_album_id");
     const QString INTERACTION_INFO("interaction_info");
     const QString VIEW_COUNT("view_count");
     const QString REACTIONS("reactions");
@@ -63,7 +65,9 @@ public:
         RoleMessageId,
         RoleMessageContentType,
         RoleMessageViewCount,
-        RoleMessageReactions
+        RoleMessageReactions,
+        RoleMessageAlbumEntryFilter,
+        RoleMessageAlbumMessageIds,
     };
 
     enum RoleFlag {
@@ -71,7 +75,9 @@ public:
         RoleFlagMessageId = 0x02,
         RoleFlagMessageContentType = 0x04,
         RoleFlagMessageViewCount = 0x08,
-        RoleFlagMessageReactions = 0x16
+        RoleFlagMessageReactions = 0x16,
+        RoleFlagMessageAlbumEntryFilter = 0x32,
+        RoleFlagMessageAlbumMessageIds = 0x64
     };
 
     MessageData(const QVariantMap &data, qlonglong msgid);
@@ -86,12 +92,16 @@ public:
     uint updateViewCount(const QVariantMap &interactionInfo);
     uint updateInteractionInfo(const QVariantMap &interactionInfo);
     uint updateReactions(const QVariantMap &interactionInfo);
+    uint updateAlbumEntryFilter(const bool isAlbumChild);
+    uint updateAlbumEntryMessageIds(const QVariantList &newAlbumMessageIds);
 
     QVector<int> diff(const MessageData *message) const;
     QVector<int> setMessageData(const QVariantMap &data);
     QVector<int> setContent(const QVariantMap &content);
     QVector<int> setReplyMarkup(const QVariantMap &replyMarkup);
     QVector<int> setInteractionInfo(const QVariantMap &interactionInfo);
+    QVector<int> setAlbumEntryFilter(bool isAlbumChild);
+    QVector<int> setAlbumEntryMessageIds(const QVariantList &newAlbumMessageIds);
 
     int senderUserId() const;
     qlonglong senderChatId() const;
@@ -104,6 +114,8 @@ public:
     QString messageContentType;
     int viewCount;
     QVariantList reactions;
+    bool albumEntryFilter;
+    QVariantList albumMessageIds;
 };
 
 ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
@@ -112,7 +124,9 @@ ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
     messageType(data.value(_TYPE).toString()),
     messageContentType(data.value(CONTENT).toMap().value(_TYPE).toString()),
     viewCount(data.value(INTERACTION_INFO).toMap().value(VIEW_COUNT).toInt()),
-    reactions(data.value(INTERACTION_INFO).toMap().value(REACTIONS).toList())
+    reactions(data.value(INTERACTION_INFO).toMap().value(REACTIONS).toList()),
+    albumEntryFilter(false),
+    albumMessageIds(QVariantList())
 {
 }
 
@@ -133,6 +147,12 @@ QVector<int> ChatModel::MessageData::flagsToRoles(uint flags)
     }
     if (flags & RoleFlagMessageReactions) {
         roles.append(RoleMessageReactions);
+    }
+    if (flags & RoleFlagMessageAlbumEntryFilter) {
+        roles.append(RoleMessageAlbumEntryFilter);
+    }
+    if (flags & RoleFlagMessageAlbumMessageIds) {
+        roles.append(RoleMessageAlbumMessageIds);
     }
     return roles;
 }
@@ -168,6 +188,12 @@ QVector<int> ChatModel::MessageData::diff(const MessageData *message) const
         }
         if (message->reactions != reactions) {
             roles.append(RoleMessageReactions);
+        }
+        if (message->albumEntryFilter != albumEntryFilter) {
+            roles.append(RoleMessageAlbumEntryFilter);
+        }
+        if (message->albumMessageIds != albumMessageIds) {
+            roles.append(RoleMessageAlbumMessageIds);
         }
     }
     return roles;
@@ -237,6 +263,37 @@ uint ChatModel::MessageData::updateReactions(const QVariantMap &interactionInfo)
     return (reactions == oldReactions) ? 0 : RoleFlagMessageReactions;
 }
 
+uint ChatModel::MessageData::updateAlbumEntryFilter(const bool isAlbumChild)
+{
+    LOG("Updating album filter... for id " << messageId << " value:" << isAlbumChild << "previously" << albumEntryFilter);
+    const bool oldAlbumFiltered = albumEntryFilter;
+    albumEntryFilter = isAlbumChild;
+    return (isAlbumChild == oldAlbumFiltered) ? 0 : RoleFlagMessageAlbumEntryFilter;
+}
+
+
+QVector<int> ChatModel::MessageData::setAlbumEntryFilter(bool isAlbumChild)
+{
+    LOG("setAlbumEntryFilter");
+    return flagsToRoles(updateAlbumEntryFilter(isAlbumChild));
+}
+
+uint ChatModel::MessageData::updateAlbumEntryMessageIds(const QVariantList &newAlbumMessageIds)
+{
+    LOG("Updating albumMessageIds... id" << messageId);
+    LOG("  Updating albumMessageIds..." << newAlbumMessageIds << "previously" << albumMessageIds << "same?" << (newAlbumMessageIds == albumMessageIds));
+    const QVariantList oldAlbumMessageIds = albumMessageIds;
+    albumMessageIds = newAlbumMessageIds;
+
+    LOG("  Updating albumMessageIds... same again?" << (newAlbumMessageIds == oldAlbumMessageIds));
+    return (newAlbumMessageIds == oldAlbumMessageIds) ? 0 : RoleFlagMessageAlbumMessageIds;
+}
+
+QVector<int> ChatModel::MessageData::setAlbumEntryMessageIds(const QVariantList &newAlbumMessageIds)
+{
+    return flagsToRoles(updateAlbumEntryMessageIds(newAlbumMessageIds));
+}
+
 QVector<int> ChatModel::MessageData::setInteractionInfo(const QVariantMap &info)
 {
     return flagsToRoles(updateInteractionInfo(info));
@@ -295,6 +352,8 @@ QHash<int,QByteArray> ChatModel::roleNames() const
     roles.insert(MessageData::RoleMessageContentType, "content_type");
     roles.insert(MessageData::RoleMessageViewCount, "view_count");
     roles.insert(MessageData::RoleMessageReactions, "reactions");
+    roles.insert(MessageData::RoleMessageAlbumEntryFilter, "album_entry_filter");
+    roles.insert(MessageData::RoleMessageAlbumMessageIds, "album_message_ids");
     return roles;
 }
 
@@ -314,6 +373,8 @@ QVariant ChatModel::data(const QModelIndex &index, int role) const
         case MessageData::RoleMessageContentType: return message->messageContentType;
         case MessageData::RoleMessageViewCount: return message->viewCount;
         case MessageData::RoleMessageReactions: return message->reactions;
+        case MessageData::RoleMessageAlbumEntryFilter: return message->albumEntryFilter;
+        case MessageData::RoleMessageAlbumMessageIds: return message->albumMessageIds;
         }
     }
     return QVariant();
@@ -331,6 +392,7 @@ void ChatModel::clear(bool contentOnly)
         qDeleteAll(messages);
         messages.clear();
         messageIndexMap.clear();
+        albumMessageMap.clear();
         endResetModel();
     }
 
@@ -356,6 +418,7 @@ void ChatModel::initialize(const QVariantMap &chatInformation)
     this->chatId = chatId;
     this->messages.clear();
     this->messageIndexMap.clear();
+    this->albumMessageMap.clear();
     this->searchQuery.clear();
     endResetModel();
     emit chatIdChanged();
@@ -420,6 +483,36 @@ int ChatModel::getMessageIndex(qlonglong messageId)
     return -1;
 }
 
+QVariantList ChatModel::getMessageIdsForAlbum(qlonglong albumId)
+{
+    QVariantList foundMessages;
+    if(albumMessageMap.contains(albumId)) { // there should be only one in here
+        QHash< qlonglong,  QVariantList >::iterator i = albumMessageMap.find(albumId);
+        return i.value();
+    }
+    return foundMessages;
+}
+
+QVariantList ChatModel::getMessagesForAlbum(qlonglong albumId, int startAt)
+{
+    LOG("getMessagesForAlbumId" << albumId);
+    QVariantList messageIds = getMessageIdsForAlbum(albumId);
+    int count = messageIds.size();
+    if ( count == 0) {
+        return messageIds;
+    }
+    QVariantList foundMessages;
+    for (int messageNum = startAt; messageNum < count; ++messageNum) {
+        const int position = messageIndexMap.value(messageIds.at(messageNum).toLongLong(), -1);
+        if(position >= 0 && position < messages.size()) {
+            foundMessages.append(messages.at(position)->messageData);
+        } else {
+            LOG("Not found in messages: #"<< messageNum);
+        }
+    }
+    return foundMessages;
+}
+
 int ChatModel::getLastReadMessageIndex()
 {
     LOG("Obtaining last read message index");
@@ -477,7 +570,8 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
                 const qlonglong messageId = messageData.value(ID).toLongLong();
                 if (messageId && messageData.value(CHAT_ID).toLongLong() == chatId && !messageIndexMap.contains(messageId)) {
                     LOG("New message will be added:" << messageId);
-                    messagesToBeAdded.append(new MessageData(messageData, messageId));
+                    MessageData* message = new MessageData(messageData, messageId);
+                    messagesToBeAdded.append(message);
                 }
             }
 
@@ -485,6 +579,7 @@ void ChatModel::handleMessagesReceived(const QVariantList &messages, int totalCo
 
             if (!messagesToBeAdded.isEmpty()) {
                 insertMessages(messagesToBeAdded);
+                setMessagesAlbum(messagesToBeAdded);
             }
 
             // First call only returns a few messages, we need to get a little more than that...
@@ -540,6 +635,7 @@ void ChatModel::handleNewMessageReceived(qlonglong chatId, const QVariantMap &me
             QList<MessageData*> messagesToBeAdded;
             messagesToBeAdded.append(new MessageData(message, messageId));
             insertMessages(messagesToBeAdded);
+            setMessagesAlbum(messagesToBeAdded);
             emit newMessageReceived(message);
         } else {
             LOG("New message in this chat, but not relevant as less recent messages need to be loaded first!");
@@ -591,6 +687,7 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         messages.replace(pos, newMessage);
         messageIndexMap.remove(oldMessageId);
         messageIndexMap.insert(messageId, pos);
+        // TODO when we support sending album messages, handle ID change in albumMessageMap
         const QVector<int> changedRoles(newMessage->diff(oldMessage));
         delete oldMessage;
         LOG("Message was replaced at index" << pos);
@@ -635,7 +732,8 @@ void ChatModel::handleMessageContentUpdated(qlonglong chatId, qlonglong messageI
         LOG("We know the message that was updated" << messageId);
         const int pos = messageIndexMap.value(messageId, -1);
         if (pos >= 0) {
-            const QVector<int> changedRoles(messages.at(pos)->setContent(newContent));
+            MessageData* messageData = messages.at(pos);
+            const QVector<int> changedRoles(messageData->setContent(newContent));
             LOG("Message was updated at index" << pos);
             const QModelIndex messageIndex(index(pos));
             emit dataChanged(messageIndex, messageIndex, changedRoles);
@@ -664,7 +762,8 @@ void ChatModel::handleMessageEditedUpdated(qlonglong chatId, qlonglong messageId
         LOG("We know the message that was updated" << messageId);
         const int pos = messageIndexMap.value(messageId, -1);
         if (pos >= 0) {
-            const QVector<int> changedRoles(messages.at(pos)->setReplyMarkup(replyMarkup));
+            MessageData* messageData = messages.at(pos);
+            const QVector<int> changedRoles(messageData->setReplyMarkup(replyMarkup));
             LOG("Message was edited at index" << pos);
             const QModelIndex messageIndex(index(pos));
             emit dataChanged(messageIndex, messageIndex, changedRoles);
@@ -709,18 +808,31 @@ void ChatModel::handleMessagesDeleted(qlonglong chatId, const QList<qlonglong> &
     }
 }
 
+
 void ChatModel::removeRange(int firstDeleted, int lastDeleted)
 {
     if (firstDeleted >= 0 && firstDeleted <= lastDeleted) {
         LOG("Removing range" << firstDeleted << "..." << lastDeleted << "| current messages size" << messages.size());
         beginRemoveRows(QModelIndex(), firstDeleted, lastDeleted);
+        QList<qlonglong> rescanAlbumIds;
         for (int i = firstDeleted; i <= lastDeleted; i++) {
             MessageData *message = messages.at(i);
             messageIndexMap.remove(message->messageId);
+
+            qlonglong albumId = message->messageData.value(MEDIA_ALBUM_ID).toLongLong();
+            if(albumId != 0 && albumMessageMap.contains(albumId)) {
+                rescanAlbumIds.append(albumId);
+            }
             delete message;
         }
         messages.erase(messages.begin() + firstDeleted, messages.begin() + (lastDeleted + 1));
+        // rebuild following messageIndexMap
+        for(int i = firstDeleted; i < messages.size(); ++i) {
+            messageIndexMap.insert(messages.at(i)->messageId, i);
+        }
         endRemoveRows();
+
+        updateAlbumMessages(rescanAlbumIds, true);
     }
 }
 
@@ -757,7 +869,7 @@ void ChatModel::appendMessages(const QList<MessageData*> newMessages)
     beginInsertRows(QModelIndex(), oldSize, oldSize + count - 1);
     messages.append(newMessages);
     for (int i = 0; i < count; i++) {
-        // Appens new indeces to the map
+        // Append new indices to the map
         messageIndexMap.insert(newMessages.at(i)->messageId, oldSize + i);
     }
     endInsertRows();
@@ -783,6 +895,90 @@ void ChatModel::prependMessages(const QList<MessageData*> newMessages)
         messageIndexMap.insert(messages.at(i)->messageId, i);
     }
     endInsertRows();
+}
+
+void ChatModel::updateAlbumMessages(qlonglong albumId, bool checkDeleted)
+{
+    if(albumMessageMap.contains(albumId)) {
+        const QVariantList empty;
+        QHash< qlonglong,  QVariantList >::iterator album = albumMessageMap.find(albumId);
+        QVariantList messageIds = album.value();
+        std::sort(messageIds.begin(), messageIds.end());
+        int count;
+        // first: clear deleted messageIds:
+        if(checkDeleted) {
+            QVariantList::iterator it = messageIds.begin();
+            while (it != messageIds.end()) {
+              if (!messageIndexMap.contains(it->toLongLong())) {
+                it = messageIds.erase(it);
+              }
+              else {
+                ++it;
+              }
+            }
+        }
+        // second: remaining ones still exist
+        count = messageIds.size();
+        if(count == 0) {
+            albumMessageMap.remove(albumId);
+        } else {
+            for (int i = 0; i < count; i++) {
+                const int position = messageIndexMap.value(messageIds.at(i).toLongLong(), -1);
+                if(position > -1) {
+                    // set list for first entry, empty for all others
+                    QVector<int> changedRolesFilter;
+                    QVector<int> changedRolesIds;
+
+                    QModelIndex messageIndex(index(position));
+                    if(i == 0) {
+                        changedRolesFilter = messages.at(position)->setAlbumEntryFilter(false);
+                        changedRolesIds = messages.at(position)->setAlbumEntryMessageIds(messageIds);
+                    } else {
+                        changedRolesFilter = messages.at(position)->setAlbumEntryFilter(true);
+                        changedRolesIds = messages.at(position)->setAlbumEntryMessageIds(empty);
+                    }
+                    emit dataChanged(messageIndex, messageIndex, changedRolesIds);
+                    emit dataChanged(messageIndex, messageIndex, changedRolesFilter);
+                }
+            }
+        }
+        albumMessageMap.insert(albumId, messageIds);
+    }
+}
+
+void ChatModel::updateAlbumMessages(QList<qlonglong> albumIds, bool checkDeleted)
+{
+    const int albumsCount = albumIds.size();
+    for (int i = 0; i < albumsCount; i++) {
+        updateAlbumMessages(albumIds.at(i), checkDeleted);
+    }
+}
+
+void ChatModel::setMessagesAlbum(const QList<MessageData *> newMessages)
+{
+    const int count = newMessages.size();
+    for (int i = 0; i < count; i++) {
+        setMessagesAlbum(newMessages.at(i));
+    }
+}
+
+void ChatModel::setMessagesAlbum(MessageData *message)
+{
+    qlonglong albumId = message->messageData.value(MEDIA_ALBUM_ID).toLongLong();
+    if (albumId > 0 && (message->messageContentType != "messagePhoto" || message->messageContentType != "messageVideo")) {
+        qlonglong messageId = message->messageId;
+
+        if(albumMessageMap.contains(albumId)) {
+            // find message id within album:
+            QHash< qlonglong,  QVariantList >::iterator i = albumMessageMap.find(albumId);
+            if(!i.value().contains(messageId)) {
+                i.value().append(messageId);
+            }
+        } else { // new album id
+            albumMessageMap.insert(albumId, QVariantList() << messageId);
+        }
+        updateAlbumMessages(albumId, false);
+    }
 }
 
 QVariantMap ChatModel::enhanceMessage(const QVariantMap &message)
