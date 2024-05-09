@@ -891,6 +891,16 @@
     </message>
 </context>
 <context>
+    <name>FullscreenOverlay</name>
+    <message numerus="yes">
+        <source>Forward %Ln messages</source>
+        <comment>dialog header</comment>
+        <translation type="unfinished">
+            <numerusform>转发 %Ln 则消息</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>

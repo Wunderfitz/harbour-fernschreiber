@@ -904,6 +904,17 @@
     </message>
 </context>
 <context>
+    <name>FullscreenOverlay</name>
+    <message numerus="yes">
+        <source>Forward %Ln messages</source>
+        <comment>dialog header</comment>
+        <translation>
+            <numerusform>Reenviar %Ln mensaje</numerusform>
+            <numerusform>Reenviar %Ln mensajes</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
