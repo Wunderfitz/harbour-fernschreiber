@@ -20,7 +20,6 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import QtMultimedia 5.6
 import "../"
-import "../../js/functions.js" as Functions
 import "../../js/debug.js" as Debug
 
 Item {

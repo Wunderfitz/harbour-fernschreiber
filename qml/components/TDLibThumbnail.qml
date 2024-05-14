@@ -59,7 +59,7 @@ Item {
 
     readonly property bool hasVisibleThumbnail: thumbnailImage.opacity !== 1.0
         && !(videoThumbnailLoader.item && videoThumbnailLoader.item.opacity === 1.0)
-
+    property alias fillMode: thumbnailImage.fillMode
     layer {
         enabled: highlighted
         effect: PressEffect { source: tdlibThumbnail }
@@ -67,6 +67,7 @@ Item {
 
     TDLibMinithumbnail {
         id: minithumbnailLoader
+        fillMode: thumbnailImage.fillMode
         active: !!minithumbnail && thumbnailImage.opacity < 1.0
     }
     BackgroundImage {
@@ -103,6 +104,7 @@ Item {
                 sourceSize.width: width
                 sourceSize.height: height
                 mimeType: tdlibThumbnail.videoMimeType
+                fillMode: thumbnailImage.fillMode == Image.PreserveAspectFit ? Thumbnail.PreserveAspectFit : Thumbnail.PreserveAspectCrop
                 visible: opacity > 0
                 opacity: status === Thumbnail.Ready ? 1.0 : 0.0
                 Behavior on opacity { FadeAnimation {} }

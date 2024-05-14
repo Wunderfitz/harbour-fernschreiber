@@ -517,7 +517,7 @@ function handleErrorMessage(code, message) {
 }
 
 function getMessagesNeededForwardPermissions(messages) {
-    var neededPermissions = ["can_send_messages"]
+    var neededPermissions = ["can_send_basic_messages"]
 
     var mediaMessageTypes = ["messageAudio", "messageDocument", "messagePhoto", "messageVideo", "messageVideoNote", "messageVoiceNote"]
     var otherMessageTypes = ["messageAnimation", "messageGame", "messageSticker"]

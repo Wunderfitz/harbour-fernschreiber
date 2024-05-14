@@ -921,6 +921,18 @@
     </message>
 </context>
 <context>
+    <name>FullscreenOverlay</name>
+    <message numerus="yes">
+        <source>Forward %Ln messages</source>
+        <comment>dialog header</comment>
+        <translation>
+            <numerusform>Перенаправить %Ln сообщение</numerusform>
+            <numerusform>Перенаправить %Ln сообщения</numerusform>
+            <numerusform>Перенаправить %Ln сообщений</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>

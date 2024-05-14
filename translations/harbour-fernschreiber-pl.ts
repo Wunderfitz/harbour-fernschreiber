@@ -918,6 +918,18 @@
     </message>
 </context>
 <context>
+    <name>FullscreenOverlay</name>
+    <message numerus="yes">
+        <source>Forward %Ln messages</source>
+        <comment>dialog header</comment>
+        <translation>
+            <numerusform>Przekaż %Ln wiadomość</numerusform>
+            <numerusform>Przekaż %Ln wiadomości</numerusform>
+            <numerusform>Przekaż %Ln wiadomości</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download Picture</source>
