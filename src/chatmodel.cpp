@@ -472,13 +472,23 @@ QVariantMap ChatModel::getMessage(int index)
     return QVariantMap();
 }
 
-int ChatModel::getMessageIndex(qlonglong messageId)
+int ChatModel::getDisplayedMessageIndex(qlonglong messageId)
 {
     if (messages.size() == 0) {
         return -1;
     }
     if (messageIndexMap.contains(messageId)) {
-        return messageIndexMap.value(messageId);
+        int rawIndex = messageIndexMap.value(messageId);
+        // We need to substract number of albums which are shown before this item, because that's the index it's displayed on screen at.
+        int realIndex = rawIndex;
+        for(int i = 0; i < rawIndex; i++) {
+            MessageData *message = messages.at(i);
+            if(message->albumMessageIds.count() > 0) {
+                realIndex -= (message->albumMessageIds.count() - 1);
+            }
+        }
+
+        return realIndex;
     }
     return -1;
 }
