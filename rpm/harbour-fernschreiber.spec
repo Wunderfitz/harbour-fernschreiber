@@ -9,6 +9,7 @@ Name:       harbour-fernschreiber
 # << macros
 %define __provides_exclude_from ^%{_datadir}/.*$
 %define __requires_exclude ^libtdjson.*$
+%define _binary_payload w6.xzdio
 
 Summary:    Fernschreiber is a Telegram client for Sailfish OS
 Version:    0.17
