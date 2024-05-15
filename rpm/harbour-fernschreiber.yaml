@@ -34,6 +34,7 @@ PkgConfigBR:
 Macros:
   - '__provides_exclude_from;^%{_datadir}/.*$'
   - '__requires_exclude;^libtdjson.*$'
+  - '_binary_payload;w6.xzdio'
 
 # Build dependencies without a pkgconfig setup can be listed here
 PkgBR:
