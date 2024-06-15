@@ -31,7 +31,7 @@ class ChatPermissionFilterModel : public QSortFilterProxyModel
 
 public:
     ChatPermissionFilterModel(QObject *parent = Q_NULLPTR);
-
+    ~ChatPermissionFilterModel() override;
     TDLibWrapper *getTDLibWrapper() const;
     void setTDLibWrapper(QObject* obj);
 
