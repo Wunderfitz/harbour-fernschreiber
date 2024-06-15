@@ -348,7 +348,7 @@ public slots:
     void handleAuthorizationStateChanged(const QString &authorizationState, const QVariantMap authorizationStateData);
     void handleOptionUpdated(const QString &optionName, const QVariant &optionValue);
     void handleConnectionStateChanged(const QString &connectionState);
-    void handleUserUpdated(const QVariantMap &userInformation);
+    void handleUserUpdated(const QVariantMap &updatedUserInformation);
     void handleUserStatusUpdated(const QString &userId, const QVariantMap &userStatusInformation);
     void handleFileUpdated(const QVariantMap &fileInformation);
     void handleNewChatDiscovered(const QVariantMap &chatInformation);
@@ -383,6 +383,7 @@ private:
     const Group *updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups);
     QVariantMap newSendMessageRequest(qlonglong chatId, qlonglong replyToMessageId);
     void initializeTDLibReceiver();
+    void updateUserInformation(const QString &userId, const QVariantMap &userInformation);
 
 private:
     void *tdLibClient;
@@ -399,8 +400,8 @@ private:
     QVariantMap options;
     QVariantMap userInformation;
     QMap<UserPrivacySetting, UserPrivacySettingRule> userPrivacySettingRules;
-    QVariantMap allUsers;
-    QVariantMap allUserNames;
+    QVariantMap usersById;
+    QVariantMap usersByName;
     QVariantMap chats;
     QMap<qlonglong, QVariantMap> secretChats;
     QVariantMap unreadMessageInformation;

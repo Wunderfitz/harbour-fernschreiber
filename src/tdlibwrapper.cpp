@@ -1573,17 +1573,17 @@ QVariantMap TDLibWrapper::getUserInformation()
 QVariantMap TDLibWrapper::getUserInformation(const QString &userId)
 {
     // LOG("Returning user information for ID" << userId);
-    return this->allUsers.value(userId).toMap();
+    return this->usersById.value(userId).toMap();
 }
 
 bool TDLibWrapper::hasUserInformation(const QString &userId)
 {
-    return this->allUsers.contains(userId);
+    return this->usersById.contains(userId);
 }
 
 QVariantMap TDLibWrapper::getUserInformationByName(const QString &userName)
 {
-    return this->allUserNames.value(userName).toMap();
+    return this->usersByName.value(userName).toMap();
 }
 
 TDLibWrapper::UserPrivacySettingRule TDLibWrapper::getUserPrivacySettingRule(TDLibWrapper::UserPrivacySetting userPrivacySetting)
@@ -1812,8 +1812,8 @@ void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationS
         LOG("Reloading TD Lib...");
         this->basicGroups.clear();
         this->superGroups.clear();
-        this->allUsers.clear();
-        this->allUserNames.clear();
+        this->usersById.clear();
+        this->usersByName.clear();
         this->tdLibReceiver->setActive(false);
         while (this->tdLibReceiver->isRunning()) {
             QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
@@ -1864,18 +1864,17 @@ void TDLibWrapper::handleConnectionStateChanged(const QString &connectionState)
     emit connectionStateChanged(this->connectionState);
 }
 
-void TDLibWrapper::handleUserUpdated(const QVariantMap &userInformation)
+void TDLibWrapper::handleUserUpdated(const QVariantMap &updatedUserInformation)
 {
-    QString updatedUserId = userInformation.value(ID).toString();
+    QString updatedUserId = updatedUserInformation.value(ID).toString();
     if (updatedUserId == this->options.value("my_id").toString()) {
         LOG("Own user information updated :)");
-        this->userInformation = userInformation;
-        emit ownUserUpdated(userInformation);
+        this->userInformation = updatedUserInformation;
+        emit ownUserUpdated(updatedUserInformation);
     }
-    LOG("User information updated:" << userInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString() << userInformation.value(FIRST_NAME).toString() << userInformation.value(LAST_NAME).toString());
-    this->allUsers.insert(updatedUserId, userInformation);
-    this->allUserNames.insert(userInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString(), userInformation);
-    emit userUpdated(updatedUserId, userInformation);
+    LOG("User information updated:" << updatedUserInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString() << updatedUserInformation.value(FIRST_NAME).toString() << updatedUserInformation.value(LAST_NAME).toString());
+    updateUserInformation(updatedUserId, updatedUserInformation);
+    emit userUpdated(updatedUserId, updatedUserInformation);
 }
 
 void TDLibWrapper::handleUserStatusUpdated(const QString &userId, const QVariantMap &userStatusInformation)
@@ -1884,12 +1883,20 @@ void TDLibWrapper::handleUserStatusUpdated(const QString &userId, const QVariant
         LOG("Own user status information updated :)");
         this->userInformation.insert(STATUS, userStatusInformation);
     }
+    QVariantMap updatedUserInformation = this->usersById.value(userId).toMap();
+    if(updatedUserInformation[STATUS] == userStatusInformation) {
+        return;
+    }
     LOG("User status information updated:" << userId << userStatusInformation.value(_TYPE).toString());
-    QVariantMap updatedUserInformation = this->allUsers.value(userId).toMap();
     updatedUserInformation.insert(STATUS, userStatusInformation);
-    this->allUsers.insert(userId, updatedUserInformation);
-    this->allUserNames.insert(userInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString(), userInformation);
+    updateUserInformation(userId, updatedUserInformation);
     emit userUpdated(userId, updatedUserInformation);
+}
+
+void TDLibWrapper::updateUserInformation(const QString &userId, const QVariantMap &userInformation)
+{
+    this->usersById.insert(userId, userInformation);
+    this->usersByName.insert(userInformation.value(USERNAMES).toMap().value(EDITABLE_USERNAME).toString(), userInformation);
 }
 
 void TDLibWrapper::handleFileUpdated(const QVariantMap &fileInformation)
