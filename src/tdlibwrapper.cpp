@@ -2204,6 +2204,14 @@ void TDLibWrapper::handleGetPageSourceFinished()
     }
 }
 
+void TDLibWrapper::handleBackground() {
+    this->tdLibReceiver->setPowerSavingMode(true);
+}
+
+void TDLibWrapper::handleForeground() {
+    this->tdLibReceiver->setPowerSavingMode(false);
+}
+
 QVariantMap& TDLibWrapper::fillTdlibParameters(QVariantMap& parameters)
 {
     parameters.insert("api_id", TDLIB_API_ID);
