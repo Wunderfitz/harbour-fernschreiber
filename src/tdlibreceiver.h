@@ -35,6 +35,7 @@ class TDLibReceiver : public QThread
 public:
     explicit TDLibReceiver(void *tdLibClient, QObject *parent = nullptr);
     void setActive(bool active);
+    void setPowerSavingMode(bool active);
 
 signals:
     void versionDetected(const QString &version);
@@ -115,6 +116,7 @@ private:
     QHash<QString, Handler> handlers;
     void *tdLibClient;
     bool isActive;
+    bool powerSavingMode;
 
 private:
     static const QVariantList cleanupList(const QVariantList& list, bool *updated = Q_NULLPTR);

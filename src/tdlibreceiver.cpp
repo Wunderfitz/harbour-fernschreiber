@@ -81,6 +81,8 @@ namespace {
     const QString TYPE_ANIMATED_EMOJI("animatedEmoji");
     const QString TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE("inputMessageReplyToMessage");
     const QString TYPE_DRAFT_MESSAGE("draftMessage");
+
+    const double POWERSAVING_TDLIB_REQUEST_INTERVAL = 100;
 }
 
 static QString getChatPositionOrder(const QVariantMap &position)
@@ -191,7 +193,13 @@ void TDLibReceiver::setActive(bool active)
     } else {
         LOG("Deactivating receiver loop, this may take a while...");
     }
+    this->powerSavingMode = false;
     this->isActive = active;
+}
+
+void TDLibReceiver::setPowerSavingMode(bool powerSavingMode)
+{
+    this->powerSavingMode = powerSavingMode;
 }
 
 void TDLibReceiver::receiverLoop()
@@ -204,6 +212,9 @@ void TDLibReceiver::receiverLoop()
           QJsonDocument receivedJsonDocument = QJsonDocument::fromJson(QByteArray(result));
           VERBOSE("Raw result:" << receivedJsonDocument.toJson(QJsonDocument::Indented).constData());
           processReceivedDocument(receivedJsonDocument);
+      }
+      if(this->powerSavingMode) {
+          msleep(POWERSAVING_TDLIB_REQUEST_INTERVAL);
       }
     }
     LOG("Stopping receiver loop");
