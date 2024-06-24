@@ -22,6 +22,7 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QGuiApplication>
 #include <QLocale>
 #include <QProcess>
 #include <QSysInfo>
@@ -102,7 +103,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *settings, MceInterface *mce, QObject *pa
 
     connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
     connect(this->appSettings, SIGNAL(storageOptimizerChanged()), this, SLOT(handleStorageOptimizerChanged()));
-
+    connect(qGuiApp, SIGNAL(applicationStateChanged(Qt::ApplicationState)), this, SLOT(handleApplicationStateChanged(Qt::ApplicationState)));
     connect(networkConfigurationManager, SIGNAL(configurationChanged(QNetworkConfiguration)), this, SLOT(handleNetworkConfigurationChanged(QNetworkConfiguration)));
 
     this->setLogVerbosityLevel();
@@ -2204,12 +2205,8 @@ void TDLibWrapper::handleGetPageSourceFinished()
     }
 }
 
-void TDLibWrapper::handleBackground() {
-    this->tdLibReceiver->setPowerSavingMode(true);
-}
-
-void TDLibWrapper::handleForeground() {
-    this->tdLibReceiver->setPowerSavingMode(false);
+void TDLibWrapper::handleApplicationStateChanged(Qt::ApplicationState state) {
+    this->tdLibReceiver->setPowerSavingMode(state != Qt::ApplicationState::ApplicationActive);
 }
 
 QVariantMap& TDLibWrapper::fillTdlibParameters(QVariantMap& parameters)
