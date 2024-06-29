@@ -82,7 +82,6 @@ namespace {
     const QString TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE("inputMessageReplyToMessage");
     const QString TYPE_DRAFT_MESSAGE("draftMessage");
 
-    const double NORMAL_TDLIB_REQUEST_INTERVAL = 20;
     const double POWERSAVING_TDLIB_REQUEST_INTERVAL = 100;
 }
 
@@ -214,7 +213,9 @@ void TDLibReceiver::receiverLoop()
           VERBOSE("Raw result:" << receivedJsonDocument.toJson(QJsonDocument::Indented).constData());
           processReceivedDocument(receivedJsonDocument);
       }
-      msleep(this->powerSavingMode ? POWERSAVING_TDLIB_REQUEST_INTERVAL : NORMAL_TDLIB_REQUEST_INTERVAL);
+      if(this->powerSavingMode) {
+          msleep(POWERSAVING_TDLIB_REQUEST_INTERVAL);
+      }
     }
     LOG("Stopping receiver loop");
 }
