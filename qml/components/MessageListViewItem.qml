@@ -127,7 +127,7 @@ ListItem {
             Debug.log("Obtaining message reactions")
             tdLibWrapper.getMessageAvailableReactions(messageListItem.chatId, messageListItem.messageId);
         }
-        selectReactionBubble.visible = false;
+        selectReactionBubble.enabled = false;
     }
 
     function getContentWidthMultiplier() {
@@ -151,9 +151,13 @@ ListItem {
 
             if (messageListItem.messageReactions) {
                 messageListItem.messageReactions = null;
-                selectReactionBubble.visible = false;
+                selectReactionBubble.enabled = false;
             } else {
-                selectReactionBubble.visible = !selectReactionBubble.visible;
+                if (selectReactionBubble.enabled) {
+                    selectReactionBubble.enabled = false
+                } else if (appSettings.showReactionButton) {
+                    selectReactionBubble.enabled = true
+                }
                 elementSelected(index);
             }
         }
@@ -190,11 +194,11 @@ ListItem {
         target: chatPage
         onResetElements: {
             messageListItem.messageReactions = null;
-            selectReactionBubble.visible = false;
+            selectReactionBubble.enabled = false;
         }
         onElementSelected: {
             if (elementIndex !== index) {
-                selectReactionBubble.visible = false;
+                selectReactionBubble.enabled = false;
             }
         }
         onNavigatedTo: {
@@ -733,7 +737,7 @@ ListItem {
                                 onClicked: {
                                     if (messageListItem.messageReactions) {
                                         messageListItem.messageReactions = null;
-                                        selectReactionBubble.visible = false;
+                                        selectReactionBubble.enabled = false;
                                     } else {
                                         openReactions();
                                     }
@@ -745,35 +749,23 @@ ListItem {
 
             }
 
-            Rectangle {
+            Loader {
                 id: selectReactionBubble
-                visible: false
-                opacity: visible ? 0.5 : 0.0
-                Behavior on opacity { NumberAnimation {} }
                 anchors {
                     horizontalCenter: messageListItem.isOwnMessage ? messageBackground.left : messageBackground.right
                     verticalCenter: messageBackground.verticalCenter
                 }
-                height: Theme.itemSizeExtraSmall
-                width: Theme.itemSizeExtraSmall
-                color: Theme.primaryColor
-                radius: parent.width / 2
-            }
-
-            IconButton {
-                id: selectReactionButton
-                visible: selectReactionBubble.visible
-                opacity: visible ? 1.0 : 0.0
-                Behavior on opacity { NumberAnimation {} }
-                icon.source: "image://theme/icon-s-favorite"
-                anchors.centerIn: selectReactionBubble
-                onClicked: {
-                    openReactions();
+                enabled: false
+                opacity: enabled ? 1 : 0
+                active: opacity > 0
+                Behavior on opacity { FadeAnimation {} }
+                sourceComponent: Component {
+                    ReactionButton {
+                        onClicked: openReactions()
+                    }
                 }
             }
-
         }
-
     }
 
     Column {
@@ -835,7 +827,7 @@ ListItem {
                                 // Reaction is not yet selected
                                 tdLibWrapper.addMessageReaction(chatId, messageId, modelData)
                                 messageReactions = null
-                                selectReactionBubble.visible = false
+                                selectReactionBubble.enabled = false
                             }
                         }
                     }

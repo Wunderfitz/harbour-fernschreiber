@@ -21,6 +21,8 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 
+import ".."
+
 AccordionItem {
     text: qsTr("Behavior")
     Component {
@@ -111,6 +113,31 @@ AccordionItem {
                 automaticCheck: false
                 onClicked: {
                     appSettings.goToQuotedMessage = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.showReactionButton
+                text: qsTr("Show reaction button on tap")
+                description: qsTr("The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.showReactionButton = !checked
+                }
+
+                ReactionButton {
+                    Behavior on opacity { FadeAnimation {} }
+                    opacity: appSettings.showReactionButton ? 1 : 0
+                    visible: opacity > 0
+                    anchors {
+                        right: parent.right
+                        rightMargin: parent.rightMargin
+                        verticalCenter: parent.verticalCenter
+                    }
+                    onClicked: {
+                        appSettings.showReactionButton = !parent.checked
+                    }
                 }
             }
 
