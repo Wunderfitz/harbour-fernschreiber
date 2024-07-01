@@ -33,7 +33,9 @@ ChatPermissionFilterModel::ChatPermissionFilterModel(QObject *parent) : QSortFil
 
 void ChatPermissionFilterModel::setSource(QObject *model)
 {
-    setSourceModel(qobject_cast<ChatListModel*>(model));
+    ChatListModel* chatListModel = qobject_cast<ChatListModel*>(model);
+    ChatListModel* chatListModelClone = chatListModel->clone();
+    setSourceModel(chatListModelClone);
 }
 
 void ChatPermissionFilterModel::setSourceModel(QAbstractItemModel *model)
@@ -42,6 +44,13 @@ void ChatPermissionFilterModel::setSourceModel(QAbstractItemModel *model)
         LOG(model);
         QSortFilterProxyModel::setSourceModel(model);
         emit sourceChanged();
+    }
+}
+
+ChatPermissionFilterModel::~ChatPermissionFilterModel() {
+    QAbstractItemModel* _sourceModel = sourceModel();
+    if(_sourceModel != nullptr) {
+        delete _sourceModel;
     }
 }
 

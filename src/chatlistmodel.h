@@ -75,6 +75,7 @@ public:
 
     bool showAllChats() const;
     void setShowAllChats(bool showAll);
+    ChatListModel* clone();
 
 private slots:
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
