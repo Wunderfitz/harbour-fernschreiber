@@ -12,6 +12,15 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Mon May 13 2024 jgibbon <jngibbon@gmail.com> 0.18.1
+- Pre-Release to test features. Changes from 0.17:
+- Update Emoji support to 15.1 – contribution by jgibbon
+- Fix Regression: Show all destinations for message forwarding – contribution by mbarashkov
+- Fix: message copy for some use cases – contribution by mbarashkov
+- Fix: message range synchronization in ChatModel – contribution by jgibbon
+- New media view for messages including album support – contribution by jgibbon
+- Updated translations for several languages, thanks to carlosgonz0, okruhliak and eson57
+
 * Sun Dec 03 2023 Sebastian J. Wolf <sebastian@ygriega.de> 0.17
 - Update to TDLib 1.8.21, expect some hiccups ;)
 - Added contacts sync (OpenRepos builds only)
