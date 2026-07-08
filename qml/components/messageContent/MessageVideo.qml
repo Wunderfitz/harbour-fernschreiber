@@ -86,7 +86,7 @@ MessageContentBase {
             if (typeof rawMessage !== "undefined" && rawMessage.content['@type'] === "messageAnimation") {
                 playButton.visible = true;
                 fullscreenButton.visible = !videoMessageComponent.fullscreen;
-                handlePlay();
+                //handlePlay();
             } else if (typeof videoData.thumbnail !== "undefined") {
                 previewFileId = videoData.thumbnail.file.id;
                 if (videoData.thumbnail.file.local.is_downloading_completed) {
