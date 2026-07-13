@@ -487,6 +487,10 @@
         <source>Double-tap on a message to choose a reaction</source>
         <translation>Drücke zweimal auf eine Nachricht, um eine Reaktion auszuwählen</translation>
     </message>
+    <message>
+        <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
+        <translation>Sind Sie sicher, dass Sie diesen Chat löschen wollen? Diese Handlung kann nicht zurückgenommen werden und Sie werden die gesamte Unterhaltung für immer verlieren!</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

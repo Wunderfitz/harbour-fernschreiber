@@ -919,10 +919,13 @@ Page {
                     visible: chatPage.isPrivateChat
                     onClicked: {
                         var privateChatId = chatInformation.id;
-                        Remorse.popupAction(chatPage, qsTr("Deleting chat"), function() {
-                            tdLibWrapper.deleteChat(privateChatId);
-                            pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
-                        }, 10000);
+                        var confirmationDialog = pageStack.push(deleteChatConfirmationDialog);
+                        confirmationDialog.accepted.connect(function() {
+                            Remorse.popupAction(chatPage, qsTr("Deleting chat"), function() {
+                                tdLibWrapper.deleteChat(privateChatId);
+                                pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
+                            }, 10000);
+                        });
                     }
                     text: qsTr("Delete Chat")
                 }
@@ -2271,5 +2274,28 @@ Page {
         anchors.bottom: parent.bottom
         text: qsTr("Double-tap on a message to choose a reaction")
         visible: false
+    }
+
+    Component {
+        id: deleteChatConfirmationDialog
+        Dialog {
+            id: deleteChatDialog
+            allowedOrientations: Orientation.All
+            DialogHeader {
+                id: deleteChatDialogHeader
+                acceptText: qsTr("Delete Chat")
+            }
+            Label {
+                anchors {
+                    top: deleteChatDialogHeader.bottom
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.horizontalPageMargin
+                }
+                wrapMode: Text.Wrap
+                color: Theme.highlightColor
+                text: qsTr("Are you sure that you want to delete this chat? This action can't be undone and you lose the entire conversation forever!")
+            }
+        }
     }
 }
