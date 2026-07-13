@@ -91,7 +91,9 @@ MessageContentBase {
             if (typeof rawMessage !== "undefined" && rawMessage.content['@type'] === "messageAnimation") {
                 playButton.visible = true;
                 fullscreenButton.visible = !videoMessageComponent.fullscreen;
-                handlePlay();
+                // Animated GIFs cause the system to crash on some devices in SFOS 5.1.x, disabling auto-play
+                // See https://forum.sailfishos.org/t/5-1-0-11-media-subsystem-crashes-apps-when-playing-animations/30544
+                // handlePlay();
             } else if (typeof videoData.thumbnail !== "undefined") {
                 previewFileId = videoData.thumbnail.file.id;
                 if (videoData.thumbnail.file.local.is_downloading_completed) {
