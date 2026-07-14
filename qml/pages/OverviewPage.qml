@@ -354,6 +354,7 @@ Page {
                 falloffRadius: 0.1
                 radius: 0.2
                 cache: false
+                anchors.bottom: parent.bottom
             }
 
             MouseArea {

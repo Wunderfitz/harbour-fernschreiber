@@ -18,8 +18,10 @@
 */
 import QtQuick 2.6
 import QtGraphicalEffects 1.0
+import WerkWolf.Fernschreiber 1.0
 import Sailfish.Silica 1.0
 import "../../../js/functions.js" as Functions
+import "../../../js/twemoji.js" as Emoji
 
 
 Item {
@@ -137,7 +139,7 @@ Item {
                 rightMargin: Theme.paddingLarge
                 right: parent.right
                 top: parent.top
-                topMargin: Theme.horizontalPageMargin
+                topMargin: (!!Screen.hasCutouts && pageStack.currentPage.orientation === Orientation.Portrait) ? Screen.topCutout.height : Theme.horizontalPageMargin
             }
 
             Behavior on height { NumberAnimation {duration: 300} }
@@ -219,6 +221,37 @@ Item {
     }
 
 
+    TDLibFile {
+        id: file
+        autoLoad: false
+        tdlib: tdLibWrapper
+        property bool isPhoto: message.content['@type'] === 'messagePhoto'
+
+        fileInformation: {
+            if(isPhoto) {
+                var photoData = message.content.photo
+                var biggestIndex = -1
+                for (var i = 0; i < photoData.sizes.length; i++) {
+                    if (biggestIndex === -1 || photoData.sizes[i].width > photoData.sizes[biggestIndex].width) {
+                        biggestIndex = i;
+                    }
+                }
+                if (biggestIndex > -1) {
+                    return photoData.sizes[biggestIndex].photo
+                }
+                return {}
+            }
+
+            return message.content.video.video
+        }
+        property real progress: isDownloadingCompleted ? 1.0 : (downloadedSize / size)
+        onDownloadingCompletedChanged: {
+            if(isDownloadingCompleted) {
+//                video.source = file.path
+
+            }
+        }
+    }
     Row {
         id: buttons
         height: Theme.itemSizeSmall
@@ -230,18 +263,26 @@ Item {
             bottomMargin: Theme.paddingLarge
         }
 
-//        IconButton {
-//             icon.source: "image://theme/icon-m-cancel?" + (pressed
-//                          ? Theme.highlightColor
-//                          : Theme.lightPrimaryColor)
-//             onClicked: pageStack.pop()
-
-//         }
         IconButton {
-             icon.source: "image://theme/icon-m-downloads?" + (pressed
-                          ? Theme.highlightColor
-                          : Theme.lightPrimaryColor)
-             onClicked: pageStack.pop()
+             icon.source: (file.isDownloadingActive
+                           ? "image://theme/icon-m-cancel"
+                           : "image://theme/icon-m-downloads")
+                          + "?"
+                          + (
+                              pressed
+                              ? Theme.highlightColor
+                              : Theme.lightPrimaryColor
+                              )
+             onClicked: {
+                 if(file.isDownloadingCompleted) {
+                     tdLibWrapper.copyFileToDownloads(file.path, true);
+                 } else if(!file.isDownloadingActive) {
+                     file.load();
+                 } else {
+                     file.cancel()
+                 }
+             }
+
          }
         Item {
             width: Theme.itemSizeSmall
@@ -266,7 +307,6 @@ Item {
             }
             AnchorChanges {
                 target: topGradient
-//                anchors.top: captionLabel.verticalCenter
                 anchors.bottom: captionFlickable.bottom
             }
         }

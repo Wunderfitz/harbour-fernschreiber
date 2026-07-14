@@ -46,58 +46,33 @@ MessageContentBase {
         if(messageContent.albumId === '0' || messageContent.albumMessageIds.length < 2) {
             return msgs;
         }
-//        var othermsgIds =
-        // getMessages from tdlib isn't faster
-//        if(rawMessage && rawMessage.chat_id) {
-//            var messages = [];
-//            return albumMessageIds.map(function(msgId){
-//                if(msgId === rawMessage.id) {
-//                    return rawMessage;
-//                }
-//                return tdLibWrapper.getMessage(rawMessage.chat_id, msgId);
-//            })
-//        }
          chatModel.getMessagesForAlbum(messageContent.albumId, 1).forEach(function(msg){
             msgs.push(msg);
          });
         //
-        return msgs; //chatModel.getMessagesForAlbum(messageContent.albumId);
+        return msgs;
     }
 
     function openDetail(index) {
-        console.log('open detail', index || 0);
-
-
         pageStack.push(Qt.resolvedUrl("../../pages/MediaAlbumPage.qml"), {
                            "messages" : albumMessages,
                            "index": index || 0
                        })
     }
-    Connections { // TODO: needed?
-        target: tdLibWrapper
-
-        onReceivedMessage: {
-            if (albumMessageIds.indexOf(messageId)) {
-//                albumMessages = getMessages()
-            }
-        }
-    }
 
     Component {
         id: photoPreviewComponent
         MessagePhoto {
-//            width: parent.width
-//            height: parent.height
             messageListItem: messageContent.messageListItem
             overlayFlickable: messageContent.overlayFlickable
             rawMessage: albumMessages[modelIndex]
-            highlighted: mediaBackgroundItem.highlighted
+            highlighted: _highlighted
         }
     }
     Component {
         id: videoPreviewComponent
         Item {
-            property bool highlighted: mediaBackgroundItem.highlighted
+            property bool highlighted:_highlighted
             anchors.fill: parent
             clip: true
             TDLibThumbnail {
@@ -174,24 +149,13 @@ MessageContentBase {
 
                 Loader {
                     anchors.fill: parent
-//                    asynchronous: true
-
                     readonly property int modelIndex: index
+                    property bool _highlighted: mediaBackgroundItem.highlighted
                     sourceComponent: albumMessages[index].content["@type"] === 'messageVideo' ? videoPreviewComponent : photoPreviewComponent
                     opacity: status === Loader.Ready
                     Behavior on opacity {FadeAnimator{}}
                 }
 
-                /*
-                  TODO video:
-                    rawMessage.content.video.thumbnail
-    TDLibPhoto {
-        id: photo
-        anchors.fill: parent
-        photo: rawMessage.content.photo
-        highlighted: parent.highlighted
-    }
-                  */
                 Rectangle {
                     visible: mediaBackgroundItem.isSelected
                     anchors {

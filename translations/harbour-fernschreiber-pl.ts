@@ -1934,21 +1934,6 @@
     </message>
 </context>
 <context>
-    <name>VideoPage</name>
-    <message>
-        <source>Download of %1 successful.</source>
-        <translation>Pobieranie %1 zakończone sukcesem</translation>
-    </message>
-    <message>
-        <source>Download failed.</source>
-        <translation>Nieudane pobieranie</translation>
-    </message>
-    <message>
-        <source>Copy video to gallery</source>
-        <translation>Kopiuj wideo do galerii</translation>
-    </message>
-</context>
-<context>
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>

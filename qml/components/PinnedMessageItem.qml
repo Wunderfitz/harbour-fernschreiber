@@ -113,7 +113,7 @@ Item {
         Loader {
             id: unpinMessageIconLoader
             asynchronous: true
-            active: canPinMessages()
+            active: !!canPinMessages()
             Behavior on opacity { FadeAnimation {} }
             width: active ? item.width : 0
             height: active ? item.height : 0

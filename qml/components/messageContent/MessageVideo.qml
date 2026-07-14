@@ -225,7 +225,11 @@ MessageContentBase {
                     highlighted: videoMessageComponent.highlighted || down
                     visible: ( placeholderImage.status === Image.Ready && !videoMessageComponent.fullscreen ) ? true : false
                     onClicked: {
-                        pageStack.push(Qt.resolvedUrl("../../pages/VideoPage.qml"), {"videoData": videoData, "sourceMessage": rawMessage});
+
+                        pageStack.push(Qt.resolvedUrl("../../pages/MediaAlbumPage.qml"), {
+                                           "messages" : [rawMessage],
+                                           "index": 0
+                                       })
                     }
                 }
             }
@@ -471,7 +475,10 @@ MessageContentBase {
                             }
                             visible: ( videoComponentLoader.active && messageVideo.playbackState === MediaPlayer.PausedState ) ? true : false
                             onClicked: {
-                                pageStack.push(Qt.resolvedUrl("../../pages/VideoPage.qml"), {"videoData": videoData, "sourceMessage": rawMessage});
+                                pageStack.push(Qt.resolvedUrl("../../pages/MediaAlbumPage.qml"), {
+                                                   "messages" : [rawMessage],
+                                                   "index": 0
+                                               })
                             }
                         }
                     }
