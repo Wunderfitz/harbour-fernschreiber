@@ -42,6 +42,7 @@ namespace {
     const QString KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN("focusTextAreaOnChatOpen");
     const QString KEY_SPONSORED_MESS("sponsoredMess");
     const QString KEY_HIGHLIGHT_UNREADCONVS("highlightUnreadConversations");
+    const QString KEY_SHOW_REACTION_BUTTON("showReactionButton");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/fernschreiber/settings.conf", QSettings::NativeFormat)
@@ -326,6 +327,20 @@ void AppSettings::setFocusTextAreaOnChatOpen(bool focusTextAreaOnChatOpen)
         LOG(KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN << focusTextAreaOnChatOpen);
         settings.setValue(KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN, focusTextAreaOnChatOpen);
         emit focusTextAreaOnChatOpenChanged();
+    }
+}
+
+bool AppSettings::showReactionButton() const
+{
+    return settings.value(KEY_SHOW_REACTION_BUTTON, true).toBool();
+}
+
+void AppSettings::setShowReactionButton(bool enable)
+{
+    if (showReactionButton() != enable) {
+        LOG(KEY_SHOW_REACTION_BUTTON << enable);
+        settings.setValue(KEY_SHOW_REACTION_BUTTON, enable);
+        emit showReactionButtonChanged();
     }
 }
 
