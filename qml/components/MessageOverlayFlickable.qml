@@ -172,6 +172,7 @@ Flickable {
                     webPageData: overlayMessage.content.web_page
                     largerFontSize: true
                     width: parent.width
+                    mediaAttachmentSizeMultiplier: Functions.isWidescreen(appWindow) ? 0.4 : 1.0
                 }
             }
         }
