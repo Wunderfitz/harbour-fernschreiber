@@ -49,7 +49,7 @@ public:
     Q_INVOKABLE int getLastReadMessageIndex();
     Q_INVOKABLE void setSearchQuery(const QString newSearchQuery);
 
-    Q_INVOKABLE int getMessageIndex(qlonglong messageId);
+    Q_INVOKABLE int getDisplayedMessageIndex(qlonglong messageId);
     QVariantMap smallPhoto() const;
     qlonglong getChatId() const;
 

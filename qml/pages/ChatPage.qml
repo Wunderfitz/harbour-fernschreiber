@@ -417,7 +417,7 @@ Page {
             chatPage.messageIdToScrollTo = messageId
         }
         if (chatPage.messageIdToScrollTo && chatPage.messageIdToScrollTo != "") {
-            var index = chatModel.getMessageIndex(chatPage.messageIdToScrollTo);
+            var index = chatModel.getDisplayedMessageIndex(chatPage.messageIdToScrollTo);
             if(index !== -1) {
                 chatPage.messageIdToScrollTo = "";
                 chatView.scrollToIndex(index);
