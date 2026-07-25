@@ -487,6 +487,10 @@
         <source>Double-tap on a message to choose a reaction</source>
         <translation>Pulsar doble a mensaje y elegir reacción</translation>
     </message>
+    <message>
+        <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

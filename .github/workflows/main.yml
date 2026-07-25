@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         submodules: 'true'
 
@@ -33,9 +33,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Decompress TDLib
-      uses: TonyBogdanov/zip@1.0
-      with:
-        args: unzip -qq ./tdlib/tdlib.zip -d ./tdlib
+      run: unzip -qq ./tdlib/tdlib.zip -d ./tdlib
         
     - name: Set Secrets
       uses: DamianReeves/write-file-action@master
@@ -70,7 +68,7 @@ jobs:
         arch: aarch64
       
     - name: Upload build result
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: rpm-build-result
         path: RPMS
