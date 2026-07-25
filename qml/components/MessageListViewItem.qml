@@ -131,7 +131,17 @@ ListItem {
     }
 
     function getContentWidthMultiplier() {
+        var type = myMessage.content["@type"];
+        if(type === "messagePoll") {
+            // We do not want to limit messagePoll content width on wide screens, it will not result in huge message items
+            // as other content types like image and video do.
+            return 1.0
+        }
         return Functions.isWidescreen(appWindow) ? 0.4 : 1.0
+    }
+
+    function shouldRightAlignMessage() {
+        return page.isPrivateChat && messageListItem.isOwnMessage
     }
 
     onClicked: {
@@ -404,7 +414,8 @@ ListItem {
         spacing: Theme.paddingSmall
         width: precalculatedValues.entryWidth
         anchors.horizontalCenter: Functions.isWidescreen(appWindow) ? undefined : parent.horizontalCenter
-        anchors.left: Functions.isWidescreen(appWindow) ? parent.left : undefined
+        anchors.left: Functions.isWidescreen(appWindow) || !shouldRightAlignMessage ? parent.left : undefined
+        anchors.right: Functions.isWidescreen(appWindow) && shouldRightAlignMessage ? parent.right : undefined
         y: Theme.paddingSmall
         anchors.leftMargin: Functions.isWidescreen(appWindow) ? Theme.paddingMedium : undefined
 
@@ -646,7 +657,7 @@ ListItem {
                     id: webPagePreviewLoader
                     active: false
                     asynchronous: true
-                    width: parent.width * getContentWidthMultiplier()
+                    width: parent.width
                     height: (status === Loader.Ready) ? item.implicitHeight : myMessage.content.web_page ? precalculatedValues.webPagePreviewHeight : 0
 
                     sourceComponent: Component {
@@ -654,6 +665,7 @@ ListItem {
                             webPageData: myMessage.content.web_page
                             width: parent.width
                             highlighted: messageListItem.highlighted
+                            mediaAttachmentSizeMultiplier: getContentWidthMultiplier()
                         }
                     }
                 }
