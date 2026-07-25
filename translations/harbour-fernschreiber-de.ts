@@ -96,6 +96,61 @@
     </message>
 </context>
 <context>
+    <name>CallOverlay</name>
+    <message>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
+    </message>
+    <message>
+        <source>Calling…</source>
+        <translation>Rufe an…</translation>
+    </message>
+    <message>
+        <source>Incoming video call</source>
+        <translation>Eingehender Videoanruf</translation>
+    </message>
+    <message>
+        <source>Incoming call</source>
+        <translation>Eingehender Anruf</translation>
+    </message>
+    <message>
+        <source>Exchanging encryption keys…</source>
+        <translation>Schlüssel werden ausgetauscht…</translation>
+    </message>
+    <message>
+        <source>Ongoing call</source>
+        <translation>Laufender Anruf</translation>
+    </message>
+    <message>
+        <source>Hanging up…</source>
+        <translation>Wird beendet…</translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation>Annehmen</translation>
+    </message>
+    <message>
+        <source>Unmute</source>
+        <translation>Stummschaltung aufheben</translation>
+    </message>
+    <message>
+        <source>Mute</source>
+        <translation>Stummschalten</translation>
+    </message>
+    <message>
+        <source>Flip</source>
+        <translation>Kamera wechseln</translation>
+    </message>
+    <message>
+        <source>Decline</source>
+        <translation>Ablehnen</translation>
+    </message>
+    <message>
+        <source>Hang up</source>
+        <translation>Auflegen</translation>
+    </message>
+</context>
+<context>
     <name>ChatInformationPageContent</name>
     <message numerus="yes">
         <source>%1 subscribers</source>
@@ -616,6 +671,14 @@
             <numerusform>%Ln Dateien</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Video Call</source>
+        <translation>Videoanruf</translation>
+    </message>
+    <message>
+        <source>Call</source>
+        <translation>Anruf</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1030,6 +1093,14 @@
     <message>
         <source>sent a video note</source>
         <translation>hat eine Videonachricht geschickt</translation>
+    </message>
+    <message>
+        <source>Video call</source>
+        <translation>Videoanruf</translation>
+    </message>
+    <message>
+        <source>Call</source>
+        <translation>Anruf</translation>
     </message>
 </context>
 <context>
@@ -2502,6 +2573,14 @@
     <message>
         <source>sent a game</source>
         <translation>hat ein Spiel gesendet</translation>
+    </message>
+    <message>
+        <source>Video call</source>
+        <translation>Videoanruf</translation>
+    </message>
+    <message>
+        <source>Call</source>
+        <translation>Anruf</translation>
     </message>
 </context>
 </TS>

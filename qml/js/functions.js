@@ -162,6 +162,14 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         return simple ? (myself ? qsTr("sent a game", "myself") : qsTr("sent a game")) : "";
     case 'messageGameScore':
         return myself ? qsTr("scored %Ln points", "myself", message.content.score) : qsTr("scored %Ln points", "myself", message.content.score);
+    case 'messageCall':
+        var callLabel = message.content.is_video ? qsTr("Video call") : qsTr("Call");
+        if (message.content.duration > 0) {
+            var callMinutes = Math.floor(message.content.duration / 60);
+            var callSeconds = message.content.duration % 60;
+            return callLabel + " (" + callMinutes + ":" + (callSeconds < 10 ? "0" : "") + callSeconds + ")";
+        }
+        return callLabel;
     case 'messageUnsupported':
         return myself ? qsTr("sent an unsupported message", "myself") : qsTr("sent an unsupported message");
     default:
