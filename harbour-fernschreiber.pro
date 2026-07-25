@@ -186,6 +186,20 @@ LIBS += -L$$PWD/tdlib/$${TARGET_ARCHITECTURE}/lib/ -ltdjson
 telegram.files = $$PWD/tdlib/$${TARGET_ARCHITECTURE}/lib
 telegram.path = /usr/share/$${TARGET}
 
+# Optional: Telegram voice/video calls via tgcalls + tg_owt (aarch64 only).
+# Enable with: qmake CONFIG+=voicecalls  (see voip.pri).
+voicecalls {
+    message("Fernschreiber: building WITH voice/video calls (tgcalls + tg_owt)")
+    include(voip.pri)
+    # SFOS PulseAudio policy rule so incoming call audio isn't corked by the
+    # "othermedia" group — routes our WebRTC streams into the "call" group.
+    # (Ships outside the app tree; a Harbour-store build would flag this — the
+    # maintainer may prefer a separate config sub-package.)
+    pulsepolicy.files = pulse/harbour-fernschreiber.conf
+    pulsepolicy.path = /etc/pulse/xpolicy.conf.d/
+    INSTALLS += pulsepolicy
+}
+
 gui.files = qml
 gui.path = /usr/share/$${TARGET}
 

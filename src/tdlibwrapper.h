@@ -209,6 +209,13 @@ public:
     Q_INVOKABLE void createBasicGroupChat(const QString &basicGroupId, const QString &extra);
     Q_INVOKABLE void getGroupsInCommon(const QString &userId, int limit, int offset);
     Q_INVOKABLE void getUserProfilePhotos(const QString &userId, int limit, int offset);
+    // Voice/video calls: signalling only (TDLib). The media runs in tgcalls,
+    // driven by VoipManager; the callProtocol (incl. tgcalls library_versions) is
+    // supplied by the caller so this layer stays media-library agnostic.
+    Q_INVOKABLE void createCall(qlonglong userId, const QVariantMap &protocol, bool isVideo);
+    Q_INVOKABLE void acceptCall(qlonglong callId, const QVariantMap &protocol);
+    Q_INVOKABLE void discardCall(qlonglong callId, bool isDisconnected, int duration, bool isVideo, qlonglong connectionId);
+    Q_INVOKABLE void sendCallSignalingData(qlonglong callId, const QByteArray &data);
     Q_INVOKABLE void setChatPermissions(const QString &chatId, const QVariantMap &chatPermissions);
     Q_INVOKABLE void setChatSlowModeDelay(const QString &chatId, int delay);
     Q_INVOKABLE void setChatDescription(const QString &chatId, const QString &description);
@@ -342,12 +349,16 @@ signals:
     void chatUnreadReactionCountUpdated(qlonglong chatId, int unreadReactionCount);
     void tgUrlFound(const QString &tgUrl);
     void reactionsUpdated();
+    void callUpdated(const QVariantMap &callInformation);
+    void callSignalingDataReceived(qlonglong callId, const QByteArray &data);
 
 public slots:
     void handleVersionDetected(const QString &version);
     void handleAuthorizationStateChanged(const QString &authorizationState, const QVariantMap authorizationStateData);
     void handleOptionUpdated(const QString &optionName, const QVariant &optionValue);
     void handleConnectionStateChanged(const QString &connectionState);
+    void handleCallUpdated(const QVariantMap &callInformation);
+    void handleCallSignalingDataReceived(qlonglong callId, const QByteArray &data);
     void handleUserUpdated(const QVariantMap &updatedUserInformation);
     void handleUserStatusUpdated(const QString &userId, const QVariantMap &userStatusInformation);
     void handleFileUpdated(const QVariantMap &fileInformation);
