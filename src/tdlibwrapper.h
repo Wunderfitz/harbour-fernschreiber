@@ -210,6 +210,8 @@ public:
     Q_INVOKABLE void getGroupsInCommon(const QString &userId, int limit, int offset);
     Q_INVOKABLE void getUserProfilePhotos(const QString &userId, int limit, int offset);
     Q_INVOKABLE void setChatPermissions(const QString &chatId, const QVariantMap &chatPermissions);
+    Q_INVOKABLE void setChatMemberStatus(const QString &chatId, const QString &memberUserId, const QVariantMap &status);
+    Q_INVOKABLE void banChatMember(const QString &chatId, const QString &memberUserId, int bannedUntilDate, bool revokeMessages);
     Q_INVOKABLE void setChatSlowModeDelay(const QString &chatId, int delay);
     Q_INVOKABLE void setChatDescription(const QString &chatId, const QString &description);
     Q_INVOKABLE void setChatTitle(const QString &chatId, const QString &title);

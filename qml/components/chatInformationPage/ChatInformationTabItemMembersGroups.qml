@@ -71,10 +71,101 @@ ChatInformationTabItemBase {
             text: (chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) ? qsTr("You don't have any groups in common with this user.") : ( chatInformationPage.isChannel ? qsTr("Channel members are anonymous.") : qsTr("This group is empty.") )
         }
         delegate: PhotoTextsListItem {
+            id: memberListItem
             pictureThumbnail {
                 photoData: user.profile_photo ? user.profile_photo.small : null
             }
             width: parent.width
+
+            // Admin actions on other members: only offered if we can restrict
+            // members and the target is a regular/restricted member (admins and
+            // the creator can't be managed this way). Newer TDLib nests the
+            // admin rights in status.rights, older TDLib has them flat.
+            readonly property bool ownUserCanRestrictMembers: (chatInformationPage.isSuperGroup || chatInformationPage.isBasicGroup)
+                                                              && chatInformationPage.groupInformation.status
+                                                              && ( chatInformationPage.groupInformation.status["@type"] === "chatMemberStatusCreator"
+                                                                  || ( chatInformationPage.groupInformation.status["@type"] === "chatMemberStatusAdministrator"
+                                                                      && ( chatInformationPage.groupInformation.status.rights
+                                                                          ? chatInformationPage.groupInformation.status.rights.can_restrict_members
+                                                                          : chatInformationPage.groupInformation.status.can_restrict_members ) ) )
+            readonly property bool memberIsManageable: member_id.user_id !== chatInformationPage.myUserId
+                                                       && ( model.status["@type"] === "chatMemberStatusMember"
+                                                           || model.status["@type"] === "chatMemberStatusRestricted" )
+
+            menu: (ownUserCanRestrictMembers && memberIsManageable) ? memberContextMenu : null
+
+            Component {
+                id: memberContextMenu
+                ContextMenu {
+                    MenuItem {
+                        visible: chatInformationPage.isSuperGroup
+                        text: qsTr("Member Permissions", "edit a group member's individual permissions")
+                        onClicked: {
+                            var setIndex = index;
+                            var dialog = pageStack.push(Qt.resolvedUrl("../../pages/ChatMemberPermissionsPage.qml"), {
+                                chatId: chatInformationPage.chatInformation.id,
+                                memberUserId: member_id.user_id,
+                                userName: Functions.getUserName(user),
+                                memberStatus: model.status,
+                                defaultPermissions: chatInformationPage.chatInformation.permissions
+                            });
+                            dialog.accepted.connect(function() {
+                                if (dialog.resultStatus) {
+                                    pageContent.membersList.set(setIndex, { status: dialog.resultStatus });
+                                }
+                            });
+                        }
+                    }
+                    MenuItem {
+                        visible: chatInformationPage.isSuperGroup && model.status["@type"] === "chatMemberStatusMember"
+                        text: qsTr("Revoke Write Permission", "restrict a group member")
+                        onClicked: {
+                            // All chatPermissions fields default to false, so an
+                            // empty object mutes the member regardless of the
+                            // TDLib generation (old flat vs. new granular fields).
+                            var newStatus = {
+                                "@type": "chatMemberStatusRestricted",
+                                is_member: true,
+                                restricted_until_date: 0,
+                                permissions: { "@type": "chatPermissions" }
+                            };
+                            tdLibWrapper.setChatMemberStatus(chatInformationPage.chatInformation.id, member_id.user_id, newStatus);
+                            pageContent.membersList.set(index, { status: newStatus });
+                        }
+                    }
+                    MenuItem {
+                        visible: chatInformationPage.isSuperGroup && model.status["@type"] === "chatMemberStatusRestricted"
+                        text: qsTr("Remove Restrictions", "lift restrictions from a group member")
+                        onClicked: {
+                            var newStatus = { "@type": "chatMemberStatusMember" };
+                            tdLibWrapper.setChatMemberStatus(chatInformationPage.chatInformation.id, member_id.user_id, newStatus);
+                            pageContent.membersList.set(index, { status: newStatus });
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Remove from Group", "ban a group member")
+                        onClicked: {
+                            var chatId = chatInformationPage.chatInformation.id;
+                            var userId = member_id.user_id;
+                            memberListItem.remorseAction(qsTr("Removing member", "remorse timer text"), function() {
+                                tdLibWrapper.banChatMember(chatId, userId, 0, false);
+                                pageContent.membersList.remove(index);
+                            });
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Remove and Delete All Messages", "ban a group member, revoking their messages")
+                        onClicked: {
+                            var chatId = chatInformationPage.chatInformation.id;
+                            var userId = member_id.user_id;
+                            memberListItem.remorseAction(qsTr("Removing member and deleting messages", "remorse timer text"), function() {
+                                tdLibWrapper.banChatMember(chatId, userId, 0, true);
+                                pageContent.membersList.remove(index);
+                            });
+                        }
+                    }
+                }
+            }
 
             // chat title
             primaryText.text: Emoji.emojify(Functions.getUserName(user), primaryText.font.pixelSize)

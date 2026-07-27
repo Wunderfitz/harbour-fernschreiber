@@ -937,6 +937,37 @@ void TDLibWrapper::setChatPermissions(const QString &chatId, const QVariantMap &
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::setChatMemberStatus(const QString &chatId, const QString &memberUserId, const QVariantMap &status)
+{
+    LOG("Setting Chat Member Status" << chatId << memberUserId);
+    QVariantMap memberId;
+    memberId.insert(_TYPE, "messageSenderUser");
+    memberId.insert("user_id", memberUserId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setChatMemberStatus");
+    requestObject.insert(_EXTRA, chatId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("member_id", memberId);
+    requestObject.insert("status", status);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::banChatMember(const QString &chatId, const QString &memberUserId, int bannedUntilDate, bool revokeMessages)
+{
+    LOG("Banning Chat Member" << chatId << memberUserId);
+    QVariantMap memberId;
+    memberId.insert(_TYPE, "messageSenderUser");
+    memberId.insert("user_id", memberUserId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "banChatMember");
+    requestObject.insert(_EXTRA, chatId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("member_id", memberId);
+    requestObject.insert("banned_until_date", bannedUntilDate);
+    requestObject.insert("revoke_messages", revokeMessages);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::setChatSlowModeDelay(const QString &chatId, int delay)
 {
 
