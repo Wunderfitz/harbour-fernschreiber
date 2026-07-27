@@ -218,6 +218,41 @@
         <source>Channel members are anonymous.</source>
         <translation>Участники группы анонимны.</translation>
     </message>
+    <message>
+        <source>Member Permissions</source>
+        <comment>edit a group member&apos;s individual permissions</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Revoke Write Permission</source>
+        <comment>restrict a group member</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove Restrictions</source>
+        <comment>lift restrictions from a group member</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove from Group</source>
+        <comment>ban a group member</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing member</source>
+        <comment>remorse timer text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove and Delete All Messages</source>
+        <comment>ban a group member, revoking their messages</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing member and deleting messages</source>
+        <comment>remorse timer text</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabView</name>
@@ -290,6 +325,89 @@
     <message>
         <source>Mute chat</source>
         <translation>Выключить уведомления</translation>
+    </message>
+</context>
+<context>
+    <name>ChatMemberPermissionsPage</name>
+    <message>
+        <source>Send Text Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Photos</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Videos</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Music &amp; Audio Files</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Files</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Voice Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Video Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Polls</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Stickers, GIFs &amp; Games</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Web Page Previews</source>
+        <comment>member permission</comment>
+        <translation type="unfinished">Добавлять предпросмотр веб страниц</translation>
+    </message>
+    <message>
+        <source>Change Chat Info</source>
+        <comment>member permission</comment>
+        <translation type="unfinished">Менять информацию о чате</translation>
+    </message>
+    <message>
+        <source>Invite Users</source>
+        <comment>member permission</comment>
+        <translation type="unfinished">Приглашать участников</translation>
+    </message>
+    <message>
+        <source>Pin Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished">Прицеплять сообщения</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <comment>member permissions dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>What can this member do?</source>
+        <comment>member permissions dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not allowed by the group&apos;s default permissions</source>
+        <comment>member permissions dialog</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
