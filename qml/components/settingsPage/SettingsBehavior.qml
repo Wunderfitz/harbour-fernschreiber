@@ -105,6 +105,17 @@ AccordionItem {
 
             TextSwitch {
                 width: parent.columnWidth
+                checked: appSettings.showMutedUnread
+                text: qsTr("Include muted chats in unread count")
+                description: qsTr("Show unread messages in muted chats on the cover")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.showMutedUnread = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
                 checked: appSettings.goToQuotedMessage
                 text: qsTr("Go to quoted message")
                 description: qsTr("When tapping a quoted message, open it in chat instead of showing it in an overlay.")

@@ -27,6 +27,7 @@ namespace {
     const QString KEY_SHOW_STICKERS_AS_EMOJIS("showStickersAsEmojis");
     const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
     const QString KEY_ANIMATE_STICKERS("animateStickers");
+    const QString KEY_SHOW_MUTED_UNREAD("showMutedUnread");
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_SOUNDS_ENABLED("notificationSoundsEnabled");
     const QString KEY_NOTIFICATION_SUPPRESS_ENABLED("notificationSuppressContent");
@@ -131,6 +132,21 @@ void AppSettings::setAnimateStickers(bool animate)
         emit animateStickersChanged();
     }
 }
+
+bool AppSettings::showMutedUnread() const
+{
+    return settings.value(KEY_SHOW_MUTED_UNREAD, true).toBool();
+}
+
+void AppSettings::setShowMutedUnread(bool wantMutedUnread)
+{
+    if (showMutedUnread() != wantMutedUnread) {
+        LOG(KEY_SHOW_MUTED_UNREAD << wantMutedUnread);
+        settings.setValue(KEY_SHOW_MUTED_UNREAD, wantMutedUnread);
+        emit showMutedUnreadChanged();
+    }
+}
+
 
 bool AppSettings::notificationTurnsDisplayOn() const
 {
