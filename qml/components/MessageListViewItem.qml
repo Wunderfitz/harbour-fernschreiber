@@ -385,7 +385,6 @@ ListItem {
             if (messageListItem.hasContentComponent) {
                 var type = myMessage.content["@type"];
                 var albumComponentPart = (myMessage.media_album_id !== "0" && ['messagePhoto', 'messageVideo'].indexOf(type) !== -1) ? 'Album' : '';
-                console.log('delegateComponentLoadingTimer', myMessage.media_album_id, albumComponentPart)
                 extraContentLoader.setSource(
                             "../components/messageContent/" + type.charAt(0).toUpperCase() + type.substring(1) + albumComponentPart + ".qml",
                             {

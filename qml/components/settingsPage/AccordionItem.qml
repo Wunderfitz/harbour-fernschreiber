@@ -56,12 +56,15 @@ Item {
     BackgroundItem {
         id: button
         height: Theme.itemSizeMedium
+        width: (!!Screen.hasCutouts && Screen.topCutout.top > 0 && Screen.topCutout.bottom > 0) ? Screen.height : parent.width
         onClicked: {
             area.parent.animate = true;
             area.parent.setActiveArea(area.expanded ? -1 : area.text)
         }
         Rectangle {
             anchors.fill: parent
+            anchors.leftMargin: (!!Screen.hasCutouts && pageStack.currentPage.orientation === Orientation.Landscape) ? -Screen.topCutout.width : 0
+            anchors.rightMargin: (!!Screen.hasCutouts && pageStack.currentPage.orientation === Orientation.LandscapeInverted) ? -Screen.topCutout.width : 0
             gradient: Gradient {
                 GradientStop { position: 0.0; color: Theme.rgba(Theme.highlightBackgroundColor, 0.15) }
                 GradientStop { position: 1.0; color: "transparent" }

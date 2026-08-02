@@ -797,7 +797,11 @@ Page {
             NamedAction {
                 visible: messageOptionsDrawer.showCopyMessageToClipboardMenuItem
                 name: qsTr("Copy Message to Clipboard")
-                action: messageOptionsDrawer.sourceItem.copyMessageToClipboard
+                action: {
+                    if(messageOptionsDrawer.sourceItem) {
+                        messageOptionsDrawer.sourceItem.copyMessageToClipboard()
+                    }
+                }
             },
             NamedAction {
                 visible: messageOptionsDrawer.showForwardMessageMenuItem && messageOptionsDrawer.myMessage.can_be_forwarded
@@ -807,7 +811,7 @@ Page {
                 }
             },
             NamedAction {
-                visible: canPinMessages()
+                visible: !!canPinMessages()
                 name: messageOptionsDrawer.myMessage.is_pinned ? qsTr("Unpin Message") : qsTr("Pin Message")
                 action: function () {
                     if (messageOptionsDrawer.myMessage.is_pinned) {
@@ -821,7 +825,11 @@ Page {
             NamedAction {
                 visible: messageOptionsDrawer.showDeleteMessageMenuItem
                 name: qsTr("Delete Message")
-                action: messageOptionsDrawer.sourceItem.deleteMessage
+                action: {
+                    if(messageOptionsDrawer.sourceItem) {
+                        messageOptionsDrawer.sourceItem.deleteMessage()
+                    }
+                }
             }
         ]
 
@@ -1007,7 +1015,11 @@ Page {
                 Row {
                     id: headerRow
                     width: parent.width - (3 * Theme.horizontalPageMargin)
-                    height: chatOverviewItem.height + ( chatPage.isPortrait ? (2 * Theme.paddingMedium) : (2 * Theme.paddingSmall) )
+                    height: chatOverviewItem.height +
+                            ( chatPage.isPortrait ?
+                                 ( Theme.paddingMedium + (!Screen.hasCutouts ? Theme.paddingMedium : Screen.topCutout.height) )
+                               : Theme.paddingSmall * 2
+                             )
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: Theme.paddingMedium
 

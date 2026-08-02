@@ -1934,21 +1934,6 @@
     </message>
 </context>
 <context>
-    <name>VideoPage</name>
-    <message>
-        <source>Download of %1 successful.</source>
-        <translation>Sťahovanie %1 bolo úspešné.</translation>
-    </message>
-    <message>
-        <source>Download failed.</source>
-        <translation>Sťahovanie zlyhalo.</translation>
-    </message>
-    <message>
-        <source>Copy video to gallery</source>
-        <translation>Kopírovať video do galérie</translation>
-    </message>
-</context>
-<context>
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>

@@ -1907,21 +1907,6 @@ messages</numerusform>
     </message>
 </context>
 <context>
-    <name>VideoPage</name>
-    <message>
-        <source>Download of %1 successful.</source>
-        <translation>Download of %1 successful.</translation>
-    </message>
-    <message>
-        <source>Download failed.</source>
-        <translation>Download failed.</translation>
-    </message>
-    <message>
-        <source>Copy video to gallery</source>
-        <translation>Copy video to gallery</translation>
-    </message>
-</context>
-<context>
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>

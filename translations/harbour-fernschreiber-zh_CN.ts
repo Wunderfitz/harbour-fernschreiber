@@ -1877,21 +1877,6 @@
     </message>
 </context>
 <context>
-    <name>VideoPage</name>
-    <message>
-        <source>Download of %1 successful.</source>
-        <translation>已成功下载 %1 。</translation>
-    </message>
-    <message>
-        <source>Download failed.</source>
-        <translation>下载失败</translation>
-    </message>
-    <message>
-        <source>Copy video to gallery</source>
-        <translation>复制视频到图库</translation>
-    </message>
-</context>
-<context>
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>

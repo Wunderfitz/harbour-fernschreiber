@@ -51,6 +51,9 @@ compile_commands.json
 # QtCreator local machine specific files for imported projects
 *creator.user*
 
+# Other IDE specific files
+.vscode/*
+
 # TDLib API Secrets
 tdlibsecrets.h
 

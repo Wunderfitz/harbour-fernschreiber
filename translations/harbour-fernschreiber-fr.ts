@@ -1905,21 +1905,6 @@
     </message>
 </context>
 <context>
-    <name>VideoPage</name>
-    <message>
-        <source>Download of %1 successful.</source>
-        <translation>Téléchargement de %1 avec succès.</translation>
-    </message>
-    <message>
-        <source>Download failed.</source>
-        <translation>Téléchargement échoué.</translation>
-    </message>
-    <message>
-        <source>Copy video to gallery</source>
-        <translation>Copier la vidéo dans la galerie</translation>
-    </message>
-</context>
-<context>
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>

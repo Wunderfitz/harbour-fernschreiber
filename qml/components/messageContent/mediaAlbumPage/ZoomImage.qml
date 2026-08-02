@@ -9,6 +9,7 @@ ZoomArea {
     property var photoData //albumMessages[index].content.photo
     property bool active: true
     property alias image: image
+    property bool highlighted
 
     signal clicked
 
@@ -35,13 +36,9 @@ ZoomArea {
                 }
             }
             if (biggestIndex > -1) {
-//                imageDelegate.imageWidth = photoData.sizes[biggestIndex].width;
-//                imageDelegate.imageHeight = photoData.sizes[biggestIndex].height;
                 image.sourceSize.width = photoData.sizes[biggestIndex].width
                 image.sourceSize.height = photoData.sizes[biggestIndex].height
                 image.fileInformation = photoData.sizes[biggestIndex].photo
-
-                console.log('loading photo', JSON.stringify(image.fileInformation))
             }
         }
     }
@@ -51,56 +48,21 @@ ZoomArea {
         width: parent.width
         height: parent.height
         source: file.isDownloadingCompleted ? file.path : ""
-//        enabled: true //!!file.fileId
-//        anchors.fill: parent
         anchors.centerIn: parent
 
         fillMode: Image.PreserveAspectFit
         asynchronous: true
         smooth: !(movingVertically || movingHorizontally)
 
-//        sourceSize.width: Screen.height
-//        visible: opacity > 0
-//        opacity: status === Image.Ready ? 1 : 0
 
         Behavior on opacity { FadeAnimator{} }
     }
-//    Label {
-//        anchors.fill: parent
-//        text: 'ok?' + image.enabled +' fileid:' +!!(image.file.fileId)
-//              + '\n - dl?' + image.file.isDownloadingActive
-//              + '\n completed?' + image.file.isDownloadingCompleted + ' path:'+ image.file.path
-//              + '\n ' + image.source
-//        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-//    }
-//    Rectangle {
-//        color: 'green'
-//        anchors.fill: image
-//        opacity: 0.3
-
-//    }
-
-//    Image {
-//        id: image
-//        anchors.fill: parent
-//        smooth: !(movingVertically || movingHorizontally)
-//        sourceSize.width: Screen.height
-//        fillMode: Image.PreserveAspectFit
-//        asynchronous: true
-//        cache: false
-
-//        onSourceChanged: {
-//            zoomOut()
-//        }
-
-//        opacity: status == Image.Ready ? 1 : 0
-//        Behavior on opacity { FadeAnimator{} }
-//    }
     Item {
         anchors.fill: parent
 
     }
     MouseArea {
+        id: mouseArea
         anchors.centerIn: parent
         width: zoomArea.contentWidth
         height: zoomArea.contentHeight
@@ -119,9 +81,4 @@ ZoomArea {
             interval: 1000
         }
     }
-//    Rectangle {
-//        color: 'green'
-//        anchors.fill: parent
-//        parent: zoomArea
-//    }
 }
