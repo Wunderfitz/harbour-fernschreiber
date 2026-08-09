@@ -36,6 +36,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
     Q_PROPERTY(bool notificationAlwaysShowPreview READ notificationAlwaysShowPreview WRITE setNotificationAlwaysShowPreview NOTIFY notificationAlwaysShowPreviewChanged)
     Q_PROPERTY(bool goToQuotedMessage READ goToQuotedMessage WRITE setGoToQuotedMessage NOTIFY goToQuotedMessageChanged)
+    Q_PROPERTY(bool showDeleteChat READ showDeleteChat WRITE setShowDeleteChat NOTIFY showDeleteChatChanged)
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
     Q_PROPERTY(bool allowInlineBotLocationAccess READ allowInlineBotLocationAccess WRITE setAllowInlineBotLocationAccess NOTIFY allowInlineBotLocationAccessChanged)
     Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
@@ -98,6 +99,8 @@ public:
     void setNotificationAlwaysShowPreview(bool enable);
 
     bool goToQuotedMessage() const;
+    void setShowDeleteChat(bool show);
+    bool showDeleteChat() const;
     void setGoToQuotedMessage(bool enable);
 
     bool storageOptimizer() const;
@@ -140,6 +143,7 @@ signals:
     void notificationFeedbackChanged();
     void notificationAlwaysShowPreviewChanged();
     void goToQuotedMessageChanged();
+    void showDeleteChatChanged();
     void storageOptimizerChanged();
     void allowInlineBotLocationAccessChanged();
     void remainingInteractionHintsChanged();
