@@ -1630,6 +1630,14 @@
         <source>When tapping a quoted message, open it in chat instead of showing it in an overlay.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show reaction button on tap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
