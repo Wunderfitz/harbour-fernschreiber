@@ -15,6 +15,9 @@ Description: |
   Fernschreiber is a Telegram client for Sailfish OS
 Configure: none
 Builder: qmake5
+# Voice/video calls are opt-in: rpmbuild --with voicecalls (see doc/voicecalls.md).
+# tg_owt_root / tgcalls_root override where the media libraries are looked for.
+QMakeOptions: '%{?_with_voicecalls:CONFIG+=voicecalls} %{?tg_owt_root:TG_OWT_ROOT=%{tg_owt_root}} %{?tgcalls_root:TGCALLS_ROOT=%{tgcalls_root}} %{?openh264_root:OPENH264_ROOT=%{openh264_root}}'
 
 # This section specifies build dependencies that are resolved using pkgconfig.
 # This is the preferred way of specifying build dependencies for your package.
@@ -33,7 +36,9 @@ PkgConfigBR:
 # NB: spectacle has a bug where it will remove custom "#<< macros" lines, so define them here:
 Macros:
   - '__provides_exclude_from;^%{_datadir}/.*$'
-  - '__requires_exclude;^libtdjson.*$'
+  # libtdjson and (with voicecalls) libopenh264 ship inside the package, in the
+  # binary's rpath dir — neither is provided by any Sailfish repository.
+  - '__requires_exclude;^(libtdjson|libopenh264).*$'
   - '_binary_payload;w6.xzdio'
 
 # Build dependencies without a pkgconfig setup can be listed here

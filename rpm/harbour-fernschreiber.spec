@@ -8,7 +8,7 @@ Name:       harbour-fernschreiber
 # >> macros
 # << macros
 %define __provides_exclude_from ^%{_datadir}/.*$
-%define __requires_exclude ^libtdjson.*$
+%define __requires_exclude ^(libtdjson|libopenh264).*$
 %define _binary_payload w6.xzdio
 
 Summary:    Fernschreiber is a Telegram client for Sailfish OS
@@ -48,7 +48,8 @@ Fernschreiber is a Telegram client for Sailfish OS
 # >> build pre
 # << build pre
 
-%qmake5 
+%qmake5  \
+    %{?_with_voicecalls:CONFIG+=voicecalls} %{?tg_owt_root:TG_OWT_ROOT=%{tg_owt_root}} %{?tgcalls_root:TGCALLS_ROOT=%{tgcalls_root}} %{?openh264_root:OPENH264_ROOT=%{openh264_root}}
 
 make %{?_smp_mflags}
 
@@ -75,4 +76,9 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 # >> files
+# Only built with "--with voicecalls": the PulseAudio policy rule that keeps the
+# WebRTC call streams out of the corking "othermedia" group (doc/voicecalls.md).
+%if 0%{?_with_voicecalls:1}
+%config %{_sysconfdir}/pulse/xpolicy.conf.d/%{name}.conf
+%endif
 # << files

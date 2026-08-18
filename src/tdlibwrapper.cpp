@@ -128,6 +128,8 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(authorizationStateChanged(QString, QVariantMap)), this, SLOT(handleAuthorizationStateChanged(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(optionUpdated(QString, QVariant)), this, SLOT(handleOptionUpdated(QString, QVariant)));
     connect(this->tdLibReceiver, SIGNAL(connectionStateChanged(QString)), this, SLOT(handleConnectionStateChanged(QString)));
+    connect(this->tdLibReceiver, SIGNAL(callUpdated(QVariantMap)), this, SLOT(handleCallUpdated(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(callSignalingDataReceived(qlonglong, QByteArray)), this, SLOT(handleCallSignalingDataReceived(qlonglong, QByteArray)));
     connect(this->tdLibReceiver, SIGNAL(userUpdated(QVariantMap)), this, SLOT(handleUserUpdated(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(userStatusUpdated(QString, QVariantMap)), this, SLOT(handleUserStatusUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(fileUpdated(QVariantMap)), this, SLOT(handleFileUpdated(QVariantMap)));
@@ -2441,4 +2443,64 @@ TDLibWrapper::ChatMemberStatus TDLibWrapper::Group::chatMemberStatus() const
 {
     const QString statusType(groupInfo.value(STATUS).toMap().value(_TYPE).toString());
     return statusType.isEmpty() ? ChatMemberStatusUnknown : chatMemberStatusFromString(statusType);
+}
+
+// ── Voice/video calls: TDLib signalling bridge ──────────────────────────────
+// TDLib only does call setup/DH/relay selection and passes opaque media
+// signalling bytes through; the actual audio/video runs in tgcalls (VoipManager).
+
+void TDLibWrapper::createCall(qlonglong userId, const QVariantMap &protocol, bool isVideo)
+{
+    LOG("Creating call to user" << userId << "video:" << isVideo);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "createCall");
+    requestObject.insert("user_id", userId);
+    requestObject.insert("protocol", protocol);
+    requestObject.insert("is_video", isVideo);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::acceptCall(qlonglong callId, const QVariantMap &protocol)
+{
+    LOG("Accepting call" << callId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "acceptCall");
+    requestObject.insert("call_id", callId);
+    requestObject.insert("protocol", protocol);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::discardCall(qlonglong callId, bool isDisconnected, int duration, bool isVideo, qlonglong connectionId)
+{
+    LOG("Discarding call" << callId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "discardCall");
+    requestObject.insert("call_id", callId);
+    requestObject.insert("is_disconnected", isDisconnected);
+    requestObject.insert("duration", duration);
+    requestObject.insert("is_video", isVideo);
+    requestObject.insert("connection_id", connectionId);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::sendCallSignalingData(qlonglong callId, const QByteArray &data)
+{
+    if (callId <= 0 || data.isEmpty()) {
+        return;
+    }
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "sendCallSignalingData");
+    requestObject.insert("call_id", callId);
+    requestObject.insert("data", QString::fromLatin1(data.toBase64()));
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::handleCallUpdated(const QVariantMap &callInformation)
+{
+    emit callUpdated(callInformation);
+}
+
+void TDLibWrapper::handleCallSignalingDataReceived(qlonglong callId, const QByteArray &data)
+{
+    emit callSignalingDataReceived(callId, data);
 }

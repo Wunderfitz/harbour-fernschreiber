@@ -55,6 +55,16 @@ ApplicationWindow
         parent: pageStack.currentPage
     }
 
+    // Global overlay for an active call. Loaded only in a voicecalls build: the
+    // overlay imports QtMultimedia, QtSensors and Nemo.DBus, and a stock build has
+    // no reason to depend on those QML plugins being installed on the device.
+    Loader {
+        anchors.fill: parent
+        z: 10000
+        active: voiceCallsAvailable
+        source: Qt.resolvedUrl("components/CallOverlay.qml")
+    }
+
     Component.onCompleted: {
         Functions.setGlobals({
             tdLibWrapper: tdLibWrapper,

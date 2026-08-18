@@ -139,6 +139,15 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     if (contentType == MESSAGE_CONTENT_TYPE_VOICE_NOTE) {
         return myself ? tr("sent a voice note", "myself") : tr("sent a voice note");
     }
+    if (contentType == "messageCall") {
+        const bool isVideo = messageContent.value("is_video").toBool();
+        const int duration = messageContent.value("duration").toInt();
+        const QString label = isVideo ? tr("Video call") : tr("Call");
+        if (duration > 0) {
+            return label + QString(" (%1:%2)").arg(duration / 60).arg(duration % 60, 2, 10, QChar('0'));
+        }
+        return label;
+    }
     if (contentType == MESSAGE_CONTENT_TYPE_DOCUMENT) {
         return myself ? tr("sent a document", "myself") : tr("sent a document");
     }

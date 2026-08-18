@@ -114,6 +114,8 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateOption", &TDLibReceiver::processUpdateOption);
     handlers.insert("updateAuthorizationState", &TDLibReceiver::processUpdateAuthorizationState);
     handlers.insert("updateConnectionState", &TDLibReceiver::processUpdateConnectionState);
+    handlers.insert("updateCall", &TDLibReceiver::processUpdateCall);
+    handlers.insert("updateNewCallSignalingData", &TDLibReceiver::processUpdateNewCallSignalingData);
     handlers.insert("updateUser", &TDLibReceiver::processUpdateUser);
     handlers.insert("updateUserStatus", &TDLibReceiver::processUpdateUserStatus);
     handlers.insert("updateFile", &TDLibReceiver::processUpdateFile);
@@ -948,4 +950,18 @@ const QVariantList TDLibReceiver::cleanupList(const QVariantList& list, bool *up
     } else {
         return list;
     }
+}
+
+void TDLibReceiver::processUpdateCall(const QVariantMap &receivedInformation)
+{
+    LOG("Call updated");
+    emit callUpdated(receivedInformation.value("call").toMap());
+}
+
+void TDLibReceiver::processUpdateNewCallSignalingData(const QVariantMap &receivedInformation)
+{
+    const qlonglong callId = receivedInformation.value("call_id").toLongLong();
+    const QByteArray data = QByteArray::fromBase64(receivedInformation.value("data").toString().toLatin1());
+    LOG("New call signaling data received for call" << callId << "size" << data.size());
+    emit callSignalingDataReceived(callId, data);
 }

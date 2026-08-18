@@ -96,6 +96,61 @@
     </message>
 </context>
 <context>
+    <name>CallOverlay</name>
+    <message>
+        <source>Unknown</source>
+        <translation>Unknown</translation>
+    </message>
+    <message>
+        <source>Calling…</source>
+        <translation>Calling…</translation>
+    </message>
+    <message>
+        <source>Incoming video call</source>
+        <translation>Incoming video call</translation>
+    </message>
+    <message>
+        <source>Incoming call</source>
+        <translation>Incoming call</translation>
+    </message>
+    <message>
+        <source>Exchanging encryption keys…</source>
+        <translation>Exchanging encryption keys…</translation>
+    </message>
+    <message>
+        <source>Ongoing call</source>
+        <translation>Ongoing call</translation>
+    </message>
+    <message>
+        <source>Hanging up…</source>
+        <translation>Hanging up…</translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation>Accept</translation>
+    </message>
+    <message>
+        <source>Unmute</source>
+        <translation>Unmute</translation>
+    </message>
+    <message>
+        <source>Mute</source>
+        <translation>Mute</translation>
+    </message>
+    <message>
+        <source>Flip</source>
+        <translation>Flip</translation>
+    </message>
+    <message>
+        <source>Decline</source>
+        <translation>Decline</translation>
+    </message>
+    <message>
+        <source>Hang up</source>
+        <translation>Hang up</translation>
+    </message>
+</context>
+<context>
     <name>ChatInformationPageContent</name>
     <message numerus="yes">
         <source>%1 subscribers</source>
@@ -490,6 +545,14 @@
     <message>
         <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Video Call</source>
+        <translation>Video Call</translation>
+    </message>
+    <message>
+        <source>Call</source>
+        <translation>Call</translation>
     </message>
 </context>
 <context>
@@ -905,6 +968,14 @@
     <message>
         <source>sent a video note</source>
         <translation type="unfinished">sent a video note</translation>
+    </message>
+    <message>
+        <source>Video call</source>
+        <translation>Video call</translation>
+    </message>
+    <message>
+        <source>Call</source>
+        <translation>Call</translation>
     </message>
 </context>
 <context>
@@ -2364,6 +2435,14 @@
     <message>
         <source>sent a game</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Video call</source>
+        <translation>Video call</translation>
+    </message>
+    <message>
+        <source>Call</source>
+        <translation>Call</translation>
     </message>
 </context>
 </TS>
