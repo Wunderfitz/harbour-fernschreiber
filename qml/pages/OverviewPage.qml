@@ -400,6 +400,12 @@ Page {
             opacity: (overviewPage.chatListCreated && !overviewPage.logoutLoading) ? 1 : 0
             Behavior on opacity { FadeAnimation {} }
             model: chatListProxyModel.sourceModel ? chatListProxyModel : chatListModel
+            move: Transition {
+                NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
+            }
+            moveDisplaced: Transition {
+                NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
+            }
             delegate: ChatListViewItem {
                 ownUserId: overviewPage.ownUserId
                 isVerified: is_verified

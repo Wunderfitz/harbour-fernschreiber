@@ -83,6 +83,13 @@ Dialog {
             requirePermissions: chatSelectionPage.payload.neededPermissions
         }
 
+        move: Transition {
+            NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
+        }
+        moveDisplaced: Transition {
+            NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
+        }
+
         delegate: ChatListViewItem {
             ownUserId: chatSelectionPage.myUserId
             onClicked: {
