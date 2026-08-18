@@ -91,6 +91,7 @@ public:
     QVector<int> updateLastMessage(const QVariantMap &message);
     QVector<int> updateGroup(const TDLibWrapper::Group *group);
     QVector<int> updateSecretChat(const QVariantMap &secretChatDetails);
+    ChatData* clone();
     TDLibWrapper *tdLibWrapper;
 
 public:
@@ -384,6 +385,24 @@ QVector<int> ChatListModel::ChatData::updateSecretChat(const QVariantMap &secret
     return changedRoles;
 }
 
+ChatListModel::ChatData* ChatListModel::ChatData::clone() {
+    QVariantMap clonedChatData;
+
+    QList<QString> keys = chatData.keys();
+    for(int i = 0; i < keys.count(); i++) {
+        clonedChatData.insert(keys[i], QVariant(chatData[keys[i]]));
+    }
+    ChatData* res = new ChatData(tdLibWrapper, clonedChatData);
+    res->chatId = chatId;
+    res->order = order;
+    res->groupId = groupId;
+    res->verified = verified;
+    res->chatType = chatType;
+    res->memberStatus = memberStatus;
+    res->secretChatState = secretChatState;
+    return res;
+}
+
 ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSettings) : showHiddenChats(false)
 {
     this->tdLibWrapper = tdLibWrapper;
@@ -424,6 +443,15 @@ ChatListModel::~ChatListModel()
     LOG("Destroying myself...");
     qDeleteAll(chatList);
     qDeleteAll(hiddenChats.values());
+}
+
+ChatListModel* ChatListModel::clone() {
+    ChatListModel* res = new ChatListModel(tdLibWrapper, appSettings);
+    res->relativeTimeRefreshTimer->stop();
+    for(int i = 0; i < chatList.count(); i++) {
+        res->chatList.append(chatList.at(i)->clone());
+    }
+    return res;
 }
 
 void ChatListModel::reset()
