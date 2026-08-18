@@ -59,6 +59,7 @@ namespace {
     const QString MESSAGE_CONTENT_TYPE_DOCUMENT("messageDocument");
     const QString MESSAGE_CONTENT_TYPE_LOCATION("messageLocation");
     const QString MESSAGE_CONTENT_TYPE_VENUE("messageVenue");
+    const QString MESSAGE_CONTENT_TYPE_CALL("messageCall");
 }
 
 FernschreiberUtils::FernschreiberUtils(QObject *parent)
@@ -221,6 +222,36 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     }
     if (contentType == "messageGame") {
         return myself ? tr("sent a game", "myself") : tr("sent a game");
+    }
+    if (contentType == MESSAGE_CONTENT_TYPE_CALL) {
+        bool video = messageContent.value("is_video").toBool();
+        qDebug() << messageContent;
+        return video ? "videocall" : "call";
+
+        const QString discardReason(messageContent.value("discard_reason").toString());
+        uint duration = messageContent.value("duration").toUInt();
+        uint minutes = floor(duration / 60);
+        uint seconds = duration % 60;
+        QString durationString = minutes > 0 ? tr("%1 min %2 sec").arg(minutes).arg(seconds) : tr("%1 sec").arg(seconds);
+        if (video) {
+            if (discardReason == "callDiscardReasonMissed")
+                    return tr("missed video call");
+                else if (discardReason == "callDiscardReasonDeclined")
+                    return tr("declined video call");
+                else if (discardReason == "callDiscardReasonDisconnected")
+                    return tr("interrupted video call: %1").arg(durationString);
+                else if (discardReason == "callDiscardReasonHungUp" || discardReason == "callDiscardReasonEmpty")
+                    return myself ? tr("outgoing video call: %1", "myself").arg(durationString) : tr("incoming video call: %1").arg(durationString);
+        } else {
+            if (discardReason == "callDiscardReasonMissed")
+                    return tr("missed call");
+                else if (discardReason == "callDiscardReasonDeclined")
+                    return tr("declined call");
+                else if (discardReason == "callDiscardReasonDisconnected")
+                    return tr("interrupted call: %1").arg(durationString);
+                else if (discardReason == "callDiscardReasonHungUp" ||discardReason == "callDiscardReasonEmpty")
+                    return myself ? tr("outgoing call: %1", "myself").arg(durationString) : tr("incoming call: %1").arg(durationString);
+        }
     }
     if (contentType == "messageUnsupported") {
         return myself ? tr("sent an unsupported message", "myself") : tr("sent an unsupported message");

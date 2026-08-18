@@ -162,6 +162,38 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         return simple ? (myself ? qsTr("sent a game", "myself") : qsTr("sent a game")) : "";
     case 'messageGameScore':
         return myself ? qsTr("scored %Ln points", "myself", message.content.score) : qsTr("scored %Ln points", "myself", message.content.score);
+    case 'messageCall':
+        var video = message.content.is_video;
+        var discardReason = message.content.discard_reason['@type'];
+        var duration = message.content.duration;
+        var minutes = Math.floor(duration / 60);
+        var seconds = duration % 60;
+        var durationString = minutes > 0 ? qsTr("%1 min %2 sec").arg(minutes).arg(seconds) : qsTr("%1 sec").arg(seconds)
+        if (video) {
+            switch (discardReason) {
+                case 'callDiscardReasonMissed':
+                    return qsTr("missed video call");
+                case 'callDiscardReasonDeclined':
+                    return qsTr("declined video call");
+                case 'callDiscardReasonDisconnected':
+                    return qsTr("interrupted video call: %1").arg(durationString);
+                case 'callDiscardReasonHungUp':
+                case 'callDiscardReasonEmpty':
+                    return myself ? qsTr("outgoing video call: %1", "myself").arg(durationString) : qsTr("incoming video call: %1").arg(durationString);
+            }
+        } else {
+            switch (discardReason) {
+                case 'callDiscardReasonMissed':
+                    return qsTr("missed call");
+                case 'callDiscardReasonDeclined':
+                    return qsTr("declined call");
+                case 'callDiscardReasonDisconnected':
+                    return qsTr("interrupted call: %1").arg(durationString);
+                case 'callDiscardReasonHungUp':
+                case 'callDiscardReasonEmpty':
+                    return myself ? qsTr("outgoing call: %1", "myself").arg(durationString) : qsTr("incoming call: %1").arg(durationString);
+            }
+        }
     case 'messageUnsupported':
         return myself ? qsTr("sent an unsupported message", "myself") : qsTr("sent an unsupported message");
     default:
