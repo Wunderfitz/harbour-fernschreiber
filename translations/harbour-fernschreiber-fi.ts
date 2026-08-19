@@ -1631,6 +1631,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Show &quot;Delete Chat&quot; in the chat menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting a chat is irreversible and rarely needed on the go. Turn this off to keep the entry out of the pulley menu.</source>
+        <translation type="unfinished"></translation>
+    </message>
         <source>Show reaction button on tap</source>
         <translation type="unfinished"></translation>
     </message>

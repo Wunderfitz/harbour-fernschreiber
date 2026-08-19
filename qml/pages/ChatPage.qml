@@ -928,7 +928,7 @@ Page {
 
                 MenuItem {
                     id: deleteChatMenuItem
-                    visible: chatPage.isPrivateChat
+                    visible: chatPage.isPrivateChat && appSettings.showDeleteChat
                     onClicked: {
                         var privateChatId = chatInformation.id;
                         var confirmationDialog = pageStack.push(deleteChatConfirmationDialog);

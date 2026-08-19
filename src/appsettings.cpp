@@ -33,6 +33,7 @@ namespace {
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
     const QString KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW("notificationAlwaysShowPreview");
     const QString KEY_GO_TO_QUOTED_MESSAGE("goToQuotedMessage");
+    const QString KEY_SHOW_DELETE_CHAT("showDeleteChat");
     const QString KEY_STORAGE_OPTIMIZER("useStorageOptimizer");
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
@@ -214,6 +215,20 @@ void AppSettings::setGoToQuotedMessage(bool enable)
         LOG(KEY_GO_TO_QUOTED_MESSAGE << enable);
         settings.setValue(KEY_GO_TO_QUOTED_MESSAGE, enable);
         emit goToQuotedMessageChanged();
+    }
+}
+
+bool AppSettings::showDeleteChat() const
+{
+    return settings.value(KEY_SHOW_DELETE_CHAT, true).toBool();
+}
+
+void AppSettings::setShowDeleteChat(bool show)
+{
+    if (showDeleteChat() != show) {
+        LOG(KEY_SHOW_DELETE_CHAT << show);
+        settings.setValue(KEY_SHOW_DELETE_CHAT, show);
+        emit showDeleteChatChanged();
     }
 }
 

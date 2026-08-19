@@ -96,6 +96,17 @@ AccordionItem {
 
             TextSwitch {
                 width: parent.columnWidth
+                checked: appSettings.showDeleteChat
+                text: qsTr("Show \"Delete Chat\" in the chat menu")
+                description: qsTr("Deleting a chat is irreversible and rarely needed on the go. Turn this off to keep the entry out of the pulley menu.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.showDeleteChat = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
                 checked: appSettings.notificationAlwaysShowPreview
                 text: qsTr("Always append message preview to notifications")
                 description: qsTr("In addition to showing the number of unread messages, the latest message will also be appended to notifications.")

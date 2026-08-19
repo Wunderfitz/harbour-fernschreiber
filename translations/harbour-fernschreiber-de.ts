@@ -1630,6 +1630,13 @@
         <translation>Beim Tippen auf eine zitierte Nachricht zu dieser springen anstatt es in einem Overlay anzuzeigen.</translation>
     </message>
     <message>
+        <source>Show &quot;Delete Chat&quot; in the chat menu</source>
+        <translation>„Chat löschen“ im Chat-Menü anzeigen</translation>
+    </message>
+    <message>
+        <source>Deleting a chat is irreversible and rarely needed on the go. Turn this off to keep the entry out of the pulley menu.</source>
+        <translation>Das Löschen eines Chats lässt sich nicht rückgängig machen und wird unterwegs selten gebraucht. Ausschalten, um den Eintrag aus dem Pulley-Menü herauszuhalten.</translation>
+    <message>
         <source>Show reaction button on tap</source>
         <translation>Reaktionsknopf beim Tippen anzeigen</translation>
     </message>
