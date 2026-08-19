@@ -215,6 +215,41 @@
         <source>Channel members are anonymous.</source>
         <translation>Channel members are anonymous.</translation>
     </message>
+    <message>
+        <source>Member Permissions</source>
+        <comment>edit a group member&apos;s individual permissions</comment>
+        <translation>Member Permissions</translation>
+    </message>
+    <message>
+        <source>Revoke Write Permission</source>
+        <comment>restrict a group member</comment>
+        <translation>Revoke Write Permission</translation>
+    </message>
+    <message>
+        <source>Remove Restrictions</source>
+        <comment>lift restrictions from a group member</comment>
+        <translation>Remove Restrictions</translation>
+    </message>
+    <message>
+        <source>Remove from Group</source>
+        <comment>ban a group member</comment>
+        <translation>Remove from Group</translation>
+    </message>
+    <message>
+        <source>Removing member</source>
+        <comment>remorse timer text</comment>
+        <translation>Removing member</translation>
+    </message>
+    <message>
+        <source>Remove and Delete All Messages</source>
+        <comment>ban a group member, revoking their messages</comment>
+        <translation>Remove and Delete All Messages</translation>
+    </message>
+    <message>
+        <source>Removing member and deleting messages</source>
+        <comment>remorse timer text</comment>
+        <translation>Removing member and deleting messages</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabView</name>
@@ -287,6 +322,89 @@
     <message>
         <source>Mute chat</source>
         <translation type="unfinished">Mute chat</translation>
+    </message>
+</context>
+<context>
+    <name>ChatMemberPermissionsPage</name>
+    <message>
+        <source>Save</source>
+        <comment>member permissions dialog</comment>
+        <translation>Save</translation>
+    </message>
+    <message>
+        <source>What can this member do?</source>
+        <comment>member permissions dialog</comment>
+        <translation>What can this member do?</translation>
+    </message>
+    <message>
+        <source>Not allowed by the group&apos;s default permissions</source>
+        <comment>member permissions dialog</comment>
+        <translation>Not allowed by the group&apos;s default permissions</translation>
+    </message>
+    <message>
+        <source>Send Text Messages</source>
+        <comment>member permission</comment>
+        <translation>Send Text Messages</translation>
+    </message>
+    <message>
+        <source>Send Photos</source>
+        <comment>member permission</comment>
+        <translation>Send Photos</translation>
+    </message>
+    <message>
+        <source>Send Videos</source>
+        <comment>member permission</comment>
+        <translation>Send Videos</translation>
+    </message>
+    <message>
+        <source>Send Music &amp; Audio Files</source>
+        <comment>member permission</comment>
+        <translation>Send Music &amp; Audio Files</translation>
+    </message>
+    <message>
+        <source>Send Files</source>
+        <comment>member permission</comment>
+        <translation>Send Files</translation>
+    </message>
+    <message>
+        <source>Send Voice Messages</source>
+        <comment>member permission</comment>
+        <translation>Send Voice Messages</translation>
+    </message>
+    <message>
+        <source>Send Video Messages</source>
+        <comment>member permission</comment>
+        <translation>Send Video Messages</translation>
+    </message>
+    <message>
+        <source>Send Polls</source>
+        <comment>member permission</comment>
+        <translation>Send Polls</translation>
+    </message>
+    <message>
+        <source>Send Stickers, GIFs &amp; Games</source>
+        <comment>member permission</comment>
+        <translation>Send Stickers, GIFs &amp; Games</translation>
+    </message>
+    <message>
+        <source>Add Web Page Previews</source>
+        <comment>member permission</comment>
+        <translation>Add Web Page Previews</translation>
+    </message>
+    <message>
+        <source>Change Chat Info</source>
+        <comment>member permission</comment>
+        <translation>Change Chat Info</translation>
+    </message>
+    <message>
+        <source>Invite Users</source>
+        <comment>member permission</comment>
+        <translation>Invite Users</translation>
+    </message>
+    <message>
+        <source>Pin Messages</source>
+        <comment>member permission</comment>
+        <translation>Pin Messages</translation>
     </message>
 </context>
 <context>
