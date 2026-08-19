@@ -1636,6 +1636,13 @@
     <message>
         <source>Deleting a chat is irreversible and rarely needed on the go. Turn this off to keep the entry out of the pulley menu.</source>
         <translation>Das Löschen eines Chats lässt sich nicht rückgängig machen und wird unterwegs selten gebraucht. Ausschalten, um den Eintrag aus dem Pulley-Menü herauszuhalten.</translation>
+    <message>
+        <source>Show reaction button on tap</source>
+        <translation>Reaktionsknopf beim Tippen anzeigen</translation>
+    </message>
+    <message>
+        <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
+        <translation>Der Reaktionsknopf erscheint beim Antippen der Nachrichtenblase, um den Zugriff auf die Reaktionen noch einfacher zu machen.</translation>
     </message>
 </context>
 <context>

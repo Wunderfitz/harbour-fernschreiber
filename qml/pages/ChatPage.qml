@@ -420,8 +420,12 @@ Page {
             var index = chatModel.getMessageIndex(chatPage.messageIdToScrollTo);
             if(index !== -1) {
                 chatPage.messageIdToScrollTo = "";
-                chatView.scrollToIndex(index);
-                navigatedTo(index);
+                // index is a row in chatModel; album entries other than the first are
+                // filtered out of chatProxyModel, so map to the proxy row (falling back
+                // to the album's representative entry if this row itself is hidden).
+                var proxyIndex = chatProxyModel.mapRowFromSource(index, -1);
+                chatView.scrollToIndex(proxyIndex);
+                navigatedTo(proxyIndex);
             } else if(initialRun) {
                 // we only want to do this once.
                 chatModel.triggerLoadHistoryForMessage(chatPage.messageIdToScrollTo)

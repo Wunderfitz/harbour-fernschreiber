@@ -1637,6 +1637,13 @@
         <source>Deleting a chat is irreversible and rarely needed on the go. Turn this off to keep the entry out of the pulley menu.</source>
         <translation>Deleting a chat is irreversible and rarely needed on the go. Turn this off to keep the entry out of the pulley menu.</translation>
     </message>
+        <source>Show reaction button on tap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

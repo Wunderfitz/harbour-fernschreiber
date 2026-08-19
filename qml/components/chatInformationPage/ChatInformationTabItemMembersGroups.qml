@@ -41,6 +41,12 @@ ChatInformationTabItemBase {
         width: tabBase.width
         opacity: tabBase.loading ? (count > 0 ? 0.5 : 0.0) : 1.0
         Behavior on opacity { FadeAnimation {} }
+        move: Transition {
+            NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
+        }
+        moveDisplaced: Transition {
+            NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
+        }
         function handleScrollIntoView(force){
             if(!tabBase.loading && !dragging && !quickScrollAnimating ) {
                 if(!atYBeginning) {

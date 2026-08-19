@@ -22,6 +22,7 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QGuiApplication>
 #include <QLocale>
 #include <QProcess>
 #include <QSysInfo>
@@ -102,7 +103,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *settings, MceInterface *mce, QObject *pa
 
     connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
     connect(this->appSettings, SIGNAL(storageOptimizerChanged()), this, SLOT(handleStorageOptimizerChanged()));
-
+    connect(qGuiApp, SIGNAL(applicationStateChanged(Qt::ApplicationState)), this, SLOT(handleApplicationStateChanged(Qt::ApplicationState)));
     connect(networkConfigurationManager, SIGNAL(configurationChanged(QNetworkConfiguration)), this, SLOT(handleNetworkConfigurationChanged(QNetworkConfiguration)));
 
     this->setLogVerbosityLevel();
@@ -2211,6 +2212,10 @@ void TDLibWrapper::handleGetPageSourceFinished()
     }
 }
 
+void TDLibWrapper::handleApplicationStateChanged(Qt::ApplicationState state) {
+    this->tdLibReceiver->setPowerSavingMode(state != Qt::ApplicationState::ApplicationActive);
+}
+
 QVariantMap& TDLibWrapper::fillTdlibParameters(QVariantMap& parameters)
 {
     parameters.insert("api_id", TDLIB_API_ID);
@@ -2225,7 +2230,7 @@ QVariantMap& TDLibWrapper::fillTdlibParameters(QVariantMap& parameters)
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
     parameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     parameters.insert("system_version", QSysInfo::prettyProductName());
-    parameters.insert("application_version", "0.17");
+    parameters.insert("application_version", "0.18");
     parameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
     // parameters.insert("use_test_dc", true);
     return parameters;
