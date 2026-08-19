@@ -428,10 +428,6 @@
         <translation>Standort: Erlange Position...</translation>
     </message>
     <message>
-        <source>Location (%1/%2)</source>
-        <translation>Standort (%1/%2)</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Nachricht in die Zwischenablage kopieren</translation>
     </message>
@@ -490,6 +486,10 @@
     <message>
         <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
         <translation>Sind Sie sicher, dass Sie diesen Chat löschen wollen? Diese Handlung kann nicht zurückgenommen werden und Sie werden die gesamte Unterhaltung für immer verlieren!</translation>
+    </message>
+    <message>
+        <source>Obtaining Position...</source>
+        <translation>Ermittle Position...</translation>
     </message>
 </context>
 <context>

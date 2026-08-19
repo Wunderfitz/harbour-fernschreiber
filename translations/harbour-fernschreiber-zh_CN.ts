@@ -418,10 +418,6 @@
         <translation>位置:正在获取位置…</translation>
     </message>
     <message>
-        <source>Location (%1/%2)</source>
-        <translation>位置 (%1/%2)</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>复制消息到剪切板</translation>
     </message>
@@ -479,6 +475,10 @@
     </message>
     <message>
         <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Obtaining Position...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

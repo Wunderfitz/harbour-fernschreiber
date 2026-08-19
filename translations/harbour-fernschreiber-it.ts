@@ -428,10 +428,6 @@
         <translation>Posizione: ottengo posizione...</translation>
     </message>
     <message>
-        <source>Location (%1/%2)</source>
-        <translation>Posizione(%1/%2)</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Copia messaggio nella clipboard</translation>
     </message>
@@ -489,6 +485,10 @@
     </message>
     <message>
         <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Obtaining Position...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -1826,8 +1826,7 @@ Page {
                         property string attachmentDescription: "";
 
                         function getLocationDescription() {
-                            return qsTr("Location (%1/%2)").arg(attachmentPreviewRow.locationData.latitude).arg(attachmentPreviewRow.locationData.longitude) + " | "
-                                    + qsTr("Accuracy: %1m").arg(attachmentPreviewRow.locationData.horizontalAccuracy) + "\n"
+                            return qsTr("Obtaining Position...") + " | " + qsTr("Accuracy: %1m").arg(attachmentPreviewRow.locationData.horizontalAccuracy) + "\n"
                                     + attachmentPreviewRow.geocodedAddress;
                         }
 
