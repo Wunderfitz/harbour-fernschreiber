@@ -82,7 +82,7 @@ namespace {
     const QString TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE("inputMessageReplyToMessage");
     const QString TYPE_DRAFT_MESSAGE("draftMessage");
 
-    const double POWERSAVING_TDLIB_REQUEST_INTERVAL = 100;
+    const double POWERSAVING_TDLIB_REQUEST_INTERVAL = 250;
 }
 
 static QString getChatPositionOrder(const QVariantMap &position)
@@ -213,7 +213,7 @@ void TDLibReceiver::receiverLoop()
           VERBOSE("Raw result:" << receivedJsonDocument.toJson(QJsonDocument::Indented).constData());
           processReceivedDocument(receivedJsonDocument);
       }
-      if(this->powerSavingMode) {
+      if (this->powerSavingMode) {
           msleep(POWERSAVING_TDLIB_REQUEST_INTERVAL);
       }
     }

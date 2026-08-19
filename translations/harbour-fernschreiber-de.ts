@@ -1630,19 +1630,20 @@
         <translation>Beim Tippen auf eine zitierte Nachricht zu dieser springen anstatt es in einem Overlay anzuzeigen.</translation>
     </message>
     <message>
-        <source>Show &quot;Delete Chat&quot; in the chat menu</source>
-        <translation>„Chat löschen“ im Chat-Menü anzeigen</translation>
+        <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
+        <translation>Der Reaktionsknopf erscheint beim Antippen der Nachrichtenblase, um den Zugriff auf die Reaktionen noch einfacher zu machen.</translation>
     </message>
-    <message>
-        <source>Deleting a chat is irreversible and rarely needed on the go. Turn this off to keep the entry out of the pulley menu.</source>
-        <translation>Das Löschen eines Chats lässt sich nicht rückgängig machen und wird unterwegs selten gebraucht. Ausschalten, um den Eintrag aus dem Pulley-Menü herauszuhalten.</translation>
     <message>
         <source>Show reaction button on tap</source>
         <translation>Reaktionsknopf beim Tippen anzeigen</translation>
     </message>
     <message>
-        <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
-        <translation>Der Reaktionsknopf erscheint beim Antippen der Nachrichtenblase, um den Zugriff auf die Reaktionen noch einfacher zu machen.</translation>
+        <source>Show chat deletion menu item</source>
+        <translation>Menüeintrag zum Löschen eines Chats anzeigen</translation>
+    </message>
+    <message>
+        <source>Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.</source>
+        <translation>Einen Chat zu löschen kann nicht rückgängig gemacht werden und wird selten gebraucht. Schalten Sie diese Option aus, um den Eintrag aus dem Menü zu entfernen.</translation>
     </message>
 </context>
 <context>

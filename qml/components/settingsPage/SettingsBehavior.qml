@@ -97,8 +97,8 @@ AccordionItem {
             TextSwitch {
                 width: parent.columnWidth
                 checked: appSettings.showDeleteChat
-                text: qsTr("Show \"Delete Chat\" in the chat menu")
-                description: qsTr("Deleting a chat is irreversible and rarely needed on the go. Turn this off to keep the entry out of the pulley menu.")
+                text: qsTr("Show chat deletion menu item")
+                description: qsTr("Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.")
                 automaticCheck: false
                 onClicked: {
                     appSettings.showDeleteChat = !checked

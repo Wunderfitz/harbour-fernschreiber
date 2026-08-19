@@ -17,6 +17,7 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 - Integration of logout and sesison options to settings page, search results optimization, highlight unread conversations: [Peter G.](https://github.com/nephros)
 - Option to always append last message in notifications: [Johannes Bachmann](https://github.com/dscheinah)
 - Option to jump to quoted message, widescreen UI adjustments, bug fixes for message forwarding and copying: [Mikhail Barashkov](https://github.com/mbarashkov)
+- Option to to remove the chat deletion menu item: [JimKnopfIoT](https://github.com/JimKnopfIoT)
 
 This list might not be complete. In case I forgot something/somebody, please let me know or create a PR, thanks! :)
 

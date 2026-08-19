@@ -17,7 +17,10 @@
 - Support for notches - contribution by jgibbon
 - Support for albums - contribution by jgibbon
 - Additional safety dialog before deleting a chat
+- Option to remove the chat deletion menu item - contribution by JimKnopfIoT
+- Animation for order changes in chat list
 - Make reactions button configurable - contribution by monich
+- Save power by adding delay between network requests in background - contribution by mbarashkov
 - Hotfix: Disable autoplay for animations (currently crashing on some devices)
 - Fix Regression: Show all destinations for message forwarding – contribution by mbarashkov
 - Fix: message copy for some use cases – contribution by mbarashkov
