@@ -129,6 +129,17 @@ AccordionItem {
 
             TextSwitch {
                 width: parent.columnWidth
+                checked: appSettings.autoplayAnimatedGifs
+                text: qsTr("Autoplay animations")
+                description: qsTr("Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.autoplayAnimatedGifs = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
                 checked: appSettings.showReactionButton
                 text: qsTr("Show reaction button on tap")
                 description: qsTr("The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.")

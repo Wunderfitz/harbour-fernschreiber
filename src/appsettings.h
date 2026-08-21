@@ -46,6 +46,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool focusTextAreaOnChatOpen READ getFocusTextAreaOnChatOpen WRITE setFocusTextAreaOnChatOpen NOTIFY focusTextAreaOnChatOpenChanged)
     Q_PROPERTY(bool highlightUnreadConversations READ highlightUnreadConversations WRITE setHighlightUnreadConversations NOTIFY highlightUnreadConversationsChanged)
     Q_PROPERTY(bool showReactionButton READ showReactionButton WRITE setShowReactionButton NOTIFY showReactionButtonChanged)
+    Q_PROPERTY(bool autoplayAnimatedGifs READ autoplayAnimatedGifs WRITE setAutoplayAnimatedGifs NOTIFY autoplayAnimatedGifsChanged)
     Q_PROPERTY(SponsoredMess sponsoredMess READ getSponsoredMess WRITE setSponsoredMess NOTIFY sponsoredMessChanged)
 
 public:
@@ -134,6 +135,9 @@ public:
     SponsoredMess getSponsoredMess() const;
     void setSponsoredMess(SponsoredMess sponsoredMess);
 
+    bool autoplayAnimatedGifs() const;
+    void setAutoplayAnimatedGifs(bool enable);
+
 signals:
     void sendByEnterChanged();
     void focusTextAreaAfterSendChanged();
@@ -158,6 +162,7 @@ signals:
     void highlightUnreadConversationsChanged();
     void showReactionButtonChanged();
     void sponsoredMessChanged();
+    void autoplayAnimatedGifsChanged();
 
 private:
     QSettings settings;

@@ -1673,6 +1673,14 @@
         <source>Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Autoplay animations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

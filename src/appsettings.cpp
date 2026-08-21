@@ -44,6 +44,7 @@ namespace {
     const QString KEY_SPONSORED_MESS("sponsoredMess");
     const QString KEY_HIGHLIGHT_UNREADCONVS("highlightUnreadConversations");
     const QString KEY_SHOW_REACTION_BUTTON("showReactionButton");
+    const QString KEY_AUTOPLAY_ANIMATED_GIFS("autoplayAnimatedGifs");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/fernschreiber/settings.conf", QSettings::NativeFormat)
@@ -371,5 +372,19 @@ void AppSettings::setSponsoredMess(SponsoredMess sponsoredMess)
         LOG(KEY_SPONSORED_MESS << sponsoredMess);
         settings.setValue(KEY_SPONSORED_MESS, sponsoredMess);
         emit sponsoredMessChanged();
+    }
+}
+
+bool AppSettings::autoplayAnimatedGifs() const
+{
+    return settings.value(KEY_AUTOPLAY_ANIMATED_GIFS, true).toBool();
+}
+
+void AppSettings::setAutoplayAnimatedGifs(bool enable)
+{
+    if (autoplayAnimatedGifs() != enable) {
+        LOG(KEY_AUTOPLAY_ANIMATED_GIFS << enable);
+        settings.setValue(KEY_AUTOPLAY_ANIMATED_GIFS, enable);
+        emit autoplayAnimatedGifsChanged();
     }
 }

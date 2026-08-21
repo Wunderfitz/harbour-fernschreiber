@@ -1645,6 +1645,14 @@
         <source>Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.</source>
         <translation>Einen Chat zu löschen kann nicht rückgängig gemacht werden und wird selten gebraucht. Schalten Sie diese Option aus, um den Eintrag aus dem Menü zu entfernen.</translation>
     </message>
+    <message>
+        <source>Autoplay animations</source>
+        <translation>Animationen automatisch abspielen</translation>
+    </message>
+    <message>
+        <source>Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.</source>
+        <translation>Spielt automatisch animierte GIFs ab. Auf manchen Geräten kann das Abstürze im Medien-Untersystem verursachen. Schalten Sie dies aus, um das zu verhindern.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
