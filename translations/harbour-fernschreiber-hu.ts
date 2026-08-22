@@ -496,13 +496,6 @@
     </message>
 </context>
 <context>
-    <name>ContactSync</name>
-    <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Nem sikerült a névjegyzékedet szinkronizálni a Telegrammal.</translation>
-    </message>
-</context>
-<context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
