@@ -801,7 +801,7 @@ Page {
             NamedAction {
                 visible: messageOptionsDrawer.showCopyMessageToClipboardMenuItem
                 name: qsTr("Copy Message to Clipboard")
-                action: {
+                action: function () {
                     if(messageOptionsDrawer.sourceItem) {
                         messageOptionsDrawer.sourceItem.copyMessageToClipboard()
                     }
@@ -829,7 +829,7 @@ Page {
             NamedAction {
                 visible: messageOptionsDrawer.showDeleteMessageMenuItem
                 name: qsTr("Delete Message")
-                action: {
+                action: function () {
                     if(messageOptionsDrawer.sourceItem) {
                         messageOptionsDrawer.sourceItem.deleteMessage()
                     }
