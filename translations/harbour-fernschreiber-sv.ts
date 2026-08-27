@@ -485,11 +485,11 @@
     </message>
     <message>
         <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vill du verkligen ta bort den här chatten? Det kan inte ångras och du förlorar hela konversationen för alltid!</translation>
     </message>
     <message>
         <source>Obtaining Position...</source>
-        <translation type="unfinished"></translation>
+        <translation>Hämtar position...</translation>
     </message>
 </context>
 <context>
@@ -1631,27 +1631,27 @@
     </message>
     <message>
         <source>Show reaction button on tap</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa reaktionsknapp vid tryck</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Reaktionsknappen kan dyka upp när du trycker på meddelandebubblan, för att göra det ännu enklare att komma åt reaktionerna.</translation>
     </message>
     <message>
         <source>Show chat deletion menu item</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa menyalternativ för att radera chatt</translation>
     </message>
     <message>
         <source>Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Att radera en chatt går inte att ångra och behövs sällan. Stäng av detta för att hålla bort posten från toppmenyn.</translation>
     </message>
     <message>
         <source>Autoplay animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Spela upp animationer automatiskt</translation>
     </message>
     <message>
         <source>Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.</source>
-        <translation type="unfinished"></translation>
+        <translation>Spela upp animerade GIF:ar automatiskt. På vissa enheter har detta varit känt för att orsaka krascher i mediesystemet; stäng av detta om du upplever det.</translation>
     </message>
 </context>
 <context>
