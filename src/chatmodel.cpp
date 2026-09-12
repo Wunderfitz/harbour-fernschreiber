@@ -687,12 +687,21 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         messages.replace(pos, newMessage);
         messageIndexMap.remove(oldMessageId);
         messageIndexMap.insert(messageId, pos);
-        // TODO when we support sending album messages, handle ID change in albumMessageMap
         const QVector<int> changedRoles(newMessage->diff(oldMessage));
         delete oldMessage;
         LOG("Message was replaced at index" << pos);
         const QModelIndex messageIndex(index(pos));
         emit dataChanged(messageIndex, messageIndex, changedRoles);
+
+        // An album is keyed by message ID and sending hands out a new one, so the
+        // album has to be rekeyed. Left alone it holds IDs nothing answers to any
+        // more: the entries lose their album and the bubbles come out empty.
+        const qlonglong albumId = newMessage->messageData.value(MEDIA_ALBUM_ID).toLongLong();
+        if (albumId != 0 && albumMessageMap.contains(albumId)) {
+            albumMessageMap[albumId].removeAll(QVariant(oldMessageId));
+        }
+        setMessagesAlbum(newMessage);
+
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
         tdLibWrapper->viewMessage(this->chatId, messageId, false);
     }
@@ -965,7 +974,10 @@ void ChatModel::setMessagesAlbum(const QList<MessageData *> newMessages)
 void ChatModel::setMessagesAlbum(MessageData *message)
 {
     qlonglong albumId = message->messageData.value(MEDIA_ALBUM_ID).toLongLong();
-    if (albumId != 0 && (message->messageContentType != "messagePhoto" || message->messageContentType != "messageVideo")) {
+    // Only pictures and videos are drawn as an album, and only they may be filtered
+    // down to one entry - the condition read "!= a || != b", which is true for every
+    // type, so a document album lost every entry but its first.
+    if (albumId != 0 && (message->messageContentType == "messagePhoto" || message->messageContentType == "messageVideo")) {
         qlonglong messageId = message->messageId;
 
         if(albumMessageMap.contains(albumId)) {
