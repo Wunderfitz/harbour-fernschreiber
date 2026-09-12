@@ -235,22 +235,53 @@ Page {
         attachmentPreviewRow.isDocument = false;
         attachmentPreviewRow.isVoiceNote = false;
         attachmentPreviewRow.isLocation = false;
-        attachmentPreviewRow.fileProperties = null;
+        attachmentPreviewRow.attachedFiles = [];
         attachmentPreviewRow.locationData = null;
         attachmentPreviewRow.attachmentDescription = "";
+        uploadStatusRow.clear();
         fernschreiberUtils.stopGeoLocationUpdates();
+    }
+
+    // The picker's model dies with its page, so what was chosen is copied out.
+    function attachedFilesFrom(selectedContent) {
+        var files = [];
+        for (var i = 0; i < selectedContent.count; i++) {
+            var selectedFile = selectedContent.get(i);
+            files.push({
+                "filePath": selectedFile.filePath,
+                "fileName": selectedFile.fileName,
+                "url": selectedFile.url,
+                "mimeType": selectedFile.mimeType
+            });
+        }
+        return files;
     }
 
     function controlSendButton() {
         if (newMessageTextField.text.length !== 0
-                || attachmentPreviewRow.isPicture
-                || attachmentPreviewRow.isDocument
-                || attachmentPreviewRow.isVideo
+                || attachmentPreviewRow.attachedFiles.length > 0
                 || attachmentPreviewRow.isVoiceNote
                 || attachmentPreviewRow.isLocation) {
             newMessageSendButton.enabled = true;
         } else {
             newMessageSendButton.enabled = false;
+        }
+    }
+
+    // A single file goes out as it always did - an album of one is still an album,
+    // and the timeline draws it differently.
+    function sendAttachedFiles(contentType) {
+        var filePaths = attachmentPreviewRow.attachedFiles.map(function(attachedFile) {
+            return attachedFile.filePath;
+        });
+        if (filePaths.length > 1) {
+            tdLibWrapper.sendAlbumMessage(chatInformation.id, contentType, filePaths, newMessageTextField.text, newMessageColumn.replyToMessageId);
+        } else if (contentType === "photo") {
+            tdLibWrapper.sendPhotoMessage(chatInformation.id, filePaths[0], newMessageTextField.text, newMessageColumn.replyToMessageId);
+        } else if (contentType === "video") {
+            tdLibWrapper.sendVideoMessage(chatInformation.id, filePaths[0], newMessageTextField.text, newMessageColumn.replyToMessageId);
+        } else {
+            tdLibWrapper.sendDocumentMessage(chatInformation.id, filePaths[0], newMessageTextField.text, newMessageColumn.replyToMessageId);
         }
     }
 
@@ -260,13 +291,13 @@ Page {
         } else {
             if (attachmentPreviewRow.visible) {
                 if (attachmentPreviewRow.isPicture) {
-                    tdLibWrapper.sendPhotoMessage(chatInformation.id, attachmentPreviewRow.fileProperties.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    sendAttachedFiles("photo");
                 }
                 if (attachmentPreviewRow.isVideo) {
-                    tdLibWrapper.sendVideoMessage(chatInformation.id, attachmentPreviewRow.fileProperties.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    sendAttachedFiles("video");
                 }
                 if (attachmentPreviewRow.isDocument) {
-                    tdLibWrapper.sendDocumentMessage(chatInformation.id, attachmentPreviewRow.fileProperties.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    sendAttachedFiles("document");
                 }
                 if (attachmentPreviewRow.isVoiceNote) {
                     tdLibWrapper.sendVoiceNoteMessage(chatInformation.id, fernschreiberUtils.voiceNotePath(), newMessageTextField.text, newMessageColumn.replyToMessageId);
@@ -542,11 +573,7 @@ Page {
             }
         }
         onFileUpdated: {
-            uploadStatusRow.visible = fileInformation.remote.is_uploading_active;
-            if (uploadStatusRow.visible) {
-                uploadingProgressBar.maximumValue = fileInformation.size;
-                uploadingProgressBar.value = fileInformation.remote.uploaded_size;
-            }
+            uploadStatusRow.update(fileInformation);
         }
         onEmojiSearchSuccessful: {
             chatPage.emojiProposals = result;
@@ -1709,13 +1736,14 @@ Page {
                                 visible: chatPage.hasSendPrivilege("can_send_photos")
                                 icon.source: "image://theme/icon-m-image"
                                 onClicked: {
-                                    var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage", {
+                                    var picker = pageStack.push("Sailfish.Pickers.MultiImagePickerDialog", {
                                         allowedOrientations: chatPage.allowedOrientations
                                     })
-                                    picker.selectedContentPropertiesChanged.connect(function(){
+                                    picker.accepted.connect(function(){
                                         attachmentOptionsFlickable.isNeeded = false;
-                                        Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
-                                        attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                        Debug.log("Selected images: ", picker.selectedContent.count );
+                                        clearAttachmentPreviewRow();
+                                        attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent);
                                         attachmentPreviewRow.isPicture = true;
                                         controlSendButton();
                                     })
@@ -1725,13 +1753,14 @@ Page {
                                 visible: chatPage.hasSendPrivilege("can_send_videos")
                                 icon.source: "image://theme/icon-m-video"
                                 onClicked: {
-                                    var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage", {
+                                    var picker = pageStack.push("Sailfish.Pickers.MultiVideoPickerDialog", {
                                         allowedOrientations: chatPage.allowedOrientations
                                     })
-                                    picker.selectedContentPropertiesChanged.connect(function(){
+                                    picker.accepted.connect(function(){
                                         attachmentOptionsFlickable.isNeeded = false;
-                                        Debug.log("Selected video: ", picker.selectedContentProperties.filePath );
-                                        attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                        Debug.log("Selected videos: ", picker.selectedContent.count );
+                                        clearAttachmentPreviewRow();
+                                        attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent);
                                         attachmentPreviewRow.isVideo = true;
                                         controlSendButton();
                                     })
@@ -1754,13 +1783,14 @@ Page {
                                 visible: chatPage.hasSendPrivilege("can_send_documents")
                                 icon.source: "image://theme/icon-m-document"
                                 onClicked: {
-                                    var picker = pageStack.push("Sailfish.Pickers.FilePickerPage", {
+                                    var picker = pageStack.push("Sailfish.Pickers.MultiFilePickerDialog", {
                                         allowedOrientations: chatPage.allowedOrientations
                                     })
-                                    picker.selectedContentPropertiesChanged.connect(function(){
+                                    picker.accepted.connect(function(){
                                         attachmentOptionsFlickable.isNeeded = false;
-                                        Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
-                                        attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                        Debug.log("Selected documents: ", picker.selectedContent.count );
+                                        clearAttachmentPreviewRow();
+                                        attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent);
                                         attachmentPreviewRow.isDocument = true;
                                         controlSendButton();
                                     })
@@ -1795,6 +1825,7 @@ Page {
                                     height: Theme.iconSizeMedium
                                 }
                                 onClicked: {
+                                    clearAttachmentPreviewRow();
                                     fernschreiberUtils.startGeoLocationUpdates();
                                     attachmentOptionsFlickable.isNeeded = false;
                                     attachmentPreviewRow.isLocation = true;
@@ -1809,7 +1840,7 @@ Page {
 
                     Row {
                         id: attachmentPreviewRow
-                        visible: (!!locationData || !!fileProperties || isVoiceNote) && !inlineQuery.userNameIsValid
+                        visible: (!!locationData || attachedFiles.length > 0 || isVoiceNote) && !inlineQuery.userNameIsValid
                         spacing: Theme.paddingMedium
                         width: parent.width
                         layoutDirection: Qt.RightToLeft
@@ -1822,7 +1853,7 @@ Page {
                         property bool isLocation: false;
                         property var locationData: null;
                         property var geocodedAddress: qsTr("Unknown address")
-                        property var fileProperties: null;
+                        property var attachedFiles: [];
                         property string attachmentDescription: "";
 
                         function getLocationDescription() {
@@ -1855,40 +1886,102 @@ Page {
                             }
                         }
 
-                        Thumbnail {
-                            id: attachmentPreviewImage
-                            width: Theme.itemSizeMedium
-                            height: Theme.itemSizeMedium
-                            sourceSize.width: width
-                            sourceSize.height: height
+                        Row {
+                            id: attachmentThumbnailRow
 
-                            fillMode: Thumbnail.PreserveAspectCrop
-                            mimeType: !!attachmentPreviewRow.fileProperties ? attachmentPreviewRow.fileProperties.mimeType || "" : ""
-                            source: !!attachmentPreviewRow.fileProperties ? attachmentPreviewRow.fileProperties.url || "" : ""
-                            visible: attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo
+                            // What is shown of a larger selection; the label carries the count.
+                            readonly property int maximumThumbnails: 3
+
+                            spacing: Theme.paddingSmall
+                            anchors.verticalCenter: parent.verticalCenter
+                            layoutDirection: Qt.RightToLeft
+
+                            Repeater {
+                                model: (attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo)
+                                       ? Math.min(attachmentPreviewRow.attachedFiles.length, attachmentThumbnailRow.maximumThumbnails)
+                                       : 0
+
+                                Thumbnail {
+                                    width: Theme.itemSizeMedium
+                                    height: Theme.itemSizeMedium
+                                    sourceSize.width: width
+                                    sourceSize.height: height
+
+                                    fillMode: Thumbnail.PreserveAspectCrop
+                                    mimeType: attachmentPreviewRow.attachedFiles[index].mimeType || ""
+                                    source: attachmentPreviewRow.attachedFiles[index].url || ""
+                                }
+                            }
                         }
 
                         Label {
                             id: attachmentPreviewText
                             font.pixelSize: Theme.fontSizeSmall
-                            text: ( attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation ) ? attachmentPreviewRow.attachmentDescription : ( !!attachmentPreviewRow.fileProperties ? attachmentPreviewRow.fileProperties.fileName || "" : "" );
+                            text: {
+                                if (attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation) {
+                                    return attachmentPreviewRow.attachmentDescription;
+                                }
+                                if (attachmentPreviewRow.attachedFiles.length > 1) {
+                                    return qsTr("%Ln files", "", attachmentPreviewRow.attachedFiles.length);
+                                }
+                                return attachmentPreviewRow.attachedFiles.length === 1 ? (attachmentPreviewRow.attachedFiles[0].fileName || "") : "";
+                            }
                             anchors.verticalCenter: parent.verticalCenter
 
-                            width: parent.width - removeAttachmentsIconButton.width - Theme.paddingMedium
+                            width: parent.width - removeAttachmentsIconButton.width - attachmentThumbnailRow.width - Theme.paddingMedium
                             maximumLineCount: 2
                             wrapMode: Text.Wrap
                             truncationMode: TruncationMode.Fade
                             color: Theme.secondaryColor
-                            visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation
+                            visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.attachedFiles.length > 1
                         }
                     }
 
                     Row {
                         id: uploadStatusRow
+
+                        // An album is several files, so the bar shows their sum and the
+                        // row stays up until none of them is uploading any more.
+                        property var uploads: ({})
+
                         visible: false
                         spacing: Theme.paddingMedium
                         width: parent.width
                         anchors.right: parent.right
+
+                        function clear() {
+                            uploads = ({});
+                            visible = false;
+                        }
+
+                        function update(fileInformation) {
+                            var uploading = fileInformation.remote.is_uploading_active;
+                            if (!uploading && !uploads.hasOwnProperty(fileInformation.id)) {
+                                return;
+                            }
+                            uploads[fileInformation.id] = {
+                                "size": fileInformation.size,
+                                "uploaded": fileInformation.remote.uploaded_size,
+                                "uploading": uploading
+                            };
+
+                            var totalSize = 0;
+                            var totalUploaded = 0;
+                            var stillUploading = false;
+                            for (var fileId in uploads) {
+                                totalSize += uploads[fileId].size;
+                                totalUploaded += uploads[fileId].uploaded;
+                                stillUploading = stillUploading || uploads[fileId].uploading;
+                            }
+                            uploadingProgressBar.maximumValue = totalSize;
+                            uploadingProgressBar.value = totalUploaded;
+
+                            if (stillUploading) {
+                                visible = true;
+                            } else {
+                                clear();
+                            }
+                        }
 
                         Text {
                             id: uploadingText

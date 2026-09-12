@@ -491,6 +491,13 @@
         <source>Obtaining Position...</source>
         <translation>Ermittle Position...</translation>
     </message>
+    <message numerus="yes">
+        <source>%Ln files</source>
+        <translation>
+            <numerusform>%Ln Datei</numerusform>
+            <numerusform>%Ln Dateien</numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

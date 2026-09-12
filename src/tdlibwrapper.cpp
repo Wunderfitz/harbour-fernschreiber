@@ -480,23 +480,57 @@ void TDLibWrapper::sendTextMessage(qlonglong chatId, const QString &message, qlo
     this->sendRequest(requestObject);
 }
 
+// Telegram takes at most ten items per album; a longer selection goes out as
+// several albums, and only the first of them carries the caption.
+static const int MAX_ALBUM_SIZE = 10;
+
+QVariantMap TDLibWrapper::newInputMessageContent(const QString &contentType, const QString &filePath, const QString &caption)
+{
+    QVariantMap inputFile;
+    inputFile.insert(_TYPE, "inputFileLocal");
+    inputFile.insert("path", filePath);
+
+    QVariantMap formattedText;
+    formattedText.insert("text", caption);
+    formattedText.insert(_TYPE, "formattedText");
+
+    QVariantMap inputMessageContent;
+    if (contentType == "video") {
+        inputMessageContent.insert(_TYPE, "inputMessageVideo");
+        inputMessageContent.insert("video", inputFile);
+    } else if (contentType == "document") {
+        inputMessageContent.insert(_TYPE, "inputMessageDocument");
+        inputMessageContent.insert("document", inputFile);
+    } else {
+        inputMessageContent.insert(_TYPE, "inputMessagePhoto");
+        inputMessageContent.insert("photo", inputFile);
+    }
+    inputMessageContent.insert("caption", formattedText);
+    return inputMessageContent;
+}
+
+void TDLibWrapper::sendAlbumMessage(qlonglong chatId, const QString &contentType, const QStringList &filePaths, const QString &message, qlonglong replyToMessageId)
+{
+    LOG("Sending album message" << chatId << contentType << filePaths.size() << message << replyToMessageId);
+    for (int offset = 0; offset < filePaths.size(); offset += MAX_ALBUM_SIZE) {
+        QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
+        requestObject.insert(_TYPE, "sendMessageAlbum");
+
+        QVariantList inputMessageContents;
+        const int end = qMin(offset + MAX_ALBUM_SIZE, filePaths.size());
+        for (int i = offset; i < end; i++) {
+            inputMessageContents.append(newInputMessageContent(contentType, filePaths.at(i), i == 0 ? message : QString()));
+        }
+        requestObject.insert("input_message_contents", inputMessageContents);
+        this->sendRequest(requestObject);
+    }
+}
+
 void TDLibWrapper::sendPhotoMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId)
 {
     LOG("Sending photo message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
-    QVariantMap inputMessageContent;
-    inputMessageContent.insert(_TYPE, "inputMessagePhoto");
-
-    QVariantMap formattedText;
-    formattedText.insert("text", message);
-    formattedText.insert(_TYPE, "formattedText");
-    inputMessageContent.insert("caption", formattedText);
-    QVariantMap photoInputFile;
-    photoInputFile.insert(_TYPE, "inputFileLocal");
-    photoInputFile.insert("path", filePath);
-    inputMessageContent.insert("photo", photoInputFile);
-
-    requestObject.insert("input_message_content", inputMessageContent);
+    requestObject.insert("input_message_content", newInputMessageContent("photo", filePath, message));
     this->sendRequest(requestObject);
 }
 
@@ -504,19 +538,7 @@ void TDLibWrapper::sendVideoMessage(qlonglong chatId, const QString &filePath, c
 {
     LOG("Sending video message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
-    QVariantMap inputMessageContent;
-    inputMessageContent.insert(_TYPE, "inputMessageVideo");
-
-    QVariantMap formattedText;
-    formattedText.insert("text", message);
-    formattedText.insert(_TYPE, "formattedText");
-    inputMessageContent.insert("caption", formattedText);
-    QVariantMap videoInputFile;
-    videoInputFile.insert(_TYPE, "inputFileLocal");
-    videoInputFile.insert("path", filePath);
-    inputMessageContent.insert("video", videoInputFile);
-
-    requestObject.insert("input_message_content", inputMessageContent);
+    requestObject.insert("input_message_content", newInputMessageContent("video", filePath, message));
     this->sendRequest(requestObject);
 }
 
@@ -524,19 +546,7 @@ void TDLibWrapper::sendDocumentMessage(qlonglong chatId, const QString &filePath
 {
     LOG("Sending document message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
-    QVariantMap inputMessageContent;
-    inputMessageContent.insert(_TYPE, "inputMessageDocument");
-
-    QVariantMap formattedText;
-    formattedText.insert("text", message);
-    formattedText.insert(_TYPE, "formattedText");
-    inputMessageContent.insert("caption", formattedText);
-    QVariantMap documentInputFile;
-    documentInputFile.insert(_TYPE, "inputFileLocal");
-    documentInputFile.insert("path", filePath);
-    inputMessageContent.insert("document", documentInputFile);
-
-    requestObject.insert("input_message_content", inputMessageContent);
+    requestObject.insert("input_message_content", newInputMessageContent("document", filePath, message));
     this->sendRequest(requestObject);
 }
 
