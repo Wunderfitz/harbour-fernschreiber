@@ -965,7 +965,7 @@ void ChatModel::setMessagesAlbum(const QList<MessageData *> newMessages)
 void ChatModel::setMessagesAlbum(MessageData *message)
 {
     qlonglong albumId = message->messageData.value(MEDIA_ALBUM_ID).toLongLong();
-    if (albumId > 0 && (message->messageContentType != "messagePhoto" || message->messageContentType != "messageVideo")) {
+    if (albumId != 0 && (message->messageContentType != "messagePhoto" || message->messageContentType != "messageVideo")) {
         qlonglong messageId = message->messageId;
 
         if(albumMessageMap.contains(albumId)) {
