@@ -1057,6 +1057,11 @@
         <source>Delete Message</source>
         <translation>Nachricht löschen</translation>
     </message>
+    <message>
+        <source>Sponsor</source>
+        <comment>author name of a sponsored message that does not name its sponsor</comment>
+        <translation>Sponsor</translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>

@@ -488,7 +488,7 @@ ListItem {
                     text: messageListItem.isOwnMessage
                           ? qsTr("You")
                           : Emoji.emojify( myMessage['@type'] === "sponsoredMessage"
-                                          ? tdLibWrapper.getChat(myMessage.sponsor_chat_id).title
+                                          ? (myMessage.title || qsTr("Sponsor", "author name of a sponsored message that does not name its sponsor"))
                                           : ( messageListItem.isAnonymous
                                                 ? page.chatInformation.title
                                                 : Functions.getUserName(messageListItem.userInformation) ), font.pixelSize)
@@ -502,7 +502,8 @@ ListItem {
                     visible: precalculatedValues.showUserInfo || myMessage['@type'] === "sponsoredMessage"
                     MouseArea {
                         anchors.fill: parent
-                        enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous)
+                        // A sponsor is no user a private chat could be opened with
+                        enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous || myMessage['@type'] === "sponsoredMessage")
                         onClicked: {
                             tdLibWrapper.createPrivateChat(messageListItem.userInformation.id, "openDirectly");
                         }
