@@ -1422,7 +1422,7 @@ Page {
                                                                        "messageChatDeleteMember",
                                                                        "messageChatDeletePhoto",
                                                                        "messageChatJoinByLink",
-                                                                       "messageChatSetTtl",
+                                                                       "messageChatSetMessageAutoDeleteTime",
                                                                        "messageChatUpgradeFrom",
                                                                        "messageContactRegistered",
                                                                        // "messageExpiredPhoto", "messageExpiredVideo","messageWebsiteConnected"

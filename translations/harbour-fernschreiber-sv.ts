@@ -1893,14 +1893,6 @@
         <source>Go to Channel</source>
         <translation>Gå till kanal</translation>
     </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>Gå till meddelande</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>Starta robot</translation>
-    </message>
 </context>
 <context>
     <name>StickerPicker</name>

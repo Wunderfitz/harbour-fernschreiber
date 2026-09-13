@@ -1922,14 +1922,6 @@
         <source>Go to Channel</source>
         <translation>Przejdź do Kanału</translation>
     </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>Przejdź do Wiadomości</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>Uruchom Bota</translation>
-    </message>
 </context>
 <context>
     <name>StickerPicker</name>

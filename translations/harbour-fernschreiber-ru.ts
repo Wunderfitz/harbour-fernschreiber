@@ -1925,14 +1925,6 @@
         <source>Go to Channel</source>
         <translation>ОТКРЫТЬ КАНАЛ</translation>
     </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>ОТКРЫТЬ СООБЩЕНИЕ</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>ЗАПУСТИТЬ БОТА</translation>
-    </message>
 </context>
 <context>
     <name>StickerPicker</name>

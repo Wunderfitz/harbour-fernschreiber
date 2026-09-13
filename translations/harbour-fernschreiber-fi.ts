@@ -1894,14 +1894,6 @@
         <source>Go to Channel</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Go to Message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>StickerPicker</name>

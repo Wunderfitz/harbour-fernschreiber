@@ -1922,14 +1922,6 @@
         <source>Go to Channel</source>
         <translation>Prejsť na kanál</translation>
     </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>Prejsť na správu</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>Spustiť robota</translation>
-    </message>
 </context>
 <context>
     <name>StickerPicker</name>

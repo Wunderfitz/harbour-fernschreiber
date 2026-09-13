@@ -58,6 +58,7 @@ namespace {
     const QString MESSAGE_CONTENT_TYPE_VOICE_NOTE("messageVoiceNote");
     const QString MESSAGE_CONTENT_TYPE_DOCUMENT("messageDocument");
     const QString MESSAGE_CONTENT_TYPE_LOCATION("messageLocation");
+    const QString MESSAGE_CONTENT_TYPE_LIVE_LOCATION("messageLiveLocation");
     const QString MESSAGE_CONTENT_TYPE_VENUE("messageVenue");
 }
 
@@ -142,7 +143,7 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     if (contentType == MESSAGE_CONTENT_TYPE_DOCUMENT) {
         return myself ? tr("sent a document", "myself") : tr("sent a document");
     }
-    if (contentType == MESSAGE_CONTENT_TYPE_LOCATION) {
+    if (contentType == MESSAGE_CONTENT_TYPE_LOCATION || contentType == MESSAGE_CONTENT_TYPE_LIVE_LOCATION) {
         return myself ? tr("sent a location", "myself") : tr("sent a location");
     }
     if (contentType == MESSAGE_CONTENT_TYPE_VENUE) {
@@ -194,7 +195,7 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     if (contentType == "messageChatDeletePhoto") {
         return myself ? tr("deleted the chat photo", "myself") : tr("deleted the chat photo");
     }
-    if (contentType == "messageChatSetTtl") {
+    if (contentType == "messageChatSetMessageAutoDeleteTime") {
         return myself ? tr("changed the secret chat TTL setting", "myself") : tr("changed the secret chat TTL setting");
     }
     if (contentType == "messageChatUpgradeFrom" || contentType == "messageChatUpgradeTo") {

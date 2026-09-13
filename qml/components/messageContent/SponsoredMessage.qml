@@ -28,49 +28,21 @@ Column {
 
     property var sponsoredMessageData;
 
-    Connections {
-        target: tdLibWrapper
-        onMessageLinkInfoReceived: {
-            if (sponsoredMessageData.link.url === url) {
-                messageOverlayLoader.overlayMessage = messageLinkInfo.message;
-                messageOverlayLoader.active = true;
-            }
-        }
-    }
-
-    Component.onCompleted: {
-        if (sponsoredMessageData) {
-            if (typeof sponsoredMessageData.link === "undefined") {
-                sponsoredMessageButton.text = qsTr("Go to Channel");
-                sponsoredMessageButton.advertisesChannel = true;
-            } else if (sponsoredMessageData.link['@type'] === "internalLinkTypeMessage") {
-                sponsoredMessageButton.text = qsTr("Go to Message");
-                sponsoredMessageButton.advertisesMessage = true;
-            } else {
-                sponsoredMessageButton.text = qsTr("Start Bot");
-                sponsoredMessageButton.advertisesBot = true;
-            }
-        }
-    }
+    // A sponsored message advertises the URL of its sponsor. That can be an
+    // ordinary web address or a Telegram link into a chat, a message or a bot -
+    // Functions.handleLink() knows how to tell those apart. Before TDLib 1.8.50
+    // the sponsor was described by an internal link instead.
+    readonly property string sponsorUrl: (sponsoredMessageData && sponsoredMessageData.sponsor) ? (sponsoredMessageData.sponsor.url || "") : ""
 
     Button {
         id: sponsoredMessageButton
-        property bool advertisesChannel: false;
-        property bool advertisesMessage: false;
-        property bool advertisesBot: false;
+        visible: sponsoredMessageColumn.sponsorUrl !== ""
+        text: (sponsoredMessageData && sponsoredMessageData.button_text) ? sponsoredMessageData.button_text : qsTr("Go to Channel")
         anchors {
             horizontalCenter: parent.horizontalCenter
         }
         onClicked: {
-            if (advertisesChannel) {
-                tdLibWrapper.createSupergroupChat(tdLibWrapper.getChat(sponsoredMessageData.sponsor_chat_id).type.supergroup_id, "openDirectly");
-            }
-            if (advertisesMessage) {
-                tdLibWrapper.getMessageLinkInfo(sponsoredMessageData.link.url);
-            }
-            if (advertisesBot) {
-                tdLibWrapper.createPrivateChat(tdLibWrapper.getUserInformationByName(sponsoredMessageData.link.bot_username).id, "openAndSendStartToBot:" + sponsoredMessageData.link.start_parameter);
-            }
+            Functions.handleLink(sponsoredMessageColumn.sponsorUrl);
         }
     }
 

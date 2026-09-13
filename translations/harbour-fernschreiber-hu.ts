@@ -1869,14 +1869,6 @@
         <source>Go to Channel</source>
         <translation>Csatorna megtekintése</translation>
     </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>Üzenet megtekintése</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>Bot elindítása</translation>
-    </message>
 </context>
 <context>
     <name>StickerPicker</name>

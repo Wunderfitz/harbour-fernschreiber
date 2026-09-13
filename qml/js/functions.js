@@ -143,7 +143,7 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         return myself ? qsTr("changed the chat photo", "myself") : qsTr("changed the chat photo");
     case 'messageChatDeletePhoto':
         return myself ? qsTr("deleted the chat photo", "myself") : qsTr("deleted the chat photo");
-    case 'messageChatSetTtl':
+    case 'messageChatSetMessageAutoDeleteTime':
         return myself ? qsTr("changed the secret chat TTL setting", "myself; TTL = Time To Live") : qsTr("changed the secret chat TTL setting", "TTL = Time To Live");
     case 'messageChatUpgradeFrom':
     case 'messageChatUpgradeTo':
@@ -516,27 +516,35 @@ function handleErrorMessage(code, message) {
     }
 }
 
+// The chat permission a message of a given content type needs to be forwarded.
+// TDLib has no coarse "can_send_media_messages" - there is one permission per
+// kind of media.
+var forwardPermissionsByContentType = {
+    "messageAnimation": "can_send_other_messages",
+    "messageAudio": "can_send_audios",
+    "messageDocument": "can_send_documents",
+    "messageGame": "can_send_other_messages",
+    "messagePhoto": "can_send_photos",
+    "messagePoll": "can_send_polls",
+    "messageSticker": "can_send_other_messages",
+    "messageText": "can_send_basic_messages",
+    "messageVideo": "can_send_videos",
+    "messageVideoNote": "can_send_video_notes",
+    "messageVoiceNote": "can_send_voice_notes"
+}
+
 function getMessagesNeededForwardPermissions(messages) {
-    var neededPermissions = ["can_send_basic_messages"]
+    var neededPermissions = []
 
-    var mediaMessageTypes = ["messageAudio", "messageDocument", "messagePhoto", "messageVideo", "messageVideoNote", "messageVoiceNote"]
-    var otherMessageTypes = ["messageAnimation", "messageGame", "messageSticker"]
-    for(var i = 0; i < messages.length && neededPermissions.length < 3; i += 1) {
-        var type = messages[i]["content"]["@type"]
-        var permission = ""
-        if(type === "messageText") {
-            continue
-        } else if(type === "messagePoll") {
-            permission = "can_send_polls"
-        } else if(mediaMessageTypes.indexOf(type) > -1) {
-            permission = "can_send_media_messages"
-        } else if(otherMessageTypes.indexOf(type) > -1) {
-            permission = "can_send_other_messages"
-        }
-
-        if(permission !== "" && neededPermissions.indexOf(permission) === -1) {
+    for(var i = 0; i < messages.length; i += 1) {
+        var permission = forwardPermissionsByContentType[messages[i]["content"]["@type"]]
+        if(permission && neededPermissions.indexOf(permission) === -1) {
             neededPermissions.push(permission)
         }
+    }
+    if(neededPermissions.length === 0) {
+        // Everything else goes out as an ordinary message
+        neededPermissions.push("can_send_basic_messages")
     }
     return neededPermissions
 }

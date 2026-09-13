@@ -1895,14 +1895,6 @@ messages</numerusform>
         <source>Go to Channel</source>
         <translation>Go to Channel</translation>
     </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>Go to Message</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>Start Bot</translation>
-    </message>
 </context>
 <context>
     <name>StickerPicker</name>
