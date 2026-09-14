@@ -55,6 +55,7 @@ namespace {
     const QString REACTIONS("reactions");
 
     const QString TYPE_SPONSORED_MESSAGE("sponsoredMessage");
+    const QString _EXTRA("@extra");
 }
 
 class ChatModel::MessageData
@@ -94,6 +95,8 @@ public:
     uint updateReactions(const QVariantMap &interactionInfo);
     uint updateAlbumEntryFilter(const bool isAlbumChild);
     uint updateAlbumEntryMessageIds(const QVariantList &newAlbumMessageIds);
+    uint updateProperties(const QVariantMap &newProperties);
+    void applyProperties();
 
     QVector<int> diff(const MessageData *message) const;
     QVector<int> setMessageData(const QVariantMap &data);
@@ -116,6 +119,8 @@ public:
     QVariantList reactions;
     bool albumEntryFilter;
     QVariantList albumMessageIds;
+    bool propertiesRequested;
+    QVariantMap properties;
 };
 
 ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
@@ -126,8 +131,30 @@ ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
     viewCount(data.value(INTERACTION_INFO).toMap().value(VIEW_COUNT).toInt()),
     reactions(data.value(INTERACTION_INFO).toMap().value(REACTIONS).toList()),
     albumEntryFilter(false),
-    albumMessageIds(QVariantList())
+    albumMessageIds(QVariantList()),
+    propertiesRequested(false)
 {
+}
+
+// The can_be_* and can_get_* flags of a message were moved out of the message
+// itself and into messageProperties in TdLib 1.8.33. Merge them back in, that
+// is where the rest of Fernschreiber looks for them.
+uint ChatModel::MessageData::updateProperties(const QVariantMap &newProperties)
+{
+    properties = newProperties;
+    applyProperties();
+    return RoleFlagDisplay;
+}
+
+void ChatModel::MessageData::applyProperties()
+{
+    QMapIterator<QString, QVariant> it(properties);
+    while (it.hasNext()) {
+        it.next();
+        if (it.key() != _TYPE && it.key() != _EXTRA) {
+            messageData.insert(it.key(), it.value());
+        }
+    }
 }
 
 QVector<int> ChatModel::MessageData::flagsToRoles(uint flags)
@@ -202,6 +229,7 @@ QVector<int> ChatModel::MessageData::diff(const MessageData *message) const
 uint ChatModel::MessageData::updateMessageData(const QVariantMap &data)
 {
     messageData = data;
+    applyProperties();
     messageType = data.value(_TYPE).toString();
     return RoleFlagDisplay |
         updateContentType(data.value(CONTENT).toMap()) |
@@ -336,6 +364,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
     connect(this->tdLibWrapper, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messagesDeleted(qlonglong, QList<qlonglong>)), this, SLOT(handleMessagesDeleted(qlonglong, QList<qlonglong>)));
+    connect(this->tdLibWrapper, SIGNAL(messagePropertiesReceived(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessagePropertiesReceived(qlonglong, qlonglong, QVariantMap)));
 }
 
 ChatModel::~ChatModel()
@@ -481,6 +510,34 @@ int ChatModel::getMessageIndex(qlonglong messageId)
         return messageIndexMap.value(messageId);
     }
     return -1;
+}
+
+void ChatModel::loadMessageProperties(qlonglong messageId)
+{
+    const int pos = messageIndexMap.value(messageId, -1);
+    if (pos < 0) {
+        return;
+    }
+    MessageData *message = messages.at(pos);
+    requestMessageProperties(message);
+    // The other messages of an album never get a delegate of their own, but
+    // the album overlay needs to know what can be done with them as well
+    QListIterator<QVariant> albumMessageIterator(message->albumMessageIds);
+    while (albumMessageIterator.hasNext()) {
+        const int albumPos = messageIndexMap.value(albumMessageIterator.next().toLongLong(), -1);
+        if (albumPos >= 0) {
+            requestMessageProperties(messages.at(albumPos));
+        }
+    }
+}
+
+void ChatModel::requestMessageProperties(MessageData *message)
+{
+    // Sponsored messages are not real messages, they have no properties
+    if (!message->propertiesRequested && message->messageType != TYPE_SPONSORED_MESSAGE) {
+        message->propertiesRequested = true;
+        this->tdLibWrapper->getMessageProperties(chatId, message->messageId);
+    }
 }
 
 QVariantList ChatModel::getMessageIdsForAlbum(qlonglong albumId)
@@ -758,6 +815,19 @@ void ChatModel::handleMessageInteractionInfoUpdated(qlonglong chatId, qlonglong 
         if (pos >= 0) {
             LOG("Message interaction info was updated at index" << pos);
             const QVector<int> changedRoles(messages.at(pos)->setInteractionInfo(updatedInfo));
+            const QModelIndex messageIndex(index(pos));
+            emit dataChanged(messageIndex, messageIndex, changedRoles);
+        }
+    }
+}
+
+void ChatModel::handleMessagePropertiesReceived(qlonglong chatId, qlonglong messageId, const QVariantMap &properties)
+{
+    if (chatId == this->chatId) {
+        const int pos = messageIndexMap.value(messageId, -1);
+        if (pos >= 0) {
+            LOG("Message properties were received at index" << pos);
+            const QVector<int> changedRoles(MessageData::flagsToRoles(messages.at(pos)->updateProperties(properties)));
             const QModelIndex messageIndex(index(pos));
             emit dataChanged(messageIndex, messageIndex, changedRoles);
         }

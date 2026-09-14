@@ -365,10 +365,19 @@ ListItem {
 
     Component.onCompleted: {
         delegateComponentLoadingTimer.start();
+        // Newer TDLib versions don't send the can_be_* flags with the message
+        // itself anymore, they have to be fetched separately
+        chatModel.loadMessageProperties(messageId);
         if (myMessage.reply_to_message_id) {
             tdLibWrapper.getMessage(myMessage.reply_in_chat_id ? myMessage.reply_in_chat_id : page.chatInformation.id,
                 myMessage.reply_to_message_id)
         }
+    }
+
+    onMessageAlbumMessageIdsChanged: {
+        // The album members may only become known after this delegate was
+        // created, they need their message properties too
+        chatModel.loadMessageProperties(messageId);
     }
 
     onMyMessageChanged: {
@@ -479,7 +488,7 @@ ListItem {
                     text: messageListItem.isOwnMessage
                           ? qsTr("You")
                           : Emoji.emojify( myMessage['@type'] === "sponsoredMessage"
-                                          ? tdLibWrapper.getChat(myMessage.sponsor_chat_id).title
+                                          ? (myMessage.title || qsTr("Sponsor", "author name of a sponsored message that does not name its sponsor"))
                                           : ( messageListItem.isAnonymous
                                                 ? page.chatInformation.title
                                                 : Functions.getUserName(messageListItem.userInformation) ), font.pixelSize)
@@ -493,7 +502,8 @@ ListItem {
                     visible: precalculatedValues.showUserInfo || myMessage['@type'] === "sponsoredMessage"
                     MouseArea {
                         anchors.fill: parent
-                        enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous)
+                        // A sponsor is no user a private chat could be opened with
+                        enabled: !(messageListItem.precalculatedValues.pageIsSelecting || messageListItem.isAnonymous || myMessage['@type'] === "sponsoredMessage")
                         onClicked: {
                             tdLibWrapper.createPrivateChat(messageListItem.userInformation.id, "openDirectly");
                         }
@@ -563,17 +573,19 @@ ListItem {
                             width: parent.width
 
                             Component.onCompleted: {
-                                var originType = myMessage.forward_info.origin["@type"]
-                                if (originType === "messageOriginChannel" || originType === "messageForwardOriginChannel") {
-                                    var otherChatInformation = tdLibWrapper.getChat(myMessage.forward_info.origin.chat_id);
+                                var origin = myMessage.forward_info.origin
+                                if (origin["@type"] === "messageOriginChannel" || origin["@type"] === "messageOriginChat") {
+                                    // A channel names the chat it was posted in, a chat the one that sent it
+                                    var otherChatInformation = tdLibWrapper.getChat(origin.chat_id ? origin.chat_id : origin.sender_chat_id);
                                     forwardedThumbnail.photoData = (typeof otherChatInformation.photo !== "undefined") ? otherChatInformation.photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(otherChatInformation.title, Theme.fontSizeExtraSmall);
-                                } else if (originType === "messageOriginUser" || originType === "messageForwardOriginUser") {
-                                    var otherUserInformation = tdLibWrapper.getUserInformation(myMessage.forward_info.origin.sender_user_id);
+                                } else if (origin["@type"] === "messageOriginUser") {
+                                    var otherUserInformation = tdLibWrapper.getUserInformation(origin.sender_user_id);
                                     forwardedThumbnail.photoData = (typeof otherUserInformation.profile_photo !== "undefined") ? otherUserInformation.profile_photo.small : {};
                                     forwardedChannelText.text = Emoji.emojify(Functions.getUserName(otherUserInformation), Theme.fontSizeExtraSmall);
                                 } else {
-                                    forwardedChannelText.text = Emoji.emojify(myMessage.forward_info.origin.sender_name, Theme.fontSizeExtraSmall);
+                                    // messageOriginHiddenUser, the only origin that carries a plain name
+                                    forwardedChannelText.text = Emoji.emojify(origin.sender_name, Theme.fontSizeExtraSmall);
                                     forwardedThumbnail.photoData = {};
                                 }
                             }

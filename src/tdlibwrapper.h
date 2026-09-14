@@ -49,7 +49,6 @@ public:
         LoggingOut,
         AuthorizationReady,
         WaitCode,
-        WaitEncryptionKey,
         WaitOtherDeviceConfirmation,
         WaitPassword,
         WaitPhoneNumber,
@@ -219,6 +218,7 @@ public:
     Q_INVOKABLE void setPollAnswer(const QString &chatId, qlonglong messageId, QVariantList optionIds);
     Q_INVOKABLE void stopPoll(const QString &chatId, qlonglong messageId);
     Q_INVOKABLE void getPollVoters(const QString &chatId, qlonglong messageId, int optionId, int limit, int offset, const QString &extra);
+    Q_INVOKABLE void getMessageProperties(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void searchPublicChat(const QString &userName, bool doOpenOnFound);
     Q_INVOKABLE void joinChatByInviteLink(const QString &inviteLink);
     Q_INVOKABLE void getDeepLinkInfo(const QString &link);
@@ -326,6 +326,7 @@ signals:
     void chatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
     void messageSendersReceived(const QString &extra, const QVariantList &senders, int totalUsers);
+    void messagePropertiesReceived(qlonglong chatId, qlonglong messageId, const QVariantMap &properties);
     void errorReceived(int code, const QString &message, const QString &extra);
     void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
     void messageNotFound(qlonglong chatId, qlonglong messageId);
@@ -379,12 +380,14 @@ public slots:
 private:
     void setOption(const QString &name, const QString &type, const QVariant &value);
     void setInitialParameters();
-    void setEncryptionKey();
     void setLogVerbosityLevel();
     QVariantMap &fillTdlibParameters(QVariantMap &parameters);
     const Group *updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups);
     QVariantMap newSendMessageRequest(qlonglong chatId, qlonglong replyToMessageId);
     QVariantMap newInputMessageContent(const QString &contentType, const QString &filePath, const QString &caption);
+    QVariantMap newFormattedText(const QString &text);
+    QVariant newInputFile(const QString &containerType, const QString &fileKey, const QString &filePath, int containerVersion, bool remote = false);
+    void insertTopicId(QVariantMap &requestObject, qlonglong threadId);
     void initializeTDLibReceiver();
     void updateUserInformation(const QString &userId, const QVariantMap &userInformation);
 

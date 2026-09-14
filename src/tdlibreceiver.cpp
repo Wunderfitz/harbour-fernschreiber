@@ -62,10 +62,40 @@ namespace {
     const QString NEW_CONTENT("new_content");
     const QString SETS("sets");
     const QString EMOJIS("emojis");
+    const QString EMOJI("emoji");
+    const QString TOP_REACTIONS("top_reactions");
+    const QString RECENT_REACTIONS("recent_reactions");
+    const QString POPULAR_REACTIONS("popular_reactions");
     const QString REPLY_TO("reply_to");
     const QString REPLY_IN_CHAT_ID("reply_in_chat_id");
     const QString REPLY_TO_MESSAGE_ID("reply_to_message_id");
     const QString DRAFT_MESSAGE("draft_message");
+    const QString INPUT_MESSAGE_TEXT("input_message_text");
+    const QString VERIFICATION_STATUS("verification_status");
+    const QString IS_VERIFIED("is_verified");
+    const QString IS_SCAM("is_scam");
+    const QString IS_FAKE("is_fake");
+    const QString RESTRICTION_INFO("restriction_info");
+    const QString RESTRICTION_REASON("restriction_reason");
+    const QString LINK_PREVIEW("link_preview");
+    const QString WEB_PAGE("web_page");
+    const QString COVER("cover");
+    const QString TYPE("type");
+    const QString POLL("poll");
+    const QString QUESTION("question");
+    const QString OPTIONS("options");
+    const QString CORRECT_OPTION_IDS("correct_option_ids");
+    const QString CORRECT_OPTION_ID("correct_option_id");
+    const QString ALLOWS_MULTIPLE_ANSWERS("allows_multiple_answers");
+    const QString ALLOW_MULTIPLE_ANSWERS("allow_multiple_answers");
+    const QString LOCATION("location");
+    const QString LIVE_PERIOD("live_period");
+    const QString EXPIRES_IN("expires_in");
+    const QString HEADING("heading");
+    const QString PROXIMITY_ALERT_RADIUS("proximity_alert_radius");
+    const QString REACTIONS("reactions");
+    const QString VOTERS("voters");
+    const QString VOTER_ID("voter_id");
 
     const QString _TYPE("@type");
     const QString _EXTRA("@extra");
@@ -74,6 +104,7 @@ namespace {
     const QString TYPE_STICKER_SET_INFO("stickerSetInfo");
     const QString TYPE_STICKER_SET("stickerSet");
     const QString TYPE_MESSAGE("message");
+    const QString TYPE_CHAT("chat");
     const QString TYPE_STICKER("sticker");
     const QString TYPE_MESSAGE_STICKER("messageSticker");
     const QString TYPE_MESSAGE_REPLY_TO_MESSAGE("messageReplyToMessage");
@@ -81,6 +112,12 @@ namespace {
     const QString TYPE_ANIMATED_EMOJI("animatedEmoji");
     const QString TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE("inputMessageReplyToMessage");
     const QString TYPE_DRAFT_MESSAGE("draftMessage");
+    const QString TYPE_MESSAGE_TEXT("messageText");
+    const QString TYPE_INPUT_MESSAGE_TEXT("inputMessageText");
+    const QString TYPE_MESSAGE_POLL("messagePoll");
+    const QString TYPE_MESSAGE_LOCATION("messageLocation");
+    const QString TYPE_MESSAGE_LIVE_LOCATION("messageLiveLocation");
+    const QString TYPE_REACTION_TYPE_EMOJI("reactionTypeEmoji");
 
     const double POWERSAVING_TDLIB_REQUEST_INTERVAL = 250;
 }
@@ -104,6 +141,129 @@ static QString findChatPositionOrder(const QVariantList &positions)
         }
     }
     return QString();
+}
+
+// TdLib keeps renaming and restructuring its payloads. Instead of chasing
+// every one of those renames through the models and the QML layer, incoming
+// data is converted back into the shape the rest of Fernschreiber expects.
+// The helpers below check for the presence of the new fields rather than for
+// a TdLib version, so that older libraries keep working as well.
+
+// Plain strings that turned into formattedText
+static QVariant plainText(const QVariant &text)
+{
+    return (text.type() == QVariant::Map) ? text.toMap().value(TEXT) : text;
+}
+
+// In TdLib 1.8.41 is_verified, is_scam and is_fake of users and supergroups
+// were merged into verification_status, in 1.8.39 restriction_reason moved
+// into restriction_info
+static QVariantMap migrateVerificationStatus(const QVariantMap &map)
+{
+    if (!map.contains(VERIFICATION_STATUS) && !map.contains(RESTRICTION_INFO)) {
+        return map;
+    }
+    QVariantMap migrated(map);
+    if (map.contains(VERIFICATION_STATUS)) {
+        const QVariantMap verificationStatus(map.value(VERIFICATION_STATUS).toMap());
+        migrated.insert(IS_VERIFIED, verificationStatus.value(IS_VERIFIED).toBool());
+        migrated.insert(IS_SCAM, verificationStatus.value(IS_SCAM).toBool());
+        migrated.insert(IS_FAKE, verificationStatus.value(IS_FAKE).toBool());
+    }
+    if (map.contains(RESTRICTION_INFO)) {
+        migrated.insert(RESTRICTION_REASON, map.value(RESTRICTION_INFO).toMap().value(RESTRICTION_REASON));
+    }
+    return migrated;
+}
+
+// In TdLib 1.8.32 the web_page of a messageText became a link_preview and its
+// photo moved into the type specific link preview details
+static QVariantMap migrateLinkPreview(const QVariantMap &content, bool *migrated)
+{
+    if (!content.contains(LINK_PREVIEW)) {
+        if (migrated) *migrated = false;
+        return content;
+    }
+    QVariantMap linkPreview(content.value(LINK_PREVIEW).toMap());
+    if (!linkPreview.contains(PHOTO)) {
+        const QVariantMap linkPreviewType(linkPreview.value(TYPE).toMap());
+        const QVariant photo(linkPreviewType.contains(PHOTO) ?
+            linkPreviewType.value(PHOTO) : linkPreviewType.value(COVER));
+        if (photo.isValid()) {
+            linkPreview.insert(PHOTO, photo);
+        }
+    }
+    QVariantMap migratedContent(content);
+    migratedContent.insert(WEB_PAGE, linkPreview);
+    if (migrated) *migrated = true;
+    return migratedContent;
+}
+
+// The question of a poll and the texts of its options became formattedText in
+// TdLib 1.8.28, the correct answer of a quiz became a list of answers and
+// multiple answers moved from pollTypeRegular to the poll itself in 1.8.62
+static QVariantMap migratePoll(const QVariantMap &content, bool *migrated)
+{
+    QVariantMap poll(content.value(POLL).toMap());
+    QVariantMap pollType(poll.value(TYPE).toMap());
+    if (poll.isEmpty() ||
+        (poll.value(QUESTION).type() != QVariant::Map &&
+         !poll.contains(ALLOWS_MULTIPLE_ANSWERS) &&
+         !pollType.contains(CORRECT_OPTION_IDS))) {
+        if (migrated) *migrated = false;
+        return content;
+    }
+    poll.insert(QUESTION, plainText(poll.value(QUESTION)));
+
+    QVariantList options(poll.value(OPTIONS).toList());
+    const int optionCount = options.count();
+    for (int i = 0; i < optionCount; i++) {
+        QVariantMap option(options.at(i).toMap());
+        option.insert(TEXT, plainText(option.value(TEXT)));
+        options.replace(i, option);
+    }
+    poll.insert(OPTIONS, options);
+
+    if (pollType.contains(CORRECT_OPTION_IDS)) {
+        const QVariantList correctOptionIds(pollType.value(CORRECT_OPTION_IDS).toList());
+        pollType.insert(CORRECT_OPTION_ID, correctOptionIds.isEmpty() ? -1 : correctOptionIds.first());
+    }
+    if (poll.contains(ALLOWS_MULTIPLE_ANSWERS)) {
+        pollType.insert(ALLOW_MULTIPLE_ANSWERS, poll.value(ALLOWS_MULTIPLE_ANSWERS));
+    }
+    poll.insert(TYPE, pollType);
+
+    QVariantMap migratedContent(content);
+    migratedContent.insert(POLL, poll);
+    if (migrated) *migrated = true;
+    return migratedContent;
+}
+
+// Live locations used to be ordinary messageLocations with a live_period.
+// TdLib 1.8.64 moved them into a messageLiveLocation of their own.
+static QVariantMap migrateLiveLocation(const QVariantMap &content)
+{
+    const QVariantMap liveLocation(content.value(LOCATION).toMap());
+    QVariantMap migrated;
+    migrated.insert(_TYPE, TYPE_MESSAGE_LOCATION);
+    migrated.insert(LOCATION, liveLocation.value(LOCATION));
+    migrated.insert(LIVE_PERIOD, liveLocation.value(LIVE_PERIOD));
+    migrated.insert(HEADING, liveLocation.value(HEADING));
+    migrated.insert(PROXIMITY_ALERT_RADIUS, liveLocation.value(PROXIMITY_ALERT_RADIUS));
+    migrated.insert(EXPIRES_IN, content.value(EXPIRES_IN));
+    return migrated;
+}
+
+// The reactions of a messageInteractionInfo were wrapped into a
+// messageReactions structure in TdLib 1.8.23
+static QVariantMap migrateInteractionInfo(const QVariantMap &interactionInfo)
+{
+    if (interactionInfo.value(REACTIONS).type() != QVariant::Map) {
+        return interactionInfo;
+    }
+    QVariantMap migrated(interactionInfo);
+    migrated.insert(REACTIONS, interactionInfo.value(REACTIONS).toMap().value(REACTIONS));
+    return migrated;
 }
 
 TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(parent)
@@ -165,6 +325,8 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateMessageIsPinned", &TDLibReceiver::processUpdateMessageIsPinned);
     handlers.insert("users", &TDLibReceiver::processUsers);
     handlers.insert("messageSenders", &TDLibReceiver::processMessageSenders);
+    handlers.insert("pollVoters", &TDLibReceiver::processPollVoters);
+    handlers.insert("messageProperties", &TDLibReceiver::processMessageProperties);
     handlers.insert("error", &TDLibReceiver::processError);
     handlers.insert("ok", &TDLibReceiver::ok);
     handlers.insert("secretChat", &TDLibReceiver::processSecretChat);
@@ -263,7 +425,7 @@ void TDLibReceiver::processUpdateConnectionState(const QVariantMap &receivedInfo
 
 void TDLibReceiver::processUpdateUser(const QVariantMap &receivedInformation)
 {
-    QVariantMap userInformation = receivedInformation.value("user").toMap();
+    QVariantMap userInformation = migrateVerificationStatus(receivedInformation.value("user").toMap());
     VERBOSE("User was updated: " << userInformation.value("username").toString() << userInformation.value("first_name").toString() << userInformation.value("last_name").toString());
     emit userUpdated(userInformation);
 }
@@ -291,7 +453,7 @@ void TDLibReceiver::processFile(const QVariantMap &receivedInformation)
 
 void TDLibReceiver::processUpdateNewChat(const QVariantMap &receivedInformation)
 {
-    const QVariantMap chatInformation = receivedInformation.value("chat").toMap();
+    const QVariantMap chatInformation = cleanupMap(receivedInformation.value("chat").toMap());
     LOG("New chat discovered: " << chatInformation.value(ID).toString() << chatInformation.value(TITLE).toString());
     emit newChatDiscovered(chatInformation);
 }
@@ -394,7 +556,7 @@ void TDLibReceiver::processUpdateBasicGroup(const QVariantMap &receivedInformati
 
 void TDLibReceiver::processUpdateSuperGroup(const QVariantMap &receivedInformation)
 {
-    const QVariantMap supergroup(receivedInformation.value(SUPERGROUP).toMap());
+    const QVariantMap supergroup(migrateVerificationStatus(receivedInformation.value(SUPERGROUP).toMap()));
     const qlonglong superGroupId = supergroup.value(ID).toLongLong();
     LOG("Super group information updated for " << superGroupId);
     emit superGroupUpdated(superGroupId, supergroup);
@@ -470,7 +632,13 @@ void TDLibReceiver::processMessageLinkInfo(const QVariantMap &receivedInformatio
     } else {
         url = oldExtra;
     }
-    emit messageLinkInfoReceived(url, receivedInformation, extra);
+    QVariantMap messageLinkInfo(receivedInformation);
+    bool cleaned = false;
+    const QVariantMap message(cleanupMap(receivedInformation.value(MESSAGE).toMap(), &cleaned));
+    if (cleaned) {
+        messageLinkInfo.insert(MESSAGE, message);
+    }
+    emit messageLinkInfoReceived(url, messageLinkInfo, extra);
 }
 
 void TDLibReceiver::processMessageSendSucceeded(const QVariantMap &receivedInformation)
@@ -536,7 +704,7 @@ void TDLibReceiver::processChats(const QVariantMap &receivedInformation)
 
 void TDLibReceiver::processChat(const QVariantMap &receivedInformation)
 {
-    emit chat(receivedInformation);
+    emit chat(cleanupMap(receivedInformation));
 }
 
 void TDLibReceiver::processUpdateRecentStickers(const QVariantMap &receivedInformation)
@@ -662,6 +830,37 @@ void TDLibReceiver::processMessageSenders(const QVariantMap &receivedInformation
     emit messageSendersReceived(receivedInformation.value(_EXTRA).toString(), receivedInformation.value("senders").toList(), receivedInformation.value(TOTAL_COUNT).toInt());
 }
 
+void TDLibReceiver::processPollVoters(const QVariantMap &receivedInformation)
+{
+    // In TdLib 1.8.61 getPollVoters started to answer with pollVoters instead
+    // of messageSenders. Unwrap the voters so that both look the same to us.
+    LOG("Received Poll Voters");
+    const QVariantList voters(receivedInformation.value(VOTERS).toList());
+    QVariantList senders;
+    senders.reserve(voters.count());
+    QListIterator<QVariant> it(voters);
+    while (it.hasNext()) {
+        senders.append(it.next().toMap().value(VOTER_ID));
+    }
+    emit messageSendersReceived(receivedInformation.value(_EXTRA).toString(), senders, receivedInformation.value(TOTAL_COUNT).toInt());
+}
+
+void TDLibReceiver::processMessageProperties(const QVariantMap &receivedInformation)
+{
+    // The can_be_* and can_get_* flags of a message were moved out of the
+    // message itself and into messageProperties in TdLib 1.8.33. See
+    // TDLibWrapper::getMessageProperties() for the format of the extra.
+    const QStringList extra(receivedInformation.value(_EXTRA).toString().split(':'));
+    if (extra.count() != 3) {
+        LOG("Received message properties without a usable extra");
+        return;
+    }
+    const qlonglong chatId = extra.at(1).toLongLong();
+    const qlonglong messageId = extra.at(2).toLongLong();
+    LOG("Received message properties" << chatId << messageId);
+    emit messagePropertiesReceived(chatId, messageId, receivedInformation);
+}
+
 void TDLibReceiver::processError(const QVariantMap &receivedInformation)
 {
     LOG("Received an error");
@@ -744,7 +943,7 @@ void TDLibReceiver::processUpdateMessageInteractionInfo(const QVariantMap &recei
     const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
     const qlonglong messageId = receivedInformation.value(MESSAGE_ID).toLongLong();
     LOG("Message interaction info updated" << chatId << messageId);
-    emit messageInteractionInfoUpdated(chatId, messageId, receivedInformation.value(INTERACTION_INFO).toMap());
+    emit messageInteractionInfoUpdated(chatId, messageId, migrateInteractionInfo(receivedInformation.value(INTERACTION_INFO).toMap()));
 }
 
 void TDLibReceiver::processSessions(const QVariantMap &receivedInformation)
@@ -754,10 +953,41 @@ void TDLibReceiver::processSessions(const QVariantMap &receivedInformation)
     emit sessionsReceived(inactive_session_ttl_days, sessions);
 }
 
+// The reactions of an availableReactions are spread over three lists of
+// availableReaction, each of which wraps a ReactionType:
+//
+//     "top_reactions": [
+//         {
+//             "@type": "availableReaction",
+//             "type": {
+//                 "@type": "reactionTypeEmoji",
+//                 "emoji": "..."
+//             },
+//             "needs_premium": false
+//         },
+//
+static void appendEmojiReactions(QStringList *emojis, const QVariantList &availableReactions)
+{
+    QListIterator<QVariant> it(availableReactions);
+    while (it.hasNext()) {
+        const QVariantMap reactionType(it.next().toMap().value(TYPE).toMap());
+        if (reactionType.value(_TYPE).toString() == TYPE_REACTION_TYPE_EMOJI) {
+            const QString emoji(reactionType.value(EMOJI).toString());
+            if (!emoji.isEmpty() && !emojis->contains(emoji)) {
+                emojis->append(emoji);
+            }
+        }
+    }
+}
+
 void TDLibReceiver::processAvailableReactions(const QVariantMap &receivedInformation)
 {
     const qlonglong messageId = receivedInformation.value(_EXTRA).toLongLong();
-    const QStringList reactions = receivedInformation.value("reactions").toStringList();
+    QStringList reactions;
+    appendEmojiReactions(&reactions, receivedInformation.value(TOP_REACTIONS).toList());
+    appendEmojiReactions(&reactions, receivedInformation.value(RECENT_REACTIONS).toList());
+    appendEmojiReactions(&reactions, receivedInformation.value(POPULAR_REACTIONS).toList());
+    LOG("Received" << reactions.count() << "available reactions for message" << messageId);
     if (!reactions.isEmpty()) {
         emit availableReactionsReceived(messageId, reactions);
     }
@@ -824,6 +1054,11 @@ const QVariantMap TDLibReceiver::cleanupMap(const QVariantMap& map, bool *update
             message.remove(CONTENT);
             message.insert(CONTENT, content);
         }
+        const QVariantMap interactionInfo(map.value(INTERACTION_INFO).toMap());
+        if (interactionInfo.value(REACTIONS).type() == QVariant::Map) {
+            message.insert(INTERACTION_INFO, migrateInteractionInfo(interactionInfo));
+            messageChanged = true;
+        }
         if (map.contains(REPLY_TO)) {
             // In TdLib 1.8.15 reply_to_message_id and reply_in_chat_id attributes
             // had been replaced with reply_to structure, e.g:
@@ -860,6 +1095,17 @@ const QVariantMap TDLibReceiver::cleanupMap(const QVariantMap& map, bool *update
         }
     } else if (type == TYPE_DRAFT_MESSAGE) {
         QVariantMap draftMessage(map);
+        bool draftChanged = false;
+        // In TdLib 1.8.64 input_message_text has been replaced with a content
+        // of its own kind, draftMessageContentText rather than inputMessageText
+        if (map.contains(CONTENT) && !map.contains(INPUT_MESSAGE_TEXT)) {
+            QVariantMap inputMessageText;
+            inputMessageText.insert(_TYPE, TYPE_INPUT_MESSAGE_TEXT);
+            inputMessageText.insert(TEXT, map.value(CONTENT).toMap().value(TEXT));
+            // input_message_text is what the chat list and QML (still) expect
+            draftMessage.insert(INPUT_MESSAGE_TEXT, inputMessageText);
+            draftChanged = true;
+        }
         QVariantMap reply_to(draftMessage.value(REPLY_TO).toMap());
         // In TdLib 1.8.21 reply_to_message_id has been replaced with reply_to
         if (reply_to.value(_TYPE).toString() == TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE) {
@@ -871,18 +1117,21 @@ const QVariantMap TDLibReceiver::cleanupMap(const QVariantMap& map, bool *update
             reply_to.remove(_TYPE);
             reply_to.insert(_TYPE, TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE); // Shared value
             draftMessage.insert(REPLY_TO, reply_to);
+            draftChanged = true;
+        }
+        if (draftChanged) {
             draftMessage.remove(_TYPE);
-            draftMessage.insert(_TYPE, DRAFT_MESSAGE); // Shared value
+            draftMessage.insert(_TYPE, TYPE_DRAFT_MESSAGE); // Shared value
             if (updated) *updated = true;
             return draftMessage;
         }
     } else if (type == TYPE_MESSAGE_STICKER) {
         bool cleaned = false;
-        const QVariantMap content(cleanupMap(map.value(CONTENT).toMap(), &cleaned));
+        const QVariantMap sticker(cleanupMap(map.value(STICKER).toMap(), &cleaned));
         if (cleaned) {
             QVariantMap messageSticker(map);
-            messageSticker.remove(CONTENT);
-            messageSticker.insert(CONTENT, content);
+            messageSticker.remove(STICKER);
+            messageSticker.insert(STICKER, sticker);
             messageSticker.remove(_TYPE);
             messageSticker.insert(_TYPE, TYPE_MESSAGE_STICKER); // Replace with a shared value
             if (updated) *updated = true;
@@ -900,6 +1149,46 @@ const QVariantMap TDLibReceiver::cleanupMap(const QVariantMap& map, bool *update
             if (updated) *updated = true;
             return messageAnimatedEmoji;
         }
+    } else if (type == TYPE_CHAT) {
+        // A chat carries its last message and its draft along, both of which
+        // need the same treatment as when they arrive on their own
+        QVariantMap chat(map);
+        bool chatChanged = false;
+        bool cleaned = false;
+        const QVariantMap lastMessage(cleanupMap(map.value(LAST_MESSAGE).toMap(), &cleaned));
+        if (cleaned) {
+            chat.insert(LAST_MESSAGE, lastMessage);
+            chatChanged = true;
+        }
+        cleaned = false;
+        const QVariantMap draftMessage(cleanupMap(map.value(DRAFT_MESSAGE).toMap(), &cleaned));
+        if (cleaned) {
+            chat.insert(DRAFT_MESSAGE, draftMessage);
+            chatChanged = true;
+        }
+        if (chatChanged) {
+            chat.remove(_TYPE);
+            chat.insert(_TYPE, TYPE_CHAT); // Replace with a shared value
+            if (updated) *updated = true;
+            return chat;
+        }
+    } else if (type == TYPE_MESSAGE_TEXT) {
+        bool migrated = false;
+        const QVariantMap content(migrateLinkPreview(map, &migrated));
+        if (migrated) {
+            if (updated) *updated = true;
+            return content;
+        }
+    } else if (type == TYPE_MESSAGE_POLL) {
+        bool migrated = false;
+        const QVariantMap content(migratePoll(map, &migrated));
+        if (migrated) {
+            if (updated) *updated = true;
+            return content;
+        }
+    } else if (type == TYPE_MESSAGE_LIVE_LOCATION) {
+        if (updated) *updated = true;
+        return migrateLiveLocation(map);
     } else if (type == TYPE_STICKER_SET_INFO) {
         bool cleaned = false;
         const QVariantList covers(cleanupList(map.value(COVERS).toList(), &cleaned));

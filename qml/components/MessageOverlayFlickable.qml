@@ -41,12 +41,13 @@ Flickable {
     function getOriginalAuthor(forwardInformation, fontSize) {
         switch (forwardInformation.origin["@type"]) {
             case "messageOriginChannel":
-            case "messageForwardOriginChannel":
                 var otherChatInformation = tdLibWrapper.getChat(forwardInformation.origin.chat_id);
                 return Emoji.emojify(otherChatInformation.title, fontSize);
+            case "messageOriginChat":
+                var senderChatInformation = tdLibWrapper.getChat(forwardInformation.origin.sender_chat_id);
+                return Emoji.emojify(senderChatInformation.title, fontSize);
             case "messageOriginUser":
-            case "messageForwardOriginUser":
-                var otherUserInformation = tdLibWrapper.getUserInformation(forwardInformation.origin.sender_id.user_id);
+                var otherUserInformation = tdLibWrapper.getUserInformation(forwardInformation.origin.sender_user_id);
                 return Emoji.emojify(Functions.getUserName(otherUserInformation), fontSize);
             default:
                 return Emoji.emojify(forwardInformation.origin.sender_name, fontSize);

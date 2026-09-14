@@ -12,6 +12,16 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Sep 13 2026 Sebastian J. Wolf <sebastian@ygriega.de> 0.19
+- Update to TDLib 1.8.67
+- Fix: reaction selection for chats without a fixed set of reactions
+- Fix: editing group member permissions for messages and media
+- Fix: required permissions when forwarding media messages
+- Fix: original author of forwarded messages from users and chats
+- Fix: show changes of the message auto-delete time
+- Fix: button of sponsored messages
+- Fix: avoid triggering copy to clipboard and delete message when opening 2nd context menu
+
 * Sat Aug 22 2026 Sebastian J. Wolf <sebastian@ygriega.de> 0.18
 - Update Emoji support to 17 – contribution by jgibbon
 - Support for notches - contribution by jgibbon

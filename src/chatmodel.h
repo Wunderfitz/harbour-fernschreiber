@@ -50,6 +50,7 @@ public:
     Q_INVOKABLE void setSearchQuery(const QString newSearchQuery);
 
     Q_INVOKABLE int getMessageIndex(qlonglong messageId);
+    Q_INVOKABLE void loadMessageProperties(qlonglong messageId);
     QVariantMap smallPhoto() const;
     qlonglong getChatId() const;
 
@@ -79,6 +80,7 @@ private slots:
     void handleMessageContentUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &newContent);
     void handleMessageEditedUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &replyMarkup);
     void handleMessageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo);
+    void handleMessagePropertiesReceived(qlonglong chatId, qlonglong messageId, const QVariantMap &properties);
     void handleMessagesDeleted(qlonglong chatId, const QList<qlonglong> &messageIds);
 
 private:
@@ -87,6 +89,7 @@ private:
     void insertMessages(const QList<MessageData*> newMessages);
     void appendMessages(const QList<MessageData*> newMessages);
     void prependMessages(const QList<MessageData*> newMessages);
+    void requestMessageProperties(MessageData *message);
     void updateAlbumMessages(qlonglong albumId, bool checkDeleted);
     void updateAlbumMessages(QList<qlonglong> albumIds, bool checkDeleted);
     void setMessagesAlbum(const QList<MessageData*> newMessages);

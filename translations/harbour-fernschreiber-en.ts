@@ -1066,6 +1066,11 @@ messages</numerusform>
         <source>Delete Message</source>
         <translation>Delete Message</translation>
     </message>
+    <message>
+        <source>Sponsor</source>
+        <comment>author name of a sponsored message that does not name its sponsor</comment>
+        <translation>Sponsor</translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
@@ -1901,14 +1906,6 @@ messages</numerusform>
     <message>
         <source>Go to Channel</source>
         <translation>Go to Channel</translation>
-    </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>Go to Message</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>Start Bot</translation>
     </message>
 </context>
 <context>

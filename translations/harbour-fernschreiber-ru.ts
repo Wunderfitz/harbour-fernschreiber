@@ -1083,6 +1083,11 @@
         <source>Delete Message</source>
         <translation>Удалить сообщение</translation>
     </message>
+    <message>
+        <source>Sponsor</source>
+        <comment>author name of a sponsored message that does not name its sponsor</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
@@ -1932,14 +1937,6 @@
     <message>
         <source>Go to Channel</source>
         <translation>ОТКРЫТЬ КАНАЛ</translation>
-    </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>ОТКРЫТЬ СООБЩЕНИЕ</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>ЗАПУСТИТЬ БОТА</translation>
     </message>
 </context>
 <context>

@@ -1065,6 +1065,11 @@
         <source>Delete Message</source>
         <translation>Poista viesti</translation>
     </message>
+    <message>
+        <source>Sponsor</source>
+        <comment>author name of a sponsored message that does not name its sponsor</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
@@ -1899,14 +1904,6 @@
     <name>SponsoredMessage</name>
     <message>
         <source>Go to Channel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Go to Message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

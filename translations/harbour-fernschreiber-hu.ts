@@ -1050,6 +1050,11 @@
         <source>Delete Message</source>
         <translation>Üzenet törlése</translation>
     </message>
+    <message>
+        <source>Sponsor</source>
+        <comment>author name of a sponsored message that does not name its sponsor</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
@@ -1874,14 +1879,6 @@
     <message>
         <source>Go to Channel</source>
         <translation>Csatorna megtekintése</translation>
-    </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>Üzenet megtekintése</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>Bot elindítása</translation>
     </message>
 </context>
 <context>

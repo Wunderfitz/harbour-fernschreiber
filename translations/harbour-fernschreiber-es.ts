@@ -1064,6 +1064,11 @@
         <source>Delete Message</source>
         <translation>Borrar</translation>
     </message>
+    <message>
+        <source>Sponsor</source>
+        <comment>author name of a sponsored message that does not name its sponsor</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
@@ -1899,14 +1904,6 @@
     <message>
         <source>Go to Channel</source>
         <translation>Ir a canal</translation>
-    </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>Ir a mensaje</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>Iniciar Robot</translation>
     </message>
 </context>
 <context>
