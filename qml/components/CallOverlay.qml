@@ -208,9 +208,20 @@ Rectangle {
             clip: true
             visible: callOverlay.videoCall && callOverlay.ready
             VideoOutput {
+                id: localPreview
                 anchors.fill: parent
                 fillMode: VideoOutput.PreserveAspectCrop
                 source: (typeof voipManager !== "undefined") ? voipManager.localVideo : null
+                // The self-view is a mirror, like the camera app's viewfinder:
+                // unflipped, raising your right arm moves the arm on the left.
+                // Only the preview is mirrored -- what the peer receives has to
+                // stay as the camera sees it. The rear camera is not a mirror,
+                // so the flip follows the active one.
+                transform: Scale {
+                    origin.x: localPreview.width / 2
+                    xScale: (typeof voipManager !== "undefined"
+                             && voipManager.frontCamera) ? -1 : 1
+                }
             }
         }
 
