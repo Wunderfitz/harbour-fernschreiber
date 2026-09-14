@@ -745,6 +745,7 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         messageIndexMap.remove(oldMessageId);
         messageIndexMap.insert(messageId, pos);
         const QVector<int> changedRoles(newMessage->diff(oldMessage));
+        const bool propertiesWereRequested = oldMessage->propertiesRequested;
         delete oldMessage;
         LOG("Message was replaced at index" << pos);
         const QModelIndex messageIndex(index(pos));
@@ -758,6 +759,13 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
             albumMessageMap[albumId].removeAll(QVariant(oldMessageId));
         }
         setMessagesAlbum(newMessage);
+
+        // The properties of the pending message don't apply to the sent one and
+        // its delegate won't ask again, as it survives the replacement. If no
+        // delegate asked yet, the one to be created will do so with the new ID.
+        if (propertiesWereRequested) {
+            requestMessageProperties(newMessage);
+        }
 
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
         tdLibWrapper->viewMessage(this->chatId, messageId, false);
