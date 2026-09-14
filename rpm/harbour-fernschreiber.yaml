@@ -36,9 +36,10 @@ PkgConfigBR:
 # NB: spectacle has a bug where it will remove custom "#<< macros" lines, so define them here:
 Macros:
   - '__provides_exclude_from;^%{_datadir}/.*$'
-  # libtdjson and (with voicecalls) libopenh264 ship inside the package, in the
-  # binary's rpath dir — neither is provided by any Sailfish repository.
-  - '__requires_exclude;^(libtdjson|libopenh264).*$'
+  # libtdjson and, with voicecalls, openh264 plus the multimedia stack ship
+  # inside the package in the binary's rpath dir -- their SONAMEs differ
+  # between Sailfish releases, so the system ones must not be required.
+  - '__requires_exclude;^(libtdjson|libopenh264|libavcodec|libavutil|libswresample|libvpx|libopus|libogg|libvorbis|libvorbisenc|libtheoradec|libtheoraenc|libwebp|libwebpmux|libsharpyuv|libopenjp2|libspeex)\..*$'
   - '_binary_payload;w6.xzdio'
 
 # Build dependencies without a pkgconfig setup can be listed here

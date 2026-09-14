@@ -96,6 +96,83 @@ openh264lib.files = $${OPENH264_ROOT}/libopenh264.so.8
 openh264lib.path = /usr/share/$${TARGET}/lib
 INSTALLS += openh264lib
 
+# The multimedia stack travels with the app as well, for a different reason:
+# SONAMEs move between Sailfish releases. 4.6 and 5.0 carry libvpx.so.9, 5.1 and
+# later carry libvpx.so.12, so a package built against one release does not
+# resolve on the other and the app dies at startup.
+#
+# It has to be the whole transitive set rather than libvpx alone: the system
+# libavcodec.so.59 links libvpx.so.12, so bundling only libvpx would put two
+# libvpx in one process, both exporting vpx_codec_*, and which one wins would
+# come down to load order. Bundling libavcodec too keeps the graph resolving
+# inside the rpath directory.
+#
+# The copies are taken from the build target's own sysroot at install time --
+# no third-party binaries live in this repository -- and the license texts of
+# the very same packages travel with them (see below).
+isEmpty(BUNDLED_LIB_DIR):     BUNDLED_LIB_DIR     = /usr/lib64
+isEmpty(BUNDLED_LICENSE_DIR): BUNDLED_LICENSE_DIR = /usr/share/licenses
+
+# Transitive closure of libavcodec/libavutil/libswresample/libvpx/libopus,
+# excluding glibc and libstdc++. Verify with:
+#   readelf -d <lib> | grep NEEDED
+BUNDLED_SONAMES = \
+    libavcodec.so.59 libavutil.so.57 libswresample.so.4 \
+    libvpx.so.9 libopus.so.0 \
+    libogg.so.0 libvorbis.so.0 libvorbisenc.so.2 \
+    libtheoradec.so.1 libtheoraenc.so.1 \
+    libwebp.so.7 libwebpmux.so.3 libsharpyuv.so.0 \
+    libopenjp2.so.7 libspeex.so.1
+
+for(soname, BUNDLED_SONAMES) {
+    !exists($${BUNDLED_LIB_DIR}/$${soname}) {
+        error("CONFIG+=voicecalls: $${soname} not found in $${BUNDLED_LIB_DIR}. The build target does not provide the multimedia stack this build links against (see doc/voicecalls.md).")
+    }
+    bundledlibs.files += $${BUNDLED_LIB_DIR}/$${soname}
+}
+bundledlibs.path = /usr/share/$${TARGET}/lib
+INSTALLS += bundledlibs
+
+# License texts for the bundled libraries, taken from the same target packages.
+# ffmpeg is LGPL-2.1+, the codecs are BSD; both require the text to reach
+# whoever receives the RPM. One entry per package, because several of the files
+# are called COPYING and would collide in a single directory. The package
+# directories carry version numbers, and $$files() cannot glob a directory
+# component, so the shell resolves them at qmake time -- and an empty result is
+# a hard error, otherwise qmake would drop the entry without a word.
+BUNDLED_LICENSE_ROOT = /usr/share/$${TARGET}/licenses/bundled
+
+licffmpeg.files = $$system(ls -1 $${BUNDLED_LICENSE_DIR}/ffmpeg-*/COPYING.LGPLv2.1 2>/dev/null)
+licffmpeg.path  = $${BUNDLED_LICENSE_ROOT}/ffmpeg
+isEmpty(licffmpeg.files): error("CONFIG+=voicecalls: no license text found at $${BUNDLED_LICENSE_DIR}/ffmpeg-*/COPYING.LGPLv2.1 -- the bundled libraries may not be shipped without it (see doc/voicecalls.md).")
+licvpx.files = $$system(ls -1 $${BUNDLED_LICENSE_DIR}/libvpx-*/LICENSE 2>/dev/null)
+licvpx.path  = $${BUNDLED_LICENSE_ROOT}/libvpx
+isEmpty(licvpx.files): error("CONFIG+=voicecalls: no license text found at $${BUNDLED_LICENSE_DIR}/libvpx-*/LICENSE -- the bundled libraries may not be shipped without it (see doc/voicecalls.md).")
+licopus.files = $$system(ls -1 $${BUNDLED_LICENSE_DIR}/opus-*/COPYING 2>/dev/null)
+licopus.path  = $${BUNDLED_LICENSE_ROOT}/opus
+isEmpty(licopus.files): error("CONFIG+=voicecalls: no license text found at $${BUNDLED_LICENSE_DIR}/opus-*/COPYING -- the bundled libraries may not be shipped without it (see doc/voicecalls.md).")
+licogg.files = $$system(ls -1 $${BUNDLED_LICENSE_DIR}/libogg-*/COPYING 2>/dev/null)
+licogg.path  = $${BUNDLED_LICENSE_ROOT}/libogg
+isEmpty(licogg.files): error("CONFIG+=voicecalls: no license text found at $${BUNDLED_LICENSE_DIR}/libogg-*/COPYING -- the bundled libraries may not be shipped without it (see doc/voicecalls.md).")
+licvorbis.files = $$system(ls -1 $${BUNDLED_LICENSE_DIR}/libvorbis-*/COPYING 2>/dev/null)
+licvorbis.path  = $${BUNDLED_LICENSE_ROOT}/libvorbis
+isEmpty(licvorbis.files): error("CONFIG+=voicecalls: no license text found at $${BUNDLED_LICENSE_DIR}/libvorbis-*/COPYING -- the bundled libraries may not be shipped without it (see doc/voicecalls.md).")
+lictheora.files = $$system(ls -1 $${BUNDLED_LICENSE_DIR}/libtheora-*/COPYING 2>/dev/null)
+lictheora.path  = $${BUNDLED_LICENSE_ROOT}/libtheora
+isEmpty(lictheora.files): error("CONFIG+=voicecalls: no license text found at $${BUNDLED_LICENSE_DIR}/libtheora-*/COPYING -- the bundled libraries may not be shipped without it (see doc/voicecalls.md).")
+licwebp.files = $$system(ls -1 $${BUNDLED_LICENSE_DIR}/libwebp-*/COPYING 2>/dev/null)
+licwebp.path  = $${BUNDLED_LICENSE_ROOT}/libwebp
+isEmpty(licwebp.files): error("CONFIG+=voicecalls: no license text found at $${BUNDLED_LICENSE_DIR}/libwebp-*/COPYING -- the bundled libraries may not be shipped without it (see doc/voicecalls.md).")
+licopenjpeg.files = $$system(ls -1 $${BUNDLED_LICENSE_DIR}/openjpeg-*/LICENSE 2>/dev/null)
+licopenjpeg.path  = $${BUNDLED_LICENSE_ROOT}/openjpeg
+isEmpty(licopenjpeg.files): error("CONFIG+=voicecalls: no license text found at $${BUNDLED_LICENSE_DIR}/openjpeg-*/LICENSE -- the bundled libraries may not be shipped without it (see doc/voicecalls.md).")
+licspeex.files = $$system(ls -1 $${BUNDLED_LICENSE_DIR}/speex-*/COPYING 2>/dev/null)
+licspeex.path  = $${BUNDLED_LICENSE_ROOT}/speex
+isEmpty(licspeex.files): error("CONFIG+=voicecalls: no license text found at $${BUNDLED_LICENSE_DIR}/speex-*/COPYING -- the bundled libraries may not be shipped without it (see doc/voicecalls.md).")
+
+INSTALLS += licffmpeg licvpx licopus licogg licvorbis lictheora licwebp licopenjpeg licspeex
+
+
 LIBS += -L$${TG_OWT_ROOT}/out -ltg_owt \
     -lssl -lcrypto -lopus -lvpx \
     -lavcodec -lavformat -lavutil -lswresample -lswscale \

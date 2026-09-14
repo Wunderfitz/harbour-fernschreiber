@@ -65,12 +65,35 @@ that the package would declare a dependency no Sailfish repository can satisfy â
 it would not install anywhere. Point `OPENH264_ROOT` at your build if it is not
 in the default sibling directory.
 
-**libvpx is deliberately not bundled.** It is a real, packaged Sailfish
-dependency, so the RPM requires it by soname (`libvpx.so.9` for the targets
-above) and a device of the same release line satisfies that. Mind the mismatch
-if the device is newer than your SDK: Sailfish 5.1 carries `libvpx.so.12`, so a
-5.0-built package will not resolve there. The clean fix is a target matching the
-device, not a second libvpx shipped beside the system's.
+**The multimedia stack is bundled.** SONAMEs move between Sailfish releases:
+4.6 and 5.0 carry `libvpx.so.9`, 5.1 and later carry `libvpx.so.12`. A package
+built against one release therefore does not resolve on the other -- the app
+does not start at all, because the missing library is a hard `NEEDED` entry.
+To keep a single RPM working across releases, `voip.pri` installs the copies the
+app was linked against into the binary's rpath directory and
+`__requires_exclude` keeps the system SONAMEs out of the RPM's dependencies.
+
+It is the whole transitive set, not just libvpx, and that matters: the system
+`libavcodec.so.59` itself links `libvpx.so.12`. Bundling libvpx alone would put
+two libvpx into one process, both exporting `vpx_codec_*`, with load order
+deciding which one a given call reaches. Bundling libavcodec as well keeps the
+entire graph resolving inside the rpath directory:
+
+`libavcodec.so.59`, `libavutil.so.57`, `libswresample.so.4`, `libvpx.so.9`,
+`libopus.so.0`, `libogg.so.0`, `libvorbis.so.0`, `libvorbisenc.so.2`,
+`libtheoradec.so.1`, `libtheoraenc.so.1`, `libwebp.so.7`, `libwebpmux.so.3`,
+`libsharpyuv.so.0`, `libopenjp2.so.7`, `libspeex.so.1`
+
+The list is the transitive closure of what the binary links; re-derive it with
+`readelf -d` if the ffmpeg version in the target changes. The files are copied
+from the **build target's own sysroot** at install time, so no third-party
+binaries live in this repository. Their license texts are taken from the same
+target packages and installed to
+`/usr/share/harbour-fernschreiber/licenses/bundled/` -- ffmpeg is LGPL-2.1+,
+the codecs are BSD, and both require the text to reach whoever receives the RPM.
+
+`BUNDLED_LIB_DIR` and `BUNDLED_LICENSE_DIR` override the source locations if
+needed.
 
 ## Building
 
