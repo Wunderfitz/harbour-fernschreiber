@@ -746,10 +746,17 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         messageIndexMap.insert(messageId, pos);
         // TODO when we support sending album messages, handle ID change in albumMessageMap
         const QVector<int> changedRoles(newMessage->diff(oldMessage));
+        const bool propertiesWereRequested = oldMessage->propertiesRequested;
         delete oldMessage;
         LOG("Message was replaced at index" << pos);
         const QModelIndex messageIndex(index(pos));
         emit dataChanged(messageIndex, messageIndex, changedRoles);
+        // The properties of the pending message don't apply to the sent one and
+        // its delegate won't ask again, as it survives the replacement. If no
+        // delegate asked yet, the one to be created will do so with the new ID.
+        if (propertiesWereRequested) {
+            requestMessageProperties(newMessage);
+        }
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
         tdLibWrapper->viewMessage(this->chatId, messageId, false);
     }
