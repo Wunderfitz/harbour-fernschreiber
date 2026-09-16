@@ -381,6 +381,18 @@ void TDLibWrapper::viewMessage(qlonglong chatId, qlonglong messageId, bool force
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::openMessageContent(qlonglong chatId, qlonglong messageId)
+{
+    // Marks the content as opened, which is what turns a voice note into a
+    // listened one for the sender. viewMessages only marks the message as read.
+    LOG("Mark message content as opened" << chatId << messageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "openMessageContent");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::pinMessage(const QString &chatId, const QString &messageId, bool disableNotification)
 {
     LOG("Pin message to chat" << chatId << messageId << disableNotification);
@@ -573,15 +585,30 @@ void TDLibWrapper::sendDocumentMessage(qlonglong chatId, const QString &filePath
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendVoiceNoteMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId)
+void TDLibWrapper::sendVoiceNoteMessage(qlonglong chatId, const QString &filePath, const QString &message, int duration, const QString &waveform, qlonglong replyToMessageId)
 {
-    LOG("Sending voice note message" << chatId << filePath << message << replyToMessageId);
+    LOG("Sending voice note message" << chatId << filePath << message << duration << replyToMessageId);
     QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageVoiceNote");
 
     inputMessageContent.insert("caption", newFormattedText(message));
-    inputMessageContent.insert("voice_note", newInputFile("inputVoiceNote", "voice_note", filePath, VERSION_NUMBER(1,8,65)));
+
+    // Providing both duration and waveform is necessary so every other client can
+    // display them as those aren't derived from the recording itself: without, the
+    // voice note shows up as 00:00 with a flat bar
+    const int containerVersion = VERSION_NUMBER(1,8,65);
+    QVariant voiceNote(newInputFile("inputVoiceNote", "voice_note", filePath, containerVersion));
+    if (versionNumber < containerVersion) {
+        inputMessageContent.insert("duration", duration);
+        inputMessageContent.insert("waveform", waveform);
+    } else {
+        QVariantMap inputVoiceNote(voiceNote.toMap());
+        inputVoiceNote.insert("duration", duration);
+        inputVoiceNote.insert("waveform", waveform);
+        voiceNote = inputVoiceNote;
+    }
+    inputMessageContent.insert("voice_note", voiceNote);
 
     requestObject.insert("input_message_content", inputMessageContent);
     this->sendRequest(requestObject);

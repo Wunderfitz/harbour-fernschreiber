@@ -173,13 +173,14 @@ public:
     Q_INVOKABLE void deleteChat(qlonglong chatId);
     Q_INVOKABLE void getChatHistory(qlonglong chatId, qlonglong fromMessageId = 0, int offset = -1, int limit = 50, bool onlyLocal = false);
     Q_INVOKABLE void viewMessage(qlonglong chatId, qlonglong messageId, bool force);
+    Q_INVOKABLE void openMessageContent(qlonglong chatId, qlonglong messageId);
     Q_INVOKABLE void pinMessage(const QString &chatId, const QString &messageId, bool disableNotification = false);
     Q_INVOKABLE void unpinMessage(const QString &chatId, const QString &messageId);
     Q_INVOKABLE void sendTextMessage(qlonglong chatId, const QString &message, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendPhotoMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendVideoMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendDocumentMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId = 0);
-    Q_INVOKABLE void sendVoiceNoteMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId = 0);
+    Q_INVOKABLE void sendVoiceNoteMessage(qlonglong chatId, const QString &filePath, const QString &message, int duration, const QString &waveform, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendLocationMessage(qlonglong chatId, double latitude, double longitude, double horizontalAccuracy, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendStickerMessage(qlonglong chatId, const QString &fileId, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendPollMessage(qlonglong chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &explanation, qlonglong replyToMessageId = 0);
