@@ -56,6 +56,72 @@ namespace {
     const QString MESSAGE_CONTENT_TYPE_ANIMATION("messageAnimation");
     const QString MESSAGE_CONTENT_TYPE_AUDIO("messageAudio");
     const QString MESSAGE_CONTENT_TYPE_VOICE_NOTE("messageVoiceNote");
+
+    // Telegram renders a voice note as 100 bars of 5 bits each: as peaks are
+    // collected at a much finer scale while recording and since the length
+    // of the recording is only known once it is over, we resample to those
+    // 100 bars only when the voice note is sent
+    const int WAVEFORM_BAR_COUNT = 100;
+    const int WAVEFORM_FRAMES_PER_PEAK = 1024;
+
+    enum SampleReader {
+        ReaderUnsupported,
+        ReaderSignedInt8,
+        ReaderUnsignedInt8,
+        ReaderSignedInt16,
+        ReaderUnsignedInt16,
+        ReaderSignedInt32,
+        ReaderFloat
+    };
+
+    SampleReader sampleReaderFor(const QAudioFormat &format)
+    {
+        switch (format.sampleType()) {
+        case QAudioFormat::SignedInt:
+            switch (format.sampleSize()) {
+            case 8: return ReaderSignedInt8;
+            case 16: return ReaderSignedInt16;
+            case 32: return ReaderSignedInt32;
+            }
+            break;
+        case QAudioFormat::UnSignedInt:
+            switch (format.sampleSize()) {
+            case 8: return ReaderUnsignedInt8;
+            case 16: return ReaderUnsignedInt16;
+            }
+            break;
+        case QAudioFormat::Float:
+            if (format.sampleSize() == 32) {
+                return ReaderFloat;
+            }
+            break;
+        default:
+            break;
+        }
+        return ReaderUnsupported;
+    }
+
+    // Amplitude of a single sample, scaled to fit regardless of the format
+    // the capture pipeline happens to hand us
+    quint16 sampleAmplitude(SampleReader reader, const char *sample)
+    {
+        switch (reader) {
+        case ReaderSignedInt8:
+            return quint16(qAbs(int(*reinterpret_cast<const qint8 *>(sample))) << 8);
+        case ReaderUnsignedInt8:
+            return quint16(qAbs(int(*reinterpret_cast<const quint8 *>(sample)) - 128) << 8);
+        case ReaderSignedInt16:
+            return quint16(qMin(qAbs(int(*reinterpret_cast<const qint16 *>(sample))), 0x7FFF));
+        case ReaderUnsignedInt16:
+            return quint16(qAbs(int(*reinterpret_cast<const quint16 *>(sample)) - 0x8000));
+        case ReaderSignedInt32:
+            return quint16(qAbs(qint64(*reinterpret_cast<const qint32 *>(sample))) >> 16);
+        case ReaderFloat:
+            return quint16(qBound(0.0f, qAbs(*reinterpret_cast<const float *>(sample)), 1.0f) * 0x7FFF);
+        default:
+            return 0;
+        }
+    }
     const QString MESSAGE_CONTENT_TYPE_DOCUMENT("messageDocument");
     const QString MESSAGE_CONTENT_TYPE_LOCATION("messageLocation");
     const QString MESSAGE_CONTENT_TYPE_LIVE_LOCATION("messageLiveLocation");
@@ -81,10 +147,23 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent)
     this->audioRecorder.setEncodingSettings(encoderSettings);
     this->audioRecorder.setContainerFormat("ogg");
 
+    this->voiceNoteDuration = 0;
+    this->currentPeak = 0;
+    this->currentPeakFrames = 0;
+    this->sampleFormatReported = false;
+
+    // Without the probe we simply send no waveform, which is what receivers
+    // render as a flat bar... The voice note itself is unaffected
+    if (this->audioProbe.setSource(&this->audioRecorder)) {
+        connect(&audioProbe, SIGNAL(audioBufferProbed(QAudioBuffer)), this, SLOT(handleAudioBufferProbed(QAudioBuffer)));
+    } else {
+        LOG("Unable to monitor the recorded audio, voice notes will have no waveform");
+    }
+
     QMediaRecorder::Status audioRecorderStatus = this->audioRecorder.status();
     this->handleAudioRecorderStatusChanged(audioRecorderStatus);
 
-    connect(&audioRecorder, SIGNAL(durationChanged(qlonglong)), this, SIGNAL(voiceNoteDurationChanged(qlonglong)));
+    connect(&audioRecorder, SIGNAL(durationChanged(qlonglong)), this, SLOT(handleVoiceNoteDurationChanged(qlonglong)));
     connect(&audioRecorder, SIGNAL(statusChanged(QMediaRecorder::Status)), this, SLOT(handleAudioRecorderStatusChanged(QMediaRecorder::Status)));
 
     this->geoPositionInfoSource = QGeoPositionInfoSource::createDefaultSource(this);
@@ -240,6 +319,10 @@ QString FernschreiberUtils::getUserName(const QVariantMap &userInformation)
 void FernschreiberUtils::startRecordingVoiceNote()
 {
     LOG("Start recording voice note...");
+    this->voiceNoteDuration = 0;
+    this->voiceNotePeaks.clear();
+    this->currentPeak = 0;
+    this->currentPeakFrames = 0;
     QDateTime thisIsNow = QDateTime::currentDateTime();
     this->audioRecorder.setOutputLocation(QUrl::fromLocalFile(this->getTemporaryDirectoryPath() + "/voicenote-" + thisIsNow.toString("yyyy-MM-dd-HH-mm-ss") + ".ogg"));
     this->audioRecorder.setVolume(1);
@@ -255,6 +338,52 @@ void FernschreiberUtils::stopRecordingVoiceNote()
 QString FernschreiberUtils::voiceNotePath()
 {
     return this->audioRecorder.outputLocation().toLocalFile();
+}
+
+qlonglong FernschreiberUtils::getVoiceNoteDuration()
+{
+    return this->voiceNoteDuration;
+}
+
+QString FernschreiberUtils::getVoiceNoteWaveform()
+{
+    QVector<quint16> peaks(this->voiceNotePeaks);
+    if (this->currentPeakFrames > 0) {
+        peaks.append(this->currentPeak);
+    }
+    if (peaks.isEmpty()) {
+        return QString();
+    }
+
+    QVector<quint16> bars(WAVEFORM_BAR_COUNT, 0);
+    quint16 loudest = 0;
+    for (int i = 0; i < WAVEFORM_BAR_COUNT; i++) {
+        const int from = (i * peaks.size()) / WAVEFORM_BAR_COUNT;
+        const int to = qMin(qMax(from + 1, ((i + 1) * peaks.size()) / WAVEFORM_BAR_COUNT), peaks.size());
+        for (int j = from; j < to; j++) {
+            bars[i] = qMax(bars.at(i), peaks.at(j));
+        }
+        loudest = qMax(loudest, bars.at(i));
+    }
+    if (!loudest) {
+        return QString();
+    }
+
+    // Five bits per bar, packed least significant bit first, looks like every
+    // other Telegram client expects to read them back this way
+    QByteArray waveform((WAVEFORM_BAR_COUNT * 5 + 7) / 8, char(0));
+    for (int i = 0; i < WAVEFORM_BAR_COUNT; i++) {
+        // Scaled against the loudest bar, so that a quietly recorded voice note
+        // still gets a waveform instead of a barely visible line
+        const int value = (int(bars.at(i)) * 31 + loudest / 2) / loudest;
+        for (int bit = 0; bit < 5; bit++) {
+            if (value & (1 << bit)) {
+                const int offset = i * 5 + bit;
+                waveform[offset / 8] = char(quint8(waveform.at(offset / 8)) | quint8(1 << (offset % 8)));
+            }
+        }
+    }
+    return QString::fromLatin1(waveform.toBase64());
 }
 
 FernschreiberUtils::VoiceNoteRecordingState FernschreiberUtils::getVoiceNoteRecordingState()
@@ -303,6 +432,45 @@ void FernschreiberUtils::initiateReverseGeocode(double latitude, double longitud
     request.setRawHeader(QByteArray("Cache-Control"), QByteArray("max-age=0"));
     QNetworkReply *reply = manager->get(request);
     connect(reply, SIGNAL(finished()), this, SLOT(handleReverseGeocodeFinished()));
+}
+
+void FernschreiberUtils::handleAudioBufferProbed(const QAudioBuffer &buffer)
+{
+    const QAudioFormat format = buffer.format();
+    const SampleReader reader = sampleReaderFor(format);
+    if (reader == ReaderUnsupported) {
+        if (!this->sampleFormatReported) {
+            LOG("Cannot build a waveform from sample type" << format.sampleType() << "of size" << format.sampleSize());
+            this->sampleFormatReported = true;
+        }
+        return;
+    }
+
+    const int channelCount = qMax(1, format.channelCount());
+    const int bytesPerSample = format.sampleSize() / 8;
+    const int frameCount = buffer.frameCount();
+    const char *data = static_cast<const char *>(buffer.constData());
+
+    for (int frame = 0; frame < frameCount; frame++) {
+        quint16 amplitude = 0;
+        for (int channel = 0; channel < channelCount; channel++) {
+            amplitude = qMax(amplitude, sampleAmplitude(reader, data + (frame * channelCount + channel) * bytesPerSample));
+        }
+        this->currentPeak = qMax(this->currentPeak, amplitude);
+        if (++this->currentPeakFrames >= WAVEFORM_FRAMES_PER_PEAK) {
+            this->voiceNotePeaks.append(this->currentPeak);
+            this->currentPeak = 0;
+            this->currentPeakFrames = 0;
+        }
+    }
+}
+
+void FernschreiberUtils::handleVoiceNoteDurationChanged(qlonglong duration)
+{
+    if (duration > this->voiceNoteDuration) {
+        this->voiceNoteDuration = duration;
+    }
+    emit voiceNoteDurationChanged(this->voiceNoteDuration);
 }
 
 void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status status)

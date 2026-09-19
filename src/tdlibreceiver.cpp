@@ -302,6 +302,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateNotificationGroup", &TDLibReceiver::processUpdateNotificationGroup);
     handlers.insert("updateChatNotificationSettings", &TDLibReceiver::processUpdateChatNotificationSettings);
     handlers.insert("updateMessageContent", &TDLibReceiver::processUpdateMessageContent);
+    handlers.insert("updateMessageContentOpened", &TDLibReceiver::processUpdateMessageContentOpened);
     handlers.insert("updateDeleteMessages", &TDLibReceiver::processUpdateDeleteMessages);
     handlers.insert("chats", &TDLibReceiver::processChats);
     handlers.insert("chat", &TDLibReceiver::processChat);
@@ -689,6 +690,14 @@ void TDLibReceiver::processUpdateMessageContent(const QVariantMap &receivedInfor
     const qlonglong messageId = receivedInformation.value(MESSAGE_ID).toLongLong();
     LOG("Message content updated" << chatId << messageId);
     emit messageContentUpdated(chatId, messageId, cleanupMap(receivedInformation.value(NEW_CONTENT).toMap()));
+}
+
+void TDLibReceiver::processUpdateMessageContentOpened(const QVariantMap &receivedInformation)
+{
+    const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
+    const qlonglong messageId = receivedInformation.value(MESSAGE_ID).toLongLong();
+    LOG("Message content opened" << chatId << messageId);
+    emit messageContentOpened(chatId, messageId);
 }
 
 void TDLibReceiver::processUpdateDeleteMessages(const QVariantMap &receivedInformation)

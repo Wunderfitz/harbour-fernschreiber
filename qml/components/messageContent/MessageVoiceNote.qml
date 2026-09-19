@@ -25,4 +25,9 @@ MessageAudio {
     duration: rawMessage.content.voice_note.duration
     thumbnail: null
     minithumbnail: null
+    onPlaybackStarted: {
+        if (!rawMessage.is_outgoing && !rawMessage.content.is_listened) {
+            tdLibWrapper.openMessageContent(rawMessage.chat_id, rawMessage.id);
+        }
+    }
 }

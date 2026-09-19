@@ -300,7 +300,7 @@ Page {
                     sendAttachedFiles("document");
                 }
                 if (attachmentPreviewRow.isVoiceNote) {
-                    tdLibWrapper.sendVoiceNoteMessage(chatInformation.id, fernschreiberUtils.voiceNotePath(), newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    tdLibWrapper.sendVoiceNoteMessage(chatInformation.id, fernschreiberUtils.voiceNotePath(), newMessageTextField.text, Math.round(fernschreiberUtils.getVoiceNoteDuration() / 1000), fernschreiberUtils.getVoiceNoteWaveform(), newMessageColumn.replyToMessageId);
                 }
                 if (attachmentPreviewRow.isLocation) {
                     tdLibWrapper.sendLocationMessage(chatInformation.id, attachmentPreviewRow.locationData.latitude, attachmentPreviewRow.locationData.longitude, attachmentPreviewRow.locationData.horizontalAccuracy, newMessageColumn.replyToMessageId);
