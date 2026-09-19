@@ -179,6 +179,7 @@ public:
     Q_INVOKABLE void sendPhotoMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendVideoMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendDocumentMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId = 0);
+    Q_INVOKABLE void sendAlbumMessage(qlonglong chatId, const QString &contentType, const QStringList &filePaths, const QString &message, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendVoiceNoteMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendLocationMessage(qlonglong chatId, double latitude, double longitude, double horizontalAccuracy, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendStickerMessage(qlonglong chatId, const QString &fileId, qlonglong replyToMessageId = 0);
@@ -383,6 +384,7 @@ private:
     QVariantMap &fillTdlibParameters(QVariantMap &parameters);
     const Group *updateGroup(qlonglong groupId, const QVariantMap &groupInfo, QHash<qlonglong,Group*> *groups);
     QVariantMap newSendMessageRequest(qlonglong chatId, qlonglong replyToMessageId);
+    QVariantMap newInputMessageContent(const QString &contentType, const QString &filePath, const QString &caption);
     QVariantMap newFormattedText(const QString &text);
     QVariant newInputFile(const QString &containerType, const QString &fileKey, const QString &filePath, int containerVersion, bool remote = false);
     void insertTopicId(QVariantMap &requestObject, qlonglong threadId);
