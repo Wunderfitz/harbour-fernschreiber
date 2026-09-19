@@ -531,8 +531,10 @@ void TDLibWrapper::sendTextMessage(qlonglong chatId, const QString &message, qlo
     this->sendRequest(requestObject);
 }
 
-// Telegram takes at most ten items per album; a longer selection goes out as
-// several albums, and only the first of them carries the caption.
+// Telegram takes two to ten items per album; a longer selection goes out as
+// several albums, and only the first of them carries the caption. An album of
+// one is none, so a selection that would leave a single item over - eleven,
+// twenty-one, ... - gives up one item to the album that follows.
 static const int MAX_ALBUM_SIZE = 10;
 
 QVariantMap TDLibWrapper::newInputMessageContent(const QString &contentType, const QString &filePath, const QString &caption)
@@ -555,7 +557,13 @@ QVariantMap TDLibWrapper::newInputMessageContent(const QString &contentType, con
 void TDLibWrapper::sendAlbumMessage(qlonglong chatId, const QString &contentType, const QStringList &filePaths, const QString &message, qlonglong replyToMessageId)
 {
     LOG("Sending album message" << chatId << contentType << filePaths.size() << message << replyToMessageId);
-    for (int offset = 0; offset < filePaths.size(); offset += MAX_ALBUM_SIZE) {
+    for (int offset = 0; offset < filePaths.size(); ) {
+        const int remaining = filePaths.size() - offset;
+        int albumSize = qMin(remaining, MAX_ALBUM_SIZE);
+        if (remaining - albumSize == 1) {
+            albumSize--;
+        }
+
         QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
         requestObject.insert(_TYPE, "sendMessageAlbum");
         // The reply is a "messages" object, like the one a history request answers
@@ -563,12 +571,13 @@ void TDLibWrapper::sendAlbumMessage(qlonglong chatId, const QString &contentType
         requestObject.insert(_EXTRA, "sendMessageAlbum");
 
         QVariantList inputMessageContents;
-        const int end = qMin(offset + MAX_ALBUM_SIZE, filePaths.size());
+        const int end = offset + albumSize;
         for (int i = offset; i < end; i++) {
             inputMessageContents.append(newInputMessageContent(contentType, filePaths.at(i), i == 0 ? message : QString()));
         }
         requestObject.insert("input_message_contents", inputMessageContents);
         this->sendRequest(requestObject);
+        offset = end;
     }
 }
 
