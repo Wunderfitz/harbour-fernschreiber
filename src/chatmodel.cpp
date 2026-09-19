@@ -54,6 +54,13 @@ namespace {
     const QString VIEW_COUNT("view_count");
     const QString REACTIONS("reactions");
 
+    // Opening a voice or video note only yields chat and message id, the flag
+    // that turns the cached message into a listened resp. viewed one is ours to set
+    const QString TYPE_MESSAGE_VOICE_NOTE("messageVoiceNote");
+    const QString TYPE_MESSAGE_VIDEO_NOTE("messageVideoNote");
+    const QString IS_LISTENED("is_listened");
+    const QString IS_VIEWED("is_viewed");
+
     const QString TYPE_SPONSORED_MESSAGE("sponsoredMessage");
     const QString _EXTRA("@extra");
 }
@@ -88,6 +95,7 @@ public:
 
     uint updateMessageData(const QVariantMap &data);
     uint updateContent(const QVariantMap &content);
+    uint updateContentOpened();
     uint updateContentType(const QVariantMap &content);
     uint updateReplyMarkup(const QVariantMap &replyMarkup);
     uint updateViewCount(const QVariantMap &interactionInfo);
@@ -101,6 +109,7 @@ public:
     QVector<int> diff(const MessageData *message) const;
     QVector<int> setMessageData(const QVariantMap &data);
     QVector<int> setContent(const QVariantMap &content);
+    QVector<int> setContentOpened();
     QVector<int> setReplyMarkup(const QVariantMap &replyMarkup);
     QVector<int> setInteractionInfo(const QVariantMap &interactionInfo);
     QVector<int> setAlbumEntryFilter(bool isAlbumChild);
@@ -259,6 +268,27 @@ QVector<int> ChatModel::MessageData::setContent(const QVariantMap &content)
     return flagsToRoles(updateContent(content));
 }
 
+uint ChatModel::MessageData::updateContentOpened()
+{
+    const QString openedKey(messageContentType == TYPE_MESSAGE_VOICE_NOTE ? IS_LISTENED :
+                            messageContentType == TYPE_MESSAGE_VIDEO_NOTE ? IS_VIEWED : QString());
+    if (openedKey.isEmpty()) {
+        return 0;
+    }
+    QVariantMap content(messageData.value(CONTENT).toMap());
+    if (content.value(openedKey).toBool()) {
+        return 0;
+    }
+    content.insert(openedKey, true);
+    messageData.insert(CONTENT, content);
+    return RoleFlagDisplay;
+}
+
+QVector<int> ChatModel::MessageData::setContentOpened()
+{
+    return flagsToRoles(updateContentOpened());
+}
+
 uint ChatModel::MessageData::updateReplyMarkup(const QVariantMap &replyMarkup)
 {
     messageData.insert(REPLY_MARKUP, replyMarkup);
@@ -361,6 +391,7 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
     connect(this->tdLibWrapper, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SLOT(handleChatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SLOT(handleChatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibWrapper, SIGNAL(messageContentUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageContentUpdated(qlonglong, qlonglong, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(messageContentOpened(qlonglong, qlonglong)), this, SLOT(handleMessageContentOpened(qlonglong, qlonglong)));
     connect(this->tdLibWrapper, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messagesDeleted(qlonglong, QList<qlonglong>)), this, SLOT(handleMessagesDeleted(qlonglong, QList<qlonglong>)));
@@ -802,6 +833,24 @@ void ChatModel::handleMessageContentUpdated(qlonglong chatId, qlonglong messageI
             const QModelIndex messageIndex(index(pos));
             emit dataChanged(messageIndex, messageIndex, changedRoles);
             emit messageUpdated(pos);
+        }
+    }
+}
+
+void ChatModel::handleMessageContentOpened(qlonglong chatId, qlonglong messageId)
+{
+    if (chatId == this->chatId && messageIndexMap.contains(messageId)) {
+        const int pos = messageIndexMap.value(messageId, -1);
+        if (pos >= 0) {
+            const QVector<int> changedRoles(messages.at(pos)->setContentOpened());
+            // An empty role list would tell the view that everything changed,
+            // so stay silent unless the message really became listened/viewed
+            if (!changedRoles.isEmpty()) {
+                LOG("Message content was opened at index" << pos);
+                const QModelIndex messageIndex(index(pos));
+                emit dataChanged(messageIndex, messageIndex, changedRoles);
+                emit messageUpdated(pos);
+            }
         }
     }
 }

@@ -78,6 +78,7 @@ private slots:
     void handleChatPhotoUpdated(qlonglong chatId, const QVariantMap &photo);
     void handleChatPinnedMessageUpdated(qlonglong chatId, qlonglong pinnedMessageId);
     void handleMessageContentUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &newContent);
+    void handleMessageContentOpened(qlonglong chatId, qlonglong messageId);
     void handleMessageEditedUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &replyMarkup);
     void handleMessageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo);
     void handleMessagePropertiesReceived(qlonglong chatId, qlonglong messageId, const QVariantMap &properties);
