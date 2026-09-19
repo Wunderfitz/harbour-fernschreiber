@@ -481,6 +481,12 @@
         <source>Obtaining Position...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <source>%Ln files</source>
+        <translation>
+            <numerusform>%Ln 个文件</numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

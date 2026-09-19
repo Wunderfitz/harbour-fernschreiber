@@ -483,6 +483,12 @@
         <source>Obtaining Position...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <source>%Ln files</source>
+        <translation>
+            <numerusform>%Ln fájl</numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

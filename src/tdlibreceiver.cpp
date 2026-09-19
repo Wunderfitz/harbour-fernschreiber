@@ -572,6 +572,14 @@ void TDLibReceiver::processChatOnlineMemberCountUpdated(const QVariantMap &recei
 
 void TDLibReceiver::processMessages(const QVariantMap &receivedInformation)
 {
+    // sendMessageAlbum answers with the messages it created, not with chat history.
+    // They already reached the model through updateNewMessage, and passing them on
+    // would make the chat page believe a history request finished and scroll away.
+    // See TDLibWrapper::sendAlbumMessage.
+    if (receivedInformation.value(_EXTRA).toString() == "sendMessageAlbum") {
+        LOG("Received the messages of a sent album, nothing to do");
+        return;
+    }
     const int total_count = receivedInformation.value(TOTAL_COUNT).toInt();
     LOG("Received new messages, amount: " << total_count);
     emit messagesReceived(cleanupList(receivedInformation.value(MESSAGES).toList()), total_count);
