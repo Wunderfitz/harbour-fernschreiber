@@ -558,6 +558,9 @@ void TDLibWrapper::sendAlbumMessage(qlonglong chatId, const QString &contentType
     for (int offset = 0; offset < filePaths.size(); offset += MAX_ALBUM_SIZE) {
         QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
         requestObject.insert(_TYPE, "sendMessageAlbum");
+        // The reply is a "messages" object, like the one a history request answers
+        // with. See TDLibReceiver::processMessages, which tells them apart by this.
+        requestObject.insert(_EXTRA, "sendMessageAlbum");
 
         QVariantList inputMessageContents;
         const int end = qMin(offset + MAX_ALBUM_SIZE, filePaths.size());

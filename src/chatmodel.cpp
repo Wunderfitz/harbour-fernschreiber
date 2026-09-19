@@ -741,9 +741,31 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         const int pos = messageIndexMap.take(oldMessageId);
         MessageData* oldMessage = messages.at(pos);
         MessageData* newMessage = new MessageData(message, messageId);
+
+        // Album membership isn't part of the message, the model keeps it, and a
+        // fresh MessageData starts without it. Carry it over before the diff, or
+        // the entry leaves its album for the moment it takes setMessagesAlbum to
+        // put it back - which makes the filtered members flash up and the delegates
+        // of the whole album get torn down and rebuilt.
+        newMessage->albumEntryFilter = oldMessage->albumEntryFilter;
+        newMessage->albumMessageIds = oldMessage->albumMessageIds;
+
         messages.replace(pos, newMessage);
-        messageIndexMap.remove(oldMessageId);
         messageIndexMap.insert(messageId, pos);
+
+        // An album is keyed by message ID and sending hands out a new one, so the
+        // album has to be rekeyed. Left alone it holds IDs nothing answers to any
+        // more: the entries lose their album and the bubbles come out empty. This
+        // is what getMessagesForAlbum() reads, so it happens before dataChanged.
+        const qlonglong albumId = newMessage->messageData.value(MEDIA_ALBUM_ID).toLongLong();
+        if (albumId != 0 && albumMessageMap.contains(albumId)) {
+            QVariantList &albumMessageIds = albumMessageMap[albumId];
+            const int albumIndex = albumMessageIds.indexOf(QVariant(oldMessageId));
+            if (albumIndex >= 0) {
+                albumMessageIds.replace(albumIndex, messageId);
+            }
+        }
+
         const QVector<int> changedRoles(newMessage->diff(oldMessage));
         const bool propertiesWereRequested = oldMessage->propertiesRequested;
         delete oldMessage;
@@ -751,13 +773,8 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         const QModelIndex messageIndex(index(pos));
         emit dataChanged(messageIndex, messageIndex, changedRoles);
 
-        // An album is keyed by message ID and sending hands out a new one, so the
-        // album has to be rekeyed. Left alone it holds IDs nothing answers to any
-        // more: the entries lose their album and the bubbles come out empty.
-        const qlonglong albumId = newMessage->messageData.value(MEDIA_ALBUM_ID).toLongLong();
-        if (albumId != 0 && albumMessageMap.contains(albumId)) {
-            albumMessageMap[albumId].removeAll(QVariant(oldMessageId));
-        }
+        // Sorts the album and hands every entry its role values, now that the new
+        // message ID is in place.
         setMessagesAlbum(newMessage);
 
         // The properties of the pending message don't apply to the sent one and
