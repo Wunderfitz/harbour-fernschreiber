@@ -1113,11 +1113,57 @@
         <translation>отправил(а) видео заметку</translation>
     </message>
     <message>
-        <source>Video call</source>
+        <source>missed video call</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Call</source>
+        <source>missed call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>call moved to a group call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>interrupted video call: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>interrupted call: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>outgoing video call: %1</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>incoming video call: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>outgoing call: %1</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>incoming call: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2609,11 +2655,57 @@
         <translation>отправил(а) игру</translation>
     </message>
     <message>
-        <source>Video call</source>
+        <source>missed video call</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Call</source>
+        <source>missed call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>call moved to a group call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>interrupted video call: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>interrupted call: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>outgoing video call: %1</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>incoming video call: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>outgoing call: %1</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>incoming call: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

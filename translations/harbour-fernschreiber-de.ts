@@ -1095,12 +1095,58 @@
         <translation>hat eine Videonachricht geschickt</translation>
     </message>
     <message>
-        <source>Video call</source>
-        <translation>Videoanruf</translation>
+        <source>missed video call</source>
+        <translation>verpasster Videoanruf</translation>
     </message>
     <message>
-        <source>Call</source>
-        <translation>Anruf</translation>
+        <source>missed call</source>
+        <translation>verpasster Anruf</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>abgelehnter Videoanruf</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>abgelehnter Anruf</translation>
+    </message>
+    <message>
+        <source>call moved to a group call</source>
+        <translation>Anruf in einen Gruppenanruf überführt</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <translation>%1 Min. %2 Sek.</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <translation>%1 Sek.</translation>
+    </message>
+    <message>
+        <source>interrupted video call: %1</source>
+        <translation>unterbrochener Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>interrupted call: %1</source>
+        <translation>unterbrochener Anruf: %1</translation>
+    </message>
+    <message>
+        <source>outgoing video call: %1</source>
+        <comment>myself</comment>
+        <translation>ausgehender Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>incoming video call: %1</source>
+        <translation>eingehender Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>outgoing call: %1</source>
+        <comment>myself</comment>
+        <translation>ausgehender Anruf: %1</translation>
+    </message>
+    <message>
+        <source>incoming call: %1</source>
+        <translation>eingehender Anruf: %1</translation>
     </message>
 </context>
 <context>
@@ -2575,12 +2621,58 @@
         <translation>hat ein Spiel gesendet</translation>
     </message>
     <message>
-        <source>Video call</source>
-        <translation>Videoanruf</translation>
+        <source>missed video call</source>
+        <translation>verpasster Videoanruf</translation>
     </message>
     <message>
-        <source>Call</source>
-        <translation>Anruf</translation>
+        <source>missed call</source>
+        <translation>verpasster Anruf</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>abgelehnter Videoanruf</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>abgelehnter Anruf</translation>
+    </message>
+    <message>
+        <source>call moved to a group call</source>
+        <translation>Anruf in einen Gruppenanruf überführt</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <translation>%1 Min. %2 Sek.</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <translation>%1 Sek.</translation>
+    </message>
+    <message>
+        <source>interrupted video call: %1</source>
+        <translation>unterbrochener Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>interrupted call: %1</source>
+        <translation>unterbrochener Anruf: %1</translation>
+    </message>
+    <message>
+        <source>outgoing video call: %1</source>
+        <comment>myself</comment>
+        <translation>ausgehender Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>incoming video call: %1</source>
+        <translation>eingehender Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>outgoing call: %1</source>
+        <comment>myself</comment>
+        <translation>ausgehender Anruf: %1</translation>
+    </message>
+    <message>
+        <source>incoming call: %1</source>
+        <translation>eingehender Anruf: %1</translation>
     </message>
 </context>
 </TS>

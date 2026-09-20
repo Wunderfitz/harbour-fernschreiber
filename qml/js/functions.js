@@ -163,13 +163,37 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
     case 'messageGameScore':
         return myself ? qsTr("scored %Ln points", "myself", message.content.score) : qsTr("scored %Ln points", "myself", message.content.score);
     case 'messageCall':
-        var callLabel = message.content.is_video ? qsTr("Video call") : qsTr("Call");
-        if (message.content.duration > 0) {
-            var callMinutes = Math.floor(message.content.duration / 60);
-            var callSeconds = message.content.duration % 60;
-            return callLabel + " (" + callMinutes + ":" + (callSeconds < 10 ? "0" : "") + callSeconds + ")";
+        // How a finished call reads is taken from PR #577 by simonschmeisser.
+        // discard_reason is a CallDiscardReason object and it is absent while the
+        // call is still running, so it is read defensively. Everything not named
+        // here - hung up, empty, a reason a later TDLib adds, or none at all -
+        // falls through to the plain outgoing/incoming line, so this case always
+        // returns instead of dropping into messageUnsupported.
+        var isVideoCall = message.content.is_video;
+        var discardReason = message.content.discard_reason ? message.content.discard_reason['@type'] : "";
+        if (discardReason === 'callDiscardReasonMissed') {
+            return isVideoCall ? qsTr("missed video call") : qsTr("missed call");
         }
-        return callLabel;
+        if (discardReason === 'callDiscardReasonDeclined') {
+            return isVideoCall ? qsTr("declined video call") : qsTr("declined call");
+        }
+        if (discardReason === 'callDiscardReasonUpgradeToGroupCall') {
+            return qsTr("call moved to a group call");
+        }
+        var callDuration = message.content.duration;
+        var callDurationString = callDuration >= 60
+                ? qsTr("%1 min %2 sec").arg(Math.floor(callDuration / 60)).arg(callDuration % 60)
+                : qsTr("%1 sec").arg(callDuration);
+        if (discardReason === 'callDiscardReasonDisconnected') {
+            return isVideoCall ? qsTr("interrupted video call: %1").arg(callDurationString)
+                               : qsTr("interrupted call: %1").arg(callDurationString);
+        }
+        if (isVideoCall) {
+            return myself ? qsTr("outgoing video call: %1", "myself").arg(callDurationString)
+                          : qsTr("incoming video call: %1").arg(callDurationString);
+        }
+        return myself ? qsTr("outgoing call: %1", "myself").arg(callDurationString)
+                      : qsTr("incoming call: %1").arg(callDurationString);
     case 'messageUnsupported':
         return myself ? qsTr("sent an unsupported message", "myself") : qsTr("sent an unsupported message");
     default:

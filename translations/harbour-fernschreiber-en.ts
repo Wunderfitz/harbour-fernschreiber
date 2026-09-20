@@ -1097,12 +1097,58 @@ messages</numerusform>
         <translation>sent a video note</translation>
     </message>
     <message>
-        <source>Video call</source>
-        <translation>Video call</translation>
+        <source>missed video call</source>
+        <translation>missed video call</translation>
     </message>
     <message>
-        <source>Call</source>
-        <translation>Call</translation>
+        <source>missed call</source>
+        <translation>missed call</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>declined video call</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>declined call</translation>
+    </message>
+    <message>
+        <source>call moved to a group call</source>
+        <translation>call moved to a group call</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <translation>%1 min %2 sec</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <translation>%1 sec</translation>
+    </message>
+    <message>
+        <source>interrupted video call: %1</source>
+        <translation>interrupted video call: %1</translation>
+    </message>
+    <message>
+        <source>interrupted call: %1</source>
+        <translation>interrupted call: %1</translation>
+    </message>
+    <message>
+        <source>outgoing video call: %1</source>
+        <comment>myself</comment>
+        <translation>outgoing video call: %1</translation>
+    </message>
+    <message>
+        <source>incoming video call: %1</source>
+        <translation>incoming video call: %1</translation>
+    </message>
+    <message>
+        <source>outgoing call: %1</source>
+        <comment>myself</comment>
+        <translation>outgoing call: %1</translation>
+    </message>
+    <message>
+        <source>incoming call: %1</source>
+        <translation>incoming call: %1</translation>
     </message>
 </context>
 <context>
@@ -2577,12 +2623,58 @@ messages</numerusform>
         <translation>sent a game</translation>
     </message>
     <message>
-        <source>Video call</source>
-        <translation>Video call</translation>
+        <source>missed video call</source>
+        <translation>missed video call</translation>
     </message>
     <message>
-        <source>Call</source>
-        <translation>Call</translation>
+        <source>missed call</source>
+        <translation>missed call</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>declined video call</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>declined call</translation>
+    </message>
+    <message>
+        <source>call moved to a group call</source>
+        <translation>call moved to a group call</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <translation>%1 min %2 sec</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <translation>%1 sec</translation>
+    </message>
+    <message>
+        <source>interrupted video call: %1</source>
+        <translation>interrupted video call: %1</translation>
+    </message>
+    <message>
+        <source>interrupted call: %1</source>
+        <translation>interrupted call: %1</translation>
+    </message>
+    <message>
+        <source>outgoing video call: %1</source>
+        <comment>myself</comment>
+        <translation>outgoing video call: %1</translation>
+    </message>
+    <message>
+        <source>incoming video call: %1</source>
+        <translation>incoming video call: %1</translation>
+    </message>
+    <message>
+        <source>outgoing call: %1</source>
+        <comment>myself</comment>
+        <translation>outgoing call: %1</translation>
+    </message>
+    <message>
+        <source>incoming call: %1</source>
+        <translation>incoming call: %1</translation>
     </message>
 </context>
 </TS>
