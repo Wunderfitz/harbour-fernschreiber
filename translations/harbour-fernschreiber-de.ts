@@ -236,9 +236,9 @@
         <translation>Aus der Gruppe verbannen</translation>
     </message>
     <message>
-        <source>Removing member</source>
+        <source>Banning member</source>
         <comment>remorse timer text</comment>
-        <translation>Entferne Mitglied</translation>
+        <translation>Verbanne Mitglied</translation>
     </message>
     <message>
         <source>Ban and Delete All Messages</source>
@@ -246,9 +246,9 @@
         <translation>Verbannen und alle Nachrichten löschen</translation>
     </message>
     <message>
-        <source>Removing member and deleting messages</source>
+        <source>Banning member and deleting messages</source>
         <comment>remorse timer text</comment>
-        <translation>Entferne Mitglied und lösche Nachrichten</translation>
+        <translation>Verbanne Mitglied und lösche Nachrichten</translation>
     </message>
 </context>
 <context>

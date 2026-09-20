@@ -180,7 +180,7 @@ ChatInformationTabItemBase {
                             var userId = member_id.user_id;
                             var removeIndex = index;
                             var membersModel = pageContent.membersList;
-                            memberRemorse.execute(qsTr("Removing member", "remorse timer text"), function() {
+                            memberRemorse.execute(qsTr("Banning member", "remorse timer text"), function() {
                                 wrapper.banChatMember(chatId, userId, 0, false);
                                 membersModel.remove(removeIndex);
                             });
@@ -197,7 +197,7 @@ ChatInformationTabItemBase {
                             var userId = member_id.user_id;
                             var removeIndex = index;
                             var membersModel = pageContent.membersList;
-                            memberRemorse.execute(qsTr("Removing member and deleting messages", "remorse timer text"), function() {
+                            memberRemorse.execute(qsTr("Banning member and deleting messages", "remorse timer text"), function() {
                                 wrapper.banChatMember(chatId, userId, 0, true);
                                 membersModel.remove(removeIndex);
                             });

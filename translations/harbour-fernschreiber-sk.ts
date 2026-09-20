@@ -239,7 +239,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Removing member</source>
+        <source>Banning member</source>
         <comment>remorse timer text</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -249,7 +249,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Removing member and deleting messages</source>
+        <source>Banning member and deleting messages</source>
         <comment>remorse timer text</comment>
         <translation type="unfinished"></translation>
     </message>

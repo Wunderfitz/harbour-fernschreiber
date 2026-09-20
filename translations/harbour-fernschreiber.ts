@@ -236,9 +236,9 @@
         <translation>Ban from Group</translation>
     </message>
     <message>
-        <source>Removing member</source>
+        <source>Banning member</source>
         <comment>remorse timer text</comment>
-        <translation>Removing member</translation>
+        <translation>Banning member</translation>
     </message>
     <message>
         <source>Ban and Delete All Messages</source>
@@ -246,9 +246,9 @@
         <translation>Ban and Delete All Messages</translation>
     </message>
     <message>
-        <source>Removing member and deleting messages</source>
+        <source>Banning member and deleting messages</source>
         <comment>remorse timer text</comment>
-        <translation>Removing member and deleting messages</translation>
+        <translation>Banning member and deleting messages</translation>
     </message>
 </context>
 <context>
