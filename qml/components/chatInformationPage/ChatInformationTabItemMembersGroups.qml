@@ -107,7 +107,13 @@ ChatInformationTabItemBase {
                         visible: chatInformationPage.isSuperGroup
                         text: qsTr("Member Permissions", "edit a group member's individual permissions")
                         onClicked: {
+                            // The delegate's context is gone by the time the dialog is
+                            // accepted, so "index" and "pageContent" have to be resolved
+                            // here and captured. Reading them from inside the callback
+                            // throws (pageContent is undefined) and the list then keeps
+                            // the old status until it is fetched from the server again.
                             var setIndex = index;
+                            var membersModel = pageContent.membersList;
                             var dialog = pageStack.push(Qt.resolvedUrl("../../pages/ChatMemberPermissionsPage.qml"), {
                                 chatId: chatInformationPage.chatInformation.id,
                                 memberUserId: member_id.user_id,
@@ -117,7 +123,7 @@ ChatInformationTabItemBase {
                             });
                             dialog.accepted.connect(function() {
                                 if (dialog.resultStatus) {
-                                    pageContent.membersList.set(setIndex, { status: dialog.resultStatus });
+                                    membersModel.set(setIndex, { status: dialog.resultStatus });
                                 }
                             });
                         }
@@ -151,22 +157,30 @@ ChatInformationTabItemBase {
                     MenuItem {
                         text: qsTr("Remove from Group", "ban a group member")
                         onClicked: {
+                            // Same reason as above: the remorse timer fires after the
+                            // context menu is gone, so everything it needs is captured now.
                             var chatId = chatInformationPage.chatInformation.id;
                             var userId = member_id.user_id;
+                            var removeIndex = index;
+                            var membersModel = pageContent.membersList;
                             memberListItem.remorseAction(qsTr("Removing member", "remorse timer text"), function() {
                                 tdLibWrapper.banChatMember(chatId, userId, 0, false);
-                                pageContent.membersList.remove(index);
+                                membersModel.remove(removeIndex);
                             });
                         }
                     }
                     MenuItem {
                         text: qsTr("Remove and Delete All Messages", "ban a group member, revoking their messages")
                         onClicked: {
+                            // Same reason as above: the remorse timer fires after the
+                            // context menu is gone, so everything it needs is captured now.
                             var chatId = chatInformationPage.chatInformation.id;
                             var userId = member_id.user_id;
+                            var removeIndex = index;
+                            var membersModel = pageContent.membersList;
                             memberListItem.remorseAction(qsTr("Removing member and deleting messages", "remorse timer text"), function() {
                                 tdLibWrapper.banChatMember(chatId, userId, 0, true);
-                                pageContent.membersList.remove(index);
+                                membersModel.remove(removeIndex);
                             });
                         }
                     }
