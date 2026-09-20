@@ -33,6 +33,16 @@ ChatInformationTabItemBase {
 
     property var chatPartnerCommonGroupsIds: ([]);
 
+    // Removing a member is undoable for a few seconds. The remorse must NOT hang
+    // off the list item: ListItem.remorseAction() parents the countdown to the
+    // delegate's contentItem, and the context menu it was started from is tearing
+    // that delegate down at the same moment - the countdown then stands still and
+    // never fires, so nothing is sent at all. A RemorsePopup belongs to the page
+    // and outlives the row it is about.
+    RemorsePopup {
+        id: memberRemorse
+    }
+
     SilicaListView {
         id: membersView
         model: (chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) ? (chatPartnerCommonGroupsIds.length > 0 ? delegateModel : null) : pageContent.membersList
@@ -157,14 +167,16 @@ ChatInformationTabItemBase {
                     MenuItem {
                         text: qsTr("Remove from Group", "ban a group member")
                         onClicked: {
-                            // Same reason as above: the remorse timer fires after the
-                            // context menu is gone, so everything it needs is captured now.
+                            // Everything the callback needs is resolved here, while the
+                            // delegate is still alive - it is gone by the time the remorse
+                            // runs out, and nothing in its context resolves any more.
+                            var wrapper = tdLibWrapper;
                             var chatId = chatInformationPage.chatInformation.id;
                             var userId = member_id.user_id;
                             var removeIndex = index;
                             var membersModel = pageContent.membersList;
-                            memberListItem.remorseAction(qsTr("Removing member", "remorse timer text"), function() {
-                                tdLibWrapper.banChatMember(chatId, userId, 0, false);
+                            memberRemorse.execute(qsTr("Removing member", "remorse timer text"), function() {
+                                wrapper.banChatMember(chatId, userId, 0, false);
                                 membersModel.remove(removeIndex);
                             });
                         }
@@ -172,14 +184,16 @@ ChatInformationTabItemBase {
                     MenuItem {
                         text: qsTr("Remove and Delete All Messages", "ban a group member, revoking their messages")
                         onClicked: {
-                            // Same reason as above: the remorse timer fires after the
-                            // context menu is gone, so everything it needs is captured now.
+                            // Everything the callback needs is resolved here, while the
+                            // delegate is still alive - it is gone by the time the remorse
+                            // runs out, and nothing in its context resolves any more.
+                            var wrapper = tdLibWrapper;
                             var chatId = chatInformationPage.chatInformation.id;
                             var userId = member_id.user_id;
                             var removeIndex = index;
                             var membersModel = pageContent.membersList;
-                            memberListItem.remorseAction(qsTr("Removing member and deleting messages", "remorse timer text"), function() {
-                                tdLibWrapper.banChatMember(chatId, userId, 0, true);
+                            memberRemorse.execute(qsTr("Removing member and deleting messages", "remorse timer text"), function() {
+                                wrapper.banChatMember(chatId, userId, 0, true);
                                 membersModel.remove(removeIndex);
                             });
                         }
