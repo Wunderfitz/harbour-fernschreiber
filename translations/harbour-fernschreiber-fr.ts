@@ -231,7 +231,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove from Group</source>
+        <source>Ban from Group</source>
         <comment>ban a group member</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -241,7 +241,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove and Delete All Messages</source>
+        <source>Ban and Delete All Messages</source>
         <comment>ban a group member, revoking their messages</comment>
         <translation type="unfinished"></translation>
     </message>

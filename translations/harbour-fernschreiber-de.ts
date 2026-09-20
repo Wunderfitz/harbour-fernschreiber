@@ -231,9 +231,9 @@
         <translation>Einschränkungen aufheben</translation>
     </message>
     <message>
-        <source>Remove from Group</source>
+        <source>Ban from Group</source>
         <comment>ban a group member</comment>
-        <translation>Aus der Gruppe entfernen</translation>
+        <translation>Aus der Gruppe verbannen</translation>
     </message>
     <message>
         <source>Removing member</source>
@@ -241,9 +241,9 @@
         <translation>Entferne Mitglied</translation>
     </message>
     <message>
-        <source>Remove and Delete All Messages</source>
+        <source>Ban and Delete All Messages</source>
         <comment>ban a group member, revoking their messages</comment>
-        <translation>Entfernen und alle Nachrichten löschen</translation>
+        <translation>Verbannen und alle Nachrichten löschen</translation>
     </message>
     <message>
         <source>Removing member and deleting messages</source>

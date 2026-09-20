@@ -170,7 +170,7 @@ ChatInformationTabItemBase {
                         }
                     }
                     MenuItem {
-                        text: qsTr("Remove from Group", "ban a group member")
+                        text: qsTr("Ban from Group", "ban a group member")
                         onClicked: {
                             // Everything the callback needs is resolved here, while the
                             // delegate is still alive - it is gone by the time the remorse
@@ -187,7 +187,7 @@ ChatInformationTabItemBase {
                         }
                     }
                     MenuItem {
-                        text: qsTr("Remove and Delete All Messages", "ban a group member, revoking their messages")
+                        text: qsTr("Ban and Delete All Messages", "ban a group member, revoking their messages")
                         onClicked: {
                             // Everything the callback needs is resolved here, while the
                             // delegate is still alive - it is gone by the time the remorse

@@ -231,9 +231,9 @@
         <translation>Remove Restrictions</translation>
     </message>
     <message>
-        <source>Remove from Group</source>
+        <source>Ban from Group</source>
         <comment>ban a group member</comment>
-        <translation>Remove from Group</translation>
+        <translation>Ban from Group</translation>
     </message>
     <message>
         <source>Removing member</source>
@@ -241,9 +241,9 @@
         <translation>Removing member</translation>
     </message>
     <message>
-        <source>Remove and Delete All Messages</source>
+        <source>Ban and Delete All Messages</source>
         <comment>ban a group member, revoking their messages</comment>
-        <translation>Remove and Delete All Messages</translation>
+        <translation>Ban and Delete All Messages</translation>
     </message>
     <message>
         <source>Removing member and deleting messages</source>
