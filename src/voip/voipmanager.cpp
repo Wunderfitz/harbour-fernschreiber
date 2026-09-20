@@ -205,6 +205,16 @@ void VoipManager::handleCallUpdated(const QVariantMap &call)
     if (callId <= 0) {
         return;
     }
+    if (m_currentCallId != callId) {
+        // A different call than the one the renderers last served. Drop what they
+        // still hold: a VideoOutput keeps presenting its last frame, so the
+        // previous call's closing picture would greet the new one while it is
+        // merely ringing - a moment at which there is no stream at all yet.
+        // Safe here: this is a call with no tgcalls instance behind it yet, so no
+        // sink is being pulled out from under one.
+        m_remoteVideoRenderer->reset();
+        m_localVideoRenderer->reset();
+    }
     m_currentCallId = callId;
     m_peerUserId = call.value("user_id").toLongLong();
     m_isOutgoing = call.value("is_outgoing").toBool();

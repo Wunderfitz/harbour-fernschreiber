@@ -140,6 +140,12 @@ Rectangle {
         // until the first remote frame arrives.
         VideoOutput {
             anchors.fill: parent
+            // Visible for the whole call (see above) but only shown once a frame of
+            // THIS call has arrived. Hiding it outright would take its surface away
+            // and no frame would ever arrive; leaving it on screen shows whatever
+            // it still held - the last picture of the previous call, while the new
+            // one is only ringing. Opacity keeps the surface and shows nothing.
+            opacity: callOverlay.remoteShowing ? 1.0 : 0.0
             // Fit, not crop: the whole frame is what matters in a call. Cropping
             // to the screen's width cost most of the height the moment the two
             // aspect ratios disagreed — turning the phone to landscape left a
