@@ -38,6 +38,9 @@ ApplicationWindow
         onPleaseOpenUrl: {
             appWindow.activate();
         }
+        onPleaseOpenCall: {
+            appWindow.activate();
+        }
     }
 
     Connections {

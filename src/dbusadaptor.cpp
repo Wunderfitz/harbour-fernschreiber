@@ -32,6 +32,12 @@ void DBusAdaptor::openMessage(const QString &chatId, const QString &messageId)
     emit pleaseOpenMessage(chatId, messageId);
 }
 
+void DBusAdaptor::openCall()
+{
+    LOG("Open Call");
+    emit pleaseOpenCall();
+}
+
 void DBusAdaptor::openUrl(const QStringList &arguments)
 {
     LOG("Open Url" << arguments);

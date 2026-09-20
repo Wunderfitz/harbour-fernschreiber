@@ -26,6 +26,7 @@
 #include <tgcalls/v2/InstanceV2ReferenceImpl.h>
 
 #include <QCoreApplication>
+#include <nemonotifications-qt5/notification.h>
 #include <QEventLoop>
 #include <QTimer>
 
@@ -57,6 +58,7 @@ VoipManager::VoipManager(TDLibWrapper *tdLibWrapper, QObject *parent)
     , m_frontCamera(true)
     , m_remoteVideoActive(false)
     , m_localVideoActive(false)
+    , m_incomingCallNotification(nullptr)
 {
     Q_UNUSED(RegisterLegacy)
     Q_UNUSED(RegisterV2)
@@ -76,6 +78,7 @@ VoipManager::VoipManager(TDLibWrapper *tdLibWrapper, QObject *parent)
 // had gone quiet, until some timeout of Telegram's ended it.
 void VoipManager::handleAboutToQuit()
 {
+    hideIncomingCallNotification();
     if (m_currentCallId == 0 || !m_tdLibWrapper) {
         return;
     }
@@ -239,6 +242,56 @@ void VoipManager::setRemoteVideoActive(bool active)
     // The sink is only torn down at call end (stopInstance).
 }
 
+// With the screen off, an incoming call announces itself through the ringtone
+// and the notification LED and nothing else - the app does not raise itself,
+// and lipstick's call screen belongs to the built-in dialer. This publishes a
+// notification so the caller's name is on the screen, and the screen is on at
+// all: "x-nemo-display-on" is what wakes it, and it is a hint, so it cannot be
+// set from the QML Notification type - only from here.
+void VoipManager::showIncomingCallNotification()
+{
+    if (!m_incomingCallNotification) {
+        m_incomingCallNotification = new Notification(this);
+        // Tapping it brings the app up; the call is answered there, not from the
+        // notification. Answer/decline as remote actions would have to work with
+        // no window in front and is a separate matter.
+        m_incomingCallNotification->setRemoteDBusCallServiceName(QStringLiteral("de.ygriega.fernschreiber"));
+        m_incomingCallNotification->setRemoteDBusCallObjectPath(QStringLiteral("/de/ygriega/fernschreiber"));
+        m_incomingCallNotification->setRemoteDBusCallInterface(QStringLiteral("de.ygriega.fernschreiber"));
+        m_incomingCallNotification->setRemoteDBusCallMethodName(QStringLiteral("openCall"));
+        m_incomingCallNotification->setUrgency(Notification::Critical);
+        // Wakes the display. Needs the Privileged permission, which the .desktop
+        // already asks for.
+        m_incomingCallNotification->setHintValue(QStringLiteral("x-nemo-display-on"), true);
+        // No feedback from the notification: the phone is already ringing through
+        // ngfd's telephony event, and two sources would talk over each other.
+        m_incomingCallNotification->setHintValue(QStringLiteral("x-nemo-feedback"), QString());
+    }
+
+    QString caller;
+    if (m_tdLibWrapper && m_peerUserId) {
+        const QVariantMap user(m_tdLibWrapper->getUserInformation(QString::number(m_peerUserId)));
+        caller = (user.value("first_name").toString() + " " + user.value("last_name").toString()).trimmed();
+    }
+    if (caller.isEmpty()) {
+        caller = tr("Unknown caller");
+    }
+    const QString what(m_isVideo ? tr("Incoming video call") : tr("Incoming call"));
+
+    m_incomingCallNotification->setSummary(caller);
+    m_incomingCallNotification->setBody(what);
+    m_incomingCallNotification->setPreviewSummary(caller);
+    m_incomingCallNotification->setPreviewBody(what);
+    m_incomingCallNotification->publish();
+}
+
+void VoipManager::hideIncomingCallNotification()
+{
+    if (m_incomingCallNotification) {
+        m_incomingCallNotification->close();
+    }
+}
+
 void VoipManager::handleCallUpdated(const QVariantMap &call)
 {
     const qlonglong callId = call.value("id").toLongLong();
@@ -268,6 +321,14 @@ void VoipManager::handleCallUpdated(const QVariantMap &call)
     if (m_callState != stateType) {
         m_callState = stateType;
         emit callStateChanged();
+    }
+
+    // The notification is for the ringing phase only: once the call is answered
+    // or over, whatever it was announcing has happened.
+    if (stateType == "callStatePending" && !m_isOutgoing) {
+        showIncomingCallNotification();
+    } else {
+        hideIncomingCallNotification();
     }
 
     if (stateType == "callStateReady") {

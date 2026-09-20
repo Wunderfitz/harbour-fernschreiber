@@ -2248,6 +2248,21 @@
     </message>
 </context>
 <context>
+    <name>VoipManager</name>
+    <message>
+        <source>Unknown caller</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Incoming video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Incoming call</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>

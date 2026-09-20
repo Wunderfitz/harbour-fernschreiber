@@ -39,6 +39,8 @@ namespace fernschreiber {
 class VideoRenderer;
 }
 
+class Notification;
+
 class VoipManager : public QObject
 {
     Q_OBJECT
@@ -108,6 +110,10 @@ private:
     // Creates the camera capture if there is none yet, so video can be switched
     // on in the middle of a call and not only at its start.
     bool ensureVideoCapture();
+    // The incoming call is announced through a notification, because with the
+    // screen off the ringtone and the notification LED are all there is.
+    void showIncomingCallNotification();
+    void hideIncomingCallNotification();
     void stopInstance();
     void resetCall();
     static std::vector<uint8_t> toByteVector(const QByteArray &data);
@@ -119,6 +125,7 @@ private:
     std::shared_ptr<tgcalls::VideoCaptureInterface> m_videoCapture;
     fernschreiber::VideoRenderer *m_remoteVideoRenderer;
     fernschreiber::VideoRenderer *m_localVideoRenderer;
+    Notification *m_incomingCallNotification;
     qlonglong m_currentCallId;
     qlonglong m_peerUserId;
     bool m_isOutgoing;

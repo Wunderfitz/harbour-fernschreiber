@@ -2215,6 +2215,21 @@
     </message>
 </context>
 <context>
+    <name>VoipManager</name>
+    <message>
+        <source>Unknown caller</source>
+        <translation>Unbekannter Anrufer</translation>
+    </message>
+    <message>
+        <source>Incoming video call</source>
+        <translation>Eingehender Videoanruf</translation>
+    </message>
+    <message>
+        <source>Incoming call</source>
+        <translation>Eingehender Anruf</translation>
+    </message>
+</context>
+<context>
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
