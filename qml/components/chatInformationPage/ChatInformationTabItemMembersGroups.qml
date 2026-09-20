@@ -104,6 +104,11 @@ ChatInformationTabItemBase {
                                                                       && ( chatInformationPage.groupInformation.status.rights
                                                                           ? chatInformationPage.groupInformation.status.rights.can_restrict_members
                                                                           : chatInformationPage.groupInformation.status.can_restrict_members ) ) )
+            // chatMemberStatusRestricted is "not supported in basic groups and
+            // channels" (TDLib), so the restriction actions are only offered in
+            // a real supergroup - a channel admin who may get the member list
+            // does see this list, and the requests would come back as an error.
+            readonly property bool chatSupportsRestrictions: chatInformationPage.isSuperGroup && !chatInformationPage.isChannel
             readonly property bool memberIsManageable: member_id.user_id !== chatInformationPage.myUserId
                                                        && ( model.status["@type"] === "chatMemberStatusMember"
                                                            || model.status["@type"] === "chatMemberStatusRestricted" )
@@ -114,7 +119,7 @@ ChatInformationTabItemBase {
                 id: memberContextMenu
                 ContextMenu {
                     MenuItem {
-                        visible: chatInformationPage.isSuperGroup
+                        visible: memberListItem.chatSupportsRestrictions
                         text: qsTr("Member Permissions", "edit a group member's individual permissions")
                         onClicked: {
                             // The delegate's context is gone by the time the dialog is
@@ -139,7 +144,7 @@ ChatInformationTabItemBase {
                         }
                     }
                     MenuItem {
-                        visible: chatInformationPage.isSuperGroup && model.status["@type"] === "chatMemberStatusMember"
+                        visible: memberListItem.chatSupportsRestrictions && model.status["@type"] === "chatMemberStatusMember"
                         text: qsTr("Revoke Write Permission", "restrict a group member")
                         onClicked: {
                             // All chatPermissions fields default to false, so an
@@ -156,7 +161,7 @@ ChatInformationTabItemBase {
                         }
                     }
                     MenuItem {
-                        visible: chatInformationPage.isSuperGroup && model.status["@type"] === "chatMemberStatusRestricted"
+                        visible: memberListItem.chatSupportsRestrictions && model.status["@type"] === "chatMemberStatusRestricted"
                         text: qsTr("Remove Restrictions", "lift restrictions from a group member")
                         onClicked: {
                             var newStatus = { "@type": "chatMemberStatusMember" };
