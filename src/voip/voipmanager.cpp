@@ -25,10 +25,18 @@
 #include <tgcalls/v2/InstanceV2Impl.h>
 #include <tgcalls/v2/InstanceV2ReferenceImpl.h>
 
+#include <QCoreApplication>
+#include <QEventLoop>
+#include <QTimer>
+
 #include "videorenderer.h"
 #include "callaudiorouter.h"
 
 namespace {
+// How long the app waits at most for TDLib to get the discard out when the
+// application is closing in the middle of a call.
+const int QUIT_DISCARD_TIMEOUT_MS = 1500;
+
 // Self-registering call implementations; Meta::Create() dispatches by version.
 const auto RegisterLegacy = tgcalls::Register<tgcalls::InstanceImpl>();
 const auto RegisterV2 = tgcalls::Register<tgcalls::InstanceV2Impl>();
@@ -59,6 +67,38 @@ VoipManager::VoipManager(TDLibWrapper *tdLibWrapper, QObject *parent)
         connect(m_tdLibWrapper, &TDLibWrapper::callUpdated, this, &VoipManager::handleCallUpdated);
         connect(m_tdLibWrapper, &TDLibWrapper::callSignalingDataReceived, this, &VoipManager::handleCallSignalingDataReceived);
     }
+    connect(qApp, &QCoreApplication::aboutToQuit, this, &VoipManager::handleAboutToQuit);
+}
+
+// Closing the app during a call used to tear down the media here and tell nobody:
+// the destructor only stops the local tgcalls instance, and discardCall lives in
+// hangUp(), which only the button calls. The other side was left in a call that
+// had gone quiet, until some timeout of Telegram's ended it.
+void VoipManager::handleAboutToQuit()
+{
+    if (m_currentCallId == 0 || !m_tdLibWrapper) {
+        return;
+    }
+    LOG("Discarding call" << m_currentCallId << "because the application is closing");
+    m_tdLibWrapper->discardCall(m_currentCallId, false, 0, m_isVideo, 0);
+
+    // The request is only queued here; TDLib sends it from its own thread. Ending
+    // the process now would take it down before the request leaves the device, so
+    // wait for TDLib's acknowledgement - and only as long as that takes. The bound
+    // is there because the app is on its way out and must not hang on a network
+    // that is gone.
+    QEventLoop loop;
+    QTimer timeout;
+    timeout.setSingleShot(true);
+    connect(&timeout, &QTimer::timeout, &loop, &QEventLoop::quit);
+    connect(m_tdLibWrapper, &TDLibWrapper::okReceived, &loop, [&loop](const QString &request) {
+        if (request == QLatin1String("discardCall")) {
+            loop.quit();
+        }
+    });
+    timeout.start(QUIT_DISCARD_TIMEOUT_MS);
+    loop.exec();
+    LOG("Discard acknowledged or timed out, closing");
 }
 
 QObject *VoipManager::remoteVideo() const

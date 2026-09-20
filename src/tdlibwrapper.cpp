@@ -2635,6 +2635,10 @@ void TDLibWrapper::discardCall(qlonglong callId, bool isDisconnected, int durati
     LOG("Discarding call" << callId);
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "discardCall");
+    // TDLib echoes the extra back with its "ok", which is the only way to tell
+    // that the request has actually left the device. VoipManager waits for it
+    // when the application is closing mid-call.
+    requestObject.insert(_EXTRA, "discardCall");
     requestObject.insert("call_id", callId);
     requestObject.insert("is_disconnected", isDisconnected);
     requestObject.insert("duration", duration);

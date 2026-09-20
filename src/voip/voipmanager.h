@@ -95,6 +95,8 @@ signals:
     void localVideoActiveChanged();
 
 private slots:
+    // Closing the app in the middle of a call must not leave the peer in one.
+    void handleAboutToQuit();
     void handleCallUpdated(const QVariantMap &call);
     void handleCallSignalingDataReceived(qlonglong callId, const QByteArray &data);
     void setRemoteVideoActive(bool active);
