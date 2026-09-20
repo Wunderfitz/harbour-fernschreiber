@@ -27,7 +27,13 @@ Rectangle {
     color: Theme.rgba(Theme.highlightDimmerColor, 0.97)
     visible: voiceCallsAvailable && typeof voipManager !== "undefined" && voipManager.active
 
-    property bool videoCall: typeof voipManager !== "undefined" && voipManager.isVideo
+    // "This is a video call" is not what is_video says -- that is fixed when the
+    // call is created and never changes. A voice call becomes one the moment
+    // either side turns a camera on, which is how the official clients do it.
+    property bool videoCall: typeof voipManager !== "undefined"
+                             && (voipManager.isVideo || voipManager.remoteVideoActive
+                                 || voipManager.localVideoActive)
+    property bool localVideoOn: typeof voipManager !== "undefined" && voipManager.localVideoActive
     property bool ready: typeof voipManager !== "undefined" && voipManager.callState === "callStateReady"
     // Show the remote video whenever its renderer is actually receiving frames —
     // more reliable than the remoteMediaStateUpdated callback.
@@ -206,7 +212,7 @@ Rectangle {
             color: "black"
             radius: Theme.paddingSmall
             clip: true
-            visible: callOverlay.videoCall && callOverlay.ready
+            visible: callOverlay.localVideoOn && callOverlay.ready
             VideoOutput {
                 id: localPreview
                 anchors.fill: parent
@@ -256,8 +262,15 @@ Rectangle {
 
             Button {
                 width: content.buttonWidth
+                text: callOverlay.localVideoOn ? qsTr("Stop Video") : qsTr("Start Video")
+                visible: callOverlay.ready
+                onClicked: voipManager.setVideoEnabled(!callOverlay.localVideoOn)
+            }
+
+            Button {
+                width: content.buttonWidth
                 text: qsTr("Flip")
-                visible: callOverlay.videoCall && callOverlay.ready
+                visible: callOverlay.localVideoOn && callOverlay.ready
                 onClicked: voipManager.switchCamera()
             }
 

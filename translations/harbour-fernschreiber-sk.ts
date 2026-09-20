@@ -142,6 +142,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Start Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Decline</source>
         <translation type="unfinished"></translation>
     </message>

@@ -48,6 +48,7 @@ VoipManager::VoipManager(TDLibWrapper *tdLibWrapper, QObject *parent)
     , m_isVideo(false)
     , m_frontCamera(true)
     , m_remoteVideoActive(false)
+    , m_localVideoActive(false)
 {
     Q_UNUSED(RegisterLegacy)
     Q_UNUSED(RegisterV2)
@@ -138,19 +139,51 @@ void VoipManager::switchCamera()
     emit frontCameraChanged();
 }
 
+// The camera is created the first time it is needed, not once at the start of
+// the call: a call that came in as voice can have video switched on later, by
+// either side, and then there is no capture yet.
+bool VoipManager::ensureVideoCapture()
+{
+    if (m_videoCapture) {
+        return true;
+    }
+    m_videoCapture = tgcalls::VideoCaptureInterface::Create(
+        tgcalls::StaticThreads::getThreads(), std::string(), false, nullptr);
+    if (!m_videoCapture) {
+        WARN("Failed to create the video capture");
+        return false;
+    }
+    m_frontCamera = true;
+    emit frontCameraChanged();
+    // Local self-view uses the same frame rotation as the remote (world-upright);
+    // the rotating CallOverlay container makes both upright to the viewer.
+    m_videoCapture->setOutput(m_localVideoRenderer->sink());
+    return true;
+}
+
 void VoipManager::setVideoEnabled(bool enabled)
 {
-    if (!m_videoCapture || !m_instance) {
+    if (!m_instance) {
         return;
     }
     if (enabled) {
+        if (!ensureVideoCapture()) {
+            return;
+        }
         m_videoCapture->setState(tgcalls::VideoState::Active);
         m_instance->setVideoCapture(m_videoCapture);
     } else {
+        if (!m_videoCapture) {
+            return;
+        }
         // Detach so tgcalls signals the peer that video is off (instead of a frozen
         // last frame), and stop the camera.
         m_instance->setVideoCapture(nullptr);
         m_videoCapture->setState(tgcalls::VideoState::Inactive);
+    }
+    if (m_localVideoActive != enabled) {
+        m_localVideoActive = enabled;
+        emit localVideoActiveChanged();
     }
 }
 
@@ -283,13 +316,11 @@ void VoipManager::ensureInstanceForReadyCall(const QVariantMap &callState)
 
     // Video calls: create the camera capture (SailfishInterface -> QtMultimedia ->
     // I420 -> VP8/VP9 encoder) and hand it to tgcalls. Audio path is unchanged.
-    if (m_isVideo) {
-        m_frontCamera = true;
-        emit frontCameraChanged();
+    if (m_remoteVideoActive) {
         m_remoteVideoActive = false;
         emit remoteVideoActiveChanged();
-        m_videoCapture = tgcalls::VideoCaptureInterface::Create(
-            tgcalls::StaticThreads::getThreads(), std::string(), false, nullptr);
+    }
+    if (m_isVideo && ensureVideoCapture()) {
         descriptor.videoCapture = m_videoCapture;
     }
 
@@ -395,13 +426,15 @@ void VoipManager::ensureInstanceForReadyCall(const QVariantMap &callState)
     // incoming (remote) video into the remote renderer.
     if (m_videoCapture) {
         m_videoCapture->setState(tgcalls::VideoState::Active);
-        // Local self-view uses the same frame rotation as the remote (world-upright);
-        // the rotating CallOverlay container makes both upright to the viewer.
-        m_videoCapture->setOutput(m_localVideoRenderer->sink());
+        m_localVideoActive = true;
+        emit localVideoActiveChanged();
     }
-    if (m_isVideo) {
-        m_instance->setIncomingVideoOutput(m_remoteVideoRenderer->sink());
-    }
+    // Unconditionally, even for a call that started as voice: the peer can turn
+    // their camera on at any point, and tgcalls then has nowhere to put those
+    // frames unless a sink is already waiting. Holding an idle renderer costs
+    // nothing; discovering afterwards that the video had no destination costs
+    // the whole feature.
+    m_instance->setIncomingVideoOutput(m_remoteVideoRenderer->sink());
 
     // Route the incoming-audio stream to the call sink and unmute it. The SFOS
     // pulse policy rule (pulse/harbour-fernschreiber.conf) puts the WebRTC streams
@@ -420,6 +453,10 @@ void VoipManager::stopInstance()
     if (m_videoCapture) {
         m_videoCapture->setState(tgcalls::VideoState::Inactive);
         m_videoCapture.reset();
+    }
+    if (m_localVideoActive) {
+        m_localVideoActive = false;
+        emit localVideoActiveChanged();
     }
     m_remoteVideoRenderer->reset();
     m_localVideoRenderer->reset();
@@ -445,6 +482,10 @@ void VoipManager::resetCall()
     m_isOutgoing = false;
     m_isVideo = false;
     m_frontCamera = true;
+    if (m_localVideoActive) {
+        m_localVideoActive = false;
+        emit localVideoActiveChanged();
+    }
     if (m_remoteVideoActive) {
         m_remoteVideoActive = false;
         emit remoteVideoActiveChanged();

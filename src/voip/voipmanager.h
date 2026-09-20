@@ -53,6 +53,10 @@ class VoipManager : public QObject
     Q_PROPERTY(QObject* localVideo READ localVideo CONSTANT)
     Q_PROPERTY(bool frontCamera READ frontCamera NOTIFY frontCameraChanged)
     Q_PROPERTY(bool remoteVideoActive READ remoteVideoActive NOTIFY remoteVideoActiveChanged)
+    // Our own camera. Not the same as isVideo: a call that started as voice can
+    // have video switched on later, and one that started as video can have it
+    // switched off again.
+    Q_PROPERTY(bool localVideoActive READ localVideoActive NOTIFY localVideoActiveChanged)
 
 public:
     explicit VoipManager(TDLibWrapper *tdLibWrapper, QObject *parent = nullptr);
@@ -68,6 +72,7 @@ public:
     QObject *localVideo() const;
     bool frontCamera() const { return m_frontCamera; }
     bool remoteVideoActive() const { return m_remoteVideoActive; }
+    bool localVideoActive() const { return m_localVideoActive; }
 
     // Start an outgoing call to a user. isVideo requests a video call.
     Q_INVOKABLE void startCall(qlonglong userId, bool isVideo);
@@ -87,6 +92,7 @@ signals:
     void emojisChanged();
     void frontCameraChanged();
     void remoteVideoActiveChanged();
+    void localVideoActiveChanged();
 
 private slots:
     void handleCallUpdated(const QVariantMap &call);
@@ -97,6 +103,9 @@ private:
     // callProtocol object (incl. tgcalls library_versions) for createCall/acceptCall.
     QVariantMap buildProtocol() const;
     void ensureInstanceForReadyCall(const QVariantMap &callState);
+    // Creates the camera capture if there is none yet, so video can be switched
+    // on in the middle of a call and not only at its start.
+    bool ensureVideoCapture();
     void stopInstance();
     void resetCall();
     static std::vector<uint8_t> toByteVector(const QByteArray &data);
@@ -114,6 +123,7 @@ private:
     bool m_isVideo;
     bool m_frontCamera;
     bool m_remoteVideoActive;
+    bool m_localVideoActive;
     QString m_callState;
     QStringList m_emojis;
     QList<QByteArray> m_pendingSignalingData;

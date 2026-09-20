@@ -142,6 +142,14 @@
         <translation>Kamera wechseln</translation>
     </message>
     <message>
+        <source>Start Video</source>
+        <translation>Video starten</translation>
+    </message>
+    <message>
+        <source>Stop Video</source>
+        <translation>Video beenden</translation>
+    </message>
+    <message>
         <source>Decline</source>
         <translation>Ablehnen</translation>
     </message>

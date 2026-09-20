@@ -142,6 +142,14 @@
         <translation>Flip</translation>
     </message>
     <message>
+        <source>Start Video</source>
+        <translation>Start Video</translation>
+    </message>
+    <message>
+        <source>Stop Video</source>
+        <translation>Stop Video</translation>
+    </message>
+    <message>
         <source>Decline</source>
         <translation>Decline</translation>
     </message>
