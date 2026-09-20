@@ -127,8 +127,11 @@ Rectangle {
         height: (callOverlay.uiRotation % 180 === 0) ? parent.height : parent.width
         rotation: callOverlay.uiRotation
 
-        // Up to three buttons are visible at once — size them to fit the width.
-        property real buttonWidth: (width - 2 * Theme.horizontalPageMargin - 2 * Theme.paddingMedium) / 3
+        // The row carries two to four buttons depending on the state of the call,
+        // so the width is shared out among the ones actually visible. A fixed
+        // divisor breaks the moment a button is added - at a third each, four of
+        // them ran off both edges.
+        property real buttonRowWidth: width - 2 * Theme.horizontalPageMargin
 
         // Remote video fills the UI. It stays visible for the whole video call so
         // its video surface is assigned to the renderer immediately — otherwise
@@ -232,6 +235,7 @@ Rectangle {
         }
 
         Row {
+            id: buttonRow
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 bottom: parent.bottom
@@ -239,8 +243,23 @@ Rectangle {
             }
             spacing: Theme.paddingMedium
 
+            // Two to four of the five are visible at a time. Four at a third of the
+            // width each ran off both edges, so the share is taken from how many
+            // are actually up - but never fewer than three, or a lone "Hang up"
+            // would stretch across the whole screen. The row is not given a width
+            // of its own: it takes the one its children need and stays centred,
+            // which is what keeps the two-button case centred as well.
+            property int visibleButtons: (acceptButton.visible ? 1 : 0) + (muteButton.visible ? 1 : 0)
+                                         + (videoButton.visible ? 1 : 0) + (flipButton.visible ? 1 : 0)
+                                         + (hangUpButton.visible ? 1 : 0)
+            property real buttonWidth: {
+                var columns = Math.max(visibleButtons, 3);
+                return (content.buttonRowWidth - spacing * (columns - 1)) / columns;
+            }
+
             Button {
-                width: content.buttonWidth
+                id: acceptButton
+                width: buttonRow.buttonWidth
                 text: qsTr("Accept")
                 visible: typeof voipManager !== "undefined"
                          && !voipManager.isOutgoing
@@ -250,7 +269,7 @@ Rectangle {
 
             Button {
                 id: muteButton
-                width: content.buttonWidth
+                width: buttonRow.buttonWidth
                 property bool muted: false
                 text: muted ? qsTr("Unmute") : qsTr("Mute")
                 visible: callOverlay.ready
@@ -261,21 +280,24 @@ Rectangle {
             }
 
             Button {
-                width: content.buttonWidth
-                text: callOverlay.localVideoOn ? qsTr("Stop Video") : qsTr("Start Video")
+                id: videoButton
+                width: buttonRow.buttonWidth
+                text: callOverlay.localVideoOn ? qsTr("Video off") : qsTr("Video on")
                 visible: callOverlay.ready
                 onClicked: voipManager.setVideoEnabled(!callOverlay.localVideoOn)
             }
 
             Button {
-                width: content.buttonWidth
+                id: flipButton
+                width: buttonRow.buttonWidth
                 text: qsTr("Flip")
                 visible: callOverlay.localVideoOn && callOverlay.ready
                 onClicked: voipManager.switchCamera()
             }
 
             Button {
-                width: content.buttonWidth
+                id: hangUpButton
+                width: buttonRow.buttonWidth
                 text: (typeof voipManager !== "undefined"
                        && !voipManager.isOutgoing
                        && voipManager.callState === "callStatePending")

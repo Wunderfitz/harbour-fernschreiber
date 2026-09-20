@@ -142,11 +142,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Start Video</source>
+        <source>Video on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Stop Video</source>
+        <source>Video off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

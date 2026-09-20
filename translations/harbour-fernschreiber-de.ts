@@ -142,12 +142,12 @@
         <translation>Kamera wechseln</translation>
     </message>
     <message>
-        <source>Start Video</source>
-        <translation>Video starten</translation>
+        <source>Video on</source>
+        <translation>Video an</translation>
     </message>
     <message>
-        <source>Stop Video</source>
-        <translation>Video beenden</translation>
+        <source>Video off</source>
+        <translation>Video aus</translation>
     </message>
     <message>
         <source>Decline</source>

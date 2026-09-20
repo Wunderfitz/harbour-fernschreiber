@@ -142,12 +142,12 @@
         <translation>Flip</translation>
     </message>
     <message>
-        <source>Start Video</source>
-        <translation>Start Video</translation>
+        <source>Video on</source>
+        <translation>Video on</translation>
     </message>
     <message>
-        <source>Stop Video</source>
-        <translation>Stop Video</translation>
+        <source>Video off</source>
+        <translation>Video off</translation>
     </message>
     <message>
         <source>Decline</source>
