@@ -140,7 +140,12 @@ Rectangle {
         // until the first remote frame arrives.
         VideoOutput {
             anchors.fill: parent
-            fillMode: VideoOutput.PreserveAspectCrop
+            // Fit, not crop: the whole frame is what matters in a call. Cropping
+            // to the screen's width cost most of the height the moment the two
+            // aspect ratios disagreed — turning the phone to landscape left a
+            // strip of the other person. Bars beside the picture are the smaller
+            // price. (The self-view below stays cropped: it is a thumbnail.)
+            fillMode: VideoOutput.PreserveAspectFit
             source: (typeof voipManager !== "undefined") ? voipManager.remoteVideo : null
             visible: callOverlay.videoCall
         }
