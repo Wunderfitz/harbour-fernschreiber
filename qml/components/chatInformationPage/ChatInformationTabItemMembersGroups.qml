@@ -170,6 +170,12 @@ ChatInformationTabItemBase {
                         }
                     }
                     MenuItem {
+                        // Only a basic group can ban without revoking: TDLib
+                        // forces revoke_messages to true in supergroups and
+                        // channels, so there the two entries would be the same
+                        // action under two names, one of them not saying what
+                        // it does. Only the honest one is offered there.
+                        visible: chatInformationPage.isBasicGroup
                         text: qsTr("Ban from Group", "ban a group member")
                         onClicked: {
                             // Everything the callback needs is resolved here, while the
