@@ -372,22 +372,22 @@
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Weblap előlap hozzáadás</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Csevegés infó módosítás</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Felhasználók meghívása</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Üzenet rögzítés</translation>
     </message>
     <message>
         <source>Save</source>
