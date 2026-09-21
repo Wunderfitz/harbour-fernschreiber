@@ -56,6 +56,9 @@
 #include "fernschreiberutils.h"
 #include "knownusersmodel.h"
 #include "contactsmodel.h"
+#ifdef FERNSCHREIBER_VOIP
+#include "voip/voipmanager.h"
+#endif
 
 // The default filter can be overridden by QT_LOGGING_RULES envinronment variable, e.g.
 // QT_LOGGING_RULES="fernschreiber.*=true" harbour-fernschreiber
@@ -143,6 +146,13 @@ int main(int argc, char *argv[])
     TDLibWrapper *tdLibWrapper = new TDLibWrapper(appSettings, mceInterface, view.data());
     context->setContextProperty("tdLibWrapper", tdLibWrapper);
     qmlRegisterUncreatableType<TDLibWrapper>(uri, 1, 0, "TelegramAPI", QString());
+#ifdef FERNSCHREIBER_VOIP
+    VoipManager *voipManager = new VoipManager(tdLibWrapper, view.data());
+    context->setContextProperty("voipManager", voipManager);
+    context->setContextProperty("voiceCallsAvailable", true);
+#else
+    context->setContextProperty("voiceCallsAvailable", false);
+#endif
 
     FernschreiberUtils *fernschreiberUtils = new FernschreiberUtils(view.data());
     context->setContextProperty("fernschreiberUtils", fernschreiberUtils);

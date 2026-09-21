@@ -56,6 +56,7 @@ namespace {
     const QString MESSAGE_CONTENT_TYPE_ANIMATION("messageAnimation");
     const QString MESSAGE_CONTENT_TYPE_AUDIO("messageAudio");
     const QString MESSAGE_CONTENT_TYPE_VOICE_NOTE("messageVoiceNote");
+    const QString MESSAGE_CONTENT_TYPE_CALL("messageCall");
 
     // Telegram renders a voice note as 100 bars of 5 bits each: as peaks are
     // collected at a much finer scale while recording and since the length
@@ -218,6 +219,39 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     }
     if (contentType == MESSAGE_CONTENT_TYPE_VOICE_NOTE) {
         return myself ? tr("sent a voice note", "myself") : tr("sent a voice note");
+    }
+    if (contentType == MESSAGE_CONTENT_TYPE_CALL) {
+        // How a finished call reads is taken from PR #577 by simonschmeisser.
+        // discard_reason is a CallDiscardReason object, so the type sits in its
+        // "@type" - and it is absent while the call is still running. Everything
+        // this does not name by itself - hung up, empty, a reason a later TDLib
+        // adds, or none at all - falls through to the plain outgoing/incoming
+        // line, so there is always an answer.
+        const bool isVideo = messageContent.value("is_video").toBool();
+        const QString discardReason(messageContent.value("discard_reason").toMap().value(_TYPE).toString());
+        if (discardReason == "callDiscardReasonMissed") {
+            return isVideo ? tr("missed video call") : tr("missed call");
+        }
+        if (discardReason == "callDiscardReasonDeclined") {
+            return isVideo ? tr("declined video call") : tr("declined call");
+        }
+        if (discardReason == "callDiscardReasonUpgradeToGroupCall") {
+            return tr("call moved to a group call");
+        }
+        const int duration = messageContent.value("duration").toInt();
+        const QString durationString = duration >= 60
+                ? tr("%1 min %2 sec").arg(duration / 60).arg(duration % 60)
+                : tr("%1 sec").arg(duration);
+        if (discardReason == "callDiscardReasonDisconnected") {
+            return isVideo ? tr("interrupted video call: %1").arg(durationString)
+                           : tr("interrupted call: %1").arg(durationString);
+        }
+        if (isVideo) {
+            return myself ? tr("outgoing video call: %1", "myself").arg(durationString)
+                          : tr("incoming video call: %1").arg(durationString);
+        }
+        return myself ? tr("outgoing call: %1", "myself").arg(durationString)
+                      : tr("incoming call: %1").arg(durationString);
     }
     if (contentType == MESSAGE_CONTENT_TYPE_DOCUMENT) {
         return myself ? tr("sent a document", "myself") : tr("sent a document");
