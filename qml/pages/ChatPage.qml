@@ -442,6 +442,11 @@ Page {
         chatPage.focus = true;
     }
 
+    function readAllChatMentionsAndReactions() {
+        tdLibWrapper.readAllChatMentions(chatInformation.id);
+        tdLibWrapper.readAllChatReactions(chatInformation.id);
+    }
+
     function showMessage(messageId, initialRun) {
         // Means we tapped a quoted message and had to load it.
         if(initialRun) {
@@ -635,6 +640,13 @@ Page {
         onReactionsUpdated: {
             availableReactions = tdLibWrapper.getChatReactions(chatInformation.id);
         }
+        onChatUnreadReactionCountUpdated: {
+            if (chatId.toString() === chatInformation.id.toString() && unreadReactionCount > 0
+                    && chatPage.isInitialized && chatPage.status === PageStatus.Active) {
+                Debug.log("[ChatPage] Reactions received while the chat is open, reading them...");
+                tdLibWrapper.readAllChatReactions(chatInformation.id);
+            }
+        }
     }
 
     Connections {
@@ -695,6 +707,12 @@ Page {
             chatInformation.unread_count = unreadCount;
             chatUnreadMessagesItem.visible = ( !chatPage.loading && unreadCount > 0 && chatOverviewItem.visible );
             chatUnreadMessagesCount.text = Functions.formatUnreadCount(unreadCount)
+            if (unreadCount === 0) {
+                // Mentions and reactions are only read once the chat has no unread messages left.
+                // While we were viewing the messages, the unread count was still greater than zero,
+                // so the attempts above were skipped - now is the time to catch up on them.
+                readAllChatMentionsAndReactions();
+            }
         }
         onLastReadSentMessageUpdated: {
             Debug.log("[ChatPage] Updating last read sent index, new index: ", lastReadSentIndex);
@@ -807,8 +825,7 @@ Page {
                 lastQueuedIndex = -1
             }
             if (chatInformation.unread_count === 0) {
-                tdLibWrapper.readAllChatMentions(chatInformation.id);
-                tdLibWrapper.readAllChatReactions(chatInformation.id);
+                readAllChatMentionsAndReactions();
             }
         }
     }
@@ -1296,8 +1313,7 @@ Page {
                                     viewMessageTimer.queueViewMessage(bottomIndex)
                                 }
                             } else {
-                                tdLibWrapper.readAllChatMentions(chatInformation.id);
-                                tdLibWrapper.readAllChatReactions(chatInformation.id);
+                                readAllChatMentionsAndReactions();
                             }
                             manuallyScrolledToBottom = chatView.atYEnd
                         }
