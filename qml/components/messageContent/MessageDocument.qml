@@ -18,6 +18,7 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import "../"
 import "../../js/twemoji.js" as Emoji
 import "../../js/functions.js" as Functions
 
@@ -51,23 +52,32 @@ MessageContentFileInfoBase {
             PropertyChanges { target: openMouseArea; enabled: true }
             PropertyChanges {
                 target: primaryLabel
-                color: (contentItem.highlighted || openMouseArea.pressed) ? Theme.highlightColor : Theme.primaryColor
+                color: (contentItem.highlighted || openSettledPress.active) ? Theme.highlightColor : Theme.primaryColor
             }
             PropertyChanges {
                 target: secondaryLabel
-                color: (contentItem.highlighted || openMouseArea.pressed) ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                color: (contentItem.highlighted || openSettledPress.active) ? Theme.secondaryHighlightColor : Theme.secondaryColor
             }
             PropertyChanges {
                 target: tertiaryLabel
-                color: (contentItem.highlighted || openMouseArea.pressed) ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                color: (contentItem.highlighted || openSettledPress.active) ? Theme.secondaryHighlightColor : Theme.secondaryColor
             }
             PropertyChanges {
                 target: leftButton
-                highlighted: contentItem.highlighted || openMouseArea.pressed
+                highlighted: contentItem.highlighted || openSettledPress.active
             }
         }
 
     ]
+    // The message around this one waits for a press to settle before it shows
+    // it, and a finger scrolling past has no business lighting the file name
+    // up either - a plain MouseArea reports its press straight away
+    SettledPress {
+        id: openSettledPress
+
+        pressed: openMouseArea.pressed
+    }
+
     MouseArea {
         id: openMouseArea
         enabled: file.isDownloadingCompleted

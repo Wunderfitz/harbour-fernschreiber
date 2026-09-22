@@ -69,7 +69,19 @@ ListItem {
     property var chatReactions
     property var messageReactions
 
-    highlighted: (down || (isSelected && messageAlbumMessageIds.length === 0) || additionalOptionsOpened || wasNavigatedTo) && !menuOpen
+    // A finger landing on a message is far more often the beginning of a
+    // scroll than a press. Silica lights the item up shortly after the touch
+    // and then keeps that highlight visible for a minimum time even once the
+    // press has been given up, so scrolling leaves a trail of flashing
+    // backgrounds behind it. The press is shown here only once the finger has
+    // stayed put long enough for a scroll to be ruled out - a tap too short
+    // for that is acknowledged when it turns into a click.
+    readonly property bool pressHighlighted: settledPress.active || clickFeedbackTimer.running
+
+    highlighted: (pressHighlighted || (isSelected && messageAlbumMessageIds.length === 0) || additionalOptionsOpened || wasNavigatedTo) && !menuOpen
+    // Silica's minimum press time is what paints the message under a
+    // scrolling finger, the highlight above says all there is to say
+    _showPress: highlighted
     openMenuOnPressAndHold: !messageListItem.precalculatedValues.pageIsSelecting
 
     signal replyToMessage()
@@ -135,6 +147,8 @@ ListItem {
     }
 
     onClicked: {
+        // A tap can be over before the press is ever shown - acknowledge it
+        clickFeedbackTimer.restart();
         if (messageListItem.precalculatedValues.pageIsSelecting) {
             page.toggleMessageSelection(myMessage);
         } else {
@@ -350,6 +364,19 @@ ListItem {
         }
     }
 
+    SettledPress {
+        id: settledPress
+
+        pressed: messageListItem.down
+    }
+
+    Timer {
+        id: clickFeedbackTimer
+
+        interval: Theme.minimumPressHighlightTime
+        repeat: false
+    }
+
     Timer {
         id: restoreNormalityTimer
 
@@ -529,10 +556,18 @@ ListItem {
                             InReplyToRow {
                                 id: messageInReplyToRow
                                 myUserId: page.myUserId
-                                layer.enabled: messageInReplyToMouseArea.pressed && !messageListItem.highlighted && !messageListItem.menuOpen
+                                layer.enabled: messageInReplyToSettledPress.active && !messageListItem.highlighted && !messageListItem.menuOpen
                                 layer.effect: PressEffect { source: messageInReplyToRow }
                                 inReplyToMessage: messageInReplyToLoader.inReplyToMessage
                                 inReplyToMessageDeleted: messageInReplyToLoader.inReplyToMessageDeleted
+                            }
+                            // A plain MouseArea reports a press the very moment
+                            // a finger touches it, scroll or not, so the quote
+                            // waits for it to settle like the message around it
+                            SettledPress {
+                                id: messageInReplyToSettledPress
+
+                                pressed: messageInReplyToMouseArea.pressed
                             }
                             MouseArea {
                                 id: messageInReplyToMouseArea

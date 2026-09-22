@@ -24,6 +24,35 @@ ListItem {
     contentHeight: Theme.itemSizeExtraLarge
     contentWidth: parent.width
 
+    // A finger landing on a chat is far more often the beginning of a scroll
+    // than a press, so the press is shown only once the finger has stayed put
+    // long enough for a scroll to be ruled out. A tap can be over before
+    // that, in which case the click it turns into acknowledges it instead.
+    highlighted: settledPress.active || clickFeedbackTimer.running || menuOpen
+    // Silica keeps a press visible for a minimum time whatever becomes of it,
+    // which paints every chat the scrolling finger happens to land on
+    _showPress: highlighted
+
+    SettledPress {
+        id: settledPress
+
+        pressed: chatListViewItem.down
+    }
+
+    Timer {
+        id: clickFeedbackTimer
+
+        interval: Theme.minimumPressHighlightTime
+        repeat: false
+    }
+
+    Connections {
+        // Whoever uses this item brings its own onClicked handler, which
+        // would take the place of one written here
+        target: chatListViewItem
+        onClicked: clickFeedbackTimer.restart()
+    }
+
 
     ShaderEffectSource {
         id: pictureItem
