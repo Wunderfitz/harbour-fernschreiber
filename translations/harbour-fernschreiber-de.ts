@@ -96,6 +96,69 @@
     </message>
 </context>
 <context>
+    <name>CallOverlay</name>
+    <message>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
+    </message>
+    <message>
+        <source>Calling…</source>
+        <translation>Rufe an…</translation>
+    </message>
+    <message>
+        <source>Incoming video call</source>
+        <translation>Eingehender Videoanruf</translation>
+    </message>
+    <message>
+        <source>Incoming call</source>
+        <translation>Eingehender Anruf</translation>
+    </message>
+    <message>
+        <source>Exchanging encryption keys…</source>
+        <translation>Schlüssel werden ausgetauscht…</translation>
+    </message>
+    <message>
+        <source>Ongoing call</source>
+        <translation>Laufender Anruf</translation>
+    </message>
+    <message>
+        <source>Hanging up…</source>
+        <translation>Wird beendet…</translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation>Annehmen</translation>
+    </message>
+    <message>
+        <source>Unmute</source>
+        <translation>Stummschaltung aufheben</translation>
+    </message>
+    <message>
+        <source>Mute</source>
+        <translation>Stummschalten</translation>
+    </message>
+    <message>
+        <source>Flip</source>
+        <translation>Kamera wechseln</translation>
+    </message>
+    <message>
+        <source>Video on</source>
+        <translation>Video an</translation>
+    </message>
+    <message>
+        <source>Video off</source>
+        <translation>Video aus</translation>
+    </message>
+    <message>
+        <source>Decline</source>
+        <translation>Ablehnen</translation>
+    </message>
+    <message>
+        <source>Hang up</source>
+        <translation>Auflegen</translation>
+    </message>
+</context>
+<context>
     <name>ChatInformationPageContent</name>
     <message numerus="yes">
         <source>%1 subscribers</source>
@@ -616,6 +679,14 @@
             <numerusform>%Ln Dateien</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Video Call</source>
+        <translation>Videoanruf</translation>
+    </message>
+    <message>
+        <source>Call</source>
+        <translation>Anruf</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1030,6 +1101,60 @@
     <message>
         <source>sent a video note</source>
         <translation>hat eine Videonachricht geschickt</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>verpasster Videoanruf</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>verpasster Anruf</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>abgelehnter Videoanruf</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>abgelehnter Anruf</translation>
+    </message>
+    <message>
+        <source>call moved to a group call</source>
+        <translation>Anruf in einen Gruppenanruf überführt</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <translation>%1 Min. %2 Sek.</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <translation>%1 Sek.</translation>
+    </message>
+    <message>
+        <source>interrupted video call: %1</source>
+        <translation>unterbrochener Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>interrupted call: %1</source>
+        <translation>unterbrochener Anruf: %1</translation>
+    </message>
+    <message>
+        <source>outgoing video call: %1</source>
+        <comment>myself</comment>
+        <translation>ausgehender Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>incoming video call: %1</source>
+        <translation>eingehender Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>outgoing call: %1</source>
+        <comment>myself</comment>
+        <translation>ausgehender Anruf: %1</translation>
+    </message>
+    <message>
+        <source>incoming call: %1</source>
+        <translation>eingehender Anruf: %1</translation>
     </message>
 </context>
 <context>
@@ -2090,6 +2215,21 @@
     </message>
 </context>
 <context>
+    <name>VoipManager</name>
+    <message>
+        <source>Unknown caller</source>
+        <translation>Unbekannter Anrufer</translation>
+    </message>
+    <message>
+        <source>Incoming video call</source>
+        <translation>Eingehender Videoanruf</translation>
+    </message>
+    <message>
+        <source>Incoming call</source>
+        <translation>Eingehender Anruf</translation>
+    </message>
+</context>
+<context>
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
@@ -2502,6 +2642,60 @@
     <message>
         <source>sent a game</source>
         <translation>hat ein Spiel gesendet</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>verpasster Videoanruf</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>verpasster Anruf</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>abgelehnter Videoanruf</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>abgelehnter Anruf</translation>
+    </message>
+    <message>
+        <source>call moved to a group call</source>
+        <translation>Anruf in einen Gruppenanruf überführt</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <translation>%1 Min. %2 Sek.</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <translation>%1 Sek.</translation>
+    </message>
+    <message>
+        <source>interrupted video call: %1</source>
+        <translation>unterbrochener Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>interrupted call: %1</source>
+        <translation>unterbrochener Anruf: %1</translation>
+    </message>
+    <message>
+        <source>outgoing video call: %1</source>
+        <comment>myself</comment>
+        <translation>ausgehender Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>incoming video call: %1</source>
+        <translation>eingehender Videoanruf: %1</translation>
+    </message>
+    <message>
+        <source>outgoing call: %1</source>
+        <comment>myself</comment>
+        <translation>ausgehender Anruf: %1</translation>
+    </message>
+    <message>
+        <source>incoming call: %1</source>
+        <translation>eingehender Anruf: %1</translation>
     </message>
 </context>
 </TS>

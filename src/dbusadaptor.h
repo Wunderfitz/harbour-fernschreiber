@@ -34,10 +34,15 @@ public:
 signals:
     void pleaseOpenMessage(const QString &chatId, const QString &messageId);
     void pleaseOpenUrl(const QString &url);
+    void pleaseOpenCall();
 
 public slots:
     void openMessage(const QString &chatId, const QString &messageId);
     void openUrl(const QStringList &arguments);
+    // Tapping the incoming-call notification. Its own method rather than a
+    // borrowed openMessage(): what it means is "bring the call up", and the
+    // notification is published by VoipManager, not by the chat notifications.
+    void openCall();
 
 };
 

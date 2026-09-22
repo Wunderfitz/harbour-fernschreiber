@@ -971,6 +971,18 @@ Page {
                 visible: chatInformation.id !== chatPage.myUserId && !stickerPickerLoader.active && !voiceNoteOverlayLoader.active && !messageOverlayLoader.active && !stickerSetOverlayLoader.active
 
                 MenuItem {
+                    visible: voiceCallsAvailable && chatPage.isPrivateChat
+                    text: qsTr("Video Call")
+                    onClicked: voipManager.startCall(chatInformation.type.user_id, true)
+                }
+
+                MenuItem {
+                    visible: voiceCallsAvailable && chatPage.isPrivateChat
+                    text: qsTr("Call")
+                    onClicked: voipManager.startCall(chatInformation.type.user_id, false)
+                }
+
+                MenuItem {
                     id: deleteChatMenuItem
                     visible: chatPage.isPrivateChat && appSettings.showDeleteChat
                     onClicked: {
@@ -1475,6 +1487,7 @@ Page {
                                                                        "messagePinMessage",
                                                                        "messageScreenshotTaken",
                                                                        "messageSupergroupChatCreate",
+                                                                       "messageCall",
                                                                        "messageUnsupported"]
                         delegate: Loader {
                             width: chatView.width
