@@ -33,6 +33,16 @@ ChatInformationTabItemBase {
 
     property var chatPartnerCommonGroupsIds: ([]);
 
+    // Removing a member is undoable for a few seconds. The remorse must NOT hang
+    // off the list item: ListItem.remorseAction() parents the countdown to the
+    // delegate's contentItem, and the context menu it was started from is tearing
+    // that delegate down at the same moment - the countdown then stands still and
+    // never fires, so nothing is sent at all. A RemorsePopup belongs to the page
+    // and outlives the row it is about.
+    RemorsePopup {
+        id: memberRemorse
+    }
+
     SilicaListView {
         id: membersView
         model: (chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) ? (chatPartnerCommonGroupsIds.length > 0 ? delegateModel : null) : pageContent.membersList
@@ -77,10 +87,130 @@ ChatInformationTabItemBase {
             text: (chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) ? qsTr("You don't have any groups in common with this user.") : ( chatInformationPage.isChannel ? qsTr("Channel members are anonymous.") : qsTr("This group is empty.") )
         }
         delegate: PhotoTextsListItem {
+            id: memberListItem
             pictureThumbnail {
                 photoData: user.profile_photo ? user.profile_photo.small : null
             }
             width: parent.width
+
+            // Admin actions on other members: only offered if we can restrict
+            // members and the target is a regular/restricted member (admins and
+            // the creator can't be managed this way). Newer TDLib nests the
+            // admin rights in status.rights, older TDLib has them flat.
+            readonly property bool ownUserCanRestrictMembers: (chatInformationPage.isSuperGroup || chatInformationPage.isBasicGroup)
+                                                              && chatInformationPage.groupInformation.status
+                                                              && ( chatInformationPage.groupInformation.status["@type"] === "chatMemberStatusCreator"
+                                                                  || ( chatInformationPage.groupInformation.status["@type"] === "chatMemberStatusAdministrator"
+                                                                      && ( chatInformationPage.groupInformation.status.rights
+                                                                          ? chatInformationPage.groupInformation.status.rights.can_restrict_members
+                                                                          : chatInformationPage.groupInformation.status.can_restrict_members ) ) )
+            // chatMemberStatusRestricted is "not supported in basic groups and
+            // channels" (TDLib), so the restriction actions are only offered in
+            // a real supergroup - a channel admin who may get the member list
+            // does see this list, and the requests would come back as an error.
+            readonly property bool chatSupportsRestrictions: chatInformationPage.isSuperGroup && !chatInformationPage.isChannel
+            readonly property bool memberIsManageable: member_id.user_id !== chatInformationPage.myUserId
+                                                       && ( model.status["@type"] === "chatMemberStatusMember"
+                                                           || model.status["@type"] === "chatMemberStatusRestricted" )
+
+            menu: (ownUserCanRestrictMembers && memberIsManageable) ? memberContextMenu : null
+
+            Component {
+                id: memberContextMenu
+                ContextMenu {
+                    MenuItem {
+                        visible: memberListItem.chatSupportsRestrictions
+                        text: qsTr("Member Permissions", "edit a group member's individual permissions")
+                        onClicked: {
+                            // The delegate's context is gone by the time the dialog is
+                            // accepted, so "index" and "pageContent" have to be resolved
+                            // here and captured. Reading them from inside the callback
+                            // throws (pageContent is undefined) and the list then keeps
+                            // the old status until it is fetched from the server again.
+                            var setIndex = index;
+                            var membersModel = pageContent.membersList;
+                            var dialog = pageStack.push(Qt.resolvedUrl("../../pages/ChatMemberPermissionsPage.qml"), {
+                                chatId: chatInformationPage.chatInformation.id,
+                                memberUserId: member_id.user_id,
+                                userName: Functions.getUserName(user),
+                                memberStatus: model.status,
+                                defaultPermissions: chatInformationPage.chatInformation.permissions
+                            });
+                            dialog.accepted.connect(function() {
+                                if (dialog.resultStatus) {
+                                    membersModel.set(setIndex, { status: dialog.resultStatus });
+                                }
+                            });
+                        }
+                    }
+                    MenuItem {
+                        visible: memberListItem.chatSupportsRestrictions && model.status["@type"] === "chatMemberStatusMember"
+                        text: qsTr("Revoke Write Permission", "restrict a group member")
+                        onClicked: {
+                            // All chatPermissions fields default to false, so an
+                            // empty object mutes the member regardless of the
+                            // TDLib generation (old flat vs. new granular fields).
+                            var newStatus = {
+                                "@type": "chatMemberStatusRestricted",
+                                is_member: true,
+                                restricted_until_date: 0,
+                                permissions: { "@type": "chatPermissions" }
+                            };
+                            tdLibWrapper.setChatMemberStatus(chatInformationPage.chatInformation.id, member_id.user_id, newStatus);
+                            pageContent.membersList.set(index, { status: newStatus });
+                        }
+                    }
+                    MenuItem {
+                        visible: memberListItem.chatSupportsRestrictions && model.status["@type"] === "chatMemberStatusRestricted"
+                        text: qsTr("Remove Restrictions", "lift restrictions from a group member")
+                        onClicked: {
+                            var newStatus = { "@type": "chatMemberStatusMember" };
+                            tdLibWrapper.setChatMemberStatus(chatInformationPage.chatInformation.id, member_id.user_id, newStatus);
+                            pageContent.membersList.set(index, { status: newStatus });
+                        }
+                    }
+                    MenuItem {
+                        // Only a basic group can ban without revoking: TDLib
+                        // forces revoke_messages to true in supergroups and
+                        // channels, so there the two entries would be the same
+                        // action under two names, one of them not saying what
+                        // it does. Only the honest one is offered there.
+                        visible: chatInformationPage.isBasicGroup
+                        text: qsTr("Ban from Group", "ban a group member")
+                        onClicked: {
+                            // Everything the callback needs is resolved here, while the
+                            // delegate is still alive - it is gone by the time the remorse
+                            // runs out, and nothing in its context resolves any more.
+                            var wrapper = tdLibWrapper;
+                            var chatId = chatInformationPage.chatInformation.id;
+                            var userId = member_id.user_id;
+                            var removeIndex = index;
+                            var membersModel = pageContent.membersList;
+                            memberRemorse.execute(qsTr("Banning member", "remorse timer text"), function() {
+                                wrapper.banChatMember(chatId, userId, 0, false);
+                                membersModel.remove(removeIndex);
+                            });
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Ban and Delete All Messages", "ban a group member, revoking their messages")
+                        onClicked: {
+                            // Everything the callback needs is resolved here, while the
+                            // delegate is still alive - it is gone by the time the remorse
+                            // runs out, and nothing in its context resolves any more.
+                            var wrapper = tdLibWrapper;
+                            var chatId = chatInformationPage.chatInformation.id;
+                            var userId = member_id.user_id;
+                            var removeIndex = index;
+                            var membersModel = pageContent.membersList;
+                            memberRemorse.execute(qsTr("Banning member and deleting messages", "remorse timer text"), function() {
+                                wrapper.banChatMember(chatId, userId, 0, true);
+                                membersModel.remove(removeIndex);
+                            });
+                        }
+                    }
+                }
+            }
 
             // chat title
             primaryText.text: Emoji.emojify(Functions.getUserName(user), primaryText.font.pixelSize)
