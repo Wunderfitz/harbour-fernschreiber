@@ -1067,6 +1067,22 @@ void TDLibWrapper::setChatPermissions(const QString &chatId, const QVariantMap &
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::searchChatMembers(qlonglong chatId, const QString &query, int limit, const QString &extra)
+{
+    LOG("Searching members of chat" << chatId << query << limit);
+    QVariantMap filter;
+    // Whoever may be mentioned in this chat, which is what TDLib has this filter for
+    filter.insert(_TYPE, "chatMembersFilterMention");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "searchChatMembers");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("query", query);
+    requestObject.insert("limit", limit);
+    requestObject.insert("filter", filter);
+    requestObject.insert(_EXTRA, extra);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::setChatMemberStatus(const QString &chatId, const QString &memberUserId, const QVariantMap &status)
 {
     LOG("Setting Chat Member Status" << chatId << memberUserId);

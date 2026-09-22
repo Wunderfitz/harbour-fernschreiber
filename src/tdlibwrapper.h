@@ -202,6 +202,7 @@ public:
     Q_INVOKABLE void getInstalledStickerSets();
     Q_INVOKABLE void getStickerSet(const QString &setId);
     Q_INVOKABLE void getSupergroupMembers(const QString &groupId, int limit, int offset);
+    Q_INVOKABLE void searchChatMembers(qlonglong chatId, const QString &query, int limit, const QString &extra);
     Q_INVOKABLE void getGroupFullInfo(const QString &groupId, bool isSuperGroup);
     Q_INVOKABLE void getUserFullInfo(const QString &userId);
     Q_INVOKABLE void createPrivateChat(const QString &userId, const QString &extra);
