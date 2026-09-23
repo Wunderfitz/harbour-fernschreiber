@@ -1159,6 +1159,20 @@ void TDLibWrapper::setPollAnswer(const QString &chatId, qlonglong messageId, QVa
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::addPollOption(const QString &chatId, qlonglong messageId, const QString &option)
+{
+    LOG("Adding Poll Option");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "addPollOption");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    QVariantMap inputPollOption;
+    inputPollOption.insert(_TYPE, "inputPollOption");
+    inputPollOption.insert(TEXT, newFormattedText(option));
+    requestObject.insert("option", inputPollOption);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::stopPoll(const QString &chatId, qlonglong messageId)
 {
     LOG("Stopping Poll");

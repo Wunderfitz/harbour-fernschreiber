@@ -64,6 +64,36 @@ Item {
         }
     }
     Loader {
+        id: pollOptionInfoLoader
+        readonly property bool optionAdded: myMessage.content["@type"] === "messagePollOptionAdded"
+        active: optionAdded || myMessage.content["@type"] === "messagePollOptionDeleted"
+        asynchronous: true
+        sourceComponent: Component {
+            Connections {
+                target: tdLibWrapper
+                onReceivedMessage: {
+                    if(chatId === chatPage.chatInformation.id && messageId === myMessage.content.poll_message_id && message.content.poll) {
+                        messageListItem.linkedMessage = message;
+                        var option = Functions.enhanceMessageText(myMessage.content.text, false);
+                        var poll = "<a href=\"linkedmessage\" style=\"text-decoration: none; color:"+Theme.primaryColor+"\">" + Functions.enhanceHtmlEntities(message.content.poll.question) + "</a>";
+                        if (pollOptionInfoLoader.optionAdded) {
+                            messageText.messageContentText = messageListItem.isOwnMessage ?
+                                        qsTr("have added the option %1 to the poll %2", "myself; %1 is the added poll option, %2 the poll it was added to").arg(option).arg(poll) :
+                                        qsTr("has added the option %1 to the poll %2", "%1 is the added poll option, %2 the poll it was added to").arg(option).arg(poll);
+                        } else {
+                            messageText.messageContentText = messageListItem.isOwnMessage ?
+                                        qsTr("have removed the option %1 from the poll %2", "myself; %1 is the removed poll option, %2 the poll it was removed from").arg(option).arg(poll) :
+                                        qsTr("has removed the option %1 from the poll %2", "%1 is the removed poll option, %2 the poll it was removed from").arg(option).arg(poll);
+                        }
+                    }
+                }
+                Component.onCompleted: {
+                    tdLibWrapper.getMessage(chatPage.chatInformation.id, myMessage.content.poll_message_id);
+                }
+            }
+        }
+    }
+    Loader {
         id: gameScoreInfoLoader
         active: myMessage.content["@type"] === "messageGameScore"
         asynchronous: true

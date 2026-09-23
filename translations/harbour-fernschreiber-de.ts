@@ -1031,6 +1031,24 @@
         <source>sent a video note</source>
         <translation>hat eine Videonachricht geschickt</translation>
     </message>
+    <message>
+        <source>have added the option %1 to a poll</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has added the option %1 to a poll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed the option %1 from a poll</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed the option %1 from a poll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -1209,6 +1227,26 @@
             <numerusform>hat %Ln Punkte bei %2 erziehlt</numerusform>
         </translation>
     </message>
+    <message>
+        <source>have added the option %1 to the poll %2</source>
+        <comment>myself; %1 is the added poll option, %2 the poll it was added to</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has added the option %1 to the poll %2</source>
+        <comment>%1 is the added poll option, %2 the poll it was added to</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed the option %1 from the poll %2</source>
+        <comment>myself; %1 is the removed poll option, %2 the poll it was removed from</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed the option %1 from the poll %2</source>
+        <comment>%1 is the removed poll option, %2 the poll it was removed from</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
@@ -1254,6 +1292,10 @@
             <numerusform>%Ln Stimme insgesamt</numerusform>
             <numerusform>%Ln Stimmen insgesamt</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Add an Option</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1517,6 +1559,34 @@
     <message>
         <source>An explanation can be up to 200 characters long.</source>
         <translation>Eine Erklärung kann bis zu 200 Zeichen lang sein.</translation>
+    </message>
+</context>
+<context>
+    <name>PollOptionPage</name>
+    <message>
+        <source>Add an Option</source>
+        <comment>Dialog Header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to %1</source>
+        <comment>After dialog header… Add an Option to [poll question]</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter an answer here</source>
+        <translation type="unfinished">Geben Sie eine Antwort ein</translation>
+    </message>
+    <message numerus="yes">
+        <source>Answer (%Ln characters left)</source>
+        <translation type="unfinished">
+            <numerusform>Antwort (%Ln Zeichen übrig)</numerusform>
+            <numerusform>Antwort (%Ln Zeichen übrig)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Everybody in this chat can see who added which answer.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2502,6 +2572,26 @@
     <message>
         <source>sent a game</source>
         <translation>hat ein Spiel gesendet</translation>
+    </message>
+    <message>
+        <source>have added the option %1 to a poll</source>
+        <comment>myself; %1 is the added poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has added the option %1 to a poll</source>
+        <comment>%1 is the added poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed the option %1 from a poll</source>
+        <comment>myself; %1 is the removed poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed the option %1 from a poll</source>
+        <comment>%1 is the removed poll option</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

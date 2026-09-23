@@ -41,6 +41,7 @@ MessageContentBase {
         }).length > 0;
     }
     readonly property bool canAnswer: !hasAnswered && !pollData.is_closed
+    readonly property bool canAddOption: !!rawMessage.content.can_add_option && !pollData.is_closed
     readonly property bool isQuiz: pollData.type['@type'] === "pollTypeQuiz"
     property list<NamedAction> extraContextMenuItems: [
         NamedAction {
@@ -224,6 +225,49 @@ MessageContentBase {
             height: contentHeight
             interactive: false
             delegate: pollMessageComponent.canAnswer ? canAnswerDelegate : resultDelegate
+        }
+
+        BackgroundItem {
+            id: addOptionItem
+            visible: pollMessageComponent.canAddOption
+            x: -Theme.horizontalPageMargin/2
+            width: parent.width - x
+            height: Theme.itemSizeExtraSmall
+            highlighted: pollMessageComponent.highlighted || down
+
+            Row {
+                spacing: Theme.paddingMedium
+                anchors {
+                    left: parent.left
+                    leftMargin: Theme.horizontalPageMargin/2
+                    right: parent.right
+                    verticalCenter: parent.verticalCenter
+                }
+
+                Icon {
+                    source: "image://theme/icon-m-add"
+                    width: Theme.iconSizeSmall
+                    height: Theme.iconSizeSmall
+                    anchors.verticalCenter: parent.verticalCenter
+                    highlighted: pollMessageComponent.isOwnMessage || addOptionItem.highlighted
+                }
+
+                Label {
+                    width: parent.width - Theme.iconSizeSmall - parent.spacing
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: qsTr("Add an Option")
+                    truncationMode: TruncationMode.Fade
+                    color: pollMessageComponent.isOwnMessage || addOptionItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                }
+            }
+
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("../../pages/PollOptionPage.qml"), {
+                                   chatId: pollMessageComponent.chatId,
+                                   messageId: pollMessageComponent.messageId,
+                                   pollQuestion: pollData.question
+                               });
+            }
         }
 
         Item {
