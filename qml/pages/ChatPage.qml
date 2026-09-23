@@ -480,7 +480,9 @@ Page {
                 forwardMessagesTimer.start()
             } else {
                 var forwardedToSecretChat = chatInformation.type["@type"] === "chatTypeSecret";
-                tdLibWrapper.forwardMessages(chatInformation.id, fromChatId, messageIds, forwardedToSecretChat, false);
+                // Captions can only be removed from copies, which hiding the sender makes of them
+                var hideCaptions = appSettings.forwardHideSender && appSettings.forwardHideCaptions;
+                tdLibWrapper.forwardMessages(chatInformation.id, fromChatId, messageIds, forwardedToSecretChat || appSettings.forwardHideSender, hideCaptions);
             }
         }
     }

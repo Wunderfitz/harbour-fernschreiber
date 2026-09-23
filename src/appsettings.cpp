@@ -33,6 +33,8 @@ namespace {
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
     const QString KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW("notificationAlwaysShowPreview");
     const QString KEY_GO_TO_QUOTED_MESSAGE("goToQuotedMessage");
+    const QString KEY_FORWARD_HIDE_SENDER("forwardHideSender");
+    const QString KEY_FORWARD_HIDE_CAPTIONS("forwardHideCaptions");
     const QString KEY_SHOW_DELETE_CHAT("showDeleteChat");
     const QString KEY_STORAGE_OPTIMIZER("useStorageOptimizer");
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
@@ -216,6 +218,34 @@ void AppSettings::setGoToQuotedMessage(bool enable)
         LOG(KEY_GO_TO_QUOTED_MESSAGE << enable);
         settings.setValue(KEY_GO_TO_QUOTED_MESSAGE, enable);
         emit goToQuotedMessageChanged();
+    }
+}
+
+bool AppSettings::forwardHideSender() const
+{
+    return settings.value(KEY_FORWARD_HIDE_SENDER, false).toBool();
+}
+
+void AppSettings::setForwardHideSender(bool hide)
+{
+    if (forwardHideSender() != hide) {
+        LOG(KEY_FORWARD_HIDE_SENDER << hide);
+        settings.setValue(KEY_FORWARD_HIDE_SENDER, hide);
+        emit forwardHideSenderChanged();
+    }
+}
+
+bool AppSettings::forwardHideCaptions() const
+{
+    return settings.value(KEY_FORWARD_HIDE_CAPTIONS, false).toBool();
+}
+
+void AppSettings::setForwardHideCaptions(bool hide)
+{
+    if (forwardHideCaptions() != hide) {
+        LOG(KEY_FORWARD_HIDE_CAPTIONS << hide);
+        settings.setValue(KEY_FORWARD_HIDE_CAPTIONS, hide);
+        emit forwardHideCaptionsChanged();
     }
 }
 
