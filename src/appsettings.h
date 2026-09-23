@@ -36,6 +36,8 @@ class AppSettings : public QObject {
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
     Q_PROPERTY(bool notificationAlwaysShowPreview READ notificationAlwaysShowPreview WRITE setNotificationAlwaysShowPreview NOTIFY notificationAlwaysShowPreviewChanged)
     Q_PROPERTY(bool goToQuotedMessage READ goToQuotedMessage WRITE setGoToQuotedMessage NOTIFY goToQuotedMessageChanged)
+    Q_PROPERTY(bool forwardHideSender READ forwardHideSender WRITE setForwardHideSender NOTIFY forwardHideSenderChanged)
+    Q_PROPERTY(bool forwardHideCaptions READ forwardHideCaptions WRITE setForwardHideCaptions NOTIFY forwardHideCaptionsChanged)
     Q_PROPERTY(bool showDeleteChat READ showDeleteChat WRITE setShowDeleteChat NOTIFY showDeleteChatChanged)
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
     Q_PROPERTY(bool allowInlineBotLocationAccess READ allowInlineBotLocationAccess WRITE setAllowInlineBotLocationAccess NOTIFY allowInlineBotLocationAccessChanged)
@@ -105,6 +107,12 @@ public:
     bool showDeleteChat() const;
     void setGoToQuotedMessage(bool enable);
 
+    bool forwardHideSender() const;
+    void setForwardHideSender(bool hide);
+
+    bool forwardHideCaptions() const;
+    void setForwardHideCaptions(bool hide);
+
     bool storageOptimizer() const;
     void setStorageOptimizer(bool enable);
 
@@ -151,6 +159,8 @@ signals:
     void notificationFeedbackChanged();
     void notificationAlwaysShowPreviewChanged();
     void goToQuotedMessageChanged();
+    void forwardHideSenderChanged();
+    void forwardHideCaptionsChanged();
     void showDeleteChatChanged();
     void storageOptimizerChanged();
     void allowInlineBotLocationAccessChanged();
