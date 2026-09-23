@@ -2671,4 +2671,11 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
