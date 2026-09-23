@@ -219,6 +219,7 @@ public:
     Q_INVOKABLE void setBio(const QString &bio);
     Q_INVOKABLE void toggleSupergroupIsAllHistoryAvailable(const QString &groupId, bool isAllHistoryAvailable);
     Q_INVOKABLE void setPollAnswer(const QString &chatId, qlonglong messageId, QVariantList optionIds);
+    Q_INVOKABLE void addPollOption(const QString &chatId, qlonglong messageId, const QString &option);
     Q_INVOKABLE void stopPoll(const QString &chatId, qlonglong messageId);
     Q_INVOKABLE void getPollVoters(const QString &chatId, qlonglong messageId, int optionId, int limit, int offset, const QString &extra);
     Q_INVOKABLE void getMessageProperties(qlonglong chatId, qlonglong messageId);

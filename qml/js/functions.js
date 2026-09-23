@@ -136,6 +136,12 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
             return simple ? (myself ? qsTr("sent an anonymous poll", "myself") : qsTr("sent an anonymous poll")) : ("<b>" + qsTr("Anonymous Poll") + "</b>");
         }
         return simple ? (myself ? qsTr("sent a poll", "myself") : qsTr("sent a poll")) : ("<b>" + qsTr("Poll") + "</b>");
+    case 'messagePollOptionAdded':
+        var addedOption = simple ? message.content.text.text : enhanceMessageText(message.content.text, ignoreEntities);
+        return myself ? qsTr("have added the option %1 to a poll", "myself; %1 is the added poll option").arg(addedOption) : qsTr("has added the option %1 to a poll", "%1 is the added poll option").arg(addedOption);
+    case 'messagePollOptionDeleted':
+        var deletedOption = simple ? message.content.text.text : enhanceMessageText(message.content.text, ignoreEntities);
+        return myself ? qsTr("have removed the option %1 from a poll", "myself; %1 is the removed poll option").arg(deletedOption) : qsTr("has removed the option %1 from a poll", "%1 is the removed poll option").arg(deletedOption);
     case 'messageBasicGroupChatCreate':
     case 'messageSupergroupChatCreate':
         return myself ? qsTr("created this group", "myself") : qsTr("created this group");

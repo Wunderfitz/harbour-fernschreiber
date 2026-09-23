@@ -265,6 +265,14 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
         }
         return myself ? tr("sent a poll", "myself") : tr("sent a poll");
     }
+    if (contentType == "messagePollOptionAdded") {
+        const QString addedOption = messageContent.value(TEXT).toMap().value(TEXT).toString();
+        return myself ? tr("have added the option %1 to a poll", "myself").arg(addedOption) : tr("has added the option %1 to a poll").arg(addedOption);
+    }
+    if (contentType == "messagePollOptionDeleted") {
+        const QString deletedOption = messageContent.value(TEXT).toMap().value(TEXT).toString();
+        return myself ? tr("have removed the option %1 from a poll", "myself").arg(deletedOption) : tr("has removed the option %1 from a poll").arg(deletedOption);
+    }
     if (contentType == "messageBasicGroupChatCreate" || contentType == "messageSupergroupChatCreate") {
         return myself ? tr("created this group", "myself") : tr("created this group");
     }

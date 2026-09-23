@@ -1046,6 +1046,24 @@
         <source>sent a video note</source>
         <translation>poslal video-poznámku</translation>
     </message>
+    <message>
+        <source>have added the option %1 to a poll</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has added the option %1 to a poll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed the option %1 from a poll</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed the option %1 from a poll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -1227,6 +1245,26 @@
             <numerusform>získal %Ln bodov v %2</numerusform>
         </translation>
     </message>
+    <message>
+        <source>have added the option %1 to the poll %2</source>
+        <comment>myself; %1 is the added poll option, %2 the poll it was added to</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has added the option %1 to the poll %2</source>
+        <comment>%1 is the added poll option, %2 the poll it was added to</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed the option %1 from the poll %2</source>
+        <comment>myself; %1 is the removed poll option, %2 the poll it was removed from</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed the option %1 from the poll %2</source>
+        <comment>%1 is the removed poll option, %2 the poll it was removed from</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
@@ -1274,6 +1312,10 @@
             <numerusform>%Ln hlasy spolu</numerusform>
             <numerusform>%Ln hlasov spolu</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Add an Option</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1540,6 +1582,35 @@
     <message>
         <source>Shown when the user selects a wrong answer.</source>
         <translation>Zobrazí sa, keď používateľ vyberie nesprávnu odpoveď.</translation>
+    </message>
+</context>
+<context>
+    <name>PollOptionPage</name>
+    <message>
+        <source>Add an Option</source>
+        <comment>Dialog Header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to %1</source>
+        <comment>After dialog header… Add an Option to [poll question]</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter an answer here</source>
+        <translation type="unfinished">Tu uveďte odpoveď</translation>
+    </message>
+    <message numerus="yes">
+        <source>Answer (%Ln characters left)</source>
+        <translation type="unfinished">
+            <numerusform>Odpoveď (zostáva %Ln znak)</numerusform>
+            <numerusform>Odpoveď (zostáva %Ln znaky))</numerusform>
+            <numerusform>Odpoveď (zostáva %Ln znakov)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Everybody in this chat can see who added which answer.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2533,6 +2604,26 @@
     <message>
         <source>sent a game</source>
         <translation>poslal hru</translation>
+    </message>
+    <message>
+        <source>have added the option %1 to a poll</source>
+        <comment>myself; %1 is the added poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has added the option %1 to a poll</source>
+        <comment>%1 is the added poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed the option %1 from a poll</source>
+        <comment>myself; %1 is the removed poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed the option %1 from a poll</source>
+        <comment>%1 is the removed poll option</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
