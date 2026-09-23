@@ -18,9 +18,11 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import Sailfish.Share 1.0
 import "pages"
 import "components"
 import "./js/functions.js" as Functions
+import "./js/debug.js" as Debug
 
 ApplicationWindow
 {
@@ -47,6 +49,16 @@ ApplicationWindow
         }
         onTgUrlFound: {
             Functions.handleLink(tgUrl);
+        }
+    }
+
+    ShareProvider {
+        method: "image"
+        registerName: true
+        capabilities: ["image/*"]
+        onTriggered: {
+            Debug.log("ShareProvider triggered", JSON.stringify(resources));
+            appWindow.activate();
         }
     }
 

@@ -4,8 +4,13 @@ X-Nemo-Application-Type=generic
 Icon=harbour-fernschreiber
 Exec=harbour-fernschreiber
 Name=Fernschreiber
+X-Share-Methods=image;
 
 [X-Sailjail]
-Permissions=Audio;Contacts;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;Privileged;PublicDir;RemovableMedia;UserDirs;Videos
+Permissions=Audio;Contacts;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;Privileged;PublicDir;RemovableMedia;Sharing;UserDirs;Videos
 OrganizationName=de.ygriega
 ApplicationName=fernschreiber
+
+[X-Share Method image]
+Description=Send via Fernschreiber
+Capabilities=image/*
