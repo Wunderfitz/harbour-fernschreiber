@@ -398,14 +398,16 @@ Page {
         forwardMessagesTimer.messageIds = messageIds;
         forwardMessagesTimer.start();
     }
-    function sendSharedImage(filePath) {
+    function sendSharedFiles(filePaths) {
         clearAttachmentPreviewRow();
-        attachmentPreviewRow.attachedFiles = [{
-            "filePath": filePath,
-            "fileName": filePath.substring(filePath.lastIndexOf("/") + 1),
-            "url": Qt.resolvedUrl(filePath),
-            "mimeType": ""
-        }];
+        attachmentPreviewRow.attachedFiles = filePaths.map(function(filePath) {
+            return {
+                "filePath": filePath,
+                "fileName": filePath.substring(filePath.lastIndexOf("/") + 1),
+                "url": Qt.resolvedUrl(filePath),
+                "mimeType": ""
+            };
+        });
         attachmentPreviewRow.isPicture = true;
         controlSendButton();
     }
