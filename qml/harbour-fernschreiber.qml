@@ -59,6 +59,13 @@ ApplicationWindow
         onTriggered: {
             Debug.log("ShareProvider triggered", JSON.stringify(resources));
             appWindow.activate();
+            if (resources.length > 0 && resources[0].filePath) {
+                pageStack.push(Qt.resolvedUrl("pages/ChatSelectionPage.qml"), {
+                    headerDescription: qsTr("Send Image"),
+                    payload: {filePath: resources[0].filePath, neededPermissions: ["can_send_photos"]},
+                    state: "shareImage"
+                });
+            }
         }
     }
 
