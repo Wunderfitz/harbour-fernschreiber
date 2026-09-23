@@ -2060,6 +2060,10 @@
 <context>
     <name>StickerPicker</name>
     <message>
+        <source>Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Recently used</source>
         <translation>Недавно использованные</translation>
     </message>
