@@ -44,7 +44,7 @@ Dialog {
     /*
         payload dependent on chatSelectionPage.state
          - forwardMessages: {fromChatId, messageIds, neededPermissions}
-         - shareImage: {filePath, neededPermissions}
+         - shareImage: {filePaths, neededPermissions}
     */
     property var payload: ({})
 
@@ -57,7 +57,7 @@ Dialog {
             acceptDestinationInstance.setMessageText(payload.text)
             break;
         case "shareImage":
-            acceptDestinationInstance.sendSharedImage(payload.filePath)
+            acceptDestinationInstance.sendSharedFiles(payload.filePaths)
             break;
         // future uses of chat selection can be processed here
         }

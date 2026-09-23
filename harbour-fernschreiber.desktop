@@ -14,3 +14,4 @@ ApplicationName=fernschreiber
 [X-Share Method image]
 Description=Send via Fernschreiber
 Capabilities=image/*
+SupportsMultipleFiles=true
