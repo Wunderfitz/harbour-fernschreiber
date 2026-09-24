@@ -102,8 +102,12 @@ ApplicationWindow
         onTriggered: {
             Debug.log("ShareProvider triggered", JSON.stringify(resources));
             appWindow.activate();
-            var filePaths = resources.filter(function(resource) { return !!resource.filePath; })
-                                      .map(function(resource) { return resource.filePath; });
+            // A resource either carries a real file or, for raw shared data
+            // (e.g. selected text with no file behind it), a name and data
+            // pair that has to be written out to a file of its own first.
+            var filePaths = resources.map(function(resource) {
+                return resource.filePath || fernschreiberUtils.writeSharedDataToFile(resource.name, resource.data);
+            }).filter(function(filePath) { return !!filePath; });
             if (filePaths.length > 0) {
                 // TDLib may still be starting up when the app is share-launched
                 // cold; pushing the chat picker before it's ready would race an

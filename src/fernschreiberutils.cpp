@@ -25,6 +25,7 @@
 #include <QDir>
 #include <QDirIterator>
 #include <QFile>
+#include <QFileInfo>
 #include <QUrl>
 #include <QUrlQuery>
 #include <QDateTime>
@@ -419,6 +420,23 @@ QString FernschreiberUtils::mimeTypeForFile(const QString &filePath)
 {
     QMimeDatabase mimeDatabase;
     return mimeDatabase.mimeTypeForFile(filePath).name();
+}
+
+QString FernschreiberUtils::writeSharedDataToFile(const QString &name, const QString &data)
+{
+    QString safeName = QFileInfo(name).fileName();
+    if (safeName.isEmpty()) {
+        safeName = "shared-text.txt";
+    }
+    const QString filePath = this->getTemporaryDirectoryPath() + "/" + safeName;
+    QFile file(filePath);
+    if (!file.open(QIODevice::WriteOnly)) {
+        LOG("Error opening file for writing shared data" << filePath);
+        return QString();
+    }
+    file.write(data.toUtf8());
+    file.close();
+    return filePath;
 }
 
 void FernschreiberUtils::initiateReverseGeocode(double latitude, double longitude)
