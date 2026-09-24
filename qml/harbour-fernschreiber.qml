@@ -19,6 +19,7 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import Sailfish.Share 1.0
+import WerkWolf.Fernschreiber 1.0
 import "pages"
 import "components"
 import "./js/functions.js" as Functions
@@ -31,6 +32,10 @@ ApplicationWindow
     initialPage: Qt.resolvedUrl("pages/OverviewPage.qml")
     cover: Qt.resolvedUrl("pages/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
+
+    // A share triggered before TDLib is ready to open a chat is held here
+    // and replayed once onAuthorizationStateChanged reports AuthorizationReady.
+    property var pendingSharedFilePaths: null
 
     Connections {
         target: dBusAdaptor
@@ -49,6 +54,12 @@ ApplicationWindow
         }
         onTgUrlFound: {
             Functions.handleLink(tgUrl);
+        }
+        onAuthorizationStateChanged: {
+            if (pendingSharedFilePaths && tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady) {
+                openSharedFiles(pendingSharedFilePaths);
+                pendingSharedFilePaths = null;
+            }
         }
     }
 
@@ -69,6 +80,21 @@ ApplicationWindow
         return types.every(function(type) { return type === types[0]; }) ? types[0] : "document";
     }
 
+    function openSharedFiles(filePaths) {
+        var contentType = classifyContentType(filePaths);
+        var headerDescription = contentType === "photo" ? qsTr("Send Image")
+            : contentType === "video" ? qsTr("Send Video")
+            : qsTr("Send File");
+        var neededPermissions = contentType === "photo" ? ["can_send_photos"]
+            : contentType === "video" ? ["can_send_videos"]
+            : ["can_send_documents"];
+        pageStack.push(Qt.resolvedUrl("pages/ChatSelectionPage.qml"), {
+            headerDescription: headerDescription,
+            payload: {filePaths: filePaths, contentType: contentType, neededPermissions: neededPermissions},
+            state: "shareFiles"
+        });
+    }
+
     ShareProvider {
         method: "file"
         registerName: true
@@ -79,18 +105,14 @@ ApplicationWindow
             var filePaths = resources.filter(function(resource) { return !!resource.filePath; })
                                       .map(function(resource) { return resource.filePath; });
             if (filePaths.length > 0) {
-                var contentType = classifyContentType(filePaths);
-                var headerDescription = contentType === "photo" ? qsTr("Send Image")
-                    : contentType === "video" ? qsTr("Send Video")
-                    : qsTr("Send File");
-                var neededPermissions = contentType === "photo" ? ["can_send_photos"]
-                    : contentType === "video" ? ["can_send_videos"]
-                    : ["can_send_documents"];
-                pageStack.push(Qt.resolvedUrl("pages/ChatSelectionPage.qml"), {
-                    headerDescription: headerDescription,
-                    payload: {filePaths: filePaths, contentType: contentType, neededPermissions: neededPermissions},
-                    state: "shareFiles"
-                });
+                // TDLib may still be starting up when the app is share-launched
+                // cold; pushing the chat picker before it's ready would race an
+                // empty or stale chat list, so the request waits its turn.
+                if (tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady) {
+                    openSharedFiles(filePaths);
+                } else {
+                    pendingSharedFilePaths = filePaths;
+                }
             }
         }
     }

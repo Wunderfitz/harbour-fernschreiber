@@ -405,7 +405,7 @@ Page {
                 "filePath": filePath,
                 "fileName": filePath.substring(filePath.lastIndexOf("/") + 1),
                 "url": Qt.resolvedUrl(filePath),
-                "mimeType": ""
+                "mimeType": fernschreiberUtils.mimeTypeForFile(filePath)
             };
         });
         attachmentPreviewRow.isPicture = contentType === "photo";
