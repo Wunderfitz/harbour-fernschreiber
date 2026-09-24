@@ -10,6 +10,7 @@ X-Share-Methods=file;
 Permissions=Audio;Contacts;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;Privileged;PublicDir;RemovableMedia;Sharing;UserDirs;Videos
 OrganizationName=de.ygriega
 ApplicationName=fernschreiber
+ExecDBus=harbour-fernschreiber
 
 [X-Share Method file]
 Description=Send via Fernschreiber
