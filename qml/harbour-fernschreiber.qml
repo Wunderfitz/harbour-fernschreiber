@@ -30,6 +30,9 @@ ApplicationWindow
     cover: Qt.resolvedUrl("pages/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
+    // Emitted by every media player that starts playing, so all others pause
+    signal mediaPlaybackStarted(var player)
+
     Connections {
         target: dBusAdaptor
         onPleaseOpenMessage: {

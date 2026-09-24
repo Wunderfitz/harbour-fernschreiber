@@ -23,6 +23,20 @@ Video {
             page.overlayActive = true
         }
     }
+    onIsPlayingChanged: {
+        if(isPlaying) {
+            appWindow.mediaPlaybackStarted(video)
+        }
+    }
+
+    Connections {
+        target: appWindow
+        onMediaPlaybackStarted: {
+            if(player !== video && video.isPlaying) {
+                video.pause()
+            }
+        }
+    }
     TDLibThumbnail {
         id: tdLibImage
 
