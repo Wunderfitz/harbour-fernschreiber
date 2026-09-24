@@ -33,6 +33,7 @@
 #include <QSysInfo>
 #include <QNetworkRequest>
 #include <QNetworkReply>
+#include <QMimeDatabase>
 
 #define DEBUG_MODULE FernschreiberUtils
 #include "debuglog.h"
@@ -413,6 +414,12 @@ bool FernschreiberUtils::supportsGeoLocation()
 QString FernschreiberUtils::getSailfishOSVersion()
 {
     return QSysInfo::productVersion();
+}
+
+QString FernschreiberUtils::mimeTypeForFile(const QString &filePath)
+{
+    QMimeDatabase mimeDatabase;
+    return mimeDatabase.mimeTypeForFile(filePath).name();
 }
 
 void FernschreiberUtils::initiateReverseGeocode(double latitude, double longitude)

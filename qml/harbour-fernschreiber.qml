@@ -52,20 +52,44 @@ ApplicationWindow
         }
     }
 
+    // Only one X-Share Method exists, so the content type isn't known from
+    // which one fired - it's read from each file's real mime type instead.
+    // A mixed selection falls back to "document", which accepts anything.
+    function classifyContentType(filePaths) {
+        var types = filePaths.map(function(filePath) {
+            var mimeType = fernschreiberUtils.mimeTypeForFile(filePath);
+            if (mimeType.indexOf("image/") === 0) {
+                return "photo";
+            } else if (mimeType.indexOf("video/") === 0) {
+                return "video";
+            } else {
+                return "document";
+            }
+        });
+        return types.every(function(type) { return type === types[0]; }) ? types[0] : "document";
+    }
+
     ShareProvider {
-        method: "image"
+        method: "file"
         registerName: true
-        capabilities: ["image/*"]
+        capabilities: ["*", "application/*", "audio/*", "font/*", "haptics/*", "image/*", "message/*", "model/*", "multipart/*", "text/*", "video/*"]
         onTriggered: {
             Debug.log("ShareProvider triggered", JSON.stringify(resources));
             appWindow.activate();
             var filePaths = resources.filter(function(resource) { return !!resource.filePath; })
                                       .map(function(resource) { return resource.filePath; });
             if (filePaths.length > 0) {
+                var contentType = classifyContentType(filePaths);
+                var headerDescription = contentType === "photo" ? qsTr("Send Image")
+                    : contentType === "video" ? qsTr("Send Video")
+                    : qsTr("Send File");
+                var neededPermissions = contentType === "photo" ? ["can_send_photos"]
+                    : contentType === "video" ? ["can_send_videos"]
+                    : ["can_send_documents"];
                 pageStack.push(Qt.resolvedUrl("pages/ChatSelectionPage.qml"), {
-                    headerDescription: qsTr("Send Image"),
-                    payload: {filePaths: filePaths, neededPermissions: ["can_send_photos"]},
-                    state: "shareImage"
+                    headerDescription: headerDescription,
+                    payload: {filePaths: filePaths, contentType: contentType, neededPermissions: neededPermissions},
+                    state: "shareFiles"
                 });
             }
         }

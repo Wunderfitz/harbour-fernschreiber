@@ -2544,5 +2544,13 @@
         <source>Send Image</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Send Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
