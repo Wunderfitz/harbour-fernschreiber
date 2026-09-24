@@ -485,7 +485,7 @@ Page {
         forwardMessagesTimer.messageIds = messageIds;
         forwardMessagesTimer.start();
     }
-    function sendSharedFiles(filePaths) {
+    function sendSharedFiles(filePaths, contentType) {
         clearAttachmentPreviewRow();
         attachmentPreviewRow.attachedFiles = filePaths.map(function(filePath) {
             return {
@@ -495,7 +495,9 @@ Page {
                 "mimeType": ""
             };
         });
-        attachmentPreviewRow.isPicture = true;
+        attachmentPreviewRow.isPicture = contentType === "photo";
+        attachmentPreviewRow.isVideo = contentType === "video";
+        attachmentPreviewRow.isDocument = contentType === "document";
         controlSendButton();
     }
     function hasSendPrivilege(privilege) {
