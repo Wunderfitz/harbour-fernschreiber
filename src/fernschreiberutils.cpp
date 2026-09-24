@@ -33,7 +33,6 @@
 #include <QSysInfo>
 #include <QNetworkRequest>
 #include <QNetworkReply>
-#include <QMimeDatabase>
 
 #define DEBUG_MODULE FernschreiberUtils
 #include "debuglog.h"
