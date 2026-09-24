@@ -2509,15 +2509,15 @@
     <name>harbour-fernschreiber</name>
     <message>
         <source>Send Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä kuva</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä video</translation>
     </message>
     <message>
         <source>Send File</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä tiedosto</translation>
     </message>
 </context>
 </TS>

@@ -2508,15 +2508,15 @@
     <name>harbour-fernschreiber</name>
     <message>
         <source>Send Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Skicka bild</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Skicka video</translation>
     </message>
     <message>
         <source>Send File</source>
-        <translation type="unfinished"></translation>
+        <translation>Skicka fil</translation>
     </message>
 </context>
 </TS>

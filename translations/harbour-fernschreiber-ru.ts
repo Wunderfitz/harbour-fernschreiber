@@ -2542,15 +2542,15 @@
     <name>harbour-fernschreiber</name>
     <message>
         <source>Send Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправить изображение</translation>
     </message>
     <message>
         <source>Send Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправить видео</translation>
     </message>
     <message>
         <source>Send File</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправить файл</translation>
     </message>
 </context>
 </TS>
