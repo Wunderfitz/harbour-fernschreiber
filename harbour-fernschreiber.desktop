@@ -14,5 +14,6 @@ ExecDBus=harbour-fernschreiber
 
 [X-Share Method file]
 Description=Send via Fernschreiber
+Description[de]=Mit Fernschreiber senden
 Capabilities=application/*;audio/*;font/*;haptics/*;image/*;message/*;model/*;multipart/*;text/*;video/*;
 SupportsMultipleFiles=true
