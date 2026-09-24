@@ -30,7 +30,8 @@ StickerManager::StickerManager(TDLibWrapper *tdLibWrapper, QObject *parent) : QO
     this->reloadNeeded = false;
 
     connect(this->tdLibWrapper, SIGNAL(recentStickersUpdated(QVariantList)), this, SLOT(handleRecentStickersUpdated(QVariantList)));
-    connect(this->tdLibWrapper, SIGNAL(stickersReceived(QVariantList)), this, SLOT(handleStickersReceived(QVariantList)));
+    connect(this->tdLibWrapper, SIGNAL(favoriteStickersUpdated(QVariantList)), this, SLOT(handleFavoriteStickersUpdated(QVariantList)));
+    connect(this->tdLibWrapper, SIGNAL(stickersReceived(QString, QVariantList)), this, SLOT(handleStickersReceived(QString, QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SLOT(handleInstalledStickerSetsUpdated(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(stickerSetsReceived(QVariantList)), this, SLOT(handleStickerSetsReceived(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(stickerSetReceived(QVariantMap)), this, SLOT(handleStickerSetReceived(QVariantMap)));
@@ -44,6 +45,11 @@ StickerManager::~StickerManager()
 QVariantList StickerManager::getRecentStickers()
 {
     return this->recentStickers;
+}
+
+QVariantList StickerManager::getFavoriteStickers()
+{
+    return this->favoriteStickers;
 }
 
 QVariantList StickerManager::getInstalledStickerSets()
@@ -82,9 +88,22 @@ void StickerManager::handleRecentStickersUpdated(const QVariantList &stickerIds)
     this->recentStickerIds = stickerIds;
 }
 
-void StickerManager::handleStickersReceived(const QVariantList &stickers)
+void StickerManager::handleFavoriteStickersUpdated(const QVariantList &stickerIds)
 {
-    LOG("Receiving stickers....");
+    LOG("Favorite stickers updated...." << stickerIds);
+    // The update only carries file IDs, the favorite stickers themselves need to be fetched
+    tdLibWrapper->getFavoriteStickers();
+}
+
+void StickerManager::handleStickersReceived(const QString &extra, const QVariantList &stickers)
+{
+    LOG("Receiving stickers...." << extra);
+    if (extra == "getFavoriteStickers") {
+        this->favoriteStickers = stickers;
+        emit favoriteStickersChanged();
+        return;
+    }
+
     QListIterator<QVariant> stickersIterator(stickers);
     while (stickersIterator.hasNext()) {
         QVariantMap newSticker = stickersIterator.next().toMap();
@@ -97,6 +116,7 @@ void StickerManager::handleStickersReceived(const QVariantList &stickers)
         QString stickerId = stickerIdIterator.next().toString();
         this->recentStickers.append(this->stickers.value(stickerId));
     }
+    emit recentStickersChanged();
 }
 
 void StickerManager::handleInstalledStickerSetsUpdated(const QVariantList &stickerSetIds)

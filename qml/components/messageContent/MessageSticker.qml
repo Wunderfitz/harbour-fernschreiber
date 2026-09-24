@@ -46,7 +46,7 @@ MessageContentBase {
     Item {
 
         width: Math.min( stickerData.width, parent.width )
-        height: width * aspectRatio
+        height: width / aspectRatio
         // (centered in image mode, text-like in sticker mode)
         x: appSettings.showStickersAsImages ? (parent.width - width) / 2 :
             isOwnSticker ? (parent.width - width) : 0

@@ -34,6 +34,7 @@ public:
     ~StickerManager();
 
     Q_INVOKABLE QVariantList getRecentStickers();
+    Q_INVOKABLE QVariantList getFavoriteStickers();
     Q_INVOKABLE QVariantList getInstalledStickerSets();
     Q_INVOKABLE QVariantMap getStickerSet(const QString &stickerSetId);
     Q_INVOKABLE bool hasStickerSet(const QString &stickerSetId);
@@ -43,11 +44,14 @@ public:
 
 signals:
     void stickerSetsReceived();
+    void recentStickersChanged();
+    void favoriteStickersChanged();
 
 private slots:
 
     void handleRecentStickersUpdated(const QVariantList &stickerIds);
-    void handleStickersReceived(const QVariantList &stickers);
+    void handleFavoriteStickersUpdated(const QVariantList &stickerIds);
+    void handleStickersReceived(const QString &extra, const QVariantList &stickers);
     void handleInstalledStickerSetsUpdated(const QVariantList &stickerSetIds);
     void handleStickerSetsReceived(const QVariantList &stickerSets);
     void handleStickerSetReceived(const QVariantMap &stickerSet);
@@ -58,6 +62,7 @@ private:
 
     QVariantList recentStickers;
     QVariantList recentStickerIds;
+    QVariantList favoriteStickers;
     QVariantList installedStickerSets;
     QVariantList installedStickerSetIds;
     QVariantMap stickers;

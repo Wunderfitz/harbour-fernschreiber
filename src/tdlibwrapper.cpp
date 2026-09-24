@@ -164,7 +164,8 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(secretChat(qlonglong, QVariantMap)), this, SLOT(handleSecretChatReceived(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(secretChatUpdated(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SIGNAL(recentStickersUpdated(QVariantList)));
-    connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SIGNAL(stickersReceived(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(favoriteStickersUpdated(QVariantList)), this, SIGNAL(favoriteStickersUpdated(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(stickers(QString, QVariantList)), this, SIGNAL(stickersReceived(QString, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SIGNAL(installedStickerSetsUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSets(QVariantList)), this, SLOT(handleStickerSets(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSet(QVariantMap)), this, SIGNAL(stickerSetReceived(QVariantMap)));
@@ -936,6 +937,16 @@ void TDLibWrapper::getRecentStickers()
     LOG("Retrieving recent stickers");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getRecentStickers");
+    requestObject.insert(_EXTRA, "getRecentStickers");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getFavoriteStickers()
+{
+    LOG("Retrieving favorite stickers");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getFavoriteStickers");
+    requestObject.insert(_EXTRA, "getFavoriteStickers");
     this->sendRequest(requestObject);
 }
 
