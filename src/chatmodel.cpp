@@ -115,7 +115,7 @@ public:
     QVector<int> setAlbumEntryFilter(bool isAlbumChild);
     QVector<int> setAlbumEntryMessageIds(const QVariantList &newAlbumMessageIds);
 
-    int senderUserId() const;
+    qlonglong senderUserId() const;
     qlonglong senderChatId() const;
     bool senderIsChat() const;
 
@@ -193,9 +193,9 @@ QVector<int> ChatModel::MessageData::flagsToRoles(uint flags)
     return roles;
 }
 
-int ChatModel::MessageData::senderUserId() const
+qlonglong ChatModel::MessageData::senderUserId() const
 {
-    return messageData.value(SENDER_ID).toMap().value(USER_ID).toInt();
+    return messageData.value(SENDER_ID).toMap().value(USER_ID).toLongLong();
 }
 
 qlonglong ChatModel::MessageData::senderChatId() const
@@ -1173,7 +1173,7 @@ int ChatModel::calculateLastKnownMessageId()
     LOG("calculateLastKnownMessageId");
     const qlonglong lastKnownMessageId = this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong();
     LOG("lastKnownMessageId" << lastKnownMessageId);
-    const int myUserId = tdLibWrapper->getUserInformation().value(ID).toInt();
+    const qlonglong myUserId = tdLibWrapper->getUserInformation().value(ID).toLongLong();
     qlonglong lastOwnMessageId = 0;
     for (int i = (messages.size() - 1); i >= 0; i--) {
         MessageData *currentMessage = messages.at(i);

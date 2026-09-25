@@ -34,7 +34,7 @@ Page {
 
     property bool loading: true;
     property bool isInitialized: false;
-    readonly property int myUserId: tdLibWrapper.getUserInformation().id;
+    readonly property double myUserId: tdLibWrapper.getUserInformation().id;
     property var chatInformation;
     property var secretChatDetails;
     property alias chatPicture: chatPictureThumbnail.photoData
