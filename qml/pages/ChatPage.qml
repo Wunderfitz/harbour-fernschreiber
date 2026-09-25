@@ -398,6 +398,21 @@ Page {
         forwardMessagesTimer.messageIds = messageIds;
         forwardMessagesTimer.start();
     }
+    function sendSharedFiles(filePaths, contentType) {
+        clearAttachmentPreviewRow();
+        attachmentPreviewRow.attachedFiles = filePaths.map(function(filePath) {
+            return {
+                "filePath": filePath,
+                "fileName": filePath.substring(filePath.lastIndexOf("/") + 1),
+                "url": Qt.resolvedUrl(filePath),
+                "mimeType": fernschreiberUtils.mimeTypeForFile(filePath)
+            };
+        });
+        attachmentPreviewRow.isPicture = contentType === "photo";
+        attachmentPreviewRow.isVideo = contentType === "video";
+        attachmentPreviewRow.isDocument = contentType === "document";
+        controlSendButton();
+    }
     function hasSendPrivilege(privilege) {
         var groupStatus = chatGroupInformation ? chatGroupInformation.status : null
         var groupStatusType = groupStatus ? groupStatus["@type"] : null

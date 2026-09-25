@@ -4,8 +4,26 @@ X-Nemo-Application-Type=generic
 Icon=harbour-fernschreiber
 Exec=harbour-fernschreiber
 Name=Fernschreiber
+X-Share-Methods=file;
 
 [X-Sailjail]
-Permissions=Audio;Contacts;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;Privileged;PublicDir;RemovableMedia;UserDirs;Videos
+Permissions=Audio;Contacts;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;Privileged;PublicDir;RemovableMedia;Sharing;UserDirs;Videos
 OrganizationName=de.ygriega
 ApplicationName=fernschreiber
+ExecDBus=harbour-fernschreiber
+
+[X-Share Method file]
+Description=Send via Fernschreiber
+Description[de]=Mit Fernschreiber senden
+Description[es]=Enviar con Fernschreiber
+Description[fi]=Lähetä Fernschreiberilla
+Description[fr]=Envoyer avec Fernschreiber
+Description[hu]=Küldés Fernschreiberrel
+Description[it]=Invia con Fernschreiber
+Description[pl]=Wyślij przez Fernschreiber
+Description[ru]=Отправить через Fernschreiber
+Description[sk]=Poslať cez Fernschreiber
+Description[sv]=Skicka med Fernschreiber
+Description[zh_CN]=通过 Fernschreiber 发送
+Capabilities=application/*;audio/*;font/*;haptics/*;image/*;message/*;model/*;multipart/*;text/*;video/*;
+SupportsMultipleFiles=true

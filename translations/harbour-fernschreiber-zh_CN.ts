@@ -2474,4 +2474,19 @@
         <translation>发送游戏</translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>发送图片</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>发送视频</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>发送文件</translation>
+    </message>
+</context>
 </TS>

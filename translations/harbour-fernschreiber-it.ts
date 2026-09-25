@@ -2504,4 +2504,19 @@
         <translation>ha inviato un gioco</translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Invia immagine</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Invia video</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Invia file</translation>
+    </message>
+</context>
 </TS>

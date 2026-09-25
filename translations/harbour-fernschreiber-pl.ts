@@ -2535,4 +2535,19 @@
         <translation>wysłał grę</translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Wyślij obraz</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Wyślij film</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Wyślij plik</translation>
+    </message>
+</context>
 </TS>

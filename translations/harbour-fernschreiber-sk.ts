@@ -2535,4 +2535,19 @@
         <translation>poslal hru</translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Poslať obrázok</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Poslať video</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Poslať súbor</translation>
+    </message>
+</context>
 </TS>

@@ -28,6 +28,7 @@
 #include <QGeoPositionInfo>
 #include <QGeoPositionInfoSource>
 #include <QNetworkAccessManager>
+#include <QMimeDatabase>
 #include "tdlibwrapper.h"
 
 class FernschreiberUtils : public QObject
@@ -59,6 +60,8 @@ public:
     Q_INVOKABLE void stopGeoLocationUpdates();
     Q_INVOKABLE bool supportsGeoLocation();
     Q_INVOKABLE QString getSailfishOSVersion();
+    Q_INVOKABLE QString mimeTypeForFile(const QString &filePath);
+    Q_INVOKABLE QString writeSharedDataToFile(const QString &name, const QString &data);
     Q_INVOKABLE void initiateReverseGeocode(double latitude, double longitude);
 
 signals:

@@ -44,6 +44,7 @@ Dialog {
     /*
         payload dependent on chatSelectionPage.state
          - forwardMessages: {fromChatId, messageIds, neededPermissions}
+         - shareFiles: {filePaths, contentType, neededPermissions}
     */
     property var payload: ({})
 
@@ -54,6 +55,9 @@ Dialog {
             break;
         case "fillTextArea": // ReplyMarkupButtons: inlineKeyboardButtonTypeSwitchInline
             acceptDestinationInstance.setMessageText(payload.text)
+            break;
+        case "shareFiles":
+            acceptDestinationInstance.sendSharedFiles(payload.filePaths, payload.contentType)
             break;
         // future uses of chat selection can be processed here
         }
@@ -97,6 +101,7 @@ Dialog {
                 switch(chatSelectionPage.state) {
                 case "forwardMessages":
                 case "fillTextArea":
+                case "shareFiles":
                     chatSelectionPage.acceptDestinationProperties = { "chatInformation" :  chat};
                     chatSelectionPage.acceptDestination = Qt.resolvedUrl("../pages/ChatPage.qml");
                     break;

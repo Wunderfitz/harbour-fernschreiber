@@ -2478,4 +2478,19 @@
         <translation>játékot küldött</translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Kép küldése</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Videó küldése</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Fájl küldése</translation>
+    </message>
+</context>
 </TS>
