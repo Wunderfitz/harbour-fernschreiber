@@ -1251,6 +1251,23 @@ void TDLibWrapper::importContacts(const QVariantList &contacts)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::addContact(qlonglong userId, const QString &firstName, const QString &lastName, const QString &phoneNumber, bool sharePhoneNumber)
+{
+    LOG("Adding contact" << userId << firstName << lastName);
+    QVariantMap contact;
+    contact.insert(_TYPE, "importedContact");
+    contact.insert("first_name", firstName);
+    contact.insert("last_name", lastName);
+    contact.insert("phone_number", phoneNumber);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "addContact");
+    requestObject.insert("user_id", userId);
+    requestObject.insert("contact", contact);
+    requestObject.insert("share_phone_number", sharePhoneNumber);
+    requestObject.insert(_EXTRA, "addContact");
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchChatMessages(qlonglong chatId, const QString &query, qlonglong fromMessageId)
 {
     LOG("Searching for messages" << chatId << query << fromMessageId);
