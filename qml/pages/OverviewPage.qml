@@ -284,7 +284,7 @@ Page {
             }
         }
         onErrorReceived: {
-            Functions.handleErrorMessage(code, message);
+            Functions.handleErrorMessage(code, message, extra);
         }
         onCopyToDownloadsSuccessful: {
             appNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
