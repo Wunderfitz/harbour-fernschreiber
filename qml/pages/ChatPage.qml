@@ -369,10 +369,13 @@ Page {
         }
 
         var wordBoundaries = getWordBoundaries(text, cursorPosition);
-        var currentWord = text.substring(wordBoundaries.beginIndex, wordBoundaries.endIndex);
+        // Only what is written up to the cursor counts: when the text is set
+        // as a whole (a draft, a message to edit, a picked emoji), the cursor
+        // sits at the start until it is placed, and nobody is typing a name
+        var typedWord = text.substring(wordBoundaries.beginIndex, cursorPosition);
         // An @ on its own already asks for the whole list, that's what it is for
-        if (currentWord.length > 0 && currentWord.charAt(0) === '@') {
-            updateAtMentionSuggestions(currentWord.substring(1));
+        if (typedWord.length > 0 && typedWord.charAt(0) === '@') {
+            updateAtMentionSuggestions(typedWord.substring(1));
         } else {
             clearAtMentionSuggestions();
         }
@@ -649,13 +652,7 @@ Page {
             chatPage.emojiProposals = result;
         }
         onErrorReceived: {
-            if (extra.indexOf("mentionSuggestions:") === 0) {
-                // Not everybody may see who is in a chat - that only means
-                // there is nothing to suggest, it is nothing to report
-                Debug.log("[ChatPage] Members of this chat can't be searched: " + message);
-                return;
-            }
-            Functions.handleErrorMessage(code, message);
+            Functions.handleErrorMessage(code, message, extra);
         }
         onChatMembersReceived: {
             if (chatPage.atMentionActive && extra === ( "mentionSuggestions:" + chatPage.atMentionQuery )) {
@@ -2309,6 +2306,11 @@ Page {
                                 controlSendButton();
                                 handleAtMention(newMessageTextField.text, newMessageTextField.cursorPosition);
                                 textReplacementTimer.restart();
+                            }
+                            // A cursor placed after the text was set, or moved into
+                            // or out of a name, changes what is being written
+                            onCursorPositionChanged: {
+                                handleAtMention(newMessageTextField.text, newMessageTextField.cursorPosition);
                             }
                             onActiveFocusChanged: {
                                 if (activeFocus) {
