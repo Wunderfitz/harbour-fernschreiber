@@ -40,6 +40,26 @@ function getUserName(userInformation) {
     return ((userInformation.first_name || "") + " " + (userInformation.last_name || "")).trim();
 }
 
+function getPhoneNumber(phoneNumber) {
+    var trimmedPhoneNumber = (phoneNumber || "").trim();
+    if (trimmedPhoneNumber === "" || trimmedPhoneNumber.charAt(0) === "+") {
+        return trimmedPhoneNumber;
+    }
+    return "+" + trimmedPhoneNumber;
+}
+
+function getUserNameTag(userInformation) {
+    if (userInformation) {
+        if (userInformation.username) {
+            return "@" + userInformation.username;
+        }
+        if (userInformation.usernames && userInformation.usernames.active_usernames && userInformation.usernames.active_usernames.length > 0) {
+            return "@" + userInformation.usernames.active_usernames[0];
+        }
+    }
+    return "";
+}
+
 function getMessageText(message, simple, currentUserId, ignoreEntities) {
 
     var myself = false;
@@ -100,6 +120,8 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         return simple ? (myself ? qsTr("sent a location", "myself") : qsTr("sent a location")) : "";
     case 'messageVenue':
         return simple ? (myself ? qsTr("sent a venue", "myself") : qsTr("sent a venue")) : ( "<b>" + message.content.venue.title + "</b>, " + message.content.venue.address );
+    case 'messageContact':
+        return simple ? (myself ? qsTr("shared the contact %1", "myself; %1 is a name").arg(getUserName(message.content.contact)) : qsTr("shared the contact %1", "%1 is a name").arg(getUserName(message.content.contact))) : "";
     case 'messageContactRegistered':
         return myself ? qsTr("have registered with Telegram") : qsTr("has registered with Telegram");
     case 'messageChatJoinByLink':
@@ -508,7 +530,14 @@ function getMessagesArrayText(messages) {
     return lines.join("\n");
 }
 
-function handleErrorMessage(code, message) {
+function handleErrorMessage(code, message, extra) {
+    if (extra && extra.indexOf("mentionSuggestions:") === 0) {
+        // Not everybody may see who is in a chat - that only means there is
+        // nothing to suggest, it is nothing to report. Every page listening
+        // for errors gets this one, not only the chat page that asked
+        Debug.log("[Functions] Members of this chat can't be searched: " + message);
+        return;
+    }
     if (code === 404 || (code === 400 && message === "USERNAME_INVALID")) {
         // Silently ignore
         // - 404 Not Found messages (occur sometimes, without clear context...)

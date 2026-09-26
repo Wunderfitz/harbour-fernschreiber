@@ -33,7 +33,7 @@ Page {
     property bool loading: true;
     property bool logoutLoading: false;
     property int connectionState: TelegramAPI.WaitingForNetwork
-    property int ownUserId;
+    property double ownUserId;
     property bool chatListCreated: false;
 
     // link handler:
@@ -248,7 +248,7 @@ Page {
             setPageStatus();
         }
         onOwnUserIdFound: {
-            overviewPage.ownUserId = ownUserId;
+            overviewPage.ownUserId = parseInt(ownUserId);
         }
         onChatLastMessageUpdated: {
             if (!overviewPage.chatListCreated) {
@@ -284,7 +284,7 @@ Page {
             }
         }
         onErrorReceived: {
-            Functions.handleErrorMessage(code, message);
+            Functions.handleErrorMessage(code, message, extra);
         }
         onCopyToDownloadsSuccessful: {
             appNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);

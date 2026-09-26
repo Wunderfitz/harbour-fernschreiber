@@ -35,7 +35,7 @@ Dialog {
         chatSelectionPage.currentDepth = chatSelectionPage.currentDepth - 1;
         return(chatSelectionPage.currentDepth === 0);
     } )
-    property int myUserId: tdLibWrapper.getUserInformation().id
+    property double myUserId: tdLibWrapper.getUserInformation().id
     property alias headerTitle: pageHeader.title
     property alias headerDescription: pageHeader.description
 

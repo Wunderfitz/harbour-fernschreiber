@@ -85,6 +85,40 @@
     </message>
 </context>
 <context>
+    <name>AddContactPage</name>
+    <message>
+        <source>Add to Contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <comment>add contact dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not a Telegram user yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>First name</source>
+        <comment>add contact dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last name</source>
+        <comment>add contact dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save on this device as well</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adds the contact to the address book of your device</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BackgroundProgressIndicator</name>
     <message>
         <source>%1 %</source>
@@ -665,6 +699,17 @@
     </message>
 </context>
 <context>
+    <name>DeviceContacts</name>
+    <message>
+        <source>%1 is already in the contacts of your device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not save the contact on your device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EditGroupChatPermissionsColumn</name>
     <message>
         <source>Group Member Permissions</source>
@@ -1018,21 +1063,13 @@
         <translation>发送视频消息</translation>
     </message>
     <message>
-        <source>have added the option %1 to a poll</source>
-        <comment>myself</comment>
+        <source>shared the contact %1</source>
+        <comment>myself; %1 is a name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>has added the option %1 to a poll</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>have removed the option %1 from a poll</source>
-        <comment>myself</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>has removed the option %1 from a poll</source>
+        <source>shared the contact %1</source>
+        <comment>%1 is a name</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1144,6 +1181,21 @@
     </message>
 </context>
 <context>
+    <name>MessageContact</name>
+    <message>
+        <source>Add to Contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 was added to your contacts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not a Telegram user yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
@@ -1210,26 +1262,6 @@
             <numerusform>已在 %2 取得 %Ln 分</numerusform>
         </translation>
     </message>
-    <message>
-        <source>have added the option %1 to the poll %2</source>
-        <comment>myself; %1 is the added poll option, %2 the poll it was added to</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>has added the option %1 to the poll %2</source>
-        <comment>%1 is the added poll option, %2 the poll it was added to</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>have removed the option %1 from the poll %2</source>
-        <comment>myself; %1 is the removed poll option, %2 the poll it was removed from</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>has removed the option %1 from the poll %2</source>
-        <comment>%1 is the removed poll option, %2 the poll it was removed from</comment>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>MessageOverlayFlickable</name>
@@ -1273,10 +1305,6 @@
         <translation>
             <numerusform>总计 %Ln 次投票</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>Add an Option</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1537,33 +1565,6 @@
     <message>
         <source>An explanation can be up to 200 characters long.</source>
         <translation>提示文本可长达200个字符。</translation>
-    </message>
-</context>
-<context>
-    <name>PollOptionPage</name>
-    <message>
-        <source>Add an Option</source>
-        <comment>Dialog Header</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>to %1</source>
-        <comment>After dialog header… Add an Option to [poll question]</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter an answer here</source>
-        <translation type="unfinished">在此输入回答</translation>
-    </message>
-    <message numerus="yes">
-        <source>Answer (%Ln characters left)</source>
-        <translation type="unfinished">
-            <numerusform>回答(剩余 %Ln 个字符)</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Everybody in this chat can see who added which answer.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2543,23 +2544,13 @@
         <translation>发送游戏</translation>
     </message>
     <message>
-        <source>have added the option %1 to a poll</source>
-        <comment>myself; %1 is the added poll option</comment>
+        <source>shared the contact %1</source>
+        <comment>myself; %1 is a name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>has added the option %1 to a poll</source>
-        <comment>%1 is the added poll option</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>have removed the option %1 from a poll</source>
-        <comment>myself; %1 is the removed poll option</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>has removed the option %1 from a poll</source>
-        <comment>%1 is the removed poll option</comment>
+        <source>shared the contact %1</source>
+        <comment>%1 is a name</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>

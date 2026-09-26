@@ -28,7 +28,7 @@ Row {
     width: parent.width
     height: inReplyToMessageColumn.height
 
-    property string myUserId;
+    property double myUserId;
     property var inReplyToMessage;
     property bool editable: false;
     property bool inReplyToMessageDeleted: false;

@@ -31,7 +31,7 @@ Page {
     property string searchString
 
     property int chatOnlineMemberCount: 0;
-    property int myUserId: tdLibWrapper.getUserInformation().id;
+    property double myUserId: tdLibWrapper.getUserInformation().id;
 
     property bool isPrivateChat: false
     property bool isSecretChat: false

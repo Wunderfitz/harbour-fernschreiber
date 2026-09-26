@@ -671,6 +671,28 @@ void TDLibWrapper::sendLocationMessage(qlonglong chatId, double latitude, double
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::sendContactMessage(qlonglong chatId, const QString &phoneNumber, const QString &firstName, const QString &lastName, qlonglong replyToMessageId)
+{
+    LOG("Sending contact message" << chatId << firstName << lastName << replyToMessageId);
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessageContact");
+
+    // Only name and number are shared, not the whole vCard of the device
+    // contact - the user_id is resolved by Telegram from the phone number
+    QVariantMap contact;
+    contact.insert(_TYPE, "contact");
+    contact.insert("phone_number", phoneNumber);
+    contact.insert("first_name", firstName);
+    contact.insert("last_name", lastName);
+    contact.insert("vcard", "");
+    contact.insert("user_id", 0);
+    inputMessageContent.insert("contact", contact);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::sendStickerMessage(qlonglong chatId, const QString &fileId, qlonglong replyToMessageId)
 {
     LOG("Sending sticker message" << chatId << fileId << replyToMessageId);
@@ -1067,6 +1089,22 @@ void TDLibWrapper::setChatPermissions(const QString &chatId, const QVariantMap &
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::searchChatMembers(qlonglong chatId, const QString &query, int limit, const QString &extra)
+{
+    LOG("Searching members of chat" << chatId << query << limit);
+    QVariantMap filter;
+    // Whoever may be mentioned in this chat, which is what TDLib has this filter for
+    filter.insert(_TYPE, "chatMembersFilterMention");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "searchChatMembers");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("query", query);
+    requestObject.insert("limit", limit);
+    requestObject.insert("filter", filter);
+    requestObject.insert(_EXTRA, extra);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::setChatMemberStatus(const QString &chatId, const QString &memberUserId, const QVariantMap &status)
 {
     LOG("Setting Chat Member Status" << chatId << memberUserId);
@@ -1262,6 +1300,23 @@ void TDLibWrapper::importContacts(const QVariantList &contacts)
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "importContacts");
     requestObject.insert("contacts", contacts);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::addContact(qlonglong userId, const QString &firstName, const QString &lastName, const QString &phoneNumber, bool sharePhoneNumber)
+{
+    LOG("Adding contact" << userId << firstName << lastName);
+    QVariantMap contact;
+    contact.insert(_TYPE, "importedContact");
+    contact.insert("first_name", firstName);
+    contact.insert("last_name", lastName);
+    contact.insert("phone_number", phoneNumber);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "addContact");
+    requestObject.insert("user_id", userId);
+    requestObject.insert("contact", contact);
+    requestObject.insert("share_phone_number", sharePhoneNumber);
+    requestObject.insert(_EXTRA, "addContact");
     this->sendRequest(requestObject);
 }
 

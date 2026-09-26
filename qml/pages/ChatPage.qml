@@ -34,7 +34,7 @@ Page {
 
     property bool loading: true;
     property bool isInitialized: false;
-    readonly property int myUserId: tdLibWrapper.getUserInformation().id;
+    readonly property double myUserId: tdLibWrapper.getUserInformation().id;
     property var chatInformation;
     property var secretChatDetails;
     property alias chatPicture: chatPictureThumbnail.photoData
@@ -51,6 +51,14 @@ Page {
     property var chatGroupInformation;
     property int chatOnlineMemberCount: 0;
     property var emojiProposals;
+    property bool atMentionActive: false;
+    property string atMentionQuery: "";
+    // Only a group knows who its members are, and a channel doesn't tell them
+    // to anyone but its admins
+    readonly property bool canSearchChatMembers: isBasicGroup || ( isSuperGroup && !isChannel );
+    // Nobody else is in a chat with a single person, but the reader may still
+    // want to point them to someone else they know of
+    readonly property bool suggestsKnownUsers: isPrivateChat || isSecretChat;
     property bool iterativeInitialization: false;
     property var messageToShow;
     property string messageIdToShow;
@@ -235,8 +243,10 @@ Page {
         attachmentPreviewRow.isDocument = false;
         attachmentPreviewRow.isVoiceNote = false;
         attachmentPreviewRow.isLocation = false;
+        attachmentPreviewRow.isContact = false;
         attachmentPreviewRow.attachedFiles = [];
         attachmentPreviewRow.locationData = null;
+        attachmentPreviewRow.contactData = null;
         attachmentPreviewRow.attachmentDescription = "";
         uploadStatusRow.clear();
         fernschreiberUtils.stopGeoLocationUpdates();
@@ -261,7 +271,8 @@ Page {
         if (newMessageTextField.text.length !== 0
                 || attachmentPreviewRow.attachedFiles.length > 0
                 || attachmentPreviewRow.isVoiceNote
-                || attachmentPreviewRow.isLocation) {
+                || attachmentPreviewRow.isLocation
+                || attachmentPreviewRow.isContact) {
             newMessageSendButton.enabled = true;
         } else {
             newMessageSendButton.enabled = false;
@@ -304,6 +315,9 @@ Page {
                 }
                 if (attachmentPreviewRow.isLocation) {
                     tdLibWrapper.sendLocationMessage(chatInformation.id, attachmentPreviewRow.locationData.latitude, attachmentPreviewRow.locationData.longitude, attachmentPreviewRow.locationData.horizontalAccuracy, newMessageColumn.replyToMessageId);
+                }
+                if (attachmentPreviewRow.isContact) {
+                    tdLibWrapper.sendContactMessage(chatInformation.id, attachmentPreviewRow.contactData.phoneNumber, attachmentPreviewRow.contactData.firstName, attachmentPreviewRow.contactData.lastName, newMessageColumn.replyToMessageId);
                 }
                 clearAttachmentPreviewRow();
             } else {
@@ -351,13 +365,86 @@ Page {
         } else {
             chatPage.emojiProposals = null;
         }
-        if (currentWord.length > 1 && currentWord.charAt(0) === '@') {
-            knownUsersRepeater.model = knownUsersProxyModel;
-            knownUsersProxyModel.setFilterWildcard("*" + currentWord.substring(1) + "*");
-        } else {
-            knownUsersRepeater.model = undefined;
+    }
+
+    // Not debounced like the replacements above: the list is expected to be
+    // there the moment the @ is typed, only asking TDLib about the members
+    // waits for a break in the typing
+    function handleAtMention(text, cursorPosition) {
+        if(!newMessageTextField.focus) {
+            // Whatever is written elsewhere, nobody is picking a name right now
+            clearAtMentionSuggestions();
+            return;
         }
 
+        // Silica's text already holds the word the keyboard is still composing,
+        // right behind the cursor - which only moves past it once the word is
+        // committed. The length of the editor leaves that word out
+        var typedEnd = cursorPosition + Math.max(0, text.length - newMessageTextField.length);
+        var wordBoundaries = getWordBoundaries(text, typedEnd);
+        // Only what is written up to there counts: when the text is set as a
+        // whole (a draft, a message to edit, a picked emoji), the cursor sits
+        // at the start until it is placed, and nobody is typing a name
+        var typedWord = text.substring(wordBoundaries.beginIndex, typedEnd);
+        // An @ on its own already asks for the whole list, that's what it is for
+        if (typedWord.length > 0 && typedWord.charAt(0) === '@') {
+            updateAtMentionSuggestions(typedWord.substring(1));
+        } else {
+            clearAtMentionSuggestions();
+        }
+    }
+
+    function updateAtMentionSuggestions(query) {
+        if (chatPage.suggestsKnownUsers) {
+            // Everybody this app knows of is at hand, no need to ask TDLib
+            knownUsersProxyModel.setFilterWildcard("*" + query + "*");
+            chatPage.atMentionActive = true;
+            chatPage.atMentionQuery = query;
+            return;
+        }
+        if (!chatPage.canSearchChatMembers) {
+            // A channel keeps its members to its admins
+            clearAtMentionSuggestions();
+            return;
+        }
+        chatPage.atMentionActive = true;
+        chatPage.atMentionQuery = query;
+        atMentionSearchTimer.restart();
+    }
+
+    function clearAtMentionSuggestions() {
+        chatPage.atMentionActive = false;
+        chatPage.atMentionQuery = "";
+        atMentionSuggestionModel.clear();
+    }
+
+    function setAtMentionSuggestions(members) {
+        atMentionSuggestionModel.clear();
+        for (var i = 0; i < members.length; i++) {
+            var memberId = members[i].member_id;
+            if (!memberId || memberId["@type"] !== "messageSenderUser" || memberId.user_id === chatPage.myUserId) {
+                continue;
+            }
+            var memberInformation = tdLibWrapper.getUserInformation(memberId.user_id);
+            if (!memberInformation.id || ( memberInformation.type && memberInformation.type["@type"] === "userTypeDeleted" )) {
+                continue;
+            }
+            var memberUserNames = memberInformation.usernames;
+            var memberUserName = "";
+            if (memberUserNames) {
+                memberUserName = memberUserNames.editable_username
+                        || ( memberUserNames.active_usernames && memberUserNames.active_usernames.length > 0 ? memberUserNames.active_usernames[0] : "" );
+            } else {
+                memberUserName = memberInformation.username || "";
+            }
+            atMentionSuggestionModel.append({
+                                                "user_id" : memberInformation.id,
+                                                "title" : Functions.getUserName(memberInformation),
+                                                "user_name" : memberUserName,
+                                                "user_handle" : memberUserName ? ( "@" + memberUserName ) : "",
+                                                "photo_small" : memberInformation.profile_photo ? memberInformation.profile_photo.small : ({})
+                                            });
+        }
     }
 
     function replaceMessageText(text, cursorPosition, newText) {
@@ -584,7 +671,12 @@ Page {
             chatPage.emojiProposals = result;
         }
         onErrorReceived: {
-            Functions.handleErrorMessage(code, message);
+            Functions.handleErrorMessage(code, message, extra);
+        }
+        onChatMembersReceived: {
+            if (chatPage.atMentionActive && extra === ( "mentionSuggestions:" + chatPage.atMentionQuery )) {
+                chatPage.setAtMentionSuggestions(members);
+            }
         }
         onReceivedMessage: {
             if (message.is_pinned) {
@@ -758,6 +850,13 @@ Page {
         }
     }
 
+    ListModel {
+        // Whoever may be mentioned in this chat, as TDLib answered last.
+        // Dynamic roles because the profile picture is an object of its own
+        id: atMentionSuggestionModel
+        dynamicRoles: true
+    }
+
     Timer {
         id: lostFocusTimer
         interval: 200
@@ -765,6 +864,18 @@ Page {
         repeat: false
         onTriggered: {
             newMessageTextField.forceActiveFocus();
+        }
+    }
+
+    Timer {
+        id: atMentionSearchTimer
+        interval: 250
+        running: false
+        repeat: false
+        onTriggered: {
+            if (chatPage.atMentionActive) {
+                tdLibWrapper.searchChatMembers(chatInformation.id, chatPage.atMentionQuery, 50, "mentionSuggestions:" + chatPage.atMentionQuery);
+            }
         }
     }
 
@@ -1406,6 +1517,7 @@ Page {
                                 return Functions.getVideoHeight(parentWidth, content.animation);
                             case "messageAudio":
                             case "messageVoiceNote":
+                            case "messageContact":
                             case "messageDocument":
                                 return Theme.itemSizeLarge;
                             case "messageGame":
@@ -1440,7 +1552,7 @@ Page {
                             "messageAnimatedEmoji",
                             "messageAnimation",
                             "messageAudio",
-                            // "messageContact",
+                            "messageContact",
                             // "messageDice"
                             "messageDocument",
                             "messageGame",
@@ -1851,6 +1963,34 @@ Page {
                                     controlSendButton();
                                 }
                             }
+                            IconButton {
+                                visible: chatPage.hasSendPrivilege("can_send_basic_messages") && newMessageTextField.text === ""
+                                icon.source: "image://theme/icon-m-contact"
+                                onClicked: {
+                                    var picker = pageStack.push("Sailfish.Contacts.ContactSelectPage", {
+                                        allowedOrientations: chatPage.allowedOrientations,
+                                        // PeopleModel.PhoneNumberRequired - org.nemomobile.contacts isn't
+                                        // imported here, the chat page must not depend on it to load
+                                        requiredProperty: 2
+                                    })
+                                    picker.contactClicked.connect(function(contact, property) {
+                                        attachmentOptionsFlickable.isNeeded = false;
+                                        clearAttachmentPreviewRow();
+                                        // Telegram insists on a first name, which not every device contact has
+                                        var firstName = contact.firstName || "";
+                                        var lastName = contact.lastName || "";
+                                        if (firstName === "") {
+                                            firstName = lastName || contact.displayLabel || property.number;
+                                            lastName = "";
+                                        }
+                                        attachmentPreviewRow.contactData = { "firstName" : firstName, "lastName" : lastName, "phoneNumber" : property.number };
+                                        attachmentPreviewRow.isContact = true;
+                                        attachmentPreviewRow.attachmentDescription = Functions.getUserName({ "first_name" : firstName, "last_name" : lastName }) + "\n" + property.number;
+                                        controlSendButton();
+                                        pageStack.pop(chatPage);
+                                    })
+                                }
+                            }
                         }
 
                     }
@@ -1858,7 +1998,7 @@ Page {
 
                     Row {
                         id: attachmentPreviewRow
-                        visible: (!!locationData || attachedFiles.length > 0 || isVoiceNote) && !inlineQuery.userNameIsValid
+                        visible: (!!locationData || attachedFiles.length > 0 || isVoiceNote || isContact) && !inlineQuery.userNameIsValid
                         spacing: Theme.paddingMedium
                         width: parent.width
                         layoutDirection: Qt.RightToLeft
@@ -1869,7 +2009,9 @@ Page {
                         property bool isDocument: false;
                         property bool isVoiceNote: false;
                         property bool isLocation: false;
+                        property bool isContact: false;
                         property var locationData: null;
+                        property var contactData: null;
                         property var geocodedAddress: qsTr("Unknown address")
                         property var attachedFiles: [];
                         property string attachmentDescription: "";
@@ -1936,7 +2078,7 @@ Page {
                             id: attachmentPreviewText
                             font.pixelSize: Theme.fontSizeSmall
                             text: {
-                                if (attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation) {
+                                if (attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact) {
                                     return attachmentPreviewRow.attachmentDescription;
                                 }
                                 if (attachmentPreviewRow.attachedFiles.length > 1) {
@@ -1951,7 +2093,7 @@ Page {
                             wrapMode: Text.Wrap
                             truncationMode: TruncationMode.Fade
                             color: Theme.secondaryColor
-                            visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.attachedFiles.length > 1
+                            visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact || attachmentPreviewRow.attachedFiles.length > 1
                         }
                     }
 
@@ -2078,77 +2220,79 @@ Page {
                         width: parent.width
                         anchors.horizontalCenter: parent.horizontalCenter
                         visible: opacity > 0
-                        opacity: knownUsersRepeater.count > 0 ? 1 : 0
+                        opacity: chatPage.atMentionActive && atMentionListView.count > 0 ? 1 : 0
                         Behavior on opacity { NumberAnimation {} }
-                        height: knownUsersRepeater.count > 0 ? childrenRect.height : 0
+                        height: opacity > 0 ? atMentionListView.height : 0
                         Behavior on height { SmoothedAnimation { duration: 200 } }
                         spacing: Theme.paddingMedium
 
-                        Flickable {
+                        SilicaListView {
+                            id: atMentionListView
+
                             width: parent.width
-                            height: atMentionResultRow.height + Theme.paddingSmall
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            contentWidth: atMentionResultRow.width
+                            // Enough of the chat stays visible, the rest is scrolled to
+                            height: Math.min(count * Theme.itemSizeExtraSmall, chatContainer.height / 3)
                             clip: true
-                            Row {
-                                id: atMentionResultRow
-                                spacing: Theme.paddingMedium
-                                Repeater {
-                                    id: knownUsersRepeater
+                            quickScroll: false
+                            // Both models have the same roles for the delegate below
+                            model: chatPage.suggestsKnownUsers ? knownUsersProxyModel : atMentionSuggestionModel
 
-                                    Item {
-                                        id: knownUserItem
-                                        height: singleAtMentionRow.height
-                                        width: singleAtMentionRow.width
+                            delegate: ListItem {
+                                id: atMentionListItem
 
-                                        property string atMentionText: "@" + (user_name ? user_name : user_id + "(" + title + ")");
+                                contentHeight: Theme.itemSizeExtraSmall
+                                width: atMentionListView.width
 
-                                        Row {
-                                            id: singleAtMentionRow
-                                            spacing: Theme.paddingSmall
+                                // Someone without a public user name is mentioned by ID,
+                                // TDLibWrapper turns that into a proper mention on send
+                                readonly property string atMentionText: "@" + ( model.user_name ? model.user_name : ( model.user_id + "(" + model.title + ")" ) )
 
-                                            Item {
-                                                width: Theme.fontSizeHuge
-                                                height: Theme.fontSizeHuge
-                                                anchors.verticalCenter: parent.verticalCenter
-                                                ProfileThumbnail {
-                                                    id: atMentionThumbnail
-                                                    replacementStringHint: title
-                                                    width: parent.width
-                                                    height: parent.width
-                                                    photoData: photo_small
-                                                }
-                                            }
+                                onClicked: {
+                                    replaceMessageText(newMessageTextField.text, newMessageTextField.cursorPosition, atMentionListItem.atMentionText);
+                                    chatPage.clearAtMentionSuggestions();
+                                }
 
-                                            Column {
-                                                Text {
-                                                    text: Emoji.emojify(title, Theme.fontSizeExtraSmall)
-                                                    textFormat: Text.StyledText
-                                                    color: Theme.primaryColor
-                                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                                    font.bold: true
-                                                }
-                                                Text {
-                                                    id: userHandleText
-                                                    text: user_handle
-                                                    textFormat: Text.StyledText
-                                                    color: Theme.primaryColor
-                                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                                }
-                                            }
-                                        }
+                                Row {
+                                    width: parent.width
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    spacing: Theme.paddingMedium
 
-                                        MouseArea {
-                                            anchors.fill: parent
-                                            onClicked: {
-                                                replaceMessageText(newMessageTextField.text, newMessageTextField.cursorPosition, knownUserItem.atMentionText);
-                                                knownUsersRepeater.model = undefined;
-                                            }
-                                        }
+                                    ProfileThumbnail {
+                                        id: atMentionThumbnail
+                                        photoData: model.photo_small ? model.photo_small : ({})
+                                        replacementStringHint: model.title
+                                        width: Theme.itemSizeExtraSmall
+                                        height: width
+                                        highlighted: atMentionListItem.highlighted
+                                        anchors.verticalCenter: parent.verticalCenter
                                     }
 
+                                    Label {
+                                        id: atMentionTitleLabel
+                                        width: Math.min(implicitWidth, parent.width - atMentionThumbnail.width - atMentionHandleLabel.width - ( 2 * parent.spacing ))
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        text: Emoji.emojify(model.title, font.pixelSize)
+                                        textFormat: Text.StyledText
+                                        font.pixelSize: Theme.fontSizeSmall
+                                        font.bold: true
+                                        truncationMode: TruncationMode.Fade
+                                        color: atMentionListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                                    }
+
+                                    Label {
+                                        id: atMentionHandleLabel
+                                        width: Math.min(implicitWidth, ( parent.width - atMentionThumbnail.width - ( 2 * parent.spacing ) ) / 2)
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        visible: text !== ""
+                                        text: model.user_handle
+                                        font.pixelSize: Theme.fontSizeSmall
+                                        truncationMode: TruncationMode.Fade
+                                        color: atMentionListItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                                    }
                                 }
                             }
+
+                            VerticalScrollDecorator {}
                         }
                     }
 
@@ -2194,7 +2338,7 @@ Page {
                             labelVisible: false
                             textLeftMargin: 0
                             textTopMargin: 0
-                            enabled: !attachmentPreviewRow.isLocation
+                            enabled: !attachmentPreviewRow.isLocation && !attachmentPreviewRow.isContact
                             focus: appSettings.focusTextAreaOnChatOpen
                             EnterKey.onClicked: {
                                 if (appSettings.sendByEnter) {
@@ -2213,7 +2357,13 @@ Page {
 
                             onTextChanged: {
                                 controlSendButton();
+                                handleAtMention(newMessageTextField.text, newMessageTextField.cursorPosition);
                                 textReplacementTimer.restart();
+                            }
+                            // A cursor placed after the text was set, or moved into
+                            // or out of a name, changes what is being written
+                            onCursorPositionChanged: {
+                                handleAtMention(newMessageTextField.text, newMessageTextField.cursorPosition);
                             }
                             onActiveFocusChanged: {
                                 if (activeFocus) {

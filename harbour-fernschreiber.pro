@@ -48,6 +48,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/BackgroundImage.qml \
     qml/components/ChatListViewItem.qml \
     qml/components/ContactSync.qml \
+    qml/components/DeviceContacts.qml \
     qml/components/DocumentPreview.qml \
     qml/components/GamePreview.qml \
     qml/components/ImagePreview.qml \
@@ -101,6 +102,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/messageContent/MessageAnimatedEmoji.qml \
     qml/components/messageContent/MessageAnimation.qml \
     qml/components/messageContent/MessageAudio.qml \
+    qml/components/messageContent/MessageContact.qml \
     qml/components/messageContent/MessageContentBase.qml \
     qml/components/messageContent/MessageContentFileInfoBase.qml \
     qml/components/messageContent/MessageDocument.qml \
@@ -133,6 +135,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/settingsPage/SettingsUserProfile.qml \
     qml/js/debug.js \
     qml/js/functions.js \
+    qml/pages/AddContactPage.qml \
     qml/pages/ChatInformationPage.qml \
     qml/pages/ChatPage.qml \
     qml/pages/ChatMemberPermissionsPage.qml \

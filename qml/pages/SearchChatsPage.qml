@@ -54,13 +54,13 @@ Page {
         }
         onErrorReceived: {
             searchChatsPage.isLoading = false;
-            Functions.handleErrorMessage(code, message);
+            Functions.handleErrorMessage(code, message, extra);
         }
     }
 
     property bool isLoading: false;
     property var chatsFound;
-    readonly property var ownUserId: tdLibWrapper.getUserInformation().id;
+    readonly property double ownUserId: tdLibWrapper.getUserInformation().id;
 
     SilicaFlickable {
         id: searchChatsContainer
