@@ -78,12 +78,12 @@ Item {
                         var poll = "<a href=\"linkedmessage\" style=\"text-decoration: none; color:"+Theme.primaryColor+"\">" + Functions.enhanceHtmlEntities(message.content.poll.question) + "</a>";
                         if (pollOptionInfoLoader.optionAdded) {
                             messageText.messageContentText = messageListItem.isOwnMessage ?
-                                        qsTr("have added the option %1 to the poll %2", "myself; %1 is the added poll option, %2 the poll it was added to").arg(option).arg(poll) :
-                                        qsTr("has added the option %1 to the poll %2", "%1 is the added poll option, %2 the poll it was added to").arg(option).arg(poll);
+                                        qsTr("have added the option “%1” to the poll %2", "myself; %1 is the added poll option, %2 the poll it was added to").arg(option).arg(poll) :
+                                        qsTr("has added the option “%1” to the poll %2", "%1 is the added poll option, %2 the poll it was added to").arg(option).arg(poll);
                         } else {
                             messageText.messageContentText = messageListItem.isOwnMessage ?
-                                        qsTr("have removed the option %1 from the poll %2", "myself; %1 is the removed poll option, %2 the poll it was removed from").arg(option).arg(poll) :
-                                        qsTr("has removed the option %1 from the poll %2", "%1 is the removed poll option, %2 the poll it was removed from").arg(option).arg(poll);
+                                        qsTr("have removed the option “%1” from the poll %2", "myself; %1 is the removed poll option, %2 the poll it was removed from").arg(option).arg(poll) :
+                                        qsTr("has removed the option “%1” from the poll %2", "%1 is the removed poll option, %2 the poll it was removed from").arg(option).arg(poll);
                         }
                     }
                 }
