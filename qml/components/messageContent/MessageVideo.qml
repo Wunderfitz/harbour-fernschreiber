@@ -302,6 +302,20 @@ MessageContentBase {
                 }
             }
 
+            // Animations are silent loops, they neither pause other media nor get paused
+            readonly property bool isAnimation: typeof rawMessage !== "undefined" && rawMessage.content['@type'] === "messageAnimation"
+
+            Connections {
+                target: appWindow
+                onMediaPlaybackStarted: {
+                    if (!isAnimation && player !== messageVideo && messageVideo.playbackState === MediaPlayer.PlayingState) {
+                        enableScreensaver();
+                        messageVideo.pause();
+                        timeLeftItem.visible = true;
+                    }
+                }
+            }
+
             Video {
                 id: messageVideo
 
@@ -313,6 +327,12 @@ MessageContentBase {
                         errorText.text = qsTr("Error loading video! " + messageVideo.errorString)
                         errorTextOverlay.visible = true;
                         errorText.visible = true;
+                    }
+                }
+
+                onPlaybackStateChanged: {
+                    if (!isAnimation && playbackState === MediaPlayer.PlayingState) {
+                        appWindow.mediaPlaybackStarted(messageVideo);
                     }
                 }
 
