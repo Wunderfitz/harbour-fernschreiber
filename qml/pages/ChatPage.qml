@@ -56,6 +56,9 @@ Page {
     // Only a group knows who its members are, and a channel doesn't tell them
     // to anyone but its admins
     readonly property bool canSearchChatMembers: isBasicGroup || ( isSuperGroup && !isChannel );
+    // Nobody else is in a chat with a single person, but the reader may still
+    // want to point them to someone else they know of
+    readonly property bool suggestsKnownUsers: isPrivateChat || isSecretChat;
     property bool iterativeInitialization: false;
     property var messageToShow;
     property string messageIdToShow;
@@ -382,9 +385,15 @@ Page {
     }
 
     function updateAtMentionSuggestions(query) {
+        if (chatPage.suggestsKnownUsers) {
+            // Everybody this app knows of is at hand, no need to ask TDLib
+            knownUsersProxyModel.setFilterWildcard("*" + query + "*");
+            chatPage.atMentionActive = true;
+            chatPage.atMentionQuery = query;
+            return;
+        }
         if (!chatPage.canSearchChatMembers) {
-            // Whoever is here is no secret to the reader, and everybody else
-            // this app happens to know of is not who they are writing to
+            // A channel keeps its members to its admins
             clearAtMentionSuggestions();
             return;
         }
@@ -2182,7 +2191,8 @@ Page {
                             height: Math.min(count * Theme.itemSizeExtraSmall, chatContainer.height / 3)
                             clip: true
                             quickScroll: false
-                            model: atMentionSuggestionModel
+                            // Both models have the same roles for the delegate below
+                            model: chatPage.suggestsKnownUsers ? knownUsersProxyModel : atMentionSuggestionModel
 
                             delegate: ListItem {
                                 id: atMentionListItem
