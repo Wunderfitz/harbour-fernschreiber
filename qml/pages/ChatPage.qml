@@ -371,11 +371,15 @@ Page {
             return;
         }
 
-        var wordBoundaries = getWordBoundaries(text, cursorPosition);
-        // Only what is written up to the cursor counts: when the text is set
-        // as a whole (a draft, a message to edit, a picked emoji), the cursor
-        // sits at the start until it is placed, and nobody is typing a name
-        var typedWord = text.substring(wordBoundaries.beginIndex, cursorPosition);
+        // Silica's text already holds the word the keyboard is still composing,
+        // right behind the cursor - which only moves past it once the word is
+        // committed. The length of the editor leaves that word out
+        var typedEnd = cursorPosition + Math.max(0, text.length - newMessageTextField.length);
+        var wordBoundaries = getWordBoundaries(text, typedEnd);
+        // Only what is written up to there counts: when the text is set as a
+        // whole (a draft, a message to edit, a picked emoji), the cursor sits
+        // at the start until it is placed, and nobody is typing a name
+        var typedWord = text.substring(wordBoundaries.beginIndex, typedEnd);
         // An @ on its own already asks for the whole list, that's what it is for
         if (typedWord.length > 0 && typedWord.charAt(0) === '@') {
             updateAtMentionSuggestions(typedWord.substring(1));
