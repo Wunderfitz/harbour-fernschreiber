@@ -148,6 +148,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/OverviewPage.qml \
     qml/pages/AboutPage.qml \
     qml/pages/PollCreationPage.qml \
+    qml/pages/PollOptionPage.qml \
     qml/pages/PollResultsPage.qml \
     qml/pages/SearchChatsPage.qml \
     qml/pages/SettingsPage.qml \
