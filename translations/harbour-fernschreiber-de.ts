@@ -88,34 +88,34 @@
     <name>AddContactPage</name>
     <message>
         <source>Add to Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Zu Kontakten hinzufügen</translation>
     </message>
     <message>
         <source>Add</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hinzufügen</translation>
     </message>
     <message>
         <source>Not a Telegram user yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Noch nicht bei Telegram</translation>
     </message>
     <message>
         <source>First name</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vorname</translation>
     </message>
     <message>
         <source>Last name</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nachname</translation>
     </message>
     <message>
         <source>Save on this device as well</source>
-        <translation type="unfinished"></translation>
+        <translation>Auch auf diesem Gerät speichern</translation>
     </message>
     <message>
         <source>Adds the contact to the address book of your device</source>
-        <translation type="unfinished"></translation>
+        <translation>Fügt den Kontakt dem Adressbuch Ihres Geräts hinzu</translation>
     </message>
 </context>
 <context>
@@ -714,11 +714,11 @@
     <name>DeviceContacts</name>
     <message>
         <source>%1 is already in the contacts of your device.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ist bereits in den Kontakten Ihres Geräts.</translation>
     </message>
     <message>
         <source>Could not save the contact on your device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Konnte den Kontakt nicht auf Ihrem Gerät speichern.</translation>
     </message>
 </context>
 <context>
@@ -1079,12 +1079,12 @@
     <message>
         <source>shared the contact %1</source>
         <comment>myself; %1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>haben den Kontakt %1 geteilt</translation>
     </message>
     <message>
         <source>shared the contact %1</source>
         <comment>%1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>hat den Kontakt %1 geteilt</translation>
     </message>
 </context>
 <context>
@@ -1199,15 +1199,15 @@
     <name>MessageContact</name>
     <message>
         <source>Add to Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Zu Kontakten hinzufügen</translation>
     </message>
     <message>
         <source>%1 was added to your contacts.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 wurde zu Ihren Kontakten hinzugefügt.</translation>
     </message>
     <message>
         <source>Not a Telegram user yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Noch nicht bei Telegram</translation>
     </message>
 </context>
 <context>
@@ -2576,12 +2576,12 @@
     <message>
         <source>shared the contact %1</source>
         <comment>myself; %1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>haben den Kontakt %1 geteilt</translation>
     </message>
     <message>
         <source>shared the contact %1</source>
         <comment>%1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>hat den Kontakt %1 geteilt</translation>
     </message>
 </context>
 </TS>
