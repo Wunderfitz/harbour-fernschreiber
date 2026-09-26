@@ -55,6 +55,14 @@ ApplicationWindow
         parent: pageStack.currentPage
     }
 
+    Loader {
+        // Only loaded once a contact is about to be stored on the device,
+        // reading the address book is nothing to do on every start
+        id: deviceContactsLoader
+        active: false
+        source: Qt.resolvedUrl("components/DeviceContacts.qml")
+    }
+
     Component.onCompleted: {
         Functions.setGlobals({
             tdLibWrapper: tdLibWrapper,

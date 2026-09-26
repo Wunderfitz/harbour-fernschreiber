@@ -1406,6 +1406,7 @@ Page {
                                 return Functions.getVideoHeight(parentWidth, content.animation);
                             case "messageAudio":
                             case "messageVoiceNote":
+                            case "messageContact":
                             case "messageDocument":
                                 return Theme.itemSizeLarge;
                             case "messageGame":
@@ -1440,7 +1441,7 @@ Page {
                             "messageAnimatedEmoji",
                             "messageAnimation",
                             "messageAudio",
-                            // "messageContact",
+                            "messageContact",
                             // "messageDice"
                             "messageDocument",
                             "messageGame",

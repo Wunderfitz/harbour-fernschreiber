@@ -85,6 +85,40 @@
     </message>
 </context>
 <context>
+    <name>AddContactPage</name>
+    <message>
+        <source>Add to Contacts</source>
+        <translation>Add to Contacts</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <comment>add contact dialog</comment>
+        <translation>Add</translation>
+    </message>
+    <message>
+        <source>Not a Telegram user yet</source>
+        <translation>Not a Telegram user yet</translation>
+    </message>
+    <message>
+        <source>First name</source>
+        <comment>add contact dialog</comment>
+        <translation>First name</translation>
+    </message>
+    <message>
+        <source>Last name</source>
+        <comment>add contact dialog</comment>
+        <translation>Last name</translation>
+    </message>
+    <message>
+        <source>Save on this device as well</source>
+        <translation>Save on this device as well</translation>
+    </message>
+    <message>
+        <source>Adds the contact to the address book of your device</source>
+        <translation>Adds the contact to the address book of your device</translation>
+    </message>
+</context>
+<context>
     <name>BackgroundProgressIndicator</name>
     <message>
         <source>%1 %</source>
@@ -679,6 +713,17 @@ messages</numerusform>
     </message>
 </context>
 <context>
+    <name>DeviceContacts</name>
+    <message>
+        <source>%1 is already in the contacts of your device.</source>
+        <translation>%1 is already in the contacts of your device.</translation>
+    </message>
+    <message>
+        <source>Could not save the contact on your device.</source>
+        <translation>Could not save the contact on your device.</translation>
+    </message>
+</context>
+<context>
     <name>EditGroupChatPermissionsColumn</name>
     <message>
         <source>Group Member Permissions</source>
@@ -1033,6 +1078,16 @@ messages</numerusform>
         <source>sent a video note</source>
         <translation>sent a video note</translation>
     </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>myself; %1 is a name</comment>
+        <translation>shared the contact %1</translation>
+    </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>%1 is a name</comment>
+        <translation>shared the contact %1</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -1140,6 +1195,21 @@ messages</numerusform>
     <message>
         <source>About Fernschreiber</source>
         <translation>About Fernschreiber</translation>
+    </message>
+</context>
+<context>
+    <name>MessageContact</name>
+    <message>
+        <source>Add to Contacts</source>
+        <translation>Add to Contacts</translation>
+    </message>
+    <message>
+        <source>%1 was added to your contacts.</source>
+        <translation>%1 was added to your contacts.</translation>
+    </message>
+    <message>
+        <source>Not a Telegram user yet</source>
+        <translation>Not a Telegram user yet</translation>
     </message>
 </context>
 <context>
@@ -2504,6 +2574,16 @@ messages</numerusform>
     <message>
         <source>sent a game</source>
         <translation>sent a game</translation>
+    </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>myself; %1 is a name</comment>
+        <translation>shared the contact %1</translation>
+    </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>%1 is a name</comment>
+        <translation>shared the contact %1</translation>
     </message>
 </context>
 </TS>

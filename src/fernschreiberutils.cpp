@@ -228,6 +228,10 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     if (contentType == MESSAGE_CONTENT_TYPE_VENUE) {
         return myself ? tr("sent a venue", "myself") : tr("sent a venue");
     }
+    if (contentType == "messageContact") {
+        const QString contactName = getUserName(messageContent.value("contact").toMap());
+        return myself ? tr("shared the contact %1", "myself; %1 is a name").arg(contactName) : tr("shared the contact %1", "%1 is a name").arg(contactName);
+    }
     if (contentType == "messageContactRegistered") {
         return myself ? tr("have registered with Telegram", "myself") : tr("has registered with Telegram");
     }
