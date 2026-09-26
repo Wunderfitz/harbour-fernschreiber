@@ -44,6 +44,7 @@ PkgBR:
 Requires:
   - sailfishsilica-qt5 >= 0.10.9
   - nemo-qml-plugin-contacts-qt5
+  - sailfish-components-contacts-qt5
 
 # All installed files
 Files:

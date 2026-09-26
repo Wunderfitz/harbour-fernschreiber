@@ -235,8 +235,10 @@ Page {
         attachmentPreviewRow.isDocument = false;
         attachmentPreviewRow.isVoiceNote = false;
         attachmentPreviewRow.isLocation = false;
+        attachmentPreviewRow.isContact = false;
         attachmentPreviewRow.attachedFiles = [];
         attachmentPreviewRow.locationData = null;
+        attachmentPreviewRow.contactData = null;
         attachmentPreviewRow.attachmentDescription = "";
         uploadStatusRow.clear();
         fernschreiberUtils.stopGeoLocationUpdates();
@@ -261,7 +263,8 @@ Page {
         if (newMessageTextField.text.length !== 0
                 || attachmentPreviewRow.attachedFiles.length > 0
                 || attachmentPreviewRow.isVoiceNote
-                || attachmentPreviewRow.isLocation) {
+                || attachmentPreviewRow.isLocation
+                || attachmentPreviewRow.isContact) {
             newMessageSendButton.enabled = true;
         } else {
             newMessageSendButton.enabled = false;
@@ -304,6 +307,9 @@ Page {
                 }
                 if (attachmentPreviewRow.isLocation) {
                     tdLibWrapper.sendLocationMessage(chatInformation.id, attachmentPreviewRow.locationData.latitude, attachmentPreviewRow.locationData.longitude, attachmentPreviewRow.locationData.horizontalAccuracy, newMessageColumn.replyToMessageId);
+                }
+                if (attachmentPreviewRow.isContact) {
+                    tdLibWrapper.sendContactMessage(chatInformation.id, attachmentPreviewRow.contactData.phoneNumber, attachmentPreviewRow.contactData.firstName, attachmentPreviewRow.contactData.lastName, newMessageColumn.replyToMessageId);
                 }
                 clearAttachmentPreviewRow();
             } else {
@@ -1850,6 +1856,34 @@ Page {
                                     controlSendButton();
                                 }
                             }
+                            IconButton {
+                                visible: chatPage.hasSendPrivilege("can_send_basic_messages") && newMessageTextField.text === ""
+                                icon.source: "image://theme/icon-m-contact"
+                                onClicked: {
+                                    var picker = pageStack.push("Sailfish.Contacts.ContactSelectPage", {
+                                        allowedOrientations: chatPage.allowedOrientations,
+                                        // PeopleModel.PhoneNumberRequired - org.nemomobile.contacts isn't
+                                        // imported here, the chat page must not depend on it to load
+                                        requiredProperty: 2
+                                    })
+                                    picker.contactClicked.connect(function(contact, property) {
+                                        attachmentOptionsFlickable.isNeeded = false;
+                                        clearAttachmentPreviewRow();
+                                        // Telegram insists on a first name, which not every device contact has
+                                        var firstName = contact.firstName || "";
+                                        var lastName = contact.lastName || "";
+                                        if (firstName === "") {
+                                            firstName = lastName || contact.displayLabel || property.number;
+                                            lastName = "";
+                                        }
+                                        attachmentPreviewRow.contactData = { "firstName" : firstName, "lastName" : lastName, "phoneNumber" : property.number };
+                                        attachmentPreviewRow.isContact = true;
+                                        attachmentPreviewRow.attachmentDescription = Functions.getUserName({ "first_name" : firstName, "last_name" : lastName }) + "\n" + property.number;
+                                        controlSendButton();
+                                        pageStack.pop(chatPage);
+                                    })
+                                }
+                            }
                         }
 
                     }
@@ -1857,7 +1891,7 @@ Page {
 
                     Row {
                         id: attachmentPreviewRow
-                        visible: (!!locationData || attachedFiles.length > 0 || isVoiceNote) && !inlineQuery.userNameIsValid
+                        visible: (!!locationData || attachedFiles.length > 0 || isVoiceNote || isContact) && !inlineQuery.userNameIsValid
                         spacing: Theme.paddingMedium
                         width: parent.width
                         layoutDirection: Qt.RightToLeft
@@ -1868,7 +1902,9 @@ Page {
                         property bool isDocument: false;
                         property bool isVoiceNote: false;
                         property bool isLocation: false;
+                        property bool isContact: false;
                         property var locationData: null;
+                        property var contactData: null;
                         property var geocodedAddress: qsTr("Unknown address")
                         property var attachedFiles: [];
                         property string attachmentDescription: "";
@@ -1935,7 +1971,7 @@ Page {
                             id: attachmentPreviewText
                             font.pixelSize: Theme.fontSizeSmall
                             text: {
-                                if (attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation) {
+                                if (attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact) {
                                     return attachmentPreviewRow.attachmentDescription;
                                 }
                                 if (attachmentPreviewRow.attachedFiles.length > 1) {
@@ -1950,7 +1986,7 @@ Page {
                             wrapMode: Text.Wrap
                             truncationMode: TruncationMode.Fade
                             color: Theme.secondaryColor
-                            visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.attachedFiles.length > 1
+                            visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact || attachmentPreviewRow.attachedFiles.length > 1
                         }
                     }
 
@@ -2193,7 +2229,7 @@ Page {
                             labelVisible: false
                             textLeftMargin: 0
                             textTopMargin: 0
-                            enabled: !attachmentPreviewRow.isLocation
+                            enabled: !attachmentPreviewRow.isLocation && !attachmentPreviewRow.isContact
                             focus: appSettings.focusTextAreaOnChatOpen
                             EnterKey.onClicked: {
                                 if (appSettings.sendByEnter) {

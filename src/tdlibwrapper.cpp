@@ -671,6 +671,28 @@ void TDLibWrapper::sendLocationMessage(qlonglong chatId, double latitude, double
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::sendContactMessage(qlonglong chatId, const QString &phoneNumber, const QString &firstName, const QString &lastName, qlonglong replyToMessageId)
+{
+    LOG("Sending contact message" << chatId << firstName << lastName << replyToMessageId);
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessageContact");
+
+    // Only name and number are shared, not the whole vCard of the device
+    // contact - the user_id is resolved by Telegram from the phone number
+    QVariantMap contact;
+    contact.insert(_TYPE, "contact");
+    contact.insert("phone_number", phoneNumber);
+    contact.insert("first_name", firstName);
+    contact.insert("last_name", lastName);
+    contact.insert("vcard", "");
+    contact.insert("user_id", 0);
+    inputMessageContent.insert("contact", contact);
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::sendStickerMessage(qlonglong chatId, const QString &fileId, qlonglong replyToMessageId)
 {
     LOG("Sending sticker message" << chatId << fileId << replyToMessageId);
