@@ -854,7 +854,7 @@ Page {
                 }
             },
             NamedAction {
-                visible: messageOptionsDrawer.showForwardMessageMenuItem && messageOptionsDrawer.myMessage.can_be_forwarded
+                visible: messageOptionsDrawer.showForwardMessageMenuItem && Functions.canForwardMessage(messageOptionsDrawer.myMessage, appSettings.forwardHideSender)
                 name: qsTr("Forward Message")
                 action: function () {
                     startForwardingMessages([messageOptionsDrawer.myMessage])
@@ -2345,7 +2345,7 @@ Page {
 
                     IconButton {
                         visible: !chatPage.isSecretChat && selectedMessages.every(function(message){
-                            return message.can_be_forwarded
+                            return Functions.canForwardMessage(message, appSettings.forwardHideSender)
                         })
                         icon.sourceSize: Qt.size(Theme.iconSizeMedium, Theme.iconSizeMedium)
                         icon.source: "image://theme/icon-m-forward"
