@@ -584,6 +584,11 @@ function getMessagesNeededForwardPermissions(messages) {
     return neededPermissions
 }
 
+function canForwardMessage(message, sendCopy) {
+    // Forwarding as a copy needs a message whose content can be copied, TDLib silently drops the others
+    return !!message.can_be_forwarded && (!sendCopy || !!message.can_be_copied)
+}
+
 function isWidescreen(appWindow) {
     return (appWindow.deviceOrientation & Silica.Orientation.LandscapeMask) || Silica.Screen.sizeCategory === Silica.Screen.Large || Silica.Screen.sizeCategory === Silica.Screen.ExtraLarge
 }

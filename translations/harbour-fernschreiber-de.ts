@@ -1923,6 +1923,22 @@
         <source>Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.</source>
         <translation>Spielt automatisch animierte GIFs ab. Auf manchen Geräten kann das Abstürze im Medien-Untersystem verursachen. Schalten Sie dies aus, um das zu verhindern.</translation>
     </message>
+    <message>
+        <source>Hide sender when forwarding</source>
+        <translation>Absender beim Weiterleiten verbergen</translation>
+    </message>
+    <message>
+        <source>Forwarded messages are sent as copies, without showing who they are forwarded from.</source>
+        <translation>Weitergeleitete Nachrichten werden als Kopien gesendet, ohne anzuzeigen, von wem sie stammen.</translation>
+    </message>
+    <message>
+        <source>Hide captions when forwarding</source>
+        <translation>Bildunterschriften beim Weiterleiten verbergen</translation>
+    </message>
+    <message>
+        <source>Captions of forwarded media are left out. Only available when the sender is hidden.</source>
+        <translation>Bildunterschriften weitergeleiteter Medien werden weggelassen. Nur verfügbar, wenn der Absender verborgen wird.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

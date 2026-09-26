@@ -129,6 +129,29 @@ AccordionItem {
 
             TextSwitch {
                 width: parent.columnWidth
+                checked: appSettings.forwardHideSender
+                text: qsTr("Hide sender when forwarding")
+                description: qsTr("Forwarded messages are sent as copies, without showing who they are forwarded from.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.forwardHideSender = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.forwardHideCaptions
+                enabled: appSettings.forwardHideSender
+                text: qsTr("Hide captions when forwarding")
+                description: qsTr("Captions of forwarded media are left out. Only available when the sender is hidden.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.forwardHideCaptions = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
                 checked: appSettings.autoplayAnimatedGifs
                 text: qsTr("Autoplay animations")
                 description: qsTr("Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.")
