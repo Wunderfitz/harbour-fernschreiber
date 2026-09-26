@@ -1785,19 +1785,19 @@
     </message>
     <message>
         <source>Hide sender when forwarding</source>
-        <translation type="unfinished"></translation>
+        <translation>Absender beim Weiterleiten verbergen</translation>
     </message>
     <message>
         <source>Forwarded messages are sent as copies, without showing who they are forwarded from.</source>
-        <translation type="unfinished"></translation>
+        <translation>Weitergeleitete Nachrichten werden als Kopien gesendet, ohne anzuzeigen, von wem sie stammen.</translation>
     </message>
     <message>
         <source>Hide captions when forwarding</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildunterschriften beim Weiterleiten verbergen</translation>
     </message>
     <message>
         <source>Captions of forwarded media are left out. Only available when the sender is hidden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildunterschriften weitergeleiteter Medien werden weggelassen. Nur verfügbar, wenn der Absender verborgen wird.</translation>
     </message>
 </context>
 <context>
