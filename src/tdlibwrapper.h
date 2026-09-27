@@ -156,6 +156,7 @@ public:
     Q_INVOKABLE void registerJoinChat();
 
     DBusAdaptor *getDBusAdaptor();
+    ShareReceiver *getShareReceiver();
 
     // Direct TDLib functions
     Q_INVOKABLE void sendRequest(const QVariantMap &requestObject);

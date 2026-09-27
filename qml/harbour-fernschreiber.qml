@@ -18,12 +18,10 @@
 */
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import Sailfish.Share 1.0
 import WerkWolf.Fernschreiber 1.0
 import "pages"
 import "components"
 import "./js/functions.js" as Functions
-import "./js/debug.js" as Debug
 
 ApplicationWindow
 {
@@ -38,7 +36,7 @@ ApplicationWindow
 
     // A share triggered before TDLib is ready to open a chat is held here
     // and replayed once onAuthorizationStateChanged reports AuthorizationReady.
-    property var pendingSharedFilePaths: null
+    property var pendingShare: null
 
     Connections {
         target: dBusAdaptor
@@ -59,9 +57,9 @@ ApplicationWindow
             Functions.handleLink(tgUrl);
         }
         onAuthorizationStateChanged: {
-            if (pendingSharedFilePaths && tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady) {
-                openSharedFiles(pendingSharedFilePaths);
-                pendingSharedFilePaths = null;
+            if (pendingShare && tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady) {
+                openShare(pendingShare);
+                pendingShare = null;
             }
         }
     }
@@ -83,8 +81,17 @@ ApplicationWindow
         return types.every(function(type) { return type === types[0]; }) ? types[0] : "document";
     }
 
-    function openSharedFiles(filePaths) {
-        var contentType = classifyContentType(filePaths);
+    // Shared text and links go into the message field, next to shared files
+    // as their caption.
+    function openShare(share) {
+        if (share.filePaths.length === 0) {
+            pageStack.push(Qt.resolvedUrl("pages/ChatSelectionPage.qml"), {
+                payload: {text: share.text, neededPermissions: ["can_send_basic_messages"]},
+                state: "fillTextArea"
+            });
+            return;
+        }
+        var contentType = classifyContentType(share.filePaths);
         var headerDescription = contentType === "photo" ? qsTr("Send Image")
             : contentType === "video" ? qsTr("Send Video")
             : qsTr("Send File");
@@ -93,32 +100,38 @@ ApplicationWindow
             : ["can_send_documents"];
         pageStack.push(Qt.resolvedUrl("pages/ChatSelectionPage.qml"), {
             headerDescription: headerDescription,
-            payload: {filePaths: filePaths, contentType: contentType, neededPermissions: neededPermissions},
+            payload: {filePaths: share.filePaths, contentType: contentType, text: share.text, neededPermissions: neededPermissions},
             state: "shareFiles"
         });
     }
 
-    ShareProvider {
-        method: "file"
-        registerName: true
-        capabilities: ["*", "application/*", "audio/*", "font/*", "haptics/*", "image/*", "message/*", "model/*", "multipart/*", "text/*", "video/*"]
-        onTriggered: {
-            Debug.log("ShareProvider triggered", JSON.stringify(resources));
+    Connections {
+        target: shareReceiver
+        onPleaseShare: {
             appWindow.activate();
-            // A resource either carries a real file or, for raw shared data
-            // (e.g. selected text with no file behind it), a name and data
-            // pair that has to be written out to a file of its own first.
-            var filePaths = resources.map(function(resource) {
-                return resource.filePath || fernschreiberUtils.writeSharedDataToFile(resource.name, resource.data);
-            }).filter(function(filePath) { return !!filePath; });
-            if (filePaths.length > 0) {
+            // Raw shared data other than text, e.g. a contact, has no file
+            // behind it and is written out to a file of its own first.
+            var filePaths = [];
+            var texts = [];
+            resources.forEach(function(resource) {
+                if (resource.text) {
+                    texts.push(resource.text);
+                } else {
+                    var filePath = resource.filePath || fernschreiberUtils.writeSharedDataToFile(resource.name, resource.data);
+                    if (filePath) {
+                        filePaths.push(filePath);
+                    }
+                }
+            });
+            var share = {filePaths: filePaths, text: texts.join("\n")};
+            if (share.filePaths.length > 0 || share.text) {
                 // TDLib may still be starting up when the app is share-launched
                 // cold; pushing the chat picker before it's ready would race an
                 // empty or stale chat list, so the request waits its turn.
                 if (tdLibWrapper.authorizationState === TelegramAPI.AuthorizationReady) {
-                    openSharedFiles(filePaths);
+                    openShare(share);
                 } else {
-                    pendingSharedFilePaths = filePaths;
+                    pendingShare = share;
                 }
             }
         }

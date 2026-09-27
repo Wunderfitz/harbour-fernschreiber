@@ -485,8 +485,11 @@ Page {
         forwardMessagesTimer.messageIds = messageIds;
         forwardMessagesTimer.start();
     }
-    function sendSharedFiles(filePaths, contentType) {
+    function sendSharedFiles(filePaths, contentType, text) {
         clearAttachmentPreviewRow();
+        if (text) {
+            setMessageText(text);
+        }
         attachmentPreviewRow.attachedFiles = filePaths.map(function(filePath) {
             return {
                 "filePath": filePath,

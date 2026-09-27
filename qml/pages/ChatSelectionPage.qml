@@ -44,7 +44,8 @@ Dialog {
     /*
         payload dependent on chatSelectionPage.state
          - forwardMessages: {fromChatId, messageIds, neededPermissions}
-         - shareFiles: {filePaths, contentType, neededPermissions}
+         - fillTextArea: {text, neededPermissions}
+         - shareFiles: {filePaths, contentType, text, neededPermissions}
     */
     property var payload: ({})
 
@@ -57,7 +58,7 @@ Dialog {
             acceptDestinationInstance.setMessageText(payload.text)
             break;
         case "shareFiles":
-            acceptDestinationInstance.sendSharedFiles(payload.filePaths, payload.contentType)
+            acceptDestinationInstance.sendSharedFiles(payload.filePaths, payload.contentType, payload.text)
             break;
         // future uses of chat selection can be processed here
         }

@@ -24,9 +24,12 @@
 #include <QtDBus>
 
 #include "dbusadaptor.h"
+#include "sharereceiver.h"
 
 const QString INTERFACE_NAME = "de.ygriega.fernschreiber";
 const QString PATH_NAME = "/de/ygriega/fernschreiber";
+// The share sheet calls /share/<method>, the method as in the desktop file
+const QString SHARE_PATH_NAME = "/share/file";
 
 class DBusInterface : public QObject
 {
@@ -34,6 +37,7 @@ class DBusInterface : public QObject
 public:
     explicit DBusInterface(QObject *parent = nullptr);
     DBusAdaptor *getDBusAdaptor();
+    ShareReceiver *getShareReceiver();
 
 signals:
 
@@ -41,6 +45,7 @@ public slots:
 
 private:
     DBusAdaptor *dbusAdaptor;
+    ShareReceiver *shareReceiver;
 
 };
 

@@ -151,6 +151,9 @@ int main(int argc, char *argv[])
     DBusAdaptor *dBusAdaptor = tdLibWrapper->getDBusAdaptor();
     context->setContextProperty("dBusAdaptor", dBusAdaptor);
 
+    ShareReceiver *shareReceiver = tdLibWrapper->getShareReceiver();
+    context->setContextProperty("shareReceiver", shareReceiver);
+
     ChatListModel chatListModel(tdLibWrapper, appSettings);
     context->setContextProperty("chatListModel", &chatListModel);
 

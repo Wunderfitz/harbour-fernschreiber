@@ -1991,6 +1991,11 @@ DBusAdaptor *TDLibWrapper::getDBusAdaptor()
     return this->dbusInterface->getDBusAdaptor();
 }
 
+ShareReceiver *TDLibWrapper::getShareReceiver()
+{
+    return this->dbusInterface->getShareReceiver();
+}
+
 void TDLibWrapper::handleVersionDetected(const QString &version)
 {
     this->versionString = version;
