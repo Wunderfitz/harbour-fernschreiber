@@ -2704,4 +2704,19 @@ messages</numerusform>
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Send Image</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Send Video</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Send File</translation>
+    </message>
+</context>
 </TS>

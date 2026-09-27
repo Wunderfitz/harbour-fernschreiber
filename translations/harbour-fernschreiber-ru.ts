@@ -2737,4 +2737,19 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Отправить изображение</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Отправить видео</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Отправить файл</translation>
+    </message>
+</context>
 </TS>

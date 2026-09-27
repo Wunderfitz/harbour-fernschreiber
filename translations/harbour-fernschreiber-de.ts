@@ -2702,4 +2702,19 @@
         <translation>hat die Option „%1“ aus einer Umfrage entfernt</translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Bild senden</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Video senden</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Datei senden</translation>
+    </message>
+</context>
 </TS>

@@ -2702,4 +2702,19 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Skicka bild</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Skicka video</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Skicka fil</translation>
+    </message>
+</context>
 </TS>

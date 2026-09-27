@@ -2703,4 +2703,19 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Lähetä kuva</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Lähetä video</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Lähetä tiedosto</translation>
+    </message>
+</context>
 </TS>
