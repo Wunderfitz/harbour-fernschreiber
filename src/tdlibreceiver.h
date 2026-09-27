@@ -74,7 +74,8 @@ signals:
     void chats(const QVariantMap &chats);
     void chat(const QVariantMap &chats);
     void recentStickersUpdated(const QVariantList &stickerIds);
-    void stickers(const QVariantList &stickers);
+    void favoriteStickersUpdated(const QVariantList &stickerIds);
+    void stickers(const QString &extra, const QVariantList &stickers);
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
     void stickerSets(const QVariantList &stickerSets);
     void stickerSet(const QVariantMap &stickerSet);
@@ -163,6 +164,7 @@ private:
     void processChats(const QVariantMap &receivedInformation);
     void processChat(const QVariantMap &receivedInformation);
     void processUpdateRecentStickers(const QVariantMap &receivedInformation);
+    void processUpdateFavoriteStickers(const QVariantMap &receivedInformation);
     void processStickers(const QVariantMap &receivedInformation);
     void processUpdateInstalledStickerSets(const QVariantMap &receivedInformation);
     void processStickerSets(const QVariantMap &receivedInformation);

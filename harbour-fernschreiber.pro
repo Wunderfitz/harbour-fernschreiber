@@ -69,6 +69,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/ReactionButton.qml \
     qml/components/ReplyMarkupButtons.qml \
     qml/components/StickerPicker.qml \
+    qml/components/StickerPickerItem.qml \
     qml/components/PhotoTextsListItem.qml \
     qml/components/StickerSetOverlay.qml \
     qml/components/TDLibImage.qml \
