@@ -1792,6 +1792,14 @@
         <source>Animate stickers</source>
         <translation>Sticker animieren</translation>
     </message>
+    <message>
+        <source>Animate stickers in the sticker picker</source>
+        <translation>Sticker in der Sticker-Auswahl animieren</translation>
+    </message>
+    <message>
+        <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
+        <translation>Spielt animierte Sticker bei der Auswahl zum Senden ab. Benötigt mehr Akku und Daten.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsBehavior</name>

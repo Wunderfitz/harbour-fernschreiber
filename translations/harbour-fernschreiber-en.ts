@@ -1794,6 +1794,14 @@ messages</numerusform>
         <source>Animate stickers</source>
         <translation>Animate stickers</translation>
     </message>
+    <message>
+        <source>Animate stickers in the sticker picker</source>
+        <translation>Animate stickers in the sticker picker</translation>
+    </message>
+    <message>
+        <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
+        <translation>Plays animated stickers while choosing one to send. Needs more battery and data.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsBehavior</name>

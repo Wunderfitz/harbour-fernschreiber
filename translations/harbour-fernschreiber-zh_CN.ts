@@ -1763,6 +1763,14 @@
         <source>Animate stickers</source>
         <translation>动态表情贴图</translation>
     </message>
+    <message>
+        <source>Animate stickers in the sticker picker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsBehavior</name>

@@ -84,6 +84,28 @@ AccordionItem {
                 opacity: visible ? 1 : 0
                 Behavior on opacity { FadeAnimation  { } }
             }
+
+            Item {
+                // Placeholder to keep the next switch underneath "Animate stickers"
+                visible: parent.columns === 2 && !appSettings.showStickersAsEmojis
+                width: 1
+                height: 1
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.animateStickersInPicker
+                text: qsTr("Animate stickers in the sticker picker")
+                description: qsTr("Plays animated stickers while choosing one to send. Needs more battery and data.")
+                automaticCheck: false
+                enabled: appSettings.animateStickers
+                onClicked: {
+                    appSettings.animateStickersInPicker = !checked
+                }
+                visible: !appSettings.showStickersAsEmojis
+                opacity: visible ? 1 : 0
+                Behavior on opacity { FadeAnimation  { } }
+            }
         }
     }
 }

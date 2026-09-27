@@ -25,7 +25,7 @@ BackgroundItem {
     id: stickerPickerItem
 
     property var sticker
-    readonly property bool animated: !!sticker && !!sticker.format && sticker.format["@type"] === "stickerFormatTgs" && appSettings.animateStickers
+    readonly property bool animated: !!sticker && !!sticker.format && sticker.format["@type"] === "stickerFormatTgs" && appSettings.animateStickers && appSettings.animateStickersInPicker
     readonly property bool animationVisible: animatedStickerLoader.item ? animatedStickerLoader.item.status === AnimatedImage.Ready : false
 
     TDLibFile {
