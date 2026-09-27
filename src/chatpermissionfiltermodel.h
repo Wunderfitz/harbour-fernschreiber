@@ -52,6 +52,7 @@ protected:
 
 private:
     TDLibWrapper *tdLibWrapper;
+    qlonglong myUserId;
     QStringList requirePermissions;
 };
 

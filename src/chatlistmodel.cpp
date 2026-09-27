@@ -67,8 +67,8 @@ public:
     int compareTo(const ChatData *chat) const;
     bool setOrder(const QString &order);
     const QVariant lastMessage(const QString &key) const;
-    bool isSavedMessages() const;
     QString title() const;
+    void setTitle(const QString &title);
     int unreadCount() const;
     int unreadMentionCount() const;
     int unreadReactionCount() const;
@@ -97,6 +97,7 @@ public:
 public:
     QVariantMap chatData;
     qlonglong chatId;
+    bool isSavedMessages;
     qlonglong order;
     qlonglong groupId;
     bool verified;
@@ -110,12 +111,14 @@ ChatListModel::ChatData::ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap 
     tdLibWrapper(tdLibWrapper),
     chatData(data),
     chatId(data.value(ID).toLongLong()),
+    isSavedMessages(chatId == tdLibWrapper->getUserInformation().value(ID).toLongLong()),
     order(data.value(ORDER).toLongLong()),
     groupId(0),
     verified(false),
     memberStatus(TDLibWrapper::ChatMemberStatusUnknown),
     secretChatState(TDLibWrapper::SecretChatStateUnknown)
 {
+    setTitle(data.value(TITLE).toString());
     const QVariantMap type(data.value(TYPE).toMap());
     switch (chatType = TDLibWrapper::chatTypeFromString(type.value(_TYPE).toString())) {
     case TDLibWrapper::ChatTypeBasicGroup:
@@ -156,15 +159,15 @@ inline const QVariant ChatListModel::ChatData::lastMessage(const QString &key) c
     return chatData.value(LAST_MESSAGE).toMap().value(key);
 }
 
-bool ChatListModel::ChatData::isSavedMessages() const
+QString ChatListModel::ChatData::title() const
 {
-    return chatId == tdLibWrapper->getUserInformation().value(ID).toLongLong();
+    return chatData.value(TITLE).toString();
 }
 
 // TDLib titles the chat with oneself after one's own name
-QString ChatListModel::ChatData::title() const
+void ChatListModel::ChatData::setTitle(const QString &title)
 {
-    return isSavedMessages() ? ChatListModel::tr("Saved Messages") : chatData.value(TITLE).toString();
+    chatData.insert(TITLE, isSavedMessages ? ChatListModel::tr("Saved Messages") : title);
 }
 
 int ChatListModel::ChatData::unreadCount() const
@@ -189,7 +192,7 @@ int ChatListModel::ChatData::unreadReactionCount() const
 
 QVariant ChatListModel::ChatData::photoSmall() const
 {
-    return isSavedMessages() ? QVariant() : chatData.value(PHOTO).toMap().value(SMALL);
+    return isSavedMessages ? QVariant() : chatData.value(PHOTO).toMap().value(SMALL);
 }
 
 qlonglong ChatListModel::ChatData::lastReadInboxMessageId() const
@@ -502,8 +505,8 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RoleIsMarkedAsUnread: return data->isMarkedAsUnread();
         case ChatListModel::RoleIsPinned: return data->isPinned();
         // The chat with oneself is also found by its English name and by one's own name
-        case ChatListModel::RoleFilter: return data->isSavedMessages()
-            ? data->title() + " Saved Messages " + data->chatData.value(TITLE).toString() + " " + data->senderMessageText()
+        case ChatListModel::RoleFilter: return data->isSavedMessages
+            ? data->title() + " Saved Messages " + FernschreiberUtils::getUserName(tdLibWrapper->getUserInformation()) + " " + data->senderMessageText()
             : data->title() + " " + data->senderMessageText();
         case ChatListModel::RoleDraftMessageText: return data->draftMessageText();
         case ChatListModel::RoleDraftMessageDate: return data->draftMessageDate();
@@ -942,7 +945,7 @@ void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString 
         LOG("Updating title for" << chatId);
         const int chatIndex = chatIndexMap.value(chatIdLongLong);
         ChatData *chat = chatList.at(chatIndex);
-        chat->chatData.insert(TITLE, title);
+        chat->setTitle(title);
         QVector<int> changedRoles;
         changedRoles.append(ChatListModel::RoleTitle);
         changedRoles.append(ChatListModel::RoleFilter);
@@ -952,7 +955,7 @@ void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString 
         ChatData *chat = hiddenChats.value(chatId.toLongLong());
         if (chat) {
             LOG("Updating title for hidden chat" << chatId);
-            chat->chatData.insert(TITLE, title);
+            chat->setTitle(title);
         }
     }
 }

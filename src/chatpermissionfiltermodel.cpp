@@ -28,7 +28,8 @@ namespace {
 }
 
 ChatPermissionFilterModel::ChatPermissionFilterModel(QObject *parent) : QSortFilterProxyModel(parent),
-    tdLibWrapper(Q_NULLPTR)
+    tdLibWrapper(Q_NULLPTR),
+    myUserId(0)
 {
     setDynamicSortFilter(true);
     sort(0);
@@ -58,6 +59,7 @@ void ChatPermissionFilterModel::setTDLibWrapper(QObject *obj)
     TDLibWrapper *wrapper = qobject_cast<TDLibWrapper*>(obj);
     if (tdLibWrapper != wrapper) {
         tdLibWrapper = wrapper;
+        myUserId = wrapper ? wrapper->getUserInformation().value(ID).toLongLong() : 0;
         LOG(wrapper);
         invalidate();
     }
@@ -137,13 +139,10 @@ bool ChatPermissionFilterModel::filterAcceptsRow(int sourceRow, const QModelInde
 // The chat with oneself comes first, the others keep the chat list's order
 bool ChatPermissionFilterModel::lessThan(const QModelIndex &sourceLeft, const QModelIndex &sourceRight) const
 {
-    if (tdLibWrapper) {
-        const qlonglong myUserId = tdLibWrapper->getUserInformation().value(ID).toLongLong();
-        const bool leftIsSavedMessages = sourceModel()->data(sourceLeft, ChatListModel::RoleChatId).toLongLong() == myUserId;
-        const bool rightIsSavedMessages = sourceModel()->data(sourceRight, ChatListModel::RoleChatId).toLongLong() == myUserId;
-        if (leftIsSavedMessages != rightIsSavedMessages) {
-            return leftIsSavedMessages;
-        }
+    const bool leftIsSavedMessages = sourceModel()->data(sourceLeft, ChatListModel::RoleChatId).toLongLong() == myUserId;
+    const bool rightIsSavedMessages = sourceModel()->data(sourceRight, ChatListModel::RoleChatId).toLongLong() == myUserId;
+    if (leftIsSavedMessages != rightIsSavedMessages) {
+        return leftIsSavedMessages;
     }
     return sourceLeft.row() < sourceRight.row();
 }
