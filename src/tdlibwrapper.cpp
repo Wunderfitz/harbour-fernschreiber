@@ -559,7 +559,17 @@ QVariantMap TDLibWrapper::newInputMessageContent(const QString &contentType, con
         inputMessageContent.insert("video", newInputFile("inputVideo", "video", filePath, VERSION_NUMBER(1,8,64)));
     } else if (contentType == "document") {
         inputMessageContent.insert(_TYPE, "inputMessageDocument");
-        inputMessageContent.insert("document", newInputFile("inputDocument", "document", filePath, VERSION_NUMBER(1,8,64)));
+        // Without it the server may turn a file back into a video or an animation
+        const int containerVersion = VERSION_NUMBER(1,8,64);
+        QVariant document(newInputFile("inputDocument", "document", filePath, containerVersion));
+        if (versionNumber < containerVersion) {
+            inputMessageContent.insert("disable_content_type_detection", true);
+        } else {
+            QVariantMap inputDocument(document.toMap());
+            inputDocument.insert("disable_content_type_detection", true);
+            document = inputDocument;
+        }
+        inputMessageContent.insert("document", document);
     } else {
         inputMessageContent.insert(_TYPE, "inputMessagePhoto");
         inputMessageContent.insert("photo", newInputFile("inputPhoto", "photo", filePath, VERSION_NUMBER(1,8,64)));
