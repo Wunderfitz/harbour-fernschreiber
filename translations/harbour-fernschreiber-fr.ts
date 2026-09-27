@@ -650,6 +650,10 @@
             <numerusform>%Ln fichiers</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Envoyer en tant que fichier</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

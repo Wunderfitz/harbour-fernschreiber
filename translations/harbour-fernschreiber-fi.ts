@@ -650,6 +650,10 @@
             <numerusform>%Ln tiedostoa</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Lähetä tiedostona</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

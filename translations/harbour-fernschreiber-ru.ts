@@ -661,6 +661,10 @@
             <numerusform>%Ln файлов</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Отправить как файл</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
