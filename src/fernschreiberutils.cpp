@@ -440,7 +440,16 @@ QString FernschreiberUtils::writeSharedDataToFile(const QString &name, const QSt
     if (safeName.isEmpty()) {
         safeName = "shared-text.txt";
     }
-    const QString filePath = this->getTemporaryDirectoryPath() + "/" + safeName;
+    // Shared files stay in the temporary directory until the app exits, so a
+    // name that is taken belongs to a file of this or an earlier share, which
+    // may still be uploading - never overwrite it, number the new one instead.
+    const QString temporaryDirectoryPath = this->getTemporaryDirectoryPath();
+    QString filePath = temporaryDirectoryPath + "/" + safeName;
+    const QFileInfo safeNameInfo(safeName);
+    const QString suffix = safeNameInfo.suffix().isEmpty() ? QString() : "." + safeNameInfo.suffix();
+    for (int i = 2; QFile::exists(filePath); i++) {
+        filePath = temporaryDirectoryPath + "/" + safeNameInfo.completeBaseName() + "-" + QString::number(i) + suffix;
+    }
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly)) {
         LOG("Error opening file for writing shared data" << filePath);
