@@ -224,6 +224,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation>ID скопирован в буфер обмена.</translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Избранное</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -304,6 +308,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Настройки</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Избранное</translation>
     </message>
 </context>
 <context>
@@ -660,6 +671,10 @@
             <numerusform>%Ln файла</numerusform>
             <numerusform>%Ln файлов</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Избранное</translation>
     </message>
 </context>
 <context>
@@ -1462,6 +1477,10 @@
             <numerusform>%Ln новых сообщения</numerusform>
             <numerusform>%Ln новых сообщений</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Избранное</translation>
     </message>
 </context>
 <context>

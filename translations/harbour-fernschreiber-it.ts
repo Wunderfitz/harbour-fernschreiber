@@ -221,6 +221,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Messaggi salvati</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -301,6 +305,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Impostazioni</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Messaggi salvati</translation>
     </message>
 </context>
 <context>
@@ -649,6 +660,10 @@
             <numerusform>%Ln file</numerusform>
             <numerusform>%Ln file</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Messaggi salvati</translation>
     </message>
 </context>
 <context>
@@ -1438,6 +1453,10 @@
             <numerusform>%Ln messaggio non letto</numerusform>
             <numerusform>%Ln messaggi non letti</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Messaggi salvati</translation>
     </message>
 </context>
 <context>

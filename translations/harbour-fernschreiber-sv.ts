@@ -221,6 +221,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation>ID har kopierats till urklipp.</translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Sparade meddelanden</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -301,6 +305,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Inställningar</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Sparade meddelanden</translation>
     </message>
 </context>
 <context>
@@ -649,6 +660,10 @@
             <numerusform>%Ln fil</numerusform>
             <numerusform>%Ln filer</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Sparade meddelanden</translation>
     </message>
 </context>
 <context>
@@ -1438,6 +1453,10 @@
             <numerusform>%Ln oläst meddelande</numerusform>
             <numerusform>%Ln olästa meddelanden</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Sparade meddelanden</translation>
     </message>
 </context>
 <context>

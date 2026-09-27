@@ -218,6 +218,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>收藏夹</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -298,6 +302,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>设置</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>收藏夹</translation>
     </message>
 </context>
 <context>
@@ -638,6 +649,10 @@
         <translation>
             <numerusform>%Ln 个文件</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>收藏夹</translation>
     </message>
 </context>
 <context>
@@ -1418,6 +1433,10 @@
         <translation>
             <numerusform>%Ln 则未读消息</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>收藏夹</translation>
     </message>
 </context>
 <context>

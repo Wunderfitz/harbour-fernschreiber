@@ -224,6 +224,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation>ID bol skopírovaný do schránky.</translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Uložené správy</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -304,6 +308,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Nastavenia</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Uložené správy</translation>
     </message>
 </context>
 <context>
@@ -660,6 +671,10 @@
             <numerusform>%Ln súbory</numerusform>
             <numerusform>%Ln súborov</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Uložené správy</translation>
     </message>
 </context>
 <context>
@@ -1459,6 +1474,10 @@
             <numerusform>%Ln neprečítané správy</numerusform>
             <numerusform>%Ln neprečítaných správ</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Uložené správy</translation>
     </message>
 </context>
 <context>

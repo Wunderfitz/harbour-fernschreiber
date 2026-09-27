@@ -218,6 +218,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation>Az azonosító a vágólapra került.</translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mentett üzenetek</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -298,6 +302,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Beállítások</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mentett üzenetek</translation>
     </message>
 </context>
 <context>
@@ -640,6 +651,10 @@
         <translation>
             <numerusform>%Ln fájl</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mentett üzenetek</translation>
     </message>
 </context>
 <context>
@@ -1422,6 +1437,10 @@
         <translation>
             <numerusform>%Ln olvasatlan üzenet</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mentett üzenetek</translation>
     </message>
 </context>
 <context>

@@ -221,6 +221,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Tallennetut viestit</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -301,6 +305,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Asetukset</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Tallennetut viestit</translation>
     </message>
 </context>
 <context>
@@ -649,6 +660,10 @@
             <numerusform>%Ln tiedosto</numerusform>
             <numerusform>%Ln tiedostoa</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Tallennetut viestit</translation>
     </message>
 </context>
 <context>
@@ -1439,6 +1454,10 @@
             <numerusform>%Ln lukematon viesti</numerusform>
             <numerusform>%Ln lukematonta viestiä</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Tallennetut viestit</translation>
     </message>
 </context>
 <context>
