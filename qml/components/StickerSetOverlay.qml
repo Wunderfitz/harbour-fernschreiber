@@ -154,6 +154,7 @@ Flickable {
                     id: singleStickerThumbnail
                     thumbnail: modelData.thumbnail
                     anchors.fill: parent
+                    fillMode: Image.PreserveAspectFit
                 }
 
                 Label {

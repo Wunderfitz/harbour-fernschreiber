@@ -92,6 +92,7 @@ Page {
         onTriggered: {
             chatListModel.calculateUnreadState();
             tdLibWrapper.getRecentStickers();
+            tdLibWrapper.getFavoriteStickers();
             tdLibWrapper.getInstalledStickerSets();
             tdLibWrapper.getContacts();
             tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingAllowChatInvites);

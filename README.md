@@ -41,7 +41,7 @@ Licensed under GNU GPLv3
 
 ## Build
 ### Local build
-Simply clone this repository and ensure to have all [submodules](https://git-scm.com/docs/git-submodule) imported as well (e.g. by using `git submodule update --init`). Then use the project file `harbour-fernschreiber.pro` to import the sources in your SailfishOS IDE. To build and run Fernschreiber or an application which is based on Fernschreiber, you need to create the file `harbour-fernschreiber/src/tdlibsecrets.h` and enter the required constants in the following format:
+Simply clone this repository. Then use the project file `harbour-fernschreiber.pro` to import the sources in your SailfishOS IDE. To build and run Fernschreiber or an application which is based on Fernschreiber, you need to create the file `harbour-fernschreiber/src/tdlibsecrets.h` and enter the required constants in the following format:
 
 ```
 #ifndef TDLIBSECRETS_H
@@ -68,6 +68,11 @@ In case you want to use the same codebase which was used to compile the library 
 - `sfdk build-shell cmake --build . --target install`
 
 You'll find the compiled library in the directory `td/tdlib`.
+
+### Vendored rlottie
+Animated stickers are rendered by [rlottie](https://github.com/Samsung/rlottie), which is compiled into Fernschreiber from the directory `rlottie/`. It's a vendored copy (not a submodule) of upstream commit [683bbaa](https://github.com/Samsung/rlottie/commit/683bbaa) with the two commits of [rlottie#602](https://github.com/Samsung/rlottie/pull/602) on top. Without that fix, the shape-content budget introduced in upstream commit `34465a9` silently drops parts of many Telegram stickers. Only the library itself (`inc/`, `src/`) and its license files are included, not upstream's examples, tests or build files. The sources are compiled by `harbour-fernschreiber.pro`, which also writes the `config.h` required by rlottie to `rlottie-config/` in the build directory.
+
+To update rlottie, replace the directory with the same set of files from the new upstream state (e.g. `git archive <commit> inc src AUTHORS COPYING licenses README.md | tar x -C rlottie` in a clone of rlottie), re-apply the #602 commits as long as upstream hasn't merged them, add new source files to `harbour-fernschreiber.pro` and update the commit reference above.
 
 ### Github Action
 Please read the "Local build" section anyway to understand what's going on before continuing. If you want to automatically build your fork on Github, you'll still need to get a Telegram API ID and hash. These are then [added as project secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named `TDLIB_API_ID` and `TDLIB_API_HASH`.

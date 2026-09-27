@@ -27,6 +27,7 @@ namespace {
     const QString KEY_SHOW_STICKERS_AS_EMOJIS("showStickersAsEmojis");
     const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
     const QString KEY_ANIMATE_STICKERS("animateStickers");
+    const QString KEY_ANIMATE_STICKERS_IN_PICKER("animateStickersInPicker");
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_SOUNDS_ENABLED("notificationSoundsEnabled");
     const QString KEY_NOTIFICATION_SUPPRESS_ENABLED("notificationSuppressContent");
@@ -134,6 +135,20 @@ void AppSettings::setAnimateStickers(bool animate)
         LOG(KEY_ANIMATE_STICKERS << animate);
         settings.setValue(KEY_ANIMATE_STICKERS, animate);
         emit animateStickersChanged();
+    }
+}
+
+bool AppSettings::animateStickersInPicker() const
+{
+    return settings.value(KEY_ANIMATE_STICKERS_IN_PICKER, false).toBool();
+}
+
+void AppSettings::setAnimateStickersInPicker(bool animate)
+{
+    if (animateStickersInPicker() != animate) {
+        LOG(KEY_ANIMATE_STICKERS_IN_PICKER << animate);
+        settings.setValue(KEY_ANIMATE_STICKERS_IN_PICKER, animate);
+        emit animateStickersInPickerChanged();
     }
 }
 
