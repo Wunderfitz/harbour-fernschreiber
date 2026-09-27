@@ -251,7 +251,8 @@ SilicaFlickable {
         z: 5
         Item {
             id: imageContainer
-            property bool hasImage: typeof chatInformationPage.chatInformation.photo !== "undefined"
+            // One's own pictures are no picture of the chat with oneself
+            property bool hasImage: !chatInformationPage.isSavedMessages && typeof chatInformationPage.chatInformation.photo !== "undefined"
             property int minDimension: chatInformationPage.isLandscape ? Theme.itemSizeSmall : Theme.itemSizeMedium
             property int maxDimension: Screen.width / 2
             property int minX: Theme.horizontalPageMargin
@@ -281,6 +282,7 @@ SilicaFlickable {
                 id: chatPictureThumbnail
                 photoData: imageContainer.hasImage ? chatInformationPage.chatInformation.photo.small : ""
                 replacementStringHint: headerItem.title
+                isSavedMessages: chatInformationPage.isSavedMessages
                 width: parent.width
                 height: width
                 radius: imageContainer.thumbnailRadius
@@ -299,7 +301,8 @@ SilicaFlickable {
             }
         }
         leftMargin: imageContainer.getEased((imageContainer.minDimension + Theme.paddingMedium), 0, imageContainer.tweenFactor) + Theme.horizontalPageMargin
-        title: chatInformationPage.chatInformation.title !== "" ? Emoji.emojify(chatInformationPage.chatInformation.title, Theme.fontSizeLarge) : qsTr("Unknown")
+        title: chatInformationPage.isSavedMessages ? qsTr("Saved Messages")
+            : chatInformationPage.chatInformation.title !== "" ? Emoji.emojify(chatInformationPage.chatInformation.title, Theme.fontSizeLarge) : qsTr("Unknown")
         description: ((chatInformationPage.isPrivateChat || chatInformationPage.isSecretChat) && chatInformationPage.privateChatUserInformation.usernames && chatInformationPage.privateChatUserInformation.usernames.editable_username)
             ? ("@"+chatInformationPage.privateChatUserInformation.usernames.editable_username) : ""
     }

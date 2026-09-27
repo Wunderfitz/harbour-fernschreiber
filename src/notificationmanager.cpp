@@ -367,7 +367,9 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
         notificationBody += FernschreiberUtils::getMessageShortText(tdLibWrapper, messageMap.value(CONTENT).toMap(), (chatInformation ? chatInformation->isChannel : false), tdLibWrapper->getUserInformation().value(ID).toLongLong(), senderInformation );
     }
 
-    const QString summary(chatInformation ? chatInformation->title : QString());
+    // TDLib titles the chat with oneself after one's own name
+    const QString summary(notificationGroup->chatId == tdLibWrapper->getUserInformation().value(ID).toLongLong()
+        ? tr("Saved Messages") : chatInformation ? chatInformation->title : QString());
     nemoNotification->setBody(notificationBody);
     nemoNotification->setSummary(summary);
     nemoNotification->setHintValue(HINT_VIBRA, needFeedback);

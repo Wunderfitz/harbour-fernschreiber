@@ -67,6 +67,7 @@ public:
     int compareTo(const ChatData *chat) const;
     bool setOrder(const QString &order);
     const QVariant lastMessage(const QString &key) const;
+    bool isSavedMessages() const;
     QString title() const;
     int unreadCount() const;
     int unreadMentionCount() const;
@@ -155,9 +156,15 @@ inline const QVariant ChatListModel::ChatData::lastMessage(const QString &key) c
     return chatData.value(LAST_MESSAGE).toMap().value(key);
 }
 
+bool ChatListModel::ChatData::isSavedMessages() const
+{
+    return chatId == tdLibWrapper->getUserInformation().value(ID).toLongLong();
+}
+
+// TDLib titles the chat with oneself after one's own name
 QString ChatListModel::ChatData::title() const
 {
-    return chatData.value(TITLE).toString();
+    return isSavedMessages() ? ChatListModel::tr("Saved Messages") : chatData.value(TITLE).toString();
 }
 
 int ChatListModel::ChatData::unreadCount() const
@@ -182,7 +189,7 @@ int ChatListModel::ChatData::unreadReactionCount() const
 
 QVariant ChatListModel::ChatData::photoSmall() const
 {
-    return chatData.value(PHOTO).toMap().value(SMALL);
+    return isSavedMessages() ? QVariant() : chatData.value(PHOTO).toMap().value(SMALL);
 }
 
 qlonglong ChatListModel::ChatData::lastReadInboxMessageId() const
@@ -494,7 +501,10 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RoleIsChannel: return data->isChannel();
         case ChatListModel::RoleIsMarkedAsUnread: return data->isMarkedAsUnread();
         case ChatListModel::RoleIsPinned: return data->isPinned();
-        case ChatListModel::RoleFilter: return data->title() + " " + data->senderMessageText();
+        // The chat with oneself is also found by its English name and by one's own name
+        case ChatListModel::RoleFilter: return data->isSavedMessages()
+            ? data->title() + " Saved Messages " + data->chatData.value(TITLE).toString() + " " + data->senderMessageText()
+            : data->title() + " " + data->senderMessageText();
         case ChatListModel::RoleDraftMessageText: return data->draftMessageText();
         case ChatListModel::RoleDraftMessageDate: return data->draftMessageDate();
         }

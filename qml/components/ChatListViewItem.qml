@@ -10,6 +10,7 @@ PhotoTextsListItem {
     pictureThumbnail {
         photoData: photo_small || ({})
         highlighted: listItem.highlighted && !listItem.menuOpen
+        isSavedMessages: chat_id === listItem.ownUserId
     }
     property double ownUserId
     property bool showDraft: !!draft_message_text && draft_message_date > last_message_date
