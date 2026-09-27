@@ -241,6 +241,7 @@ Page {
         attachmentPreviewRow.isPicture = false;
         attachmentPreviewRow.isVideo = false;
         attachmentPreviewRow.isDocument = false;
+        attachmentPreviewRow.sendAsFile = false;
         attachmentPreviewRow.isVoiceNote = false;
         attachmentPreviewRow.isLocation = false;
         attachmentPreviewRow.isContact = false;
@@ -302,10 +303,10 @@ Page {
         } else {
             if (attachmentPreviewRow.visible) {
                 if (attachmentPreviewRow.isPicture) {
-                    sendAttachedFiles("photo");
+                    sendAttachedFiles(attachmentPreviewRow.sendAsFile ? "document" : "photo");
                 }
                 if (attachmentPreviewRow.isVideo) {
-                    sendAttachedFiles("video");
+                    sendAttachedFiles(attachmentPreviewRow.sendAsFile ? "document" : "video");
                 }
                 if (attachmentPreviewRow.isDocument) {
                     sendAttachedFiles("document");
@@ -2027,6 +2028,7 @@ Page {
                         property bool isPicture: false;
                         property bool isVideo: false;
                         property bool isDocument: false;
+                        property bool sendAsFile: false;
                         property bool isVoiceNote: false;
                         property bool isLocation: false;
                         property bool isContact: false;
@@ -2094,26 +2096,41 @@ Page {
                             }
                         }
 
-                        Label {
-                            id: attachmentPreviewText
-                            font.pixelSize: Theme.fontSizeSmall
-                            text: {
-                                if (attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact) {
-                                    return attachmentPreviewRow.attachmentDescription;
-                                }
-                                if (attachmentPreviewRow.attachedFiles.length > 1) {
-                                    return qsTr("%Ln files", "", attachmentPreviewRow.attachedFiles.length);
-                                }
-                                return attachmentPreviewRow.attachedFiles.length === 1 ? (attachmentPreviewRow.attachedFiles[0].fileName || "") : "";
-                            }
+                        Column {
                             anchors.verticalCenter: parent.verticalCenter
+                            width: parent.width - removeAttachmentsIconButton.width - attachmentThumbnailRow.width - 2 * parent.spacing
 
-                            width: parent.width - removeAttachmentsIconButton.width - attachmentThumbnailRow.width - Theme.paddingMedium
-                            maximumLineCount: 2
-                            wrapMode: Text.Wrap
-                            truncationMode: TruncationMode.Fade
-                            color: Theme.secondaryColor
-                            visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact || attachmentPreviewRow.attachedFiles.length > 1
+                            Label {
+                                id: attachmentPreviewText
+                                font.pixelSize: Theme.fontSizeSmall
+                                text: {
+                                    if (attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact) {
+                                        return attachmentPreviewRow.attachmentDescription;
+                                    }
+                                    if (attachmentPreviewRow.attachedFiles.length > 1) {
+                                        return qsTr("%Ln files", "", attachmentPreviewRow.attachedFiles.length);
+                                    }
+                                    return attachmentPreviewRow.attachedFiles.length === 1 ? (attachmentPreviewRow.attachedFiles[0].fileName || "") : "";
+                                }
+                                x: Theme.horizontalPageMargin
+                                width: parent.width - x
+                                maximumLineCount: 2
+                                wrapMode: Text.Wrap
+                                truncationMode: TruncationMode.Fade
+                                color: Theme.secondaryColor
+                                visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact || attachmentPreviewRow.attachedFiles.length > 1
+                            }
+
+                            // A file goes out as it is, at full resolution and with its metadata.
+                            TextSwitch {
+                                width: parent.width
+                                text: qsTr("Send as file")
+                                visible: (attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo)
+                                         && chatPage.hasSendPrivilege("can_send_documents")
+                                automaticCheck: false
+                                checked: attachmentPreviewRow.sendAsFile
+                                onClicked: attachmentPreviewRow.sendAsFile = !attachmentPreviewRow.sendAsFile
+                            }
                         }
                     }
 

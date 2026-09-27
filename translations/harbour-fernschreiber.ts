@@ -650,6 +650,10 @@
             <numerusform></numerusform>
         </translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Send as file</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
