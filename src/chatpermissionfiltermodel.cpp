@@ -24,11 +24,14 @@
 namespace {
     const QString PERMISSIONS("permissions");
     const QString STATUS("status");
+    const QString ID("id");
 }
 
-ChatPermissionFilterModel::ChatPermissionFilterModel(QObject *parent) : QSortFilterProxyModel(parent)
+ChatPermissionFilterModel::ChatPermissionFilterModel(QObject *parent) : QSortFilterProxyModel(parent),
+    tdLibWrapper(Q_NULLPTR)
 {
     setDynamicSortFilter(true);
+    sort(0);
 }
 
 void ChatPermissionFilterModel::setSource(QObject *model)
@@ -56,7 +59,7 @@ void ChatPermissionFilterModel::setTDLibWrapper(QObject *obj)
     if (tdLibWrapper != wrapper) {
         tdLibWrapper = wrapper;
         LOG(wrapper);
-        invalidateFilter();
+        invalidate();
     }
 }
 
@@ -129,4 +132,18 @@ bool ChatPermissionFilterModel::filterAcceptsRow(int sourceRow, const QModelInde
         }
     }
     return false;
+}
+
+// The chat with oneself comes first, the others keep the chat list's order
+bool ChatPermissionFilterModel::lessThan(const QModelIndex &sourceLeft, const QModelIndex &sourceRight) const
+{
+    if (tdLibWrapper) {
+        const qlonglong myUserId = tdLibWrapper->getUserInformation().value(ID).toLongLong();
+        const bool leftIsSavedMessages = sourceModel()->data(sourceLeft, ChatListModel::RoleChatId).toLongLong() == myUserId;
+        const bool rightIsSavedMessages = sourceModel()->data(sourceRight, ChatListModel::RoleChatId).toLongLong() == myUserId;
+        if (leftIsSavedMessages != rightIsSavedMessages) {
+            return leftIsSavedMessages;
+        }
+    }
+    return sourceLeft.row() < sourceRight.row();
 }
