@@ -24,6 +24,7 @@ import "../"
 Item {
     visible: parent.thumbnailVisible && chatPictureDetail.imageStatus === Image.Ready
     property bool isActive: parent.thumbnailActive
+    readonly property bool imageReady: visible
     opacity: isActive ? 1.0 : 0.0
     Behavior on opacity { FadeAnimation {} }
     ProfileThumbnail {
