@@ -30,6 +30,8 @@ Item {
     property int imageStatus: -1
     property bool optimizeImageSize: true
     property bool highlighted
+    // The chat with oneself shows a bookmark instead of one's own picture
+    property bool isSavedMessages: false
 
     layer.enabled: highlighted
     layer.effect: PressEffect { source: profileThumbnail }
@@ -101,7 +103,7 @@ Item {
 
     Loader {
         id: profileImageLoader
-        active: file.isDownloadingCompleted
+        active: file.isDownloadingCompleted && !profileThumbnail.isSavedMessages
         asynchronous: true
         width: parent.width
         sourceComponent: profileImageComponent
@@ -115,13 +117,25 @@ Item {
         Rectangle {
             id: replacementThumbnailBackground
             anchors.fill: parent
-            color: (Theme.colorScheme === Theme.LightOnDark) ? Theme.darkSecondaryColor : Theme.lightSecondaryColor
+            color: profileThumbnail.isSavedMessages ? Theme.highlightBackgroundColor
+                 : (Theme.colorScheme === Theme.LightOnDark) ? Theme.darkSecondaryColor : Theme.lightSecondaryColor
             radius: parent.width / 2
-            opacity: 0.8
+            opacity: profileThumbnail.isSavedMessages ? 1.0 : 0.8
+        }
+
+        Image {
+            anchors.centerIn: replacementThumbnailBackground
+            width: parent.width / 2
+            height: width
+            sourceSize.width: width
+            sourceSize.height: height
+            source: "../../images/icon-m-bookmark.svg"
+            visible: profileThumbnail.isSavedMessages
         }
 
         Text {
             anchors.centerIn: replacementThumbnailBackground
+            visible: !profileThumbnail.isSavedMessages
             text: getReplacementString()
             color: Theme.primaryColor
             font.bold: true

@@ -106,6 +106,17 @@ AccordionItem {
                 opacity: visible ? 1 : 0
                 Behavior on opacity { FadeAnimation  { } }
             }
+
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.showSavedMessagesProfile
+                text: qsTr("Show profile info for saved messages")
+                description: qsTr("Shows your own name and picture for the chat with yourself instead of \"Saved Messages\"")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.showSavedMessagesProfile = !checked
+                }
+            }
         }
     }
 }

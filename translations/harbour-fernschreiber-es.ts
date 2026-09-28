@@ -221,6 +221,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation>ID copiado a portapapeles.</translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mensajes guardados</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -301,6 +305,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Ajustes</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mensajes guardados</translation>
     </message>
 </context>
 <context>
@@ -649,6 +660,10 @@
             <numerusform>%Ln archivo</numerusform>
             <numerusform>%Ln archivos</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mensajes guardados</translation>
     </message>
     <message>
         <source>Send as file</source>
@@ -1443,6 +1458,10 @@
             <numerusform>%Ln mensajes no leídos</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mensajes guardados</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1803,6 +1822,14 @@
     <message>
         <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show profile info for saved messages</source>
+        <translation>Mostrar información del perfil en Mensajes guardados</translation>
+    </message>
+    <message>
+        <source>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</source>
+        <translation>Muestra el propio nombre y la propia foto en el chat con uno mismo en lugar de «Mensajes guardados»</translation>
     </message>
 </context>
 <context>

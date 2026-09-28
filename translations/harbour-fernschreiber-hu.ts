@@ -218,6 +218,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation>Az azonosító a vágólapra került.</translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mentett üzenetek</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -298,6 +302,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Beállítások</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mentett üzenetek</translation>
     </message>
 </context>
 <context>
@@ -640,6 +651,10 @@
         <translation>
             <numerusform>%Ln fájl</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mentett üzenetek</translation>
     </message>
     <message>
         <source>Send as file</source>
@@ -1427,6 +1442,10 @@
             <numerusform>%Ln olvasatlan üzenet</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Mentett üzenetek</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1778,6 +1797,14 @@
     <message>
         <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show profile info for saved messages</source>
+        <translation>Profiladatok megjelenítése a mentett üzeneteknél</translation>
+    </message>
+    <message>
+        <source>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</source>
+        <translation>A saját név és kép jelenik meg a saját magaddal folytatott csevegésnél a „Mentett üzenetek” helyett</translation>
     </message>
 </context>
 <context>

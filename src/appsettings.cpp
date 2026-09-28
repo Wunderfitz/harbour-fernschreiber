@@ -28,6 +28,7 @@ namespace {
     const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
     const QString KEY_ANIMATE_STICKERS("animateStickers");
     const QString KEY_ANIMATE_STICKERS_IN_PICKER("animateStickersInPicker");
+    const QString KEY_SHOW_SAVED_MESSAGES_PROFILE("showSavedMessagesProfile");
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_SOUNDS_ENABLED("notificationSoundsEnabled");
     const QString KEY_NOTIFICATION_SUPPRESS_ENABLED("notificationSuppressContent");
@@ -149,6 +150,20 @@ void AppSettings::setAnimateStickersInPicker(bool animate)
         LOG(KEY_ANIMATE_STICKERS_IN_PICKER << animate);
         settings.setValue(KEY_ANIMATE_STICKERS_IN_PICKER, animate);
         emit animateStickersInPickerChanged();
+    }
+}
+
+bool AppSettings::showSavedMessagesProfile() const
+{
+    return settings.value(KEY_SHOW_SAVED_MESSAGES_PROFILE, true).toBool();
+}
+
+void AppSettings::setShowSavedMessagesProfile(bool show)
+{
+    if (showSavedMessagesProfile() != show) {
+        LOG(KEY_SHOW_SAVED_MESSAGES_PROFILE << show);
+        settings.setValue(KEY_SHOW_SAVED_MESSAGES_PROFILE, show);
+        emit showSavedMessagesProfileChanged();
     }
 }
 

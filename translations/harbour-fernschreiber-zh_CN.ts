@@ -218,6 +218,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>收藏夹</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -298,6 +302,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>设置</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>收藏夹</translation>
     </message>
 </context>
 <context>
@@ -638,6 +649,10 @@
         <translation>
             <numerusform>%Ln 个文件</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>收藏夹</translation>
     </message>
     <message>
         <source>Send as file</source>
@@ -1423,6 +1438,10 @@
             <numerusform>%Ln 则未读消息</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>收藏夹</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1774,6 +1793,14 @@
     <message>
         <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show profile info for saved messages</source>
+        <translation>为收藏夹显示个人资料信息</translation>
+    </message>
+    <message>
+        <source>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</source>
+        <translation>在与自己的聊天中显示你的名字和头像，而不是“收藏夹”</translation>
     </message>
 </context>
 <context>

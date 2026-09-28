@@ -221,6 +221,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Saved Messages</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -301,6 +305,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Settings</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Saved Messages</translation>
     </message>
 </context>
 <context>
@@ -649,6 +660,10 @@
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Saved Messages</translation>
     </message>
     <message>
         <source>Send as file</source>
@@ -1443,6 +1458,10 @@
             <numerusform>%Ln unread messages</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Saved Messages</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1802,6 +1821,14 @@
     </message>
     <message>
         <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show profile info for saved messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
