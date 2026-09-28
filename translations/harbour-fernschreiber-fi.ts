@@ -665,6 +665,10 @@
         <source>Saved Messages</source>
         <translation>Tallennetut viestit</translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Lähetä tiedostona</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -2728,6 +2732,21 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Lähetä kuva</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Lähetä video</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Lähetä tiedosto</translation>
     </message>
 </context>
 </TS>

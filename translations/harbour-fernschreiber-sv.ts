@@ -665,6 +665,10 @@
         <source>Saved Messages</source>
         <translation>Sparade meddelanden</translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Skicka som fil</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -2727,6 +2731,21 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Skicka bild</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Skicka video</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Skicka fil</translation>
     </message>
 </context>
 </TS>

@@ -676,6 +676,10 @@
         <source>Saved Messages</source>
         <translation>Uložené správy</translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Poslať ako súbor</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -2759,6 +2763,21 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Poslať obrázok</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Poslať video</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Poslať súbor</translation>
     </message>
 </context>
 </TS>

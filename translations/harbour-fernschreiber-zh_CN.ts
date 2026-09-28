@@ -654,6 +654,10 @@
         <source>Saved Messages</source>
         <translation>收藏夹</translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>以文件形式发送</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -2696,6 +2700,21 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>发送图片</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>发送视频</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>发送文件</translation>
     </message>
 </context>
 </TS>
