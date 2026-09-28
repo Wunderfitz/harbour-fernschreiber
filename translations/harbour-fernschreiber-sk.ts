@@ -1849,6 +1849,14 @@
         <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show profile info for saved messages</source>
+        <translation>Zobraziť informácie profilu pre uložené správy</translation>
+    </message>
+    <message>
+        <source>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</source>
+        <translation>Zobrazí vlastné meno a obrázok v rozhovore so sebou namiesto „Uložené správy“</translation>
+    </message>
 </context>
 <context>
     <name>SettingsBehavior</name>

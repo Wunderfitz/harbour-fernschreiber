@@ -68,7 +68,6 @@ public:
     bool setOrder(const QString &order);
     const QVariant lastMessage(const QString &key) const;
     QString title() const;
-    void setTitle(const QString &title);
     int unreadCount() const;
     int unreadMentionCount() const;
     int unreadReactionCount() const;
@@ -118,7 +117,6 @@ ChatListModel::ChatData::ChatData(TDLibWrapper *tdLibWrapper, const QVariantMap 
     memberStatus(TDLibWrapper::ChatMemberStatusUnknown),
     secretChatState(TDLibWrapper::SecretChatStateUnknown)
 {
-    setTitle(data.value(TITLE).toString());
     const QVariantMap type(data.value(TYPE).toMap());
     switch (chatType = TDLibWrapper::chatTypeFromString(type.value(_TYPE).toString())) {
     case TDLibWrapper::ChatTypeBasicGroup:
@@ -164,12 +162,6 @@ QString ChatListModel::ChatData::title() const
     return chatData.value(TITLE).toString();
 }
 
-// TDLib titles the chat with oneself after one's own name
-void ChatListModel::ChatData::setTitle(const QString &title)
-{
-    chatData.insert(TITLE, isSavedMessages ? ChatListModel::tr("Saved Messages") : title);
-}
-
 int ChatListModel::ChatData::unreadCount() const
 {
     return chatData.value(UNREAD_COUNT).toInt();
@@ -192,7 +184,7 @@ int ChatListModel::ChatData::unreadReactionCount() const
 
 QVariant ChatListModel::ChatData::photoSmall() const
 {
-    return isSavedMessages ? QVariant() : chatData.value(PHOTO).toMap().value(SMALL);
+    return chatData.value(PHOTO).toMap().value(SMALL);
 }
 
 qlonglong ChatListModel::ChatData::lastReadInboxMessageId() const
@@ -418,6 +410,7 @@ ChatListModel::ChatListModel(TDLibWrapper *tdLibWrapper, AppSettings *appSetting
     connect(tdLibWrapper, SIGNAL(chatUnreadMentionCountUpdated(qlonglong, int)), this, SLOT(handleChatUnreadMentionCountUpdated(qlonglong, int)));
     connect(tdLibWrapper, SIGNAL(chatUnreadReactionCountUpdated(qlonglong, int)), this, SLOT(handleChatUnreadReactionCountUpdated(qlonglong, int)));
     connect(tdLibWrapper, SIGNAL(chatAvailableReactionsUpdated(qlonglong,QVariantMap)), this, SLOT(handleChatAvailableReactionsUpdated(qlonglong,QVariantMap)));
+    connect(appSettings, SIGNAL(showSavedMessagesProfileChanged()), this, SLOT(handleShowSavedMessagesProfileChanged()));
 
     // Don't start the timer until we have at least one chat
     relativeTimeRefreshTimer = new QTimer(this);
@@ -482,13 +475,15 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
     const int row = index.row();
     if (row >= 0 && row < chatList.size()) {
         const ChatData *data = chatList.at(row);
+        // TDLib titles the chat with oneself after one's own name
+        const bool showAsSavedMessages = data->isSavedMessages && !appSettings->showSavedMessagesProfile();
         switch ((ChatListModel::Role)role) {
         case ChatListModel::RoleDisplay: return data->chatData;
         case ChatListModel::RoleChatId: return data->chatId;
         case ChatListModel::RoleChatType: return data->chatType;
         case ChatListModel::RoleGroupId: return data->groupId;
-        case ChatListModel::RoleTitle: return data->title();
-        case ChatListModel::RolePhotoSmall: return data->photoSmall();
+        case ChatListModel::RoleTitle: return showAsSavedMessages ? tr("Saved Messages") : data->title();
+        case ChatListModel::RolePhotoSmall: return showAsSavedMessages ? QVariant() : data->photoSmall();
         case ChatListModel::RoleUnreadCount: return data->unreadCount();
         case ChatListModel::RoleUnreadMentionCount: return data->unreadMentionCount();
         case ChatListModel::RoleAvailableReactions: return data->availableReactions();
@@ -505,8 +500,8 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
         case ChatListModel::RoleIsMarkedAsUnread: return data->isMarkedAsUnread();
         case ChatListModel::RoleIsPinned: return data->isPinned();
         // The chat with oneself is also found by its English name and by one's own name
-        case ChatListModel::RoleFilter: return data->isSavedMessages
-            ? data->title() + " Saved Messages " + FernschreiberUtils::getUserName(tdLibWrapper->getUserInformation()) + " " + data->senderMessageText()
+        case ChatListModel::RoleFilter: return showAsSavedMessages
+            ? tr("Saved Messages") + " Saved Messages " + data->title() + " " + data->senderMessageText()
             : data->title() + " " + data->senderMessageText();
         case ChatListModel::RoleDraftMessageText: return data->draftMessageText();
         case ChatListModel::RoleDraftMessageDate: return data->draftMessageDate();
@@ -945,7 +940,7 @@ void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString 
         LOG("Updating title for" << chatId);
         const int chatIndex = chatIndexMap.value(chatIdLongLong);
         ChatData *chat = chatList.at(chatIndex);
-        chat->setTitle(title);
+        chat->chatData.insert(TITLE, title);
         QVector<int> changedRoles;
         changedRoles.append(ChatListModel::RoleTitle);
         changedRoles.append(ChatListModel::RoleFilter);
@@ -955,7 +950,7 @@ void ChatListModel::handleChatTitleUpdated(const QString &chatId, const QString 
         ChatData *chat = hiddenChats.value(chatId.toLongLong());
         if (chat) {
             LOG("Updating title for hidden chat" << chatId);
-            chat->setTitle(title);
+            chat->chatData.insert(TITLE, title);
         }
     }
 }
@@ -1076,6 +1071,20 @@ void ChatListModel::handleChatAvailableReactionsUpdated(qlonglong chatId, const 
             LOG("Updating available reaction type for hidden chat" << chatId << availableReactions);
             chat->chatData.insert(AVAILABLE_REACTIONS, availableReactions);
         }
+    }
+}
+
+void ChatListModel::handleShowSavedMessagesProfileChanged()
+{
+    const qlonglong ownUserId = tdLibWrapper->getUserInformation().value(ID).toLongLong();
+    if (chatIndexMap.contains(ownUserId)) {
+        LOG("Updating the chat with oneself");
+        QVector<int> changedRoles;
+        changedRoles.append(ChatListModel::RoleTitle);
+        changedRoles.append(ChatListModel::RolePhotoSmall);
+        changedRoles.append(ChatListModel::RoleFilter);
+        const QModelIndex modelIndex(index(chatIndexMap.value(ownUserId)));
+        emit dataChanged(modelIndex, modelIndex, changedRoles);
     }
 }
 

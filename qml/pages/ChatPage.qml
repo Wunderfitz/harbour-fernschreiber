@@ -40,6 +40,7 @@ Page {
     property alias chatPicture: chatPictureThumbnail.photoData
     property bool isPrivateChat: false;
     readonly property bool isSavedMessages: isPrivateChat && chatInformation.type.user_id === myUserId
+    readonly property bool showAsSavedMessages: isSavedMessages && !appSettings.showSavedMessagesProfile
     property bool isSecretChat: false;
     property bool isSecretChatReady: false;
     property bool isBasicGroup: false;
@@ -122,7 +123,7 @@ Page {
 
     function updateChatPartnerStatusText() {
         // Being online is no news in the chat with oneself
-        if (chatPage.isSelecting || chatPage.isSavedMessages) {
+        if (chatPage.isSelecting || chatPage.showAsSavedMessages) {
             return
         }
         var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
@@ -1195,7 +1196,7 @@ Page {
                         ProfileThumbnail {
                             id: chatPictureThumbnail
                             replacementStringHint: chatNameText.text
-                            isSavedMessages: chatPage.isSavedMessages
+                            isSavedMessages: chatPage.showAsSavedMessages
                             width: parent.height
                             height: parent.height
 
@@ -1243,7 +1244,7 @@ Page {
                             id: chatNameText
                             width: Math.min(implicitWidth, parent.width)
                             anchors.right: parent.right
-                            text: chatPage.isSavedMessages ? qsTr("Saved Messages")
+                            text: chatPage.showAsSavedMessages ? qsTr("Saved Messages")
                                 : chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, font.pixelSize) : qsTr("Unknown")
                             textFormat: Text.StyledText
                             font.pixelSize: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium

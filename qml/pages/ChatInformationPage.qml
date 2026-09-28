@@ -42,6 +42,7 @@ Page {
 
     property string chatPartnerGroupId
     readonly property bool isSavedMessages: isPrivateChat && chatPartnerGroupId === myUserId.toString()
+    readonly property bool showAsSavedMessages: isSavedMessages && !appSettings.showSavedMessagesProfile
 
     property bool userIsMember: ((isPrivateChat || isSecretChat ) && chatInformation["@type"]) || // should be optimized
                                 (isBasicGroup || isSuperGroup) && (

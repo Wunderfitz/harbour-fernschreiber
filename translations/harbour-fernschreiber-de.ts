@@ -1819,6 +1819,14 @@
         <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
         <translation>Spielt animierte Sticker bei der Auswahl zum Senden ab. Benötigt mehr Akku und Daten.</translation>
     </message>
+    <message>
+        <source>Show profile info for saved messages</source>
+        <translation>Profilinfo für gespeicherte Nachrichten anzeigen</translation>
+    </message>
+    <message>
+        <source>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</source>
+        <translation>Zeigt für den Chat mit sich selbst den eigenen Namen und das eigene Bild statt „Gespeichertes“</translation>
+    </message>
 </context>
 <context>
     <name>SettingsBehavior</name>

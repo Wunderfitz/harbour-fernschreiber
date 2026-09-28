@@ -368,7 +368,7 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     }
 
     // TDLib titles the chat with oneself after one's own name
-    const QString summary(notificationGroup->chatId == tdLibWrapper->getUserInformation().value(ID).toLongLong()
+    const QString summary(notificationGroup->chatId == tdLibWrapper->getUserInformation().value(ID).toLongLong() && !appSettings->showSavedMessagesProfile()
         ? tr("Saved Messages") : chatInformation ? chatInformation->title : QString());
     nemoNotification->setBody(notificationBody);
     nemoNotification->setSummary(summary);

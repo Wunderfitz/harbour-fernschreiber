@@ -31,6 +31,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
     Q_PROPERTY(bool animateStickersInPicker READ animateStickersInPicker WRITE setAnimateStickersInPicker NOTIFY animateStickersInPickerChanged)
+    Q_PROPERTY(bool showSavedMessagesProfile READ showSavedMessagesProfile WRITE setShowSavedMessagesProfile NOTIFY showSavedMessagesProfileChanged)
     Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
     Q_PROPERTY(bool notificationSoundsEnabled READ notificationSoundsEnabled WRITE setNotificationSoundsEnabled NOTIFY notificationSoundsEnabledChanged)
     Q_PROPERTY(bool notificationSuppressContent READ notificationSuppressContent WRITE setNotificationSuppressContent NOTIFY notificationSuppressContentChanged)
@@ -90,6 +91,9 @@ public:
 
     bool animateStickersInPicker() const;
     void setAnimateStickersInPicker(bool animate);
+
+    bool showSavedMessagesProfile() const;
+    void setShowSavedMessagesProfile(bool show);
 
     bool notificationTurnsDisplayOn() const;
     void setNotificationTurnsDisplayOn(bool turnOn);
@@ -158,6 +162,7 @@ signals:
     void showStickersAsImagesChanged();
     void animateStickersChanged();
     void animateStickersInPickerChanged();
+    void showSavedMessagesProfileChanged();
     void notificationTurnsDisplayOnChanged();
     void notificationSoundsEnabledChanged();
     void notificationSuppressContentChanged();

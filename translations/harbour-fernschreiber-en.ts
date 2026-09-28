@@ -1821,6 +1821,14 @@ messages</numerusform>
         <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
         <translation>Plays animated stickers while choosing one to send. Needs more battery and data.</translation>
     </message>
+    <message>
+        <source>Show profile info for saved messages</source>
+        <translation>Show profile info for saved messages</translation>
+    </message>
+    <message>
+        <source>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</source>
+        <translation>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</translation>
+    </message>
 </context>
 <context>
     <name>SettingsBehavior</name>
