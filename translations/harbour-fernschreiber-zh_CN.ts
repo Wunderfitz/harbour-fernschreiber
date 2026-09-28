@@ -639,6 +639,10 @@
             <numerusform>%Ln 个文件</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>以文件形式发送</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

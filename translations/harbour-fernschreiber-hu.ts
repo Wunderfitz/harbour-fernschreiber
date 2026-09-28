@@ -641,6 +641,10 @@
             <numerusform>%Ln fájl</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Küldés fájlként</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

@@ -661,6 +661,10 @@
             <numerusform>%Ln súborov</numerusform>
         </translation>
     </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Poslať ako súbor</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
