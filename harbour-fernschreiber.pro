@@ -37,6 +37,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/namedaction.cpp \
     src/notificationmanager.cpp \
     src/processlauncher.cpp \
+    src/livelocationmanager.cpp \
     src/stickermanager.cpp \
     src/tdlibfile.cpp \
     src/tdlibreceiver.cpp \
@@ -245,6 +246,7 @@ HEADERS += \
     src/namedaction.h \
     src/notificationmanager.h \
     src/processlauncher.h \
+    src/livelocationmanager.h \
     src/stickermanager.h \
     src/tdlibfile.h \
     src/tdlibreceiver.h \

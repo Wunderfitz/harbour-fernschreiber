@@ -662,6 +662,14 @@
         <source>Location: Position unavailable, please check the location settings</source>
         <translation>位置:无法获取位置，请检查定位设置</translation>
     </message>
+    <message>
+        <source>Once</source>
+        <translation>一次</translation>
+    </message>
+    <message>
+        <source>%1 mins</source>
+        <translation>%1 分钟</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1409,6 +1417,13 @@
         <source>has removed the option “%1” from the poll %2</source>
         <comment>%1 is the removed poll option, %2 the poll it was removed from</comment>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageLocation</name>
+    <message>
+        <source>Live location sharing active for %1 mins</source>
+        <translation>实时位置共享剩余 %1 分钟</translation>
     </message>
 </context>
 <context>

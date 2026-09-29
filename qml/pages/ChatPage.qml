@@ -247,6 +247,7 @@ Page {
         attachmentPreviewRow.sendAsFile = false;
         attachmentPreviewRow.isVoiceNote = false;
         attachmentPreviewRow.isLocation = false;
+        attachmentPreviewRow.locationPeriod = -1;
         attachmentPreviewRow.isContact = false;
         attachmentPreviewRow.attachedFiles = [];
         attachmentPreviewRow.locationData = null;
@@ -277,12 +278,24 @@ Page {
         if (newMessageTextField.text.length !== 0
                 || attachmentPreviewRow.attachedFiles.length > 0
                 || attachmentPreviewRow.isVoiceNote
-                || (attachmentPreviewRow.isLocation && !!attachmentPreviewRow.locationData)
                 || attachmentPreviewRow.isContact) {
             newMessageSendButton.enabled = true;
         } else {
             newMessageSendButton.enabled = false;
         }
+    }
+
+    // A location goes out as soon as it is chosen and known, without the send button
+    function sendLocation() {
+        var locationData = attachmentPreviewRow.locationData;
+        if (attachmentPreviewRow.locationPeriod > 0) {
+            liveLocationManager.startLiveLocation(chatInformation.id, attachmentPreviewRow.locationPeriod, locationData, newMessageColumn.replyToMessageId);
+        } else {
+            tdLibWrapper.sendLocationMessage(chatInformation.id, locationData.latitude, locationData.longitude, locationData.horizontalAccuracy, newMessageColumn.replyToMessageId);
+        }
+        clearAttachmentPreviewRow();
+        controlSendButton();
+        newMessageInReplyToRow.inReplyToMessage = null;
     }
 
     // A single file goes out as it always did - an album of one is still an album,
@@ -318,9 +331,6 @@ Page {
                 }
                 if (attachmentPreviewRow.isVoiceNote) {
                     tdLibWrapper.sendVoiceNoteMessage(chatInformation.id, fernschreiberUtils.voiceNotePath(), newMessageTextField.text, Math.round(fernschreiberUtils.getVoiceNoteDuration() / 1000), fernschreiberUtils.getVoiceNoteWaveform(), newMessageColumn.replyToMessageId);
-                }
-                if (attachmentPreviewRow.isLocation) {
-                    tdLibWrapper.sendLocationMessage(chatInformation.id, attachmentPreviewRow.locationData.latitude, attachmentPreviewRow.locationData.longitude, attachmentPreviewRow.locationData.horizontalAccuracy, newMessageColumn.replyToMessageId);
                 }
                 if (attachmentPreviewRow.isContact) {
                     tdLibWrapper.sendContactMessage(chatInformation.id, attachmentPreviewRow.contactData.phoneNumber, attachmentPreviewRow.contactData.firstName, attachmentPreviewRow.contactData.lastName, newMessageColumn.replyToMessageId);
@@ -1988,6 +1998,7 @@ Page {
                                     attachmentOptionsFlickable.isNeeded = false;
                                     // Sending waits for the first fix, which can take a while
                                     attachmentPreviewRow.isLocation = true;
+                                    attachmentPreviewRow.locationPeriod = -1;
                                     attachmentPreviewRow.attachmentDescription = qsTr("Location: Waiting for the first position fix...");
                                     controlSendButton();
                                 }
@@ -2042,6 +2053,9 @@ Page {
                         property bool isContact: false;
                         property var locationData: null;
                         property bool locationUnavailable: false;
+                        // -1 while not chosen yet, 0 for a single location, the seconds of a live location.
+                        // Chosen before the first fix, the location is sent with it.
+                        property int locationPeriod: -1;
                         property var contactData: null;
                         property var geocodedAddress: qsTr("Unknown address")
                         property var attachedFiles: [];
@@ -2061,6 +2075,9 @@ Page {
                                     attachmentPreviewRow.locationUnavailable = false;
                                     attachmentPreviewRow.attachmentDescription = attachmentPreviewRow.getLocationDescription();
                                     controlSendButton();
+                                    if (attachmentPreviewRow.locationPeriod >= 0) {
+                                        sendLocation();
+                                    }
                                 }
                             }
                             onGeoPositionUnavailable: {
@@ -2144,6 +2161,33 @@ Page {
                                 truncationMode: TruncationMode.Fade
                                 color: Theme.secondaryColor
                                 visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact || attachmentPreviewRow.attachedFiles.length > 1
+                            }
+
+                            Row {
+                                id: locationPeriodRow
+                                x: Theme.horizontalPageMargin
+                                width: parent.width - x
+                                spacing: Theme.paddingSmall
+                                visible: attachmentPreviewRow.isLocation && attachmentPreviewRow.locationPeriod < 0
+
+                                Repeater {
+                                    // Live locations can't be sent to secret chats and channels
+                                    model: (chatPage.isSecretChat || chatPage.isChannel)
+                                           ? [ { "text": qsTr("Once"), "period": 0 } ]
+                                           : [ { "text": qsTr("Once"), "period": 0 },
+                                               { "text": qsTr("%1 mins").arg(15), "period": 900 },
+                                               { "text": qsTr("%1 mins").arg(30), "period": 1800 } ]
+                                    Button {
+                                        width: (locationPeriodRow.width - 2 * locationPeriodRow.spacing) / 3
+                                        text: modelData.text
+                                        onClicked: {
+                                            attachmentPreviewRow.locationPeriod = modelData.period;
+                                            if (attachmentPreviewRow.locationData) {
+                                                sendLocation();
+                                            }
+                                        }
+                                    }
+                                }
                             }
 
                             // A file goes out as it is, at full resolution and with its metadata.

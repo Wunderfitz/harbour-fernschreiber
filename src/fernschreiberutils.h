@@ -59,6 +59,7 @@ public:
     Q_INVOKABLE void startGeoLocationUpdates();
     Q_INVOKABLE void stopGeoLocationUpdates();
     Q_INVOKABLE bool supportsGeoLocation();
+    void setLiveGeoLocationUpdates(bool active);
     Q_INVOKABLE QString getSailfishOSVersion();
     Q_INVOKABLE QString mimeTypeForFile(const QString &filePath);
     Q_INVOKABLE QString writeSharedDataToFile(const QString &name, const QString &data);
@@ -90,9 +91,12 @@ private:
     bool sampleFormatReported;
 
     QGeoPositionInfoSource *geoPositionInfoSource;
+    bool previewGeoLocationUpdates;
+    bool liveGeoLocationUpdates;
     QNetworkAccessManager *manager;
 
     void cleanUp();
+    void updateGeoLocationSource();
     QString getTemporaryDirectoryPath();
 
 };

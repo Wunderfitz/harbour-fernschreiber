@@ -664,6 +664,14 @@
         <source>Location: Position unavailable, please check the location settings</source>
         <translation>Helyzet: A helyzet nem elérhető, ellenőrizze a helymeghatározási beállításokat</translation>
     </message>
+    <message>
+        <source>Once</source>
+        <translation>Egyszer</translation>
+    </message>
+    <message>
+        <source>%1 mins</source>
+        <translation>%1 perc</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1412,6 +1420,13 @@
         <source>has removed the option “%1” from the poll %2</source>
         <comment>%1 is the removed poll option, %2 the poll it was removed from</comment>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageLocation</name>
+    <message>
+        <source>Live location sharing active for %1 mins</source>
+        <translation>Élő helymegosztás aktív még %1 percig</translation>
     </message>
 </context>
 <context>

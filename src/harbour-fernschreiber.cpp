@@ -49,6 +49,7 @@
 #include "mceinterface.h"
 #include "dbusadaptor.h"
 #include "processlauncher.h"
+#include "livelocationmanager.h"
 #include "stickermanager.h"
 #include "textfiltermodel.h"
 #include "boolfiltermodel.h"
@@ -147,6 +148,9 @@ int main(int argc, char *argv[])
     FernschreiberUtils *fernschreiberUtils = new FernschreiberUtils(view.data());
     context->setContextProperty("fernschreiberUtils", fernschreiberUtils);
     qmlRegisterUncreatableType<FernschreiberUtils>(uri, 1, 0, "FernschreiberUtilities", QString());
+
+    LiveLocationManager *liveLocationManager = new LiveLocationManager(tdLibWrapper, fernschreiberUtils, view.data());
+    context->setContextProperty("liveLocationManager", liveLocationManager);
 
     DBusAdaptor *dBusAdaptor = tdLibWrapper->getDBusAdaptor();
     context->setContextProperty("dBusAdaptor", dBusAdaptor);

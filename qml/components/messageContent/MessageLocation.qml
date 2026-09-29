@@ -28,6 +28,16 @@ MessageContentBase {
     property var locationData : rawMessage.content.location
     property string fileExtra;
 
+    // Only set while this device keeps the live location up to date
+    readonly property real liveLocationEnd: rawMessage ? (liveLocationManager.activeLiveLocations[rawMessage.chat_id + ":" + rawMessage.id] || 0) : 0
+    property real currentTime: Date.now()
+    readonly property int liveLocationRemainingSeconds: liveLocationEnd > 0 ? Math.max(0, Math.ceil((liveLocationEnd - currentTime) / 1000)) : 0
+
+    function formatRemainingTime(seconds) {
+        var remainingSeconds = seconds % 60;
+        return Math.floor(seconds / 60) + ":" + (remainingSeconds < 10 ? "0" : "") + remainingSeconds;
+    }
+
     onClicked: {
         Qt.openUrlExternally("geo:" + locationData.latitude + "," + locationData.longitude);
     }
@@ -83,6 +93,52 @@ MessageContentBase {
 
     BackgroundImage {
         visible: image.status !== Image.Ready
+    }
+
+    Timer {
+        interval: 1000
+        repeat: true
+        triggeredOnStart: true
+        running: contentItem.liveLocationEnd > 0 && Qt.application.active
+        onTriggered: contentItem.currentTime = Date.now()
+    }
+
+    Rectangle {
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: Math.max(liveLocationLabel.height + 2 * Theme.paddingSmall, stopLiveLocationButton.height)
+        color: Theme.rgba(Theme.highlightDimmerColor, Theme.opacityOverlay)
+        visible: contentItem.liveLocationRemainingSeconds > 0
+
+        Label {
+            id: liveLocationLabel
+            anchors {
+                left: parent.left
+                leftMargin: Theme.paddingMedium
+                right: stopLiveLocationButton.left
+                verticalCenter: parent.verticalCenter
+            }
+            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.primaryColor
+            wrapMode: Text.Wrap
+            text: qsTr("Live location sharing active for %1 mins").arg(contentItem.formatRemainingTime(contentItem.liveLocationRemainingSeconds))
+        }
+
+        IconButton {
+            id: stopLiveLocationButton
+            anchors {
+                right: parent.right
+                verticalCenter: parent.verticalCenter
+            }
+            width: Theme.itemSizeExtraSmall
+            height: Theme.itemSizeExtraSmall
+            icon.source: "image://theme/icon-m-clear"
+            icon.sourceSize: Qt.size(Theme.iconSizeSmallPlus, Theme.iconSizeSmallPlus)
+            onClicked: liveLocationManager.stopLiveLocation(rawMessage.chat_id, rawMessage.id)
+        }
     }
 
     Component.onCompleted: {

@@ -658,27 +658,73 @@ void TDLibWrapper::sendVoiceNoteMessage(qlonglong chatId, const QString &filePat
     this->sendRequest(requestObject);
 }
 
+static QVariantMap newLocation(double latitude, double longitude, double horizontalAccuracy)
+{
+    QVariantMap location;
+    location.insert("latitude", latitude);
+    location.insert("longitude", longitude);
+    location.insert("horizontal_accuracy", horizontalAccuracy);
+    location.insert(_TYPE, "location");
+    return location;
+}
+
+static QVariantMap newLiveLocation(const QVariantMap &location, int livePeriod)
+{
+    QVariantMap liveLocation;
+    liveLocation.insert(_TYPE, "liveLocation");
+    liveLocation.insert("location", location);
+    liveLocation.insert("live_period", livePeriod);
+    liveLocation.insert("heading", 0);
+    liveLocation.insert("proximity_alert_radius", 0);
+    return liveLocation;
+}
+
 void TDLibWrapper::sendLocationMessage(qlonglong chatId, double latitude, double longitude, double horizontalAccuracy, qlonglong replyToMessageId)
 {
     LOG("Sending location message" << chatId << latitude << longitude << horizontalAccuracy << replyToMessageId);
     QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageLocation");
-
-    QVariantMap location;
-    location.insert("latitude", latitude);
-    location.insert("longitude", longitude);
-    location.insert("horizontal_accuracy", horizontalAccuracy);
-    location.insert(_TYPE, "location");
-    inputMessageContent.insert("location", location);
-    if (versionNumber <= VERSION_NUMBER(1,8,63)) {
-        // Live locations became an inputMessageLiveLocation of their own in 1.8.64
-        inputMessageContent.insert("live_period", 0);
-        inputMessageContent.insert("heading", 0);
-        inputMessageContent.insert("proximity_alert_radius", 0);
-    }
+    inputMessageContent.insert("location", newLocation(latitude, longitude, horizontalAccuracy));
 
     requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::sendLiveLocationMessage(qlonglong chatId, double latitude, double longitude, double horizontalAccuracy, int livePeriod, qlonglong replyToMessageId, const QString &extra)
+{
+    LOG("Sending live location message" << chatId << latitude << longitude << horizontalAccuracy << livePeriod << replyToMessageId);
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessageLiveLocation");
+    inputMessageContent.insert("location", newLiveLocation(newLocation(latitude, longitude, horizontalAccuracy), livePeriod));
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    requestObject.insert(_EXTRA, extra);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::editMessageLiveLocation(qlonglong chatId, qlonglong messageId, double latitude, double longitude, double horizontalAccuracy, int livePeriod, const QString &extra)
+{
+    LOG("Editing live location" << chatId << messageId << latitude << longitude << horizontalAccuracy);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "editMessageLiveLocation");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    requestObject.insert("location", newLiveLocation(newLocation(latitude, longitude, horizontalAccuracy), livePeriod));
+    requestObject.insert(_EXTRA, extra);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::stopMessageLiveLocation(qlonglong chatId, qlonglong messageId, const QString &extra)
+{
+    LOG("Stopping live location" << chatId << messageId);
+    // Without a location, the live location is stopped
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "editMessageLiveLocation");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    requestObject.insert(_EXTRA, extra);
     this->sendRequest(requestObject);
 }
 

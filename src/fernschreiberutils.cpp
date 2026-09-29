@@ -168,6 +168,8 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent)
     connect(&audioRecorder, SIGNAL(durationChanged(qlonglong)), this, SLOT(handleVoiceNoteDurationChanged(qlonglong)));
     connect(&audioRecorder, SIGNAL(statusChanged(QMediaRecorder::Status)), this, SLOT(handleAudioRecorderStatusChanged(QMediaRecorder::Status)));
 
+    this->previewGeoLocationUpdates = false;
+    this->liveGeoLocationUpdates = false;
     this->geoPositionInfoSource = QGeoPositionInfoSource::createDefaultSource(this);
     if (this->geoPositionInfoSource) {
         LOG("Geolocation successfully initialized...");
@@ -433,15 +435,32 @@ FernschreiberUtils::VoiceNoteRecordingState FernschreiberUtils::getVoiceNoteReco
 
 void FernschreiberUtils::startGeoLocationUpdates()
 {
-    if (this->geoPositionInfoSource) {
-        this->geoPositionInfoSource->startUpdates();
-    }
+    this->previewGeoLocationUpdates = true;
+    this->updateGeoLocationSource();
 }
 
 void FernschreiberUtils::stopGeoLocationUpdates()
 {
+    this->previewGeoLocationUpdates = false;
+    this->updateGeoLocationSource();
+}
+
+void FernschreiberUtils::setLiveGeoLocationUpdates(bool active)
+{
+    this->liveGeoLocationUpdates = active;
+    this->updateGeoLocationSource();
+}
+
+// The location being attached and the live locations being shared use the
+// same source, which only stops when neither needs it any more
+void FernschreiberUtils::updateGeoLocationSource()
+{
     if (this->geoPositionInfoSource) {
-        this->geoPositionInfoSource->stopUpdates();
+        if (this->previewGeoLocationUpdates || this->liveGeoLocationUpdates) {
+            this->geoPositionInfoSource->startUpdates();
+        } else {
+            this->geoPositionInfoSource->stopUpdates();
+        }
     }
 }
 
@@ -594,7 +613,10 @@ void FernschreiberUtils::handleGeoPositionUpdated(const QGeoPositionInfo &info)
     positionInformation.insert("latitude", geoCoordinate.latitude());
     positionInformation.insert("longitude", geoCoordinate.longitude());
 
-    this->initiateReverseGeocode(geoCoordinate.latitude(), geoCoordinate.longitude());
+    // Only the location being attached shows an address
+    if (this->previewGeoLocationUpdates) {
+        this->initiateReverseGeocode(geoCoordinate.latitude(), geoCoordinate.longitude());
+    }
 
     emit newPositionInformation(positionInformation);
 }

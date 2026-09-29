@@ -567,6 +567,12 @@ function handleErrorMessage(code, message, extra) {
         Debug.log("[Functions] Members of this chat can't be searched: " + message);
         return;
     }
+    if (extra && (extra.indexOf("liveLocation:update:") === 0 || extra.indexOf("liveLocation:stop:") === 0)) {
+        // A live location that can't be updated any more simply ends,
+        // see LiveLocationManager - only a failed start is reported
+        Debug.log("[Functions] Live location not updated: " + message);
+        return;
+    }
     if (code === 404 || (code === 400 && message === "USERNAME_INVALID")) {
         // Silently ignore
         // - 404 Not Found messages (occur sometimes, without clear context...)

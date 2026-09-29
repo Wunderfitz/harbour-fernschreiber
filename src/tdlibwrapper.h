@@ -270,6 +270,11 @@ public:
     Q_INVOKABLE void removeOpenWith();
 
 public:
+    // For LiveLocationManager, which keeps track of the live locations being shared
+    void sendLiveLocationMessage(qlonglong chatId, double latitude, double longitude, double horizontalAccuracy, int livePeriod, qlonglong replyToMessageId, const QString &extra);
+    void editMessageLiveLocation(qlonglong chatId, qlonglong messageId, double latitude, double longitude, double horizontalAccuracy, int livePeriod, const QString &extra);
+    void stopMessageLiveLocation(qlonglong chatId, qlonglong messageId, const QString &extra);
+
     const Group* getGroup(qlonglong groupId) const;
     static ChatType chatTypeFromString(const QString &type);
     static ChatMemberStatus chatMemberStatusFromString(const QString &status);
