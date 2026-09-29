@@ -191,42 +191,39 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
     case 'messageGameScore':
         return myself ? qsTr("scored %Ln points", "myself", message.content.score) : qsTr("scored %Ln points", "myself", message.content.score);
     case 'messageCall':
-        var video = message.content.is_video;
-        var discardReason = message.content.discard_reason['@type'];
-        var duration = message.content.duration;
-        var minutes = Math.floor(duration / 60);
-        var seconds = duration % 60;
-        var durationString = minutes > 0 ? qsTr("%1 min %2 sec").arg(minutes).arg(seconds) : qsTr("%1 sec").arg(seconds)
-        if (video) {
-            switch (discardReason) {
-                case 'callDiscardReasonMissed':
-                    return qsTr("missed video call");
-                case 'callDiscardReasonDeclined':
-                    return qsTr("declined video call");
-                case 'callDiscardReasonDisconnected':
-                    return qsTr("interrupted video call: %1").arg(durationString);
-                case 'callDiscardReasonHungUp':
-                case 'callDiscardReasonEmpty':
-                    return myself ? qsTr("outgoing video call: %1", "myself").arg(durationString) : qsTr("incoming video call: %1").arg(durationString);
-            }
-        } else {
-            switch (discardReason) {
-                case 'callDiscardReasonMissed':
-                    return qsTr("missed call");
-                case 'callDiscardReasonDeclined':
-                    return qsTr("declined call");
-                case 'callDiscardReasonDisconnected':
-                    return qsTr("interrupted call: %1").arg(durationString);
-                case 'callDiscardReasonHungUp':
-                case 'callDiscardReasonEmpty':
-                    return myself ? qsTr("outgoing call: %1", "myself").arg(durationString) : qsTr("incoming call: %1").arg(durationString);
-            }
+        var callText;
+        switch (message.content.discard_reason['@type']) {
+        case 'callDiscardReasonMissed':
+            callText = message.content.is_video ? (myself ? qsTr("cancelled video call") : qsTr("missed video call")) : (myself ? qsTr("cancelled call") : qsTr("missed call"));
+            break;
+        case 'callDiscardReasonDeclined':
+            callText = message.content.is_video ? qsTr("declined video call") : qsTr("declined call");
+            break;
+        case 'callDiscardReasonDisconnected':
+            callText = message.content.is_video ? qsTr("interrupted video call") : qsTr("interrupted call");
+            break;
+        default:
+            callText = message.content.is_video ? (myself ? qsTr("outgoing video call") : qsTr("incoming video call")) : (myself ? qsTr("outgoing call") : qsTr("incoming call"));
         }
+        return message.content.duration > 0 ? (callText + " (" + getCallDurationText(message.content.duration) + ")") : callText;
     case 'messageUnsupported':
         return myself ? qsTr("sent an unsupported message", "myself") : qsTr("sent an unsupported message");
     default:
         return myself ? qsTr("sent an unsupported message: %1", "myself; %1 is message type").arg(message.content['@type'].substring(7)) : qsTr("sent an unsupported message: %1", "%1 is message type").arg(message.content['@type'].substring(7));
     }
+}
+
+function getCallDurationText(duration) {
+    var hours = Math.floor(duration / 3600);
+    var minutes = Math.floor(duration % 3600 / 60);
+    var seconds = duration % 60;
+    if (hours > 0) {
+        return qsTr("%1 h %2 min", "call duration").arg(hours).arg(minutes);
+    }
+    if (minutes > 0) {
+        return qsTr("%1 min %2 sec", "call duration").arg(minutes).arg(seconds);
+    }
+    return qsTr("%1 sec", "call duration").arg(seconds);
 }
 
 function getChatPartnerStatusText(statusType, was_online) {
