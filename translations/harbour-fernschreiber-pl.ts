@@ -1138,6 +1138,69 @@
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>anulowane połączenie wideo</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>nieodebrane połączenie wideo</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>anulowane połączenie</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>nieodebrane połączenie</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>odrzucone połączenie wideo</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>odrzucone połączenie</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>przerwane połączenie wideo</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>przerwane połączenie</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>wychodzące połączenie wideo</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>przychodzące połączenie wideo</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>wychodzące połączenie</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>przychodzące połączenie</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 godz. %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 s</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 s</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2763,6 +2826,69 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>anulowane połączenie wideo</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>nieodebrane połączenie wideo</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>anulowane połączenie</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>nieodebrane połączenie</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>odrzucone połączenie wideo</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>odrzucone połączenie</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>przerwane połączenie wideo</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>przerwane połączenie</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>wychodzące połączenie wideo</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>przychodzące połączenie wideo</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>wychodzące połączenie</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>przychodzące połączenie</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 godz. %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 s</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 s</translation>
     </message>
 </context>
 <context>

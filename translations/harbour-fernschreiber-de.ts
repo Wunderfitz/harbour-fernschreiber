@@ -1123,6 +1123,69 @@
         <source>has removed the option “%1” from a poll</source>
         <translation>hat die Option „%1“ aus einer Umfrage entfernt</translation>
     </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>abgebrochener Videoanruf</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>verpasster Videoanruf</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>abgebrochener Anruf</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>verpasster Anruf</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>abgelehnter Videoanruf</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>abgelehnter Anruf</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>unterbrochener Videoanruf</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>unterbrochener Anruf</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>ausgehender Videoanruf</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>eingehender Videoanruf</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>ausgehender Anruf</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>eingehender Anruf</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 Std. %2 Min.</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 Min. %2 Sek.</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 Sek.</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2731,6 +2794,69 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation>hat die Option „%1“ aus einer Umfrage entfernt</translation>
+    </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>abgebrochener Videoanruf</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>verpasster Videoanruf</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>abgebrochener Anruf</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>verpasster Anruf</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>abgelehnter Videoanruf</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>abgelehnter Anruf</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>unterbrochener Videoanruf</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>unterbrochener Anruf</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>ausgehender Videoanruf</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>eingehender Videoanruf</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>ausgehender Anruf</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>eingehender Anruf</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 Std. %2 Min.</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 Min. %2 Sek.</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 Sek.</translation>
     </message>
 </context>
 <context>

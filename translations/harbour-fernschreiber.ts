@@ -1123,6 +1123,69 @@
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2730,6 +2793,69 @@
     <message>
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>

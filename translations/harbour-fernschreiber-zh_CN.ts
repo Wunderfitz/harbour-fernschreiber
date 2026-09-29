@@ -1109,6 +1109,69 @@
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>已取消的视频通话</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>未接视频通话</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>已取消的通话</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>未接来电</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>已拒绝的视频通话</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>已拒绝的通话</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>已中断的视频通话</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>已中断的通话</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>呼出视频通话</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>呼入视频通话</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>呼出通话</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>呼入通话</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 小时 %2 分</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 分 %2 秒</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 秒</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2700,6 +2763,69 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>已取消的视频通话</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>未接视频通话</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>已取消的通话</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>未接来电</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>已拒绝的视频通话</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>已拒绝的通话</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>已中断的视频通话</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>已中断的通话</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>呼出视频通话</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>呼入视频通话</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>呼出通话</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>呼入通话</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 小时 %2 分</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 分 %2 秒</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 秒</translation>
     </message>
 </context>
 <context>

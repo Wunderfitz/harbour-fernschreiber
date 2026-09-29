@@ -1125,6 +1125,69 @@ messages</numerusform>
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>cancelled video call</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>missed video call</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>cancelled call</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>missed call</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>declined video call</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>declined call</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>interrupted video call</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>interrupted call</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>outgoing video call</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>incoming video call</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>outgoing call</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>incoming call</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 h %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 sec</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 sec</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2733,6 +2796,69 @@ messages</numerusform>
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>cancelled video call</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>missed video call</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>cancelled call</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>missed call</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>declined video call</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>declined call</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>interrupted video call</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>interrupted call</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>outgoing video call</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>incoming video call</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>outgoing call</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>incoming call</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 h %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 sec</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 sec</translation>
     </message>
 </context>
 <context>

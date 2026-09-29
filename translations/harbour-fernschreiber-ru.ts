@@ -1141,6 +1141,69 @@
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>отменённый видеозвонок</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>пропущенный видеозвонок</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>отменённый звонок</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>пропущенный звонок</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>отклонённый видеозвонок</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>отклонённый звонок</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>прерванный видеозвонок</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>прерванный звонок</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>исходящий видеозвонок</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>входящий видеозвонок</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>исходящий звонок</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>входящий звонок</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 ч %2 мин</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 мин %2 с</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 с</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2766,6 +2829,69 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>отменённый видеозвонок</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>пропущенный видеозвонок</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>отменённый звонок</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>пропущенный звонок</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>отклонённый видеозвонок</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>отклонённый звонок</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>прерванный видеозвонок</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>прерванный звонок</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>исходящий видеозвонок</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>входящий видеозвонок</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>исходящий звонок</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>входящий звонок</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 ч %2 мин</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 мин %2 с</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 с</translation>
     </message>
 </context>
 <context>

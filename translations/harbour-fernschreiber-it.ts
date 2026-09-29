@@ -1123,6 +1123,69 @@
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>videochiamata annullata</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>videochiamata persa</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>chiamata annullata</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>chiamata persa</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>videochiamata rifiutata</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>chiamata rifiutata</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>videochiamata interrotta</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>chiamata interrotta</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>videochiamata in uscita</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>videochiamata in arrivo</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>chiamata in uscita</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>chiamata in arrivo</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 h %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 s</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 s</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2731,6 +2794,69 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cancelled video call</source>
+        <translation>videochiamata annullata</translation>
+    </message>
+    <message>
+        <source>missed video call</source>
+        <translation>videochiamata persa</translation>
+    </message>
+    <message>
+        <source>cancelled call</source>
+        <translation>chiamata annullata</translation>
+    </message>
+    <message>
+        <source>missed call</source>
+        <translation>chiamata persa</translation>
+    </message>
+    <message>
+        <source>declined video call</source>
+        <translation>videochiamata rifiutata</translation>
+    </message>
+    <message>
+        <source>declined call</source>
+        <translation>chiamata rifiutata</translation>
+    </message>
+    <message>
+        <source>interrupted video call</source>
+        <translation>videochiamata interrotta</translation>
+    </message>
+    <message>
+        <source>interrupted call</source>
+        <translation>chiamata interrotta</translation>
+    </message>
+    <message>
+        <source>outgoing video call</source>
+        <translation>videochiamata in uscita</translation>
+    </message>
+    <message>
+        <source>incoming video call</source>
+        <translation>videochiamata in arrivo</translation>
+    </message>
+    <message>
+        <source>outgoing call</source>
+        <translation>chiamata in uscita</translation>
+    </message>
+    <message>
+        <source>incoming call</source>
+        <translation>chiamata in arrivo</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 h %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 s</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 s</translation>
     </message>
 </context>
 <context>
