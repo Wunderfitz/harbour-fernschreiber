@@ -321,13 +321,13 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
         const QString discardReason(messageContent.value("discard_reason").toMap().value(_TYPE).toString());
         QString callText;
         if (discardReason == "callDiscardReasonMissed") {
-            callText = video ? (myself ? tr("cancelled video call") : tr("missed video call")) : (myself ? tr("cancelled call") : tr("missed call"));
+            callText = video ? (myself ? tr("tried to video call", "myself") : tr("tried to video call you")) : (myself ? tr("tried to call", "myself") : tr("tried to call you"));
         } else if (discardReason == "callDiscardReasonDeclined") {
-            callText = video ? tr("declined video call") : tr("declined call");
+            callText = video ? (myself ? tr("tried to video call, but the call was declined", "myself") : tr("tried to video call you, but you declined the call")) : (myself ? tr("tried to call, but the call was declined", "myself") : tr("tried to call you, but you declined the call"));
         } else if (discardReason == "callDiscardReasonDisconnected") {
-            callText = video ? tr("interrupted video call") : tr("interrupted call");
+            callText = video ? (myself ? tr("were in an interrupted video call", "myself") : tr("was in an interrupted video call with you")) : (myself ? tr("were in an interrupted call", "myself") : tr("was in an interrupted call with you"));
         } else {
-            callText = video ? (myself ? tr("outgoing video call") : tr("incoming video call")) : (myself ? tr("outgoing call") : tr("incoming call"));
+            callText = video ? (myself ? tr("made a video call", "myself") : tr("video called you")) : (myself ? tr("made a call", "myself") : tr("called you"));
         }
         const int duration = messageContent.value("duration").toInt();
         if (duration <= 0) {

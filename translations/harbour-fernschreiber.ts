@@ -1124,54 +1124,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>cancelled video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>missed video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>cancelled call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>missed call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>declined video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>declined call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>interrupted video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>interrupted call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>outgoing video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>incoming video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>outgoing call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>incoming call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>%1 h %2 min</source>
         <comment>call duration</comment>
         <translation type="unfinished"></translation>
@@ -1184,6 +1136,78 @@
     <message>
         <source>%1 sec</source>
         <comment>call duration</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>called you</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2796,54 +2820,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>cancelled video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>missed video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>cancelled call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>missed call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>declined video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>declined call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>interrupted video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>interrupted call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>outgoing video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>incoming video call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>outgoing call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>incoming call</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>%1 h %2 min</source>
         <comment>call duration</comment>
         <translation type="unfinished"></translation>
@@ -2856,6 +2832,78 @@
     <message>
         <source>%1 sec</source>
         <comment>call duration</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>called you</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

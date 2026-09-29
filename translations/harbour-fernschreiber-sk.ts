@@ -1139,54 +1139,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>cancelled video call</source>
-        <translation>zrušený videohovor</translation>
-    </message>
-    <message>
-        <source>missed video call</source>
-        <translation>zmeškaný videohovor</translation>
-    </message>
-    <message>
-        <source>cancelled call</source>
-        <translation>zrušený hovor</translation>
-    </message>
-    <message>
-        <source>missed call</source>
-        <translation>zmeškaný hovor</translation>
-    </message>
-    <message>
-        <source>declined video call</source>
-        <translation>odmietnutý videohovor</translation>
-    </message>
-    <message>
-        <source>declined call</source>
-        <translation>odmietnutý hovor</translation>
-    </message>
-    <message>
-        <source>interrupted video call</source>
-        <translation>prerušený videohovor</translation>
-    </message>
-    <message>
-        <source>interrupted call</source>
-        <translation>prerušený hovor</translation>
-    </message>
-    <message>
-        <source>outgoing video call</source>
-        <translation>odchádzajúci videohovor</translation>
-    </message>
-    <message>
-        <source>incoming video call</source>
-        <translation>prichádzajúci videohovor</translation>
-    </message>
-    <message>
-        <source>outgoing call</source>
-        <translation>odchádzajúci hovor</translation>
-    </message>
-    <message>
-        <source>incoming call</source>
-        <translation>prichádzajúci hovor</translation>
-    </message>
-    <message>
         <source>%1 h %2 min</source>
         <comment>call duration</comment>
         <translation>%1 h %2 min</translation>
@@ -1200,6 +1152,78 @@
         <source>%1 sec</source>
         <comment>call duration</comment>
         <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>som sa pokúsil uskutočniť videohovor</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>sa mi pokúsil zavolať cez videohovor</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>som sa pokúsil zavolať</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>sa mi pokúsil zavolať</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>som sa pokúsil uskutočniť videohovor, ale hovor bol odmietnutý</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>sa mi pokúsil zavolať cez videohovor, ale hovor som odmietol</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>som sa pokúsil zavolať, ale hovor bol odmietnutý</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>sa mi pokúsil zavolať, ale hovor som odmietol</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>som bol v prerušenom videohovore</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>bol so mnou v prerušenom videohovore</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>som bol v prerušenom hovore</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>bol so mnou v prerušenom hovore</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>som uskutočnil videohovor</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>mi volal cez videohovor</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>som uskutočnil hovor</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>mi volal</translation>
     </message>
 </context>
 <context>
@@ -2828,54 +2852,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>cancelled video call</source>
-        <translation>zrušený videohovor</translation>
-    </message>
-    <message>
-        <source>missed video call</source>
-        <translation>zmeškaný videohovor</translation>
-    </message>
-    <message>
-        <source>cancelled call</source>
-        <translation>zrušený hovor</translation>
-    </message>
-    <message>
-        <source>missed call</source>
-        <translation>zmeškaný hovor</translation>
-    </message>
-    <message>
-        <source>declined video call</source>
-        <translation>odmietnutý videohovor</translation>
-    </message>
-    <message>
-        <source>declined call</source>
-        <translation>odmietnutý hovor</translation>
-    </message>
-    <message>
-        <source>interrupted video call</source>
-        <translation>prerušený videohovor</translation>
-    </message>
-    <message>
-        <source>interrupted call</source>
-        <translation>prerušený hovor</translation>
-    </message>
-    <message>
-        <source>outgoing video call</source>
-        <translation>odchádzajúci videohovor</translation>
-    </message>
-    <message>
-        <source>incoming video call</source>
-        <translation>prichádzajúci videohovor</translation>
-    </message>
-    <message>
-        <source>outgoing call</source>
-        <translation>odchádzajúci hovor</translation>
-    </message>
-    <message>
-        <source>incoming call</source>
-        <translation>prichádzajúci hovor</translation>
-    </message>
-    <message>
         <source>%1 h %2 min</source>
         <comment>call duration</comment>
         <translation>%1 h %2 min</translation>
@@ -2889,6 +2865,78 @@
         <source>%1 sec</source>
         <comment>call duration</comment>
         <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>som sa pokúsil uskutočniť videohovor</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>sa mi pokúsil zavolať cez videohovor</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>som sa pokúsil zavolať</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>sa mi pokúsil zavolať</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>som sa pokúsil uskutočniť videohovor, ale hovor bol odmietnutý</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>sa mi pokúsil zavolať cez videohovor, ale hovor som odmietol</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>som sa pokúsil zavolať, ale hovor bol odmietnutý</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>sa mi pokúsil zavolať, ale hovor som odmietol</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>som bol v prerušenom videohovore</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>bol so mnou v prerušenom videohovore</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>som bol v prerušenom hovore</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>bol so mnou v prerušenom hovore</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>som uskutočnil videohovor</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>mi volal cez videohovor</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>som uskutočnil hovor</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>mi volal</translation>
     </message>
 </context>
 <context>

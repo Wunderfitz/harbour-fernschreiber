@@ -1124,54 +1124,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>cancelled video call</source>
-        <translation>videollamada cancelada</translation>
-    </message>
-    <message>
-        <source>missed video call</source>
-        <translation>videollamada perdida</translation>
-    </message>
-    <message>
-        <source>cancelled call</source>
-        <translation>llamada cancelada</translation>
-    </message>
-    <message>
-        <source>missed call</source>
-        <translation>llamada perdida</translation>
-    </message>
-    <message>
-        <source>declined video call</source>
-        <translation>videollamada rechazada</translation>
-    </message>
-    <message>
-        <source>declined call</source>
-        <translation>llamada rechazada</translation>
-    </message>
-    <message>
-        <source>interrupted video call</source>
-        <translation>videollamada interrumpida</translation>
-    </message>
-    <message>
-        <source>interrupted call</source>
-        <translation>llamada interrumpida</translation>
-    </message>
-    <message>
-        <source>outgoing video call</source>
-        <translation>videollamada saliente</translation>
-    </message>
-    <message>
-        <source>incoming video call</source>
-        <translation>videollamada entrante</translation>
-    </message>
-    <message>
-        <source>outgoing call</source>
-        <translation>llamada saliente</translation>
-    </message>
-    <message>
-        <source>incoming call</source>
-        <translation>llamada entrante</translation>
-    </message>
-    <message>
         <source>%1 h %2 min</source>
         <comment>call duration</comment>
         <translation>%1 h %2 min</translation>
@@ -1185,6 +1137,78 @@
         <source>%1 sec</source>
         <comment>call duration</comment>
         <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>intentó hacer una videollamada</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>intentó hacerle una videollamada</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>intentó llamar</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>intentó llamarle</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>intentó hacer una videollamada, pero la llamada fue rechazada</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>intentó hacerle una videollamada, pero usted rechazó la llamada</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>intentó llamar, pero la llamada fue rechazada</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>intentó llamarle, pero usted rechazó la llamada</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>estuvo en una videollamada interrumpida</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>estuvo en una videollamada interrumpida con usted</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>estuvo en una llamada interrumpida</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>estuvo en una llamada interrumpida con usted</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>hizo una videollamada</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>le hizo una videollamada</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>hizo una llamada</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>le llamó</translation>
     </message>
 </context>
 <context>
@@ -2796,54 +2820,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>cancelled video call</source>
-        <translation>videollamada cancelada</translation>
-    </message>
-    <message>
-        <source>missed video call</source>
-        <translation>videollamada perdida</translation>
-    </message>
-    <message>
-        <source>cancelled call</source>
-        <translation>llamada cancelada</translation>
-    </message>
-    <message>
-        <source>missed call</source>
-        <translation>llamada perdida</translation>
-    </message>
-    <message>
-        <source>declined video call</source>
-        <translation>videollamada rechazada</translation>
-    </message>
-    <message>
-        <source>declined call</source>
-        <translation>llamada rechazada</translation>
-    </message>
-    <message>
-        <source>interrupted video call</source>
-        <translation>videollamada interrumpida</translation>
-    </message>
-    <message>
-        <source>interrupted call</source>
-        <translation>llamada interrumpida</translation>
-    </message>
-    <message>
-        <source>outgoing video call</source>
-        <translation>videollamada saliente</translation>
-    </message>
-    <message>
-        <source>incoming video call</source>
-        <translation>videollamada entrante</translation>
-    </message>
-    <message>
-        <source>outgoing call</source>
-        <translation>llamada saliente</translation>
-    </message>
-    <message>
-        <source>incoming call</source>
-        <translation>llamada entrante</translation>
-    </message>
-    <message>
         <source>%1 h %2 min</source>
         <comment>call duration</comment>
         <translation>%1 h %2 min</translation>
@@ -2857,6 +2833,78 @@
         <source>%1 sec</source>
         <comment>call duration</comment>
         <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>intentó hacer una videollamada</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>intentó hacerle una videollamada</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>intentó llamar</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>intentó llamarle</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>intentó hacer una videollamada, pero la llamada fue rechazada</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>intentó hacerle una videollamada, pero usted rechazó la llamada</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>intentó llamar, pero la llamada fue rechazada</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>intentó llamarle, pero usted rechazó la llamada</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>estuvo en una videollamada interrumpida</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>estuvo en una videollamada interrumpida con usted</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>estuvo en una llamada interrumpida</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>estuvo en una llamada interrumpida con usted</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>hizo una videollamada</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>le hizo una videollamada</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>hizo una llamada</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>le llamó</translation>
     </message>
 </context>
 <context>

@@ -194,16 +194,16 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         var callText;
         switch (message.content.discard_reason['@type']) {
         case 'callDiscardReasonMissed':
-            callText = message.content.is_video ? (myself ? qsTr("cancelled video call") : qsTr("missed video call")) : (myself ? qsTr("cancelled call") : qsTr("missed call"));
+            callText = message.content.is_video ? (myself ? qsTr("tried to video call", "myself") : qsTr("tried to video call you")) : (myself ? qsTr("tried to call", "myself") : qsTr("tried to call you"));
             break;
         case 'callDiscardReasonDeclined':
-            callText = message.content.is_video ? qsTr("declined video call") : qsTr("declined call");
+            callText = message.content.is_video ? (myself ? qsTr("tried to video call, but the call was declined", "myself") : qsTr("tried to video call you, but you declined the call")) : (myself ? qsTr("tried to call, but the call was declined", "myself") : qsTr("tried to call you, but you declined the call"));
             break;
         case 'callDiscardReasonDisconnected':
-            callText = message.content.is_video ? qsTr("interrupted video call") : qsTr("interrupted call");
+            callText = message.content.is_video ? (myself ? qsTr("were in an interrupted video call", "myself") : qsTr("was in an interrupted video call with you")) : (myself ? qsTr("were in an interrupted call", "myself") : qsTr("was in an interrupted call with you"));
             break;
         default:
-            callText = message.content.is_video ? (myself ? qsTr("outgoing video call") : qsTr("incoming video call")) : (myself ? qsTr("outgoing call") : qsTr("incoming call"));
+            callText = message.content.is_video ? (myself ? qsTr("made a video call", "myself") : qsTr("video called you")) : (myself ? qsTr("made a call", "myself") : qsTr("called you"));
         }
         return message.content.duration > 0 ? (callText + " (" + getCallDurationText(message.content.duration) + ")") : callText;
     case 'messageUnsupported':
