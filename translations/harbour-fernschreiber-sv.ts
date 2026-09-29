@@ -587,10 +587,6 @@
         <translation>Sök i chatten...</translation>
     </message>
     <message>
-        <source>Location: Obtaining position...</source>
-        <translation>Plats: Hämtar position...</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Kopiera meddelandet till urklipp</translation>
     </message>
@@ -668,6 +664,14 @@
     <message>
         <source>Send as file</source>
         <translation>Skicka som fil</translation>
+    </message>
+    <message>
+        <source>Location: Waiting for the first position fix...</source>
+        <translation>Plats: Väntar på första positionsbestämningen...</translation>
+    </message>
+    <message>
+        <source>Location: Position unavailable, please check the location settings</source>
+        <translation>Plats: Position ej tillgänglig, kontrollera platsinställningarna</translation>
     </message>
 </context>
 <context>

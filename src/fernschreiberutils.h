@@ -69,12 +69,14 @@ signals:
     void voiceNoteRecordingStateChanged(VoiceNoteRecordingState state);
     void newPositionInformation(const QVariantMap &positionInformation);
     void newGeocodedAddress(const QString &geocodedAddress);
+    void geoPositionUnavailable();
 
 private slots:
     void handleAudioBufferProbed(const QAudioBuffer &buffer);
     void handleVoiceNoteDurationChanged(qlonglong duration);
     void handleAudioRecorderStatusChanged(QMediaRecorder::Status status);
     void handleGeoPositionUpdated(const QGeoPositionInfo &info);
+    void handleGeoPositionError(QGeoPositionInfoSource::Error positioningError);
     void handleReverseGeocodeFinished();
 
 private:

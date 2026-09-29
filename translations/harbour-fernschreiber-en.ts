@@ -587,10 +587,6 @@
         <translation>Search in chat...</translation>
     </message>
     <message>
-        <source>Location: Obtaining position...</source>
-        <translation>Location: Obtaining position...</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Copy Message to Clipboard</translation>
     </message>
@@ -668,6 +664,14 @@
     <message>
         <source>Send as file</source>
         <translation>Send as file</translation>
+    </message>
+    <message>
+        <source>Location: Waiting for the first position fix...</source>
+        <translation>Location: Waiting for the first position fix...</translation>
+    </message>
+    <message>
+        <source>Location: Position unavailable, please check the location settings</source>
+        <translation>Location: Position unavailable, please check the location settings</translation>
     </message>
 </context>
 <context>

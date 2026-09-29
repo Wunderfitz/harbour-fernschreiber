@@ -579,10 +579,6 @@
         <translation>Keresés a csevegésben...</translation>
     </message>
     <message>
-        <source>Location: Obtaining position...</source>
-        <translation>Helyzet elérése...</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Üzenet másolása vágólapra</translation>
     </message>
@@ -659,6 +655,14 @@
     <message>
         <source>Send as file</source>
         <translation>Küldés fájlként</translation>
+    </message>
+    <message>
+        <source>Location: Waiting for the first position fix...</source>
+        <translation>Helyzet: Várakozás az első helymeghatározásra...</translation>
+    </message>
+    <message>
+        <source>Location: Position unavailable, please check the location settings</source>
+        <translation>Helyzet: A helyzet nem elérhető, ellenőrizze a helymeghatározási beállításokat</translation>
     </message>
 </context>
 <context>

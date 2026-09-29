@@ -597,10 +597,6 @@
         <translation>Hľadanie v čete...</translation>
     </message>
     <message>
-        <source>Location: Obtaining position...</source>
-        <translation>Poloha: Získavanie pozície...</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Kopírovať správu do schránky</translation>
     </message>
@@ -679,6 +675,14 @@
     <message>
         <source>Send as file</source>
         <translation>Poslať ako súbor</translation>
+    </message>
+    <message>
+        <source>Location: Waiting for the first position fix...</source>
+        <translation>Poloha: Čaká sa na prvé určenie pozície...</translation>
+    </message>
+    <message>
+        <source>Location: Position unavailable, please check the location settings</source>
+        <translation>Poloha: Pozícia nie je dostupná, skontrolujte nastavenia polohy</translation>
     </message>
 </context>
 <context>

@@ -577,10 +577,6 @@
         <translation>搜索对话内容…</translation>
     </message>
     <message>
-        <source>Location: Obtaining position...</source>
-        <translation>位置:正在获取位置…</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>复制消息到剪切板</translation>
     </message>
@@ -657,6 +653,14 @@
     <message>
         <source>Send as file</source>
         <translation>以文件形式发送</translation>
+    </message>
+    <message>
+        <source>Location: Waiting for the first position fix...</source>
+        <translation>位置:正在等待首次定位…</translation>
+    </message>
+    <message>
+        <source>Location: Position unavailable, please check the location settings</source>
+        <translation>位置:无法获取位置，请检查定位设置</translation>
     </message>
 </context>
 <context>

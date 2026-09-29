@@ -597,10 +597,6 @@
         <translation>Поиск...</translation>
     </message>
     <message>
-        <source>Location: Obtaining position...</source>
-        <translation>Определение координат...</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Скопировать в буфер обмена</translation>
     </message>
@@ -679,6 +675,14 @@
     <message>
         <source>Send as file</source>
         <translation>Отправить как файл</translation>
+    </message>
+    <message>
+        <source>Location: Waiting for the first position fix...</source>
+        <translation>Местоположение: ожидание первого определения координат...</translation>
+    </message>
+    <message>
+        <source>Location: Position unavailable, please check the location settings</source>
+        <translation>Местоположение: координаты недоступны, проверьте настройки местоположения</translation>
     </message>
 </context>
 <context>

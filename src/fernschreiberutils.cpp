@@ -173,6 +173,7 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent)
         LOG("Geolocation successfully initialized...");
         this->geoPositionInfoSource->setUpdateInterval(5000);
         connect(geoPositionInfoSource, SIGNAL(positionUpdated(QGeoPositionInfo)), this, SLOT(handleGeoPositionUpdated(QGeoPositionInfo)));
+        connect(geoPositionInfoSource, SIGNAL(error(QGeoPositionInfoSource::Error)), this, SLOT(handleGeoPositionError(QGeoPositionInfoSource::Error)));
     } else {
         LOG("Unable to initialize geolocation!");
     }
@@ -573,6 +574,11 @@ void FernschreiberUtils::handleAudioRecorderStatusChanged(QMediaRecorder::Status
 void FernschreiberUtils::handleGeoPositionUpdated(const QGeoPositionInfo &info)
 {
     LOG("Geo position was updated");
+    // Only a fix with coordinates can be sent
+    if (!info.isValid()) {
+        LOG("Ignoring invalid geo position");
+        return;
+    }
     QVariantMap positionInformation;
     if (info.hasAttribute(QGeoPositionInfo::HorizontalAccuracy)) {
         positionInformation.insert("horizontalAccuracy", info.attribute(QGeoPositionInfo::HorizontalAccuracy));
@@ -591,6 +597,14 @@ void FernschreiberUtils::handleGeoPositionUpdated(const QGeoPositionInfo &info)
     this->initiateReverseGeocode(geoCoordinate.latitude(), geoCoordinate.longitude());
 
     emit newPositionInformation(positionInformation);
+}
+
+void FernschreiberUtils::handleGeoPositionError(QGeoPositionInfoSource::Error positioningError)
+{
+    LOG("Geo position error" << positioningError);
+    if (positioningError != QGeoPositionInfoSource::NoError) {
+        emit geoPositionUnavailable();
+    }
 }
 
 void FernschreiberUtils::handleReverseGeocodeFinished()

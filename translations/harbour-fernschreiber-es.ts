@@ -587,10 +587,6 @@
         <translation>A b c</translation>
     </message>
     <message>
-        <source>Location: Obtaining position...</source>
-        <translation>Ubicación: Recibiendo posición...</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Copiar</translation>
     </message>
@@ -668,6 +664,14 @@
     <message>
         <source>Send as file</source>
         <translation>Enviar como archivo</translation>
+    </message>
+    <message>
+        <source>Location: Waiting for the first position fix...</source>
+        <translation>Ubicación: Esperando la primera posición...</translation>
+    </message>
+    <message>
+        <source>Location: Position unavailable, please check the location settings</source>
+        <translation>Ubicación: Posición no disponible, compruebe los ajustes de ubicación</translation>
     </message>
 </context>
 <context>

@@ -250,6 +250,8 @@ Page {
         attachmentPreviewRow.isContact = false;
         attachmentPreviewRow.attachedFiles = [];
         attachmentPreviewRow.locationData = null;
+        attachmentPreviewRow.locationUnavailable = false;
+        attachmentPreviewRow.geocodedAddress = qsTr("Unknown address");
         attachmentPreviewRow.contactData = null;
         attachmentPreviewRow.attachmentDescription = "";
         uploadStatusRow.clear();
@@ -275,7 +277,7 @@ Page {
         if (newMessageTextField.text.length !== 0
                 || attachmentPreviewRow.attachedFiles.length > 0
                 || attachmentPreviewRow.isVoiceNote
-                || attachmentPreviewRow.isLocation
+                || (attachmentPreviewRow.isLocation && !!attachmentPreviewRow.locationData)
                 || attachmentPreviewRow.isContact) {
             newMessageSendButton.enabled = true;
         } else {
@@ -1984,8 +1986,9 @@ Page {
                                     clearAttachmentPreviewRow();
                                     fernschreiberUtils.startGeoLocationUpdates();
                                     attachmentOptionsFlickable.isNeeded = false;
+                                    // Sending waits for the first fix, which can take a while
                                     attachmentPreviewRow.isLocation = true;
-                                    attachmentPreviewRow.attachmentDescription = qsTr("Location: Obtaining position...");
+                                    attachmentPreviewRow.attachmentDescription = qsTr("Location: Waiting for the first position fix...");
                                     controlSendButton();
                                 }
                             }
@@ -2024,7 +2027,7 @@ Page {
 
                     Row {
                         id: attachmentPreviewRow
-                        visible: (!!locationData || attachedFiles.length > 0 || isVoiceNote || isContact) && !inlineQuery.userNameIsValid
+                        visible: (isLocation || attachedFiles.length > 0 || isVoiceNote || isContact) && !inlineQuery.userNameIsValid
                         spacing: Theme.paddingMedium
                         width: parent.width
                         layoutDirection: Qt.RightToLeft
@@ -2038,6 +2041,7 @@ Page {
                         property bool isLocation: false;
                         property bool isContact: false;
                         property var locationData: null;
+                        property bool locationUnavailable: false;
                         property var contactData: null;
                         property var geocodedAddress: qsTr("Unknown address")
                         property var attachedFiles: [];
@@ -2051,9 +2055,18 @@ Page {
                         Connections {
                             target: fernschreiberUtils
                             onNewPositionInformation: {
-                                attachmentPreviewRow.locationData = positionInformation;
+                                // An update can still be queued when the location was already discarded
                                 if (attachmentPreviewRow.isLocation) {
+                                    attachmentPreviewRow.locationData = positionInformation;
+                                    attachmentPreviewRow.locationUnavailable = false;
                                     attachmentPreviewRow.attachmentDescription = attachmentPreviewRow.getLocationDescription();
+                                    controlSendButton();
+                                }
+                            }
+                            onGeoPositionUnavailable: {
+                                if (attachmentPreviewRow.isLocation && !attachmentPreviewRow.locationData) {
+                                    attachmentPreviewRow.locationUnavailable = true;
+                                    attachmentPreviewRow.attachmentDescription = qsTr("Location: Position unavailable, please check the location settings");
                                 }
                             }
                             onNewGeocodedAddress: {
@@ -2082,6 +2095,13 @@ Page {
                             spacing: Theme.paddingSmall
                             anchors.verticalCenter: parent.verticalCenter
                             layoutDirection: Qt.RightToLeft
+
+                            BusyIndicator {
+                                size: BusyIndicatorSize.Small
+                                anchors.verticalCenter: parent.verticalCenter
+                                running: visible
+                                visible: attachmentPreviewRow.isLocation && !attachmentPreviewRow.locationData && !attachmentPreviewRow.locationUnavailable
+                            }
 
                             Repeater {
                                 model: (attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo)

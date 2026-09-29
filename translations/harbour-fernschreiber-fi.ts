@@ -587,10 +587,6 @@
         <translation>Etsi keskustelusta...</translation>
     </message>
     <message>
-        <source>Location: Obtaining position...</source>
-        <translation>Sijainti: Paikannetaan...</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Kopioi viesti leikepöydälle</translation>
     </message>
@@ -668,6 +664,14 @@
     <message>
         <source>Send as file</source>
         <translation>Lähetä tiedostona</translation>
+    </message>
+    <message>
+        <source>Location: Waiting for the first position fix...</source>
+        <translation>Sijainti: Odotetaan ensimmäistä paikannusta...</translation>
+    </message>
+    <message>
+        <source>Location: Position unavailable, please check the location settings</source>
+        <translation>Sijainti: Sijaintia ei saatavilla, tarkista sijaintiasetukset</translation>
     </message>
 </context>
 <context>

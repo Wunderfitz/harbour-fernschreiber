@@ -597,10 +597,6 @@
         <translation>Wyszukaj w czacie...</translation>
     </message>
     <message>
-        <source>Location: Obtaining position...</source>
-        <translation>Lokalizacja: Uzyskanie pozycji ...</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Skopiuj wiadomość do schowka</translation>
     </message>
@@ -679,6 +675,14 @@
     <message>
         <source>Send as file</source>
         <translation>Wyślij jako plik</translation>
+    </message>
+    <message>
+        <source>Location: Waiting for the first position fix...</source>
+        <translation>Lokalizacja: Oczekiwanie na pierwsze ustalenie pozycji...</translation>
+    </message>
+    <message>
+        <source>Location: Position unavailable, please check the location settings</source>
+        <translation>Lokalizacja: Pozycja niedostępna, sprawdź ustawienia lokalizacji</translation>
     </message>
 </context>
 <context>
