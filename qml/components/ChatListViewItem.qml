@@ -10,8 +10,9 @@ PhotoTextsListItem {
     pictureThumbnail {
         photoData: photo_small || ({})
         highlighted: listItem.highlighted && !listItem.menuOpen
+        isSavedMessages: chat_id === listItem.ownUserId && !appSettings.showSavedMessagesProfile
     }
-    property int ownUserId
+    property double ownUserId
     property bool showDraft: !!draft_message_text && draft_message_date > last_message_date
     property string previewText: showDraft ? draft_message_text : last_message_text
 

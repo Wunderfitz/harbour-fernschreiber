@@ -21,10 +21,14 @@
 #define FERNSCHREIBERUTILS_H
 
 #include <QObject>
+#include <QAudioBuffer>
+#include <QAudioProbe>
 #include <QAudioRecorder>
+#include <QVector>
 #include <QGeoPositionInfo>
 #include <QGeoPositionInfoSource>
 #include <QNetworkAccessManager>
+#include <QMimeDatabase>
 #include "tdlibwrapper.h"
 
 class FernschreiberUtils : public QObject
@@ -49,11 +53,15 @@ public:
     Q_INVOKABLE void startRecordingVoiceNote();
     Q_INVOKABLE void stopRecordingVoiceNote();
     Q_INVOKABLE QString voiceNotePath();
+    Q_INVOKABLE qlonglong getVoiceNoteDuration();
+    Q_INVOKABLE QString getVoiceNoteWaveform();
     Q_INVOKABLE VoiceNoteRecordingState getVoiceNoteRecordingState();
     Q_INVOKABLE void startGeoLocationUpdates();
     Q_INVOKABLE void stopGeoLocationUpdates();
     Q_INVOKABLE bool supportsGeoLocation();
     Q_INVOKABLE QString getSailfishOSVersion();
+    Q_INVOKABLE QString mimeTypeForFile(const QString &filePath);
+    Q_INVOKABLE QString writeSharedDataToFile(const QString &name, const QString &data);
     Q_INVOKABLE void initiateReverseGeocode(double latitude, double longitude);
 
 signals:
@@ -63,13 +71,21 @@ signals:
     void newGeocodedAddress(const QString &geocodedAddress);
 
 private slots:
+    void handleAudioBufferProbed(const QAudioBuffer &buffer);
+    void handleVoiceNoteDurationChanged(qlonglong duration);
     void handleAudioRecorderStatusChanged(QMediaRecorder::Status status);
     void handleGeoPositionUpdated(const QGeoPositionInfo &info);
     void handleReverseGeocodeFinished();
 
 private:
     QAudioRecorder audioRecorder;
+    QAudioProbe audioProbe;
     VoiceNoteRecordingState voiceNoteRecordingState;
+    qlonglong voiceNoteDuration;
+    QVector<quint16> voiceNotePeaks;
+    quint16 currentPeak;
+    int currentPeakFrames;
+    bool sampleFormatReported;
 
     QGeoPositionInfoSource *geoPositionInfoSource;
     QNetworkAccessManager *manager;

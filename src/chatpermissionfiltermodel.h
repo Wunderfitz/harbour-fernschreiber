@@ -48,9 +48,11 @@ signals:
 
 protected:
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const Q_DECL_OVERRIDE;
+    bool lessThan(const QModelIndex &sourceLeft, const QModelIndex &sourceRight) const Q_DECL_OVERRIDE;
 
 private:
     TDLibWrapper *tdLibWrapper;
+    qlonglong myUserId;
     QStringList requirePermissions;
 };
 

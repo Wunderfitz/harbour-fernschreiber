@@ -30,12 +30,17 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool showStickersAsEmojis READ showStickersAsEmojis WRITE setShowStickersAsEmojis NOTIFY showStickersAsEmojisChanged)
     Q_PROPERTY(bool showStickersAsImages READ showStickersAsImages WRITE setShowStickersAsImages NOTIFY showStickersAsImagesChanged)
     Q_PROPERTY(bool animateStickers READ animateStickers WRITE setAnimateStickers NOTIFY animateStickersChanged)
+    Q_PROPERTY(bool animateStickersInPicker READ animateStickersInPicker WRITE setAnimateStickersInPicker NOTIFY animateStickersInPickerChanged)
+    Q_PROPERTY(bool showSavedMessagesProfile READ showSavedMessagesProfile WRITE setShowSavedMessagesProfile NOTIFY showSavedMessagesProfileChanged)
     Q_PROPERTY(bool notificationTurnsDisplayOn READ notificationTurnsDisplayOn WRITE setNotificationTurnsDisplayOn NOTIFY notificationTurnsDisplayOnChanged)
     Q_PROPERTY(bool notificationSoundsEnabled READ notificationSoundsEnabled WRITE setNotificationSoundsEnabled NOTIFY notificationSoundsEnabledChanged)
     Q_PROPERTY(bool notificationSuppressContent READ notificationSuppressContent WRITE setNotificationSuppressContent NOTIFY notificationSuppressContentChanged)
     Q_PROPERTY(NotificationFeedback notificationFeedback READ notificationFeedback WRITE setNotificationFeedback NOTIFY notificationFeedbackChanged)
     Q_PROPERTY(bool notificationAlwaysShowPreview READ notificationAlwaysShowPreview WRITE setNotificationAlwaysShowPreview NOTIFY notificationAlwaysShowPreviewChanged)
     Q_PROPERTY(bool goToQuotedMessage READ goToQuotedMessage WRITE setGoToQuotedMessage NOTIFY goToQuotedMessageChanged)
+    Q_PROPERTY(bool forwardHideSender READ forwardHideSender WRITE setForwardHideSender NOTIFY forwardHideSenderChanged)
+    Q_PROPERTY(bool forwardHideCaptions READ forwardHideCaptions WRITE setForwardHideCaptions NOTIFY forwardHideCaptionsChanged)
+    Q_PROPERTY(bool showDeleteChat READ showDeleteChat WRITE setShowDeleteChat NOTIFY showDeleteChatChanged)
     Q_PROPERTY(bool storageOptimizer READ storageOptimizer WRITE setStorageOptimizer NOTIFY storageOptimizerChanged)
     Q_PROPERTY(bool allowInlineBotLocationAccess READ allowInlineBotLocationAccess WRITE setAllowInlineBotLocationAccess NOTIFY allowInlineBotLocationAccessChanged)
     Q_PROPERTY(int remainingInteractionHints READ remainingInteractionHints WRITE setRemainingInteractionHints NOTIFY remainingInteractionHintsChanged)
@@ -43,8 +48,10 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool onlineOnlyMode READ onlineOnlyMode WRITE setOnlineOnlyMode NOTIFY onlineOnlyModeChanged)
     Q_PROPERTY(bool delayMessageRead READ delayMessageRead WRITE setDelayMessageRead NOTIFY delayMessageReadChanged)
     Q_PROPERTY(bool focusTextAreaOnChatOpen READ getFocusTextAreaOnChatOpen WRITE setFocusTextAreaOnChatOpen NOTIFY focusTextAreaOnChatOpenChanged)
-    Q_PROPERTY(SponsoredMess sponsoredMess READ getSponsoredMess WRITE setSponsoredMess NOTIFY sponsoredMessChanged)
     Q_PROPERTY(bool highlightUnreadConversations READ highlightUnreadConversations WRITE setHighlightUnreadConversations NOTIFY highlightUnreadConversationsChanged)
+    Q_PROPERTY(bool showReactionButton READ showReactionButton WRITE setShowReactionButton NOTIFY showReactionButtonChanged)
+    Q_PROPERTY(bool autoplayAnimatedGifs READ autoplayAnimatedGifs WRITE setAutoplayAnimatedGifs NOTIFY autoplayAnimatedGifsChanged)
+    Q_PROPERTY(SponsoredMess sponsoredMess READ getSponsoredMess WRITE setSponsoredMess NOTIFY sponsoredMessChanged)
 
 public:
     enum SponsoredMess {
@@ -82,6 +89,12 @@ public:
     bool animateStickers() const;
     void setAnimateStickers(bool animate);
 
+    bool animateStickersInPicker() const;
+    void setAnimateStickersInPicker(bool animate);
+
+    bool showSavedMessagesProfile() const;
+    void setShowSavedMessagesProfile(bool show);
+
     bool notificationTurnsDisplayOn() const;
     void setNotificationTurnsDisplayOn(bool turnOn);
 
@@ -98,7 +111,15 @@ public:
     void setNotificationAlwaysShowPreview(bool enable);
 
     bool goToQuotedMessage() const;
+    void setShowDeleteChat(bool show);
+    bool showDeleteChat() const;
     void setGoToQuotedMessage(bool enable);
+
+    bool forwardHideSender() const;
+    void setForwardHideSender(bool hide);
+
+    bool forwardHideCaptions() const;
+    void setForwardHideCaptions(bool hide);
 
     bool storageOptimizer() const;
     void setStorageOptimizer(bool enable);
@@ -121,11 +142,17 @@ public:
     bool getFocusTextAreaOnChatOpen() const;
     void setFocusTextAreaOnChatOpen(bool focusTextAreaOnChatOpen);
 
+    bool highlightUnreadConversations() const;
+    void setHighlightUnreadConversations(bool enable);
+
+    bool showReactionButton() const;
+    void setShowReactionButton(bool enable);
+
     SponsoredMess getSponsoredMess() const;
     void setSponsoredMess(SponsoredMess sponsoredMess);
 
-    bool highlightUnreadConversations() const;
-    void setHighlightUnreadConversations(bool enable);
+    bool autoplayAnimatedGifs() const;
+    void setAutoplayAnimatedGifs(bool enable);
 
 signals:
     void sendByEnterChanged();
@@ -134,12 +161,17 @@ signals:
     void showStickersAsEmojisChanged();
     void showStickersAsImagesChanged();
     void animateStickersChanged();
+    void animateStickersInPickerChanged();
+    void showSavedMessagesProfileChanged();
     void notificationTurnsDisplayOnChanged();
     void notificationSoundsEnabledChanged();
     void notificationSuppressContentChanged();
     void notificationFeedbackChanged();
     void notificationAlwaysShowPreviewChanged();
     void goToQuotedMessageChanged();
+    void forwardHideSenderChanged();
+    void forwardHideCaptionsChanged();
+    void showDeleteChatChanged();
     void storageOptimizerChanged();
     void allowInlineBotLocationAccessChanged();
     void remainingInteractionHintsChanged();
@@ -147,8 +179,10 @@ signals:
     void onlineOnlyModeChanged();
     void delayMessageReadChanged();
     void focusTextAreaOnChatOpenChanged();
-    void sponsoredMessChanged();
     void highlightUnreadConversationsChanged();
+    void showReactionButtonChanged();
+    void sponsoredMessChanged();
+    void autoplayAnimatedGifsChanged();
 
 private:
     QSettings settings;

@@ -19,13 +19,13 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../components"
-import "../js/twemoji.js" as Emoji
 
 Item {
     id: stickerPickerOverlayItem
     anchors.fill: parent
 
     property var recentStickers: stickerManager.getRecentStickers();
+    property var favoriteStickers: stickerManager.getFavoriteStickers();
     property var installedStickerSets: stickerManager.getInstalledStickerSets();
 
     Connections {
@@ -43,30 +43,22 @@ Item {
         onStickerSetsReceived: {
             installedStickerSets = stickerManager.getInstalledStickerSets();
         }
+        onRecentStickersChanged: {
+            recentStickers = stickerManager.getRecentStickers();
+        }
+        onFavoriteStickersChanged: {
+            favoriteStickers = stickerManager.getFavoriteStickers();
+        }
     }
     Component {
         id: stickerComponent
-        BackgroundItem {
-           id: stickerSetItem
-           width: Theme.itemSizeExtraLarge
-           height: Theme.itemSizeExtraLarge
+        StickerPickerItem {
+            width: Theme.itemSizeExtraLarge
+            height: Theme.itemSizeExtraLarge
+            sticker: modelData
 
-           onClicked: stickerPickerOverlayItem.stickerPicked(modelData.sticker.remote.id)
-
-           TDLibThumbnail {
-               thumbnail: modelData.thumbnail
-               anchors.fill: parent
-               highlighted: stickerSetItem.highlighted
-           }
-
-           Label {
-               font.pixelSize: Theme.fontSizeSmall
-               anchors.right: parent.right
-               anchors.bottom: parent.bottom
-               text: Emoji.emojify(modelData.emoji, font.pixelSize)
-           }
-
-       }
+            onClicked: stickerPickerOverlayItem.stickerPicked(modelData.sticker.remote.id)
+        }
     }
 
     signal stickerPicked(var stickerId)
@@ -89,8 +81,34 @@ Item {
         header: Column {
             spacing: Theme.paddingSmall
             width: stickerPickerListView.width
-            height: recentStickersGridView.count > 0 ? ( Theme.fontSizeLarge + Theme.itemSizeExtraLarge + 4 * Theme.paddingSmall ) : 0
             topPadding: Theme.paddingSmall
+            bottomPadding: favoriteStickersGridView.count > 0 || recentStickersGridView.count > 0 ? Theme.paddingSmall : 0
+            Label {
+                font.pixelSize: Theme.fontSizeLarge
+                font.bold: true
+                width: favoriteStickersGridView.width
+                leftPadding: Theme.paddingMedium
+                visible: favoriteStickersGridView.count > 0
+                maximumLineCount: 1
+                truncationMode: TruncationMode.Fade
+                text: qsTr("Favorites")
+            }
+            SilicaGridView {
+                id: favoriteStickersGridView
+                width: stickerPickerListView.width
+                height: Theme.itemSizeExtraLarge + Theme.paddingSmall
+                cellWidth: Theme.itemSizeExtraLarge;
+                cellHeight: Theme.itemSizeExtraLarge;
+                visible: count > 0
+                clip: true
+                flow: GridView.FlowTopToBottom
+
+                model: stickerPickerOverlayItem.favoriteStickers
+                delegate: stickerComponent
+
+                HorizontalScrollDecorator {}
+
+            }
             Label {
                 font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
@@ -155,6 +173,7 @@ Item {
                         }
                         width: Theme.itemSizeMedium
                         height: Theme.itemSizeMedium
+                        fillMode: Image.PreserveAspectFit
                         highlighted: stickerSetToggle.down
                     }
 

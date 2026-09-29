@@ -24,6 +24,7 @@ Item {
     visible: imageContainer.thumbnailVisible && bigProfilePictureList.count > 0
     property bool isActive: imageContainer.thumbnailActive
     readonly property int currentPictureIndex: bigProfilePictureList.currentIndex
+    readonly property bool imageReady: visible && !!bigProfilePictureList.currentItem && bigProfilePictureList.currentItem.imageStatus === Image.Ready
 
     opacity: isActive ? 1.0 : 0.0
     Behavior on opacity { FadeAnimation {} }
@@ -38,6 +39,7 @@ Item {
         interactive: parent.isActive
         model: imageContainer.thumbnailModel
         delegate: Item {
+            readonly property int imageStatus: chatPictureDetail.imageStatus
             width: bigProfilePictureList.itemWidth
             height: bigProfilePictureList.itemHeight
             ProfileThumbnail {

@@ -22,6 +22,7 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QGuiApplication>
 #include <QLocale>
 #include <QProcess>
 #include <QSysInfo>
@@ -50,7 +51,6 @@ namespace {
     const QString USERNAME("username");
     const QString USERNAMES("usernames");
     const QString EDITABLE_USERNAME("editable_username");
-    const QString THREAD_ID("thread_id");
     const QString VALUE("value");
     const QString CHAT_LIST_TYPE("chat_list_type");
     const QString REPLY_TO_MESSAGE_ID("reply_to_message_id");
@@ -67,6 +67,11 @@ namespace {
     const QString EMOJI("emoji");
     const QString TYPE_MESSAGE_REPLY_TO_MESSAGE("messageReplyToMessage");
     const QString TYPE_INPUT_MESSAGE_REPLY_TO_MESSAGE("inputMessageReplyToMessage");
+    const QString TOPIC_ID("topic_id");
+    const QString MESSAGE_THREAD_ID("message_thread_id");
+    const QString TYPE_MESSAGE_TOPIC_THREAD("messageTopicThread");
+    const QString TEXT("text");
+    const QString TYPE_FORMATTED_TEXT("formattedText");
 }
 
 TDLibWrapper::TDLibWrapper(AppSettings *settings, MceInterface *mce, QObject *parent)
@@ -102,7 +107,7 @@ TDLibWrapper::TDLibWrapper(AppSettings *settings, MceInterface *mce, QObject *pa
 
     connect(this->appSettings, SIGNAL(useOpenWithChanged()), this, SLOT(handleOpenWithChanged()));
     connect(this->appSettings, SIGNAL(storageOptimizerChanged()), this, SLOT(handleStorageOptimizerChanged()));
-
+    connect(qGuiApp, SIGNAL(applicationStateChanged(Qt::ApplicationState)), this, SLOT(handleApplicationStateChanged(Qt::ApplicationState)));
     connect(networkConfigurationManager, SIGNAL(configurationChanged(QNetworkConfiguration)), this, SLOT(handleNetworkConfigurationChanged(QNetworkConfiguration)));
 
     this->setLogVerbosityLevel();
@@ -152,13 +157,15 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(notificationUpdated(QVariantMap)), this, SIGNAL(notificationUpdated(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)), this, SIGNAL(chatNotificationSettingsUpdated(QString, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messageContentUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageContentUpdated(qlonglong, qlonglong, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageContentOpened(qlonglong, qlonglong)), this, SIGNAL(messageContentOpened(qlonglong, qlonglong)));
     connect(this->tdLibReceiver, SIGNAL(messagesDeleted(qlonglong, QList<qlonglong>)), this, SIGNAL(messagesDeleted(qlonglong, QList<qlonglong>)));
     connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SIGNAL(chatsReceived(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chat(QVariantMap)), this, SLOT(handleChatReceived(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(secretChat(qlonglong, QVariantMap)), this, SLOT(handleSecretChatReceived(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(secretChatUpdated(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SIGNAL(recentStickersUpdated(QVariantList)));
-    connect(this->tdLibReceiver, SIGNAL(stickers(QVariantList)), this, SIGNAL(stickersReceived(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(favoriteStickersUpdated(QVariantList)), this, SIGNAL(favoriteStickersUpdated(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(stickers(QString, QVariantList)), this, SIGNAL(stickersReceived(QString, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SIGNAL(installedStickerSetsUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSets(QVariantList)), this, SLOT(handleStickerSets(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSet(QVariantMap)), this, SIGNAL(stickerSetReceived(QVariantMap)));
@@ -178,6 +185,7 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(messageIsPinnedUpdated(qlonglong, qlonglong, bool)), this, SLOT(handleMessageIsPinnedUpdated(qlonglong, qlonglong, bool)));
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(messageSendersReceived(QString, QVariantList, int)), this, SIGNAL(messageSendersReceived(QString, QVariantList, int)));
+    connect(this->tdLibReceiver, SIGNAL(messagePropertiesReceived(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messagePropertiesReceived(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString, QString)), this, SLOT(handleErrorReceived(int, QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(contactsImported(QVariantList, QVariantList)), this, SIGNAL(contactsImported(QVariantList, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
@@ -375,6 +383,18 @@ void TDLibWrapper::viewMessage(qlonglong chatId, qlonglong messageId, bool force
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::openMessageContent(qlonglong chatId, qlonglong messageId)
+{
+    // Marks the content as opened, which is what turns a voice note into a
+    // listened one for the sender. viewMessages only marks the message as read.
+    LOG("Mark message content as opened" << chatId << messageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "openMessageContent");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::pinMessage(const QString &chatId, const QString &messageId, bool disableNotification)
 {
     LOG("Pin message to chat" << chatId << messageId << disableNotification);
@@ -407,6 +427,52 @@ static bool compareReplacements(const QVariant &replacement1, const QVariant &re
     } else {
         return false;
     }
+}
+
+// In TdLib 1.8.55 the message_thread_id of the send requests became a topic
+void TDLibWrapper::insertTopicId(QVariantMap &requestObject, qlonglong threadId)
+{
+    if (!threadId) {
+        return;
+    }
+    if (versionNumber > VERSION_NUMBER(1,8,54)) {
+        QVariantMap topicId;
+        topicId.insert(_TYPE, TYPE_MESSAGE_TOPIC_THREAD);
+        topicId.insert(MESSAGE_THREAD_ID, threadId);
+        requestObject.insert(TOPIC_ID, topicId);
+    } else {
+        requestObject.insert(MESSAGE_THREAD_ID, threadId);
+    }
+}
+
+QVariantMap TDLibWrapper::newFormattedText(const QString &text)
+{
+    QVariantMap formattedText;
+    formattedText.insert(_TYPE, TYPE_FORMATTED_TEXT);
+    formattedText.insert(TEXT, text);
+    return formattedText;
+}
+
+// The input files of inputMessagePhoto, inputMessageVideo and
+// inputMessageDocument were wrapped into inputPhoto, inputVideo and
+// inputDocument structures in TdLib 1.8.64, those of inputMessageSticker and
+// inputMessageVoiceNote into inputSticker and inputVoiceNote in 1.8.65. The
+// wrappers also carry the thumbnail and the dimensions that used to sit next
+// to the file. containerVersion is the version that introduced the wrapper,
+// fileKey the name of the field holding the file, which is the same in the
+// wrapper and in the input message content it was taken from.
+QVariant TDLibWrapper::newInputFile(const QString &containerType, const QString &fileKey, const QString &filePath, int containerVersion, bool remote)
+{
+    QVariantMap inputFile;
+    inputFile.insert(_TYPE, remote ? "inputFileRemote" : "inputFileLocal");
+    inputFile.insert(remote ? ID : QString("path"), filePath);
+    if (versionNumber < containerVersion) {
+        return inputFile;
+    }
+    QVariantMap container;
+    container.insert(_TYPE, containerType);
+    container.insert(fileKey, inputFile);
+    return container;
 }
 
 QVariantMap TDLibWrapper::newSendMessageRequest(qlonglong chatId, qlonglong replyToMessageId)
@@ -479,23 +545,71 @@ void TDLibWrapper::sendTextMessage(qlonglong chatId, const QString &message, qlo
     this->sendRequest(requestObject);
 }
 
+// Telegram takes two to ten items per album; a longer selection goes out as
+// several albums, and only the first of them carries the caption. An album of
+// one is none, so a selection that would leave a single item over - eleven,
+// twenty-one, ... - gives up one item to the album that follows.
+static const int MAX_ALBUM_SIZE = 10;
+
+QVariantMap TDLibWrapper::newInputMessageContent(const QString &contentType, const QString &filePath, const QString &caption)
+{
+    QVariantMap inputMessageContent;
+    if (contentType == "video") {
+        inputMessageContent.insert(_TYPE, "inputMessageVideo");
+        inputMessageContent.insert("video", newInputFile("inputVideo", "video", filePath, VERSION_NUMBER(1,8,64)));
+    } else if (contentType == "document") {
+        inputMessageContent.insert(_TYPE, "inputMessageDocument");
+        // Without it the server may turn a file back into a video or an animation
+        const int containerVersion = VERSION_NUMBER(1,8,64);
+        QVariant document(newInputFile("inputDocument", "document", filePath, containerVersion));
+        if (versionNumber < containerVersion) {
+            inputMessageContent.insert("disable_content_type_detection", true);
+        } else {
+            QVariantMap inputDocument(document.toMap());
+            inputDocument.insert("disable_content_type_detection", true);
+            document = inputDocument;
+        }
+        inputMessageContent.insert("document", document);
+    } else {
+        inputMessageContent.insert(_TYPE, "inputMessagePhoto");
+        inputMessageContent.insert("photo", newInputFile("inputPhoto", "photo", filePath, VERSION_NUMBER(1,8,64)));
+    }
+    inputMessageContent.insert("caption", newFormattedText(caption));
+    return inputMessageContent;
+}
+
+void TDLibWrapper::sendAlbumMessage(qlonglong chatId, const QString &contentType, const QStringList &filePaths, const QString &message, qlonglong replyToMessageId)
+{
+    LOG("Sending album message" << chatId << contentType << filePaths.size() << message << replyToMessageId);
+    for (int offset = 0; offset < filePaths.size(); ) {
+        const int remaining = filePaths.size() - offset;
+        int albumSize = qMin(remaining, MAX_ALBUM_SIZE);
+        if (remaining - albumSize == 1) {
+            albumSize--;
+        }
+
+        QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
+        requestObject.insert(_TYPE, "sendMessageAlbum");
+        // The reply is a "messages" object, like the one a history request answers
+        // with. See TDLibReceiver::processMessages, which tells them apart by this.
+        requestObject.insert(_EXTRA, "sendMessageAlbum");
+
+        QVariantList inputMessageContents;
+        const int end = offset + albumSize;
+        for (int i = offset; i < end; i++) {
+            inputMessageContents.append(newInputMessageContent(contentType, filePaths.at(i), i == 0 ? message : QString()));
+        }
+        requestObject.insert("input_message_contents", inputMessageContents);
+        this->sendRequest(requestObject);
+        offset = end;
+    }
+}
+
 void TDLibWrapper::sendPhotoMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId)
 {
     LOG("Sending photo message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
-    QVariantMap inputMessageContent;
-    inputMessageContent.insert(_TYPE, "inputMessagePhoto");
-
-    QVariantMap formattedText;
-    formattedText.insert("text", message);
-    formattedText.insert(_TYPE, "formattedText");
-    inputMessageContent.insert("caption", formattedText);
-    QVariantMap photoInputFile;
-    photoInputFile.insert(_TYPE, "inputFileLocal");
-    photoInputFile.insert("path", filePath);
-    inputMessageContent.insert("photo", photoInputFile);
-
-    requestObject.insert("input_message_content", inputMessageContent);
+    requestObject.insert("input_message_content", newInputMessageContent("photo", filePath, message));
     this->sendRequest(requestObject);
 }
 
@@ -503,19 +617,7 @@ void TDLibWrapper::sendVideoMessage(qlonglong chatId, const QString &filePath, c
 {
     LOG("Sending video message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
-    QVariantMap inputMessageContent;
-    inputMessageContent.insert(_TYPE, "inputMessageVideo");
-
-    QVariantMap formattedText;
-    formattedText.insert("text", message);
-    formattedText.insert(_TYPE, "formattedText");
-    inputMessageContent.insert("caption", formattedText);
-    QVariantMap videoInputFile;
-    videoInputFile.insert(_TYPE, "inputFileLocal");
-    videoInputFile.insert("path", filePath);
-    inputMessageContent.insert("video", videoInputFile);
-
-    requestObject.insert("input_message_content", inputMessageContent);
+    requestObject.insert("input_message_content", newInputMessageContent("video", filePath, message));
     this->sendRequest(requestObject);
 }
 
@@ -523,37 +625,34 @@ void TDLibWrapper::sendDocumentMessage(qlonglong chatId, const QString &filePath
 {
     LOG("Sending document message" << chatId << filePath << message << replyToMessageId);
     QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
-    QVariantMap inputMessageContent;
-    inputMessageContent.insert(_TYPE, "inputMessageDocument");
-
-    QVariantMap formattedText;
-    formattedText.insert("text", message);
-    formattedText.insert(_TYPE, "formattedText");
-    inputMessageContent.insert("caption", formattedText);
-    QVariantMap documentInputFile;
-    documentInputFile.insert(_TYPE, "inputFileLocal");
-    documentInputFile.insert("path", filePath);
-    inputMessageContent.insert("document", documentInputFile);
-
-    requestObject.insert("input_message_content", inputMessageContent);
+    requestObject.insert("input_message_content", newInputMessageContent("document", filePath, message));
     this->sendRequest(requestObject);
 }
 
-void TDLibWrapper::sendVoiceNoteMessage(qlonglong chatId, const QString &filePath, const QString &message, qlonglong replyToMessageId)
+void TDLibWrapper::sendVoiceNoteMessage(qlonglong chatId, const QString &filePath, const QString &message, int duration, const QString &waveform, qlonglong replyToMessageId)
 {
-    LOG("Sending voice note message" << chatId << filePath << message << replyToMessageId);
+    LOG("Sending voice note message" << chatId << filePath << message << duration << replyToMessageId);
     QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageVoiceNote");
 
-    QVariantMap formattedText;
-    formattedText.insert("text", message);
-    formattedText.insert(_TYPE, "formattedText");
-    inputMessageContent.insert("caption", formattedText);
-    QVariantMap documentInputFile;
-    documentInputFile.insert(_TYPE, "inputFileLocal");
-    documentInputFile.insert("path", filePath);
-    inputMessageContent.insert("voice_note", documentInputFile);
+    inputMessageContent.insert("caption", newFormattedText(message));
+
+    // Providing both duration and waveform is necessary so every other client can
+    // display them as those aren't derived from the recording itself: without, the
+    // voice note shows up as 00:00 with a flat bar
+    const int containerVersion = VERSION_NUMBER(1,8,65);
+    QVariant voiceNote(newInputFile("inputVoiceNote", "voice_note", filePath, containerVersion));
+    if (versionNumber < containerVersion) {
+        inputMessageContent.insert("duration", duration);
+        inputMessageContent.insert("waveform", waveform);
+    } else {
+        QVariantMap inputVoiceNote(voiceNote.toMap());
+        inputVoiceNote.insert("duration", duration);
+        inputVoiceNote.insert("waveform", waveform);
+        voiceNote = inputVoiceNote;
+    }
+    inputMessageContent.insert("voice_note", voiceNote);
 
     requestObject.insert("input_message_content", inputMessageContent);
     this->sendRequest(requestObject);
@@ -572,9 +671,34 @@ void TDLibWrapper::sendLocationMessage(qlonglong chatId, double latitude, double
     location.insert("horizontal_accuracy", horizontalAccuracy);
     location.insert(_TYPE, "location");
     inputMessageContent.insert("location", location);
-    inputMessageContent.insert("live_period", 0);
-    inputMessageContent.insert("heading", 0);
-    inputMessageContent.insert("proximity_alert_radius", 0);
+    if (versionNumber <= VERSION_NUMBER(1,8,63)) {
+        // Live locations became an inputMessageLiveLocation of their own in 1.8.64
+        inputMessageContent.insert("live_period", 0);
+        inputMessageContent.insert("heading", 0);
+        inputMessageContent.insert("proximity_alert_radius", 0);
+    }
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::sendContactMessage(qlonglong chatId, const QString &phoneNumber, const QString &firstName, const QString &lastName, qlonglong replyToMessageId)
+{
+    LOG("Sending contact message" << chatId << firstName << lastName << replyToMessageId);
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessageContact");
+
+    // Only name and number are shared, not the whole vCard of the device
+    // contact - the user_id is resolved by Telegram from the phone number
+    QVariantMap contact;
+    contact.insert(_TYPE, "contact");
+    contact.insert("phone_number", phoneNumber);
+    contact.insert("first_name", firstName);
+    contact.insert("last_name", lastName);
+    contact.insert("vcard", "");
+    contact.insert("user_id", 0);
+    inputMessageContent.insert("contact", contact);
 
     requestObject.insert("input_message_content", inputMessageContent);
     this->sendRequest(requestObject);
@@ -587,11 +711,7 @@ void TDLibWrapper::sendStickerMessage(qlonglong chatId, const QString &fileId, q
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessageSticker");
 
-    QVariantMap stickerInputFile;
-    stickerInputFile.insert(_TYPE, "inputFileRemote");
-    stickerInputFile.insert(ID, fileId);
-
-    inputMessageContent.insert("sticker", stickerInputFile);
+    inputMessageContent.insert("sticker", newInputFile("inputSticker", "sticker", fileId, VERSION_NUMBER(1,8,65), true));
 
     requestObject.insert("input_message_content", inputMessageContent);
     this->sendRequest(requestObject);
@@ -604,23 +724,49 @@ void TDLibWrapper::sendPollMessage(qlonglong chatId, const QString &question, co
     QVariantMap inputMessageContent;
     inputMessageContent.insert(_TYPE, "inputMessagePoll");
 
+    // In TdLib 1.8.62 the options of a poll became inputPollOptions, the
+    // correct answer of a quiz a list of answers and multiple answers moved
+    // from pollTypeRegular to the poll itself. The question had already become
+    // formattedText in 1.8.28, but is only sent as such from 1.8.62 on - the
+    // versions in between are no longer of interest.
+    const bool formattedPoll = (versionNumber > VERSION_NUMBER(1,8,61));
+
     QVariantMap pollType;
     if(correctOption > -1) {
         pollType.insert(_TYPE, "pollTypeQuiz");
-        pollType.insert("correct_option_id", correctOption);
+        if (formattedPoll) {
+            pollType.insert("correct_option_ids", QVariantList() << correctOption);
+        } else {
+            pollType.insert("correct_option_id", correctOption);
+        }
         if(!explanation.isEmpty()) {
-            QVariantMap formattedExplanation;
-            formattedExplanation.insert("text", explanation);
-            pollType.insert("explanation", formattedExplanation);
+            pollType.insert("explanation", newFormattedText(explanation));
         }
     } else {
         pollType.insert(_TYPE, "pollTypeRegular");
-        pollType.insert("allow_multiple_answers", multiple);
+        if (!formattedPoll) {
+            pollType.insert("allow_multiple_answers", multiple);
+        }
     }
 
     inputMessageContent.insert(TYPE, pollType);
-    inputMessageContent.insert("question", question);
-    inputMessageContent.insert("options", options);
+    if (formattedPoll) {
+        inputMessageContent.insert("question", newFormattedText(question));
+        QVariantList pollOptions;
+        pollOptions.reserve(options.count());
+        QListIterator<QVariant> optionIterator(options);
+        while (optionIterator.hasNext()) {
+            QVariantMap pollOption;
+            pollOption.insert(_TYPE, "inputPollOption");
+            pollOption.insert(TEXT, newFormattedText(optionIterator.next().toString()));
+            pollOptions.append(pollOption);
+        }
+        inputMessageContent.insert("options", pollOptions);
+        inputMessageContent.insert("allows_multiple_answers", correctOption > -1 ? false : multiple);
+    } else {
+        inputMessageContent.insert("question", question);
+        inputMessageContent.insert("options", options);
+    }
     inputMessageContent.insert("is_anonymous", anonymous);
 
     requestObject.insert("input_message_content", inputMessageContent);
@@ -649,6 +795,23 @@ void TDLibWrapper::getMessage(qlonglong chatId, qlonglong messageId)
     requestObject.insert(CHAT_ID, chatId);
     requestObject.insert(MESSAGE_ID, messageId);
     requestObject.insert(_EXTRA, QString("getMessage:%1:%2").arg(chatId).arg(messageId));
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getMessageProperties(qlonglong chatId, qlonglong messageId)
+{
+    // The can_be_* and can_get_* flags of a message were moved out of the
+    // message itself and into messageProperties in TdLib 1.8.33
+    if (versionNumber <= VERSION_NUMBER(1,8,32)) {
+        return;
+    }
+    LOG("Retrieving message properties" << chatId << messageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getMessageProperties");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    // See TDLibReceiver::processMessageProperties()
+    requestObject.insert(_EXTRA, QString("messageProperties:%1:%2").arg(chatId).arg(messageId));
     this->sendRequest(requestObject);
 }
 
@@ -806,6 +969,16 @@ void TDLibWrapper::getRecentStickers()
     LOG("Retrieving recent stickers");
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getRecentStickers");
+    requestObject.insert(_EXTRA, "getRecentStickers");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getFavoriteStickers()
+{
+    LOG("Retrieving favorite stickers");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getFavoriteStickers");
+    requestObject.insert(_EXTRA, "getFavoriteStickers");
     this->sendRequest(requestObject);
 }
 
@@ -937,6 +1110,53 @@ void TDLibWrapper::setChatPermissions(const QString &chatId, const QVariantMap &
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::searchChatMembers(qlonglong chatId, const QString &query, int limit, const QString &extra)
+{
+    LOG("Searching members of chat" << chatId << query << limit);
+    QVariantMap filter;
+    // Whoever may be mentioned in this chat, which is what TDLib has this filter for
+    filter.insert(_TYPE, "chatMembersFilterMention");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "searchChatMembers");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("query", query);
+    requestObject.insert("limit", limit);
+    requestObject.insert("filter", filter);
+    requestObject.insert(_EXTRA, extra);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::setChatMemberStatus(const QString &chatId, const QString &memberUserId, const QVariantMap &status)
+{
+    LOG("Setting Chat Member Status" << chatId << memberUserId);
+    QVariantMap memberId;
+    memberId.insert(_TYPE, "messageSenderUser");
+    memberId.insert("user_id", memberUserId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "setChatMemberStatus");
+    requestObject.insert(_EXTRA, chatId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("member_id", memberId);
+    requestObject.insert("status", status);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::banChatMember(const QString &chatId, const QString &memberUserId, int bannedUntilDate, bool revokeMessages)
+{
+    LOG("Banning Chat Member" << chatId << memberUserId);
+    QVariantMap memberId;
+    memberId.insert(_TYPE, "messageSenderUser");
+    memberId.insert("user_id", memberUserId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "banChatMember");
+    requestObject.insert(_EXTRA, chatId);
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert("member_id", memberId);
+    requestObject.insert("banned_until_date", bannedUntilDate);
+    requestObject.insert("revoke_messages", revokeMessages);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::setChatSlowModeDelay(const QString &chatId, int delay)
 {
 
@@ -995,6 +1215,20 @@ void TDLibWrapper::setPollAnswer(const QString &chatId, qlonglong messageId, QVa
     requestObject.insert(CHAT_ID, chatId);
     requestObject.insert(MESSAGE_ID, messageId);
     requestObject.insert("option_ids", optionIds);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::addPollOption(const QString &chatId, qlonglong messageId, const QString &option)
+{
+    LOG("Adding Poll Option");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "addPollOption");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    QVariantMap inputPollOption;
+    inputPollOption.insert(_TYPE, "inputPollOption");
+    inputPollOption.insert(TEXT, newFormattedText(option));
+    requestObject.insert("option", inputPollOption);
     this->sendRequest(requestObject);
 }
 
@@ -1090,6 +1324,23 @@ void TDLibWrapper::importContacts(const QVariantList &contacts)
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::addContact(qlonglong userId, const QString &firstName, const QString &lastName, const QString &phoneNumber, bool sharePhoneNumber)
+{
+    LOG("Adding contact" << userId << firstName << lastName);
+    QVariantMap contact;
+    contact.insert(_TYPE, "importedContact");
+    contact.insert("first_name", firstName);
+    contact.insert("last_name", lastName);
+    contact.insert("phone_number", phoneNumber);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "addContact");
+    requestObject.insert("user_id", userId);
+    requestObject.insert("contact", contact);
+    requestObject.insert("share_phone_number", sharePhoneNumber);
+    requestObject.insert(_EXTRA, "addContact");
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::searchChatMessages(qlonglong chatId, const QString &query, qlonglong fromMessageId)
 {
     LOG("Searching for messages" << chatId << query << fromMessageId);
@@ -1162,18 +1413,26 @@ void TDLibWrapper::setChatDraftMessage(qlonglong chatId, qlonglong threadId, qlo
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "setChatDraftMessage");
     requestObject.insert(CHAT_ID, chatId);
-    requestObject.insert(THREAD_ID, threadId);
+    insertTopicId(requestObject, threadId);
     QVariantMap draftMessage;
-    QVariantMap inputMessageContent;
-    QVariantMap formattedText;
+    const QVariantMap formattedText(newFormattedText(draft));
 
-    formattedText.insert("text", draft);
-    formattedText.insert("clear_draft", draft.isEmpty());
-    formattedText.insert(_TYPE, "formattedText");
-    inputMessageContent.insert(_TYPE, "inputMessageText");
-    inputMessageContent.insert("text", formattedText);
     draftMessage.insert(_TYPE, "draftMessage");
-    draftMessage.insert("input_message_text", inputMessageContent);
+    // In TdLib 1.8.64 input_message_text has been replaced with a content of
+    // its own kind, draftMessageContentText rather than inputMessageText
+    if (versionNumber > VERSION_NUMBER(1,8,63)) {
+        QVariantMap draftMessageContent;
+        draftMessageContent.insert(_TYPE, "draftMessageContentText");
+        draftMessageContent.insert(TEXT, formattedText);
+        draftMessage.insert("content", draftMessageContent);
+    } else {
+        QVariantMap draftText(formattedText);
+        draftText.insert("clear_draft", draft.isEmpty());
+        QVariantMap inputMessageContent;
+        inputMessageContent.insert(_TYPE, "inputMessageText");
+        inputMessageContent.insert(TEXT, draftText);
+        draftMessage.insert("input_message_text", inputMessageContent);
+    }
 
     if (versionNumber > VERSION_NUMBER(1,8,20)) {
         QVariantMap replyTo;
@@ -1214,7 +1473,7 @@ void TDLibWrapper::sendInlineQueryResultMessage(qlonglong chatId, qlonglong thre
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "sendInlineQueryResultMessage");
     requestObject.insert(CHAT_ID, chatId);
-    requestObject.insert("message_thread_id", threadId);
+    insertTopicId(requestObject, threadId);
     requestObject.insert("reply_to_message_id", replyToMessageId);
     requestObject.insert("query_id", queryId);
     requestObject.insert("result_id", resultId);
@@ -1742,6 +2001,11 @@ DBusAdaptor *TDLibWrapper::getDBusAdaptor()
     return this->dbusInterface->getDBusAdaptor();
 }
 
+ShareReceiver *TDLibWrapper::getShareReceiver()
+{
+    return this->dbusInterface->getShareReceiver();
+}
+
 void TDLibWrapper::handleVersionDetected(const QString &version)
 {
     this->versionString = version;
@@ -1777,11 +2041,6 @@ void TDLibWrapper::handleAuthorizationStateChanged(const QString &authorizationS
 
     if (authorizationState == "authorizationStateWaitCode") {
         this->authorizationState = AuthorizationState::WaitCode;
-    }
-
-    if (authorizationState == "authorizationStateWaitEncryptionKey") {
-        this->setEncryptionKey();
-        this->authorizationState = AuthorizationState::WaitEncryptionKey;
     }
 
     if (authorizationState == "authorizationStateWaitOtherDeviceConfirmation") {
@@ -2211,6 +2470,10 @@ void TDLibWrapper::handleGetPageSourceFinished()
     }
 }
 
+void TDLibWrapper::handleApplicationStateChanged(Qt::ApplicationState state) {
+    this->tdLibReceiver->setPowerSavingMode(state != Qt::ApplicationState::ApplicationActive);
+}
+
 QVariantMap& TDLibWrapper::fillTdlibParameters(QVariantMap& parameters)
 {
     parameters.insert("api_id", TDLIB_API_ID);
@@ -2225,8 +2488,12 @@ QVariantMap& TDLibWrapper::fillTdlibParameters(QVariantMap& parameters)
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
     parameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     parameters.insert("system_version", QSysInfo::prettyProductName());
-    parameters.insert("application_version", "0.17");
-    parameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
+    parameters.insert("application_version", "0.19");
+    if (versionNumber <= VERSION_NUMBER(1,8,22)) {
+        // Replaced with the "use_storage_optimizer" option in TdLib 1.8.23,
+        // see handleStorageOptimizerChanged()
+        parameters.insert("enable_storage_optimizer", appSettings->storageOptimizer());
+    }
     // parameters.insert("use_test_dc", true);
     return parameters;
 }
@@ -2246,16 +2513,9 @@ void TDLibWrapper::setInitialParameters()
         requestObject.insert("parameters", initialParameters);
     }
     this->sendRequest(requestObject);
-}
-
-void TDLibWrapper::setEncryptionKey()
-{
-    LOG("Setting database encryption key");
-    QVariantMap requestObject;
-    requestObject.insert(_TYPE, "checkDatabaseEncryptionKey");
-    // see https://github.com/tdlib/td/issues/188#issuecomment-379536139
-    requestObject.insert("encryption_key", "");
-    this->sendRequest(requestObject);
+    if (versionNumber > VERSION_NUMBER(1,8,22)) {
+        handleStorageOptimizerChanged();
+    }
 }
 
 void TDLibWrapper::setLogVerbosityLevel()

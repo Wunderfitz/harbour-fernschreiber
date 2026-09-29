@@ -21,6 +21,8 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import WerkWolf.Fernschreiber 1.0
 
+import ".."
+
 AccordionItem {
     text: qsTr("Behavior")
     Component {
@@ -94,6 +96,17 @@ AccordionItem {
 
             TextSwitch {
                 width: parent.columnWidth
+                checked: appSettings.showDeleteChat
+                text: qsTr("Show chat deletion menu item")
+                description: qsTr("Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.showDeleteChat = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
                 checked: appSettings.notificationAlwaysShowPreview
                 text: qsTr("Always append message preview to notifications")
                 description: qsTr("In addition to showing the number of unread messages, the latest message will also be appended to notifications.")
@@ -111,6 +124,65 @@ AccordionItem {
                 automaticCheck: false
                 onClicked: {
                     appSettings.goToQuotedMessage = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.forwardHideSender
+                text: qsTr("Hide sender when forwarding")
+                description: qsTr("Forwarded messages are sent as copies, without showing who they are forwarded from.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.forwardHideSender = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.forwardHideCaptions
+                enabled: appSettings.forwardHideSender
+                text: qsTr("Hide captions when forwarding")
+                description: qsTr("Captions of forwarded media are left out. Only available when the sender is hidden.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.forwardHideCaptions = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.autoplayAnimatedGifs
+                text: qsTr("Autoplay animations")
+                description: qsTr("Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.autoplayAnimatedGifs = !checked
+                }
+            }
+
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.showReactionButton
+                text: qsTr("Show reaction button on tap")
+                description: qsTr("The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.showReactionButton = !checked
+                }
+
+                ReactionButton {
+                    Behavior on opacity { FadeAnimation {} }
+                    opacity: appSettings.showReactionButton ? 1 : 0
+                    visible: opacity > 0
+                    anchors {
+                        right: parent.right
+                        rightMargin: parent.rightMargin
+                        verticalCenter: parent.verticalCenter
+                    }
+                    onClicked: {
+                        appSettings.showReactionButton = !parent.checked
+                    }
                 }
             }
 

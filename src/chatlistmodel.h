@@ -95,6 +95,7 @@ private slots:
     void handleChatUnreadMentionCountUpdated(qlonglong chatId, int unreadMentionCount);
     void handleChatUnreadReactionCountUpdated(qlonglong chatId, int unreadReactionCount);
     void handleChatAvailableReactionsUpdated(qlonglong chatId, const QVariantMap availableReactions);
+    void handleShowSavedMessagesProfileChanged();
     void handleRelativeTimeRefreshTimer();
 
 signals:

@@ -11,12 +11,13 @@ Fernschreiber wouldn't be the same without all the people helping in making it b
 
 ### Code (Features, Bugfixes, Optimizations etc.)
 - Chat list model, chat model, notifications, TDLib receiver, animated stickers, project dependencies, qml/c++ optimizations, chatPhoto, TDLibFile, code reviews, logging categories: [Slava Monich](https://github.com/monich)
-- Chat info page, performance improvements to chat page, location support, app initialization/registration with Telegram, project dependencies, emoji handling, qml/js optimizations, multi-message actions, i18n fixes, chat permission handling, code reviews, logging categories, bot support, github build: [jgibbon](https://github.com/jgibbon)
+- Chat info page, performance improvements to chat page, location support, app initialization/registration with Telegram, project dependencies, emoji handling, qml/js optimizations, multi-message actions, i18n fixes, message media UI, chat permission handling, bug fixes, code reviews, logging categories, bot support, github build: [jgibbon](https://github.com/jgibbon)
 - Copy message to clipboard: [Christian Stemmle](https://github.com/chstem)
 - Hide send message button if send-by-enter is switched on, focus text input on entering a chat: [santhoshmanikandan](https://github.com/santhoshmanikandan)
 - Integration of logout and sesison options to settings page, search results optimization, highlight unread conversations: [Peter G.](https://github.com/nephros)
 - Option to always append last message in notifications: [Johannes Bachmann](https://github.com/dscheinah)
-- Option to jump to quoted message, widescreen UI adjustments: [Mikhail Barashkov](https://github.com/mbarashkov)
+- Option to jump to quoted message, widescreen UI adjustments, bug fixes for message forwarding and copying: [Mikhail Barashkov](https://github.com/mbarashkov)
+- Option to to remove the chat deletion menu item: [JimKnopfIoT](https://github.com/JimKnopfIoT)
 
 This list might not be complete. In case I forgot something/somebody, please let me know or create a PR, thanks! :)
 
@@ -40,7 +41,7 @@ Licensed under GNU GPLv3
 
 ## Build
 ### Local build
-Simply clone this repository and ensure to have all [submodules](https://git-scm.com/docs/git-submodule) imported as well (e.g. by using `git submodule update --init`). Then use the project file `harbour-fernschreiber.pro` to import the sources in your SailfishOS IDE. To build and run Fernschreiber or an application which is based on Fernschreiber, you need to create the file `harbour-fernschreiber/src/tdlibsecrets.h` and enter the required constants in the following format:
+Simply clone this repository. Then use the project file `harbour-fernschreiber.pro` to import the sources in your SailfishOS IDE. To build and run Fernschreiber or an application which is based on Fernschreiber, you need to create the file `harbour-fernschreiber/src/tdlibsecrets.h` and enter the required constants in the following format:
 
 ```
 #ifndef TDLIBSECRETS_H
@@ -52,7 +53,7 @@ const char TDLIB_API_HASH[] = "1234567890abcdef1234567890abcdef";
 
 You get the Telegram API ID and hash as soon as you've registered your own application on [https://my.telegram.org](https://my.telegram.org).
 
-Moreover, you need to have a compiled version of [TDLib 1.8.21](https://github.com/tdlib/td) or higher in the sub-directory `tdlib`. This sub-directory must contain another sub-directory that fits to the target device architecture (e.g. armv7hl, i486). Within this directory, there needs to be a folder called `lib` that contains at least `libtdjson.so`. For armv7hl the relative path would consequently be `tdlib/armv7hl/lib`.
+Moreover, you need to have a compiled version of [TDLib 1.8.67](https://github.com/tdlib/td) or higher in the sub-directory `tdlib`. This sub-directory must contain another sub-directory that fits to the target device architecture (e.g. armv7hl, i486). Within this directory, there needs to be a folder called `lib` that contains at least `libtdjson.so`. For armv7hl the relative path would consequently be `tdlib/armv7hl/lib`.
 
 You may just want to download the [tdlib.zip from our fork](https://github.com/Wunderfitz/td/releases) to just use the exact version of the latest official Fernschreiber release. To use it, you need to extract it into your local `tdlib/` folder as described above. If so, you're done and can compile Fernschreiber using the Sailfish SDK. If you want to build TDLib for yourself, please keep on reading.
 
@@ -67,6 +68,11 @@ In case you want to use the same codebase which was used to compile the library 
 - `sfdk build-shell cmake --build . --target install`
 
 You'll find the compiled library in the directory `td/tdlib`.
+
+### Vendored rlottie
+Animated stickers are rendered by [rlottie](https://github.com/Samsung/rlottie), which is compiled into Fernschreiber from the directory `rlottie/`. It's a vendored copy (not a submodule) of upstream commit [683bbaa](https://github.com/Samsung/rlottie/commit/683bbaa) with the two commits of [rlottie#602](https://github.com/Samsung/rlottie/pull/602) on top. Without that fix, the shape-content budget introduced in upstream commit `34465a9` silently drops parts of many Telegram stickers. Only the library itself (`inc/`, `src/`) and its license files are included, not upstream's examples, tests or build files. The sources are compiled by `harbour-fernschreiber.pro`, which also writes the `config.h` required by rlottie to `rlottie-config/` in the build directory.
+
+To update rlottie, replace the directory with the same set of files from the new upstream state (e.g. `git archive <commit> inc src AUTHORS COPYING licenses README.md | tar x -C rlottie` in a clone of rlottie), re-apply the #602 commits as long as upstream hasn't merged them, add new source files to `harbour-fernschreiber.pro` and update the commit reference above.
 
 ### Github Action
 Please read the "Local build" section anyway to understand what's going on before continuing. If you want to automatically build your fork on Github, you'll still need to get a Telegram API ID and hash. These are then [added as project secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named `TDLIB_API_ID` and `TDLIB_API_HASH`.
@@ -94,7 +100,7 @@ If you want to contribute bug fixes, improvements, new features etc. please crea
 This project uses
 
 - The Telegram Database Library (TDLib) - available on [GitHub.com](https://github.com/tdlib/td). Thanks for making it available under the conditions of the Boost Software License 1.0! Details about the license of TDLib in [its license file](https://github.com/tdlib/td/blob/master/LICENSE_1_0.txt).
-- Emoji parsing and artwork by [Twitter Emoji (Twemoji)](http://twitter.github.io/twemoji/), copyright 2018 Twitter, Inc and other contributors, Code licensed under the [MIT License](http://opensource.org/licenses/MIT), Graphics licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- Emoji parsing and artwork by [Twitter Emoji (Twemoji)](https://github.com/jdecked/twemoji), copyright 2026 by twmoji contributors, Code licensed under the [MIT License](http://opensource.org/licenses/MIT), Graphics licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - Animated sticker parsing and animation by [rlottie](https://github.com/Samsung/rlottie), copyright 2020 Samsung Electronics Co., Ltd. and [other contributors](https://github.com/Samsung/rlottie/blob/master/AUTHORS), Code licensed under the [MIT License](https://github.com/Samsung/rlottie/blob/master/licenses/COPYING.MIT), some rlottie components [licensed under other licenses](https://github.com/Samsung/rlottie/blob/master/COPYING).
 - Reverse geocoding for location attachments by [OpenStreetMap Nominatim](https://wiki.openstreetmap.org/wiki/Nominatim).
 

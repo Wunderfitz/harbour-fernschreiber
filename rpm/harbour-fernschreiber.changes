@@ -12,6 +12,32 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Sep 13 2026 Sebastian J. Wolf <sebastian@ygriega.de> 0.19
+- Update to TDLib 1.8.67
+- Fix: reaction selection for chats without a fixed set of reactions
+- Fix: editing group member permissions for messages and media
+- Fix: required permissions when forwarding media messages
+- Fix: original author of forwarded messages from users and chats
+- Fix: show changes of the message auto-delete time
+- Fix: button of sponsored messages
+- Fix: avoid triggering copy to clipboard and delete message when opening 2nd context menu
+
+* Sat Aug 22 2026 Sebastian J. Wolf <sebastian@ygriega.de> 0.18
+- Update Emoji support to 17 – contribution by jgibbon
+- Support for notches - contribution by jgibbon
+- New media view for messages including album support – contribution by jgibbon
+- Additional safety dialog before deleting a chat
+- Option to remove the chat deletion menu item - contribution by JimKnopfIoT
+- Animation for order changes in chat list
+- Make reactions button configurable - contribution by monich
+- Make animation/animated GIF autoplay configurable
+- Save power by adding delay between network requests in background - contribution by mbarashkov
+- Hotfix: Disable autoplay for animations (currently crashing on some devices)
+- Fix Regression: Show all destinations for message forwarding – contribution by mbarashkov
+- Fix: message copy for some use cases – contribution by mbarashkov
+- Fix: message range synchronization in ChatModel – contribution by jgibbon
+- Updated translations for several languages, thanks to BotchedRPR, carlosgonz0, eson57, Lundrin and okruhliak
+
 * Sun Dec 03 2023 Sebastian J. Wolf <sebastian@ygriega.de> 0.17
 - Update to TDLib 1.8.21, expect some hiccups ;)
 - Added contacts sync (OpenRepos builds only)

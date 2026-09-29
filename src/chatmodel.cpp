@@ -54,7 +54,15 @@ namespace {
     const QString VIEW_COUNT("view_count");
     const QString REACTIONS("reactions");
 
+    // Opening a voice or video note only yields chat and message id, the flag
+    // that turns the cached message into a listened resp. viewed one is ours to set
+    const QString TYPE_MESSAGE_VOICE_NOTE("messageVoiceNote");
+    const QString TYPE_MESSAGE_VIDEO_NOTE("messageVideoNote");
+    const QString IS_LISTENED("is_listened");
+    const QString IS_VIEWED("is_viewed");
+
     const QString TYPE_SPONSORED_MESSAGE("sponsoredMessage");
+    const QString _EXTRA("@extra");
 }
 
 class ChatModel::MessageData
@@ -87,6 +95,7 @@ public:
 
     uint updateMessageData(const QVariantMap &data);
     uint updateContent(const QVariantMap &content);
+    uint updateContentOpened();
     uint updateContentType(const QVariantMap &content);
     uint updateReplyMarkup(const QVariantMap &replyMarkup);
     uint updateViewCount(const QVariantMap &interactionInfo);
@@ -94,16 +103,19 @@ public:
     uint updateReactions(const QVariantMap &interactionInfo);
     uint updateAlbumEntryFilter(const bool isAlbumChild);
     uint updateAlbumEntryMessageIds(const QVariantList &newAlbumMessageIds);
+    uint updateProperties(const QVariantMap &newProperties);
+    void applyProperties();
 
     QVector<int> diff(const MessageData *message) const;
     QVector<int> setMessageData(const QVariantMap &data);
     QVector<int> setContent(const QVariantMap &content);
+    QVector<int> setContentOpened();
     QVector<int> setReplyMarkup(const QVariantMap &replyMarkup);
     QVector<int> setInteractionInfo(const QVariantMap &interactionInfo);
     QVector<int> setAlbumEntryFilter(bool isAlbumChild);
     QVector<int> setAlbumEntryMessageIds(const QVariantList &newAlbumMessageIds);
 
-    int senderUserId() const;
+    qlonglong senderUserId() const;
     qlonglong senderChatId() const;
     bool senderIsChat() const;
 
@@ -116,6 +128,8 @@ public:
     QVariantList reactions;
     bool albumEntryFilter;
     QVariantList albumMessageIds;
+    bool propertiesRequested;
+    QVariantMap properties;
 };
 
 ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
@@ -126,8 +140,30 @@ ChatModel::MessageData::MessageData(const QVariantMap &data, qlonglong msgid) :
     viewCount(data.value(INTERACTION_INFO).toMap().value(VIEW_COUNT).toInt()),
     reactions(data.value(INTERACTION_INFO).toMap().value(REACTIONS).toList()),
     albumEntryFilter(false),
-    albumMessageIds(QVariantList())
+    albumMessageIds(QVariantList()),
+    propertiesRequested(false)
 {
+}
+
+// The can_be_* and can_get_* flags of a message were moved out of the message
+// itself and into messageProperties in TdLib 1.8.33. Merge them back in, that
+// is where the rest of Fernschreiber looks for them.
+uint ChatModel::MessageData::updateProperties(const QVariantMap &newProperties)
+{
+    properties = newProperties;
+    applyProperties();
+    return RoleFlagDisplay;
+}
+
+void ChatModel::MessageData::applyProperties()
+{
+    QMapIterator<QString, QVariant> it(properties);
+    while (it.hasNext()) {
+        it.next();
+        if (it.key() != _TYPE && it.key() != _EXTRA) {
+            messageData.insert(it.key(), it.value());
+        }
+    }
 }
 
 QVector<int> ChatModel::MessageData::flagsToRoles(uint flags)
@@ -157,9 +193,9 @@ QVector<int> ChatModel::MessageData::flagsToRoles(uint flags)
     return roles;
 }
 
-int ChatModel::MessageData::senderUserId() const
+qlonglong ChatModel::MessageData::senderUserId() const
 {
-    return messageData.value(SENDER_ID).toMap().value(USER_ID).toInt();
+    return messageData.value(SENDER_ID).toMap().value(USER_ID).toLongLong();
 }
 
 qlonglong ChatModel::MessageData::senderChatId() const
@@ -202,6 +238,7 @@ QVector<int> ChatModel::MessageData::diff(const MessageData *message) const
 uint ChatModel::MessageData::updateMessageData(const QVariantMap &data)
 {
     messageData = data;
+    applyProperties();
     messageType = data.value(_TYPE).toString();
     return RoleFlagDisplay |
         updateContentType(data.value(CONTENT).toMap()) |
@@ -229,6 +266,27 @@ uint ChatModel::MessageData::updateContent(const QVariantMap &content)
 QVector<int> ChatModel::MessageData::setContent(const QVariantMap &content)
 {
     return flagsToRoles(updateContent(content));
+}
+
+uint ChatModel::MessageData::updateContentOpened()
+{
+    const QString openedKey(messageContentType == TYPE_MESSAGE_VOICE_NOTE ? IS_LISTENED :
+                            messageContentType == TYPE_MESSAGE_VIDEO_NOTE ? IS_VIEWED : QString());
+    if (openedKey.isEmpty()) {
+        return 0;
+    }
+    QVariantMap content(messageData.value(CONTENT).toMap());
+    if (content.value(openedKey).toBool()) {
+        return 0;
+    }
+    content.insert(openedKey, true);
+    messageData.insert(CONTENT, content);
+    return RoleFlagDisplay;
+}
+
+QVector<int> ChatModel::MessageData::setContentOpened()
+{
+    return flagsToRoles(updateContentOpened());
 }
 
 uint ChatModel::MessageData::updateReplyMarkup(const QVariantMap &replyMarkup)
@@ -333,9 +391,11 @@ ChatModel::ChatModel(TDLibWrapper *tdLibWrapper) :
     connect(this->tdLibWrapper, SIGNAL(chatPhotoUpdated(qlonglong, QVariantMap)), this, SLOT(handleChatPhotoUpdated(qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatPinnedMessageUpdated(qlonglong, qlonglong)), this, SLOT(handleChatPinnedMessageUpdated(qlonglong, qlonglong)));
     connect(this->tdLibWrapper, SIGNAL(messageContentUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageContentUpdated(qlonglong, qlonglong, QVariantMap)));
+    connect(this->tdLibWrapper, SIGNAL(messageContentOpened(qlonglong, qlonglong)), this, SLOT(handleMessageContentOpened(qlonglong, qlonglong)));
     connect(this->tdLibWrapper, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessageInteractionInfoUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(messagesDeleted(qlonglong, QList<qlonglong>)), this, SLOT(handleMessagesDeleted(qlonglong, QList<qlonglong>)));
+    connect(this->tdLibWrapper, SIGNAL(messagePropertiesReceived(qlonglong, qlonglong, QVariantMap)), this, SLOT(handleMessagePropertiesReceived(qlonglong, qlonglong, QVariantMap)));
 }
 
 ChatModel::~ChatModel()
@@ -481,6 +541,34 @@ int ChatModel::getMessageIndex(qlonglong messageId)
         return messageIndexMap.value(messageId);
     }
     return -1;
+}
+
+void ChatModel::loadMessageProperties(qlonglong messageId)
+{
+    const int pos = messageIndexMap.value(messageId, -1);
+    if (pos < 0) {
+        return;
+    }
+    MessageData *message = messages.at(pos);
+    requestMessageProperties(message);
+    // The other messages of an album never get a delegate of their own, but
+    // the album overlay needs to know what can be done with them as well
+    QListIterator<QVariant> albumMessageIterator(message->albumMessageIds);
+    while (albumMessageIterator.hasNext()) {
+        const int albumPos = messageIndexMap.value(albumMessageIterator.next().toLongLong(), -1);
+        if (albumPos >= 0) {
+            requestMessageProperties(messages.at(albumPos));
+        }
+    }
+}
+
+void ChatModel::requestMessageProperties(MessageData *message)
+{
+    // Sponsored messages are not real messages, they have no properties
+    if (!message->propertiesRequested && message->messageType != TYPE_SPONSORED_MESSAGE) {
+        message->propertiesRequested = true;
+        this->tdLibWrapper->getMessageProperties(chatId, message->messageId);
+    }
 }
 
 QVariantList ChatModel::getMessageIdsForAlbum(qlonglong albumId)
@@ -684,15 +772,49 @@ void ChatModel::handleMessageSendSucceeded(qlonglong messageId, qlonglong oldMes
         const int pos = messageIndexMap.take(oldMessageId);
         MessageData* oldMessage = messages.at(pos);
         MessageData* newMessage = new MessageData(message, messageId);
+
+        // Album membership isn't part of the message, the model keeps it, and a
+        // fresh MessageData starts without it. Carry it over before the diff, or
+        // the entry leaves its album for the moment it takes setMessagesAlbum to
+        // put it back - which makes the filtered members flash up and the delegates
+        // of the whole album get torn down and rebuilt.
+        newMessage->albumEntryFilter = oldMessage->albumEntryFilter;
+        newMessage->albumMessageIds = oldMessage->albumMessageIds;
+
         messages.replace(pos, newMessage);
-        messageIndexMap.remove(oldMessageId);
         messageIndexMap.insert(messageId, pos);
-        // TODO when we support sending album messages, handle ID change in albumMessageMap
+
+        // An album is keyed by message ID and sending hands out a new one, so the
+        // album has to be rekeyed. Left alone it holds IDs nothing answers to any
+        // more: the entries lose their album and the bubbles come out empty. This
+        // is what getMessagesForAlbum() reads, so it happens before dataChanged.
+        const qlonglong albumId = newMessage->messageData.value(MEDIA_ALBUM_ID).toLongLong();
+        if (albumId != 0 && albumMessageMap.contains(albumId)) {
+            QVariantList &albumMessageIds = albumMessageMap[albumId];
+            const int albumIndex = albumMessageIds.indexOf(QVariant(oldMessageId));
+            if (albumIndex >= 0) {
+                albumMessageIds.replace(albumIndex, messageId);
+            }
+        }
+
         const QVector<int> changedRoles(newMessage->diff(oldMessage));
+        const bool propertiesWereRequested = oldMessage->propertiesRequested;
         delete oldMessage;
         LOG("Message was replaced at index" << pos);
         const QModelIndex messageIndex(index(pos));
         emit dataChanged(messageIndex, messageIndex, changedRoles);
+
+        // Sorts the album and hands every entry its role values, now that the new
+        // message ID is in place.
+        setMessagesAlbum(newMessage);
+
+        // The properties of the pending message don't apply to the sent one and
+        // its delegate won't ask again, as it survives the replacement. If no
+        // delegate asked yet, the one to be created will do so with the new ID.
+        if (propertiesWereRequested) {
+            requestMessageProperties(newMessage);
+        }
+
         emit lastReadSentMessageUpdated(calculateLastReadSentMessageId());
         tdLibWrapper->viewMessage(this->chatId, messageId, false);
     }
@@ -742,6 +864,24 @@ void ChatModel::handleMessageContentUpdated(qlonglong chatId, qlonglong messageI
     }
 }
 
+void ChatModel::handleMessageContentOpened(qlonglong chatId, qlonglong messageId)
+{
+    if (chatId == this->chatId && messageIndexMap.contains(messageId)) {
+        const int pos = messageIndexMap.value(messageId, -1);
+        if (pos >= 0) {
+            const QVector<int> changedRoles(messages.at(pos)->setContentOpened());
+            // An empty role list would tell the view that everything changed,
+            // so stay silent unless the message really became listened/viewed
+            if (!changedRoles.isEmpty()) {
+                LOG("Message content was opened at index" << pos);
+                const QModelIndex messageIndex(index(pos));
+                emit dataChanged(messageIndex, messageIndex, changedRoles);
+                emit messageUpdated(pos);
+            }
+        }
+    }
+}
+
 void ChatModel::handleMessageInteractionInfoUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &updatedInfo)
 {
     if (chatId == this->chatId && messageIndexMap.contains(messageId)) {
@@ -749,6 +889,19 @@ void ChatModel::handleMessageInteractionInfoUpdated(qlonglong chatId, qlonglong 
         if (pos >= 0) {
             LOG("Message interaction info was updated at index" << pos);
             const QVector<int> changedRoles(messages.at(pos)->setInteractionInfo(updatedInfo));
+            const QModelIndex messageIndex(index(pos));
+            emit dataChanged(messageIndex, messageIndex, changedRoles);
+        }
+    }
+}
+
+void ChatModel::handleMessagePropertiesReceived(qlonglong chatId, qlonglong messageId, const QVariantMap &properties)
+{
+    if (chatId == this->chatId) {
+        const int pos = messageIndexMap.value(messageId, -1);
+        if (pos >= 0) {
+            LOG("Message properties were received at index" << pos);
+            const QVector<int> changedRoles(MessageData::flagsToRoles(messages.at(pos)->updateProperties(properties)));
             const QModelIndex messageIndex(index(pos));
             emit dataChanged(messageIndex, messageIndex, changedRoles);
         }
@@ -965,7 +1118,10 @@ void ChatModel::setMessagesAlbum(const QList<MessageData *> newMessages)
 void ChatModel::setMessagesAlbum(MessageData *message)
 {
     qlonglong albumId = message->messageData.value(MEDIA_ALBUM_ID).toLongLong();
-    if (albumId > 0 && (message->messageContentType != "messagePhoto" || message->messageContentType != "messageVideo")) {
+    // Only pictures and videos are drawn as an album, and only they may be filtered
+    // down to one entry - the condition read "!= a || != b", which is true for every
+    // type, so a document album lost every entry but its first.
+    if (albumId != 0 && (message->messageContentType == "messagePhoto" || message->messageContentType == "messageVideo")) {
         qlonglong messageId = message->messageId;
 
         if(albumMessageMap.contains(albumId)) {
@@ -1017,7 +1173,7 @@ int ChatModel::calculateLastKnownMessageId()
     LOG("calculateLastKnownMessageId");
     const qlonglong lastKnownMessageId = this->chatInformation.value(LAST_READ_INBOX_MESSAGE_ID).toLongLong();
     LOG("lastKnownMessageId" << lastKnownMessageId);
-    const int myUserId = tdLibWrapper->getUserInformation().value(ID).toInt();
+    const qlonglong myUserId = tdLibWrapper->getUserInformation().value(ID).toLongLong();
     qlonglong lastOwnMessageId = 0;
     for (int i = (messages.size() - 1); i >= 0; i--) {
         MessageData *currentMessage = messages.at(i);

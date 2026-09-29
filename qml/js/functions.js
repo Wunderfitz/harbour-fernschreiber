@@ -40,6 +40,26 @@ function getUserName(userInformation) {
     return ((userInformation.first_name || "") + " " + (userInformation.last_name || "")).trim();
 }
 
+function getPhoneNumber(phoneNumber) {
+    var trimmedPhoneNumber = (phoneNumber || "").trim();
+    if (trimmedPhoneNumber === "" || trimmedPhoneNumber.charAt(0) === "+") {
+        return trimmedPhoneNumber;
+    }
+    return "+" + trimmedPhoneNumber;
+}
+
+function getUserNameTag(userInformation) {
+    if (userInformation) {
+        if (userInformation.username) {
+            return "@" + userInformation.username;
+        }
+        if (userInformation.usernames && userInformation.usernames.active_usernames && userInformation.usernames.active_usernames.length > 0) {
+            return "@" + userInformation.usernames.active_usernames[0];
+        }
+    }
+    return "";
+}
+
 function getMessageText(message, simple, currentUserId, ignoreEntities) {
 
     var myself = false;
@@ -100,6 +120,8 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         return simple ? (myself ? qsTr("sent a location", "myself") : qsTr("sent a location")) : "";
     case 'messageVenue':
         return simple ? (myself ? qsTr("sent a venue", "myself") : qsTr("sent a venue")) : ( "<b>" + message.content.venue.title + "</b>, " + message.content.venue.address );
+    case 'messageContact':
+        return simple ? (myself ? qsTr("shared the contact %1", "myself; %1 is a name").arg(getUserName(message.content.contact)) : qsTr("shared the contact %1", "%1 is a name").arg(getUserName(message.content.contact))) : "";
     case 'messageContactRegistered':
         return myself ? qsTr("have registered with Telegram") : qsTr("has registered with Telegram");
     case 'messageChatJoinByLink':
@@ -136,6 +158,12 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
             return simple ? (myself ? qsTr("sent an anonymous poll", "myself") : qsTr("sent an anonymous poll")) : ("<b>" + qsTr("Anonymous Poll") + "</b>");
         }
         return simple ? (myself ? qsTr("sent a poll", "myself") : qsTr("sent a poll")) : ("<b>" + qsTr("Poll") + "</b>");
+    case 'messagePollOptionAdded':
+        var addedOption = simple ? message.content.text.text : enhanceMessageText(message.content.text, ignoreEntities);
+        return myself ? qsTr("have added the option “%1” to a poll", "myself; %1 is the added poll option").arg(addedOption) : qsTr("has added the option “%1” to a poll", "%1 is the added poll option").arg(addedOption);
+    case 'messagePollOptionDeleted':
+        var deletedOption = simple ? message.content.text.text : enhanceMessageText(message.content.text, ignoreEntities);
+        return myself ? qsTr("have removed the option “%1” from a poll", "myself; %1 is the removed poll option").arg(deletedOption) : qsTr("has removed the option “%1” from a poll", "%1 is the removed poll option").arg(deletedOption);
     case 'messageBasicGroupChatCreate':
     case 'messageSupergroupChatCreate':
         return myself ? qsTr("created this group", "myself") : qsTr("created this group");
@@ -143,7 +171,7 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         return myself ? qsTr("changed the chat photo", "myself") : qsTr("changed the chat photo");
     case 'messageChatDeletePhoto':
         return myself ? qsTr("deleted the chat photo", "myself") : qsTr("deleted the chat photo");
-    case 'messageChatSetTtl':
+    case 'messageChatSetMessageAutoDeleteTime':
         return myself ? qsTr("changed the secret chat TTL setting", "myself; TTL = Time To Live") : qsTr("changed the secret chat TTL setting", "TTL = Time To Live");
     case 'messageChatUpgradeFrom':
     case 'messageChatUpgradeTo':
@@ -534,7 +562,14 @@ function getMessagesArrayText(messages) {
     return lines.join("\n");
 }
 
-function handleErrorMessage(code, message) {
+function handleErrorMessage(code, message, extra) {
+    if (extra && extra.indexOf("mentionSuggestions:") === 0) {
+        // Not everybody may see who is in a chat - that only means there is
+        // nothing to suggest, it is nothing to report. Every page listening
+        // for errors gets this one, not only the chat page that asked
+        Debug.log("[Functions] Members of this chat can't be searched: " + message);
+        return;
+    }
     if (code === 404 || (code === 400 && message === "USERNAME_INVALID")) {
         // Silently ignore
         // - 404 Not Found messages (occur sometimes, without clear context...)
@@ -548,29 +583,42 @@ function handleErrorMessage(code, message) {
     }
 }
 
+// The chat permission a message of a given content type needs to be forwarded.
+// TDLib has no coarse "can_send_media_messages" - there is one permission per
+// kind of media.
+var forwardPermissionsByContentType = {
+    "messageAnimation": "can_send_other_messages",
+    "messageAudio": "can_send_audios",
+    "messageDocument": "can_send_documents",
+    "messageGame": "can_send_other_messages",
+    "messagePhoto": "can_send_photos",
+    "messagePoll": "can_send_polls",
+    "messageSticker": "can_send_other_messages",
+    "messageText": "can_send_basic_messages",
+    "messageVideo": "can_send_videos",
+    "messageVideoNote": "can_send_video_notes",
+    "messageVoiceNote": "can_send_voice_notes"
+}
+
 function getMessagesNeededForwardPermissions(messages) {
-    var neededPermissions = ["can_send_basic_messages"]
+    var neededPermissions = []
 
-    var mediaMessageTypes = ["messageAudio", "messageDocument", "messagePhoto", "messageVideo", "messageVideoNote", "messageVoiceNote"]
-    var otherMessageTypes = ["messageAnimation", "messageGame", "messageSticker"]
-    for(var i = 0; i < messages.length && neededPermissions.length < 3; i += 1) {
-        var type = messages[i]["content"]["@type"]
-        var permission = ""
-        if(type === "messageText") {
-            continue
-        } else if(type === "messagePoll") {
-            permission = "can_send_polls"
-        } else if(mediaMessageTypes.indexOf(type) > -1) {
-            permission = "can_send_media_messages"
-        } else if(otherMessageTypes.indexOf(type) > -1) {
-            permission = "can_send_other_messages"
-        }
-
-        if(permission !== "" && neededPermissions.indexOf(permission) === -1) {
+    for(var i = 0; i < messages.length; i += 1) {
+        var permission = forwardPermissionsByContentType[messages[i]["content"]["@type"]]
+        if(permission && neededPermissions.indexOf(permission) === -1) {
             neededPermissions.push(permission)
         }
     }
+    if(neededPermissions.length === 0) {
+        // Everything else goes out as an ordinary message
+        neededPermissions.push("can_send_basic_messages")
+    }
     return neededPermissions
+}
+
+function canForwardMessage(message, sendCopy) {
+    // Forwarding as a copy needs a message whose content can be copied, TDLib silently drops the others
+    return !!message.can_be_forwarded && (!sendCopy || !!message.can_be_copied)
 }
 
 function isWidescreen(appWindow) {

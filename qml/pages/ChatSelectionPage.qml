@@ -35,7 +35,7 @@ Dialog {
         chatSelectionPage.currentDepth = chatSelectionPage.currentDepth - 1;
         return(chatSelectionPage.currentDepth === 0);
     } )
-    property int myUserId: tdLibWrapper.getUserInformation().id
+    property double myUserId: tdLibWrapper.getUserInformation().id
     property alias headerTitle: pageHeader.title
     property alias headerDescription: pageHeader.description
 
@@ -44,6 +44,8 @@ Dialog {
     /*
         payload dependent on chatSelectionPage.state
          - forwardMessages: {fromChatId, messageIds, neededPermissions}
+         - fillTextArea: {text, neededPermissions}
+         - shareFiles: {filePaths, contentType, text, neededPermissions}
     */
     property var payload: ({})
 
@@ -54,6 +56,9 @@ Dialog {
             break;
         case "fillTextArea": // ReplyMarkupButtons: inlineKeyboardButtonTypeSwitchInline
             acceptDestinationInstance.setMessageText(payload.text)
+            break;
+        case "shareFiles":
+            acceptDestinationInstance.sendSharedFiles(payload.filePaths, payload.contentType, payload.text)
             break;
         // future uses of chat selection can be processed here
         }
@@ -83,6 +88,13 @@ Dialog {
             requirePermissions: chatSelectionPage.payload.neededPermissions
         }
 
+        move: Transition {
+            NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
+        }
+        moveDisplaced: Transition {
+            NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
+        }
+
         delegate: ChatListViewItem {
             ownUserId: chatSelectionPage.myUserId
             onClicked: {
@@ -90,6 +102,7 @@ Dialog {
                 switch(chatSelectionPage.state) {
                 case "forwardMessages":
                 case "fillTextArea":
+                case "shareFiles":
                     chatSelectionPage.acceptDestinationProperties = { "chatInformation" :  chat};
                     chatSelectionPage.acceptDestination = Qt.resolvedUrl("../pages/ChatPage.qml");
                     break;

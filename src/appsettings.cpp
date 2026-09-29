@@ -27,12 +27,17 @@ namespace {
     const QString KEY_SHOW_STICKERS_AS_EMOJIS("showStickersAsEmojis");
     const QString KEY_SHOW_STICKERS_AS_IMAGES("showStickersAsImages");
     const QString KEY_ANIMATE_STICKERS("animateStickers");
+    const QString KEY_ANIMATE_STICKERS_IN_PICKER("animateStickersInPicker");
+    const QString KEY_SHOW_SAVED_MESSAGES_PROFILE("showSavedMessagesProfile");
     const QString KEY_NOTIFICATION_TURNS_DISPLAY_ON("notificationTurnsDisplayOn");
     const QString KEY_NOTIFICATION_SOUNDS_ENABLED("notificationSoundsEnabled");
     const QString KEY_NOTIFICATION_SUPPRESS_ENABLED("notificationSuppressContent");
     const QString KEY_NOTIFICATION_FEEDBACK("notificationFeedback");
     const QString KEY_NOTIFICATION_ALWAYS_SHOW_PREVIEW("notificationAlwaysShowPreview");
     const QString KEY_GO_TO_QUOTED_MESSAGE("goToQuotedMessage");
+    const QString KEY_FORWARD_HIDE_SENDER("forwardHideSender");
+    const QString KEY_FORWARD_HIDE_CAPTIONS("forwardHideCaptions");
+    const QString KEY_SHOW_DELETE_CHAT("showDeleteChat");
     const QString KEY_STORAGE_OPTIMIZER("useStorageOptimizer");
     const QString KEY_INLINEBOT_LOCATION_ACCESS("allowInlineBotLocationAccess");
     const QString KEY_REMAINING_INTERACTION_HINTS("remainingInteractionHints");
@@ -42,6 +47,8 @@ namespace {
     const QString KEY_FOCUS_TEXTAREA_ON_CHAT_OPEN("focusTextAreaOnChatOpen");
     const QString KEY_SPONSORED_MESS("sponsoredMess");
     const QString KEY_HIGHLIGHT_UNREADCONVS("highlightUnreadConversations");
+    const QString KEY_SHOW_REACTION_BUTTON("showReactionButton");
+    const QString KEY_AUTOPLAY_ANIMATED_GIFS("autoplayAnimatedGifs");
 }
 
 AppSettings::AppSettings(QObject *parent) : QObject(parent), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/fernschreiber/settings.conf", QSettings::NativeFormat)
@@ -132,6 +139,34 @@ void AppSettings::setAnimateStickers(bool animate)
     }
 }
 
+bool AppSettings::animateStickersInPicker() const
+{
+    return settings.value(KEY_ANIMATE_STICKERS_IN_PICKER, false).toBool();
+}
+
+void AppSettings::setAnimateStickersInPicker(bool animate)
+{
+    if (animateStickersInPicker() != animate) {
+        LOG(KEY_ANIMATE_STICKERS_IN_PICKER << animate);
+        settings.setValue(KEY_ANIMATE_STICKERS_IN_PICKER, animate);
+        emit animateStickersInPickerChanged();
+    }
+}
+
+bool AppSettings::showSavedMessagesProfile() const
+{
+    return settings.value(KEY_SHOW_SAVED_MESSAGES_PROFILE, true).toBool();
+}
+
+void AppSettings::setShowSavedMessagesProfile(bool show)
+{
+    if (showSavedMessagesProfile() != show) {
+        LOG(KEY_SHOW_SAVED_MESSAGES_PROFILE << show);
+        settings.setValue(KEY_SHOW_SAVED_MESSAGES_PROFILE, show);
+        emit showSavedMessagesProfileChanged();
+    }
+}
+
 bool AppSettings::notificationTurnsDisplayOn() const
 {
     return settings.value(KEY_NOTIFICATION_TURNS_DISPLAY_ON, false).toBool();
@@ -213,6 +248,48 @@ void AppSettings::setGoToQuotedMessage(bool enable)
         LOG(KEY_GO_TO_QUOTED_MESSAGE << enable);
         settings.setValue(KEY_GO_TO_QUOTED_MESSAGE, enable);
         emit goToQuotedMessageChanged();
+    }
+}
+
+bool AppSettings::forwardHideSender() const
+{
+    return settings.value(KEY_FORWARD_HIDE_SENDER, false).toBool();
+}
+
+void AppSettings::setForwardHideSender(bool hide)
+{
+    if (forwardHideSender() != hide) {
+        LOG(KEY_FORWARD_HIDE_SENDER << hide);
+        settings.setValue(KEY_FORWARD_HIDE_SENDER, hide);
+        emit forwardHideSenderChanged();
+    }
+}
+
+bool AppSettings::forwardHideCaptions() const
+{
+    return settings.value(KEY_FORWARD_HIDE_CAPTIONS, false).toBool();
+}
+
+void AppSettings::setForwardHideCaptions(bool hide)
+{
+    if (forwardHideCaptions() != hide) {
+        LOG(KEY_FORWARD_HIDE_CAPTIONS << hide);
+        settings.setValue(KEY_FORWARD_HIDE_CAPTIONS, hide);
+        emit forwardHideCaptionsChanged();
+    }
+}
+
+bool AppSettings::showDeleteChat() const
+{
+    return settings.value(KEY_SHOW_DELETE_CHAT, true).toBool();
+}
+
+void AppSettings::setShowDeleteChat(bool show)
+{
+    if (showDeleteChat() != show) {
+        LOG(KEY_SHOW_DELETE_CHAT << show);
+        settings.setValue(KEY_SHOW_DELETE_CHAT, show);
+        emit showDeleteChatChanged();
     }
 }
 
@@ -329,6 +406,20 @@ void AppSettings::setFocusTextAreaOnChatOpen(bool focusTextAreaOnChatOpen)
     }
 }
 
+bool AppSettings::showReactionButton() const
+{
+    return settings.value(KEY_SHOW_REACTION_BUTTON, true).toBool();
+}
+
+void AppSettings::setShowReactionButton(bool enable)
+{
+    if (showReactionButton() != enable) {
+        LOG(KEY_SHOW_REACTION_BUTTON << enable);
+        settings.setValue(KEY_SHOW_REACTION_BUTTON, enable);
+        emit showReactionButtonChanged();
+    }
+}
+
 AppSettings::SponsoredMess AppSettings::getSponsoredMess() const
 {
     return (SponsoredMess) settings.value(KEY_SPONSORED_MESS, (int)
@@ -341,5 +432,19 @@ void AppSettings::setSponsoredMess(SponsoredMess sponsoredMess)
         LOG(KEY_SPONSORED_MESS << sponsoredMess);
         settings.setValue(KEY_SPONSORED_MESS, sponsoredMess);
         emit sponsoredMessChanged();
+    }
+}
+
+bool AppSettings::autoplayAnimatedGifs() const
+{
+    return settings.value(KEY_AUTOPLAY_ANIMATED_GIFS, true).toBool();
+}
+
+void AppSettings::setAutoplayAnimatedGifs(bool enable)
+{
+    if (autoplayAnimatedGifs() != enable) {
+        LOG(KEY_AUTOPLAY_ANIMATED_GIFS << enable);
+        settings.setValue(KEY_AUTOPLAY_ANIMATED_GIFS, enable);
+        emit autoplayAnimatedGifsChanged();
     }
 }

@@ -26,6 +26,7 @@ DBusInterface::DBusInterface(QObject *parent) : QObject(parent)
 {
     LOG("Initializing D-BUS connectivity");
     this->dbusAdaptor = new DBusAdaptor(this);
+    this->shareReceiver = new ShareReceiver(this);
     QDBusConnection sessionBusConnection = QDBusConnection::sessionBus();
 
     if (!sessionBusConnection.isConnected()) {
@@ -38,6 +39,11 @@ DBusInterface::DBusInterface(QObject *parent) : QObject(parent)
         return;
     }
 
+    // Before the service name, which is what lets a share that launched the app through D-Bus come in
+    if (!sessionBusConnection.registerObject(SHARE_PATH_NAME, this->shareReceiver, QDBusConnection::ExportScriptableSlots)) {
+        WARN("Error registering share receiver to D-BUS" << sessionBusConnection.lastError().message());
+    }
+
     if (!sessionBusConnection.registerService(INTERFACE_NAME)) {
         WARN("Error registering interface to D-BUS" << sessionBusConnection.lastError().message());
         return;
@@ -47,4 +53,9 @@ DBusInterface::DBusInterface(QObject *parent) : QObject(parent)
 DBusAdaptor *DBusInterface::getDBusAdaptor()
 {
     return this->dbusAdaptor;
+}
+
+ShareReceiver *DBusInterface::getShareReceiver()
+{
+    return this->shareReceiver;
 }

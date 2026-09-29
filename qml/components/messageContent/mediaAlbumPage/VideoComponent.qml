@@ -23,6 +23,20 @@ Video {
             page.overlayActive = true
         }
     }
+    onIsPlayingChanged: {
+        if(isPlaying) {
+            appWindow.mediaPlaybackStarted(video)
+        }
+    }
+
+    Connections {
+        target: appWindow
+        onMediaPlaybackStarted: {
+            if(player !== video && video.isPlaying) {
+                video.pause()
+            }
+        }
+    }
     TDLibThumbnail {
         id: tdLibImage
 
@@ -32,7 +46,6 @@ Video {
 
         width: parent.width //don't use anchors here for easier custom scaling
         height: parent.height
-//        highlighted: parent.highlighted
         thumbnail: videoData.thumbnail
         minithumbnail: videoData.minithumbnail
         fillMode: Image.PreserveAspectFit
@@ -57,16 +70,6 @@ Video {
             }
         }
     }
-    Label {
-        anchors.centerIn: parent
-        text: 'dl: '+file.downloadedSize
-              + ' \ns: '+file.size
-              + ' \nes: '+file.expectedSize
-              + ' \nd:'+file.isDownloadingActive
-              + ' \nc:'+file.isDownloadingCompleted
-
-    }
-
     MouseArea {
         anchors.fill: parent
         onClicked: page.overlayActive = !page.overlayActive

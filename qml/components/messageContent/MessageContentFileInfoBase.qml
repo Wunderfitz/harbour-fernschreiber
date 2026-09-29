@@ -57,7 +57,7 @@ MessageContentBase {
         width: parent.width
         height: Theme.itemSizeLarge
         Loader {
-            active: contentItem.thumbnail || contentItem.minithumbnail
+            active: (contentItem.thumbnail || contentItem.minithumbnail) || false
             visible: active
             anchors.fill: leftButton
             sourceComponent: Component {

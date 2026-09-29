@@ -60,10 +60,27 @@ MessageContentFileInfoBase {
 
     property int duration: rawMessage.content.audio.duration
 
+    signal playbackStarted()
+
     Audio {
         id: audioPlayer
         source: file.isDownloadingCompleted ? file.path : ""
         autoPlay: false
+        onPlaybackStateChanged: {
+            if (playbackState === Audio.PlayingState) {
+                appWindow.mediaPlaybackStarted(audioPlayer);
+                contentItem.playbackStarted();
+            }
+        }
+    }
+
+    Connections {
+        target: appWindow
+        onMediaPlaybackStarted: {
+            if (player !== audioPlayer && audioPlayer.playbackState === Audio.PlayingState) {
+                audioPlayer.pause();
+            }
+        }
     }
 
     Slider {

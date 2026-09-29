@@ -35,6 +35,7 @@ class TDLibReceiver : public QThread
 public:
     explicit TDLibReceiver(void *tdLibClient, QObject *parent = nullptr);
     void setActive(bool active);
+    void setPowerSavingMode(bool active);
 
 signals:
     void versionDetected(const QString &version);
@@ -67,12 +68,14 @@ signals:
     void notificationUpdated(const QVariantMap updatedNotification);
     void chatNotificationSettingsUpdated(const QString &chatId, const QVariantMap updatedChatNotificationSettings);
     void messageContentUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &newContent);
+    void messageContentOpened(qlonglong chatId, qlonglong messageId);
     void messageEditedUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &replyMarkup);
     void messagesDeleted(qlonglong chatId, const QList<qlonglong> &messageIds);
     void chats(const QVariantMap &chats);
     void chat(const QVariantMap &chats);
     void recentStickersUpdated(const QVariantList &stickerIds);
-    void stickers(const QVariantList &stickers);
+    void favoriteStickersUpdated(const QVariantList &stickerIds);
+    void stickers(const QString &extra, const QVariantList &stickers);
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
     void stickerSets(const QVariantList &stickerSets);
     void stickerSet(const QVariantMap &stickerSet);
@@ -91,6 +94,7 @@ signals:
     void messageIsPinnedUpdated(qlonglong chatId, qlonglong messageId, bool isPinned);
     void usersReceived(const QString &extra, const QVariantList &senders, int totalUsers);
     void messageSendersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
+    void messagePropertiesReceived(qlonglong chatId, qlonglong messageId, const QVariantMap &properties);
     void errorReceived(const int code, const QString &message, const QString &extra);
     void secretChat(qlonglong secretChatId, const QVariantMap &secretChat);
     void secretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
@@ -115,6 +119,7 @@ private:
     QHash<QString, Handler> handlers;
     void *tdLibClient;
     bool isActive;
+    bool powerSavingMode;
 
 private:
     static const QVariantList cleanupList(const QVariantList& list, bool *updated = Q_NULLPTR);
@@ -154,10 +159,12 @@ private:
     void processUpdateNotification(const QVariantMap &receivedInformation);
     void processUpdateChatNotificationSettings(const QVariantMap &receivedInformation);
     void processUpdateMessageContent(const QVariantMap &receivedInformation);
+    void processUpdateMessageContentOpened(const QVariantMap &receivedInformation);
     void processUpdateDeleteMessages(const QVariantMap &receivedInformation);
     void processChats(const QVariantMap &receivedInformation);
     void processChat(const QVariantMap &receivedInformation);
     void processUpdateRecentStickers(const QVariantMap &receivedInformation);
+    void processUpdateFavoriteStickers(const QVariantMap &receivedInformation);
     void processStickers(const QVariantMap &receivedInformation);
     void processUpdateInstalledStickerSets(const QVariantMap &receivedInformation);
     void processStickerSets(const QVariantMap &receivedInformation);
@@ -177,6 +184,8 @@ private:
     void processUpdateMessageIsPinned(const QVariantMap &receivedInformation);
     void processUsers(const QVariantMap &receivedInformation);
     void processMessageSenders(const QVariantMap &receivedInformation);
+    void processPollVoters(const QVariantMap &receivedInformation);
+    void processMessageProperties(const QVariantMap &receivedInformation);
     void processError(const QVariantMap &receivedInformation);
     void processSecretChat(const QVariantMap &receivedInformation);
     void processUpdateSecretChat(const QVariantMap &receivedInformation);

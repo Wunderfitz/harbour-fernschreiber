@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Źródła na GitHub</translation>
+        <translation>Kod źródłowy na GitHub</translation>
     </message>
     <message>
         <source>Terms of Service</source>
@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses the Telegram Database Library (TDLib). Thanks for making it available under the conditions of the Boost Software License 1.0!</source>
-        <translation>Ten projekt wykorzystuje bibliotekę bazy danych telegramu (TDLib). Dziękujemy za udostępnienie go na warunkach licencji Boost Software License 1.0!</translation>
+        <translation>Ten projekt wykorzystuje bibliotekę bazy danych Telegram (TDLib). Dziękujemy za udostępnienie jej na warunkach licencji Boost Software License 1.0!</translation>
     </message>
     <message>
         <source>Open Telegram Database Library on GitHub</source>
@@ -85,6 +85,40 @@
     </message>
 </context>
 <context>
+    <name>AddContactPage</name>
+    <message>
+        <source>Add to Contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <comment>add contact dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not a Telegram user yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>First name</source>
+        <comment>add contact dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last name</source>
+        <comment>add contact dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save on this device as well</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adds the contact to the address book of your device</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BackgroundProgressIndicator</name>
     <message>
         <source>%1 %</source>
@@ -123,7 +157,7 @@
     </message>
     <message>
         <source>Leaving chat</source>
-        <translation>Opuszcza czat</translation>
+        <translation>Opuszczanie czatu</translation>
     </message>
     <message>
         <source>Info</source>
@@ -188,7 +222,11 @@
     </message>
     <message>
         <source>ID has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>ID zostało skopiowane do schowka.</translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Zapisane wiadomości</translation>
     </message>
 </context>
 <context>
@@ -212,11 +250,46 @@
     </message>
     <message>
         <source>This group is empty.</source>
-        <translation>Ta grupa jest pusta</translation>
+        <translation>Ta grupa jest pusta.</translation>
     </message>
     <message>
         <source>Channel members are anonymous.</source>
-        <translation>Członkowie kanału są anonimowi</translation>
+        <translation>Członkowie kanału są anonimowi.</translation>
+    </message>
+    <message>
+        <source>Member Permissions</source>
+        <comment>edit a group member&apos;s individual permissions</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Revoke Write Permission</source>
+        <comment>restrict a group member</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove Restrictions</source>
+        <comment>lift restrictions from a group member</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ban from Group</source>
+        <comment>ban a group member</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Banning member</source>
+        <comment>remorse timer text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ban and Delete All Messages</source>
+        <comment>ban a group member, revoking their messages</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Banning member and deleting messages</source>
+        <comment>remorse timer text</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -235,6 +308,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Ustawienia</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Zapisane wiadomości</translation>
     </message>
 </context>
 <context>
@@ -293,6 +373,89 @@
     </message>
 </context>
 <context>
+    <name>ChatMemberPermissionsPage</name>
+    <message>
+        <source>Send Text Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Photos</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Videos</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Music &amp; Audio Files</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Files</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Voice Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Video Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Polls</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Stickers, GIFs &amp; Games</source>
+        <comment>member permission</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Web Page Previews</source>
+        <comment>member permission</comment>
+        <translation type="unfinished">Dodaj podglad stron internetowych</translation>
+    </message>
+    <message>
+        <source>Change Chat Info</source>
+        <comment>member permission</comment>
+        <translation type="unfinished">Zmień informacje o czacie</translation>
+    </message>
+    <message>
+        <source>Invite Users</source>
+        <comment>member permission</comment>
+        <translation type="unfinished">Zaproś użytkowników</translation>
+    </message>
+    <message>
+        <source>Pin Messages</source>
+        <comment>member permission</comment>
+        <translation type="unfinished">Przypnij wiadomość</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <comment>member permissions dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>What can this member do?</source>
+        <comment>member permissions dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not allowed by the group&apos;s default permissions</source>
+        <comment>member permissions dialog</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChatPage</name>
     <message>
         <source>Unknown</source>
@@ -344,7 +507,7 @@
     </message>
     <message>
         <source>This chat is empty.</source>
-        <translation>Ten czat jest pusty</translation>
+        <translation>Ten czat jest pusty.</translation>
     </message>
     <message>
         <source>Leave Chat</source>
@@ -379,7 +542,7 @@
         <translation>
             <numerusform>%Ln wiadomość została skopiowana</numerusform>
             <numerusform>%Ln wiadomości zostały skopiowane</numerusform>
-            <numerusform>%Ln wiadomość zostało skopiowane</numerusform>
+            <numerusform>%Ln wiadomości zostało skopiowane</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -431,15 +594,11 @@
     </message>
     <message>
         <source>Search in chat...</source>
-        <translation>Wyszukaj w czacie</translation>
+        <translation>Wyszukaj w czacie...</translation>
     </message>
     <message>
         <source>Location: Obtaining position...</source>
         <translation>Lokalizacja: Uzyskanie pozycji ...</translation>
-    </message>
-    <message>
-        <source>Location (%1/%2)</source>
-        <translation>Lokalizacja (%1/%2)</translation>
     </message>
     <message>
         <source>Copy Message to Clipboard</source>
@@ -447,7 +606,7 @@
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation>Wiadomość opięta</translation>
+        <translation>Wiadomość odpięta</translation>
     </message>
     <message>
         <source>Unpin Message</source>
@@ -495,7 +654,31 @@
     </message>
     <message>
         <source>Double-tap on a message to choose a reaction</source>
+        <translation>Dotknij wiadomości dwa razy, aby wybrać reakcję.</translation>
+    </message>
+    <message>
+        <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Obtaining Position...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln files</source>
+        <translation>
+            <numerusform>%Ln plik</numerusform>
+            <numerusform>%Ln pliki</numerusform>
+            <numerusform>%Ln plików</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Zapisane wiadomości</translation>
+    </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Wyślij jako plik</translation>
     </message>
 </context>
 <context>
@@ -532,11 +715,11 @@
     </message>
     <message>
         <source>Connecting to proxy...</source>
-        <translation>Łączenie z proxy</translation>
+        <translation>Łączenie z proxy...</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation>Połaczony</translation>
+        <translation>Połączony</translation>
     </message>
     <message>
         <source>Updating content...</source>
@@ -545,9 +728,9 @@
     <message numerus="yes">
         <source>chats</source>
         <translation>
-            <numerusform>czat</numerusform>
-            <numerusform>czaty</numerusform>
-            <numerusform>czatów</numerusform>
+            <numerusform>czacie</numerusform>
+            <numerusform>czatach</numerusform>
+            <numerusform>czatach</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -560,6 +743,17 @@
     </message>
 </context>
 <context>
+    <name>DeviceContacts</name>
+    <message>
+        <source>%1 is already in the contacts of your device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not save the contact on your device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EditGroupChatPermissionsColumn</name>
     <message>
         <source>Group Member Permissions</source>
@@ -569,37 +763,37 @@
     <message>
         <source>Send Messages</source>
         <comment>member permission</comment>
-        <translation>Wyślij wiadomości</translation>
+        <translation>Wysyłanie wiadomości</translation>
     </message>
     <message>
         <source>Send Media Messages</source>
         <comment>member permission</comment>
-        <translation>Wyślij wiadomość multimedialną</translation>
+        <translation>Wysyłanie wiadomości multimedialnych</translation>
     </message>
     <message>
         <source>Send Other Messages</source>
         <comment>member permission</comment>
-        <translation>Wyślij inne wiadomości</translation>
+        <translation>Wysyłanie innych wiadomości</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation>Dodaj podglad stron internetowych</translation>
+        <translation>Dodwanie podglądu stron internetowych</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation>Zmień informacje o czacie</translation>
+        <translation>Zmienianie informacji o czacie</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation>Zaproś użytkowników</translation>
+        <translation>Zapraszenie użytkowników</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation>Przypnij wiadomość</translation>
+        <translation>Przypinanie wiadomości</translation>
     </message>
     <message>
         <source>New Members</source>
@@ -658,7 +852,7 @@
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>wysłał notatke głosową</translation>
+        <translation>wysłał notatkę głosową</translation>
     </message>
     <message>
         <source>sent a document</source>
@@ -690,11 +884,11 @@
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>dołaczyłem do tego czatu</translation>
+        <translation>dołączyłem do tego czatu</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>dołaczył do tego czatu</translation>
+        <translation>dołączył do tego czatu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
@@ -717,7 +911,7 @@
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>wysłałem notatke głosową</translation>
+        <translation>wysłałem notatkę głosową</translation>
     </message>
     <message>
         <source>sent a venue</source>
@@ -749,7 +943,7 @@
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>wysłąłem quiz</translation>
+        <translation>wysłałem quiz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
@@ -776,11 +970,11 @@
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>skasowałem zdjęcie czatu</translation>
+        <translation>usunąłem zdjęcie czatu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>skoasował zdjęcie czatu</translation>
+        <translation>usunął zdjęcie czatu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
@@ -794,7 +988,7 @@
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>zaktualizawałem tą grupę do supergrupy</translation>
+        <translation>zaktualizowałem tą grupę do supergrupy</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
@@ -848,7 +1042,7 @@
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation>wysłąłem nieobługiwaną wiadomość: %1</translation>
+        <translation>wysłałem nieobługiwaną wiadomość: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
@@ -874,7 +1068,7 @@
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>dodsałem %1 do czatu</translation>
+        <translation>dodałem %1 do czatu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
@@ -916,6 +1110,34 @@
         <source>sent a video note</source>
         <translation>wysłał notatkę video</translation>
     </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>myself; %1 is a name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>%1 is a name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have added the option “%1” to a poll</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has added the option “%1” to a poll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed the option “%1” from a poll</source>
+        <comment>myself</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed the option “%1” from a poll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -937,7 +1159,7 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Probrano %1 plików</translation>
+        <translation>Pobrano %1 plików</translation>
     </message>
     <message>
         <source>Download failed.</source>
@@ -956,7 +1178,7 @@
     </message>
     <message>
         <source>This message was deleted</source>
-        <translation>Ta wiadomość została skasowana</translation>
+        <translation>Ta wiadomość została usunięta</translation>
     </message>
 </context>
 <context>
@@ -1011,7 +1233,7 @@
     </message>
     <message>
         <source>Enter your Last Name</source>
-        <translation>wprowadź swoje nazwisko</translation>
+        <translation>Wprowadź swoje nazwisko</translation>
     </message>
     <message>
         <source>User Registration</source>
@@ -1019,11 +1241,26 @@
     </message>
     <message>
         <source>Use the international format, e.g. %1</source>
-        <translation>Użyj międzynarodowego formatu, %1</translation>
+        <translation>Użyj międzynarodowego formatu, np. %1</translation>
     </message>
     <message>
         <source>About Fernschreiber</source>
         <translation>O Fernschreiber</translation>
+    </message>
+</context>
+<context>
+    <name>MessageContact</name>
+    <message>
+        <source>Add to Contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 was added to your contacts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not a Telegram user yet</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1068,6 +1305,11 @@
         <source>Delete Message</source>
         <translation>Usuń wiadomość</translation>
     </message>
+    <message>
+        <source>Sponsor</source>
+        <comment>author name of a sponsored message that does not name its sponsor</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
@@ -1091,6 +1333,26 @@
             <numerusform>zdobył %Ln punkty w %2</numerusform>
             <numerusform>zdobył %Ln punktów w %2</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>have added the option “%1” to the poll %2</source>
+        <comment>myself; %1 is the added poll option, %2 the poll it was added to</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has added the option “%1” to the poll %2</source>
+        <comment>%1 is the added poll option, %2 the poll it was added to</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed the option “%1” from the poll %2</source>
+        <comment>myself; %1 is the removed poll option, %2 the poll it was removed from</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed the option “%1” from the poll %2</source>
+        <comment>%1 is the removed poll option, %2 the poll it was removed from</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1139,6 +1401,10 @@
             <numerusform>%Ln odpowiedzi</numerusform>
             <numerusform>%Ln odpowiedzi</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Add an Option</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1200,7 +1466,7 @@
     </message>
     <message>
         <source>No contacts found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie znaleziono kontaktów.</translation>
     </message>
 </context>
 <context>
@@ -1210,8 +1476,12 @@
         <translation>
             <numerusform>%Ln nieprzeczytana wiadomość</numerusform>
             <numerusform>%Ln nieprzeczytane wiadomości</numerusform>
-            <numerusform>%Ln nieprzeczytanych wiadomośći</numerusform>
+            <numerusform>%Ln nieprzeczytanych wiadomości</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Zapisane wiadomości</translation>
     </message>
 </context>
 <context>
@@ -1238,7 +1508,7 @@
     </message>
     <message>
         <source>Updating content...</source>
-        <translation>Aktualizacja treści...</translation>
+        <translation>Aktualizowanie treści...</translation>
     </message>
     <message>
         <source>Loading chat list...</source>
@@ -1301,22 +1571,22 @@
     </message>
     <message>
         <source>Pinned Message</source>
-        <translation>Przypieta wiadomość</translation>
+        <translation>Przypięta wiadomość</translation>
     </message>
     <message>
         <source>Message unpinned</source>
-        <translation>Wiadomość opięta</translation>
+        <translation>Wiadomość odpięta</translation>
     </message>
 </context>
 <context>
     <name>PollCreationPage</name>
     <message>
         <source>All answers have to contain 1-100 characters.</source>
-        <translation>Wszystkie odpowiedzi musza zawierać od 1 do 100 znaków.</translation>
+        <translation>Wszystkie odpowiedzi muszą zawierać od 1 do 100 znaków.</translation>
     </message>
     <message>
         <source>To send a quiz, you have to specify the right answer.</source>
-        <translation>Aby wysłać quiz musisz wskazać prawidłową odpowiedź.</translation>
+        <translation>Aby wysłać quiz, musisz wskazać prawidłową odpowiedź.</translation>
     </message>
     <message>
         <source>You have to enter a question.</source>
@@ -1324,7 +1594,7 @@
     </message>
     <message>
         <source>The question has to be shorter than 256 characters.</source>
-        <translation>Pytanie musi byś krótsze niż 256 znaków.</translation>
+        <translation>Pytanie musi być krótsze niż 256 znaków.</translation>
     </message>
     <message>
         <source>A poll requires 2-10 answers.</source>
@@ -1333,7 +1603,7 @@
     <message>
         <source>Create a Poll</source>
         <comment>Dialog Header</comment>
-        <translation>Utórz ankietę</translation>
+        <translation>Utwórz ankietę</translation>
     </message>
     <message>
         <source>in %1</source>
@@ -1408,6 +1678,35 @@
     </message>
 </context>
 <context>
+    <name>PollOptionPage</name>
+    <message>
+        <source>Add an Option</source>
+        <comment>Dialog Header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to %1</source>
+        <comment>After dialog header… Add an Option to [poll question]</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter an answer here</source>
+        <translation type="unfinished">Wprowadź tutaj swoją odpowiedź</translation>
+    </message>
+    <message numerus="yes">
+        <source>Answer (%Ln characters left)</source>
+        <translation type="unfinished">
+            <numerusform>Odpowiedź (pozostał %Ln znak)</numerusform>
+            <numerusform>Odpowiedź (pozostały %Ln znaki)</numerusform>
+            <numerusform>Odpowiedź (pozostało %Ln znaków)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Everybody in this chat can see who added which answer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PollResultsPage</name>
     <message>
         <source>Quiz Results</source>
@@ -1457,7 +1756,7 @@
     <message>
         <source>Chosen by:</source>
         <comment>This answer has been chosen by the following users</comment>
-        <translation>Wybrany przez:</translation>
+        <translation>Wybrana przez:</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) including yours</source>
@@ -1546,6 +1845,22 @@
         <source>Animate stickers</source>
         <translation>Animowane naklejki</translation>
     </message>
+    <message>
+        <source>Animate stickers in the sticker picker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show profile info for saved messages</source>
+        <translation>Pokaż informacje profilu dla zapisanych wiadomości</translation>
+    </message>
+    <message>
+        <source>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</source>
+        <translation>Pokazuje własne imię i zdjęcie w czacie z samym sobą zamiast „Zapisane wiadomości”</translation>
+    </message>
 </context>
 <context>
     <name>SettingsBehavior</name>
@@ -1555,27 +1870,27 @@
     </message>
     <message>
         <source>Send message by enter</source>
-        <translation>Wyślij wiadomość przez naciśniecie enter</translation>
+        <translation>Wyślij wiadomość przez naciśnięcie enter</translation>
     </message>
     <message>
         <source>Send your message by pressing the enter key</source>
-        <translation>Wyślij wiadomość przez naciśniecie przycisku enter</translation>
+        <translation>Wyślij wiadomość przez naciśnięcie przycisku enter</translation>
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation>Skup się na wpisywaniu tekstu na otwartym czacie</translation>
+        <translation>Zaznacz pole tekstowe po otwarciu czatu</translation>
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation>Skoncentruj obszar wprowadzania tekstu podczas wchodzenia na czat </translation>
+        <translation>Zaznacz pole tekstowe podczas wchodzenia na czat</translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
-        <translation>Po wysłaniu zaznacz pole wprowadzania tekstu</translation>
+        <translation>Zaznacz pole tekstowe po wysłaniu</translation>
     </message>
     <message>
         <source>Focus the text input area after sending a message</source>
-        <translation>Po wysłaniu wiadomości zaznacz pole wprowadzania tekstu</translation>
+        <translation>Zaznacz pole tekstowe po wysłaniu wiadomości</translation>
     </message>
     <message>
         <source>Delay before marking messages as read</source>
@@ -1591,7 +1906,7 @@
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Zintegruj Fernschreiber z menu &quot;otwórz za pomocą&quot; w SailfishOS</translation>
+        <translation>Zintegruj Fernschreiber z menu &quot;otwórz za pomocą&quot; w Sailfish OS</translation>
     </message>
     <message>
         <source>Notification feedback</source>
@@ -1627,30 +1942,70 @@
     </message>
     <message>
         <source>Always append message preview to notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Zawsze dołącz podgląd wiadomości do powiadomienia</translation>
     </message>
     <message>
         <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprócz pokazywania liczby nieprzeczytanych wiadomości, najnowsza wiadomość zostanie również dodana do powiadomień.</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Podświetl nieprzeczytane wiadomości.</translation>
     </message>
     <message>
         <source>Highlight Conversations with unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Podświetl konwersacje z nieprzeczytanymi wiadomościami</translation>
     </message>
     <message>
         <source>Hide content in notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukryj zawartość w powiadomieniach</translation>
     </message>
     <message>
         <source>Go to quoted message</source>
-        <translation type="unfinished"></translation>
+        <translation>Przejdź do cytowanej wiadomości</translation>
     </message>
     <message>
         <source>When tapping a quoted message, open it in chat instead of showing it in an overlay.</source>
+        <translation>Po dotknięciu cytowanej wiadomości, otwórz ją w czacie zamiast pokazywania jej w nakładce.</translation>
+    </message>
+    <message>
+        <source>Show reaction button on tap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show chat deletion menu item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Autoplay animations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide sender when forwarding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forwarded messages are sent as copies, without showing who they are forwarded from.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide captions when forwarding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Captions of forwarded media are left out. Only available when the sender is hidden.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1693,7 +2048,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Ustawienie prywatności umożliwiające określenie, czy można Cię znaleźć według numeru telefonu.</translation>
+        <translation>Ustawienie prywatności umożliwiające określenie, czy można Cię znaleźć po numerze telefonu.</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
@@ -1701,7 +2056,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Ustawienie prywatności umożliwiające okreslenie, czy odnośnik do twojego konta jest dodawany do przekazanych wiadomości.</translation>
+        <translation>Ustawienie prywatności umożliwiające określenie, czy odnośnik do twojego konta jest dodawany do przekazanych wiadomości.</translation>
     </message>
     <message>
         <source>Show phone number</source>
@@ -1764,39 +2119,39 @@
     </message>
     <message numerus="yes">
         <source>%1 day(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 dzień</numerusform>
+            <numerusform>%1 dni</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <source>1 week</source>
-        <translation type="unfinished"></translation>
+        <translation>1 tydzień</translation>
     </message>
     <message>
         <source>1 month</source>
-        <translation type="unfinished"></translation>
+        <translation>1 miesiąc</translation>
     </message>
     <message>
         <source>3 months</source>
-        <translation type="unfinished"></translation>
+        <translation>3 miesiące</translation>
     </message>
     <message>
         <source>6 months</source>
-        <translation type="unfinished"></translation>
+        <translation>6 miesięcy</translation>
     </message>
     <message>
         <source>1 year</source>
-        <translation type="unfinished"></translation>
+        <translation>1 rok</translation>
     </message>
     <message>
         <source>Session Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Czas wygaśnięcia sesji</translation>
     </message>
     <message>
         <source>Inactive sessions will be terminated after this timeframe</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieaktywne sesje zostaną zakończone po tym czasie</translation>
     </message>
 </context>
 <context>
@@ -1831,7 +2186,7 @@
     </message>
     <message>
         <source>Enter 1-64 characters</source>
-        <translation>Wprowadź znaki 1-64</translation>
+        <translation>Wprowadź od 1 do 64 znaków</translation>
     </message>
     <message>
         <source>Last Name</source>
@@ -1840,7 +2195,7 @@
     </message>
     <message>
         <source>Enter 0-64 characters</source>
-        <translation>Wprowadź znaki 0-64</translation>
+        <translation>Wprowadź od 0 do 64 znaków</translation>
     </message>
     <message>
         <source>Username</source>
@@ -1857,11 +2212,11 @@
     </message>
     <message>
         <source>Delete Picture</source>
-        <translation>usuń zdjęcie</translation>
+        <translation>Usuń zdjęcie</translation>
     </message>
     <message>
         <source>Deleting profile picture</source>
-        <translation>Usuwanie zjęcia profilowego</translation>
+        <translation>Usuwanie zdjęcia profilowego</translation>
     </message>
     <message>
         <source>Uploading...</source>
@@ -1869,7 +2224,7 @@
     </message>
     <message>
         <source>Log Out</source>
-        <translation>Wyloguj</translation>
+        <translation>Wyloguj się</translation>
     </message>
     <message>
         <source>Logged out</source>
@@ -1894,17 +2249,13 @@
         <source>Go to Channel</source>
         <translation>Przejdź do Kanału</translation>
     </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>Przejdź do Wiadomości</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>Uruchom Bota</translation>
-    </message>
 </context>
 <context>
     <name>StickerPicker</name>
+    <message>
+        <source>Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <source>Recently used</source>
         <translation>Ostatnio użyty</translation>
@@ -1915,7 +2266,7 @@
     </message>
     <message>
         <source>Sticker set successfully removed!</source>
-        <translation>Zestaw naklejek został usuniety!</translation>
+        <translation>Zestaw naklejek został usunięty!</translation>
     </message>
 </context>
 <context>
@@ -1930,21 +2281,6 @@
     </message>
 </context>
 <context>
-    <name>VideoPage</name>
-    <message>
-        <source>Download of %1 successful.</source>
-        <translation>Pobieranie %1 zakończone sukcesem</translation>
-    </message>
-    <message>
-        <source>Download failed.</source>
-        <translation>Nieudane pobieranie</translation>
-    </message>
-    <message>
-        <source>Copy video to gallery</source>
-        <translation>Kopiuj wideo do galerii</translation>
-    </message>
-</context>
-<context>
     <name>VoiceNoteOverlay</name>
     <message>
         <source>Record a Voice Note</source>
@@ -1956,7 +2292,7 @@
     </message>
     <message>
         <source>Unavailable</source>
-        <translation>Niedostepne</translation>
+        <translation>Niedostępne</translation>
     </message>
     <message>
         <source>Starting</source>
@@ -1972,7 +2308,7 @@
     </message>
     <message>
         <source>Use recording</source>
-        <translation>Użyj nagrywania</translation>
+        <translation>Użyj nagrania</translation>
     </message>
     <message>
         <source>Voice Note (%1)</source>
@@ -1987,7 +2323,7 @@
     <name>WebPagePreview</name>
     <message>
         <source>Preview not supported for this link...</source>
-        <translation>Podgląd jest niewspierany dla tego odnośnika</translation>
+        <translation>Podgląd nie jest wspierany dla tego odnośnika</translation>
     </message>
 </context>
 <context>
@@ -2022,35 +2358,35 @@
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>wyślij obraz</translation>
+        <translation>wysłał obraz</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>wyślij film</translation>
+        <translation>wysłał film</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>wyślij animację</translation>
+        <translation>wysłał animację</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>wyślij dźwięk</translation>
+        <translation>wysłał dźwięk</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>wyślij notatke głosową</translation>
+        <translation>wysłał notatke głosową</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>wyślij dokument</translation>
+        <translation>wysłał dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>wyślij lokalizację</translation>
+        <translation>wysłał lokalizację</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>dołaczył do tego czatu</translation>
+        <translation>dołączył do tego czatu</translation>
     </message>
     <message>
         <source>was added to this chat</source>
@@ -2119,7 +2455,7 @@
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>dołaczyłem do tego czatu</translation>
+        <translation>dołączyłem do tego czatu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
@@ -2196,7 +2532,7 @@
     <message>
         <source>sent an anonymous quiz</source>
         <comment>myself</comment>
-        <translation>wysłąłem anonimowy quiz</translation>
+        <translation>wysłałem anonimowy quiz</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
@@ -2317,7 +2653,7 @@
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation>zaktualizawal ta grupę do supergrupy</translation>
+        <translation>zaktualizował tą grupę do supergrupy</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
@@ -2397,6 +2733,51 @@
     <message>
         <source>sent a game</source>
         <translation>wysłał grę</translation>
+    </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>myself; %1 is a name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>%1 is a name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have added the option “%1” to a poll</source>
+        <comment>myself; %1 is the added poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has added the option “%1” to a poll</source>
+        <comment>%1 is the added poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>have removed the option “%1” from a poll</source>
+        <comment>myself; %1 is the removed poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>has removed the option “%1” from a poll</source>
+        <comment>%1 is the removed poll option</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Wyślij obraz</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Wyślij film</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Wyślij plik</translation>
     </message>
 </context>
 </TS>

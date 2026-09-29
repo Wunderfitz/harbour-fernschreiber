@@ -34,11 +34,13 @@ Page {
 
     property bool loading: true;
     property bool isInitialized: false;
-    readonly property int myUserId: tdLibWrapper.getUserInformation().id;
+    readonly property double myUserId: tdLibWrapper.getUserInformation().id;
     property var chatInformation;
     property var secretChatDetails;
     property alias chatPicture: chatPictureThumbnail.photoData
     property bool isPrivateChat: false;
+    readonly property bool isSavedMessages: isPrivateChat && chatInformation.type.user_id === myUserId
+    readonly property bool showAsSavedMessages: isSavedMessages && !appSettings.showSavedMessagesProfile
     property bool isSecretChat: false;
     property bool isSecretChatReady: false;
     property bool isBasicGroup: false;
@@ -51,6 +53,14 @@ Page {
     property var chatGroupInformation;
     property int chatOnlineMemberCount: 0;
     property var emojiProposals;
+    property bool atMentionActive: false;
+    property string atMentionQuery: "";
+    // Only a group knows who its members are, and a channel doesn't tell them
+    // to anyone but its admins
+    readonly property bool canSearchChatMembers: isBasicGroup || ( isSuperGroup && !isChannel );
+    // Nobody else is in a chat with a single person, but the reader may still
+    // want to point them to someone else they know of
+    readonly property bool suggestsKnownUsers: isPrivateChat || isSecretChat;
     property bool iterativeInitialization: false;
     property var messageToShow;
     property string messageIdToShow;
@@ -112,7 +122,8 @@ Page {
     }
 
     function updateChatPartnerStatusText() {
-        if (chatPage.isSelecting) {
+        // Being online is no news in the chat with oneself
+        if (chatPage.isSelecting || chatPage.showAsSavedMessages) {
             return
         }
         var statusText = Functions.getChatPartnerStatusText(chatPartnerInformation.status['@type'], chatPartnerInformation.status.was_online);
@@ -233,24 +244,59 @@ Page {
         attachmentPreviewRow.isPicture = false;
         attachmentPreviewRow.isVideo = false;
         attachmentPreviewRow.isDocument = false;
+        attachmentPreviewRow.sendAsFile = false;
         attachmentPreviewRow.isVoiceNote = false;
         attachmentPreviewRow.isLocation = false;
-        attachmentPreviewRow.fileProperties = null;
+        attachmentPreviewRow.isContact = false;
+        attachmentPreviewRow.attachedFiles = [];
         attachmentPreviewRow.locationData = null;
+        attachmentPreviewRow.contactData = null;
         attachmentPreviewRow.attachmentDescription = "";
+        uploadStatusRow.clear();
         fernschreiberUtils.stopGeoLocationUpdates();
+    }
+
+    // The picker's model dies with its page, so what was chosen is copied out.
+    function attachedFilesFrom(selectedContent) {
+        var files = [];
+        for (var i = 0; i < selectedContent.count; i++) {
+            var selectedFile = selectedContent.get(i);
+            files.push({
+                "filePath": selectedFile.filePath,
+                "fileName": selectedFile.fileName,
+                "url": selectedFile.url,
+                "mimeType": selectedFile.mimeType
+            });
+        }
+        return files;
     }
 
     function controlSendButton() {
         if (newMessageTextField.text.length !== 0
-                || attachmentPreviewRow.isPicture
-                || attachmentPreviewRow.isDocument
-                || attachmentPreviewRow.isVideo
+                || attachmentPreviewRow.attachedFiles.length > 0
                 || attachmentPreviewRow.isVoiceNote
-                || attachmentPreviewRow.isLocation) {
+                || attachmentPreviewRow.isLocation
+                || attachmentPreviewRow.isContact) {
             newMessageSendButton.enabled = true;
         } else {
             newMessageSendButton.enabled = false;
+        }
+    }
+
+    // A single file goes out as it always did - an album of one is still an album,
+    // and the timeline draws it differently.
+    function sendAttachedFiles(contentType) {
+        var filePaths = attachmentPreviewRow.attachedFiles.map(function(attachedFile) {
+            return attachedFile.filePath;
+        });
+        if (filePaths.length > 1) {
+            tdLibWrapper.sendAlbumMessage(chatInformation.id, contentType, filePaths, newMessageTextField.text, newMessageColumn.replyToMessageId);
+        } else if (contentType === "photo") {
+            tdLibWrapper.sendPhotoMessage(chatInformation.id, filePaths[0], newMessageTextField.text, newMessageColumn.replyToMessageId);
+        } else if (contentType === "video") {
+            tdLibWrapper.sendVideoMessage(chatInformation.id, filePaths[0], newMessageTextField.text, newMessageColumn.replyToMessageId);
+        } else {
+            tdLibWrapper.sendDocumentMessage(chatInformation.id, filePaths[0], newMessageTextField.text, newMessageColumn.replyToMessageId);
         }
     }
 
@@ -260,19 +306,22 @@ Page {
         } else {
             if (attachmentPreviewRow.visible) {
                 if (attachmentPreviewRow.isPicture) {
-                    tdLibWrapper.sendPhotoMessage(chatInformation.id, attachmentPreviewRow.fileProperties.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    sendAttachedFiles(attachmentPreviewRow.sendAsFile ? "document" : "photo");
                 }
                 if (attachmentPreviewRow.isVideo) {
-                    tdLibWrapper.sendVideoMessage(chatInformation.id, attachmentPreviewRow.fileProperties.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    sendAttachedFiles(attachmentPreviewRow.sendAsFile ? "document" : "video");
                 }
                 if (attachmentPreviewRow.isDocument) {
-                    tdLibWrapper.sendDocumentMessage(chatInformation.id, attachmentPreviewRow.fileProperties.filePath, newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    sendAttachedFiles("document");
                 }
                 if (attachmentPreviewRow.isVoiceNote) {
-                    tdLibWrapper.sendVoiceNoteMessage(chatInformation.id, fernschreiberUtils.voiceNotePath(), newMessageTextField.text, newMessageColumn.replyToMessageId);
+                    tdLibWrapper.sendVoiceNoteMessage(chatInformation.id, fernschreiberUtils.voiceNotePath(), newMessageTextField.text, Math.round(fernschreiberUtils.getVoiceNoteDuration() / 1000), fernschreiberUtils.getVoiceNoteWaveform(), newMessageColumn.replyToMessageId);
                 }
                 if (attachmentPreviewRow.isLocation) {
                     tdLibWrapper.sendLocationMessage(chatInformation.id, attachmentPreviewRow.locationData.latitude, attachmentPreviewRow.locationData.longitude, attachmentPreviewRow.locationData.horizontalAccuracy, newMessageColumn.replyToMessageId);
+                }
+                if (attachmentPreviewRow.isContact) {
+                    tdLibWrapper.sendContactMessage(chatInformation.id, attachmentPreviewRow.contactData.phoneNumber, attachmentPreviewRow.contactData.firstName, attachmentPreviewRow.contactData.lastName, newMessageColumn.replyToMessageId);
                 }
                 clearAttachmentPreviewRow();
             } else {
@@ -320,13 +369,86 @@ Page {
         } else {
             chatPage.emojiProposals = null;
         }
-        if (currentWord.length > 1 && currentWord.charAt(0) === '@') {
-            knownUsersRepeater.model = knownUsersProxyModel;
-            knownUsersProxyModel.setFilterWildcard("*" + currentWord.substring(1) + "*");
-        } else {
-            knownUsersRepeater.model = undefined;
+    }
+
+    // Not debounced like the replacements above: the list is expected to be
+    // there the moment the @ is typed, only asking TDLib about the members
+    // waits for a break in the typing
+    function handleAtMention(text, cursorPosition) {
+        if(!newMessageTextField.focus) {
+            // Whatever is written elsewhere, nobody is picking a name right now
+            clearAtMentionSuggestions();
+            return;
         }
 
+        // Silica's text already holds the word the keyboard is still composing,
+        // right behind the cursor - which only moves past it once the word is
+        // committed. The length of the editor leaves that word out
+        var typedEnd = cursorPosition + Math.max(0, text.length - newMessageTextField.length);
+        var wordBoundaries = getWordBoundaries(text, typedEnd);
+        // Only what is written up to there counts: when the text is set as a
+        // whole (a draft, a message to edit, a picked emoji), the cursor sits
+        // at the start until it is placed, and nobody is typing a name
+        var typedWord = text.substring(wordBoundaries.beginIndex, typedEnd);
+        // An @ on its own already asks for the whole list, that's what it is for
+        if (typedWord.length > 0 && typedWord.charAt(0) === '@') {
+            updateAtMentionSuggestions(typedWord.substring(1));
+        } else {
+            clearAtMentionSuggestions();
+        }
+    }
+
+    function updateAtMentionSuggestions(query) {
+        if (chatPage.suggestsKnownUsers) {
+            // Everybody this app knows of is at hand, no need to ask TDLib
+            knownUsersProxyModel.setFilterWildcard("*" + query + "*");
+            chatPage.atMentionActive = true;
+            chatPage.atMentionQuery = query;
+            return;
+        }
+        if (!chatPage.canSearchChatMembers) {
+            // A channel keeps its members to its admins
+            clearAtMentionSuggestions();
+            return;
+        }
+        chatPage.atMentionActive = true;
+        chatPage.atMentionQuery = query;
+        atMentionSearchTimer.restart();
+    }
+
+    function clearAtMentionSuggestions() {
+        chatPage.atMentionActive = false;
+        chatPage.atMentionQuery = "";
+        atMentionSuggestionModel.clear();
+    }
+
+    function setAtMentionSuggestions(members) {
+        atMentionSuggestionModel.clear();
+        for (var i = 0; i < members.length; i++) {
+            var memberId = members[i].member_id;
+            if (!memberId || memberId["@type"] !== "messageSenderUser" || memberId.user_id === chatPage.myUserId) {
+                continue;
+            }
+            var memberInformation = tdLibWrapper.getUserInformation(memberId.user_id);
+            if (!memberInformation.id || ( memberInformation.type && memberInformation.type["@type"] === "userTypeDeleted" )) {
+                continue;
+            }
+            var memberUserNames = memberInformation.usernames;
+            var memberUserName = "";
+            if (memberUserNames) {
+                memberUserName = memberUserNames.editable_username
+                        || ( memberUserNames.active_usernames && memberUserNames.active_usernames.length > 0 ? memberUserNames.active_usernames[0] : "" );
+            } else {
+                memberUserName = memberInformation.username || "";
+            }
+            atMentionSuggestionModel.append({
+                                                "user_id" : memberInformation.id,
+                                                "title" : Functions.getUserName(memberInformation),
+                                                "user_name" : memberUserName,
+                                                "user_handle" : memberUserName ? ( "@" + memberUserName ) : "",
+                                                "photo_small" : memberInformation.profile_photo ? memberInformation.profile_photo.small : ({})
+                                            });
+        }
     }
 
     function replaceMessageText(text, cursorPosition, newText) {
@@ -366,6 +488,24 @@ Page {
         forwardMessagesTimer.fromChatId = fromChatId;
         forwardMessagesTimer.messageIds = messageIds;
         forwardMessagesTimer.start();
+    }
+    function sendSharedFiles(filePaths, contentType, text) {
+        clearAttachmentPreviewRow();
+        if (text) {
+            setMessageText(text);
+        }
+        attachmentPreviewRow.attachedFiles = filePaths.map(function(filePath) {
+            return {
+                "filePath": filePath,
+                "fileName": filePath.substring(filePath.lastIndexOf("/") + 1),
+                "url": Qt.resolvedUrl(filePath),
+                "mimeType": fernschreiberUtils.mimeTypeForFile(filePath)
+            };
+        });
+        attachmentPreviewRow.isPicture = contentType === "photo";
+        attachmentPreviewRow.isVideo = contentType === "video";
+        attachmentPreviewRow.isDocument = contentType === "document";
+        controlSendButton();
     }
     function hasSendPrivilege(privilege) {
         var groupStatus = chatGroupInformation ? chatGroupInformation.status : null
@@ -411,6 +551,11 @@ Page {
         chatPage.focus = true;
     }
 
+    function readAllChatMentionsAndReactions() {
+        tdLibWrapper.readAllChatMentions(chatInformation.id);
+        tdLibWrapper.readAllChatReactions(chatInformation.id);
+    }
+
     function showMessage(messageId, initialRun) {
         // Means we tapped a quoted message and had to load it.
         if(initialRun) {
@@ -420,8 +565,12 @@ Page {
             var index = chatModel.getMessageIndex(chatPage.messageIdToScrollTo);
             if(index !== -1) {
                 chatPage.messageIdToScrollTo = "";
-                chatView.scrollToIndex(index);
-                navigatedTo(index);
+                // index is a row in chatModel; album entries other than the first are
+                // filtered out of chatProxyModel, so map to the proxy row (falling back
+                // to the album's representative entry if this row itself is hidden).
+                var proxyIndex = chatProxyModel.mapRowFromSource(index, -1);
+                chatView.scrollToIndex(proxyIndex);
+                navigatedTo(proxyIndex);
             } else if(initialRun) {
                 // we only want to do this once.
                 chatModel.triggerLoadHistoryForMessage(chatPage.messageIdToScrollTo)
@@ -440,7 +589,9 @@ Page {
                 forwardMessagesTimer.start()
             } else {
                 var forwardedToSecretChat = chatInformation.type["@type"] === "chatTypeSecret";
-                tdLibWrapper.forwardMessages(chatInformation.id, fromChatId, messageIds, forwardedToSecretChat, false);
+                // Captions can only be removed from copies, which hiding the sender makes of them
+                var hideCaptions = appSettings.forwardHideSender && appSettings.forwardHideCaptions;
+                tdLibWrapper.forwardMessages(chatInformation.id, fromChatId, messageIds, forwardedToSecretChat || appSettings.forwardHideSender, hideCaptions);
             }
         }
     }
@@ -538,17 +689,18 @@ Page {
             }
         }
         onFileUpdated: {
-            uploadStatusRow.visible = fileInformation.remote.is_uploading_active;
-            if (uploadStatusRow.visible) {
-                uploadingProgressBar.maximumValue = fileInformation.size;
-                uploadingProgressBar.value = fileInformation.remote.uploaded_size;
-            }
+            uploadStatusRow.update(fileInformation);
         }
         onEmojiSearchSuccessful: {
             chatPage.emojiProposals = result;
         }
         onErrorReceived: {
-            Functions.handleErrorMessage(code, message);
+            Functions.handleErrorMessage(code, message, extra);
+        }
+        onChatMembersReceived: {
+            if (chatPage.atMentionActive && extra === ( "mentionSuggestions:" + chatPage.atMentionQuery )) {
+                chatPage.setAtMentionSuggestions(members);
+            }
         }
         onReceivedMessage: {
             if (message.is_pinned) {
@@ -603,6 +755,13 @@ Page {
         }
         onReactionsUpdated: {
             availableReactions = tdLibWrapper.getChatReactions(chatInformation.id);
+        }
+        onChatUnreadReactionCountUpdated: {
+            if (chatId.toString() === chatInformation.id.toString() && unreadReactionCount > 0
+                    && chatPage.isInitialized && chatPage.status === PageStatus.Active) {
+                Debug.log("[ChatPage] Reactions received while the chat is open, reading them...");
+                tdLibWrapper.readAllChatReactions(chatInformation.id);
+            }
         }
     }
 
@@ -664,6 +823,12 @@ Page {
             chatInformation.unread_count = unreadCount;
             chatUnreadMessagesItem.visible = ( !chatPage.loading && unreadCount > 0 && chatOverviewItem.visible );
             chatUnreadMessagesCount.text = Functions.formatUnreadCount(unreadCount)
+            if (unreadCount === 0) {
+                // Mentions and reactions are only read once the chat has no unread messages left.
+                // While we were viewing the messages, the unread count was still greater than zero,
+                // so the attempts above were skipped - now is the time to catch up on them.
+                readAllChatMentionsAndReactions();
+            }
         }
         onLastReadSentMessageUpdated: {
             Debug.log("[ChatPage] Updating last read sent index, new index: ", lastReadSentIndex);
@@ -709,6 +874,13 @@ Page {
         }
     }
 
+    ListModel {
+        // Whoever may be mentioned in this chat, as TDLib answered last.
+        // Dynamic roles because the profile picture is an object of its own
+        id: atMentionSuggestionModel
+        dynamicRoles: true
+    }
+
     Timer {
         id: lostFocusTimer
         interval: 200
@@ -716,6 +888,18 @@ Page {
         repeat: false
         onTriggered: {
             newMessageTextField.forceActiveFocus();
+        }
+    }
+
+    Timer {
+        id: atMentionSearchTimer
+        interval: 250
+        running: false
+        repeat: false
+        onTriggered: {
+            if (chatPage.atMentionActive) {
+                tdLibWrapper.searchChatMembers(chatInformation.id, chatPage.atMentionQuery, 50, "mentionSuggestions:" + chatPage.atMentionQuery);
+            }
         }
     }
 
@@ -776,8 +960,7 @@ Page {
                 lastQueuedIndex = -1
             }
             if (chatInformation.unread_count === 0) {
-                tdLibWrapper.readAllChatMentions(chatInformation.id);
-                tdLibWrapper.readAllChatReactions(chatInformation.id);
+                readAllChatMentionsAndReactions();
             }
         }
     }
@@ -797,17 +980,21 @@ Page {
             NamedAction {
                 visible: messageOptionsDrawer.showCopyMessageToClipboardMenuItem
                 name: qsTr("Copy Message to Clipboard")
-                action: messageOptionsDrawer.sourceItem.copyMessageToClipboard
+                action: function () {
+                    if(messageOptionsDrawer.sourceItem) {
+                        messageOptionsDrawer.sourceItem.copyMessageToClipboard()
+                    }
+                }
             },
             NamedAction {
-                visible: messageOptionsDrawer.showForwardMessageMenuItem && messageOptionsDrawer.myMessage.can_be_forwarded
+                visible: messageOptionsDrawer.showForwardMessageMenuItem && Functions.canForwardMessage(messageOptionsDrawer.myMessage, appSettings.forwardHideSender)
                 name: qsTr("Forward Message")
                 action: function () {
                     startForwardingMessages([messageOptionsDrawer.myMessage])
                 }
             },
             NamedAction {
-                visible: canPinMessages()
+                visible: !!canPinMessages()
                 name: messageOptionsDrawer.myMessage.is_pinned ? qsTr("Unpin Message") : qsTr("Pin Message")
                 action: function () {
                     if (messageOptionsDrawer.myMessage.is_pinned) {
@@ -821,7 +1008,11 @@ Page {
             NamedAction {
                 visible: messageOptionsDrawer.showDeleteMessageMenuItem
                 name: qsTr("Delete Message")
-                action: messageOptionsDrawer.sourceItem.deleteMessage
+                action: function () {
+                    if(messageOptionsDrawer.sourceItem) {
+                        messageOptionsDrawer.sourceItem.deleteMessage()
+                    }
+                }
             }
         ]
 
@@ -916,13 +1107,16 @@ Page {
 
                 MenuItem {
                     id: deleteChatMenuItem
-                    visible: chatPage.isPrivateChat
+                    visible: chatPage.isPrivateChat && appSettings.showDeleteChat
                     onClicked: {
                         var privateChatId = chatInformation.id;
-                        Remorse.popupAction(chatPage, qsTr("Deleting chat"), function() {
-                            tdLibWrapper.deleteChat(privateChatId);
-                            pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
-                        }, 10000);
+                        var confirmationDialog = pageStack.push(deleteChatConfirmationDialog);
+                        confirmationDialog.accepted.connect(function() {
+                            Remorse.popupAction(chatPage, qsTr("Deleting chat"), function() {
+                                tdLibWrapper.deleteChat(privateChatId);
+                                pageStack.pop(pageStack.find( function(page){ return(page._depth === 0)} ));
+                            }, 10000);
+                        });
                     }
                     text: qsTr("Delete Chat")
                 }
@@ -1004,7 +1198,11 @@ Page {
                 Row {
                     id: headerRow
                     width: parent.width - (3 * Theme.horizontalPageMargin)
-                    height: chatOverviewItem.height + ( chatPage.isPortrait ? (2 * Theme.paddingMedium) : (2 * Theme.paddingSmall) )
+                    height: chatOverviewItem.height +
+                            ( chatPage.isPortrait ?
+                                 ( Theme.paddingMedium + (!Screen.hasCutouts ? Theme.paddingMedium : Screen.topCutout.height) )
+                               : Theme.paddingSmall * 2
+                             )
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: Theme.paddingMedium
 
@@ -1017,6 +1215,7 @@ Page {
                         ProfileThumbnail {
                             id: chatPictureThumbnail
                             replacementStringHint: chatNameText.text
+                            isSavedMessages: chatPage.showAsSavedMessages
                             width: parent.height
                             height: parent.height
 
@@ -1064,7 +1263,8 @@ Page {
                             id: chatNameText
                             width: Math.min(implicitWidth, parent.width)
                             anchors.right: parent.right
-                            text: chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, font.pixelSize) : qsTr("Unknown")
+                            text: chatPage.showAsSavedMessages ? qsTr("Saved Messages")
+                                : chatInformation.title !== "" ? Emoji.emojify(chatInformation.title, font.pixelSize) : qsTr("Unknown")
                             textFormat: Text.StyledText
                             font.pixelSize: chatPage.isPortrait ? Theme.fontSizeLarge : Theme.fontSizeMedium
                             font.family: Theme.fontFamilyHeading
@@ -1250,8 +1450,7 @@ Page {
                                     viewMessageTimer.queueViewMessage(bottomIndex)
                                 }
                             } else {
-                                tdLibWrapper.readAllChatMentions(chatInformation.id);
-                                tdLibWrapper.readAllChatReactions(chatInformation.id);
+                                readAllChatMentionsAndReactions();
                             }
                             manuallyScrolledToBottom = chatView.atYEnd
                         }
@@ -1344,6 +1543,7 @@ Page {
                                 return Functions.getVideoHeight(parentWidth, content.animation);
                             case "messageAudio":
                             case "messageVoiceNote":
+                            case "messageContact":
                             case "messageDocument":
                                 return Theme.itemSizeLarge;
                             case "messageGame":
@@ -1378,7 +1578,7 @@ Page {
                             "messageAnimatedEmoji",
                             "messageAnimation",
                             "messageAudio",
-                            // "messageContact",
+                            "messageContact",
                             // "messageDice"
                             "messageDocument",
                             "messageGame",
@@ -1403,7 +1603,7 @@ Page {
                                                                        "messageChatDeleteMember",
                                                                        "messageChatDeletePhoto",
                                                                        "messageChatJoinByLink",
-                                                                       "messageChatSetTtl",
+                                                                       "messageChatSetMessageAutoDeleteTime",
                                                                        "messageChatUpgradeFrom",
                                                                        "messageContactRegistered",
                                                                        // "messageExpiredPhoto", "messageExpiredVideo","messageWebsiteConnected"
@@ -1411,6 +1611,8 @@ Page {
                                                                        "messageChatUpgradeTo",
                                                                        "messageCustomServiceAction",
                                                                        "messagePinMessage",
+                                                                       "messagePollOptionAdded",
+                                                                       "messagePollOptionDeleted",
                                                                        "messageScreenshotTaken",
                                                                        "messageSupergroupChatCreate",
                                                                        "messageUnsupported"]
@@ -1690,13 +1892,14 @@ Page {
                                 visible: chatPage.hasSendPrivilege("can_send_photos")
                                 icon.source: "image://theme/icon-m-image"
                                 onClicked: {
-                                    var picker = pageStack.push("Sailfish.Pickers.ImagePickerPage", {
+                                    var picker = pageStack.push("Sailfish.Pickers.MultiImagePickerDialog", {
                                         allowedOrientations: chatPage.allowedOrientations
                                     })
-                                    picker.selectedContentPropertiesChanged.connect(function(){
+                                    picker.accepted.connect(function(){
                                         attachmentOptionsFlickable.isNeeded = false;
-                                        Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
-                                        attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                        Debug.log("Selected images: ", picker.selectedContent.count );
+                                        clearAttachmentPreviewRow();
+                                        attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent);
                                         attachmentPreviewRow.isPicture = true;
                                         controlSendButton();
                                     })
@@ -1706,13 +1909,14 @@ Page {
                                 visible: chatPage.hasSendPrivilege("can_send_videos")
                                 icon.source: "image://theme/icon-m-video"
                                 onClicked: {
-                                    var picker = pageStack.push("Sailfish.Pickers.VideoPickerPage", {
+                                    var picker = pageStack.push("Sailfish.Pickers.MultiVideoPickerDialog", {
                                         allowedOrientations: chatPage.allowedOrientations
                                     })
-                                    picker.selectedContentPropertiesChanged.connect(function(){
+                                    picker.accepted.connect(function(){
                                         attachmentOptionsFlickable.isNeeded = false;
-                                        Debug.log("Selected video: ", picker.selectedContentProperties.filePath );
-                                        attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                        Debug.log("Selected videos: ", picker.selectedContent.count );
+                                        clearAttachmentPreviewRow();
+                                        attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent);
                                         attachmentPreviewRow.isVideo = true;
                                         controlSendButton();
                                     })
@@ -1735,13 +1939,14 @@ Page {
                                 visible: chatPage.hasSendPrivilege("can_send_documents")
                                 icon.source: "image://theme/icon-m-document"
                                 onClicked: {
-                                    var picker = pageStack.push("Sailfish.Pickers.FilePickerPage", {
+                                    var picker = pageStack.push("Sailfish.Pickers.MultiFilePickerDialog", {
                                         allowedOrientations: chatPage.allowedOrientations
                                     })
-                                    picker.selectedContentPropertiesChanged.connect(function(){
+                                    picker.accepted.connect(function(){
                                         attachmentOptionsFlickable.isNeeded = false;
-                                        Debug.log("Selected document: ", picker.selectedContentProperties.filePath );
-                                        attachmentPreviewRow.fileProperties = picker.selectedContentProperties;
+                                        Debug.log("Selected documents: ", picker.selectedContent.count );
+                                        clearAttachmentPreviewRow();
+                                        attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent);
                                         attachmentPreviewRow.isDocument = true;
                                         controlSendButton();
                                     })
@@ -1776,11 +1981,40 @@ Page {
                                     height: Theme.iconSizeMedium
                                 }
                                 onClicked: {
+                                    clearAttachmentPreviewRow();
                                     fernschreiberUtils.startGeoLocationUpdates();
                                     attachmentOptionsFlickable.isNeeded = false;
                                     attachmentPreviewRow.isLocation = true;
                                     attachmentPreviewRow.attachmentDescription = qsTr("Location: Obtaining position...");
                                     controlSendButton();
+                                }
+                            }
+                            IconButton {
+                                visible: chatPage.hasSendPrivilege("can_send_basic_messages") && newMessageTextField.text === ""
+                                icon.source: "image://theme/icon-m-contact"
+                                onClicked: {
+                                    var picker = pageStack.push("Sailfish.Contacts.ContactSelectPage", {
+                                        allowedOrientations: chatPage.allowedOrientations,
+                                        // PeopleModel.PhoneNumberRequired - org.nemomobile.contacts isn't
+                                        // imported here, the chat page must not depend on it to load
+                                        requiredProperty: 2
+                                    })
+                                    picker.contactClicked.connect(function(contact, property) {
+                                        attachmentOptionsFlickable.isNeeded = false;
+                                        clearAttachmentPreviewRow();
+                                        // Telegram insists on a first name, which not every device contact has
+                                        var firstName = contact.firstName || "";
+                                        var lastName = contact.lastName || "";
+                                        if (firstName === "") {
+                                            firstName = lastName || contact.displayLabel || property.number;
+                                            lastName = "";
+                                        }
+                                        attachmentPreviewRow.contactData = { "firstName" : firstName, "lastName" : lastName, "phoneNumber" : property.number };
+                                        attachmentPreviewRow.isContact = true;
+                                        attachmentPreviewRow.attachmentDescription = Functions.getUserName({ "first_name" : firstName, "last_name" : lastName }) + "\n" + property.number;
+                                        controlSendButton();
+                                        pageStack.pop(chatPage);
+                                    })
                                 }
                             }
                         }
@@ -1790,7 +2024,7 @@ Page {
 
                     Row {
                         id: attachmentPreviewRow
-                        visible: (!!locationData || !!fileProperties || isVoiceNote) && !inlineQuery.userNameIsValid
+                        visible: (!!locationData || attachedFiles.length > 0 || isVoiceNote || isContact) && !inlineQuery.userNameIsValid
                         spacing: Theme.paddingMedium
                         width: parent.width
                         layoutDirection: Qt.RightToLeft
@@ -1799,16 +2033,18 @@ Page {
                         property bool isPicture: false;
                         property bool isVideo: false;
                         property bool isDocument: false;
+                        property bool sendAsFile: false;
                         property bool isVoiceNote: false;
                         property bool isLocation: false;
+                        property bool isContact: false;
                         property var locationData: null;
+                        property var contactData: null;
                         property var geocodedAddress: qsTr("Unknown address")
-                        property var fileProperties: null;
+                        property var attachedFiles: [];
                         property string attachmentDescription: "";
 
                         function getLocationDescription() {
-                            return qsTr("Location (%1/%2)").arg(attachmentPreviewRow.locationData.latitude).arg(attachmentPreviewRow.locationData.longitude) + " | "
-                                    + qsTr("Accuracy: %1m").arg(attachmentPreviewRow.locationData.horizontalAccuracy) + "\n"
+                            return qsTr("Obtaining Position...") + " | " + qsTr("Accuracy: %1m").arg(attachmentPreviewRow.locationData.horizontalAccuracy) + "\n"
                                     + attachmentPreviewRow.geocodedAddress;
                         }
 
@@ -1837,40 +2073,117 @@ Page {
                             }
                         }
 
-                        Thumbnail {
-                            id: attachmentPreviewImage
-                            width: Theme.itemSizeMedium
-                            height: Theme.itemSizeMedium
-                            sourceSize.width: width
-                            sourceSize.height: height
+                        Row {
+                            id: attachmentThumbnailRow
 
-                            fillMode: Thumbnail.PreserveAspectCrop
-                            mimeType: !!attachmentPreviewRow.fileProperties ? attachmentPreviewRow.fileProperties.mimeType || "" : ""
-                            source: !!attachmentPreviewRow.fileProperties ? attachmentPreviewRow.fileProperties.url || "" : ""
-                            visible: attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo
+                            // What is shown of a larger selection; the label carries the count.
+                            readonly property int maximumThumbnails: 3
+
+                            spacing: Theme.paddingSmall
+                            anchors.verticalCenter: parent.verticalCenter
+                            layoutDirection: Qt.RightToLeft
+
+                            Repeater {
+                                model: (attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo)
+                                       ? Math.min(attachmentPreviewRow.attachedFiles.length, attachmentThumbnailRow.maximumThumbnails)
+                                       : 0
+
+                                Thumbnail {
+                                    width: Theme.itemSizeMedium
+                                    height: Theme.itemSizeMedium
+                                    sourceSize.width: width
+                                    sourceSize.height: height
+
+                                    fillMode: Thumbnail.PreserveAspectCrop
+                                    mimeType: attachmentPreviewRow.attachedFiles[index].mimeType || ""
+                                    source: attachmentPreviewRow.attachedFiles[index].url || ""
+                                }
+                            }
                         }
 
-                        Label {
-                            id: attachmentPreviewText
-                            font.pixelSize: Theme.fontSizeSmall
-                            text: ( attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation ) ? attachmentPreviewRow.attachmentDescription : ( !!attachmentPreviewRow.fileProperties ? attachmentPreviewRow.fileProperties.fileName || "" : "" );
+                        Column {
                             anchors.verticalCenter: parent.verticalCenter
+                            width: parent.width - removeAttachmentsIconButton.width - attachmentThumbnailRow.width - 2 * parent.spacing
 
-                            width: parent.width - removeAttachmentsIconButton.width - Theme.paddingMedium
-                            maximumLineCount: 2
-                            wrapMode: Text.Wrap
-                            truncationMode: TruncationMode.Fade
-                            color: Theme.secondaryColor
-                            visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation
+                            Label {
+                                id: attachmentPreviewText
+                                font.pixelSize: Theme.fontSizeSmall
+                                text: {
+                                    if (attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact) {
+                                        return attachmentPreviewRow.attachmentDescription;
+                                    }
+                                    if (attachmentPreviewRow.attachedFiles.length > 1) {
+                                        return qsTr("%Ln files", "", attachmentPreviewRow.attachedFiles.length);
+                                    }
+                                    return attachmentPreviewRow.attachedFiles.length === 1 ? (attachmentPreviewRow.attachedFiles[0].fileName || "") : "";
+                                }
+                                x: Theme.horizontalPageMargin
+                                width: parent.width - x
+                                maximumLineCount: 2
+                                wrapMode: Text.Wrap
+                                truncationMode: TruncationMode.Fade
+                                color: Theme.secondaryColor
+                                visible: attachmentPreviewRow.isDocument || attachmentPreviewRow.isVoiceNote || attachmentPreviewRow.isLocation || attachmentPreviewRow.isContact || attachmentPreviewRow.attachedFiles.length > 1
+                            }
+
+                            // A file goes out as it is, at full resolution and with its metadata.
+                            TextSwitch {
+                                width: parent.width
+                                text: qsTr("Send as file")
+                                visible: (attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo)
+                                         && chatPage.hasSendPrivilege("can_send_documents")
+                                automaticCheck: false
+                                checked: attachmentPreviewRow.sendAsFile
+                                onClicked: attachmentPreviewRow.sendAsFile = !attachmentPreviewRow.sendAsFile
+                            }
                         }
                     }
 
                     Row {
                         id: uploadStatusRow
+
+                        // An album is several files, so the bar shows their sum and the
+                        // row stays up until none of them is uploading any more.
+                        property var uploads: ({})
+
                         visible: false
                         spacing: Theme.paddingMedium
                         width: parent.width
                         anchors.right: parent.right
+
+                        function clear() {
+                            uploads = ({});
+                            visible = false;
+                        }
+
+                        function update(fileInformation) {
+                            var uploading = fileInformation.remote.is_uploading_active;
+                            if (!uploading && !uploads.hasOwnProperty(fileInformation.id)) {
+                                return;
+                            }
+                            uploads[fileInformation.id] = {
+                                "size": fileInformation.size,
+                                "uploaded": fileInformation.remote.uploaded_size,
+                                "uploading": uploading
+                            };
+
+                            var totalSize = 0;
+                            var totalUploaded = 0;
+                            var stillUploading = false;
+                            for (var fileId in uploads) {
+                                totalSize += uploads[fileId].size;
+                                totalUploaded += uploads[fileId].uploaded;
+                                stillUploading = stillUploading || uploads[fileId].uploading;
+                            }
+                            uploadingProgressBar.maximumValue = totalSize;
+                            uploadingProgressBar.value = totalUploaded;
+
+                            if (stillUploading) {
+                                visible = true;
+                            } else {
+                                clear();
+                            }
+                        }
 
                         Text {
                             id: uploadingText
@@ -1949,77 +2262,79 @@ Page {
                         width: parent.width
                         anchors.horizontalCenter: parent.horizontalCenter
                         visible: opacity > 0
-                        opacity: knownUsersRepeater.count > 0 ? 1 : 0
+                        opacity: chatPage.atMentionActive && atMentionListView.count > 0 ? 1 : 0
                         Behavior on opacity { NumberAnimation {} }
-                        height: knownUsersRepeater.count > 0 ? childrenRect.height : 0
+                        height: opacity > 0 ? atMentionListView.height : 0
                         Behavior on height { SmoothedAnimation { duration: 200 } }
                         spacing: Theme.paddingMedium
 
-                        Flickable {
+                        SilicaListView {
+                            id: atMentionListView
+
                             width: parent.width
-                            height: atMentionResultRow.height + Theme.paddingSmall
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            contentWidth: atMentionResultRow.width
+                            // Enough of the chat stays visible, the rest is scrolled to
+                            height: Math.min(count * Theme.itemSizeExtraSmall, chatContainer.height / 3)
                             clip: true
-                            Row {
-                                id: atMentionResultRow
-                                spacing: Theme.paddingMedium
-                                Repeater {
-                                    id: knownUsersRepeater
+                            quickScroll: false
+                            // Both models have the same roles for the delegate below
+                            model: chatPage.suggestsKnownUsers ? knownUsersProxyModel : atMentionSuggestionModel
 
-                                    Item {
-                                        id: knownUserItem
-                                        height: singleAtMentionRow.height
-                                        width: singleAtMentionRow.width
+                            delegate: ListItem {
+                                id: atMentionListItem
 
-                                        property string atMentionText: "@" + (user_name ? user_name : user_id + "(" + title + ")");
+                                contentHeight: Theme.itemSizeExtraSmall
+                                width: atMentionListView.width
 
-                                        Row {
-                                            id: singleAtMentionRow
-                                            spacing: Theme.paddingSmall
+                                // Someone without a public user name is mentioned by ID,
+                                // TDLibWrapper turns that into a proper mention on send
+                                readonly property string atMentionText: "@" + ( model.user_name ? model.user_name : ( model.user_id + "(" + model.title + ")" ) )
 
-                                            Item {
-                                                width: Theme.fontSizeHuge
-                                                height: Theme.fontSizeHuge
-                                                anchors.verticalCenter: parent.verticalCenter
-                                                ProfileThumbnail {
-                                                    id: atMentionThumbnail
-                                                    replacementStringHint: title
-                                                    width: parent.width
-                                                    height: parent.width
-                                                    photoData: photo_small
-                                                }
-                                            }
+                                onClicked: {
+                                    replaceMessageText(newMessageTextField.text, newMessageTextField.cursorPosition, atMentionListItem.atMentionText);
+                                    chatPage.clearAtMentionSuggestions();
+                                }
 
-                                            Column {
-                                                Text {
-                                                    text: Emoji.emojify(title, Theme.fontSizeExtraSmall)
-                                                    textFormat: Text.StyledText
-                                                    color: Theme.primaryColor
-                                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                                    font.bold: true
-                                                }
-                                                Text {
-                                                    id: userHandleText
-                                                    text: user_handle
-                                                    textFormat: Text.StyledText
-                                                    color: Theme.primaryColor
-                                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                                }
-                                            }
-                                        }
+                                Row {
+                                    width: parent.width
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    spacing: Theme.paddingMedium
 
-                                        MouseArea {
-                                            anchors.fill: parent
-                                            onClicked: {
-                                                replaceMessageText(newMessageTextField.text, newMessageTextField.cursorPosition, knownUserItem.atMentionText);
-                                                knownUsersRepeater.model = undefined;
-                                            }
-                                        }
+                                    ProfileThumbnail {
+                                        id: atMentionThumbnail
+                                        photoData: model.photo_small ? model.photo_small : ({})
+                                        replacementStringHint: model.title
+                                        width: Theme.itemSizeExtraSmall
+                                        height: width
+                                        highlighted: atMentionListItem.highlighted
+                                        anchors.verticalCenter: parent.verticalCenter
                                     }
 
+                                    Label {
+                                        id: atMentionTitleLabel
+                                        width: Math.min(implicitWidth, parent.width - atMentionThumbnail.width - atMentionHandleLabel.width - ( 2 * parent.spacing ))
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        text: Emoji.emojify(model.title, font.pixelSize)
+                                        textFormat: Text.StyledText
+                                        font.pixelSize: Theme.fontSizeSmall
+                                        font.bold: true
+                                        truncationMode: TruncationMode.Fade
+                                        color: atMentionListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                                    }
+
+                                    Label {
+                                        id: atMentionHandleLabel
+                                        width: Math.min(implicitWidth, ( parent.width - atMentionThumbnail.width - ( 2 * parent.spacing ) ) / 2)
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        visible: text !== ""
+                                        text: model.user_handle
+                                        font.pixelSize: Theme.fontSizeSmall
+                                        truncationMode: TruncationMode.Fade
+                                        color: atMentionListItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                                    }
                                 }
                             }
+
+                            VerticalScrollDecorator {}
                         }
                     }
 
@@ -2065,7 +2380,7 @@ Page {
                             labelVisible: false
                             textLeftMargin: 0
                             textTopMargin: 0
-                            enabled: !attachmentPreviewRow.isLocation
+                            enabled: !attachmentPreviewRow.isLocation && !attachmentPreviewRow.isContact
                             focus: appSettings.focusTextAreaOnChatOpen
                             EnterKey.onClicked: {
                                 if (appSettings.sendByEnter) {
@@ -2084,7 +2399,13 @@ Page {
 
                             onTextChanged: {
                                 controlSendButton();
+                                handleAtMention(newMessageTextField.text, newMessageTextField.cursorPosition);
                                 textReplacementTimer.restart();
+                            }
+                            // A cursor placed after the text was set, or moved into
+                            // or out of a name, changes what is being written
+                            onCursorPositionChanged: {
+                                handleAtMention(newMessageTextField.text, newMessageTextField.cursorPosition);
                             }
                             onActiveFocusChanged: {
                                 if (activeFocus) {
@@ -2216,7 +2537,7 @@ Page {
 
                     IconButton {
                         visible: !chatPage.isSecretChat && selectedMessages.every(function(message){
-                            return message.can_be_forwarded
+                            return Functions.canForwardMessage(message, appSettings.forwardHideSender)
                         })
                         icon.sourceSize: Qt.size(Theme.iconSizeMedium, Theme.iconSizeMedium)
                         icon.source: "image://theme/icon-m-forward"
@@ -2271,5 +2592,28 @@ Page {
         anchors.bottom: parent.bottom
         text: qsTr("Double-tap on a message to choose a reaction")
         visible: false
+    }
+
+    Component {
+        id: deleteChatConfirmationDialog
+        Dialog {
+            id: deleteChatDialog
+            allowedOrientations: Orientation.All
+            DialogHeader {
+                id: deleteChatDialogHeader
+                acceptText: qsTr("Delete Chat")
+            }
+            Label {
+                anchors {
+                    top: deleteChatDialogHeader.bottom
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.horizontalPageMargin
+                }
+                wrapMode: Text.Wrap
+                color: Theme.highlightColor
+                text: qsTr("Are you sure that you want to delete this chat? This action can't be undone and you lose the entire conversation forever!")
+            }
+        }
     }
 }

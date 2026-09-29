@@ -33,7 +33,7 @@ Page {
     property bool loading: true;
     property bool logoutLoading: false;
     property int connectionState: TelegramAPI.WaitingForNetwork
-    property int ownUserId;
+    property double ownUserId;
     property bool chatListCreated: false;
 
     // link handler:
@@ -92,6 +92,7 @@ Page {
         onTriggered: {
             chatListModel.calculateUnreadState();
             tdLibWrapper.getRecentStickers();
+            tdLibWrapper.getFavoriteStickers();
             tdLibWrapper.getInstalledStickerSets();
             tdLibWrapper.getContacts();
             tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingAllowChatInvites);
@@ -248,7 +249,7 @@ Page {
             setPageStatus();
         }
         onOwnUserIdFound: {
-            overviewPage.ownUserId = ownUserId;
+            overviewPage.ownUserId = parseInt(ownUserId);
         }
         onChatLastMessageUpdated: {
             if (!overviewPage.chatListCreated) {
@@ -284,7 +285,7 @@ Page {
             }
         }
         onErrorReceived: {
-            Functions.handleErrorMessage(code, message);
+            Functions.handleErrorMessage(code, message, extra);
         }
         onCopyToDownloadsSuccessful: {
             appNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
@@ -354,6 +355,7 @@ Page {
                 falloffRadius: 0.1
                 radius: 0.2
                 cache: false
+                anchors.bottom: parent.bottom
             }
 
             MouseArea {
@@ -399,6 +401,12 @@ Page {
             opacity: (overviewPage.chatListCreated && !overviewPage.logoutLoading) ? 1 : 0
             Behavior on opacity { FadeAnimation {} }
             model: chatListProxyModel.sourceModel ? chatListProxyModel : chatListModel
+            move: Transition {
+                NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
+            }
+            moveDisplaced: Transition {
+                NumberAnimation { properties: "y"; duration: 200; easing.type: Easing.InOutCubic }
+            }
             delegate: ChatListViewItem {
                 ownUserId: overviewPage.ownUserId
                 isVerified: is_verified

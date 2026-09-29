@@ -85,6 +85,40 @@
     </message>
 </context>
 <context>
+    <name>AddContactPage</name>
+    <message>
+        <source>Add to Contacts</source>
+        <translation>Zu Kontakten hinzufügen</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <comment>add contact dialog</comment>
+        <translation>Hinzufügen</translation>
+    </message>
+    <message>
+        <source>Not a Telegram user yet</source>
+        <translation>Noch nicht bei Telegram</translation>
+    </message>
+    <message>
+        <source>First name</source>
+        <comment>add contact dialog</comment>
+        <translation>Vorname</translation>
+    </message>
+    <message>
+        <source>Last name</source>
+        <comment>add contact dialog</comment>
+        <translation>Nachname</translation>
+    </message>
+    <message>
+        <source>Save on this device as well</source>
+        <translation>Auch auf diesem Gerät speichern</translation>
+    </message>
+    <message>
+        <source>Adds the contact to the address book of your device</source>
+        <translation>Fügt den Kontakt dem Adressbuch Ihres Geräts hinzu</translation>
+    </message>
+</context>
+<context>
     <name>BackgroundProgressIndicator</name>
     <message>
         <source>%1 %</source>
@@ -187,6 +221,10 @@
         <source>ID has been copied to the clipboard.</source>
         <translation>ID wurde in die Zwischenablage kopiert</translation>
     </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Gespeichertes</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabItemMembersGroups</name>
@@ -215,6 +253,41 @@
         <source>Channel members are anonymous.</source>
         <translation>Mitglieder von Kanälen sind anonym.</translation>
     </message>
+    <message>
+        <source>Member Permissions</source>
+        <comment>edit a group member&apos;s individual permissions</comment>
+        <translation>Berechtigungen</translation>
+    </message>
+    <message>
+        <source>Revoke Write Permission</source>
+        <comment>restrict a group member</comment>
+        <translation>Schreibrechte entziehen</translation>
+    </message>
+    <message>
+        <source>Remove Restrictions</source>
+        <comment>lift restrictions from a group member</comment>
+        <translation>Einschränkungen aufheben</translation>
+    </message>
+    <message>
+        <source>Ban from Group</source>
+        <comment>ban a group member</comment>
+        <translation>Aus der Gruppe verbannen</translation>
+    </message>
+    <message>
+        <source>Banning member</source>
+        <comment>remorse timer text</comment>
+        <translation>Verbanne Mitglied</translation>
+    </message>
+    <message>
+        <source>Ban and Delete All Messages</source>
+        <comment>ban a group member, revoking their messages</comment>
+        <translation>Verbannen und alle Nachrichten löschen</translation>
+    </message>
+    <message>
+        <source>Banning member and deleting messages</source>
+        <comment>remorse timer text</comment>
+        <translation>Verbanne Mitglied und lösche Nachrichten</translation>
+    </message>
 </context>
 <context>
     <name>ChatInformationTabView</name>
@@ -232,6 +305,13 @@
         <source>Settings</source>
         <comment>Button: Chat Settings</comment>
         <translation>Einstellungen</translation>
+    </message>
+</context>
+<context>
+    <name>ChatListModel</name>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Gespeichertes</translation>
     </message>
 </context>
 <context>
@@ -287,6 +367,89 @@
     <message>
         <source>Mute chat</source>
         <translation>Chat stummschalten</translation>
+    </message>
+</context>
+<context>
+    <name>ChatMemberPermissionsPage</name>
+    <message>
+        <source>Save</source>
+        <comment>member permissions dialog</comment>
+        <translation>Speichern</translation>
+    </message>
+    <message>
+        <source>What can this member do?</source>
+        <comment>member permissions dialog</comment>
+        <translation>Was darf dieses Mitglied?</translation>
+    </message>
+    <message>
+        <source>Not allowed by the group&apos;s default permissions</source>
+        <comment>member permissions dialog</comment>
+        <translation>Durch die Standardrechte der Gruppe nicht erlaubt</translation>
+    </message>
+    <message>
+        <source>Send Text Messages</source>
+        <comment>member permission</comment>
+        <translation>Textnachrichten senden</translation>
+    </message>
+    <message>
+        <source>Send Photos</source>
+        <comment>member permission</comment>
+        <translation>Fotos senden</translation>
+    </message>
+    <message>
+        <source>Send Videos</source>
+        <comment>member permission</comment>
+        <translation>Videos senden</translation>
+    </message>
+    <message>
+        <source>Send Music &amp; Audio Files</source>
+        <comment>member permission</comment>
+        <translation>Musik &amp; Audiodateien senden</translation>
+    </message>
+    <message>
+        <source>Send Files</source>
+        <comment>member permission</comment>
+        <translation>Dateien senden</translation>
+    </message>
+    <message>
+        <source>Send Voice Messages</source>
+        <comment>member permission</comment>
+        <translation>Sprachnachrichten senden</translation>
+    </message>
+    <message>
+        <source>Send Video Messages</source>
+        <comment>member permission</comment>
+        <translation>Videonachrichten senden</translation>
+    </message>
+    <message>
+        <source>Send Polls</source>
+        <comment>member permission</comment>
+        <translation>Umfragen senden</translation>
+    </message>
+    <message>
+        <source>Send Stickers, GIFs &amp; Games</source>
+        <comment>member permission</comment>
+        <translation>Sticker, GIFs &amp; Spiele senden</translation>
+    </message>
+    <message>
+        <source>Add Web Page Previews</source>
+        <comment>member permission</comment>
+        <translation>Linkvorschauen anfügen</translation>
+    </message>
+    <message>
+        <source>Change Chat Info</source>
+        <comment>member permission</comment>
+        <translation>Chatinfo ändern</translation>
+    </message>
+    <message>
+        <source>Invite Users</source>
+        <comment>member permission</comment>
+        <translation>Benutzer einladen</translation>
+    </message>
+    <message>
+        <source>Pin Messages</source>
+        <comment>member permission</comment>
+        <translation>Nachrichten anpinnen</translation>
     </message>
 </context>
 <context>
@@ -428,10 +591,6 @@
         <translation>Standort: Erlange Position...</translation>
     </message>
     <message>
-        <source>Location (%1/%2)</source>
-        <translation>Standort (%1/%2)</translation>
-    </message>
-    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Nachricht in die Zwischenablage kopieren</translation>
     </message>
@@ -486,6 +645,29 @@
     <message>
         <source>Double-tap on a message to choose a reaction</source>
         <translation>Drücke zweimal auf eine Nachricht, um eine Reaktion auszuwählen</translation>
+    </message>
+    <message>
+        <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
+        <translation>Sind Sie sicher, dass Sie diesen Chat löschen wollen? Diese Handlung kann nicht zurückgenommen werden und Sie werden die gesamte Unterhaltung für immer verlieren!</translation>
+    </message>
+    <message>
+        <source>Obtaining Position...</source>
+        <translation>Ermittle Position...</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln files</source>
+        <translation>
+            <numerusform>%Ln Datei</numerusform>
+            <numerusform>%Ln Dateien</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Gespeichertes</translation>
+    </message>
+    <message>
+        <source>Send as file</source>
+        <translation>Als Datei senden</translation>
     </message>
 </context>
 <context>
@@ -545,6 +727,17 @@
             <numerusform>ungelesene Nachricht</numerusform>
             <numerusform>ungelesene Nachrichten</numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>DeviceContacts</name>
+    <message>
+        <source>%1 is already in the contacts of your device.</source>
+        <translation>%1 ist bereits in den Kontakten Ihres Geräts.</translation>
+    </message>
+    <message>
+        <source>Could not save the contact on your device.</source>
+        <translation>Konnte den Kontakt nicht auf Ihrem Gerät speichern.</translation>
     </message>
 </context>
 <context>
@@ -902,6 +1095,34 @@
         <source>sent a video note</source>
         <translation>hat eine Videonachricht geschickt</translation>
     </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>myself; %1 is a name</comment>
+        <translation>haben den Kontakt %1 geteilt</translation>
+    </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>%1 is a name</comment>
+        <translation>hat den Kontakt %1 geteilt</translation>
+    </message>
+    <message>
+        <source>have added the option “%1” to a poll</source>
+        <comment>myself</comment>
+        <translation>haben die Option „%1“ zu einer Umfrage hinzugefügt</translation>
+    </message>
+    <message>
+        <source>has added the option “%1” to a poll</source>
+        <translation>hat die Option „%1“ zu einer Umfrage hinzugefügt</translation>
+    </message>
+    <message>
+        <source>have removed the option “%1” from a poll</source>
+        <comment>myself</comment>
+        <translation>haben die Option „%1“ aus einer Umfrage entfernt</translation>
+    </message>
+    <message>
+        <source>has removed the option “%1” from a poll</source>
+        <translation>hat die Option „%1“ aus einer Umfrage entfernt</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -1012,6 +1233,21 @@
     </message>
 </context>
 <context>
+    <name>MessageContact</name>
+    <message>
+        <source>Add to Contacts</source>
+        <translation>Zu Kontakten hinzufügen</translation>
+    </message>
+    <message>
+        <source>%1 was added to your contacts.</source>
+        <translation>%1 wurde zu Ihren Kontakten hinzugefügt.</translation>
+    </message>
+    <message>
+        <source>Not a Telegram user yet</source>
+        <translation>Noch nicht bei Telegram</translation>
+    </message>
+</context>
+<context>
     <name>MessageListViewItem</name>
     <message>
         <source>Reply to Message</source>
@@ -1053,6 +1289,11 @@
         <source>Delete Message</source>
         <translation>Nachricht löschen</translation>
     </message>
+    <message>
+        <source>Sponsor</source>
+        <comment>author name of a sponsored message that does not name its sponsor</comment>
+        <translation>Sponsor</translation>
+    </message>
 </context>
 <context>
     <name>MessageListViewItemSimple</name>
@@ -1074,6 +1315,26 @@
             <numerusform>hat %Ln Punkt bei %2 erziehlt</numerusform>
             <numerusform>hat %Ln Punkte bei %2 erziehlt</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>have added the option “%1” to the poll %2</source>
+        <comment>myself; %1 is the added poll option, %2 the poll it was added to</comment>
+        <translation>haben die Option „%1“ zur Umfrage %2 hinzugefügt</translation>
+    </message>
+    <message>
+        <source>has added the option “%1” to the poll %2</source>
+        <comment>%1 is the added poll option, %2 the poll it was added to</comment>
+        <translation>hat die Option „%1“ zur Umfrage %2 hinzugefügt</translation>
+    </message>
+    <message>
+        <source>have removed the option “%1” from the poll %2</source>
+        <comment>myself; %1 is the removed poll option, %2 the poll it was removed from</comment>
+        <translation>haben die Option „%1“ aus der Umfrage %2 entfernt</translation>
+    </message>
+    <message>
+        <source>has removed the option “%1” from the poll %2</source>
+        <comment>%1 is the removed poll option, %2 the poll it was removed from</comment>
+        <translation>hat die Option „%1“ aus der Umfrage %2 entfernt</translation>
     </message>
 </context>
 <context>
@@ -1120,6 +1381,10 @@
             <numerusform>%Ln Stimme insgesamt</numerusform>
             <numerusform>%Ln Stimmen insgesamt</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Add an Option</source>
+        <translation>Option hinzufügen</translation>
     </message>
 </context>
 <context>
@@ -1192,6 +1457,10 @@
             <numerusform>%Ln ungelesene Nachricht</numerusform>
             <numerusform>%Ln ungelesene Nachrichten</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Saved Messages</source>
+        <translation>Gespeichertes</translation>
     </message>
 </context>
 <context>
@@ -1386,6 +1655,34 @@
     </message>
 </context>
 <context>
+    <name>PollOptionPage</name>
+    <message>
+        <source>Add an Option</source>
+        <comment>Dialog Header</comment>
+        <translation>Option hinzufügen</translation>
+    </message>
+    <message>
+        <source>to %1</source>
+        <comment>After dialog header… Add an Option to [poll question]</comment>
+        <translation>zu %1</translation>
+    </message>
+    <message>
+        <source>Enter an answer here</source>
+        <translation>Geben Sie eine Antwort ein</translation>
+    </message>
+    <message numerus="yes">
+        <source>Answer (%Ln characters left)</source>
+        <translation>
+            <numerusform>Antwort (%Ln Zeichen übrig)</numerusform>
+            <numerusform>Antwort (%Ln Zeichen übrig)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Everybody in this chat can see who added which answer.</source>
+        <translation>Alle in diesem Chat können sehen, wer welche Antwort hinzugefügt hat.</translation>
+    </message>
+</context>
+<context>
     <name>PollResultsPage</name>
     <message>
         <source>Quiz Results</source>
@@ -1518,6 +1815,22 @@
         <source>Animate stickers</source>
         <translation>Sticker animieren</translation>
     </message>
+    <message>
+        <source>Animate stickers in the sticker picker</source>
+        <translation>Sticker in der Sticker-Auswahl animieren</translation>
+    </message>
+    <message>
+        <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
+        <translation>Spielt animierte Sticker bei der Auswahl zum Senden ab. Benötigt mehr Akku und Daten.</translation>
+    </message>
+    <message>
+        <source>Show profile info for saved messages</source>
+        <translation>Profilinfo für gespeicherte Nachrichten anzeigen</translation>
+    </message>
+    <message>
+        <source>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</source>
+        <translation>Zeigt für den Chat mit sich selbst den eigenen Namen und das eigene Bild statt „Gespeichertes“</translation>
+    </message>
 </context>
 <context>
     <name>SettingsBehavior</name>
@@ -1624,6 +1937,46 @@
     <message>
         <source>When tapping a quoted message, open it in chat instead of showing it in an overlay.</source>
         <translation>Beim Tippen auf eine zitierte Nachricht zu dieser springen anstatt es in einem Overlay anzuzeigen.</translation>
+    </message>
+    <message>
+        <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
+        <translation>Der Reaktionsknopf erscheint beim Antippen der Nachrichtenblase, um den Zugriff auf die Reaktionen noch einfacher zu machen.</translation>
+    </message>
+    <message>
+        <source>Show reaction button on tap</source>
+        <translation>Reaktionsknopf beim Tippen anzeigen</translation>
+    </message>
+    <message>
+        <source>Show chat deletion menu item</source>
+        <translation>Menüeintrag zum Löschen eines Chats anzeigen</translation>
+    </message>
+    <message>
+        <source>Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.</source>
+        <translation>Einen Chat zu löschen kann nicht rückgängig gemacht werden und wird selten gebraucht. Schalten Sie diese Option aus, um den Eintrag aus dem Menü zu entfernen.</translation>
+    </message>
+    <message>
+        <source>Autoplay animations</source>
+        <translation>Animationen automatisch abspielen</translation>
+    </message>
+    <message>
+        <source>Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.</source>
+        <translation>Spielt automatisch animierte GIFs ab. Auf manchen Geräten kann das Abstürze im Medien-Untersystem verursachen. Schalten Sie dies aus, um das zu verhindern.</translation>
+    </message>
+    <message>
+        <source>Hide sender when forwarding</source>
+        <translation>Absender beim Weiterleiten verbergen</translation>
+    </message>
+    <message>
+        <source>Forwarded messages are sent as copies, without showing who they are forwarded from.</source>
+        <translation>Weitergeleitete Nachrichten werden als Kopien gesendet, ohne anzuzeigen, von wem sie stammen.</translation>
+    </message>
+    <message>
+        <source>Hide captions when forwarding</source>
+        <translation>Bildunterschriften beim Weiterleiten verbergen</translation>
+    </message>
+    <message>
+        <source>Captions of forwarded media are left out. Only available when the sender is hidden.</source>
+        <translation>Bildunterschriften weitergeleiteter Medien werden weggelassen. Nur verfügbar, wenn der Absender verborgen wird.</translation>
     </message>
 </context>
 <context>
@@ -1865,17 +2218,13 @@
         <source>Go to Channel</source>
         <translation>Zum Kanal gehen</translation>
     </message>
-    <message>
-        <source>Go to Message</source>
-        <translation>Zur Nachricht gehen</translation>
-    </message>
-    <message>
-        <source>Start Bot</source>
-        <translation>Bot starten</translation>
-    </message>
 </context>
 <context>
     <name>StickerPicker</name>
+    <message>
+        <source>Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <source>Recently used</source>
         <translation>Kürzlich verwendet</translation>
@@ -1898,21 +2247,6 @@
     <message>
         <source>Sticker set successfully removed!</source>
         <translation>Sticker-Set erfolgreich entfernt!</translation>
-    </message>
-</context>
-<context>
-    <name>VideoPage</name>
-    <message>
-        <source>Download of %1 successful.</source>
-        <translation>Download von %1 erfolgreich.</translation>
-    </message>
-    <message>
-        <source>Download failed.</source>
-        <translation>Download fehlgeschlagen.</translation>
-    </message>
-    <message>
-        <source>Copy video to gallery</source>
-        <translation>Video in die Galerie kopieren</translation>
     </message>
 </context>
 <context>
@@ -2367,6 +2701,51 @@
     <message>
         <source>sent a game</source>
         <translation>hat ein Spiel gesendet</translation>
+    </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>myself; %1 is a name</comment>
+        <translation>haben den Kontakt %1 geteilt</translation>
+    </message>
+    <message>
+        <source>shared the contact %1</source>
+        <comment>%1 is a name</comment>
+        <translation>hat den Kontakt %1 geteilt</translation>
+    </message>
+    <message>
+        <source>have added the option “%1” to a poll</source>
+        <comment>myself; %1 is the added poll option</comment>
+        <translation>haben die Option „%1“ zu einer Umfrage hinzugefügt</translation>
+    </message>
+    <message>
+        <source>has added the option “%1” to a poll</source>
+        <comment>%1 is the added poll option</comment>
+        <translation>hat die Option „%1“ zu einer Umfrage hinzugefügt</translation>
+    </message>
+    <message>
+        <source>have removed the option “%1” from a poll</source>
+        <comment>myself; %1 is the removed poll option</comment>
+        <translation>haben die Option „%1“ aus einer Umfrage entfernt</translation>
+    </message>
+    <message>
+        <source>has removed the option “%1” from a poll</source>
+        <comment>%1 is the removed poll option</comment>
+        <translation>hat die Option „%1“ aus einer Umfrage entfernt</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-fernschreiber</name>
+    <message>
+        <source>Send Image</source>
+        <translation>Bild senden</translation>
+    </message>
+    <message>
+        <source>Send Video</source>
+        <translation>Video senden</translation>
+    </message>
+    <message>
+        <source>Send File</source>
+        <translation>Datei senden</translation>
     </message>
 </context>
 </TS>
