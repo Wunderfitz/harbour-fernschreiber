@@ -190,11 +190,40 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         return simple ? (myself ? qsTr("sent a game", "myself") : qsTr("sent a game")) : "";
     case 'messageGameScore':
         return myself ? qsTr("scored %Ln points", "myself", message.content.score) : qsTr("scored %Ln points", "myself", message.content.score);
+    case 'messageCall':
+        var callText;
+        switch (message.content.discard_reason['@type']) {
+        case 'callDiscardReasonMissed':
+            callText = message.content.is_video ? (myself ? qsTr("tried to video call", "myself") : qsTr("tried to video call you")) : (myself ? qsTr("tried to call", "myself") : qsTr("tried to call you"));
+            break;
+        case 'callDiscardReasonDeclined':
+            callText = message.content.is_video ? (myself ? qsTr("tried to video call, but the call was declined", "myself") : qsTr("tried to video call you, but you declined the call")) : (myself ? qsTr("tried to call, but the call was declined", "myself") : qsTr("tried to call you, but you declined the call"));
+            break;
+        case 'callDiscardReasonDisconnected':
+            callText = message.content.is_video ? (myself ? qsTr("were in an interrupted video call", "myself") : qsTr("was in an interrupted video call with you")) : (myself ? qsTr("were in an interrupted call", "myself") : qsTr("was in an interrupted call with you"));
+            break;
+        default:
+            callText = message.content.is_video ? (myself ? qsTr("made a video call", "myself") : qsTr("video called you")) : (myself ? qsTr("made a call", "myself") : qsTr("called you"));
+        }
+        return message.content.duration > 0 ? (callText + " (" + getCallDurationText(message.content.duration) + ")") : callText;
     case 'messageUnsupported':
         return myself ? qsTr("sent an unsupported message", "myself") : qsTr("sent an unsupported message");
     default:
         return myself ? qsTr("sent an unsupported message: %1", "myself; %1 is message type").arg(message.content['@type'].substring(7)) : qsTr("sent an unsupported message: %1", "%1 is message type").arg(message.content['@type'].substring(7));
     }
+}
+
+function getCallDurationText(duration) {
+    var hours = Math.floor(duration / 3600);
+    var minutes = Math.floor(duration % 3600 / 60);
+    var seconds = duration % 60;
+    if (hours > 0) {
+        return qsTr("%1 h %2 min", "call duration").arg(hours).arg(minutes);
+    }
+    if (minutes > 0) {
+        return qsTr("%1 min %2 sec", "call duration").arg(minutes).arg(seconds);
+    }
+    return qsTr("%1 sec", "call duration").arg(seconds);
 }
 
 function getChatPartnerStatusText(statusType, was_online) {

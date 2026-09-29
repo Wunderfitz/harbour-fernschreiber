@@ -1123,6 +1123,93 @@
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 h %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 s</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>intentó hacer una videollamada</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>intentó hacerle una videollamada</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>intentó llamar</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>intentó llamarle</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>intentó hacer una videollamada, pero la llamada fue rechazada</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>intentó hacerle una videollamada, pero usted rechazó la llamada</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>intentó llamar, pero la llamada fue rechazada</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>intentó llamarle, pero usted rechazó la llamada</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>estuvo en una videollamada interrumpida</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>estuvo en una videollamada interrumpida con usted</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>estuvo en una llamada interrumpida</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>estuvo en una llamada interrumpida con usted</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>hizo una videollamada</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>le hizo una videollamada</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>hizo una llamada</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>le llamó</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2731,6 +2818,93 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 h %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 s</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>intentó hacer una videollamada</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>intentó hacerle una videollamada</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>intentó llamar</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>intentó llamarle</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>intentó hacer una videollamada, pero la llamada fue rechazada</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>intentó hacerle una videollamada, pero usted rechazó la llamada</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>intentó llamar, pero la llamada fue rechazada</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>intentó llamarle, pero usted rechazó la llamada</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>estuvo en una videollamada interrumpida</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>estuvo en una videollamada interrumpida con usted</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>estuvo en una llamada interrumpida</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>estuvo en una llamada interrumpida con usted</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>hizo una videollamada</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>le hizo una videollamada</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>hizo una llamada</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>le llamó</translation>
     </message>
 </context>
 <context>

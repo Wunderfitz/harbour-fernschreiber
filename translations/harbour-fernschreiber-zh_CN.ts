@@ -1109,6 +1109,93 @@
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 小时 %2 分</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 分 %2 秒</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 秒</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>尝试发起视频通话</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>尝试给你打视频电话</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>尝试发起通话</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>尝试给你打电话</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>尝试发起视频通话，但通话被拒绝</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>尝试给你打视频电话，但你拒绝了通话</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>尝试发起通话，但通话被拒绝</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>尝试给你打电话，但你拒绝了通话</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>参与了一次中断的视频通话</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>与你进行了一次中断的视频通话</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>参与了一次中断的通话</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>与你进行了一次中断的通话</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>发起了视频通话</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>给你打了视频电话</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>发起了通话</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>给你打了电话</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2700,6 +2787,93 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 小时 %2 分</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 分 %2 秒</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 秒</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>尝试发起视频通话</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>尝试给你打视频电话</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>尝试发起通话</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>尝试给你打电话</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>尝试发起视频通话，但通话被拒绝</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>尝试给你打视频电话，但你拒绝了通话</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>尝试发起通话，但通话被拒绝</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>尝试给你打电话，但你拒绝了通话</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>参与了一次中断的视频通话</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>与你进行了一次中断的视频通话</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>参与了一次中断的通话</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>与你进行了一次中断的通话</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>发起了视频通话</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>给你打了视频电话</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>发起了通话</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>给你打了电话</translation>
     </message>
 </context>
 <context>

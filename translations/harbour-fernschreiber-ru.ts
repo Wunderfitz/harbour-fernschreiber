@@ -1141,6 +1141,93 @@
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 ч %2 мин</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 мин %2 с</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 с</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>попытался(ась) совершить видеозвонок</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>попытался(ась) позвонить мне по видеосвязи</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>попытался(ась) позвонить</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>попытался(ась) позвонить мне</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>попытался(ась) совершить видеозвонок, но звонок был отклонён</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>попытался(ась) позвонить мне по видеосвязи, но я отклонил(а) звонок</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>попытался(ась) позвонить, но звонок был отклонён</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>попытался(ась) позвонить мне, но я отклонил(а) звонок</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>участвовал(а) в прерванном видеозвонке</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>участвовал(а) со мной в прерванном видеозвонке</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>участвовал(а) в прерванном звонке</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>участвовал(а) со мной в прерванном звонке</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>совершил(а) видеозвонок</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>позвонил(а) мне по видеосвязи</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>совершил(а) звонок</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>позвонил(а) мне</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2766,6 +2853,93 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 ч %2 мин</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 мин %2 с</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 с</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>попытался(ась) совершить видеозвонок</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>попытался(ась) позвонить мне по видеосвязи</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>попытался(ась) позвонить</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>попытался(ась) позвонить мне</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>попытался(ась) совершить видеозвонок, но звонок был отклонён</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>попытался(ась) позвонить мне по видеосвязи, но я отклонил(а) звонок</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>попытался(ась) позвонить, но звонок был отклонён</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>попытался(ась) позвонить мне, но я отклонил(а) звонок</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>участвовал(а) в прерванном видеозвонке</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>участвовал(а) со мной в прерванном видеозвонке</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>участвовал(а) в прерванном звонке</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>участвовал(а) со мной в прерванном звонке</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>совершил(а) видеозвонок</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>позвонил(а) мне по видеосвязи</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>совершил(а) звонок</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>позвонил(а) мне</translation>
     </message>
 </context>
 <context>

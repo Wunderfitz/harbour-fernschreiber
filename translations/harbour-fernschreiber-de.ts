@@ -1123,6 +1123,93 @@
         <source>has removed the option “%1” from a poll</source>
         <translation>hat die Option „%1“ aus einer Umfrage entfernt</translation>
     </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 Std. %2 Min.</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 Min. %2 Sek.</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 Sek.</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>haben versucht, per Video anzurufen</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>hat versucht, Sie per Video anzurufen</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>haben versucht anzurufen</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>hat versucht, Sie anzurufen</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>haben versucht, per Video anzurufen, aber der Anruf wurde abgelehnt</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>hat versucht, Sie per Video anzurufen, aber Sie haben den Anruf abgelehnt</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>haben versucht anzurufen, aber der Anruf wurde abgelehnt</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>hat versucht, Sie anzurufen, aber Sie haben den Anruf abgelehnt</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>waren in einem unterbrochenen Videoanruf</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>war mit Ihnen in einem unterbrochenen Videoanruf</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>waren in einem unterbrochenen Anruf</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>war mit Ihnen in einem unterbrochenen Anruf</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>haben per Video angerufen</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>hat Sie per Video angerufen</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>haben angerufen</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>hat Sie angerufen</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2731,6 +2818,93 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation>hat die Option „%1“ aus einer Umfrage entfernt</translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 Std. %2 Min.</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 Min. %2 Sek.</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 Sek.</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>haben versucht, per Video anzurufen</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>hat versucht, Sie per Video anzurufen</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>haben versucht anzurufen</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>hat versucht, Sie anzurufen</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>haben versucht, per Video anzurufen, aber der Anruf wurde abgelehnt</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>hat versucht, Sie per Video anzurufen, aber Sie haben den Anruf abgelehnt</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>haben versucht anzurufen, aber der Anruf wurde abgelehnt</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>hat versucht, Sie anzurufen, aber Sie haben den Anruf abgelehnt</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>waren in einem unterbrochenen Videoanruf</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>war mit Ihnen in einem unterbrochenen Videoanruf</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>waren in einem unterbrochenen Anruf</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>war mit Ihnen in einem unterbrochenen Anruf</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>haben per Video angerufen</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>hat Sie per Video angerufen</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>haben angerufen</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>hat Sie angerufen</translation>
     </message>
 </context>
 <context>

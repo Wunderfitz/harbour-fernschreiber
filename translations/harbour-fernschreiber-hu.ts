@@ -1110,6 +1110,93 @@
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 ó %2 perc</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 perc %2 mp</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 mp</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>megpróbáltál videohívást indítani</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>megpróbált videohívással hívni téged</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>megpróbáltál hívást indítani</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>megpróbált felhívni téged</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>megpróbáltál videohívást indítani, de a hívást elutasították</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>megpróbált videohívással hívni téged, de elutasítottad a hívást</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>megpróbáltál hívást indítani, de a hívást elutasították</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>megpróbált felhívni téged, de elutasítottad a hívást</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>megszakadt videohívásban voltál</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>megszakadt videohívásban volt veled</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>megszakadt hívásban voltál</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>megszakadt hívásban volt veled</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>videohívást indítottál</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>videohívással hívott téged</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>hívást indítottál</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>felhívott téged</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2704,6 +2791,93 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 ó %2 perc</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 perc %2 mp</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 mp</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>megpróbáltál videohívást indítani</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>megpróbált videohívással hívni téged</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>megpróbáltál hívást indítani</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>megpróbált felhívni téged</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>megpróbáltál videohívást indítani, de a hívást elutasították</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>megpróbált videohívással hívni téged, de elutasítottad a hívást</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>megpróbáltál hívást indítani, de a hívást elutasították</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>megpróbált felhívni téged, de elutasítottad a hívást</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>megszakadt videohívásban voltál</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>megszakadt videohívásban volt veled</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>megszakadt hívásban voltál</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>megszakadt hívásban volt veled</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>videohívást indítottál</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>videohívással hívott téged</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>hívást indítottál</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>felhívott téged</translation>
     </message>
 </context>
 <context>

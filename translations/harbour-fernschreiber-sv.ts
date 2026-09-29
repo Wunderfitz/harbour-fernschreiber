@@ -1123,6 +1123,93 @@
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 tim %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 s</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>försökte ringa ett videosamtal</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>försökte ringa dig via video</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>försökte ringa</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>försökte ringa dig</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>försökte ringa ett videosamtal, men samtalet avvisades</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>försökte ringa dig via video, men du avvisade samtalet</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>försökte ringa, men samtalet avvisades</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>försökte ringa dig, men du avvisade samtalet</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>var i ett avbrutet videosamtal</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>var i ett avbrutet videosamtal med dig</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>var i ett avbrutet samtal</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>var i ett avbrutet samtal med dig</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>ringde ett videosamtal</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>ringde dig via video</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>ringde ett samtal</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>ringde dig</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2731,6 +2818,93 @@
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 tim %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 s</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>försökte ringa ett videosamtal</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>försökte ringa dig via video</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>försökte ringa</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>försökte ringa dig</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>försökte ringa ett videosamtal, men samtalet avvisades</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>försökte ringa dig via video, men du avvisade samtalet</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>försökte ringa, men samtalet avvisades</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>försökte ringa dig, men du avvisade samtalet</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>var i ett avbrutet videosamtal</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>var i ett avbrutet videosamtal med dig</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>var i ett avbrutet samtal</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>var i ett avbrutet samtal med dig</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>ringde ett videosamtal</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>ringde dig via video</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>ringde ett samtal</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>ringde dig</translation>
     </message>
 </context>
 <context>

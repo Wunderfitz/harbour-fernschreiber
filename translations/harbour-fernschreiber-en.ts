@@ -1125,6 +1125,93 @@ messages</numerusform>
         <source>has removed the option “%1” from a poll</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 h %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 sec</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 sec</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>tried to video call</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>tried to video call you</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>tried to call</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>tried to call you</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>tried to video call, but the call was declined</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>tried to video call you, but you declined the call</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>tried to call, but the call was declined</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>tried to call you, but you declined the call</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>were in an interrupted video call</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>was in an interrupted video call with you</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>were in an interrupted call</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>was in an interrupted call with you</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>made a video call</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>video called you</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>made a call</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>called you</translation>
+    </message>
 </context>
 <context>
     <name>FullscreenOverlay</name>
@@ -2733,6 +2820,93 @@ messages</numerusform>
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 h %2 min</source>
+        <comment>call duration</comment>
+        <translation>%1 h %2 min</translation>
+    </message>
+    <message>
+        <source>%1 min %2 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 min %2 sec</translation>
+    </message>
+    <message>
+        <source>%1 sec</source>
+        <comment>call duration</comment>
+        <translation>%1 sec</translation>
+    </message>
+    <message>
+        <source>tried to video call</source>
+        <comment>myself</comment>
+        <translation>tried to video call</translation>
+    </message>
+    <message>
+        <source>tried to video call you</source>
+        <translation>tried to video call you</translation>
+    </message>
+    <message>
+        <source>tried to call</source>
+        <comment>myself</comment>
+        <translation>tried to call</translation>
+    </message>
+    <message>
+        <source>tried to call you</source>
+        <translation>tried to call you</translation>
+    </message>
+    <message>
+        <source>tried to video call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>tried to video call, but the call was declined</translation>
+    </message>
+    <message>
+        <source>tried to video call you, but you declined the call</source>
+        <translation>tried to video call you, but you declined the call</translation>
+    </message>
+    <message>
+        <source>tried to call, but the call was declined</source>
+        <comment>myself</comment>
+        <translation>tried to call, but the call was declined</translation>
+    </message>
+    <message>
+        <source>tried to call you, but you declined the call</source>
+        <translation>tried to call you, but you declined the call</translation>
+    </message>
+    <message>
+        <source>were in an interrupted video call</source>
+        <comment>myself</comment>
+        <translation>were in an interrupted video call</translation>
+    </message>
+    <message>
+        <source>was in an interrupted video call with you</source>
+        <translation>was in an interrupted video call with you</translation>
+    </message>
+    <message>
+        <source>were in an interrupted call</source>
+        <comment>myself</comment>
+        <translation>were in an interrupted call</translation>
+    </message>
+    <message>
+        <source>was in an interrupted call with you</source>
+        <translation>was in an interrupted call with you</translation>
+    </message>
+    <message>
+        <source>made a video call</source>
+        <comment>myself</comment>
+        <translation>made a video call</translation>
+    </message>
+    <message>
+        <source>video called you</source>
+        <translation>video called you</translation>
+    </message>
+    <message>
+        <source>made a call</source>
+        <comment>myself</comment>
+        <translation>made a call</translation>
+    </message>
+    <message>
+        <source>called you</source>
+        <translation>called you</translation>
     </message>
 </context>
 <context>

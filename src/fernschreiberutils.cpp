@@ -127,6 +127,7 @@ namespace {
     const QString MESSAGE_CONTENT_TYPE_LOCATION("messageLocation");
     const QString MESSAGE_CONTENT_TYPE_LIVE_LOCATION("messageLiveLocation");
     const QString MESSAGE_CONTENT_TYPE_VENUE("messageVenue");
+    const QString MESSAGE_CONTENT_TYPE_CALL("messageCall");
 }
 
 FernschreiberUtils::FernschreiberUtils(QObject *parent)
@@ -314,6 +315,31 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
     }
     if (contentType == "messageGame") {
         return myself ? tr("sent a game", "myself") : tr("sent a game");
+    }
+    if (contentType == MESSAGE_CONTENT_TYPE_CALL) {
+        const bool video = messageContent.value("is_video").toBool();
+        const QString discardReason(messageContent.value("discard_reason").toMap().value(_TYPE).toString());
+        QString callText;
+        if (discardReason == "callDiscardReasonMissed") {
+            callText = video ? (myself ? tr("tried to video call", "myself") : tr("tried to video call you")) : (myself ? tr("tried to call", "myself") : tr("tried to call you"));
+        } else if (discardReason == "callDiscardReasonDeclined") {
+            callText = video ? (myself ? tr("tried to video call, but the call was declined", "myself") : tr("tried to video call you, but you declined the call")) : (myself ? tr("tried to call, but the call was declined", "myself") : tr("tried to call you, but you declined the call"));
+        } else if (discardReason == "callDiscardReasonDisconnected") {
+            callText = video ? (myself ? tr("were in an interrupted video call", "myself") : tr("was in an interrupted video call with you")) : (myself ? tr("were in an interrupted call", "myself") : tr("was in an interrupted call with you"));
+        } else {
+            callText = video ? (myself ? tr("made a video call", "myself") : tr("video called you")) : (myself ? tr("made a call", "myself") : tr("called you"));
+        }
+        const int duration = messageContent.value("duration").toInt();
+        if (duration <= 0) {
+            return callText;
+        }
+        const int hours = duration / 3600;
+        const int minutes = duration % 3600 / 60;
+        const int seconds = duration % 60;
+        const QString durationText = hours > 0 ? tr("%1 h %2 min", "call duration").arg(hours).arg(minutes)
+            : minutes > 0 ? tr("%1 min %2 sec", "call duration").arg(minutes).arg(seconds)
+            : tr("%1 sec", "call duration").arg(seconds);
+        return callText + " (" + durationText + ")";
     }
     if (contentType == "messageUnsupported") {
         return myself ? tr("sent an unsupported message", "myself") : tr("sent an unsupported message");
