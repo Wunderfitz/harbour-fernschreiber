@@ -404,9 +404,7 @@ ListItem {
                                 messageListItem: messageListItem
                             })
             } else {
-                if (typeof myMessage.content.web_page !== "undefined") { // only in messageText
-                    webPagePreviewLoader.active = true;
-                }
+                webPagePreviewLoader.requested = true;
             }
         }
     }
@@ -659,7 +657,10 @@ ListItem {
 
                 Loader {
                     id: webPagePreviewLoader
-                    active: false
+                    // The link preview may only arrive with an update of the message,
+                    // e.g. once a message sent with a link got through
+                    property bool requested: false
+                    active: requested && !!myMessage.content.web_page // only in messageText
                     asynchronous: true
                     width: parent.width * getContentWidthMultiplier()
                     height: (status === Loader.Ready) ? item.implicitHeight : myMessage.content.web_page ? precalculatedValues.webPagePreviewHeight : 0
