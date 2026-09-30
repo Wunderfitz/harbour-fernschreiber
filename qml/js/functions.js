@@ -515,6 +515,21 @@ function handleLink(link) {
     }
 }
 
+function getPhotoAspectRatio(photo) {
+    // The last size is usually the biggest one, but a photo sent from this device
+    // also lists its original, as a size of type "i" without width and height
+    for (var i = photo.sizes.length - 1; i >= 0; i--) {
+        var size = photo.sizes[i];
+        if (size.width > 0 && size.height > 0) {
+            return size.width / size.height;
+        }
+    }
+    if (photo.minithumbnail && photo.minithumbnail.width > 0 && photo.minithumbnail.height > 0) {
+        return photo.minithumbnail.width / photo.minithumbnail.height;
+    }
+    return 1.5;
+}
+
 function getVideoHeight(videoWidth, videoData) {
     if (typeof videoData !== "undefined") {
         if (videoData.height === 0) {

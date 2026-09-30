@@ -1568,9 +1568,8 @@ Page {
                                     unit = (parentWidth * 0.66666666)
                                     return (albumEntries % 2 !== 0 ? unit * 0.75 : 0) + unit * albumEntries * 0.25
                                 }
-                                var biggest = content.photo.sizes[content.photo.sizes.length - 1];
-                                var aspectRatio = biggest.width/biggest.height;
-                                return Math.max(Theme.itemSizeExtraSmall, Math.min(parentWidth * 0.66666666, parentWidth / aspectRatio));
+                                // Same as the height of MessagePhoto, or the bubble jumps once the photo is loaded
+                                return Math.max(Theme.itemSizeExtraSmall, Math.min(Math.round(parentWidth * 0.66666666), parentWidth / Functions.getPhotoAspectRatio(content.photo)));
                             case "messagePoll":
                                 return Theme.itemSizeSmall * (4 + content.poll.options);
                             case "messageSticker":
