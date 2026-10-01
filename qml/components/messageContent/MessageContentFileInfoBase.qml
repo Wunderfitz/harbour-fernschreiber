@@ -29,7 +29,16 @@ import "../../js/debug.js" as Debug
 MessageContentBase {
     id: contentItem
     height: childrenRect.height
-    property alias fileInformation: file.fileInformation
+    // An updated message (e.g. a voice note marked as listened) still carries the
+    // file as it was when the message was loaded. TDLibFile follows the file via
+    // TDLib's updates, so only a different file may replace it - a stale copy
+    // would reset it to "not downloaded" and stop the playback that just started.
+    property var fileInformation
+    onFileInformationChanged: {
+        if (fileInformation && fileInformation.id !== file.fileId) {
+            file.fileInformation = fileInformation;
+        }
+    }
     property alias primaryLabel: primaryLabel
     property alias primaryText: primaryLabel.text
     property alias secondaryLabel: secondaryLabel
