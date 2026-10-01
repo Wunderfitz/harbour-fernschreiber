@@ -1353,17 +1353,21 @@ Page {
                     width: parent.width
                     height: parent.height - headerRow.height - pinnedMessageItem.height - newMessageColumn.height - selectedMessagesActions.height
 
-                    property int previousHeight;
+                    // Not an int: animated heights are fractional, and rounding every step lets the chat drift
+                    property real previousHeight;
 
                     Component.onCompleted: {
                         previousHeight = height;
                     }
 
+                    // The messages at the bottom stay where they are both ways, so opening and
+                    // closing something below the chat leaves it where it was
                     onHeightChanged: {
-                        if (previousHeight > height) {
-                            var deltaHeight = previousHeight - height;
+                        var deltaHeight = previousHeight - height;
+                        if (deltaHeight > 0) {
                             chatView.contentY = chatView.contentY + deltaHeight;
                         } else {
+                            chatView.contentY = Math.max(chatView.contentY + deltaHeight, chatView.originY);
                             chatView.handleScrollPositionChanged();
                         }
                         previousHeight = height;
