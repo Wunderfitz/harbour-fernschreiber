@@ -241,8 +241,7 @@ Page {
     }
 
     function clearAttachmentPreviewRow() {
-        attachmentPreviewRow.isPicture = false;
-        attachmentPreviewRow.isVideo = false;
+        attachmentPreviewRow.isMedia = false;
         attachmentPreviewRow.isDocument = false;
         attachmentPreviewRow.sendAsFile = false;
         attachmentPreviewRow.isVoiceNote = false;
@@ -260,7 +259,7 @@ Page {
     }
 
     // The picker's model dies with its page, so what was chosen is copied out.
-    function attachedFilesFrom(selectedContent) {
+    function attachedFilesFrom(selectedContent, contentType) {
         var files = [];
         for (var i = 0; i < selectedContent.count; i++) {
             var selectedFile = selectedContent.get(i);
@@ -268,7 +267,8 @@ Page {
                 "filePath": selectedFile.filePath,
                 "fileName": selectedFile.fileName,
                 "url": selectedFile.url,
-                "mimeType": selectedFile.mimeType
+                "mimeType": selectedFile.mimeType,
+                "contentType": contentType
             });
         }
         return files;
@@ -299,13 +299,17 @@ Page {
     }
 
     // A single file goes out as it always did - an album of one is still an album,
-    // and the timeline draws it differently.
-    function sendAttachedFiles(contentType) {
+    // and the timeline draws it differently. Photos and videos can share an album.
+    function sendAttachedFiles(asDocuments) {
         var filePaths = attachmentPreviewRow.attachedFiles.map(function(attachedFile) {
             return attachedFile.filePath;
         });
+        var contentTypes = attachmentPreviewRow.attachedFiles.map(function(attachedFile) {
+            return asDocuments ? "document" : attachedFile.contentType;
+        });
+        var contentType = contentTypes[0];
         if (filePaths.length > 1) {
-            tdLibWrapper.sendAlbumMessage(chatInformation.id, contentType, filePaths, newMessageTextField.text, newMessageColumn.replyToMessageId);
+            tdLibWrapper.sendAlbumMessage(chatInformation.id, contentTypes, filePaths, newMessageTextField.text, newMessageColumn.replyToMessageId);
         } else if (contentType === "photo") {
             tdLibWrapper.sendPhotoMessage(chatInformation.id, filePaths[0], newMessageTextField.text, newMessageColumn.replyToMessageId);
         } else if (contentType === "video") {
@@ -320,14 +324,11 @@ Page {
             tdLibWrapper.editMessageText(chatInformation.id, newMessageColumn.editMessageId, newMessageTextField.text);
         } else {
             if (attachmentPreviewRow.visible) {
-                if (attachmentPreviewRow.isPicture) {
-                    sendAttachedFiles(attachmentPreviewRow.sendAsFile ? "document" : "photo");
-                }
-                if (attachmentPreviewRow.isVideo) {
-                    sendAttachedFiles(attachmentPreviewRow.sendAsFile ? "document" : "video");
+                if (attachmentPreviewRow.isMedia) {
+                    sendAttachedFiles(attachmentPreviewRow.sendAsFile);
                 }
                 if (attachmentPreviewRow.isDocument) {
-                    sendAttachedFiles("document");
+                    sendAttachedFiles(true);
                 }
                 if (attachmentPreviewRow.isVoiceNote) {
                     tdLibWrapper.sendVoiceNoteMessage(chatInformation.id, fernschreiberUtils.voiceNotePath(), newMessageTextField.text, Math.round(fernschreiberUtils.getVoiceNoteDuration() / 1000), fernschreiberUtils.getVoiceNoteWaveform(), newMessageColumn.replyToMessageId);
@@ -511,11 +512,11 @@ Page {
                 "filePath": filePath,
                 "fileName": filePath.substring(filePath.lastIndexOf("/") + 1),
                 "url": Qt.resolvedUrl(filePath),
-                "mimeType": fernschreiberUtils.mimeTypeForFile(filePath)
+                "mimeType": fernschreiberUtils.mimeTypeForFile(filePath),
+                "contentType": contentType
             };
         });
-        attachmentPreviewRow.isPicture = contentType === "photo";
-        attachmentPreviewRow.isVideo = contentType === "video";
+        attachmentPreviewRow.isMedia = contentType === "photo" || contentType === "video";
         attachmentPreviewRow.isDocument = contentType === "document";
         controlSendButton();
     }
@@ -1900,35 +1901,20 @@ Page {
 
                             IconButton {
                                 id: attachImageIconButton
-                                visible: chatPage.hasSendPrivilege("can_send_photos")
-                                icon.source: "image://theme/icon-m-image"
+                                visible: chatPage.hasSendPrivilege("can_send_photos") || chatPage.hasSendPrivilege("can_send_videos")
+                                icon.source: "image://theme/icon-m-camera"
                                 onClicked: {
-                                    var picker = pageStack.push("Sailfish.Pickers.MultiImagePickerDialog", {
-                                        allowedOrientations: chatPage.allowedOrientations
+                                    var picker = pageStack.push(Qt.resolvedUrl("MediaPickerDialog.qml"), {
+                                        allowedOrientations: chatPage.allowedOrientations,
+                                        showImages: chatPage.hasSendPrivilege("can_send_photos"),
+                                        showVideos: chatPage.hasSendPrivilege("can_send_videos")
                                     })
                                     picker.accepted.connect(function(){
                                         attachmentOptionsFlickable.isNeeded = false;
-                                        Debug.log("Selected images: ", picker.selectedContent.count );
+                                        Debug.log("Selected photos and videos: ", picker.selectedFiles.length );
                                         clearAttachmentPreviewRow();
-                                        attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent);
-                                        attachmentPreviewRow.isPicture = true;
-                                        controlSendButton();
-                                    })
-                                }
-                            }
-                            IconButton {
-                                visible: chatPage.hasSendPrivilege("can_send_videos")
-                                icon.source: "image://theme/icon-m-video"
-                                onClicked: {
-                                    var picker = pageStack.push("Sailfish.Pickers.MultiVideoPickerDialog", {
-                                        allowedOrientations: chatPage.allowedOrientations
-                                    })
-                                    picker.accepted.connect(function(){
-                                        attachmentOptionsFlickable.isNeeded = false;
-                                        Debug.log("Selected videos: ", picker.selectedContent.count );
-                                        clearAttachmentPreviewRow();
-                                        attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent);
-                                        attachmentPreviewRow.isVideo = true;
+                                        attachmentPreviewRow.attachedFiles = picker.selectedFiles;
+                                        attachmentPreviewRow.isMedia = true;
                                         controlSendButton();
                                     })
                                 }
@@ -1948,7 +1934,7 @@ Page {
                             }
                             IconButton {
                                 visible: chatPage.hasSendPrivilege("can_send_documents")
-                                icon.source: "image://theme/icon-m-document"
+                                icon.source: "image://theme/icon-m-file-folder"
                                 onClicked: {
                                     var picker = pageStack.push("Sailfish.Pickers.MultiFilePickerDialog", {
                                         allowedOrientations: chatPage.allowedOrientations
@@ -1957,7 +1943,7 @@ Page {
                                         attachmentOptionsFlickable.isNeeded = false;
                                         Debug.log("Selected documents: ", picker.selectedContent.count );
                                         clearAttachmentPreviewRow();
-                                        attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent);
+                                        attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent, "document");
                                         attachmentPreviewRow.isDocument = true;
                                         controlSendButton();
                                     })
@@ -1965,7 +1951,7 @@ Page {
                             }
                             IconButton {
                                 visible: chatPage.hasSendPrivilege("can_send_other_messages")
-                                icon.source: "../../images/icon-m-sticker.svg"
+                                icon.source: "image://theme/icon-m-file-image"
                                 icon.sourceSize {
                                     width: Theme.iconSizeMedium
                                     height: Theme.iconSizeMedium
@@ -2043,8 +2029,8 @@ Page {
                         layoutDirection: Qt.RightToLeft
                         anchors.right: parent.right
 
-                        property bool isPicture: false;
-                        property bool isVideo: false;
+                        // Photos, videos or both
+                        property bool isMedia: false;
                         property bool isDocument: false;
                         property bool sendAsFile: false;
                         property bool isVoiceNote: false;
@@ -2120,7 +2106,7 @@ Page {
                             }
 
                             Repeater {
-                                model: (attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo)
+                                model: attachmentPreviewRow.isMedia
                                        ? Math.min(attachmentPreviewRow.attachedFiles.length, attachmentThumbnailRow.maximumThumbnails)
                                        : 0
 
@@ -2193,7 +2179,7 @@ Page {
                             TextSwitch {
                                 width: parent.width
                                 text: qsTr("Send as file")
-                                visible: (attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo)
+                                visible: attachmentPreviewRow.isMedia
                                          && chatPage.hasSendPrivilege("can_send_documents")
                                 automaticCheck: false
                                 checked: attachmentPreviewRow.sendAsFile

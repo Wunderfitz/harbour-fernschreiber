@@ -578,9 +578,9 @@ QVariantMap TDLibWrapper::newInputMessageContent(const QString &contentType, con
     return inputMessageContent;
 }
 
-void TDLibWrapper::sendAlbumMessage(qlonglong chatId, const QString &contentType, const QStringList &filePaths, const QString &message, qlonglong replyToMessageId)
+void TDLibWrapper::sendAlbumMessage(qlonglong chatId, const QStringList &contentTypes, const QStringList &filePaths, const QString &message, qlonglong replyToMessageId)
 {
-    LOG("Sending album message" << chatId << contentType << filePaths.size() << message << replyToMessageId);
+    LOG("Sending album message" << chatId << contentTypes << filePaths.size() << message << replyToMessageId);
     for (int offset = 0; offset < filePaths.size(); ) {
         const int remaining = filePaths.size() - offset;
         int albumSize = qMin(remaining, MAX_ALBUM_SIZE);
@@ -597,7 +597,7 @@ void TDLibWrapper::sendAlbumMessage(qlonglong chatId, const QString &contentType
         QVariantList inputMessageContents;
         const int end = offset + albumSize;
         for (int i = offset; i < end; i++) {
-            inputMessageContents.append(newInputMessageContent(contentType, filePaths.at(i), i == 0 ? message : QString()));
+            inputMessageContents.append(newInputMessageContent(contentTypes.value(i), filePaths.at(i), i == 0 ? message : QString()));
         }
         requestObject.insert("input_message_contents", inputMessageContents);
         this->sendRequest(requestObject);
