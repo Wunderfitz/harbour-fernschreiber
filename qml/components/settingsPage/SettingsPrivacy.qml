@@ -26,230 +26,80 @@ AccordionItem {
     Component {
         Column {
             bottomPadding: Theme.paddingMedium
-            Connections {
-                target: tdLibWrapper
-                onUserPrivacySettingUpdated: {
-                    Debug.log("Received updated privacy setting: " + setting + ":" + rule);
-                    switch (setting) {
-                    case TelegramAPI.SettingAllowChatInvites:
-                        allowChatInvitesComboBox.currentIndex = rule;
-                        break;
-                    case TelegramAPI.SettingAllowFindingByPhoneNumber:
-                        allowFindingByPhoneNumberComboBox.currentIndex = rule;
-                        break;
-                    case TelegramAPI.SettingShowLinkInForwardedMessages:
-                        showLinkInForwardedMessagesComboBox.currentIndex = rule;
-                        break;
-                    case TelegramAPI.SettingShowPhoneNumber:
-                        showPhoneNumberComboBox.currentIndex = rule;
-                        break;
-                    case TelegramAPI.SettingShowProfilePhoto:
-                        showProfilePhotoComboBox.currentIndex = rule;
-                        break;
-                    case TelegramAPI.SettingShowStatus:
-                        showStatusComboBox.currentIndex = rule;
-                        break;
+            ResponsiveGrid {
+                id: privacySettingsGrid
+                Repeater {
+                    model: [
+                        { setting: TelegramAPI.SettingShowPhoneNumber, label: qsTr("Show phone number"), description: qsTr("Privacy setting for managing whether your phone number is visible.") },
+                        // TDLib only accepts "allow all" and "allow contacts" for this one
+                        { setting: TelegramAPI.SettingAllowFindingByPhoneNumber, label: qsTr("Allow finding by phone number"), description: qsTr("Privacy setting for managing whether you can be found by your phone number."), canRestrictAll: false },
+                        { setting: TelegramAPI.SettingShowStatus, label: qsTr("Show status"), description: qsTr("Privacy setting for managing whether your online status is visible.") },
+                        { setting: TelegramAPI.SettingShowProfilePhoto, label: qsTr("Show profile photo"), description: qsTr("Privacy setting for managing whether your profile photo is visible.") },
+                        { setting: TelegramAPI.SettingShowBio, label: qsTr("Show bio"), description: qsTr("Privacy setting for managing whether your bio is visible.") },
+                        { setting: TelegramAPI.SettingShowBirthdate, label: qsTr("Show birthdate"), description: qsTr("Privacy setting for managing whether your birthdate is visible.") },
+                        { setting: TelegramAPI.SettingShowLinkInForwardedMessages, label: qsTr("Show link in forwarded messages"), description: qsTr("Privacy setting for managing whether a link to your account is included in forwarded messages.") },
+                        { setting: TelegramAPI.SettingAllowCalls, label: qsTr("Allow calls"), description: qsTr("Privacy setting for managing whether you can be called.") },
+                        { setting: TelegramAPI.SettingAllowPeerToPeerCalls, label: qsTr("Allow peer-to-peer calls"), description: qsTr("Privacy setting for managing whether peer-to-peer connections can be used for calls.") },
+                        { setting: TelegramAPI.SettingAllowChatInvites, label: qsTr("Allow chat invites"), description: qsTr("Privacy setting for managing whether you can be invited to chats.") }
+                    ]
+                    // The menu items are in the order of TelegramAPI.RuleAllowAll, RuleAllowContacts and RuleRestrictAll,
+                    // so a rule is also the index of its menu item
+                    ComboBox {
+                        id: privacySettingComboBox
+                        width: privacySettingsGrid.columnWidth
+                        label: modelData.label
+                        description: modelData.description
+                        menu: ContextMenu {
+                            x: 0
+                            width: privacySettingComboBox.width
+
+                            MenuItem {
+                                text: qsTr("Yes")
+                                onClicked: {
+                                    tdLibWrapper.setUserPrivacySettingRule(modelData.setting, TelegramAPI.RuleAllowAll);
+                                }
+                            }
+                            MenuItem {
+                                text: qsTr("Your contacts only")
+                                onClicked: {
+                                    tdLibWrapper.setUserPrivacySettingRule(modelData.setting, TelegramAPI.RuleAllowContacts);
+                                }
+                            }
+                            MenuItem {
+                                visible: modelData.canRestrictAll !== false
+                                text: qsTr("No")
+                                onClicked: {
+                                    tdLibWrapper.setUserPrivacySettingRule(modelData.setting, TelegramAPI.RuleRestrictAll);
+                                }
+                            }
+                        }
+
+                        Component.onCompleted: {
+                            currentIndex = tdLibWrapper.getUserPrivacySettingRule(modelData.setting);
+                        }
+
+                        Connections {
+                            target: tdLibWrapper
+                            onUserPrivacySettingUpdated: {
+                                if (setting === modelData.setting) {
+                                    Debug.log("Received updated privacy setting: " + setting + ":" + rule);
+                                    privacySettingComboBox.currentIndex = rule;
+                                }
+                            }
+                        }
                     }
                 }
             }
-            ResponsiveGrid {
-                ComboBox {
-                    id: allowChatInvitesComboBox
-                    width: parent.columnWidth
-                    label: qsTr("Allow chat invites")
-                    description: qsTr("Privacy setting for managing whether you can be invited to chats.")
-                    menu: ContextMenu {
-                        x: 0
-                        width: allowChatInvitesComboBox.width
 
-                        MenuItem {
-                            text: qsTr("Yes")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingAllowChatInvites, TelegramAPI.RuleAllowAll);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("Your contacts only")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingAllowChatInvites, TelegramAPI.RuleAllowContacts);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("No")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingAllowChatInvites, TelegramAPI.RuleRestrictAll);
-                            }
-                        }
-                    }
-
-                    Component.onCompleted: {
-                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingAllowChatInvites);
-                    }
-                }
-
-                ComboBox {
-                    id: allowFindingByPhoneNumberComboBox
-                    width: parent.columnWidth
-                    label: qsTr("Allow finding by phone number")
-                    description: qsTr("Privacy setting for managing whether you can be found by your phone number.")
-                    menu: ContextMenu {
-                        x: 0
-                        width: allowFindingByPhoneNumberComboBox.width
-
-                        MenuItem {
-                            text: qsTr("Yes")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingAllowFindingByPhoneNumber, TelegramAPI.RuleAllowAll);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("Your contacts only")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingAllowFindingByPhoneNumber, TelegramAPI.RuleAllowContacts);
-                            }
-                        }
-                    }
-
-                    Component.onCompleted: {
-                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingAllowFindingByPhoneNumber);
-                    }
-                }
-
-                ComboBox {
-                    id: showLinkInForwardedMessagesComboBox
-                    width: parent.columnWidth
-                    label: qsTr("Show link in forwarded messages")
-                    description: qsTr("Privacy setting for managing whether a link to your account is included in forwarded messages.")
-                    menu: ContextMenu {
-                        x: 0
-                        width: showLinkInForwardedMessagesComboBox.width
-
-                        MenuItem {
-                            text: qsTr("Yes")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowLinkInForwardedMessages, TelegramAPI.RuleAllowAll);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("Your contacts only")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowLinkInForwardedMessages, TelegramAPI.RuleAllowContacts);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("No")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowLinkInForwardedMessages, TelegramAPI.RuleRestrictAll);
-                            }
-                        }
-                    }
-
-                    Component.onCompleted: {
-                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingShowLinkInForwardedMessages);
-                    }
-                }
-
-                ComboBox {
-                    id: showPhoneNumberComboBox
-                    width: parent.columnWidth
-                    label: qsTr("Show phone number")
-                    description: qsTr("Privacy setting for managing whether your phone number is visible.")
-                    menu: ContextMenu {
-                        x: 0
-                        width: showPhoneNumberComboBox.width
-
-                        MenuItem {
-                            text: qsTr("Yes")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowPhoneNumber, TelegramAPI.RuleAllowAll);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("Your contacts only")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowPhoneNumber, TelegramAPI.RuleAllowContacts);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("No")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowPhoneNumber, TelegramAPI.RuleRestrictAll);
-                            }
-                        }
-                    }
-
-                    Component.onCompleted: {
-                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingShowPhoneNumber);
-                    }
-                }
-
-                ComboBox {
-                    id: showProfilePhotoComboBox
-                    width: parent.columnWidth
-                    label: qsTr("Show profile photo")
-                    description: qsTr("Privacy setting for managing whether your profile photo is visible.")
-                    menu: ContextMenu {
-                        x: 0
-                        width: showProfilePhotoComboBox.width
-
-                        MenuItem {
-                            text: qsTr("Yes")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowProfilePhoto, TelegramAPI.RuleAllowAll);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("Your contacts only")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowProfilePhoto, TelegramAPI.RuleAllowContacts);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("No")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowProfilePhoto, TelegramAPI.RuleRestrictAll);
-                            }
-                        }
-                    }
-
-                    Component.onCompleted: {
-                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingShowProfilePhoto);
-                    }
-                }
-
-                ComboBox {
-                    id: showStatusComboBox
-                    width: parent.columnWidth
-                    label: qsTr("Show status")
-                    description: qsTr("Privacy setting for managing whether your online status is visible.")
-                    menu: ContextMenu {
-                        x: 0
-                        width: showStatusComboBox.width
-
-                        MenuItem {
-                            text: qsTr("Yes")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowStatus, TelegramAPI.RuleAllowAll);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("Your contacts only")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowStatus, TelegramAPI.RuleAllowContacts);
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("No")
-                            onClicked: {
-                                tdLibWrapper.setUserPrivacySettingRule(TelegramAPI.SettingShowStatus, TelegramAPI.RuleRestrictAll);
-                            }
-                        }
-                    }
-
-                    Component.onCompleted: {
-                        currentIndex = tdLibWrapper.getUserPrivacySettingRule(TelegramAPI.SettingShowStatus);
-                    }
-                }
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
+                topPadding: Theme.paddingMedium
+                bottomPadding: Theme.paddingMedium
+                text: qsTr("Exceptions for single users or chats, e.g. made in other Telegram apps, are kept.")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.secondaryColor
+                wrapMode: Text.Wrap
             }
 
             TextSwitch {

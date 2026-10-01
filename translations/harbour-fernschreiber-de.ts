@@ -2166,6 +2166,42 @@
         <source>Some inline bots request location data when using them</source>
         <translation>Einige Inline-Bots fragen bei Nutzung Standortdaten an</translation>
     </message>
+    <message>
+        <source>Show bio</source>
+        <translation>Bio anzeigen</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your bio is visible.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Ihre Bio sichtbar ist.</translation>
+    </message>
+    <message>
+        <source>Show birthdate</source>
+        <translation>Geburtstag anzeigen</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your birthdate is visible.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Ihr Geburtstag sichtbar ist.</translation>
+    </message>
+    <message>
+        <source>Allow calls</source>
+        <translation>Anrufe erlauben</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be called.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob Sie angerufen werden können.</translation>
+    </message>
+    <message>
+        <source>Allow peer-to-peer calls</source>
+        <translation>Peer-to-Peer-Anrufe erlauben</translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether peer-to-peer connections can be used for calls.</source>
+        <translation>Privatsphären-Einstellung zur Regelung, ob für Anrufe Peer-to-Peer-Verbindungen genutzt werden dürfen.</translation>
+    </message>
+    <message>
+        <source>Exceptions for single users or chats, e.g. made in other Telegram apps, are kept.</source>
+        <translation>Ausnahmen für einzelne Personen oder Chats, z.B. aus anderen Telegram-Apps, bleiben erhalten.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsSession</name>

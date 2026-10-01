@@ -95,8 +95,12 @@ Page {
             tdLibWrapper.getFavoriteStickers();
             tdLibWrapper.getInstalledStickerSets();
             tdLibWrapper.getContacts();
+            tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingAllowCalls);
             tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingAllowChatInvites);
             tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingAllowFindingByPhoneNumber);
+            tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingAllowPeerToPeerCalls);
+            tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingShowBio);
+            tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingShowBirthdate);
             tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingShowLinkInForwardedMessages);
             tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingShowPhoneNumber);
             tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingShowProfilePhoto);

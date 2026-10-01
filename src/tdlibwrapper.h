@@ -97,8 +97,12 @@ public:
     Q_ENUM(SecretChatState)
 
     enum UserPrivacySetting {
+        SettingAllowCalls,
         SettingAllowChatInvites,
         SettingAllowFindingByPhoneNumber,
+        SettingAllowPeerToPeerCalls,
+        SettingShowBio,
+        SettingShowBirthdate,
         SettingShowLinkInForwardedMessages,
         SettingShowPhoneNumber,
         SettingShowProfilePhoto,
@@ -421,7 +425,7 @@ private:
     TDLibWrapper::ConnectionState connectionState;
     QVariantMap options;
     QVariantMap userInformation;
-    QMap<UserPrivacySetting, UserPrivacySettingRule> userPrivacySettingRules;
+    QMap<UserPrivacySetting, QVariantList> userPrivacySettingRules;
     QVariantMap usersById;
     QVariantMap usersByName;
     QVariantMap chats;

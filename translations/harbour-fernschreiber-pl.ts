@@ -2196,6 +2196,42 @@
         <source>Some inline bots request location data when using them</source>
         <translation>Niektóre roboty wbudowane żądają danych o lokalizacji podczas ich używania</translation>
     </message>
+    <message>
+        <source>Show bio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your bio is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show birthdate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether your birthdate is visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow calls</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether you can be called.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow peer-to-peer calls</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy setting for managing whether peer-to-peer connections can be used for calls.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exceptions for single users or chats, e.g. made in other Telegram apps, are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsSession</name>
