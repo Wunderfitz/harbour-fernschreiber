@@ -2364,6 +2364,14 @@
 <context>
     <name>StickerPicker</name>
     <message>
+        <source>Remove from favorites</source>
+        <translation>Quitar de favoritos</translation>
+    </message>
+    <message>
+        <source>Add to favorites</source>
+        <translation>Añadir a favoritos</translation>
+    </message>
+    <message>
         <source>Favorites</source>
         <translation type="unfinished"></translation>
     </message>

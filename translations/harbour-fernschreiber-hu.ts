@@ -2338,6 +2338,14 @@
 <context>
     <name>StickerPicker</name>
     <message>
+        <source>Remove from favorites</source>
+        <translation>Eltávolítás a kedvencek közül</translation>
+    </message>
+    <message>
+        <source>Add to favorites</source>
+        <translation>Hozzáadás a kedvencekhez</translation>
+    </message>
+    <message>
         <source>Favorites</source>
         <translation type="unfinished"></translation>
     </message>

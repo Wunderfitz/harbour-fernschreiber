@@ -206,6 +206,8 @@ public:
     Q_INVOKABLE void getMapThumbnailFile(const QString &chatId, double latitude, double longitude, int width, int height, const QString &extra);
     Q_INVOKABLE void getRecentStickers();
     Q_INVOKABLE void getFavoriteStickers();
+    Q_INVOKABLE void addFavoriteSticker(const QString &fileId);
+    Q_INVOKABLE void removeFavoriteSticker(const QString &fileId);
     Q_INVOKABLE void getInstalledStickerSets();
     Q_INVOKABLE void getStickerSet(const QString &setId);
     Q_INVOKABLE void getSupergroupMembers(const QString &groupId, int limit, int offset);
