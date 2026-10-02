@@ -142,8 +142,10 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent)
         temporaryDirectory.mkpath(temporaryDirectoryPath);
     }
 
+    LOG("Supported audio codecs:" << this->audioRecorder.supportedAudioCodecs() << "containers:" << this->audioRecorder.supportedContainers());
+
     QAudioEncoderSettings encoderSettings;
-    encoderSettings.setCodec("audio/vorbis");
+    encoderSettings.setCodec("audio/opus");
     encoderSettings.setChannelCount(1);
     encoderSettings.setQuality(QMultimedia::LowQuality);
     this->audioRecorder.setEncodingSettings(encoderSettings);
