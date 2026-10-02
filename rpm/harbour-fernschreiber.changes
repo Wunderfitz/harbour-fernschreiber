@@ -12,8 +12,25 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Sun Sep 13 2026 Sebastian J. Wolf <sebastian@ygriega.de> 0.19
+* Sat Oct 03 2026 Sebastian J. Wolf <sebastian@ygriega.de> 0.19
 - Update to TDLib 1.8.67
+- Send several pictures, videos or documents as one album – contribution by JimKnopfIoT
+- Admin actions in the group members list – contribution by JimKnopfIoT
+- Support for contact messages, add shared contacts to the address book – contribution by Eugenio Rossi
+- Attach contacts from the device to a chat
+- Share the location once or live for 15 or 30 minutes
+- Show added poll options and offer to add one – contribution by Eugenio Rossi
+- Option to forward messages without their sender and captions – contribution by Eugenio Rossi
+- Animated and favorite stickers in the sticker picker – contribution by Eugenio Rossi
+- Add stickers to the favorites and remove them in the sticker picker – contribution by Eugenio Rossi
+- Only one voice note or video plays at a time – contribution by Eugenio Rossi
+- Receive pictures, videos and files shared by other apps – contribution by Andreas Horn
+- Option to send photos and videos as file – contribution by Andreas Horn
+- Show the chat with yourself as Saved Messages – contribution by Andreas Horn
+- Show duration and success of (video) calls – contribution by Simon Schmeisser
+- Privacy settings for bio, birthdate and calls
+- Record voice notes with Opus instead of Vorbis
+- Updated rlottie library (for animated stickers)
 - Fix: reaction selection for chats without a fixed set of reactions
 - Fix: editing group member permissions for messages and media
 - Fix: required permissions when forwarding media messages
@@ -21,6 +38,19 @@
 - Fix: show changes of the message auto-delete time
 - Fix: button of sponsored messages
 - Fix: avoid triggering copy to clipboard and delete message when opening 2nd context menu
+- Fix: show sponsor name as author of sponsored messages
+- Fix: edit or delete messages right after they have been sent
+- Fix: unread reactions stayed unread after opening the chat
+- Fix: own messages not recognized for large user IDs
+- Fix: keep privacy exceptions made in other Telegram apps
+- Fix: voice note duration, waveform and listened state – contribution by Eugenio Rossi
+- Fix: play voice notes with one tap when they still need to be downloaded
+- Fix: mention suggestions when typing @ – contribution by Eugenio Rossi
+- Fix: missing parts of animated stickers, show non-square stickers at full size – contribution by Eugenio Rossi
+- Fix: keep the small profile picture visible until the big one is downloaded – contribution by Eugenio Rossi
+- Fix: load link previews that arrive after the message
+- Fix: chat jumping when photos sent from this device are loaded
+- Fix: immediate feedback when attaching a location
 
 * Sat Aug 22 2026 Sebastian J. Wolf <sebastian@ygriega.de> 0.18
 - Update Emoji support to 17 – contribution by jgibbon
