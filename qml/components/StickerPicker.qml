@@ -27,6 +27,31 @@ Item {
     property var recentStickers: stickerManager.getRecentStickers();
     property var favoriteStickers: stickerManager.getFavoriteStickers();
     property var installedStickerSets: stickerManager.getInstalledStickerSets();
+    property Item stickerMenu
+
+    function isFavoriteSticker(sticker) {
+        for (var i = 0; i < favoriteStickers.length; i++) {
+            if (favoriteStickers[i].sticker.remote.id === sticker.sticker.remote.id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // The menu opens below the full-width row that holds the sticker, as the
+    // horizontal sticker lists are only one sticker high
+    function openStickerMenu(sticker, menuHost) {
+        if (!stickerMenu) {
+            stickerMenu = stickerMenuComponent.createObject(stickerPickerOverlayItem);
+        }
+        stickerMenu.sticker = sticker;
+        stickerMenu.isFavorite = isFavoriteSticker(sticker);
+        stickerMenu.open(menuHost);
+    }
+
+    function menuHeight(menuHost) {
+        return stickerMenu && stickerMenu.parent === menuHost ? stickerMenu.height : 0;
+    }
 
     Connections {
         target: tdLibWrapper
@@ -58,6 +83,26 @@ Item {
             sticker: modelData
 
             onClicked: stickerPickerOverlayItem.stickerPicked(modelData.sticker.remote.id)
+            onPressAndHold: stickerPickerOverlayItem.openStickerMenu(modelData, (GridView.view || ListView.view).menuHost)
+        }
+    }
+
+    Component {
+        id: stickerMenuComponent
+        ContextMenu {
+            id: stickerContextMenu
+            property var sticker
+            property bool isFavorite
+            MenuItem {
+                text: stickerContextMenu.isFavorite ? qsTr("Remove from favorites") : qsTr("Add to favorites")
+                onClicked: {
+                    if (stickerContextMenu.isFavorite) {
+                        tdLibWrapper.removeFavoriteSticker(stickerContextMenu.sticker.sticker.remote.id);
+                    } else {
+                        tdLibWrapper.addFavoriteSticker(stickerContextMenu.sticker.sticker.remote.id);
+                    }
+                }
+            }
         }
     }
 
@@ -93,21 +138,28 @@ Item {
                 truncationMode: TruncationMode.Fade
                 text: qsTr("Favorites")
             }
-            SilicaGridView {
-                id: favoriteStickersGridView
+            Item {
+                id: favoriteStickersRow
                 width: stickerPickerListView.width
-                height: Theme.itemSizeExtraLarge + Theme.paddingSmall
-                cellWidth: Theme.itemSizeExtraLarge;
-                cellHeight: Theme.itemSizeExtraLarge;
-                visible: count > 0
-                clip: true
-                flow: GridView.FlowTopToBottom
+                height: favoriteStickersGridView.height + stickerPickerOverlayItem.menuHeight(favoriteStickersRow)
+                visible: favoriteStickersGridView.count > 0
 
-                model: stickerPickerOverlayItem.favoriteStickers
-                delegate: stickerComponent
+                SilicaGridView {
+                    id: favoriteStickersGridView
+                    property Item menuHost: favoriteStickersRow
+                    width: parent.width
+                    height: Theme.itemSizeExtraLarge + Theme.paddingSmall
+                    cellWidth: Theme.itemSizeExtraLarge;
+                    cellHeight: Theme.itemSizeExtraLarge;
+                    clip: true
+                    flow: GridView.FlowTopToBottom
 
-                HorizontalScrollDecorator {}
+                    model: stickerPickerOverlayItem.favoriteStickers
+                    delegate: stickerComponent
 
+                    HorizontalScrollDecorator {}
+
+                }
             }
             Label {
                 font.pixelSize: Theme.fontSizeLarge
@@ -119,21 +171,28 @@ Item {
                 truncationMode: TruncationMode.Fade
                 text: qsTr("Recently used")
             }
-            SilicaGridView {
-                id: recentStickersGridView
+            Item {
+                id: recentStickersRow
                 width: stickerPickerListView.width
-                height: Theme.itemSizeExtraLarge + Theme.paddingSmall
-                cellWidth: Theme.itemSizeExtraLarge;
-                cellHeight: Theme.itemSizeExtraLarge;
-                visible: count > 0
-                clip: true
-                flow: GridView.FlowTopToBottom
+                height: recentStickersGridView.height + stickerPickerOverlayItem.menuHeight(recentStickersRow)
+                visible: recentStickersGridView.count > 0
 
-                model: stickerPickerOverlayItem.recentStickers
-                delegate: stickerComponent
+                SilicaGridView {
+                    id: recentStickersGridView
+                    property Item menuHost: recentStickersRow
+                    width: parent.width
+                    height: Theme.itemSizeExtraLarge + Theme.paddingSmall
+                    cellWidth: Theme.itemSizeExtraLarge;
+                    cellHeight: Theme.itemSizeExtraLarge;
+                    clip: true
+                    flow: GridView.FlowTopToBottom
 
-                HorizontalScrollDecorator {}
+                    model: stickerPickerOverlayItem.recentStickers
+                    delegate: stickerComponent
 
+                    HorizontalScrollDecorator {}
+
+                }
             }
         }
         delegate: Column {
@@ -220,40 +279,47 @@ Item {
 
             }
 
-            Loader {
-                id: stickerSetLoader
+            Item {
+                id: stickerSetRow
                 width: parent.width
-                active: stickerSetColumn.isExpanded || height > 0
-                height: stickerSetColumn.isExpanded ? Theme.itemSizeExtraLarge + Theme.paddingSmall : 0
-                opacity: stickerSetColumn.isExpanded ? 1.0 : 0.0
+                height: stickerSetLoader.height + stickerPickerOverlayItem.menuHeight(stickerSetRow)
 
-                Behavior on height {
-                    NumberAnimation { duration: 200 }
-                }
-                Behavior on opacity {
-                    NumberAnimation { duration: 200 }
-                }
+                Loader {
+                    id: stickerSetLoader
+                    width: parent.width
+                    active: stickerSetColumn.isExpanded || height > 0
+                    height: stickerSetColumn.isExpanded ? Theme.itemSizeExtraLarge + Theme.paddingSmall : 0
+                    opacity: stickerSetColumn.isExpanded ? 1.0 : 0.0
 
-                property var myStickerSet
-                onActiveChanged: {
-                    if(!active) {
-                        myStickerSet = ({});
+                    Behavior on height {
+                        NumberAnimation { duration: 200 }
                     }
-                }
+                    Behavior on opacity {
+                        NumberAnimation { duration: 200 }
+                    }
 
-                sourceComponent: Component {
-                    SilicaListView {
-                        id: installedStickerSetGridView
-                        width: stickerSetLoader.width
-                        height: stickerSetLoader.height
+                    property var myStickerSet
+                    onActiveChanged: {
+                        if(!active) {
+                            myStickerSet = ({});
+                        }
+                    }
 
-                        orientation: Qt.Horizontal
-                        visible: count > 0
+                    sourceComponent: Component {
+                        SilicaListView {
+                            id: installedStickerSetGridView
+                            property Item menuHost: stickerSetRow
+                            width: stickerSetLoader.width
+                            height: stickerSetLoader.height
 
-                        model: stickerSetLoader.myStickerSet
-                        delegate: stickerComponent
+                            orientation: Qt.Horizontal
+                            visible: count > 0
 
-                        HorizontalScrollDecorator {}
+                            model: stickerSetLoader.myStickerSet
+                            delegate: stickerComponent
+
+                            HorizontalScrollDecorator {}
+                        }
                     }
                 }
             }

@@ -1100,6 +1100,30 @@ void TDLibWrapper::getFavoriteStickers()
     this->sendRequest(requestObject);
 }
 
+void TDLibWrapper::addFavoriteSticker(const QString &fileId)
+{
+    LOG("Adding favorite sticker" << fileId);
+    QVariantMap inputFile;
+    inputFile.insert(_TYPE, "inputFileRemote");
+    inputFile.insert(ID, fileId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "addFavoriteSticker");
+    requestObject.insert("sticker", inputFile);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::removeFavoriteSticker(const QString &fileId)
+{
+    LOG("Removing favorite sticker" << fileId);
+    QVariantMap inputFile;
+    inputFile.insert(_TYPE, "inputFileRemote");
+    inputFile.insert(ID, fileId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "removeFavoriteSticker");
+    requestObject.insert("sticker", inputFile);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::getInstalledStickerSets()
 {
     LOG("Retrieving installed sticker sets");
