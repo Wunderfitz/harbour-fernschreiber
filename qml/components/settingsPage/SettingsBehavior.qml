@@ -186,6 +186,17 @@ AccordionItem {
                 }
             }
 
+            TextSwitch {
+                width: parent.columnWidth
+                checked: appSettings.recentReactionsFirst
+                text: qsTr("Show recent reactions first")
+                description: qsTr("The reactions you used most recently are shown first when you choose a reaction. Long-press one of them to clear the list.")
+                automaticCheck: false
+                onClicked: {
+                    appSettings.recentReactionsFirst = !checked
+                }
+            }
+
             ComboBox {
                 id: feedbackComboBox
                 width: parent.columnWidth

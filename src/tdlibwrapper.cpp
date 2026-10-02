@@ -2462,6 +2462,7 @@ void TDLibWrapper::handleActiveEmojiReactionsUpdated(const QStringList& emojis)
     if (activeEmojiReactions != emojis) {
         activeEmojiReactions = emojis;
         LOG(emojis.count() << "reaction(s) available");
+        appSettings->removeInactiveRecentReactions(emojis);
         emit reactionsUpdated();
     }
 }

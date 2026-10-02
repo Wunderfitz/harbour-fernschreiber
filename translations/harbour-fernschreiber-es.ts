@@ -1377,6 +1377,10 @@
         <translation>Mensaje borrado</translation>
     </message>
     <message>
+        <source>Clear recent reactions</source>
+        <translation>Borrar las reacciones recientes</translation>
+    </message>
+    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Copiar</translation>
     </message>
@@ -2047,6 +2051,14 @@
     <message>
         <source>Show reaction button on tap</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show recent reactions first</source>
+        <translation>Mostrar primero las reacciones recientes</translation>
+    </message>
+    <message>
+        <source>The reactions you used most recently are shown first when you choose a reaction. Long-press one of them to clear the list.</source>
+        <translation>Las reacciones que usaste más recientemente se muestran primero al elegir una reacción. Mantén pulsada una de ellas para borrar la lista.</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>

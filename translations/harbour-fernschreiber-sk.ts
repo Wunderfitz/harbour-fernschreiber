@@ -1393,6 +1393,10 @@
         <translation>Správa bola odstránená</translation>
     </message>
     <message>
+        <source>Clear recent reactions</source>
+        <translation>Vymazať nedávne reakcie</translation>
+    </message>
+    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Kopírovať správu do schránky</translation>
     </message>
@@ -2077,6 +2081,14 @@
     <message>
         <source>Show reaction button on tap</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show recent reactions first</source>
+        <translation>Zobraziť najprv nedávne reakcie</translation>
+    </message>
+    <message>
+        <source>The reactions you used most recently are shown first when you choose a reaction. Long-press one of them to clear the list.</source>
+        <translation>Naposledy použité reakcie sa pri výbere reakcie zobrazia ako prvé. Podržaním jednej z nich zoznam vymažete.</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>

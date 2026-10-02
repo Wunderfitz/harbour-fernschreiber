@@ -1393,6 +1393,10 @@
         <translation>Wiadomość usunięta</translation>
     </message>
     <message>
+        <source>Clear recent reactions</source>
+        <translation>Wyczyść ostatnie reakcje</translation>
+    </message>
+    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Skopiuj wiadomość do schowka</translation>
     </message>
@@ -2077,6 +2081,14 @@
     <message>
         <source>Show reaction button on tap</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show recent reactions first</source>
+        <translation>Pokazuj najpierw ostatnie reakcje</translation>
+    </message>
+    <message>
+        <source>The reactions you used most recently are shown first when you choose a reaction. Long-press one of them to clear the list.</source>
+        <translation>Ostatnio używane reakcje są wyświetlane jako pierwsze podczas wybierania reakcji. Przytrzymaj jedną z nich, aby wyczyścić listę.</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>

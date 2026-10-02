@@ -1363,6 +1363,10 @@
         <translation>Üzenet törölve</translation>
     </message>
     <message>
+        <source>Clear recent reactions</source>
+        <translation>Legutóbbi reakciók törlése</translation>
+    </message>
+    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Üzenet másolása vágólapra</translation>
     </message>
@@ -2022,6 +2026,14 @@
     <message>
         <source>Show reaction button on tap</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show recent reactions first</source>
+        <translation>Legutóbbi reakciók elöl</translation>
+    </message>
+    <message>
+        <source>The reactions you used most recently are shown first when you choose a reaction. Long-press one of them to clear the list.</source>
+        <translation>A legutóbb használt reakciók jelennek meg elöl, amikor reakciót választ. Nyomjon hosszan egyet közülük a lista törléséhez.</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>

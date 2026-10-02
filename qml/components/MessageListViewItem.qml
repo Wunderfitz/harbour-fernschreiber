@@ -25,8 +25,14 @@ import "../js/debug.js" as Debug
 
 ListItem {
     id: messageListItem
+    // The menu for the recent reactions isn't the item's own, so it has to make room for it
     contentHeight: messageBackground.height + Theme.paddingMedium + ( reactionsColumn.visible ? reactionsColumn.height : 0 )
-    Behavior on contentHeight { NumberAnimation { duration: 200 } }
+                   + ( recentReactionsMenu.parent === messageListItem ? recentReactionsMenu.height : 0 )
+    Behavior on contentHeight {
+        // The menu animates itself, the room for it has to keep up
+        enabled: recentReactionsMenu.parent !== messageListItem
+        NumberAnimation { duration: 200 }
+    }
     property var chatId
     property var messageId
     property int messageIndex
@@ -120,7 +126,7 @@ ListItem {
     function openReactions() {
         if (messageListItem.chatReactions) {
             Debug.log("Using chat reactions")
-            messageListItem.messageReactions = chatReactions
+            messageListItem.messageReactions = appSettings.reactionsInOrder(chatReactions)
             showItemCompletelyTimer.requestedIndex = index;
             showItemCompletelyTimer.start();
         } else {
@@ -306,7 +312,7 @@ ListItem {
             if (messageListItem.messageId === messageId &&
                     pageStack.currentPage === chatPage) {
                 Debug.log("Available reactions for this message: " + reactions);
-                messageListItem.messageReactions = reactions;
+                messageListItem.messageReactions = appSettings.reactionsInOrder(reactions);
                 showItemCompletelyTimer.requestedIndex = messageIndex;
                 showItemCompletelyTimer.start();
             } else {
@@ -822,6 +828,14 @@ ListItem {
 
                         MouseArea {
                             anchors.fill: parent
+                            onPressAndHold: {
+                                if (appSettings.recentReactionsFirst && appSettings.hasRecentReactions()) {
+                                    recentReactionsMenu.open(messageListItem)
+                                } else {
+                                    // Released, it still picks the reaction
+                                    mouse.accepted = false
+                                }
+                            }
                             onClicked: {
                                 for (var i = 0; i < reactions.length; i++) {
                                     var reaction = reactions[i]
@@ -838,12 +852,25 @@ ListItem {
                                 }
                                 // Reaction is not yet selected
                                 tdLibWrapper.addMessageReaction(chatId, messageId, modelData)
+                                appSettings.addRecentReaction(modelData)
                                 messageReactions = null
                                 selectReactionBubble.enabled = false
                             }
                         }
                     }
                 }
+            }
+        }
+    }
+
+    ContextMenu {
+        id: recentReactionsMenu
+        MenuItem {
+            text: qsTr("Clear recent reactions")
+            onClicked: {
+                appSettings.clearRecentReactions()
+                // Show the reactions in their usual order again
+                openReactions()
             }
         }
     }
