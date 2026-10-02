@@ -29,7 +29,7 @@
 - Show the chat with yourself as Saved Messages – contribution by Andreas Horn
 - Show duration and success of (video) calls – contribution by Simon Schmeisser
 - Privacy settings for bio, birthdate and calls
-- Record voice notes with Opus instead of Vorbis
+- Record voice notes with Opus instead of Vorbis (where the device supports it)
 - Updated rlottie library (for animated stickers)
 - Fix: reaction selection for chats without a fixed set of reactions
 - Fix: editing group member permissions for messages and media

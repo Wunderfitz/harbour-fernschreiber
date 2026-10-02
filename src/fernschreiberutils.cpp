@@ -142,10 +142,16 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent)
         temporaryDirectory.mkpath(temporaryDirectoryPath);
     }
 
-    LOG("Supported audio codecs:" << this->audioRecorder.supportedAudioCodecs() << "containers:" << this->audioRecorder.supportedContainers());
+    const QStringList supportedAudioCodecs = this->audioRecorder.supportedAudioCodecs();
+    LOG("Supported audio codecs:" << supportedAudioCodecs << "containers:" << this->audioRecorder.supportedContainers());
+
+    // Opus is what Telegram itself uses for voice notes, but the encoder is
+    // only available on newer Sailfish OS releases (5.1+)
+    const QString audioCodec = supportedAudioCodecs.contains("audio/opus") ? QStringLiteral("audio/opus") : QStringLiteral("audio/vorbis");
+    LOG("Recording voice notes with" << audioCodec);
 
     QAudioEncoderSettings encoderSettings;
-    encoderSettings.setCodec("audio/opus");
+    encoderSettings.setCodec(audioCodec);
     encoderSettings.setChannelCount(1);
     encoderSettings.setQuality(QMultimedia::LowQuality);
     this->audioRecorder.setEncodingSettings(encoderSettings);
