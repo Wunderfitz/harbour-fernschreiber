@@ -2572,7 +2572,7 @@ QVariantMap& TDLibWrapper::fillTdlibParameters(QVariantMap& parameters)
     QSettings hardwareSettings("/etc/hw-release", QSettings::NativeFormat);
     parameters.insert("device_model", hardwareSettings.value("NAME", "Unknown Mobile Device").toString());
     parameters.insert("system_version", QSysInfo::prettyProductName());
-    parameters.insert("application_version", "0.19");
+    parameters.insert("application_version", "0.20");
     if (versionNumber <= VERSION_NUMBER(1,8,22)) {
         // Replaced with the "use_storage_optimizer" option in TdLib 1.8.23,
         // see handleStorageOptimizerChanged()
