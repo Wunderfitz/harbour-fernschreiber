@@ -42,10 +42,20 @@ Item {
             readonly property int imageStatus: chatPictureDetail.imageStatus
             width: bigProfilePictureList.itemWidth
             height: bigProfilePictureList.itemHeight
+            // Shown while the big one is loading. Under the first picture
+            // there's already the chat's small one, so no replacement there.
+            ProfileThumbnail {
+                photoData: modelData.sizes[0].photo
+                replacementStringHint: ""
+                showReplacement: index > 0
+                visible: chatPictureDetail.imageStatus !== Image.Ready
+                radius: imageContainer.thumbnailRadius
+                anchors.fill: parent
+            }
             ProfileThumbnail {
                 id: chatPictureDetail
                 photoData: modelData.sizes[modelData.sizes.length - 1].photo
-                replacementStringHint: ""
+                showReplacement: false
                 radius: imageContainer.thumbnailRadius
                 anchors.fill: parent
             }
