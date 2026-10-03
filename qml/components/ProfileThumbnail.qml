@@ -32,6 +32,8 @@ Item {
     property bool highlighted
     // The chat with oneself shows a bookmark instead of one's own picture
     property bool isSavedMessages: false
+    // Off where something else is shown while the picture is loading
+    property bool showReplacement: true
 
     layer.enabled: highlighted
     layer.effect: PressEffect { source: profileThumbnail }
@@ -112,7 +114,7 @@ Item {
     Item {
         width: parent.width - Theme.paddingSmall
         height: parent.height - Theme.paddingSmall
-        visible: !profileImageLoader.item || !profileImageLoader.item.visible
+        visible: profileThumbnail.showReplacement && (!profileImageLoader.item || !profileImageLoader.item.visible)
 
         Rectangle {
             id: replacementThumbnailBackground
