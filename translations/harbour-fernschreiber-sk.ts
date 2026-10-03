@@ -88,34 +88,34 @@
     <name>AddContactPage</name>
     <message>
         <source>Add to Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať do kontaktov</translation>
     </message>
     <message>
         <source>Add</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pridať</translation>
     </message>
     <message>
         <source>Not a Telegram user yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Zatiaľ nie je používateľom Telegramu</translation>
     </message>
     <message>
         <source>First name</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Meno</translation>
     </message>
     <message>
         <source>Last name</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Priezvisko</translation>
     </message>
     <message>
         <source>Save on this device as well</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť aj v tomto zariadení</translation>
     </message>
     <message>
         <source>Adds the contact to the address book of your device</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať kontakt do adresára v tomto zariadení</translation>
     </message>
 </context>
 <context>
@@ -259,37 +259,37 @@
     <message>
         <source>Member Permissions</source>
         <comment>edit a group member&apos;s individual permissions</comment>
-        <translation type="unfinished"></translation>
+        <translation>Povolenia člena</translation>
     </message>
     <message>
         <source>Revoke Write Permission</source>
         <comment>restrict a group member</comment>
-        <translation type="unfinished"></translation>
+        <translation>Odvolať povolenie na zápis</translation>
     </message>
     <message>
         <source>Remove Restrictions</source>
         <comment>lift restrictions from a group member</comment>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť povolenia</translation>
     </message>
     <message>
         <source>Ban from Group</source>
         <comment>ban a group member</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zakázať vstup do skupiny</translation>
     </message>
     <message>
         <source>Banning member</source>
         <comment>remorse timer text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zakázanie člena</translation>
     </message>
     <message>
         <source>Ban and Delete All Messages</source>
         <comment>ban a group member, revoking their messages</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zakázať a odstrániť všetkých členov</translation>
     </message>
     <message>
         <source>Banning member and deleting messages</source>
         <comment>remorse timer text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zakázať člena a odstrániť správy</translation>
     </message>
 </context>
 <context>
@@ -377,82 +377,82 @@
     <message>
         <source>Send Text Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Posielať textovú správu</translation>
     </message>
     <message>
         <source>Send Photos</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Posielať fotografiu</translation>
     </message>
     <message>
         <source>Send Videos</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Posielať video</translation>
     </message>
     <message>
         <source>Send Music &amp; Audio Files</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Posielať hudbu a zvukové súbory</translation>
     </message>
     <message>
         <source>Send Files</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Posielať súbory</translation>
     </message>
     <message>
         <source>Send Voice Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Posielať zvukovú správu</translation>
     </message>
     <message>
         <source>Send Video Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Posielať video správu</translation>
     </message>
     <message>
         <source>Send Polls</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Posielať anketu</translation>
     </message>
     <message>
         <source>Send Stickers, GIFs &amp; Games</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Posielať nálepky, obrázky GIF a hry</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Pridávať náhľad webovej stránky</translation>
+        <translation>Pridávať náhľad webovej stránky</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Meniť informácie o čete</translation>
+        <translation>Meniť informácie o čete</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Pozývať používateľov</translation>
+        <translation>Pozývať používateľov</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Pripínať správu</translation>
+        <translation>Pripínať správu</translation>
     </message>
     <message>
         <source>Save</source>
         <comment>member permissions dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť</translation>
     </message>
     <message>
         <source>What can this member do?</source>
         <comment>member permissions dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Čo môže robiť tento člen?</translation>
     </message>
     <message>
         <source>Not allowed by the group&apos;s default permissions</source>
         <comment>member permissions dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zakázané predvolenými povoleniami skupiny</translation>
     </message>
 </context>
 <context>
@@ -654,11 +654,11 @@
     </message>
     <message>
         <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
-        <translation type="unfinished"></translation>
+        <translation>Skutočne chcete odstrániť tento čet? Táto akcia sa nedá vrátiť späť a navždy stratíte celú konverzáciu!</translation>
     </message>
     <message>
         <source>Obtaining Position...</source>
-        <translation type="unfinished"></translation>
+        <translation>Získavanie polohy...</translation>
     </message>
     <message numerus="yes">
         <source>%Ln files</source>
@@ -758,11 +758,11 @@
     <name>DeviceContacts</name>
     <message>
         <source>%1 is already in the contacts of your device.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 už je v kontaktoch na tomto zariadení.</translation>
     </message>
     <message>
         <source>Could not save the contact on your device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nemožno uložiť kontakt v tomto zariadení.</translation>
     </message>
 </context>
 <context>
@@ -838,317 +838,317 @@
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>som poslal obrázok</translation>
+        <translation>som poslal(a) obrázok</translation>
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>poslal obrázok</translation>
+        <translation>poslal(a) obrázok</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>som poslal video</translation>
+        <translation>som poslal(a) video</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>poslal video</translation>
+        <translation>poslal(a) video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>som poslal animáciu</translation>
+        <translation>som poslal(a) animáciu</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>poslal animáciu</translation>
+        <translation>poslal(a) animáciu</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>poslal hlasovú správu</translation>
+        <translation>poslal(a) hlasovú správu</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>som poslal dokument</translation>
+        <translation>som poslal(a) dokument</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>poslal dokument</translation>
+        <translation>poslal(a) dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>som poslal polohu</translation>
+        <translation>som poslal(a) polohu</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>poslal polohu</translation>
+        <translation>poslal(a) polohu</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
         <comment>myself</comment>
-        <translation>som sa registroval pomocou Telegramu</translation>
+        <translation>som sa registroval(a) pomocou Telegramu</translation>
     </message>
     <message>
         <source>has registered with Telegram</source>
-        <translation>registrovaný pomocou Telegramu</translation>
+        <translation>registrovaný(á) pomocou Telegramu</translation>
     </message>
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>som sa pripojil do tohto četu</translation>
+        <translation>som sa pripojil(a) do tohto četu</translation>
     </message>
     <message>
         <source>joined this chat</source>
-        <translation>sa pripojil do tohto četu</translation>
+        <translation>sa pripojil(a) do tohto četu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>som bol pridaný do tohto četu</translation>
+        <translation>som bol(a) pridaný(á) do tohto četu</translation>
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>bol pridaný do tohto četu</translation>
+        <translation>bol(a) pridaný(á) do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>som opustil tento čet</translation>
+        <translation>som opustil(a) tento čet</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>opustil tento čet</translation>
+        <translation>opustil(a) tento čet</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>som poslal hlasovú poznámku</translation>
+        <translation>som poslal(a) hlasovú poznámku</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>som poslal miesto stretnutia</translation>
+        <translation>som poslal(a) miesto stretnutia</translation>
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>poslal miesto stretnutia</translation>
+        <translation>poslal(a) miesto stretnutia</translation>
     </message>
     <message>
         <source>changed the chat title</source>
         <comment>myself</comment>
-        <translation>som zmenil názov četu</translation>
+        <translation>som zmenil(a) názov četu</translation>
     </message>
     <message>
         <source>changed the chat title</source>
-        <translation>zmenil názov četu</translation>
+        <translation>zmenil(a) názov četu</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>som poslal prieskum</translation>
+        <translation>som poslal(a) anketu</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation>poslal prieskum</translation>
+        <translation>poslal(a) anketu</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>som poslal kvíz</translation>
+        <translation>som poslal(a) kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation>poslal kvíz</translation>
+        <translation>poslal(a) kvíz</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>som vytvoril túto skupinu</translation>
+        <translation>som vytvoril(a) túto skupinu</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation>vytvoril túto skupinu</translation>
+        <translation>vytvoril(a) túto skupinu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>som zmenil fotografiu četu</translation>
+        <translation>som zmenil(a) fotografiu četu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation>zmenil fotografiu četu</translation>
+        <translation>zmenil(a) fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>som odstránil fotografiu četu</translation>
+        <translation>som odstránil(a) fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>odstránil fotografiu četu</translation>
+        <translation>odstránil(a) fotografiu četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself</comment>
-        <translation>som zmenil nastavenia TTL dôverného četu</translation>
+        <translation>som zmenil(a) nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
-        <translation>zmenil nastavenia TTL dôverného četu</translation>
+        <translation>zmenil(a) nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>som aktualizoval túto skupinu na super-skupinu</translation>
+        <translation>som aktualizoval(a) túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>som zmenil pripnutú správu</translation>
+        <translation>som zmenil(a) pripnutú správu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation>zmenil pripnutú správu</translation>
+        <translation>zmenil(a) pripnutú správu</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>som vytvoril snímku obrazovky v tomto čete</translation>
+        <translation>som vytvoril(a) snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>vytvoril snímku obrazovky v tomto čete</translation>
+        <translation>vytvoril(a) snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>som poslal nepodporovanú správu</translation>
+        <translation>som poslal(a) nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation>poslal nepodporovanú správu</translation>
+        <translation>poslal(a) nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
-        <translation>poslal nepodporovanú správu: %1</translation>
+        <translation>poslal(a) nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation>aktualizoval túto skupinu na super-skupinu</translation>
+        <translation>aktualizoval(a) túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>som poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
+        <translation>som poslal(a) samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>som poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
+        <translation>som poslal(a) samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
+        <translation>poslal(a) samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself</comment>
-        <translation>som poslal nepodporovanú správu: %1</translation>
+        <translation>som poslal(a) nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
+        <translation>poslal(a) samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>som poslal zvuk</translation>
+        <translation>som poslal(a) zvukový záznam</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>poslal zvuk</translation>
+        <translation>poslal(a) zvukový záznam</translation>
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>pridal %1 do četu</translation>
+        <translation>pridal(a) %1 do četu</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>odstránil %1 z četu</translation>
+        <translation>odstránil(a) %1 z četu</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>som pridal %1 do četu</translation>
+        <translation>som pridal(a) %1 do četu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>som odstránil %1 z četu</translation>
+        <translation>som odstránil(a) %1 z četu</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>som získal %Ln bod</numerusform>
-            <numerusform>som získal %Ln body</numerusform>
-            <numerusform>som získal %Ln bodov</numerusform>
+            <numerusform>som získal(a) %Ln bod</numerusform>
+            <numerusform>som získal(a) %Ln body</numerusform>
+            <numerusform>som získal(a) %Ln bodov</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <translation>
-            <numerusform>získal %Ln bod</numerusform>
-            <numerusform>získal %Ln body</numerusform>
-            <numerusform>získal %Ln bodov</numerusform>
+            <numerusform>získal(a) %Ln bod</numerusform>
+            <numerusform>získal(a) %Ln body</numerusform>
+            <numerusform>získal(a) %Ln bodov</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>som poslal hru</translation>
+        <translation>som poslal(a) hru</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>poslal hru</translation>
+        <translation>poslal(a) hru</translation>
     </message>
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>som poslal video-poznámku</translation>
+        <translation>som poslal(a) video-poznámku</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation>poslal video-poznámku</translation>
+        <translation>poslal(a) video-poznámku</translation>
     </message>
     <message>
         <source>shared the contact %1</source>
         <comment>myself; %1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>som poskytol(la) kontakt %1</translation>
     </message>
     <message>
         <source>shared the contact %1</source>
         <comment>%1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>poskytol(la) kontakt %1</translation>
     </message>
     <message>
         <source>have added the option “%1” to a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>som pridal(a) možnosť „%1“ do ankety</translation>
     </message>
     <message>
         <source>has added the option “%1” to a poll</source>
-        <translation type="unfinished"></translation>
+        <translation>pridal(a) možnosť „%1“ do ankety</translation>
     </message>
     <message>
         <source>have removed the option “%1” from a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>som odstránil(a) možnosť „%1“ z ankety</translation>
     </message>
     <message>
         <source>has removed the option “%1” from a poll</source>
-        <translation type="unfinished"></translation>
+        <translation>odstránil(a) možnosť „%1“ z ankety</translation>
     </message>
     <message>
         <source>%1 h %2 min</source>
@@ -1168,74 +1168,74 @@
     <message>
         <source>tried to video call</source>
         <comment>myself</comment>
-        <translation>som sa pokúsil uskutočniť videohovor</translation>
+        <translation>som sa pokúsil(a) uskutočniť videohovor</translation>
     </message>
     <message>
         <source>tried to video call you</source>
-        <translation>sa mi pokúsil zavolať cez videohovor</translation>
+        <translation>sa mi pokúsil(a) zavolať cez videohovor</translation>
     </message>
     <message>
         <source>tried to call</source>
         <comment>myself</comment>
-        <translation>som sa pokúsil zavolať</translation>
+        <translation>som sa pokúsil(a) zavolať</translation>
     </message>
     <message>
         <source>tried to call you</source>
-        <translation>sa mi pokúsil zavolať</translation>
+        <translation>sa mi pokúsil(a) zavolať</translation>
     </message>
     <message>
         <source>tried to video call, but the call was declined</source>
         <comment>myself</comment>
-        <translation>som sa pokúsil uskutočniť videohovor, ale hovor bol odmietnutý</translation>
+        <translation>som sa pokúsil(a) uskutočniť videohovor, ale hovor bol odmietnutý</translation>
     </message>
     <message>
         <source>tried to video call you, but you declined the call</source>
-        <translation>sa mi pokúsil zavolať cez videohovor, ale hovor som odmietol</translation>
+        <translation>sa mi pokúsil(a) zavolať cez videohovor, ale hovor som odmietol</translation>
     </message>
     <message>
         <source>tried to call, but the call was declined</source>
         <comment>myself</comment>
-        <translation>som sa pokúsil zavolať, ale hovor bol odmietnutý</translation>
+        <translation>som sa pokúsil(a) zavolať, ale hovor bol odmietnutý</translation>
     </message>
     <message>
         <source>tried to call you, but you declined the call</source>
-        <translation>sa mi pokúsil zavolať, ale hovor som odmietol</translation>
+        <translation>sa mi pokúsil(a) zavolať, ale hovor som odmietol</translation>
     </message>
     <message>
         <source>were in an interrupted video call</source>
         <comment>myself</comment>
-        <translation>som bol v prerušenom videohovore</translation>
+        <translation>som bol(a) prerušený(á) vo videohovore</translation>
     </message>
     <message>
         <source>was in an interrupted video call with you</source>
-        <translation>bol so mnou v prerušenom videohovore</translation>
+        <translation>bol(a) so mnou v prerušenom videohovore</translation>
     </message>
     <message>
         <source>were in an interrupted call</source>
         <comment>myself</comment>
-        <translation>som bol v prerušenom hovore</translation>
+        <translation>som bol(a) prerušený v hovore</translation>
     </message>
     <message>
         <source>was in an interrupted call with you</source>
-        <translation>bol so mnou v prerušenom hovore</translation>
+        <translation>bol(a) so mnou v prerušenom hovore</translation>
     </message>
     <message>
         <source>made a video call</source>
         <comment>myself</comment>
-        <translation>som uskutočnil videohovor</translation>
+        <translation>som uskutočnil(a) videohovor</translation>
     </message>
     <message>
         <source>video called you</source>
-        <translation>mi volal cez videohovor</translation>
+        <translation>mi volal(a) cez videohovor</translation>
     </message>
     <message>
         <source>made a call</source>
         <comment>myself</comment>
-        <translation>som uskutočnil hovor</translation>
+        <translation>som uskutočnil(a) hovor</translation>
     </message>
     <message>
         <source>called you</source>
-        <translation>mi volal</translation>
+        <translation>mi volal(a)</translation>
     </message>
 </context>
 <context>
@@ -1351,15 +1351,15 @@
     <name>MessageContact</name>
     <message>
         <source>Add to Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať do kontaktov</translation>
     </message>
     <message>
         <source>%1 was added to your contacts.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 bol(a) pridaný(á) do kontaktov.</translation>
     </message>
     <message>
         <source>Not a Telegram user yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie je používateľom Telegramu</translation>
     </message>
 </context>
 <context>
@@ -1407,7 +1407,7 @@
     <message>
         <source>Sponsor</source>
         <comment>author name of a sponsored message that does not name its sponsor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podporovateľ</translation>
     </message>
 </context>
 <context>
@@ -1420,38 +1420,38 @@
         <source>scored %Ln points in %2</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>som získal %Ln bod v %2</numerusform>
-            <numerusform>som získal %Ln body v %2</numerusform>
-            <numerusform>som získal %Ln bodov v %2</numerusform>
+            <numerusform>som získal(a) %Ln bod v %2</numerusform>
+            <numerusform>som získal(a) %Ln body v %2</numerusform>
+            <numerusform>som získal(a) %Ln bodov v %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points in %2</source>
         <translation>
-            <numerusform>získal %Ln bod v %2</numerusform>
-            <numerusform>získal %Ln body v %2</numerusform>
-            <numerusform>získal %Ln bodov v %2</numerusform>
+            <numerusform>získal(a) %Ln bod v %2</numerusform>
+            <numerusform>získal(a) %Ln body v %2</numerusform>
+            <numerusform>získal(a) %Ln bodov v %2</numerusform>
         </translation>
     </message>
     <message>
         <source>have added the option “%1” to the poll %2</source>
         <comment>myself; %1 is the added poll option, %2 the poll it was added to</comment>
-        <translation type="unfinished"></translation>
+        <translation>som pridal(a) možnosť „%1“ do ankety %2</translation>
     </message>
     <message>
         <source>has added the option “%1” to the poll %2</source>
         <comment>%1 is the added poll option, %2 the poll it was added to</comment>
-        <translation type="unfinished"></translation>
+        <translation>pridal(a) možnosť „%1“ do ankety %2</translation>
     </message>
     <message>
         <source>have removed the option “%1” from the poll %2</source>
         <comment>myself; %1 is the removed poll option, %2 the poll it was removed from</comment>
-        <translation type="unfinished"></translation>
+        <translation>som odstránil(a) možnosť „%1“ z ankety %2</translation>
     </message>
     <message>
         <source>has removed the option “%1” from the poll %2</source>
         <comment>%1 is the removed poll option, %2 the poll it was removed from</comment>
-        <translation type="unfinished"></translation>
+        <translation>odstránil(a) možnosť „%1“ z ankety %2</translation>
     </message>
 </context>
 <context>
@@ -1476,7 +1476,7 @@
     <name>MessagePoll</name>
     <message>
         <source>Close Poll</source>
-        <translation>Zatvoriť prieskum</translation>
+        <translation>Zatvoriť anketu</translation>
     </message>
     <message>
         <source>Reset Answer</source>
@@ -1510,7 +1510,7 @@
     </message>
     <message>
         <source>Add an Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať možnosť</translation>
     </message>
 </context>
 <context>
@@ -1704,12 +1704,12 @@
     </message>
     <message>
         <source>A poll requires 2-10 answers.</source>
-        <translation>Prieskum vyžaduje od 2 do 10 odpovedí.</translation>
+        <translation>Anketa vyžaduje od 2 do 10 odpovedí.</translation>
     </message>
     <message>
         <source>Create a Poll</source>
         <comment>Dialog Header</comment>
-        <translation>Vytvoriť prieskum</translation>
+        <translation>Vytvoriť anketu</translation>
     </message>
     <message>
         <source>in %1</source>
@@ -1752,7 +1752,7 @@
     <message>
         <source>Poll Options</source>
         <comment>Section header</comment>
-        <translation>Možnosti prieskumu</translation>
+        <translation>Možnosti ankety</translation>
     </message>
     <message>
         <source>Anonymous answers</source>
@@ -1788,20 +1788,20 @@
     <message>
         <source>Add an Option</source>
         <comment>Dialog Header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pridať možnosť</translation>
     </message>
     <message>
         <source>to %1</source>
         <comment>After dialog header… Add an Option to [poll question]</comment>
-        <translation type="unfinished"></translation>
+        <translation>do %1</translation>
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation type="unfinished">Tu uveďte odpoveď</translation>
+        <translation>Tu uviesť odpoveď</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Odpoveď (zostáva %Ln znak)</numerusform>
             <numerusform>Odpoveď (zostáva %Ln znaky))</numerusform>
             <numerusform>Odpoveď (zostáva %Ln znakov)</numerusform>
@@ -1809,7 +1809,7 @@
     </message>
     <message>
         <source>Everybody in this chat can see who added which answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Všetci členovia tohto četu môžu vidieť kto pridal túto možnosť.</translation>
     </message>
 </context>
 <context>
@@ -1820,7 +1820,7 @@
     </message>
     <message>
         <source>Poll Results</source>
-        <translation>Výsledky prieskumu</translation>
+        <translation>Výsledky ankety</translation>
     </message>
     <message numerus="yes">
         <source>%Ln vote(s) total</source>
@@ -1953,11 +1953,11 @@
     </message>
     <message>
         <source>Animate stickers in the sticker picker</source>
-        <translation type="unfinished"></translation>
+        <translation>Animovať nálepky vo výbere</translation>
     </message>
     <message>
         <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prehrávať animované nálepky počas výberu na odoslanie. Zvýši spotrebu akumulátora a dát.</translation>
     </message>
     <message>
         <source>Show profile info for saved messages</source>
@@ -2076,43 +2076,43 @@
     </message>
     <message>
         <source>Show reaction button on tap</source>
-        <translation type="unfinished"></translation>
+        <translation>Po klepnutí zobraziť tlačidlo reakcie</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Po klepnutí na bublinu správy sa môže zobraziť tlačidlo reakcie, aby bol prístup k reakciám ešte jednoduchší.</translation>
     </message>
     <message>
         <source>Show chat deletion menu item</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť položku ponuky na odstránenie rozhovoru</translation>
     </message>
     <message>
         <source>Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstránenie chatu je nevratné a zriedka potrebné. Vypnite, ak nechcete aby zaradilo do sťahovacieho menu.</translation>
     </message>
     <message>
         <source>Autoplay animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky prehrávať animácie</translation>
     </message>
     <message>
         <source>Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky prehrávať animované súbory GIF. Na niektorých zariadeniach je známe, že to spôsobuje zlyhania v mediálnom subsystéme; vypnúť, ak je to váš prípad.</translation>
     </message>
     <message>
         <source>Hide sender when forwarding</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryť odosielateľa pri postúpení</translation>
     </message>
     <message>
         <source>Forwarded messages are sent as copies, without showing who they are forwarded from.</source>
-        <translation type="unfinished"></translation>
+        <translation>Postúpená správa sa pošle ako kópia bez zobrazenia pôvodného autora.</translation>
     </message>
     <message>
         <source>Hide captions when forwarding</source>
-        <translation type="unfinished"></translation>
+        <translation>Pri postúpení skryť titulky</translation>
     </message>
     <message>
         <source>Captions of forwarded media are left out. Only available when the sender is hidden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Titulky postúpených médií sú vynechané. Táto možnoť je dostupná iba ak je odosielateľ skrytý.</translation>
     </message>
 </context>
 <context>
@@ -2198,39 +2198,39 @@
     </message>
     <message>
         <source>Show bio</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť životopis</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your bio is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenie súkromia na správu viditeľnosti vášho životopisu.</translation>
     </message>
     <message>
         <source>Show birthdate</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť dátum narodenia</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your birthdate is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenie súkromia pre zobrazenie vášho dátumu narodenia.</translation>
     </message>
     <message>
         <source>Allow calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Povoliť volania</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be called.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenie súkromia pre správu povolenia prichádzajúcich volaní.</translation>
     </message>
     <message>
         <source>Allow peer-to-peer calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolenie priamych volaní</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether peer-to-peer connections can be used for calls.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenie súkromia per správu povolenia priameho spojenia na volania.</translation>
     </message>
     <message>
         <source>Exceptions for single users or chats, e.g. made in other Telegram apps, are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>Výnimky pre jednotlivých používateľov alebo čety, napr. vytvorené v iných telegramových aplikáciách, sa uchovávajú.</translation>
     </message>
 </context>
 <context>
@@ -2404,7 +2404,7 @@
     </message>
     <message>
         <source>Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>Obľúbené</translation>
     </message>
     <message>
         <source>Recently used</source>
@@ -2508,31 +2508,31 @@
     </message>
     <message>
         <source>sent a picture</source>
-        <translation>poslal obrázok</translation>
+        <translation>poslal(a) obrázok</translation>
     </message>
     <message>
         <source>sent a video</source>
-        <translation>poslal video</translation>
+        <translation>poslal(a) video</translation>
     </message>
     <message>
         <source>sent an animation</source>
-        <translation>poslal animáciu</translation>
+        <translation>poslal(a) animáciu</translation>
     </message>
     <message>
         <source>sent an audio</source>
-        <translation>poslal zvuk</translation>
+        <translation>poslal(a) zvukový záznam</translation>
     </message>
     <message>
         <source>sent a voice note</source>
-        <translation>poslal hlasovú poznámku</translation>
+        <translation>poslal(a) hlasovú poznámku</translation>
     </message>
     <message>
         <source>sent a document</source>
-        <translation>poslal dokument</translation>
+        <translation>poslal(a) dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
-        <translation>poslal polohu</translation>
+        <translation>poslal(a) polohu</translation>
     </message>
     <message>
         <source>joined this chat</source>
@@ -2540,11 +2540,11 @@
     </message>
     <message>
         <source>was added to this chat</source>
-        <translation>pridaný do tohto četu</translation>
+        <translation>pridaný(á) do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
-        <translation>opustil tento čet</translation>
+        <translation>opustil(a) tento čet</translation>
     </message>
     <message>
         <source>%1M</source>
@@ -2556,47 +2556,47 @@
     </message>
     <message>
         <source>sent a venue</source>
-        <translation>poslal miesto stretnutia</translation>
+        <translation>poslal(a) miesto stretnutia</translation>
     </message>
     <message>
         <source>sent a picture</source>
         <comment>myself</comment>
-        <translation>som poslal obrázok</translation>
+        <translation>som poslal(a) obrázok</translation>
     </message>
     <message>
         <source>sent a video</source>
         <comment>myself</comment>
-        <translation>som poslal video</translation>
+        <translation>som poslal(a) video</translation>
     </message>
     <message>
         <source>sent an animation</source>
         <comment>myself</comment>
-        <translation>som poslal animáciu</translation>
+        <translation>som poslal(a) animáciu</translation>
     </message>
     <message>
         <source>sent an audio</source>
         <comment>myself</comment>
-        <translation>som poslal zvuk</translation>
+        <translation>som poslal(a) zvukový záznam</translation>
     </message>
     <message>
         <source>sent a voice note</source>
         <comment>myself</comment>
-        <translation>som poslal hlasovú poznámku</translation>
+        <translation>som poslal(a) hlasovú poznámku</translation>
     </message>
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>som poslal dokument</translation>
+        <translation>som poslal(a) dokument</translation>
     </message>
     <message>
         <source>sent a location</source>
         <comment>myself</comment>
-        <translation>som poslal polohu</translation>
+        <translation>som poslal(a) polohu</translation>
     </message>
     <message>
         <source>sent a venue</source>
         <comment>myself</comment>
-        <translation>som poslal miesto stretnutia</translation>
+        <translation>som poslal(a) miesto stretnutia</translation>
     </message>
     <message>
         <source>have registered with Telegram</source>
@@ -2605,21 +2605,21 @@
     <message>
         <source>joined this chat</source>
         <comment>myself</comment>
-        <translation>som bol pripojený k tomuto četu</translation>
+        <translation>som bol(a) pripojený(á) k tomuto četu</translation>
     </message>
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
-        <translation>som bol pridaný do tohto četu</translation>
+        <translation>som bol(a) pridaný(á) do tohto četu</translation>
     </message>
     <message>
         <source>left this chat</source>
         <comment>myself</comment>
-        <translation>som opustil tento čet</translation>
+        <translation>som opustil(a) tento čet</translation>
     </message>
     <message>
         <source>was never online</source>
-        <translation>nikdy nebol pripojený</translation>
+        <translation>nikdy nebol pripojený(á)</translation>
     </message>
     <message>
         <source>last online: last month</source>
@@ -2664,47 +2664,47 @@
     <message>
         <source>changed the chat title to %1</source>
         <comment>myself</comment>
-        <translation>som zmenil názov četu na %1</translation>
+        <translation>som zmenil(a) názov četu na %1</translation>
     </message>
     <message>
         <source>changed the chat title to %1</source>
-        <translation>názov četu zmenil na %1</translation>
+        <translation>názov četu zmenil(a) na %1</translation>
     </message>
     <message>
         <source>sent a poll</source>
         <comment>myself</comment>
-        <translation>som poslal prieskum</translation>
+        <translation>som poslal(a) anketu</translation>
     </message>
     <message>
         <source>sent a poll</source>
-        <translation>poslal prieskum</translation>
+        <translation>poslal(a) anketu</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
         <comment>myself</comment>
-        <translation>som poslal anonymný kvíz</translation>
+        <translation>som poslal(a) anonymný kvíz</translation>
     </message>
     <message>
         <source>sent an anonymous quiz</source>
-        <translation>poslal anonymný kvíz</translation>
+        <translation>poslal(a) anonymný kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
         <comment>myself</comment>
-        <translation>som poslal kvíz</translation>
+        <translation>som poslal(a) kvíz</translation>
     </message>
     <message>
         <source>sent a quiz</source>
-        <translation>poslal kvíz</translation>
+        <translation>poslal(a) kvíz</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
         <comment>myself</comment>
-        <translation>som poslal anonymný prieskum</translation>
+        <translation>som poslal(a) anonymnú anketu</translation>
     </message>
     <message>
         <source>sent an anonymous poll</source>
-        <translation>poslal anonymný prieskum</translation>
+        <translation>poslal(a) anonymnú anketu</translation>
     </message>
     <message>
         <source>Anonymous Quiz</source>
@@ -2716,112 +2716,112 @@
     </message>
     <message>
         <source>Anonymous Poll</source>
-        <translation>Anonymný prieskum</translation>
+        <translation>Anonymná anketa</translation>
     </message>
     <message>
         <source>Poll</source>
-        <translation>Prieskum</translation>
+        <translation>Anketa</translation>
     </message>
     <message>
         <source>created this group</source>
         <comment>myself</comment>
-        <translation>som vytvoril túto skupinu</translation>
+        <translation>som vytvoril(a) túto skupinu</translation>
     </message>
     <message>
         <source>created this group</source>
-        <translation>vytvoril túto skupinu</translation>
+        <translation>vytvoril(a) túto skupinu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
         <comment>myself</comment>
-        <translation>som zmenil fotografiu četu</translation>
+        <translation>som zmenil(a) fotografiu četu</translation>
     </message>
     <message>
         <source>changed the chat photo</source>
-        <translation>zmenil fotografiu četu</translation>
+        <translation>zmenil(a) fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
         <comment>myself</comment>
-        <translation>som odstránil fotografiu četu</translation>
+        <translation>som odstránil(a) fotografiu četu</translation>
     </message>
     <message>
         <source>deleted the chat photo</source>
-        <translation>odstránil fotografiu četu</translation>
+        <translation>odstránil(a) fotografiu četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>myself; TTL = Time To Live</comment>
-        <translation>som zmenil nastavenia TTL dôverného četu</translation>
+        <translation>som zmenil(a) nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>changed the secret chat TTL setting</source>
         <comment>TTL = Time To Live</comment>
-        <translation>zmenil nastavenia TTL dôverného četu</translation>
+        <translation>zmenil(a) nastavenia TTL dôverného četu</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
         <comment>myself</comment>
-        <translation>som aktualizoval túto skupinu na super-skupinu</translation>
+        <translation>som aktualizoval(a) túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
         <comment>myself</comment>
-        <translation>som zmenil pripnutú správu</translation>
+        <translation>som zmenil(a) pripnutú správu</translation>
     </message>
     <message>
         <source>changed the pinned message</source>
-        <translation>zmenil pripnutú správu</translation>
+        <translation>zmenil(a) pripnutú správu</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
         <comment>myself</comment>
-        <translation>som vytvoril snímku obrazovky v tomto čete</translation>
+        <translation>som vytvoril(a) snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>created a screenshot in this chat</source>
-        <translation>vytvoril snímku obrazovky v tomto čete</translation>
+        <translation>vytvoril(a) snímku obrazovky v tomto čete</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
         <comment>myself</comment>
-        <translation>som poslal nepodporovanú správu</translation>
+        <translation>som poslal(a) nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message</source>
-        <translation>poslal nepodporovanú správu</translation>
+        <translation>poslal(a) nepodporovanú správu</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>myself; %1 is message type</comment>
-        <translation>som poslal nepodporovanú správu: %1</translation>
+        <translation>som poslal(a) nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
         <comment>%1 is message type</comment>
-        <translation>poslal nepodporovanú správu: %1</translation>
+        <translation>poslal(a) nepodporovanú správu: %1</translation>
     </message>
     <message>
         <source>upgraded this group to a supergroup</source>
-        <translation>aktualizoval túto skupinu na super-skupinu</translation>
+        <translation>aktualizoval(a) túto skupinu na super-skupinu</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>som poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
+        <translation>som poslal(a) samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>poslal samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
+        <translation>poslal(a) samodeštrukčnú fotografiu, ktorej platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>som poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
+        <translation>som poslal(a) samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>poslal samodeštrukčné video, ktorého platnosť vypršala</translation>
+        <translation>poslal(a) samodeštrukčné video, ktorého platnosť vypršala</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
@@ -2830,11 +2830,11 @@
     <message>
         <source>sent a video note</source>
         <comment>myself</comment>
-        <translation>som poslal video-poznámku</translation>
+        <translation>som poslal(a) video-poznámku</translation>
     </message>
     <message>
         <source>sent a video note</source>
-        <translation>poslal video-poznámku</translation>
+        <translation>poslal(a) video-poznámku</translation>
     </message>
     <message>
         <source>You are already a member of this chat.</source>
@@ -2850,69 +2850,69 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>pridal %1 do četu</translation>
+        <translation>pridal(a) %1 do četu</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>odstránil %1 z četu</translation>
+        <translation>odstránil(a) %1 z četu</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
         <comment>myself</comment>
-        <translation>som pridal %1 do četu</translation>
+        <translation>som pridal(a) %1 do četu</translation>
     </message>
     <message>
         <source>have removed %1 from the chat</source>
         <comment>myself</comment>
-        <translation>som odstránil %1 z četu</translation>
+        <translation>som odstránil(a) %1 z četu</translation>
     </message>
     <message numerus="yes">
         <source>scored %Ln points</source>
         <comment>myself</comment>
         <translation>
-            <numerusform>som získal %Ln bod</numerusform>
-            <numerusform>som získal %Ln body</numerusform>
-            <numerusform>som získal %Ln bodov</numerusform>
+            <numerusform>som získal(a) %Ln bod</numerusform>
+            <numerusform>som získal(a) %Ln body</numerusform>
+            <numerusform>som získal(a) %Ln bodov</numerusform>
         </translation>
     </message>
     <message>
         <source>sent a game</source>
         <comment>myself</comment>
-        <translation>som poslal hru</translation>
+        <translation>som poslal(a) hru</translation>
     </message>
     <message>
         <source>sent a game</source>
-        <translation>poslal hru</translation>
+        <translation>poslal(a) hru</translation>
     </message>
     <message>
         <source>shared the contact %1</source>
         <comment>myself; %1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>som poskytol(la) kontakt %1</translation>
     </message>
     <message>
         <source>shared the contact %1</source>
         <comment>%1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>poskytol(la) kontakt %1</translation>
     </message>
     <message>
         <source>have added the option “%1” to a poll</source>
         <comment>myself; %1 is the added poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>som pridal(a) možnosť „%1“ do ankety</translation>
     </message>
     <message>
         <source>has added the option “%1” to a poll</source>
         <comment>%1 is the added poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>pridal(a) možnosť „%1“ do ankety</translation>
     </message>
     <message>
         <source>have removed the option “%1” from a poll</source>
         <comment>myself; %1 is the removed poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>som odstránil(a) možnosť „%1“ z ankety</translation>
     </message>
     <message>
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>odstránil(a) možnosť „%1“ z ankety</translation>
     </message>
     <message>
         <source>%1 h %2 min</source>
@@ -2932,56 +2932,56 @@
     <message>
         <source>tried to video call</source>
         <comment>myself</comment>
-        <translation>som sa pokúsil uskutočniť videohovor</translation>
+        <translation>som sa pokúsil(a) uskutočniť videohovor</translation>
     </message>
     <message>
         <source>tried to video call you</source>
-        <translation>sa mi pokúsil zavolať cez videohovor</translation>
+        <translation>sa mi pokúsil(a) zavolať cez videohovor</translation>
     </message>
     <message>
         <source>tried to call</source>
         <comment>myself</comment>
-        <translation>som sa pokúsil zavolať</translation>
+        <translation>som sa pokúsil(a) zavolať</translation>
     </message>
     <message>
         <source>tried to call you</source>
-        <translation>sa mi pokúsil zavolať</translation>
+        <translation>sa mi pokúsil(a) zavolať</translation>
     </message>
     <message>
         <source>tried to video call, but the call was declined</source>
         <comment>myself</comment>
-        <translation>som sa pokúsil uskutočniť videohovor, ale hovor bol odmietnutý</translation>
+        <translation>som sa pokúsil(a) uskutočniť videohovor, ale hovor bol odmietnutý</translation>
     </message>
     <message>
         <source>tried to video call you, but you declined the call</source>
-        <translation>sa mi pokúsil zavolať cez videohovor, ale hovor som odmietol</translation>
+        <translation>sa mi pokúsil(a) zavolať cez videohovor, ale hovor som odmietol</translation>
     </message>
     <message>
         <source>tried to call, but the call was declined</source>
         <comment>myself</comment>
-        <translation>som sa pokúsil zavolať, ale hovor bol odmietnutý</translation>
+        <translation>som sa pokúsil(a) zavolať, ale hovor bol odmietnutý</translation>
     </message>
     <message>
         <source>tried to call you, but you declined the call</source>
-        <translation>sa mi pokúsil zavolať, ale hovor som odmietol</translation>
+        <translation>sa mi pokúsil(a) zavolať, ale hovor som odmietol</translation>
     </message>
     <message>
         <source>were in an interrupted video call</source>
         <comment>myself</comment>
-        <translation>som bol v prerušenom videohovore</translation>
+        <translation>som bol(a) prerušený vo videohovore</translation>
     </message>
     <message>
         <source>was in an interrupted video call with you</source>
-        <translation>bol so mnou v prerušenom videohovore</translation>
+        <translation>bol(a) so mnou v prerušenom videohovore</translation>
     </message>
     <message>
         <source>were in an interrupted call</source>
         <comment>myself</comment>
-        <translation>som bol v prerušenom hovore</translation>
+        <translation>som bol(a) prerušená v hovore</translation>
     </message>
     <message>
         <source>was in an interrupted call with you</source>
-        <translation>bol so mnou v prerušenom hovore</translation>
+        <translation>bol(a) so mnou v prerušenom hovore</translation>
     </message>
     <message>
         <source>made a video call</source>
