@@ -51,6 +51,7 @@
 - Fix: load link previews that arrive after the message
 - Fix: chat jumping when photos sent from this device are loaded
 - Fix: immediate feedback when attaching a location
+- Updated Slovak translation, thanks to okruhliak
 
 * Sat Aug 22 2026 Sebastian J. Wolf <sebastian@ygriega.de> 0.18
 - Update Emoji support to 17 – contribution by jgibbon
