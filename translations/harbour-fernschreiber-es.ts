@@ -694,13 +694,6 @@
     </message>
 </context>
 <context>
-    <name>ContactSync</name>
-    <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>No se puede sincronizar los contactos con Telegrama.</translation>
-    </message>
-</context>
-<context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
@@ -739,17 +732,6 @@
             <numerusform>mensaje no leído</numerusform>
             <numerusform>mensajes no leídos</numerusform>
         </translation>
-    </message>
-</context>
-<context>
-    <name>DeviceContacts</name>
-    <message>
-        <source>%1 is already in the contacts of your device.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Could not save the contact on your device.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

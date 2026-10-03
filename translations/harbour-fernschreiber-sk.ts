@@ -705,13 +705,6 @@
     </message>
 </context>
 <context>
-    <name>ContactSync</name>
-    <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Nemožno synchonizovať kontakty s Telegramom.</translation>
-    </message>
-</context>
-<context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
@@ -752,17 +745,6 @@
             <numerusform>neprečítané správy</numerusform>
             <numerusform>neprečítaných správ</numerusform>
         </translation>
-    </message>
-</context>
-<context>
-    <name>DeviceContacts</name>
-    <message>
-        <source>%1 is already in the contacts of your device.</source>
-        <translation>%1 už je v kontaktoch na tomto zariadení.</translation>
-    </message>
-    <message>
-        <source>Could not save the contact on your device.</source>
-        <translation>Nemožno uložiť kontakt v tomto zariadení.</translation>
     </message>
 </context>
 <context>

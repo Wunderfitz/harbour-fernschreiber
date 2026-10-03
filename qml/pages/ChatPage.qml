@@ -2002,34 +2002,6 @@ Page {
                                     controlSendButton();
                                 }
                             }
-                            IconButton {
-                                visible: chatPage.hasSendPrivilege("can_send_basic_messages") && newMessageTextField.text === ""
-                                icon.source: "image://theme/icon-m-contact"
-                                onClicked: {
-                                    var picker = pageStack.push("Sailfish.Contacts.ContactSelectPage", {
-                                        allowedOrientations: chatPage.allowedOrientations,
-                                        // PeopleModel.PhoneNumberRequired - org.nemomobile.contacts isn't
-                                        // imported here, the chat page must not depend on it to load
-                                        requiredProperty: 2
-                                    })
-                                    picker.contactClicked.connect(function(contact, property) {
-                                        attachmentOptionsFlickable.isNeeded = false;
-                                        clearAttachmentPreviewRow();
-                                        // Telegram insists on a first name, which not every device contact has
-                                        var firstName = contact.firstName || "";
-                                        var lastName = contact.lastName || "";
-                                        if (firstName === "") {
-                                            firstName = lastName || contact.displayLabel || property.number;
-                                            lastName = "";
-                                        }
-                                        attachmentPreviewRow.contactData = { "firstName" : firstName, "lastName" : lastName, "phoneNumber" : property.number };
-                                        attachmentPreviewRow.isContact = true;
-                                        attachmentPreviewRow.attachmentDescription = Functions.getUserName({ "first_name" : firstName, "last_name" : lastName }) + "\n" + property.number;
-                                        controlSendButton();
-                                        pageStack.pop(chatPage);
-                                    })
-                                }
-                            }
                         }
 
                     }

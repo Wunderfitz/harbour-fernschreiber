@@ -694,13 +694,6 @@
     </message>
 </context>
 <context>
-    <name>ContactSync</name>
-    <message>
-        <source>Could not synchronize your contacts with Telegram.</source>
-        <translation>Impossible de synchroniser vos contacts avec Telegram.</translation>
-    </message>
-</context>
-<context>
     <name>CoverPage</name>
     <message>
         <source>in</source>
@@ -739,17 +732,6 @@
             <numerusform>message non lu</numerusform>
             <numerusform>messages non lus</numerusform>
         </translation>
-    </message>
-</context>
-<context>
-    <name>DeviceContacts</name>
-    <message>
-        <source>%1 is already in the contacts of your device.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Could not save the contact on your device.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
