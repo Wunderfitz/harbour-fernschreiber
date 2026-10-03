@@ -1362,6 +1362,10 @@
         <translation>已删除消息</translation>
     </message>
     <message>
+        <source>Clear recent reactions</source>
+        <translation>清除最近的回应</translation>
+    </message>
+    <message>
         <source>Copy Message to Clipboard</source>
         <translation>复制消息到剪切板</translation>
     </message>
@@ -2018,6 +2022,14 @@
     <message>
         <source>Show reaction button on tap</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show recent reactions first</source>
+        <translation>优先显示最近的回应</translation>
+    </message>
+    <message>
+        <source>The reactions you used most recently are shown first when you choose a reaction. Long-press one of them to clear the list.</source>
+        <translation>选择回应时，最近使用的回应会排在最前面。长按其中一个即可清除列表。</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>

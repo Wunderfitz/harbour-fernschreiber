@@ -1377,6 +1377,10 @@
         <translation>Nachricht gelöscht</translation>
     </message>
     <message>
+        <source>Clear recent reactions</source>
+        <translation>Zuletzt verwendete Reaktionen löschen</translation>
+    </message>
+    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Nachricht in die Zwischenablage kopieren</translation>
     </message>
@@ -2051,6 +2055,14 @@
     <message>
         <source>Show reaction button on tap</source>
         <translation>Reaktionsknopf beim Tippen anzeigen</translation>
+    </message>
+    <message>
+        <source>Show recent reactions first</source>
+        <translation>Zuletzt verwendete Reaktionen zuerst anzeigen</translation>
+    </message>
+    <message>
+        <source>The reactions you used most recently are shown first when you choose a reaction. Long-press one of them to clear the list.</source>
+        <translation>Die zuletzt verwendeten Reaktionen werden bei der Auswahl einer Reaktion zuerst angezeigt. Lange auf eine davon drücken, um die Liste zu löschen.</translation>
     </message>
     <message>
         <source>Show chat deletion menu item</source>

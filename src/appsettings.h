@@ -50,6 +50,7 @@ class AppSettings : public QObject {
     Q_PROPERTY(bool focusTextAreaOnChatOpen READ getFocusTextAreaOnChatOpen WRITE setFocusTextAreaOnChatOpen NOTIFY focusTextAreaOnChatOpenChanged)
     Q_PROPERTY(bool highlightUnreadConversations READ highlightUnreadConversations WRITE setHighlightUnreadConversations NOTIFY highlightUnreadConversationsChanged)
     Q_PROPERTY(bool showReactionButton READ showReactionButton WRITE setShowReactionButton NOTIFY showReactionButtonChanged)
+    Q_PROPERTY(bool recentReactionsFirst READ recentReactionsFirst WRITE setRecentReactionsFirst NOTIFY recentReactionsFirstChanged)
     Q_PROPERTY(bool autoplayAnimatedGifs READ autoplayAnimatedGifs WRITE setAutoplayAnimatedGifs NOTIFY autoplayAnimatedGifsChanged)
     Q_PROPERTY(SponsoredMess sponsoredMess READ getSponsoredMess WRITE setSponsoredMess NOTIFY sponsoredMessChanged)
 
@@ -148,6 +149,14 @@ public:
     bool showReactionButton() const;
     void setShowReactionButton(bool enable);
 
+    bool recentReactionsFirst() const;
+    void setRecentReactionsFirst(bool enable);
+    Q_INVOKABLE void addRecentReaction(const QString &reaction);
+    Q_INVOKABLE bool hasRecentReactions() const;
+    Q_INVOKABLE void clearRecentReactions();
+    void removeInactiveRecentReactions(const QStringList &activeReactions);
+    Q_INVOKABLE QStringList reactionsInOrder(const QStringList &reactions) const;
+
     SponsoredMess getSponsoredMess() const;
     void setSponsoredMess(SponsoredMess sponsoredMess);
 
@@ -181,6 +190,7 @@ signals:
     void focusTextAreaOnChatOpenChanged();
     void highlightUnreadConversationsChanged();
     void showReactionButtonChanged();
+    void recentReactionsFirstChanged();
     void sponsoredMessChanged();
     void autoplayAnimatedGifsChanged();
 

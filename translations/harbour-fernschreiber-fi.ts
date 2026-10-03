@@ -1378,6 +1378,10 @@
         <translation>Viesti poistettu</translation>
     </message>
     <message>
+        <source>Clear recent reactions</source>
+        <translation>Tyhjennä viimeisimmät reaktiot</translation>
+    </message>
+    <message>
         <source>Copy Message to Clipboard</source>
         <translation>Kopioi viesti leikepöydälle</translation>
     </message>
@@ -2048,6 +2052,14 @@
     <message>
         <source>Show reaction button on tap</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show recent reactions first</source>
+        <translation>Näytä viimeisimmät reaktiot ensin</translation>
+    </message>
+    <message>
+        <source>The reactions you used most recently are shown first when you choose a reaction. Long-press one of them to clear the list.</source>
+        <translation>Viimeksi käyttämäsi reaktiot näytetään ensimmäisinä, kun valitset reaktion. Tyhjennä luettelo painamalla jotakin niistä pitkään.</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
