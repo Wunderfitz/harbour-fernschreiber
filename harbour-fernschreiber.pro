@@ -147,6 +147,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/DebugPage.qml \
     qml/pages/InitializationPage.qml \
     qml/pages/MediaAlbumPage.qml \
+    qml/pages/MediaPickerDialog.qml \
     qml/pages/NewChatPage.qml \
     qml/pages/OverviewPage.qml \
     qml/pages/AboutPage.qml \

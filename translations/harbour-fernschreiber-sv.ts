@@ -1332,6 +1332,32 @@
     </message>
 </context>
 <context>
+    <name>MediaPickerDialog</name>
+    <message numerus="yes">
+        <source>%Ln selected</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Photos and videos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Photos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Videos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No photos or videos on this device</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MessageContact</name>
     <message>
         <source>Add to Contacts</source>
