@@ -32,6 +32,16 @@ void DBusAdaptor::openMessage(const QString &chatId, const QString &messageId)
     emit pleaseOpenMessage(chatId, messageId);
 }
 
+// The text typed into the notification's own text field (remote action
+// "reply" with type=input): lipstick appends that text as the last
+// argument of the call. The window is not raised -- not having to open
+// the app is the whole point of replying in the notification.
+void DBusAdaptor::replyToChat(const QString &chatId, const QString &message)
+{
+    LOG("Reply from notification requested for chat" << chatId);
+    emit pleaseReplyToChat(chatId, message);
+}
+
 void DBusAdaptor::openUrl(const QStringList &arguments)
 {
     LOG("Open Url" << arguments);

@@ -46,11 +46,22 @@ public slots:
     void handleUpdateNotification(const QVariantMap &updatedNotification);
     void handleChatDiscovered(const QString &chatId, const QVariantMap &chatInformation);
     void handleChatTitleUpdated(const QString &chatId, const QString &title);
+    // A reply written in the notification's text field (D-Bus: replyToChat).
+    void handleReplyToChat(const QString &chatId, const QString &message);
 
 private:
 
     void publishNotification(const NotificationGroup *notificationGroup, bool needFeedback);
     void controlLedNotification(bool enabled);
+    // True if we may write in this chat: decides whether the notification
+    // offers the "Reply" action (same logic as hasSendPrivilege() in
+    // ChatPage.qml, but in C++ and only for text messages).
+    bool canSendToChat(qlonglong chatId, const ChatInfo *chatInformation) const;
+    void sendReply(qlonglong chatId, const QString &message);
+    void flushPendingReplies();
+    // Id of the last notified message of that chat (0 if unknown): needed
+    // to mark it as viewed when the reply comes from the notification.
+    qlonglong lastNotifiedMessageId(qlonglong chatId) const;
     void updateNotificationGroup(int groupId, qlonglong chatId, int totalCount,
         const QVariantList &addedNotifications,
         const QVariantList &removedNotificationIds = QVariantList(),
@@ -65,6 +76,10 @@ private:
     QMap<qlonglong,ChatInfo*> chatMap;
     QMap<int,NotificationGroup*> notificationGroups;
     QString appIconFile;
+    // Replies that arrived before TDLib was authorized: happens when the
+    // notification action itself started the app (D-Bus activation). They
+    // are sent at the first AuthorizationReady.
+    QList<QPair<qlonglong,QString> > pendingReplies;
 
 };
 
