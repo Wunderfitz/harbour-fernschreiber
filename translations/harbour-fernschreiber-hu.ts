@@ -1478,6 +1478,17 @@
     </message>
 </context>
 <context>
+    <name>MessageSticker</name>
+    <message>
+        <source>Remove from favorites</source>
+        <translation>Eltávolítás a kedvencek közül</translation>
+    </message>
+    <message>
+        <source>Add to favorites</source>
+        <translation>Hozzáadás a kedvencekhez</translation>
+    </message>
+</context>
+<context>
     <name>MessageViaLabel</name>
     <message>
         <source>via %1</source>

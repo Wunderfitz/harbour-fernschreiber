@@ -1517,6 +1517,17 @@
     </message>
 </context>
 <context>
+    <name>MessageSticker</name>
+    <message>
+        <source>Remove from favorites</source>
+        <translation>Удалить из избранного</translation>
+    </message>
+    <message>
+        <source>Add to favorites</source>
+        <translation>Добавить в избранное</translation>
+    </message>
+</context>
+<context>
     <name>MessageViaLabel</name>
     <message>
         <source>via %1</source>

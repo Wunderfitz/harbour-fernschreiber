@@ -29,15 +29,6 @@ Item {
     property var installedStickerSets: stickerManager.getInstalledStickerSets();
     property Item stickerMenu
 
-    function isFavoriteSticker(sticker) {
-        for (var i = 0; i < favoriteStickers.length; i++) {
-            if (favoriteStickers[i].sticker.remote.id === sticker.sticker.remote.id) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     // The menu opens below the full-width row that holds the sticker, as the
     // horizontal sticker lists are only one sticker high
     function openStickerMenu(sticker, menuHost) {
@@ -45,7 +36,7 @@ Item {
             stickerMenu = stickerMenuComponent.createObject(stickerPickerOverlayItem);
         }
         stickerMenu.sticker = sticker;
-        stickerMenu.isFavorite = isFavoriteSticker(sticker);
+        stickerMenu.isFavorite = stickerManager.isFavoriteSticker(sticker.sticker.remote.id);
         stickerMenu.open(menuHost);
     }
 

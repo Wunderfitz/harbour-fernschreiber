@@ -1514,6 +1514,17 @@
     </message>
 </context>
 <context>
+    <name>MessageSticker</name>
+    <message>
+        <source>Remove from favorites</source>
+        <translation>Odstrániť z obľúbených</translation>
+    </message>
+    <message>
+        <source>Add to favorites</source>
+        <translation>Pridať medzi obľúbené</translation>
+    </message>
+</context>
+<context>
     <name>MessageViaLabel</name>
     <message>
         <source>via %1</source>

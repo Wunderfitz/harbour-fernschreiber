@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QVariantMap>
 #include <QVariantList>
+#include <QSet>
 
 #include "tdlibwrapper.h"
 
@@ -35,6 +36,7 @@ public:
 
     Q_INVOKABLE QVariantList getRecentStickers();
     Q_INVOKABLE QVariantList getFavoriteStickers();
+    Q_INVOKABLE bool isFavoriteSticker(const QString &remoteFileId);
     Q_INVOKABLE QVariantList getInstalledStickerSets();
     Q_INVOKABLE QVariantMap getStickerSet(const QString &stickerSetId);
     Q_INVOKABLE bool hasStickerSet(const QString &stickerSetId);
@@ -63,6 +65,7 @@ private:
     QVariantList recentStickers;
     QVariantList recentStickerIds;
     QVariantList favoriteStickers;
+    QSet<QString> favoriteStickerRemoteIds;
     QVariantList installedStickerSets;
     QVariantList installedStickerSetIds;
     QVariantMap stickers;

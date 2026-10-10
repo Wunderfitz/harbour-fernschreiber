@@ -52,6 +52,11 @@ QVariantList StickerManager::getFavoriteStickers()
     return this->favoriteStickers;
 }
 
+bool StickerManager::isFavoriteSticker(const QString &remoteFileId)
+{
+    return this->favoriteStickerRemoteIds.contains(remoteFileId);
+}
+
 QVariantList StickerManager::getInstalledStickerSets()
 {
     return this->installedStickerSets;
@@ -100,6 +105,11 @@ void StickerManager::handleStickersReceived(const QString &extra, const QVariant
     LOG("Receiving stickers...." << extra);
     if (extra == "getFavoriteStickers") {
         this->favoriteStickers = stickers;
+        this->favoriteStickerRemoteIds.clear();
+        QListIterator<QVariant> favoriteStickersIterator(stickers);
+        while (favoriteStickersIterator.hasNext()) {
+            this->favoriteStickerRemoteIds.insert(favoriteStickersIterator.next().toMap().value("sticker").toMap().value("remote").toMap().value("id").toString());
+        }
         emit favoriteStickersChanged();
         return;
     }

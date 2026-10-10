@@ -1494,6 +1494,17 @@
     </message>
 </context>
 <context>
+    <name>MessageSticker</name>
+    <message>
+        <source>Remove from favorites</source>
+        <translation>Remove from favorites</translation>
+    </message>
+    <message>
+        <source>Add to favorites</source>
+        <translation>Add to favorites</translation>
+    </message>
+</context>
+<context>
     <name>MessageViaLabel</name>
     <message>
         <source>via %1</source>

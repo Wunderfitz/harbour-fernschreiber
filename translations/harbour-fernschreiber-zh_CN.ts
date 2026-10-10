@@ -1475,6 +1475,17 @@
     </message>
 </context>
 <context>
+    <name>MessageSticker</name>
+    <message>
+        <source>Remove from favorites</source>
+        <translation>从收藏中移除</translation>
+    </message>
+    <message>
+        <source>Add to favorites</source>
+        <translation>添加到收藏</translation>
+    </message>
+</context>
+<context>
     <name>MessageViaLabel</name>
     <message>
         <source>via %1</source>

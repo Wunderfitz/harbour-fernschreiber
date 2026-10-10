@@ -32,6 +32,35 @@ MessageContentBase {
         animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
     readonly property bool isOwnSticker : messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
     readonly property real aspectRatio: stickerData.width / stickerData.height
+    // Only real stickers (no animated emojis) from a sticker set can be favorites
+    readonly property bool canBeFavorite: rawMessage.content["@type"] === "messageSticker" && stickerData.set_id !== "0"
+    property bool isFavorite
+
+    // Without the action, there is nothing to add to the context menu
+    readonly property var extraContextMenuItems: canBeFavorite ? [ favoriteAction ] : []
+
+    function updateFavorite() {
+        isFavorite = canBeFavorite && stickerManager.isFavoriteSticker(stickerData.sticker.remote.id);
+    }
+
+    Component.onCompleted: updateFavorite()
+
+    NamedAction {
+        id: favoriteAction
+        name: thisItem.isFavorite ? qsTr("Remove from favorites") : qsTr("Add to favorites")
+        action: function () {
+            if (thisItem.isFavorite) {
+                tdLibWrapper.removeFavoriteSticker(stickerData.sticker.remote.id);
+            } else {
+                tdLibWrapper.addFavoriteSticker(stickerData.sticker.remote.id);
+            }
+        }
+    }
+
+    Connections {
+        target: thisItem.canBeFavorite ? stickerManager : null
+        onFavoriteStickersChanged: thisItem.updateFavorite()
+    }
 
     implicitWidth: stickerData.width
     implicitHeight: stickerData.height
