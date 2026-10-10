@@ -88,34 +88,34 @@
     <name>AddContactPage</name>
     <message>
         <source>Add to Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till i Kontakter</translation>
     </message>
     <message>
         <source>Add</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <source>Not a Telegram user yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Inte en Telegram-användare ännu</translation>
     </message>
     <message>
         <source>First name</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Förnamn</translation>
     </message>
     <message>
         <source>Last name</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Efternamn</translation>
     </message>
     <message>
         <source>Save on this device as well</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara på den här enheten också</translation>
     </message>
     <message>
         <source>Adds the contact to the address book of your device</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägger till kontakten i adressboken på din enhet</translation>
     </message>
 </context>
 <context>
@@ -256,37 +256,37 @@
     <message>
         <source>Member Permissions</source>
         <comment>edit a group member&apos;s individual permissions</comment>
-        <translation type="unfinished"></translation>
+        <translation>Medlemsbehörigheter</translation>
     </message>
     <message>
         <source>Revoke Write Permission</source>
         <comment>restrict a group member</comment>
-        <translation type="unfinished"></translation>
+        <translation>Återkalla skrivbehörighet</translation>
     </message>
     <message>
         <source>Remove Restrictions</source>
         <comment>lift restrictions from a group member</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort restriktioner</translation>
     </message>
     <message>
         <source>Ban from Group</source>
         <comment>ban a group member</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bannlys från gruppen</translation>
     </message>
     <message>
         <source>Banning member</source>
         <comment>remorse timer text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bannlyser medlem</translation>
     </message>
     <message>
         <source>Ban and Delete All Messages</source>
         <comment>ban a group member, revoking their messages</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bannlys och ta bort alla meddelanden</translation>
     </message>
     <message>
         <source>Banning member and deleting messages</source>
         <comment>remorse timer text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bannlyser medlem och tar bort meddelanden</translation>
     </message>
 </context>
 <context>
@@ -374,82 +374,82 @@
     <message>
         <source>Send Text Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka textmeddelanden</translation>
     </message>
     <message>
         <source>Send Photos</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka bilder</translation>
     </message>
     <message>
         <source>Send Videos</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka videor</translation>
     </message>
     <message>
         <source>Send Music &amp; Audio Files</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka musik- &amp; ljudfiler</translation>
     </message>
     <message>
         <source>Send Files</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka filer</translation>
     </message>
     <message>
         <source>Send Voice Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka röstmeddelanden</translation>
     </message>
     <message>
         <source>Send Video Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka videomeddelanden</translation>
     </message>
     <message>
         <source>Send Polls</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka omröstningar</translation>
     </message>
     <message>
         <source>Send Stickers, GIFs &amp; Games</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Skicka dekaler, GIF:ar &amp; spel</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Lägga till förhandsvisning av webbsida</translation>
+        <translation>Lägga till förhandsvisning av webbsidor</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Ändra chattinformation</translation>
+        <translation>Ändra chattinformation</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Bjuda in användare</translation>
+        <translation>Bjuda in användare</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Fästa meddelanden</translation>
+        <translation>Fästa meddelanden</translation>
     </message>
     <message>
         <source>Save</source>
         <comment>member permissions dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spara</translation>
     </message>
     <message>
         <source>What can this member do?</source>
         <comment>member permissions dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vad kan den här medlemmen göra?</translation>
     </message>
     <message>
         <source>Not allowed by the group&apos;s default permissions</source>
         <comment>member permissions dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ej tillåtet av gruppens standardbehörigheter</translation>
     </message>
 </context>
 <context>
@@ -644,11 +644,11 @@
     </message>
     <message>
         <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vill du verkligen ta bort den här chatten? Den här åtgärden kan inte ångras och du förlorar hela konversationen för alltid!</translation>
     </message>
     <message>
         <source>Obtaining Position...</source>
-        <translation type="unfinished"></translation>
+        <translation>Hämtar position...</translation>
     </message>
     <message numerus="yes">
         <source>%Ln files</source>
@@ -745,11 +745,11 @@
     <name>DeviceContacts</name>
     <message>
         <source>%1 is already in the contacts of your device.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 finns redan i kontakterna på din enhet.</translation>
     </message>
     <message>
         <source>Could not save the contact on your device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte spara kontakten på din enhet.</translation>
     </message>
 </context>
 <context>
@@ -1110,30 +1110,30 @@
     <message>
         <source>shared the contact %1</source>
         <comment>myself; %1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>delade kontakten %1</translation>
     </message>
     <message>
         <source>shared the contact %1</source>
         <comment>%1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>delade kontakten %1</translation>
     </message>
     <message>
         <source>have added the option “%1” to a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>har lagt till alternativet &quot;%1&quot; i en omröstning</translation>
     </message>
     <message>
         <source>has added the option “%1” to a poll</source>
-        <translation type="unfinished"></translation>
+        <translation>har lagt till alternativet &quot;%1&quot; i en omröstning</translation>
     </message>
     <message>
         <source>have removed the option “%1” from a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>har tagit bort alternativet &quot;%1&quot; från en omröstning</translation>
     </message>
     <message>
         <source>has removed the option “%1” from a poll</source>
-        <translation type="unfinished"></translation>
+        <translation>har tagit bort alternativet &quot;%1&quot; från en omröstning</translation>
     </message>
     <message>
         <source>%1 h %2 min</source>
@@ -1335,15 +1335,15 @@
     <name>MessageContact</name>
     <message>
         <source>Add to Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till i kontakter</translation>
     </message>
     <message>
         <source>%1 was added to your contacts.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 har lagts till i dina kontakter.</translation>
     </message>
     <message>
         <source>Not a Telegram user yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Inte en Telegram-användare ännu</translation>
     </message>
 </context>
 <context>
@@ -1391,7 +1391,7 @@
     <message>
         <source>Sponsor</source>
         <comment>author name of a sponsored message that does not name its sponsor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sponsor</translation>
     </message>
 </context>
 <context>
@@ -1418,22 +1418,22 @@
     <message>
         <source>have added the option “%1” to the poll %2</source>
         <comment>myself; %1 is the added poll option, %2 the poll it was added to</comment>
-        <translation type="unfinished"></translation>
+        <translation>har lagt till alternativet “%1” i omröstningen %2</translation>
     </message>
     <message>
         <source>has added the option “%1” to the poll %2</source>
         <comment>%1 is the added poll option, %2 the poll it was added to</comment>
-        <translation type="unfinished"></translation>
+        <translation>har lagt till alternativet “%1” i omröstningen %2</translation>
     </message>
     <message>
         <source>have removed the option “%1” from the poll %2</source>
         <comment>myself; %1 is the removed poll option, %2 the poll it was removed from</comment>
-        <translation type="unfinished"></translation>
+        <translation>har tagit bort alternativet “%1” i omröstningen %2</translation>
     </message>
     <message>
         <source>has removed the option “%1” from the poll %2</source>
         <comment>%1 is the removed poll option, %2 the poll it was removed from</comment>
-        <translation type="unfinished"></translation>
+        <translation>har tagit bort alternativet “%1” i omröstningen %2</translation>
     </message>
 </context>
 <context>
@@ -1490,7 +1490,7 @@
     </message>
     <message>
         <source>Add an Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till ett alternativ</translation>
     </message>
 </context>
 <context>
@@ -1765,27 +1765,27 @@
     <message>
         <source>Add an Option</source>
         <comment>Dialog Header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till ett alternativ</translation>
     </message>
     <message>
         <source>to %1</source>
         <comment>After dialog header… Add an Option to [poll question]</comment>
-        <translation type="unfinished"></translation>
+        <translation>till %1</translation>
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation type="unfinished">Ange svaret här</translation>
+        <translation>Ange ett svar här</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Svar (%Ln tecken kvar)</numerusform>
             <numerusform>Svar (%Ln tecken kvar)</numerusform>
         </translation>
     </message>
     <message>
         <source>Everybody in this chat can see who added which answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alla i den här chatten kan se vem som svarade vad.</translation>
     </message>
 </context>
 <context>
@@ -1923,11 +1923,11 @@
     </message>
     <message>
         <source>Animate stickers in the sticker picker</source>
-        <translation type="unfinished"></translation>
+        <translation>Animera dekaler i dekalväljaren</translation>
     </message>
     <message>
         <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Spelar upp animerade dekaler medan du väljer ett att skicka. Kräver mer batteri och data.</translation>
     </message>
     <message>
         <source>Show profile info for saved messages</source>
@@ -2046,43 +2046,43 @@
     </message>
     <message>
         <source>Show reaction button on tap</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa reaktionsknapp vid tryck</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Reaktionsknappen kan visas när du trycker på meddelandebubblan, för att göra det ännu enklare att komma åt reaktionerna.</translation>
     </message>
     <message>
         <source>Show chat deletion menu item</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa menyalternativ för att radera en chatt</translation>
     </message>
     <message>
         <source>Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Att radera en chatt går inte att ångra och behövs sällan. Stäng av detta för att hålla posten borta från toppmenyn.</translation>
     </message>
     <message>
         <source>Autoplay animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Spela animationer automatiskt</translation>
     </message>
     <message>
         <source>Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.</source>
-        <translation type="unfinished"></translation>
+        <translation>Spela upp animerade GIF:ar automatiskt. På vissa enheter har detta varit känt för att orsaka krascher i mediesystemet. Stäng av detta om du upplever krascher.</translation>
     </message>
     <message>
         <source>Hide sender when forwarding</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj avsändaren vid vidarebefordran</translation>
     </message>
     <message>
         <source>Forwarded messages are sent as copies, without showing who they are forwarded from.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vidarebefordrade meddelanden skickas som kopior, utan att visa vem de är vidarebefordrade från.</translation>
     </message>
     <message>
         <source>Hide captions when forwarding</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj bildtexter vid vidarebefordran</translation>
     </message>
     <message>
         <source>Captions of forwarded media are left out. Only available when the sender is hidden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildtexter till vidarebefordrade mediefiler utelämnas. Fungerar endast när avsändaren är dold.</translation>
     </message>
 </context>
 <context>
@@ -2168,39 +2168,39 @@
     </message>
     <message>
         <source>Show bio</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa biografi</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your bio is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretessinställning för att styra om din biografi skall vara synlig.</translation>
     </message>
     <message>
         <source>Show birthdate</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa födelsedatum</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your birthdate is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretessinställning för att styra om ditt födelsedatum skall visas.</translation>
     </message>
     <message>
         <source>Allow calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillåt samtal</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be called.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretessinställning för att styra om du kan ringas upp.</translation>
     </message>
     <message>
         <source>Allow peer-to-peer calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillåt peer-to-peer-samtal</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether peer-to-peer connections can be used for calls.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekretessinställning för att styra om peer-to-peer-anslutningar får användas för samtal.</translation>
     </message>
     <message>
         <source>Exceptions for single users or chats, e.g. made in other Telegram apps, are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>Undantag för enskilda användare eller chattar, t.ex. sådana som skapats i andra Telegram-appar, bevaras.</translation>
     </message>
 </context>
 <context>
@@ -2373,7 +2373,7 @@
     </message>
     <message>
         <source>Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>Favoriter</translation>
     </message>
     <message>
         <source>Recently used</source>
@@ -2855,32 +2855,32 @@
     <message>
         <source>shared the contact %1</source>
         <comment>myself; %1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>delade kontakten %1</translation>
     </message>
     <message>
         <source>shared the contact %1</source>
         <comment>%1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>delade kontakten %1</translation>
     </message>
     <message>
         <source>have added the option “%1” to a poll</source>
         <comment>myself; %1 is the added poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>har lagt till alternativet ”%1” i en omröstning</translation>
     </message>
     <message>
         <source>has added the option “%1” to a poll</source>
         <comment>%1 is the added poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>har lagt till alternativet ”%1” i en omröstning</translation>
     </message>
     <message>
         <source>have removed the option “%1” from a poll</source>
         <comment>myself; %1 is the removed poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>har tagit bort alternativet ”%1” i en omröstning</translation>
     </message>
     <message>
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>har tagit bort alternativet ”%1” i en omröstning</translation>
     </message>
     <message>
         <source>%1 h %2 min</source>
