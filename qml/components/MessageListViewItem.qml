@@ -85,7 +85,7 @@ ListItem {
     }
 
     function copyMessageToClipboard() {
-        Clipboard.text = Functions.getMessageText(myMessage, true, userInformation.id, true)
+        Clipboard.text = Functions.getMessageClipboardText(myMessage, userInformation.id)
     }
 
     function openContextMenu() {

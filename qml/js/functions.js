@@ -572,10 +572,32 @@ function getMessagesArrayText(messages) {
             lines.push(senderName);
         }
         lastSenderName = senderName;
-        lines.push(getMessageText(messages[i], true, tdLibWrapper.getUserInformation().id, false));
+        lines.push(getMessageClipboardText(messages[i], tdLibWrapper.getUserInformation().id));
         lines.push("");
     }
     return lines.join("\n");
+}
+
+function getLocationUrl(location) {
+    // mlat and mlon put a marker on the map, #map only centers it
+    return "https://www.openstreetmap.org/?mlat=" + location.latitude + "&mlon=" + location.longitude
+            + "#map=17/" + location.latitude + "/" + location.longitude;
+}
+
+function getMessageClipboardText(message, currentUserId) {
+    // Locations and venues are copied as a link to the place, which can be
+    // opened anywhere, instead of the "sent a location" placeholder
+    switch (message.content['@type']) {
+    case 'messageLocation':
+        return getLocationUrl(message.content.location);
+    case 'messageVenue':
+        var venue = message.content.venue;
+        return [venue.title, venue.address, getLocationUrl(venue.location)].filter(function(line) {
+            return !!line;
+        }).join("\n");
+    default:
+        return getMessageText(message, true, currentUserId, true);
+    }
 }
 
 function handleErrorMessage(code, message, extra) {
