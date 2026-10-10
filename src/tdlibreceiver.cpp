@@ -346,6 +346,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("availableReactions", &TDLibReceiver::processAvailableReactions);
     handlers.insert("updateMessageMentionRead", &TDLibReceiver::processUpdateChatUnreadMentionCount);
     handlers.insert("updateChatUnreadMentionCount", &TDLibReceiver::processUpdateChatUnreadMentionCount);
+    handlers.insert("updateMessageUnreadReactions", &TDLibReceiver::processUpdateChatUnreadReactionCount);
     handlers.insert("updateChatUnreadReactionCount", &TDLibReceiver::processUpdateChatUnreadReactionCount);
     handlers.insert("updateActiveEmojiReactions", &TDLibReceiver::processUpdateActiveEmojiReactions);
 }
@@ -1029,6 +1030,9 @@ void TDLibReceiver::processUpdateChatUnreadMentionCount(const QVariantMap &recei
 
 void TDLibReceiver::processUpdateChatUnreadReactionCount(const QVariantMap &receivedInformation)
 {
+    // Handles both updateMessageUnreadReactions and updateChatUnreadReactionCount
+    // They both have chat_id and unread_reaction_count which is all we need,
+    // TDLib only sends the former for messages it has already sent to us
     const qlonglong chatId = receivedInformation.value(CHAT_ID).toLongLong();
     const int unreadReactionCount = receivedInformation.value(UNREAD_REACTION_COUNT).toInt();
     LOG("Chat unread reaction count updated" << chatId << unreadReactionCount);
