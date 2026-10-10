@@ -811,6 +811,15 @@
 <context>
     <name>FernschreiberUtils</name>
     <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>发送贴纸</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>发送贴纸</translation>
+    </message>
+    <message>
         <source>sent a picture</source>
         <comment>myself</comment>
         <translation>发送图片</translation>
@@ -2455,6 +2464,15 @@
     <message>
         <source>Document: %1</source>
         <translation>文档: %1</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>发送贴纸</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>发送贴纸</translation>
     </message>
     <message>
         <source>sent a picture</source>

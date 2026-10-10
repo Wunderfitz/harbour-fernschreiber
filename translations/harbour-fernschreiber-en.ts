@@ -825,6 +825,15 @@ messages</numerusform>
 <context>
     <name>FernschreiberUtils</name>
     <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>sent a sticker</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>sent a sticker</translation>
+    </message>
+    <message>
         <source>sent a picture</source>
         <comment>myself</comment>
         <translation>sent a picture</translation>
@@ -2487,6 +2496,15 @@ messages</numerusform>
     <message>
         <source>Document: %1</source>
         <translation>Document: %1</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>sent a sticker</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>sent a sticker</translation>
     </message>
     <message>
         <source>sent a picture</source>

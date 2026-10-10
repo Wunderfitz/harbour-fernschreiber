@@ -209,7 +209,12 @@ QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, cons
         return messageContent.value(TEXT).toMap().value(TEXT).toString();
     }
     if (contentType == MESSAGE_CONTENT_TYPE_STICKER) {
-        return messageContent.value(STICKER).toMap().value(EMOJI).toString();
+        // Not every sticker comes with an emoji
+        const QString emoji(messageContent.value(STICKER).toMap().value(EMOJI).toString());
+        if (!emoji.isEmpty()) {
+            return emoji;
+        }
+        return myself ? tr("sent a sticker", "myself") : tr("sent a sticker");
     }
     if (contentType == MESSAGE_CONTENT_TYPE_ANIMATED_EMOJI) {
         return messageContent.value(ANIMATED_EMOJI).toMap().value(STICKER).toMap().value(EMOJI).toString();

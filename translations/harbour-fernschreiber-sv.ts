@@ -823,6 +823,15 @@
 <context>
     <name>FernschreiberUtils</name>
     <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>skickade ett klistermärke</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>skickade ett klistermärke</translation>
+    </message>
+    <message>
         <source>sent a picture</source>
         <comment>myself</comment>
         <translation>skickade en bild</translation>
@@ -2485,6 +2494,15 @@
     <message>
         <source>Document: %1</source>
         <translation>Dokument: %1</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>skickade ett klistermärke</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>skickade ett klistermärke</translation>
     </message>
     <message>
         <source>sent a picture</source>

@@ -812,6 +812,15 @@
 <context>
     <name>FernschreiberUtils</name>
     <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>matricát küldtél</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>matricát küldött</translation>
+    </message>
+    <message>
         <source>sent a picture</source>
         <comment>myself</comment>
         <translation>képet küldtél</translation>
@@ -2459,6 +2468,15 @@
     <message>
         <source>Document: %1</source>
         <translation>Dokumentum: %1</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>matricát küldtél</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>matricát küldött</translation>
     </message>
     <message>
         <source>sent a picture</source>

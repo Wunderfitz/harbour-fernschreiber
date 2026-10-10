@@ -824,6 +824,15 @@
 <context>
     <name>FernschreiberUtils</name>
     <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>lähetit tarran</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>lähetti tarran</translation>
+    </message>
+    <message>
         <source>sent a picture</source>
         <comment>myself</comment>
         <translation>lähetit kuvan</translation>
@@ -2486,6 +2495,15 @@
     <message>
         <source>Document: %1</source>
         <translation>Asiakirja: %1</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>lähetit tarran</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>lähetti tarran</translation>
     </message>
     <message>
         <source>sent a picture</source>

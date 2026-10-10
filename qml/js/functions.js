@@ -75,7 +75,11 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
             return enhanceMessageText(message.content.text, ignoreEntities);
         }
     case 'messageSticker':
-        return simple ? message.content.sticker.emoji : ""
+        if (!simple) {
+            return "";
+        }
+        // Not every sticker comes with an emoji
+        return message.content.sticker.emoji || (myself ? qsTr("sent a sticker", "myself") : qsTr("sent a sticker"));
     case 'messageAnimatedEmoji':
         return simple ? message.content.animated_emoji.sticker.emoji : ""
     case 'messagePhoto':
