@@ -16,6 +16,10 @@ CONFIG += sailfishapp sailfishapp_i18n
 
 PKGCONFIG += nemonotifications-qt5 zlib
 
+tdlib_static {
+    PKGCONFIG += tdjson_static tdjson_private tdclient tdapi tdcore tdnet tdmtproto tdactor tde2e tddb tdsqlite tdutils libssl libcrypto
+}
+
 QT += core dbus sql multimedia positioning
 
 DEFINES += QT_STATICPLUGIN
@@ -189,11 +193,14 @@ equals(QT_ARCH, arm64){
     TARGET_ARCHITECTURE = aarch64
 }
 
+!tdlib_static {
 INCLUDEPATH += $$PWD/tdlib/include
 DEPENDPATH += $$PWD/tdlib/include
 LIBS += -L$$PWD/tdlib/$${TARGET_ARCHITECTURE}/lib/ -ltdjson
 telegram.files = $$PWD/tdlib/$${TARGET_ARCHITECTURE}/lib
 telegram.path = /usr/share/$${TARGET}
+INSTALLS += telegram
+}
 
 gui.files = qml
 gui.path = /usr/share/$${TARGET}
@@ -224,7 +231,7 @@ fernschreiber.desktop.files = harbour-fernschreiber.desktop
 database.files = db
 database.path = /usr/share/$${TARGET}
 
-INSTALLS += telegram 86.png 108.png 128.png 172.png 256.png \
+INSTALLS += 86.png 108.png 128.png 172.png 256.png \
             fernschreiber.desktop gui images database
 
 HEADERS += \
