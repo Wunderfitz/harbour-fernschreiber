@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>A Telegram client for Sailfish OS</source>
-        <translation>Telegram sovellus Sailfish OS:lle</translation>
+        <translation>Telegram-sovellus Sailfish OS:lle</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
@@ -77,45 +77,45 @@
     </message>
     <message>
         <source>This project uses OpenStreetMap Nominatim for reverse geocoding of location attachments. Thanks for making it available as web service!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämä projekti käyttää OpenStreetMap Nominatimia sijantiliitteiden käänteiseen geokoodaamiseen. Kiitokset sen julkaisemisesta verkkopalveluna!</translation>
     </message>
     <message>
         <source>Open OSM Nominatim Wiki</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa OSM Nominatim Wiki</translation>
     </message>
 </context>
 <context>
     <name>AddContactPage</name>
     <message>
         <source>Add to Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisää yhteystietoihin</translation>
     </message>
     <message>
         <source>Add</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lisää</translation>
     </message>
     <message>
         <source>Not a Telegram user yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei ole vielä Telegram-käyttäjä</translation>
     </message>
     <message>
         <source>First name</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Etunimi</translation>
     </message>
     <message>
         <source>Last name</source>
         <comment>add contact dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sukunimi</translation>
     </message>
     <message>
         <source>Save on this device as well</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallenna myös tälle laitteelle</translation>
     </message>
     <message>
         <source>Adds the contact to the address book of your device</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisää yhteystiedon laitteesi yhteystietoihin</translation>
     </message>
 </context>
 <context>
@@ -191,7 +191,7 @@
     </message>
     <message>
         <source>The Invite Link has been copied to the clipboard.</source>
-        <translation>Kutsulinkki on kopioitu leikepöydälle.</translation>
+        <translation>Kutsulinkki kopioitiin leikepöydälle.</translation>
     </message>
     <message>
         <source>%1, %2</source>
@@ -211,15 +211,15 @@
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
+        <translation>Poista keskustelun mykistys</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Vaimenna keskustelu</translation>
+        <translation>Mykistä keskustelu</translation>
     </message>
     <message>
         <source>ID has been copied to the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>ID kopioitiin leikepöydälle.</translation>
     </message>
     <message>
         <source>Saved Messages</source>
@@ -256,37 +256,37 @@
     <message>
         <source>Member Permissions</source>
         <comment>edit a group member&apos;s individual permissions</comment>
-        <translation type="unfinished"></translation>
+        <translation>Jäsenen käyttöoikeudet</translation>
     </message>
     <message>
         <source>Revoke Write Permission</source>
         <comment>restrict a group member</comment>
-        <translation type="unfinished"></translation>
+        <translation>Evää kirjoitusoikeudet</translation>
     </message>
     <message>
         <source>Remove Restrictions</source>
         <comment>lift restrictions from a group member</comment>
-        <translation type="unfinished"></translation>
+        <translation>Poista rajoitukset</translation>
     </message>
     <message>
         <source>Ban from Group</source>
         <comment>ban a group member</comment>
-        <translation type="unfinished"></translation>
+        <translation>Estä ryhmästä</translation>
     </message>
     <message>
         <source>Banning member</source>
         <comment>remorse timer text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Estetään jäsentä</translation>
     </message>
     <message>
         <source>Ban and Delete All Messages</source>
         <comment>ban a group member, revoking their messages</comment>
-        <translation type="unfinished"></translation>
+        <translation>Estä ja poista kaikki viestit</translation>
     </message>
     <message>
         <source>Banning member and deleting messages</source>
         <comment>remorse timer text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Estetään jäsentä ja poistetaan viestejä</translation>
     </message>
 </context>
 <context>
@@ -362,11 +362,11 @@
     </message>
     <message>
         <source>Unmute chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
+        <translation>Poista keskustelun mykistys</translation>
     </message>
     <message>
         <source>Mute chat</source>
-        <translation>Vaimenna keskustelu</translation>
+        <translation>Mykistä keskustelu</translation>
     </message>
 </context>
 <context>
@@ -374,82 +374,82 @@
     <message>
         <source>Send Text Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää tekstiviestejä</translation>
     </message>
     <message>
         <source>Send Photos</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää kuvia</translation>
     </message>
     <message>
         <source>Send Videos</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää videoita</translation>
     </message>
     <message>
         <source>Send Music &amp; Audio Files</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää musiikki- ja äänitiedostoja</translation>
     </message>
     <message>
         <source>Send Files</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää tiedostoja</translation>
     </message>
     <message>
         <source>Send Voice Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää ääniviestejä</translation>
     </message>
     <message>
         <source>Send Video Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää videoviestejä</translation>
     </message>
     <message>
         <source>Send Polls</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää kyselyitä</translation>
     </message>
     <message>
         <source>Send Stickers, GIFs &amp; Games</source>
         <comment>member permission</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lähettää tarroja, GIF-tiedostoja &amp; pelejä</translation>
     </message>
     <message>
         <source>Add Web Page Previews</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Lähettää verkkosivuesikatseluita</translation>
+        <translation>Lisätä verkkosivun esikatseluita</translation>
     </message>
     <message>
         <source>Change Chat Info</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Muuttaa keskustelun tietoja</translation>
+        <translation>Muuttaa keskustelun tietoja</translation>
     </message>
     <message>
         <source>Invite Users</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Kutsua jäseniä</translation>
+        <translation>Kutsua jäseniä</translation>
     </message>
     <message>
         <source>Pin Messages</source>
         <comment>member permission</comment>
-        <translation type="unfinished">Kiinnittää viestejä</translation>
+        <translation>Kiinnittää viestejä</translation>
     </message>
     <message>
         <source>Save</source>
         <comment>member permissions dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tallenna</translation>
     </message>
     <message>
         <source>What can this member do?</source>
         <comment>member permissions dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mitä tämä jäsen voi tehdä?</translation>
     </message>
     <message>
         <source>Not allowed by the group&apos;s default permissions</source>
         <comment>member permissions dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmän oletusoikeudet eivät salli tätä</translation>
     </message>
 </context>
 <context>
@@ -482,11 +482,11 @@
     </message>
     <message>
         <source>Unmute Chat</source>
-        <translation>Poista keskustelun vaimennus</translation>
+        <translation>Poista keskustelun mykistys</translation>
     </message>
     <message>
         <source>Mute Chat</source>
-        <translation>Vaimenna keskustelu</translation>
+        <translation>Mykistä keskustelu</translation>
     </message>
     <message>
         <source>Edit Message</source>
@@ -568,7 +568,7 @@
     </message>
     <message>
         <source>This secret chat is not yet ready. Your chat partner needs to go online first.</source>
-        <translation>Tämä salattu keskustelu ei ole vielä valmis. Keskustelukumppanisi täytyy ensin käydä online tilassa.</translation>
+        <translation>Tämä salattu keskustelu ei ole vielä valmis. Keskustelukumppanisi täytyy ensin käydä online-tilassa.</translation>
     </message>
     <message>
         <source>Closing chat</source>
@@ -616,39 +616,39 @@
     </message>
     <message>
         <source>Unknown address</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuntematon osoite</translation>
     </message>
     <message>
         <source>Accuracy: %1m</source>
-        <translation type="unfinished"></translation>
+        <translation>Tarkkuus: %1m</translation>
     </message>
     <message>
         <source>Sponsored Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Sponsoroitu viesti</translation>
     </message>
     <message>
         <source>Deleting chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistetaan keskustelua</translation>
     </message>
     <message>
         <source>Delete Chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista keskustelu</translation>
     </message>
     <message>
         <source>Deleted User</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistettu käyttäjä</translation>
     </message>
     <message>
         <source>Double-tap on a message to choose a reaction</source>
-        <translation type="unfinished"></translation>
+        <translation>Kosketa viestiä kahdesti valitaksesi reaktion</translation>
     </message>
     <message>
         <source>Are you sure that you want to delete this chat? This action can&apos;t be undone and you lose the entire conversation forever!</source>
-        <translation type="unfinished"></translation>
+        <translation>Oletko varma, että haluat poistaa tämän keskustelun? Toimintoa ei voida peruuttaa ja menetät keskustelun lopullisesti!</translation>
     </message>
     <message>
         <source>Obtaining Position...</source>
-        <translation type="unfinished"></translation>
+        <translation>Määritetään sijaintia...</translation>
     </message>
     <message numerus="yes">
         <source>%Ln files</source>
@@ -697,7 +697,7 @@
     <name>ContactSync</name>
     <message>
         <source>Could not synchronize your contacts with Telegram.</source>
-        <translation type="unfinished">Yhteystietojasi ei voitu synkronoida Telegramin kanssa.</translation>
+        <translation>Yhteystietojasi ei voitu synkronoida Telegramin kanssa.</translation>
     </message>
 </context>
 <context>
@@ -709,7 +709,7 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Odotetaan verkkoa...</translation>
+        <translation>Odotetaan verkkoyhteyttä...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
@@ -746,11 +746,11 @@
     <name>DeviceContacts</name>
     <message>
         <source>%1 is already in the contacts of your device.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 on jo laitteesi yhteystiedoissa.</translation>
     </message>
     <message>
         <source>Could not save the contact on your device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yhteystietoa ei voitu tallentaa laitteellesi.</translation>
     </message>
 </context>
 <context>
@@ -763,7 +763,7 @@
     <message>
         <source>Send Messages</source>
         <comment>member permission</comment>
-        <translation>Lähettä viestejä</translation>
+        <translation>Lähettää viestejä</translation>
     </message>
     <message>
         <source>Send Media Messages</source>
@@ -810,7 +810,7 @@
     <name>EditSuperGroupSlowModeColumn</name>
     <message>
         <source>Slow Mode</source>
-        <translation>Hidas moodi</translation>
+        <translation>Hidas tila</translation>
     </message>
     <message>
         <source>Off</source>
@@ -818,7 +818,7 @@
     </message>
     <message>
         <source>Set how long every chat member has to wait between Messages</source>
-        <translation>Aseta kuinka kauan jokaisen keskustelun jäsenen täytyy odottaa viestien välillä</translation>
+        <translation>Määritä, kuinka kauan jokaisen keskustelun jäsenen täytyy odottaa viestien välillä</translation>
     </message>
 </context>
 <context>
@@ -1028,16 +1028,16 @@
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>lähetit itsetuhoutuvan kuvan joka vanheni</translation>
+        <translation>lähetit itsetuhoutuvan kuvan, joka on vanhentunut</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>lähetit itsetuhoutuvan videon joka vanheni</translation>
+        <translation>lähetit itsetuhoutuvan videon, joka on vanhentunut</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>lähetti itsetuhoutuvan videon joka vanheni</translation>
+        <translation>lähetti itsetuhoutuvan videon, joku on vanhentunut</translation>
     </message>
     <message>
         <source>sent an unsupported message: %1</source>
@@ -1046,7 +1046,7 @@
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>lähetti itsetuhoutuvan kuvan joka vanheni</translation>
+        <translation>lähetti itsetuhoutuvan kuvan, joka on vanhentunut</translation>
     </message>
     <message>
         <source>sent an audio</source>
@@ -1063,7 +1063,7 @@
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>posit käyttäjän %1 keskustelusta</translation>
+        <translation>poisti käyttäjän %1 keskustelusta</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
@@ -1111,30 +1111,30 @@
     <message>
         <source>shared the contact %1</source>
         <comment>myself; %1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>jaoit yhteystiedon %1</translation>
     </message>
     <message>
         <source>shared the contact %1</source>
         <comment>%1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>jakoi yhteystiedon %1</translation>
     </message>
     <message>
         <source>have added the option “%1” to a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>lisäsit kyselyyn vastausvaihtoehdon &quot;%1&quot;</translation>
     </message>
     <message>
         <source>has added the option “%1” to a poll</source>
-        <translation type="unfinished"></translation>
+        <translation>lisäsi kyselyyn vastausvaihtoehdon &quot;%1&quot;</translation>
     </message>
     <message>
         <source>have removed the option “%1” from a poll</source>
         <comment>myself</comment>
-        <translation type="unfinished"></translation>
+        <translation>poistit kyselystä vastausvaihtoehdon &quot;%1&quot;</translation>
     </message>
     <message>
         <source>has removed the option “%1” from a poll</source>
-        <translation type="unfinished"></translation>
+        <translation>poisti kyselystä vastausvaihtoehdon &quot;%1&quot;</translation>
     </message>
     <message>
         <source>%1 h %2 min</source>
@@ -1269,7 +1269,7 @@
     <name>InitializationPage</name>
     <message>
         <source>OK</source>
-        <translation>Ok</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Welcome to Fernschreiber!</source>
@@ -1285,7 +1285,7 @@
     </message>
     <message>
         <source>Please enter the code that you received:</source>
-        <translation>Syötä koodi jonka vastaanotit:</translation>
+        <translation>Syötä vastaanottamasi koodi:</translation>
     </message>
     <message>
         <source>Loading...</source>
@@ -1336,15 +1336,15 @@
     <name>MessageContact</name>
     <message>
         <source>Add to Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisää yhteystietoihin</translation>
     </message>
     <message>
         <source>%1 was added to your contacts.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 lisättiin yhteystietoihisi.</translation>
     </message>
     <message>
         <source>Not a Telegram user yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei ole vielä Telegram-käyttäjä</translation>
     </message>
 </context>
 <context>
@@ -1392,7 +1392,7 @@
     <message>
         <source>Sponsor</source>
         <comment>author name of a sponsored message that does not name its sponsor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sponsori</translation>
     </message>
 </context>
 <context>
@@ -1419,22 +1419,22 @@
     <message>
         <source>have added the option “%1” to the poll %2</source>
         <comment>myself; %1 is the added poll option, %2 the poll it was added to</comment>
-        <translation type="unfinished"></translation>
+        <translation>lisäsit vastausvaihtoehdon &quot;%1&quot; kyselyyn %2</translation>
     </message>
     <message>
         <source>has added the option “%1” to the poll %2</source>
         <comment>%1 is the added poll option, %2 the poll it was added to</comment>
-        <translation type="unfinished"></translation>
+        <translation>lisäsi vastausvaihtoehdon &quot;%1&quot; kyselyyn %2</translation>
     </message>
     <message>
         <source>have removed the option “%1” from the poll %2</source>
         <comment>myself; %1 is the removed poll option, %2 the poll it was removed from</comment>
-        <translation type="unfinished"></translation>
+        <translation>poistit vastausvaihtoehdon &quot;%1&quot; kyselystä %2</translation>
     </message>
     <message>
         <source>has removed the option “%1” from the poll %2</source>
         <comment>%1 is the removed poll option, %2 the poll it was removed from</comment>
-        <translation type="unfinished"></translation>
+        <translation>poisti vastausvaihtoehdon &quot;%1&quot; kyselystä %2</translation>
     </message>
 </context>
 <context>
@@ -1491,7 +1491,7 @@
     </message>
     <message>
         <source>Add an Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisää vastausvaihtoehto</translation>
     </message>
 </context>
 <context>
@@ -1517,7 +1517,7 @@
     </message>
     <message>
         <source>You don&apos;t have any contacts.</source>
-        <translation>Sinulla ei ole yhteystietoja</translation>
+        <translation>Sinulla ei ole yhteystietoja.</translation>
     </message>
     <message>
         <source>Private Chat</source>
@@ -1553,7 +1553,7 @@
     </message>
     <message>
         <source>No contacts found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yhteystietoja ei löytynyt.</translation>
     </message>
 </context>
 <context>
@@ -1582,7 +1582,7 @@
     </message>
     <message>
         <source>Waiting for network...</source>
-        <translation>Odotetaan verkkoa...</translation>
+        <translation>Odotetaan verkkoyhteyttä...</translation>
     </message>
     <message>
         <source>Connecting to network...</source>
@@ -1634,7 +1634,7 @@
     </message>
     <message>
         <source>No matching chats found.</source>
-        <translation>Hakua vastaavia keskusteluja ei löytynyt,</translation>
+        <translation>Hakua vastaavia keskusteluja ei löytynyt.</translation>
     </message>
     <message>
         <source>You can search public chats or create a new chat via the pull-down menu.</source>
@@ -1646,7 +1646,7 @@
     </message>
     <message>
         <source>Unable to open link.</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkkiä ei voida avata.</translation>
     </message>
 </context>
 <context>
@@ -1680,11 +1680,11 @@
     </message>
     <message>
         <source>The question has to be shorter than 256 characters.</source>
-        <translation>Tämän kysymyksen täytyy olla lyhyempi kuin 256 merkkiä.</translation>
+        <translation>Kysymyksen voi sisältää korkeintaan 256 merkkiä.</translation>
     </message>
     <message>
         <source>A poll requires 2-10 answers.</source>
-        <translation>Kysely tarvitsee 2-10 vastausta.</translation>
+        <translation>Kyselyyn tarvitaan 2-10 vastausta.</translation>
     </message>
     <message>
         <source>Create a Poll</source>
@@ -1698,7 +1698,7 @@
     </message>
     <message>
         <source>Enter your question here</source>
-        <translation>Kirjoita kysymyksesi tähän</translation>
+        <translation>Syötä kysymyksesi tähän</translation>
     </message>
     <message numerus="yes">
         <source>Question (%Ln characters left)</source>
@@ -1754,7 +1754,7 @@
     </message>
     <message>
         <source>Shown when the user selects a wrong answer.</source>
-        <translation>Näytä kun käyttäjä valitsee väärän vastauksen.</translation>
+        <translation>Näytä, kun käyttäjä valitsee väärän vastauksen.</translation>
     </message>
     <message>
         <source>An explanation can be up to 200 characters long.</source>
@@ -1766,27 +1766,27 @@
     <message>
         <source>Add an Option</source>
         <comment>Dialog Header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lisää vastausvaihtoehto</translation>
     </message>
     <message>
         <source>to %1</source>
         <comment>After dialog header… Add an Option to [poll question]</comment>
-        <translation type="unfinished"></translation>
+        <translation>kyselyyn %1</translation>
     </message>
     <message>
         <source>Enter an answer here</source>
-        <translation type="unfinished">Kirjoita vastaus tähän</translation>
+        <translation>Syötä vastaus tähän</translation>
     </message>
     <message numerus="yes">
         <source>Answer (%Ln characters left)</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Vastaus (%Ln merkki jäljellä)</numerusform>
             <numerusform>Vastaus (%Ln merkkiä jäljellä)</numerusform>
         </translation>
     </message>
     <message>
         <source>Everybody in this chat can see who added which answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keskustelun jäsenet näkevät, kuka kirjoitti minkäkin vastauksen.</translation>
     </message>
 </context>
 <context>
@@ -1803,7 +1803,7 @@
         <source>%Ln vote(s) total</source>
         <comment>number of total votes</comment>
         <translation>
-            <numerusform>yhteensä %Ln ääni </numerusform>
+            <numerusform>yhteensä %Ln ääni</numerusform>
             <numerusform>yhteensä %Ln ääntä</numerusform>
         </translation>
     </message>
@@ -1851,7 +1851,7 @@
     <name>SearchChatsPage</name>
     <message>
         <source>No chats found.</source>
-        <translation>Keskusteluja ei löytynyt</translation>
+        <translation>Keskusteluja ei löytynyt.</translation>
     </message>
     <message>
         <source>Searching chats...</source>
@@ -1893,7 +1893,7 @@
     </message>
     <message>
         <source>Enter your query to start searching (at least 5 characters needed)</source>
-        <translation>Syötä hakusanasi etsiäksesi (vähintään 5 merkkiä tarvitaan)</translation>
+        <translation>Etsi syöttämällä hakusana (vähintään 5 merkkiä)</translation>
     </message>
 </context>
 <context>
@@ -1904,11 +1904,11 @@
     </message>
     <message>
         <source>Show stickers as emojis</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä tarrat emojeina</translation>
     </message>
     <message>
         <source>Only display emojis instead of the actual stickers</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä pelkät emojit varsinaisten tarrojen sijaan</translation>
     </message>
     <message>
         <source>Show stickers as images</source>
@@ -1916,7 +1916,7 @@
     </message>
     <message>
         <source>Show background for stickers and align them centrally like images</source>
-        <translation>Näytä tarroissa tausta ja keskitä ne kuten kuvat</translation>
+        <translation>Näytä tarroissa tausta ja keskitä ne kuvien tavoin</translation>
     </message>
     <message>
         <source>Animate stickers</source>
@@ -1924,11 +1924,11 @@
     </message>
     <message>
         <source>Animate stickers in the sticker picker</source>
-        <translation type="unfinished"></translation>
+        <translation>Animoidut tarrat tarravalitsimessa</translation>
     </message>
     <message>
         <source>Plays animated stickers while choosing one to send. Needs more battery and data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toistaa animoituja tarroja valinnan aikana. Lisää akunkulutusta sekä datan käyttöä.</translation>
     </message>
     <message>
         <source>Show profile info for saved messages</source>
@@ -1936,7 +1936,7 @@
     </message>
     <message>
         <source>Shows your own name and picture for the chat with yourself instead of &quot;Saved Messages&quot;</source>
-        <translation>Näyttää oman nimen ja kuvan keskustelussa itsesi kanssa nimen ”Tallennetut viestit” sijaan</translation>
+        <translation>Näyttää oman nimesi ja kuvasi keskustelussa itsesi kanssa Tallennetut viestit” sijaan</translation>
     </message>
 </context>
 <context>
@@ -1955,11 +1955,11 @@
     </message>
     <message>
         <source>Focus text input on chat open</source>
-        <translation type="unfinished"></translation>
+        <translation>Kohdista tekstinsyöttökenttä avatessasi keskustelun</translation>
     </message>
     <message>
         <source>Focus the text input area when entering a chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Kohdista tekstinsyöttökenttä, kun keskustelu avataan</translation>
     </message>
     <message>
         <source>Focus text input area after send</source>
@@ -1971,7 +1971,7 @@
     </message>
     <message>
         <source>Delay before marking messages as read</source>
-        <translation>Viive viestien merkitsemisessä luetuksi</translation>
+        <translation>Viive viestien merkitsemisessä luetuiksi</translation>
     </message>
     <message>
         <source>Fernschreiber will wait a bit before messages are marked as read</source>
@@ -1983,7 +1983,7 @@
     </message>
     <message>
         <source>Integrate Fernschreiber into open-with menu of Sailfish OS</source>
-        <translation>Sisällytä Fernschreiber Sailfish OS:n avaa sovelluksella ‑valikkoon</translation>
+        <translation>Sisällytä Fernschreiber Sailfish OS:n Avaa sovelluksella ‑valikkoon</translation>
     </message>
     <message>
         <source>Notification feedback</source>
@@ -2015,75 +2015,75 @@
     </message>
     <message>
         <source>When sounds are enabled, Fernschreiber will use the current Sailfish OS notification sound for chats, which can be configured in the system settings.</source>
-        <translation>Kun äänet ovat käytössä, Fernschreiber käyttää Sailfish OS:n ilmoitusääniä keskusteluille, jotia voit muuttaa järjestelmäasetuksista.</translation>
+        <translation>Kun äänet ovat käytössä, Fernschreiber käyttää Sailfish OS:n ilmoitusääniä, joita voi muuttaa järjestelmäasetuksista.</translation>
     </message>
     <message>
         <source>Always append message preview to notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä viestin esikatselu ilmoituksissa</translation>
     </message>
     <message>
         <source>In addition to showing the number of unread messages, the latest message will also be appended to notifications.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lukemattomien viestin lukumäärän lisäksi ilmoituksissa näytetään viimeisimmän viestin sisältö.</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Korosta lukemattomat viestit</translation>
     </message>
     <message>
         <source>Highlight Conversations with unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Korosta keskustelut, joissa on lukemattomia viestejä</translation>
     </message>
     <message>
         <source>Hide content in notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Piilota viestin sisältö ilmoituksissa</translation>
     </message>
     <message>
         <source>Go to quoted message</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirry lainattuun viestiin</translation>
     </message>
     <message>
         <source>When tapping a quoted message, open it in chat instead of showing it in an overlay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lainatun viestin koskettaminen näyttää viestin keskustelussa päällekkäisikkunan sijaan.</translation>
     </message>
     <message>
         <source>Show reaction button on tap</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä reaktiopainike koskettamalla</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Reaktiopainike ilmestyy, kun kosketat viestikuplaa, tehden reagoimisesta vieläkin helpompaa.</translation>
     </message>
     <message>
         <source>Show chat deletion menu item</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä &quot;Poista keskustelu&quot; vetovalikossa</translation>
     </message>
     <message>
         <source>Deleting a chat is irreversible and rarely needed. Turn this off to keep the entry out of the pulley menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keskustelun poistaminen on peruuttamaton toimenpide, jota tarvitaan harvoin. Kytke tämä pois päältä poistaaksesi toiminnon vetovalikosta.</translation>
     </message>
     <message>
         <source>Autoplay animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Toista animaatiot automaattisesti</translation>
     </message>
     <message>
         <source>Automatically play animated GIFs. On some devices, this has been known to cause crashes in the media subsystem; turn this off if you experience that.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toista animoidut GIF-tiedostot automaattisesti. Joillakin laitteilla tämän tiedetään aiheuttavan media-alijärjestelmän kaatumisen. Poista tämä käytöstä, jos kohtaat tällaisia ongelmia.</translation>
     </message>
     <message>
         <source>Hide sender when forwarding</source>
-        <translation type="unfinished"></translation>
+        <translation>Piilota lähettäjä välitetyissä viesteissä</translation>
     </message>
     <message>
         <source>Forwarded messages are sent as copies, without showing who they are forwarded from.</source>
-        <translation type="unfinished"></translation>
+        <translation>Välitetyt viestit lähetään kopioina näyttämättä viestin alkuperäistä lähettäjää.</translation>
     </message>
     <message>
         <source>Hide captions when forwarding</source>
-        <translation type="unfinished"></translation>
+        <translation>Piilota kuvausteksti välitetyissä viesteissä</translation>
     </message>
     <message>
         <source>Captions of forwarded media are left out. Only available when the sender is hidden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Välitetyn mediasisällön kuvausteksti jätetään pois. Saatavilla vain, kun viestin lähettäjä on piilotettu.</translation>
     </message>
 </context>
 <context>
@@ -2105,7 +2105,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether you can be invited to chats.</source>
-        <translation>Yksityisyysasetus joka määrittää voiko keskustelukutsuja lähettää sinulle.</translation>
+        <translation>Yksityisyysasetus, joka määrittää, voidaanko sinulle lähettää keskustelukutsuja.</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -2121,11 +2121,11 @@
     </message>
     <message>
         <source>Allow finding by phone number</source>
-        <translation>Salli haku puhelinnumerolla</translation>
+        <translation>Salli löytäminen puhelinnumerolla</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be found by your phone number.</source>
-        <translation>Yksityisyysasetus joka määrittää voivatko muut löytää käyttäjäsi puhelinnumeron perusteella.</translation>
+        <translation>Yksityisyysasetus, joka määrittää, voivatko muut käyttäjät löytää sinut puhelinnumerosi perusteella.</translation>
     </message>
     <message>
         <source>Show link in forwarded messages</source>
@@ -2133,7 +2133,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether a link to your account is included in forwarded messages.</source>
-        <translation>Yksityisyysasetus joka määrittää sisältävätkö välitetyt viesti linkin käyttäjätunnukseesi.</translation>
+        <translation>Yksityisyysasetus, joka määrittää, sisältävätkö välitetyt viestit linkin käyttäjätunnukseesi.</translation>
     </message>
     <message>
         <source>Show phone number</source>
@@ -2141,7 +2141,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your phone number is visible.</source>
-        <translation>Yksityisyysasetus joka määrittää onko puhelinnumerosi julkinen.</translation>
+        <translation>Yksityisyysasetus puhelinnumerosi näkyvyyden määrittämiseksi.</translation>
     </message>
     <message>
         <source>Show profile photo</source>
@@ -2149,7 +2149,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your profile photo is visible.</source>
-        <translation>Yksityisyysasetus joka määrittää onko profiilikuvasi julkinen.</translation>
+        <translation>Yksityisyysasetus profiilikuvasi näkyvyyden määrittämiseksi.</translation>
     </message>
     <message>
         <source>Show status</source>
@@ -2157,7 +2157,7 @@
     </message>
     <message>
         <source>Privacy setting for managing whether your online status is visible.</source>
-        <translation>Yksityisyysasetus joka määrittää näytetäänkö muille käyttäjille kun olet online-tilassa.</translation>
+        <translation>Yksityisyysasetus, joka määrittää, näytetäänkö muille käyttäjille, kun olet paikalla.</translation>
     </message>
     <message>
         <source>Allow sending Location to inline bots</source>
@@ -2169,46 +2169,46 @@
     </message>
     <message>
         <source>Show bio</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä profiili</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your bio is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yksityisyysasetus profiilin näkyvyyden määrittämiseksi.</translation>
     </message>
     <message>
         <source>Show birthdate</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä syntymäpäivä</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether your birthdate is visible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yksityisyysasetus syntymäpäiväsi näkyvyyden määrittämiseksi.</translation>
     </message>
     <message>
         <source>Allow calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Salli puhelut</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether you can be called.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yksityisyysasetus, joka määrittää, voidaanko sinulle soittaa.</translation>
     </message>
     <message>
         <source>Allow peer-to-peer calls</source>
-        <translation type="unfinished"></translation>
+        <translation>Salli puhelut vertaisverkossa</translation>
     </message>
     <message>
         <source>Privacy setting for managing whether peer-to-peer connections can be used for calls.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yksityisyysasetus, joka määrittää, sallitaanko puhelut vertaisverkossa.</translation>
     </message>
     <message>
         <source>Exceptions for single users or chats, e.g. made in other Telegram apps, are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yksittäisille käyttäjille tai keskusteluille tehdyt poikkeukset, esimerkiksi toisissa Telegram-sovelluksissa, säilytetään.</translation>
     </message>
 </context>
 <context>
     <name>SettingsSession</name>
     <message>
         <source>Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Istunnot</translation>
     </message>
     <message>
         <source>Session was terminated</source>
@@ -2228,42 +2228,42 @@
     </message>
     <message>
         <source>Active since: %1, last online: %2</source>
-        <translation>Aktiivinen %1 alkaen, viimeksi paikalla: %2</translation>
+        <translation>Aktiivinen alkaen: %1, viimeksi paikalla: %2</translation>
     </message>
     <message numerus="yes">
         <source>%1 day(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 päivä</numerusform>
+            <numerusform>%1 päivää</numerusform>
         </translation>
     </message>
     <message>
         <source>1 week</source>
-        <translation type="unfinished"></translation>
+        <translation>1 viikko</translation>
     </message>
     <message>
         <source>1 month</source>
-        <translation type="unfinished"></translation>
+        <translation>1 kuukausi</translation>
     </message>
     <message>
         <source>3 months</source>
-        <translation type="unfinished"></translation>
+        <translation>3 kuukautta</translation>
     </message>
     <message>
         <source>6 months</source>
-        <translation type="unfinished"></translation>
+        <translation>6 kuukautta</translation>
     </message>
     <message>
         <source>1 year</source>
-        <translation type="unfinished"></translation>
+        <translation>1 vuosi</translation>
     </message>
     <message>
         <source>Session Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Istunnon aikakatkaisu</translation>
     </message>
     <message>
         <source>Inactive sessions will be terminated after this timeframe</source>
-        <translation type="unfinished"></translation>
+        <translation>Epäaktiiviset istunnot suljetaan tämän ajanjakson jälkeen</translation>
     </message>
 </context>
 <context>
@@ -2307,7 +2307,7 @@
     </message>
     <message>
         <source>Enter 0-64 characters</source>
-        <translation>Syötä 1-64 merkkiä</translation>
+        <translation>Syötä 0-64 merkkiä</translation>
     </message>
     <message>
         <source>Username</source>
@@ -2359,7 +2359,7 @@
     <name>SponsoredMessage</name>
     <message>
         <source>Go to Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirry kanavalle</translation>
     </message>
 </context>
 <context>
@@ -2374,7 +2374,7 @@
     </message>
     <message>
         <source>Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>Suosikit</translation>
     </message>
     <message>
         <source>Recently used</source>
@@ -2474,7 +2474,7 @@
     </message>
     <message>
         <source>Document: %1</source>
-        <translation>Dokumentti: %1</translation>
+        <translation>Asiakirja: %1</translation>
     </message>
     <message>
         <source>sent a picture</source>
@@ -2498,7 +2498,7 @@
     </message>
     <message>
         <source>sent a document</source>
-        <translation>lähetti dokumentin</translation>
+        <translation>lähetti asiakirjan</translation>
     </message>
     <message>
         <source>sent a location</source>
@@ -2552,7 +2552,7 @@
     <message>
         <source>sent a document</source>
         <comment>myself</comment>
-        <translation>lähetit dokumentin</translation>
+        <translation>lähetit asiakirjan</translation>
     </message>
     <message>
         <source>sent a location</source>
@@ -2580,6 +2580,7 @@
     <message>
         <source>were added to this chat</source>
         <comment>myself</comment>
+        <translatorcomment>Would &quot;(sinut) lisättiin keskusteluun&quot; sound more natural?</translatorcomment>
         <translation>tulit lisätyksi keskusteluun</translation>
     </message>
     <message>
@@ -2593,15 +2594,15 @@
     </message>
     <message>
         <source>last online: last month</source>
-        <translation>Nähty viimeksi: viime kuussa</translation>
+        <translation>nähty viimeksi: viime kuussa</translation>
     </message>
     <message>
         <source>last online: last week</source>
-        <translation>Nähty viimeksi: viime viikolla</translation>
+        <translation>nähty viimeksi: viime viikolla</translation>
     </message>
     <message>
         <source>last online: %1</source>
-        <translation>Nähty viimeksi: %1</translation>
+        <translation>nähty viimeksi: %1</translation>
     </message>
     <message>
         <source>online</source>
@@ -2614,7 +2615,7 @@
     <message>
         <source>Admin</source>
         <comment>channel user role</comment>
-        <translation>Pääkäyttäjä</translation>
+        <translation>Valvoja</translation>
     </message>
     <message>
         <source>Banned</source>
@@ -2778,24 +2779,24 @@
     <message>
         <source>sent a self-destructing photo that is expired</source>
         <comment>myself</comment>
-        <translation>lähetit itsetuhoutuvan kuvan joka vanheni</translation>
+        <translation>lähetit itsetuhoutuvan kuvan, joka on vanhentunut</translation>
     </message>
     <message>
         <source>sent a self-destructing photo that is expired</source>
-        <translation>lähetti itsetuhoutuvan kuvan joka vanheni</translation>
+        <translation>lähetti itsetuhoutuvan kuvan, joka on vanhentunut</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
         <comment>myself</comment>
-        <translation>lähetit itsetuhoutuvan videon joka vanheni</translation>
+        <translation>lähetit itsetuhoutuvan videon, joka on vanhentunut</translation>
     </message>
     <message>
         <source>sent a self-destructing video that is expired</source>
-        <translation>lähetti itsetuhoutuvan videon joka vanheni</translation>
+        <translation>lähetti itsetuhoutuvan videon, joka on vanhentunut</translation>
     </message>
     <message>
         <source>Unable to find user %1</source>
-        <translation>Käyttäjää ei löydy: %1</translation>
+        <translation>Käyttäjää %1 ei löydy</translation>
     </message>
     <message>
         <source>sent a video note</source>
@@ -2820,11 +2821,11 @@
     </message>
     <message>
         <source>has added %1 to the chat</source>
-        <translation>lisäsi käyttäjä %1 keskusteluun</translation>
+        <translation>lisäsi käyttäjän %1 keskusteluun</translation>
     </message>
     <message>
         <source>has removed %1 from the chat</source>
-        <translation>posit käyttäjän %1 keskustelusta</translation>
+        <translation>poisti käyttäjän %1 keskustelusta</translation>
     </message>
     <message>
         <source>have added %1 to the chat</source>
@@ -2856,32 +2857,32 @@
     <message>
         <source>shared the contact %1</source>
         <comment>myself; %1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>jaoit yhteystiedon %1</translation>
     </message>
     <message>
         <source>shared the contact %1</source>
         <comment>%1 is a name</comment>
-        <translation type="unfinished"></translation>
+        <translation>jakoi yhteystiedon %1</translation>
     </message>
     <message>
         <source>have added the option “%1” to a poll</source>
         <comment>myself; %1 is the added poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>lisäsit kyselyyn vastausvaihtoehdon &quot;%1&quot;</translation>
     </message>
     <message>
         <source>has added the option “%1” to a poll</source>
         <comment>%1 is the added poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>lisäsi kyselyyn vastausvaihtoehdon &quot;%1&quot;</translation>
     </message>
     <message>
         <source>have removed the option “%1” from a poll</source>
         <comment>myself; %1 is the removed poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>poistit kyselystä vastausvaihtoehdon &quot;%1&quot;</translation>
     </message>
     <message>
         <source>has removed the option “%1” from a poll</source>
         <comment>%1 is the removed poll option</comment>
-        <translation type="unfinished"></translation>
+        <translation>poisti kyselystä vastausvaihtoehdon &quot;%1&quot;</translation>
     </message>
     <message>
         <source>%1 h %2 min</source>
