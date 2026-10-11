@@ -692,6 +692,10 @@
         <source>%1 mins</source>
         <translation>%1 мин</translation>
     </message>
+    <message>
+        <source>Readers and Reactions</source>
+        <translation>Прочитавшие и реакции</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1372,6 +1376,69 @@
     <message>
         <source>Not a Telegram user yet</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageInteractionsPage</name>
+    <message>
+        <source>Read %1</source>
+        <comment>%1 is a point in time</comment>
+        <translation>Прочитано %1</translation>
+    </message>
+    <message>
+        <source>Not read yet</source>
+        <translation>Ещё не прочитано</translation>
+    </message>
+    <message>
+        <source>Readers and Reactions</source>
+        <translation>Прочитавшие и реакции</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln reader(s)</source>
+        <comment>number of users who read a message</comment>
+        <translation>
+            <numerusform>%Ln читатель</numerusform>
+            <numerusform>%Ln читателя</numerusform>
+            <numerusform>%Ln читателей</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln reaction(s)</source>
+        <comment>number of reactions to a message</comment>
+        <translation>
+            <numerusform>%Ln реакция</numerusform>
+            <numerusform>%Ln реакции</numerusform>
+            <numerusform>%Ln реакций</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation>Вы</translation>
+    </message>
+    <message>
+        <source>Reacted %1</source>
+        <comment>%1 is a point in time</comment>
+        <translation>Реакция %1</translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t load who read or reacted to this message</source>
+        <translation>Не удалось загрузить, кто прочитал это сообщение или отреагировал на него</translation>
+    </message>
+    <message>
+        <source>Nobody has read or reacted to this message yet</source>
+        <translation>Никто ещё не прочитал это сообщение и не отреагировал на него</translation>
+    </message>
+    <message>
+        <source>Too old to know when it was read</source>
+        <translation>Слишком старое, чтобы узнать, когда прочитано</translation>
+    </message>
+    <message>
+        <source>Hides when they read messages</source>
+        <translation>Скрывает, когда читает сообщения</translation>
+    </message>
+    <message>
+        <source>Hidden, as you hide when you read messages</source>
+        <translation>Скрыто, так как вы скрываете, когда читаете сообщения</translation>
     </message>
 </context>
 <context>

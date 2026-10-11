@@ -692,6 +692,10 @@
         <source>%1 mins</source>
         <translation>%1 min</translation>
     </message>
+    <message>
+        <source>Readers and Reactions</source>
+        <translation>Čitatelia a reakcie</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1369,6 +1373,69 @@
     <message>
         <source>Not a Telegram user yet</source>
         <translation>Nie je používateľom Telegramu</translation>
+    </message>
+</context>
+<context>
+    <name>MessageInteractionsPage</name>
+    <message>
+        <source>Read %1</source>
+        <comment>%1 is a point in time</comment>
+        <translation>Prečítané %1</translation>
+    </message>
+    <message>
+        <source>Not read yet</source>
+        <translation>Zatiaľ neprečítané</translation>
+    </message>
+    <message>
+        <source>Readers and Reactions</source>
+        <translation>Čitatelia a reakcie</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln reader(s)</source>
+        <comment>number of users who read a message</comment>
+        <translation>
+            <numerusform>%Ln čitateľ</numerusform>
+            <numerusform>%Ln čitatelia</numerusform>
+            <numerusform>%Ln čitateľov</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln reaction(s)</source>
+        <comment>number of reactions to a message</comment>
+        <translation>
+            <numerusform>%Ln reakcia</numerusform>
+            <numerusform>%Ln reakcie</numerusform>
+            <numerusform>%Ln reakcií</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation>Vy</translation>
+    </message>
+    <message>
+        <source>Reacted %1</source>
+        <comment>%1 is a point in time</comment>
+        <translation>Reakcia %1</translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t load who read or reacted to this message</source>
+        <translation>Nepodarilo sa načítať, kto si správu prečítal alebo na ňu reagoval</translation>
+    </message>
+    <message>
+        <source>Nobody has read or reacted to this message yet</source>
+        <translation>Túto správu si zatiaľ nikto neprečítal ani na ňu nereagoval</translation>
+    </message>
+    <message>
+        <source>Too old to know when it was read</source>
+        <translation>Príliš stará na to, aby sa dalo zistiť, kedy bola prečítaná</translation>
+    </message>
+    <message>
+        <source>Hides when they read messages</source>
+        <translation>Skrýva, kedy číta správy</translation>
+    </message>
+    <message>
+        <source>Hidden, as you hide when you read messages</source>
+        <translation>Skryté, pretože skrývate, kedy čítate správy</translation>
     </message>
 </context>
 <context>

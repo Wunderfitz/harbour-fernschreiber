@@ -56,6 +56,7 @@ ListItem {
         (showCopyMessageToClipboardMenuItem ? 0 : 1) +
         (showForwardMessageMenuItem ? 0 : 1) +
         (page.canPinMessages() ? 1 : 0) +
+        (Functions.canShowMessageInteractions(myMessage) ? 1 : 0) +
         (additionalItemsModel ? additionalItemsModel.length : 0)
     readonly property bool deleteMessageIsOnlyExtraOption: canDeleteMessage && !numberOfExtraOptionsOtherThanDeleteMessage
 

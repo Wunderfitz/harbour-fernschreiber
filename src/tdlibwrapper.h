@@ -233,6 +233,9 @@ public:
     Q_INVOKABLE void stopPoll(const QString &chatId, qlonglong messageId);
     Q_INVOKABLE void getPollVoters(const QString &chatId, qlonglong messageId, int optionId, int limit, int offset, const QString &extra);
     Q_INVOKABLE void getMessageProperties(qlonglong chatId, qlonglong messageId);
+    Q_INVOKABLE void getMessageViewers(qlonglong chatId, qlonglong messageId, const QString &extra);
+    Q_INVOKABLE void getMessageReadDate(qlonglong chatId, qlonglong messageId, const QString &extra);
+    Q_INVOKABLE void getMessageAddedReactions(qlonglong chatId, qlonglong messageId, const QString &offset, int limit, const QString &extra);
     Q_INVOKABLE void searchPublicChat(const QString &userName, bool doOpenOnFound);
     Q_INVOKABLE void joinChatByInviteLink(const QString &inviteLink);
     Q_INVOKABLE void getDeepLinkInfo(const QString &link);
@@ -349,6 +352,9 @@ signals:
     void usersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
     void messageSendersReceived(const QString &extra, const QVariantList &senders, int totalUsers);
     void messagePropertiesReceived(qlonglong chatId, qlonglong messageId, const QVariantMap &properties);
+    void messageViewersReceived(const QString &extra, const QVariantList &viewers);
+    void messageReadDateReceived(const QString &extra, const QVariantMap &readDate);
+    void addedReactionsReceived(const QString &extra, const QVariantList &reactions, int totalCount, const QString &nextOffset);
     void errorReceived(int code, const QString &message, const QString &extra);
     void contactsImported(const QVariantList &importerCount, const QVariantList &userIds);
     void messageNotFound(qlonglong chatId, qlonglong messageId);

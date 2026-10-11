@@ -670,6 +670,10 @@
         <source>%1 mins</source>
         <translation>%1 分钟</translation>
     </message>
+    <message>
+        <source>Readers and Reactions</source>
+        <translation>已读与回应</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1338,6 +1342,65 @@
     <message>
         <source>Not a Telegram user yet</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageInteractionsPage</name>
+    <message>
+        <source>Read %1</source>
+        <comment>%1 is a point in time</comment>
+        <translation>已读于 %1</translation>
+    </message>
+    <message>
+        <source>Not read yet</source>
+        <translation>未读</translation>
+    </message>
+    <message>
+        <source>Readers and Reactions</source>
+        <translation>已读与回应</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln reader(s)</source>
+        <comment>number of users who read a message</comment>
+        <translation>
+            <numerusform>%Ln 人已读</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln reaction(s)</source>
+        <comment>number of reactions to a message</comment>
+        <translation>
+            <numerusform>%Ln 个回应</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation>你</translation>
+    </message>
+    <message>
+        <source>Reacted %1</source>
+        <comment>%1 is a point in time</comment>
+        <translation>回应于 %1</translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t load who read or reacted to this message</source>
+        <translation>无法加载谁已读或回应了此消息</translation>
+    </message>
+    <message>
+        <source>Nobody has read or reacted to this message yet</source>
+        <translation>还没有人阅读或回应此消息</translation>
+    </message>
+    <message>
+        <source>Too old to know when it was read</source>
+        <translation>消息太旧，无法得知读取时间</translation>
+    </message>
+    <message>
+        <source>Hides when they read messages</source>
+        <translation>对方隐藏了已读时间</translation>
+    </message>
+    <message>
+        <source>Hidden, as you hide when you read messages</source>
+        <translation>已隐藏，因为你隐藏了自己的已读时间</translation>
     </message>
 </context>
 <context>

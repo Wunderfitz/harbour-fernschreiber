@@ -1006,6 +1006,13 @@ Page {
                 }
             },
             NamedAction {
+                visible: Functions.canShowMessageInteractions(messageOptionsDrawer.myMessage)
+                name: qsTr("Readers and Reactions")
+                action: function () {
+                    pageStack.push(Qt.resolvedUrl("MessageInteractionsPage.qml"), { message: messageOptionsDrawer.myMessage })
+                }
+            },
+            NamedAction {
                 visible: !!canPinMessages()
                 name: messageOptionsDrawer.myMessage.is_pinned ? qsTr("Unpin Message") : qsTr("Pin Message")
                 action: function () {

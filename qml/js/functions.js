@@ -614,6 +614,11 @@ function handleErrorMessage(code, message, extra) {
         Debug.log("[Functions] Live location not updated: " + message);
         return;
     }
+    if (extra && extra.indexOf("messageInteractions:") === 0) {
+        // MessageInteractionsPage says so itself when it can't load anything
+        Debug.log("[Functions] Readers or reactions not loaded: " + message);
+        return;
+    }
     if (code === 404 || (code === 400 && message === "USERNAME_INVALID")) {
         // Silently ignore
         // - 404 Not Found messages (occur sometimes, without clear context...)
@@ -658,6 +663,24 @@ function getMessagesNeededForwardPermissions(messages) {
         neededPermissions.push("can_send_basic_messages")
     }
     return neededPermissions
+}
+
+// Whether MessageInteractionsPage has anything to show for a message: the read
+// date in private chats, the viewers in groups or who reacted. The first two
+// come with the message properties, see ChatModel::loadMessageProperties().
+// Where the reactions can't be listed, as in private chats, each reaction
+// still names its few recent senders.
+function canShowMessageInteractions(message) {
+    if (!!message.can_get_read_date || !!message.can_get_viewers) {
+        return true;
+    }
+    var interactionInfo = message.interaction_info;
+    if (!interactionInfo) {
+        return false;
+    }
+    return !!interactionInfo.can_get_added_reactions || (interactionInfo.reactions || []).some(function(reaction) {
+        return reaction.recent_sender_ids && reaction.recent_sender_ids.length > 0;
+    });
 }
 
 function canForwardMessage(message, sendCopy) {

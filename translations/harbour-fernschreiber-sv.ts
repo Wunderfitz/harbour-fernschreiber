@@ -681,6 +681,10 @@
         <source>%1 mins</source>
         <translation>%1 min</translation>
     </message>
+    <message>
+        <source>Readers and Reactions</source>
+        <translation>Läsare och reaktioner</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1353,6 +1357,67 @@
     <message>
         <source>Not a Telegram user yet</source>
         <translation>Inte en Telegram-användare ännu</translation>
+    </message>
+</context>
+<context>
+    <name>MessageInteractionsPage</name>
+    <message>
+        <source>Read %1</source>
+        <comment>%1 is a point in time</comment>
+        <translation>Läst %1</translation>
+    </message>
+    <message>
+        <source>Not read yet</source>
+        <translation>Inte läst än</translation>
+    </message>
+    <message>
+        <source>Readers and Reactions</source>
+        <translation>Läsare och reaktioner</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln reader(s)</source>
+        <comment>number of users who read a message</comment>
+        <translation>
+            <numerusform>%Ln läsare</numerusform>
+            <numerusform>%Ln läsare</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln reaction(s)</source>
+        <comment>number of reactions to a message</comment>
+        <translation>
+            <numerusform>%Ln reaktion</numerusform>
+            <numerusform>%Ln reaktioner</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation>Du</translation>
+    </message>
+    <message>
+        <source>Reacted %1</source>
+        <comment>%1 is a point in time</comment>
+        <translation>Reagerade %1</translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t load who read or reacted to this message</source>
+        <translation>Kunde inte läsa in vem som har läst eller reagerat på meddelandet</translation>
+    </message>
+    <message>
+        <source>Nobody has read or reacted to this message yet</source>
+        <translation>Ingen har läst eller reagerat på meddelandet än</translation>
+    </message>
+    <message>
+        <source>Too old to know when it was read</source>
+        <translation>För gammalt för att veta när det lästes</translation>
+    </message>
+    <message>
+        <source>Hides when they read messages</source>
+        <translation>Döljer när hen läser meddelanden</translation>
+    </message>
+    <message>
+        <source>Hidden, as you hide when you read messages</source>
+        <translation>Dolt, eftersom du döljer när du läser meddelanden</translation>
     </message>
 </context>
 <context>

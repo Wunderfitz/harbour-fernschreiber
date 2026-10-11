@@ -95,6 +95,9 @@ signals:
     void usersReceived(const QString &extra, const QVariantList &senders, int totalUsers);
     void messageSendersReceived(const QString &extra, const QVariantList &userIds, int totalUsers);
     void messagePropertiesReceived(qlonglong chatId, qlonglong messageId, const QVariantMap &properties);
+    void messageViewersReceived(const QString &extra, const QVariantList &viewers);
+    void messageReadDateReceived(const QString &extra, const QVariantMap &readDate);
+    void addedReactionsReceived(const QString &extra, const QVariantList &reactions, int totalCount, const QString &nextOffset);
     void errorReceived(const int code, const QString &message, const QString &extra);
     void secretChat(qlonglong secretChatId, const QVariantMap &secretChat);
     void secretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
@@ -186,6 +189,9 @@ private:
     void processMessageSenders(const QVariantMap &receivedInformation);
     void processPollVoters(const QVariantMap &receivedInformation);
     void processMessageProperties(const QVariantMap &receivedInformation);
+    void processMessageViewers(const QVariantMap &receivedInformation);
+    void processMessageReadDate(const QVariantMap &receivedInformation);
+    void processAddedReactions(const QVariantMap &receivedInformation);
     void processError(const QVariantMap &receivedInformation);
     void processSecretChat(const QVariantMap &receivedInformation);
     void processUpdateSecretChat(const QVariantMap &receivedInformation);

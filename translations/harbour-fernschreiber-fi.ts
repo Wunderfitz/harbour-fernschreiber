@@ -681,6 +681,10 @@
         <source>%1 mins</source>
         <translation>%1 min</translation>
     </message>
+    <message>
+        <source>Readers and Reactions</source>
+        <translation>Lukijat ja reaktiot</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>
@@ -1354,6 +1358,67 @@
     <message>
         <source>Not a Telegram user yet</source>
         <translation>Ei ole vielä Telegram-käyttäjä</translation>
+    </message>
+</context>
+<context>
+    <name>MessageInteractionsPage</name>
+    <message>
+        <source>Read %1</source>
+        <comment>%1 is a point in time</comment>
+        <translation>Luettu %1</translation>
+    </message>
+    <message>
+        <source>Not read yet</source>
+        <translation>Ei vielä luettu</translation>
+    </message>
+    <message>
+        <source>Readers and Reactions</source>
+        <translation>Lukijat ja reaktiot</translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln reader(s)</source>
+        <comment>number of users who read a message</comment>
+        <translation>
+            <numerusform>%Ln lukija</numerusform>
+            <numerusform>%Ln lukijaa</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%Ln reaction(s)</source>
+        <comment>number of reactions to a message</comment>
+        <translation>
+            <numerusform>%Ln reaktio</numerusform>
+            <numerusform>%Ln reaktiota</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation>Sinä</translation>
+    </message>
+    <message>
+        <source>Reacted %1</source>
+        <comment>%1 is a point in time</comment>
+        <translation>Reagoi %1</translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t load who read or reacted to this message</source>
+        <translation>Viestin lukijoita ja reaktioita ei voitu ladata</translation>
+    </message>
+    <message>
+        <source>Nobody has read or reacted to this message yet</source>
+        <translation>Kukaan ei ole vielä lukenut tätä viestiä tai reagoinut siihen</translation>
+    </message>
+    <message>
+        <source>Too old to know when it was read</source>
+        <translation>Liian vanha, jotta tiedettäisiin, milloin se luettiin</translation>
+    </message>
+    <message>
+        <source>Hides when they read messages</source>
+        <translation>Piilottaa, milloin lukee viestejä</translation>
+    </message>
+    <message>
+        <source>Hidden, as you hide when you read messages</source>
+        <translation>Piilotettu, koska piilotat, milloin luet viestejä</translation>
     </message>
 </context>
 <context>

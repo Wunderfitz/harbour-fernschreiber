@@ -118,6 +118,7 @@ namespace {
     const QString TYPE_MESSAGE_LOCATION("messageLocation");
     const QString TYPE_MESSAGE_LIVE_LOCATION("messageLiveLocation");
     const QString TYPE_REACTION_TYPE_EMOJI("reactionTypeEmoji");
+    const QString CAN_GET_ADDED_REACTIONS("can_get_added_reactions");
 
     const double POWERSAVING_TDLIB_REQUEST_INTERVAL = 250;
 }
@@ -261,8 +262,11 @@ static QVariantMap migrateInteractionInfo(const QVariantMap &interactionInfo)
     if (interactionInfo.value(REACTIONS).type() != QVariant::Map) {
         return interactionInfo;
     }
+    const QVariantMap messageReactions(interactionInfo.value(REACTIONS).toMap());
     QVariantMap migrated(interactionInfo);
-    migrated.insert(REACTIONS, interactionInfo.value(REACTIONS).toMap().value(REACTIONS));
+    migrated.insert(REACTIONS, messageReactions.value(REACTIONS));
+    // Would get lost with the wrapper, MessageInteractionsPage needs it
+    migrated.insert(CAN_GET_ADDED_REACTIONS, messageReactions.value(CAN_GET_ADDED_REACTIONS));
     return migrated;
 }
 
@@ -329,6 +333,13 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("messageSenders", &TDLibReceiver::processMessageSenders);
     handlers.insert("pollVoters", &TDLibReceiver::processPollVoters);
     handlers.insert("messageProperties", &TDLibReceiver::processMessageProperties);
+    handlers.insert("messageViewers", &TDLibReceiver::processMessageViewers);
+    handlers.insert("messageReadDateRead", &TDLibReceiver::processMessageReadDate);
+    handlers.insert("messageReadDateUnread", &TDLibReceiver::processMessageReadDate);
+    handlers.insert("messageReadDateTooOld", &TDLibReceiver::processMessageReadDate);
+    handlers.insert("messageReadDateUserPrivacyRestricted", &TDLibReceiver::processMessageReadDate);
+    handlers.insert("messageReadDateMyPrivacyRestricted", &TDLibReceiver::processMessageReadDate);
+    handlers.insert("addedReactions", &TDLibReceiver::processAddedReactions);
     handlers.insert("error", &TDLibReceiver::processError);
     handlers.insert("ok", &TDLibReceiver::ok);
     handlers.insert("secretChat", &TDLibReceiver::processSecretChat);
@@ -884,6 +895,26 @@ void TDLibReceiver::processMessageProperties(const QVariantMap &receivedInformat
     const qlonglong messageId = extra.at(2).toLongLong();
     LOG("Received message properties" << chatId << messageId);
     emit messagePropertiesReceived(chatId, messageId, receivedInformation);
+}
+
+void TDLibReceiver::processMessageViewers(const QVariantMap &receivedInformation)
+{
+    LOG("Received message viewers");
+    emit messageViewersReceived(receivedInformation.value(_EXTRA).toString(), receivedInformation.value("viewers").toList());
+}
+
+void TDLibReceiver::processMessageReadDate(const QVariantMap &receivedInformation)
+{
+    // One of the messageReadDate* types, the type itself is the answer
+    LOG("Received message read date" << receivedInformation.value(_TYPE).toString());
+    emit messageReadDateReceived(receivedInformation.value(_EXTRA).toString(), receivedInformation);
+}
+
+void TDLibReceiver::processAddedReactions(const QVariantMap &receivedInformation)
+{
+    LOG("Received added reactions");
+    emit addedReactionsReceived(receivedInformation.value(_EXTRA).toString(), receivedInformation.value("reactions").toList(),
+        receivedInformation.value(TOTAL_COUNT).toInt(), receivedInformation.value("next_offset").toString());
 }
 
 void TDLibReceiver::processError(const QVariantMap &receivedInformation)

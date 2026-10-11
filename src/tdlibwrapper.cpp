@@ -258,6 +258,9 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(usersReceived(QString, QVariantList, int)), this, SIGNAL(usersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(messageSendersReceived(QString, QVariantList, int)), this, SIGNAL(messageSendersReceived(QString, QVariantList, int)));
     connect(this->tdLibReceiver, SIGNAL(messagePropertiesReceived(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messagePropertiesReceived(qlonglong, qlonglong, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(messageViewersReceived(QString, QVariantList)), this, SIGNAL(messageViewersReceived(QString, QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(messageReadDateReceived(QString, QVariantMap)), this, SIGNAL(messageReadDateReceived(QString, QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(addedReactionsReceived(QString, QVariantList, int, QString)), this, SIGNAL(addedReactionsReceived(QString, QVariantList, int, QString)));
     connect(this->tdLibReceiver, SIGNAL(errorReceived(int, QString, QString)), this, SLOT(handleErrorReceived(int, QString, QString)));
     connect(this->tdLibReceiver, SIGNAL(contactsImported(QVariantList, QVariantList)), this, SIGNAL(contactsImported(QVariantList, QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageEditedUpdated(qlonglong, qlonglong, QVariantMap)));
@@ -930,6 +933,45 @@ void TDLibWrapper::getMessageProperties(qlonglong chatId, qlonglong messageId)
     requestObject.insert(MESSAGE_ID, messageId);
     // See TDLibReceiver::processMessageProperties()
     requestObject.insert(_EXTRA, QString("messageProperties:%1:%2").arg(chatId).arg(messageId));
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getMessageViewers(qlonglong chatId, qlonglong messageId, const QString &extra)
+{
+    // Only for recent outgoing messages in groups, see messageProperties.can_get_viewers
+    LOG("Retrieving message viewers" << chatId << messageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getMessageViewers");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    requestObject.insert(_EXTRA, extra);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getMessageReadDate(qlonglong chatId, qlonglong messageId, const QString &extra)
+{
+    // Only for recent outgoing messages in private chats, see messageProperties.can_get_read_date
+    LOG("Retrieving message read date" << chatId << messageId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getMessageReadDate");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    requestObject.insert(_EXTRA, extra);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getMessageAddedReactions(qlonglong chatId, qlonglong messageId, const QString &offset, int limit, const QString &extra)
+{
+    // Without a reaction_type all reactions are returned, see
+    // messageReactions.can_get_added_reactions
+    LOG("Retrieving added reactions" << chatId << messageId << offset);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getMessageAddedReactions");
+    requestObject.insert(CHAT_ID, chatId);
+    requestObject.insert(MESSAGE_ID, messageId);
+    requestObject.insert("offset", offset);
+    requestObject.insert("limit", limit); // max 100
+    requestObject.insert(_EXTRA, extra);
     this->sendRequest(requestObject);
 }
 
