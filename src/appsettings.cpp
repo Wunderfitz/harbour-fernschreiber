@@ -48,6 +48,9 @@ namespace {
     const QString KEY_SPONSORED_MESS("sponsoredMess");
     const QString KEY_HIGHLIGHT_UNREADCONVS("highlightUnreadConversations");
     const QString KEY_SHOW_REACTION_BUTTON("showReactionButton");
+    const QString KEY_RECENT_REACTIONS_FIRST("recentReactionsFirst");
+    const QString KEY_RECENT_REACTIONS("recentReactions");
+    const int MAX_RECENT_REACTIONS = 50;
     const QString KEY_AUTOPLAY_ANIMATED_GIFS("autoplayAnimatedGifs");
 }
 
@@ -418,6 +421,90 @@ void AppSettings::setShowReactionButton(bool enable)
         settings.setValue(KEY_SHOW_REACTION_BUTTON, enable);
         emit showReactionButtonChanged();
     }
+}
+
+bool AppSettings::recentReactionsFirst() const
+{
+    return settings.value(KEY_RECENT_REACTIONS_FIRST, false).toBool();
+}
+
+void AppSettings::setRecentReactionsFirst(bool enable)
+{
+    if (recentReactionsFirst() != enable) {
+        LOG(KEY_RECENT_REACTIONS_FIRST << enable);
+        settings.setValue(KEY_RECENT_REACTIONS_FIRST, enable);
+        emit recentReactionsFirstChanged();
+    }
+}
+
+// Reactions are only remembered while the recent ones are shown first
+void AppSettings::addRecentReaction(const QString &reaction)
+{
+    if (!recentReactionsFirst()) {
+        return;
+    }
+    QStringList recent(settings.value(KEY_RECENT_REACTIONS).toStringList());
+    recent.removeAll(reaction);
+    recent.prepend(reaction);
+    while (recent.size() > MAX_RECENT_REACTIONS) {
+        recent.removeLast();
+    }
+    settings.setValue(KEY_RECENT_REACTIONS, recent);
+}
+
+bool AppSettings::hasRecentReactions() const
+{
+    return settings.contains(KEY_RECENT_REACTIONS);
+}
+
+void AppSettings::clearRecentReactions()
+{
+    LOG("Clearing recent reactions");
+    settings.remove(KEY_RECENT_REACTIONS);
+}
+
+// Forgets the reactions Telegram has retired, and the whole entry once
+// nothing is left
+void AppSettings::removeInactiveRecentReactions(const QStringList &activeReactions)
+{
+    if (activeReactions.isEmpty() || !settings.contains(KEY_RECENT_REACTIONS)) {
+        return;
+    }
+    const QStringList recent(settings.value(KEY_RECENT_REACTIONS).toStringList());
+    QStringList active;
+    for (const QString &reaction : recent) {
+        if (activeReactions.contains(reaction)) {
+            active.append(reaction);
+        }
+    }
+    if (active.isEmpty()) {
+        LOG("Removing all recent reactions");
+        settings.remove(KEY_RECENT_REACTIONS);
+    } else if (active.size() != recent.size()) {
+        LOG("Removing" << (recent.size() - active.size()) << "inactive recent reaction(s)");
+        settings.setValue(KEY_RECENT_REACTIONS, active);
+    }
+}
+
+// The most recently used reactions come first, the others keep their order
+QStringList AppSettings::reactionsInOrder(const QStringList &reactions) const
+{
+    if (!recentReactionsFirst()) {
+        return reactions;
+    }
+    QStringList sorted;
+    const QStringList recent(settings.value(KEY_RECENT_REACTIONS).toStringList());
+    for (const QString &reaction : recent) {
+        if (reactions.contains(reaction)) {
+            sorted.append(reaction);
+        }
+    }
+    for (const QString &reaction : reactions) {
+        if (!sorted.contains(reaction)) {
+            sorted.append(reaction);
+        }
+    }
+    return sorted;
 }
 
 AppSettings::SponsoredMess AppSettings::getSponsoredMess() const

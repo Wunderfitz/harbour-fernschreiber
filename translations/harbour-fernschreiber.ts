@@ -1451,6 +1451,10 @@
         <translation type="unfinished">Message deleted</translation>
     </message>
     <message>
+        <source>Clear recent reactions</source>
+        <translation>Clear recent reactions</translation>
+    </message>
+    <message>
         <source>Copy Message to Clipboard</source>
         <translation type="unfinished">Copy Message to Clipboard</translation>
     </message>
@@ -2132,6 +2136,14 @@
     <message>
         <source>Show reaction button on tap</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show recent reactions first</source>
+        <translation>Show recent reactions first</translation>
+    </message>
+    <message>
+        <source>The reactions you used most recently are shown first when you choose a reaction. Long-press one of them to clear the list.</source>
+        <translation>The reactions you used most recently are shown first when you choose a reaction. Long-press one of them to clear the list.</translation>
     </message>
     <message>
         <source>The reaction button may appear when you tap the message bubble, to make access to the reactions even easier.</source>
