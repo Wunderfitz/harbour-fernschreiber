@@ -18,6 +18,7 @@
 */
 
 #include "notificationmanager.h"
+#include "dbusadaptor.h"
 #include "fernschreiberutils.h"
 #include "chatmodel.h"
 #include <sailfishapp.h>
@@ -68,6 +69,24 @@ namespace {
     const QString HINT_FEEDBACK("x-nemo-feedback");                 // QString
     const QString HINT_PRIORITY("x-nemo-priority");                 // int
     const QString VISIBILITY_PUBLIC("public");
+
+    // D-Bus service of the app itself, the one the notification's remote
+    // actions call back into.
+    const QString APP_SERVICE("de.ygriega.fernschreiber");
+    const QString APP_PATH("/de/ygriega/fernschreiber");
+
+    // Remote action "reply": with type=input lipstick draws the text field
+    // inside the notification (like it does for SMS) instead of a plain
+    // button, and appends the typed text as the last argument of the D-Bus
+    // call.
+    const QString ACTION_REPLY("reply");
+    const QString ACTION_TYPE("type");
+    const QString ACTION_TYPE_INPUT("input");
+    const QString PERMISSIONS("permissions");
+    const QString CAN_SEND_BASIC_MESSAGES("can_send_basic_messages");
+    const QString STATUS("status");
+    const QString BASIC_GROUP_ID("basic_group_id");
+    const QString SUPERGROUP_ID("supergroup_id");
 }
 
 class NotificationManager::ChatInfo
@@ -139,6 +158,21 @@ NotificationManager::NotificationManager(TDLibWrapper *tdLibWrapper, AppSettings
     connect(this->tdLibWrapper, SIGNAL(notificationUpdated(QVariantMap)), this, SLOT(handleUpdateNotification(QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(newChatDiscovered(QString, QVariantMap)), this, SLOT(handleChatDiscovered(QString, QVariantMap)));
     connect(this->tdLibWrapper, SIGNAL(chatTitleUpdated(QString, QString)), this, SLOT(handleChatTitleUpdated(QString, QString)));
+
+    // Replying straight from the notification: the remote action "reply"
+    // calls replyToChat() on the session bus. If the app is not running,
+    // sailjaild starts it (ExecDBus in the .desktop file) and the reply waits
+    // until TDLib is authorized (see pendingReplies).
+    DBusAdaptor *dBusAdaptor = this->tdLibWrapper->getDBusAdaptor();
+    if (dBusAdaptor) {
+        connect(dBusAdaptor, &DBusAdaptor::pleaseReplyToChat, this, &NotificationManager::handleReplyToChat);
+    }
+    connect(this->tdLibWrapper, &TDLibWrapper::authorizationStateChanged, this,
+        [this](const TDLibWrapper::AuthorizationState &authorizationState, const QVariantMap &) {
+            if (authorizationState == TDLibWrapper::AuthorizationReady) {
+                flushPendingReplies();
+            }
+        });
 
     this->controlLedNotification(false);
 
@@ -331,12 +365,27 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     if (!messageMap.isEmpty()) {
         nemoNotification->setTimestamp(QDateTime::fromMSecsSinceEpoch(messageMap.value(DATE).toLongLong() * 1000));
 
+        QVariantList remoteActions;
         QVariantList remoteActionArguments;
         remoteActionArguments.append(QString::number(notificationGroup->chatId));
         remoteActionArguments.append(messageMap.value(ID).toString());
-        nemoNotification->setRemoteAction(Notification::remoteAction("default", "openMessage",
-            "de.ygriega.fernschreiber", "/de/ygriega/fernschreiber", "de.ygriega.fernschreiber",
+        remoteActions.append(Notification::remoteAction("default", "openMessage",
+            APP_SERVICE, APP_PATH, APP_SERVICE,
             "openMessage", remoteActionArguments));
+
+        // "Reply" in the events view and in the banner: a named action with
+        // type=input, lipstick calls us back as replyToChat(chatId, <text>).
+        // The action name is fixed because the very same notification is
+        // republished on every update of the group.
+        if (canSendToChat(notificationGroup->chatId, chatInformation)) {
+            //: Notification action: write the answer right in the notification
+            QVariantMap replyAction = Notification::remoteAction(ACTION_REPLY, tr("Reply"),
+                APP_SERVICE, APP_PATH, APP_SERVICE,
+                "replyToChat", QVariantList() << QString::number(notificationGroup->chatId)).toMap();
+            replyAction.insert(ACTION_TYPE, ACTION_TYPE_INPUT);
+            remoteActions.append(replyAction);
+        }
+        nemoNotification->setRemoteActions(remoteActions);
     }
 
     QString notificationBody;
@@ -396,6 +445,108 @@ void NotificationManager::publishNotification(const NotificationGroup *notificat
     }
 
     nemoNotification->publish();
+}
+
+bool NotificationManager::canSendToChat(qlonglong chatId, const ChatInfo *chatInformation) const
+{
+    if (!chatInformation) {
+        // Chat not in the cache yet: when in doubt offer the reply, the
+        // normal case is a private chat. A send we were not allowed to make
+        // fails in TDLib; a reply refused by mistake is a missing button.
+        return true;
+    }
+    // Channels are read: whoever may post there does so from the app.
+    if (chatInformation->isChannel) {
+        return false;
+    }
+    if (chatInformation->type != TDLibWrapper::ChatTypeBasicGroup &&
+        chatInformation->type != TDLibWrapper::ChatTypeSupergroup) {
+        return true;
+    }
+    const QVariantMap chatInformationMap = tdLibWrapper->getChat(QString::number(chatId));
+    const QVariantMap chatType = chatInformationMap.value(TYPE).toMap();
+    const bool basicGroup = (chatInformation->type == TDLibWrapper::ChatTypeBasicGroup);
+    const qlonglong groupId = basicGroup
+        ? chatType.value(BASIC_GROUP_ID).toLongLong()
+        : chatType.value(SUPERGROUP_ID).toLongLong();
+    const QVariantMap groupInformation = basicGroup
+        ? tdLibWrapper->getBasicGroup(groupId)
+        : tdLibWrapper->getSuperGroup(groupId);
+    const QVariantMap memberStatus = groupInformation.value(STATUS).toMap();
+    switch (TDLibWrapper::chatMemberStatusFromString(memberStatus.value(_TYPE).toString())) {
+    case TDLibWrapper::ChatMemberStatusCreator:
+    case TDLibWrapper::ChatMemberStatusAdministrator:
+        return true;
+    case TDLibWrapper::ChatMemberStatusRestricted:
+        return memberStatus.value(PERMISSIONS).toMap().value(CAN_SEND_BASIC_MESSAGES).toBool();
+    case TDLibWrapper::ChatMemberStatusLeft:
+    case TDLibWrapper::ChatMemberStatusBanned:
+        return false;
+    default:
+        break;
+    }
+    // Read-only group: the basic permission is missing for every member.
+    return chatInformationMap.value(PERMISSIONS).toMap().value(CAN_SEND_BASIC_MESSAGES, true).toBool();
+}
+
+void NotificationManager::handleReplyToChat(const QString &chatId, const QString &message)
+{
+    const qlonglong chat = chatId.toLongLong();
+    const QString text = message.trimmed();
+    if (!chat || text.isEmpty()) {
+        LOG("Ignoring empty notification reply for chat" << chatId);
+        return;
+    }
+    if (tdLibWrapper->getAuthorizationState() != TDLibWrapper::AuthorizationReady) {
+        // This very call may have started the app (D-Bus activation): TDLib
+        // needs a few seconds, so the reply waits in the queue instead of
+        // being lost.
+        LOG("TDLib not ready yet, queueing notification reply for chat" << chat);
+        pendingReplies.append(qMakePair(chat, text));
+        return;
+    }
+    sendReply(chat, text);
+}
+
+void NotificationManager::flushPendingReplies()
+{
+    if (pendingReplies.isEmpty()) {
+        return;
+    }
+    LOG("TDLib authorized, sending" << pendingReplies.size() << "queued notification replies");
+    const QList<QPair<qlonglong,QString> > replies = pendingReplies;
+    pendingReplies.clear();
+    for (const QPair<qlonglong,QString> &reply : replies) {
+        sendReply(reply.first, reply.second);
+    }
+}
+
+void NotificationManager::sendReply(qlonglong chatId, const QString &message)
+{
+    LOG("Sending notification reply to chat" << chatId);
+    tdLibWrapper->sendTextMessage(chatId, message);
+    // Whoever replies has read: without this the chat stays unread (cover
+    // badge and counter) while the reply is already on its way.
+    const qlonglong messageId = lastNotifiedMessageId(chatId);
+    if (messageId) {
+        tdLibWrapper->viewMessage(chatId, messageId, true);
+    }
+}
+
+qlonglong NotificationManager::lastNotifiedMessageId(qlonglong chatId) const
+{
+    QMapIterator<int,NotificationGroup*> iterator(notificationGroups);
+    while (iterator.hasNext()) {
+        const NotificationGroup *group = iterator.next().value();
+        if (group->chatId == chatId && !group->notificationOrder.isEmpty()) {
+            const QVariantMap notification = group->activeNotifications.value(group->notificationOrder.last());
+            const qlonglong messageId = notification.value(TYPE).toMap().value(MESSAGE).toMap().value(ID).toLongLong();
+            if (messageId) {
+                return messageId;
+            }
+        }
+    }
+    return 0;
 }
 
 void NotificationManager::controlLedNotification(bool enabled)
