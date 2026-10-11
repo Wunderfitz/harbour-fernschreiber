@@ -43,11 +43,23 @@ Page {
     property int viewerCount: 0
     property int reactionCount: 0
     property bool loadingFailed: false
+    // Only the first page of the added reactions is part of the initial load,
+    // the others follow while scrolling towards the end of the reactions
+    property bool modelFilled: false
+    property bool loadingReactions: false
+    property string nextReactionsOffset: ""
+    // The rows with a reaction come first, those who only read it after them
+    property int reactionRows: 0
+    readonly property int rowHeight: Theme.itemSizeMedium
+
+    function getKey(sender) {
+        return sender["@type"] === "messageSenderUser" ? "user:" + sender.user_id : "chat:" + sender.chat_id;
+    }
 
     function getEntry(sender) {
         var isUser = sender["@type"] === "messageSenderUser";
         var senderId = isUser ? sender.user_id : sender.chat_id;
-        var key = (isUser ? "user:" : "chat:") + senderId;
+        var key = getKey(sender);
         if (!entries[key]) {
             var name = "";
             // Never null, the model takes the type of a role from its first entry
@@ -62,6 +74,7 @@ Page {
                 photo = chat.photo ? chat.photo.small : {};
             }
             entries[key] = {
+                key: key,
                 isUser: isUser,
                 senderId: senderId.toString(),
                 name: name,
@@ -86,6 +99,47 @@ Page {
             entry.hasCustomReaction = true;
         }
         entry.reactionDate = Math.max(entry.reactionDate, date);
+        return entry;
+    }
+
+    function findRow(key, from, to) {
+        for (var i = from; i < to; i++) {
+            if (interactionsModel.get(i).key === key) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // A reaction from a later page is older than the ones shown, so its sender
+    // goes to the end of the reactions unless they're already among them
+    function addLoadedReaction(sender, reactionType, date) {
+        var key = getKey(sender);
+        var hadReaction = !!entries[key] && entries[key].hasReaction;
+        var readerRow = !!entries[key] && !hadReaction ? findRow(key, reactionRows, interactionsModel.count) : -1;
+        var entry = addReaction(sender, reactionType, date);
+        if (hadReaction) {
+            var row = findRow(key, 0, reactionRows);
+            if (row >= 0) {
+                interactionsModel.set(row, entry);
+            }
+        } else {
+            if (readerRow >= 0) {
+                interactionsModel.remove(readerRow);
+            }
+            interactionsModel.insert(reactionRows, entry);
+            reactionRows += 1;
+        }
+    }
+
+    // Asks for the next page of reactions once their end is less than a screen
+    // below the visible part of the list
+    function loadMoreReactionsIfNeeded() {
+        if (modelFilled && !loadingReactions && nextReactionsOffset !== ""
+                && interactionsListView.contentY + 2 * interactionsListView.height >= reactionRows * rowHeight) {
+            loadingReactions = true;
+            requestReactions(nextReactionsOffset);
+        }
     }
 
     function finishRequest() {
@@ -107,9 +161,15 @@ Page {
             return (b.reactionDate || b.viewDate) - (a.reactionDate || a.viewDate);
         });
         interactionsModel.clear();
+        reactionRows = 0;
         for (var i = 0; i < list.length; i++) {
             interactionsModel.append(list[i]);
+            if (list[i].hasReaction) {
+                reactionRows += 1;
+            }
         }
+        modelFilled = true;
+        loadMoreReactionsIfNeeded();
     }
 
     function requestReactions(offset) {
@@ -187,13 +247,18 @@ Page {
         }
         onAddedReactionsReceived: {
             if (extra === extraPrefix + "reactions") {
-                for (var i = 0; i < reactions.length; i++) {
-                    addReaction(reactions[i].sender_id, reactions[i].type, reactions[i].date);
-                }
                 reactionCount = totalCount;
-                if (nextOffset !== "" && reactions.length > 0) {
-                    requestReactions(nextOffset);
+                nextReactionsOffset = reactions.length > 0 ? nextOffset : "";
+                if (modelFilled) {
+                    for (var i = 0; i < reactions.length; i++) {
+                        addLoadedReaction(reactions[i].sender_id, reactions[i].type, reactions[i].date);
+                    }
+                    loadingReactions = false;
+                    loadMoreReactionsIfNeeded();
                 } else {
+                    for (var j = 0; j < reactions.length; j++) {
+                        addReaction(reactions[j].sender_id, reactions[j].type, reactions[j].date);
+                    }
                     finishRequest();
                 }
             }
@@ -201,8 +266,14 @@ Page {
         onErrorReceived: {
             if (extra.indexOf(extraPrefix) === 0) {
                 Debug.log("[MessageInteractionsPage] Request failed: " + extra + " " + message);
-                loadingFailed = true;
-                finishRequest();
+                if (modelFilled) {
+                    // A later page of reactions, keep what is shown and stop there
+                    loadingReactions = false;
+                    nextReactionsOffset = "";
+                } else {
+                    loadingFailed = true;
+                    finishRequest();
+                }
             }
         }
     }
@@ -215,6 +286,9 @@ Page {
         id: interactionsListView
         anchors.fill: parent
         model: interactionsModel
+
+        onContentYChanged: messageInteractionsPage.loadMoreReactionsIfNeeded()
+        onHeightChanged: messageInteractionsPage.loadMoreReactionsIfNeeded()
 
         header: PageHeader {
             page: messageInteractionsPage
@@ -231,9 +305,24 @@ Page {
             }
         }
 
+        footer: Item {
+            width: interactionsListView.width
+            height: moreReactionsIndicator.running ? Theme.itemSizeLarge : 0
+
+            BusyIndicator {
+                id: moreReactionsIndicator
+                anchors.centerIn: parent
+                size: BusyIndicatorSize.Medium
+                running: messageInteractionsPage.loadingReactions
+            }
+        }
+
         delegate: ListItem {
             id: interactionItem
-            contentHeight: Theme.itemSizeMedium
+            readonly property bool isOwnRow: model.isUser && model.senderId === messageInteractionsPage.myUserId
+            contentHeight: messageInteractionsPage.rowHeight
+            // Nothing to open for yourself
+            enabled: !isOwnRow
 
             ProfileThumbnail {
                 id: interactionThumbnail
@@ -260,7 +349,7 @@ Page {
                 Label {
                     id: nameLabel
                     width: parent.width
-                    text: Emoji.emojify(model.isUser && model.senderId === messageInteractionsPage.myUserId ? qsTr("You") : model.name, font.pixelSize)
+                    text: Emoji.emojify(interactionItem.isOwnRow ? qsTr("You") : model.name, font.pixelSize)
                     truncationMode: TruncationMode.Fade
                     color: interactionItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                 }
