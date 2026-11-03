@@ -31,6 +31,8 @@
 #include <QMimeDatabase>
 #include "tdlibwrapper.h"
 
+class PhotoLimitsWorker;
+
 class FernschreiberUtils : public QObject
 {
     Q_OBJECT
@@ -64,6 +66,7 @@ public:
     Q_INVOKABLE QString mimeTypeForFile(const QString &filePath);
     Q_INVOKABLE QString writeSharedDataToFile(const QString &name, const QString &data);
     Q_INVOKABLE void initiateReverseGeocode(double latitude, double longitude);
+    Q_INVOKABLE void checkPhotoLimits(const QStringList &filePaths);
 
 signals:
     void voiceNoteDurationChanged(qlonglong duration);
@@ -71,6 +74,7 @@ signals:
     void newPositionInformation(const QVariantMap &positionInformation);
     void newGeocodedAddress(const QString &geocodedAddress);
     void geoPositionUnavailable();
+    void photoLimitsChecked(const QStringList &filePaths, bool limitsExceeded);
 
 private slots:
     void handleAudioBufferProbed(const QAudioBuffer &buffer);
@@ -94,6 +98,7 @@ private:
     bool previewGeoLocationUpdates;
     bool liveGeoLocationUpdates;
     QNetworkAccessManager *manager;
+    PhotoLimitsWorker *photoLimitsWorker;
 
     void cleanUp();
     void updateGeoLocationSource();

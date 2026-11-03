@@ -35,6 +35,7 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/dbusinterface.cpp \
     src/sharereceiver.cpp \
     src/emojisearchworker.cpp \
+    src/photolimitsworker.cpp \
     src/fernschreiberutils.cpp \
     src/knownusersmodel.cpp \
     src/mceinterface.cpp \
@@ -248,6 +249,7 @@ HEADERS += \
     src/debuglog.h \
     src/debuglogjs.h \
     src/emojisearchworker.h \
+    src/photolimitsworker.h \
     src/fernschreiberutils.h \
     src/knownusersmodel.h \
     src/mceinterface.h \

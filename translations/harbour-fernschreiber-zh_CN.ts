@@ -674,6 +674,14 @@
         <source>Readers and Reactions</source>
         <translation>已读与回应</translation>
     </message>
+    <message>
+        <source>Telegram doesn&apos;t accept pictures of this size or resolution as photos</source>
+        <translation>Telegram 不接受此大小或分辨率的图片作为照片</translation>
+    </message>
+    <message>
+        <source>Telegram doesn&apos;t accept pictures of this size or resolution as photos, and this chat doesn&apos;t allow sending files</source>
+        <translation>Telegram 不接受此大小或分辨率的图片作为照片，且此聊天不允许发送文件</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

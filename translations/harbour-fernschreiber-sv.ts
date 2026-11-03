@@ -685,6 +685,14 @@
         <source>Readers and Reactions</source>
         <translation>Läsare och reaktioner</translation>
     </message>
+    <message>
+        <source>Telegram doesn&apos;t accept pictures of this size or resolution as photos</source>
+        <translation>Telegram tar inte emot bilder av den här storleken eller upplösningen som foton</translation>
+    </message>
+    <message>
+        <source>Telegram doesn&apos;t accept pictures of this size or resolution as photos, and this chat doesn&apos;t allow sending files</source>
+        <translation>Telegram tar inte emot bilder av den här storleken eller upplösningen som foton, och den här chatten tillåter inte att filer skickas</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

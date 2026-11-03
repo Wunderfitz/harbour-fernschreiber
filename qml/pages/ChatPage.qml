@@ -245,6 +245,8 @@ Page {
         attachmentPreviewRow.isVideo = false;
         attachmentPreviewRow.isDocument = false;
         attachmentPreviewRow.sendAsFile = false;
+        attachmentPreviewRow.checkingPhotoLimits = false;
+        attachmentPreviewRow.photoLimitsExceeded = false;
         attachmentPreviewRow.isVoiceNote = false;
         attachmentPreviewRow.isLocation = false;
         attachmentPreviewRow.locationPeriod = -1;
@@ -274,11 +276,22 @@ Page {
         return files;
     }
 
+    // Pictures Telegram doesn't take as photos can only go out as files,
+    // which is only known once they have been looked at.
+    function checkPhotoLimits() {
+        attachmentPreviewRow.checkingPhotoLimits = true;
+        fernschreiberUtils.checkPhotoLimits(attachmentPreviewRow.attachedFiles.map(function(attachedFile) {
+            return attachedFile.filePath;
+        }));
+    }
+
     function controlSendButton() {
-        if (newMessageTextField.text.length !== 0
+        if ((newMessageTextField.text.length !== 0
                 || attachmentPreviewRow.attachedFiles.length > 0
                 || attachmentPreviewRow.isVoiceNote
-                || attachmentPreviewRow.isContact) {
+                || attachmentPreviewRow.isContact)
+                && !attachmentPreviewRow.checkingPhotoLimits
+                && !attachmentPreviewRow.photosUnsendable) {
             newMessageSendButton.enabled = true;
         } else {
             newMessageSendButton.enabled = false;
@@ -517,6 +530,9 @@ Page {
         attachmentPreviewRow.isPicture = contentType === "photo";
         attachmentPreviewRow.isVideo = contentType === "video";
         attachmentPreviewRow.isDocument = contentType === "document";
+        if (attachmentPreviewRow.isPicture) {
+            checkPhotoLimits();
+        }
         controlSendButton();
     }
     function hasSendPrivilege(privilege) {
@@ -1919,6 +1935,7 @@ Page {
                                         clearAttachmentPreviewRow();
                                         attachmentPreviewRow.attachedFiles = attachedFilesFrom(picker.selectedContent);
                                         attachmentPreviewRow.isPicture = true;
+                                        checkPhotoLimits();
                                         controlSendButton();
                                     })
                                 }
@@ -2059,6 +2076,11 @@ Page {
                         property bool isVideo: false;
                         property bool isDocument: false;
                         property bool sendAsFile: false;
+                        property bool checkingPhotoLimits: false;
+                        // At least one of the pictures can't be sent as a photo
+                        property bool photoLimitsExceeded: false;
+                        // Where no files may be sent either, Telegram takes such pictures neither way
+                        readonly property bool photosUnsendable: photoLimitsExceeded && !chatPage.hasSendPrivilege("can_send_documents")
                         property bool isVoiceNote: false;
                         property bool isLocation: false;
                         property bool isContact: false;
@@ -2090,6 +2112,21 @@ Page {
                                         sendLocation();
                                     }
                                 }
+                            }
+                            onPhotoLimitsChecked: {
+                                // A result may still arrive for pictures that were replaced or discarded
+                                var attachedFilePaths = attachmentPreviewRow.attachedFiles.map(function(attachedFile) {
+                                    return attachedFile.filePath;
+                                });
+                                if (!attachmentPreviewRow.isPicture || attachedFilePaths.join("\n") !== filePaths.join("\n")) {
+                                    return;
+                                }
+                                attachmentPreviewRow.checkingPhotoLimits = false;
+                                attachmentPreviewRow.photoLimitsExceeded = limitsExceeded;
+                                if (limitsExceeded) {
+                                    attachmentPreviewRow.sendAsFile = true;
+                                }
+                                controlSendButton();
                             }
                             onGeoPositionUnavailable: {
                                 if (attachmentPreviewRow.isLocation && !attachmentPreviewRow.locationData) {
@@ -2205,10 +2242,19 @@ Page {
                             TextSwitch {
                                 width: parent.width
                                 text: qsTr("Send as file")
+                                // Also shown where files may not be sent when it's the only way, to tell why nothing can be sent
                                 visible: (attachmentPreviewRow.isPicture || attachmentPreviewRow.isVideo)
-                                         && chatPage.hasSendPrivilege("can_send_documents")
+                                         && (chatPage.hasSendPrivilege("can_send_documents") || attachmentPreviewRow.photoLimitsExceeded)
+                                description: {
+                                    if (attachmentPreviewRow.photosUnsendable) {
+                                        return qsTr("Telegram doesn't accept pictures of this size or resolution as photos, and this chat doesn't allow sending files");
+                                    }
+                                    return attachmentPreviewRow.photoLimitsExceeded ? qsTr("Telegram doesn't accept pictures of this size or resolution as photos") : "";
+                                }
+                                enabled: !attachmentPreviewRow.photoLimitsExceeded
                                 automaticCheck: false
-                                checked: attachmentPreviewRow.sendAsFile
+                                // Not offered as the way out where files may not be sent
+                                checked: attachmentPreviewRow.sendAsFile && !attachmentPreviewRow.photosUnsendable
                                 onClicked: attachmentPreviewRow.sendAsFile = !attachmentPreviewRow.sendAsFile
                             }
                         }
@@ -2469,7 +2515,7 @@ Page {
                                 }
                             }
 
-                            EnterKey.enabled: !inlineQuery.userNameIsValid && (!appSettings.sendByEnter || text.length)
+                            EnterKey.enabled: !inlineQuery.userNameIsValid && (!appSettings.sendByEnter || (text.length && !attachmentPreviewRow.checkingPhotoLimits && !attachmentPreviewRow.photosUnsendable))
                             EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-chat" : "image://theme/icon-m-enter"
 
                             onTextChanged: {

@@ -696,6 +696,14 @@
         <source>Readers and Reactions</source>
         <translation>Czytelnicy i reakcje</translation>
     </message>
+    <message>
+        <source>Telegram doesn&apos;t accept pictures of this size or resolution as photos</source>
+        <translation>Telegram nie przyjmuje obrazów o tym rozmiarze lub rozdzielczości jako zdjęć</translation>
+    </message>
+    <message>
+        <source>Telegram doesn&apos;t accept pictures of this size or resolution as photos, and this chat doesn&apos;t allow sending files</source>
+        <translation>Telegram nie przyjmuje obrazów o tym rozmiarze lub rozdzielczości jako zdjęć, a ten czat nie pozwala na wysyłanie plików</translation>
+    </message>
 </context>
 <context>
     <name>ChatSelectionPage</name>

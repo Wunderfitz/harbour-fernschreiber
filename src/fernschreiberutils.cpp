@@ -18,6 +18,7 @@
 */
 
 #include "fernschreiberutils.h"
+#include "photolimitsworker.h"
 #include <QMap>
 #include <QVariant>
 #include <QAudioEncoderSettings>
@@ -133,6 +134,7 @@ namespace {
 FernschreiberUtils::FernschreiberUtils(QObject *parent)
     : QObject(parent)
     , manager(new QNetworkAccessManager(this))
+    , photoLimitsWorker(nullptr)
 {
     LOG("Initializing audio recorder...");
 
@@ -192,6 +194,11 @@ FernschreiberUtils::FernschreiberUtils(QObject *parent)
 FernschreiberUtils::~FernschreiberUtils()
 {
     this->cleanUp();
+    // A thread must not be destroyed while running
+    for (PhotoLimitsWorker *worker : findChildren<PhotoLimitsWorker *>()) {
+        worker->requestInterruption();
+        worker->wait();
+    }
 }
 
 QString FernschreiberUtils::getMessageShortText(TDLibWrapper *tdLibWrapper, const QVariantMap &messageContent, const bool isChannel, const qlonglong currentUserId, const QVariantMap &messageSender)
@@ -491,6 +498,25 @@ QString FernschreiberUtils::mimeTypeForFile(const QString &filePath)
 {
     QMimeDatabase mimeDatabase;
     return mimeDatabase.mimeTypeForFile(filePath).name();
+}
+
+void FernschreiberUtils::checkPhotoLimits(const QStringList &filePaths)
+{
+    LOG("Checking photo limits" << filePaths.size());
+    // Waiting for a check of what isn't attached any more would only block the UI,
+    // so it is just told to stop and cleans up after itself whenever it's done.
+    if (this->photoLimitsWorker) {
+        this->photoLimitsWorker->requestInterruption();
+    }
+    this->photoLimitsWorker = new PhotoLimitsWorker(filePaths, this);
+    connect(this->photoLimitsWorker, SIGNAL(checkCompleted(QStringList, bool)), this, SIGNAL(photoLimitsChecked(QStringList, bool)));
+    connect(this->photoLimitsWorker, SIGNAL(finished()), this->photoLimitsWorker, SLOT(deleteLater()));
+    connect(this->photoLimitsWorker, &QObject::destroyed, this, [this](QObject *worker) {
+        if (this->photoLimitsWorker == worker) {
+            this->photoLimitsWorker = nullptr;
+        }
+    });
+    this->photoLimitsWorker->start();
 }
 
 QString FernschreiberUtils::writeSharedDataToFile(const QString &name, const QString &data)
